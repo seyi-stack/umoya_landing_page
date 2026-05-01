@@ -1,0 +1,148 @@
+/* ══════════════════════════════════════════════════════════
+   Umoya Founder's Circle — Section 00: Sticky Nav
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Tokens ────────────────────────────────────────────── */
+.fc-nav-bar {
+  --cream:      #F5F0EB;
+  --brown:      #4B2E2B;
+  --terra:      #D97E53;
+  --terra-dk:   #C06840;
+  --text-muted: #4B2E2B;
+  --white:      #FFFFFF;
+  --ease:       cubic-bezier(.25,.46,.45,.94);
+}
+
+.fc-nav-bar,
+.fc-nav-bar *,
+.fc-nav-bar *::before,
+.fc-nav-bar *::after {
+  box-sizing: border-box;
+}
+
+/* ── Bar shell ─────────────────────────────────────────── */
+.fc-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+
+  height: 64px;
+  background: rgba(245,240,235,0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(75,46,43,.09);
+  box-shadow: 0 2px 24px rgba(75,46,43,.07);
+  font-family: inherit;
+  overflow: visible;
+
+  /* Hidden by default — shown by JS when hero leaves viewport */
+  transform: translateY(-100%);
+  transition: transform .4s var(--ease);
+}
+
+.fc-nav-bar.fc-nav-visible {
+  transform: translateY(0);
+}
+
+/* ── Inner row ─────────────────────────────────────────── */
+.fc-nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Logo (left) ───────────────────────────────────────── */
+.fc-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.fc-nav-logo img {
+  height: 26px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+.fc-nav-logo-text {
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  color: var(--brown);
+  white-space: nowrap;
+}
+
+/* ── Centre label ──────────────────────────────────────── */
+.fc-nav-label {
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ── CTA button (right) ───────────────────────────────── */
+.fc-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 10px 20px;
+  min-height: 44px;
+  background: var(--terra);
+  color: var(--white);
+  border: 2px solid var(--terra);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .25s var(--ease), border-color .25s var(--ease),
+              transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+
+.fc-nav-btn:hover {
+  background: var(--terra-dk);
+  border-color: var(--terra-dk);
+  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(217,126,83,.28);
+}
+
+/* ── Tablet ≤1024px ────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .fc-nav-inner { padding: 0 28px; gap: 16px; }
+}
+
+/* ── Mobile ≤768px ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .fc-nav-bar       { height: 58px; }
+  .fc-nav-inner     { padding: 0 20px; gap: 12px; height: 58px; }
+  .fc-nav-label     { display: none; }
+}
+
+/* ── Small mobile ≤420px ───────────────────────────────── */
+@media (max-width: 420px) {
+  .fc-nav-inner     { padding: 0 16px; }
+  .fc-nav-logo-text { display: none; }
+  .fc-nav-btn       { padding: 8px 14px; font-size: 0.68rem; }
+}

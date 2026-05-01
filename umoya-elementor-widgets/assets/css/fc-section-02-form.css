@@ -1,0 +1,277 @@
+/* ══════════════════════════════════════════════════════════
+   Umoya Founder's Circle — Section 02 Form
+   ══════════════════════════════════════════════════════════ */
+
+#fc-form-section {
+  --cream:      #F5F0EB;
+  --cream-lt:   #F5F0EB;
+  --cream-dk:   #F5F0EB;
+  --brown:      #4B2E2B;
+  --terra:      #D97E53;
+  --terra-dk:   #C06840;
+  --gold:       #D97E53;
+  --gold-lt:    #D97E53;
+  --olive:      #708238;
+  --text:       #4B2E2B;
+  --text-mid:   #4B2E2B;
+  --text-muted: #4B2E2B;
+  --white:      #FFFFFF;
+  --ease:       cubic-bezier(.25,.46,.45,.94);
+}
+
+#fc-form-section,
+#fc-form-section *,
+#fc-form-section *::before,
+#fc-form-section *::after { box-sizing: border-box; }
+
+#fc-form-section {
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: inherit;
+  background: var(--brown);
+}
+
+.fc-f2-outer {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Image column */
+.fc-f2-img-col {
+  position: relative;
+  overflow: hidden;
+}
+
+.fc-f2-img-col img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.fc-f2-img-ov {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(28,13,6,.75) 0%, rgba(28,13,6,.56) 30%,
+    rgba(28,13,6,.25) 60%, rgba(28,13,6,.0) 100%
+  );
+  z-index: 1;
+}
+
+.fc-f2-img-txt {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: clamp(32px, 5vh, 56px) clamp(28px, 3.5vw, 48px);
+}
+
+.fc-f2-img-eye {
+  display: block;
+  font-family: inherit;
+  font-size: clamp(0.75rem, 0.95vh, 0.82rem);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  margin-bottom: clamp(14px, 1.6vh, 18px);
+  text-shadow: 0 1px 8px rgba(75,46,43,.5);
+}
+
+.fc-f2-img-ttl {
+  font-family: inherit;
+  font-size: clamp(1.6rem, 3vh, 2.8rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  color: var(--cream);
+  margin-bottom: clamp(14px, 1.6vh, 18px);
+  text-shadow: 0 2px 14px rgba(75,46,43,.5);
+}
+
+.fc-f2-img-rule {
+  display: block;
+  width: 40px; height: 2px;
+  background: var(--terra);
+  margin-bottom: clamp(14px, 1.6vh, 18px);
+}
+
+.fc-f2-img-body {
+  font-family: inherit;
+  font-size: clamp(0.82rem, 1.2vh, 0.92rem);
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: #F5F0EB;
+  max-width: 32ch;
+  text-shadow: 0 1px 8px rgba(75,46,43,.4);
+}
+
+/* Form column */
+.fc-f2-form-col {
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  padding-top: clamp(28px, 4vh, 48px);
+  padding-bottom: clamp(28px, 4vh, 48px);
+  padding-left: clamp(28px, 4vw, 56px);
+  padding-right: clamp(28px, 4vw, 56px);
+  position: relative;
+}
+
+.fc-f2-inner {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.fc-f2-hd {
+  flex-shrink: 0;
+  text-align: center;
+  margin-bottom: clamp(12px, 1.8vh, 24px);
+}
+
+.fc-f2-eye {
+  display: block;
+  font-family: inherit;
+  font-size: clamp(0.75rem, 0.95vh, 0.82rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: clamp(6px, 0.9vh, 10px);
+}
+
+.fc-f2-ttl {
+  font-family: inherit;
+  font-size: clamp(1.6rem, 3.5vh, 2.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--brown);
+}
+
+.fc-f2-ttl em { font-style: italic; color: var(--terra); }
+
+.fc-f2-rule {
+  display: block;
+  width: 40px; height: 2px;
+  background: var(--terra);
+  margin: clamp(7px, 1vh, 12px) auto;
+}
+
+.fc-f2-sub {
+  font-family: inherit;
+  font-size: clamp(0.8rem, 1.3vh, 0.95rem);
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* Form card */
+.fc-f2-card {
+  flex: 1;
+  min-height: 0;
+  background: var(--white);
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(14px, 1.8vh, 22px) clamp(20px, 2.8vw, 40px) clamp(16px, 2vh, 24px);
+  box-shadow: 0 1px 3px rgba(75,46,43,.04), 0 10px 36px rgba(75,46,43,.09), 0 0 0 1px rgba(217,126,83,.08);
+}
+
+.fc-f2-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--terra), var(--gold), var(--olive));
+  border-radius: 10px 10px 0 0;
+  flex-shrink: 0;
+}
+
+/* Watermark */
+.fc-f2-wm {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: inherit;
+  font-size: clamp(6rem, 12vw, 14rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(28,13,6,.03);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+/* Scroll reveal */
+.fc-f2-rv {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+.fc-f2-rv.fc-f2-on { opacity: 1; transform: none; }
+.fc-f2-rv.d1       { transition-delay: .12s; }
+
+/* CF7 form integration styles */
+.fc-f2-card .wpcf7 { flex: 1; min-height: 0; }
+.fc-f2-card .wpcf7-form { display: flex; flex-direction: column; height: 100%; }
+
+/* Responsive ≤1024px */
+@media (max-width: 1024px) {
+  .fc-f2-img-col img { object-position: center center; }
+  .fc-f2-img-txt { padding: clamp(32px, 4vh, 48px) clamp(20px, 2.4vw, 28px); }
+  .fc-f2-img-eye { font-size: 0.75rem; }
+  .fc-f2-img-ttl { font-size: clamp(1.45rem, 2.6vh, 2.05rem); }
+  .fc-f2-img-body { font-size: 0.8rem; max-width: 26ch; }
+}
+
+/* Responsive ≤768px */
+@media (max-width: 768px) {
+  #fc-form-section { min-height: 0; height: auto; }
+  .fc-f2-outer { grid-template-columns: 1fr; min-height: 0; height: auto; }
+  .fc-f2-img-col { height: clamp(380px, 58vw, 480px); position: relative; }
+  .fc-f2-img-col img { object-position: center 75%; }
+  .fc-f2-img-ov {
+    background: linear-gradient(180deg,
+      rgba(75,46,43,.40) 0%, rgba(75,46,43,.20) 35%,
+      rgba(75,46,43,.76) 68%, rgba(75,46,43,.97) 100%
+    );
+  }
+  .fc-f2-img-txt { justify-content: flex-end; padding: 36px 28px 32px; }
+  .fc-f2-img-eye { font-size: 0.78rem; margin-bottom: 16px; }
+  .fc-f2-img-ttl { font-size: clamp(1.85rem, 5.6vw, 2.5rem); margin-bottom: 16px; }
+  .fc-f2-img-body { display: block; font-size: 0.84rem; max-width: 36ch; margin: 0 auto; }
+  .fc-f2-form-col { padding: 48px 24px 56px; }
+  .fc-f2-inner { flex: none; display: block; }
+  .fc-f2-hd { margin-bottom: 28px; }
+  .fc-f2-card { flex: none; padding: 24px 20px 20px; }
+}
+
+/* Responsive ≤420px */
+@media (max-width: 420px) {
+  .fc-f2-img-col { height: clamp(340px, 82vw, 380px); }
+  .fc-f2-img-col img { object-position: center 78%; }
+  .fc-f2-img-txt { padding: 28px 20px 24px; }
+  .fc-f2-img-eye { font-size: 0.75rem; margin-bottom: 12px; }
+  .fc-f2-img-ttl { font-size: 1.7rem; margin-bottom: 12px; }
+  .fc-f2-img-body { font-size: 0.8rem; max-width: 30ch; }
+  .fc-f2-form-col { padding: 36px 16px 48px; }
+  .fc-f2-card { padding: 20px 16px 16px; }
+}

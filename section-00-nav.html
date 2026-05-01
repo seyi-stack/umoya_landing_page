@@ -1,0 +1,578 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 00: STICKY NAVIGATION
+=================================================================
+  BEHAVIOUR:
+  • Renders as a normal in-flow element directly below the hero
+  • When user scrolls and the bar reaches the top of the viewport,
+    it pins there — position: sticky; top: 0
+  • No show/hide animation. No IntersectionObserver on the hero.
+    The browser handles the stick natively and performantly.
+
+  IMPORTANT — ELEMENTOR:
+  • This widget must be placed immediately AFTER the hero widget
+    (Section 01.1) in the Elementor panel — not before it.
+  • Do NOT wrap this widget in an Elementor section that has
+    overflow: hidden — that will break sticky positioning.
+  • The Elementor section container for this widget should have
+    no top/bottom padding and no background colour set.
+
+  STRUCTURE:
+  • Logo         — left, links to main site
+  • Nav links    — centre, 6 section anchors with active state
+  • CTA button   — right, anchors to form
+  • Hamburger    — mobile only, opens dropdown inside the nav bar
+=================================================================
+-->
+<style>
+  /* ── Tokens ─────────────────────────────────────────────────── */
+  #fcNavBar {
+    --cream:      #F5F0EB;
+    --brown:      #4B2E2B;
+    --terra:      #D97E53;
+    --terra-dk:   #C06840;
+    --text-muted: #4B2E2B;
+    --white:      #FFFFFF;
+    --ease:       cubic-bezier(.25,.46,.45,.94);
+  }
+  
+  #fcNavBar,
+  #fcNavBar *,
+  #fcNavBar *::before,
+  #fcNavBar *::after {
+    box-sizing: border-box;
+  }
+  
+  /* ── Bar shell ──────────────────────────────────────────────── */
+  #fcNavBar {
+    /*
+     * STICKY — renders below the hero in document flow.
+     * Pins to top: 0 the moment it reaches the viewport edge.
+     * No transform, no JS show/hide needed.
+     */
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+  
+    height: 64px;
+    background: rgba(245,240,235,0.99);
+    border-bottom: 1px solid rgba(75,46,43,.09);
+    box-shadow: 0 2px 24px rgba(75,46,43,.07);
+    font-family: inherit;
+  
+    /*
+     * overflow: visible is critical — the mobile dropdown is
+     * position: absolute inside this element and must escape
+     * the bar's visible bounds.
+     */
+    overflow: visible;
+  }
+  
+  /* ── Inner row ──────────────────────────────────────────────── */
+  .fc-nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* ── LOGO (left) ────────────────────────────────────────────── */
+  .fc-nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+    flex-shrink: 0;
+    min-width: 0;
+  }
+  
+  .fc-nav-logo img {
+    height: 26px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+  }
+  
+  .fc-nav-logo-text {
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    color: var(--brown);
+    white-space: nowrap;
+  }
+  
+  /* ── NAV LINKS (centre) ─────────────────────────────────────── */
+  .fc-nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    justify-content: center;
+    gap: 0;
+  }
+  
+  .fc-nav-item { position: relative; }
+  
+  .fc-nav-link {
+    display: inline-flex;
+    align-items: center;
+    height: 64px;
+    padding: 0 18px;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-muted);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color .25s var(--ease);
+    position: relative;
+  }
+  
+  .fc-nav-link:hover { color: var(--brown); }
+  
+  /* Terracotta underline — hidden by default, shown when active */
+  .fc-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 18px;
+    right: 18px;
+    height: 2px;
+    background: var(--terra);
+    border-radius: 2px 2px 0 0;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .3s var(--ease);
+  }
+  
+  .fc-nav-item.fc-active .fc-nav-link {
+    color: var(--brown);
+    font-weight: 600;
+  }
+  
+  .fc-nav-item.fc-active .fc-nav-link::after {
+    transform: scaleX(1);
+  }
+  
+  /* ── CTA BUTTON (right) ─────────────────────────────────────── */
+  .fc-nav-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 20px;
+    min-height: 44px;
+    background: var(--terra);
+    color: var(--white);
+    border: 2px solid var(--terra);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background .25s var(--ease), border-color .25s var(--ease),
+                transform .25s var(--ease), box-shadow .25s var(--ease);
+  }
+  
+  .fc-nav-cta:hover {
+    background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    color: var(--white);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(217,126,83,.28);
+  }
+  
+  /* ── HAMBURGER (mobile only, hidden on desktop) ─────────────── */
+  .fc-nav-burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    transition: background .2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .fc-nav-burger:hover { background: rgba(75,46,43,.06); }
+  
+  .fc-nav-burger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--brown);
+    border-radius: 2px;
+    transition: transform .35s var(--ease), opacity .25s, width .25s;
+    transform-origin: center;
+  }
+  
+  /* Burger → X */
+  #fcNavBar.fc-open .fc-nav-burger span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  #fcNavBar.fc-open .fc-nav-burger span:nth-child(2) {
+    opacity: 0;
+    width: 0;
+  }
+  #fcNavBar.fc-open .fc-nav-burger span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+  
+  /* ── MOBILE DROPDOWN ─────────────────────────────────────────── */
+  /*
+   * position: absolute relative to the sticky #fcNavBar.
+   * top: 100% places it immediately below the bar.
+   * Follows the bar as it sticks — no separate positioning needed.
+   */
+  .fc-nav-dropdown {
+    display: none; /* block only on mobile via media query */
+    position: absolute;
+    top: 100%;      /* flush below the 64px bar */
+    left: 0;
+    right: 0;
+    background: rgba(245,240,235,0.995);
+    border-bottom: 1px solid rgba(75,46,43,.09);
+    box-shadow: 0 8px 32px rgba(75,46,43,.12);
+  
+    /* Collapsed state */
+    transform: translateY(-6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .35s var(--ease), opacity .3s var(--ease);
+  }
+  
+  .fc-nav-dropdown.fc-mob-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .fc-nav-dropdown-list {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0 14px;
+  }
+  
+  .fc-nav-dropdown-item {
+    border-bottom: 1px solid rgba(75,46,43,.06);
+  }
+  
+  .fc-nav-dropdown-item:last-child { border-bottom: none; }
+  
+  .fc-nav-dropdown-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 24px;
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: color .2s, background .2s, padding-left .2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .fc-nav-dropdown-link:hover,
+  .fc-nav-dropdown-item.fc-active .fc-nav-dropdown-link {
+    color: var(--brown);
+    background: rgba(217,126,83,.05);
+    padding-left: 30px;
+  }
+  
+  /* Active dot indicator */
+  .fc-nav-dropdown-item.fc-active .fc-nav-dropdown-link::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--terra);
+    flex-shrink: 0;
+  }
+  
+  /* CTA row inside dropdown */
+  .fc-nav-dropdown-cta-row {
+    padding: 14px 24px 10px;
+  }
+  
+  .fc-nav-dropdown-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 12px 20px;
+    min-height: 48px;
+    background: var(--terra);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    transition: background .25s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .fc-nav-dropdown-cta:hover { background: var(--terra-dk); color: var(--white); }
+  
+  /* ── TABLET ≤1024px ─────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .fc-nav-inner { padding: 0 28px; gap: 16px; }
+    .fc-nav-link  { padding: 0 13px; font-size: 0.75rem; }
+  }
+  
+  /* ── TABLET ≤900px — trim links to prevent overflow ────────── */
+  @media (max-width: 900px) {
+    .fc-nav-item[data-s="fc-journey"],
+    .fc-nav-item[data-s="fc-details"] {
+      display: none;
+    }
+  }
+  
+  /* ── MOBILE ≤768px ──────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    #fcNavBar         { height: 58px; }
+    .fc-nav-inner     { padding: 0 20px; gap: 12px; height: 58px; }
+    .fc-nav-links     { display: none; }
+    .fc-nav-cta       { display: none; }
+    .fc-nav-burger    { display: flex; }
+    .fc-nav-dropdown  { display: block; } /* allow JS to show/hide it */
+  }
+  
+  /* ── SMALL MOBILE ≤420px ────────────────────────────────────── */
+  @media (max-width: 420px) {
+    .fc-nav-inner       { padding: 0 16px; }
+    .fc-nav-logo-text   { display: none; }
+  }
+  </style>
+  
+  <!-- ── NAV BAR (sticky) ──────────────────────────────────────── -->
+  <nav id="fcNavBar" aria-label="Founder's Circle page navigation">
+  
+    <div class="fc-nav-inner">
+  
+      <!-- Logo -->
+      <a class="fc-nav-logo" href="#fc-hero" aria-label="Umoya Afrika Tours — back to top">
+        <img
+          src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Umoya-Afrika-Logomark.svg"
+          alt="Umoya Afrika Tours logo"
+          onerror="this.style.display='none';document.getElementById('fcNLT').style.display='inline';"
+        />
+        <span class="fc-nav-logo-text" id="fcNLT" style="display:none;">Umoya</span>
+      </a>
+  
+      <!-- Desktop section links -->
+      <ul class="fc-nav-links" role="list">
+        <li class="fc-nav-item" data-s="fc-intro">
+          <a class="fc-nav-link" href="#fc-intro">Overview</a>
+        </li>
+        <li class="fc-nav-item" data-s="fc-form-section">
+          <a class="fc-nav-link" href="#fc-form-section">How to Inquire</a>
+        </li>
+        <li class="fc-nav-item" data-s="fc-benefits">
+          <a class="fc-nav-link" href="#fc-benefits">Membership Offers</a>
+        </li>
+        <li class="fc-nav-item" data-s="fc-journey">
+          <a class="fc-nav-link" href="#fc-journey">Inaugural Journey Details</a>
+        </li>
+        <li class="fc-nav-item" data-s="fc-why">
+          <a class="fc-nav-link" href="#fc-why">Why Umoya Afrika Tours?</a>
+        </li>
+        <li class="fc-nav-item" data-s="fc-details">
+          <a class="fc-nav-link" href="#fc-details">Travel Essentials</a>
+        </li>
+      </ul>
+  
+      <!-- Desktop CTA -->
+      <a class="fc-nav-cta" href="#fc-form-section">Reserve Your Place</a>
+  
+      <!-- Hamburger -->
+      <button
+        class="fc-nav-burger"
+        id="fcNavBurger"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="fcNavDropdown"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+  
+      <!-- Mobile dropdown — inside the nav so it follows sticky position -->
+      <div class="fc-nav-dropdown" id="fcNavDropdown" role="menu" aria-label="Page sections">
+  
+        <ul class="fc-nav-dropdown-list" role="list">
+          <li class="fc-nav-dropdown-item" data-s="fc-intro">
+            <a class="fc-nav-dropdown-link" href="#fc-intro" role="menuitem">Overview</a>
+          </li>
+          <li class="fc-nav-dropdown-item" data-s="fc-form-section">
+            <a class="fc-nav-dropdown-link" href="#fc-form-section" role="menuitem">How to Inquire</a>
+          </li>
+          <li class="fc-nav-dropdown-item" data-s="fc-benefits">
+            <a class="fc-nav-dropdown-link" href="#fc-benefits" role="menuitem">Membership Offers</a>
+          </li>
+          <li class="fc-nav-dropdown-item" data-s="fc-journey">
+            <a class="fc-nav-dropdown-link" href="#fc-journey" role="menuitem">Inaugural Journey Details</a>
+          </li>
+          <li class="fc-nav-dropdown-item" data-s="fc-why">
+            <a class="fc-nav-dropdown-link" href="#fc-why" role="menuitem">Why Umoya Afrika Tours?</a>
+          </li>
+          <li class="fc-nav-dropdown-item" data-s="fc-details">
+            <a class="fc-nav-dropdown-link" href="#fc-details" role="menuitem">Travel Essentials</a>
+          </li>
+        </ul>
+  
+        <div class="fc-nav-dropdown-cta-row">
+          <a class="fc-nav-dropdown-cta" href="#fc-form-section">Reserve Your Place</a>
+        </div>
+  
+      </div><!-- /.fc-nav-dropdown -->
+  
+    </div><!-- /.fc-nav-inner -->
+  
+  </nav>
+  
+  <script>
+  (function(){
+    'use strict';
+  
+    var bar      = document.getElementById('fcNavBar');
+    var burger   = document.getElementById('fcNavBurger');
+    var dropdown = document.getElementById('fcNavDropdown');
+  
+    if(!bar) return;
+  
+    /* ── HAMBURGER TOGGLE ───────────────────────────────────── */
+    function open(){
+      bar.classList.add('fc-open');
+      dropdown.classList.add('fc-mob-open');
+      burger.setAttribute('aria-expanded','true');
+      burger.setAttribute('aria-label','Close navigation menu');
+    }
+  
+    function close(){
+      bar.classList.remove('fc-open');
+      dropdown.classList.remove('fc-mob-open');
+      burger.setAttribute('aria-expanded','false');
+      burger.setAttribute('aria-label','Open navigation menu');
+    }
+  
+    if(burger){
+      burger.addEventListener('click', function(){
+        bar.classList.contains('fc-open') ? close() : open();
+      });
+      burger.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); burger.click(); }
+      });
+    }
+  
+    /* Close on any dropdown link or CTA tap */
+    if(dropdown){
+      dropdown.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){ close(); });
+      });
+    }
+  
+    /* Close when clicking outside the bar */
+    document.addEventListener('click', function(e){
+      if(!bar.contains(e.target)) close();
+    });
+  
+    /* ── ACTIVE SECTION TRACKING ────────────────────────────── */
+    var ids = [
+      'fc-intro',
+      'fc-form-section',
+      'fc-benefits',
+      'fc-journey',
+      'fc-why',
+      'fc-details'
+    ];
+  
+    function setActive(activeId){
+      ids.forEach(function(id){
+        /* desktop items */
+        var desktopItem = bar.querySelector('.fc-nav-item[data-s="' + id + '"]');
+        if(desktopItem) desktopItem.classList.toggle('fc-active', id === activeId);
+        /* mobile dropdown items */
+        var mobileItem = bar.querySelector('.fc-nav-dropdown-item[data-s="' + id + '"]');
+        if(mobileItem) mobileItem.classList.toggle('fc-active', id === activeId);
+      });
+    }
+  
+    if('IntersectionObserver' in window){
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting) setActive(entry.target.id);
+        });
+      },{
+        rootMargin: '-64px 0px -50% 0px',
+        threshold: 0
+      });
+      ids.forEach(function(id){
+        var el = document.getElementById(id);
+        if(el) obs.observe(el);
+      });
+    }
+  
+    /* ── SMOOTH SCROLL ──────────────────────────────────────── */
+    var navH = bar.offsetHeight || 64;
+
+    /* Logo — always scrolls to the very top of the page */
+    var logoLink = bar.querySelector('.fc-nav-logo');
+    if(logoLink){
+      logoLink.addEventListener('click', function(e){
+        e.preventDefault();
+        'scrollBehavior' in document.documentElement.style
+          ? window.scrollTo({top: 0, behavior: 'smooth'})
+          : window.scrollTo(0, 0);
+      });
+    }
+
+    /* All other hash links — offset by nav height */
+    bar.querySelectorAll('a[href^="#"]').forEach(function(a){
+      if(a.classList.contains('fc-nav-logo')) return; /* skip logo */
+      a.addEventListener('click', function(e){
+        var target = document.getElementById(a.getAttribute('href').slice(1));
+        if(!target) return;
+        e.preventDefault();
+        var top = target.getBoundingClientRect().top + window.pageYOffset - navH;
+        'scrollBehavior' in document.documentElement.style
+          ? window.scrollTo({top: top, behavior: 'smooth'})
+          : window.scrollTo(0, top);
+      });
+    });
+  
+  }());
+  </script>
+  

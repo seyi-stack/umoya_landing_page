@@ -1,0 +1,22 @@
+/* ══════════════════════════════════════════════════════════
+   Umoya Founder's Circle — Shared Design Tokens & Utilities
+   ══════════════════════════════════════════════════════════ */
+
+:root {
+  --fc-cream:      #F5F0EB;
+  --fc-cream-lt:   #F5F0EB;
+  --fc-cream-dk:   #F5F0EB;
+  --fc-brown:      #4B2E2B;
+  --fc-brown-mid:  #4B2E2B;
+  --fc-terra:      #D97E53;
+  --fc-terra-dk:   #C06840;
+  --fc-terra-lt:   #D97E53;
+  --fc-gold:       #D97E53;
+  --fc-gold-lt:    #D97E53;
+  --fc-olive:      #708238;
+  --fc-text:       #4B2E2B;
+  --fc-text-mid:   #4B2E2B;
+  --fc-text-muted: #4B2E2B;
+  --fc-white:      #ffffff;
+  --fc-ease:       cubic-bezier(.25, .46, .45, .94);
+}

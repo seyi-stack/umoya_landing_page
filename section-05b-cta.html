@@ -1,0 +1,248 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 05B: CLOSING CTA
+  Full-bleed image section with two-column layout + divider
+=================================================================
+-->
+<style>
+  /* ── Design tokens ─────────────────────────────────────────── */
+  #fc-cta {
+    --cream:      #F5F0EB;
+    --cream-lt:   #F5F0EB;
+    --cream-dk:   #F5F0EB;
+    --brown:      #4B2E2B;
+    --terra:      #D97E53;
+    --terra-dk:   #C06840;
+    --white:      #FFFFFF;
+    --ease:       cubic-bezier(.25,.46,.45,.94);
+
+    position: relative;
+    height: 450px;
+    overflow: hidden;
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+
+  #fc-cta *,
+  #fc-cta *::before,
+  #fc-cta *::after { box-sizing: border-box; }
+
+  /* ── Reveal ────────────────────────────────────────────────── */
+  .fc-cta-rv {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .85s var(--ease), transform .85s var(--ease);
+  }
+  .fc-cta-rv.on { opacity: 1; transform: none; }
+
+  /* ── Background ────────────────────────────────────────────── */
+  .fc-cta-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .fc-cta-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .fc-cta-ov {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.60);
+    z-index: 1;
+  }
+
+  /* ── Container ─────────────────────────────────────────────── */
+  .fc-cta-c {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 100%;
+  }
+
+  /* ── Content layout ────────────────────────────────────────── */
+  .fc-cta-inner {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .fc-cta-left {
+    flex: 1;
+    padding-right: 48px;
+    text-align: left;
+  }
+
+  .fc-cta-divider {
+    width: 1px;
+    align-self: stretch;
+    background: rgba(245,240,235,.25);
+    flex-shrink: 0;
+    margin: 100px 0; /* Updated from 60px to 100px */
+  }
+
+  .fc-cta-right {
+    flex: 1;
+    padding-left: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    text-align: left;
+  }
+
+  .fc-cta-h2 {
+    font-family: inherit;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .fc-cta-q {
+    font-family: inherit;
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    font-weight: 700;
+    font-style: normal;
+    color: var(--cream);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .fc-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 13px 28px;
+    min-height: 50px;
+    background: var(--terra);
+    color: var(--white);
+    border: 2px solid var(--terra);
+    border-radius: 0;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background .25s, border-color .25s, transform .25s, box-shadow .25s;
+  }
+
+  .fc-cta-btn:hover {
+    background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(217,126,83,.3);
+  }
+
+  /* ── TABLET ≤1024px ──────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .fc-cta-c     { padding: 0 100px; } /* Increased from 32px to keep content from spreading too wide */
+    .fc-cta-left  { padding-right: 36px; text-align: center; } /* Centered text */
+    .fc-cta-right { padding-left: 36px; align-items: center; text-align: center; } /* Centered content */
+  }
+
+  /* ── MOBILE ≤768px ───────────────────────────────────────── */
+  @media (max-width: 768px) {
+    #fc-cta { height: auto; }
+    .fc-cta-c { padding: 0 20px; }
+    .fc-cta-inner {
+      flex-direction: column;
+      align-items: center; /* Centered column */
+      text-align: center;
+      padding: 56px 0;
+      gap: 0;
+    }
+    .fc-cta-left {
+      padding-right: 0;
+      text-align: center;
+    }
+    .fc-cta-divider {
+      width: 100%;
+      height: 1px;
+      align-self: center;
+      margin: 40px 0; /* Balanced margin for the horizontal divider */
+    }
+    .fc-cta-right {
+      padding-left: 0;
+      align-items: center;
+      text-align: center;
+    }
+    .fc-cta-btn {
+      width: auto; /* Removed 100% width */
+      justify-content: center;
+      padding: 11px 22px; /* Slightly smaller padding */
+      min-height: 44px; /* Slightly smaller height */
+      font-size: 0.75rem; /* Slightly smaller font */
+    }
+  }
+
+  /* ── SMALL MOBILE ≤420px ─────────────────────────────────── */
+  @media (max-width: 420px) {
+    .fc-cta-c { padding: 0 16px; }
+    .fc-cta-inner { padding: 44px 0; }
+  }
+</style>
+
+<section id="fc-cta" class="fc-cta-rv" aria-label="Join the Founder's Circle">
+  <!-- Background image -->
+  <div class="fc-cta-bg" aria-hidden="true">
+    <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05313.jpg"
+         alt="" loading="lazy" />
+  </div>
+  <!-- Dark overlay -->
+  <div class="fc-cta-ov" aria-hidden="true"></div>
+  <!-- Content -->
+  <div class="fc-cta-c">
+    <div class="fc-cta-inner">
+      <!-- Left: italic statement -->
+      <div class="fc-cta-left">
+        <h2 class="fc-cta-h2">Umoya Afrika Tours is for those who feel called to be part of something greater.</h2>
+      </div>
+      <!-- Vertical divider -->
+      <div class="fc-cta-divider" aria-hidden="true"></div>
+      <!-- Right: bold question + CTA -->
+      <div class="fc-cta-right">
+        <p class="fc-cta-q">Ready to move beyond another vacation and into a sacred journey of remembrance?</p>
+        <a href="#fc-form-section" class="fc-cta-btn">Become a Founder's Circle Member</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ── Scroll reveal ─────────────────────────────────────── */
+  var rvEls = document.querySelectorAll('#fc-cta .fc-cta-rv');
+  var section = document.getElementById('fc-cta');
+  if (section) {
+    rvEls = [section];
+  }
+  if ('IntersectionObserver' in window) {
+    var rvObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('on'); rvObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.06 });
+    rvEls.forEach(function(el){ rvObs.observe(el); });
+  } else {
+    rvEls.forEach(function(el){ el.classList.add('on'); });
+  }
+
+}());
+</script>

@@ -1,0 +1,407 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 06B: BRAND PILLARS
+=================================================================
+  ELEMENTOR USAGE:
+  • Add an "HTML" widget after Section 06 (Why Umoya).
+  • Layout: full-bleed background image with four text columns
+    anchored to the bottom of the section.
+  • Mobile: horizontal infinite-swipe carousel with partial
+    column visibility to invite scrolling.
+=================================================================
+-->
+<style>
+  /* ── Tokens ─────────────────────────────────────── */
+  #fc-pillars {
+    --cream:      #F5F0EB;
+    --brown:      #4B2E2B;
+    --brown-mid:  #3A2220;
+    --terra:      #D97E53;
+    --terra-dk:   #C06840;
+    --white:      #FFFFFF;
+    --ease:       cubic-bezier(.25,.46,.45,.94);
+  }
+
+  /* ── Section ─────────────────────────────────────── */
+  #fc-pillars {
+    position: relative;
+    min-height: 62vh;
+    min-height: 62dvh;
+    display: flex;
+    align-items: flex-end;
+    font-family: inherit;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  #fc-pillars *, #fc-pillars *::before, #fc-pillars *::after {
+    box-sizing: border-box;
+  }
+
+  /* ── Background image ──────────────────────────── */
+  .fc-pil-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .fc-pil-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .fc-pil-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(28,13,6,.10) 0%,
+      rgba(28,13,6,.18) 25%,
+      rgba(28,13,6,.52) 55%,
+      rgba(28,13,6,.88) 100%
+    );
+    z-index: 1;
+  }
+
+  /* ── Content layer ─────────────────────────────── */
+  .fc-pil-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── Four-column grid ──────────────────────────── */
+  .fc-pil-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  /* ── Individual column ─────────────────────────── */
+  .fc-pil-col {
+    border-top: 2px solid rgba(245,240,235,.2);
+    padding-top: 28px;
+  }
+
+  .fc-pil-col:first-child {
+    border-top-color: var(--terra);
+  }
+
+  .fc-pil-title {
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--white);
+    margin: 0 0 14px;
+  }
+
+  .fc-pil-body {
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.78;
+    color: rgba(245,240,235,.78);
+    margin: 0;
+  }
+
+  /* ── Scroll reveal ─────────────────────────────── */
+  .fc-pil-rv {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .85s var(--ease), transform .85s var(--ease);
+  }
+  .fc-pil-rv.fc-pil-on { opacity: 1; transform: none; }
+  .fc-pil-rv.d1 { transition-delay: .12s; }
+  .fc-pil-rv.d2 { transition-delay: .24s; }
+  .fc-pil-rv.d3 { transition-delay: .36s; }
+
+  /* ── TABLET ≤1024px ─────────────────────────────── */
+  @media (max-width: 1024px) {
+    #fc-pillars { min-height: 80vh; min-height: 80dvh; }
+    .fc-pil-grid { gap: 32px; }
+    .fc-pil-title { font-size: 1rem; }
+    .fc-pil-body  { font-size: 0.84rem; }
+  }
+
+  /* ── MOBILE ≤768px ──────────────────────────────── */
+  @media (max-width: 768px) {
+    #fc-pillars { min-height: 72vh; min-height: 72dvh; }
+    .fc-pil-content { padding: 0 0 60px; }
+
+    .fc-pil-grid {
+      display: flex;
+      overflow: visible;
+      gap: 0;
+      touch-action: pan-x;
+      -webkit-overflow-scrolling: touch;
+      cursor: grab;
+      will-change: transform;
+    }
+
+    .fc-pil-grid.fc-pil-dragging { cursor: grabbing; }
+
+    .fc-pil-col {
+      flex: 0 0 72%;
+      min-width: 72%;
+      padding: 24px 24px 0;
+      border-top: none;
+      border-left: 2px solid rgba(245,240,235,.2);
+    }
+
+    .fc-pil-col:first-child {
+      border-left-color: var(--terra);
+    }
+
+    /* Reveal all on mobile — carousel handles visibility */
+    .fc-pil-rv { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ── SMALL MOBILE ≤420px ────────────────────────── */
+  @media (max-width: 420px) {
+    #fc-pillars { min-height: 64vh; min-height: 64dvh; }
+    .fc-pil-content { padding: 0 0 48px; }
+    .fc-pil-col {
+      flex: 0 0 80%;
+      min-width: 80%;
+      padding: 20px 20px 0;
+    }
+    .fc-pil-title { font-size: 0.95rem; }
+    .fc-pil-body  { font-size: 0.82rem; }
+  }
+</style>
+
+<section id="fc-pillars" aria-label="What sets Umoya apart">
+
+  <!-- Background image -->
+  <div class="fc-pil-bg" aria-hidden="true">
+    <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05243.jpg"
+         alt="" loading="lazy" />
+  </div>
+
+  <!-- Content -->
+  <div class="fc-pil-content">
+    <div class="fc-pil-grid" role="list">
+
+      <div class="fc-pil-col fc-pil-rv" role="listitem">
+        <h3 class="fc-pil-title">Guided by Cultural Custodians</h3>
+        <p class="fc-pil-body">Each experience is shaped by those who carry the knowledge — historians, elders, and local voices who bring South Africa's living heritage into deeper context.</p>
+      </div>
+
+      <div class="fc-pil-col fc-pil-rv d1" role="listitem">
+        <h3 class="fc-pil-title">A Like-minded Community of Travelers</h3>
+        <p class="fc-pil-body">Our journeys bring together individuals seeking reconnection and a deeper relationship with the continent and one another.</p>
+      </div>
+
+      <div class="fc-pil-col fc-pil-rv d2" role="listitem">
+        <h3 class="fc-pil-title">Intimate by Design</h3>
+        <p class="fc-pil-body">Each journey is limited to 20 guests to preserve space — for reflection, meaningful connection, and a more personal experience of the land, its people, and its stories.</p>
+      </div>
+
+      <div class="fc-pil-col fc-pil-rv d3" role="listitem">
+        <h3 class="fc-pil-title">Carefully Selected Premium Accommodations</h3>
+        <p class="fc-pil-body">Each stay is carefully chosen for its sense of place, cultural integrity, and level of comfort. From boutique lodges to private villas, every property reflects the spirit of its region.</p>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ── Scroll reveal (desktop) ───────────────────── */
+  var rvEls = document.querySelectorAll('#fc-pillars .fc-pil-rv');
+  if ('IntersectionObserver' in window) {
+    var rvObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('fc-pil-on'); rvObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    rvEls.forEach(function(el) { rvObs.observe(el); });
+  } else {
+    rvEls.forEach(function(el) { el.classList.add('fc-pil-on'); });
+  }
+
+  /* ── Infinite swipe carousel (mobile) ──────────── */
+  var MOBILE_BP = 768;
+  var container = document.querySelector('#fc-pillars .fc-pil-grid');
+  if (!container) return;
+
+  var origCols = [];
+  var children = container.children;
+  var i;
+  for (i = 0; i < children.length; i++) {
+    origCols.push(children[i]);
+  }
+  var colCount = origCols.length;
+  var isSetup = false;
+  var offset = 0;
+  var dragging = false;
+  var startX = 0;
+  var startOffset = 0;
+  var colWidth = 0;
+  var totalOrigWidth = 0;
+
+  function getColWidth() {
+    var first = container.querySelector('.fc-pil-col');
+    if (!first) return 0;
+    return first.offsetWidth;
+  }
+
+  function applyTransform(smooth) {
+    if (smooth) {
+      container.style.transition = 'transform 0.35s cubic-bezier(.25,.46,.45,.94)';
+    } else {
+      container.style.transition = 'none';
+    }
+    container.style.transform = 'translateX(' + offset + 'px)';
+  }
+
+  function wrapOffset() {
+    if (offset > 0) {
+      offset -= totalOrigWidth;
+      applyTransform(false);
+    } else if (offset < -totalOrigWidth * 2 + colWidth) {
+      offset += totalOrigWidth;
+      applyTransform(false);
+    }
+  }
+
+  function snapToNearest() {
+    colWidth = getColWidth();
+    totalOrigWidth = colWidth * colCount;
+    var drift = offset - startOffset;
+    var threshold = colWidth * 0.15;
+    var snapped;
+    if (drift < -threshold) {
+      snapped = Math.floor(offset / colWidth) * colWidth;
+    } else if (drift > threshold) {
+      snapped = Math.ceil(offset / colWidth) * colWidth;
+    } else {
+      snapped = Math.round(startOffset / colWidth) * colWidth;
+    }
+    offset = snapped;
+    applyTransform(true);
+    setTimeout(function(){ wrapOffset(); }, 380);
+  }
+
+  function setupCarousel() {
+    if (window.innerWidth > MOBILE_BP) {
+      if (isSetup) teardown();
+      return;
+    }
+    if (isSetup) return;
+    isSetup = true;
+
+    for (i = 0; i < colCount; i++) {
+      var cloneAfter = origCols[i].cloneNode(true);
+      cloneAfter.classList.add('fc-pil-clone');
+      cloneAfter.setAttribute('aria-hidden', 'true');
+      container.appendChild(cloneAfter);
+    }
+    for (i = 0; i < colCount; i++) {
+      var cloneBefore = origCols[i].cloneNode(true);
+      cloneBefore.classList.add('fc-pil-clone');
+      cloneBefore.setAttribute('aria-hidden', 'true');
+      container.insertBefore(cloneBefore, container.children[i]);
+    }
+
+    colWidth = getColWidth();
+    totalOrigWidth = colWidth * colCount;
+    offset = -totalOrigWidth;
+    applyTransform(false);
+
+    container.addEventListener('touchstart', onTouchStart, {passive: true});
+    container.addEventListener('touchmove', onTouchMove, {passive: false});
+    container.addEventListener('touchend', onTouchEnd);
+    container.addEventListener('mousedown', onMouseDown);
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
+  }
+
+  function teardown() {
+    isSetup = false;
+    container.removeEventListener('touchstart', onTouchStart);
+    container.removeEventListener('touchmove', onTouchMove);
+    container.removeEventListener('touchend', onTouchEnd);
+    container.removeEventListener('mousedown', onMouseDown);
+    window.removeEventListener('mousemove', onMouseMove);
+    window.removeEventListener('mouseup', onMouseUp);
+    var clones = container.querySelectorAll('.fc-pil-clone');
+    for (i = 0; i < clones.length; i++) {
+      clones[i].parentNode.removeChild(clones[i]);
+    }
+    container.style.transform = '';
+    container.style.transition = '';
+    container.classList.remove('fc-pil-dragging');
+  }
+
+  /* Touch */
+  function onTouchStart(e) {
+    dragging = true;
+    startX = e.touches[0].clientX;
+    startOffset = offset;
+    container.style.transition = 'none';
+  }
+  function onTouchMove(e) {
+    if (!dragging) return;
+    var dx = e.touches[0].clientX - startX;
+    offset = startOffset + dx;
+    applyTransform(false);
+    if (Math.abs(dx) > 5) e.preventDefault();
+  }
+  function onTouchEnd() {
+    if (!dragging) return;
+    dragging = false;
+    snapToNearest();
+  }
+
+  /* Mouse */
+  function onMouseDown(e) {
+    dragging = true;
+    startX = e.clientX;
+    startOffset = offset;
+    container.style.transition = 'none';
+    container.classList.add('fc-pil-dragging');
+    e.preventDefault();
+  }
+  function onMouseMove(e) {
+    if (!dragging) return;
+    var dx = e.clientX - startX;
+    offset = startOffset + dx;
+    applyTransform(false);
+  }
+  function onMouseUp() {
+    if (!dragging) return;
+    dragging = false;
+    container.classList.remove('fc-pil-dragging');
+    snapToNearest();
+  }
+
+  setupCarousel();
+  var resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      if (window.innerWidth > MOBILE_BP && isSetup) {
+        teardown();
+      } else if (window.innerWidth <= MOBILE_BP && !isSetup) {
+        setupCarousel();
+      } else if (isSetup) {
+        colWidth = getColWidth();
+        totalOrigWidth = colWidth * colCount;
+        offset = -totalOrigWidth;
+        applyTransform(false);
+      }
+    }, 150);
+  });
+})();
+</script>

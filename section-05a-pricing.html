@@ -1,0 +1,205 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 05A: PRICING STRIP
+=================================================================
+  ELEMENTOR USAGE:
+  • Add an "HTML" widget after Section 05 (Journey).
+  • Replace $[Price] with real starting price before launch.
+=================================================================
+-->
+<style>
+  /* ── Tokens ─────────────────────────────────────── */
+  #fc-pricing {
+    --cream:      #F5F0EB;
+    --brown:      #4B2E2B;
+    --terra:      #D97E53;
+    --terra-dk:   #C06840;
+    --text:       #4B2E2B;
+    --text-muted: #4B2E2B;
+    --white:      #FFFFFF;
+    --ease:       cubic-bezier(.25,.46,.45,.94);
+  }
+
+  /* ── Section ─────────────────────────────────────── */
+  #fc-pricing {
+    background: var(--cream);
+    padding-top: 40px;
+    padding-bottom: 80px;
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+
+  #fc-pricing *, #fc-pricing *::before, #fc-pricing *::after {
+    box-sizing: border-box;
+  }
+
+  /* ── Container ──────────────────────────────────── */
+  .fc-pri-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Scroll reveal ──────────────────────────────── */
+  .fc-pri-rv {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .85s var(--ease), transform .85s var(--ease);
+  }
+  .fc-pri-rv.fc-pri-on { opacity: 1; transform: none; }
+
+  /* ── Card ────────────────────────────────────────── */
+  .fc-pri-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    background: var(--white);
+    border-radius: 10px;
+    padding: 40px 48px;
+    box-shadow: 0 4px 24px rgba(75,46,43,.06), 0 1px 4px rgba(75,46,43,.04);
+  }
+
+  /* ── Left: label + price ────────────────────────── */
+  .fc-pri-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .fc-pri-label {
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin: 0;
+  }
+
+  .fc-pri-price {
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .fc-pri-digits {
+    font-size: 2.4rem;
+    font-weight: 600;
+    font-style: normal;
+    color: var(--brown);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  /* ── Right: button + note ──────────────────────── */
+  .fc-pri-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .fc-pri-note {
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .fc-pri-btn {
+    display: inline-block;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--white);
+    background: var(--terra);
+    padding: 14px 28px;
+    border-radius: 0;
+    white-space: nowrap;
+    transition: background .25s ease, transform .25s ease, box-shadow .25s ease;
+  }
+
+  .fc-pri-btn:hover {
+    background: var(--terra-dk);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(217,126,83,.25);
+  }
+
+  /* ── TABLET ≤1024px ─────────────────────────────── */
+  @media (max-width: 1024px) {
+    .fc-pri-wrap { padding: 0 32px; }
+    .fc-pri-card { padding: 36px 40px; gap: 32px; }
+  }
+
+  /* ── MOBILE ≤768px ──────────────────────────────── */
+  @media (max-width: 768px) {
+    #fc-pricing { padding-top: 0px; padding-bottom: 56px; }
+    .fc-pri-wrap { padding: 0 20px; }
+    .fc-pri-card {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 28px;
+      padding: 32px 28px;
+    }
+    .fc-pri-left { align-items: center; text-align: center; }
+    .fc-pri-digits { display: block; margin: 4px 0; }
+    .fc-pri-right { align-items: center; }
+    .fc-pri-note { text-align: center; }
+  }
+
+  /* ── SMALL MOBILE ≤420px ────────────────────────── */
+  @media (max-width: 420px) {
+    #fc-pricing { padding-top: 0px; padding-bottom: 48px; }
+    .fc-pri-wrap { padding: 0 16px; }
+    .fc-pri-card { padding: 28px 20px; gap: 24px; }
+    .fc-pri-digits { font-size: 2rem; }
+    .fc-pri-btn { text-align: center; width: 100%; }
+  }
+</style>
+
+<section id="fc-pricing" aria-label="Journey pricing">
+  <div class="fc-pri-wrap">
+    <div class="fc-pri-card fc-pri-rv" role="note">
+
+      <!-- Left: label + price -->
+      <div class="fc-pri-left">
+        <p class="fc-pri-label">Founder's Circle Offer</p>
+        <p class="fc-pri-price">Starting from <span class="fc-pri-digits">$9,999</span> per person</p>
+      </div>
+
+      <!-- Right: button + note -->
+      <div class="fc-pri-right">
+        <a href="#fc-form-section" class="fc-pri-btn">Claim $500 Off</a>
+        <span class="fc-pri-note">Limited Time Only</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var rvEls = document.querySelectorAll('#fc-pricing .fc-pri-rv');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('fc-pri-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    rvEls.forEach(function(el) { obs.observe(el); });
+  } else {
+    rvEls.forEach(function(el) { el.classList.add('fc-pri-on'); });
+  }
+})();
+</script>

@@ -1,0 +1,1235 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 05: YOUR JOURNEY BEGINS HERE
+  Map: Leaflet.js — dynamically injected CSS + JS (Elementor safe)
+=================================================================
+  WHY DYNAMIC INJECTION:
+  Elementor HTML widgets sometimes strip <link> tags and <script>
+  src attributes. Injecting Leaflet CSS and JS programmatically
+  via document.createElement guarantees they load in all cases.
+
+  MAP HEIGHT FIX:
+  Previous version used position:absolute which collapses to 0px
+  when the parent has no explicit height. Now the map uses an
+  explicit pixel height set from the right content column height
+  via JS, with a 460px fallback — so Leaflet always has a non-zero
+  container to render into.
+=================================================================
+-->
+<style>
+  /* ── Design tokens ─────────────────────────────────────────── */
+  #fc-journey {
+    --cream:      #f5ede0;
+    --cream-lt:   #faf6f0;
+    --cream-dk:   #ece1cf;
+    --brown:      #1c0d06;
+    --terra:      #c4622a;
+    --terra-dk:   #a84e20;
+    --terra-lt:   #d4784a;
+    --text:       #1c0d06;
+    --text-mid:   #4a2e1a;
+    --text-muted: #7a5c44;
+    --gold:       #b8913a;
+    --white:      #ffffff;
+    --ease:       cubic-bezier(.25,.46,.45,.94);
+  
+    background: var(--cream);
+    padding: 100px 0;
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+  
+  #fc-journey *,
+  #fc-journey *::before,
+  #fc-journey *::after { box-sizing: border-box; }
+  
+  /* ── Container ─────────────────────────────────────────────── */
+  .fc-jrn-c {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  
+  /* ── Reveal ────────────────────────────────────────────────── */
+  .fc-jrn-rv {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .85s var(--ease), transform .85s var(--ease);
+  }
+  .fc-jrn-rv.on { opacity: 1; transform: none; }
+  .fc-jrn-rv.d1 { transition-delay: .14s; }
+  .fc-jrn-rv.d2 { transition-delay: .26s; }
+  
+  /* ── A. HEADER + STATS ─────────────────────────────────────── */
+  .fc-jrn-hd {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+  
+  .fc-jrn-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  
+  .fc-jrn-ttl {
+    font-family: inherit;
+    font-size: clamp(1.9rem, 4vw, 3.4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--brown);
+  }
+  
+  .fc-jrn-ttl em { font-style: italic; color: var(--terra); }
+  
+  .fc-jrn-stats {
+    display: flex;
+    gap: 28px;
+    flex-shrink: 0;
+    padding-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  
+  .fc-jrn-stat { text-align: center; }
+  
+  .fc-jrn-stat-n {
+    font-family: inherit;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 400;
+    color: var(--terra);
+    line-height: 1;
+  }
+  
+  .fc-jrn-stat-l {
+    font-family: inherit;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 5px;
+  }
+  
+  /* ── B. PROVINCE CARDS — FLIP (UPDATED) ────────────────────── */
+  .fc-prov-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    margin-bottom: 72px;
+  }
+
+  .fc-prov-card {
+    position: relative;
+    width: 100%;
+    padding-bottom: 140%;
+    cursor: pointer;
+    border-radius: 10px;
+    perspective: 1000px;
+  }
+
+  /* Force override any global theme settings making the card 'float' up */
+  .fc-prov-card:hover {
+    transform: translateY(0) !important;
+  }
+
+  .fc-prov-front,
+  .fc-prov-back {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  }
+
+  /* ── FRONT FACE ─────────────────────────── */
+  .fc-prov-front {
+    transform: rotateY(0deg);
+    box-shadow: 0 4px 16px rgba(28,13,6,.14);
+    z-index: 2;
+  }
+
+  .fc-prov-card:hover .fc-prov-front,
+  .fc-prov-card.fc-flipped .fc-prov-front {
+    transform: rotateY(180deg);
+  }
+
+  .fc-prov-front img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+
+  .fc-prov-ov {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(28,13,6,.88) 0%,
+      rgba(28,13,6,.18) 55%,
+      transparent 100%
+    );
+  }
+
+  .fc-prov-info {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 18px 14px; z-index: 2;
+  }
+
+  .fc-prov-reg {
+    font-family: inherit;
+    font-size: 0.56rem; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: #d4784a; margin-bottom: 4px;
+  }
+
+  .fc-prov-nm {
+    font-family: inherit;
+    font-size: 0.85rem; font-weight: 400;
+    color: #f5ede0; line-height: 1.35;
+  }
+
+  /* ── BACK FACE ──────────────────────────── */
+  .fc-prov-back {
+    transform: rotateY(-180deg);
+    background: #1c0d06;
+    box-shadow: 0 4px 16px rgba(28,13,6,.22);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 22px 18px;
+    z-index: 1;
+  }
+
+  .fc-prov-card:hover .fc-prov-back,
+  .fc-prov-card.fc-flipped .fc-prov-back {
+    transform: rotateY(0deg);
+  }
+
+  .fc-prov-back::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: #c4622a;
+  }
+
+  .fc-prov-back-eye {
+    display: block; font-family: inherit;
+    font-size: 0.56rem; font-weight: 700;
+    letter-spacing: 0.24em; text-transform: uppercase;
+    color: #d4784a; margin-bottom: 10px;
+  }
+
+  .fc-prov-back-ttl {
+    font-family: inherit;
+    font-size: clamp(0.8rem, 1.2vw, 0.98rem);
+    font-weight: 400; font-style: italic;
+    line-height: 1.3; color: #f5ede0;
+    margin-bottom: 12px;
+  }
+
+  .fc-prov-back-rule {
+    display: block; width: 28px; height: 1.5px;
+    background: #c4622a; margin-bottom: 12px;
+  }
+
+  .fc-prov-back-body {
+    font-family: inherit;
+    font-size: clamp(0.7rem, 0.95vw, 0.8rem);
+    line-height: 1.65;
+    color: rgba(244,237,224,.72);
+  }
+  
+  /* ── C. FULL-BLEED MAP + INCLUDES SPLIT ───────────────────── */
+  .fc-ji-section {
+    padding-top: 64px;
+    border-top: 1px solid rgba(28,13,6,.1);
+    position: relative;
+    /* Break out of container to reach left screen edge */
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+  
+  .fc-ji-outer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  /* ── MAP COLUMN (left) ─────────────────────────────────────── */
+  .fc-map-col {
+    position: relative;
+    background: #e8eff4;
+    /*
+     * Explicit height — set by JS to match right column.
+     * Fallback: 460px so Leaflet always has a non-zero container.
+     */
+    min-height: 460px;
+  }
+  
+  /*
+   * #fcLeafletMap: NOT position:absolute.
+   * width:100% + height:100% works reliably when the parent
+   * (.fc-map-col) has an explicit pixel height set.
+   */
+  #fcLeafletMap {
+    width: 100%;
+    height: 100%;
+    min-height: 460px;
+    display: block;
+    background: #dde8f0;
+  }
+  
+  /* Loading indicator shown before map tiles arrive */
+  .fc-map-loading {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1000;
+    background: #e8eff4;
+    transition: opacity .5s;
+  }
+  
+  .fc-map-loading.fc-map-ready {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .fc-map-loading-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .fc-map-spinner {
+    width: 28px;
+    height: 28px;
+    border: 3px solid rgba(196,98,42,.2);
+    border-top-color: #c4622a;
+    border-radius: 50%;
+    animation: fcMapSpin .8s linear infinite;
+  }
+  
+  @keyframes fcMapSpin { to { transform: rotate(360deg); } }
+  
+  .fc-map-loading-txt {
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #7a5c44;
+  }
+  
+  /* Leaflet custom marker styles */
+  .fc-lm-wrap {
+    position: relative;
+    width: 28px;
+    height: 28px;
+  }
+  
+  .fc-lm-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #c4622a;
+    border: 2.5px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(28,13,6,.4);
+    cursor: default;
+  }
+  
+  .fc-lm-label {
+    position: absolute;
+    left: 34px;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    background: rgba(255,255,255,.88);
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #1c0d06;
+    box-shadow: 0 1px 4px rgba(28,13,6,.18);
+    pointer-events: none;
+  }
+  
+  /* ── CONTENT COLUMN (right) ────────────────────────────────── */
+  .fc-ji-copy {
+    background: var(--cream-lt);
+    border-left: 1px solid rgba(28,13,6,.08);
+    padding: 52px 48px 52px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .fc-ji-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  
+  .fc-ji-ttl {
+    font-family: inherit;
+    font-size: clamp(1.6rem, 3vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.12;
+    color: var(--brown);
+    margin-bottom: 1.4rem;
+  }
+  
+  .fc-ji-rule {
+    display: block;
+    width: 44px; height: 2px;
+    background: var(--terra);
+    margin-bottom: 1.8rem;
+  }
+  
+  .fc-inc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 2rem;
+  }
+  
+  .fc-inc-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-family: inherit;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--text-mid);
+  }
+  
+  .fc-inc-dot {
+    flex-shrink: 0;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--terra);
+    margin-top: 8px;
+  }
+  
+  .fc-price-blk {
+    background: var(--cream-dk);
+    border: 1px solid rgba(28,13,6,.1);
+    border-left: 3px solid var(--terra);
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin-bottom: 2.2rem;
+  }
+  
+  .fc-price-from {
+    font-family: inherit;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 3px;
+  }
+  
+  .fc-price-amt {
+    font-family: inherit;
+    font-size: 1.9rem;
+    font-weight: 400;
+    color: var(--brown);
+    line-height: 1.2;
+  }
+  
+  .fc-price-amt span {
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--text-muted);
+  }
+  
+  .fc-price-note {
+    font-family: inherit;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  
+  .fc-ji-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 13px 28px;
+    min-height: 50px;
+    background: transparent;
+    color: var(--terra);
+    border: 2px solid var(--terra);
+    border-radius: 0;
+    cursor: pointer;
+    transition: background .25s, color .25s, transform .25s;
+  }
+  
+  .fc-ji-btn:hover {
+    background: var(--terra);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  
+  /* ── D. CLOSING CTA ────────────────────────────────────────── */
+  .fc-jrn-close {
+    margin-top: 72px;
+    padding: 64px 72px;
+    background: var(--brown);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .fc-jrn-close-p {
+    font-family: inherit;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-style: italic;
+    color: rgba(244,237,224,.7);
+    line-height: 1.65;
+    flex: 1;
+    min-width: 240px;
+  }
+  
+  .fc-jrn-close-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 13px 28px;
+    min-height: 50px;
+    background: var(--terra);
+    color: var(--white);
+    border: 2px solid var(--terra);
+    border-radius: 0;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background .25s, border-color .25s, transform .25s, box-shadow .25s;
+  }
+  
+  .fc-jrn-close-btn:hover {
+    background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(196,98,42,.3);
+  }
+  
+  /* ── TABLET ≤1024px ────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .fc-jrn-c     { padding: 0 32px; }
+  
+    /* Province cards: 5 → 3 cols; last 2 items fill remaining width */
+    .fc-prov-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    /* 4th and 5th cards take equal share of the second row */
+    .fc-prov-grid .fc-prov-card:nth-child(4),
+    .fc-prov-grid .fc-prov-card:nth-child(5) {
+      grid-column: span 1;
+    }
+  
+    /* Full-bleed split: reduce to side-by-side with tighter padding */
+    .fc-ji-copy   { padding: 40px 32px 40px 40px; }
+  
+    /* Closing CTA */
+    .fc-jrn-close { padding: 48px 40px; gap: 28px; }
+  }
+  
+  /* ── TABLET LANDSCAPE / NARROW ≤900px ──────────────────────── */
+  @media (max-width: 900px) {
+    /* Province cards: drop to 2 cols */
+    .fc-prov-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 52px;
+    }
+    /* Last card (5th) spans full width at landscape tablet */
+    .fc-prov-grid .fc-prov-card:last-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16 / 7;
+      padding-bottom: 0;
+    }
+  
+    /* Keep map+content side-by-side, compact map height */
+    .fc-map-col,
+    #fcLeafletMap { min-height: 300px; }
+  
+    .fc-ji-copy { padding: 36px 28px 36px 36px; }
+  }
+  
+  /* ── MOBILE ≤768px ─────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    #fc-journey   { padding: 64px 0; }
+    .fc-jrn-c     { padding: 0 20px; }
+  
+    /* Header */
+    .fc-jrn-hd    { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 36px; }
+    .fc-jrn-stats { gap: 20px; flex-wrap: wrap; }
+  
+    /* Province cards: 2 cols, last card full-width */
+    .fc-prov-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 48px;
+    }
+    .fc-prov-grid .fc-prov-card:last-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16 / 7;
+      padding-bottom: 0;
+    }
+    .fc-prov-nm  { font-size: 0.8rem; }
+    .fc-prov-reg { font-size: 0.52rem; letter-spacing: 0.18em; }
+  
+    /* Full-bleed section: cancel viewport trick, stack vertically */
+    .fc-ji-section {
+      width: 100%;
+      left: auto;
+      right: auto;
+      margin-left: 0;
+      margin-right: 0;
+      padding-top: 48px;
+    }
+  
+    /* Stack: map on top, content below */
+    .fc-ji-outer {
+      grid-template-columns: 1fr;
+    }
+  
+    /*
+     * Map height on mobile — 380px gives enough canvas to show
+     * all 4 SA province stops clearly after fitBounds().
+     * JS syncMapHeight is disabled on mobile (see script).
+     */
+    .fc-map-col   { min-height: 240px; height: 240px; }
+    #fcLeafletMap { min-height: 240px; height: 240px; }
+  
+    /* Loading overlay adapts */
+    .fc-map-loading { border-radius: 0; }
+  
+    /* Content column: full width, top border, comfortable padding */
+    .fc-ji-copy {
+      padding: 44px 24px 52px;
+      border-left: none;
+      border-top: 1px solid rgba(28,13,6,.08);
+      justify-content: flex-start;
+    }
+  
+    .fc-ji-ttl   { font-size: clamp(1.5rem, 5vw, 2.2rem); }
+  
+    /* Includes list: slightly more compact */
+    .fc-inc-list { gap: 10px; margin-bottom: 1.6rem; }
+    .fc-inc-list li { font-size: 0.88rem; }
+  
+    /* Price block */
+    .fc-price-blk { margin-bottom: 1.8rem; }
+  
+    /* CTA button: full-width */
+    .fc-ji-btn {
+      width: 100%;
+      align-self: stretch;
+      justify-content: center;
+    }
+  
+    /* Closing CTA block */
+    .fc-jrn-close {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 40px 24px;
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .fc-jrn-close-btn { width: 100%; }
+  }
+  
+  /* ── SMALL MOBILE ≤420px ───────────────────────────────────── */
+  @media (max-width: 420px) {
+    #fc-journey   { padding: 56px 0; }
+    .fc-jrn-c     { padding: 0 16px; }
+  
+    .fc-jrn-ttl   { font-size: clamp(1.7rem, 6vw, 2.2rem); }
+  
+    /* Province cards: keep 2-col but tighter */
+    .fc-prov-grid { gap: 8px; margin-bottom: 40px; }
+    .fc-prov-nm   { font-size: 0.75rem; line-height: 1.25; }
+    .fc-prov-reg  { font-size: 0.48rem; letter-spacing: 0.14em; }
+  
+    /* Map: slightly shorter on very small screens */
+    .fc-map-col   { min-height: 200px; height: 200px; }
+    #fcLeafletMap { min-height: 200px; height: 200px; }
+  
+    /* Marker labels: hide on very small screens to reduce clutter */
+    .fc-lm-label  { display: none; }
+  
+    .fc-ji-copy   { padding: 36px 16px 44px; }
+    .fc-ji-ttl    { font-size: clamp(1.4rem, 5.5vw, 2rem); }
+    .fc-inc-list li { font-size: 0.85rem; }
+  
+    .fc-jrn-close { padding: 32px 16px; }
+  }
+  </style>
+  
+  <section id="fc-journey" aria-label="Signature Heritage Journey — Your Journey Begins Here">
+    <div class="fc-jrn-c">
+  
+      <!-- ── A. HEADER + STATS ──────────────────────────── -->
+      <div class="fc-jrn-hd fc-jrn-rv">
+        <div>
+          <span class="fc-jrn-eye">Our Inaugural Journey</span>
+          <h2 class="fc-jrn-ttl">Your Journey <em>Begins Here</em></h2>
+        </div>
+        <div class="fc-jrn-stats" role="list">
+          <div class="fc-jrn-stat" role="listitem">
+            <div class="fc-jrn-stat-n">18</div>
+            <div class="fc-jrn-stat-l">Days</div>
+          </div>
+          <div class="fc-jrn-stat" role="listitem">
+            <div class="fc-jrn-stat-n">5</div>
+            <div class="fc-jrn-stat-l">Provinces</div>
+          </div>
+          <div class="fc-jrn-stat" role="listitem">
+            <div class="fc-jrn-stat-n">20</div>
+            <div class="fc-jrn-stat-l">Guests Max</div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- ── B. PROVINCE CARDS ──────────────────────────── -->
+      <div class="fc-prov-grid fc-jrn-rv d1" role="list" aria-label="Five provinces of the signature journey">
+
+        <article class="fc-prov-card" role="listitem" tabindex="0"
+                 aria-label="Gauteng and Limpopo — tap to read more">
+            <div class="fc-prov-front">
+              <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/12/IMG_6762-scaled.webp"
+                   alt="Gauteng and Limpopo — Sacred Origins and Living Heritage" loading="lazy" />
+              <div class="fc-prov-ov" aria-hidden="true"></div>
+              <div class="fc-prov-info">
+                <p class="fc-prov-reg">Gauteng &amp; Limpopo</p>
+                <p class="fc-prov-nm">Sacred Origins<br />&amp; Living Heritage</p>
+              </div>
+            </div>
+            <div class="fc-prov-back" aria-hidden="true">
+              <span class="fc-prov-back-eye">Stop 1</span>
+              <h4 class="fc-prov-back-ttl">Sacred Origins<br />&amp; Living Heritage</h4>
+              <span class="fc-prov-back-rule"></span>
+              <p class="fc-prov-back-body">Walk the cradle of humankind, visit living cultural villages, and connect with historians who carry the ancient stories of this land in their voices.</p>
+            </div>
+        </article>
+
+        <article class="fc-prov-card" role="listitem" tabindex="0"
+                 aria-label="Mpumalanga — tap to read more">
+            <div class="fc-prov-front">
+              <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/12/IMG_7057-scaled.webp"
+                   alt="Mpumalanga — Wonders of Nature" loading="lazy" />
+              <div class="fc-prov-ov" aria-hidden="true"></div>
+              <div class="fc-prov-info">
+                <p class="fc-prov-reg">Mpumalanga</p>
+                <p class="fc-prov-nm">Wonders of<br />Nature</p>
+              </div>
+            </div>
+            <div class="fc-prov-back" aria-hidden="true">
+              <span class="fc-prov-back-eye">Stop 2</span>
+              <h4 class="fc-prov-back-ttl">Wonders of<br />Nature</h4>
+              <span class="fc-prov-back-rule"></span>
+              <p class="fc-prov-back-body">Stand at the edge of the Blyde River Canyon, witness the grandeur of God's Window, and feel the raw pulse of the African wilderness around you.</p>
+            </div>
+        </article>
+
+        <article class="fc-prov-card" role="listitem" tabindex="0"
+                 aria-label="KwaZulu-Natal — tap to read more">
+            <div class="fc-prov-front">
+              <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/04/DSC04415.jpg"
+                   alt="KwaZulu-Natal — Be Welcomed and Embraced by Royalty" loading="lazy" />
+              <div class="fc-prov-ov" aria-hidden="true"></div>
+              <div class="fc-prov-info">
+                <p class="fc-prov-reg">KwaZulu-Natal</p>
+                <p class="fc-prov-nm">Be Welcomed<br />&amp; Embraced by Royalty</p>
+              </div>
+            </div>
+            <div class="fc-prov-back" aria-hidden="true">
+              <span class="fc-prov-back-eye">Stop 3</span>
+              <h4 class="fc-prov-back-ttl">Be Welcomed<br />&amp; Embraced by Royalty</h4>
+              <span class="fc-prov-back-rule"></span>
+              <p class="fc-prov-back-body">Experience the warmth of Zulu royal traditions, share in sacred ceremonies, and be received not as a visitor — but as kin returning home.</p>
+            </div>
+        </article>
+
+        <article class="fc-prov-card" role="listitem" tabindex="0"
+                 aria-label="Western Cape — tap to read more">
+            <div class="fc-prov-front">
+              <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/12/IMG_7630-scaled.webp"
+                   alt="Western Cape — Wine, Oceans and Cultural Elegance" loading="lazy" />
+              <div class="fc-prov-ov" aria-hidden="true"></div>
+              <div class="fc-prov-info">
+                <p class="fc-prov-reg">Western Cape</p>
+                <p class="fc-prov-nm">Wine, Oceans<br />&amp; Culture</p>
+              </div>
+            </div>
+            <div class="fc-prov-back" aria-hidden="true">
+              <span class="fc-prov-back-eye">Stop 4</span>
+              <h4 class="fc-prov-back-ttl">Wine, Oceans<br />&amp; Culture</h4>
+              <span class="fc-prov-back-rule"></span>
+              <p class="fc-prov-back-body">Journey through the Cape Winelands, taste cuisine shaped by centuries of culture, and let the meeting of two oceans mark the close of a transformative journey.</p>
+            </div>
+        </article>
+
+        <article class="fc-prov-card" role="listitem" tabindex="0"
+                 aria-label="All Provinces — tap to read more">
+            <div class="fc-prov-front">
+              <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-19.jpg"
+                   alt="Luxury Journeys of Transformation" loading="lazy" />
+              <div class="fc-prov-ov" aria-hidden="true"></div>
+              <div class="fc-prov-info">
+                <p class="fc-prov-reg">All Provinces</p>
+                <p class="fc-prov-nm">Luxury Journeys<br />of Transformation</p>
+              </div>
+            </div>
+            <div class="fc-prov-back" aria-hidden="true">
+              <span class="fc-prov-back-eye">18 Days</span>
+              <h4 class="fc-prov-back-ttl">Luxury Journeys<br />of Transformation</h4>
+              <span class="fc-prov-back-rule"></span>
+              <p class="fc-prov-back-body">Across five provinces, 18 days, and a lifetime of memories — this journey is designed to return something to you that travel alone cannot: a true sense of belonging.</p>
+            </div>
+        </article>
+
+      </div>
+  
+    </div><!-- /.fc-jrn-c — container ends; map is full-bleed -->
+  
+    <!-- ── C. FULL-BLEED MAP + INCLUDES ──────────────────── -->
+    <div class="fc-ji-section fc-jrn-rv">
+      <div class="fc-ji-outer" id="fcJiOuter">
+  
+        <!-- LEFT: Leaflet map -->
+        <div class="fc-map-col" id="fcMapCol">
+  
+          <!-- Loading state — hidden once map tiles load -->
+          <div class="fc-map-loading" id="fcMapLoading">
+            <div class="fc-map-loading-inner">
+              <div class="fc-map-spinner"></div>
+              <span class="fc-map-loading-txt">Loading map&hellip;</span>
+            </div>
+          </div>
+  
+          <!-- Leaflet renders into this div -->
+          <div id="fcLeafletMap" aria-label="South Africa route map"></div>
+  
+        </div>
+  
+        <!-- RIGHT: Includes content -->
+        <div class="fc-ji-copy" id="fcJiCopy">
+  
+          <span class="fc-ji-eye">Included in Every Journey</span>
+          <h3 class="fc-ji-ttl">Every Journey<br />Includes</h3>
+          <span class="fc-ji-rule" aria-hidden="true"></span>
+  
+          <ul class="fc-inc-list" aria-label="Journey inclusions">
+            <li><span class="fc-inc-dot" aria-hidden="true"></span>Curated travel across five South African provinces</li>
+            <li><span class="fc-inc-dot" aria-hidden="true"></span>Premium lodging and thoughtfully selected accommodations</li>
+            <li><span class="fc-inc-dot" aria-hidden="true"></span>Cultural experiences led by historians, elders &amp; cultural custodians</li>
+            <li><span class="fc-inc-dot" aria-hidden="true"></span>Regional cuisine by local chefs — all dietary needs accommodated</li>
+            <li><span class="fc-inc-dot" aria-hidden="true"></span>A likeminded community of travelers dedicated to reconnection</li>
+          </ul>
+  
+          <!-- ★ Replace with real pricing figures -->
+          <div class="fc-price-blk" role="note">
+            <p class="fc-price-from">Starting from</p>
+            <p class="fc-price-amt">$[Price] <span>per person</span></p>
+            <p class="fc-price-note">Founder's Circle members receive an exclusive discount of $[Amount]</p>
+          </div>
+  
+          <a href="#fc-form-section" class="fc-ji-btn">Become a Founder's Circle Member</a>
+  
+        </div><!-- /.fc-ji-copy -->
+  
+      </div><!-- /.fc-ji-outer -->
+    </div><!-- /.fc-ji-section -->
+  
+    <!-- D. Closing CTA — back inside the container -->
+    <div class="fc-jrn-c">
+      <div class="fc-jrn-close fc-jrn-rv">
+        <p class="fc-jrn-close-p">
+          Umoya Afrika Tours is for those who feel called to be part of something intentional from the very beginning. If you are ready to move beyond another vacation and into a sacred journey of remembrance — we invite you to take your place among the founding travelers.
+        </p>
+        <a href="#fc-form-section" class="fc-jrn-close-btn">Become a Founder's Circle Member</a>
+      </div>
+    </div>
+  
+  </section>
+  
+  <script>
+  (function(){
+    'use strict';
+  
+    /* ── Scroll reveal ─────────────────────────────────────── */
+    var rvEls = document.querySelectorAll('#fc-journey .fc-jrn-rv');
+    if('IntersectionObserver' in window){
+      var rvObs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('on'); rvObs.unobserve(e.target); }
+        });
+      },{threshold:.06});
+      rvEls.forEach(function(el){ rvObs.observe(el); });
+    } else {
+      rvEls.forEach(function(el){ el.classList.add('on'); });
+    }
+  
+    /* ── Dynamic Leaflet loader ────────────────────────────────
+     * Injects both the CSS and JS programmatically so they load
+     * regardless of how Elementor processes the HTML widget.
+     * -----------------------------------------------------------*/
+    var LEAFLET_CSS = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    var LEAFLET_JS  = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  
+    function injectCSS(href){
+      /* Skip if already loaded */
+      if(document.querySelector('link[href*="leaflet"]')) return;
+      var link = document.createElement('link');
+      link.rel  = 'stylesheet';
+      link.href = href;
+      document.head.appendChild(link);
+    }
+  
+    function injectJS(src, cb){
+      /* Skip if Leaflet is already available */
+      if(typeof L !== 'undefined'){ cb(); return; }
+      /* Skip if script already injected */
+      if(document.querySelector('script[src*="leaflet"]')){
+        var wait = setInterval(function(){
+          if(typeof L !== 'undefined'){ clearInterval(wait); cb(); }
+        }, 50);
+        return;
+      }
+      var script    = document.createElement('script');
+      script.src    = src;
+      script.async  = true;
+      script.onload = cb;
+      script.onerror = function(){
+        /* Try cdnjs fallback */
+        var fb = document.createElement('script');
+        fb.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
+        fb.async  = true;
+        fb.onload = cb;
+        document.head.appendChild(fb);
+      };
+      document.head.appendChild(script);
+    }
+  
+    /* ── Match map height to right column ───────────────────────
+     * On desktop/tablet (>768px): make map column match the content
+     * column height so both sides are equal.
+     * On mobile (≤768px): map has a fixed CSS height — skip sync
+     * because the columns are stacked, not side-by-side.
+     * -----------------------------------------------------------*/
+    function syncMapHeight(){
+      /* Skip on mobile — CSS fixed height handles it */
+      if(window.innerWidth <= 768) return;
+  
+      var copy   = document.getElementById('fcJiCopy');
+      var mapCol = document.getElementById('fcMapCol');
+      var mapEl  = document.getElementById('fcLeafletMap');
+      if(!copy || !mapCol || !mapEl) return;
+  
+      var h = Math.max(copy.offsetHeight, 380);
+      mapCol.style.height = h + 'px';
+      mapEl.style.height  = h + 'px';
+    }
+  
+    /* ── Build the Leaflet map ──────────────────────────────────*/
+    var fcMap = null;
+  
+    function buildMap(){
+      var mapEl   = document.getElementById('fcLeafletMap');
+      var loading = document.getElementById('fcMapLoading');
+      if(!mapEl || typeof L === 'undefined') return;
+  
+      /* Ensure the container has a real pixel height */
+      syncMapHeight();
+  
+      /* On mobile, CSS gives 240px / 200px — enforce it directly */
+      var isMobile = window.innerWidth <= 768;
+      var isSmall  = window.innerWidth <= 420;
+      var fallbackH = isSmall ? 200 : isMobile ? 240 : 460;
+  
+      if(mapEl.offsetHeight === 0){
+        mapEl.style.height = fallbackH + 'px';
+        var col = document.getElementById('fcMapCol');
+        if(col) col.style.height = fallbackH + 'px';
+      }
+  
+      /* Province stops */
+      var stops = [
+        { num: 1, lat: -25.8,  lng: 28.2,  label: 'Gauteng & Limpopo' },
+        { num: 2, lat: -25.0,  lng: 31.5,  label: 'Mpumalanga'        },
+        { num: 3, lat: -29.85, lng: 31.05, label: 'KwaZulu-Natal'     },
+        { num: 4, lat: -33.92, lng: 18.42, label: 'Western Cape'      }
+      ];
+  
+      /* Create map — centred on South Africa */
+      fcMap = L.map('fcLeafletMap', {
+        center: [-29.0, 25.5],
+        zoom: 5,
+        zoomControl: true,
+        scrollWheelZoom: false,   /* prevent accidental scroll-zoom on desktop */
+        tap: true,                /* enable tap handler for mobile */
+        touchZoom: true,          /* pinch-to-zoom on mobile */
+        dragging: true,           /* pan on mobile */
+        attributionControl: false
+      });
+  
+      /* CartoDB Positron tiles — clean minimal style matching reference */
+      L.tileLayer(
+        'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+        {
+          attribution: '',
+          subdomains: 'abcd',
+          maxZoom: 18
+        }
+      ).addTo(fcMap);
+  
+      /* Hide loading overlay once first tiles arrive */
+      fcMap.once('load', function(){
+        if(loading) loading.classList.add('fc-map-ready');
+      });
+      fcMap.once('tileload', function(){
+        if(loading) loading.classList.add('fc-map-ready');
+      });
+      /* Fallback: hide after 3s regardless */
+      setTimeout(function(){ if(loading) loading.classList.add('fc-map-ready'); }, 3000);
+  
+      /* ── Quadratic bezier curve generator ────────────────── */
+      function qBez(p1, p2, bend, n){
+        n = n || 64;
+        var mx  = (p1[0]+p2[0])/2, my = (p1[1]+p2[1])/2;
+        var dx  = p2[0]-p1[0],    dy = p2[1]-p1[1];
+        var cpx = mx - dy*bend,   cpy = my + dx*bend;
+        var pts = [];
+        for(var i=0; i<=n; i++){
+          var t = i/n, u = 1-t;
+          pts.push([
+            u*u*p1[0] + 2*u*t*cpx + t*t*p2[0],
+            u*u*p1[1] + 2*u*t*cpy + t*t*p2[1]
+          ]);
+        }
+        return pts;
+      }
+  
+      /* ── Bearing calculation for arrowheads ─────────────── */
+      function brng(p1, p2){
+        return Math.atan2(p2[1]-p1[1], p2[0]-p1[0]) * 180 / Math.PI;
+      }
+  
+      /* ── Route segments ──────────────────────────────────── */
+      var segs = [
+        { a: [stops[0].lat, stops[0].lng], b: [stops[1].lat, stops[1].lng], bend:  0.20 },
+        { a: [stops[1].lat, stops[1].lng], b: [stops[2].lat, stops[2].lng], bend: -0.18 },
+        { a: [stops[2].lat, stops[2].lng], b: [stops[3].lat, stops[3].lng], bend:  0.22 }
+      ];
+  
+      var lineStyle = {
+        color:     '#2c1c0e',
+        weight:    1.8,
+        opacity:   0.72,
+        dashArray: '7 5',
+        lineCap:   'round'
+      };
+  
+      segs.forEach(function(seg){
+        var pts = qBez(seg.a, seg.b, seg.bend);
+        L.polyline(pts, lineStyle).addTo(fcMap);
+  
+        /* Arrowhead at ~80% along the curve */
+        var idx = Math.floor(pts.length * 0.80);
+        var p1  = pts[idx];
+        var p2  = pts[Math.min(idx+2, pts.length-1)];
+        var ang = brng(p1, p2);
+  
+        var arrIcon = L.divIcon({
+          html: '<svg width="10" height="10" viewBox="0 0 10 10" ' +
+                'style="display:block;transform:rotate(' + ang + 'deg);transform-origin:5px 5px;">' +
+                '<polygon points="5,0 10,10 0,10" fill="#2c1c0e" opacity="0.75"/></svg>',
+          iconSize:   [10, 10],
+          iconAnchor: [5, 5],
+          className:  ''
+        });
+        L.marker(p1, { icon: arrIcon, interactive: false }).addTo(fcMap);
+      });
+  
+      /* ── Province stop markers ───────────────────────────── */
+      stops.forEach(function(s){
+        var icon = L.divIcon({
+          html: '<div class="fc-lm-wrap">' +
+                  '<div class="fc-lm-dot">' + s.num + '</div>' +
+                  '<span class="fc-lm-label">' + s.label + '</span>' +
+                '</div>',
+          iconSize:   [28, 28],
+          iconAnchor: [14, 14],
+          className:  ''
+        });
+        L.marker([s.lat, s.lng], {
+          icon:        icon,
+          title:       s.label,
+          interactive: false
+        }).addTo(fcMap);
+      });
+  
+      /* ── Fit map to show all stops with padding ──────────── */
+      var bounds = stops.map(function(s){ return [s.lat, s.lng]; });
+      var padPx  = window.innerWidth <= 420 ? 30 : window.innerWidth <= 768 ? 44 : 56;
+      fcMap.fitBounds(bounds, { padding: [padPx, padPx] });
+    }
+  
+    /* ── Province card flip — tap on mobile, keyboard ─────────
+     * Hover is handled by CSS :hover.
+     * On touch devices (no hover), tap toggles .fc-flipped.
+     * Keyboard: Enter or Space flips; Escape un-flips.
+     * -----------------------------------------------------------*/
+    var cards = document.querySelectorAll('#fc-journey .fc-prov-card');
+
+    cards.forEach(function(card){
+      card.addEventListener('click', function(){
+        /* Only use JS toggle on touch/non-hover devices */
+        if(window.matchMedia('(hover: none)').matches){
+          var isFlipped = card.classList.contains('fc-flipped');
+          /* Un-flip all others first */
+          cards.forEach(function(c){ c.classList.remove('fc-flipped'); });
+          if(!isFlipped) card.classList.add('fc-flipped');
+        }
+      });
+
+      /* Keyboard: Enter or Space to flip, Escape to un-flip */
+      card.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          var isFlipped = card.classList.contains('fc-flipped');
+          cards.forEach(function(c){ c.classList.remove('fc-flipped'); });
+          if(!isFlipped) card.classList.add('fc-flipped');
+        }
+        if(e.key === 'Escape'){
+          card.classList.remove('fc-flipped');
+        }
+      });
+    });
+
+    /* Un-flip all cards when clicking anywhere outside */
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('#fc-journey .fc-prov-card')){
+        cards.forEach(function(c){ c.classList.remove('fc-flipped'); });
+      }
+    });
+
+    /* ── Init sequence ─────────────────────────────────────────
+     * 1. Sync map height from content column (desktop/tablet)
+     * 2. Inject Leaflet CSS
+     * 3. Inject Leaflet JS → build map on load
+     * -----------------------------------------------------------*/
+    function init(){
+      syncMapHeight();
+      injectCSS(LEAFLET_CSS);
+      injectJS(LEAFLET_JS, function(){
+        /* Small delay lets layout reflow settle */
+        setTimeout(function(){
+          syncMapHeight();
+          buildMap();
+        }, 80);
+      });
+  
+      /* Resize: re-sync height + invalidate + re-fit */
+      var resizeTimer;
+      window.addEventListener('resize', function(){
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function(){
+          syncMapHeight();
+          if(fcMap){
+            fcMap.invalidateSize();
+            /* Re-fit bounds after resize / orientation change */
+            var stops2 = [
+              [-25.8,  28.2],
+              [-25.0,  31.5],
+              [-29.85, 31.05],
+              [-33.92, 18.42]
+            ];
+            var pad2 = window.innerWidth <= 420 ? 30 : window.innerWidth <= 768 ? 44 : 56;
+            fcMap.fitBounds(stops2, { padding: [pad2, pad2] });
+          }
+        }, 200);
+      }, { passive: true });
+  
+      /* Orientation change on mobile */
+      window.addEventListener('orientationchange', function(){
+        setTimeout(function(){
+          syncMapHeight();
+          if(fcMap) fcMap.invalidateSize();
+        }, 400);
+      }, { passive: true });
+    }
+  
+    /* Run once DOM is ready */
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  
+    /* Also trigger if the section scrolls into view later */
+    var section = document.getElementById('fc-journey');
+    if(section && 'IntersectionObserver' in window && !fcMap){
+      var sectObs = new IntersectionObserver(function(entries){
+        if(entries[0].isIntersecting){
+          if(!fcMap){ syncMapHeight(); buildMap(); }
+          sectObs.unobserve(section);
+        }
+      }, { threshold: 0.05 });
+      sectObs.observe(section);
+    }
+  
+  }());
+  </script>

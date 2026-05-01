@@ -1,0 +1,446 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 03: BE AMONG THE FIRST
+=================================================================
+  ELEMENTOR USAGE:
+  • Add an "HTML" widget after the Form section.
+  • id="fc-be-first" is the anchor target from the Hero's
+    "Learn More" ghost button.
+  • The right column is a 4-slide auto-advancing carousel.
+    Arrows and dot-nav are fully accessible (ARIA roles set).
+  • IMAGES: Replace each <img> src with your Founder's Circle
+    Drive images. Order: Image 1 → 2 → 3 → 4 from the brief.
+=================================================================
+-->
+<style>
+  /* ── Tokens ─────────────────────────────────────── */
+  #fc-be-first {
+    --cream:     #F5F0EB;
+    --cream-lt:  #F5F0EB;
+    --brown:     #4B2E2B;
+    --terra:     #D97E53;
+    --terra-dk:  #C06840;
+    --terra-lt:  #D97E53;
+    --gold-lt:   #D97E53;
+    --text:      #4B2E2B;
+    --text-mid:  #4B2E2B;
+    --text-muted:#4B2E2B;
+    --white:     #FFFFFF;
+    --ease:      cubic-bezier(.25,.46,.45,.94);
+  }
+
+  /* ── Section ─────────────────────────────────────── */
+  #fc-be-first {
+    background: var(--cream-lt);
+    padding: 100px 0;
+    font-family: inherit;
+    overflow: hidden;
+  }
+
+  /* ── Layout ──────────────────────────────────────── */
+  .fc-bf-wrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .fc-bf-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  /* ── Copy column ─────────────────────────────────── */
+  .fc-bf-eyebrow {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+
+  .fc-bf-title {
+    font-family: inherit;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--brown);
+    margin-bottom: 1.4rem;
+  }
+
+  .fc-bf-title em {
+    font-style: italic;
+    color: var(--terra);
+    display: block;
+  }
+
+  .fc-bf-rule {
+    display: block;
+    width: 44px;
+    height: 2px;
+    background: var(--terra);
+    margin-bottom: 2rem;
+  }
+
+  .fc-bf-body p {
+    font-family: inherit;
+    font-size: 0.95rem;
+    line-height: 1.82;
+    color: var(--text-mid);
+    margin-bottom: 1.1rem;
+  }
+
+  .fc-bf-body strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* Pull quote */
+  .fc-bf-pull {
+    border-left: 3px solid var(--terra);
+    background: rgba(217,126,83,.04);
+    border-radius: 0 6px 6px 0;
+    padding: 14px 20px;
+    margin: 2rem 0 2.8rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--text-mid);
+    line-height: 1.72;
+  }
+
+  /* Button */
+  .fc-bf-btn {
+    display: inline-block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 13px 28px;
+    background: var(--terra);
+    color: var(--white);
+    border: 2px solid var(--terra);
+    cursor: pointer;
+    transition: background .25s, border-color .25s, transform .25s, box-shadow .25s;
+  }
+
+  .fc-bf-btn:hover {
+    background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(217,126,83,.3);
+  }
+
+  /* ── Slideshow ────────────────────────────────────── */
+  .fc-ss-outer {
+    position: relative;
+    aspect-ratio: 3/4;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow:
+      0 8px 24px rgba(75,46,43,.12),
+      0 24px 64px rgba(75,46,43,.14);
+  }
+
+  .fc-ss-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Individual slide */
+  .fc-ss-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.05s var(--ease);
+  }
+
+  .fc-ss-slide.fc-ss-on { opacity: 1; }
+
+  .fc-ss-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Gradient */
+  .fc-ss-slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(75,46,43,.75) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  /* Caption */
+  .fc-ss-cap {
+    position: absolute;
+    bottom: 22px;
+    left: 22px;
+    right: 22px;
+    z-index: 2;
+    font-family: inherit;
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(245,240,235,.88);
+    line-height: 1.45;
+  }
+
+  /* Arrow buttons */
+  .fc-ss-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    background: rgba(245,240,235,.18);
+    border: 1px solid rgba(245,240,235,.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background .22s, border-color .22s;
+    background: rgba(75,46,43,0.45);
+  }
+
+  .fc-ss-arrow:hover {
+    background: rgba(217,126,83,.5);
+    border-color: var(--terra-lt);
+  }
+
+  .fc-ss-arrow svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--white);
+    fill: none;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .fc-ss-prev { left: 12px; }
+  .fc-ss-next { right: 12px; }
+
+  /* Dots */
+  .fc-ss-dots {
+    position: absolute;
+    bottom: 8px;
+    right: 6px;
+    display: flex;
+    gap: 0;
+    z-index: 10;
+  }
+
+  .fc-ss-dot {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background .22s;
+    position: relative;
+  }
+
+  .fc-ss-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(245,240,235,.35);
+    transition: background .22s, transform .22s;
+  }
+
+  .fc-ss-dot.fc-ss-on::after {
+    background: var(--terra);
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .fc-bf-reveal {
+    will-change: transform, opacity;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .85s var(--ease), transform .85s var(--ease);
+  }
+  .fc-bf-reveal.fc-bf-in { opacity: 1; transform: none; }
+  .fc-bf-reveal.fc-d1 { transition-delay: .18s; }
+  .fc-bf-reveal.fc-d2 { transition-delay: .28s; }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .fc-bf-grid { gap: 52px; }
+  }
+
+  @media (max-width: 768px) {
+    .fc-bf-wrap  { padding: 0 24px; }
+    .fc-bf-grid  { grid-template-columns: 1fr; gap: 48px; }
+    .fc-ss-outer { aspect-ratio: 4/3; }
+  }
+</style>
+
+<section id="fc-be-first" aria-label="Be the First to Return">
+  <div class="fc-bf-wrap">
+    <div class="fc-bf-grid">
+
+      <!-- ── COPY ──────────────────────────────── -->
+      <div class="fc-bf-reveal">
+        <span class="fc-bf-eyebrow">Exclusive Early Access</span>
+        <h2 class="fc-bf-title">
+          Be the First <em>to Return</em>
+        </h2>
+        <span class="fc-bf-rule" aria-hidden="true"></span>
+
+        <div class="fc-bf-body">
+          <p><strong>This is more than early registration.</strong> It's an invitation to take part in the founding chapter of a travel movement dedicated to reconnecting the global African diaspora with homeland.</p>
+          <p>Founder's Circle membership is intentionally limited to a small group of early travelers who will help shape the beginning of the Umoya community.</p>
+        </div>
+
+        <div class="fc-bf-pull">
+          Join now to reserve your personalized heritage journey before Founder's Circle access closes and journeys open to the public. Once this founding cohort is complete, membership closes permanently.
+        </div>
+
+        <a href="#fc-form-section" class="fc-bf-btn">Join Now</a>
+      </div>
+
+      <!-- ── SLIDESHOW ──────────────────────────── -->
+      <div
+        class="fc-ss-outer fc-bf-reveal fc-d2"
+        role="region"
+        aria-label="Journey imagery — slideshow"
+        aria-roledescription="carousel"
+      >
+        <div class="fc-ss-track">
+
+          <!-- Slide 1 — ★ SWAP src with Drive Image 1 -->
+          <div class="fc-ss-slide fc-ss-on" role="group" aria-label="1 of 4" aria-roledescription="slide">
+            <img
+              src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc02384.jpg"
+              alt="Heritage journey — South Africa landscape"
+              loading="lazy"
+            />
+            <span class="fc-ss-cap">Return to the land of your ancestors</span>
+          </div>
+
+          <!-- Slide 2 — ★ SWAP src with Drive Image 2 -->
+          <div class="fc-ss-slide" role="group" aria-label="2 of 4" aria-roledescription="slide">
+            <img
+              src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_kzn(1).jpg"
+              alt="Luxury lodge — Umoya journey accommodation"
+              loading="lazy"
+            />
+            <span class="fc-ss-cap">Boutique stays. Concierge care.</span>
+          </div>
+
+          <!-- Slide 3 — ★ SWAP src with Drive Image 3 -->
+          <div class="fc-ss-slide" role="group" aria-label="3 of 4" aria-roledescription="slide">
+            <img
+              src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_victor zaviano itffa-176.jpg"
+              alt="South African coastline — Western Cape"
+              loading="lazy"
+            />
+            <span class="fc-ss-cap">Walk the land. Feel the sky.</span>
+          </div>
+
+          <!-- Slide 4 — ★ SWAP src with Drive Image 4 -->
+          <div class="fc-ss-slide" role="group" aria-label="4 of 4" aria-roledescription="slide">
+            <img
+              src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05189.jpg"
+              alt="KwaZulu-Natal — cultural welcome ceremony"
+              loading="lazy"
+            />
+            <span class="fc-ss-cap">Be welcomed as kin, not as tourist</span>
+          </div>
+
+        </div><!-- /.fc-ss-track -->
+
+        <!-- Arrows -->
+        <button class="fc-ss-arrow fc-ss-prev" id="fc3Prev" aria-label="Previous slide">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="fc-ss-arrow fc-ss-next" id="fc3Next" aria-label="Next slide">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+        <!-- Dots -->
+        <div class="fc-ss-dots" role="tablist" aria-label="Slide navigation">
+          <button class="fc-ss-dot fc-ss-on" role="tab" aria-selected="true"  aria-label="Slide 1" data-fci="0"></button>
+          <button class="fc-ss-dot"          role="tab" aria-selected="false" aria-label="Slide 2" data-fci="1"></button>
+          <button class="fc-ss-dot"          role="tab" aria-selected="false" aria-label="Slide 3" data-fci="2"></button>
+          <button class="fc-ss-dot"          role="tab" aria-selected="false" aria-label="Slide 4" data-fci="3"></button>
+        </div>
+
+      </div><!-- /.fc-ss-outer -->
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Scroll reveal ─────────────────────────── */
+  var revEls = document.querySelectorAll('.fc-bf-reveal');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('fc-bf-in'); e.target.style.willChange = 'auto'; obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    revEls.forEach(function (el) { obs.observe(el); });
+  } else {
+    revEls.forEach(function (el) { el.classList.add('fc-bf-in'); });
+  }
+
+  /* ── Slideshow ─────────────────────────────── */
+  var slides = document.querySelectorAll('.fc-ss-slide');
+  var dots   = document.querySelectorAll('.fc-ss-dot');
+  var prev   = document.getElementById('fc3Prev');
+  var next   = document.getElementById('fc3Next');
+  var cur    = 0;
+  var timer  = null;
+
+  function goTo(n) {
+    slides[cur].classList.remove('fc-ss-on');
+    dots[cur].classList.remove('fc-ss-on');
+    dots[cur].setAttribute('aria-selected', 'false');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('fc-ss-on');
+    dots[cur].classList.add('fc-ss-on');
+    dots[cur].setAttribute('aria-selected', 'true');
+  }
+
+  function startAuto() { timer = setInterval(function () { goTo(cur + 1); }, 5500); }
+  function stopAuto()  { clearInterval(timer); }
+
+  if (prev) prev.addEventListener('click', function () { stopAuto(); goTo(cur - 1); startAuto(); });
+  if (next) next.addEventListener('click', function () { stopAuto(); goTo(cur + 1); startAuto(); });
+
+  dots.forEach(function (d) {
+    d.addEventListener('click', function () {
+      stopAuto();
+      goTo(parseInt(d.getAttribute('data-fci'), 10));
+      startAuto();
+    });
+  });
+
+  startAuto();
+}());
+</script>

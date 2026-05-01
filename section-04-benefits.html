@@ -1,0 +1,318 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 04: MEMBER BENEFITS
+=================================================================
+  ELEMENTOR USAGE:
+  • Add an "HTML" widget after Section 03.
+  • This is the page's only dark-brown section — it provides
+    tonal contrast between the surrounding cream sections.
+  • IMAGE: Replace the <img> src with your Drive image for this
+    section. Note from brief: crop to remove individual on right.
+  • The checklist uses a terracotta circle check icon per item.
+=================================================================
+-->
+<style>
+  /* ── Tokens ─────────────────────────────────────── */
+  #fc-benefits {
+    --cream:     #F5F0EB;
+    --cream-lt:  #F5F0EB;
+    --brown:     #4B2E2B;
+    --brown-mid: #4B2E2B;
+    --terra:     #D97E53;
+    --terra-dk:  #C06840;
+    --gold:      #D97E53;
+    --gold-lt:   #D97E53;
+    --olive:     #708238;
+    --white:     #FFFFFF;
+    --text-mid:  #4B2E2B;
+    --ease:      cubic-bezier(.25,.46,.45,.94);
+  }
+  
+  /* ── Section ─────────────────────────────────────── */
+  #fc-benefits {
+    background: var(--brown);
+    padding: 100px 0;
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Ambient radial glow */
+  #fc-benefits::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 55% 40% at 95% 8%,  rgba(217,126,83,.14)  0%, transparent 65%),
+      radial-gradient(ellipse 40% 50% at 4%  92%,  rgba(112,130,56,.1)  0%, transparent 60%);
+    pointer-events: none;
+  }
+  
+  /* ── Layout ──────────────────────────────────────── */
+  .fc-ben-wrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .fc-ben-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  
+  /* ── Image panel ─────────────────────────────────── */
+  .fc-ben-photo {
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,.45);
+  }
+  
+  .fc-ben-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Terracotta corner accent */
+  .fc-ben-photo::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: -16px;
+    width: 90px;
+    height: 90px;
+    background: var(--terra);
+    z-index: -1;
+    opacity: .28;
+    border-radius: 4px;
+  }
+  
+  /* ── Copy column ─────────────────────────────────── */
+  .fc-ben-eyebrow {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--gold-lt);
+    margin-bottom: 1.2rem;
+  }
+  
+  .fc-ben-title {
+    font-family: inherit;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.12;
+    color: var(--cream);
+    margin-bottom: 1.4rem;
+  }
+  
+  .fc-ben-title em {
+    font-style: italic;
+    color: var(--gold-lt);
+  }
+  
+  .fc-ben-rule {
+    display: block;
+    width: 44px;
+    height: 2px;
+    background: rgba(245,240,235,.3);
+    margin-bottom: 0;
+  }
+  
+  /* ── Checklist ───────────────────────────────────── */
+  .fc-ben-list {
+    list-style: none;
+    margin: 2.2rem 0 3rem;
+    border-top: 1px solid rgba(245,240,235,.08);
+  }
+  
+  .fc-ben-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(245,240,235,.07);
+    font-family: inherit;
+    font-size: 0.93rem;
+    line-height: 1.62;
+    color: rgba(245,240,235,.78);
+    transition: padding-left .22s;
+  }
+  
+  .fc-ben-list li:hover { padding-left: 4px; }
+  
+  /* Check circle */
+  .fc-chk {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    background: var(--terra);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  
+  .fc-chk svg {
+    width: 10px;
+    height: 10px;
+    stroke: white;
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  
+  /* ── CTA button ──────────────────────────────────── */
+  .fc-ben-btn {
+    display: inline-block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 13px 28px;
+    background: var(--terra);
+    color: var(--white);
+    border: 2px solid var(--terra);
+    border-radius: 0;
+    cursor: pointer;
+    transition: background .25s, border-color .25s, transform .25s, box-shadow .25s;
+  }
+  
+  .fc-ben-btn:hover {
+    background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(217,126,83,.35);
+  }
+  
+  /* ── Scroll reveal ───────────────────────────────── */
+  .fc-ben-reveal {
+    will-change: transform, opacity;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .85s var(--ease), transform .85s var(--ease);
+  }
+  .fc-ben-reveal.fc-ben-in { opacity: 1; transform: none; }
+  .fc-ben-reveal.fc-d1 { transition-delay: .18s; }
+  
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 768px) {
+    .fc-ben-wrap { padding: 0 24px; }
+    .fc-ben-grid { grid-template-columns: 1fr; gap: 48px; }
+    .fc-ben-photo { aspect-ratio: 16/9; }
+  }
+  </style>
+  
+  <section id="fc-benefits" aria-label="Founder's Circle Member Benefits">
+    <div class="fc-ben-wrap">
+      <div class="fc-ben-grid">
+  
+        <!-- ── IMAGE ─────────────────────────────── -->
+        <div class="fc-ben-photo fc-ben-reveal">
+          <!--
+            ★ SWAP: Replace src with your Drive image for benefits section.
+            Brief note: Crop to remove the individual on the right.
+          -->
+          <img
+            src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc04603-enhanced-nr.jpg"
+            alt="Umoya Founder's Circle — heritage traveler"
+            loading="lazy"
+          />
+        </div>
+  
+        <!-- ── COPY + CHECKLIST ───────────────────── -->
+        <div class="fc-ben-reveal fc-d1">
+          <span class="fc-ben-eyebrow">Membership Privileges</span>
+          <h2 class="fc-ben-title">What Your <em>Membership</em> Includes</h2>
+          <span class="fc-ben-rule" aria-hidden="true"></span>
+  
+          <ul class="fc-ben-list" aria-label="Founder's Circle member benefits">
+  
+            <li>
+              <span class="fc-chk" aria-hidden="true">
+                <svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg>
+              </span>
+              Exclusive promotions reserved for Founder's Circle members only
+            </li>
+  
+            <li>
+              <span class="fc-chk" aria-hidden="true">
+                <svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg>
+              </span>
+              Priority access to book before journeys open to the general public
+            </li>
+  
+            <li>
+              <span class="fc-chk" aria-hidden="true">
+                <svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg>
+              </span>
+              A dedicated travel expert to guide you personally from enquiry to arrival
+            </li>
+  
+            <li>
+              <span class="fc-chk" aria-hidden="true">
+                <svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg>
+              </span>
+              Seamless, concierge-style booking and journey planning experience
+            </li>
+  
+            <li>
+              <span class="fc-chk" aria-hidden="true">
+                <svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg>
+              </span>
+              Pre-departure orientation and cultural preparation materials
+            </li>
+  
+            <li>
+              <span class="fc-chk" aria-hidden="true">
+                <svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg>
+              </span>
+              Arrival welcome gift and an opening ceremony in South Africa
+            </li>
+  
+            <li>
+              <span class="fc-chk" aria-hidden="true">
+                <svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg>
+              </span>
+              Early access to all future journey announcements and Umoya experiences
+            </li>
+  
+          </ul>
+  
+          <a href="#fc-form-section" class="fc-ben-btn">Become a Founder's Circle Member</a>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+  <script>
+  (function () {
+    'use strict';
+    var els = document.querySelectorAll('.fc-ben-reveal');
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('fc-ben-in'); e.target.style.willChange = 'auto'; obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      els.forEach(function (el) { obs.observe(el); });
+    } else {
+      els.forEach(function (el) { el.classList.add('fc-ben-in'); });
+    }
+  }());
+  </script>
