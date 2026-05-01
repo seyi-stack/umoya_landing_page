@@ -4,8 +4,7 @@
 =================================================================
   ELEMENTOR USAGE:
   - Add an "HTML" widget after Section 05 (Journey).
-  - This section turns the Founder's Circle price into a premium
-    editorial offer moment with clear hierarchy and mobile polish.
+  - Premium pricing offer moment using only approved offer copy.
 =================================================================
 -->
 <style>
@@ -109,15 +108,6 @@
     font-style: italic;
   }
 
-  .fc-pri-copy {
-    max-width: 390px;
-    margin: 20px 0 0;
-    color: rgba(245,240,235,.78);
-    font-family: inherit;
-    font-size: .95rem;
-    line-height: 1.78;
-  }
-
   .fc-pri-offer {
     position: relative;
     z-index: 1;
@@ -194,50 +184,6 @@
     text-transform: uppercase;
   }
 
-  .fc-pri-actions {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    flex-wrap: wrap;
-  }
-
-  .fc-pri-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 50px;
-    padding: 14px 28px;
-    background: var(--terra);
-    border: 2px solid var(--terra);
-    color: var(--white);
-    font-family: inherit;
-    font-size: .76rem;
-    font-weight: 700;
-    letter-spacing: .16em;
-    line-height: 1.2;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: background .25s var(--ease), border-color .25s var(--ease),
-                box-shadow .25s var(--ease), transform .25s var(--ease);
-  }
-
-  .fc-pri-btn:hover {
-    background: var(--terra-dk);
-    border-color: var(--terra-dk);
-    color: var(--white);
-    box-shadow: 0 10px 26px rgba(217,126,83,.28);
-    transform: translateY(-2px);
-  }
-
-  .fc-pri-note {
-    max-width: 170px;
-    color: rgba(75,46,43,.68);
-    font-family: inherit;
-    font-size: .82rem;
-    line-height: 1.55;
-  }
-
   @media (max-width: 900px) {
     #fc-pricing {
       padding: 20px 0 72px;
@@ -257,8 +203,7 @@
       padding: 40px 34px 30px;
     }
 
-    .fc-pri-heading,
-    .fc-pri-copy {
+    .fc-pri-heading {
       max-width: none;
     }
 
@@ -309,19 +254,6 @@
       border-top: 1px solid rgba(75,46,43,.12);
     }
 
-    .fc-pri-actions {
-      display: block;
-    }
-
-    .fc-pri-btn {
-      width: 100%;
-    }
-
-    .fc-pri-note {
-      max-width: none;
-      margin-top: 14px;
-      text-align: center;
-    }
   }
 </style>
 
@@ -331,8 +263,7 @@
 
       <div class="fc-pri-story">
         <p class="fc-pri-kicker">Founder's Circle Exclusive</p>
-        <h2 class="fc-pri-heading">A preferred rate for the <em>founding guests.</em></h2>
-        <p class="fc-pri-copy">Secure your place on the inaugural Signature Journey with founding-member pricing before the experience opens publicly.</p>
+        <h2 class="fc-pri-heading">Limited to <em>founding guests</em></h2>
       </div>
 
       <div class="fc-pri-offer">
@@ -343,18 +274,11 @@
 
         <div class="fc-pri-details" aria-label="Founder's Circle pricing details">
           <div class="fc-pri-detail">
-            <strong>Save $2,500</strong>
-            <span>From regular pricing</span>
+            <strong>Save $2,500 from regular pricing</strong>
           </div>
           <div class="fc-pri-detail">
-            <strong>Limited Access</strong>
-            <span>For founding guests</span>
+            <strong>Limited to founding guests</strong>
           </div>
-        </div>
-
-        <div class="fc-pri-actions">
-          <a href="#fc-form-section" class="fc-pri-btn">Reserve My Place</a>
-          <p class="fc-pri-note">Membership benefits close once the founding cohort is complete.</p>
         </div>
       </div>
 
