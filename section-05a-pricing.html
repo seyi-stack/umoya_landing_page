@@ -1,186 +1,361 @@
 <!--
 =================================================================
-  UMOYA FOUNDER'S CIRCLE — SECTION 05A: PRICING STRIP
+  UMOYA FOUNDER'S CIRCLE - SECTION 05A: PRICING OFFER
 =================================================================
   ELEMENTOR USAGE:
-  • Add an "HTML" widget after Section 05 (Journey).
-  • Replace $[Price] with real starting price before launch.
+  - Add an "HTML" widget after Section 05 (Journey).
+  - This section turns the Founder's Circle price into a premium
+    editorial offer moment with clear hierarchy and mobile polish.
 =================================================================
 -->
 <style>
-  /* ── Tokens ─────────────────────────────────────── */
+  /* Design tokens */
   #fc-pricing {
     --cream:      #F5F0EB;
     --brown:      #4B2E2B;
     --terra:      #D97E53;
     --terra-dk:   #C06840;
-    --text:       #4B2E2B;
-    --text-muted: #4B2E2B;
+    --olive:      #708238;
     --white:      #FFFFFF;
     --ease:       cubic-bezier(.25,.46,.45,.94);
-  }
 
-  /* ── Section ─────────────────────────────────────── */
-  #fc-pricing {
     background: var(--cream);
-    padding-top: 40px;
-    padding-bottom: 80px;
+    padding: 32px 0 92px;
     font-family: inherit;
+    color: var(--brown);
     box-sizing: border-box;
   }
 
-  #fc-pricing *, #fc-pricing *::before, #fc-pricing *::after {
+  #fc-pricing *,
+  #fc-pricing *::before,
+  #fc-pricing *::after {
     box-sizing: border-box;
   }
 
-  /* ── Container ──────────────────────────────────── */
   .fc-pri-wrap {
-    max-width: 860px;
+    max-width: 1120px;
     margin: 0 auto;
     padding: 0 24px;
   }
 
-  /* ── Scroll reveal ──────────────────────────────── */
   .fc-pri-rv {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity .85s var(--ease), transform .85s var(--ease);
   }
-  .fc-pri-rv.fc-pri-on { opacity: 1; transform: none; }
 
-  /* ── Card ────────────────────────────────────────── */
-  .fc-pri-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    background: var(--white);
-    border-radius: 10px;
-    padding: 40px 48px;
-    box-shadow: 0 4px 24px rgba(75,46,43,.06), 0 1px 4px rgba(75,46,43,.04);
+  .fc-pri-rv.fc-pri-on {
+    opacity: 1;
+    transform: none;
   }
 
-  /* ── Left: label + price ────────────────────────── */
-  .fc-pri-left {
+  .fc-pri-panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, .95fr) minmax(320px, 1.05fr);
+    min-height: 320px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: var(--brown);
+    box-shadow: 0 18px 54px rgba(75,46,43,.16);
+  }
+
+  .fc-pri-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(75,46,43,.96) 0%, rgba(75,46,43,.9) 42%, rgba(75,46,43,0) 78%),
+      radial-gradient(circle at 12% 18%, rgba(217,126,83,.24) 0%, rgba(217,126,83,0) 34%);
+    pointer-events: none;
+  }
+
+  .fc-pri-story {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    justify-content: center;
+    padding: clamp(34px, 5vw, 58px);
+    color: var(--cream);
   }
 
-  .fc-pri-label {
-    font-family: inherit;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+  .fc-pri-kicker {
+    width: fit-content;
+    margin: 0 0 22px;
+    padding: 8px 12px;
+    border: 1px solid rgba(245,240,235,.28);
     color: var(--terra);
-    margin: 0;
+    font-family: inherit;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    line-height: 1.2;
+    text-transform: uppercase;
   }
 
-  .fc-pri-price {
-    font-family: inherit;
-    font-size: 0.92rem;
-    font-weight: 400;
-    color: var(--text-muted);
-    line-height: 1.3;
+  .fc-pri-heading {
+    max-width: 420px;
     margin: 0;
+    font-family: inherit;
+    font-size: clamp(1.8rem, 3.4vw, 3.05rem);
+    font-weight: 400;
+    line-height: 1.08;
+    color: var(--cream);
+  }
+
+  .fc-pri-heading em {
+    color: var(--terra);
+    font-style: italic;
+  }
+
+  .fc-pri-copy {
+    max-width: 390px;
+    margin: 20px 0 0;
+    color: rgba(245,240,235,.78);
+    font-family: inherit;
+    font-size: .95rem;
+    line-height: 1.78;
+  }
+
+  .fc-pri-offer {
+    position: relative;
+    z-index: 1;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 18px 18px 18px 0;
+    padding: clamp(30px, 4vw, 48px);
+    background: rgba(245,240,235,.98);
+    border-radius: 8px;
+  }
+
+  .fc-pri-price-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(75,46,43,.13);
   }
 
   .fc-pri-digits {
-    font-size: 2.4rem;
-    font-weight: 600;
-    font-style: normal;
-    color: var(--brown);
-    letter-spacing: -0.02em;
-    line-height: 1;
-  }
-
-  /* ── Right: button + note ──────────────────────── */
-  .fc-pri-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-  }
-
-  .fc-pri-note {
     font-family: inherit;
-    font-size: 0.75rem;
+    font-size: clamp(3rem, 6vw, 5.2rem);
     font-weight: 500;
-    letter-spacing: 0.12em;
+    letter-spacing: 0;
+    line-height: .9;
+    color: var(--brown);
+  }
+
+  .fc-pri-person {
+    margin: 0 0 8px;
+    color: rgba(75,46,43,.72);
+    font-family: inherit;
+    font-size: .88rem;
+    font-weight: 600;
+    letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--text-muted);
+  }
+
+  .fc-pri-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    margin: 24px 0 28px;
+    border: 1px solid rgba(75,46,43,.12);
+  }
+
+  .fc-pri-detail {
+    padding: 18px 20px;
+  }
+
+  .fc-pri-detail + .fc-pri-detail {
+    border-left: 1px solid rgba(75,46,43,.12);
+  }
+
+  .fc-pri-detail strong {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--brown);
+    font-family: inherit;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .fc-pri-detail span {
+    color: rgba(75,46,43,.68);
+    font-family: inherit;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .13em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .fc-pri-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
   }
 
   .fc-pri-btn {
-    display: inline-block;
-    font-family: inherit;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--white);
-    background: var(--terra);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
     padding: 14px 28px;
-    border-radius: 0;
-    white-space: nowrap;
-    transition: background .25s ease, transform .25s ease, box-shadow .25s ease;
+    background: var(--terra);
+    border: 2px solid var(--terra);
+    color: var(--white);
+    font-family: inherit;
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background .25s var(--ease), border-color .25s var(--ease),
+                box-shadow .25s var(--ease), transform .25s var(--ease);
   }
 
   .fc-pri-btn:hover {
     background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    color: var(--white);
+    box-shadow: 0 10px 26px rgba(217,126,83,.28);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(217,126,83,.25);
   }
 
-  /* ── TABLET ≤1024px ─────────────────────────────── */
-  @media (max-width: 1024px) {
-    .fc-pri-wrap { padding: 0 32px; }
-    .fc-pri-card { padding: 36px 40px; gap: 32px; }
+  .fc-pri-note {
+    max-width: 170px;
+    color: rgba(75,46,43,.68);
+    font-family: inherit;
+    font-size: .82rem;
+    line-height: 1.55;
   }
 
-  /* ── MOBILE ≤768px ──────────────────────────────── */
-  @media (max-width: 768px) {
-    #fc-pricing { padding-top: 0px; padding-bottom: 56px; }
-    .fc-pri-wrap { padding: 0 20px; }
-    .fc-pri-card {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 28px;
-      padding: 32px 28px;
+  @media (max-width: 900px) {
+    #fc-pricing {
+      padding: 20px 0 72px;
     }
-    .fc-pri-left { align-items: center; text-align: center; }
-    .fc-pri-digits { display: block; margin: 4px 0; }
-    .fc-pri-right { align-items: center; }
-    .fc-pri-note { text-align: center; }
+
+    .fc-pri-panel {
+      grid-template-columns: 1fr;
+    }
+
+    .fc-pri-panel::before {
+      background:
+        linear-gradient(180deg, rgba(75,46,43,.98) 0%, rgba(75,46,43,.92) 48%, rgba(75,46,43,0) 80%),
+        radial-gradient(circle at 12% 12%, rgba(217,126,83,.22) 0%, rgba(217,126,83,0) 34%);
+    }
+
+    .fc-pri-story {
+      padding: 40px 34px 30px;
+    }
+
+    .fc-pri-heading,
+    .fc-pri-copy {
+      max-width: none;
+    }
+
+    .fc-pri-offer {
+      margin: 0 18px 18px;
+    }
   }
 
-  /* ── SMALL MOBILE ≤420px ────────────────────────── */
-  @media (max-width: 420px) {
-    #fc-pricing { padding-top: 0px; padding-bottom: 48px; }
-    .fc-pri-wrap { padding: 0 16px; }
-    .fc-pri-card { padding: 28px 20px; gap: 24px; }
-    .fc-pri-digits { font-size: 2rem; }
-    .fc-pri-btn { text-align: center; width: 100%; }
+  @media (max-width: 560px) {
+    #fc-pricing {
+      padding: 8px 0 60px;
+    }
+
+    .fc-pri-wrap {
+      padding: 0 18px;
+    }
+
+    .fc-pri-story {
+      padding: 34px 24px 26px;
+    }
+
+    .fc-pri-kicker {
+      width: auto;
+      font-size: .68rem;
+      letter-spacing: .16em;
+      line-height: 1.45;
+    }
+
+    .fc-pri-offer {
+      margin: 0 12px 12px;
+      padding: 26px 22px;
+    }
+
+    .fc-pri-price-row {
+      display: block;
+    }
+
+    .fc-pri-person {
+      margin: 10px 0 0;
+    }
+
+    .fc-pri-details {
+      grid-template-columns: 1fr;
+    }
+
+    .fc-pri-detail + .fc-pri-detail {
+      border-left: 0;
+      border-top: 1px solid rgba(75,46,43,.12);
+    }
+
+    .fc-pri-actions {
+      display: block;
+    }
+
+    .fc-pri-btn {
+      width: 100%;
+    }
+
+    .fc-pri-note {
+      max-width: none;
+      margin-top: 14px;
+      text-align: center;
+    }
   }
 </style>
 
-<section id="fc-pricing" aria-label="Journey pricing">
+<section id="fc-pricing" aria-label="Founder's Circle journey pricing">
   <div class="fc-pri-wrap">
-    <div class="fc-pri-card fc-pri-rv" role="note">
+    <div class="fc-pri-panel fc-pri-rv" role="note">
 
-      <!-- Left: label + price -->
-      <div class="fc-pri-left">
-        <p class="fc-pri-label">Founder's Circle Exclusive</p>
-        <p class="fc-pri-price"><span class="fc-pri-digits">$12,500</span> per person</p>
+      <div class="fc-pri-story">
+        <p class="fc-pri-kicker">Founder's Circle Exclusive</p>
+        <h2 class="fc-pri-heading">A preferred rate for the <em>founding guests.</em></h2>
+        <p class="fc-pri-copy">Secure your place on the inaugural Signature Journey with founding-member pricing before the experience opens publicly.</p>
       </div>
 
-      <!-- Right: button + note -->
-      <div class="fc-pri-right">
-        <a href="#fc-form-section" class="fc-pri-btn">Reserve My Place</a>
-        <span class="fc-pri-note">Save $2,500 from regular pricing · Limited to founding guests</span>
+      <div class="fc-pri-offer">
+        <div class="fc-pri-price-row">
+          <span class="fc-pri-digits">$12,500</span>
+          <p class="fc-pri-person">Per person</p>
+        </div>
+
+        <div class="fc-pri-details" aria-label="Founder's Circle pricing details">
+          <div class="fc-pri-detail">
+            <strong>Save $2,500</strong>
+            <span>From regular pricing</span>
+          </div>
+          <div class="fc-pri-detail">
+            <strong>Limited Access</strong>
+            <span>For founding guests</span>
+          </div>
+        </div>
+
+        <div class="fc-pri-actions">
+          <a href="#fc-form-section" class="fc-pri-btn">Reserve My Place</a>
+          <p class="fc-pri-note">Membership benefits close once the founding cohort is complete.</p>
+        </div>
       </div>
 
     </div>
