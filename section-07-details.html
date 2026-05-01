@@ -32,21 +32,21 @@
     --white:      #FFFFFF;
     --ease:       cubic-bezier(.25,.46,.45,.94);
   }
-  
+
   /* ── Section ─────────────────────────────────────── */
   #fc-details {
     background: var(--cream-dk);
     padding: clamp(64px, 9vw, 100px) 0;
     font-family: inherit;
   }
-  
+
   /* ── Container ───────────────────────────────────── */
   .fc-det-wrap {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
   }
-  
+
   /* ── Scroll reveal ───────────────────────────────── */
   .fc-det-rev {
     will-change: transform, opacity;
@@ -56,13 +56,13 @@
   }
   .fc-det-rev.fc-det-in { opacity: 1; transform: none; }
   .fc-det-rev.fc-d1 { transition-delay: .14s; }
-  
+
   /* ── Section header ──────────────────────────────── */
   .fc-det-hd {
     text-align: left;
     margin-bottom: 56px;
   }
-  
+
   .fc-det-eyebrow {
     display: block;
     font-family: inherit;
@@ -73,7 +73,7 @@
     color: var(--terra);
     margin-bottom: 1.2rem;
   }
-  
+
   .fc-det-title {
     font-family: inherit;
     font-size: clamp(2rem, 4vw, 3.2rem);
@@ -81,12 +81,12 @@
     line-height: 1.1;
     color: var(--brown);
   }
-  
+
   .fc-det-title em {
     font-style: italic;
     color: var(--terra);
   }
-  
+
   .fc-det-rule {
     display: block;
     width: 44px;
@@ -94,7 +94,7 @@
     background: var(--terra);
     margin: 1.4rem 0 1.6rem;
   }
-  
+
   .fc-det-lead {
     font-family: inherit;
     font-size: 0.93rem;
@@ -103,14 +103,14 @@
     margin: 0;
     line-height: 1.8;
   }
-  
+
   /* ── Accordion wrapper ───────────────────────────── */
   .fc-acc {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
-  
+
   /* ── Accordion item ──────────────────────────────── */
   .fc-acc-item {
     background: var(--white);
@@ -119,12 +119,12 @@
     overflow: hidden;
     transition: border-color .25s, box-shadow .25s;
   }
-  
+
   .fc-acc-item.fc-det-open {
     border-color: rgba(217,126,83,.3);
     box-shadow: 0 4px 20px rgba(75,46,43,.07);
   }
-  
+
   /* ── Trigger button ──────────────────────────────── */
   .fc-acc-btn {
     width: 100%;
@@ -139,15 +139,15 @@
     text-align: left;
     transition: background .2s;
   }
-  
+
   .fc-acc-btn:hover { background: rgba(245,240,235,.65); }
-  
+
   .fc-acc-left {
     display: flex;
     align-items: center;
     gap: 16px;
   }
-  
+
   /* Icon box */
   .fc-acc-icon {
     flex-shrink: 0;
@@ -160,11 +160,11 @@
     justify-content: center;
     transition: background .25s;
   }
-  
+
   .fc-acc-item.fc-det-open .fc-acc-icon {
     background: var(--terra);
   }
-  
+
   .fc-acc-icon svg {
     width: 17px;
     height: 17px;
@@ -173,11 +173,11 @@
     stroke-width: 1.5;
     transition: stroke .25s;
   }
-  
+
   .fc-acc-item.fc-det-open .fc-acc-icon svg {
     stroke: var(--white);
   }
-  
+
   /* Title + subtitle */
   .fc-acc-title {
     font-family: inherit;
@@ -195,7 +195,7 @@
     margin: 4px 0 0;
     line-height: 1.4;
   }
-  
+
   /* Chevron */
   .fc-acc-chev {
     flex-shrink: 0;
@@ -203,11 +203,11 @@
     height: 20px;
     transition: transform .35s var(--ease);
   }
-  
+
   .fc-acc-item.fc-det-open .fc-acc-chev {
     transform: rotate(180deg);
   }
-  
+
   .fc-acc-chev svg {
     width: 100%;
     height: 100%;
@@ -215,14 +215,14 @@
     fill: none;
     stroke-width: 2;
   }
-  
+
   /* ── Body (collapsible) ──────────────────────────── */
   .fc-acc-body {
     max-height: 0;
     overflow: hidden;
     transition: max-height .42s var(--ease);
   }
-  
+
   .fc-acc-item.fc-det-open .fc-acc-body {
     max-height: 480px;
   }
@@ -235,40 +235,42 @@
     line-height: 1.82;
     color: var(--text-muted);
   }
-  
+
   .fc-acc-content strong {
     color: var(--text);
     font-weight: 600;
   }
-  
+
   /* ── Footer CTA ──────────────────────────────────── */
   .fc-det-foot {
     text-align: center;
     margin-top: 72px;
-    padding-top: 64px;
-    border-top: 1px solid rgba(75,46,43,.1);
+    padding: 56px 32px;
+    border-top: 0;
+    background: var(--brown);
+    border-radius: 10px;
   }
-  
+
   .fc-det-foot h3 {
     font-family: inherit;
     font-size: clamp(1.4rem, 2.5vw, 2.2rem);
     font-weight: 400;
     font-style: italic;
-    color: var(--brown);
-    max-width: 540px;
+    color: var(--white);
+    max-width: 920px;
     margin: 0 auto 0.8rem;
     line-height: 1.35;
   }
-  
+
   .fc-det-foot p {
     font-family: inherit;
     font-size: 0.88rem;
-    color: var(--text-muted);
-    max-width: 360px;
+    color: rgba(245,240,235,.82);
+    max-width: 620px;
     margin: 0 auto 2.4rem;
     line-height: 1.7;
   }
-  
+
   .fc-det-foot-btn {
     display: inline-block;
     font-family: inherit;
@@ -284,7 +286,7 @@
     cursor: pointer;
     transition: background .25s, border-color .25s, transform .25s, box-shadow .25s;
   }
-  
+
   .fc-det-foot-btn:hover {
     background: var(--terra-dk);
     border-color: var(--terra-dk);
@@ -292,7 +294,7 @@
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(217,126,83,.3);
   }
-  
+
   /* ── Responsive ──────────────────────────────────── */
   @media (max-width: 768px) {
     .fc-det-wrap    { padding: 0 24px; }
@@ -312,21 +314,21 @@
     .fc-acc-content { padding: 14px 18px 20px; font-size: 0.88rem; }
   }
   </style>
-  
+
   <section id="fc-details" aria-label="Journey Details — Frequently Asked Questions">
     <div class="fc-det-wrap">
-  
+
       <!-- Section header -->
       <div class="fc-det-hd fc-det-rev">
         <span class="fc-det-eyebrow">Everything You Need to Know</span>
         <h2 class="fc-det-title">Travel <em>Essentials</em></h2>
         <span class="fc-det-rule" aria-hidden="true"></span>
-        <p class="fc-det-lead">Travel with clarity and confidence, knowing every detail has been carefully considered. From customization to comfort, each element is designed to support a seamless and intentional journey.</p>
+        <p class="fc-det-lead">Travel with clarity and confidence, knowing every detail has been carefully considered. From customization to comfort, each element combines cultural depth, local access, and seamless execution.</p>
       </div>
-  
+
       <!-- Accordion list -->
       <div class="fc-acc fc-det-rev fc-d1" role="list">
-  
+
         <!-- ── Item 1: Guaranteed Departures (open by default) ── -->
         <div class="fc-acc-item fc-det-open" role="listitem">
           <button
@@ -355,11 +357,11 @@
           </button>
           <div class="fc-acc-body" id="fc-det-body-2" role="region" aria-labelledby="fc-det-btn-2">
             <div class="fc-acc-content">
-              All journeys are <strong>guaranteed to depart with a minimum of five guests</strong>, allowing travelers to plan with full confidence. Once you have secured your spot, you can book your flights and make arrangements knowing your journey will proceed as planned.
+              All journeys are guaranteed to depart, allowing travelers to plan with full confidence. Once you have secured your spot, you can book your flights and make arrangements knowing your journey will proceed as planned.
             </div>
           </div>
         </div>
-  
+
         <!-- ── Item 3: Personalization ────────────────── -->
         <div class="fc-acc-item" role="listitem">
           <button
@@ -386,11 +388,11 @@
           </button>
           <div class="fc-acc-body" id="fc-det-body-3" role="region" aria-labelledby="fc-det-btn-3">
             <div class="fc-acc-content">
-              While each itinerary is carefully designed, we understand every traveler's interests are unique. <strong>Optional add-on experiences</strong> allow guests to explore the places and themes that matter most to them — whether deeper genealogical research, extended time at a particular site, or a private encounter with a cultural custodian.
+              While each itinerary is carefully designed, we understand every traveler's interests are unique. Optional add-on experiences allow guests to explore extended time at particular sites, private wine tastings, or exclusive access to local artists and designers.
             </div>
           </div>
         </div>
-  
+
         <!-- ── Item 4: Travel Protection ─────────────── -->
         <div class="fc-acc-item" role="listitem">
           <button
@@ -420,7 +422,7 @@
             </div>
           </div>
         </div>
-  
+
         <!-- ── Item 5: Flexible Journey Lengths ───────── -->
         <div class="fc-acc-item" role="listitem">
           <button
@@ -438,7 +440,7 @@
               </div>
               <div>
                 <p class="fc-acc-title">Journeys that reflect Your Schedule</p>
-                <p class="fc-acc-sub">Flexible Journey Length</p>
+                <p class="fc-acc-sub">Signature Journey Structure</p>
               </div>
             </div>
             <div class="fc-acc-chev" aria-hidden="true">
@@ -447,11 +449,11 @@
           </button>
           <div class="fc-acc-body" id="fc-det-body-5" role="region" aria-labelledby="fc-det-btn-5">
             <div class="fc-acc-content">
-              Our signature heritage journey spans <strong>18 days across multiple provinces</strong>. For travelers with limited time, we also offer shorter regional experiences that maintain the same level of cultural depth and thoughtful design. Speak with your dedicated travel expert about the option that best fits your schedule.
+              Our signature journey spans 15 days across four provinces. This duration allows for the proper pacing and cultural depth that defines the Umoya experience. Speak with your dedicated travel expert about customizing the itinerary to your specific interests within this timeframe.
             </div>
           </div>
         </div>
-  
+
         <!-- ── Item 6: Cuisine & Dietary Care ─────────── -->
         <div class="fc-acc-item" role="listitem">
           <button
@@ -481,27 +483,27 @@
           </button>
           <div class="fc-acc-body" id="fc-det-body-6" role="region" aria-labelledby="fc-det-btn-6">
             <div class="fc-acc-content">
-              Guests experience <strong>regional cuisine prepared by local chefs</strong> throughout the journey. Dietary restrictions are collected in advance so we can coordinate thoughtfully with our culinary partners. We approach all dietary needs with care, transparency, and respect — your wellbeing is part of the journey.
+              Guests experience regional cuisine prepared by local chefs throughout the journey. Dietary restrictions are collected in advance so we can coordinate thoughtfully with our culinary partners. We approach all dietary needs with care and transparency, because respecting your wellbeing is part of the journey.
             </div>
           </div>
         </div>
-  
+
       </div><!-- /.fc-acc -->
-  
+
       <!-- Footer CTA -->
       <div class="fc-det-foot fc-det-rev">
-        <h3>Still have questions? We'd love to speak with you.</h3>
-        <p>Your dedicated Umoya travel expert is ready to walk you through everything and find the journey that feels like home.</p>
+        <h3>Still have questions? We'd love to speak with you</h3>
+        <p>Your dedicated Umoya travel expert is ready to help you plan the perfect South African experience.</p>
         <a href="#fc-form-section" class="fc-det-foot-btn">Speak with a Travel Expert</a>
       </div>
-  
+
     </div>
   </section>
-  
+
   <script>
   (function () {
     'use strict';
-  
+
     /* ── Scroll reveal ─────────────────────────── */
     var revEls = document.querySelectorAll('.fc-det-rev');
     if ('IntersectionObserver' in window) {
@@ -514,24 +516,24 @@
     } else {
       revEls.forEach(function (el) { el.classList.add('fc-det-in'); });
     }
-  
+
     /* ── Accordion ─────────────────────────────── */
     var items = document.querySelectorAll('.fc-acc-item');
-  
+
     items.forEach(function (item) {
       var btn = item.querySelector('.fc-acc-btn');
       if (!btn) return;
-  
+
       btn.addEventListener('click', function () {
         var isOpen = item.classList.contains('fc-det-open');
-  
+
         /* Close all */
         items.forEach(function (i) {
           i.classList.remove('fc-det-open');
           var b = i.querySelector('.fc-acc-btn');
           if (b) b.setAttribute('aria-expanded', 'false');
         });
-  
+
         /* Open the clicked one (unless it was already open) */
         if (!isOpen) {
           item.classList.add('fc-det-open');
@@ -539,6 +541,6 @@
         }
       });
     });
-  
+
   }());
   </script>

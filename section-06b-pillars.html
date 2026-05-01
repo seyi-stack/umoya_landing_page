@@ -75,6 +75,19 @@
     padding: 0 24px 80px;
   }
 
+  .fc-pil-header {
+    margin-bottom: 48px;
+  }
+
+  .fc-pil-heading {
+    font-family: inherit;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--white);
+    margin: 0;
+  }
+
   /* ── Four-column grid ──────────────────────────── */
   .fc-pil-grid {
     display: grid;
@@ -88,9 +101,7 @@
     padding-top: 28px;
   }
 
-  .fc-pil-col:first-child {
-    border-top-color: var(--terra);
-  }
+  .fc-pil-col:first-child { border-top-color: rgba(245,240,235,.2); }
 
   .fc-pil-title {
     font-family: inherit;
@@ -154,9 +165,7 @@
       border-left: 2px solid rgba(245,240,235,.2);
     }
 
-    .fc-pil-col:first-child {
-      border-left-color: var(--terra);
-    }
+    .fc-pil-col:first-child { border-left-color: rgba(245,240,235,.2); }
 
     /* Reveal all on mobile — carousel handles visibility */
     .fc-pil-rv { opacity: 1; transform: none; transition: none; }
@@ -186,26 +195,29 @@
 
   <!-- Content -->
   <div class="fc-pil-content">
+    <div class="fc-pil-header">
+      <h2 class="fc-pil-heading">Why Umoya Afrika Tours?</h2>
+    </div>
     <div class="fc-pil-grid" role="list">
 
       <div class="fc-pil-col fc-pil-rv" role="listitem">
-        <h3 class="fc-pil-title">Guided by Cultural Custodians</h3>
-        <p class="fc-pil-body">Each experience is shaped by those who carry the knowledge — historians, elders, and local voices who bring South Africa's living heritage into deeper context.</p>
+        <h3 class="fc-pil-title">Expert Local Guidance</h3>
+        <p class="fc-pil-body">Each experience is led by professional guides and local specialists who provide insider access and authentic perspectives on South Africa's landscapes, culture, and contemporary life.</p>
       </div>
 
       <div class="fc-pil-col fc-pil-rv d1" role="listitem">
-        <h3 class="fc-pil-title">A Like-minded Community of Travelers</h3>
-        <p class="fc-pil-body">Our journeys bring together individuals seeking reconnection and a deeper relationship with the continent and one another.</p>
+        <h3 class="fc-pil-title">Discerning Travelers</h3>
+        <p class="fc-pil-body">Our journeys attract sophisticated travelers who value quality experiences, exclusive access, and seamless execution.</p>
       </div>
 
       <div class="fc-pil-col fc-pil-rv d2" role="listitem">
         <h3 class="fc-pil-title">Intimate by Design</h3>
-        <p class="fc-pil-body">Each journey is limited to 20 guests to preserve space — for reflection, meaningful connection, and a more personal experience of the land, its people, and its stories.</p>
+        <p class="fc-pil-body">Each journey is limited to 16 guests to ensure personalized service, exclusive access, and the flexibility to customize experiences to your interests.</p>
       </div>
 
       <div class="fc-pil-col fc-pil-rv d3" role="listitem">
-        <h3 class="fc-pil-title">Carefully Selected Premium Accommodations</h3>
-        <p class="fc-pil-body">Each stay is carefully chosen for its sense of place, cultural integrity, and level of comfort. From boutique lodges to private villas, every property reflects the spirit of its region.</p>
+        <h3 class="fc-pil-title">Premium Accommodations</h3>
+        <p class="fc-pil-body">Each property is carefully selected for exceptional service, unique character, and prime location. From luxury lodges to boutique hotels, every stay reflects our commitment to quality.</p>
       </div>
 
     </div>

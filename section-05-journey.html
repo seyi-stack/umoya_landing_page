@@ -32,18 +32,18 @@
     --gold:       #D97E53;
     --white:      #FFFFFF;
     --ease:       cubic-bezier(.25,.46,.45,.94);
-  
+
     background: var(--cream);
     padding-top: 80px;
     padding-bottom: 40px;
     font-family: inherit;
     box-sizing: border-box;
   }
-  
+
   #fc-journey *,
   #fc-journey *::before,
   #fc-journey *::after { box-sizing: border-box; }
-  
+
   /* ── Container ─────────────────────────────────────────────── */
   .fc-jrn-c {
     max-width: 1160px;
@@ -54,7 +54,7 @@
   .fc-jrn-tabs-wrap {
     padding: 0 clamp(24px, 4vw, 72px);
   }
-  
+
   /* ── Reveal ────────────────────────────────────────────────── */
   .fc-jrn-rv {
     will-change: transform, opacity;
@@ -65,7 +65,7 @@
   .fc-jrn-rv.on { opacity: 1; transform: none; }
   .fc-jrn-rv.d1 { transition-delay: .14s; }
   .fc-jrn-rv.d2 { transition-delay: .26s; }
-  
+
   /* ── A. HEADER + STATS ─────────────────────────────────────── */
   .fc-jrn-hd {
     display: flex;
@@ -75,7 +75,7 @@
     flex-wrap: wrap;
     margin-bottom: 56px;
   }
-  
+
   .fc-jrn-eye {
     display: block;
     font-family: inherit;
@@ -86,7 +86,7 @@
     color: var(--terra);
     margin-bottom: 1.2rem;
   }
-  
+
   .fc-jrn-ttl {
     font-family: inherit;
     font-size: clamp(1.9rem, 4vw, 3.4rem);
@@ -94,9 +94,9 @@
     line-height: 1.1;
     color: var(--brown);
   }
-  
+
   .fc-jrn-ttl em { font-style: italic; color: var(--terra); }
-  
+
   .fc-jrn-stats {
     display: flex;
     gap: 28px;
@@ -104,9 +104,9 @@
     padding-bottom: 6px;
     flex-wrap: wrap;
   }
-  
+
   .fc-jrn-stat { text-align: center; }
-  
+
   .fc-jrn-stat-n {
     font-family: inherit;
     font-size: clamp(1.8rem, 3vw, 2.4rem);
@@ -114,7 +114,7 @@
     color: var(--terra);
     line-height: 1;
   }
-  
+
   .fc-jrn-stat-l {
     font-family: inherit;
     font-size: 0.75rem;
@@ -124,7 +124,7 @@
     color: var(--text-muted);
     margin-top: 5px;
   }
-  
+
   /* ── B. PROVINCE TABS — 3-col interactive ──────────────────── */
   .fc-prov-tabs {
     display: grid;
@@ -510,7 +510,7 @@
     display: block;
     background: #F5F0EB;
   }
-  
+
   /* Loading indicator shown before map tiles arrive */
   .fc-map-loading {
     position: absolute;
@@ -523,19 +523,19 @@
     background: #F5F0EB;
     transition: opacity .5s;
   }
-  
+
   .fc-map-loading.fc-map-ready {
     opacity: 0;
     pointer-events: none;
   }
-  
+
   .fc-map-loading-inner {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
   }
-  
+
   .fc-map-spinner {
     width: 28px;
     height: 28px;
@@ -544,9 +544,9 @@
     border-radius: 50%;
     animation: fcMapSpin .8s linear infinite;
   }
-  
+
   @keyframes fcMapSpin { to { transform: rotate(360deg); } }
-  
+
   .fc-map-loading-txt {
     font-family: inherit;
     font-size: 0.75rem;
@@ -555,14 +555,14 @@
     text-transform: uppercase;
     color: #4B2E2B;
   }
-  
+
   /* Leaflet custom marker styles */
   .fc-lm-wrap {
     position: relative;
     width: 28px;
     height: 28px;
   }
-  
+
   .fc-lm-dot {
     width: 28px;
     height: 28px;
@@ -579,7 +579,7 @@
     box-shadow: 0 2px 8px rgba(75,46,43,.4);
     cursor: default;
   }
-  
+
   .fc-lm-label {
     position: absolute;
     left: 34px;
@@ -597,7 +597,7 @@
     box-shadow: 0 1px 4px rgba(75,46,43,.18);
     pointer-events: none;
   }
-  
+
   /* ── TABLET ≤1024px ────────────────────────────────────────── */
   @media (max-width: 1024px) {
     .fc-jrn-c     { padding: 0 32px; }
@@ -616,7 +616,7 @@
 
     .fc-jrn-tabs-wrap { padding: 0 clamp(20px, 3vw, 56px); }
   }
-  
+
   /* ── TABLET NARROW ≤900px ──────────────────────────────────── */
   @media (max-width: 900px) {
     /* Hide desktop 3-col tabs; swap in the FAQ accordion. */
@@ -634,16 +634,16 @@
     .fc-jrn-tabs-wrap { padding: 0 20px; }
     #fcLeafletMapMob { width: 100%; height: 100%; display: block; background: #F5F0EB; }
   }
-  
+
   /* ── MOBILE ≤768px ─────────────────────────────────────────── */
   @media (max-width: 768px) {
     #fc-journey   { padding: 64px 0 28px; }
     .fc-jrn-c     { padding: 0 20px; }
-  
+
     /* Header */
     .fc-jrn-hd    { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 36px; }
     .fc-jrn-stats { gap: 20px; flex-wrap: wrap; }
-  
+
     /* Province accordion */
     .fc-prov-acc       { margin-bottom: 48px; border-radius: 8px; }
     .fc-pa-trigger     { padding: 20px 20px; gap: 14px; min-height: 60px; }
@@ -653,17 +653,17 @@
     .fc-pa-body-inner  { padding: 4px 20px 24px; }
     .fc-pa-image       { margin-bottom: 16px; }
     .fc-pa-text        { font-size: 0.88rem; line-height: 1.65; }
-  
+
     /* Loading overlay adapts */
     .fc-map-loading { border-radius: 0; }
 
   }
-  
+
   /* ── SMALL MOBILE ≤420px ───────────────────────────────────── */
   @media (max-width: 420px) {
     #fc-journey   { padding: 56px 0 24px; }
     .fc-jrn-c     { padding: 0 16px; }
-  
+
     .fc-jrn-ttl   { font-size: clamp(1.7rem, 6vw, 2.2rem); }
 
     /* Province accordion: tighter on very small screens */
@@ -676,54 +676,54 @@
     .fc-pa-image      { aspect-ratio: 4 / 3; margin-bottom: 14px; }
     .fc-pa-body-inner { padding: 4px 16px 22px; }
     .fc-pa-text       { font-size: 0.84rem; }
-  
+
     /* Map marker labels: hide on very small screens */
     .fc-lm-label  { display: none; }
 
     .fc-pa-rule { margin: 10px 0 12px; }
   }
   </style>
-  
+
   <section id="fc-journey" aria-label="Signature Heritage Journey — Your Journey Begins Here">
     <div class="fc-jrn-c">
-  
+
       <!-- ── A. HEADER + STATS ──────────────────────────── -->
       <div class="fc-jrn-hd fc-jrn-rv">
         <div>
-          <span class="fc-jrn-eye">Our Inaugural Journey: The Sacred Return</span>
+          <span class="fc-jrn-eye">Our Signature Journey</span>
           <h2 class="fc-jrn-ttl">Your Journey <em>Begins Here</em></h2>
         </div>
         <div class="fc-jrn-stats" role="list">
           <div class="fc-jrn-stat" role="listitem">
-            <div class="fc-jrn-stat-n">18</div>
+            <div class="fc-jrn-stat-n">15</div>
             <div class="fc-jrn-stat-l">Days</div>
           </div>
           <div class="fc-jrn-stat" role="listitem">
-            <div class="fc-jrn-stat-n">5</div>
+            <div class="fc-jrn-stat-n">4</div>
             <div class="fc-jrn-stat-l">Provinces</div>
           </div>
           <div class="fc-jrn-stat" role="listitem">
-            <div class="fc-jrn-stat-n">20</div>
-            <div class="fc-jrn-stat-l">Guests Max</div>
+            <div class="fc-jrn-stat-n">16</div>
+            <div class="fc-jrn-stat-l">Guests</div>
           </div>
         </div>
       </div>
-  
+
     </div><!-- /.fc-jrn-c -->
-  
+
     <!-- B. PROVINCE TABS + ACCORDION -->
     <div class="fc-jrn-tabs-wrap">
       <div class="fc-prov-tabs fc-jrn-rv d1">
 
         <!-- Left: title tabs -->
-        <div class="fc-pt-list" role="tablist" aria-label="Signature journey — six sections">
+        <div class="fc-pt-list" role="tablist" aria-label="Signature journey — five sections">
 
           <button class="fc-pt-tab fc-pt-active" type="button" role="tab"
                   id="fc-pt-tab-1" aria-controls="fc-pt-panel-1"
                   aria-selected="true" tabindex="0">
             <span class="fc-pt-tab-inner">
               <span class="fc-pt-reg">The Route</span>
-              <span class="fc-pt-nm">Journey Across Five Provinces</span>
+              <span class="fc-pt-nm">Journey Across Four Provinces</span>
             </span>
           </button>
 
@@ -733,7 +733,7 @@
             <span class="fc-pt-num" aria-hidden="true">01</span>
             <span class="fc-pt-tab-inner">
               <span class="fc-pt-reg">Gauteng</span>
-              <span class="fc-pt-nm">Sacred Origins<br />&amp; Living Heritage</span>
+              <span class="fc-pt-nm">Liberation History<br />&amp; Urban Culture</span>
             </span>
           </button>
 
@@ -743,37 +743,26 @@
             <span class="fc-pt-num" aria-hidden="true">02</span>
             <span class="fc-pt-tab-inner">
               <span class="fc-pt-reg">Mpumalanga</span>
-              <span class="fc-pt-nm">Wonders of<br />Nature</span>
+              <span class="fc-pt-nm">Safari &amp; Scenic<br />Landscapes</span>
             </span>
           </button>
-
-          <button class="fc-pt-tab" type="button" role="tab"
-                  id="fc-pt-tab-4" aria-controls="fc-pt-panel-4"
-                  aria-selected="false" tabindex="-1">
-            <span class="fc-pt-num" aria-hidden="true">03</span>
-            <span class="fc-pt-tab-inner">
-              <span class="fc-pt-reg">Limpopo</span>
-              <span class="fc-pt-nm">Connect with<br />the Ancestors</span>
-            </span>
-          </button>
-
           <button class="fc-pt-tab" type="button" role="tab"
                   id="fc-pt-tab-5" aria-controls="fc-pt-panel-5"
                   aria-selected="false" tabindex="-1">
-            <span class="fc-pt-num" aria-hidden="true">04</span>
+            <span class="fc-pt-num" aria-hidden="true">03</span>
             <span class="fc-pt-tab-inner">
               <span class="fc-pt-reg">KwaZulu-Natal</span>
-              <span class="fc-pt-nm">Experience Royal<br />Traditions</span>
+              <span class="fc-pt-nm">Zulu Culture<br />&amp; Coastal Beauty</span>
             </span>
           </button>
 
           <button class="fc-pt-tab" type="button" role="tab"
                   id="fc-pt-tab-6" aria-controls="fc-pt-panel-6"
                   aria-selected="false" tabindex="-1">
-            <span class="fc-pt-num" aria-hidden="true">05</span>
+            <span class="fc-pt-num" aria-hidden="true">04</span>
             <span class="fc-pt-tab-inner">
               <span class="fc-pt-reg">Western Cape</span>
-              <span class="fc-pt-nm">Culture, Coastlines<br />&amp; Celebration</span>
+              <span class="fc-pt-nm">Cape Peninsula<br />&amp; Winelands</span>
             </span>
           </button>
 
@@ -785,49 +774,40 @@
           <div class="fc-pt-panel fc-pt-active" role="tabpanel"
                id="fc-pt-panel-1" aria-labelledby="fc-pt-tab-1">
             <span class="fc-pt-eye">The Route</span>
-            <h3 class="fc-pt-ttl">Journey Across<br />Five Provinces</h3>
+            <h3 class="fc-pt-ttl">Journey Across<br />Four Provinces</h3>
             <span class="fc-pt-rule" aria-hidden="true"></span>
-            <p class="fc-pt-body">Your inaugural heritage journey will take you through five of South Africa's provinces where you will explore the country's layered history, where living traditions and authentic voices continue to shape the nation today. You will explore historic ground with context, engage with historians and cultural stewards, and experience the country through the communities that sustain its heritage.</p>
+            <p class="fc-pt-body">Your Signature Journey is a 15-day experience across four provinces of South Africa, designed as a rare opportunity to encounter the country through authentic local perspectives. The journey unfolds through a series of intimate, thoughtfully curated moments not typically accessible to most travelers.</p>
           </div>
 
           <div class="fc-pt-panel" role="tabpanel"
                id="fc-pt-panel-2" aria-labelledby="fc-pt-tab-2">
             <span class="fc-pt-eye">Gauteng</span>
-            <h3 class="fc-pt-ttl">Explore Sacred Origins<br />&amp; Living Heritage</h3>
+            <h3 class="fc-pt-ttl">Liberation History<br />&amp; Urban Culture</h3>
             <span class="fc-pt-rule" aria-hidden="true"></span>
-            <p class="fc-pt-body">In Gauteng, travelers are invited into the layered history of South Africa's past and present. Walk through the powerful exhibits of the Apartheid Museum and stand on the historic streets of Soweto, home to landmarks like Nelson Mandela House on Vilakazi Street. Engage with cultural traditions at Lesedi Cultural Village, and explore the deeper origins of humanity at the Origins Centre and Freedom Park. This is where history is not only remembered, but deeply felt.</p>
+            <p class="fc-pt-body">The economic heart of Africa. Home to the liberation struggle that changed a continent. Walk through the powerful exhibits of the Apartheid Museum with expert context and experience authentic Soweto with community-rooted guides who lived these stories. Visit landmarks like Nelson Mandela House on Vilakazi Street and explore Freedom Park for a comprehensive historical perspective. This is where you encounter the struggle for freedom through local perspectives.</p>
           </div>
 
           <div class="fc-pt-panel" role="tabpanel"
                id="fc-pt-panel-3" aria-labelledby="fc-pt-tab-3">
             <span class="fc-pt-eye">Mpumalanga</span>
-            <h3 class="fc-pt-ttl">See the Wonders<br />of Nature</h3>
+            <h3 class="fc-pt-ttl">Safari &amp; Scenic<br />Landscapes</h3>
             <span class="fc-pt-rule" aria-hidden="true"></span>
-            <p class="fc-pt-body">Mpumalanga reveals the breathtaking beauty of South Africa's natural world. Take in sweeping views of the Blyde River Canyon, one of the largest green canyons on earth, and journey along the scenic Panorama Route. Experience the thrill of a safari in Kruger National Park, where wildlife moves freely across vast landscapes. Explore the ancient formations of Sudwala Caves and encounter the sacred Inzalo yelanga Solar Calendar, a testament to early African knowledge systems and cosmology.</p>
+            <p class="fc-pt-body">Where humanity's earliest ancestors walked. A landscape as ancient as the story of us all. Journey along the scenic Panorama Route, taking in sweeping views of Blyde River Canyon, one of the world's largest green canyons. Experience private game drives in Kruger National Park with expert guides leading you through vast landscapes teeming with Big Five wildlife. Visit the historic Inzalo ye Langa stone circle site, an astronomical calendar demonstrating sophisticated pre-colonial African science, and explore the ancient Sudwala Caves.</p>
           </div>
-
-          <div class="fc-pt-panel" role="tabpanel"
-               id="fc-pt-panel-4" aria-labelledby="fc-pt-tab-4">
-            <span class="fc-pt-eye">Limpopo</span>
-            <h3 class="fc-pt-ttl">Connect with<br />the Ancestors</h3>
-            <span class="fc-pt-rule" aria-hidden="true"></span>
-            <p class="fc-pt-body">Limpopo offers a profound connection to South Africa's spiritual and ancestral heritage. Journey through the historic Makapansgat Valley and experience traditional life at Bakone Malapa Northern Sotho Open-Air Museum. Visit revered Venda sacred sites, including Phiphidi Waterfall and the symbolic Nwali footprint. The journey continues to the ancient Mapungubwe National Park, once home to one of Africa's earliest kingdoms, offering a powerful reflection on legacy, leadership, and civilization.</p>
-          </div>
-
           <div class="fc-pt-panel" role="tabpanel"
                id="fc-pt-panel-5" aria-labelledby="fc-pt-tab-5">
             <span class="fc-pt-eye">KwaZulu-Natal</span>
-            <h3 class="fc-pt-ttl">Experience Royal<br />Traditions</h3>
+            <h3 class="fc-pt-ttl">Zulu Culture<br />&amp; Coastal Beauty</h3>
             <span class="fc-pt-rule" aria-hidden="true"></span>
-            <p class="fc-pt-body">In KwaZulu-Natal, travelers are immersed in the living traditions of the Zulu Kingdom. Experience the warmth of royal hospitality with a visit to a Zulu royal palace, and gather for an evening boma dinner rooted in community and storytelling. This region offers space for reflection through guided spiritual experiences, while the nearby Indian Ocean invites moments of ease and celebration, including a serene coastal cruise. Here, heritage, hospitality, and spirit come together in powerful harmony.</p>
+            <p class="fc-pt-body">Zulu kingdom territory. Where one of history's greatest resistances against colonial rule was fought. Explore key historical sites with specialist guides who provide expert context on the military innovations and cultural legacy of the Zulu nation. The region's stunning Indian Ocean coastline offers pristine beaches, warm subtropical waters, and dramatic coastal scenery. Experience luxury beachfront accommodations, scenic coastal drives along the Dolphin Coast, and exclusive access to secluded beach areas.</p>
           </div>
 
           <div class="fc-pt-panel" role="tabpanel"
                id="fc-pt-panel-6" aria-labelledby="fc-pt-tab-6">
             <span class="fc-pt-eye">Western Cape</span>
-            <h3 class="fc-pt-ttl">Experience Culture,<br />Coastlines &amp; Celebration</h3>
+            <h3 class="fc-pt-ttl">Cape Peninsula<br />&amp; Winelands</h3>
             <span class="fc-pt-rule" aria-hidden="true"></span>
-            <p class="fc-pt-body">The Western Cape offers a vibrant culmination of culture, history, and natural beauty. Ascend the iconic Table Mountain and reflect on history with a visit to Robben Island. Enjoy the elegance of the Cape Winelands, explore the dramatic coastline of the Cape Peninsula, and unwind with curated wellness experiences in Cape Town. Engage with local creativity through township arts and cultural expression, before closing the journey with a celebratory farewell gala — honoring connection, reflection, and return.</p>
+            <p class="fc-pt-body">From a port of arrival to one of the world's most celebrated cities. Contemporary African creativity thrives here. Stand on Robben Island where Nelson Mandela spent 18 of his 27 years, guided by former political prisoners who share stories of resilience that changed a nation. Ascend Table Mountain for panoramic views and explore the dramatic Cape Peninsula coastline including Chapman's Peak and Cape Point. Experience private tastings at exclusive wine estates, and discover Cape Town's vibrant creative scene through curated gallery visits and studio access.</p>
           </div>
 
         </div>
@@ -844,7 +824,7 @@
                 <span class="fc-map-loading-txt">Loading map&hellip;</span>
               </div>
             </div>
-            <div id="fcLeafletMap" aria-label="South Africa route map — five provinces"></div>
+            <div id="fcLeafletMap" aria-label="South Africa route map — four provinces"></div>
           </div>
 
           <!-- Panel 2: Gauteng -->
@@ -862,22 +842,14 @@
                  alt="" loading="lazy" />
             <div class="fc-pt-img-ov"></div>
           </div>
-
-          <!-- Panel 4: Limpopo — ★ SWAP when Limpopo image is available -->
-          <div class="fc-pt-img">
-            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_limpopo.jpg"
-                 alt="" loading="lazy" />
-            <div class="fc-pt-img-ov"></div>
-          </div>
-
-          <!-- Panel 5: KwaZulu-Natal -->
+          <!-- Panel 4: KwaZulu-Natal -->
           <div class="fc-pt-img">
             <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/04/DSC04415.jpg"
                  alt="" loading="lazy" />
             <div class="fc-pt-img-ov"></div>
           </div>
 
-          <!-- Panel 6: Western Cape -->
+          <!-- Panel 5: Western Cape -->
           <div class="fc-pt-img">
             <!-- ★ SWAP: IMG_7630-scaled.webp -->
             <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_img_7634.jpeg"
@@ -892,7 +864,7 @@
       <!-- ── B-MOBILE. PROVINCE ACCORDION ──────────────────
            Renders only at ≤900px (CSS toggle). Mirrors the
            desktop tabs above as a stacked FAQ-style reveal. -->
-      <div class="fc-prov-acc fc-jrn-rv d1" aria-label="Signature journey — six sections">
+      <div class="fc-prov-acc fc-jrn-rv d1" aria-label="Signature journey — five sections">
 
         <!-- 01 Overview -->
         <article class="fc-pa-item fc-pa-active">
@@ -901,7 +873,7 @@
                     id="fc-pa-trig-1" aria-expanded="true" aria-controls="fc-pa-body-1">
               <span class="fc-pa-label-wrap">
                 <span class="fc-pa-reg">The Route</span>
-                <span class="fc-pa-ttl">Journey Across Five Provinces</span>
+                <span class="fc-pa-ttl">Journey Across Four Provinces</span>
               </span>
               <span class="fc-pa-chev" aria-hidden="true">
                 <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
@@ -917,7 +889,7 @@
                 <div id="fcLeafletMapMob" aria-label="South Africa route map"></div>
               </div>
               <span class="fc-pa-rule" aria-hidden="true"></span>
-              <p class="fc-pa-text">Your inaugural heritage journey will take you through five of South Africa's provinces where you will explore the country's layered history, where living traditions and authentic voices continue to shape the nation today. You will explore historic ground with context, engage with historians and cultural stewards, and experience the country through the communities that sustain its heritage.</p>
+              <p class="fc-pa-text">Your Signature Journey is a 15-day experience across four provinces of South Africa, designed as a rare opportunity to encounter the country through authentic local perspectives. The journey unfolds through a series of intimate, thoughtfully curated moments not typically accessible to most travelers.</p>
             </div>
           </div>
         </article>
@@ -930,7 +902,7 @@
               <span class="fc-pa-num" aria-hidden="true">01</span>
               <span class="fc-pa-label-wrap">
                 <span class="fc-pa-reg">Gauteng</span>
-                <span class="fc-pa-ttl">Sacred Origins &amp; Living Heritage</span>
+                <span class="fc-pa-ttl">Liberation History &amp; Urban Culture</span>
               </span>
               <span class="fc-pa-chev" aria-hidden="true">
                 <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
@@ -947,7 +919,7 @@
                      alt="" loading="lazy" />
               </div>
               <span class="fc-pa-rule" aria-hidden="true"></span>
-              <p class="fc-pa-text">In Gauteng, travelers are invited into the layered history of South Africa's past and present. Walk through the powerful exhibits of the Apartheid Museum and stand on the historic streets of Soweto, home to landmarks like Nelson Mandela House on Vilakazi Street. Engage with cultural traditions at Lesedi Cultural Village, and explore the deeper origins of humanity at the Origins Centre and Freedom Park.</p>
+              <p class="fc-pa-text">The economic heart of Africa. Home to the liberation struggle that changed a continent. Walk through the powerful exhibits of the Apartheid Museum with expert context and experience authentic Soweto with community-rooted guides who lived these stories. Visit landmarks like Nelson Mandela House on Vilakazi Street and explore Freedom Park for a comprehensive historical perspective. This is where you encounter the struggle for freedom through local perspectives.</p>
             </div>
           </div>
         </article>
@@ -960,7 +932,7 @@
               <span class="fc-pa-num" aria-hidden="true">02</span>
               <span class="fc-pa-label-wrap">
                 <span class="fc-pa-reg">Mpumalanga</span>
-                <span class="fc-pa-ttl">Wonders of Nature</span>
+                <span class="fc-pa-ttl">Safari &amp; Scenic Landscapes</span>
               </span>
               <span class="fc-pa-chev" aria-hidden="true">
                 <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
@@ -977,51 +949,19 @@
                      alt="" loading="lazy" />
               </div>
               <span class="fc-pa-rule" aria-hidden="true"></span>
-              <p class="fc-pa-text">Mpumalanga reveals the breathtaking beauty of South Africa's natural world. Take in sweeping views of the Blyde River Canyon, one of the largest green canyons on earth, and journey along the scenic Panorama Route. Experience the thrill of a safari in Kruger National Park, and explore the ancient formations of Sudwala Caves and the sacred Inzalo yelanga Solar Calendar.</p>
+              <p class="fc-pa-text">Where humanity's earliest ancestors walked. A landscape as ancient as the story of us all. Journey along the scenic Panorama Route, taking in sweeping views of Blyde River Canyon, one of the world's largest green canyons. Experience private game drives in Kruger National Park with expert guides leading you through vast landscapes teeming with Big Five wildlife. Visit the historic Inzalo ye Langa stone circle site, an astronomical calendar demonstrating sophisticated pre-colonial African science, and explore the ancient Sudwala Caves.</p>
             </div>
           </div>
         </article>
-
-        <!-- 04 Limpopo -->
-        <article class="fc-pa-item">
-          <h3 class="fc-pa-h">
-            <button class="fc-pa-trigger" type="button"
-                    id="fc-pa-trig-4" aria-expanded="false" aria-controls="fc-pa-body-4">
-              <span class="fc-pa-num" aria-hidden="true">03</span>
-              <span class="fc-pa-label-wrap">
-                <span class="fc-pa-reg">Limpopo</span>
-                <span class="fc-pa-ttl">Sacred Landscapes &amp; Ancient Kingdoms</span>
-              </span>
-              <span class="fc-pa-chev" aria-hidden="true">
-                <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
-                  <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8"
-                        stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-            </button>
-          </h3>
-          <div class="fc-pa-body" id="fc-pa-body-4" role="region" aria-labelledby="fc-pa-trig-4">
-            <div class="fc-pa-body-inner">
-              <div class="fc-pa-image">
-                <!-- ★ SWAP: replace with Limpopo image when available -->
-                <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_limpopo.jpg"
-                     alt="" loading="lazy" />
-              </div>
-              <span class="fc-pa-rule" aria-hidden="true"></span>
-              <p class="fc-pa-text">Limpopo offers a profound connection to South Africa's spiritual and ancestral heritage. Journey through the historic Makapansgat Valley and experience traditional life at Bakone Malapa Northern Sotho Open-Air Museum. Visit revered Venda sacred sites, including Phiphidi Waterfall and the symbolic Nwali footprint. The journey continues to the ancient Mapungubwe National Park, once home to one of Africa's earliest kingdoms.</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- 05 KwaZulu-Natal -->
+        <!-- 04 KwaZulu-Natal -->
         <article class="fc-pa-item">
           <h3 class="fc-pa-h">
             <button class="fc-pa-trigger" type="button"
                     id="fc-pa-trig-5" aria-expanded="false" aria-controls="fc-pa-body-5">
-              <span class="fc-pa-num" aria-hidden="true">04</span>
+              <span class="fc-pa-num" aria-hidden="true">03</span>
               <span class="fc-pa-label-wrap">
                 <span class="fc-pa-reg">KwaZulu-Natal</span>
-                <span class="fc-pa-ttl">Be Welcomed &amp; Embraced by Royalty</span>
+                <span class="fc-pa-ttl">Zulu Culture &amp; Coastal Beauty</span>
               </span>
               <span class="fc-pa-chev" aria-hidden="true">
                 <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
@@ -1038,20 +978,20 @@
                      alt="" loading="lazy" />
               </div>
               <span class="fc-pa-rule" aria-hidden="true"></span>
-              <p class="fc-pa-text">In KwaZulu-Natal, travelers are immersed in the living traditions of the Zulu Kingdom. Experience the warmth of royal hospitality with a visit to a Zulu royal palace, and gather for an evening boma dinner rooted in community and storytelling. Guided spiritual experiences and a serene coastal cruise bring heritage, hospitality, and spirit together in powerful harmony.</p>
+              <p class="fc-pa-text">Zulu kingdom territory. Where one of history's greatest resistances against colonial rule was fought. Explore key historical sites with specialist guides who provide expert context on the military innovations and cultural legacy of the Zulu nation. The region's stunning Indian Ocean coastline offers pristine beaches, warm subtropical waters, and dramatic coastal scenery. Experience luxury beachfront accommodations, scenic coastal drives along the Dolphin Coast, and exclusive access to secluded beach areas.</p>
             </div>
           </div>
         </article>
 
-        <!-- 06 Western Cape -->
+        <!-- 05 Western Cape -->
         <article class="fc-pa-item">
           <h3 class="fc-pa-h">
             <button class="fc-pa-trigger" type="button"
                     id="fc-pa-trig-6" aria-expanded="false" aria-controls="fc-pa-body-6">
-              <span class="fc-pa-num" aria-hidden="true">05</span>
+              <span class="fc-pa-num" aria-hidden="true">04</span>
               <span class="fc-pa-label-wrap">
                 <span class="fc-pa-reg">Western Cape</span>
-                <span class="fc-pa-ttl">Culture, Coastlines &amp; Celebration</span>
+                <span class="fc-pa-ttl">Cape Peninsula &amp; Winelands</span>
               </span>
               <span class="fc-pa-chev" aria-hidden="true">
                 <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
@@ -1068,7 +1008,7 @@
                      alt="" loading="lazy" />
               </div>
               <span class="fc-pa-rule" aria-hidden="true"></span>
-              <p class="fc-pa-text">The Western Cape offers a vibrant culmination of culture, history, and natural beauty. Ascend Table Mountain, reflect on history at Robben Island, and enjoy the elegance of the Cape Winelands. Engage with local creativity through township arts and cultural expression, before closing the journey with a celebratory farewell gala — honoring connection, reflection, and return.</p>
+              <p class="fc-pa-text">From a port of arrival to one of the world's most celebrated cities. Contemporary African creativity thrives here. Stand on Robben Island where Nelson Mandela spent 18 of his 27 years, guided by former political prisoners who share stories of resilience that changed a nation. Ascend Table Mountain for panoramic views and explore the dramatic Cape Peninsula coastline including Chapman's Peak and Cape Point. Experience private tastings at exclusive wine estates, and discover Cape Town's vibrant creative scene through curated gallery visits and studio access.</p>
             </div>
           </div>
         </article>
@@ -1078,11 +1018,11 @@
     </div><!-- /.fc-jrn-tabs-wrap -->
 
   </section>
-  
+
   <script>
   (function(){
     'use strict';
-  
+
     /* ── Scroll reveal ─────────────────────────────────────── */
     var rvEls = document.querySelectorAll('#fc-journey .fc-jrn-rv');
     if('IntersectionObserver' in window){
@@ -1102,7 +1042,7 @@
      * -----------------------------------------------------------*/
     var LEAFLET_CSS = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
     var LEAFLET_JS  = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-  
+
     function injectCSS(href){
       /* Skip if already loaded */
       if(document.querySelector('link[href*="leaflet"]')) return;
@@ -1111,7 +1051,7 @@
       link.href = href;
       document.head.appendChild(link);
     }
-  
+
     function injectJS(src, cb){
       /* Skip if Leaflet is already available */
       if(typeof L !== 'undefined'){ cb(); return; }
@@ -1136,15 +1076,14 @@
       };
       document.head.appendChild(script);
     }
-  
+
     var fcMap    = null;  /* desktop map instance */
     var fcMapMob = null;  /* mobile/tablet map instance */
     var stops = [
       { num:1, lat:-26.2,  lng:28.04, label:'Gauteng'       },
       { num:2, lat:-25.0,  lng:31.5,  label:'Mpumalanga'    },
-      { num:3, lat:-23.9,  lng:29.45, label:'Limpopo'       },
-      { num:4, lat:-29.85, lng:30.55, label:'KwaZulu-Natal' },
-      { num:5, lat:-33.55, lng:18.42, label:'Western Cape'  }
+      { num:3, lat:-29.85, lng:30.55, label:'KwaZulu-Natal' },
+      { num:4, lat:-33.55, lng:18.42, label:'Western Cape'  }
     ];
     var stopBounds = stops.map(function(s){ return [s.lat, s.lng]; });
 
@@ -1184,8 +1123,7 @@
         var segs=[
           {a:[stops[0].lat,stops[0].lng],b:[stops[1].lat,stops[1].lng],bend:-0.15},
           {a:[stops[1].lat,stops[1].lng],b:[stops[2].lat,stops[2].lng],bend:-0.18},
-          {a:[stops[2].lat,stops[2].lng],b:[stops[3].lat,stops[3].lng],bend:-0.18},
-          {a:[stops[3].lat,stops[3].lng],b:[stops[4].lat,stops[4].lng],bend: 0.22}
+          {a:[stops[2].lat,stops[2].lng],b:[stops[3].lat,stops[3].lng],bend: 0.22}
         ];
         var ls={color:'#4B2E2B',weight:1.8,opacity:0.72,dashArray:'7 5',lineCap:'round'};
         segs.forEach(function(seg){
@@ -1207,7 +1145,7 @@
         m.fitBounds(stopBounds,{padding:[padPx,padPx]});
         if(isDesktop) fcMap=m; else fcMapMob=m;
       }
-  
+
     /* ── Province tabs — click to switch active panel ─────────
      * Only one title/content/image triplet visible at a time.
      * Keyboard: Arrow Up/Down (vertical desktop layout) or
@@ -1343,7 +1281,7 @@
         }, 400);
       }, { passive: true });
     }
-  
+
     /* Lazy-load: only init the map when Section 05 scrolls into view.
      * No Leaflet CDN or CartoDB tile requests until user reaches this section. */
     var section = document.getElementById('fc-journey');
@@ -1359,6 +1297,6 @@
       /* Fallback for browsers without IntersectionObserver */
       init();
     }
-  
+
   }());
   </script>
