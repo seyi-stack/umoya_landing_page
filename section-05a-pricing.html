@@ -16,7 +16,7 @@
     --ease: cubic-bezier(.25,.46,.45,.94);
 
     background: var(--cream);
-    padding: 36px 0 88px;
+    padding: 32px 0 72px;
     font-family: inherit;
     color: var(--brown);
     box-sizing: border-box;
@@ -29,33 +29,23 @@
   }
 
   .fc-pri-wrap {
-    max-width: 1060px;
+    max-width: 1480px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 clamp(20px, 3vw, 34px);
   }
 
   .fc-pri-card {
-    position: relative;
     overflow: hidden;
     display: grid;
-    grid-template-columns: minmax(260px, .95fr) minmax(260px, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 385px);
     align-items: center;
-    gap: clamp(28px, 4vw, 54px);
-    padding: clamp(34px, 4.6vw, 50px) clamp(30px, 5vw, 64px);
+    gap: clamp(42px, 7vw, 92px);
+    min-height: 314px;
+    padding: clamp(58px, 6vw, 84px) clamp(54px, 6.8vw, 88px);
     background: var(--white);
-    border: 1px solid rgba(75,46,43,.12);
-    border-radius: 10px;
-    box-shadow: 0 14px 44px rgba(75,46,43,.09);
-  }
-
-  .fc-pri-card::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: var(--terra);
+    border: 1px solid rgba(75,46,43,.06);
+    border-radius: 18px;
+    box-shadow: 0 16px 42px rgba(75,46,43,.08);
   }
 
   .fc-pri-rv {
@@ -70,79 +60,84 @@
   }
 
   .fc-pri-label {
-    margin: 0 0 14px;
+    margin: 0 0 24px;
     color: var(--terra);
     font-family: inherit;
-    font-size: .74rem;
+    font-size: clamp(.88rem, 1.28vw, 1.15rem);
     font-weight: 700;
-    letter-spacing: .22em;
+    letter-spacing: .34em;
     line-height: 1.4;
     text-transform: uppercase;
+  }
+
+  .fc-pri-value {
+    display: flex;
+    align-items: baseline;
+    gap: clamp(18px, 2.6vw, 28px);
+    margin: 0 0 10px;
   }
 
   .fc-pri-price {
     margin: 0;
     color: var(--brown);
     font-family: inherit;
-    font-size: clamp(2.7rem, 5.4vw, 4.5rem);
+    font-size: clamp(5.1rem, 9vw, 7.3rem);
     font-weight: 500;
     letter-spacing: 0;
-    line-height: .95;
+    line-height: .82;
   }
 
   .fc-pri-person {
-    display: block;
-    margin-top: 12px;
-    color: rgba(75,46,43,.72);
-    font-family: inherit;
-    font-size: .86rem;
-    font-weight: 600;
-    letter-spacing: .16em;
-    line-height: 1.4;
-    text-transform: uppercase;
-  }
-
-  .fc-pri-rule {
-    width: 1px;
-    height: 96px;
-    margin: 0;
-    background: rgba(75,46,43,.14);
-  }
-
-  .fc-pri-meta {
-    display: grid;
-    gap: 10px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .fc-pri-meta li {
     color: var(--brown);
     font-family: inherit;
-    font-size: .98rem;
-    font-weight: 500;
-    line-height: 1.45;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.4;
   }
 
-  .fc-pri-meta li + li {
-    padding-top: 10px;
-    border-top: 1px solid rgba(75,46,43,.12);
+  .fc-pri-save {
+    margin: 0;
+    color: var(--terra);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.35rem, 2.3vw, 2rem);
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  .fc-pri-side {
+    display: grid;
+    justify-items: center;
+    gap: 34px;
+  }
+
+  .fc-pri-limited {
+    margin: 0;
+    color: var(--brown);
+    font-family: inherit;
+    font-size: clamp(.9rem, 1.35vw, 1.12rem);
+    font-weight: 800;
+    letter-spacing: .34em;
+    line-height: 1.45;
+    text-align: center;
+    text-transform: uppercase;
   }
 
   .fc-pri-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 50px;
-    padding: 14px 28px;
+    width: 100%;
+    min-height: 105px;
+    padding: 24px 32px;
     background: var(--terra);
     border: 2px solid var(--terra);
     color: var(--white);
     font-family: inherit;
-    font-size: .76rem;
+    font-size: clamp(.95rem, 1.35vw, 1.2rem);
     font-weight: 700;
-    letter-spacing: .16em;
+    letter-spacing: .18em;
     line-height: 1.2;
     text-align: center;
     text-decoration: none;
@@ -163,24 +158,17 @@
   @media (max-width: 900px) {
     .fc-pri-card {
       grid-template-columns: 1fr;
-      gap: 26px;
+      gap: 36px;
+      min-height: 0;
       text-align: center;
     }
 
-    .fc-pri-rule {
-      width: 100%;
-      max-width: 360px;
-      height: 1px;
-      margin: 0 auto;
+    .fc-pri-value {
+      justify-content: center;
     }
 
-    .fc-pri-meta {
-      max-width: 420px;
-      margin: 0 auto;
-    }
-
-    .fc-pri-btn {
-      width: fit-content;
+    .fc-pri-side {
+      width: min(100%, 385px);
       margin: 0 auto;
     }
   }
@@ -195,38 +183,48 @@
     }
 
     .fc-pri-card {
-      padding: 38px 22px;
+      padding: 42px 22px;
+      border-radius: 14px;
     }
 
     .fc-pri-label {
-      font-size: .68rem;
-      letter-spacing: .16em;
+      letter-spacing: .2em;
     }
 
-    .fc-pri-meta {
+    .fc-pri-value {
       display: block;
     }
 
-    .fc-pri-meta li + li {
+    .fc-pri-person {
+      display: block;
       margin-top: 10px;
-      padding-top: 10px;
     }
 
-    .fc-pri-btn { width: 100%; }
+    .fc-pri-btn {
+      min-height: 78px;
+    }
+
+    .fc-pri-limited {
+      letter-spacing: .22em;
+    }
   }
 </style>
 
 <section id="fc-pricing" aria-label="Founder's Circle journey pricing">
   <div class="fc-pri-wrap">
     <div class="fc-pri-card fc-pri-rv" role="note">
-      <p class="fc-pri-label">Founder's Circle Exclusive</p>
-      <p class="fc-pri-price">$12,500 <span class="fc-pri-person">per person</span></p>
-      <div class="fc-pri-rule" aria-hidden="true"></div>
-      <ul class="fc-pri-meta" aria-label="Founder's Circle pricing details">
-        <li>Save $2,500 from regular pricing</li>
-        <li>Limited to founding guests</li>
-      </ul>
-      <a href="#fc-form-section" class="fc-pri-btn">Reserve My Place</a>
+      <div class="fc-pri-main">
+        <p class="fc-pri-label">Founder's Circle Exclusive</p>
+        <div class="fc-pri-value">
+          <p class="fc-pri-price">$12,500</p>
+          <p class="fc-pri-person">per person</p>
+        </div>
+        <p class="fc-pri-save">Save $2,500 from regular pricing</p>
+      </div>
+      <div class="fc-pri-side">
+        <a href="#fc-form-section" class="fc-pri-btn">Reserve My Place</a>
+        <p class="fc-pri-limited">Limited to founding guests</p>
+      </div>
     </div>
   </div>
 </section>
