@@ -232,6 +232,13 @@
 /* CF7 form integration styles */
 .fc-f2-card .wpcf7 { flex: 1; min-height: 0; }
 .fc-f2-card .wpcf7-form { display: flex; flex-direction: column; height: 100%; }
+.fc-f2-card input::placeholder,
+.fc-f2-card textarea::placeholder,
+.fc-f2-field input::placeholder,
+.fc-f2-field textarea::placeholder {
+  color: rgba(75,46,43,.36);
+  opacity: 1;
+}
 
 /* Responsive ≤1024px */
 @media (max-width: 1024px) {
