@@ -331,6 +331,9 @@ class FC_Details extends \Umoya_EW\Base_Widget {
     /* ─── Render ───────────────────────────────────────────────── */
 
     protected function render() {
+        $this->render_section_template( 'section-07-details.php' );
+        return;
+
         $s = $this->get_settings_for_display();
 
         $is_editor = \Elementor\Plugin::$instance->editor->is_edit_mode();

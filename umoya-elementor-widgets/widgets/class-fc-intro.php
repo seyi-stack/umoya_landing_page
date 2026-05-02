@@ -34,7 +34,7 @@ class FC_Intro extends \Umoya_EW\Base_Widget {
     }
 
     public function get_script_depends() {
-        return array( 'fc-scroll-reveal' );
+        return array( 'fc-section-02-intro' );
     }
 
     public function get_keywords() {
@@ -326,6 +326,9 @@ class FC_Intro extends \Umoya_EW\Base_Widget {
     /* ─── Render ───────────────────────────────────────────────── */
 
     protected function render() {
+        $this->render_section_template( 'section-02-intro.php' );
+        return;
+
         $s  = $this->get_settings_for_display();
         $is_editor = \Elementor\Plugin::$instance->editor->is_edit_mode();
 

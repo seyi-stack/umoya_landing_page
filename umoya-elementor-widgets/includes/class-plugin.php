@@ -68,13 +68,17 @@ final class Plugin {
         require_once UMOYA_EW_PATH . 'widgets/class-fc-benefits.php';
         $widgets_manager->register( new \Umoya_EW\Widgets\FC_Benefits() );
 
-        // Section 05: Journey (3 sub-widgets)
+        // Section 05: Journey + pricing + closing CTA
         require_once UMOYA_EW_PATH . 'widgets/class-fc-journey-header.php';
         require_once UMOYA_EW_PATH . 'widgets/class-fc-province-cards.php';
         require_once UMOYA_EW_PATH . 'widgets/class-fc-journey-includes.php';
+        require_once UMOYA_EW_PATH . 'widgets/class-fc-pricing.php';
+        require_once UMOYA_EW_PATH . 'widgets/class-fc-cta.php';
         $widgets_manager->register( new \Umoya_EW\Widgets\FC_Journey_Header() );
         $widgets_manager->register( new \Umoya_EW\Widgets\FC_Province_Cards() );
         $widgets_manager->register( new \Umoya_EW\Widgets\FC_Journey_Includes() );
+        $widgets_manager->register( new \Umoya_EW\Widgets\FC_Pricing() );
+        $widgets_manager->register( new \Umoya_EW\Widgets\FC_CTA() );
 
         // Section 06: Why Umoya + Pillars
         require_once UMOYA_EW_PATH . 'widgets/class-fc-why.php';
@@ -102,6 +106,8 @@ final class Plugin {
         wp_register_style( 'fc-section-03',      $u . 'fc-section-03.css',      array( 'fc-shared' ), $v );
         wp_register_style( 'fc-section-04',      $u . 'fc-section-04.css',      array( 'fc-shared' ), $v );
         wp_register_style( 'fc-section-05',      $u . 'fc-section-05.css',      array( 'fc-shared' ), $v );
+        wp_register_style( 'fc-section-05a',     $u . 'fc-section-05a.css',     array( 'fc-shared' ), $v );
+        wp_register_style( 'fc-section-05b',     $u . 'fc-section-05b.css',     array( 'fc-shared' ), $v );
         wp_register_style( 'fc-section-06',      $u . 'fc-section-06.css',      array( 'fc-shared' ), $v );
         wp_register_style( 'fc-section-06b',     $u . 'fc-section-06b.css',     array( 'fc-shared' ), $v );
         wp_register_style( 'fc-section-07',      $u . 'fc-section-07.css',      array( 'fc-shared' ), $v );
@@ -116,7 +122,14 @@ final class Plugin {
 
         wp_register_script( 'fc-scroll-reveal',        $u . 'fc-scroll-reveal.js',        array(), $v, true );
         wp_register_script( 'fc-section-00-nav',       $u . 'fc-section-00-nav.js',       array(), $v, true );
+        wp_register_script( 'fc-section-01-hero',      $u . 'fc-section-01-hero.js',      array(), $v, true );
+        wp_register_script( 'fc-section-02-intro',     $u . 'fc-section-02-intro.js',     array(), $v, true );
+        wp_register_script( 'fc-section-02-form',      $u . 'fc-section-02-form.js',      array(), $v, true );
         wp_register_script( 'fc-section-03-slideshow', $u . 'fc-section-03-slideshow.js',  array( 'fc-scroll-reveal' ), $v, true );
+        wp_register_script( 'fc-section-04-benefits',  $u . 'fc-section-04-benefits.js',  array(), $v, true );
+        wp_register_script( 'fc-section-05-journey',   $u . 'fc-section-05-journey.js',   array(), $v, true );
+        wp_register_script( 'fc-section-05a-pricing',  $u . 'fc-section-05a-pricing.js',  array(), $v, true );
+        wp_register_script( 'fc-section-05b-cta',      $u . 'fc-section-05b-cta.js',      array(), $v, true );
         wp_register_script( 'fc-section-05-cards',     $u . 'fc-section-05-cards.js',      array(), $v, true );
         wp_register_script( 'fc-section-05-map',       $u . 'fc-section-05-map.js',        array(), $v, true );
         wp_register_script( 'fc-section-06-video',     $u . 'fc-section-06-video.js',      array(), $v, true );
@@ -139,6 +152,8 @@ final class Plugin {
         wp_enqueue_style( 'fc-section-03',      $u . 'fc-section-03.css',      array( 'fc-shared' ), $v );
         wp_enqueue_style( 'fc-section-04',      $u . 'fc-section-04.css',      array( 'fc-shared' ), $v );
         wp_enqueue_style( 'fc-section-05',      $u . 'fc-section-05.css',      array( 'fc-shared' ), $v );
+        wp_enqueue_style( 'fc-section-05a',     $u . 'fc-section-05a.css',     array( 'fc-shared' ), $v );
+        wp_enqueue_style( 'fc-section-05b',     $u . 'fc-section-05b.css',     array( 'fc-shared' ), $v );
         wp_enqueue_style( 'fc-section-06',      $u . 'fc-section-06.css',      array( 'fc-shared' ), $v );
         wp_enqueue_style( 'fc-section-06b',     $u . 'fc-section-06b.css',     array( 'fc-shared' ), $v );
         wp_enqueue_style( 'fc-section-07',      $u . 'fc-section-07.css',      array( 'fc-shared' ), $v );

@@ -32,7 +32,11 @@ class FC_Province_Cards extends \Umoya_EW\Base_Widget {
     }
 
     public function get_script_depends() {
-        return array( 'fc-scroll-reveal', 'fc-section-05-cards' );
+        return array( 'fc-section-05-journey' );
+    }
+
+    public function show_in_panel() {
+        return false;
     }
 
     public function get_keywords() {
@@ -271,6 +275,8 @@ class FC_Province_Cards extends \Umoya_EW\Base_Widget {
     /* ─── Render ───────────────────────────────────────────────── */
 
     protected function render() {
+        return;
+
         $s  = $this->get_settings_for_display();
         $is_editor = \Elementor\Plugin::$instance->editor->is_edit_mode();
         $rv = $is_editor ? 'fc-prov-grid fc-jrn-rv d1 on' : 'fc-prov-grid fc-jrn-rv d1';

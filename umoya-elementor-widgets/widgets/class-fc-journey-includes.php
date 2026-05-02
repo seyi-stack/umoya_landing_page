@@ -33,7 +33,11 @@ class FC_Journey_Includes extends \Umoya_EW\Base_Widget {
     }
 
     public function get_script_depends() {
-        return array( 'fc-scroll-reveal', 'fc-section-05-map' );
+        return array( 'fc-section-05-journey' );
+    }
+
+    public function show_in_panel() {
+        return false;
     }
 
     public function get_keywords() {
@@ -346,6 +350,8 @@ class FC_Journey_Includes extends \Umoya_EW\Base_Widget {
     /* ─── Render ───────────────────────────────────────────────── */
 
     protected function render() {
+        return;
+
         $s  = $this->get_settings_for_display();
         $is_editor = \Elementor\Plugin::$instance->editor->is_edit_mode();
         $rv = $is_editor ? 'fc-jrn-rv on' : 'fc-jrn-rv';

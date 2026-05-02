@@ -379,6 +379,9 @@ class FC_Be_First extends \Umoya_EW\Base_Widget {
     /* ─── Render ───────────────────────────────────────────────── */
 
     protected function render() {
+        $this->render_section_template( 'section-03-be-first.php' );
+        return;
+
         $s = $this->get_settings_for_display();
 
         $is_editor = \Elementor\Plugin::$instance->editor->is_edit_mode();

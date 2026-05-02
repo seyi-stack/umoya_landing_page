@@ -1,14 +1,4 @@
-<!--
-=================================================================
-  UMOYA FOUNDER'S CIRCLE - SECTION 05A: PRICING OFFER
-=================================================================
-  ELEMENTOR USAGE:
-  - Add an "HTML" widget after Section 05 (Journey).
-  - Clean pricing card using only approved offer copy.
-=================================================================
--->
-<style>
-  #fc-pricing {
+#fc-pricing {
     --cream: #F5F0EB;
     --brown: #4B2E2B;
     --terra: #D97E53;
@@ -207,40 +197,3 @@
       letter-spacing: .18em;
     }
   }
-</style>
-
-<section id="fc-pricing" aria-label="Founder's Circle journey pricing">
-  <div class="fc-pri-wrap">
-    <div class="fc-pri-card fc-pri-rv" role="note">
-      <div class="fc-pri-main">
-        <p class="fc-pri-label">Founder's Circle Exclusive</p>
-        <div class="fc-pri-value">
-          <h3 class="fc-pri-price">$12,500</h3>
-          <p class="fc-pri-person">per person</p>
-        </div>
-        <h3 class="fc-pri-save">Save $2,500 from regular pricing</h3>
-      </div>
-      <div class="fc-pri-side">
-        <a href="#fc-form-section" class="fc-pri-btn">Reserve My Place</a>
-        <p class="fc-pri-limited">Limited to founding guests</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-(function(){
-  'use strict';
-  var rvEls = document.querySelectorAll('#fc-pricing .fc-pri-rv');
-  if ('IntersectionObserver' in window) {
-    var obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) { e.target.classList.add('fc-pri-on'); obs.unobserve(e.target); }
-      });
-    }, { threshold: 0.15 });
-    rvEls.forEach(function(el) { obs.observe(el); });
-  } else {
-    rvEls.forEach(function(el) { el.classList.add('fc-pri-on'); });
-  }
-})();
-</script>

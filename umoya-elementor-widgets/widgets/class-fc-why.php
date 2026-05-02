@@ -290,6 +290,9 @@ class FC_Why extends \Umoya_EW\Base_Widget {
     /* ─── Render ───────────────────────────────────────────────── */
 
     protected function render() {
+        $this->render_section_template( 'section-06-why.php' );
+        return;
+
         $s = $this->get_settings_for_display();
 
         $is_editor = \Elementor\Plugin::$instance->editor->is_edit_mode();

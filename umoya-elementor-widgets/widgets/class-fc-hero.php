@@ -35,7 +35,7 @@ class FC_Hero extends \Umoya_EW\Base_Widget {
     }
 
     public function get_script_depends() {
-        return array( 'fc-scroll-reveal' );
+        return array( 'fc-section-01-hero' );
     }
 
     public function get_keywords() {
@@ -336,6 +336,9 @@ class FC_Hero extends \Umoya_EW\Base_Widget {
     /* ─── Render ───────────────────────────────────────────────── */
 
     protected function render() {
+        $this->render_section_template( 'section-01-hero.php' );
+        return;
+
         $s = $this->get_settings_for_display();
         $t = $this->get_design_tokens();
 

@@ -239,4 +239,17 @@ abstract class Base_Widget extends \Elementor\Widget_Base {
         echo '<svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg>';
         echo '</span>';
     }
+
+    /**
+     * Render a static section template generated from the canonical HTML files.
+     *
+     * @param string $template Template filename under /templates.
+     */
+    protected function render_section_template( $template ) {
+        $path = UMOYA_EW_PATH . 'templates/' . ltrim( $template, '/\\' );
+
+        if ( file_exists( $path ) ) {
+            include $path;
+        }
+    }
 }

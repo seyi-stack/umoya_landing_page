@@ -20,7 +20,7 @@ class FC_Journey_Header extends \Umoya_EW\Base_Widget {
     }
 
     public function get_title() {
-        return 'FC Journey Header';
+        return 'FC Journey';
     }
 
     public function get_icon() {
@@ -32,11 +32,11 @@ class FC_Journey_Header extends \Umoya_EW\Base_Widget {
     }
 
     public function get_script_depends() {
-        return array( 'fc-scroll-reveal' );
+        return array( 'fc-section-05-journey' );
     }
 
     public function get_keywords() {
-        return array( 'umoya', 'journey', 'header', 'stats' );
+        return array( 'umoya', 'journey', 'tabs', 'map', 'provinces' );
     }
 
     /* ─── Controls ─────────────────────────────────────────────── */
@@ -193,6 +193,9 @@ class FC_Journey_Header extends \Umoya_EW\Base_Widget {
     /* ─── Render ───────────────────────────────────────────────── */
 
     protected function render() {
+        $this->render_section_template( 'section-05-journey.php' );
+        return;
+
         $s = $this->get_settings_for_display();
         $is_editor = \Elementor\Plugin::$instance->editor->is_edit_mode();
         $rv = $is_editor ? 'fc-jrn-rv on' : 'fc-jrn-rv';
