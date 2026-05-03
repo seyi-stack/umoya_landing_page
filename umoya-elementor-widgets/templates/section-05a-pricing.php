@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
+
 <!--
 =================================================================
   UMOYA FOUNDER'S CIRCLE - SECTION 05A: PRICING OFFER
@@ -7,7 +9,6 @@
   - Clean pricing card using only approved offer copy.
 =================================================================
 -->
-
 
 <section id="fc-pricing" aria-label="Founder's Circle journey pricing">
   <div class="fc-pri-wrap">

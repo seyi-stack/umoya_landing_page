@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
+
 <!--
 =================================================================
   UMOYA FOUNDER'S CIRCLE — SECTION 02: FORM — YOUR HOMECOMING
@@ -15,7 +17,6 @@
              Mailchimp's embedded form action URL + hidden fields.
 =================================================================
 -->
-
 
 <section id="fc-form-section" aria-label="Join the Founder's Circle — Inquiry Form">
 

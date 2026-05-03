@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
+
 <!--
 =================================================================
   UMOYA FOUNDER'S CIRCLE — SECTION 06B: BRAND PILLARS
@@ -10,7 +12,6 @@
     column visibility to invite scrolling.
 =================================================================
 -->
-
 
 <section id="fc-pillars" aria-label="What sets Umoya apart">
 

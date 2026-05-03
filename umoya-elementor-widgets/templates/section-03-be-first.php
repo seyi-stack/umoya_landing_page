@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
+
 <!--
 =================================================================
   UMOYA FOUNDER'S CIRCLE — SECTION 03: BE AMONG THE FIRST
@@ -12,7 +14,6 @@
     Drive images. Order: Image 1 → 2 → 3 → 4 from the brief.
 =================================================================
 -->
-
 
 <section id="fc-be-first" aria-label="Experience South Africa Differently">
   <div class="fc-bf-wrap">

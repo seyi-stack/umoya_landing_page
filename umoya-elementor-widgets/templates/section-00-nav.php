@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
+
 <!--
 =================================================================
   UMOYA FOUNDER'S CIRCLE — SECTION 00: STICKY NAVIGATION
@@ -24,7 +26,6 @@
   • Hamburger    — mobile only, opens dropdown inside the nav bar
 =================================================================
 -->
-
 
   <!-- ── NAV BAR (sticky) ──────────────────────────────────────── -->
   <nav id="fcNavBar" aria-label="Founder's Circle page navigation">

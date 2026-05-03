@@ -5,9 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-/**
- * FC Pricing — Section 05a: Founder's Circle pricing offer.
- */
 class FC_Pricing extends \Umoya_EW\Base_Widget {
 
     public function get_name() {
@@ -37,6 +34,6 @@ class FC_Pricing extends \Umoya_EW\Base_Widget {
     protected function register_controls() {}
 
     protected function render() {
-        $this->render_section_template( 'section-05a-pricing.php' );
+        $this->render_template( 'section-05a-pricing.php' );
     }
 }

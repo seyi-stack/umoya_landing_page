@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
+
 <!--
 =================================================================
   UMOYA FOUNDER'S CIRCLE — SECTION 05: YOUR JOURNEY BEGINS HERE
@@ -16,7 +18,6 @@
   container to render into.
 =================================================================
 -->
-
 
   <section id="fc-journey" aria-label="Signature Heritage Journey — Your Journey Begins Here">
     <div class="fc-jrn-c">

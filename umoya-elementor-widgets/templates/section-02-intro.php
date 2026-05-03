@@ -1,7 +1,8 @@
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
+
 <!-- ============================================================
   UMOYA FOUNDER'S CIRCLE — SECTION 2: INTRO STATEMENT
 ============================================================ -->
-
 
 <section id="fc-intro" aria-label="Founder's Circle Introduction">
   <div class="fc-intro-wrap">

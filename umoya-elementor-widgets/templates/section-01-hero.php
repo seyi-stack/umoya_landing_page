@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
+
 <!--
 =================================================================
   UMOYA FOUNDER'S CIRCLE — SECTION 01: HERO
@@ -10,7 +12,6 @@
   when your video asset is ready.
 =================================================================
 -->
-
 
   <section id="fc-hero" aria-label="Founder's Circle — Hero">
 

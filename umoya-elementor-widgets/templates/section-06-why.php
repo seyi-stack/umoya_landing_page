@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
+
 <!--
 =================================================================
   UMOYA FOUNDER'S CIRCLE — SECTION 06: WHY UMOYA AFRIKA TOURS
@@ -10,7 +12,6 @@
       Backup: Google Drive backup video from brief
 =================================================================
 -->
-
 
   <section id="fc-why" aria-label="Why Umoya Afrika Tours">
     <div class="fc-why-wrap">

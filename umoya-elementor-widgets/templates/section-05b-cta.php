@@ -1,10 +1,11 @@
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
+
 <!--
 =================================================================
   UMOYA FOUNDER'S CIRCLE — SECTION 05B: CLOSING CTA
   Full-bleed image section with two-column layout + divider
 =================================================================
 -->
-
 
 <section id="fc-cta" class="fc-cta-rv" aria-label="Join the Founder's Circle">
   <!-- Background image -->

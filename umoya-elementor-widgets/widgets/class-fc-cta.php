@@ -5,9 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-/**
- * FC Closing CTA — Section 05b: full-bleed image call to action.
- */
 class FC_CTA extends \Umoya_EW\Base_Widget {
 
     public function get_name() {
@@ -31,12 +28,12 @@ class FC_CTA extends \Umoya_EW\Base_Widget {
     }
 
     public function get_keywords() {
-        return array( 'umoya', 'cta', 'closing', 'founders' );
+        return array( 'umoya', 'cta', 'closing', 'join' );
     }
 
     protected function register_controls() {}
 
     protected function render() {
-        $this->render_section_template( 'section-05b-cta.php' );
+        $this->render_template( 'section-05b-cta.php' );
     }
 }

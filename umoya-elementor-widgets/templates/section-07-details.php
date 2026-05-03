@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
+
 <!--
 =================================================================
   UMOYA FOUNDER'S CIRCLE — SECTION 07: JOURNEY DETAILS
@@ -15,7 +17,6 @@
     Travel Protection · Journey Lengths · Cuisine & Dietary Care
 =================================================================
 -->
-
 
   <section id="fc-details" aria-label="Journey Details — Frequently Asked Questions">
     <div class="fc-det-wrap">

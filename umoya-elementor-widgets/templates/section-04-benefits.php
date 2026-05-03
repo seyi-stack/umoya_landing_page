@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
+
 <!--
 =================================================================
   UMOYA FOUNDER'S CIRCLE — SECTION 04: MEMBER BENEFITS
@@ -11,7 +13,6 @@
   • The checklist uses a terracotta circle check icon per item.
 =================================================================
 -->
-
 
   <section id="fc-benefits" aria-label="Founder's Circle Member Benefits">
     <div class="fc-ben-wrap">
