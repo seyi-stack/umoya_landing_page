@@ -1,0 +1,993 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE - SECTION 05: YOUR JOURNEY BEGINS HERE
+  Variant: image-only. Uses image panels for every journey tab.
+=================================================================
+-->
+<style>
+  /* ── Design tokens ─────────────────────────────────────────── */
+  #fc-journey {
+    --cream:      #F5F0EB;
+    --cream-lt:   #F5F0EB;
+    --cream-dk:   #F5F0EB;
+    --brown:      #4B2E2B;
+    --terra:      #D97E53;
+    --terra-dk:   #C06840;
+    --terra-lt:   #D97E53;
+    --text:       #4B2E2B;
+    --text-mid:   #4B2E2B;
+    --text-muted: #4B2E2B;
+    --gold:       #D97E53;
+    --white:      #FFFFFF;
+    --ease:       cubic-bezier(.25,.46,.45,.94);
+
+    background: var(--cream);
+    padding-top: 80px;
+    padding-bottom: 40px;
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+
+  #fc-journey *,
+  #fc-journey *::before,
+  #fc-journey *::after { box-sizing: border-box; }
+
+  /* ── Container ─────────────────────────────────────────────── */
+  .fc-jrn-c {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .fc-jrn-tabs-wrap {
+    padding: 0 clamp(24px, 4vw, 72px);
+  }
+
+  /* ── Reveal ────────────────────────────────────────────────── */
+  .fc-jrn-rv {
+    will-change: transform, opacity;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .85s var(--ease), transform .85s var(--ease);
+  }
+  .fc-jrn-rv.on { opacity: 1; transform: none; }
+  .fc-jrn-rv.d1 { transition-delay: .14s; }
+  .fc-jrn-rv.d2 { transition-delay: .26s; }
+
+  /* ── A. HEADER + STATS ─────────────────────────────────────── */
+  .fc-jrn-hd {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .fc-jrn-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+
+  .fc-jrn-ttl {
+    font-family: inherit;
+    font-size: clamp(1.9rem, 4vw, 3.4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--brown);
+  }
+
+  .fc-jrn-ttl em { font-style: italic; color: var(--terra); }
+
+  .fc-jrn-stats {
+    display: flex;
+    gap: 28px;
+    flex-shrink: 0;
+    padding-bottom: 6px;
+    flex-wrap: wrap;
+  }
+
+  .fc-jrn-stat { text-align: center; }
+
+  .fc-jrn-stat-n {
+    font-family: inherit;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 400;
+    color: var(--terra);
+    line-height: 1;
+  }
+
+  .fc-jrn-stat-l {
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 5px;
+  }
+
+  /* ── B. PROVINCE TABS — 3-col interactive ──────────────────── */
+  .fc-prov-tabs {
+    display: grid;
+    grid-template-columns: 0.95fr 1fr 1.4fr;
+    min-height: clamp(540px, 60vh, 660px);
+    background: var(--cream-lt);
+    border: 1px solid rgba(75,46,43,.08);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 28px rgba(75,46,43,.08);
+  }
+
+  /* Titles column (left) ──────────────────── */
+  .fc-pt-list {
+    display: flex;
+    flex-direction: column;
+    background: var(--cream-lt);
+    border-right: 1px solid rgba(75,46,43,.08);
+  }
+
+  .fc-pt-tab {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 22px 24px;
+    background: transparent;
+    border: none;
+    border-left: 3px solid transparent;
+    text-align: left;
+    font-family: inherit;
+    color: var(--text-mid);
+    cursor: pointer;
+    min-width: 0;
+    position: relative;
+    transition: background .32s var(--ease),
+                border-color .32s var(--ease),
+                color .32s var(--ease),
+                padding-left .32s var(--ease);
+  }
+
+  .fc-pt-tab + .fc-pt-tab {
+    border-top: 1px solid rgba(75,46,43,.06);
+  }
+
+  .fc-pt-tab:hover {
+    background: rgba(217,126,83,.05);
+    color: var(--brown);
+    padding-left: 28px;
+  }
+
+  .fc-pt-tab:focus-visible {
+    outline: 2px solid var(--terra);
+    outline-offset: -2px;
+  }
+
+  .fc-pt-tab.fc-pt-active {
+    background: var(--cream);
+    border-left-color: var(--terra);
+    color: var(--brown);
+  }
+
+  .fc-pt-num {
+    flex-shrink: 0;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--terra);
+    line-height: 1;
+    padding-top: 5px;
+    min-width: 22px;
+  }
+
+  .fc-pt-tab-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .fc-pt-reg {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    transition: color .32s var(--ease);
+  }
+
+  .fc-pt-tab.fc-pt-active .fc-pt-reg {
+    color: var(--terra);
+  }
+
+  .fc-pt-nm {
+    display: block;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.3;
+    color: inherit;
+  }
+
+  /* Content column (middle) ─────────────── */
+  .fc-pt-content {
+    position: relative;
+    background: var(--cream);
+    border-right: 1px solid rgba(75,46,43,.08);
+    min-height: 0;
+  }
+
+  .fc-pt-panel {
+    position: absolute;
+    inset: 0;
+    padding: 52px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: opacity .5s var(--ease), transform .5s var(--ease);
+  }
+
+  .fc-pt-panel.fc-pt-active {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    transition-delay: .08s;
+  }
+
+  .fc-pt-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+
+  .fc-pt-ttl {
+    font-family: inherit;
+    font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.15;
+    color: var(--brown);
+    margin: 0 0 1.2rem;
+  }
+
+  .fc-pt-rule {
+    display: block;
+    width: 38px;
+    height: 2px;
+    background: var(--terra);
+    margin-bottom: 1.4rem;
+  }
+
+  .fc-pa-rule {
+    display: block;
+    width: 38px;
+    height: 2px;
+    background: var(--terra);
+    margin: 14px 0 16px;
+  }
+
+  .fc-pt-body {
+    font-family: inherit;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-mid);
+    margin: 0;
+  }
+
+  /* Image column (right) ────────────────── */
+  .fc-pt-images {
+    position: relative;
+    overflow: hidden;
+    background: var(--brown);
+    min-height: 0;
+  }
+
+  .fc-pt-img {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: scale(1.04);
+    pointer-events: none;
+    transition: opacity .55s var(--ease), transform 1s var(--ease);
+  }
+
+  .fc-pt-img.fc-pt-active {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    transition-delay: .06s;
+  }
+
+  .fc-pt-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .fc-pt-img-ov {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(75,46,43,0) 45%,
+      rgba(75,46,43,.52) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* ── B-MOBILE. PROVINCE ACCORDION (FAQ-style reveal) ──────
+     Only renders at ≤900px; hidden on desktop where the
+     3-column tabs above are used instead. */
+  .fc-prov-acc { display: none; }
+
+  .fc-pa-item { position: relative; }
+  .fc-pa-item + .fc-pa-item {
+    border-top: 1px solid rgba(75,46,43,.08);
+  }
+
+  .fc-pa-h {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: 1;
+  }
+
+  .fc-pa-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 22px;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-family: inherit;
+    color: var(--text-mid);
+    cursor: pointer;
+    min-height: 64px;
+    transition: background .25s var(--ease), color .25s var(--ease);
+  }
+  .fc-pa-trigger:hover {
+    background: rgba(217,126,83,.04);
+    color: var(--brown);
+  }
+  .fc-pa-trigger:focus-visible {
+    outline: 2px solid var(--terra);
+    outline-offset: -2px;
+  }
+
+  .fc-pa-item.fc-pa-active .fc-pa-trigger {
+    background: var(--cream);
+    color: var(--brown);
+  }
+
+  .fc-pa-num {
+    flex-shrink: 0;
+    font-family: inherit;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--terra);
+    line-height: 1;
+    min-width: 22px;
+  }
+
+  .fc-pa-label-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+  }
+
+  .fc-pa-reg {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    transition: color .25s var(--ease);
+  }
+  .fc-pa-item.fc-pa-active .fc-pa-reg { color: var(--terra); }
+
+  .fc-pa-ttl {
+    display: block;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.3;
+    color: inherit;
+  }
+
+  .fc-pa-chev {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--terra);
+    border-radius: 50%;
+    transition: transform .4s var(--ease), background .25s var(--ease);
+  }
+  .fc-pa-item.fc-pa-active .fc-pa-chev {
+    transform: rotate(180deg);
+    background: rgba(217,126,83,.1);
+  }
+
+  .fc-pa-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .55s var(--ease);
+  }
+  .fc-pa-item.fc-pa-active .fc-pa-body {
+    max-height: 1400px;
+  }
+
+  .fc-pa-body-inner {
+    padding: 6px 22px 28px;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity .35s var(--ease), transform .35s var(--ease);
+  }
+  .fc-pa-item.fc-pa-active .fc-pa-body-inner {
+    opacity: 1;
+    transform: none;
+    transition-delay: .15s;
+  }
+
+  .fc-pa-image {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    background: var(--brown);
+    margin-bottom: 18px;
+  }
+  .fc-pa-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .fc-pa-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(75,46,43,0) 55%, rgba(75,46,43,.42) 100%);
+    pointer-events: none;
+  }
+
+  .fc-pa-text {
+    font-family: inherit;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--text-mid);
+    margin: 0;
+  }
+
+  /* ── TABLET ≤1024px ────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .fc-jrn-c     { padding: 0 32px; }
+
+    /* Province tabs: slightly tighter 3-col */
+    .fc-prov-tabs {
+      grid-template-columns: 0.9fr 1fr 1.35fr;
+      min-height: clamp(520px, 57vh, 620px);
+    }
+    .fc-pt-tab        { padding: 18px 20px; gap: 14px; }
+    .fc-pt-tab:hover  { padding-left: 24px; }
+    .fc-pt-nm         { font-size: 0.88rem; }
+    .fc-pt-panel      { padding: 44px 34px; }
+    .fc-pt-ttl        { font-size: clamp(1.4rem, 2.3vw, 1.9rem); }
+    .fc-pt-body       { font-size: 0.9rem; }
+
+    .fc-jrn-tabs-wrap { padding: 0 clamp(20px, 3vw, 56px); }
+  }
+
+  /* ── TABLET NARROW ≤900px ──────────────────────────────────── */
+  @media (max-width: 900px) {
+    /* Hide desktop 3-col tabs; swap in the FAQ accordion. */
+    .fc-prov-tabs { display: none; }
+    .fc-prov-acc {
+      display: block;
+      margin-bottom: 56px;
+      background: var(--cream-lt);
+      border: 1px solid rgba(75,46,43,.08);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 28px rgba(75,46,43,.08);
+    }
+
+    .fc-jrn-tabs-wrap { padding: 0 20px; }
+  }
+
+  /* ── MOBILE ≤768px ─────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    #fc-journey   { padding: 64px 0 28px; }
+    .fc-jrn-c     { padding: 0 20px; }
+
+    /* Header */
+    .fc-jrn-hd    { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 36px; }
+    .fc-jrn-stats { gap: 20px; flex-wrap: wrap; }
+
+    /* Province accordion */
+    .fc-prov-acc       { margin-bottom: 48px; border-radius: 8px; }
+    .fc-pa-trigger     { padding: 20px 20px; gap: 14px; min-height: 60px; }
+    .fc-pa-num         { font-size: 0.75rem; }
+    .fc-pa-reg         { font-size: 0.75rem; }
+    .fc-pa-ttl         { font-size: 0.9rem; }
+    .fc-pa-body-inner  { padding: 4px 20px 24px; }
+    .fc-pa-image       { margin-bottom: 16px; }
+    .fc-pa-text        { font-size: 0.88rem; line-height: 1.65; }
+
+  }
+
+  /* ── SMALL MOBILE ≤420px ───────────────────────────────────── */
+  @media (max-width: 420px) {
+    #fc-journey   { padding: 56px 0 24px; }
+    .fc-jrn-c     { padding: 0 16px; }
+
+    .fc-jrn-ttl   { font-size: clamp(1.7rem, 6vw, 2.2rem); }
+
+    /* Province accordion: tighter on very small screens */
+    .fc-prov-acc      { margin-bottom: 40px; }
+    .fc-pa-trigger    { padding: 18px 16px; gap: 12px; min-height: 58px; }
+    .fc-pa-num        { font-size: 0.75rem; min-width: 20px; }
+    .fc-pa-reg        { font-size: 0.75rem; letter-spacing: 0.16em; }
+    .fc-pa-ttl        { font-size: 0.86rem; line-height: 1.25; }
+    .fc-pa-chev       { width: 28px; height: 28px; }
+    .fc-pa-image      { aspect-ratio: 4 / 3; margin-bottom: 14px; }
+    .fc-pa-body-inner { padding: 4px 16px 22px; }
+    .fc-pa-text       { font-size: 0.84rem; }
+
+    .fc-pa-rule { margin: 10px 0 12px; }
+  }
+  </style>
+
+  <section id="fc-journey" aria-label="Signature Heritage Journey — Your Journey Begins Here">
+    <div class="fc-jrn-c">
+
+      <!-- ── A. HEADER + STATS ──────────────────────────── -->
+      <div class="fc-jrn-hd fc-jrn-rv">
+        <div>
+          <span class="fc-jrn-eye">Our Signature Journey</span>
+          <h2 class="fc-jrn-ttl">Your Journey <em>Begins Here</em></h2>
+        </div>
+        <div class="fc-jrn-stats" role="list">
+          <div class="fc-jrn-stat" role="listitem">
+            <div class="fc-jrn-stat-n">15</div>
+            <div class="fc-jrn-stat-l">Days</div>
+          </div>
+          <div class="fc-jrn-stat" role="listitem">
+            <div class="fc-jrn-stat-n">4</div>
+            <div class="fc-jrn-stat-l">Provinces</div>
+          </div>
+          <div class="fc-jrn-stat" role="listitem">
+            <div class="fc-jrn-stat-n">16</div>
+            <div class="fc-jrn-stat-l">Guests</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.fc-jrn-c -->
+
+    <!-- B. PROVINCE TABS + ACCORDION -->
+    <div class="fc-jrn-tabs-wrap">
+      <div class="fc-prov-tabs fc-jrn-rv d1">
+
+        <!-- Left: title tabs -->
+        <div class="fc-pt-list" role="tablist" aria-label="Signature Journey — five sections">
+
+          <button class="fc-pt-tab fc-pt-active" type="button" role="tab"
+                  id="fc-pt-tab-1" aria-controls="fc-pt-panel-1"
+                  aria-selected="true" tabindex="0">
+            <span class="fc-pt-tab-inner">
+              <span class="fc-pt-reg">The Route</span>
+              <span class="fc-pt-nm">Journey Across Four Provinces</span>
+            </span>
+          </button>
+
+          <button class="fc-pt-tab" type="button" role="tab"
+                  id="fc-pt-tab-2" aria-controls="fc-pt-panel-2"
+                  aria-selected="false" tabindex="-1">
+            <span class="fc-pt-num" aria-hidden="true">01</span>
+            <span class="fc-pt-tab-inner">
+              <span class="fc-pt-reg">Gauteng</span>
+              <span class="fc-pt-nm">Liberation History<br />&amp; Urban Culture</span>
+            </span>
+          </button>
+
+          <button class="fc-pt-tab" type="button" role="tab"
+                  id="fc-pt-tab-3" aria-controls="fc-pt-panel-3"
+                  aria-selected="false" tabindex="-1">
+            <span class="fc-pt-num" aria-hidden="true">02</span>
+            <span class="fc-pt-tab-inner">
+              <span class="fc-pt-reg">Mpumalanga</span>
+              <span class="fc-pt-nm">Safari &amp; Scenic<br />Landscapes</span>
+            </span>
+          </button>
+          <button class="fc-pt-tab" type="button" role="tab"
+                  id="fc-pt-tab-5" aria-controls="fc-pt-panel-5"
+                  aria-selected="false" tabindex="-1">
+            <span class="fc-pt-num" aria-hidden="true">03</span>
+            <span class="fc-pt-tab-inner">
+              <span class="fc-pt-reg">KwaZulu-Natal</span>
+              <span class="fc-pt-nm">Zulu Culture<br />&amp; Coastal Beauty</span>
+            </span>
+          </button>
+
+          <button class="fc-pt-tab" type="button" role="tab"
+                  id="fc-pt-tab-6" aria-controls="fc-pt-panel-6"
+                  aria-selected="false" tabindex="-1">
+            <span class="fc-pt-num" aria-hidden="true">04</span>
+            <span class="fc-pt-tab-inner">
+              <span class="fc-pt-reg">Western Cape</span>
+              <span class="fc-pt-nm">Cape Peninsula<br />&amp; Winelands</span>
+            </span>
+          </button>
+
+        </div>
+
+        <!-- Middle: content panels -->
+        <div class="fc-pt-content">
+
+          <div class="fc-pt-panel fc-pt-active" role="tabpanel"
+               id="fc-pt-panel-1" aria-labelledby="fc-pt-tab-1">
+            <span class="fc-pt-eye">The Route</span>
+            <h3 class="fc-pt-ttl">Journey Across<br />Four Provinces</h3>
+            <span class="fc-pt-rule" aria-hidden="true"></span>
+            <p class="fc-pt-body">Your Signature Journey is a 15-day experience across four provinces of South Africa, designed as a rare opportunity to encounter the country through authentic local perspectives. The journey unfolds through a series of intimate, thoughtfully curated moments not typically accessible to most travelers.</p>
+          </div>
+
+          <div class="fc-pt-panel" role="tabpanel"
+               id="fc-pt-panel-2" aria-labelledby="fc-pt-tab-2">
+            <span class="fc-pt-eye">Gauteng</span>
+            <h3 class="fc-pt-ttl">Liberation History<br />&amp; Urban Culture</h3>
+            <span class="fc-pt-rule" aria-hidden="true"></span>
+            <p class="fc-pt-body">The economic heart of Africa. Home to the liberation struggle that changed a continent. Walk through the powerful exhibits of the Apartheid Museum with expert context and experience authentic Soweto with community-rooted guides who lived these stories. Visit landmarks like Nelson Mandela House on Vilakazi Street and explore Freedom Park for a comprehensive historical perspective. This is where you encounter the struggle for freedom through local perspectives.</p>
+          </div>
+
+          <div class="fc-pt-panel" role="tabpanel"
+               id="fc-pt-panel-3" aria-labelledby="fc-pt-tab-3">
+            <span class="fc-pt-eye">Mpumalanga</span>
+            <h3 class="fc-pt-ttl">Safari &amp; Scenic<br />Landscapes</h3>
+            <span class="fc-pt-rule" aria-hidden="true"></span>
+            <p class="fc-pt-body">Where humanity's earliest ancestors walked. A landscape as ancient as the story of us all. Journey along the scenic Panorama Route, taking in sweeping views of Blyde River Canyon, one of the world's largest green canyons. Experience private game drives in Kruger National Park with expert guides leading you through vast landscapes teeming with Big Five wildlife. Visit the historic Inzalo ye Langa stone circle site, an astronomical calendar demonstrating sophisticated pre-colonial African science, and explore the ancient Sudwala Caves.</p>
+          </div>
+          <div class="fc-pt-panel" role="tabpanel"
+               id="fc-pt-panel-5" aria-labelledby="fc-pt-tab-5">
+            <span class="fc-pt-eye">KwaZulu-Natal</span>
+            <h3 class="fc-pt-ttl">Zulu Culture<br />&amp; Coastal Beauty</h3>
+            <span class="fc-pt-rule" aria-hidden="true"></span>
+            <p class="fc-pt-body">Zulu kingdom territory. Where one of history's greatest resistances against colonial rule was fought. Explore key historical sites with specialist guides who provide expert context on the military innovations and cultural legacy of the Zulu nation. The region's stunning Indian Ocean coastline offers pristine beaches, warm subtropical waters, and dramatic coastal scenery. Experience luxury beachfront accommodations, scenic coastal drives along the Dolphin Coast, and exclusive access to secluded beach areas.</p>
+          </div>
+
+          <div class="fc-pt-panel" role="tabpanel"
+               id="fc-pt-panel-6" aria-labelledby="fc-pt-tab-6">
+            <span class="fc-pt-eye">Western Cape</span>
+            <h3 class="fc-pt-ttl">Cape Peninsula<br />&amp; Winelands</h3>
+            <span class="fc-pt-rule" aria-hidden="true"></span>
+            <p class="fc-pt-body">From a port of arrival to one of the world's most celebrated cities. Contemporary African creativity thrives here. Stand on Robben Island where Nelson Mandela spent 18 of his 27 years, guided by former political prisoners who share stories of resilience that changed a nation. Ascend Table Mountain for panoramic views and explore the dramatic Cape Peninsula coastline including Chapman's Peak and Cape Point. Experience private tastings at exclusive wine estates, and discover Cape Town's vibrant creative scene through curated gallery visits and studio access.</p>
+          </div>
+
+        </div>
+
+        <!-- Right: image panels. Every tab uses a photograph. -->
+        <div class="fc-pt-images" aria-hidden="true">
+
+          <!-- Panel 1: Overview image -->
+          <div class="fc-pt-img fc-pt-active">
+            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05313.jpg"
+                 alt="" loading="lazy" />
+            <div class="fc-pt-img-ov"></div>
+          </div>
+
+          <!-- Panel 2: Gauteng -->
+          <div class="fc-pt-img">
+            <!-- ★ SWAP: Gauteng image -->
+            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/12/IMG_6762-scaled.webp"
+                 alt="" loading="lazy" />
+            <div class="fc-pt-img-ov"></div>
+          </div>
+
+          <!-- Panel 3: Mpumalanga -->
+          <div class="fc-pt-img">
+            <!-- ★ SWAP: IMG_7057-scaled.webp -->
+            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc02927.jpg"
+                 alt="" loading="lazy" />
+            <div class="fc-pt-img-ov"></div>
+          </div>
+          <!-- Panel 4: KwaZulu-Natal -->
+          <div class="fc-pt-img">
+            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/04/DSC04415.jpg"
+                 alt="" loading="lazy" />
+            <div class="fc-pt-img-ov"></div>
+          </div>
+
+          <!-- Panel 5: Western Cape -->
+          <div class="fc-pt-img">
+            <!-- ★ SWAP: IMG_7630-scaled.webp -->
+            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_img_7634.jpeg"
+                 alt="" loading="lazy" />
+            <div class="fc-pt-img-ov"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ── B-MOBILE. PROVINCE ACCORDION ──────────────────
+           Renders only at ≤900px (CSS toggle). Mirrors the
+           desktop tabs above as a stacked FAQ-style reveal. -->
+      <div class="fc-prov-acc fc-jrn-rv d1" aria-label="Signature Journey — five sections">
+
+        <!-- 01 Overview -->
+        <article class="fc-pa-item fc-pa-active">
+          <h3 class="fc-pa-h">
+            <button class="fc-pa-trigger" type="button"
+                    id="fc-pa-trig-1" aria-expanded="true" aria-controls="fc-pa-body-1">
+              <span class="fc-pa-label-wrap">
+                <span class="fc-pa-reg">The Route</span>
+                <span class="fc-pa-ttl">Journey Across Four Provinces</span>
+              </span>
+              <span class="fc-pa-chev" aria-hidden="true">
+                <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
+                  <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+          </h3>
+          <div class="fc-pa-body" id="fc-pa-body-1" role="region" aria-labelledby="fc-pa-trig-1">
+            <div class="fc-pa-body-inner">
+              <div class="fc-pa-image" aria-hidden="true">
+                <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05313.jpg"
+                     alt="" loading="lazy" />
+              </div>
+              <span class="fc-pa-rule" aria-hidden="true"></span>
+              <p class="fc-pa-text">Your Signature Journey is a 15-day experience across four provinces of South Africa, designed as a rare opportunity to encounter the country through authentic local perspectives. The journey unfolds through a series of intimate, thoughtfully curated moments not typically accessible to most travelers.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02 Gauteng -->
+        <article class="fc-pa-item">
+          <h3 class="fc-pa-h">
+            <button class="fc-pa-trigger" type="button"
+                    id="fc-pa-trig-2" aria-expanded="false" aria-controls="fc-pa-body-2">
+              <span class="fc-pa-num" aria-hidden="true">01</span>
+              <span class="fc-pa-label-wrap">
+                <span class="fc-pa-reg">Gauteng</span>
+                <span class="fc-pa-ttl">Liberation History &amp; Urban Culture</span>
+              </span>
+              <span class="fc-pa-chev" aria-hidden="true">
+                <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
+                  <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+          </h3>
+          <div class="fc-pa-body" id="fc-pa-body-2" role="region" aria-labelledby="fc-pa-trig-2">
+            <div class="fc-pa-body-inner">
+              <div class="fc-pa-image">
+                <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/12/IMG_6762-scaled.webp"
+                     alt="" loading="lazy" />
+              </div>
+              <span class="fc-pa-rule" aria-hidden="true"></span>
+              <p class="fc-pa-text">The economic heart of Africa. Home to the liberation struggle that changed a continent. Walk through the powerful exhibits of the Apartheid Museum with expert context and experience authentic Soweto with community-rooted guides who lived these stories. Visit landmarks like Nelson Mandela House on Vilakazi Street and explore Freedom Park for a comprehensive historical perspective. This is where you encounter the struggle for freedom through local perspectives.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 03 Mpumalanga -->
+        <article class="fc-pa-item">
+          <h3 class="fc-pa-h">
+            <button class="fc-pa-trigger" type="button"
+                    id="fc-pa-trig-3" aria-expanded="false" aria-controls="fc-pa-body-3">
+              <span class="fc-pa-num" aria-hidden="true">02</span>
+              <span class="fc-pa-label-wrap">
+                <span class="fc-pa-reg">Mpumalanga</span>
+                <span class="fc-pa-ttl">Safari &amp; Scenic Landscapes</span>
+              </span>
+              <span class="fc-pa-chev" aria-hidden="true">
+                <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
+                  <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+          </h3>
+          <div class="fc-pa-body" id="fc-pa-body-3" role="region" aria-labelledby="fc-pa-trig-3">
+            <div class="fc-pa-body-inner">
+              <div class="fc-pa-image">
+                <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc02927.jpg"
+                     alt="" loading="lazy" />
+              </div>
+              <span class="fc-pa-rule" aria-hidden="true"></span>
+              <p class="fc-pa-text">Where humanity's earliest ancestors walked. A landscape as ancient as the story of us all. Journey along the scenic Panorama Route, taking in sweeping views of Blyde River Canyon, one of the world's largest green canyons. Experience private game drives in Kruger National Park with expert guides leading you through vast landscapes teeming with Big Five wildlife. Visit the historic Inzalo ye Langa stone circle site, an astronomical calendar demonstrating sophisticated pre-colonial African science, and explore the ancient Sudwala Caves.</p>
+            </div>
+          </div>
+        </article>
+        <!-- 04 KwaZulu-Natal -->
+        <article class="fc-pa-item">
+          <h3 class="fc-pa-h">
+            <button class="fc-pa-trigger" type="button"
+                    id="fc-pa-trig-5" aria-expanded="false" aria-controls="fc-pa-body-5">
+              <span class="fc-pa-num" aria-hidden="true">03</span>
+              <span class="fc-pa-label-wrap">
+                <span class="fc-pa-reg">KwaZulu-Natal</span>
+                <span class="fc-pa-ttl">Zulu Culture &amp; Coastal Beauty</span>
+              </span>
+              <span class="fc-pa-chev" aria-hidden="true">
+                <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
+                  <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+          </h3>
+          <div class="fc-pa-body" id="fc-pa-body-5" role="region" aria-labelledby="fc-pa-trig-5">
+            <div class="fc-pa-body-inner">
+              <div class="fc-pa-image">
+                <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/04/DSC04415.jpg"
+                     alt="" loading="lazy" />
+              </div>
+              <span class="fc-pa-rule" aria-hidden="true"></span>
+              <p class="fc-pa-text">Zulu kingdom territory. Where one of history's greatest resistances against colonial rule was fought. Explore key historical sites with specialist guides who provide expert context on the military innovations and cultural legacy of the Zulu nation. The region's stunning Indian Ocean coastline offers pristine beaches, warm subtropical waters, and dramatic coastal scenery. Experience luxury beachfront accommodations, scenic coastal drives along the Dolphin Coast, and exclusive access to secluded beach areas.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 05 Western Cape -->
+        <article class="fc-pa-item">
+          <h3 class="fc-pa-h">
+            <button class="fc-pa-trigger" type="button"
+                    id="fc-pa-trig-6" aria-expanded="false" aria-controls="fc-pa-body-6">
+              <span class="fc-pa-num" aria-hidden="true">04</span>
+              <span class="fc-pa-label-wrap">
+                <span class="fc-pa-reg">Western Cape</span>
+                <span class="fc-pa-ttl">Cape Peninsula &amp; Winelands</span>
+              </span>
+              <span class="fc-pa-chev" aria-hidden="true">
+                <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
+                  <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+          </h3>
+          <div class="fc-pa-body" id="fc-pa-body-6" role="region" aria-labelledby="fc-pa-trig-6">
+            <div class="fc-pa-body-inner">
+              <div class="fc-pa-image">
+                <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_img_7634.jpeg"
+                     alt="" loading="lazy" />
+              </div>
+              <span class="fc-pa-rule" aria-hidden="true"></span>
+              <p class="fc-pa-text">From a port of arrival to one of the world's most celebrated cities. Contemporary African creativity thrives here. Stand on Robben Island where Nelson Mandela spent 18 of his 27 years, guided by former political prisoners who share stories of resilience that changed a nation. Ascend Table Mountain for panoramic views and explore the dramatic Cape Peninsula coastline including Chapman's Peak and Cape Point. Experience private tastings at exclusive wine estates, and discover Cape Town's vibrant creative scene through curated gallery visits and studio access.</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div><!-- /.fc-jrn-tabs-wrap -->
+
+  </section>
+
+  <script>
+  (function(){
+    'use strict';
+
+    var rvEls = document.querySelectorAll('#fc-journey .fc-jrn-rv');
+    if('IntersectionObserver' in window){
+      var rvObs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('on'); e.target.style.willChange = 'auto'; rvObs.unobserve(e.target); }
+        });
+      },{threshold:.06});
+      rvEls.forEach(function(el){ rvObs.observe(el); });
+    } else {
+      rvEls.forEach(function(el){ el.classList.add('on'); });
+    }
+
+    var ptTabs   = document.querySelectorAll('#fc-journey .fc-pt-tab');
+    var ptPanels = document.querySelectorAll('#fc-journey .fc-pt-panel');
+    var ptImgs   = document.querySelectorAll('#fc-journey .fc-pt-img');
+
+    function fcActivateTab(idx){
+      var i;
+      for(i = 0; i < ptTabs.length; i++){
+        if(i === idx){
+          ptTabs[i].classList.add('fc-pt-active');
+          ptTabs[i].setAttribute('aria-selected', 'true');
+          ptTabs[i].setAttribute('tabindex', '0');
+        } else {
+          ptTabs[i].classList.remove('fc-pt-active');
+          ptTabs[i].setAttribute('aria-selected', 'false');
+          ptTabs[i].setAttribute('tabindex', '-1');
+        }
+      }
+      for(i = 0; i < ptPanels.length; i++){
+        if(i === idx) ptPanels[i].classList.add('fc-pt-active');
+        else          ptPanels[i].classList.remove('fc-pt-active');
+      }
+      for(i = 0; i < ptImgs.length; i++){
+        if(i === idx) ptImgs[i].classList.add('fc-pt-active');
+        else          ptImgs[i].classList.remove('fc-pt-active');
+      }
+    }
+
+    for(var t = 0; t < ptTabs.length; t++){
+      (function(tabEl, idx){
+        tabEl.addEventListener('click', function(){ fcActivateTab(idx); });
+        tabEl.addEventListener('keydown', function(e){
+          var horizontal = window.innerWidth <= 900;
+          var prevKey = horizontal ? 'ArrowLeft' : 'ArrowUp';
+          var nextKey = horizontal ? 'ArrowRight' : 'ArrowDown';
+          var next = idx;
+          if(e.key === prevKey){
+            e.preventDefault();
+            next = (idx - 1 + ptTabs.length) % ptTabs.length;
+          } else if(e.key === nextKey){
+            e.preventDefault();
+            next = (idx + 1) % ptTabs.length;
+          } else if(e.key === 'Home'){
+            e.preventDefault();
+            next = 0;
+          } else if(e.key === 'End'){
+            e.preventDefault();
+            next = ptTabs.length - 1;
+          } else {
+            return;
+          }
+          fcActivateTab(next);
+          ptTabs[next].focus();
+        });
+      })(ptTabs[t], t);
+    }
+
+    var paItems    = document.querySelectorAll('#fc-journey .fc-pa-item');
+    var paTriggers = document.querySelectorAll('#fc-journey .fc-pa-trigger');
+
+    for(var a = 0; a < paTriggers.length; a++){
+      (function(triggerEl, idx){
+        triggerEl.addEventListener('click', function(){
+          var wasActive = paItems[idx].classList.contains('fc-pa-active');
+          var i;
+          for(i = 0; i < paItems.length; i++){
+            paItems[i].classList.remove('fc-pa-active');
+            paTriggers[i].setAttribute('aria-expanded', 'false');
+          }
+          if(!wasActive){
+            paItems[idx].classList.add('fc-pa-active');
+            paTriggers[idx].setAttribute('aria-expanded', 'true');
+          }
+        });
+      })(paTriggers[a], a);
+    }
+  }());
+  </script>
