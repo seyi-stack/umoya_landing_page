@@ -1,19 +1,7 @@
 <!--
 =================================================================
-  UMOYA FOUNDER'S CIRCLE — SECTION 05: YOUR JOURNEY BEGINS HERE
-  Map: Leaflet.js — dynamically injected CSS + JS (Elementor safe)
-=================================================================
-  WHY DYNAMIC INJECTION:
-  Elementor HTML widgets sometimes strip <link> tags and <script>
-  src attributes. Injecting Leaflet CSS and JS programmatically
-  via document.createElement guarantees they load in all cases.
-
-  MAP HEIGHT FIX:
-  Previous version used position:absolute which collapses to 0px
-  when the parent has no explicit height. Now the map uses an
-  explicit pixel height set from the right content column height
-  via JS, with a 460px fallback — so Leaflet always has a non-zero
-  container to render into.
+  UMOYA FOUNDER'S CIRCLE - SECTION 05: YOUR JOURNEY BEGINS HERE
+  Variant: image-only. Uses image panels for every journey tab.
 =================================================================
 -->
 <style>
@@ -356,6 +344,79 @@
     pointer-events: none;
   }
 
+  .fc-route-map-graphic {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    background: #F6F5F2;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+  }
+
+  .fc-route-map-graphic.fc-map-dragging {
+    cursor: grabbing;
+  }
+
+  .fc-route-map-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    pointer-events: none;
+    transform-origin: center center;
+    transition: transform .12s var(--ease);
+    will-change: transform;
+  }
+
+  .fc-route-map-graphic.fc-map-dragging .fc-route-map-img {
+    transition: none;
+  }
+
+  .fc-route-map-graphic svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .fc-route-map-controls {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 3;
+    display: grid;
+    gap: 6px;
+  }
+
+  .fc-route-map-control {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    background: var(--white);
+    border: 1px solid rgba(75,46,43,.16);
+    border-radius: 3px;
+    color: var(--brown);
+    font-family: inherit;
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: 0 2px 8px rgba(75,46,43,.14);
+    cursor: pointer;
+    transition: background .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
+  }
+
+  .fc-route-map-control:hover,
+  .fc-route-map-control:focus-visible {
+    background: var(--terra);
+    color: var(--white);
+    transform: translateY(-1px);
+  }
+
+
   /* ── B-MOBILE. PROVINCE ACCORDION (FAQ-style reveal) ──────
      Only renders at ≤900px; hidden on desktop where the
      3-column tabs above are used instead. */
@@ -502,6 +563,10 @@
     pointer-events: none;
   }
 
+  .fc-pa-image.fc-pa-map-image::after {
+    display: none;
+  }
+
   .fc-pa-text {
     font-family: inherit;
     font-size: 0.92rem;
@@ -518,104 +583,6 @@
     line-height: 1.55;
     color: var(--terra);
     margin: 0 0 0.75rem;
-  }
-
-  /* ── LEAFLET MAP (now hosted inside the first tab image panel) */
-  /* height/width fill the absolutely-positioned .fc-pt-img panel.
-     No standalone min-height needed — the tab grid provides it.  */
-  #fcLeafletMap {
-    width: 100%;
-    height: 100%;
-    min-height: 0;
-    display: block;
-    background: #F5F0EB;
-  }
-
-  /* Loading indicator shown before map tiles arrive */
-  .fc-map-loading {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-    z-index: 1000;
-    background: #F5F0EB;
-    transition: opacity .5s;
-  }
-
-  .fc-map-loading.fc-map-ready {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .fc-map-loading-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .fc-map-spinner {
-    width: 28px;
-    height: 28px;
-    border: 3px solid rgba(217,126,83,.2);
-    border-top-color: #D97E53;
-    border-radius: 50%;
-    animation: fcMapSpin .8s linear infinite;
-  }
-
-  @keyframes fcMapSpin { to { transform: rotate(360deg); } }
-
-  .fc-map-loading-txt {
-    font-family: inherit;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #4B2E2B;
-  }
-
-  /* Leaflet custom marker styles */
-  .fc-lm-wrap {
-    position: relative;
-    width: 28px;
-    height: 28px;
-  }
-
-  .fc-lm-dot {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: #D97E53;
-    border: 2.5px solid #FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: inherit;
-    font-size: 11px;
-    font-weight: 700;
-    color: #FFFFFF;
-    box-shadow: 0 2px 8px rgba(75,46,43,.4);
-    cursor: default;
-  }
-
-  .fc-lm-label {
-    position: absolute;
-    left: 34px;
-    top: 50%;
-    transform: translateY(-50%);
-    white-space: nowrap;
-    background: rgba(255,255,255,.88);
-    padding: 2px 7px;
-    border-radius: 3px;
-    font-family: inherit;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: #4B2E2B;
-    box-shadow: 0 1px 4px rgba(75,46,43,.18);
-    pointer-events: none;
   }
 
   /* ── TABLET ≤1024px ────────────────────────────────────────── */
@@ -652,7 +619,6 @@
     }
 
     .fc-jrn-tabs-wrap { padding: 0 20px; }
-    #fcLeafletMapMob { width: 100%; height: 100%; display: block; background: #F5F0EB; }
   }
 
   /* ── MOBILE ≤768px ─────────────────────────────────────────── */
@@ -674,9 +640,6 @@
     .fc-pa-image       { margin-bottom: 16px; }
     .fc-pa-text        { font-size: 0.88rem; line-height: 1.65; }
 
-    /* Loading overlay adapts */
-    .fc-map-loading { border-radius: 0; }
-
   }
 
   /* ── SMALL MOBILE ≤420px ───────────────────────────────────── */
@@ -697,10 +660,8 @@
     .fc-pa-body-inner { padding: 4px 16px 22px; }
     .fc-pa-text       { font-size: 0.84rem; }
 
-    /* Map marker labels: hide on very small screens */
-    .fc-lm-label  { display: none; }
-
     .fc-pa-rule { margin: 10px 0 12px; }
+
   }
   </style>
 
@@ -836,19 +797,42 @@
 
         </div>
 
-        <!-- Right: image panels. Panel 1 contains the interactive
-             Leaflet map; panels 2–6 use province photographs. -->
-        <div class="fc-pt-images" aria-hidden="true">
+        <!-- Right: image panels. Every tab uses a photograph. -->
+        <div class="fc-pt-images">
 
-          <!-- Panel 1: Leaflet map (Overview) -->
-          <div class="fc-pt-img fc-pt-active" id="fc-pt-img-map">
-            <div class="fc-map-loading" id="fcMapLoading">
-              <div class="fc-map-loading-inner">
-                <div class="fc-map-spinner"></div>
-                <span class="fc-map-loading-txt">Loading map&hellip;</span>
+          <!-- Panel 1: Interactive route map image -->
+          <div class="fc-pt-img fc-pt-active">
+            <div class="fc-route-map-graphic" role="img" aria-label="South Africa journey route map across Gauteng, Mpumalanga, KwaZulu-Natal, and Western Cape">
+              <img class="fc-route-map-img" src="/wp-content/uploads/2026/optimized/compressed_map.png" alt="" loading="lazy" />
+              <div class="fc-route-map-controls" aria-label="Map zoom controls">
+                <button class="fc-route-map-control" type="button" data-fc-map-zoom="in" aria-label="Zoom in">+</button>
+                <button class="fc-route-map-control" type="button" data-fc-map-zoom="out" aria-label="Zoom out">-</button>
               </div>
+              <svg viewBox="0 0 900 760" aria-hidden="true" focusable="false" style="display:none">
+                <rect width="900" height="760" fill="#f7f6f3"/>
+                <path d="M0 0h900v760H0z" fill="#f7f6f3"/>
+                <path d="M760 0c-35 70-38 145-20 220 18 76 15 132-28 190-48 65-43 139-3 204 23 38 45 76 54 146h137V0z" fill="#cfd7d9"/>
+                <path d="M0 646c45-16 70-45 88-83 22-47 56-72 104-82 78-16 156 18 236-8 70-23 118-83 201-70 51 8 91 42 131 50 29 6 59-4 89-11V0H0z" fill="#fbfaf7"/>
+                <path d="M214 0v142h116l44 96 148-22 82 91 112-19 28 102-76 89 38 80-98 83-134-42-92 76-137-32-69 58H0V0z" fill="none" stroke="#ecd7d2" stroke-width="2"/>
+                <path d="M0 652c52-17 81-54 105-93 33-53 75-86 135-97 78-15 141-12 209-48 84-44 140-124 245-111 58 7 104 43 155 46" fill="none" stroke="#e1e8e8" stroke-width="2"/>
+                <g fill="#9dacb6" font-family="Arial, sans-serif" font-weight="700">
+                  <text x="70" y="170" font-size="16">NAMIBIA</text>
+                  <text x="350" y="170" font-size="16">BOTSWANA</text>
+                  <text x="444" y="308" font-size="14">GAUTENG</text>
+                  <text x="597" y="186" font-size="16">LIMPOPO</text>
+                  <text x="664" y="438" font-size="16">KWAZULU-</text>
+                  <text x="680" y="458" font-size="16">NATAL</text>
+                  <text x="470" y="510" font-size="16">LESOTHO</text>
+                  <text x="310" y="465" font-size="18">SOUTH AFRICA</text>
+                  <text x="190" y="706" font-size="14">WESTERN</text>
+                  <text x="196" y="724" font-size="14">CAPE</text>
+                  <text x="438" y="640" font-size="14">EASTERN</text>
+                  <text x="445" y="658" font-size="14">CAPE</text>
+                </g>
+                <path d="M532 325C585 285 636 258 688 263M688 263C703 330 704 398 646 512M646 512C445 505 250 570 92 710" fill="none" stroke="#6e5a55" stroke-width="2.6" stroke-dasharray="9 8" stroke-linecap="round"/>
+                <path d="M655 264l20-8-8 20M660 438l-15 20-6-24M179 650l-17 16 3-23" fill="none" stroke="#6e5a55" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
-            <div id="fcLeafletMap" aria-label="South Africa route map — four provinces"></div>
           </div>
 
           <!-- Panel 2: Gauteng -->
@@ -909,8 +893,38 @@
           </h3>
           <div class="fc-pa-body" id="fc-pa-body-1" role="region" aria-labelledby="fc-pa-trig-1">
             <div class="fc-pa-body-inner">
-              <div class="fc-pa-image fc-pa-image-map" aria-hidden="true">
-                <div id="fcLeafletMapMob" aria-label="South Africa route map"></div>
+              <div class="fc-pa-image fc-pa-map-image">
+                <div class="fc-route-map-graphic" role="img" aria-label="South Africa journey route map across Gauteng, Mpumalanga, KwaZulu-Natal, and Western Cape">
+                  <img class="fc-route-map-img" src="/wp-content/uploads/2026/optimized/compressed_map.png" alt="" loading="lazy" />
+                  <div class="fc-route-map-controls" aria-label="Map zoom controls">
+                    <button class="fc-route-map-control" type="button" data-fc-map-zoom="in" aria-label="Zoom in">+</button>
+                    <button class="fc-route-map-control" type="button" data-fc-map-zoom="out" aria-label="Zoom out">-</button>
+                  </div>
+                  <svg viewBox="0 0 900 760" aria-hidden="true" focusable="false" style="display:none">
+                    <rect width="900" height="760" fill="#f7f6f3"/>
+                    <path d="M0 0h900v760H0z" fill="#f7f6f3"/>
+                    <path d="M760 0c-35 70-38 145-20 220 18 76 15 132-28 190-48 65-43 139-3 204 23 38 45 76 54 146h137V0z" fill="#cfd7d9"/>
+                    <path d="M0 646c45-16 70-45 88-83 22-47 56-72 104-82 78-16 156 18 236-8 70-23 118-83 201-70 51 8 91 42 131 50 29 6 59-4 89-11V0H0z" fill="#fbfaf7"/>
+                    <path d="M214 0v142h116l44 96 148-22 82 91 112-19 28 102-76 89 38 80-98 83-134-42-92 76-137-32-69 58H0V0z" fill="none" stroke="#ecd7d2" stroke-width="2"/>
+                    <path d="M0 652c52-17 81-54 105-93 33-53 75-86 135-97 78-15 141-12 209-48 84-44 140-124 245-111 58 7 104 43 155 46" fill="none" stroke="#e1e8e8" stroke-width="2"/>
+                    <g fill="#9dacb6" font-family="Arial, sans-serif" font-weight="700">
+                      <text x="70" y="170" font-size="16">NAMIBIA</text>
+                      <text x="350" y="170" font-size="16">BOTSWANA</text>
+                      <text x="444" y="308" font-size="14">GAUTENG</text>
+                      <text x="597" y="186" font-size="16">LIMPOPO</text>
+                      <text x="664" y="438" font-size="16">KWAZULU-</text>
+                      <text x="680" y="458" font-size="16">NATAL</text>
+                      <text x="470" y="510" font-size="16">LESOTHO</text>
+                      <text x="310" y="465" font-size="18">SOUTH AFRICA</text>
+                      <text x="190" y="706" font-size="14">WESTERN</text>
+                      <text x="196" y="724" font-size="14">CAPE</text>
+                      <text x="438" y="640" font-size="14">EASTERN</text>
+                      <text x="445" y="658" font-size="14">CAPE</text>
+                    </g>
+                    <path d="M532 325C585 285 636 258 688 263M688 263C703 330 704 398 646 512M646 512C445 505 250 570 92 710" fill="none" stroke="#6e5a55" stroke-width="2.6" stroke-dasharray="9 8" stroke-linecap="round"/>
+                    <path d="M655 264l20-8-8 20M660 438l-15 20-6-24M179 650l-17 16 3-23" fill="none" stroke="#6e5a55" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
               </div>
               <span class="fc-pa-rule" aria-hidden="true"></span>
               <p class="fc-pa-text">Your Signature Journey is a 15-day experience across four provinces of South Africa, designed as a rare opportunity to encounter the country through authentic local perspectives. The journey unfolds through a series of intimate, thoughtfully curated moments not typically accessible to most travelers.</p>
@@ -1051,7 +1065,6 @@
   (function(){
     'use strict';
 
-    /* ── Scroll reveal ─────────────────────────────────────── */
     var rvEls = document.querySelectorAll('#fc-journey .fc-jrn-rv');
     if('IntersectionObserver' in window){
       var rvObs = new IntersectionObserver(function(entries){
@@ -1064,122 +1077,6 @@
       rvEls.forEach(function(el){ el.classList.add('on'); });
     }
 
-    /* ── Dynamic Leaflet loader ────────────────────────────────
-     * Injects both the CSS and JS programmatically so they load
-     * regardless of how Elementor processes the HTML widget.
-     * -----------------------------------------------------------*/
-    var LEAFLET_CSS = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
-    var LEAFLET_JS  = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-
-    function injectCSS(href){
-      /* Skip if already loaded */
-      if(document.querySelector('link[href*="leaflet"]')) return;
-      var link = document.createElement('link');
-      link.rel  = 'stylesheet';
-      link.href = href;
-      document.head.appendChild(link);
-    }
-
-    function injectJS(src, cb){
-      /* Skip if Leaflet is already available */
-      if(typeof L !== 'undefined'){ cb(); return; }
-      /* Skip if script already injected */
-      if(document.querySelector('script[src*="leaflet"]')){
-        var wait = setInterval(function(){
-          if(typeof L !== 'undefined'){ clearInterval(wait); cb(); }
-        }, 50);
-        return;
-      }
-      var script    = document.createElement('script');
-      script.src    = src;
-      script.async  = true;
-      script.onload = cb;
-      script.onerror = function(){
-        /* Try cdnjs fallback */
-        var fb = document.createElement('script');
-        fb.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
-        fb.async  = true;
-        fb.onload = cb;
-        document.head.appendChild(fb);
-      };
-      document.head.appendChild(script);
-    }
-
-    var fcMap    = null;  /* desktop map instance */
-    var fcMapMob = null;  /* mobile/tablet map instance */
-    var stops = [
-      { num:1, lat:-26.2,  lng:28.04, label:'Gauteng'       },
-      { num:2, lat:-25.0,  lng:31.5,  label:'Mpumalanga'    },
-      { num:3, lat:-29.85, lng:30.55, label:'KwaZulu-Natal' },
-      { num:4, lat:-33.55, lng:18.42, label:'Western Cape'  }
-    ];
-    var stopBounds = stops.map(function(s){ return [s.lat, s.lng]; });
-
-      function buildMap(){
-        var isDesktop   = window.innerWidth > 900;
-        var containerId = isDesktop ? 'fcLeafletMap' : 'fcLeafletMapMob';
-        var loadingId   = isDesktop ? 'fcMapLoading' : null;
-        if(isDesktop  && fcMap)    return;
-        if(!isDesktop && fcMapMob) return;
-        var mapEl   = document.getElementById(containerId);
-        var loading = loadingId ? document.getElementById(loadingId) : null;
-        if(!mapEl || typeof L === 'undefined') return;
-        var m = L.map(containerId, {
-          center:[-29.0,25.5], zoom:5, zoomControl:true,
-          scrollWheelZoom:false, tap:true, touchZoom:true, dragging:true,
-          attributionControl:false
-        });
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-          {attribution:'',subdomains:'abcd',maxZoom:18}).addTo(m);
-        if(loading){
-          m.once('tileload',function(){ loading.classList.add('fc-map-ready'); });
-          setTimeout(function(){ loading.classList.add('fc-map-ready'); },3000);
-        }
-        function qBez(p1,p2,bend,n){
-          n=n||64;
-          var mx=(p1[0]+p2[0])/2,my=(p1[1]+p2[1])/2;
-          var dx=p2[0]-p1[0],dy=p2[1]-p1[1];
-          var cpx=mx-dy*bend,cpy=my+dx*bend;
-          var pts=[];
-          for(var i=0;i<=n;i++){
-            var t=i/n,u=1-t;
-            pts.push([u*u*p1[0]+2*u*t*cpx+t*t*p2[0],u*u*p1[1]+2*u*t*cpy+t*t*p2[1]]);
-          }
-          return pts;
-        }
-        function brng(p1,p2){return Math.atan2(p2[1]-p1[1],p2[0]-p1[0])*180/Math.PI;}
-        var segs=[
-          {a:[stops[0].lat,stops[0].lng],b:[stops[1].lat,stops[1].lng],bend:-0.15},
-          {a:[stops[1].lat,stops[1].lng],b:[stops[2].lat,stops[2].lng],bend:-0.18},
-          {a:[stops[2].lat,stops[2].lng],b:[stops[3].lat,stops[3].lng],bend: 0.22}
-        ];
-        var ls={color:'#4B2E2B',weight:1.8,opacity:0.72,dashArray:'7 5',lineCap:'round'};
-        segs.forEach(function(seg){
-          var pts=qBez(seg.a,seg.b,seg.bend);
-          L.polyline(pts,ls).addTo(m);
-          var qi=Math.floor(pts.length*0.80);
-          var ang=brng(pts[qi],pts[Math.min(qi+2,pts.length-1)]);
-          var arrHtml='<svg width="10" height="10" viewBox="0 0 10 10" '+
-            'style="display:block;transform:rotate('+ang+'deg);transform-origin:5px 5px;">'+
-            '<polygon points="5,0 10,10 0,10" fill="#4B2E2B" opacity="0.75"/></svg>';
-          L.marker(pts[qi],{icon:L.divIcon({html:arrHtml,iconSize:[10,10],iconAnchor:[5,5],className:''}),interactive:false}).addTo(m);
-        });
-        stops.forEach(function(s){
-          var mHtml='<div class="fc-lm-wrap"><div class="fc-lm-dot">'+s.num+'</div>'+
-            '<span class="fc-lm-label">'+s.label+'</span></div>';
-          L.marker([s.lat,s.lng],{icon:L.divIcon({html:mHtml,iconSize:[28,28],iconAnchor:[14,14],className:''}),title:s.label,interactive:false}).addTo(m);
-        });
-        var padPx=window.innerWidth<=420?30:window.innerWidth<=768?44:56;
-        m.fitBounds(stopBounds,{padding:[padPx,padPx]});
-        if(isDesktop) fcMap=m; else fcMapMob=m;
-      }
-
-    /* ── Province tabs — click to switch active panel ─────────
-     * Only one title/content/image triplet visible at a time.
-     * Keyboard: Arrow Up/Down (vertical desktop layout) or
-     * Arrow Left/Right (horizontal pill strip on ≤900px),
-     * Home and End jump to first/last. Roving tabindex.
-     * -----------------------------------------------------------*/
     var ptTabs   = document.querySelectorAll('#fc-journey .fc-pt-tab');
     var ptPanels = document.querySelectorAll('#fc-journey .fc-pt-panel');
     var ptImgs   = document.querySelectorAll('#fc-journey .fc-pt-img');
@@ -1205,15 +1102,11 @@
         if(i === idx) ptImgs[i].classList.add('fc-pt-active');
         else          ptImgs[i].classList.remove('fc-pt-active');
       }
-      /* Refresh map tile layout when the map panel is activated */
-      if(idx === 0 && fcMap){ fcMap.invalidateSize(); }
     }
 
     for(var t = 0; t < ptTabs.length; t++){
       (function(tabEl, idx){
-        tabEl.addEventListener('click', function(){
-          fcActivateTab(idx);
-        });
+        tabEl.addEventListener('click', function(){ fcActivateTab(idx); });
         tabEl.addEventListener('keydown', function(e){
           var horizontal = window.innerWidth <= 900;
           var prevKey = horizontal ? 'ArrowLeft' : 'ArrowUp';
@@ -1240,10 +1133,6 @@
       })(ptTabs[t], t);
     }
 
-    /* ── Province accordion (mobile/tablet) — FAQ-style reveal ──
-     * Click a trigger to expand its image + text. Clicking the
-     * already-open item collapses it. Only one open at a time.
-     * -----------------------------------------------------------*/
     var paItems    = document.querySelectorAll('#fc-journey .fc-pa-item');
     var paTriggers = document.querySelectorAll('#fc-journey .fc-pa-trigger');
 
@@ -1259,72 +1148,115 @@
           if(!wasActive){
             paItems[idx].classList.add('fc-pa-active');
             paTriggers[idx].setAttribute('aria-expanded', 'true');
-            if(idx === 0 && fcMapMob){
-              setTimeout(function(){ fcMapMob.invalidateSize(); }, 320);
-            }
           }
         });
       })(paTriggers[a], a);
     }
 
-    /* Inject Leaflet CSS and JS then build the map.
-     * PERFORMANCE: Only called when Section 05 scrolls into view
-     * via IntersectionObserver — never on initial page load.
-     * This eliminates Leaflet CDN + CartoDB tile requests for
-     * visitors who never scroll to this section. */
-    var mapInitialised = false;
-    function init(){
-      if(mapInitialised) return;
-      mapInitialised = true;
-      injectCSS(LEAFLET_CSS);
-      injectJS(LEAFLET_JS, function(){
-        /* Small delay lets layout reflow settle */
-        setTimeout(function(){
-          buildMap();
-        }, 80);
+    var routeMaps = document.querySelectorAll('#fc-journey .fc-route-map-graphic');
+
+    function clamp(n, min, max) {
+      return Math.max(min, Math.min(max, n));
+    }
+
+    function initRouteMapPanZoom(mapEl) {
+      var img = mapEl.querySelector('.fc-route-map-img');
+      var zoomControls = mapEl.querySelectorAll('[data-fc-map-zoom]');
+      if(!img) return;
+
+      var state = { scale: 1, x: 0, y: 0, dragging: false, lastX: 0, lastY: 0 };
+      var minScale = 1;
+      var maxScale = 4;
+
+      function bounds() {
+        var rect = mapEl.getBoundingClientRect();
+        return {
+          x: Math.max(0, (rect.width * state.scale - rect.width) / 2),
+          y: Math.max(0, (rect.height * state.scale - rect.height) / 2)
+        };
+      }
+
+      function apply() {
+        var b = bounds();
+        state.x = clamp(state.x, -b.x, b.x);
+        state.y = clamp(state.y, -b.y, b.y);
+        img.style.transform = 'translate(' + state.x + 'px, ' + state.y + 'px) scale(' + state.scale + ')';
+      }
+
+      function zoomBy(multiplier) {
+        var oldScale = state.scale;
+        state.scale = clamp(state.scale * multiplier, minScale, maxScale);
+        if(state.scale === oldScale) return;
+        state.x = state.x * (state.scale / oldScale);
+        state.y = state.y * (state.scale / oldScale);
+        apply();
+      }
+
+      for(var z = 0; z < zoomControls.length; z++) {
+        zoomControls[z].addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          zoomBy(this.getAttribute('data-fc-map-zoom') === 'in' ? 1.25 : 0.8);
+        });
+        zoomControls[z].addEventListener('pointerdown', function(e) {
+          e.stopPropagation();
+        });
+      }
+
+      mapEl.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        var rect = mapEl.getBoundingClientRect();
+        var oldScale = state.scale;
+        var delta = e.deltaY < 0 ? 1.12 : 0.88;
+        state.scale = clamp(state.scale * delta, minScale, maxScale);
+        var cx = e.clientX - rect.left - rect.width / 2;
+        var cy = e.clientY - rect.top - rect.height / 2;
+        state.x = cx - (cx - state.x) * (state.scale / oldScale);
+        state.y = cy - (cy - state.y) * (state.scale / oldScale);
+        apply();
+      }, { passive: false });
+
+      mapEl.addEventListener('pointerdown', function(e) {
+        if(e.button !== 0) return;
+        if(e.target.closest && e.target.closest('.fc-route-map-control')) return;
+        state.dragging = true;
+        state.lastX = e.clientX;
+        state.lastY = e.clientY;
+        mapEl.classList.add('fc-map-dragging');
+        mapEl.setPointerCapture(e.pointerId);
       });
 
-      /* Resize: invalidate + re-fit; init correct map if crossing viewport boundary */
-      var resizeTimer;
-      window.addEventListener('resize', function(){
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function(){
-          var isDesk = window.innerWidth > 900;
-          var p2=window.innerWidth<=420?30:window.innerWidth<=768?44:56;
-          if(isDesk){
-            if(fcMap){ fcMap.invalidateSize(); fcMap.fitBounds(stopBounds,{padding:[p2,p2]}); }
-            else { buildMap(); }
-          } else {
-            if(fcMapMob){ fcMapMob.invalidateSize(); }
-            else { buildMap(); }
-          }
-        }, 200);
-      }, { passive: true });
+      mapEl.addEventListener('pointermove', function(e) {
+        if(!state.dragging) return;
+        state.x += e.clientX - state.lastX;
+        state.y += e.clientY - state.lastY;
+        state.lastX = e.clientX;
+        state.lastY = e.clientY;
+        apply();
+      });
 
-      /* Orientation change */
-      window.addEventListener('orientationchange', function(){
-        setTimeout(function(){
-          if(window.innerWidth > 900){ if(fcMap) fcMap.invalidateSize(); }
-          else { if(fcMapMob) fcMapMob.invalidateSize(); }
-        }, 400);
-      }, { passive: true });
-    }
-
-    /* Lazy-load: only init the map when Section 05 scrolls into view.
-     * No Leaflet CDN or CartoDB tile requests until user reaches this section. */
-    var section = document.getElementById('fc-journey');
-    if(section && 'IntersectionObserver' in window){
-      var sectObs = new IntersectionObserver(function(entries){
-        if(entries[0].isIntersecting){
-          init();
-          sectObs.unobserve(section);
+      function endDrag(e) {
+        state.dragging = false;
+        mapEl.classList.remove('fc-map-dragging');
+        if(e && mapEl.hasPointerCapture(e.pointerId)) {
+          mapEl.releasePointerCapture(e.pointerId);
         }
-      }, { threshold: 0.05 });
-      sectObs.observe(section);
-    } else {
-      /* Fallback for browsers without IntersectionObserver */
-      init();
+      }
+
+      mapEl.addEventListener('pointerup', endDrag);
+      mapEl.addEventListener('pointercancel', endDrag);
+      mapEl.addEventListener('dblclick', function() {
+        state.scale = 1;
+        state.x = 0;
+        state.y = 0;
+        apply();
+      });
+      window.addEventListener('resize', apply, { passive: true });
+      apply();
     }
 
+    for(var m = 0; m < routeMaps.length; m++){
+      initRouteMapPanZoom(routeMaps[m]);
+    }
   }());
   </script>

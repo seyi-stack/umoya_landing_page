@@ -1,0 +1,366 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE - SECTION 05 MAP: SIGNATURE JOURNEY ROUTE
+  Standalone full-screen map-only section.
+=================================================================
+  ELEMENTOR USAGE:
+  - Add this as its own HTML widget wherever the standalone route
+    map should appear.
+  - Leaflet CSS and JS are injected dynamically for Elementor safety.
+=================================================================
+-->
+<style>
+  #fc-route-map-section {
+    --brown: #4B2E2B;
+    --terra: #D97E53;
+    --white: #FFFFFF;
+    --ease: cubic-bezier(.25,.46,.45,.94);
+
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+
+  #fc-route-map-section *,
+  #fc-route-map-section *::before,
+  #fc-route-map-section *::after {
+    box-sizing: border-box;
+  }
+
+  .fc-route-map-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+  }
+
+  #fcRouteLeafletMap {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: block;
+  }
+
+  .fc-route-map-loading {
+    position: absolute;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F5F0EB;
+    pointer-events: none;
+    transition: opacity .45s var(--ease);
+  }
+
+  .fc-route-map-loading.fc-route-map-ready {
+    opacity: 0;
+  }
+
+  .fc-route-map-loading-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .fc-route-map-spinner {
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(217,126,83,.2);
+    border-top-color: var(--terra);
+    border-radius: 50%;
+    animation: fcRouteMapSpin .8s linear infinite;
+  }
+
+  @keyframes fcRouteMapSpin {
+    to { transform: rotate(360deg); }
+  }
+
+  .fc-route-map-loading-text {
+    color: var(--brown);
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .fc-route-lm-wrap {
+    position: relative;
+    width: 30px;
+    height: 30px;
+  }
+
+  .fc-route-lm-dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--terra);
+    border: 3px solid var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 3px 10px rgba(75,46,43,.36);
+  }
+
+  .fc-route-lm-label {
+    position: absolute;
+    left: 38px;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    background: rgba(255,255,255,.9);
+    padding: 3px 8px;
+    border-radius: 3px;
+    color: var(--brown);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    box-shadow: 0 2px 6px rgba(75,46,43,.14);
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    #fc-route-map-section,
+    .fc-route-map-frame,
+    #fcRouteLeafletMap {
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .fc-route-lm-label {
+      display: none;
+    }
+  }
+</style>
+
+<section id="fc-route-map-section" aria-label="Signature Journey route map">
+  <div class="fc-route-map-frame">
+    <div class="fc-route-map-loading" id="fcRouteMapLoading">
+      <div class="fc-route-map-loading-inner">
+        <div class="fc-route-map-spinner" aria-hidden="true"></div>
+        <span class="fc-route-map-loading-text">Loading map...</span>
+      </div>
+    </div>
+    <div id="fcRouteLeafletMap" aria-label="South Africa route map across Gauteng, Mpumalanga, KwaZulu-Natal, and Western Cape"></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+
+  var section = document.getElementById('fc-route-map-section');
+  var mapEl = document.getElementById('fcRouteLeafletMap');
+  var loading = document.getElementById('fcRouteMapLoading');
+  if (!section || !mapEl) return;
+
+  var LEAFLET_CSS = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+  var LEAFLET_JS = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  var routeMap = null;
+  var mapInitialised = false;
+
+  var stops = [
+    { num: 1, lat: -26.2, lng: 28.04, label: 'Gauteng' },
+    { num: 2, lat: -25.0, lng: 31.5, label: 'Mpumalanga' },
+    { num: 3, lat: -29.85, lng: 30.55, label: 'KwaZulu-Natal' },
+    { num: 4, lat: -33.55, lng: 18.42, label: 'Western Cape' }
+  ];
+  var stopBounds = stops.map(function(s){ return [s.lat, s.lng]; });
+
+  function injectCSS(href) {
+    if (document.querySelector('link[href*="leaflet"]')) return;
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    document.head.appendChild(link);
+  }
+
+  function injectJS(src, cb) {
+    if (typeof L !== 'undefined') { cb(); return; }
+    if (document.querySelector('script[src*="leaflet"]')) {
+      var wait = setInterval(function(){
+        if (typeof L !== 'undefined') {
+          clearInterval(wait);
+          cb();
+        }
+      }, 50);
+      return;
+    }
+    var script = document.createElement('script');
+    script.src = src;
+    script.async = true;
+    script.onload = cb;
+    script.onerror = function() {
+      var fallback = document.createElement('script');
+      fallback.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
+      fallback.async = true;
+      fallback.onload = cb;
+      document.head.appendChild(fallback);
+    };
+    document.head.appendChild(script);
+  }
+
+  function qBez(p1, p2, bend, n) {
+    n = n || 64;
+    var mx = (p1[0] + p2[0]) / 2;
+    var my = (p1[1] + p2[1]) / 2;
+    var dx = p2[0] - p1[0];
+    var dy = p2[1] - p1[1];
+    var cpx = mx - dy * bend;
+    var cpy = my + dx * bend;
+    var pts = [];
+    for (var i = 0; i <= n; i++) {
+      var t = i / n;
+      var u = 1 - t;
+      pts.push([
+        u * u * p1[0] + 2 * u * t * cpx + t * t * p2[0],
+        u * u * p1[1] + 2 * u * t * cpy + t * t * p2[1]
+      ]);
+    }
+    return pts;
+  }
+
+  function bearing(p1, p2) {
+    return Math.atan2(p2[1] - p1[1], p2[0] - p1[0]) * 180 / Math.PI;
+  }
+
+  function buildMap() {
+    if (routeMap || typeof L === 'undefined') return;
+
+    routeMap = L.map('fcRouteLeafletMap', {
+      center: [-29.0, 25.5],
+      zoom: 5,
+      zoomControl: true,
+      scrollWheelZoom: false,
+      tap: true,
+      touchZoom: true,
+      dragging: true,
+      attributionControl: false
+    });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '',
+      subdomains: 'abcd',
+      maxZoom: 18
+    }).addTo(routeMap);
+
+    if (loading) {
+      routeMap.once('tileload', function(){
+        loading.classList.add('fc-route-map-ready');
+      });
+      setTimeout(function(){
+        loading.classList.add('fc-route-map-ready');
+      }, 3000);
+    }
+
+    var segs = [
+      { a: [stops[0].lat, stops[0].lng], b: [stops[1].lat, stops[1].lng], bend: -0.15 },
+      { a: [stops[1].lat, stops[1].lng], b: [stops[2].lat, stops[2].lng], bend: -0.18 },
+      { a: [stops[2].lat, stops[2].lng], b: [stops[3].lat, stops[3].lng], bend: 0.22 }
+    ];
+
+    segs.forEach(function(seg) {
+      var pts = qBez(seg.a, seg.b, seg.bend);
+      L.polyline(pts, {
+        color: '#4B2E2B',
+        weight: 2.2,
+        opacity: 0.74,
+        dashArray: '8 6',
+        lineCap: 'round'
+      }).addTo(routeMap);
+
+      var qi = Math.floor(pts.length * 0.80);
+      var ang = bearing(pts[qi], pts[Math.min(qi + 2, pts.length - 1)]);
+      var arrowHtml =
+        '<svg width="11" height="11" viewBox="0 0 10 10" ' +
+        'style="display:block;transform:rotate(' + ang + 'deg);transform-origin:5px 5px;">' +
+        '<polygon points="5,0 10,10 0,10" fill="#4B2E2B" opacity="0.75"/></svg>';
+
+      L.marker(pts[qi], {
+        icon: L.divIcon({
+          html: arrowHtml,
+          iconSize: [11, 11],
+          iconAnchor: [5, 5],
+          className: ''
+        }),
+        interactive: false
+      }).addTo(routeMap);
+    });
+
+    stops.forEach(function(s) {
+      var markerHtml =
+        '<div class="fc-route-lm-wrap"><div class="fc-route-lm-dot">' + s.num + '</div>' +
+        '<span class="fc-route-lm-label">' + s.label + '</span></div>';
+
+      L.marker([s.lat, s.lng], {
+        icon: L.divIcon({
+          html: markerHtml,
+          iconSize: [30, 30],
+          iconAnchor: [15, 15],
+          className: ''
+        }),
+        title: s.label,
+        interactive: false
+      }).addTo(routeMap);
+    });
+
+    fitMap();
+  }
+
+  function fitMap() {
+    if (!routeMap) return;
+    var pad = window.innerWidth <= 420 ? 30 : window.innerWidth <= 768 ? 44 : 72;
+    routeMap.invalidateSize();
+    routeMap.fitBounds(stopBounds, { padding: [pad, pad] });
+  }
+
+  function init() {
+    if (mapInitialised) return;
+    mapInitialised = true;
+    injectCSS(LEAFLET_CSS);
+    injectJS(LEAFLET_JS, function(){
+      setTimeout(buildMap, 80);
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        init();
+        obs.unobserve(section);
+      }
+    }, { threshold: 0.05 });
+    obs.observe(section);
+  } else {
+    init();
+  }
+
+  var resizeTimer;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(fitMap, 200);
+  }, { passive: true });
+
+  window.addEventListener('orientationchange', function(){
+    setTimeout(fitMap, 400);
+  }, { passive: true });
+})();
+</script>
