@@ -221,10 +221,14 @@
   /* Dots */
   .fc-ss-dots {
     position: absolute;
-    bottom: 12px;
+    top: 50%;
+    bottom: auto;
     left: 50%;
-    transform: translateX(-50%);
+    right: auto;
+    transform: translate(-50%, -50%);
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 4px;
     z-index: 10;
   }
@@ -232,6 +236,7 @@
   .fc-ss-dot {
     width: 30px;
     height: 32px;
+    min-width: 30px;
     border-radius: 50%;
     background: transparent;
     border: none;
