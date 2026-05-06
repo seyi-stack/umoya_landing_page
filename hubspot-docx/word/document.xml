@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:body>
+    <w:p><w:pPr><w:pStyle w:val="Title"/></w:pPr><w:r><w:t>HubSpot Integration Brief</w:t></w:r></w:p>
+    <w:p><w:pPr><w:pStyle w:val="Subtitle"/></w:pPr><w:r><w:t>Section 02 Founder&apos;s Circle Form | Prepared May 6, 2026</w:t></w:r></w:p>
+
+    <w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>Objective</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Integrate the Section 02 form with HubSpot so Founder&apos;s Circle membership enquiries are captured in HubSpot while preserving the current custom-designed form experience on the landing page.</w:t></w:r></w:p>
+
+    <w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>Recommended Integration Approach</w:t></w:r></w:p>
+    <w:p><w:r><w:t>The preferred approach is HubSpot API form submission rather than replacing the custom design with a default HubSpot embed. This keeps the existing visual styling, button copy, layout, and interaction pattern while sending submissions into HubSpot behind the scenes.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>An embedded HubSpot form is also possible, but it would usually require more styling work and may not match the current Section 02 design as cleanly.</w:t></w:r></w:p>
+
+    <w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>Information Needed From HubSpot</w:t></w:r></w:p>
+    <w:p><w:r><w:t>To wire the existing form successfully, the implementation needs the HubSpot Portal ID, the HubSpot Form ID, field/property mappings, consent requirements, post-submit behavior, and the tracking preference.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Field mapping means matching each visible form field to a HubSpot property internal name, such as firstname, lastname, email, phone, country, preferred_travel_month, number_of_guests, travel_interests, or founders_circle_message.</w:t></w:r></w:p>
+
+    <w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>HubSpot Setup Steps</w:t></w:r></w:p>
+    <w:p><w:r><w:t>1. Log in to HubSpot and go to Marketing &gt; Forms.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>2. Create a new embedded form, using a blank or simple contact form as the starting point.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>3. Add the fields needed by Section 02: first name, last name, email, phone number, country, preferred travel month or date, number of guests, and message or interests.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>4. Create custom contact properties for any fields that HubSpot does not already provide.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>5. Configure consent text and decide whether the consent checkbox should be required.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>6. Publish the form and copy the Portal ID and Form ID for the integration.</w:t></w:r></w:p>
+
+    <w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>Suggested Custom Properties</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Recommended custom contact property internal names include preferred_travel_month, number_of_guests, travel_interests, and founders_circle_message. These names can be adjusted to match HubSpot naming conventions already used in the account.</w:t></w:r></w:p>
+
+    <w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>Consent Wording</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Suggested consent text: I agree to be contacted by Umoya Afrika Tours about Founder&apos;s Circle membership and related travel experiences.</w:t></w:r></w:p>
+    <w:p><w:r><w:t>The final integration should confirm whether consent is required and whether HubSpot marketing consent/GDPR tracking should be included.</w:t></w:r></w:p>
+
+    <w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>Post-Submit Behavior</w:t></w:r></w:p>
+    <w:p><w:r><w:t>The form can either show an inline success message, redirect to a thank-you page, disable the form and show confirmation, or trigger a next step such as a download or follow-up prompt. This should be decided before implementation.</w:t></w:r></w:p>
+
+    <w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>Automation Option</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Some HubSpot setup can be automated if a HubSpot Private App access token is provided. The safer route is to manually create the form in HubSpot and share the Portal ID, Form ID, and field mappings. The faster automated route requires a temporary private app token with the appropriate forms/properties scopes, which should be deleted or rotated after the integration is complete.</w:t></w:r></w:p>
+
+    <w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>Implementation Handoff Template</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Portal ID:</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Form ID:</w:t></w:r></w:p>
+    <w:p><w:r><w:t>First name -&gt; firstname</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Last name -&gt; lastname</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Email -&gt; email</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Phone -&gt; phone</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Country -&gt; country</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Preferred travel month -&gt; preferred_travel_month</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Number of guests -&gt; number_of_guests</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Message/interests -&gt; founders_circle_message or travel_interests</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Consent required: yes/no</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Consent text:</w:t></w:r></w:p>
+    <w:p><w:r><w:t>After submit: inline success message or redirect URL</w:t></w:r></w:p>
+    <w:p><w:r><w:t>Tracking cookie/context: yes/no</w:t></w:r></w:p>
+
+    <w:sectPr>
+      <w:pgSz w:w="12240" w:h="15840"/>
+      <w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440" w:header="720" w:footer="720" w:gutter="0"/>
+    </w:sectPr>
+  </w:body>
+</w:document>
