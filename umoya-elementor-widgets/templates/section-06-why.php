@@ -38,14 +38,7 @@
 
           <!-- Video block -->
           <div class="fc-vid-wrap">
-            <video
-              class="fc-vid"
-              src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya_hd_optimized_720.mp4"
-              preload="none"
-              playsinline
-              aria-label="Umoya Afrika Tours — Signature Journey">
-            </video>
-            <button class="fc-vid-ph" type="button" aria-label="Play Umoya brand video">
+            <button class="fc-vid-ph" type="button" aria-label="Play Umoya brand video" aria-haspopup="dialog" aria-controls="fc-why-video-modal">
               <span class="fc-play" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
               </span>
@@ -57,5 +50,22 @@
       </div><!-- /.fc-why-grid -->
 
 
+    </div>
+    <div class="fc-video-modal" id="fc-why-video-modal" role="dialog" aria-modal="true" aria-label="Umoya Afrika Tours video" hidden>
+      <div class="fc-video-backdrop" data-fc-video-close></div>
+      <div class="fc-video-dialog">
+        <button class="fc-video-close" type="button" aria-label="Close video" data-fc-video-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <video
+          class="fc-video-player"
+          src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya_hd_optimized_720.mp4"
+          preload="metadata"
+          controls
+          controlsList="nodownload"
+          playsinline
+          aria-label="Umoya Afrika Tours video">
+        </video>
+      </div>
     </div>
   </section>

@@ -13,18 +13,48 @@
     }
 
     /* ── Video play overlay ──────────────────────── */
-    var vid = document.querySelector('#fc-why .fc-vid');
-    var ph  = document.querySelector('#fc-why .fc-vid-ph');
-    if (vid && ph) {
-      ph.addEventListener('click', function () {
-        vid.setAttribute('controls', 'controls');
-        var p = vid.play();
-        if (p && typeof p.then === 'function') {
-          p.then(function () { ph.classList.add('fc-vid-hide'); })
-           .catch(function () { ph.classList.add('fc-vid-hide'); });
-        } else {
-          ph.classList.add('fc-vid-hide');
-        }
-      });
+    var section = document.getElementById('fc-why');
+    var trigger = section ? section.querySelector('.fc-vid-ph') : null;
+    var modal = section ? section.querySelector('.fc-video-modal') : null;
+    var player = section ? section.querySelector('.fc-video-player') : null;
+    var closeEls = section ? section.querySelectorAll('[data-fc-video-close]') : [];
+    var closeBtn = section ? section.querySelector('.fc-video-close') : null;
+    var lastFocus = null;
+
+    function closeVideoModal() {
+      if (!modal || !player) return;
+      player.pause();
+      try { player.currentTime = 0; } catch (err) {}
+      modal.hidden = true;
+      document.removeEventListener('keydown', onVideoKeydown);
+      if (lastFocus && typeof lastFocus.focus === 'function') {
+        lastFocus.focus();
+      }
+    }
+
+    function onVideoKeydown(e) {
+      if (e.key === 'Escape') {
+        closeVideoModal();
+      }
+    }
+
+    function openVideoModal() {
+      if (!modal || !player) return;
+      lastFocus = document.activeElement;
+      modal.hidden = false;
+      document.addEventListener('keydown', onVideoKeydown);
+      if (closeBtn) closeBtn.focus();
+      var p = player.play();
+      if (p && typeof p.catch === 'function') {
+        p.catch(function () {});
+      }
+    }
+
+    if (trigger && modal && player) {
+      trigger.addEventListener('click', openVideoModal);
+      modal.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+      for (var c = 0; c < closeEls.length; c++) {
+        closeEls[c].addEventListener('click', closeVideoModal);
+      }
     }
   }());

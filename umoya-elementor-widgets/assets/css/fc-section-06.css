@@ -147,17 +147,6 @@
     box-shadow: 0 16px 48px rgba(75,46,43,.18);
   }
 
-  .fc-vid-wrap video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border: 0;
-    display: block;
-    background: var(--brown);
-  }
-
   .fc-vid-ph {
     position: absolute;
     inset: 0;
@@ -230,6 +219,72 @@
     margin-left: 4px;
   }
 
+  .fc-video-modal[hidden] {
+    display: none;
+  }
+
+  .fc-video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    padding: clamp(16px, 4vw, 48px);
+  }
+
+  .fc-video-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(28,13,6,.78);
+    backdrop-filter: blur(8px);
+  }
+
+  .fc-video-dialog {
+    position: relative;
+    z-index: 1;
+    width: min(1120px, 100%);
+    background: #120D0B;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 28px 90px rgba(0,0,0,.48);
+  }
+
+  .fc-video-player {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 78vh;
+    display: block;
+    background: #000;
+  }
+
+  .fc-video-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    background: rgba(18,13,11,.78);
+    border: 1px solid rgba(245,240,235,.36);
+    border-radius: 50%;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 1.45rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .2s ease, transform .2s ease, border-color .2s ease;
+  }
+
+  .fc-video-close:hover,
+  .fc-video-close:focus-visible {
+    background: var(--terra);
+    border-color: var(--terra);
+    transform: scale(1.04);
+    outline: none;
+  }
+
   /* ── Responsive ──────────────────────────────────── */
   @media (max-width: 1024px) {
     .fc-why-grid  { grid-template-columns: 1fr; gap: 56px; align-items: start; }
@@ -245,4 +300,6 @@
     .fc-why-rule { margin-bottom: 1.35rem; }
     .fc-why-lead  { font-size: 1rem; line-height: 1.55; margin-bottom: 1rem; }
     .fc-why-body { line-height: 1.65; margin-bottom: .85rem; }
+    .fc-video-modal { padding: 12px; }
+    .fc-video-close { top: 8px; right: 8px; width: 38px; height: 38px; }
   }
