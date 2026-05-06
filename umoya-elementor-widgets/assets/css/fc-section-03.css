@@ -206,11 +206,11 @@
   /* Dots */
   .fc-ss-dots {
     position: absolute;
-    top: 50%;
-    bottom: auto;
+    top: auto;
+    bottom: 12px;
     left: 50%;
     right: auto;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
