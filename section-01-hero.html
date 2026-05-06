@@ -366,7 +366,7 @@
   <section id="fc-hero" aria-label="Founder's Circle — Hero">
 
     <div class="fc-h1-bg">
-      <!-- Poster image loads instantly; video lazy-loads 2s after page load -->
+      <!-- Poster image loads instantly; video starts early with mobile-safe autoplay fallback -->
       <img
         src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-1.jpg"
         alt="Umoya Afrika Tours — heritage journey through South Africa"
@@ -374,10 +374,12 @@
       />
       <video
         id="fc-hero-vid"
+        autoplay
         muted
         loop
         playsinline
-        preload="none"
+        webkit-playsinline
+        preload="auto"
         poster="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-1.jpg"
         aria-label="Umoya Afrika Tours — heritage journey through South Africa"
         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;opacity:0;transition:opacity .8s ease;"
@@ -422,22 +424,47 @@
     'use strict';
     var vid = document.getElementById('fc-hero-vid');
     if(!vid) return;
-    /* Wait 2s after page load, then start loading the video */
-    function loadVid(){
+
+    function revealVid(){
+      vid.style.opacity = '1';
+    }
+
+    function playVid(){
+      vid.muted = true;
+      vid.defaultMuted = true;
+      vid.setAttribute('muted', '');
+      vid.setAttribute('autoplay', '');
+      vid.setAttribute('playsinline', '');
+      vid.setAttribute('webkit-playsinline', '');
       vid.preload = 'auto';
-      vid.load();
+      if(vid.readyState === 0){
+        try { vid.load(); } catch(e) {}
+      }
       var p = vid.play();
       if(p && typeof p.then === 'function'){
-        p.then(function(){ vid.style.opacity = '1'; })
-         .catch(function(){ /* autoplay blocked — poster stays visible */ });
+        p.then(revealVid)
+         .catch(function(){ /* autoplay blocked - poster stays visible */ });
       } else {
-        vid.style.opacity = '1';
+        revealVid();
       }
     }
-    if(document.readyState === 'complete'){
-      setTimeout(loadVid, 2000);
+
+    vid.addEventListener('playing', revealVid);
+    vid.addEventListener('loadeddata', function(){
+      if(!vid.paused) revealVid();
+    });
+
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', function(){ setTimeout(playVid, 150); });
     } else {
-      window.addEventListener('load', function(){ setTimeout(loadVid, 2000); });
+      setTimeout(playVid, 150);
     }
+    window.addEventListener('load', function(){ setTimeout(playVid, 900); });
+    document.addEventListener('visibilitychange', function(){
+      if(!document.hidden) playVid();
+    });
+    ['touchstart', 'pointerdown', 'click'].forEach(function(evt){
+      document.addEventListener(evt, playVid, { once: true, passive: true });
+    });
   }());
   </script>

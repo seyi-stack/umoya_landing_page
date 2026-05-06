@@ -16,7 +16,7 @@
   <section id="fc-hero" aria-label="Founder's Circle — Hero">
 
     <div class="fc-h1-bg">
-      <!-- Poster image loads instantly; video lazy-loads 2s after page load -->
+      <!-- Poster image loads instantly; video starts early with mobile-safe autoplay fallback -->
       <img
         src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-1.jpg"
         alt="Umoya Afrika Tours — heritage journey through South Africa"
@@ -24,10 +24,12 @@
       />
       <video
         id="fc-hero-vid"
+        autoplay
         muted
         loop
         playsinline
-        preload="none"
+        webkit-playsinline
+        preload="auto"
         poster="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-1.jpg"
         aria-label="Umoya Afrika Tours — heritage journey through South Africa"
         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;opacity:0;transition:opacity .8s ease;"
