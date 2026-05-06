@@ -166,20 +166,6 @@
     pointer-events: none;
   }
 
-  /* Caption */
-  .fc-ss-cap {
-    position: absolute;
-    bottom: 22px;
-    left: 22px;
-    right: 22px;
-    z-index: 2;
-    font-family: inherit;
-    font-size: 1rem;
-    font-style: italic;
-    color: rgba(245,240,235,.88);
-    line-height: 1.45;
-  }
-
   /* Arrow buttons */
   .fc-ss-arrow {
     position: absolute;
@@ -223,13 +209,13 @@
     bottom: 8px;
     right: 6px;
     display: flex;
-    gap: 0;
+    gap: 2px;
     z-index: 10;
   }
 
   .fc-ss-dot {
-    width: 44px;
-    height: 44px;
+    width: 24px;
+    height: 30px;
     border-radius: 50%;
     background: transparent;
     border: none;

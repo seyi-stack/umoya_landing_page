@@ -55,7 +55,6 @@
               alt="Gauteng heritage and city experience"
               loading="lazy"
             />
-            <span class="fc-ss-cap">Heritage, city energy, and living history</span>
           </div>
 
           <!-- Slide 2 — ★ SWAP src with Drive Image 2 -->
@@ -65,7 +64,6 @@
               alt="Umoya Afrika Tours journey moment"
               loading="lazy"
             />
-            <span class="fc-ss-cap">Designed moments beyond ordinary travel</span>
           </div>
 
           <div class="fc-ss-slide" role="group" aria-label="3 of 5" aria-roledescription="slide">
@@ -74,7 +72,6 @@
               alt="Cultural experience on an Umoya journey"
               loading="lazy"
             />
-            <span class="fc-ss-cap">Culture encountered with depth and care</span>
           </div>
 
           <div class="fc-ss-slide" role="group" aria-label="4 of 5" aria-roledescription="slide">
@@ -83,7 +80,6 @@
               alt="Premium South African travel experience"
               loading="lazy"
             />
-            <span class="fc-ss-cap">Quiet luxury, thoughtfully arranged</span>
           </div>
 
           <div class="fc-ss-slide" role="group" aria-label="5 of 5" aria-roledescription="slide">
@@ -92,7 +88,6 @@
               alt="Founder's Circle journey guest experience"
               loading="lazy"
             />
-            <span class="fc-ss-cap">Be first to travel differently</span>
           </div>
         </div><!-- /.fc-ss-track -->
 
