@@ -230,6 +230,17 @@
     display: grid;
     place-items: center;
     padding: clamp(16px, 4vw, 48px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .32s ease, visibility 0s linear .32s;
+  }
+
+  .fc-video-modal.fc-video-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
   }
 
   .fc-video-backdrop {
@@ -237,6 +248,8 @@
     inset: 0;
     background: rgba(28,13,6,.78);
     backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity .32s ease;
   }
 
   .fc-video-dialog {
@@ -247,6 +260,18 @@
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 28px 90px rgba(0,0,0,.48);
+    opacity: 0;
+    transform: translateY(18px) scale(.96);
+    transition: opacity .28s ease, transform .42s cubic-bezier(.22,1,.36,1);
+  }
+
+  .fc-video-modal.fc-video-open .fc-video-backdrop,
+  .fc-video-modal.fc-video-open .fc-video-dialog {
+    opacity: 1;
+  }
+
+  .fc-video-modal.fc-video-open .fc-video-dialog {
+    transform: none;
   }
 
   .fc-video-player {
@@ -283,6 +308,18 @@
     border-color: var(--terra);
     transform: scale(1.04);
     outline: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fc-video-modal,
+    .fc-video-backdrop,
+    .fc-video-dialog {
+      transition: none;
+    }
+
+    .fc-video-dialog {
+      transform: none;
+    }
   }
 
   /* ── Responsive ──────────────────────────────────── */

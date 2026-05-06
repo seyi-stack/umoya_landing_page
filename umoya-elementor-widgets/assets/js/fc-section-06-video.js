@@ -20,16 +20,26 @@
     var closeEls = section ? section.querySelectorAll('[data-fc-video-close]') : [];
     var closeBtn = section ? section.querySelector('.fc-video-close') : null;
     var lastFocus = null;
+    var closeTimer = null;
 
     function closeVideoModal() {
       if (!modal || !player) return;
+      if (closeTimer) {
+        window.clearTimeout(closeTimer);
+      }
       player.pause();
       try { player.currentTime = 0; } catch (err) {}
-      modal.hidden = true;
+      modal.classList.remove('fc-video-open');
       document.removeEventListener('keydown', onVideoKeydown);
-      if (lastFocus && typeof lastFocus.focus === 'function') {
-        lastFocus.focus();
-      }
+      closeTimer = window.setTimeout(function () {
+        if (!modal.classList.contains('fc-video-open')) {
+          modal.hidden = true;
+          if (lastFocus && typeof lastFocus.focus === 'function') {
+            lastFocus.focus();
+          }
+          lastFocus = null;
+        }
+      }, 430);
     }
 
     function onVideoKeydown(e) {
@@ -40,8 +50,13 @@
 
     function openVideoModal() {
       if (!modal || !player) return;
+      if (closeTimer) {
+        window.clearTimeout(closeTimer);
+      }
       lastFocus = document.activeElement;
       modal.hidden = false;
+      modal.offsetHeight;
+      modal.classList.add('fc-video-open');
       document.addEventListener('keydown', onVideoKeydown);
       if (closeBtn) closeBtn.focus();
       var p = player.play();
