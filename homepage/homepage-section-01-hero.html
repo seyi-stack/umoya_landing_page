@@ -1,0 +1,212 @@
+<!-- UMOYA - HOMEPAGE SECTION 01: HERO -->
+<section id="umoya-hero" class="umoya-hero" aria-label="Umoya Landing Hero">
+  <style>
+    #umoya-hero {
+      --terracotta: #D97E53;
+      --cream: #F5F0EB;
+      --text: #FDFCF9;
+
+      position: relative;
+      width: 100%;
+      min-height: 65svh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: transparent;
+      color: var(--text);
+    }
+
+    #umoya-hero,
+    #umoya-hero *,
+    #umoya-hero *::before,
+    #umoya-hero *::after {
+      box-sizing: border-box;
+    }
+
+    #umoya-hero .inner {
+      width: min(1120px, 92vw);
+      max-width: 100%;
+      margin: 0 auto;
+      padding: clamp(16px, 3.5vw, 40px);
+      display: grid;
+      justify-items: center;
+      gap: clamp(24px, 3vw, 40px);
+      text-align: center;
+      transform: translateY(-3vh);
+    }
+
+    #umoya-hero h1 {
+      max-width: 100%;
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(48px, 8vw, 82px);
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.05;
+    }
+
+    #umoya-hero .sub {
+      margin: 0 auto;
+      max-width: 60ch;
+      color: #F1ECE6;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.6;
+    }
+
+    #umoya-hero .cta-row {
+      display: inline-flex;
+      justify-content: center;
+      min-width: 0;
+      width: 100%;
+      margin-top: 12px;
+    }
+
+    #umoya-hero .btn {
+      --btn-bg: var(--terracotta);
+      --btn-bg-hover: #c66c44;
+
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-width: 0;
+      padding: 16px 32px;
+      border: 0;
+      border-radius: 14px;
+      background: var(--btn-bg);
+      box-shadow: 0 6px 18px rgba(0,0,0,.25);
+      color: var(--cream);
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      line-height: 1.2;
+      text-decoration: none;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    #umoya-hero .btn,
+    #umoya-hero .btn:visited {
+      color: var(--cream);
+    }
+
+    #umoya-hero .btn:hover {
+      background: var(--btn-bg-hover);
+      box-shadow: 0 10px 22px rgba(0,0,0,.28);
+      color: var(--cream);
+      transform: translateY(-1px);
+    }
+
+    #umoya-hero .btn svg {
+      flex-shrink: 0;
+    }
+
+    #umoya-hero .btn-label {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      text-wrap: balance;
+    }
+
+    #umoya-hero .btn-label span {
+      display: inline;
+    }
+
+    #umoya-hero .btn-label span + span::before {
+      content: " ";
+    }
+
+    @media (max-width: 768px) {
+      #umoya-hero {
+        width: 100%;
+        max-width: 100%;
+        min-height: 390px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      #umoya-hero .inner {
+        width: 100%;
+        max-width: 100%;
+        padding-right: 22px;
+        padding-left: 22px;
+        transform: none;
+      }
+
+      #umoya-hero h1,
+      #umoya-hero .sub {
+        width: 100%;
+      }
+
+      #umoya-hero h1 {
+        font-size: clamp(2.55rem, 12vw, 4rem);
+      }
+
+      #umoya-hero .btn {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        padding: 13px 16px !important;
+        font-size: clamp(0.82rem, 3.1vw, 0.96rem) !important;
+        letter-spacing: .045em !important;
+        overflow-wrap: normal;
+        text-align: center;
+        text-transform: uppercase;
+        white-space: normal !important;
+      }
+
+      #umoya-hero .btn-label {
+        display: grid;
+        gap: 1px;
+        max-width: 20ch;
+        line-height: 1.25;
+        overflow-wrap: normal;
+      }
+
+      #umoya-hero .btn-label span {
+        display: block;
+      }
+
+      #umoya-hero .btn-label span + span::before {
+        content: "";
+      }
+    }
+
+    @media (max-width: 390px) {
+      #umoya-hero .inner {
+        padding-right: 16px;
+        padding-left: 16px;
+      }
+
+      #umoya-hero .btn {
+        gap: 8px;
+        padding-right: 14px;
+        padding-left: 14px;
+        font-size: clamp(0.78rem, 3vw, 0.88rem) !important;
+        letter-spacing: .035em !important;
+      }
+
+      #umoya-hero .btn-label {
+        max-width: 19ch;
+      }
+
+      #umoya-hero h1 {
+        font-size: clamp(2.35rem, 11.2vw, 3.45rem);
+      }
+    }
+  </style>
+
+  <div class="inner">
+    <h1>Breathe South Africa Differently.</h1>
+    <h2 class="sub">Premier small-group journeys for discerning travelers who expect more than the ordinary.</h2>
+
+    <div class="cta-row" role="group" aria-label="Primary action">
+      <a class="btn" href="https://umoyaafrikatours.co.za/founders-circle/">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="btn-label"><span>Join our Inaugural</span><span>Journey</span></span>
+      </a>
+    </div>
+  </div>
+</section>

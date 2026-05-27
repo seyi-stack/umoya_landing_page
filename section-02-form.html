@@ -10,9 +10,8 @@
 =================================================================
   ELEMENTOR: HTML widget directly below Section 01 (Hero).
   id="fc-form-section" is the anchor for all CTA buttons.
-  MAILCHIMP: Form uses standard field names compatible with
-             Mailchimp embedded form integration. Connect via
-             Mailchimp's embedded form action URL + hidden fields.
+  HUBSPOT: Form keeps the custom visual design and submits through
+           HubSpot's Forms API once Portal ID and Form ID are added.
 =================================================================
 -->
 <style>
@@ -673,18 +672,21 @@
         <div class="fc-f2-card fc-f2-rv d1">
 
           <!--
-            ★ MAILCHIMP INTEGRATION:
-            Replace the action URL and hidden fields below with your
-            Mailchimp embedded form action URL and list/audience fields.
-            Example:
-              action="https://umoyaafrikatours.us21.list-manage.com/subscribe/post?u=XXXXX&amp;id=XXXXX"
-            Add the required hidden field:
-              <input type="hidden" name="u" value="YOUR_U_VALUE" />
-              <input type="hidden" name="id" value="YOUR_LIST_ID" />
-            The field name attributes (MERGE0–MERGE9) map to Mailchimp merge tags.
-            Configure these in Mailchimp: Audience > Settings > Audience fields and *|MERGE|* tags
+            HUBSPOT INTEGRATION:
+            Paste the HubSpot Portal ID and Form GUID into the data attributes
+            on this form. The JavaScript below maps each visible input to the
+            HubSpot property names used by the published HubSpot form.
           -->
-          <form class="fc-f2-form" id="fc2Form" method="post" novalidate aria-label="Founder's Circle Inquiry Form">
+          <form
+            class="fc-f2-form"
+            id="fc2Form"
+            method="post"
+            novalidate
+            aria-label="Founder's Circle Inquiry Form"
+            data-hubspot-portal-id="246097317"
+            data-hubspot-form-id="cb87d460-fb2d-4c53-8c32-7daaa05067d7"
+            data-hubspot-consent-text="I agree to be contacted by Umoya Afrika Tours about Founder&apos;s Circle membership and related travel experiences."
+          >
 
             <div class="fc-f2-fg">
 
@@ -1039,8 +1041,112 @@
   var submitting   = false;
   var originalText = btn.textContent;
 
+  /*
+   * HubSpot setup:
+   * 1. Paste the HubSpot Portal ID into data-hubspot-portal-id on the form.
+   * 2. Paste the HubSpot Form GUID into data-hubspot-form-id on the form.
+   * 3. Make sure each mapped property exists on the HubSpot form.
+   */
+  var hubspotFieldMap = {
+    MERGE1: 'salutation',
+    FNAME: 'firstname',
+    LNAME: 'lastname',
+    EMAIL: 'email',
+    PHONE: 'phone',
+    MERGE2: 'country',
+    MERGE3: 'city',
+    MERGE4: 'preferred_travel_season',
+    MERGE5: 'preferred_travel_year',
+    MERGE6: 'preferred_journey_length',
+    MERGE7: 'founders_circle_message'
+  };
+
   function isValidEmail(v){
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+
+  function getFieldValue(fieldName) {
+    var field = form.elements[fieldName];
+    if (!field) return '';
+    return String(field.value || '').trim();
+  }
+
+  function getCookie(name) {
+    var parts = document.cookie ? document.cookie.split('; ') : [];
+    for (var i = 0; i < parts.length; i += 1) {
+      var item = parts[i].split('=');
+      if (item[0] === name) return decodeURIComponent(item.slice(1).join('='));
+    }
+    return '';
+  }
+
+  function buildHubSpotPayload() {
+    var fields = [];
+
+    Object.keys(hubspotFieldMap).forEach(function(fieldName) {
+      var value = getFieldValue(fieldName);
+      if (value) {
+        fields.push({
+          name: hubspotFieldMap[fieldName],
+          value: value
+        });
+      }
+    });
+
+    var context = {
+      pageUri: window.location.href,
+      pageName: document.title || 'Umoya Founder\'s Circle'
+    };
+    var hutk = getCookie('hubspotutk');
+    if (hutk) context.hutk = hutk;
+
+    var payload = {
+      fields: fields,
+      context: context
+    };
+
+    var consentText = (form.getAttribute('data-hubspot-consent-text') || '').trim();
+    if (consentText) {
+      payload.legalConsentOptions = {
+        consent: {
+          consentToProcess: true,
+          text: consentText
+        }
+      };
+    }
+
+    return payload;
+  }
+
+  function submitToHubSpot() {
+    var portalId = (form.getAttribute('data-hubspot-portal-id') || '').trim();
+    var formId = (form.getAttribute('data-hubspot-form-id') || '').trim();
+
+    if (!portalId || !formId) {
+      return Promise.reject(new Error('HubSpot is not configured yet. Add the Portal ID and Form ID to this form.'));
+    }
+
+    return fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + encodeURIComponent(portalId) + '/' + encodeURIComponent(formId), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(buildHubSpotPayload())
+    }).then(function(response) {
+      return response.text().then(function(text) {
+        var data = null;
+        if (text) {
+          try { data = JSON.parse(text); } catch (ignore) {}
+        }
+
+        if (!response.ok) {
+          var message = data && (data.message || data.error) ? (data.message || data.error) : 'HubSpot could not receive the submission. Please try again.';
+          throw new Error(message);
+        }
+
+        return data;
+      });
+    });
   }
 
   form.addEventListener('submit', function(e){
@@ -1065,7 +1171,7 @@
     });
 
     /* Email-specific validation */
-    var emailField = form.querySelector('[name="MERGE0"], [type="email"]');
+    var emailField = form.querySelector('[name="EMAIL"], [type="email"]');
     if(emailField && emailField.value && !isValidEmail(emailField.value)){
       valid = false;
       emailField.style.borderColor = '#D97E53';
@@ -1084,39 +1190,12 @@
     btn.textContent = 'Sending\u2026';
     btn.style.opacity = '0.7';
 
-    /*
-     * ★ MAILCHIMP AJAX SUBMISSION
-     * When you have your Mailchimp action URL, uncomment Option A
-     * below and replace YOUR_MAILCHIMP_POST_JSON_URL with your URL.
-     * Change "/post?" to "/post-json?" and add "&c=mailchimpCallback"
-     * for JSONP. Then remove the Option B placeholder block.
-     */
-
-    /* Collect form data */
-    var data = new FormData(form);
-    var params = [];
-    data.forEach(function(val, key){
-      params.push(encodeURIComponent(key) + '=' + encodeURIComponent(val));
-    });
-
-    /* ── Option A: Mailchimp JSONP (uncomment when ready) ─── */
-    /*
-    var mcURL = 'YOUR_MAILCHIMP_POST_JSON_URL';
-    var script = document.createElement('script');
-    script.src = mcURL + '&' + params.join('&') + '&c=mailchimpCallback';
-    document.body.appendChild(script);
-    window.mailchimpCallback = function(resp){
-      if(resp.result === 'success'){
-        showSuccess();
-      } else {
-        showError(resp.msg || 'Something went wrong. Please try again.');
-      }
-      if(script.parentNode) document.body.removeChild(script);
-    };
-    */
-
-    /* ── Option B: Placeholder success (remove when Mailchimp is live) */
-    setTimeout(function(){ showSuccess(); }, 800);
+    /* Submit the custom-designed form to HubSpot without replacing the layout. */
+    submitToHubSpot()
+      .then(function(){ showSuccess(); })
+      .catch(function(error){
+        showError(error.message || 'Something went wrong. Please try again.');
+      });
   });
 
   function showSuccess(){

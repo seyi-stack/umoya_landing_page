@@ -72,14 +72,14 @@
 
   /* ── Inner row ──────────────────────────────────────────────── */
   .fc-nav-inner {
-    max-width: 1280px;
+    max-width: min(1280px, 100%);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 18px;
     height: 64px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
+    gap: 14px;
     position: relative;
     z-index: 1;
   }
@@ -128,11 +128,11 @@
     display: inline-flex;
     align-items: center;
     height: 64px;
-    padding: 0 18px;
+    padding: 0 10px;
     font-family: inherit;
-    font-size: 0.75rem;
+    font-size: 0.68rem;
     font-weight: 500;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
     text-decoration: none;
     color: var(--text-muted);
@@ -149,8 +149,8 @@
     content: '';
     position: absolute;
     bottom: 0;
-    left: 18px;
-    right: 18px;
+    left: 10px;
+    right: 10px;
     height: 2px;
     background: var(--terra);
     border-radius: 2px 2px 0 0;
@@ -175,12 +175,12 @@
     justify-content: center;
     flex-shrink: 0;
     font-family: inherit;
-    font-size: 0.75rem;
+    font-size: 0.68rem;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 10px 15px;
     min-height: 44px;
     background: var(--terra);
     color: var(--white);
@@ -351,16 +351,8 @@
     .fc-nav-link  { padding: 0 13px; font-size: 0.75rem; }
   }
 
-  /* ── TABLET ≤900px — trim links to prevent overflow ────────── */
-  @media (max-width: 900px) {
-    .fc-nav-item[data-s="fc-journey"],
-    .fc-nav-item[data-s="fc-details"] {
-      display: none;
-    }
-  }
-
-  /* ── MOBILE ≤768px ──────────────────────────────────────────── */
-  @media (max-width: 768px) {
+  /* Compact nav: switch to hamburger before desktop links can overflow. */
+  @media (max-width: 1240px) {
     #fcNavBar         { height: 58px; }
     .fc-nav-inner     { padding: 0 20px; gap: 12px; height: 58px; }
     .fc-nav-links     { display: none; }
@@ -575,4 +567,3 @@
 
   }());
   </script>
-

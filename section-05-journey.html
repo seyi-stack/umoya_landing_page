@@ -120,16 +120,18 @@
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.2em;
+    line-height: 1.25;
     text-transform: uppercase;
     color: var(--text-muted);
     margin-top: 5px;
+    white-space: nowrap;
   }
 
   /* ── B. PROVINCE TABS — 3-col interactive ──────────────────── */
   .fc-prov-tabs {
     display: grid;
     grid-template-columns: 0.95fr 1fr 1.4fr;
-    min-height: clamp(540px, 60vh, 660px);
+    min-height: clamp(690px, 70vh, 820px);
     background: var(--cream-lt);
     border: 1px solid rgba(75,46,43,.08);
     border-radius: 10px;
@@ -304,6 +306,10 @@
     margin: 0;
   }
 
+  .fc-pt-body + .fc-pt-body {
+    margin-top: 0.75rem;
+  }
+
   .fc-pt-kicker {
     font-family: inherit;
     font-size: 0.98rem;
@@ -312,6 +318,26 @@
     line-height: 1.55;
     color: var(--terra);
     margin: 0 0 0.85rem;
+  }
+
+  .fc-pt-signature {
+    margin: 1rem 0 0;
+    padding-left: 14px;
+    border-left: 2px solid var(--terra);
+    color: var(--text-mid);
+    font-family: inherit;
+    font-size: 0.9rem;
+    line-height: 1.62;
+  }
+
+  .fc-pt-signature strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--terra);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
   }
 
   /* Image column (right) ────────────────── */
@@ -357,7 +383,7 @@
   }
 
   /* ── B-MOBILE. PROVINCE ACCORDION (FAQ-style reveal) ──────
-     Only renders at ≤900px; hidden on desktop where the
+     Renders on narrower screens; hidden on desktop where the
      3-column tabs above are used instead. */
   .fc-prov-acc { display: none; }
 
@@ -510,6 +536,10 @@
     margin: 0;
   }
 
+  .fc-pa-text + .fc-pa-text {
+    margin-top: 0.7rem;
+  }
+
   .fc-pa-kicker {
     font-family: inherit;
     font-size: 0.95rem;
@@ -518,6 +548,26 @@
     line-height: 1.55;
     color: var(--terra);
     margin: 0 0 0.75rem;
+  }
+
+  .fc-pa-signature {
+    margin: 1rem 0 0;
+    padding-left: 12px;
+    border-left: 2px solid var(--terra);
+    color: var(--text-mid);
+    font-family: inherit;
+    font-size: 0.86rem;
+    line-height: 1.62;
+  }
+
+  .fc-pa-signature strong {
+    display: block;
+    margin-bottom: 0.22rem;
+    color: var(--terra);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
   }
 
   /* ── LEAFLET MAP (now hosted inside the first tab image panel) */
@@ -637,8 +687,8 @@
     .fc-jrn-tabs-wrap { padding: 0 clamp(20px, 3vw, 56px); }
   }
 
-  /* ── TABLET NARROW ≤900px ──────────────────────────────────── */
-  @media (max-width: 900px) {
+  /* ── TABLET NARROW ≤1100px ─────────────────────────────────── */
+  @media (max-width: 1100px) {
     /* Hide desktop 3-col tabs; swap in the FAQ accordion. */
     .fc-prov-tabs { display: none; }
     .fc-prov-acc {
@@ -726,6 +776,10 @@
             <div class="fc-jrn-stat-n">16</div>
             <div class="fc-jrn-stat-l">Guests</div>
           </div>
+          <div class="fc-jrn-stat" role="listitem">
+            <div class="fc-jrn-stat-n">5</div>
+            <div class="fc-jrn-stat-l">Signature Moments</div>
+          </div>
         </div>
       </div>
 
@@ -753,7 +807,7 @@
             <span class="fc-pt-num" aria-hidden="true">01</span>
             <span class="fc-pt-tab-inner">
               <span class="fc-pt-reg">Gauteng</span>
-              <span class="fc-pt-nm">Liberation History<br />&amp; Urban Culture</span>
+              <span class="fc-pt-nm">Living History<br />of South Africa</span>
             </span>
           </button>
 
@@ -763,7 +817,7 @@
             <span class="fc-pt-num" aria-hidden="true">02</span>
             <span class="fc-pt-tab-inner">
               <span class="fc-pt-reg">Mpumalanga</span>
-              <span class="fc-pt-nm">Safari &amp; Scenic<br />Landscapes</span>
+              <span class="fc-pt-nm">Into the Wild</span>
             </span>
           </button>
           <button class="fc-pt-tab" type="button" role="tab"
@@ -772,7 +826,7 @@
             <span class="fc-pt-num" aria-hidden="true">03</span>
             <span class="fc-pt-tab-inner">
               <span class="fc-pt-reg">KwaZulu-Natal</span>
-              <span class="fc-pt-nm">Zulu Culture<br />&amp; Coastal Beauty</span>
+              <span class="fc-pt-nm">The Zulu Kingdom</span>
             </span>
           </button>
 
@@ -782,7 +836,7 @@
             <span class="fc-pt-num" aria-hidden="true">04</span>
             <span class="fc-pt-tab-inner">
               <span class="fc-pt-reg">Western Cape</span>
-              <span class="fc-pt-nm">Cape Peninsula<br />&amp; Winelands</span>
+              <span class="fc-pt-nm">Where the Continent Ends</span>
             </span>
           </button>
 
@@ -796,42 +850,42 @@
             <span class="fc-pt-eye">The Route</span>
             <h3 class="fc-pt-ttl">Journey Across<br />Four Provinces</h3>
             <span class="fc-pt-rule" aria-hidden="true"></span>
-            <p class="fc-pt-body">Your Signature Journey is a 15-day experience across four provinces of South Africa, designed as a rare opportunity to encounter the country through authentic local perspectives. The journey unfolds through a series of intimate, thoughtfully curated moments not typically accessible to most travelers.</p>
+            <p class="fc-pt-body">Your Signature Journey moves from the living history of Johannesburg and Soweto to the ancient landscapes of Mpumalanga, the warm coastline of KwaZulu-Natal, and the creative energy of Cape Town.</p>
+            <p class="fc-pt-body">Each province is explored with privileged local access, private game drives, and intimate hosted moments. Five of these are our Signature Moments: experiences chosen because they bring you closer to the country than any standard itinerary can.</p>
           </div>
 
           <div class="fc-pt-panel" role="tabpanel"
                id="fc-pt-panel-2" aria-labelledby="fc-pt-tab-2">
             <span class="fc-pt-eye">Gauteng</span>
-            <h3 class="fc-pt-ttl">Liberation History<br />&amp; Urban Culture</h3>
+            <h3 class="fc-pt-ttl">Immerse Yourself in the Living History of South Africa</h3>
             <span class="fc-pt-rule" aria-hidden="true"></span>
-            <p class="fc-pt-kicker">The economic heart of Africa. Home to the liberation struggle that changed a continent.</p>
-            <p class="fc-pt-body">Walk through the powerful exhibits of the Apartheid Museum with expert context and experience authentic Soweto with community-rooted guides who lived these stories. Visit landmarks like Nelson Mandela House on Vilakazi Street and explore Freedom Park for a comprehensive historical perspective. This is where you encounter the struggle for freedom through local perspectives.</p>
+            <p class="fc-pt-body">Walk through the powerful exhibits of the Apartheid Museum and experience Soweto with community rooted guides who know these streets intimately. Visit Mandela House on Vilakazi Street, the Hector Pieterson Memorial, and Freedom Park for a perspective on South Africa's past that goes far beyond the surface.</p>
+            <p class="fc-pt-signature"><strong>Signature Moment</strong>A hosted lunch in Soweto, joined by a special guest from the generation that shaped the city's history.</p>
           </div>
 
           <div class="fc-pt-panel" role="tabpanel"
                id="fc-pt-panel-3" aria-labelledby="fc-pt-tab-3">
             <span class="fc-pt-eye">Mpumalanga</span>
-            <h3 class="fc-pt-ttl">Safari &amp; Scenic<br />Landscapes</h3>
+            <h3 class="fc-pt-ttl">Into the Wild. Where the Landscape Takes Over.</h3>
             <span class="fc-pt-rule" aria-hidden="true"></span>
-            <p class="fc-pt-kicker">Where humanity's earliest ancestors walked. A landscape as ancient as the story of us all.</p>
-            <p class="fc-pt-body">Journey along the scenic Panorama Route, taking in sweeping views of Blyde River Canyon, one of the world's largest green canyons. Experience private game drives in Kruger National Park with expert guides leading you through vast landscapes teeming with Big Five wildlife. Visit the historic Inzalo ye Langa stone circle site, an astronomical calendar demonstrating sophisticated pre-colonial African science, and explore the ancient Sudwala Caves.</p>
+            <p class="fc-pt-body">Travel north into Mpumalanga along the Panorama Route, where the landscape opens dramatically at Blyde River Canyon, God's Window, and Lisbon Falls. Then settle into a private game reserve for exclusive game drives, bush walks, and conservation experiences. The Big Five, on your own terms.</p>
+            <p class="fc-pt-signature"><strong>Signature Moment</strong>Private sundowners in the bush. An evening stop in the reserve as the light goes, with drinks and the quiet that only the bush has.</p>
           </div>
           <div class="fc-pt-panel" role="tabpanel"
                id="fc-pt-panel-5" aria-labelledby="fc-pt-tab-5">
             <span class="fc-pt-eye">KwaZulu-Natal</span>
-            <h3 class="fc-pt-ttl">Zulu Culture<br />&amp; Coastal Beauty</h3>
+            <h3 class="fc-pt-ttl">The Warmth of the Zulu Kingdom</h3>
             <span class="fc-pt-rule" aria-hidden="true"></span>
-            <p class="fc-pt-kicker">Zulu kingdom territory. Where one of history's greatest resistances against colonial rule was fought.</p>
-            <p class="fc-pt-body">Explore key historical sites with specialist guides who provide expert context on the military innovations and cultural legacy of the Zulu nation. The region's stunning Indian Ocean coastline offers pristine beaches, warm subtropical waters, and dramatic coastal scenery. Experience luxury beachfront accommodations, scenic coastal drives along the Dolphin Coast, and exclusive access to secluded beach areas.</p>
+            <p class="fc-pt-body">Arrive on the warm coastline of KwaZulu-Natal and venture into an authentic Zulu cultural experience rooted in genuine local access. Spend a full day at iSimangaliso Wetland Park, one of Africa's most biodiverse ecosystems, with a boat cruise through the waterways of St Lucia.</p>
           </div>
 
           <div class="fc-pt-panel" role="tabpanel"
                id="fc-pt-panel-6" aria-labelledby="fc-pt-tab-6">
             <span class="fc-pt-eye">Western Cape</span>
-            <h3 class="fc-pt-ttl">Cape Peninsula<br />&amp; Winelands</h3>
+            <h3 class="fc-pt-ttl">Cape Town. Where the Continent Ends.</h3>
             <span class="fc-pt-rule" aria-hidden="true"></span>
-            <p class="fc-pt-kicker">From a port of arrival to one of the world's most celebrated cities. Contemporary African creativity thrives here.</p>
-            <p class="fc-pt-body">Stand on Robben Island where Nelson Mandela spent 18 of his 27 years, guided by former political prisoners who share stories of resilience that changed a nation. Ascend Table Mountain for panoramic views and explore the dramatic Cape Peninsula coastline including Chapman's Peak and Cape Point. Experience private tastings at exclusive wine estates, and discover Cape Town's vibrant creative scene through curated gallery visits and studio access.</p>
+            <p class="fc-pt-body">Cape Town rewards those who take their time. Drive the Cape Peninsula, access Robben Island with rare insider access, and immerse yourself in the city's world-class contemporary African art scene. Wind the Atlantic Seaboard in a vintage car convoy along one of the world's most spectacular coastlines. Then, on your final morning, take a scenic helicopter flight over Table Mountain, the Twelve Apostles, and Robben Island. The journey closes unforgettably.</p>
+            <p class="fc-pt-signature"><strong>Signature Moments</strong>Creative access. A private visit to an artist's studio, designer, or gallery, with the people shaping South Africa's creative present.<br />Farewell dinner at Gold Restaurant. A private venue, a South African feast, and live Djembe drumming to close the journey.</p>
           </div>
 
         </div>
@@ -854,7 +908,7 @@
           <!-- Panel 2: Gauteng -->
           <div class="fc-pt-img">
             <!-- ★ SWAP: Gauteng image -->
-            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/12/IMG_6762-scaled.webp"
+            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img000916.jpeg"
                  alt="" loading="lazy" />
             <div class="fc-pt-img-ov"></div>
           </div>
@@ -862,13 +916,13 @@
           <!-- Panel 3: Mpumalanga -->
           <div class="fc-pt-img">
             <!-- ★ SWAP: IMG_7057-scaled.webp -->
-            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc02927.jpg"
+            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1625373428.jpeg"
                  alt="" loading="lazy" />
             <div class="fc-pt-img-ov"></div>
           </div>
           <!-- Panel 4: KwaZulu-Natal -->
           <div class="fc-pt-img">
-            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/04/DSC04415.jpg"
+            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img000922.jpeg"
                  alt="" loading="lazy" />
             <div class="fc-pt-img-ov"></div>
           </div>
@@ -876,7 +930,7 @@
           <!-- Panel 5: Western Cape -->
           <div class="fc-pt-img">
             <!-- ★ SWAP: IMG_7630-scaled.webp -->
-            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_img_7634.jpeg"
+            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img641447002.jpeg"
                  alt="" loading="lazy" />
             <div class="fc-pt-img-ov"></div>
           </div>
@@ -913,7 +967,8 @@
                 <div id="fcLeafletMapMob" aria-label="South Africa route map"></div>
               </div>
               <span class="fc-pa-rule" aria-hidden="true"></span>
-              <p class="fc-pa-text">Your Signature Journey is a 15-day experience across four provinces of South Africa, designed as a rare opportunity to encounter the country through authentic local perspectives. The journey unfolds through a series of intimate, thoughtfully curated moments not typically accessible to most travelers.</p>
+              <p class="fc-pa-text">Your Signature Journey moves from the living history of Johannesburg and Soweto to the ancient landscapes of Mpumalanga, the warm coastline of KwaZulu-Natal, and the creative energy of Cape Town.</p>
+              <p class="fc-pa-text">Each province is explored with privileged local access, private game drives, and intimate hosted moments. Five of these are our Signature Moments: experiences chosen because they bring you closer to the country than any standard itinerary can.</p>
             </div>
           </div>
         </article>
@@ -926,7 +981,7 @@
               <span class="fc-pa-num" aria-hidden="true">01</span>
               <span class="fc-pa-label-wrap">
                 <span class="fc-pa-reg">Gauteng</span>
-                <span class="fc-pa-ttl">Liberation History &amp; Urban Culture</span>
+                <span class="fc-pa-ttl">Living History of South Africa</span>
               </span>
               <span class="fc-pa-chev" aria-hidden="true">
                 <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
@@ -939,12 +994,12 @@
           <div class="fc-pa-body" id="fc-pa-body-2" role="region" aria-labelledby="fc-pa-trig-2">
             <div class="fc-pa-body-inner">
               <div class="fc-pa-image">
-                <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/12/IMG_6762-scaled.webp"
+                <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img000916.jpeg"
                      alt="" loading="lazy" />
               </div>
               <span class="fc-pa-rule" aria-hidden="true"></span>
-              <p class="fc-pa-kicker">The economic heart of Africa. Home to the liberation struggle that changed a continent.</p>
-              <p class="fc-pa-text">Walk through the powerful exhibits of the Apartheid Museum with expert context and experience authentic Soweto with community-rooted guides who lived these stories. Visit landmarks like Nelson Mandela House on Vilakazi Street and explore Freedom Park for a comprehensive historical perspective. This is where you encounter the struggle for freedom through local perspectives.</p>
+              <p class="fc-pa-text">Walk through the powerful exhibits of the Apartheid Museum and experience Soweto with community rooted guides who know these streets intimately. Visit Mandela House on Vilakazi Street, the Hector Pieterson Memorial, and Freedom Park for a perspective on South Africa's past that goes far beyond the surface.</p>
+              <p class="fc-pa-signature"><strong>Signature Moment</strong>A hosted lunch in Soweto, joined by a special guest from the generation that shaped the city's history.</p>
             </div>
           </div>
         </article>
@@ -957,7 +1012,7 @@
               <span class="fc-pa-num" aria-hidden="true">02</span>
               <span class="fc-pa-label-wrap">
                 <span class="fc-pa-reg">Mpumalanga</span>
-                <span class="fc-pa-ttl">Safari &amp; Scenic Landscapes</span>
+                <span class="fc-pa-ttl">Into the Wild</span>
               </span>
               <span class="fc-pa-chev" aria-hidden="true">
                 <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
@@ -970,12 +1025,12 @@
           <div class="fc-pa-body" id="fc-pa-body-3" role="region" aria-labelledby="fc-pa-trig-3">
             <div class="fc-pa-body-inner">
               <div class="fc-pa-image">
-                <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc02927.jpg"
+                <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1625373428.jpeg"
                      alt="" loading="lazy" />
               </div>
               <span class="fc-pa-rule" aria-hidden="true"></span>
-              <p class="fc-pa-kicker">Where humanity's earliest ancestors walked. A landscape as ancient as the story of us all.</p>
-              <p class="fc-pa-text">Journey along the scenic Panorama Route, taking in sweeping views of Blyde River Canyon, one of the world's largest green canyons. Experience private game drives in Kruger National Park with expert guides leading you through vast landscapes teeming with Big Five wildlife. Visit the historic Inzalo ye Langa stone circle site, an astronomical calendar demonstrating sophisticated pre-colonial African science, and explore the ancient Sudwala Caves.</p>
+              <p class="fc-pa-text">Travel north into Mpumalanga along the Panorama Route, where the landscape opens dramatically at Blyde River Canyon, God's Window, and Lisbon Falls. Then settle into a private game reserve for exclusive game drives, bush walks, and conservation experiences. The Big Five, on your own terms.</p>
+              <p class="fc-pa-signature"><strong>Signature Moment</strong>Private sundowners in the bush. An evening stop in the reserve as the light goes, with drinks and the quiet that only the bush has.</p>
             </div>
           </div>
         </article>
@@ -987,7 +1042,7 @@
               <span class="fc-pa-num" aria-hidden="true">03</span>
               <span class="fc-pa-label-wrap">
                 <span class="fc-pa-reg">KwaZulu-Natal</span>
-                <span class="fc-pa-ttl">Zulu Culture &amp; Coastal Beauty</span>
+                <span class="fc-pa-ttl">The Zulu Kingdom</span>
               </span>
               <span class="fc-pa-chev" aria-hidden="true">
                 <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
@@ -1000,12 +1055,11 @@
           <div class="fc-pa-body" id="fc-pa-body-5" role="region" aria-labelledby="fc-pa-trig-5">
             <div class="fc-pa-body-inner">
               <div class="fc-pa-image">
-                <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/04/DSC04415.jpg"
+                <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img000922.jpeg"
                      alt="" loading="lazy" />
               </div>
               <span class="fc-pa-rule" aria-hidden="true"></span>
-              <p class="fc-pa-kicker">Zulu kingdom territory. Where one of history's greatest resistances against colonial rule was fought.</p>
-              <p class="fc-pa-text">Explore key historical sites with specialist guides who provide expert context on the military innovations and cultural legacy of the Zulu nation. The region's stunning Indian Ocean coastline offers pristine beaches, warm subtropical waters, and dramatic coastal scenery. Experience luxury beachfront accommodations, scenic coastal drives along the Dolphin Coast, and exclusive access to secluded beach areas.</p>
+              <p class="fc-pa-text">Arrive on the warm coastline of KwaZulu-Natal and venture into an authentic Zulu cultural experience rooted in genuine local access. Spend a full day at iSimangaliso Wetland Park, one of Africa's most biodiverse ecosystems, with a boat cruise through the waterways of St Lucia.</p>
             </div>
           </div>
         </article>
@@ -1018,7 +1072,7 @@
               <span class="fc-pa-num" aria-hidden="true">04</span>
               <span class="fc-pa-label-wrap">
                 <span class="fc-pa-reg">Western Cape</span>
-                <span class="fc-pa-ttl">Cape Peninsula &amp; Winelands</span>
+                <span class="fc-pa-ttl">Where the Continent Ends</span>
               </span>
               <span class="fc-pa-chev" aria-hidden="true">
                 <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
@@ -1031,12 +1085,12 @@
           <div class="fc-pa-body" id="fc-pa-body-6" role="region" aria-labelledby="fc-pa-trig-6">
             <div class="fc-pa-body-inner">
               <div class="fc-pa-image">
-                <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_img_7634.jpeg"
+                <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img641447002.jpeg"
                      alt="" loading="lazy" />
               </div>
               <span class="fc-pa-rule" aria-hidden="true"></span>
-              <p class="fc-pa-kicker">From a port of arrival to one of the world's most celebrated cities. Contemporary African creativity thrives here.</p>
-              <p class="fc-pa-text">Stand on Robben Island where Nelson Mandela spent 18 of his 27 years, guided by former political prisoners who share stories of resilience that changed a nation. Ascend Table Mountain for panoramic views and explore the dramatic Cape Peninsula coastline including Chapman's Peak and Cape Point. Experience private tastings at exclusive wine estates, and discover Cape Town's vibrant creative scene through curated gallery visits and studio access.</p>
+              <p class="fc-pa-text">Cape Town rewards those who take their time. Drive the Cape Peninsula, access Robben Island with rare insider access, and immerse yourself in the city's world-class contemporary African art scene. Wind the Atlantic Seaboard in a vintage car convoy along one of the world's most spectacular coastlines. Then, on your final morning, take a scenic helicopter flight over Table Mountain, the Twelve Apostles, and Robben Island. The journey closes unforgettably.</p>
+              <p class="fc-pa-signature"><strong>Signature Moments</strong>Creative access. A private visit to an artist's studio, designer, or gallery, with the people shaping South Africa's creative present.<br />Farewell dinner at Gold Restaurant. A private venue, a South African feast, and live Djembe drumming to close the journey.</p>
             </div>
           </div>
         </article>

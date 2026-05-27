@@ -1,0 +1,492 @@
+<!--
+  UMOYA HOMEPAGE - SECTION 03: SIGNATURE JOURNEY
+  Purpose: centered journey section with a wide image carousel and copy below.
+  Elementor: paste this as one HTML widget. The CTA uses the shared Umoya popup trigger.
+-->
+<span id="umoya-journey-anchor" style="display:block;height:0;scroll-margin-top:76px;" aria-hidden="true"></span>
+<section id="umoya-journey" aria-label="Introducing the Umoya Signature Journey">
+  <style>
+    /* Section shell and shared design tokens */
+    #umoya-journey {
+      --cream: #F5F0EB;
+      --brown: #4B2E2B;
+      --terra: #D97E53;
+      --terra-dk: #C06840;
+      --olive: #708238;
+      --white: #FFFFFF;
+      --ease: cubic-bezier(.25,.46,.45,.94);
+
+      background: var(--cream);
+      color: var(--brown);
+      display: block !important;
+      width: 100%;
+      padding: clamp(54px, 7vw, 92px) 0;
+      overflow: hidden;
+    }
+
+    #umoya-journey,
+    #umoya-journey *,
+    #umoya-journey *::before,
+    #umoya-journey *::after {
+      box-sizing: border-box;
+    }
+
+    /* Shared width keeps the intro, carousel, and text visually aligned. */
+    #umoya-journey .umoya-journey-wrap {
+      display: block !important;
+      width: min(1008px, 92vw);
+      margin: 0 auto;
+    }
+
+    /* Intro band above carousel: title on the left, journey stats on the right. */
+    #umoya-journey .umoya-journey-intro {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: clamp(26px, 5vw, 70px);
+      align-items: end;
+      margin-bottom: clamp(28px, 4.5vw, 46px);
+    }
+
+    #umoya-journey .umoya-journey-intro-copy {
+      min-width: 0;
+    }
+
+    #umoya-journey .umoya-journey-kicker {
+      display: block;
+      margin-bottom: clamp(18px, 2.5vw, 30px);
+      color: var(--terra);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .28em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    #umoya-journey .umoya-journey-heading {
+      margin: 0;
+      color: var(--brown);
+      font-size: clamp(2.45rem, 5.4vw, 4.7rem);
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.04;
+    }
+
+    #umoya-journey .umoya-journey-heading em {
+      color: var(--terra);
+      font-style: italic;
+    }
+
+    #umoya-journey .umoya-journey-stats {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(74px, 1fr));
+      gap: clamp(18px, 3vw, 42px);
+      align-items: end;
+      margin: 0;
+      padding: 0;
+    }
+
+    #umoya-journey .umoya-journey-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 0;
+      text-align: center;
+    }
+
+    #umoya-journey .umoya-journey-stat dt {
+      order: 2;
+      margin-top: 10px;
+      color: var(--brown);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .24em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    #umoya-journey .umoya-journey-stat dd {
+      order: 1;
+      margin: 0;
+      color: var(--terra);
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1;
+    }
+
+    /* Top image carousel */
+    #umoya-journey .umoya-journey-carousel {
+      position: relative;
+      display: block !important;
+      overflow: hidden;
+      width: 100%;
+      aspect-ratio: 16 / 7.5;
+      min-height: 340px;
+      background: var(--brown);
+      border-radius: 10px;
+      box-shadow: 0 24px 60px rgba(75,46,43,.14);
+    }
+
+    #umoya-journey .umoya-journey-image {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.018);
+      transition: opacity .7s var(--ease), transform 1s var(--ease);
+    }
+
+    #umoya-journey .umoya-journey-image.is-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Dot controls sit over the bottom edge of the image. */
+    #umoya-journey .umoya-journey-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 14px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transform: translateX(-50%);
+    }
+
+    #umoya-journey .umoya-journey-dot {
+      appearance: none;
+      width: 11px;
+      height: 11px;
+      padding: 0;
+      border: 1px solid rgba(255,255,255,.85);
+      border-radius: 50%;
+      background: rgba(255,255,255,.48);
+      cursor: pointer;
+      box-shadow: 0 1px 6px rgba(0,0,0,.2);
+      transition: background .22s var(--ease), transform .22s var(--ease);
+    }
+
+    #umoya-journey .umoya-journey-dot.is-active {
+      background: var(--white);
+      transform: scale(1.12);
+    }
+
+    /* Copy block below carousel */
+    #umoya-journey .umoya-journey-copy {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) !important;
+      align-items: start;
+      justify-items: start;
+      gap: 0;
+      width: min(880px, 100%);
+      max-width: 880px;
+      margin-top: clamp(30px, 4vw, 44px);
+    }
+
+    #umoya-journey .umoya-journey-copy > * {
+      grid-column: 1 / -1 !important;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    #umoya-journey .umoya-journey-body {
+      display: block !important;
+      width: 100%;
+      margin: 0;
+      color: rgba(75,46,43,.88);
+      font-size: clamp(1rem, 1.25vw, 1.08rem);
+      line-height: 1.82;
+    }
+
+    /* Compact itinerary rows under the paragraph */
+    #umoya-journey .umoya-journey-highlights {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 12px;
+      width: 100%;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    #umoya-journey .umoya-journey-highlight {
+      display: grid !important;
+      grid-template-columns: 22px minmax(0, 1fr) !important;
+      gap: 12px;
+      align-items: start;
+      color: rgba(75,46,43,.84);
+      font-size: .92rem;
+      line-height: 1.6;
+    }
+
+    #umoya-journey .umoya-journey-check {
+      display: grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      margin-top: 1px;
+      border: 1.5px solid var(--brown);
+      border-radius: 50%;
+      color: var(--brown);
+      flex-shrink: 0;
+    }
+
+    #umoya-journey .umoya-journey-check svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    #umoya-journey .umoya-journey-highlight strong {
+      color: var(--brown);
+      font-weight: 800;
+    }
+
+    #umoya-journey .umoya-journey-cta {
+      appearance: none;
+      -webkit-appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      margin-top: 28px;
+      padding: 14px 28px;
+      background: var(--terra);
+      border: 2px solid var(--terra);
+      border-radius: 7px;
+      color: var(--white);
+      cursor: pointer;
+      font-size: .95rem;
+      font-weight: 800;
+      line-height: 1.2;
+      text-decoration: none;
+      transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
+    }
+
+    #umoya-journey .umoya-journey-cta:hover {
+      background: var(--terra-dk);
+      border-color: var(--terra-dk);
+      color: var(--white);
+      box-shadow: 0 12px 28px rgba(217,126,83,.24);
+      transform: translateY(-1px);
+    }
+
+    #umoya-journey .umoya-journey-cta svg {
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+    }
+
+    /* Keep content visible even if Elementor delays or skips inline scripts. */
+    #umoya-journey .umoya-journey-rv {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 760px) {
+      #umoya-journey {
+        padding: 42px 0 58px;
+      }
+
+      #umoya-journey .umoya-journey-intro {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      #umoya-journey .umoya-journey-stats {
+        width: min(100%, 420px);
+      }
+
+      #umoya-journey .umoya-journey-carousel {
+        aspect-ratio: 4 / 3;
+        min-height: 260px;
+      }
+
+      #umoya-journey .umoya-journey-copy {
+        margin-top: 28px;
+      }
+
+      #umoya-journey .umoya-journey-cta {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #umoya-journey .umoya-journey-stats {
+        gap: 12px;
+      }
+
+      #umoya-journey .umoya-journey-stat dt {
+        font-size: .58rem;
+        letter-spacing: .16em;
+      }
+    }
+  </style>
+
+  <div class="umoya-journey-wrap umoya-journey-rv">
+    <!-- Intro band follows the reference layout: title block left, key numbers right. -->
+    <header class="umoya-journey-intro">
+      <div class="umoya-journey-intro-copy">
+        <span class="umoya-journey-kicker">Our Signature Journey</span>
+        <h2 class="umoya-journey-heading">Introducing the Umoya <em>Signature Journey</em></h2>
+      </div>
+
+      <dl class="umoya-journey-stats" aria-label="Signature Journey facts">
+        <div class="umoya-journey-stat">
+          <dt>Days</dt>
+          <dd>15</dd>
+        </div>
+        <div class="umoya-journey-stat">
+          <dt>Provinces</dt>
+          <dd>4</dd>
+        </div>
+        <div class="umoya-journey-stat">
+          <dt>Guests</dt>
+          <dd>16</dd>
+        </div>
+      </dl>
+    </header>
+
+    <!-- Image carousel. Dot order follows image order. -->
+    <div class="umoya-journey-carousel" aria-label="Signature Journey image slideshow">
+      <img class="umoya-journey-image is-active" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img166276458.jpeg" alt="Umoya Signature Journey moment in South Africa" loading="eager" decoding="async" fetchpriority="high">
+      <img class="umoya-journey-image" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img001238.jpeg" alt="Umoya Signature Journey cultural experience" loading="eager" decoding="async">
+      <img class="umoya-journey-image" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img02376.jpg" alt="Umoya Signature Journey landscape" loading="eager" decoding="async">
+      <img class="umoya-journey-image" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img000916.jpeg" alt="Umoya Signature Journey coastal experience" loading="eager" decoding="async">
+      <img class="umoya-journey-image" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1777576366.jpeg" alt="Umoya Signature Journey heritage experience" loading="eager" decoding="async">
+
+      <div class="umoya-journey-dots" aria-label="Choose slideshow image">
+        <button class="umoya-journey-dot is-active" type="button" data-journey-dot="0" aria-label="Show image 1" aria-current="true"></button>
+        <button class="umoya-journey-dot" type="button" data-journey-dot="1" aria-label="Show image 2" aria-current="false"></button>
+        <button class="umoya-journey-dot" type="button" data-journey-dot="2" aria-label="Show image 3" aria-current="false"></button>
+        <button class="umoya-journey-dot" type="button" data-journey-dot="3" aria-label="Show image 4" aria-current="false"></button>
+        <button class="umoya-journey-dot" type="button" data-journey-dot="4" aria-label="Show image 5" aria-current="false"></button>
+      </div>
+    </div>
+
+    <!-- Text content sits below the carousel, aligned to the same width. -->
+    <div class="umoya-journey-copy">
+      <p class="umoya-journey-body">The Signature Journey moves through four of South Africa's most extraordinary provinces, from the living history of Johannesburg and Soweto, to private game drives at Kapama River Lodge, the warm coastline of KwaZulu-Natal, and the breathtaking landscapes of Cape Town. Intentionally intimate and anchored by five signature moments, every stop is experienced with privileged local access and every detail taken care of from the moment you land. For those who wish to linger, an optional Winelands extension awaits. This is South Africa as most travelers never see it.</p>
+
+      <ul class="umoya-journey-highlights" aria-label="Itinerary highlights">
+        <li class="umoya-journey-highlight">
+          <span class="umoya-journey-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span><strong>Itinerary at a Glance:</strong> Gauteng, Mpumalanga, KwaZulu-Natal, and the Western Cape.</span>
+        </li>
+      </ul>
+
+      <button class="umoya-journey-cta" type="button" data-umoya-form-popup>
+        Join the Journey
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    'use strict';
+
+    var script = document.currentScript;
+    var root = script && script.closest ? script.closest('#umoya-journey') : document.getElementById('umoya-journey');
+    if (!root) return;
+
+    /*
+      Elementor can rerender HTML widgets while editing. Rebuild the carousel
+      bindings each time this script runs so stale timers/listeners cannot keep
+      the first slide frozen.
+    */
+    if (root.__umoyaJourneyTimer) {
+      window.clearInterval(root.__umoyaJourneyTimer);
+      root.__umoyaJourneyTimer = null;
+    }
+    if (root.__umoyaJourneyClick) {
+      root.removeEventListener('click', root.__umoyaJourneyClick);
+    }
+    if (root.__umoyaJourneyFocusIn) {
+      root.removeEventListener('focusin', root.__umoyaJourneyFocusIn);
+    }
+    if (root.__umoyaJourneyFocusOut) {
+      root.removeEventListener('focusout', root.__umoyaJourneyFocusOut);
+    }
+
+    var images = Array.prototype.slice.call(root.querySelectorAll('.umoya-journey-image'));
+    var dots = Array.prototype.slice.call(root.querySelectorAll('.umoya-journey-dot'));
+    var index = 0;
+    var AUTOPLAY_DELAY = 5000;
+
+    if (!images.length) return;
+
+    function normalizeIndex(value) {
+      return (value + images.length) % images.length;
+    }
+
+    function showSlide(nextIndex) {
+      index = normalizeIndex(nextIndex);
+      images.forEach(function(image, imageIndex) {
+        image.classList.toggle('is-active', imageIndex === index);
+      });
+      dots.forEach(function(dot, dotIndex) {
+        var isActive = dotIndex === index;
+        dot.classList.toggle('is-active', isActive);
+        dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+      });
+    }
+
+    function requestSlide(nextIndex) {
+      showSlide(nextIndex);
+    }
+
+    function startAutoplay() {
+      if (root.__umoyaJourneyTimer || images.length < 2) return;
+      root.__umoyaJourneyTimer = window.setInterval(function() {
+        requestSlide(index + 1);
+      }, AUTOPLAY_DELAY);
+    }
+
+    function stopAutoplay() {
+      if (!root.__umoyaJourneyTimer) return;
+      window.clearInterval(root.__umoyaJourneyTimer);
+      root.__umoyaJourneyTimer = null;
+    }
+
+    function activateDot(dot, event) {
+      var targetIndex = parseInt(dot.getAttribute('data-journey-dot'), 10);
+      if (isNaN(targetIndex)) return;
+
+      if (event && event.preventDefault) event.preventDefault();
+      if (event && event.stopPropagation) event.stopPropagation();
+      stopAutoplay();
+      requestSlide(targetIndex);
+      startAutoplay();
+    }
+
+    dots.forEach(function(dot) {
+      dot.onclick = function(event) {
+        activateDot(dot, event);
+      };
+    });
+
+    root.__umoyaJourneyClick = function(event) {
+      var dot = event.target.closest ? event.target.closest('.umoya-journey-dot') : null;
+      if (!dot || !root.contains(dot)) return;
+      activateDot(dot, event);
+    };
+
+    root.__umoyaJourneyFocusIn = stopAutoplay;
+    root.__umoyaJourneyFocusOut = startAutoplay;
+
+    root.addEventListener('click', root.__umoyaJourneyClick);
+    root.addEventListener('focusin', root.__umoyaJourneyFocusIn);
+    root.addEventListener('focusout', root.__umoyaJourneyFocusOut);
+
+    showSlide(0);
+    startAutoplay();
+  }());
+  </script>
+</section>

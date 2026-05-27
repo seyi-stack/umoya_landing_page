@@ -1,0 +1,259 @@
+<!-- UMOYA - HOMEPAGE SECTION 06: ACCOMMODATIONS -->
+<section id="umoya-accommodations" aria-label="Accommodations">
+  <style>
+    #umoya-accommodations {
+      --cream: #F5F0EB;
+      --brown: #4B2E2B;
+      --terra: #D97E53;
+      --terra-dk: #C06840;
+      --white: #FFFFFF;
+      --ease: cubic-bezier(.25,.46,.45,.94);
+
+      background: var(--cream);
+      color: var(--brown);
+      padding: clamp(64px, 8vw, 112px) 0;
+      overflow: hidden;
+    }
+
+    #umoya-accommodations,
+    #umoya-accommodations *,
+    #umoya-accommodations *::before,
+    #umoya-accommodations *::after {
+      box-sizing: border-box;
+    }
+
+    #umoya-accommodations .umoya-acc-wrap {
+      width: min(1180px, 92vw);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+      gap: clamp(34px, 6vw, 82px);
+      align-items: center;
+    }
+
+    #umoya-accommodations .umoya-acc-eye {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--terra);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .24em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    #umoya-accommodations h2 {
+      margin: 0 0 24px;
+      color: var(--brown);
+      font-size: clamp(2.1rem, 4.8vw, 4.1rem);
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.04;
+    }
+
+    #umoya-accommodations .umoya-acc-body {
+      display: grid;
+      gap: 18px;
+      color: rgba(75,46,43,.86);
+      font-size: clamp(1rem, 1.2vw, 1.06rem);
+      line-height: 1.78;
+    }
+
+    #umoya-accommodations .umoya-acc-body p {
+      margin: 0;
+    }
+
+    #umoya-accommodations .umoya-acc-btn {
+      appearance: none;
+      -webkit-appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 32px;
+      min-height: 48px;
+      padding: 14px 28px;
+      background: var(--terra);
+      border: 2px solid var(--terra);
+      color: var(--white);
+      cursor: pointer;
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      line-height: 1.2;
+      text-transform: uppercase;
+      transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+    }
+
+    #umoya-accommodations .umoya-acc-btn:hover {
+      background: var(--terra-dk);
+      border-color: var(--terra-dk);
+      transform: translateY(-2px);
+    }
+
+    #umoya-accommodations .umoya-acc-gallery {
+      position: relative;
+      min-height: clamp(380px, 46vw, 560px);
+      overflow: hidden;
+      background: var(--brown);
+    }
+
+    #umoya-accommodations .umoya-acc-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity .6s var(--ease), transform .9s var(--ease);
+    }
+
+    #umoya-accommodations .umoya-acc-image.is-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    #umoya-accommodations .umoya-acc-controls {
+      position: absolute;
+      right: 22px;
+      bottom: 22px;
+      display: flex;
+      gap: 10px;
+      z-index: 2;
+    }
+
+    #umoya-accommodations .umoya-acc-arrow {
+      appearance: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 50%;
+      background: rgba(75,46,43,.42);
+      color: var(--white);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      backdrop-filter: blur(8px);
+      transition: background .22s var(--ease), transform .22s var(--ease);
+    }
+
+    #umoya-accommodations .umoya-acc-arrow:hover {
+      background: var(--terra);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 900px) {
+      #umoya-accommodations {
+        padding: 54px 0 72px;
+      }
+
+      #umoya-accommodations .umoya-acc-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      #umoya-accommodations .umoya-acc-gallery {
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+      }
+    }
+  </style>
+
+  <div class="umoya-acc-wrap">
+    <div class="umoya-acc-copy">
+      <span class="umoya-acc-eye">Accommodations</span>
+      <h2>Where Luxury Feels at Home</h2>
+      <div class="umoya-acc-body">
+        <p>Umoya Afrika Tours pairs refined comfort with a deep sense of peace. Guests stay in carefully selected boutique lodges and luxury accommodations that reflect the beauty and character of South Africa's landscapes.</p>
+        <p>Every stay is designed to offer both relaxation and immersion, welcoming travelers to experience the continent with comfort, intention, and care.</p>
+      </div>
+      <button type="button" class="umoya-acc-btn" data-umoya-form-popup>Inquire Now</button>
+    </div>
+
+    <figure class="umoya-acc-gallery" aria-label="Luxury South African accommodations">
+      <img class="umoya-acc-image is-active" src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-5.jpg" alt="Luxury lodge interior in South Africa" loading="eager" decoding="async">
+      <img class="umoya-acc-image" src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-19.jpg" alt="Serene South African landscape near a lodge" loading="eager" decoding="async">
+      <img class="umoya-acc-image" src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-20.jpg" alt="Coastal South African accommodation setting" loading="eager" decoding="async">
+      <img class="umoya-acc-image" src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=1800&auto=format&fit=crop" alt="South African wilderness lodge setting" loading="eager" decoding="async">
+      <div class="umoya-acc-controls" aria-label="Accommodation carousel controls">
+        <button class="umoya-acc-arrow" type="button" data-acc-prev aria-label="Previous accommodation image">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="umoya-acc-arrow" type="button" data-acc-next aria-label="Next accommodation image">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </figure>
+  </div>
+
+  <script>
+  (function(){
+    'use strict';
+    var root = document.getElementById('umoya-accommodations');
+    if (!root) return;
+
+    var images = Array.prototype.slice.call(root.querySelectorAll('.umoya-acc-image'));
+    var prev = root.querySelector('[data-acc-prev]');
+    var next = root.querySelector('[data-acc-next]');
+    var index = 0;
+
+    function normalizeIndex(value) {
+      return (value + images.length) % images.length;
+    }
+
+    function imageIsReady(image) {
+      return image && image.complete && image.naturalWidth > 0;
+    }
+
+    function render(nextIndex) {
+      index = normalizeIndex(nextIndex);
+      images.forEach(function(img, imgIndex) {
+        img.classList.toggle('is-active', imgIndex === index);
+      });
+    }
+
+    function renderWhenDecoded(nextIndex) {
+      var targetIndex = normalizeIndex(nextIndex);
+      var targetImage = images[targetIndex];
+
+      if (!targetImage || typeof targetImage.decode !== 'function') {
+        render(targetIndex);
+        return;
+      }
+
+      targetImage.decode().catch(function() {
+        return null;
+      }).then(function() {
+        render(targetIndex);
+      });
+    }
+
+    function requestImage(nextIndex) {
+      var targetIndex = normalizeIndex(nextIndex);
+      var targetImage = images[targetIndex];
+
+      /* Avoid revealing the gallery background while a remote image is still loading. */
+      if (imageIsReady(targetImage)) {
+        renderWhenDecoded(targetIndex);
+        return;
+      }
+
+      function cleanup() {
+        targetImage.removeEventListener('load', onReady);
+        targetImage.removeEventListener('error', cleanup);
+      }
+
+      function onReady() {
+        cleanup();
+        renderWhenDecoded(targetIndex);
+      }
+
+      targetImage.addEventListener('load', onReady, { once: true });
+      targetImage.addEventListener('error', cleanup, { once: true });
+    }
+
+    prev && prev.addEventListener('click', function() { requestImage(index - 1); });
+    next && next.addEventListener('click', function() { requestImage(index + 1); });
+  }());
+  </script>
+</section>

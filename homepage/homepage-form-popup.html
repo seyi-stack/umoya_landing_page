@@ -1,0 +1,698 @@
+<div id="umoya-form-popup" class="umoya-form-popup" aria-hidden="true">
+  <style>
+    #umoya-form-popup {
+      --cream: #F5F0EB;
+      --brown: #4B2E2B;
+      --terra: #D97E53;
+      --terra-dk: #C06840;
+      --olive: #708238;
+      --white: #FFFFFF;
+      --ease: cubic-bezier(.25,.46,.45,.94);
+
+      position: fixed !important;
+      inset: 0;
+      z-index: 2147483647 !important;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      background: rgba(28,13,6,.68);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .28s var(--ease), visibility 0s linear .28s;
+    }
+
+    #umoya-form-popup,
+    #umoya-form-popup *,
+    #umoya-form-popup *::before,
+    #umoya-form-popup *::after {
+      box-sizing: border-box;
+    }
+
+    #umoya-form-popup.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition: opacity .28s var(--ease);
+    }
+
+    #umoya-form-popup .umoya-form-dialog {
+      position: relative;
+      width: min(1120px, 96vw);
+      max-height: min(92vh, 900px);
+      display: grid;
+      grid-template-columns: minmax(280px, .78fr) minmax(0, 1.22fr);
+      overflow: hidden;
+      background: var(--cream);
+      box-shadow: 0 28px 80px rgba(0,0,0,.35);
+      transform: translateY(16px) scale(.985);
+      transition: transform .28s var(--ease);
+    }
+
+    #umoya-form-popup.is-open .umoya-form-dialog {
+      transform: none;
+    }
+
+    #umoya-form-popup .umoya-form-close {
+      appearance: none;
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 4;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255,255,255,.45);
+      border-radius: 50%;
+      background: rgba(75,46,43,.55);
+      color: var(--white);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      backdrop-filter: blur(8px);
+    }
+
+    #umoya-form-popup .umoya-form-image {
+      position: relative;
+      min-height: 100%;
+      background: var(--brown);
+      overflow: hidden;
+    }
+
+    #umoya-form-popup .umoya-form-image img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
+
+    #umoya-form-popup .umoya-form-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(28,13,6,.72), rgba(28,13,6,.24) 55%, rgba(28,13,6,.04));
+    }
+
+    #umoya-form-popup .umoya-form-image-copy {
+      position: relative;
+      z-index: 2;
+      padding: clamp(32px, 5vw, 58px) 28px;
+      color: var(--cream);
+      text-align: center;
+    }
+
+    #umoya-form-popup .umoya-form-image-copy span {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--terra);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    #umoya-form-popup .umoya-form-image-copy h2 {
+      margin: 0;
+      color: var(--cream);
+      font-size: clamp(1.7rem, 3vw, 2.7rem);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.08;
+    }
+
+    #umoya-form-popup .umoya-form-panel {
+      max-height: min(92vh, 900px);
+      overflow: auto;
+      padding: clamp(28px, 4vw, 52px);
+      background: var(--cream);
+    }
+
+    #umoya-form-popup .umoya-form-head {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    #umoya-form-popup .umoya-form-head span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--terra);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    #umoya-form-popup .umoya-form-head h2 {
+      margin: 0 0 10px;
+      color: var(--brown);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    #umoya-form-popup .umoya-form-head p {
+      margin: 0 auto;
+      max-width: 580px;
+      color: rgba(75,46,43,.78);
+      font-size: .95rem;
+      line-height: 1.65;
+    }
+
+    #umoya-form-popup .umoya-form-card {
+      background: var(--white);
+      padding: clamp(22px, 3vw, 36px);
+      box-shadow: 0 14px 40px rgba(75,46,43,.1);
+      border-top: 3px solid var(--terra);
+    }
+
+    #umoya-form-popup .umoya-popup-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    #umoya-form-popup .umoya-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 16px;
+    }
+
+    #umoya-form-popup .umoya-field {
+      display: grid;
+      gap: 6px;
+    }
+
+    #umoya-form-popup .umoya-field.full {
+      grid-column: 1 / -1;
+    }
+
+    #umoya-form-popup label {
+      color: rgba(75,46,43,.78);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    #umoya-form-popup input,
+    #umoya-form-popup select,
+    #umoya-form-popup textarea {
+      width: 100%;
+      min-height: 44px;
+      border: 1.5px solid rgba(75,46,43,.13);
+      border-radius: 6px;
+      background: var(--cream);
+      color: var(--brown);
+      font-size: max(16px, .92rem);
+      line-height: 1.45;
+      outline: none;
+      padding: 11px 13px;
+      transition: border-color .22s, box-shadow .22s, background .22s;
+    }
+
+    #umoya-form-popup textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    #umoya-form-popup select {
+      appearance: none;
+      -webkit-appearance: none;
+      padding-right: 34px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234B2E2B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+
+    #umoya-form-popup input:focus,
+    #umoya-form-popup select:focus,
+    #umoya-form-popup textarea:focus {
+      border-color: var(--terra);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(217,126,83,.12);
+    }
+
+    #umoya-form-popup .umoya-form-submit {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      min-height: 52px;
+      border: 2px solid var(--terra);
+      background: var(--terra);
+      color: var(--white);
+      cursor: pointer;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      transition: background .25s, border-color .25s, transform .25s;
+    }
+
+    #umoya-form-popup .umoya-form-submit:hover {
+      background: var(--terra-dk);
+      border-color: var(--terra-dk);
+      transform: translateY(-1px);
+    }
+
+    #umoya-form-popup .umoya-form-submit:disabled {
+      background: var(--olive);
+      border-color: var(--olive);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    #umoya-form-popup .umoya-form-legal,
+    #umoya-form-popup .umoya-form-status {
+      margin: 10px auto 0;
+      max-width: 620px;
+      color: rgba(75,46,43,.72);
+      font-size: .78rem;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    #umoya-form-popup .umoya-form-status {
+      display: none;
+      color: var(--terra);
+    }
+
+    #umoya-form-popup .umoya-form-status.is-visible {
+      display: block;
+    }
+
+    #umoya-form-popup .umoya-form-status.is-error {
+      color: #8B2B2B;
+    }
+
+    @media (max-width: 860px) {
+      #umoya-form-popup {
+        padding: 12px;
+      }
+
+      #umoya-form-popup .umoya-form-dialog {
+        grid-template-columns: 1fr;
+        max-height: 94vh;
+      }
+
+      #umoya-form-popup .umoya-form-image {
+        min-height: 240px;
+      }
+
+      #umoya-form-popup .umoya-form-panel {
+        max-height: calc(94vh - 240px);
+        padding: 26px 18px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      #umoya-form-popup .umoya-form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <div class="umoya-form-dialog" role="dialog" aria-modal="true" aria-labelledby="umoya-form-title">
+    <button type="button" class="umoya-form-close" data-umoya-form-close aria-label="Close form">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+
+    <div class="umoya-form-image" aria-hidden="true">
+      <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc04418(1).jpg" alt="">
+      <div class="umoya-form-image-copy">
+        <span>Inquiry Form</span>
+        <h2>Inaugural Founder's Journey</h2>
+      </div>
+    </div>
+
+    <div class="umoya-form-panel">
+      <div class="umoya-form-head">
+        <span>Reserve Your Place</span>
+        <h2 id="umoya-form-title">South Africa Awaits</h2>
+        <p>Tell us about yourself and the travel experience you're seeking. A dedicated Umoya Travel Expert will personally connect with you.</p>
+      </div>
+
+      <div class="umoya-form-card">
+        <form
+          id="umoyaPopupForm"
+          class="umoya-popup-form"
+          novalidate
+          data-hubspot-portal-id="246097317"
+          data-hubspot-form-id="cb87d460-fb2d-4c53-8c32-7daaa05067d7"
+          data-hubspot-consent-text="I agree to be contacted by Umoya Afrika Tours about Founder&apos;s Circle membership and related travel experiences."
+        >
+          <div class="umoya-form-grid">
+            <div class="umoya-field">
+              <label for="umoyaTitle">Title</label>
+              <select id="umoyaTitle" name="TITLE">
+                <option value="" selected>Select...</option>
+                <option value="Mr.">Mr.</option>
+                <option value="Mrs.">Mrs.</option>
+                <option value="Ms.">Ms.</option>
+                <option value="Dr.">Dr.</option>
+                <option value="Prof.">Prof.</option>
+              </select>
+            </div>
+            <div class="umoya-field">
+              <label for="umoyaCountry">Country *</label>
+              <select id="umoyaCountry" name="COUNTRY" required>
+                <option value="" selected>Select country...</option>
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Canada">Canada</option>
+                <option value="South Africa">South Africa</option>
+                <option value="Australia">Australia</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="umoya-field">
+              <label for="umoyaFirst">First Name *</label>
+              <input id="umoyaFirst" name="FNAME" type="text" placeholder="First name" required autocomplete="given-name">
+            </div>
+            <div class="umoya-field">
+              <label for="umoyaLast">Last Name *</label>
+              <input id="umoyaLast" name="LNAME" type="text" placeholder="Last name" required autocomplete="family-name">
+            </div>
+            <div class="umoya-field">
+              <label for="umoyaEmail">Email Address *</label>
+              <input id="umoyaEmail" name="EMAIL" type="email" placeholder="your@email.com" required autocomplete="email">
+            </div>
+            <div class="umoya-field">
+              <label for="umoyaPhone">Phone Number</label>
+              <input id="umoyaPhone" name="PHONE" type="tel" placeholder="+1 (000) 000-0000" autocomplete="tel">
+            </div>
+            <div class="umoya-field">
+              <label for="umoyaSeason">Travel Season</label>
+              <select id="umoyaSeason" name="SEASON">
+                <option value="" selected>Select season...</option>
+                <option value="Spring">Spring</option>
+                <option value="Summer">Summer</option>
+                <option value="Autumn">Autumn</option>
+                <option value="Winter">Winter</option>
+              </select>
+            </div>
+            <div class="umoya-field">
+              <label for="umoyaYear">Preferred Year</label>
+              <select id="umoyaYear" name="YEAR">
+                <option value="" selected>Select year...</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
+              </select>
+            </div>
+            <div class="umoya-field full">
+              <label for="umoyaLength">Preferred Journey Length</label>
+              <select id="umoyaLength" name="LENGTH">
+                <option value="" selected>Select...</option>
+                <option value="15-Day Signature Journey">15-Day Signature Journey - 4 Provinces</option>
+                <option value="Shorter Regional Experience">Shorter Regional Experience</option>
+                <option value="Open to recommendation">Open to recommendation</option>
+              </select>
+            </div>
+            <div class="umoya-field full">
+              <label for="umoyaMessage">What Are You Hoping to Experience?</label>
+              <textarea id="umoyaMessage" name="MESSAGE" placeholder="Tell us about your travel interests and what draws you to South Africa."></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="umoya-form-submit">Speak to an Expert</button>
+          <p class="umoya-form-status" role="status" aria-live="polite"></p>
+          <p class="umoya-form-legal">By submitting you agree to our Privacy Policy. Your information is held in strict confidence and never shared.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  var popup = document.getElementById('umoya-form-popup');
+  if (!popup || popup.dataset.ready === 'true') return;
+  popup.dataset.ready = 'true';
+
+  var form = document.getElementById('umoyaPopupForm');
+  var closeBtn = popup.querySelector('[data-umoya-form-close]');
+  var lastFocus = null;
+  var submitBtn = form ? form.querySelector('.umoya-form-submit') : null;
+  var statusEl = form ? form.querySelector('.umoya-form-status') : null;
+  var submitText = submitBtn ? submitBtn.textContent : '';
+
+  /*
+   * HubSpot setup:
+   * 1. Paste the HubSpot Portal ID into data-hubspot-portal-id on the form.
+   * 2. Paste the HubSpot Form GUID into data-hubspot-form-id on the form.
+   * 3. Make sure each mapped property exists on the HubSpot form.
+   */
+  var hubspotFieldMap = {
+    TITLE: 'salutation',
+    COUNTRY: 'country',
+    FNAME: 'firstname',
+    LNAME: 'lastname',
+    EMAIL: 'email',
+    PHONE: 'phone',
+    SEASON: 'preferred_travel_season',
+    YEAR: 'preferred_travel_year',
+    LENGTH: 'preferred_journey_length',
+    MESSAGE: 'founders_circle_message'
+  };
+
+  function movePopupToBody() {
+    if (popup.parentElement !== document.body) {
+      document.body.appendChild(popup);
+    }
+  }
+
+  function openPopup() {
+    lastFocus = document.activeElement;
+    movePopupToBody();
+    if (form && form.getAttribute('data-submitted') === 'true') {
+      resetFormState(true);
+    }
+    popup.classList.add('is-open');
+    popup.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    window.setTimeout(function() {
+      var first = form ? form.querySelector('input:not([type="hidden"]), select, textarea') : closeBtn;
+      if (first) first.focus();
+    }, 40);
+    document.addEventListener('keydown', onKeydown);
+  }
+
+  movePopupToBody();
+
+  function closePopup() {
+    popup.classList.remove('is-open');
+    popup.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onKeydown);
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  function resetFormState(clearValues) {
+    if (!form) return;
+    if (clearValues) form.reset();
+    form.removeAttribute('data-submitted');
+    form.removeAttribute('aria-busy');
+    form.querySelectorAll('input, select, textarea').forEach(function(field) {
+      field.style.borderColor = '';
+      field.style.boxShadow = '';
+    });
+    if (statusEl) {
+      statusEl.textContent = '';
+      statusEl.classList.remove('is-visible');
+      statusEl.classList.remove('is-error');
+    }
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = submitText;
+    }
+  }
+
+  function showStatus(message, isError) {
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.classList.toggle('is-error', !!isError);
+    statusEl.classList.add('is-visible');
+  }
+
+  function setSubmitting(isSubmitting) {
+    if (!form || !submitBtn) return;
+    submitBtn.disabled = isSubmitting;
+    submitBtn.textContent = isSubmitting ? 'Sending...' : submitText;
+    form.setAttribute('aria-busy', isSubmitting ? 'true' : 'false');
+  }
+
+  function getFormValue(fieldName) {
+    var field = form.elements[fieldName];
+    if (!field) return '';
+    return String(field.value || '').trim();
+  }
+
+  function getCookie(name) {
+    var parts = document.cookie ? document.cookie.split('; ') : [];
+    for (var i = 0; i < parts.length; i += 1) {
+      var item = parts[i].split('=');
+      if (item[0] === name) return decodeURIComponent(item.slice(1).join('='));
+    }
+    return '';
+  }
+
+  function buildHubSpotPayload() {
+    var fields = [];
+
+    Object.keys(hubspotFieldMap).forEach(function(fieldName) {
+      var value = getFormValue(fieldName);
+      if (value) {
+        fields.push({
+          name: hubspotFieldMap[fieldName],
+          value: value
+        });
+      }
+    });
+
+    var context = {
+      pageUri: window.location.href,
+      pageName: document.title || 'Umoya Afrika Tours'
+    };
+    var hutk = getCookie('hubspotutk');
+    if (hutk) context.hutk = hutk;
+
+    var payload = {
+      fields: fields,
+      context: context
+    };
+
+    var consentText = (form.getAttribute('data-hubspot-consent-text') || '').trim();
+    if (consentText) {
+      payload.legalConsentOptions = {
+        consent: {
+          consentToProcess: true,
+          text: consentText
+        }
+      };
+    }
+
+    return payload;
+  }
+
+  function submitToHubSpot() {
+    var portalId = (form.getAttribute('data-hubspot-portal-id') || '').trim();
+    var formId = (form.getAttribute('data-hubspot-form-id') || '').trim();
+
+    if (!portalId || !formId) {
+      return Promise.reject(new Error('HubSpot is not configured yet. Add the Portal ID and Form ID to this form.'));
+    }
+
+    return fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + encodeURIComponent(portalId) + '/' + encodeURIComponent(formId), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(buildHubSpotPayload())
+    }).then(function(response) {
+      return response.text().then(function(text) {
+        var data = null;
+        if (text) {
+          try { data = JSON.parse(text); } catch (ignore) {}
+        }
+
+        if (!response.ok) {
+          var message = data && (data.message || data.error) ? (data.message || data.error) : 'HubSpot could not receive the submission. Please try again.';
+          throw new Error(message);
+        }
+
+        return data;
+      });
+    });
+  }
+
+  function onKeydown(event) {
+    if (event.key === 'Escape') closePopup();
+  }
+
+  document.addEventListener('click', function(event) {
+    var trigger = event.target.closest('[data-umoya-form-popup], .umoya-open-form-popup');
+    if (!trigger) return;
+    event.preventDefault();
+    openPopup();
+  });
+
+  closeBtn && closeBtn.addEventListener('click', closePopup);
+  popup.addEventListener('click', function(event) {
+    if (event.target === popup) closePopup();
+  });
+
+  if (form) {
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      var required = Array.prototype.slice.call(form.querySelectorAll('[required]'));
+      var valid = true;
+      var firstInvalid = null;
+
+      required.forEach(function(field) {
+        if (!field.value.trim()) {
+          valid = false;
+          if (!firstInvalid) firstInvalid = field;
+          field.style.borderColor = '#D97E53';
+          field.style.boxShadow = '0 0 0 3px rgba(217,126,83,.12)';
+        } else {
+          field.style.borderColor = '';
+          field.style.boxShadow = '';
+        }
+      });
+
+      var email = form.querySelector('[type="email"]');
+      if (email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        valid = false;
+        if (!firstInvalid) firstInvalid = email;
+        email.style.borderColor = '#D97E53';
+        email.style.boxShadow = '0 0 0 3px rgba(217,126,83,.12)';
+      }
+
+      if (!valid) {
+        showStatus('Please complete the required fields.', true);
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
+
+      setSubmitting(true);
+      showStatus('Sending your inquiry...', false);
+
+      submitToHubSpot()
+        .then(function() {
+          form.setAttribute('data-submitted', 'true');
+          form.removeAttribute('aria-busy');
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Inquiry Received - We Will Be in Touch Soon';
+          }
+          showStatus('Thank you. Your inquiry has been received.', false);
+        })
+        .catch(function(error) {
+          setSubmitting(false);
+          showStatus(error.message || 'Something went wrong. Please try again.', true);
+        });
+    });
+
+    form.querySelectorAll('input, select, textarea').forEach(function(field) {
+      field.addEventListener('input', function() {
+        field.style.borderColor = '';
+        field.style.boxShadow = '';
+        if (statusEl) {
+          statusEl.classList.remove('is-visible');
+          statusEl.classList.remove('is-error');
+        }
+      });
+    });
+  }
+}());
+</script>
