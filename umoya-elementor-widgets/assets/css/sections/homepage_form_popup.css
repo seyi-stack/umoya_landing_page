@@ -1,0 +1,320 @@
+#umoya-form-popup {
+      --cream: #F5F0EB;
+      --brown: #4B2E2B;
+      --terra: #D97E53;
+      --terra-dk: #C06840;
+      --olive: #708238;
+      --white: #FFFFFF;
+      --ease: cubic-bezier(.25,.46,.45,.94);
+
+      position: fixed !important;
+      inset: 0;
+      z-index: 2147483647 !important;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      background: rgba(28,13,6,.68);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .28s var(--ease), visibility 0s linear .28s;
+    }
+
+    #umoya-form-popup,
+    #umoya-form-popup *,
+    #umoya-form-popup *::before,
+    #umoya-form-popup *::after {
+      box-sizing: border-box;
+    }
+
+    #umoya-form-popup.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition: opacity .28s var(--ease);
+    }
+
+    #umoya-form-popup .umoya-form-dialog {
+      position: relative;
+      width: min(1120px, 96vw);
+      max-height: min(92vh, 900px);
+      display: grid;
+      grid-template-columns: minmax(280px, 1fr) minmax(0, 2fr);
+      overflow: hidden;
+      background: var(--cream);
+      box-shadow: 0 28px 80px rgba(0,0,0,.35);
+      transform: translateY(16px) scale(.985);
+      transition: transform .28s var(--ease);
+    }
+
+    #umoya-form-popup.is-open .umoya-form-dialog {
+      transform: none;
+    }
+
+    #umoya-form-popup .umoya-form-close {
+      appearance: none;
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 4;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255,255,255,.45);
+      border-radius: 50%;
+      background: rgba(75,46,43,.55);
+      color: var(--white);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      backdrop-filter: blur(8px);
+    }
+
+    #umoya-form-popup .umoya-form-image {
+      position: relative;
+      min-height: 100%;
+      background: var(--brown);
+      overflow: hidden;
+    }
+
+    #umoya-form-popup .umoya-form-image img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
+
+    #umoya-form-popup .umoya-form-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(28,13,6,.72), rgba(28,13,6,.24) 55%, rgba(28,13,6,.04));
+    }
+
+    #umoya-form-popup .umoya-form-image-copy {
+      position: relative;
+      z-index: 2;
+      padding: clamp(32px, 5vw, 58px) 28px;
+      color: var(--cream);
+      text-align: center;
+    }
+
+    #umoya-form-popup .umoya-form-image-copy span {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--terra);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    #umoya-form-popup .umoya-form-image-copy h2 {
+      margin: 0;
+      color: var(--cream);
+      font-size: clamp(1.7rem, 3vw, 2.7rem);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.08;
+    }
+
+    #umoya-form-popup .umoya-form-panel {
+      max-height: min(92vh, 900px);
+      overflow: auto;
+      padding: clamp(28px, 4vw, 52px);
+      background: var(--cream);
+    }
+
+    #umoya-form-popup .umoya-form-head {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    #umoya-form-popup .umoya-form-head span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--terra);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    #umoya-form-popup .umoya-form-head h2 {
+      margin: 0 0 10px;
+      color: var(--brown);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    #umoya-form-popup .umoya-form-head p {
+      margin: 0 auto;
+      max-width: 580px;
+      color: rgba(75,46,43,.78);
+      font-size: .95rem;
+      line-height: 1.65;
+    }
+
+    #umoya-form-popup .umoya-form-card {
+      background: var(--white);
+      padding: clamp(22px, 3vw, 36px);
+      box-shadow: 0 14px 40px rgba(75,46,43,.1);
+      border-top: 3px solid var(--terra);
+    }
+
+    #umoya-form-popup .umoya-popup-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    #umoya-form-popup .umoya-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 16px;
+    }
+
+    #umoya-form-popup .umoya-field {
+      display: grid;
+      gap: 6px;
+    }
+
+    #umoya-form-popup .umoya-field.full {
+      grid-column: 1 / -1;
+    }
+
+    #umoya-form-popup .umoya-field-spacer {
+      min-height: 0;
+    }
+
+    #umoya-form-popup label {
+      color: rgba(75,46,43,.78);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    #umoya-form-popup input,
+    #umoya-form-popup select,
+    #umoya-form-popup textarea {
+      width: 100%;
+      min-height: 44px;
+      border: 1.5px solid rgba(75,46,43,.13);
+      border-radius: 6px;
+      background: var(--cream);
+      color: var(--brown);
+      font-size: max(16px, .92rem);
+      line-height: 1.45;
+      outline: none;
+      padding: 11px 13px;
+      transition: border-color .22s, box-shadow .22s, background .22s;
+    }
+
+    #umoya-form-popup textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    #umoya-form-popup select {
+      appearance: none;
+      -webkit-appearance: none;
+      padding-right: 34px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234B2E2B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+
+    #umoya-form-popup input:focus,
+    #umoya-form-popup select:focus,
+    #umoya-form-popup textarea:focus {
+      border-color: var(--terra);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(217,126,83,.12);
+    }
+
+    #umoya-form-popup .umoya-form-submit {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      min-height: 52px;
+      border: 2px solid var(--terra);
+      background: var(--terra);
+      color: var(--white);
+      cursor: pointer;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      transition: background .25s, border-color .25s, transform .25s;
+    }
+
+    #umoya-form-popup .umoya-form-submit:hover {
+      background: var(--terra-dk);
+      border-color: var(--terra-dk);
+      transform: translateY(-1px);
+    }
+
+    #umoya-form-popup .umoya-form-submit:disabled {
+      background: var(--olive);
+      border-color: var(--olive);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    #umoya-form-popup .umoya-form-legal,
+    #umoya-form-popup .umoya-form-status {
+      margin: 10px auto 0;
+      max-width: 620px;
+      color: rgba(75,46,43,.72);
+      font-size: .78rem;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    #umoya-form-popup .umoya-form-status {
+      display: none;
+      color: var(--terra);
+    }
+
+    #umoya-form-popup .umoya-form-status.is-visible {
+      display: block;
+    }
+
+    #umoya-form-popup .umoya-form-status.is-error {
+      color: #8B2B2B;
+    }
+
+    @media (max-width: 860px) {
+      #umoya-form-popup {
+        padding: 12px;
+      }
+
+      #umoya-form-popup .umoya-form-dialog {
+        grid-template-columns: 1fr;
+        max-height: 94vh;
+      }
+
+      #umoya-form-popup .umoya-form-image {
+        min-height: 240px;
+      }
+
+      #umoya-form-popup .umoya-form-panel {
+        max-height: calc(94vh - 240px);
+        padding: 26px 18px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      #umoya-form-popup .umoya-form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #umoya-form-popup .umoya-field-spacer {
+        display: none;
+      }
+    }

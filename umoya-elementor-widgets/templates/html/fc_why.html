@@ -1,0 +1,68 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 06: WHY UMOYA AFRIKA TOURS
+=================================================================
+  ELEMENTOR USAGE:
+  • Add an "HTML" widget after Section 05 (Journey).
+  • Layout: two-column — copy left, video + CTA right.
+  • VIDEO: Replace the placeholder div with your actual embed:
+      Primary: Brand Video (Coming Soon)
+      Backup: Google Drive backup video from brief
+=================================================================
+-->
+
+  <section id="fc-why" aria-label="%%UEW_FC_WHY_ATTR_001_ARIA_LABEL%%">
+    <div class="fc-why-wrap">
+
+      <!-- Two-column grid -->
+      <div class="fc-why-grid">
+
+        <!-- ── LEFT: Philosophy copy ───────────────── -->
+        <div class="fc-why-rev">
+          <span class="fc-why-eyebrow">%%UEW_FC_WHY_TEXT_001%%</span>
+          <h2 class="fc-why-title">%%UEW_FC_WHY_TEXT_002%% <em>%%UEW_FC_WHY_TEXT_003%%</em></h2>
+          <span class="fc-why-rule" aria-hidden="true"></span>
+
+          <p class="fc-why-lead"><strong>%%UEW_FC_WHY_TEXT_004%%</strong></p>
+
+          <p class="fc-why-body">%%UEW_FC_WHY_TEXT_005%%</p>
+
+          <p class="fc-why-body">%%UEW_FC_WHY_TEXT_006%%</p>
+          <a href="%%UEW_FC_WHY_URL_002_HREF%%" class="fc-why-btn">%%UEW_FC_WHY_TEXT_007%%</a>
+        </div>
+
+        <!-- ── RIGHT: Video + CTA ─────────────────── -->
+        <div class="fc-why-aside fc-why-rev fc-d2">
+
+          <!-- Video block -->
+          <div class="fc-vid-wrap">
+            <button class="fc-vid-ph" type="button" aria-label="%%UEW_FC_WHY_ATTR_003_ARIA_LABEL%%" aria-haspopup="dialog" aria-controls="fc-why-video-modal">
+              <span class="fc-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </span>
+            </button>
+          </div>
+
+        </div>
+
+      </div><!-- /.fc-why-grid -->
+
+    </div>
+    <div class="fc-video-modal" id="fc-why-video-modal" role="dialog" aria-modal="true" aria-label="%%UEW_FC_WHY_ATTR_004_ARIA_LABEL%%" hidden>
+      <div class="fc-video-backdrop" data-fc-video-close></div>
+      <div class="fc-video-dialog">
+        <button class="fc-video-close" type="button" aria-label="%%UEW_FC_WHY_ATTR_005_ARIA_LABEL%%" data-fc-video-close>
+          <span aria-hidden="true">%%UEW_FC_WHY_TEXT_008%%</span>
+        </button>
+        <video
+          class="fc-video-player"
+          src="%%UEW_FC_WHY_URL_006_SRC%%"
+          preload="metadata"
+          controls
+          controlsList="nodownload"
+          playsinline
+          aria-label="%%UEW_FC_WHY_ATTR_004_ARIA_LABEL%%">
+        </video>
+      </div>
+    </div>
+  </section>

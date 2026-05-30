@@ -1,0 +1,365 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 05: YOUR JOURNEY BEGINS HERE
+  Map: Leaflet.js — dynamically injected CSS + JS (Elementor safe)
+=================================================================
+  WHY DYNAMIC INJECTION:
+  Elementor HTML widgets sometimes strip <link> tags and <script>
+  src attributes. Injecting Leaflet CSS and JS programmatically
+  via document.createElement guarantees they load in all cases.
+
+  MAP HEIGHT FIX:
+  Previous version used position:absolute which collapses to 0px
+  when the parent has no explicit height. Now the map uses an
+  explicit pixel height set from the right content column height
+  via JS, with a 460px fallback — so Leaflet always has a non-zero
+  container to render into.
+=================================================================
+-->
+
+  <section id="fc-journey" aria-label="%%UEW_FC_JOURNEY_ATTR_001_ARIA_LABEL%%">
+    <div class="fc-jrn-c">
+
+      <!-- ── A. HEADER + STATS ──────────────────────────── -->
+      <div class="fc-jrn-hd fc-jrn-rv">
+        <div>
+          <span class="fc-jrn-eye">%%UEW_FC_JOURNEY_TEXT_001%%</span>
+          <h2 class="fc-jrn-ttl">%%UEW_FC_JOURNEY_TEXT_002%% <em>%%UEW_FC_JOURNEY_TEXT_003%%</em></h2>
+        </div>
+        <div class="fc-jrn-stats" role="list">
+          <div class="fc-jrn-stat" role="listitem">
+            <div class="fc-jrn-stat-n">%%UEW_FC_JOURNEY_TEXT_004%%</div>
+            <div class="fc-jrn-stat-l">%%UEW_FC_JOURNEY_TEXT_005%%</div>
+          </div>
+          <div class="fc-jrn-stat" role="listitem">
+            <div class="fc-jrn-stat-n">4</div>
+            <div class="fc-jrn-stat-l">%%UEW_FC_JOURNEY_TEXT_006%%</div>
+          </div>
+          <div class="fc-jrn-stat" role="listitem">
+            <div class="fc-jrn-stat-n">%%UEW_FC_JOURNEY_TEXT_007%%</div>
+            <div class="fc-jrn-stat-l">%%UEW_FC_JOURNEY_TEXT_008%%</div>
+          </div>
+          <div class="fc-jrn-stat" role="listitem">
+            <div class="fc-jrn-stat-n">5</div>
+            <div class="fc-jrn-stat-l">%%UEW_FC_JOURNEY_TEXT_009%%</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.fc-jrn-c -->
+
+    <!-- B. PROVINCE TABS + ACCORDION -->
+    <div class="fc-jrn-tabs-wrap">
+      <div class="fc-prov-tabs fc-jrn-rv d1">
+
+        <!-- Left: title tabs -->
+        <div class="fc-pt-list" role="tablist" aria-label="%%UEW_FC_JOURNEY_ATTR_002_ARIA_LABEL%%">
+
+          <button class="fc-pt-tab fc-pt-active" type="button" role="tab"
+                  id="fc-pt-tab-1" aria-controls="fc-pt-panel-1"
+                  aria-selected="true" tabindex="0">
+            <span class="fc-pt-tab-inner">
+              <span class="fc-pt-reg">%%UEW_FC_JOURNEY_TEXT_010%%</span>
+              <span class="fc-pt-nm">%%UEW_FC_JOURNEY_TEXT_011%%</span>
+            </span>
+          </button>
+
+          <button class="fc-pt-tab" type="button" role="tab"
+                  id="fc-pt-tab-2" aria-controls="fc-pt-panel-2"
+                  aria-selected="false" tabindex="-1">
+            <span class="fc-pt-num" aria-hidden="true">%%UEW_FC_JOURNEY_TEXT_012%%</span>
+            <span class="fc-pt-tab-inner">
+              <span class="fc-pt-reg">%%UEW_FC_JOURNEY_TEXT_013%%</span>
+              <span class="fc-pt-nm">%%UEW_FC_JOURNEY_TEXT_014%%<br />%%UEW_FC_JOURNEY_TEXT_015%%</span>
+            </span>
+          </button>
+
+          <button class="fc-pt-tab" type="button" role="tab"
+                  id="fc-pt-tab-3" aria-controls="fc-pt-panel-3"
+                  aria-selected="false" tabindex="-1">
+            <span class="fc-pt-num" aria-hidden="true">%%UEW_FC_JOURNEY_TEXT_016%%</span>
+            <span class="fc-pt-tab-inner">
+              <span class="fc-pt-reg">%%UEW_FC_JOURNEY_TEXT_017%%</span>
+              <span class="fc-pt-nm">%%UEW_FC_JOURNEY_TEXT_018%%</span>
+            </span>
+          </button>
+          <button class="fc-pt-tab" type="button" role="tab"
+                  id="fc-pt-tab-5" aria-controls="fc-pt-panel-5"
+                  aria-selected="false" tabindex="-1">
+            <span class="fc-pt-num" aria-hidden="true">%%UEW_FC_JOURNEY_TEXT_019%%</span>
+            <span class="fc-pt-tab-inner">
+              <span class="fc-pt-reg">%%UEW_FC_JOURNEY_TEXT_020%%</span>
+              <span class="fc-pt-nm">%%UEW_FC_JOURNEY_TEXT_021%%</span>
+            </span>
+          </button>
+
+          <button class="fc-pt-tab" type="button" role="tab"
+                  id="fc-pt-tab-6" aria-controls="fc-pt-panel-6"
+                  aria-selected="false" tabindex="-1">
+            <span class="fc-pt-num" aria-hidden="true">%%UEW_FC_JOURNEY_TEXT_022%%</span>
+            <span class="fc-pt-tab-inner">
+              <span class="fc-pt-reg">%%UEW_FC_JOURNEY_TEXT_023%%</span>
+              <span class="fc-pt-nm">%%UEW_FC_JOURNEY_TEXT_024%%</span>
+            </span>
+          </button>
+
+        </div>
+
+        <!-- Middle: content panels -->
+        <div class="fc-pt-content">
+
+          <div class="fc-pt-panel fc-pt-active" role="tabpanel"
+               id="fc-pt-panel-1" aria-labelledby="fc-pt-tab-1">
+            <span class="fc-pt-eye">%%UEW_FC_JOURNEY_TEXT_010%%</span>
+            <h3 class="fc-pt-ttl">%%UEW_FC_JOURNEY_TEXT_025%%<br />%%UEW_FC_JOURNEY_TEXT_026%%</h3>
+            <span class="fc-pt-rule" aria-hidden="true"></span>
+            <p class="fc-pt-body">%%UEW_FC_JOURNEY_TEXT_027%%</p>
+            <p class="fc-pt-body">%%UEW_FC_JOURNEY_TEXT_028%%</p>
+          </div>
+
+          <div class="fc-pt-panel" role="tabpanel"
+               id="fc-pt-panel-2" aria-labelledby="fc-pt-tab-2">
+            <span class="fc-pt-eye">%%UEW_FC_JOURNEY_TEXT_013%%</span>
+            <h3 class="fc-pt-ttl">%%UEW_FC_JOURNEY_TEXT_029%%</h3>
+            <span class="fc-pt-rule" aria-hidden="true"></span>
+            <p class="fc-pt-body">%%UEW_FC_JOURNEY_TEXT_030%%</p>
+            <p class="fc-pt-signature"><strong>%%UEW_FC_JOURNEY_TEXT_031%%</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">%%UEW_FC_JOURNEY_TEXT_032%%</span><span class="fc-signature-title">%%UEW_FC_JOURNEY_TEXT_033%%</span> %%UEW_FC_JOURNEY_TEXT_034%%</span></p>
+          </div>
+
+          <div class="fc-pt-panel" role="tabpanel"
+               id="fc-pt-panel-3" aria-labelledby="fc-pt-tab-3">
+            <span class="fc-pt-eye">%%UEW_FC_JOURNEY_TEXT_017%%</span>
+            <h3 class="fc-pt-ttl">%%UEW_FC_JOURNEY_TEXT_035%%</h3>
+            <span class="fc-pt-rule" aria-hidden="true"></span>
+            <p class="fc-pt-body">%%UEW_FC_JOURNEY_TEXT_036%%</p>
+            <p class="fc-pt-signature"><strong>%%UEW_FC_JOURNEY_TEXT_031%%</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">%%UEW_FC_JOURNEY_TEXT_032%%</span><span class="fc-signature-title">%%UEW_FC_JOURNEY_TEXT_037%%</span> %%UEW_FC_JOURNEY_TEXT_038%%</span></p>
+          </div>
+          <div class="fc-pt-panel" role="tabpanel"
+               id="fc-pt-panel-5" aria-labelledby="fc-pt-tab-5">
+            <span class="fc-pt-eye">%%UEW_FC_JOURNEY_TEXT_020%%</span>
+            <h3 class="fc-pt-ttl">%%UEW_FC_JOURNEY_TEXT_039%%</h3>
+            <span class="fc-pt-rule" aria-hidden="true"></span>
+            <p class="fc-pt-body">%%UEW_FC_JOURNEY_TEXT_040%%</p>
+          </div>
+
+          <div class="fc-pt-panel" role="tabpanel"
+               id="fc-pt-panel-6" aria-labelledby="fc-pt-tab-6">
+            <span class="fc-pt-eye">%%UEW_FC_JOURNEY_TEXT_023%%</span>
+            <h3 class="fc-pt-ttl">%%UEW_FC_JOURNEY_TEXT_041%%</h3>
+            <span class="fc-pt-rule" aria-hidden="true"></span>
+            <p class="fc-pt-body">%%UEW_FC_JOURNEY_TEXT_042%%</p>
+            <p class="fc-pt-signature"><strong>%%UEW_FC_JOURNEY_TEXT_009%%</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">%%UEW_FC_JOURNEY_TEXT_032%%</span><span class="fc-signature-title">%%UEW_FC_JOURNEY_TEXT_043%%</span> %%UEW_FC_JOURNEY_TEXT_044%%</span><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">%%UEW_FC_JOURNEY_TEXT_032%%</span><span class="fc-signature-title">%%UEW_FC_JOURNEY_TEXT_045%%</span> %%UEW_FC_JOURNEY_TEXT_046%%</span></p>
+          </div>
+
+        </div>
+
+        <!-- Right: image panels. Panel 1 contains the interactive
+             Leaflet map; panels 2–6 use province photographs. -->
+        <div class="fc-pt-images" aria-hidden="true">
+
+          <!-- Panel 1: Leaflet map (Overview) -->
+          <div class="fc-pt-img fc-pt-active" id="fc-pt-img-map">
+            <div class="fc-map-loading" id="fcMapLoading">
+              <div class="fc-map-loading-inner">
+                <div class="fc-map-spinner"></div>
+                <span class="fc-map-loading-txt">%%UEW_FC_JOURNEY_TEXT_047%%</span>
+              </div>
+            </div>
+            <div id="fcLeafletMap" aria-label="%%UEW_FC_JOURNEY_ATTR_003_ARIA_LABEL%%"></div>
+          </div>
+
+          <!-- Panel 2: Gauteng -->
+          <div class="fc-pt-img">
+            <!-- ★ SWAP: Gauteng image -->
+            <img src="%%UEW_FC_JOURNEY_MEDIA_004_SRC%%"
+                 alt="" loading="lazy" />
+            <div class="fc-pt-img-ov"></div>
+          </div>
+
+          <!-- Panel 3: Mpumalanga -->
+          <div class="fc-pt-img">
+            <!-- ★ SWAP: IMG_7057-scaled.webp -->
+            <img src="%%UEW_FC_JOURNEY_MEDIA_005_SRC%%"
+                 alt="" loading="lazy" />
+            <div class="fc-pt-img-ov"></div>
+          </div>
+          <!-- Panel 4: KwaZulu-Natal -->
+          <div class="fc-pt-img">
+            <img src="%%UEW_FC_JOURNEY_MEDIA_006_SRC%%"
+                 alt="" loading="lazy" />
+            <div class="fc-pt-img-ov"></div>
+          </div>
+
+          <!-- Panel 5: Western Cape -->
+          <div class="fc-pt-img">
+            <!-- ★ SWAP: IMG_7630-scaled.webp -->
+            <img src="%%UEW_FC_JOURNEY_MEDIA_007_SRC%%"
+                 alt="" loading="lazy" />
+            <div class="fc-pt-img-ov"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ── B-MOBILE. PROVINCE ACCORDION ──────────────────
+           Renders only at ≤900px (CSS toggle). Mirrors the
+           desktop tabs above as a stacked FAQ-style reveal. -->
+      <div class="fc-prov-acc fc-jrn-rv d1" aria-label="%%UEW_FC_JOURNEY_ATTR_002_ARIA_LABEL%%">
+
+        <!-- 01 Overview -->
+        <article class="fc-pa-item fc-pa-active">
+          <h3 class="fc-pa-h">
+            <button class="fc-pa-trigger" type="button"
+                    id="fc-pa-trig-1" aria-expanded="true" aria-controls="fc-pa-body-1">
+              <span class="fc-pa-label-wrap">
+                <span class="fc-pa-reg">%%UEW_FC_JOURNEY_TEXT_010%%</span>
+                <span class="fc-pa-ttl">%%UEW_FC_JOURNEY_TEXT_011%%</span>
+              </span>
+              <span class="fc-pa-chev" aria-hidden="true">
+                <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
+                  <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+          </h3>
+          <div class="fc-pa-body" id="fc-pa-body-1" role="region" aria-labelledby="fc-pa-trig-1">
+            <div class="fc-pa-body-inner">
+              <div class="fc-pa-image fc-pa-image-map" aria-hidden="true">
+                <div id="fcLeafletMapMob" aria-label="%%UEW_FC_JOURNEY_ATTR_008_ARIA_LABEL%%"></div>
+              </div>
+              <span class="fc-pa-rule" aria-hidden="true"></span>
+              <p class="fc-pa-text">%%UEW_FC_JOURNEY_TEXT_027%%</p>
+              <p class="fc-pa-text">%%UEW_FC_JOURNEY_TEXT_028%%</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02 Gauteng -->
+        <article class="fc-pa-item">
+          <h3 class="fc-pa-h">
+            <button class="fc-pa-trigger" type="button"
+                    id="fc-pa-trig-2" aria-expanded="false" aria-controls="fc-pa-body-2">
+              <span class="fc-pa-num" aria-hidden="true">%%UEW_FC_JOURNEY_TEXT_012%%</span>
+              <span class="fc-pa-label-wrap">
+                <span class="fc-pa-reg">%%UEW_FC_JOURNEY_TEXT_013%%</span>
+                <span class="fc-pa-ttl">%%UEW_FC_JOURNEY_TEXT_048%%</span>
+              </span>
+              <span class="fc-pa-chev" aria-hidden="true">
+                <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
+                  <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+          </h3>
+          <div class="fc-pa-body" id="fc-pa-body-2" role="region" aria-labelledby="fc-pa-trig-2">
+            <div class="fc-pa-body-inner">
+              <div class="fc-pa-image">
+                <img src="%%UEW_FC_JOURNEY_MEDIA_004_SRC%%"
+                     alt="" loading="lazy" />
+              </div>
+              <span class="fc-pa-rule" aria-hidden="true"></span>
+              <p class="fc-pa-text">%%UEW_FC_JOURNEY_TEXT_030%%</p>
+              <p class="fc-pa-signature"><strong>%%UEW_FC_JOURNEY_TEXT_031%%</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">%%UEW_FC_JOURNEY_TEXT_032%%</span><span class="fc-signature-title">%%UEW_FC_JOURNEY_TEXT_033%%</span> %%UEW_FC_JOURNEY_TEXT_034%%</span></p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 03 Mpumalanga -->
+        <article class="fc-pa-item">
+          <h3 class="fc-pa-h">
+            <button class="fc-pa-trigger" type="button"
+                    id="fc-pa-trig-3" aria-expanded="false" aria-controls="fc-pa-body-3">
+              <span class="fc-pa-num" aria-hidden="true">%%UEW_FC_JOURNEY_TEXT_016%%</span>
+              <span class="fc-pa-label-wrap">
+                <span class="fc-pa-reg">%%UEW_FC_JOURNEY_TEXT_017%%</span>
+                <span class="fc-pa-ttl">%%UEW_FC_JOURNEY_TEXT_018%%</span>
+              </span>
+              <span class="fc-pa-chev" aria-hidden="true">
+                <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
+                  <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+          </h3>
+          <div class="fc-pa-body" id="fc-pa-body-3" role="region" aria-labelledby="fc-pa-trig-3">
+            <div class="fc-pa-body-inner">
+              <div class="fc-pa-image">
+                <img src="%%UEW_FC_JOURNEY_MEDIA_005_SRC%%"
+                     alt="" loading="lazy" />
+              </div>
+              <span class="fc-pa-rule" aria-hidden="true"></span>
+              <p class="fc-pa-text">%%UEW_FC_JOURNEY_TEXT_036%%</p>
+              <p class="fc-pa-signature"><strong>%%UEW_FC_JOURNEY_TEXT_031%%</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">%%UEW_FC_JOURNEY_TEXT_032%%</span><span class="fc-signature-title">%%UEW_FC_JOURNEY_TEXT_037%%</span> %%UEW_FC_JOURNEY_TEXT_038%%</span></p>
+            </div>
+          </div>
+        </article>
+        <!-- 04 KwaZulu-Natal -->
+        <article class="fc-pa-item">
+          <h3 class="fc-pa-h">
+            <button class="fc-pa-trigger" type="button"
+                    id="fc-pa-trig-5" aria-expanded="false" aria-controls="fc-pa-body-5">
+              <span class="fc-pa-num" aria-hidden="true">%%UEW_FC_JOURNEY_TEXT_019%%</span>
+              <span class="fc-pa-label-wrap">
+                <span class="fc-pa-reg">%%UEW_FC_JOURNEY_TEXT_020%%</span>
+                <span class="fc-pa-ttl">%%UEW_FC_JOURNEY_TEXT_021%%</span>
+              </span>
+              <span class="fc-pa-chev" aria-hidden="true">
+                <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
+                  <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+          </h3>
+          <div class="fc-pa-body" id="fc-pa-body-5" role="region" aria-labelledby="fc-pa-trig-5">
+            <div class="fc-pa-body-inner">
+              <div class="fc-pa-image">
+                <img src="%%UEW_FC_JOURNEY_MEDIA_006_SRC%%"
+                     alt="" loading="lazy" />
+              </div>
+              <span class="fc-pa-rule" aria-hidden="true"></span>
+              <p class="fc-pa-text">%%UEW_FC_JOURNEY_TEXT_040%%</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 05 Western Cape -->
+        <article class="fc-pa-item">
+          <h3 class="fc-pa-h">
+            <button class="fc-pa-trigger" type="button"
+                    id="fc-pa-trig-6" aria-expanded="false" aria-controls="fc-pa-body-6">
+              <span class="fc-pa-num" aria-hidden="true">%%UEW_FC_JOURNEY_TEXT_022%%</span>
+              <span class="fc-pa-label-wrap">
+                <span class="fc-pa-reg">%%UEW_FC_JOURNEY_TEXT_023%%</span>
+                <span class="fc-pa-ttl">%%UEW_FC_JOURNEY_TEXT_024%%</span>
+              </span>
+              <span class="fc-pa-chev" aria-hidden="true">
+                <svg viewBox="0 0 14 14" width="14" height="14" fill="none">
+                  <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+          </h3>
+          <div class="fc-pa-body" id="fc-pa-body-6" role="region" aria-labelledby="fc-pa-trig-6">
+            <div class="fc-pa-body-inner">
+              <div class="fc-pa-image">
+                <img src="%%UEW_FC_JOURNEY_MEDIA_007_SRC%%"
+                     alt="" loading="lazy" />
+              </div>
+              <span class="fc-pa-rule" aria-hidden="true"></span>
+              <p class="fc-pa-text">%%UEW_FC_JOURNEY_TEXT_042%%</p>
+              <p class="fc-pa-signature"><strong>%%UEW_FC_JOURNEY_TEXT_009%%</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">%%UEW_FC_JOURNEY_TEXT_032%%</span><span class="fc-signature-title">%%UEW_FC_JOURNEY_TEXT_043%%</span> %%UEW_FC_JOURNEY_TEXT_044%%</span><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">%%UEW_FC_JOURNEY_TEXT_032%%</span><span class="fc-signature-title">%%UEW_FC_JOURNEY_TEXT_045%%</span> %%UEW_FC_JOURNEY_TEXT_046%%</span></p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div><!-- /.fc-jrn-tabs-wrap -->
+
+  </section>

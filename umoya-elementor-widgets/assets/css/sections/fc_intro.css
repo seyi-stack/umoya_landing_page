@@ -1,0 +1,117 @@
+/* ── Tokens ─────────────────────────────────────── */
+  #fc-intro {
+    --brown:      #4B2E2B;
+    --terra:      #D97E53;
+    --olive:      #708238;
+    --cream:      #F5F0EB;
+    --text-muted: #4B2E2B;
+    --white:      #FFFFFF;
+    --ease:       cubic-bezier(.25,.46,.45,.94);
+
+    background: var(--white);
+    padding: 80px 20px;
+    font-family: inherit;
+    color: var(--brown);
+    display: flex;
+    justify-content: center;
+  }
+
+  #fc-intro *,
+  #fc-intro *::before,
+  #fc-intro *::after {
+    box-sizing: border-box;
+  }
+
+  /* ── Container ───────────────────────────────────── */
+  #fc-intro .fc-intro-wrap {
+    max-width: 1140px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Decorative Line ─────────────────────────────── */
+  #fc-intro .fc-dec-line {
+    width: 1px;
+    height: 60px;
+    background: rgba(217, 126, 83, 0.4);
+    margin: 0 auto 2.5rem auto;
+    transform-origin: top;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  #fc-intro .fc-intro-rv {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
+  }
+  #fc-intro .fc-intro-rv.fc-intro-on { opacity: 1; transform: none; }
+
+  /* Staggered delays */
+  #fc-intro .fc-d0 { transition-delay: 0.1s; }
+  #fc-intro .fc-d1 { transition-delay: 0.25s; }
+  #fc-intro .fc-d2 { transition-delay: 0.4s; }
+  #fc-intro .fc-d3 { transition-delay: 0.55s; }
+
+  /* ── Typography ──────────────────────────────────── */
+  #fc-intro .fc-intro-heading {
+    margin: 0 0 2.5rem 0;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    color: var(--brown);
+    max-width: 100%;
+  }
+
+  #fc-intro .fc-intro-body {
+    margin: 0 0 3.5rem 0;
+    font-family: inherit;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-muted);
+    max-width: 900px;
+  }
+
+  /* ── Button ──────────────────────────────────────── */
+  #fc-intro .fc-intro-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 32px;
+    background: var(--brown);
+    color: var(--white);
+    border: 1px solid var(--brown);
+    cursor: pointer;
+    transition: background 0.4s var(--ease), color 0.4s var(--ease),
+                border-color 0.4s var(--ease);
+  }
+
+  #fc-intro .fc-intro-btn:hover {
+    background: var(--terra);
+    border-color: var(--terra);
+    color: var(--white);
+  }
+
+  /* ── Responsive ≤768px ───────────────────────────── */
+  @media (max-width: 768px) {
+    #fc-intro { padding: 80px 24px; }
+    #fc-intro .fc-dec-line { height: 40px; margin-bottom: 2rem; }
+    #fc-intro .fc-intro-heading { font-size: 1.6rem; margin-bottom: 1.5rem; }
+    #fc-intro .fc-intro-body { margin-bottom: 1.5rem; }
+    #fc-intro .fc-intro-btn {
+      width: 70%;
+      padding: 18px 24px;
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+  }

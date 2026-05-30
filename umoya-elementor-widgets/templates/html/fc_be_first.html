@@ -1,0 +1,113 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 03: BE AMONG THE FIRST
+=================================================================
+  ELEMENTOR USAGE:
+  • Add an "HTML" widget after the Form section.
+  • id="fc-be-first" is the anchor target from the Hero's
+    "Learn More" ghost button.
+  • The right column is a 4-slide auto-advancing carousel.
+    Arrows and dot-nav are fully accessible (ARIA roles set).
+  • IMAGES: Replace each <img> src with your Founder's Circle
+    Drive images. Order: Image 1 → 2 → 3 → 4 from the brief.
+=================================================================
+-->
+
+<section id="fc-be-first" aria-label="%%UEW_FC_BE_FIRST_ATTR_001_ARIA_LABEL%%">
+  <div class="fc-bf-wrap">
+    <div class="fc-bf-grid">
+
+      <!-- ── COPY ──────────────────────────────── -->
+      <div class="fc-bf-reveal">
+        <span class="fc-bf-eyebrow">%%UEW_FC_BE_FIRST_TEXT_001%%</span>
+        <h2 class="fc-bf-title">
+          %%UEW_FC_BE_FIRST_TEXT_002%% <em>%%UEW_FC_BE_FIRST_TEXT_003%%</em>
+        </h2>
+        <span class="fc-bf-rule" aria-hidden="true"></span>
+
+        <div class="fc-bf-body">
+          <p>%%UEW_FC_BE_FIRST_TEXT_004%%</p>
+          <p>%%UEW_FC_BE_FIRST_TEXT_005%%</p>
+        </div>
+
+        <div class="fc-bf-pull">
+          %%UEW_FC_BE_FIRST_TEXT_006%%
+        </div>
+
+        <a href="%%UEW_FC_BE_FIRST_URL_002_HREF%%" class="fc-bf-btn">%%UEW_FC_BE_FIRST_TEXT_007%%</a>
+      </div>
+
+      <!-- ── SLIDESHOW ──────────────────────────── -->
+      <div
+        class="fc-ss-outer fc-bf-reveal fc-d2"
+        role="region"
+        aria-label="%%UEW_FC_BE_FIRST_ATTR_003_ARIA_LABEL%%"
+        aria-roledescription="carousel"
+      >
+        <div class="fc-ss-track">
+
+          <!-- Slide 1 — ★ SWAP src with Drive Image 1 -->
+          <div class="fc-ss-slide fc-ss-on" role="group" aria-label="%%UEW_FC_BE_FIRST_ATTR_004_ARIA_LABEL%%" aria-roledescription="slide">
+            <img
+              src="%%UEW_FC_BE_FIRST_MEDIA_005_SRC%%"
+              alt="%%UEW_FC_BE_FIRST_ATTR_006_ALT%%"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Slide 2 — ★ SWAP src with Drive Image 2 -->
+          <div class="fc-ss-slide" role="group" aria-label="%%UEW_FC_BE_FIRST_ATTR_007_ARIA_LABEL%%" aria-roledescription="slide">
+            <img
+              src="%%UEW_FC_BE_FIRST_MEDIA_008_SRC%%"
+              alt="%%UEW_FC_BE_FIRST_ATTR_009_ALT%%"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="fc-ss-slide" role="group" aria-label="%%UEW_FC_BE_FIRST_ATTR_010_ARIA_LABEL%%" aria-roledescription="slide">
+            <img
+              src="%%UEW_FC_BE_FIRST_MEDIA_011_SRC%%"
+              alt="%%UEW_FC_BE_FIRST_ATTR_012_ALT%%"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="fc-ss-slide" role="group" aria-label="%%UEW_FC_BE_FIRST_ATTR_013_ARIA_LABEL%%" aria-roledescription="slide">
+            <img
+              src="%%UEW_FC_BE_FIRST_MEDIA_014_SRC%%"
+              alt="%%UEW_FC_BE_FIRST_ATTR_015_ALT%%"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="fc-ss-slide" role="group" aria-label="%%UEW_FC_BE_FIRST_ATTR_016_ARIA_LABEL%%" aria-roledescription="slide">
+            <img
+              src="%%UEW_FC_BE_FIRST_MEDIA_017_SRC%%"
+              alt="%%UEW_FC_BE_FIRST_ATTR_018_ALT%%"
+              loading="lazy"
+            />
+          </div>
+        </div><!-- /.fc-ss-track -->
+
+        <!-- Arrows -->
+        <button class="fc-ss-arrow fc-ss-prev" id="fc3Prev" aria-label="%%UEW_FC_BE_FIRST_ATTR_019_ARIA_LABEL%%">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="fc-ss-arrow fc-ss-next" id="fc3Next" aria-label="%%UEW_FC_BE_FIRST_ATTR_020_ARIA_LABEL%%">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+        <!-- Dots -->
+        <div class="fc-ss-dots" role="tablist" aria-label="%%UEW_FC_BE_FIRST_ATTR_021_ARIA_LABEL%%">
+          <button class="fc-ss-dot fc-ss-on" role="tab" aria-selected="true"  aria-label="%%UEW_FC_BE_FIRST_ATTR_022_ARIA_LABEL%%" data-fci="0"></button>
+          <button class="fc-ss-dot"          role="tab" aria-selected="false" aria-label="%%UEW_FC_BE_FIRST_ATTR_023_ARIA_LABEL%%" data-fci="1"></button>
+          <button class="fc-ss-dot"          role="tab" aria-selected="false" aria-label="%%UEW_FC_BE_FIRST_ATTR_024_ARIA_LABEL%%" data-fci="2"></button>
+          <button class="fc-ss-dot"          role="tab" aria-selected="false" aria-label="%%UEW_FC_BE_FIRST_ATTR_025_ARIA_LABEL%%" data-fci="3"></button>
+          <button class="fc-ss-dot"          role="tab" aria-selected="false" aria-label="%%UEW_FC_BE_FIRST_ATTR_026_ARIA_LABEL%%" data-fci="4"></button>
+        </div>
+
+      </div><!-- /.fc-ss-outer -->
+
+    </div>
+  </div>
+</section>

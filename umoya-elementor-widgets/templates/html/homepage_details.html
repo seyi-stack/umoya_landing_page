@@ -1,0 +1,202 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE - SECTION 07: JOURNEY DETAILS
+=================================================================
+  ELEMENTOR USAGE:
+  - Add an "HTML" widget as the final section before the footer.
+  - Background: cream-dark (#F5F0EB) - one shade deeper than
+    the cream-light sections above to signal a natural close.
+  - The accordion is collapsible: clicking any item expands it
+    and collapses any previously open item (one open at a time).
+  - Item 1 is open by default via the fc-det-open class.
+  - Elementor note: the [Feature: Section will be collapsible]
+    note from the brief is fulfilled by this accordion.
+  - 6 items: Small-Group, Departures, Personalization,
+    Travel Protection, Journey Lengths, Cuisine and Dietary Care
+=================================================================
+-->
+
+  <section id="fc-details" aria-label="%%UEW_HOMEPAGE_DETAILS_ATTR_001_ARIA_LABEL%%">
+    <div class="fc-det-wrap">
+
+      <!-- Section header -->
+      <div class="fc-det-hd fc-det-rev">
+        <span class="fc-det-eyebrow">%%UEW_HOMEPAGE_DETAILS_TEXT_001%%</span>
+        <h2 class="fc-det-title">%%UEW_HOMEPAGE_DETAILS_TEXT_002%% <em>%%UEW_HOMEPAGE_DETAILS_TEXT_003%%</em></h2>
+        <span class="fc-det-rule" aria-hidden="true"></span>
+        <p class="fc-det-lead">%%UEW_HOMEPAGE_DETAILS_TEXT_004%%</p>
+      </div>
+
+      <!-- Accordion list -->
+      <div class="fc-acc fc-det-rev fc-d1" role="list">
+
+        <!-- Item 1: Guaranteed Departures (open by default) -->
+        <div class="fc-acc-item fc-det-open" role="listitem">
+          <button
+            class="fc-acc-btn"
+            aria-expanded="true"
+            aria-controls="fc-det-body-2"
+            id="fc-det-btn-2"
+          >
+            <div class="fc-acc-left">
+              <div class="fc-acc-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+              </div>
+              <div>
+                <p class="fc-acc-title">%%UEW_HOMEPAGE_DETAILS_TEXT_005%%</p>
+                <p class="fc-acc-sub">%%UEW_HOMEPAGE_DETAILS_TEXT_006%%</p>
+              </div>
+            </div>
+            <div class="fc-acc-chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </button>
+          <div class="fc-acc-body" id="fc-det-body-2" role="region" aria-labelledby="fc-det-btn-2">
+            <div class="fc-acc-content">
+              %%UEW_HOMEPAGE_DETAILS_TEXT_007%%
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2: Personalization -->
+        <div class="fc-acc-item" role="listitem">
+          <button
+            class="fc-acc-btn"
+            aria-expanded="false"
+            aria-controls="fc-det-body-3"
+            id="fc-det-btn-3"
+          >
+            <div class="fc-acc-left">
+              <div class="fc-acc-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 20h9"/>
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="fc-acc-title">%%UEW_HOMEPAGE_DETAILS_TEXT_008%%</p>
+                <p class="fc-acc-sub">%%UEW_HOMEPAGE_DETAILS_TEXT_009%%</p>
+              </div>
+            </div>
+            <div class="fc-acc-chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </button>
+          <div class="fc-acc-body" id="fc-det-body-3" role="region" aria-labelledby="fc-det-btn-3">
+            <div class="fc-acc-content">
+              %%UEW_HOMEPAGE_DETAILS_TEXT_010%%
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3: Travel Protection -->
+        <div class="fc-acc-item" role="listitem">
+          <button
+            class="fc-acc-btn"
+            aria-expanded="false"
+            aria-controls="fc-det-body-4"
+            id="fc-det-btn-4"
+          >
+            <div class="fc-acc-left">
+              <div class="fc-acc-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="fc-acc-title">%%UEW_HOMEPAGE_DETAILS_TEXT_011%%</p>
+                <p class="fc-acc-sub">%%UEW_HOMEPAGE_DETAILS_TEXT_012%%</p>
+              </div>
+            </div>
+            <div class="fc-acc-chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </button>
+          <div class="fc-acc-body" id="fc-det-body-4" role="region" aria-labelledby="fc-det-btn-4">
+            <div class="fc-acc-content">
+              %%UEW_HOMEPAGE_DETAILS_TEXT_013%% <strong>%%UEW_HOMEPAGE_DETAILS_TEXT_014%%</strong> %%UEW_HOMEPAGE_DETAILS_TEXT_015%%
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4: Flexible Journey Lengths -->
+        <div class="fc-acc-item" role="listitem">
+          <button
+            class="fc-acc-btn"
+            aria-expanded="false"
+            aria-controls="fc-det-body-5"
+            id="fc-det-btn-5"
+          >
+            <div class="fc-acc-left">
+              <div class="fc-acc-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <div>
+                <p class="fc-acc-title">%%UEW_HOMEPAGE_DETAILS_TEXT_016%%</p>
+                <p class="fc-acc-sub">%%UEW_HOMEPAGE_DETAILS_TEXT_017%%</p>
+              </div>
+            </div>
+            <div class="fc-acc-chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </button>
+          <div class="fc-acc-body" id="fc-det-body-5" role="region" aria-labelledby="fc-det-btn-5">
+            <div class="fc-acc-content">
+              %%UEW_HOMEPAGE_DETAILS_TEXT_018%%
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5: Cuisine and Dietary Care -->
+        <div class="fc-acc-item" role="listitem">
+          <button
+            class="fc-acc-btn"
+            aria-expanded="false"
+            aria-controls="fc-det-body-6"
+            id="fc-det-btn-6"
+          >
+            <div class="fc-acc-left">
+              <div class="fc-acc-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                  <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                  <line x1="6"  y1="1" x2="6"  y2="4"/>
+                  <line x1="10" y1="1" x2="10" y2="4"/>
+                  <line x1="14" y1="1" x2="14" y2="4"/>
+                </svg>
+              </div>
+              <div>
+                <p class="fc-acc-title">%%UEW_HOMEPAGE_DETAILS_TEXT_019%%</p>
+                <p class="fc-acc-sub">%%UEW_HOMEPAGE_DETAILS_TEXT_020%%</p>
+              </div>
+            </div>
+            <div class="fc-acc-chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </button>
+          <div class="fc-acc-body" id="fc-det-body-6" role="region" aria-labelledby="fc-det-btn-6">
+            <div class="fc-acc-content">
+              %%UEW_HOMEPAGE_DETAILS_TEXT_021%%
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.fc-acc -->
+
+      <!-- Footer CTA -->
+      <div class="fc-det-foot fc-det-rev">
+        <h3>%%UEW_HOMEPAGE_DETAILS_TEXT_022%%</h3>
+        <p>%%UEW_HOMEPAGE_DETAILS_TEXT_023%%</p>
+        <button type="button" class="fc-det-foot-btn" data-umoya-form-popup>%%UEW_HOMEPAGE_DETAILS_TEXT_024%%</button>
+      </div>
+
+    </div>
+  </section>

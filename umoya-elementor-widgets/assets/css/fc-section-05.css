@@ -618,12 +618,61 @@
 
   /* ── MOBILE ≤768px ─────────────────────────────────────────── */
   @media (max-width: 768px) {
-    #fc-journey   { padding: 64px 0 28px; }
-    .fc-jrn-c     { padding: 0 20px; }
+    #fc-journey   { padding: 64px 0 28px; overflow-x: hidden; }
+    .fc-jrn-c,
+    .fc-jrn-tabs-wrap {
+      width: 100%;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: clamp(16px, 4vw, 20px);
+      padding-right: clamp(16px, 4vw, 20px);
+    }
 
     /* Header */
     .fc-jrn-hd    { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 36px; }
-    .fc-jrn-stats { gap: 20px; flex-wrap: wrap; }
+    .fc-jrn-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 12px 0;
+      border-top: 1px solid rgba(75,46,43,.12);
+      border-bottom: 1px solid rgba(75,46,43,.12);
+    }
+
+    .fc-jrn-stat {
+      display: grid;
+      place-items: center;
+      min-width: 0;
+      min-height: 0;
+      padding: 0 8px;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .fc-jrn-stat + .fc-jrn-stat {
+      border-left: 1px solid rgba(75,46,43,.12);
+    }
+
+    .fc-jrn-stat-n {
+      font-size: clamp(1.35rem, 6.4vw, 1.75rem);
+    }
+
+    .fc-jrn-stat-l {
+      margin-top: 5px;
+      font-size: 0.58rem;
+      line-height: 1.2;
+      letter-spacing: 0.1em;
+      max-width: none;
+      text-align: center;
+      white-space: nowrap;
+      overflow-wrap: normal;
+    }
 
     /* Province accordion */
     .fc-prov-acc       { margin-bottom: 48px; border-radius: 8px; }
@@ -643,9 +692,16 @@
   /* ── SMALL MOBILE ≤420px ───────────────────────────────────── */
   @media (max-width: 420px) {
     #fc-journey   { padding: 56px 0 24px; }
-    .fc-jrn-c     { padding: 0 16px; }
+    .fc-jrn-c     { padding-left: 16px; padding-right: 16px; }
 
     .fc-jrn-ttl   { font-size: clamp(1.7rem, 6vw, 2.2rem); }
+    .fc-jrn-stats { gap: 0; padding: 11px 0; }
+    .fc-jrn-stat  { min-height: 0; padding: 0 4px; }
+    .fc-jrn-stat-l {
+      font-size: 0.5rem;
+      letter-spacing: 0.08em;
+      max-width: none;
+    }
 
     /* Province accordion: tighter on very small screens */
     .fc-prov-acc      { margin-bottom: 40px; }

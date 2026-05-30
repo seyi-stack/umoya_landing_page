@@ -42,7 +42,7 @@
       width: min(1120px, 96vw);
       max-height: min(92vh, 900px);
       display: grid;
-      grid-template-columns: minmax(280px, .78fr) minmax(0, 1.22fr);
+      grid-template-columns: minmax(280px, 1fr) minmax(0, 2fr);
       overflow: hidden;
       background: var(--cream);
       box-shadow: 0 28px 80px rgba(0,0,0,.35);
@@ -188,6 +188,10 @@
       grid-column: 1 / -1;
     }
 
+    #umoya-form-popup .umoya-field-spacer {
+      min-height: 0;
+    }
+
     #umoya-form-popup label {
       color: rgba(75,46,43,.78);
       font-size: .72rem;
@@ -311,6 +315,10 @@
       #umoya-form-popup .umoya-form-grid {
         grid-template-columns: 1fr;
       }
+
+      #umoya-form-popup .umoya-field-spacer {
+        display: none;
+      }
     }
   </style>
 
@@ -331,42 +339,45 @@
       <div class="umoya-form-head">
         <span>Reserve Your Place</span>
         <h2 id="umoya-form-title">South Africa Awaits</h2>
-        <p>Tell us about yourself and the travel experience you're seeking. A dedicated Umoya Travel Expert will personally connect with you.</p>
+        <p>Tell us about yourself and the travel experience you're seeking. A dedicated Umoya Travel Expert will personally connect with you to begin planning your experience.</p>
       </div>
 
       <div class="umoya-form-card">
         <form
           id="umoyaPopupForm"
           class="umoya-popup-form"
+          action="/wp-json/umoya/v1/submissions"
+          method="post"
+          target="umoyaPopupSubmissionFrame"
           novalidate
           data-hubspot-portal-id="246097317"
           data-hubspot-form-id="cb87d460-fb2d-4c53-8c32-7daaa05067d7"
+          data-umoya-form-source="homepage_popup"
+          data-wordpress-backup-endpoint="/wp-json/umoya/v1/submissions"
           data-hubspot-consent-text="I agree to be contacted by Umoya Afrika Tours about Founder&apos;s Circle membership and related travel experiences."
         >
+          <input type="hidden" name="source" value="homepage_popup">
+          <input type="hidden" name="hubspotPortalId" value="246097317">
+          <input type="hidden" name="hubspotFormId" value="cb87d460-fb2d-4c53-8c32-7daaa05067d7">
+          <input type="hidden" name="consentText" value="I agree to be contacted by Umoya Afrika Tours about Founder's Circle membership and related travel experiences.">
+          <input type="hidden" name="hutk" value="">
+          <input type="hidden" name="pageUri" value="">
+          <input type="hidden" name="pageName" value="">
           <div class="umoya-form-grid">
             <div class="umoya-field">
               <label for="umoyaTitle">Title</label>
-              <select id="umoyaTitle" name="TITLE">
-                <option value="" selected>Select...</option>
+              <select id="umoyaTitle" name="MERGE1">
+                <option value="" disabled selected>Select...</option>
                 <option value="Mr.">Mr.</option>
                 <option value="Mrs.">Mrs.</option>
                 <option value="Ms.">Ms.</option>
+                <option value="Miss">Miss</option>
                 <option value="Dr.">Dr.</option>
                 <option value="Prof.">Prof.</option>
               </select>
             </div>
-            <div class="umoya-field">
-              <label for="umoyaCountry">Country *</label>
-              <select id="umoyaCountry" name="COUNTRY" required>
-                <option value="" selected>Select country...</option>
-                <option value="United States">United States</option>
-                <option value="United Kingdom">United Kingdom</option>
-                <option value="Canada">Canada</option>
-                <option value="South Africa">South Africa</option>
-                <option value="Australia">Australia</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
+            <div class="umoya-field-spacer" aria-hidden="true"></div>
+
             <div class="umoya-field">
               <label for="umoyaFirst">First Name *</label>
               <input id="umoyaFirst" name="FNAME" type="text" placeholder="First name" required autocomplete="given-name">
@@ -375,6 +386,7 @@
               <label for="umoyaLast">Last Name *</label>
               <input id="umoyaLast" name="LNAME" type="text" placeholder="Last name" required autocomplete="family-name">
             </div>
+
             <div class="umoya-field">
               <label for="umoyaEmail">Email Address *</label>
               <input id="umoyaEmail" name="EMAIL" type="email" placeholder="your@email.com" required autocomplete="email">
@@ -383,20 +395,238 @@
               <label for="umoyaPhone">Phone Number</label>
               <input id="umoyaPhone" name="PHONE" type="tel" placeholder="+1 (000) 000-0000" autocomplete="tel">
             </div>
+
             <div class="umoya-field">
-              <label for="umoyaSeason">Travel Season</label>
-              <select id="umoyaSeason" name="SEASON">
-                <option value="" selected>Select season...</option>
+              <label for="umoyaCountry">Country *</label>
+              <select id="umoyaCountry" name="MERGE2" required>
+                  <option value="" disabled selected>Select country…</option>
+
+                  <!-- Frequently Used Countries Pinned to Top -->
+                  <option value="US">United States</option>
+                  <option value="GB">United Kingdom</option>
+                  <option value="CA">Canada</option>
+                  <option value="ZA">South Africa</option>
+                  <option value="AU">Australia</option>
+                  <option disabled>──────────</option>
+
+                  <!-- Complete ISO Alphabetical List -->
+                  <option value="AF">Afghanistan</option>
+                  <option value="AL">Albania</option>
+                  <option value="DZ">Algeria</option>
+                  <option value="AS">American Samoa</option>
+                  <option value="AD">Andorra</option>
+                  <option value="AO">Angola</option>
+                  <option value="AI">Anguilla</option>
+                  <option value="AG">Antigua and Barbuda</option>
+                  <option value="AR">Argentina</option>
+                  <option value="AM">Armenia</option>
+                  <option value="AW">Aruba</option>
+                  <option value="AT">Austria</option>
+                  <option value="AZ">Azerbaijan</option>
+                  <option value="BS">Bahamas</option>
+                  <option value="BH">Bahrain</option>
+                  <option value="BD">Bangladesh</option>
+                  <option value="BB">Barbados</option>
+                  <option value="BY">Belarus</option>
+                  <option value="BE">Belgium</option>
+                  <option value="BZ">Belize</option>
+                  <option value="BJ">Benin</option>
+                  <option value="BM">Bermuda</option>
+                  <option value="BT">Bhutan</option>
+                  <option value="BO">Bolivia</option>
+                  <option value="BA">Bosnia and Herzegovina</option>
+                  <option value="BW">Botswana</option>
+                  <option value="BR">Brazil</option>
+                  <option value="BN">Brunei Darussalam</option>
+                  <option value="BG">Bulgaria</option>
+                  <option value="BF">Burkina Faso</option>
+                  <option value="BI">Burundi</option>
+                  <option value="CV">Cabo Verde</option>
+                  <option value="KH">Cambodia</option>
+                  <option value="CM">Cameroon</option>
+                  <option value="KY">Cayman Islands</option>
+                  <option value="CF">Central African Republic</option>
+                  <option value="TD">Chad</option>
+                  <option value="CL">Chile</option>
+                  <option value="CN">China</option>
+                  <option value="CO">Colombia</option>
+                  <option value="KM">Comoros</option>
+                  <option value="CG">Congo</option>
+                  <option value="CD">Congo, Democratic Republic of the</option>
+                  <option value="CR">Costa Rica</option>
+                  <option value="HR">Croatia</option>
+                  <option value="CU">Cuba</option>
+                  <option value="CY">Cyprus</option>
+                  <option value="CZ">Czechia</option>
+                  <option value="DK">Denmark</option>
+                  <option value="DJ">Djibouti</option>
+                  <option value="DM">Dominica</option>
+                  <option value="DO">Dominican Republic</option>
+                  <option value="EC">Ecuador</option>
+                  <option value="EG">Egypt</option>
+                  <option value="SV">El Salvador</option>
+                  <option value="GQ">Equatorial Guinea</option>
+                  <option value="ER">Eritrea</option>
+                  <option value="EE">Estonia</option>
+                  <option value="SZ">Eswatini</option>
+                  <option value="ET">Ethiopia</option>
+                  <option value="FJ">Fiji</option>
+                  <option value="FI">Finland</option>
+                  <option value="FR">France</option>
+                  <option value="GF">French Guiana</option>
+                  <option value="PF">French Polynesia</option>
+                  <option value="GA">Gabon</option>
+                  <option value="GM">Gambia</option>
+                  <option value="GE">Georgia</option>
+                  <option value="DE">Germany</option>
+                  <option value="GH">Ghana</option>
+                  <option value="GR">Greece</option>
+                  <option value="GL">Greenland</option>
+                  <option value="GD">Grenada</option>
+                  <option value="GU">Guam</option>
+                  <option value="GT">Guatemala</option>
+                  <option value="GN">Guinea</option>
+                  <option value="GW">Guinea-Bissau</option>
+                  <option value="GY">Guyana</option>
+                  <option value="HT">Haiti</option>
+                  <option value="HN">Honduras</option>
+                  <option value="HK">Hong Kong</option>
+                  <option value="HU">Hungary</option>
+                  <option value="IS">Iceland</option>
+                  <option value="IN">India</option>
+                  <option value="ID">Indonesia</option>
+                  <option value="IR">Iran</option>
+                  <option value="IQ">Iraq</option>
+                  <option value="IE">Ireland</option>
+                  <option value="IL">Israel</option>
+                  <option value="IT">Italy</option>
+                  <option value="JM">Jamaica</option>
+                  <option value="JP">Japan</option>
+                  <option value="JO">Jordan</option>
+                  <option value="KZ">Kazakhstan</option>
+                  <option value="KE">Kenya</option>
+                  <option value="KI">Kiribati</option>
+                  <option value="KP">Korea (North)</option>
+                  <option value="KR">Korea (South)</option>
+                  <option value="KW">Kuwait</option>
+                  <option value="KG">Kyrgyzstan</option>
+                  <option value="LA">Lao People's Democratic Republic</option>
+                  <option value="LV">Latvia</option>
+                  <option value="LB">Lebanon</option>
+                  <option value="LS">Lesotho</option>
+                  <option value="LR">Liberia</option>
+                  <option value="LY">Libya</option>
+                  <option value="LI">Liechtenstein</option>
+                  <option value="LT">Lithuania</option>
+                  <option value="LU">Luxembourg</option>
+                  <option value="MO">Macao</option>
+                  <option value="MG">Madagascar</option>
+                  <option value="MW">Malawi</option>
+                  <option value="MY">Malaysia</option>
+                  <option value="MV">Maldives</option>
+                  <option value="ML">Mali</option>
+                  <option value="MT">Malta</option>
+                  <option value="MR">Mauritania</option>
+                  <option value="MU">Mauritius</option>
+                  <option value="MX">Mexico</option>
+                  <option value="FM">Micronesia</option>
+                  <option value="MD">Moldova</option>
+                  <option value="MC">Monaco</option>
+                  <option value="MN">Mongolia</option>
+                  <option value="ME">Montenegro</option>
+                  <option value="MA">Morocco</option>
+                  <option value="MZ">Mozambique</option>
+                  <option value="MM">Myanmar</option>
+                  <option value="NA">Namibia</option>
+                  <option value="NR">Nauru</option>
+                  <option value="NP">Nepal</option>
+                  <option value="NL">Netherlands</option>
+                  <option value="NC">New Caledonia</option>
+                  <option value="NZ">New Zealand</option>
+                  <option value="NI">Nicaragua</option>
+                  <option value="NE">Niger</option>
+                  <option value="NG">Nigeria</option>
+                  <option value="NO">Norway</option>
+                  <option value="OM">Oman</option>
+                  <option value="PK">Pakistan</option>
+                  <option value="PW">Palau</option>
+                  <option value="PA">Panama</option>
+                  <option value="PG">Papua New Guinea</option>
+                  <option value="PY">Paraguay</option>
+                  <option value="PE">Peru</option>
+                  <option value="PH">Philippines</option>
+                  <option value="PL">Poland</option>
+                  <option value="PT">Portugal</option>
+                  <option value="PR">Puerto Rico</option>
+                  <option value="QA">Qatar</option>
+                  <option value="RO">Romania</option>
+                  <option value="RU">Russian Federation</option>
+                  <option value="RW">Rwanda</option>
+                  <option value="WS">Samoa</option>
+                  <option value="SM">San Marino</option>
+                  <option value="ST">Sao Tome and Principe</option>
+                  <option value="SA">Saudi Arabia</option>
+                  <option value="SN">Senegal</option>
+                  <option value="RS">Serbia</option>
+                  <option value="SC">Seychelles</option>
+                  <option value="SL">Sierra Leone</option>
+                  <option value="SG">Singapore</option>
+                  <option value="SK">Slovakia</option>
+                  <option value="SI">Slovenia</option>
+                  <option value="SB">Solomon Islands</option>
+                  <option value="SO">Somalia</option>
+                  <option value="SS">South Sudan</option>
+                  <option value="ES">Spain</option>
+                  <option value="LK">Sri Lanka</option>
+                  <option value="SD">Sudan</option>
+                  <option value="SR">Suriname</option>
+                  <option value="SE">Sweden</option>
+                  <option value="CH">Switzerland</option>
+                  <option value="SY">Syrian Arab Republic</option>
+                  <option value="TW">Taiwan</option>
+                  <option value="TJ">Tajikistan</option>
+                  <option value="TZ">Tanzania</option>
+                  <option value="TH">Thailand</option>
+                  <option value="TL">Timor-Leste</option>
+                  <option value="TG">Togo</option>
+                  <option value="TO">Tonga</option>
+                  <option value="TT">Trinidad and Tobago</option>
+                  <option value="TN">Tunisia</option>
+                  <option value="TR">Turkey</option>
+                  <option value="TM">Turkmenistan</option>
+                  <option value="TV">Tuvalu</option>
+                  <option value="UG">Uganda</option>
+                  <option value="UA">Ukraine</option>
+                  <option value="AE">United Arab Emirates</option>
+                  <option value="UY">Uruguay</option>
+                  <option value="UZ">Uzbekistan</option>
+                  <option value="VU">Vanuatu</option>
+                  <option value="VE">Venezuela</option>
+                  <option value="VN">Viet Nam</option>
+                  <option value="YE">Yemen</option>
+                  <option value="ZM">Zambia</option>
+                  <option value="ZW">Zimbabwe</option>
+                </select>
+            </div>
+            <div class="umoya-field">
+              <label for="umoyaCity">City</label>
+              <input id="umoyaCity" name="MERGE3" type="text" placeholder="Your city" autocomplete="address-level2">
+            </div>
+
+            <div class="umoya-field">
+              <label for="umoyaSeason">When Would You Like to Travel?</label>
+              <select id="umoyaSeason" name="MERGE4">
+                <option value="" disabled selected>Select season...</option>
                 <option value="Spring">Spring</option>
                 <option value="Summer">Summer</option>
-                <option value="Autumn">Autumn</option>
+                <option value="Autumn (Fall)">Autumn (Fall)</option>
                 <option value="Winter">Winter</option>
               </select>
             </div>
             <div class="umoya-field">
               <label for="umoyaYear">Preferred Year</label>
-              <select id="umoyaYear" name="YEAR">
-                <option value="" selected>Select year...</option>
+              <select id="umoyaYear" name="MERGE5">
+                <option value="" disabled selected>Select year...</option>
                 <option value="2026">2026</option>
                 <option value="2027">2027</option>
                 <option value="2028">2028</option>
@@ -404,18 +634,19 @@
                 <option value="2030">2030</option>
               </select>
             </div>
+
             <div class="umoya-field full">
-              <label for="umoyaLength">Preferred Journey Length</label>
-              <select id="umoyaLength" name="LENGTH">
-                <option value="" selected>Select...</option>
-                <option value="15-Day Signature Journey">15-Day Signature Journey - 4 Provinces</option>
-                <option value="Shorter Regional Experience">Shorter Regional Experience</option>
-                <option value="Open to recommendation">Open to recommendation</option>
+              <label for="umoyaLength">How would you like to Travel?</label>
+              <select id="umoyaLength" name="MERGE6">
+                <option value="" disabled selected>Select...</option>
+                <option value="Small-Group Signature Journey">Small-Group Signature Journey</option>
+                <option value="Private Tailor-Made Journey">Private Tailor-Made Journey</option>
               </select>
             </div>
+
             <div class="umoya-field full">
               <label for="umoyaMessage">What Are You Hoping to Experience?</label>
-              <textarea id="umoyaMessage" name="MESSAGE" placeholder="Tell us about your travel interests and what draws you to South Africa."></textarea>
+              <textarea id="umoyaMessage" name="MERGE7" placeholder="Tell us about your travel interests, what you hope to experience, and what draws you to South Africa."></textarea>
             </div>
           </div>
 
@@ -423,6 +654,7 @@
           <p class="umoya-form-status" role="status" aria-live="polite"></p>
           <p class="umoya-form-legal">By submitting you agree to our Privacy Policy. Your information is held in strict confidence and never shared.</p>
         </form>
+        <iframe name="umoyaPopupSubmissionFrame" title="Umoya popup submission fallback" style="display:none;width:0;height:0;border:0;"></iframe>
       </div>
     </div>
   </div>
@@ -442,6 +674,8 @@
   var submitBtn = form ? form.querySelector('.umoya-form-submit') : null;
   var statusEl = form ? form.querySelector('.umoya-form-status') : null;
   var submitText = submitBtn ? submitBtn.textContent : '';
+  var pendingBackupKey = 'umoyaPendingFormBackups';
+  var pendingBackupMaxAge = 24 * 60 * 60 * 1000;
 
   /*
    * HubSpot setup:
@@ -450,16 +684,17 @@
    * 3. Make sure each mapped property exists on the HubSpot form.
    */
   var hubspotFieldMap = {
-    TITLE: 'salutation',
-    COUNTRY: 'country',
+    MERGE1: 'salutation',
     FNAME: 'firstname',
     LNAME: 'lastname',
     EMAIL: 'email',
     PHONE: 'phone',
-    SEASON: 'preferred_travel_season',
-    YEAR: 'preferred_travel_year',
-    LENGTH: 'preferred_journey_length',
-    MESSAGE: 'founders_circle_message'
+    MERGE2: 'country',
+    MERGE3: 'city',
+    MERGE4: 'preferred_travel_season',
+    MERGE5: 'preferred_travel_year',
+    MERGE6: 'preferred_journey_length',
+    MERGE7: 'founders_circle_message'
   };
 
   function movePopupToBody() {
@@ -545,7 +780,28 @@
     return '';
   }
 
+  function setHiddenValue(fieldName, value) {
+    var field = form && form.elements ? form.elements[fieldName] : null;
+    if (field) field.value = value || '';
+  }
+
+  function syncTrackingFields() {
+    if (!form) return;
+    setHiddenValue('hutk', getCookie('hubspotutk'));
+    setHiddenValue('pageUri', window.location.href);
+    setHiddenValue('pageName', document.title || 'Umoya Afrika Tours');
+  }
+
+  function identifyHubSpotVisitor() {
+    var email = getFormValue('EMAIL');
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+    window._hsq = window._hsq || [];
+    window._hsq.push(['identify', { email: email }]);
+    window._hsq.push(['trackPageView']);
+  }
+
   function buildHubSpotPayload() {
+    syncTrackingFields();
     var fields = [];
 
     Object.keys(hubspotFieldMap).forEach(function(fieldName) {
@@ -614,6 +870,117 @@
     });
   }
 
+  function buildWordPressBackupPayload() {
+    var hubspotPayload = buildHubSpotPayload();
+    var rawFields = {};
+
+    Object.keys(hubspotFieldMap).forEach(function(fieldName) {
+      rawFields[fieldName] = getFormValue(fieldName);
+    });
+
+    return {
+      submissionId: createSubmissionId(),
+      source: (form.getAttribute('data-umoya-form-source') || 'homepage_popup').trim(),
+      hubspotPortalId: (form.getAttribute('data-hubspot-portal-id') || '').trim(),
+      hubspotFormId: (form.getAttribute('data-hubspot-form-id') || '').trim(),
+      consentText: (form.getAttribute('data-hubspot-consent-text') || '').trim(),
+      hutk: getCookie('hubspotutk'),
+      pageUri: window.location.href,
+      pageName: document.title || 'Umoya Afrika Tours',
+      rawFields: rawFields,
+      fields: hubspotPayload.fields,
+      context: hubspotPayload.context
+    };
+  }
+
+  function createSubmissionId() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+      return window.crypto.randomUUID();
+    }
+
+    return 'umoya-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12);
+  }
+
+  function getPendingBackups() {
+    try {
+      return JSON.parse(window.localStorage.getItem(pendingBackupKey) || '[]').filter(function(item) {
+        return item && (!item.queuedAt || Date.now() - item.queuedAt < pendingBackupMaxAge);
+      });
+    } catch (ignore) {
+      return [];
+    }
+  }
+
+  function savePendingBackups(items) {
+    try {
+      window.localStorage.setItem(pendingBackupKey, JSON.stringify(items.slice(-8)));
+    } catch (ignore) {}
+  }
+
+  function queuePendingBackup(payload) {
+    payload.hubspotAlreadySent = true;
+    payload.queuedAt = Date.now();
+    var items = getPendingBackups();
+    items.push(payload);
+    savePendingBackups(items);
+  }
+
+  function flushPendingBackups() {
+    var items = getPendingBackups();
+    if (!items.length) return;
+
+    var endpoint = (form.getAttribute('data-wordpress-backup-endpoint') || '/wp-json/umoya/v1/submissions').trim();
+    var remaining = items.slice();
+
+    items.forEach(function(item) {
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify(item)
+      }).then(function(response) {
+        if (!response.ok) return;
+        remaining = remaining.filter(function(entry) {
+          return entry.submissionId !== item.submissionId;
+        });
+        savePendingBackups(remaining);
+      }).catch(function() {});
+    });
+  }
+
+  function submitToWordPressBackup(payload) {
+    var endpoint = (form.getAttribute('data-wordpress-backup-endpoint') || '/wp-json/umoya/v1/submissions').trim();
+
+    return fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify(payload)
+    }).then(function(response) {
+      return response.text().then(function(text) {
+        var data = null;
+        if (text) {
+          try { data = JSON.parse(text); } catch (ignore) {}
+        }
+
+        if (!response.ok || !data || data.saved !== true) {
+          var message = data && data.message ? data.message : 'WordPress could not save the submission. Please try again.';
+          throw new Error(message);
+        }
+
+        return data;
+      });
+    });
+  }
+
+  if (form) {
+    window.setTimeout(flushPendingBackups, 1200);
+    syncTrackingFields();
+    window.setTimeout(syncTrackingFields, 1500);
+  }
+
   function onKeydown(event) {
     if (event.key === 'Escape') closePopup();
   }
@@ -633,6 +1000,7 @@
   if (form) {
     form.addEventListener('submit', function(event) {
       event.preventDefault();
+      syncTrackingFields();
 
       var required = Array.prototype.slice.call(form.querySelectorAll('[required]'));
       var valid = true;
@@ -666,8 +1034,12 @@
 
       setSubmitting(true);
       showStatus('Sending your inquiry...', false);
+      syncTrackingFields();
+      identifyHubSpotVisitor();
 
-      submitToHubSpot()
+      var backupPayload = buildWordPressBackupPayload();
+
+      submitToWordPressBackup(backupPayload)
         .then(function() {
           form.setAttribute('data-submitted', 'true');
           form.removeAttribute('aria-busy');
@@ -678,8 +1050,21 @@
           showStatus('Thank you. Your inquiry has been received.', false);
         })
         .catch(function(error) {
-          setSubmitting(false);
-          showStatus(error.message || 'Something went wrong. Please try again.', true);
+          submitToHubSpot()
+            .then(function() {
+              queuePendingBackup(backupPayload);
+              form.setAttribute('data-submitted', 'true');
+              form.removeAttribute('aria-busy');
+              if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Inquiry Received - We Will Be in Touch Soon';
+              }
+              showStatus('Thank you. Your inquiry has been received.', false);
+            })
+            .catch(function(fallbackError) {
+              setSubmitting(false);
+              showStatus((error.message || 'WordPress could not save the submission.') + ' ' + (fallbackError.message || 'HubSpot fallback also failed.'), true);
+            });
         });
     });
 

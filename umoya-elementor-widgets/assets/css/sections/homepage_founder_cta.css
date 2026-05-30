@@ -1,0 +1,104 @@
+#umoya-founder-cta {
+      --cream: #F5F0EB;
+      --brown: #4B2E2B;
+      --terra: #D97E53;
+      --terra-dk: #C06840;
+      --white: #FFFFFF;
+      --ease: cubic-bezier(.25,.46,.45,.94);
+
+      position: relative;
+      isolation: isolate;
+      min-height: clamp(430px, 54vw, 620px);
+      display: flex;
+      align-items: center;
+      background: var(--brown);
+      color: var(--cream);
+      overflow: hidden;
+    }
+
+    #umoya-founder-cta,
+    #umoya-founder-cta *,
+    #umoya-founder-cta *::before,
+    #umoya-founder-cta *::after {
+      box-sizing: border-box;
+    }
+
+    #umoya-founder-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(75,46,43,.92) 0%, rgba(75,46,43,.72) 48%, rgba(75,46,43,.34) 100%),
+        url("https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-20.jpg") center/cover no-repeat;
+    }
+
+    #umoya-founder-cta::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.28));
+    }
+
+    #umoya-founder-cta .umoya-founder-inner {
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+      padding: clamp(62px, 8vw, 110px) 0;
+    }
+
+    #umoya-founder-cta .umoya-founder-copy {
+      max-width: 660px;
+    }
+
+    #umoya-founder-cta h2 {
+      margin: 0 0 22px;
+      color: var(--cream);
+      font-size: clamp(2.1rem, 5.2vw, 4.45rem);
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.04;
+    }
+
+    #umoya-founder-cta p {
+      margin: 0;
+      max-width: 620px;
+      color: rgba(245,240,235,.9);
+      font-size: clamp(1rem, 1.35vw, 1.1rem);
+      line-height: 1.78;
+    }
+
+    #umoya-founder-cta .umoya-founder-btn {
+      appearance: none;
+      -webkit-appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 34px;
+      min-height: 50px;
+      padding: 15px 30px;
+      background: var(--terra);
+      border: 2px solid var(--terra);
+      color: var(--white);
+      cursor: pointer;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      line-height: 1.2;
+      text-transform: uppercase;
+      transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+    }
+
+    #umoya-founder-cta .umoya-founder-btn:hover {
+      background: var(--terra-dk);
+      border-color: var(--terra-dk);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 720px) {
+      #umoya-founder-cta::before {
+        background:
+          linear-gradient(180deg, rgba(75,46,43,.88) 0%, rgba(75,46,43,.76) 58%, rgba(75,46,43,.58) 100%),
+          url("https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-20.jpg") center/cover no-repeat;
+      }
+    }

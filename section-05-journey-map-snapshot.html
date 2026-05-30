@@ -118,9 +118,9 @@
   /* ── B. PROVINCE TABS — 3-col interactive ──────────────────── */
   .fc-prov-tabs {
     display: grid;
-    grid-template-columns: 0.95fr 1fr 1.4fr;
+    grid-template-columns: 0.76fr 1.2fr 1.4fr;
     min-height: clamp(690px, 70vh, 820px);
-    background: var(--cream-lt);
+    background: #FFFFFF;
     border: 1px solid rgba(75,46,43,.08);
     border-radius: 10px;
     overflow: hidden;
@@ -131,7 +131,7 @@
   .fc-pt-list {
     display: flex;
     flex-direction: column;
-    background: var(--cream-lt);
+    background: #FFFFFF;
     border-right: 1px solid rgba(75,46,43,.08);
   }
 
@@ -172,7 +172,7 @@
   }
 
   .fc-pt-tab.fc-pt-active {
-    background: var(--cream);
+    background: #FFFFFF;
     border-left-color: var(--terra);
     color: var(--brown);
   }
@@ -224,7 +224,7 @@
   /* Content column (middle) ─────────────── */
   .fc-pt-content {
     position: relative;
-    background: var(--cream);
+    background: #FFFFFF;
     border-right: 1px solid rgba(75,46,43,.08);
     min-height: 0;
   }
@@ -232,10 +232,11 @@
   .fc-pt-panel {
     position: absolute;
     inset: 0;
-    padding: 52px 44px;
+    padding: 48px 38px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    overflow-y: auto;
     opacity: 0;
     transform: translateY(10px);
     pointer-events: none;
@@ -332,7 +333,7 @@
   .fc-pt-images {
     position: relative;
     overflow: hidden;
-    background: var(--brown);
+    background: #FFFFFF;
     min-height: 0;
   }
 
@@ -412,7 +413,7 @@
   }
 
   .fc-pa-item.fc-pa-active .fc-pa-trigger {
-    background: var(--cream);
+    background: #FFFFFF;
     color: var(--brown);
   }
 
@@ -499,7 +500,7 @@
     border-radius: 8px;
     overflow: hidden;
     aspect-ratio: 16 / 10;
-    background: var(--brown);
+    background: #FFFFFF;
     margin-bottom: 18px;
   }
   .fc-pa-image img {
@@ -559,6 +560,43 @@
     text-transform: uppercase;
   }
 
+  .fc-signature-moment {
+    display: block;
+  }
+
+  .fc-signature-moment + .fc-signature-moment {
+    margin-top: 0.55rem;
+  }
+
+  .fc-signature-star {
+    display: inline-block;
+    margin-right: 0.45em;
+    color: var(--terra);
+    font-size: 0.8em;
+    line-height: 1;
+    transform: translateY(-0.08em);
+  }
+
+  .fc-signature-title {
+    font-weight: 700;
+  }
+
+  /* Keep all journey card columns on brand white, even inside WordPress/theme wrappers. */
+  #fc-journey .fc-prov-tabs,
+  #fc-journey .fc-pt-list,
+  #fc-journey .fc-pt-tab,
+  #fc-journey .fc-pt-content,
+  #fc-journey .fc-pt-panel,
+  #fc-journey .fc-pt-images,
+  #fc-journey .fc-prov-acc,
+  #fc-journey .fc-pa-item,
+  #fc-journey .fc-pa-trigger,
+  #fc-journey .fc-pa-body,
+  #fc-journey .fc-pa-body-inner {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+  }
+
   .fc-map-snapshot-img {
     width: 100%;
     height: 100%;
@@ -573,13 +611,13 @@
 
     /* Province tabs: slightly tighter 3-col */
     .fc-prov-tabs {
-      grid-template-columns: 0.9fr 1fr 1.35fr;
+      grid-template-columns: 0.72fr 1.2fr 1.33fr;
       min-height: clamp(520px, 57vh, 620px);
     }
     .fc-pt-tab        { padding: 18px 20px; gap: 14px; }
     .fc-pt-tab:hover  { padding-left: 24px; }
     .fc-pt-nm         { font-size: 0.88rem; }
-    .fc-pt-panel      { padding: 44px 34px; }
+    .fc-pt-panel      { padding: 42px 30px; }
     .fc-pt-ttl        { font-size: clamp(1.4rem, 2.3vw, 1.9rem); }
     .fc-pt-body       { font-size: 0.9rem; }
 
@@ -593,7 +631,7 @@
     .fc-prov-acc {
       display: block;
       margin-bottom: 56px;
-      background: var(--cream-lt);
+      background: #FFFFFF;
       border: 1px solid rgba(75,46,43,.08);
       border-radius: 10px;
       overflow: hidden;
@@ -752,7 +790,7 @@
             <h3 class="fc-pt-ttl">Immerse Yourself in the Living History of South Africa</h3>
             <span class="fc-pt-rule" aria-hidden="true"></span>
             <p class="fc-pt-body">Walk through the powerful exhibits of the Apartheid Museum and experience Soweto with community rooted guides who know these streets intimately. Visit Mandela House on Vilakazi Street, the Hector Pieterson Memorial, and Freedom Park for a perspective on South Africa's past that goes far beyond the surface.</p>
-            <p class="fc-pt-signature"><strong>Signature Moment</strong>A hosted lunch in Soweto, joined by a special guest from the generation that shaped the city's history.</p>
+            <p class="fc-pt-signature"><strong>Signature Moment</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">&#9733;</span><span class="fc-signature-title">A hosted lunch in Soweto.</span> Joined by a special guest from the generation that shaped the city's history.</span></p>
           </div>
 
           <div class="fc-pt-panel" role="tabpanel"
@@ -761,7 +799,7 @@
             <h3 class="fc-pt-ttl">Into the Wild. Where the Landscape Takes Over.</h3>
             <span class="fc-pt-rule" aria-hidden="true"></span>
             <p class="fc-pt-body">Travel north into Mpumalanga along the Panorama Route, where the landscape opens dramatically at Blyde River Canyon, God's Window, and Lisbon Falls. Then settle into a private game reserve for exclusive game drives, bush walks, and conservation experiences. The Big Five, on your own terms.</p>
-            <p class="fc-pt-signature"><strong>Signature Moment</strong>Private sundowners in the bush. An evening stop in the reserve as the light goes, with drinks and the quiet that only the bush has.</p>
+            <p class="fc-pt-signature"><strong>Signature Moment</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">&#9733;</span><span class="fc-signature-title">Private sundowners in the bush.</span> An evening stop in the reserve as the light goes, with drinks and the quiet that only the bush has.</span></p>
           </div>
           <div class="fc-pt-panel" role="tabpanel"
                id="fc-pt-panel-5" aria-labelledby="fc-pt-tab-5">
@@ -776,8 +814,8 @@
             <span class="fc-pt-eye">Western Cape</span>
             <h3 class="fc-pt-ttl">Cape Town. Where the Continent Ends.</h3>
             <span class="fc-pt-rule" aria-hidden="true"></span>
-            <p class="fc-pt-body">Cape Town rewards those who take their time. Drive the Cape Peninsula, access Robben Island with rare insider access, and immerse yourself in the city's world-class contemporary African art scene. Wind the Atlantic Seaboard in a vintage car convoy along one of the world's most spectacular coastlines. Then, on your final morning, take a scenic helicopter flight over Table Mountain, the Twelve Apostles, and Robben Island. The journey closes unforgettably.</p>
-            <p class="fc-pt-signature"><strong>Signature Moments</strong>Creative access. A private visit to an artist's studio, designer, or gallery, with the people shaping South Africa's creative present.<br />Farewell dinner at Gold Restaurant. A private venue, a South African feast, and live Djembe drumming to close the journey.</p>
+            <p class="fc-pt-body">Cape Town rewards those who take their time. Drive the Cape Peninsula, experience Robben Island with rare insider access, and immerse yourself in the city's world-class contemporary African art scene. Wind the Atlantic Seaboard in a vintage car convoy along one of the world's most spectacular coastlines. Then, on your final morning, take a scenic helicopter flight over Table Mountain, the Twelve Apostles, and Robben Island. The journey closes unforgettably.</p>
+            <p class="fc-pt-signature"><strong>Signature Moments</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">&#9733;</span><span class="fc-signature-title">Creative access.</span> A private visit to an artist's studio, designer, or gallery, with the people shaping South Africa's creative present.</span><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">&#9733;</span><span class="fc-signature-title">Farewell dinner at Gold Restaurant.</span> A private venue, a South African feast, and live Djembe drumming to close the journey.</span></p>
           </div>
 
         </div>
@@ -889,7 +927,7 @@
               </div>
               <span class="fc-pa-rule" aria-hidden="true"></span>
               <p class="fc-pa-text">Walk through the powerful exhibits of the Apartheid Museum and experience Soweto with community rooted guides who know these streets intimately. Visit Mandela House on Vilakazi Street, the Hector Pieterson Memorial, and Freedom Park for a perspective on South Africa's past that goes far beyond the surface.</p>
-              <p class="fc-pa-signature"><strong>Signature Moment</strong>A hosted lunch in Soweto, joined by a special guest from the generation that shaped the city's history.</p>
+              <p class="fc-pa-signature"><strong>Signature Moment</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">&#9733;</span><span class="fc-signature-title">A hosted lunch in Soweto.</span> Joined by a special guest from the generation that shaped the city's history.</span></p>
             </div>
           </div>
         </article>
@@ -920,7 +958,7 @@
               </div>
               <span class="fc-pa-rule" aria-hidden="true"></span>
               <p class="fc-pa-text">Travel north into Mpumalanga along the Panorama Route, where the landscape opens dramatically at Blyde River Canyon, God's Window, and Lisbon Falls. Then settle into a private game reserve for exclusive game drives, bush walks, and conservation experiences. The Big Five, on your own terms.</p>
-              <p class="fc-pa-signature"><strong>Signature Moment</strong>Private sundowners in the bush. An evening stop in the reserve as the light goes, with drinks and the quiet that only the bush has.</p>
+              <p class="fc-pa-signature"><strong>Signature Moment</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">&#9733;</span><span class="fc-signature-title">Private sundowners in the bush.</span> An evening stop in the reserve as the light goes, with drinks and the quiet that only the bush has.</span></p>
             </div>
           </div>
         </article>
@@ -979,8 +1017,8 @@
                      alt="" loading="lazy" />
               </div>
               <span class="fc-pa-rule" aria-hidden="true"></span>
-              <p class="fc-pa-text">Cape Town rewards those who take their time. Drive the Cape Peninsula, access Robben Island with rare insider access, and immerse yourself in the city's world-class contemporary African art scene. Wind the Atlantic Seaboard in a vintage car convoy along one of the world's most spectacular coastlines. Then, on your final morning, take a scenic helicopter flight over Table Mountain, the Twelve Apostles, and Robben Island. The journey closes unforgettably.</p>
-              <p class="fc-pa-signature"><strong>Signature Moments</strong>Creative access. A private visit to an artist's studio, designer, or gallery, with the people shaping South Africa's creative present.<br />Farewell dinner at Gold Restaurant. A private venue, a South African feast, and live Djembe drumming to close the journey.</p>
+              <p class="fc-pa-text">Cape Town rewards those who take their time. Drive the Cape Peninsula, experience Robben Island with rare insider access, and immerse yourself in the city's world-class contemporary African art scene. Wind the Atlantic Seaboard in a vintage car convoy along one of the world's most spectacular coastlines. Then, on your final morning, take a scenic helicopter flight over Table Mountain, the Twelve Apostles, and Robben Island. The journey closes unforgettably.</p>
+              <p class="fc-pa-signature"><strong>Signature Moments</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">&#9733;</span><span class="fc-signature-title">Creative access.</span> A private visit to an artist's studio, designer, or gallery, with the people shaping South Africa's creative present.</span><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">&#9733;</span><span class="fc-signature-title">Farewell dinner at Gold Restaurant.</span> A private venue, a South African feast, and live Djembe drumming to close the journey.</span></p>
             </div>
           </div>
         </article>

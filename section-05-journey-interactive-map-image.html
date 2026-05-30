@@ -48,11 +48,22 @@
   /* ── Reveal ────────────────────────────────────────────────── */
   .fc-jrn-rv {
     will-change: transform, opacity;
-    opacity: 0;
-    transform: translateY(28px);
+    opacity: 1;
+    transform: none;
     transition: opacity .85s var(--ease), transform .85s var(--ease);
   }
-  .fc-jrn-rv.on { opacity: 1; transform: none; }
+
+  /* Reveal is progressive enhancement only; content must never depend on JS. */
+  #fc-journey.fc-reveal-ready .fc-jrn-rv {
+    opacity: 1;
+    transform: none;
+  }
+
+  #fc-journey.fc-reveal-ready .fc-jrn-rv.on,
+  .fc-jrn-rv.on {
+    opacity: 1;
+    transform: none;
+  }
   .fc-jrn-rv.d1 { transition-delay: .14s; }
   .fc-jrn-rv.d2 { transition-delay: .26s; }
 
@@ -120,9 +131,9 @@
   /* ── B. PROVINCE TABS — 3-col interactive ──────────────────── */
   .fc-prov-tabs {
     display: grid;
-    grid-template-columns: 0.95fr 1fr 1.4fr;
+    grid-template-columns: 0.76fr 1.2fr 1.4fr;
     min-height: clamp(690px, 70vh, 820px);
-    background: var(--tab-surface);
+    background: #FFFFFF;
     border: 1px solid rgba(75,46,43,.08);
     border-radius: 10px;
     overflow: hidden;
@@ -133,7 +144,7 @@
   .fc-pt-list {
     display: flex;
     flex-direction: column;
-    background: var(--tab-surface);
+    background: #FFFFFF;
     border-right: 1px solid rgba(75,46,43,.08);
   }
 
@@ -174,7 +185,7 @@
   }
 
   .fc-pt-tab.fc-pt-active {
-    background: var(--tab-active);
+    background: #FFFFFF;
     border-left-color: var(--terra);
     color: var(--brown);
   }
@@ -226,7 +237,7 @@
   /* Content column (middle) ─────────────── */
   .fc-pt-content {
     position: relative;
-    background: var(--white);
+    background: #FFFFFF;
     border-right: 1px solid rgba(75,46,43,.08);
     min-height: 0;
   }
@@ -234,10 +245,11 @@
   .fc-pt-panel {
     position: absolute;
     inset: 0;
-    padding: 52px 44px;
+    padding: 48px 38px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    overflow-y: auto;
     opacity: 0;
     transform: translateY(10px);
     pointer-events: none;
@@ -334,7 +346,7 @@
   .fc-pt-images {
     position: relative;
     overflow: hidden;
-    background: var(--white);
+    background: #FFFFFF;
     min-height: 0;
   }
 
@@ -390,6 +402,27 @@
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
+  }
+
+  .fc-signature-moment {
+    display: block;
+  }
+
+  .fc-signature-moment + .fc-signature-moment {
+    margin-top: 0.55rem;
+  }
+
+  .fc-signature-star {
+    display: inline-block;
+    margin-right: 0.45em;
+    color: var(--terra);
+    font-size: 0.8em;
+    line-height: 1;
+    transform: translateY(-0.08em);
+  }
+
+  .fc-signature-title {
+    font-weight: 700;
   }
 
   .fc-route-map-graphic {
@@ -507,7 +540,7 @@
   }
 
   .fc-pa-item.fc-pa-active .fc-pa-trigger {
-    background: var(--tab-active);
+    background: #FFFFFF;
     color: var(--brown);
   }
 
@@ -637,19 +670,35 @@
     margin: 0 0 0.75rem;
   }
 
+  /* Keep all journey card columns on brand white, even inside WordPress/theme wrappers. */
+  #fc-journey .fc-prov-tabs,
+  #fc-journey .fc-pt-list,
+  #fc-journey .fc-pt-tab,
+  #fc-journey .fc-pt-content,
+  #fc-journey .fc-pt-panel,
+  #fc-journey .fc-pt-images,
+  #fc-journey .fc-prov-acc,
+  #fc-journey .fc-pa-item,
+  #fc-journey .fc-pa-trigger,
+  #fc-journey .fc-pa-body,
+  #fc-journey .fc-pa-body-inner {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+  }
+
   /* ── TABLET ≤1024px ────────────────────────────────────────── */
   @media (max-width: 1024px) {
     .fc-jrn-c     { padding: 0 32px; }
 
     /* Province tabs: slightly tighter 3-col */
     .fc-prov-tabs {
-      grid-template-columns: 0.9fr 1fr 1.35fr;
+      grid-template-columns: 0.72fr 1.2fr 1.33fr;
       min-height: clamp(520px, 57vh, 620px);
     }
     .fc-pt-tab        { padding: 18px 20px; gap: 14px; }
     .fc-pt-tab:hover  { padding-left: 24px; }
     .fc-pt-nm         { font-size: 0.88rem; }
-    .fc-pt-panel      { padding: 44px 34px; }
+    .fc-pt-panel      { padding: 42px 30px; }
     .fc-pt-ttl        { font-size: clamp(1.4rem, 2.3vw, 1.9rem); }
     .fc-pt-body       { font-size: 0.9rem; }
 
@@ -663,7 +712,7 @@
     .fc-prov-acc {
       display: block;
       margin-bottom: 56px;
-      background: var(--tab-surface);
+      background: #FFFFFF;
       border: 1px solid rgba(75,46,43,.08);
       border-radius: 10px;
       overflow: hidden;
@@ -676,12 +725,14 @@
   /* ── MOBILE ≤768px ─────────────────────────────────────────── */
   @media (max-width: 768px) {
     #fc-journey   { padding: 52px 0 28px; overflow-x: hidden; }
-    .fc-jrn-c     { width: 100%; max-width: 100%; padding: 0 20px; }
+    .fc-jrn-c,
     .fc-jrn-tabs-wrap {
-      width: min(100%, calc(100vw - 40px));
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 0;
+      width: 100%;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: clamp(16px, 4vw, 20px);
+      padding-right: clamp(16px, 4vw, 20px);
     }
 
     /* Header */
@@ -710,7 +761,7 @@
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 0;
-      width: min(100%, calc(100vw - 40px));
+      width: 100%;
       max-width: 100%;
       margin: 0 auto;
       padding: 12px 0;
@@ -770,14 +821,14 @@
   /* ── SMALL MOBILE ≤420px ───────────────────────────────────── */
   @media (max-width: 480px) {
     .fc-jrn-stats {
-      width: min(100%, 320px);
-      margin-left: 0;
+      width: 100%;
+      margin-left: auto;
       margin-right: auto;
     }
 
     .fc-jrn-tabs-wrap {
-      width: min(100%, 380px);
-      margin-left: 0;
+      width: 100%;
+      margin-left: auto;
       margin-right: auto;
     }
 
@@ -812,7 +863,7 @@
 
   @media (max-width: 420px) {
     #fc-journey   { padding: 48px 0 24px; }
-    .fc-jrn-c     { padding: 0 16px; }
+    .fc-jrn-c     { padding-left: 16px; padding-right: 16px; }
 
     .fc-jrn-hd    { gap: 22px; margin-bottom: 26px; }
     .fc-jrn-ttl   { font-size: clamp(1.9rem, 8.8vw, 2.3rem); }
@@ -847,7 +898,7 @@
     <div class="fc-jrn-c">
 
       <!-- ── A. HEADER + STATS ──────────────────────────── -->
-      <div class="fc-jrn-hd fc-jrn-rv">
+      <div class="fc-jrn-hd fc-jrn-rv on">
         <div>
           <span class="fc-jrn-eye">Our Signature Journey</span>
           <h2 class="fc-jrn-ttl">Your Journey <em>Begins Here</em></h2>
@@ -876,7 +927,7 @@
 
     <!-- B. PROVINCE TABS + ACCORDION -->
     <div class="fc-jrn-tabs-wrap">
-      <div class="fc-prov-tabs fc-jrn-rv d1">
+      <div class="fc-prov-tabs fc-jrn-rv d1 on">
 
         <!-- Left: title tabs -->
         <div class="fc-pt-list" role="tablist" aria-label="Signature Journey — five sections">
@@ -949,7 +1000,7 @@
             <h3 class="fc-pt-ttl">Immerse Yourself in the Living History of South Africa</h3>
             <span class="fc-pt-rule" aria-hidden="true"></span>
             <p class="fc-pt-body">Walk through the powerful exhibits of the Apartheid Museum and experience Soweto with community rooted guides who know these streets intimately. Visit Mandela House on Vilakazi Street, the Hector Pieterson Memorial, and Freedom Park for a perspective on South Africa's past that goes far beyond the surface.</p>
-            <p class="fc-pt-signature"><strong>Signature Moment</strong>A hosted lunch in Soweto, joined by a special guest from the generation that shaped the city's history.</p>
+            <p class="fc-pt-signature"><strong>Signature Moment</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">&#9733;</span><span class="fc-signature-title">A hosted lunch in Soweto.</span> Joined by a special guest from the generation that shaped the city's history.</span></p>
           </div>
 
           <div class="fc-pt-panel" role="tabpanel"
@@ -958,7 +1009,7 @@
             <h3 class="fc-pt-ttl">Into the Wild. Where the Landscape Takes Over.</h3>
             <span class="fc-pt-rule" aria-hidden="true"></span>
             <p class="fc-pt-body">Travel north into Mpumalanga along the Panorama Route, where the landscape opens dramatically at Blyde River Canyon, God's Window, and Lisbon Falls. Then settle into a private game reserve for exclusive game drives, bush walks, and conservation experiences. The Big Five, on your own terms.</p>
-            <p class="fc-pt-signature"><strong>Signature Moment</strong>Private sundowners in the bush. An evening stop in the reserve as the light goes, with drinks and the quiet that only the bush has.</p>
+            <p class="fc-pt-signature"><strong>Signature Moment</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">&#9733;</span><span class="fc-signature-title">Private sundowners in the bush.</span> An evening stop in the reserve as the light goes, with drinks and the quiet that only the bush has.</span></p>
           </div>
           <div class="fc-pt-panel" role="tabpanel"
                id="fc-pt-panel-5" aria-labelledby="fc-pt-tab-5">
@@ -973,8 +1024,8 @@
             <span class="fc-pt-eye">Western Cape</span>
             <h3 class="fc-pt-ttl">Cape Town. Where the Continent Ends.</h3>
             <span class="fc-pt-rule" aria-hidden="true"></span>
-            <p class="fc-pt-body">Cape Town rewards those who take their time. Drive the Cape Peninsula, access Robben Island with rare insider access, and immerse yourself in the city's world-class contemporary African art scene. Wind the Atlantic Seaboard in a vintage car convoy along one of the world's most spectacular coastlines. Then, on your final morning, take a scenic helicopter flight over Table Mountain, the Twelve Apostles, and Robben Island. The journey closes unforgettably.</p>
-            <p class="fc-pt-signature"><strong>Signature Moments</strong>Creative access. A private visit to an artist's studio, designer, or gallery, with the people shaping South Africa's creative present.<br />Farewell dinner at Gold Restaurant. A private venue, a South African feast, and live Djembe drumming to close the journey.</p>
+            <p class="fc-pt-body">Cape Town rewards those who take their time. Drive the Cape Peninsula, experience Robben Island with rare insider access, and immerse yourself in the city's world-class contemporary African art scene. Wind the Atlantic Seaboard in a vintage car convoy along one of the world's most spectacular coastlines. Then, on your final morning, take a scenic helicopter flight over Table Mountain, the Twelve Apostles, and Robben Island. The journey closes unforgettably.</p>
+            <p class="fc-pt-signature"><strong>Signature Moments</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">&#9733;</span><span class="fc-signature-title">Creative access.</span> A private visit to an artist's studio, designer, or gallery, with the people shaping South Africa's creative present.</span><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">&#9733;</span><span class="fc-signature-title">Farewell dinner at Gold Restaurant.</span> A private venue, a South African feast, and live Djembe drumming to close the journey.</span></p>
           </div>
 
         </div>
@@ -1054,7 +1105,7 @@
       <!-- ── B-MOBILE. PROVINCE ACCORDION ──────────────────
            Renders only at <=1100px (CSS toggle). Mirrors the
            desktop tabs above as a stacked FAQ-style reveal. -->
-      <div class="fc-prov-acc fc-jrn-rv d1" aria-label="Signature Journey — five sections">
+      <div class="fc-prov-acc fc-jrn-rv d1 on" aria-label="Signature Journey — five sections">
 
         <!-- 01 Overview -->
         <article class="fc-pa-item fc-pa-active">
@@ -1141,7 +1192,7 @@
               </div>
               <span class="fc-pa-rule" aria-hidden="true"></span>
               <p class="fc-pa-text">Walk through the powerful exhibits of the Apartheid Museum and experience Soweto with community rooted guides who know these streets intimately. Visit Mandela House on Vilakazi Street, the Hector Pieterson Memorial, and Freedom Park for a perspective on South Africa's past that goes far beyond the surface.</p>
-              <p class="fc-pa-signature"><strong>Signature Moment</strong>A hosted lunch in Soweto, joined by a special guest from the generation that shaped the city's history.</p>
+              <p class="fc-pa-signature"><strong>Signature Moment</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">&#9733;</span><span class="fc-signature-title">A hosted lunch in Soweto.</span> Joined by a special guest from the generation that shaped the city's history.</span></p>
             </div>
           </div>
         </article>
@@ -1172,7 +1223,7 @@
               </div>
               <span class="fc-pa-rule" aria-hidden="true"></span>
               <p class="fc-pa-text">Travel north into Mpumalanga along the Panorama Route, where the landscape opens dramatically at Blyde River Canyon, God's Window, and Lisbon Falls. Then settle into a private game reserve for exclusive game drives, bush walks, and conservation experiences. The Big Five, on your own terms.</p>
-              <p class="fc-pa-signature"><strong>Signature Moment</strong>Private sundowners in the bush. An evening stop in the reserve as the light goes, with drinks and the quiet that only the bush has.</p>
+              <p class="fc-pa-signature"><strong>Signature Moment</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">&#9733;</span><span class="fc-signature-title">Private sundowners in the bush.</span> An evening stop in the reserve as the light goes, with drinks and the quiet that only the bush has.</span></p>
             </div>
           </div>
         </article>
@@ -1231,8 +1282,8 @@
                      alt="" loading="lazy" />
               </div>
               <span class="fc-pa-rule" aria-hidden="true"></span>
-              <p class="fc-pa-text">Cape Town rewards those who take their time. Drive the Cape Peninsula, access Robben Island with rare insider access, and immerse yourself in the city's world-class contemporary African art scene. Wind the Atlantic Seaboard in a vintage car convoy along one of the world's most spectacular coastlines. Then, on your final morning, take a scenic helicopter flight over Table Mountain, the Twelve Apostles, and Robben Island. The journey closes unforgettably.</p>
-              <p class="fc-pa-signature"><strong>Signature Moments</strong>Creative access. A private visit to an artist's studio, designer, or gallery, with the people shaping South Africa's creative present.<br />Farewell dinner at Gold Restaurant. A private venue, a South African feast, and live Djembe drumming to close the journey.</p>
+              <p class="fc-pa-text">Cape Town rewards those who take their time. Drive the Cape Peninsula, experience Robben Island with rare insider access, and immerse yourself in the city's world-class contemporary African art scene. Wind the Atlantic Seaboard in a vintage car convoy along one of the world's most spectacular coastlines. Then, on your final morning, take a scenic helicopter flight over Table Mountain, the Twelve Apostles, and Robben Island. The journey closes unforgettably.</p>
+              <p class="fc-pa-signature"><strong>Signature Moments</strong><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">&#9733;</span><span class="fc-signature-title">Creative access.</span> A private visit to an artist's studio, designer, or gallery, with the people shaping South Africa's creative present.</span><span class="fc-signature-moment"><span class="fc-signature-star" aria-hidden="true">&#9733;</span><span class="fc-signature-title">Farewell dinner at Gold Restaurant.</span> A private venue, a South African feast, and live Djembe drumming to close the journey.</span></p>
             </div>
           </div>
         </article>
@@ -1247,7 +1298,18 @@
   (function(){
     'use strict';
 
-    var rvEls = document.querySelectorAll('#fc-journey .fc-jrn-rv');
+    var root = document.getElementById('fc-journey');
+    if(!root) return;
+
+    var rvEls = root.querySelectorAll('.fc-jrn-rv');
+
+    function fcRevealAll(){
+      rvEls.forEach(function(el){
+        el.classList.add('on');
+        el.style.willChange = 'auto';
+      });
+    }
+
     if('IntersectionObserver' in window){
       var rvObs = new IntersectionObserver(function(entries){
         entries.forEach(function(e){
@@ -1256,12 +1318,14 @@
       },{threshold:.06});
       rvEls.forEach(function(el){ rvObs.observe(el); });
     } else {
-      rvEls.forEach(function(el){ el.classList.add('on'); });
+      fcRevealAll();
     }
 
-    var ptTabs   = document.querySelectorAll('#fc-journey .fc-pt-tab');
-    var ptPanels = document.querySelectorAll('#fc-journey .fc-pt-panel');
-    var ptImgs   = document.querySelectorAll('#fc-journey .fc-pt-img');
+    window.setTimeout(fcRevealAll, 900);
+
+    var ptTabs   = root.querySelectorAll('.fc-pt-tab');
+    var ptPanels = root.querySelectorAll('.fc-pt-panel');
+    var ptImgs   = root.querySelectorAll('.fc-pt-img');
 
     function fcActivateTab(idx){
       var i;
@@ -1315,8 +1379,8 @@
       })(ptTabs[t], t);
     }
 
-    var paItems    = document.querySelectorAll('#fc-journey .fc-pa-item');
-    var paTriggers = document.querySelectorAll('#fc-journey .fc-pa-trigger');
+    var paItems    = root.querySelectorAll('.fc-pa-item');
+    var paTriggers = root.querySelectorAll('.fc-pa-trigger');
 
     for(var a = 0; a < paTriggers.length; a++){
       (function(triggerEl, idx){
@@ -1335,7 +1399,7 @@
       })(paTriggers[a], a);
     }
 
-    var routeMaps = document.querySelectorAll('#fc-journey .fc-route-map-graphic');
+    var routeMaps = root.querySelectorAll('.fc-route-map-graphic');
 
     function clamp(n, min, max) {
       return Math.max(min, Math.min(max, n));

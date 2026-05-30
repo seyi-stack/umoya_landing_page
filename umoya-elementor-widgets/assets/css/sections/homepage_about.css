@@ -1,0 +1,166 @@
+#umoya-about {
+      --cream: #F5F0EB;
+      --brown: #4B2E2B;
+      --terra: #D97E53;
+      --terra-dk: #C06840;
+      --olive: #708238;
+      --ink: #3A2F2C;
+      --white: #FFFFFF;
+      --ease: cubic-bezier(.25,.46,.45,.94);
+
+      background: var(--white);
+      color: var(--brown);
+      overflow: hidden;
+    }
+
+    #umoya-about,
+    #umoya-about *,
+    #umoya-about *::before,
+    #umoya-about *::after {
+      box-sizing: border-box;
+    }
+
+    #umoya-about .umoya-about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      min-height: clamp(620px, 78vh, 820px);
+    }
+
+    #umoya-about .umoya-about-copy {
+      display: flex;
+      align-items: center;
+      padding: clamp(56px, 8vw, 112px) clamp(28px, 7vw, 96px);
+    }
+
+    #umoya-about .umoya-about-inner {
+      width: min(100%, 560px);
+      margin-left: auto;
+    }
+
+    #umoya-about .umoya-about-eye {
+      display: block;
+      margin-bottom: 18px;
+      color: var(--terra);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.24em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    #umoya-about h2 {
+      margin: 0 0 26px;
+      color: var(--ink);
+      font-size: clamp(2.05rem, 4.5vw, 4.2rem);
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.04;
+    }
+
+    #umoya-about .umoya-about-rule {
+      display: block;
+      width: 54px;
+      height: 2px;
+      margin: 0 0 28px;
+      background: var(--terra);
+    }
+
+    #umoya-about .umoya-about-body {
+      display: grid;
+      gap: 18px;
+      color: rgba(75,46,43,.88);
+      font-size: clamp(1rem, 1.35vw, 1.08rem);
+      line-height: 1.82;
+    }
+
+    #umoya-about .umoya-about-body p {
+      margin: 0;
+    }
+
+    #umoya-about .umoya-about-media {
+      position: relative;
+      min-height: 100%;
+      overflow: hidden;
+      background: var(--brown);
+    }
+
+    #umoya-about .umoya-about-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      object-position: center 34%;
+      display: block;
+      transform: scale(1.01);
+    }
+
+    #umoya-about .umoya-about-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(75,46,43,.08), rgba(75,46,43,.02));
+      pointer-events: none;
+    }
+
+    #umoya-about .umoya-about-rv {
+      opacity: 1;
+      transform: none;
+    }
+
+    #umoya-about .umoya-about-rv.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 900px) {
+      #umoya-about {
+        padding: 34px 0 58px;
+      }
+
+      #umoya-about .umoya-about-layout {
+        grid-template-columns: 1fr;
+        width: min(1008px, 92vw);
+        margin: 0 auto;
+        gap: 34px;
+        min-height: 0;
+      }
+
+      #umoya-about .umoya-about-copy {
+        order: 2;
+        padding: 0;
+      }
+
+      #umoya-about .umoya-about-inner {
+        width: 100%;
+        margin: 0;
+      }
+
+      #umoya-about .umoya-about-media {
+        order: 1;
+        min-height: clamp(360px, 68vw, 520px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      #umoya-about {
+        width: 100vw;
+        max-width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        padding: 28px 0 52px;
+      }
+
+      #umoya-about .umoya-about-layout {
+        gap: 28px;
+      }
+
+      #umoya-about .umoya-about-media {
+        width: 100%;
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+        border-radius: 9px;
+        box-shadow: 0 18px 44px rgba(75,46,43,.12);
+      }
+    }

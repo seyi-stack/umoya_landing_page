@@ -1,0 +1,392 @@
+#umoyaHomepageNavMount {
+      height: 0;
+      min-height: 0;
+      width: 100%;
+      position: relative;
+      z-index: 2147483000;
+      line-height: 0;
+      overflow: visible;
+    }
+
+    #umoyaHomepageNav {
+      --cream: #F5F0EB;
+      --brown: #4B2E2B;
+      --terra: #D97E53;
+      --terra-dk: #C06840;
+      --white: #FFFFFF;
+      --ease: cubic-bezier(.25,.46,.45,.94);
+
+      position: fixed !important;
+      top: 0 !important;
+      left: 0;
+      right: 0;
+      bottom: auto;
+      z-index: 2147483000;
+      width: 100%;
+      height: 64px;
+      background: rgba(245,240,235,.99);
+      border-bottom: 1px solid rgba(75,46,43,.09);
+      box-shadow: 0 2px 24px rgba(75,46,43,.07);
+      overflow: visible;
+    }
+
+    #umoyaHomepageNav,
+    #umoyaHomepageNav *,
+    #umoyaHomepageNav *::before,
+    #umoyaHomepageNav *::after {
+      box-sizing: border-box;
+    }
+
+    #umoya-hero,
+    #umoya-about,
+    #umoya-journey-anchor,
+    #umoya-journey,
+    #fc-pillars,
+    #fc-details {
+      scroll-margin-top: 76px;
+    }
+
+    #umoyaHomepageNav .umoya-nav-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      height: 64px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    #umoyaHomepageNav .umoya-nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    #umoyaHomepageNav .umoya-nav-logo img {
+      display: block;
+      width: auto;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    #umoyaHomepageNav .umoya-nav-logo-text {
+      color: var(--brown);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      white-space: nowrap;
+    }
+
+    #umoyaHomepageNav .umoya-nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    #umoyaHomepageNav .umoya-nav-item {
+      position: relative;
+    }
+
+    #umoyaHomepageNav .umoya-nav-link {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      height: 64px;
+      padding: 0 14px;
+      border: 0;
+      background: transparent;
+      color: var(--brown);
+      cursor: pointer;
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .11em;
+      line-height: 1;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: color .25s var(--ease);
+    }
+
+    #umoyaHomepageNav .umoya-nav-link:hover,
+    #umoyaHomepageNav .umoya-nav-item.is-active .umoya-nav-link {
+      color: var(--brown);
+    }
+
+    #umoyaHomepageNav .umoya-nav-link::after {
+      content: "";
+      position: absolute;
+      right: 14px;
+      bottom: 0;
+      left: 14px;
+      height: 2px;
+      background: var(--terra);
+      border-radius: 2px 2px 0 0;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform .3s var(--ease);
+    }
+
+    #umoyaHomepageNav .umoya-nav-item.is-active .umoya-nav-link {
+      font-weight: 700;
+    }
+
+    #umoyaHomepageNav .umoya-nav-item.is-active .umoya-nav-link::after {
+      transform: scaleX(1);
+    }
+
+    #umoyaHomepageNav .umoya-nav-cta {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 20px;
+      flex-shrink: 0;
+      background: var(--terra);
+      border: 2px solid var(--terra);
+      color: var(--white);
+      cursor: pointer;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      line-height: 1.2;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
+    }
+
+    #umoyaHomepageNav .umoya-nav-cta:hover {
+      background: var(--terra-dk);
+      border-color: var(--terra-dk);
+      color: var(--white);
+      box-shadow: 0 6px 18px rgba(217,126,83,.28);
+      transform: translateY(-1px);
+    }
+
+    #umoyaHomepageNav .umoya-nav-burger {
+      appearance: none;
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 8px;
+      flex-shrink: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      background: transparent;
+      border: 0;
+      border-radius: 4px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: background .2s;
+    }
+
+    #umoyaHomepageNav .umoya-nav-burger:hover {
+      background: rgba(75,46,43,.06);
+    }
+
+    #umoyaHomepageNav .umoya-nav-burger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--brown);
+      border-radius: 2px;
+      transform-origin: center;
+      transition: transform .35s var(--ease), opacity .25s, width .25s;
+    }
+
+    #umoyaHomepageNav.is-open .umoya-nav-burger span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+
+    #umoyaHomepageNav.is-open .umoya-nav-burger span:nth-child(2) {
+      width: 0;
+      opacity: 0;
+    }
+
+    #umoyaHomepageNav.is-open .umoya-nav-burger span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      background: rgba(245,240,235,.995);
+      border-bottom: 1px solid rgba(75,46,43,.09);
+      box-shadow: 0 8px 32px rgba(75,46,43,.12);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-6px);
+      transition: transform .35s var(--ease), opacity .3s var(--ease);
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown.is-open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-list {
+      margin: 0;
+      padding: 10px 0 14px;
+      list-style: none;
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-item {
+      border-bottom: 1px solid rgba(75,46,43,.06);
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-item:last-child {
+      border-bottom: 0;
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-link {
+      appearance: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 15px 24px;
+      background: transparent;
+      border: 0;
+      color: var(--brown);
+      cursor: pointer;
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      line-height: 1.2;
+      text-align: left;
+      text-decoration: none;
+      text-transform: uppercase;
+      -webkit-tap-highlight-color: transparent;
+      transition: color .2s, background .2s, padding-left .2s;
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-link:hover,
+    #umoyaHomepageNav .umoya-nav-dropdown-item.is-active .umoya-nav-dropdown-link {
+      background: rgba(217,126,83,.05);
+      color: var(--brown);
+      padding-left: 30px;
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-item.is-active .umoya-nav-dropdown-link::after {
+      content: "";
+      display: block;
+      width: 6px;
+      height: 6px;
+      flex-shrink: 0;
+      background: var(--terra);
+      border-radius: 50%;
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-cta-row {
+      padding: 14px 24px 10px;
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 20px;
+      background: var(--terra);
+      border: 0;
+      color: var(--white);
+      cursor: pointer;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background .25s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-cta:hover {
+      background: var(--terra-dk);
+      color: var(--white);
+    }
+
+    @media (max-width: 1120px) {
+      #umoyaHomepageNav .umoya-nav-inner {
+        gap: 14px;
+        padding: 0 18px;
+      }
+
+      #umoyaHomepageNav .umoya-nav-link {
+        padding: 0 10px;
+        font-size: .68rem;
+        letter-spacing: .09em;
+      }
+
+      #umoyaHomepageNav .umoya-nav-link::after {
+        right: 10px;
+        left: 10px;
+      }
+
+      #umoyaHomepageNav .umoya-nav-cta {
+        padding: 10px 16px;
+        font-size: .68rem;
+        letter-spacing: .12em;
+      }
+    }
+
+    @media (max-width: 900px) {
+      #umoyaHomepageNav {
+        height: 58px;
+      }
+
+      #umoyaHomepageNav .umoya-nav-inner {
+        height: 58px;
+        padding: 0 20px;
+      }
+
+      #umoyaHomepageNav .umoya-nav-links,
+      #umoyaHomepageNav .umoya-nav-cta {
+        display: none;
+      }
+
+      #umoyaHomepageNav .umoya-nav-burger {
+        display: flex;
+      }
+
+      #umoyaHomepageNav .umoya-nav-dropdown {
+        display: block;
+      }
+
+      #umoya-hero,
+      #umoya-about,
+      #umoya-journey-anchor,
+      #umoya-journey,
+      #fc-pillars,
+      #fc-details {
+        scroll-margin-top: 70px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      #umoyaHomepageNav .umoya-nav-inner {
+        padding: 0 16px;
+      }
+
+      #umoyaHomepageNav .umoya-nav-logo-text {
+        display: none;
+      }
+    }

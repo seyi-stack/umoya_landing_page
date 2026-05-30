@@ -277,7 +277,7 @@
        Row 3: Email | Phone
        Row 4: Country | City
        Row 5: Travel Season | Travel Year
-       Row 6: Journey Length (full-width)
+       Row 6: Travel Style (full-width)
        Row 7: Textarea (full-width, 1fr — absorbs remaining height)
      ─────────────────────────────────────────────────────────── */
   .fc-f2-fg {
@@ -680,13 +680,24 @@
           <form
             class="fc-f2-form"
             id="fc2Form"
+            action="/wp-json/umoya/v1/submissions"
             method="post"
+            target="umoyaSubmissionFrame"
             novalidate
             aria-label="Founder's Circle Inquiry Form"
             data-hubspot-portal-id="246097317"
             data-hubspot-form-id="cb87d460-fb2d-4c53-8c32-7daaa05067d7"
+            data-umoya-form-source="founders_circle_page"
+            data-wordpress-backup-endpoint="/wp-json/umoya/v1/submissions"
             data-hubspot-consent-text="I agree to be contacted by Umoya Afrika Tours about Founder&apos;s Circle membership and related travel experiences."
           >
+            <input type="hidden" name="source" value="founders_circle_page">
+            <input type="hidden" name="hubspotPortalId" value="246097317">
+            <input type="hidden" name="hubspotFormId" value="cb87d460-fb2d-4c53-8c32-7daaa05067d7">
+            <input type="hidden" name="consentText" value="I agree to be contacted by Umoya Afrika Tours about Founder's Circle membership and related travel experiences.">
+            <input type="hidden" name="hutk" value="">
+            <input type="hidden" name="pageUri" value="">
+            <input type="hidden" name="pageName" value="">
 
             <div class="fc-f2-fg">
 
@@ -966,14 +977,13 @@
                 </select>
               </div>
 
-              <!-- Row 6: Journey Length — full width -->
+              <!-- Row 6: Travel Style — full width -->
               <div class="fc-f2-field fc-f2-span">
-                <label for="fc2Length">Preferred Journey Length</label>
+                <label for="fc2Length">How would you like to Travel?</label>
                 <select id="fc2Length" name="MERGE6">
                   <option value="" disabled selected>Select…</option>
-                  <option value="15-Day Signature Journey">15-Day Signature Journey — 4 Provinces</option>
-                  <option value="Shorter Regional Experience">Shorter Regional Experience (TBD)</option>
-                  <option value="Open to recommendation">Open to recommendation</option>
+                  <option value="Small-Group Signature Journey">Small-Group Signature Journey</option>
+                  <option value="Private Tailor-Made Journey">Private Tailor-Made Journey</option>
                 </select>
               </div>
 
@@ -1002,6 +1012,7 @@
             </p>
 
           </form>
+          <iframe name="umoyaSubmissionFrame" title="Umoya submission fallback" style="display:none;width:0;height:0;border:0;"></iframe>
 
         </div><!-- /.fc-f2-card -->
 
@@ -1036,10 +1047,11 @@
   /* ── Form validation + AJAX submission ──────────────────── */
   var form = document.getElementById('fc2Form');
   var btn  = document.getElementById('fc2Btn');
-  if(!form || !btn) return;
 
   var submitting   = false;
-  var originalText = btn.textContent;
+  var originalText = btn ? btn.textContent : '';
+  var pendingBackupKey = 'umoyaPendingFormBackups';
+  var pendingBackupMaxAge = 24 * 60 * 60 * 1000;
 
   /*
    * HubSpot setup:
@@ -1080,7 +1092,28 @@
     return '';
   }
 
+  function setHiddenValue(fieldName, value) {
+    var field = form && form.elements ? form.elements[fieldName] : null;
+    if (field) field.value = value || '';
+  }
+
+  function syncTrackingFields() {
+    if (!form) return;
+    setHiddenValue('hutk', getCookie('hubspotutk'));
+    setHiddenValue('pageUri', window.location.href);
+    setHiddenValue('pageName', document.title || 'Umoya Founder\'s Circle');
+  }
+
+  function identifyHubSpotVisitor() {
+    var email = getFieldValue('EMAIL');
+    if (!email || !isValidEmail(email)) return;
+    window._hsq = window._hsq || [];
+    window._hsq.push(['identify', { email: email }]);
+    window._hsq.push(['trackPageView']);
+  }
+
   function buildHubSpotPayload() {
+    syncTrackingFields();
     var fields = [];
 
     Object.keys(hubspotFieldMap).forEach(function(fieldName) {
@@ -1149,8 +1182,130 @@
     });
   }
 
-  form.addEventListener('submit', function(e){
+  function buildWordPressBackupPayload() {
+    var hubspotPayload = buildHubSpotPayload();
+    var rawFields = {};
+
+    Object.keys(hubspotFieldMap).forEach(function(fieldName) {
+      rawFields[fieldName] = getFieldValue(fieldName);
+    });
+
+    return {
+      submissionId: createSubmissionId(),
+      source: (form.getAttribute('data-umoya-form-source') || 'founders_circle_page').trim(),
+      hubspotPortalId: (form.getAttribute('data-hubspot-portal-id') || '').trim(),
+      hubspotFormId: (form.getAttribute('data-hubspot-form-id') || '').trim(),
+      consentText: (form.getAttribute('data-hubspot-consent-text') || '').trim(),
+      hutk: getCookie('hubspotutk'),
+      pageUri: window.location.href,
+      pageName: document.title || 'Umoya Founder\'s Circle',
+      rawFields: rawFields,
+      fields: hubspotPayload.fields,
+      context: hubspotPayload.context
+    };
+  }
+
+  function createSubmissionId() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+      return window.crypto.randomUUID();
+    }
+
+    return 'umoya-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12);
+  }
+
+  function getPendingBackups() {
+    try {
+      return JSON.parse(window.localStorage.getItem(pendingBackupKey) || '[]').filter(function(item) {
+        return item && (!item.queuedAt || Date.now() - item.queuedAt < pendingBackupMaxAge);
+      });
+    } catch (ignore) {
+      return [];
+    }
+  }
+
+  function savePendingBackups(items) {
+    try {
+      window.localStorage.setItem(pendingBackupKey, JSON.stringify(items.slice(-8)));
+    } catch (ignore) {}
+  }
+
+  function queuePendingBackup(payload) {
+    payload.hubspotAlreadySent = true;
+    payload.queuedAt = Date.now();
+    var items = getPendingBackups();
+    items.push(payload);
+    savePendingBackups(items);
+  }
+
+  function flushPendingBackups() {
+    var items = getPendingBackups();
+    if (!items.length) return;
+
+    var endpoint = (form.getAttribute('data-wordpress-backup-endpoint') || '/wp-json/umoya/v1/submissions').trim();
+    var remaining = items.slice();
+
+    items.forEach(function(item) {
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify(item)
+      }).then(function(response) {
+        if (!response.ok) return;
+        remaining = remaining.filter(function(entry) {
+          return entry.submissionId !== item.submissionId;
+        });
+        savePendingBackups(remaining);
+      }).catch(function() {});
+    });
+  }
+
+  function submitToWordPressBackup(payload) {
+    var endpoint = (form.getAttribute('data-wordpress-backup-endpoint') || '/wp-json/umoya/v1/submissions').trim();
+
+    return fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify(payload)
+    }).then(function(response) {
+      return response.text().then(function(text) {
+        var data = null;
+        if (text) {
+          try { data = JSON.parse(text); } catch (ignore) {}
+        }
+
+        if (!response.ok || !data || data.saved !== true) {
+          var message = data && data.message ? data.message : 'WordPress could not save the submission. Please try again.';
+          throw new Error(message);
+        }
+
+        return data;
+      });
+    });
+  }
+
+  if (form) window.setTimeout(flushPendingBackups, 1200);
+  if (form) {
+    syncTrackingFields();
+    window.setTimeout(syncTrackingFields, 1500);
+  }
+
+  function handleFounderCircleSubmit(e, submittedForm) {
+    form = submittedForm || form;
+    btn = form ? (form.querySelector('#fc2Btn, .fc-f2-sub-btn') || btn) : btn;
+    if (!form || !btn) return;
+    syncTrackingFields();
+    identifyHubSpotVisitor();
+    if (!btn.getAttribute('data-umoya-original-text')) {
+      btn.setAttribute('data-umoya-original-text', btn.textContent);
+    }
+    originalText = btn.getAttribute('data-umoya-original-text');
+
     e.preventDefault();
+    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
 
     /* Rate limit: block double-clicks and spam */
     if(submitting) return;
@@ -1190,13 +1345,34 @@
     btn.textContent = 'Sending\u2026';
     btn.style.opacity = '0.7';
 
-    /* Submit the custom-designed form to HubSpot without replacing the layout. */
-    submitToHubSpot()
+    var backupPayload = buildWordPressBackupPayload();
+
+    /* Save to WordPress first; the WordPress endpoint forwards the submission to HubSpot. */
+    submitToWordPressBackup(backupPayload)
       .then(function(){ showSuccess(); })
       .catch(function(error){
-        showError(error.message || 'Something went wrong. Please try again.');
+        submitToHubSpot()
+          .then(function(){
+            queuePendingBackup(backupPayload);
+            showSuccess();
+          })
+          .catch(function(fallbackError){
+            showError((error.message || 'WordPress could not save the submission.') + ' ' + (fallbackError.message || 'HubSpot fallback also failed.'));
+          });
       });
-  });
+  }
+
+  document.addEventListener('submit', function(e) {
+    var submittedForm = e.target;
+    if (!submittedForm || !submittedForm.matches || !submittedForm.matches('#fc2Form, .fc-f2-form')) return;
+    handleFounderCircleSubmit(e, submittedForm);
+  }, true);
+
+  if (form) {
+    form.addEventListener('submit', function(e){
+      handleFounderCircleSubmit(e, form);
+    });
+  }
 
   function showSuccess(){
     btn.textContent       = 'Inquiry Received \u2014 We\u2019ll Be in Touch Soon';
@@ -1224,12 +1400,14 @@
   }
 
   /* Clear validation styling on input */
-  form.querySelectorAll('input, select, textarea').forEach(function(f){
-    f.addEventListener('input', function(){
-      f.style.borderColor = '';
-      f.style.boxShadow   = '';
+  if (form) {
+    form.querySelectorAll('input, select, textarea').forEach(function(f){
+      f.addEventListener('input', function(){
+        f.style.borderColor = '';
+        f.style.boxShadow   = '';
+      });
     });
-  });
+  }
 
 }());
 </script>

@@ -1,0 +1,113 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 00: STICKY NAVIGATION
+=================================================================
+  BEHAVIOUR:
+  • Renders as a normal in-flow element directly below the hero
+  • When user scrolls and the bar reaches the top of the viewport,
+    it pins there — position: sticky; top: 0
+  • No show/hide animation. No IntersectionObserver on the hero.
+    The browser handles the stick natively and performantly.
+
+  IMPORTANT — ELEMENTOR:
+  • This widget must be placed immediately AFTER the hero widget
+    (Section 01.1) in the Elementor panel — not before it.
+  • Do NOT wrap this widget in an Elementor section that has
+    overflow: hidden — that will break sticky positioning.
+  • The Elementor section container for this widget should have
+    no top/bottom padding and no background colour set.
+
+  STRUCTURE:
+  • Logo         — left, links to main site
+  • Nav links    — centre, 6 section anchors with active state
+  • CTA button   — right, anchors to form
+  • Hamburger    — mobile only, opens dropdown inside the nav bar
+=================================================================
+-->
+
+  <!-- ── NAV BAR (sticky) ──────────────────────────────────────── -->
+  <nav id="fcNavBar" aria-label="%%UEW_FC_NAV_ATTR_001_ARIA_LABEL%%">
+
+    <div class="fc-nav-inner">
+
+      <!-- Logo -->
+      <a class="fc-nav-logo" href="%%UEW_FC_NAV_URL_002_HREF%%" aria-label="%%UEW_FC_NAV_ATTR_003_ARIA_LABEL%%">
+        <img
+          src="%%UEW_FC_NAV_MEDIA_004_SRC%%"
+          alt="%%UEW_FC_NAV_ATTR_005_ALT%%"
+          onerror="this.style.display='none';document.getElementById('fcNLT').style.display='inline';"
+        />
+        <span class="fc-nav-logo-text" id="fcNLT" style="display:none;">%%UEW_FC_NAV_TEXT_001%%</span>
+      </a>
+
+      <!-- Desktop section links -->
+      <ul class="fc-nav-links" role="list">
+        <li class="fc-nav-item" data-s="fc-intro">
+          <a class="fc-nav-link" href="%%UEW_FC_NAV_URL_006_HREF%%">%%UEW_FC_NAV_TEXT_002%%</a>
+        </li>
+        <li class="fc-nav-item" data-s="fc-form-section">
+          <a class="fc-nav-link" href="%%UEW_FC_NAV_URL_007_HREF%%">%%UEW_FC_NAV_TEXT_003%%</a>
+        </li>
+        <li class="fc-nav-item" data-s="fc-benefits">
+          <a class="fc-nav-link" href="%%UEW_FC_NAV_URL_008_HREF%%">%%UEW_FC_NAV_TEXT_004%%</a>
+        </li>
+        <li class="fc-nav-item" data-s="fc-journey">
+          <a class="fc-nav-link" href="%%UEW_FC_NAV_URL_009_HREF%%">%%UEW_FC_NAV_TEXT_005%%</a>
+        </li>
+        <li class="fc-nav-item" data-s="fc-why">
+          <a class="fc-nav-link" href="%%UEW_FC_NAV_URL_010_HREF%%">%%UEW_FC_NAV_TEXT_006%%</a>
+        </li>
+        <li class="fc-nav-item" data-s="fc-details">
+          <a class="fc-nav-link" href="%%UEW_FC_NAV_URL_011_HREF%%">%%UEW_FC_NAV_TEXT_007%%</a>
+        </li>
+      </ul>
+
+      <!-- Desktop CTA -->
+      <a class="fc-nav-cta" href="%%UEW_FC_NAV_URL_007_HREF%%">%%UEW_FC_NAV_TEXT_008%%</a>
+
+      <!-- Hamburger -->
+      <button
+        class="fc-nav-burger"
+        id="fcNavBurger"
+        aria-label="%%UEW_FC_NAV_ATTR_012_ARIA_LABEL%%"
+        aria-expanded="false"
+        aria-controls="fcNavDropdown"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Mobile dropdown — inside the nav so it follows sticky position -->
+      <div class="fc-nav-dropdown" id="fcNavDropdown" role="menu" aria-label="%%UEW_FC_NAV_ATTR_013_ARIA_LABEL%%">
+
+        <ul class="fc-nav-dropdown-list" role="list">
+          <li class="fc-nav-dropdown-item" data-s="fc-intro">
+            <a class="fc-nav-dropdown-link" href="%%UEW_FC_NAV_URL_006_HREF%%" role="menuitem">%%UEW_FC_NAV_TEXT_002%%</a>
+          </li>
+          <li class="fc-nav-dropdown-item" data-s="fc-form-section">
+            <a class="fc-nav-dropdown-link" href="%%UEW_FC_NAV_URL_007_HREF%%" role="menuitem">%%UEW_FC_NAV_TEXT_003%%</a>
+          </li>
+          <li class="fc-nav-dropdown-item" data-s="fc-benefits">
+            <a class="fc-nav-dropdown-link" href="%%UEW_FC_NAV_URL_008_HREF%%" role="menuitem">%%UEW_FC_NAV_TEXT_004%%</a>
+          </li>
+          <li class="fc-nav-dropdown-item" data-s="fc-journey">
+            <a class="fc-nav-dropdown-link" href="%%UEW_FC_NAV_URL_009_HREF%%" role="menuitem">%%UEW_FC_NAV_TEXT_005%%</a>
+          </li>
+          <li class="fc-nav-dropdown-item" data-s="fc-why">
+            <a class="fc-nav-dropdown-link" href="%%UEW_FC_NAV_URL_010_HREF%%" role="menuitem">%%UEW_FC_NAV_TEXT_006%%</a>
+          </li>
+          <li class="fc-nav-dropdown-item" data-s="fc-details">
+            <a class="fc-nav-dropdown-link" href="%%UEW_FC_NAV_URL_011_HREF%%" role="menuitem">%%UEW_FC_NAV_TEXT_007%%</a>
+          </li>
+        </ul>
+
+        <div class="fc-nav-dropdown-cta-row">
+          <a class="fc-nav-dropdown-cta" href="%%UEW_FC_NAV_URL_007_HREF%%">%%UEW_FC_NAV_TEXT_008%%</a>
+        </div>
+
+      </div><!-- /.fc-nav-dropdown -->
+
+    </div><!-- /.fc-nav-inner -->
+
+  </nav>
