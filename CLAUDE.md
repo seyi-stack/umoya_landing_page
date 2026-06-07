@@ -1,696 +1,1020 @@
-# CLAUDE.md — Umoya Afrika Tours: Founder's Circle Build
+# CLAUDE.md - Umoya Afrika Tours Project Handoff
 
-> This file is the living source of truth for the Umoya Founder's Circle landing page project.
-> It records every decision made, every file produced, every constraint enforced, and every
-> standard to be maintained for all future work on this page and the wider Umoya platform.
+Last updated: 2026-06-07
+Workspace: `C:\Users\MOVING_SURFACE\Downloads\UM_Claude`
+Remote: `https://github.com/seyi-stack/umoya_landing_page.git`
+Current local branch observed during this update: `codex/elementor-widget-sync`
 
----
+This file is the living handoff for the Umoya Afrika Tours website work. It should help any future assistant, developer, or editor understand what has been built, why it was built, how the pieces connect, and what still needs attention.
 
-## 1. Who I Am in This Project
+It intentionally covers the project in sequence:
 
-I operate simultaneously as:
+1. Brand and product intent.
+2. The original Founder's Circle landing page.
+3. The HubSpot and WordPress submission infrastructure.
+4. The homepage rebuild.
+5. The custom Elementor widget plugin.
+6. Legal and footer documentation.
+7. Footer newsletter form routing.
+8. Current workflow rules, validation, and open tasks.
 
-- **Lead WordPress Architect** — all technical decisions align with the WordPress/Elementor stack
-- **Senior UI/UX Designer** — all visual decisions align with the Umoya brand and live site aesthetic
-- **Digital Strategy Consultant** — every element must answer: *what problem does this solve, and how does it move the user forward?*
-
----
-
-## 2. Project Overview
-
-**Umoya Afrika Tours** is a luxury heritage travel company offering immersive journeys across South Africa for the global African diaspora. The website is not a static brochure — it is a scalable, high-end digital platform built to:
-
-- Capture leads into a highly targeted waitlist
-- Communicate value instantly through narrative-driven hero sections
-- Build trust and authority through structured storytelling and high-end aesthetics
-- Prepare for scale: user portals, automated payments, a full service ecosystem
-
-**The Founder's Circle Landing Page** is a high-intent, narrative 6-section conversion page designed for diaspora travelers encountering Umoya for the first time through advertising or brand storytelling. Its single primary action is: **joining the Founder's Circle**.
-
-**Live site reference:** [umoyaafrikatours.co.za](https://umoyaafrikatours.co.za)
+Use this file before making further changes. The project has moved beyond standalone HTML snippets; it now includes a generated Elementor plugin, HubSpot forwarding, WordPress backup submissions, legal content snippets, homepage sections, and GitHub sync expectations.
 
 ---
 
-## 3. Technical Stack — Absolute Constraints
+## 1. Project Identity
 
-| Layer | Technology | Notes |
+### Business
+
+Umoya Afrika Tours is a luxury heritage travel company focused on immersive, high-touch journeys across South Africa, especially for the global African diaspora. The brand voice is premium, warm, culturally grounded, and intentionally different from generic tourism language.
+
+### Strategic Website Goal
+
+The website is not just a brochure. It is being shaped into a conversion and trust platform that can support:
+
+- Founder's Circle lead capture.
+- Newsletter and early-access signups.
+- High-end narrative storytelling.
+- Legal compliance and trust pages.
+- HubSpot CRM capture.
+- Future payment, booking, and client portal infrastructure.
+
+### Audience
+
+The primary audience is discerning diaspora travelers who want a luxury experience with emotional, cultural, and ancestral meaning. The user experience should feel personal, cinematic, calm, and intentional. It should not feel like a stock travel template.
+
+---
+
+## 2. Standing Collaboration Rules
+
+These preferences come from the way the project has evolved and should be treated as durable unless the user overrides them.
+
+- Act directly in the local workspace when a concrete path is given.
+- Preserve visual fidelity first when converting HTML into Elementor widgets.
+- Preserve useful explanatory comments in code; remove only noisy or misleading comments.
+- When the user asks for entire code or copy-paste content, provide full replacement code, not small fragments.
+- For responsive CTA/layout issues, preserve the intended visual style first. If a button background should contain text and icon, fix sizing and padding before changing typography or stacking layout.
+- For Elementor work, keep homepage and Founder's Circle widgets grouped separately.
+- When generating widgets, expose broad editability without breaking the exact source layout.
+- Stage only intentional files in git. The worktree often contains unrelated QA/profile artifacts.
+- The user previously asked to always sync with GitHub after repo changes. When doing that, use a scoped branch and do not blanket-add unrelated files.
+
+---
+
+## 3. Technical Stack and Non-Negotiables
+
+| Layer | Current / Intended Technology | Notes |
 |---|---|---|
-| CMS | WordPress | Non-negotiable |
-| Builder | Elementor + Elementor Pro | All frontend UI/UX |
-| Theme | `tevily-child` | Child theme of Tevily |
-| Hosting | VPS/Managed WP + Cloudflare CDN | |
-| Caching | LiteSpeed Cache (or WP Rocket) | Strict caching, lazy loading |
-| Forms | Contact Form 7 (CF7) | Custom styled via CSS |
-| Backups | All-in-One WP Migration | |
-| SEO | RankMath or Yoast | |
-| Payments (planned) | Paystack, Flutterwave, Stripe | |
-| Analytics | GA4 + Meta Pixel | |
+| CMS | WordPress | Core deployment target. |
+| Builder | Elementor + Elementor Pro | Primary page-building surface. |
+| Custom plugin | `umoya-elementor-widgets` | Main reusable section/widget infrastructure. |
+| Theme context | Tevily child theme / live Umoya theme context | Avoid conflicting global styles. |
+| CRM | HubSpot | Form submissions and tracking. |
+| Network / security | Cloudflare | Referenced in legal docs and performance strategy. |
+| Forms | Custom HTML forms plus Elementor default form widget | Custom forms already route to WordPress and HubSpot; footer newsletter form is currently a default Elementor form. |
+| Legal/content snippets | Plain text source docs converted to Elementor HTML snippets | Stored under `Website docs`. |
+| Git remote | `origin` -> `https://github.com/seyi-stack/umoya_landing_page.git` | Previous widget sync pushed to `codex/elementor-widget-sync`. |
 
-### Rules of Engagement
+### Technical Rules
 
-1. **No plugins outside this stack** unless absolutely necessary for the Client Portal
-2. **Performance first** — custom CSS/PHP over heavy JS libraries or bloated Elementor add-ons
-3. **Plugin count: minimal** — zero bloat
-4. **No external font imports** — all pages inherit fonts from the `tevily-child` theme via Elementor. Every `font-family` declaration in HTML widgets must be `font-family: inherit`
-5. **Aesthetic alignment** — every suggestion must match the luxury, spacious, earthy design system
+- Prefer lightweight HTML/CSS/JS over extra Elementor add-ons.
+- Keep custom CSS scoped to section roots.
+- Avoid external font imports inside section snippets or widgets.
+- Prefer `font-family: inherit` so typography follows the theme/Elementor global settings.
+- Keep scripts section-scoped and collision-safe.
+- Do not rely on blanket global selectors when a section root can scope behavior.
+- Avoid destructive git operations. Preserve unrelated local artifacts.
 
 ---
 
-## 4. Brand & Design System
+## 4. Brand and Design System
 
-### Colour Palette
+The design system is earthy luxury: cream, deep brown, terracotta, olive, editorial spacing, cinematic imagery, and restrained motion.
+
+### Core Palette
 
 ```css
---cream:      #F5F0EB;   /* dominant background — used on most sections */
---cream-lt:   #F5F0EB;   /* lightest cream — alternate section background */
---cream-dk:   #F5F0EB;   /* darkest cream — final section, form backgrounds */
---brown:      #4B2E2B;   /* deep brown — accent sections, hero overlay, text */
---brown-mid:  #4B2E2B;   /* mid brown — hover states */
---terra:      #D97E53;   /* terracotta — primary CTA, accents, rules */
---terra-dk:   #C06840;   /* terracotta dark — hover states */
---terra-lt:   #D97E53;   /* terracotta light — province labels, highlights */
---gold:       #D97E53;   /* gold — form stripe, dividers */
---gold-lt:    #D97E53;   /* gold light — hero eyebrow, image overlay text */
---olive:      #708238;   /* olive — form stripe, success state */
---text:       #4B2E2B;   /* primary body text */
---text-mid:   #4B2E2B;   /* secondary body text */
---text-muted: #4B2E2B;   /* muted text, labels */
---white:      #FFFFFF;
+--cream: #F5F0EB;
+--brown: #4B2E2B;
+--terra: #D97E53;
+--terra-dk: #C06840;
+--olive: #708238;
+--white: #FFFFFF;
+--text: #4B2E2B;
 ```
 
-### Section Colour Rhythm
+### Visual Principles
 
-The page alternates between cream and dark brown to create tonal contrast:
+- Cream is the dominant page background.
+- Deep brown is used as a premium accent, not as every section background.
+- Terracotta is the primary CTA and accent color.
+- Layouts should feel spacious and editorial.
+- Photography should be real, specific, and inspectable.
+- Buttons should remain crisp and premium; avoid cramped labels.
+- On branded pages, the brand signal should be immediate and visible in the first viewport.
+- Avoid generic SaaS cards, stock-template rhythm, and one-note palettes.
 
-| Section | Background |
+### CTA Lesson Learned
+
+A prior mobile CTA issue was fixed by letting the button background grow to the content:
+
+```css
+width: max-content;
+max-width: none;
+white-space: nowrap;
+text-transform: uppercase;
+```
+
+The user specifically preferred preserving uppercase text and the original button feel, instead of stacking the label or shrinking it too aggressively.
+
+---
+
+## 5. Project Chronology and Progress
+
+### Phase 1 - Founder's Circle Landing Page
+
+The early project centered on a Founder's Circle landing page built as separate standalone HTML sections for pasting into Elementor HTML widgets.
+
+Original purpose:
+
+- Create a premium, narrative landing page for early Umoya guests.
+- Capture high-intent Founder's Circle inquiries.
+- Present the inaugural South Africa journey.
+- Communicate exclusivity, cultural depth, and small-group luxury.
+
+Main standalone files:
+
+| File | Purpose |
 |---|---|
-| 00 Sticky Nav | `rgba(245,240,235,0.97)` — translucent cream |
-| 01 Hero | `#4B2E2B` (brown) + full-bleed image |
-| 02 Form | `#F5F0EB` cream (right col) + image (left col) |
-| 03 Be Among the First | `#F5F0EB` cream-light |
-| 04 Member Benefits | `#4B2E2B` deep brown — **accent dark section** |
-| 05 Journey | `#F5F0EB` cream |
-| 06 Why Umoya | `#F5F0EB` cream-light |
-| 07 Journey Details | `#F5F0EB` cream-dark |
+| `section-00-nav.html` | Founder's Circle navigation. |
+| `section-01-hero.html` | Full hero section. |
+| `section-02-intro.html` | Introductory section. |
+| `section-02-form.html` | Main inquiry form with HubSpot/WordPress integration. |
+| `section-03-be-first.html` | Early access / exclusivity section. |
+| `section-04-benefits.html` | Member benefits section. |
+| `section-05-journey.html` | Journey section. |
+| `section-05-journey-interactive-map-image.html` | Journey map/image variant. |
+| `section-05-journey-map-snapshot.html` | Journey map snapshot variant. |
+| `section-05-journey-no-map.html` | Journey variant without map. |
+| `section-05-map.html` | Route map section. |
+| `section-05a-pricing.html` | Pricing section. |
+| `section-05b-cta.html` | CTA section. |
+| `section-06-why.html` | Why Umoya section. |
+| `section-06b-pillars.html` | Pillars section. |
+| `section-07-details.html` | Travel essentials / accordion section. |
 
-### Typography
+### Phase 2 - Section 02 HubSpot Brief and Integration
 
-- **No external font imports** — all `font-family: inherit` in HTML widgets
-- The theme injects its own serif + sans-serif stack at the WordPress level
-- Display/heading text should be set at the appropriate size and weight; the browser inherits the correct typeface from Elementor's global typography settings
+The file `HubSpot Section 02 Integration Brief.docx` was created to explain the preferred approach:
 
-### Design Principles (from live site observation)
+- Keep the custom-designed form experience.
+- Submit to HubSpot behind the scenes.
+- Avoid replacing the form with a generic HubSpot embed.
+- Use Portal ID, Form GUID, field mappings, consent text, and tracking context.
 
-- **Cream dominant** — the background is warm off-white/cream for most sections, not dark
-- **Deep brown is accent-only** — used for 1–2 statement sections per page
-- **Terracotta pill buttons** — `#D97E53`, slightly rounded (4px radius)
-- **Rounded corners** — `border-radius: 10px` on all images and cards
-- **Spacious editorial layouts** — generous padding, strong visual hierarchy
-- **Mobile-first** — infinite scroll mechanics on mobile, stacked single-column layouts
-- **Cinematic photography** — full-bleed images with deep gradient overlays
-- **No generic aesthetics** — no predictable component patterns, no cookie-cutter design
+The integration now exists in `section-02-form.html` and in the generated plugin assets.
+
+Current known HubSpot configuration in source files:
+
+```text
+Portal ID: 246097317
+Form GUID: cb87d460-fb2d-4c53-8c32-7daaa05067d7
+HubSpot endpoint: https://api.hsforms.com/submissions/v3/integration/submit/{portalId}/{formId}
+WordPress backup endpoint: /wp-json/umoya/v1/submissions
+```
+
+### Phase 3 - Homepage Build
+
+The homepage section family was added under `homepage/`.
+
+Current homepage source files:
+
+| File | Root / role |
+|---|---|
+| `homepage/homepage-form-popup.html` | Reusable popup inquiry form. |
+| `homepage/homepage-section-00-nav.html` | Homepage navigation. |
+| `homepage/homepage-section-01-hero.html` | Homepage hero, `#umoya-hero`. |
+| `homepage/homepage-section-02-about.html` | About / story section, `#umoya-about`. |
+| `homepage/homepage-section-03-homecoming.html` | Signature journey carousel, `#umoya-journey`. |
+| `homepage/homepage-section-04-founder-cta.html` | Founder's Circle CTA. |
+| `homepage/homepage-section-05a-pricing.html` | Pricing section. |
+| `homepage/homepage-section-06-accommodations.html` | Accommodations section. |
+| `homepage/homepage-section-06b-pillars.html` | Why Umoya pillars. |
+| `homepage/homepage-section-07-details.html` | Travel essentials / details. |
+
+The homepage uses `data-umoya-form-popup` triggers to open `homepage-form-popup.html`. Those triggers appear in CTA sections, pricing, accommodations, details, and the homepage nav.
+
+### Phase 4 - Homecoming Carousel Comment Restoration
+
+The file `homepage/homepage-section-03-homecoming.html` had a specific cleanup pass where useful comments were restored. This matters because the user values comments that explain how complex sections work.
+
+Useful comment anchors that should remain:
+
+- `Section shell and shared design tokens`
+- `Main carousel frame`
+- `Left copy panel`
+- `Render with textContent so slide copy stays safe and predictable.`
+- `Fade the carousel in once it enters the viewport.`
+
+Important technical note: this file previously had a hidden UTF-8 BOM issue. If an `apply_patch` appears to fail on the first line even though the visible text matches, check for and remove a hidden BOM before retrying.
+
+### Phase 5 - Widget Generator and Plugin Sync
+
+The project shifted from manually pasting standalone snippets into Elementor toward a generated custom Elementor widget plugin.
+
+The generator is:
+
+```text
+tools/build-elementor-widgets.mjs
+```
+
+It takes the latest root HTML sources and generates:
+
+- Clean per-section HTML templates.
+- Per-section CSS files.
+- Per-section JS files.
+- Widget classes.
+- PHP wrapper templates.
+- The registry manifest at `umoya-elementor-widgets/includes/section-definitions.json`.
+
+This generator was built because the user wanted the Elementor widgets to:
+
+- Match the latest HTML sections exactly.
+- Preserve the visual layout exactly as normal HTML.
+- Expose text, media, links, styles, sizes, and common Elementor edit affordances.
+- Group homepage and Founder's Circle sections separately.
+
+### Phase 6 - GitHub Sync
+
+The widget sync was committed and pushed to GitHub.
+
+Known previous sync:
+
+```text
+Branch: codex/elementor-widget-sync
+Commit: 042040d sync elementor widgets with html sections
+Remote PR URL suggested by GitHub:
+https://github.com/seyi-stack/umoya_landing_page/pull/new/codex/elementor-widget-sync
+```
+
+The environment did not have `gh`, so PR creation was left to the GitHub URL.
+
+### Phase 7 - Legal and Footer Documentation
+
+A `Website docs` folder was added with policy/legal/support content:
+
+| Source file | Purpose |
+|---|---|
+| `Website docs/FOOTER URL MAP.pdf` | Footer link routing map. |
+| `Website docs/Umoya_Cookie_Policy.txt` | Cookie policy. |
+| `Website docs/Umoya_POPIA_Consent_Wording.txt` | POPIA notices, checkbox copy, newsletter, cookie banner, email footer copy. |
+| `Website docs/Umoya_Privacy_Policy.txt` | Privacy policy. |
+| `Website docs/Umoya_Terms_and_Conditions.txt` | Booking terms. |
+| `Website docs/Umoya_Travel_Insurance_Guidance.txt` | Travel insurance guidance. |
+
+Those were converted into paste-ready Elementor snippets under:
+
+```text
+Website docs/Elementor HTML snippets/
+```
+
+Generated snippet files:
+
+| Output file | Notes |
+|---|---|
+| `FOOTER_URL_MAP.elementor.html` | HTML table decoded from the PDF routing map. |
+| `Umoya_Cookie_Policy.elementor.html` | Adds policy headings, paragraphs, mailto links, and privacy link. |
+| `Umoya_POPIA_Consent_Wording.elementor.html` | Includes checkboxes and form/cookie/email copy. |
+| `Umoya_Privacy_Policy.elementor.html` | Adds headings, lists, email links, cookie policy link. |
+| `Umoya_Terms_and_Conditions.elementor.html` | Adds headings, lists, privacy link, email links. |
+| `Umoya_Travel_Insurance_Guidance.elementor.html` | Adds headings, lists, booking terms links, email link. |
+
+Snippet generation verification that was performed:
+
+- 6 files created.
+- Headings, lists, tables, and links inserted.
+- No nested links.
+- No `href="#"`.
+- No `undefined` values.
+
+### Phase 8 - Footer Newsletter Form
+
+The user added a default Elementor Form widget in the footer for newsletter signup. It currently appears to use Elementor's `Actions After Submit` controls with:
+
+- `Collect Submissions`
+- `Email`
+- `MailChimp`
+
+No native HubSpot action was visible in the screenshot.
+
+Recommended routes discussed:
+
+1. Fast no-code route:
+   - Install/connect the official HubSpot WordPress plugin.
+   - Enable HubSpot non-HubSpot form capture.
+   - Give the Elementor form clear field IDs such as `firstname` or `name`, and `email`.
+   - Keep Elementor `Collect Submissions` as a WordPress backup.
+
+2. More reliable custom route:
+   - Create a dedicated HubSpot form for the footer newsletter.
+   - Get its Portal ID and Form GUID.
+   - Add a WordPress hook or webhook bridge that forwards Elementor Form widget submissions to HubSpot.
+   - Include POPIA/marketing consent text and source context.
+
+The second route is cleaner for a production newsletter signup because it gives explicit field mapping and consent handling instead of relying on auto-captured non-HubSpot form behavior.
 
 ---
 
-## 5. Page Architecture — Founder's Circle
+## 6. Repository Map
 
-The page is structured as 8 separate HTML files, each dropped into an Elementor HTML widget in sequence. This separation makes maintenance, testing, and iteration faster.
+### Root-Level Working Files
 
-### Elementor Widget Order
+| Path | Role |
+|---|---|
+| `CLAUDE.md` | This handoff and project source of truth. |
+| `section-*.html` | Founder's Circle source sections and variants. |
+| `homepage/*.html` | Homepage source sections and popup form. |
+| `tools/build-elementor-widgets.mjs` | Generator that rebuilds plugin artifacts from source HTML. |
+| `umoya-elementor-widgets/` | Custom Elementor plugin source. |
+| `Website docs/` | Legal documents, footer URL map, and Elementor-ready legal snippets. |
+| `hubspot-docx/` | Extracted Word document content for the HubSpot integration brief. |
+| `HubSpot Section 02 Integration Brief.docx` | Original HubSpot handoff brief. |
+| `Umoya_Performance_Uptime_Audit_Report.docx` | Prior audit/report artifact. |
+| `Old files/` | Superseded legacy files; do not treat as current source. |
+| `_visual-check-*.png`, `.edge-visual-profile-*` | QA artifacts and browser profile output; generally do not stage unless explicitly relevant. |
 
+### Current Custom Plugin Layout
+
+```text
+umoya-elementor-widgets/
+  umoya-elementor-widgets.php
+  includes/
+    class-plugin.php
+    class-base-widget.php
+    class-section-registry.php
+    class-submissions.php
+    class-console-cleanup.php
+    section-definitions.json
+  widgets/
+    class-*.php
+  templates/
+    section-*.php
+    homepage-section-*.php
+    html/
+      *.html
+  assets/
+    css/
+      fc-shared.css
+      sections/*.css
+    js/
+      sections/*.js
 ```
-Section 00 — sticky-nav     (position: fixed, before the hero)
-Section 01 — hero
-Section 02 — form
-Section 03 — be-first
-Section 04 — benefits
-Section 05 — journey
-Section 06 — why
-Section 07 — details
-```
 
-### File Map
+### Plugin Bootstrap
 
-| File | Section | Size |
-|---|---|---|
-| `section-00-sticky-nav.html` | Sticky Navigation Bar | ~5KB |
-| `section-01-hero.html` | Full-viewport Hero | ~9KB |
-| `section-02-form.html` | Your Homecoming Awaits (Form) | ~22KB |
-| `section-03-be-first.html` | Be Among the First + Slideshow | ~12KB |
-| `section-04-benefits.html` | Member Benefits (dark section) | ~8KB |
-| `section-05-journey.html` | Signature Journey + Province Cards | ~16KB |
-| `section-06-why.html` | Why Umoya Afrika Tours | ~12KB |
-| `section-07-details.html` | Journey Details Accordion | ~17KB |
+`umoya-elementor-widgets/umoya-elementor-widgets.php`:
+
+- Plugin name: `Umoya Elementor Widgets`
+- Version: `1.1.0`
+- Requires WordPress 5.8+, PHP 7.4+, Elementor.
+- Initializes:
+  - `Submissions`
+  - `Console_Cleanup`
+  - `Plugin` if Elementor is loaded.
+
+`includes/class-plugin.php`:
+
+- Registers Elementor categories.
+- Registers widgets from the section registry.
+- Registers per-section styles/scripts.
+- Enqueues editor styles.
+
+`includes/class-section-registry.php`:
+
+- Loads `section-definitions.json`.
+- Provides widgets, styles, scripts, and section config.
+
+`includes/class-base-widget.php`:
+
+- Uses registry config to render editable sections.
+- Replaces generated placeholders with Elementor controls.
+- Exposes grouped controls for:
+  - Text fields.
+  - Links and media.
+  - Labels and attributes.
+  - Form integrations.
+  - Layout/style controls.
+  - Design tokens.
+  - Custom replacements.
+  - Custom CSS.
+  - Full HTML override.
 
 ---
 
-## 6. Section-by-Section Specification
+## 7. Elementor Widget Registry
 
----
+The plugin currently exposes 26 generated section widgets.
 
-### Section 00 — Sticky Navigation Bar
+### Founder's Circle Category
 
-**File:** `section-00-sticky-nav.html`
-**Purpose:** Provides persistent brand presence and a quick CTA once the user scrolls past the hero.
+Category: `Umoya - Founder's Circle`
 
-**Behaviour:**
-- `position: fixed; top: 0; z-index: 9999`
-- Starts `translateY(-100%)` — hidden off-screen
-- Becomes visible once `#fc-hero` scrolls out of the viewport via `IntersectionObserver`
-- Fallback: shows after 300px scroll if IntersectionObserver unavailable
-
-**Contents:** Logo (SVG from WordPress uploads) · Centre label "Founder's Circle — Limited Membership" · Terracotta CTA button → `#fc-form-section`
-
-**Responsive:**
-- ≤768px: Centre label hidden, padding reduced
-- ≤420px: Brand text hidden (logo mark only), button padding compressed
-
-**Critical:** The element `id="fc-hero"` must exist on Section 01's outer wrapper for the observer to function.
-
----
-
-### Section 01 — Hero
-
-**File:** `section-01-hero.html`
-**Purpose:** First impression. Establishes brand, emotional tone, and drives primary CTA.
-
-**Layout:** Full-viewport, content **centre-aligned**. Text and buttons are horizontally centred.
-
-**Height:**
-```css
-height: max(100dvh, 620px);  /* dvh = accounts for iOS address bar */
-```
-Three-layer safety net: `100vh` fallback → `100dvh` → `620px` absolute floor.
-
-**Background:** Full-bleed image with cinematic gradient overlay:
-```css
-background: linear-gradient(180deg,
-  rgba(28,13,6,.12)  0%,
-  rgba(28,13,6,.18) 30%,   /* strengthened mid-band */
-  rgba(28,13,6,.55) 65%,
-  rgba(28,13,6,.93) 100%
-);
-```
-
-**Content (top → bottom, centred):**
-1. Eyebrow label — gold-lt, 0.75rem, uppercase
-2. H1 — italic, `clamp(2.2rem, 6.5vw, 5.2rem)`
-3. Body paragraph — max-width: 580px, centred
-4. Two buttons — Primary (terracotta) + Ghost (cream outline)
-
-**Buttons:**
-- Primary: `href="#fc-form-section"` — "Join the Founder's Circle"
-- Ghost: `href="#fc-be-first"` — "Learn More"
-- On mobile: stack full-width, `max-width: 400px`, centred
-
-**Video swap comment:** The `<img>` is pre-marked for swap to `<video autoplay muted loop playsinline poster="">` when the brand video asset is ready.
-
-**Audit fixes applied (v4):**
-
-| Element | Before | After | Reason |
+| Key | Widget title | Source | Root |
 |---|---|---|---|
-| Eyebrow | 0.68rem (10.9px) | 0.75rem (12px) | Below readable minimum |
-| Eyebrow ≤420px | 0.60rem (9.6px) | 0.72rem (11.5px) | Even smaller — wrong direction |
-| Button labels | 0.72rem (11.5px) | 0.75rem (12px) | Below minimum for interactive elements |
-| Title max | 6rem (96px) | 5.2rem (83px) | Excessive on wide viewports |
-| Title min | 2.6rem | 2.2rem / 2rem @420 | Too large on 320px phones |
-| Body min | 0.88rem | 0.95rem | Borderline floor |
-| Body opacity | .76 | .90 | Visually thin |
-| Ghost border | rgba(.45) | rgba(.70) | Near-invisible on bright images |
-| Gradient mid | .04 at 30% | .18 at 30% | Bright photos washing out text |
-| Text-shadow | none | added to title + eyebrow | Contrast insurance |
-| Padding-top | 0 | 110px desktop / 80px mobile | No guard vs sticky nav bar |
-| Mobile floor | 92dvh only | max(92dvh, 600px) | Landscape phones collapse |
+| `fc_nav` | FC Navigation | `section-00-nav.html` | `#fcNavBar` |
+| `fc_hero` | FC Hero | `section-01-hero.html` | `#fc-hero` |
+| `fc_intro` | FC Intro | `section-02-intro.html` | `#fc-intro` |
+| `fc_form` | FC Inquiry Form | `section-02-form.html` | `#fc-form-section` |
+| `fc_be_first` | FC Be First | `section-03-be-first.html` | `#fc-be-first` |
+| `fc_benefits` | FC Benefits | `section-04-benefits.html` | `#fc-benefits` |
+| `fc_journey` | FC Journey | `section-05-journey.html` | `#fc-journey` |
+| `fc_journey_interactive_map_image` | FC Journey Interactive Map Image | `section-05-journey-interactive-map-image.html` | `#fc-journey` |
+| `fc_journey_map_snapshot` | FC Journey Map Snapshot | `section-05-journey-map-snapshot.html` | `#fc-journey` |
+| `fc_journey_no_map` | FC Journey No Map | `section-05-journey-no-map.html` | `#fc-journey` |
+| `fc_map` | FC Route Map | `section-05-map.html` | `#fc-route-map-section` |
+| `fc_pricing` | FC Pricing | `section-05a-pricing.html` | `#fc-pricing` |
+| `fc_cta` | FC CTA | `section-05b-cta.html` | `#fc-cta` |
+| `fc_why` | FC Why Umoya | `section-06-why.html` | `#fc-why` |
+| `fc_pillars` | FC Pillars | `section-06b-pillars.html` | `#fc-pillars` |
+| `fc_details` | FC Travel Essentials | `section-07-details.html` | `#fc-details` |
+
+### Homepage Category
+
+Category: `Umoya - Homepage`
+
+| Key | Widget title | Source | Root |
+|---|---|---|---|
+| `homepage_form_popup` | Homepage Form Popup | `homepage/homepage-form-popup.html` | `#umoya-form-popup` |
+| `homepage_nav` | Homepage Navigation | `homepage/homepage-section-00-nav.html` | `#umoyaHomepageNavMount` |
+| `homepage_hero` | Homepage Hero | `homepage/homepage-section-01-hero.html` | `#umoya-hero` |
+| `homepage_about` | Homepage About | `homepage/homepage-section-02-about.html` | `#umoya-about` |
+| `homepage_homecoming` | Homepage Homecoming Journey | `homepage/homepage-section-03-homecoming.html` | `#umoya-journey` |
+| `homepage_founder_cta` | Homepage Founder CTA | `homepage/homepage-section-04-founder-cta.html` | `#umoya-founder-cta` |
+| `homepage_pricing` | Homepage Pricing | `homepage/homepage-section-05a-pricing.html` | `#fc-pricing` |
+| `homepage_accommodations` | Homepage Accommodations | `homepage/homepage-section-06-accommodations.html` | `#umoya-accommodations` |
+| `homepage_pillars` | Homepage Pillars | `homepage/homepage-section-06b-pillars.html` | `#fc-pillars` |
+| `homepage_details` | Homepage Travel Essentials | `homepage/homepage-section-07-details.html` | `#fc-details` |
+
+### Important Registry Rule
+
+The standalone source HTML files are the visual source of truth. If changing a section:
+
+1. Edit the root HTML source file first.
+2. Run the generator:
+
+```powershell
+node tools/build-elementor-widgets.mjs
+```
+
+3. Verify generated outputs.
+4. Package or deploy the plugin if needed.
+
+Avoid manually editing generated plugin templates unless the task is explicitly to hotfix the generated plugin only.
 
 ---
 
-### Section 02 — Form: Your Homecoming Awaits
+## 8. Form and HubSpot Infrastructure
 
-**File:** `section-02-form.html`
-**Purpose:** Primary conversion — collects traveler information for the Founder's Circle.
+### Custom Form Flow
 
-**Layout:** Two-column grid, `1fr` image left / `2fr` form right. Section = exactly `100dvh`. Both columns fill full height. **No overflow property on the form column.**
+The custom Founder's Circle and homepage popup forms are designed to submit through both WordPress and HubSpot.
 
-**Key technique — fits without overflow:**
-The right column is a flex chain where every level has `min-height: 0`:
-```
-section (100dvh)
- └ grid (height:100%)
-    └ form column (flex column, no overflow)
-       └ .fc-f2-inner (flex:1, min-height:0)
-          ├ header (flex-shrink:0)
-          └ card (flex:1, min-height:0)
-             └ form (flex:1, min-height:0)
-                ├ field grid (flex:1, min-height:0)
-                │  grid-template-rows: auto auto auto auto auto 1fr
-                │  └ textarea row = 1fr (absorbs leftover height)
-                ├ submit (flex-shrink:0)
-                └ legal (flex-shrink:0)
-```
+Expected flow:
 
-All spacing uses `clamp()` with `vh` units so every value scales proportionally with viewport height — no fixed pixel values that could cause overflow.
+1. Browser gathers field values.
+2. Browser includes `hubspotutk` when available.
+3. Browser sends data to `/wp-json/umoya/v1/submissions`.
+4. WordPress stores a private `umoya_submission` post.
+5. WordPress forwards the normalized submission to HubSpot.
+6. If the WordPress endpoint is unavailable, the browser can attempt direct HubSpot fallback.
+7. Admin can resend failed submissions to HubSpot from the WordPress submission screen.
 
-**Left column (image):**
-- `position: relative; overflow: hidden` — clips image to column boundary (structural, not scrolling)
-- Image: `position: absolute; inset: 0; object-fit: cover`
-- Dark gradient overlay + overlay text (eyebrow, italic title, rule, descriptor)
+### WordPress REST Endpoint
 
-**Right column (form):**
-- Watermark "UMOYA" behind content (decorative, `color: rgba(28,13,6,.03)`)
-- Section header: eyebrow · title · rule · subtitle (centred)
-- Form card with top accent stripe (terracotta→gold→olive gradient)
+Defined in:
 
-**Form fields (all 9 — original content, never change):**
-1. Title (dropdown)
-2. First Name + Last Name (two-column row)
-3. Email Address
-4. Phone Number
-5. Zip / Postal Code
-6. Preferred Travel Window (dropdown)
-7. Preferred Journey Length (dropdown, full-width)
-8. What Are You Hoping to Experience? (textarea, full-width, `1fr` row)
-9. Submit button + legal note
-
-**CF7 integration:**
-Delete the `<form id="fc2Form">` block and replace with:
-```
-[contact-form-7 id="YOUR_FORM_ID" title="Founders Circle"]
+```text
+umoya-elementor-widgets/includes/class-submissions.php
 ```
 
-**Success state:** Button text changes, disabled, background switches to `--olive` (`#708238`).
+Constants:
 
-**Responsive:**
-- ≤768px: `height: auto`, single column, image becomes 260px banner, flex chain reverts to block flow, textarea gets natural 100px height
-- ≤420px: image 220px, padding compressed
-
----
-
-### Section 03 — Be Among the First to Journey Home
-
-**File:** `section-03-be-first.html`
-**Purpose:** Communicates exclusivity and urgency. Reinforces the Founder's Circle value proposition.
-
-**Layout:** Two-column grid — copy left · slideshow right.
-**Background:** `#F5F0EB` cream-light
-**Anchor ID:** `id="fc-be-first"` — target from Hero "Learn More" button
-
-**Left column content:**
-- Eyebrow: "Exclusive Early Access"
-- H2: "Be Among the First to Journey Home" (italic em)
-- Rule divider
-- Body: 3 paragraphs (original copy — do not change)
-- Pull quote (terracotta left border): urgency statement
-- CTA button → `#fc-form-section`
-
-**Right column — 4-slide carousel:**
-- Auto-advances every 5,500ms
-- Left/right arrow buttons (44px min touch target)
-- Dot navigation (role="tablist")
-- Fully ARIA accessible: `aria-roledescription="carousel"`, slide roles, `aria-selected`
-- Image gradient overlay + caption per slide
-- `★ SWAP` comments mark each `<img>` src for Drive images 1–4
-
-**Responsive:**
-- ≤768px: Stacks, copy first (order:1), slideshow second (order:2), aspect ratio 4/3
-- ≤420px: aspect ratio 1/1
-
----
-
-### Section 04 — Member Benefits
-
-**File:** `section-04-benefits.html`
-**Purpose:** Lists all Founder's Circle membership privileges. The page's only dark-brown section — creates tonal contrast between cream sections.
-
-**Layout:** Two-column — image left · checklist right.
-**Background:** `#4B2E2B` deep brown
-
-**Image panel:**
-- `aspect-ratio: 4/5` portrait
-- Terracotta corner accent block (absolute positioned, behind image)
-- `★ SWAP` comment: brief specifies "crop to remove individual on the right"
-
-**Checklist (7 items — do not add or remove):**
-1. Exclusive promotions reserved for Founder's Circle members only
-2. Priority access to book before journeys open to the general public
-3. A dedicated travel expert to guide you personally from enquiry to arrival
-4. Seamless, concierge-style booking and journey planning experience
-5. Pre-departure orientation and cultural preparation materials
-6. Arrival welcome gift and an opening ceremony in South Africa
-7. Early access to all future journey announcements and Umoya experiences
-
-Each item: terracotta circle with checkmark SVG · cream text · hover shifts `padding-left`
-
-**Responsive:**
-- ≤768px: Single column, image becomes 16/9 landscape, accent block hidden
-
----
-
-### Section 05 — Your Journey Begins Here
-
-**File:** `section-05-journey.html`
-**Purpose:** Presents the inaugural 18-day signature journey. The page's most content-rich section.
-
-**Background:** `#F5F0EB` cream
-**Sub-sections A→D:**
-
-**A. Header + Stats row:**
-- Eyebrow · H2 "Your Journey Begins Here"
-- Three stats: 18 Days · 5 Provinces · 20 Guests Max
-- Flex row, `flex-wrap` so stats wrap on narrow screens
-
-**B. Province Cards grid (5 cards):**
-- Desktop: `repeat(5, 1fr)` · Tablet: `repeat(3, 1fr)` · Mobile: `1fr 1fr` (5th card spans full width at `16/7` ratio)
-- Each card: full-bleed image + gradient overlay + region label (terracotta) + province name (cream)
-- Hover: `translateY(-6px)` lift + `scale(1.06)` on image
-- `★ SWAP` comments on all 5 image sources
-
-**Province cards order (from the brief):**
-1. Gauteng & Limpopo — Sacred Origins & Living Heritage
-2. Mpumalanga — Wonders of Nature
-3. KwaZulu-Natal — Be Welcomed & Embraced by Royalty
-4. Western Cape — Wine, Oceans & Culture
-5. All Provinces — Luxury Journeys of Transformation
-
-**C. Every Journey Includes split:**
-- Two-column: image left (`16/10`) · copy right
-- Bullet list (5 items) with terracotta dot icons
-- Pricing block: `$[Price]` and `$[Amount]` placeholders — **replace with real figures**
-- Outline CTA button
-
-**D. Closing CTA block:**
-- Dark brown (`#4B2E2B`) rounded card
-- Italic closing statement + terracotta CTA button
-- Desktop: flex row. Mobile: stacks vertically
-
----
-
-### Section 06 — Why Umoya Afrika Tours
-
-**File:** `section-06-why.html`
-**Purpose:** Communicates brand philosophy and differentiates Umoya from conventional tourism.
-
-**Background:** `#F5F0EB` cream-light
-**Layout:** Two-column `1.1fr / 1fr` — copy left · video+pillars right (sticky on desktop)
-
-**Left column:**
-- Eyebrow · H2 "Why Umoya Afrika Tours?"
-- Rule divider
-- Lead paragraph (large, brown)
-- 3 body paragraphs
-- Dark CTA button: "Enquire Now"
-
-**Right column (sticky: top 88px on desktop):**
-- Video placeholder block (16/10 aspect ratio) with play button
-  - `★ SWAP` for brand video (primary) or backup Drive video
-- Three brand pillars (hover shifts terracotta/gold/olive left border):
-  1. Historically Grounded
-  2. Diaspora-Centered
-  3. Intimate & Intentional
-
-**CTA Band (full-width, below grid):**
-- Dark brown rounded card
-- Italic headline + subtitle
-- Flex row → stacks on mobile
-
-**Responsive:**
-- ≤1024px: Single column, right col `position: static`
-- ≤768px: CTA band stacks, button full-width
-
----
-
-### Section 07 — Journey Details
-
-**File:** `section-07-details.html`
-**Purpose:** Answers key traveler questions. Signals the natural close of the page.
-
-**Background:** `#F5F0EB` cream-dark
-**Layout:** Single column, `max-width: 860px` centred
-
-**Header:** Eyebrow · H2 "Journey Details" · Rule · Subtitle
-
-**Accordion (6 items — one open at a time, item 1 open by default):**
-
-| # | Title | Subtitle |
-|---|---|---|
-| 1 | Intimate Small-Group Travel | Group size, movement & community |
-| 2 | Guaranteed Departures | Plan with absolute confidence |
-| 3 | Thoughtful Personalization | Your journey, your way |
-| 4 | Travel Protection | Peace of mind for your investment |
-| 5 | Flexible Journey Lengths | Options for every schedule |
-| 6 | Regional Cuisine & Dietary Care | Authentic flavors, thoughtful planning |
-
-**Accordion behaviour:**
-- Click opens selected item, collapses all others
-- `aria-expanded` updated on each toggle
-- On mobile: `scrollIntoView({ behavior: 'smooth', block: 'nearest' })` after open
-- Icon box: terracotta background when open, white icon stroke
-
-**Footer CTA:** Italic H3 · subtitle · terracotta button → `#fc-form-section`
-
----
-
-## 7. CSS Architecture Standards
-
-### Scoping Strategy
-
-Every rule is scoped under the section's root element ID (e.g., `#fc-hero`, `#fc-benefits`). This prevents Elementor theme styles from bleeding in or overriding section styles.
-
-```css
-/* Pattern used in every file */
-#fc-form-section { /* design tokens as CSS custom properties */ }
-#fc-form-section * { box-sizing: border-box; }
+```php
+POST_TYPE = 'umoya_submission'
+REST_NAMESPACE = 'umoya/v1'
+REST_ROUTE = '/submissions'
 ```
 
-### Class Naming Convention
+Endpoint:
 
-All classes are prefixed to avoid collision with Elementor, WordPress, or the tevily theme:
-
-```
-fc-      = Founder's Circle global prefix
-fc-f2-   = Section 02 specific
-fc-bf-   = Section 03 (be-first) specific
-fc-ben-  = Section 04 (benefits) specific
-fc-jrn-  = Section 05 (journey) specific
-fc-why-  = Section 06 specific
-fc-det-  = Section 07 (details) specific
+```text
+/wp-json/umoya/v1/submissions
 ```
 
-### Responsive Breakpoints
+### WordPress Submission Storage
 
-| Breakpoint | Target |
+The plugin registers a private admin-only post type:
+
+```text
+umoya_submission
+```
+
+Stored metadata includes:
+
+- Submitted at.
+- Source.
+- First name.
+- Last name.
+- Email.
+- Phone.
+- Country.
+- City.
+- Preferred travel season.
+- Preferred travel year.
+- Preferred journey length.
+- Founder's Circle message.
+- Page URL.
+- HubSpot status.
+- HubSpot response code/body.
+- Submission UUID.
+- IP address.
+- User agent.
+
+Admin features:
+
+- Custom columns for email, phone, source, HubSpot status, date.
+- Status badges for `sent`, `failed`, `skipped`, `sent_direct_from_browser`, and `not attempted`.
+- `Resend to HubSpot` admin action.
+
+### Rate Limiting
+
+The REST handler rate-limits by IP using a transient:
+
+```text
+8 submissions per 10 minutes
+```
+
+### HubSpot Tracking Code
+
+`class-submissions.php` injects the HubSpot tracking script in `wp_footer`:
+
+```text
+https://js.hs-scripts.com/246097317.js
+```
+
+This is important for `hubspotutk` and visitor context.
+
+### Field Mapping
+
+The JS maps form fields to HubSpot property names:
+
+| Form field / alias | Normalized HubSpot property |
 |---|---|
-| `max-width: 1024px` | Tablet — columns narrow, some layouts restructure |
-| `max-width: 768px` | Mobile — all two-column layouts collapse to single column |
-| `max-width: 420px` | Small mobile — compressed padding, oversized elements reduced |
+| `MERGE1`, `title`, `salutation` | `salutation` |
+| `FNAME`, `firstname` | `firstname` |
+| `LNAME`, `lastname` | `lastname` |
+| `EMAIL`, `email` | `email` |
+| `PHONE`, `phone` | `phone` |
+| `MERGE2`, `country` | `country` |
+| `MERGE3`, `city` | `city` |
+| `MERGE4`, `preferred_travel_season` | `preferred_travel_season` |
+| `MERGE5`, `preferred_travel_year` | `preferred_travel_year` |
+| `MERGE6`, `preferred_journey_length` | `preferred_journey_length` |
+| `MERGE7`, `founders_circle_message` | `founders_circle_message` |
 
-### Scroll Reveal Pattern
+### Current Forms Using This Infrastructure
 
-Used on every section. CSS-only until triggered by `IntersectionObserver`:
-
-```css
-.fc-xxx-rv {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .85s var(--ease), transform .85s var(--ease);
-}
-.fc-xxx-rv.fc-xxx-on { opacity: 1; transform: none; }
-.fc-xxx-rv.d1 { transition-delay: .14s; }
-.fc-xxx-rv.d2 { transition-delay: .26s; }
-```
-
-All `IntersectionObserver` calls include a no-JS fallback that immediately adds the visible class.
-
-### The `clamp()` + `vh` Pattern (Section 02)
-
-Spacing that must scale with viewport height (not width) uses:
-```css
-padding-top: clamp(28px, 4vh, 48px);
-font-size:   clamp(0.6rem, 0.9vh, 0.72rem);
-```
-This ensures content fits in `100dvh` without overflow at any screen height ≥768px.
-
----
-
-## 8. Accessibility Standards
-
-Every section meets or exceeds WCAG 2.1 AA:
-
-- **Minimum font size:** 12px (0.75rem). Eyebrow labels at exactly 12px are acceptable as decorative all-caps labels with wide letter-spacing.
-- **Contrast:** All text on dark overlays tested and confirmed ≥4.5:1. Hero text scores 15.84:1 AAA.
-- **Touch targets:** All interactive elements (buttons, accordion triggers, slideshow arrows, dots) have `min-height: 44px` and `min-width: 44px`.
-- **ARIA:** Carousel sections use `role="region"`, `aria-roledescription="carousel"`, slide `role="group"`. Accordion uses `aria-expanded`, `aria-controls`, `role="region"`. Dots use `role="tablist"`, `role="tab"`, `aria-selected`.
-- **iOS zoom prevention:** All form inputs have `font-size: max(16px, 0.9rem)` — a font size below 16px triggers auto-zoom in iOS Safari.
-- **Animations:** All entrance animations use `animation: xxx both` with delays — content is never invisible without JS.
-
----
-
-## 9. JavaScript Standards
-
-All scripts are:
-- Wrapped in an IIFE: `(function(){ 'use strict'; }())`
-- Scoped by querying within the section element (e.g., `document.querySelectorAll('#fc-benefits .fc-ben-rv')`) — prevents cross-section conflicts when multiple scripts are on the same page
-- Written in ES5-compatible syntax — no arrow functions, no `const`/`let`, no template literals — for maximum compatibility with older WordPress/Elementor environments
-- Include `IntersectionObserver` fallbacks that immediately show content if the API is unavailable
-
----
-
-## 10. Elementor Deployment Instructions
-
-### Step-by-step for each section:
-
-1. Open the Founder's Circle page in Elementor editor
-2. Add a new **HTML widget** in the correct position
-3. Paste the **entire contents** of the section file into the widget's HTML field
-4. Click **Update**
-5. Preview to confirm rendering
-
-### Important anchor IDs (must not be changed)
-
-These IDs are referenced by CTA buttons across multiple sections. Changing them will break all cross-section links.
-
-| ID | Section | Referenced by |
+| Form | File | Source value |
 |---|---|---|
-| `#fc-hero` | Section 01 | Sticky nav IntersectionObserver |
-| `#fc-form-section` | Section 02 | Every CTA button on the page |
-| `#fc-be-first` | Section 03 | Hero "Learn More" ghost button |
+| Founder's Circle Section 02 form | `section-02-form.html` | `founders_circle_page` |
+| Homepage popup form | `homepage/homepage-form-popup.html` | `homepage_popup` |
 
-### Contact Form 7 Integration
+Both currently use:
 
-In Section 02, locate the `<form id="fc2Form">` block and replace the entire `<form>` element with:
-```
-[contact-form-7 id="YOUR_FORM_ID" title="Founders Circle"]
-```
-
-To maintain styling, apply the following classes via CF7's tag editor or Additional CSS:
-- Field wrappers: `fc-f2-field`
-- Inputs/selects: the default CF7 markup accepts class attributes in the tag generator
-- The submit button can be styled globally since it's outside the HTML widget scope
-
----
-
-## 11. Image Swap Instructions
-
-Every image placeholder is marked with a `★ SWAP` comment. Below is the full list:
-
-| Section | Placeholder | Drive source (from brief) |
-|---|---|---|
-| 01 Hero | Hero image | Your hero video/poster OR `umoya_image-1.jpg` |
-| 02 Form | Left column image | Portrait shot — best with cultural moment |
-| 03 Slideshow Slide 1 | Journey image | Drive Image 1 |
-| 03 Slideshow Slide 2 | Journey image | Drive Image 2 |
-| 03 Slideshow Slide 3 | Journey image | Drive Image 3 |
-| 03 Slideshow Slide 4 | Journey image | Drive Image 4 |
-| 04 Benefits | Left portrait | Drive image — **crop to remove individual on right** |
-| 05 Province 1 | Gauteng/Limpopo | `IMG_6762-scaled.webp` |
-| 05 Province 2 | Mpumalanga | `IMG_7057-scaled.webp` |
-| 05 Province 3 | KwaZulu-Natal | `IMG_9149.webp` |
-| 05 Province 4 | Western Cape | `IMG_7630-scaled.webp` |
-| 05 Province 5 | All Provinces | Your choice |
-| 05 Includes | Journey experience | `umoya_image-20.jpg` |
-| 06 Video | Brand video | Brand video (primary) — backup video from Drive |
-
-All section images are currently using live images from the WordPress uploads directory at `umoyaafrikatours.co.za/wp-content/uploads/` as placeholders.
-
----
-
-## 12. Pricing Placeholders
-
-In Section 05 (Journey), two values must be filled in before launch:
-
-```html
-$[Price]   — Starting price per person
-$[Amount]  — Founder's Circle exclusive discount
+```text
+Portal ID: 246097317
+Form GUID: cb87d460-fb2d-4c53-8c32-7daaa05067d7
+Consent text: I agree to be contacted by Umoya Afrika Tours about Founder's Circle membership and related travel experiences.
 ```
 
-Search for `$[Price]` and `$[Amount]` in `section-05-journey.html` to locate them.
+### POPIA Consent Requirements
+
+From `Website docs/Umoya_POPIA_Consent_Wording.txt`:
+
+- Marketing consent checkboxes must not be pre-ticked.
+- Booking form confirmations must be separate checkboxes.
+- Consent register should record who consented, what they consented to, date, and wording used.
+- Every marketing email must contain a working unsubscribe link.
+- Unsubscribes must be honored promptly.
 
 ---
 
-## 13. Planned Work Not Yet Built
+## 9. Footer and Legal Routing
 
-Per the Website Requirements Document and Master Guide, the following remain to be built:
+The footer URL map was decoded from `Website docs/FOOTER URL MAP.pdf` and converted into `FOOTER_URL_MAP.elementor.html`.
 
-### Wider Site Pages
+Current footer routes:
 
-| Page | Status | Notes |
-|---|---|---|
-| Homepage | In development | Conversion engine — hero video, tours, testimonials |
-| About Us | Planned | Mission, vision, founders, cultural impact |
-| Signature Experiences (5) | Planned | One page per province — storytelling + CTA |
-| Tours & Packages | Planned | Layered: highlights on page + downloadable PDF itinerary |
-| Accommodations & Dining | Planned | New section — boutique stays, fine dining, luxury positioning |
-| Knowledge Hub | Planned | Thought leadership — distinct from blog |
-| Blog / Media | Planned | Travel tips, news, lighter than Knowledge Hub |
-| Luxury Contact Page | Planned | Live |
-| Client Portal | Planned | Advanced: user login, file uploads, payment tracking |
-
-### Founder's Circle Page — Remaining Items
-
-- **Video integration:** Hero (Section 01) and Why Umoya (Section 06) are pre-marked for video embeds once brand video is delivered
-- **Real pricing:** Replace `$[Price]` and `$[Amount]` in Section 05
-- **Drive images:** Replace all `★ SWAP` placeholders with final approved images
-- **CF7 form ID:** Connect Section 02 form to WordPress CF7 with correct form ID
-- **Meta Pixel + GA4:** Confirm event tracking on form submit action
-
----
-
-## 14. Key Decisions Log
-
-| Decision | Rationale |
+| Footer label | Destination |
 |---|---|
-| All HTML in separate files per section | Faster iteration, easier debugging, no Elementor re-renders of unrelated sections |
-| `font-family: inherit` everywhere | Fonts come from tevily-child theme — importing Google Fonts would conflict |
-| `clamp()` + `vh` for Section 02 spacing | Eliminates overflow without any `overflow` property — sizes scale to fill `100dvh` |
-| `flex: 1` + `min-height: 0` chain in Section 02 | The only pure CSS way to make a textarea fill remaining viewport height without JS |
-| Cream as dominant background (not dark) | Matches the live site — dark brown is accent-only, not the default |
-| Province cards: last card full-width on mobile | 5 cards in 2 columns leaves an orphan — spanning it improves layout at any screen |
-| Accordion: one item open at a time | Prevents users from losing context; keeps content readable in bounded space |
-| Scroll indicator hidden on mobile | Unnecessary at ≤768px — users are experienced scrollers on touch devices |
-| Ghost button border: rgba(.70) not rgba(.45) | .45 was near-invisible on bright image backgrounds — contrast insurance |
-| `min-height: max(100dvh, 620px)` on hero | Prevents hero from collapsing below usable height in landscape on small phones |
+| Journey | `/the-journey` |
+| Experience | `/why-umoya` |
+| Founder's Circle | `/founders-circle` |
+| About | `/our-story` |
+| Contact | `/contact` |
+| Travel Essentials | `/travel-essentials` |
+| Travel Brochure | `/travel-brochure.pdf` |
+| Travel Insurance Guidance | `/travel-essentials#travel-protection` |
+| Visa & Entry Information | `/visa-and-entry` |
+| Press & Media | `/press` |
+| Booking Terms & Conditions | `/booking-terms` |
+| Privacy Policy | `/privacy` |
+| Cookie Preferences | Opens cookie consent modal, not a normal URL |
+| Email Opt-out | HubSpot subscription preferences URL, still needs final URL |
+| PAIA Manual | `/paia-manual.pdf` |
+
+### Legal Snippet Placeholders Still Open
+
+The generated snippets intentionally preserve these placeholders:
+
+```text
+[INSERT DATE]
+[INSERT_UNSUBSCRIBE_URL]
+[INSERT_HUBSPOT_SUBSCRIPTION_PREFERENCES_URL]
+```
+
+Those should be replaced before publishing.
+
+### Cookie Preferences
+
+The footer `Cookie Preferences` link should trigger the active cookie consent tool/modal. It should not route to a normal page unless the cookie tool requires it.
+
+The plugin includes a console cleanup / cookie admin shim:
+
+```text
+umoya-elementor-widgets/includes/class-console-cleanup.php
+```
+
+It creates hidden shim nodes/classes for `cookieadmin_*` selectors to reduce console noise when cookie admin scripts expect those elements.
 
 ---
 
-## 15. Files Reference
+## 10. Default Elementor Footer Newsletter Form
 
-### Delivered in this project
+The footer newsletter form is currently a default Elementor Form widget, not one of the custom generated forms.
 
+### Current UI State Observed
+
+In Elementor editor, `Actions After Submit` showed:
+
+- `Collect Submissions`
+- `Email`
+- `MailChimp`
+
+No HubSpot action was visible in the screenshot.
+
+### Recommended Production Path
+
+Preferred robust setup:
+
+1. Create a dedicated HubSpot form named something like `Footer Newsletter Signup`.
+2. Use fields:
+   - `email` required.
+   - `firstname` or `name` optional, depending on the HubSpot property strategy.
+   - Marketing consent checkbox if the form is for newsletter/marketing.
+3. Copy the HubSpot Portal ID and Form GUID.
+4. Add a small WordPress hook or webhook integration to forward this Elementor form to HubSpot.
+5. Preserve Elementor `Collect Submissions` as local backup.
+6. Store source as something like `footer_newsletter`.
+
+### Fast No-Code Option
+
+Use the official HubSpot WordPress plugin and enable non-HubSpot form capture. Then:
+
+- Give the Elementor form a clear name.
+- Use clean field IDs such as `email` and `firstname`.
+- Submit a test lead.
+- Confirm it appears in HubSpot.
+
+This can be fast, but it is less explicit than a custom Forms API bridge.
+
+### Why Not Rely Only on MailChimp
+
+MailChimp can collect newsletter contacts, but the project already uses HubSpot as the CRM and the legal docs refer to HubSpot as a customer relationship management platform. The cleaner long-term source of truth is HubSpot.
+
+---
+
+## 11. Generator Workflow
+
+Use this when updating source sections and keeping the plugin synchronized.
+
+### Edit Flow
+
+1. Edit the relevant source HTML:
+   - Founder's Circle: root `section-*.html`.
+   - Homepage: `homepage/*.html`.
+2. Run:
+
+```powershell
+node tools/build-elementor-widgets.mjs
 ```
-section-00-sticky-nav.html    — Fixed nav bar
-section-01-hero.html          — Full-viewport hero (centre-aligned, audited)
-section-02-form.html          — Two-column form (1fr/2fr, 100dvh, no overflow)
-section-03-be-first.html      — Copy + 4-slide carousel
-section-04-benefits.html      — Dark section, image + checklist
-section-05-journey.html       — Stats + province cards + includes + closing CTA
-section-06-why.html           — Philosophy copy + video + pillars + CTA band
-section-07-details.html       — Collapsible accordion + footer CTA
+
+3. Review generated changes:
+
+```powershell
+git diff -- umoya-elementor-widgets tools/build-elementor-widgets.mjs
 ```
 
-### Superseded (do not use)
+4. Check for whitespace:
 
+```powershell
+git diff --check
 ```
-founders-circle.html          — V1 monolithic file (replaced by section files)
-founders-circle-v2.html       — V2 monolithic file (replaced by section files)
-founders-circle-v3.html       — V3 monolithic file (replaced by section files)
+
+5. If packaging is needed, refresh:
+
+```powershell
+Compress-Archive -Path umoya-elementor-widgets -DestinationPath umoya-elementor-widgets.zip -Force
+```
+
+Use PowerShell-native commands on Windows. Avoid shell write tricks for manual file edits.
+
+### Generator Guarantees
+
+The generator:
+
+- Removes hidden BOMs from source input.
+- Splits `<style>` and `<script>` into plugin asset files.
+- Masks comments so comments do not become editable Elementor text fields.
+- Performs round-trip validation on placeholders.
+- Creates registry entries with fields and design tokens.
+- Writes normalized line endings and strips trailing spaces.
+
+### Prior Validation Achieved
+
+During the widget sync rollout:
+
+- `node tools/build-elementor-widgets.mjs` generated 26 widgets.
+- JS syntax check passed for generated section scripts.
+- A temporary Node-installed PHP parser parsed 58 PHP files.
+- Coverage check confirmed manifest/template/asset consistency.
+- `git diff --check` passed.
+
+---
+
+## 12. Deployment and Elementor Editing Guidance
+
+### For Standalone HTML Widgets
+
+If using raw HTML snippets manually:
+
+1. Open the page in Elementor.
+2. Add an HTML widget.
+3. Paste the entire file content.
+4. Update the page.
+5. Preview desktop, tablet, and mobile.
+
+### For Custom Plugin Widgets
+
+Preferred ongoing route:
+
+1. Install or update `umoya-elementor-widgets.zip`.
+2. In Elementor, use the section widgets from:
+   - `Umoya - Homepage`
+   - `Umoya - Founder's Circle`
+3. Edit text/media/link values through widget controls where possible.
+4. Use the widget's custom replacement/custom CSS controls for isolated changes.
+5. Use full HTML override only when a section needs a deliberate local divergence.
+
+### Do Not Change These Anchors Carelessly
+
+| Anchor | Role |
+|---|---|
+| `#fc-form-section` | Main Founder's Circle form target. |
+| `#fc-hero` | Founder's Circle hero target. |
+| `#fc-be-first` | Hero "Learn More" target. |
+| `#umoya-hero` | Homepage top section. |
+| `#umoya-about` | Homepage story section. |
+| `#umoya-journey-anchor` | Homepage nav scroll target for journey. |
+| `#fc-pillars` | Why Umoya / pillars target in several sections. |
+| `#fc-details` | Travel essentials target. |
+
+---
+
+## 13. Accessibility and Interaction Standards
+
+Keep these standards for future changes:
+
+- Use semantic section roots with `aria-label` where helpful.
+- Keep interactive controls keyboard-accessible.
+- Use 44px minimum touch targets for buttons, arrows, dots, and accordion triggers.
+- Keep form inputs at 16px or above on mobile to avoid iOS zoom.
+- Keep accordions and carousels ARIA-aware.
+- Use no-JS fallbacks for reveal animations.
+- Do not hide real content permanently behind JS-only behavior.
+- Keep carousel copy inserted with `textContent` or safe templating.
+
+---
+
+## 14. Styling Standards
+
+- Scope CSS under the section root.
+- Prefer section prefixes:
+  - `fc-` for Founder's Circle.
+  - `umoya-` for homepage/general brand sections.
+- Keep `box-sizing: border-box` inside section scopes.
+- Use `clamp()` thoughtfully for responsive typography and spacing.
+- Do not scale everything purely with viewport width.
+- Avoid negative letter spacing.
+- Keep cards and framed elements intentional; do not nest cards inside cards.
+- Avoid decorative gradient blobs/orbs.
+- If a CTA is meant to stay one line, use intrinsic width and padding before changing the design.
+
+---
+
+## 15. JavaScript Standards
+
+Most section scripts follow this shape:
+
+```js
+(function() {
+  'use strict';
+  var root = document.querySelector('#section-root');
+  if (!root) return;
+  // section-scoped behavior
+}());
+```
+
+Guidelines:
+
+- Prefer ES5 syntax for WordPress/Elementor compatibility.
+- Query within the section root.
+- Avoid global variable leakage.
+- Add IntersectionObserver fallbacks.
+- For form scripts, prevent duplicate submissions.
+- For popup scripts, manage focus, escape key, close buttons, and `aria-hidden`.
+
+---
+
+## 16. Known Open Items
+
+### Legal / Footer
+
+- Replace `[INSERT DATE]` in Cookie Policy and Privacy Policy.
+- Replace `[INSERT_UNSUBSCRIBE_URL]`.
+- Replace `[INSERT_HUBSPOT_SUBSCRIPTION_PREFERENCES_URL]`.
+- Confirm the final `/cookie-policy` slug if the cookie policy will exist as its own page.
+- Wire `Cookie Preferences` to the cookie consent modal.
+- Confirm `/travel-brochure.pdf` and `/paia-manual.pdf` assets exist on the live site.
+
+### Footer Newsletter Form
+
+- Decide no-code HubSpot plugin capture vs custom HubSpot Forms API bridge.
+- Create dedicated HubSpot footer newsletter form if using the custom route.
+- Add POPIA marketing consent copy.
+- Test lead capture in HubSpot and Elementor submissions.
+
+### HubSpot / Forms
+
+- Confirm whether the current shared HubSpot Form GUID should remain shared by Founder's Circle and homepage popup.
+- Confirm whether newsletter contacts should use a separate HubSpot form/list.
+- Confirm marketing subscription type / consent handling in HubSpot.
+- Confirm final unsubscribe and subscription preferences URLs.
+
+### Elementor Plugin
+
+- Re-run generator after any source HTML change.
+- Rebuild `umoya-elementor-widgets.zip` after plugin changes.
+- If committing, stage only intentional plugin/source files.
+- Consider adding a formal package/build command if this becomes recurring.
+
+### Homepage / Founder's Circle
+
+- Final pricing and offer values should be confirmed.
+- Final image/video assets should be audited against the live media library.
+- Review all CTA routes against live WordPress pages.
+- Confirm any QA screenshots/profile folders that can be cleaned up.
+
+### GitHub
+
+- Current branch is `codex/elementor-widget-sync`.
+- The previous commit on that branch is `042040d`.
+- If making a new kind of change, either continue this branch intentionally or create a new scoped branch.
+- Because the worktree has many unrelated untracked artifacts, never use blanket `git add .`.
+
+---
+
+## 17. Quick Commands
+
+```powershell
+# Show current git branch
+git branch --show-current
+
+# Show status without touching unrelated files
+git status --short
+
+# Search fast
+rg -n "HubSpot|hubspot|fc-form-section|umoya-form-popup"
+
+# Rebuild generated Elementor plugin artifacts
+node tools/build-elementor-widgets.mjs
+
+# Check whitespace problems
+git diff --check
+
+# Rebuild plugin zip if needed
+Compress-Archive -Path umoya-elementor-widgets -DestinationPath umoya-elementor-widgets.zip -Force
 ```
 
 ---
 
-## 16. How to Work With Me Going Forward
+## 18. File-Specific Notes
 
-When making requests, the following will always be applied automatically:
+### `section-02-form.html`
 
-1. **Stack compliance** — no suggestions outside WordPress/Elementor
-2. **Font inheritance** — `font-family: inherit` always, never imported fonts
-3. **Colour system** — always use the tokens defined in Section 4
-4. **No overflow** — content sized to fit its container; clamp+flex+min-height-0 used instead
-5. **Audit before build** — for any layout involving height constraints, spacing is calculated before code is written
-6. **Scoped CSS** — all rules under the section's root ID
-7. **ES5 JS** — IIFE, `var`, `function(){}`, no modern syntax
-8. **WCAG AA minimum** — 12px font floor, 44px touch targets, proper ARIA
-9. **Zero HTML errors** — all files are validated before delivery
-10. **Responsive at four breakpoints** — Desktop · 1024px · 768px · 420px
+Main custom Founder's Circle form. It already contains:
+
+- `action="/wp-json/umoya/v1/submissions"`
+- HubSpot portal and form IDs.
+- `data-umoya-form-source="founders_circle_page"`
+- Hidden `hutk` input.
+- JS form mapping and fallback logic.
+
+### `homepage/homepage-form-popup.html`
+
+Reusable homepage popup form. It already contains:
+
+- Same HubSpot portal and form GUID.
+- `data-umoya-form-source="homepage_popup"`
+- Popup open/close behavior.
+- Duplicate-submission prevention.
+- WordPress backup and HubSpot fallback logic.
+
+### `umoya-elementor-widgets/includes/class-submissions.php`
+
+Core server-side submission infrastructure:
+
+- Registers private submission post type.
+- Registers REST endpoint.
+- Normalizes field aliases.
+- Saves submissions.
+- Forwards to HubSpot.
+- Injects HubSpot tracking script.
+- Provides admin resend.
+
+### `tools/build-elementor-widgets.mjs`
+
+Do not delete. This is the sync bridge from source HTML to the plugin.
+
+### `Website docs/Elementor HTML snippets/`
+
+Paste-ready legal snippets for Elementor text/HTML editing. These are fragments, not full HTML pages.
 
 ---
 
-*Last updated: March 2026. Maintained by Claude (Anthropic) as Lead Architect on the Umoya Afrika Tours platform.*
+## 19. Future Assistant Checklist
+
+Before changing anything:
+
+1. Read this `CLAUDE.md`.
+2. Check `git status --short`.
+3. Identify whether the change belongs to source HTML, generated plugin output, legal docs, or WordPress integration.
+4. Preserve unrelated local files.
+5. Make the smallest safe edit.
+6. If source HTML changed, run the generator.
+7. Verify with `rg`, `git diff --check`, and targeted file checks.
+8. If syncing to GitHub, stage only the intended scope.
+
+After changing anything:
+
+1. State exactly what files changed.
+2. State what was verified.
+3. Note any unresolved placeholders or external credentials/URLs needed.
+4. If a GitHub sync was done, include branch and commit.
+
+---
+
+## 20. The Current Mental Model
+
+Think of this project as four connected layers:
+
+1. Brand/content layer:
+   - Umoya's premium heritage travel narrative.
+   - Legal policies and footer route map.
+
+2. Source HTML layer:
+   - Root `section-*.html` files for Founder's Circle.
+   - `homepage/*.html` files for homepage.
+
+3. Elementor plugin layer:
+   - Generated widgets, controls, assets, and registry.
+   - Two Elementor categories: homepage and Founder's Circle.
+
+4. CRM/compliance layer:
+   - WordPress submission storage.
+   - HubSpot Forms API forwarding.
+   - HubSpot tracking code.
+   - POPIA consent wording.
+   - Footer newsletter and opt-out work still being completed.
+
+When in doubt, preserve the source HTML visual behavior, then sync the plugin layer, then verify HubSpot/legal implications.
