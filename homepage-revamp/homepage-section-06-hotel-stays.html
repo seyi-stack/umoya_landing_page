@@ -1,5 +1,34 @@
-<!-- UMOYA - HOMEPAGE SECTION 06: ACCOMMODATIONS -->
-<section id="umoya-accommodations" aria-label="Accommodations">
+<!--
+=================================================================
+  UMOYA — HOMEPAGE (REVAMP) SECTION 06: HOTEL STAYS
+  Featured hotel: CAPE GRACE (A Fairmont Hotel · V&A Waterfront)
+=================================================================
+  Full-bleed (edge-to-edge) cinematic carousel band.
+
+  MOTION — rebuilt to be fail-proof:
+  • The images SLIDE horizontally. Motion is driven by a JS
+    requestAnimationFrame tween that writes `transform` every frame
+    (NO CSS transition, NO drag) — so the slide is always visible,
+    with no reliance on transition/reflow timing.
+  • Auto-advances every 5s on a continuous, seamless loop
+    (cloned edge slides; an instant jump off the clone keeps it
+    endless). The arrows trigger the same slide.
+  • Text sits FIXED, top-left, over the images and never moves.
+
+  Tall/thin luxury line-arrows on the far left/right (no chrome,
+  no hover; scale-down on click). Bottom-left note links to the
+  Signature Journey stays. "Featured Hotel" badge makes clear
+  Cape Grace is the featured stay, not the only one.
+
+  Standalone Elementor HTML widget (not a generator source file).
+  BRAND: font-family: inherit; palette tokens only. Scoped to
+  #umoya-accommodations. ES5 IIFE, IntersectionObserver-paused when
+  off-screen. Autoplay is intentional and runs regardless of the OS
+  "reduce motion" setting. Each slide carries an earthy fallback
+  background so the slide is visible even before/without images.
+=================================================================
+-->
+<section id="umoya-accommodations" role="region" aria-roledescription="carousel" aria-label="Featured hotel stay — Cape Grace">
   <style>
     #umoya-accommodations {
       --cream: #F5F0EB;
@@ -9,310 +38,429 @@
       --white: #FFFFFF;
       --ease: cubic-bezier(.25,.46,.45,.94);
 
-      background: var(--cream);
-      color: var(--brown);
-      padding: clamp(64px, 8vw, 112px) 0;
-      overflow: hidden;
-    }
-
-    #umoya-accommodations,
-    #umoya-accommodations *,
-    #umoya-accommodations *::before,
-    #umoya-accommodations *::after {
-      box-sizing: border-box;
-    }
-
-    #umoya-accommodations .umoya-acc-wrap {
-      width: min(1180px, 92vw);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
-      gap: clamp(34px, 6vw, 82px);
-      align-items: center;
-    }
-
-    #umoya-accommodations .umoya-acc-eye {
-      display: block;
-      margin-bottom: 16px;
-      color: var(--terra);
-      font-size: .72rem;
-      font-weight: 800;
-      letter-spacing: .24em;
-      line-height: 1.4;
-      text-transform: uppercase;
-    }
-
-    #umoya-accommodations h2 {
-      margin: 0 0 24px;
-      color: var(--brown);
-      font-size: clamp(2.1rem, 4.8vw, 4.1rem);
-      font-weight: 400;
-      letter-spacing: 0;
-      line-height: 1.04;
-    }
-
-    #umoya-accommodations .umoya-acc-body {
-      display: grid;
-      gap: 18px;
-      color: rgba(75,46,43,.86);
-      font-size: clamp(1rem, 1.2vw, 1.06rem);
-      line-height: 1.78;
-    }
-
-    #umoya-accommodations .umoya-acc-body p {
-      margin: 0;
-    }
-
-    #umoya-accommodations .umoya-acc-btn {
-      appearance: none;
-      -webkit-appearance: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 32px;
-      min-height: 48px;
-      padding: 14px 28px;
-      background: var(--terra);
-      border: 2px solid var(--terra);
-      border-radius: 0;
-      color: var(--white);
-      cursor: pointer;
-      font-size: .76rem;
-      font-weight: 800;
-      letter-spacing: .18em;
-      line-height: 1.2;
-      text-transform: uppercase;
-      transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
-    }
-
-    #umoya-accommodations .umoya-acc-btn:hover {
-      background: var(--terra-dk);
-      border-color: var(--terra-dk);
-      transform: translateY(-2px);
-    }
-
-    #umoya-accommodations .umoya-acc-gallery {
       position: relative;
-      min-height: clamp(380px, 46vw, 560px);
+      /* Full-bleed: break out of the centered Elementor container to span the viewport */
+      width: 100vw;
+      max-width: 100vw;
+      margin-left: calc(50% - 50vw);
+      height: clamp(580px, 82vh, 860px);
       overflow: hidden;
       background: var(--brown);
+      color: var(--cream);
+      font-family: inherit;
+      isolation: isolate;
     }
 
-    #umoya-accommodations .umoya-acc-image {
+    #umoya-accommodations *,
+    #umoya-accommodations *::before,
+    #umoya-accommodations *::after { box-sizing: border-box; }
+
+    /* ── Image layer (moved by JS rAF; no CSS transition) ────── */
+    #umoya-accommodations .umoya-hs-viewport {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+    #umoya-accommodations .umoya-hs-track {
+      display: flex;
+      flex-wrap: nowrap;
+      width: 100%;
+      height: 100%;
+      will-change: transform;
+      transform: translate3d(-100%,0,0);
+    }
+    #umoya-accommodations .umoya-hs-slide {
+      position: relative;
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+    }
+    #umoya-accommodations .umoya-hs-slide img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       max-width: none;
       object-fit: cover;
-      opacity: 0;
-      transform: scale(1.02);
-      transition: opacity .6s var(--ease), transform .9s var(--ease);
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
     }
 
-    #umoya-accommodations .umoya-acc-image.is-active {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    /* Property caption — name + place over a bottom gradient */
-    #umoya-accommodations .umoya-acc-cap {
+    /* ── Legibility scrim (darker toward the top-left text) ──── */
+    #umoya-accommodations .umoya-hs-scrim {
       position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
       z-index: 1;
-      margin: 0;
-      padding: clamp(46px, 6vw, 64px) clamp(20px, 3vw, 30px) clamp(20px, 3vw, 26px);
-      background: linear-gradient(180deg, rgba(28,13,6,0) 0%, rgba(28,13,6,.68) 60%, rgba(28,13,6,.88) 100%);
-      color: var(--cream);
-      opacity: 0;
       pointer-events: none;
-      transition: opacity .6s var(--ease);
+      background:
+        linear-gradient(90deg,  rgba(28,13,6,.66) 0%, rgba(28,13,6,.28) 46%, rgba(28,13,6,0) 74%),
+        linear-gradient(180deg, rgba(28,13,6,.54) 0%, rgba(28,13,6,.08) 42%, rgba(28,13,6,0) 64%),
+        linear-gradient(0deg,   rgba(28,13,6,.34) 0%, rgba(28,13,6,0) 26%);
     }
 
-    #umoya-accommodations .umoya-acc-cap.is-active {
-      opacity: 1;
+    /* ── Fixed text content — TOP-LEFT ───────────────────────── */
+    #umoya-accommodations .umoya-hs-content {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      align-items: flex-start;
+      pointer-events: none;         /* clicks fall through; the CTA + note link re-enable */
+    }
+    #umoya-accommodations .umoya-hs-inner {
+      max-width: 680px;
+      /* top · right · bottom · left — left inset keeps clear of the side arrows */
+      padding: clamp(84px, 15vh, 168px) clamp(24px, 4vw, 48px) 0 clamp(72px, 8vw, 132px);
     }
 
-    #umoya-accommodations .umoya-acc-cap-name {
-      display: block;
-      font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-      font-weight: 400;
-      font-style: italic;
-      line-height: 1.15;
-      text-shadow: 0 2px 12px rgba(28,13,6,.55);
+    #umoya-accommodations .umoya-hs-kicker {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
     }
-
-    #umoya-accommodations .umoya-acc-cap-place {
-      display: block;
-      margin-top: 5px;
-      color: var(--terra);
-      font-size: .72rem;
+    #umoya-accommodations .umoya-hs-eye {
+      color: rgba(245,240,235,.95);
+      font-size: clamp(.9rem, 1.1vw, 1.05rem);
+      font-weight: 500;
+      letter-spacing: .04em;        /* Title Case — not uppercased */
+      text-shadow: 0 1px 8px rgba(28,13,6,.55);
+    }
+    #umoya-accommodations .umoya-hs-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 13px;
+      background: var(--terra);
+      color: var(--white);
+      border-radius: 999px;
+      font-size: .6rem;
       font-weight: 800;
       letter-spacing: .16em;
       text-transform: uppercase;
-      text-shadow: 0 1px 8px rgba(28,13,6,.6);
+      white-space: nowrap;
+      box-shadow: 0 8px 22px rgba(28,13,6,.4);
     }
+    #umoya-accommodations .umoya-hs-badge svg { width: 11px; height: 11px; flex: 0 0 auto; }
 
-    #umoya-accommodations .umoya-acc-controls {
-      position: absolute;
-      right: 22px;
-      bottom: 22px;
-      display: flex;
-      gap: 10px;
-      z-index: 2;
-    }
-
-    #umoya-accommodations .umoya-acc-arrow {
-      appearance: none;
-      width: 44px;
-      height: 44px;
-      border: 1px solid rgba(255,255,255,.55);
-      border-radius: 50%;
-      background: rgba(75,46,43,.42);
+    #umoya-accommodations .umoya-hs-name {
+      margin: 0;
       color: var(--white);
+      font-size: clamp(2.9rem, 7vw, 5.4rem);
+      font-weight: 400;
+      line-height: 1.03;
+      letter-spacing: -.005em;
+      text-shadow: 0 2px 26px rgba(28,13,6,.5);
+    }
+    #umoya-accommodations .umoya-hs-place {
+      display: block;
+      margin-top: 24px;
+      color: rgba(245,240,235,.92);
+      font-size: clamp(1rem, 1.2vw, 1.16rem);
+      line-height: 1.5;
+      text-shadow: 0 1px 10px rgba(28,13,6,.5);
+    }
+
+    #umoya-accommodations .umoya-hs-btn {
+      pointer-events: auto;
+      appearance: none;
+      -webkit-appearance: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 38px;
+      min-height: 52px;
+      padding: 15px 28px;
+      background: transparent;
+      border: 1px solid rgba(245,240,235,.6);
+      border-radius: 0;
+      color: var(--cream);
       cursor: pointer;
+      font-size: .74rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      line-height: 1.2;
+      text-decoration: none;
+      text-transform: uppercase;
+      -webkit-tap-highlight-color: transparent;
+      transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+    }
+    #umoya-accommodations .umoya-hs-btn svg { width: 15px; height: 15px; flex: 0 0 auto; }
+    #umoya-accommodations .umoya-hs-btn:hover {
+      background: rgba(245,240,235,.12);
+      border-color: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    /* ── Note pinned to the BOTTOM of the section ────────────── */
+    #umoya-accommodations .umoya-hs-foot {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: clamp(28px, 4.5vh, 52px);
+      z-index: 2;
+      pointer-events: none;
+      padding: 0 clamp(24px, 4vw, 48px) 0 clamp(72px, 8vw, 132px);
+    }
+    #umoya-accommodations .umoya-hs-note {
+      margin: 0;
+      max-width: 100%;
+      color: rgba(245,240,235,.9);
+      font-size: clamp(1.05rem, 1.55vw, 1.32rem);
+      line-height: 1.5;
+      text-shadow: 0 1px 10px rgba(28,13,6,.5);
+      white-space: nowrap;          /* one line by design — see mobile override */
+      overflow: hidden;
+      text-overflow: ellipsis;      /* safety net only; should not trigger at normal widths */
+    }
+    #umoya-accommodations .umoya-hs-note a {
+      pointer-events: auto;
+      color: var(--terra);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      transition: color .2s var(--ease);
+    }
+    #umoya-accommodations .umoya-hs-note a:hover { color: var(--cream); }
+
+    /* ── Arrows: elegant thin line-arrows, no chrome, no hover ── */
+    #umoya-accommodations .umoya-hs-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      pointer-events: auto;
       display: grid;
       place-items: center;
-      backdrop-filter: blur(8px);
-      transition: background .22s var(--ease), transform .22s var(--ease);
+      width: 64px;
+      height: 56px;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: var(--white);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      filter: drop-shadow(0 1px 8px rgba(28,13,6,.65));
+      transition: transform .16s var(--ease);
+    }
+    #umoya-accommodations .umoya-hs-arrow:active { transform: translateY(-50%) scale(.86); }
+    #umoya-accommodations .umoya-hs-arrow:focus-visible { outline: 2px solid var(--cream); outline-offset: 4px; border-radius: 4px; }
+    #umoya-accommodations .umoya-hs-prev { left: clamp(12px, 2vw, 34px); }
+    #umoya-accommodations .umoya-hs-next { right: clamp(12px, 2vw, 34px); }
+    #umoya-accommodations .umoya-hs-arrow svg { width: 56px; height: 16px; }   /* natural ratio — not stretched */
+
+    /* ── Tablet ──────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      #umoya-accommodations { height: clamp(540px, 84vh, 760px); }
+      #umoya-accommodations .umoya-hs-inner { padding-left: clamp(52px, 7vw, 92px); padding-top: clamp(72px, 12vh, 128px); }
+      #umoya-accommodations .umoya-hs-foot { padding-left: clamp(52px, 7vw, 92px); }
     }
 
-    #umoya-accommodations .umoya-acc-arrow:hover {
-      background: var(--terra);
-      transform: translateY(-1px);
-    }
+    /* ── Mobile: content top-left, note bottom-left, arrows bottom-right ── */
+    @media (max-width: 768px) {
+      #umoya-accommodations { height: clamp(500px, 86vh, 680px); }
+      #umoya-accommodations .umoya-hs-inner {
+        max-width: none;
+        padding: clamp(60px, 11vh, 104px) clamp(22px, 6vw, 34px) 0;
+      }
+      #umoya-accommodations .umoya-hs-name { font-size: clamp(2.6rem, 12vw, 3.5rem); }
+      #umoya-accommodations .umoya-hs-btn { width: 100%; max-width: 340px; justify-content: center; }
 
-    @media (max-width: 900px) {
-      #umoya-accommodations {
-        padding: 54px 0 72px;
+      #umoya-accommodations .umoya-hs-foot {
+        padding: 0 120px clamp(0px, 0vh, 0px) clamp(22px, 6vw, 34px);   /* leave room for bottom-right arrows */
+        bottom: clamp(18px, 3vh, 28px);
+      }
+      #umoya-accommodations .umoya-hs-note {
+        font-size: clamp(.98rem, 3.6vw, 1.12rem);
+        max-width: none;
+        white-space: normal;        /* mobile is the one place this may wrap to two lines */
+        overflow: visible;
+        text-overflow: clip;
       }
 
-      #umoya-accommodations .umoya-acc-wrap {
-        grid-template-columns: 1fr;
+      #umoya-accommodations .umoya-hs-arrow {
+        top: auto;
+        bottom: clamp(16px, 3vh, 26px);
+        transform: none;
+        width: 52px;
+        height: 44px;
       }
-
-      #umoya-accommodations .umoya-acc-gallery {
-        min-height: 0;
-        aspect-ratio: 4 / 3;
-      }
+      #umoya-accommodations .umoya-hs-arrow:active { transform: scale(.86); }
+      #umoya-accommodations .umoya-hs-arrow svg { width: 44px; height: 14px; }
+      #umoya-accommodations .umoya-hs-prev { left: auto; right: 66px; }
+      #umoya-accommodations .umoya-hs-next { right: 14px; }
     }
   </style>
 
-  <div class="umoya-acc-wrap">
-    <div class="umoya-acc-copy">
-      <span class="umoya-acc-eye">Where You'll Stay</span>
-      <h2>Hotel Stays Worthy of the Journey</h2>
-      <div class="umoya-acc-body">
-        <p>Your accommodations are as carefully considered as every moment between them. Each property is five-star, chosen not just for its comfort, but for what it adds to the journey itself.</p>
+  <!-- IMAGE LAYER -->
+  <div class="umoya-hs-viewport" data-hs-viewport>
+    <div class="umoya-hs-track" data-hs-track>
+      <div class="umoya-hs-slide" role="group" aria-roledescription="slide" aria-label="Cape Grace — 1 of 4" style="background:linear-gradient(135deg,#4B2E2B,#241310);">
+        <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Hero_Shot_Table_Mountain_(1).jpg" alt="Cape Grace on the V&amp;A Waterfront marina, with Table Mountain beyond" loading="eager" fetchpriority="high" decoding="async">
       </div>
-      <button type="button" class="umoya-acc-btn" data-umoya-form-popup>Inquire Now</button>
+      <div class="umoya-hs-slide" role="group" aria-roledescription="slide" aria-label="Cape Grace — 2 of 4" style="background:linear-gradient(135deg,#6a4a2e,#2f1e12);">
+        <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Junior_Suite_2.jpg" alt="A Junior Suite at Cape Grace" loading="eager" decoding="async">
+      </div>
+      <div class="umoya-hs-slide" role="group" aria-roledescription="slide" aria-label="Cape Grace — 3 of 4" style="background:linear-gradient(135deg,#3f5237,#20291c);">
+        <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Fairmont_Spa_Salt_Room.jpg" alt="The salt room at the Fairmont Spa, Cape Grace" loading="eager" decoding="async">
+      </div>
+      <div class="umoya-hs-slide" role="group" aria-roledescription="slide" aria-label="Cape Grace — 4 of 4" style="background:linear-gradient(135deg,#7a4b3a,#341f18);">
+        <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Cape_Grace_Suite_Terrace.jpg" alt="A suite terrace overlooking the marina at Cape Grace" loading="eager" decoding="async">
+      </div>
     </div>
-
-    <figure class="umoya-acc-gallery" aria-label="Five-star hotel stays on the Umoya journey">
-      <!-- ★ SWAP: confirm final images for The Da Vinci, MalaMala, and Cape Grace -->
-      <img class="umoya-acc-image is-active" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Davinci_Outdoor_Pool.jpg" alt="The Da Vinci Hotel — Nelson Mandela Square, Sandton" loading="eager" decoding="async">
-      <img class="umoya-acc-image" src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-19.jpg" alt="MalaMala — community-owned lodge in the Sabi Sand" loading="eager" decoding="async">
-      <img class="umoya-acc-image" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_imgLibrary_marina_view.png" alt="Cape Grace, A Fairmont Hotel — V&A Waterfront, Cape Town" loading="eager" decoding="async">
-
-      <!-- Property captions paired 1:1 with the images above -->
-      <figcaption class="umoya-acc-cap is-active" data-acc-cap="0">
-        <span class="umoya-acc-cap-name">The Da Vinci</span>
-        <span class="umoya-acc-cap-place">Nelson Mandela Square, Sandton</span>
-      </figcaption>
-      <figcaption class="umoya-acc-cap" data-acc-cap="1">
-        <span class="umoya-acc-cap-name">MalaMala</span>
-        <span class="umoya-acc-cap-place">Community-Owned &middot; The Sabi Sand</span>
-      </figcaption>
-      <figcaption class="umoya-acc-cap" data-acc-cap="2">
-        <span class="umoya-acc-cap-name">Cape Grace</span>
-        <span class="umoya-acc-cap-place">A Fairmont Hotel &middot; V&amp;A Waterfront</span>
-      </figcaption>
-
-      <div class="umoya-acc-controls" aria-label="Accommodation carousel controls">
-        <button class="umoya-acc-arrow" type="button" data-acc-prev aria-label="Previous accommodation image">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <button class="umoya-acc-arrow" type="button" data-acc-next aria-label="Next accommodation image">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
-    </figure>
   </div>
+
+  <!-- SCRIM -->
+  <div class="umoya-hs-scrim" aria-hidden="true"></div>
+
+  <!-- FIXED TEXT (top-left) -->
+  <div class="umoya-hs-content">
+    <div class="umoya-hs-inner">
+      <div class="umoya-hs-kicker">
+        <span class="umoya-hs-eye">Where You'll Stay</span>
+        <span class="umoya-hs-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.26L21.6 9l-5 4.6 1.3 7.4L12 17.6 6.1 21l1.3-7.4-5-4.6 6.7-.74L12 2z"/></svg>
+          Featured Hotel
+        </span>
+      </div>
+      <h2 class="umoya-hs-name">Cape Grace</h2>
+      <span class="umoya-hs-place">A Fairmont Hotel &middot; V&amp;A Waterfront, Cape Town</span>
+      <a class="umoya-hs-btn" href="https://umoyaafrikatours.co.za/signature-journey/#sj-stays" target="_blank" rel="noopener">
+        Explore All Stays
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9 7h8v8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- NOTE pinned to the bottom -->
+  <div class="umoya-hs-foot">
+    <p class="umoya-hs-note">This is our featured stay — explore the full collection on the <a href="https://umoyaafrikatours.co.za/signature-journey/#sj-stays" target="_blank" rel="noopener">Signature Journey stays</a>.</p>
+  </div>
+
+  <!-- ARROWS (thin line-arrows) -->
+  <button class="umoya-hs-arrow umoya-hs-prev" type="button" data-hs-prev aria-label="Previous image">
+    <svg viewBox="0 0 56 16" fill="none" aria-hidden="true">
+      <path d="M55 8 H3 M11 2 L3 8 L11 14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <button class="umoya-hs-arrow umoya-hs-next" type="button" data-hs-next aria-label="Next image">
+    <svg viewBox="0 0 56 16" fill="none" aria-hidden="true">
+      <path d="M1 8 H53 M45 2 L53 8 L45 14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
 
   <script>
   (function(){
     'use strict';
+
     var root = document.getElementById('umoya-accommodations');
     if (!root) return;
 
-    var images = Array.prototype.slice.call(root.querySelectorAll('.umoya-acc-image'));
-    var caps = Array.prototype.slice.call(root.querySelectorAll('.umoya-acc-cap'));
-    var prev = root.querySelector('[data-acc-prev]');
-    var next = root.querySelector('[data-acc-next]');
-    var index = 0;
+    var track = root.querySelector('[data-hs-track]');
+    if (!track) return;
 
-    function normalizeIndex(value) {
-      return (value + images.length) % images.length;
+    var slides = Array.prototype.slice.call(track.querySelectorAll('.umoya-hs-slide'));
+    var N = slides.length;
+    if (N < 2) return;
+
+    var prevBtn = root.querySelector('[data-hs-prev]');
+    var nextBtn = root.querySelector('[data-hs-next]');
+
+    /* Motion is intentional here (client wants an auto-playing slideshow), so it
+       runs regardless of the OS "reduce motion" setting. Honouring reduce here
+       is what silently disabled autoplay + turned the slide into a hard cut. */
+    var AUTO = 5000;                 /* 5s interval */
+    var SLIDE_MS = 820;              /* duration of each slide */
+
+    /* ── Seamless infinite loop: clone last -> front, first -> end ── */
+    var lastClone = slides[N - 1].cloneNode(true);
+    var firstClone = slides[0].cloneNode(true);
+    lastClone.setAttribute('aria-hidden', 'true');
+    firstClone.setAttribute('aria-hidden', 'true');
+    track.insertBefore(lastClone, slides[0]);
+    track.appendChild(firstClone);
+    /* DOM: [lastClone, s0..s(N-1), firstClone]; logical pos 1..N are real slides */
+
+    var pos = 1;
+    var current = -100;              /* current translateX, in % of one slide width */
+    var animating = false;
+    var rafId = null;
+    var timer = null;
+    var inView = true;
+
+    function apply(){ track.style.transform = 'translate3d(' + current + '%,0,0)'; }
+
+    function easeInOutCubic(t){ return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+
+    /* JS-driven tween — writes transform every frame, so the slide ALWAYS shows */
+    function tweenTo(target, done){
+      if (rafId){ cancelAnimationFrame(rafId); rafId = null; }
+      if (SLIDE_MS <= 0){ current = target; apply(); if (done) done(); return; }
+      var startVal = current;
+      var delta = target - startVal;
+      var startTs = null;
+      function frame(ts){
+        if (startTs === null) startTs = ts;
+        var t = (ts - startTs) / SLIDE_MS;
+        if (t > 1) t = 1;
+        current = startVal + delta * easeInOutCubic(t);
+        apply();
+        if (t < 1){ rafId = requestAnimationFrame(frame); }
+        else { rafId = null; current = target; apply(); if (done) done(); }
+      }
+      rafId = requestAnimationFrame(frame);
     }
 
-    function imageIsReady(image) {
-      return image && image.complete && image.naturalWidth > 0;
-    }
-
-    function render(nextIndex) {
-      index = normalizeIndex(nextIndex);
-      images.forEach(function(img, imgIndex) {
-        img.classList.toggle('is-active', imgIndex === index);
+    function go(dir){
+      if (animating) return;
+      animating = true;
+      pos += dir;
+      tweenTo(-pos * 100, function(){
+        /* Landed on a clone? jump instantly onto its real twin (invisible) */
+        if (pos === N + 1){ pos = 1; current = -100; apply(); }
+        else if (pos === 0){ pos = N; current = -N * 100; apply(); }
+        animating = false;
       });
-      caps.forEach(function(cap, capIndex) {
-        cap.classList.toggle('is-active', capIndex === index);
-      });
     }
 
-    function renderWhenDecoded(nextIndex) {
-      var targetIndex = normalizeIndex(nextIndex);
-      var targetImage = images[targetIndex];
-
-      if (!targetImage || typeof targetImage.decode !== 'function') {
-        render(targetIndex);
-        return;
-      }
-
-      targetImage.decode().catch(function() {
-        return null;
-      }).then(function() {
-        render(targetIndex);
-      });
+    /* ── Autoplay ─────────────────────────────────────────────── */
+    function startAuto(){
+      if (!inView || document.hidden || timer) return;
+      timer = setInterval(function(){ go(1); }, AUTO);
     }
+    function stopAuto(){ if (timer){ clearInterval(timer); timer = null; } }
+    function resetAuto(){ stopAuto(); startAuto(); }
 
-    function requestImage(nextIndex) {
-      var targetIndex = normalizeIndex(nextIndex);
-      var targetImage = images[targetIndex];
+    /* ── Arrows / keyboard trigger the same slide ─────────────── */
+    function manual(dir){ if (animating) return; go(dir); resetAuto(); }
+    if (prevBtn) prevBtn.addEventListener('click', function(){ manual(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', function(){ manual(1); });
+    root.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowLeft' || e.keyCode === 37){ manual(-1); }
+      else if (e.key === 'ArrowRight' || e.keyCode === 39){ manual(1); }
+    });
 
-      /* Avoid revealing the gallery background while a remote image is still loading. */
-      if (imageIsReady(targetImage)) {
-        renderWhenDecoded(targetIndex);
-        return;
-      }
-
-      function cleanup() {
-        targetImage.removeEventListener('load', onReady);
-        targetImage.removeEventListener('error', cleanup);
-      }
-
-      function onReady() {
-        cleanup();
-        renderWhenDecoded(targetIndex);
-      }
-
-      targetImage.addEventListener('load', onReady, { once: true });
-      targetImage.addEventListener('error', cleanup, { once: true });
+    /* ── Pause when off-screen or tab hidden ──────────────────── */
+    if ('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        for (var i = 0; i < entries.length; i++){
+          inView = entries[i].isIntersecting;
+          if (inView) startAuto(); else stopAuto();
+        }
+      }, { threshold: 0.2 });
+      io.observe(root);
     }
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden) stopAuto(); else startAuto();
+    });
 
-    prev && prev.addEventListener('click', function() { requestImage(index - 1); });
-    next && next.addEventListener('click', function() { requestImage(index + 1); });
+    /* ── Init ─────────────────────────────────────────────────── */
+    current = -100;
+    apply();
+    startAuto();
   }());
   </script>
 </section>

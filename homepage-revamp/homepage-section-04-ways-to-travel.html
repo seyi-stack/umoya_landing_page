@@ -88,27 +88,42 @@
       gap: 14px;
     }
 
+    /* Carousel stage wraps the track so the arrows can flank the tiles. */
+    #umoya-ways-to-travel .umoya-wtt-stage {
+      position: relative;
+    }
+
     #umoya-ways-to-travel .umoya-wtt-arrow {
       appearance: none;
       -webkit-appearance: none;
-      width: 46px;
-      height: 46px;
+      position: absolute;
+      top: calc(clamp(200px, 22vw, 250px) / 2);  /* centre on the card image strip */
+      transform: translateY(-50%);
+      z-index: 4;
+      width: 48px;
+      height: 48px;
       display: grid;
       place-items: center;
-      background: transparent;
-      border: 1.5px solid rgba(75,46,43,.35);
+      background: var(--white);
+      border: 1px solid rgba(75,46,43,.14);
       border-radius: 50%;
       color: var(--brown);
       cursor: pointer;
+      box-shadow: 0 8px 24px rgba(75,46,43,.20);
       transition: background .22s var(--ease), border-color .22s var(--ease),
-                  color .22s var(--ease), transform .22s var(--ease);
+                  color .22s var(--ease), transform .22s var(--ease),
+                  box-shadow .22s var(--ease);
     }
+
+    #umoya-ways-to-travel .umoya-wtt-arrow[data-wtt-prev] { left: 10px; }
+    #umoya-ways-to-travel .umoya-wtt-arrow[data-wtt-next] { right: 10px; }
 
     #umoya-ways-to-travel .umoya-wtt-arrow:hover {
       background: var(--terra);
       border-color: var(--terra);
       color: var(--white);
-      transform: translateY(-1px);
+      transform: translateY(-50%) scale(1.06);
+      box-shadow: 0 10px 26px rgba(217,126,83,.35);
     }
 
     #umoya-ways-to-travel .umoya-wtt-arrow svg {
@@ -242,6 +257,15 @@
       #umoya-ways-to-travel .umoya-wtt-media {
         height: clamp(190px, 52vw, 240px);
       }
+
+      /* Recentre the side arrows on the shorter mobile image strip. */
+      #umoya-ways-to-travel .umoya-wtt-arrow {
+        top: calc(clamp(190px, 52vw, 240px) / 2);
+        width: 44px;
+        height: 44px;
+      }
+      #umoya-ways-to-travel .umoya-wtt-arrow[data-wtt-prev] { left: 6px; }
+      #umoya-ways-to-travel .umoya-wtt-arrow[data-wtt-next] { right: 6px; }
     }
 
     @media (max-width: 420px) {
@@ -266,17 +290,19 @@
         <h2>Travel Designed<br class="umoya-wtt-title-break"> With You in Mind</h2>
       </div>
       <div class="umoya-wtt-actions">
-        <button class="umoya-wtt-arrow" type="button" data-wtt-prev aria-label="Previous travel styles">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <button class="umoya-wtt-arrow" type="button" data-wtt-next aria-label="More travel styles">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
         <button class="umoya-wtt-cta" type="button" data-umoya-form-popup>Plan Your Journey</button>
       </div>
     </div>
 
-    <div class="umoya-wtt-track umoya-wtt-rv" role="list" aria-label="Travel styles">
+    <div class="umoya-wtt-stage umoya-wtt-rv">
+      <button class="umoya-wtt-arrow" type="button" data-wtt-prev aria-label="Previous travel styles">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="umoya-wtt-arrow" type="button" data-wtt-next aria-label="More travel styles">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+    <div class="umoya-wtt-track" role="list" aria-label="Travel styles">
 
       <article class="umoya-wtt-card" role="listitem">
         <div class="umoya-wtt-media">
@@ -344,6 +370,7 @@
         </div>
       </article>
 
+    </div>
     </div>
   </div>
 
