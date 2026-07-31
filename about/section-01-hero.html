@@ -1,0 +1,207 @@
+<!--
+=================================================================
+  UMOYA — ABOUT US — SECTION 01: HERO
+=================================================================
+  Centred hero. The mockup calls for a background VIDEO (brand film
+  or trip B-roll); this is built video-ready:
+  • The <img> poster paints instantly.
+  • The <video> fades in only once it can actually autoplay
+    (mobile-safe), so the poster never flashes to black.
+  ★ SWAP: point the <source> at the final brand film. To ship the
+  still only, delete the <video> block and its script.
+
+  ANCHOR: id="ab-hero" — first content widget after the site nav.
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #ab-hero {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --white:    #FFFFFF;
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    position: relative;
+    min-height: max(72dvh, 520px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--brown);
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+
+  #ab-hero *, #ab-hero *::before, #ab-hero *::after { box-sizing: border-box; }
+
+  /* ── Background ──────────────────────────────────── */
+  .ab-h-bg { position: absolute; inset: 0; z-index: 0; }
+  .ab-h-bg img,
+  .ab-h-bg video {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    object-position: center 30%;
+    display: block;
+  }
+  .ab-h-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(28,13,6,.46)  0%,
+      rgba(28,13,6,.38) 42%,
+      rgba(28,13,6,.68) 78%,
+      rgba(28,13,6,.88) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* ── Content ─────────────────────────────────────── */
+  .ab-h-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 92px 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ab-h-eye {
+    display: inline-block;
+    font-family: inherit;
+    font-size: clamp(0.78rem, 1vw, 0.9rem);
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.4rem;
+    animation: abHUp .9s .1s both;
+  }
+
+  .ab-h-title {
+    font-family: inherit;
+    font-size: clamp(2.3rem, 6.2vw, 4.4rem);
+    font-weight: 400;
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    max-width: 20ch;
+    text-wrap: balance;
+    margin: 0 0 1.3rem;
+    animation: abHUp 1s .24s both;
+  }
+
+  .ab-h-sub {
+    font-family: inherit;
+    font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+    font-weight: 300;
+    line-height: 1.68;
+    color: var(--cream);
+    opacity: .94;
+    max-width: 58ch;
+    margin: 0;
+    animation: abHUp .9s .38s both;
+  }
+
+  @keyframes abHUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+
+  /* ── Tablet ≤1024px ──────────────────────────────── */
+  @media (max-width: 1024px) {
+    .ab-h-content { padding: 76px 22px; }
+  }
+
+  /* ── Mobile ≤768px ───────────────────────────────── */
+  @media (max-width: 768px) {
+    #ab-hero { min-height: max(60dvh, 430px); }
+    .ab-h-content { padding: 60px 20px; }
+    .ab-h-eye { font-size: 0.76rem; letter-spacing: 0.22em; margin-bottom: 1rem; }
+    .ab-h-title { font-size: clamp(1.95rem, 8vw, 3.1rem); margin-bottom: 1rem; }
+    .ab-h-sub { font-size: 1rem; }
+  }
+
+  /* ── Small mobile ≤420px ─────────────────────────── */
+  @media (max-width: 420px) {
+    #ab-hero { min-height: max(56dvh, 390px); }
+    .ab-h-content { padding: 50px 16px; }
+    .ab-h-eye { font-size: 0.7rem; letter-spacing: 0.18em; }
+    .ab-h-title { font-size: clamp(1.75rem, 9vw, 2.5rem); }
+    .ab-h-sub { font-size: 0.95rem; }
+  }
+</style>
+
+<section id="ab-hero" aria-label="About Umoya Afrika Tours — Hero">
+
+  <div class="ab-h-bg">
+    <!-- Poster paints instantly; the video fades in once it can autoplay -->
+    <img
+      src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_SAT000922.jpeg"
+      alt="Umoya Afrika Tours — journeys across South Africa"
+    />
+    <!-- ★ SWAP: final brand film / trip B-roll. Delete this block to keep the still. -->
+    <video
+      id="ab-hero-vid"
+      autoplay muted loop playsinline webkit-playsinline preload="auto"
+      poster="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_SAT000922.jpeg"
+      aria-label="Umoya Afrika Tours brand film"
+      style="position:absolute;inset:0;opacity:0;transition:opacity .8s ease;"
+    >
+      <source src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya_hd_optimized_720.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="ab-h-content">
+    <span class="ab-h-eye">About Us</span>
+    <h1 class="ab-h-title">The best journeys bring you inside a place.</h1>
+    <p class="ab-h-sub">Umoya Afrika Tours is an African-owned and African-led travel company designing premium journeys across South Africa, hosted by the people who make the country what it is.</p>
+  </div>
+
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var vid = document.getElementById('ab-hero-vid');
+  if(!vid) return;
+
+  function revealVid(){ vid.style.opacity = '1'; }
+
+  function playVid(){
+    vid.muted = true;
+    vid.defaultMuted = true;
+    vid.setAttribute('muted', '');
+    vid.setAttribute('autoplay', '');
+    vid.setAttribute('playsinline', '');
+    vid.setAttribute('webkit-playsinline', '');
+    vid.preload = 'auto';
+    if(vid.readyState === 0){ try { vid.load(); } catch(e) {} }
+    var p = vid.play();
+    if(p && typeof p.then === 'function'){
+      p.then(revealVid).catch(function(){ /* autoplay blocked — poster stays */ });
+    } else {
+      revealVid();
+    }
+  }
+
+  vid.addEventListener('playing', revealVid);
+  vid.addEventListener('loadeddata', function(){ if(!vid.paused) revealVid(); });
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(playVid, 150); });
+  } else {
+    setTimeout(playVid, 150);
+  }
+  window.addEventListener('load', function(){ setTimeout(playVid, 900); });
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) playVid(); });
+  ['touchstart','pointerdown','click'].forEach(function(evt){
+    document.addEventListener(evt, playVid, { once: true, passive: true });
+  });
+}());
+</script>

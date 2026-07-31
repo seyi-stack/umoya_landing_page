@@ -1,0 +1,298 @@
+<!--
+=================================================================
+  UMOYA — THE SIGNATURE JOURNEY — SECTION 01: HERO
+  Layout: CENTRE-ALIGNED — eyebrow, title, sub, buttons (per mockup)
+=================================================================
+  ELEMENTOR: First content HTML widget after the nav.
+  id="sj-hero" is the nav's active-section target.
+
+  IMAGE ONLY — no video. ★ SWAP: hero background image.
+=================================================================
+-->
+<style>
+  #sj-hero {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --terra-dk: #C06840;
+    --gold-lt:  #D97E53;
+    --white:    #FFFFFF;
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    position: relative;
+    min-height: max(66dvh, 440px); /* reduced hero — not full-screen; dvh handles the iOS bar */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    background: var(--brown);
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+
+  #sj-hero *, #sj-hero *::before, #sj-hero *::after { box-sizing: border-box; }
+
+  /* ── Background ──────────────────────────────────── */
+  .sj-h1-bg { position: absolute; inset: 0; z-index: 0; }
+
+  .sj-h1-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+  }
+
+  /* Cinematic gradient — even wash, deeper at the foot for the CTA */
+  .sj-h1-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(28,13,6,.34)  0%,
+      rgba(28,13,6,.30) 45%,
+      rgba(28,13,6,.62) 78%,
+      rgba(28,13,6,.86) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Grain texture */
+  .sj-h1-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    opacity: .35;
+  }
+
+  /* ── Content — centred ───────────────────────────── */
+  .sj-h1-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 940px;
+    min-width: 0;
+    margin: 0 auto;
+    padding: 68px 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Brand lockup */
+  .sj-h1-brand {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2.2rem;
+    animation: sjH1Up .9s 0s both;
+  }
+  .sj-h1-brand img {
+    width: clamp(120px, 14vw, 176px);
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 18px rgba(75,46,43,.65));
+  }
+
+  .sj-h1-eye {
+    display: inline-block;
+    font-family: inherit;
+    font-size: clamp(0.8rem, 1vw, 0.95rem);
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-lt);
+    margin-bottom: 1.6rem;
+    animation: sjH1Up .9s .12s both;
+  }
+
+  .sj-h1-title {
+    font-family: inherit;
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    font-weight: 400;
+    line-height: 1.03;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    max-width: 16ch;
+    text-wrap: balance;
+    margin: 0 0 1.4rem;
+    animation: sjH1Up 1s .28s both;
+  }
+  .sj-h1-title em { font-style: italic; color: var(--white); }
+
+  .sj-h1-sub {
+    font-family: inherit;
+    font-size: clamp(1.05rem, 1.6vw, 1.28rem);
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--cream);
+    opacity: .95;
+    margin: 0 0 2.6rem;
+    max-width: 44ch;
+    animation: sjH1Up .9s .42s both;
+  }
+
+  /* Button group */
+  .sj-h1-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    animation: sjH1Up .9s .56s both;
+  }
+
+  .sj-h1-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: inherit;
+    font-size: 0.8125rem;    /* 13px */
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 38px;
+    min-height: 58px;
+    cursor: pointer;
+    transition: background .3s var(--ease), color .3s var(--ease),
+                border-color .3s var(--ease), transform .3s var(--ease);
+  }
+
+  .sj-h1-btn-primary {
+    background: var(--terra);
+    color: var(--white);
+    border: 1.5px solid var(--terra);
+  }
+  .sj-h1-btn-primary svg { width: 16px; height: 16px; transition: transform .3s var(--ease); }
+  .sj-h1-btn-primary:hover {
+    background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  .sj-h1-btn-primary:hover svg { transform: translateY(3px); }
+
+  .sj-h1-btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border: 1.5px solid rgba(245,240,235,.7);
+  }
+  .sj-h1-btn-ghost:hover {
+    background: rgba(245,240,235,.12);
+    border-color: var(--cream);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  /* ── Scroll indicator ────────────────────────────── */
+  .sj-h1-scroll {
+    position: absolute;
+    bottom: 34px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    animation: sjH1Up 1s .9s both;
+  }
+  .sj-h1-scroll-lbl {
+    font-family: inherit;
+    font-size: 0.6rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: rgba(245,240,235,.42);
+  }
+  .sj-h1-track { width: 1px; height: 46px; background: rgba(245,240,235,.16); position: relative; overflow: hidden; }
+  .sj-h1-track::after {
+    content: '';
+    position: absolute;
+    top: -60%; left: 0;
+    width: 100%; height: 50%;
+    background: linear-gradient(to bottom, transparent, var(--gold-lt), transparent);
+    animation: sjH1Drop 2.2s ease-in-out infinite;
+  }
+
+  /* ── Keyframes ───────────────────────────────────── */
+  @keyframes sjH1Up { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  @keyframes sjH1Drop { 0% { top: -60%; } 100% { top: 160%; } }
+
+  /* ── Tablet ≤1024px ──────────────────────────────── */
+  @media (max-width: 1024px) {
+    .sj-h1-content { padding: 60px 22px; }
+  }
+
+  /* ── Mobile ≤768px ───────────────────────────────── */
+  @media (max-width: 768px) {
+    #sj-hero { min-height: max(58dvh, 400px); }
+    .sj-h1-content { padding: 56px 20px; }
+    .sj-h1-brand { margin-bottom: 1.4rem; }
+    .sj-h1-brand img { width: clamp(104px, 22vw, 140px); }
+    .sj-h1-eye { font-size: 0.8rem; letter-spacing: 0.24em; margin-bottom: 1rem; }
+    .sj-h1-title { font-size: clamp(2.1rem, 8.4vw, 3.4rem); margin-bottom: 1rem; }
+    .sj-h1-sub { font-size: 1.02rem; margin-bottom: 1.8rem; }
+    .sj-h1-scroll { display: none; }
+    .sj-h1-btns { flex-direction: column; gap: 12px; align-items: stretch; width: 100%; max-width: 360px; }
+    .sj-h1-btn { width: 100%; padding: 16px 28px; min-height: 54px; }
+  }
+
+  /* ── Small mobile ≤420px ─────────────────────────── */
+  @media (max-width: 420px) {
+    #sj-hero { min-height: max(56dvh, 360px); }
+    .sj-h1-content { padding: 48px 16px; }
+    .sj-h1-brand { margin-bottom: 1.2rem; }
+    .sj-h1-brand img { width: clamp(94px, 28vw, 124px); }
+    .sj-h1-eye { font-size: 0.72rem; letter-spacing: 0.2em; margin-bottom: 0.85rem; }
+    .sj-h1-title { font-size: clamp(1.95rem, 9.6vw, 2.9rem); line-height: 1.08; }
+    .sj-h1-sub { font-size: 0.96rem; margin-bottom: 1.6rem; }
+  }
+</style>
+
+<section id="sj-hero" aria-label="The Signature Journey — Hero">
+
+  <div class="sj-h1-bg">
+    <!-- Hero image -->
+    <img
+      src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img504253742.jpeg"
+      alt="The Signature Journey — across South Africa with Umoya Afrika Tours"
+      style="width:100%;height:100%;object-fit:cover;object-position:center 30%;"
+    />
+  </div>
+
+  <div class="sj-h1-content">
+    <div class="sj-h1-brand">
+      <img
+        src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Property-1Umoya-Afrika-Logo_v3.svg"
+        alt="Umoya Afrika Tours"
+      />
+    </div>
+    <span class="sj-h1-eye">The Signature Journey</span>
+    <h1 class="sj-h1-title">One Journey,<br>in Three Chapters.</h1>
+    <p class="sj-h1-sub">Welcome into the heart of South Africa.</p>
+    <div class="sj-h1-btns">
+      <!-- ★ SWAP: link the primary button to the brochure PDF/download when ready -->
+      <a href="#" class="sj-h1-btn sj-h1-btn-primary">
+        Download the Brochure
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+          <line x1="12" y1="4" x2="12" y2="16"/>
+          <polyline points="6 11 12 17 18 11"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="sj-h1-scroll" aria-hidden="true">
+    <span class="sj-h1-scroll-lbl">Scroll</span>
+    <div class="sj-h1-track"></div>
+  </div>
+
+</section>

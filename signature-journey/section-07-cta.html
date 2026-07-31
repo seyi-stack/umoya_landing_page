@@ -1,0 +1,184 @@
+<!--
+=================================================================
+  UMOYA — THE SIGNATURE JOURNEY — SECTION 07: CLOSING CTA
+=================================================================
+  Full-bleed image band with a deep brown overlay and the page's
+  final call to action.
+
+  ANCHOR: id="sj-cta" is the nav / offers-panel target — do not change.
+  ★ SWAP: background image.
+  NOTE: the footer is a THEME-LEVEL element (like the site header) and
+  is intentionally NOT part of these section widgets.
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #sj-cta {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --terra-dk: #C06840;
+    --white:    #FFFFFF;
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    position: relative;
+    font-family: inherit;
+    text-align: center;
+    color: var(--cream);
+    background: #2a1f17;
+    padding: clamp(80px, 11vw, 130px) 0;
+    overflow: hidden;
+  }
+
+  #sj-cta *, #sj-cta *::before, #sj-cta *::after { box-sizing: border-box; }
+
+  /* Background image + overlay */
+  .sj-cta-bg { position: absolute; inset: 0; z-index: 0; }
+  .sj-cta-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+  .sj-cta-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(33,24,18,.68), rgba(33,24,18,.8));
+    pointer-events: none;
+  }
+
+  .sj-cta-c {
+    position: relative;
+    z-index: 1;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 3.4vw, 48px);
+  }
+
+  .sj-cta-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  .sj-cta-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.6vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    max-width: 22ch;
+    margin: 0 auto;
+    text-wrap: balance;
+  }
+  .sj-cta-ttl em { font-style: italic; color: var(--white); }
+  .sj-cta-sub {
+    font-family: inherit;
+    font-size: clamp(1.02rem, 1.5vw, 1.16rem);
+    line-height: 1.7;
+    color: rgba(245,240,235,.9);
+    max-width: 52ch;
+    margin: 1.2rem auto 2rem;
+  }
+
+  .sj-cta-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  .sj-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: inherit;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 40px;
+    min-height: 58px;
+    cursor: pointer;
+    transition: background .3s var(--ease), color .3s var(--ease),
+                border-color .3s var(--ease), transform .3s var(--ease);
+  }
+  .sj-cta-btn-primary {
+    background: var(--terra);
+    color: var(--white);
+    border: 1.5px solid var(--terra);
+  }
+  .sj-cta-btn-primary svg { width: 16px; height: 16px; transition: transform .3s var(--ease); }
+  .sj-cta-btn-primary:hover { background: var(--terra-dk); border-color: var(--terra-dk); color: var(--white); transform: translateY(-2px); }
+  .sj-cta-btn-primary:hover svg { transform: translateX(4px); }
+
+  .sj-cta-btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border: 1.5px solid rgba(245,240,235,.7);
+  }
+  .sj-cta-btn-ghost:hover { background: rgba(245,240,235,.12); border-color: var(--cream); color: var(--white); transform: translateY(-2px); }
+
+  /* Scroll reveal */
+  .sj-cta-rv { opacity: 0; transform: translateY(24px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+  .sj-cta-rv.sj-cta-on { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    #sj-cta { padding: 56px 0; }
+    .sj-cta-eye { margin-bottom: 0.9rem; }
+    .sj-cta-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .sj-cta-sub { font-size: 1rem; line-height: 1.6; margin: 1rem auto 1.6rem; }
+    .sj-cta-row { flex-direction: column; align-items: stretch; max-width: 360px; margin-inline: auto; }
+    .sj-cta-btn { width: 100%; padding: 16px 28px; min-height: 54px; }
+  }
+  @media (max-width: 420px) {
+    #sj-cta { padding: 46px 0; }
+    .sj-cta-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+    .sj-cta-sub { font-size: 0.95rem; }
+  }
+</style>
+
+<section id="sj-cta" aria-label="Speak with a Umoya Travel Expert">
+
+  <div class="sj-cta-bg">
+    <!-- ★ SWAP: closing CTA background image -->
+    <img
+      src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05243.jpg"
+      alt="South African landscape at golden hour"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="sj-cta-c sj-cta-rv">
+    <span class="sj-cta-eye">Ready to Reserve Your Place?</span>
+    <h2 class="sj-cta-ttl">Speak with a Umoya Travel Expert.</h2>
+    <p class="sj-cta-sub">Secure your Founder's Circle rate and begin planning your journey to South Africa.</p>
+    <div class="sj-cta-row">
+      <!-- ★ SWAP: point at the enquiry / contact destination when ready -->
+      <a href="#" class="sj-cta-btn sj-cta-btn-primary">
+        Speak With a Travel Expert
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="13 6 19 12 13 18"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('#sj-cta .sj-cta-rv');
+  if(!els.length) return;
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('sj-cta-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('sj-cta-on'); });
+  }
+}());
+</script>

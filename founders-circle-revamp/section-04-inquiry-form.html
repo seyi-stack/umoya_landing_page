@@ -1,0 +1,1513 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 02: FORM — YOUR HOMECOMING
+  Layout  : 100dvh · Grid 1fr / 2fr · no overflow anywhere
+  Strategy: clamp()+vh units scale all spacing proportionally.
+           Right col is a flex column — card grows to fill space.
+           Inside the card: 7-row grid where the textarea row
+           is 1fr so it absorbs all leftover height naturally.
+           No scrollbars. No overflow. Fits at every viewport ≥768px.
+=================================================================
+  ELEMENTOR: HTML widget directly below Section 01 (Hero).
+  id="fc-form-section" is the anchor for all CTA buttons.
+  HUBSPOT: Form keeps the custom visual design and submits through
+           HubSpot's Forms API once Portal ID and Form ID are added.
+=================================================================
+-->
+<style>
+  #fc-form-section {
+    --cream:      #F5F0EB;
+    --cream-lt:   #F5F0EB;
+    --cream-dk:   #F5F0EB;
+    --brown:      #4B2E2B;
+    --terra:      #D97E53;
+    --terra-dk:   #C06840;
+    --gold:       #D97E53;
+    --gold-lt:    #D97E53;
+    --olive:      #708238;
+    --text:       #4B2E2B;
+    --text-mid:   #4B2E2B;
+    --text-muted: #4B2E2B;
+    --white:      #FFFFFF;
+    --ease:       cubic-bezier(.25,.46,.45,.94);
+  }
+
+  #fc-form-section,
+  #fc-form-section *,
+  #fc-form-section *::before,
+  #fc-form-section *::after {
+    box-sizing: border-box;
+  }
+
+  /* ── Section shell ─────────────────────────────────────────────
+     min-height: 100dvh — fills viewport on normal desktops, grows
+     gracefully on short viewports (e.g. 720p laptops) so content
+     never gets squeezed below WCAG-minimum font sizes.
+     ─────────────────────────────────────────────────────────── */
+  #fc-form-section {
+    /* Sizes to its content. A forced 100dvh left an empty cream strip
+       below the form card on viewports taller than the form's natural
+       height (e.g. wide desktops), which then abutted the next section
+       and read as a stray cream band. Content-height removes it. */
+    font-family: inherit;
+    background: var(--brown);  /* fallback during image load */
+  }
+
+  /* ── Two-column grid — 1fr image · 2fr form ────────────────── */
+  .fc-f2-outer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    /* Row height follows the form column's content; the image column
+       stretches to match it (no forced viewport height). */
+  }
+
+  /* ============================================================
+     LEFT COLUMN — image fills full height
+     overflow:hidden is structural — clips the image at the
+     column edge. Has nothing to do with content scrolling.
+     ============================================================ */
+  .fc-f2-img-col {
+    position: relative;
+    overflow: hidden; /* clips image to column boundary only */
+  }
+
+  .fc-f2-img-col img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Desktop: tall narrow column fits image by height — no vertical
+       crop, horizontal center is what matters. Face sits naturally. */
+    object-position: center center;
+    display: block;
+  }
+
+  /* Gradient overlay */
+  .fc-f2-img-ov {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(28,13,6,.75) 0%,
+      rgba(28,13,6,.56) 30%,
+      rgba(28,13,6,.25) 60%,
+      rgba(28,13,6,.0) 100%
+    );
+    z-index: 1;
+  }
+
+  /* Overlay text — top-center aligned */
+  .fc-f2-img-txt {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding: clamp(32px, 5vh, 56px) clamp(28px, 3.5vw, 48px);
+  }
+
+  /* ── Overlay typography — unified across breakpoints ────────
+     Shared defaults: 0.2em tracking on eyebrow, 1.1 title leading,
+     1.6 body leading, 4-px margin rhythm.
+     ──────────────────────────────────────────────────────────── */
+  .fc-f2-img-eye {
+    display: block;
+    font-family: inherit;
+    font-size: clamp(0.75rem, 0.95vh, 0.82rem);  /* 12–13.1px — WCAG floor */
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--cream);   /* high contrast on the dark image overlay */
+    margin-bottom: clamp(14px, 1.6vh, 18px);
+  }
+
+  .fc-f2-img-ttl {
+    font-family: inherit;
+    font-size: clamp(1.6rem, 3vh, 2.8rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+    color: var(--cream);
+    margin-bottom: clamp(14px, 1.6vh, 18px);
+    text-shadow: 0 2px 14px rgba(75,46,43,.5);
+  }
+
+  .fc-f2-img-rule {
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--terra);
+    margin-bottom: clamp(14px, 1.6vh, 18px);
+  }
+
+  .fc-f2-img-body {
+    font-family: inherit;
+    font-size: clamp(0.82rem, 1.2vh, 0.92rem);   /* 13.1–14.7px */
+    font-weight: 300;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    color: #F5F0EB;
+    max-width: 32ch;                              /* editorial line-length */
+    text-shadow: 0 1px 8px rgba(75,46,43,.4);
+  }
+
+  /* ============================================================
+     RIGHT COLUMN — flex column, no overflow
+     Padding uses clamp()+vh so it scales with viewport height.
+     Card grows to fill space. Textarea row absorbs the rest.
+     ============================================================ */
+  .fc-f2-form-col {
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+
+    /* Vertical padding scales with viewport height — balanced top/bottom */
+    padding-top:    clamp(28px, 4vh,   48px);
+    padding-bottom: clamp(28px, 4vh,   48px);
+    padding-left:   clamp(28px, 4vw,   56px);
+    padding-right:  clamp(28px, 4vw,   56px);
+
+    position: relative; /* for watermark */
+  }
+
+  /* Inner wrapper */
+  .fc-f2-inner {
+    position: relative;
+    flex: 1;
+    min-height: 0; /* critical — allows flex child to shrink */
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Section header — flex-shrink:0 ────────────────────────── */
+  .fc-f2-hd {
+    flex-shrink: 0;
+    text-align: center;
+    margin-bottom: clamp(12px, 1.8vh, 24px);
+  }
+
+  .fc-f2-eye {
+    display: block;
+    font-family: inherit;
+    font-size: clamp(0.75rem, 0.95vh, 0.82rem);  /* 12–13.1px — WCAG floor */
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: clamp(6px, 0.9vh, 10px);
+  }
+
+  .fc-f2-ttl {
+    font-family: inherit;
+    font-size: clamp(1.6rem, 3.5vh, 2.8rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--brown);
+  }
+
+  .fc-f2-ttl em { font-style: italic; color: var(--terra); }
+
+  .fc-f2-rule {
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--terra);
+    margin: clamp(7px, 1vh, 12px) auto;
+  }
+
+  .fc-f2-sub {
+    font-family: inherit;
+    font-size: clamp(0.8rem, 1.3vh, 0.95rem);
+    color: var(--text-muted);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  /* ── Form card — flex:1 fills all remaining height ──────────── */
+  .fc-f2-card {
+    flex: 1;
+    min-height: 0; /* critical — allows card to shrink below content size */
+    background: var(--white);
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    padding-top:    clamp(14px, 1.8vh, 22px);
+    padding-bottom: clamp(16px, 2vh,   24px);
+    padding-left:   clamp(20px, 2.8vw, 40px);
+    padding-right:  clamp(20px, 2.8vw, 40px);
+
+    box-shadow:
+      0 1px 3px rgba(75,46,43,.04),
+      0 10px 36px rgba(75,46,43,.09),
+      0 0 0 1px rgba(217,126,83,.08);
+  }
+
+  /* Top accent stripe */
+  .fc-f2-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--terra), var(--gold), var(--olive));
+    border-radius: 10px 10px 0 0;
+    flex-shrink: 0;
+  }
+
+  /* ── Form — flex column inside card ────────────────────────── */
+  .fc-f2-form {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Field grid ─────────────────────────────────────────────
+     7 rows:
+       Row 1: Title | spacer
+       Row 2: First Name | Last Name
+       Row 3: Email | Phone
+       Row 4: Country | City
+       Row 5: Travel Season | Travel Year
+       Row 6: Travel Style (full-width)
+       Row 7: Textarea (full-width, 1fr — absorbs remaining height)
+     ─────────────────────────────────────────────────────────── */
+  .fc-f2-fg {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto auto auto 1fr;
+    gap: clamp(9px, 1.1vh, 13px) clamp(10px, 1.2vw, 18px);
+    align-items: start;  /* rows sized by content except row 7 */
+  }
+
+  /* Full-width grid items */
+  .fc-f2-span { grid-column: 1 / -1; }
+
+  /* Textarea row — special: flex column so textarea fills the 1fr row */
+  .fc-f2-span-grow {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  /* ── Individual field ────────────────────────────────────────── */
+  .fc-f2-field {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4px, 0.6vh, 7px);
+    min-height: 0;
+  }
+
+  .fc-f2-field label {
+    font-family: inherit;
+    font-size: clamp(0.75rem, 0.9vh, 0.8rem);   /* 12–12.8px — WCAG floor */
+    font-weight: 700;
+    letter-spacing: 0.1em;                      /* reduced so labels don't wrap */
+    text-transform: uppercase;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    line-height: 1.25;
+  }
+
+  .fc-f2-field input,
+  .fc-f2-field select {
+    font-family: inherit;
+    font-size: max(16px, 0.9rem);  /* 16px min = no iOS zoom */
+    color: var(--text);
+    background: var(--cream-lt);
+    border: 1.5px solid rgba(75,46,43,.12);
+    border-radius: 6px;
+    padding: clamp(10px, 1.2vh, 12px) 14px;
+    min-height: 44px;              /* WCAG touch target */
+    width: 100%;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: border-color .22s, box-shadow .22s, background .22s;
+    line-height: 1.4;
+    flex-shrink: 0;
+  }
+
+  .fc-f2-field input::placeholder,
+  .fc-f2-field.fc-f2-span-grow textarea::placeholder {
+    color: rgba(75,46,43,.36);
+    opacity: 1;
+  }
+
+  .fc-f2-field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234B2E2B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-color: var(--cream-lt);
+    padding-right: 32px;
+    cursor: pointer;
+  }
+
+  /* Textarea — flex:1 fills the 1fr grid row */
+  .fc-f2-field.fc-f2-span-grow textarea {
+    font-family: inherit;
+    font-size: max(16px, 0.9rem);
+    color: var(--text);
+    background: var(--cream-lt);
+    border: 1.5px solid rgba(75,46,43,.12);
+    border-radius: 6px;
+    padding: clamp(10px, 1.2vh, 12px) 14px;
+    width: 100%;
+    outline: none;
+    appearance: none;
+    resize: none;         /* no resize handle — height is grid-managed */
+    flex: 1;              /* fills the 1fr row */
+    min-height: 80px;     /* usable floor; section grows on short viewports */
+    line-height: 1.55;
+    transition: border-color .22s, box-shadow .22s, background .22s;
+  }
+
+  .fc-f2-field input:focus,
+  .fc-f2-field select:focus,
+  .fc-f2-field.fc-f2-span-grow textarea:focus {
+    border-color: var(--terra);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(217,126,83,.1);
+  }
+
+  .fc-f2-req { color: var(--terra); margin-left: 2px; }
+
+  /* ── Submit + legal — flex-shrink:0 ────────────────────────── */
+  .fc-f2-submit {
+    flex-shrink: 0;
+    margin-top: clamp(12px, 1.5vh, 18px);
+  }
+
+  .fc-f2-sub-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-family: inherit;
+    font-size: clamp(0.75rem, 1vh, 0.82rem);  /* 12–13.1px — WCAG floor */
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: clamp(12px, 1.5vh, 15px) 20px;
+    min-height: clamp(48px, 5.5vh, 54px);     /* 48px floor — above 44 WCAG */
+    background: var(--terra);
+    color: var(--white);
+    border: 2px solid var(--terra);
+    cursor: pointer;
+    transition: background .25s, border-color .25s, transform .25s;
+  }
+
+  .fc-f2-sub-btn:hover {
+    background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    color: var(--white);
+    transform: translateY(-1px);
+  }
+
+  .fc-f2-sub-btn:disabled {
+    background: var(--olive);
+    border-color: var(--olive);
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .fc-f2-legal {
+    flex-shrink: 0;
+    font-family: inherit;
+    font-size: clamp(0.75rem, 0.95vh, 0.8rem);  /* 12–12.8px — WCAG floor */
+    color: var(--text-muted);
+    text-align: center;
+    margin: clamp(10px, 1.2vh, 14px) auto 0;
+    max-width: 620px;
+    line-height: 1.55;
+  }
+
+  .fc-f2-legal a { color: var(--terra); text-decoration: none; }
+
+  /* ── "When are you hoping to travel" — Month + Year side by side
+        Stays two-up on mobile too (the brief asks for two side-by-side
+        dropdowns so it doesn't feel clunky). ─────────────────────── */
+  .fc-f2-when {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(10px, 1.2vw, 18px);
+  }
+
+  /* ── Consent checkboxes (POPIA) ─────────────────────────────── */
+  .fc-f2-consent {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 1vh, 12px);
+    margin-top: clamp(10px, 1.4vh, 16px);
+  }
+
+  .fc-f2-consent-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0;
+    font-family: inherit;
+    font-size: clamp(0.78rem, 1vh, 0.85rem);  /* 12.5–13.6px */
+    line-height: 1.5;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+
+  .fc-f2-consent-item input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    accent-color: var(--terra);
+    cursor: pointer;
+  }
+
+  .fc-f2-consent-item a {
+    color: var(--terra);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .fc-f2-consent-item a:hover { text-decoration: underline; }
+
+  .fc-f2-consent-tag { color: var(--terra); font-weight: 600; }
+
+  /* ── Scroll reveal ──────────────────────────────────────────── */
+  .fc-f2-rv {
+    will-change: transform, opacity;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .8s var(--ease), transform .8s var(--ease);
+  }
+  .fc-f2-rv.fc-f2-on { opacity: 1; transform: none; }
+  .fc-f2-rv.d1       { transition-delay: .12s; }
+
+  /* ============================================================
+     RESPONSIVE — TABLET ≤1024px
+     Image column narrows to ~256–341px. The column is tall so the
+     image fills by height — no vertical crop and the face sits
+     naturally in the frame. Typography scales down horizontally.
+     ============================================================ */
+  @media (max-width: 1024px) {
+    /* Keep image vertically centred — tall column = no vertical crop */
+    .fc-f2-img-col img { object-position: center center; }
+
+    .fc-f2-img-txt {
+      padding: clamp(32px, 4vh, 48px) clamp(20px, 2.4vw, 28px);
+    }
+
+    .fc-f2-img-eye {
+      font-size: 0.75rem;          /* 12px */
+      letter-spacing: 0.2em;
+      margin-bottom: 14px;
+    }
+
+    .fc-f2-img-ttl {
+      font-size: clamp(1.45rem, 2.6vh, 2.05rem);   /* 23.2–32.8px */
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .fc-f2-img-rule { margin-bottom: 14px; }
+
+    .fc-f2-img-body {
+      font-size: 0.8rem;            /* 12.8px */
+      line-height: 1.6;
+      max-width: 26ch;              /* editorial measure in narrow col */
+    }
+  }
+
+  /* ============================================================
+     RESPONSIVE — MOBILE ≤768px
+     Remove 100dvh, stack to single column, restore natural height.
+     ============================================================ */
+  @media (max-width: 768px) {
+    /* Restore natural document flow on mobile */
+    #fc-form-section {
+      min-height: 0;
+      height: auto;
+    }
+
+    .fc-f2-outer {
+      grid-template-columns: 1fr;
+      min-height: 0;
+      height: auto;
+    }
+
+    /* Image becomes a full-width banner — taller so the subject
+       of the photo reads and the overlay text has proper breathing room */
+    .fc-f2-img-col {
+      height: clamp(380px, 58vw, 480px);
+      position: relative;
+    }
+
+    /* Portrait source in a wide banner → vertical crop.
+       object-position Y=75% keeps the lady's face in the upper
+       third of the frame, clear of the bottom-aligned text block. */
+    .fc-f2-img-col img { object-position: center 75%; }
+
+    /* Strengthen the bottom gradient so text stays legible without
+       needing to grow upward into the face area */
+    .fc-f2-img-ov {
+      background: linear-gradient(
+        180deg,
+        rgba(75,46,43,.40) 0%,
+        rgba(75,46,43,.20) 35%,
+        rgba(75,46,43,.76) 68%,
+        rgba(75,46,43,.97) 100%
+      );
+    }
+
+    .fc-f2-img-txt {
+      justify-content: flex-end;
+      padding: 36px 28px 32px;
+    }
+
+    /* Overlay text — fixed sizes (not vh) since the banner is no
+       longer tied to viewport height */
+    .fc-f2-img-eye {
+      font-size: 0.78rem;            /* 12.5px */
+      letter-spacing: 0.2em;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    .fc-f2-img-ttl {
+      font-size: clamp(1.85rem, 5.6vw, 2.5rem);   /* 29.6–40px */
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+
+    .fc-f2-img-rule { margin-bottom: 16px; }
+
+    .fc-f2-img-body {
+      display: block;                /* re-enable on mobile */
+      font-size: 0.84rem;            /* 13.4px */
+      line-height: 1.6;
+      max-width: 36ch;
+      margin: 0 auto;
+    }
+
+    /* Form column returns to natural height */
+    .fc-f2-form-col {
+      padding: 48px 24px 56px;
+    }
+
+    .fc-f2-inner {
+      flex: none;
+      display: block;   /* back to normal flow on mobile */
+    }
+
+    .fc-f2-hd         { margin-bottom: 28px; }
+
+    /* Card no longer needs to fill height — natural sizing */
+    .fc-f2-card {
+      flex: none;
+      padding: 24px 20px 20px;
+    }
+
+    .fc-f2-form {
+      flex: none;
+      display: block;
+    }
+
+    /* Restore single-column form grid on mobile */
+    .fc-f2-fg {
+      flex: none;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto; /* all auto on mobile */
+      gap: 12px;
+    }
+
+    /* All fields full-width on mobile */
+    .fc-f2-span,
+    .fc-f2-span-grow { grid-column: 1; }
+
+    /* Restore natural textarea height */
+    .fc-f2-field.fc-f2-span-grow textarea {
+      flex: none;
+      height: 100px;
+      resize: vertical;
+    }
+
+    .fc-f2-sub-btn { min-height: 50px; }
+  }
+
+  /* ============================================================
+     RESPONSIVE — SMALL MOBILE ≤420px
+     ============================================================ */
+  @media (max-width: 420px) {
+    .fc-f2-img-col     { height: clamp(340px, 82vw, 380px); }
+    /* Keep face high in frame — text sits at bottom */
+    .fc-f2-img-col img { object-position: center 78%; }
+
+    .fc-f2-img-txt  { padding: 28px 20px 24px; }
+
+    .fc-f2-img-eye  {
+      font-size: 0.75rem;              /* 12px */
+      letter-spacing: 0.2em;
+      margin-bottom: 12px;
+    }
+    .fc-f2-img-ttl  {
+      font-size: 1.7rem;               /* 27.2px */
+      line-height: 1.08;
+      margin-bottom: 12px;
+    }
+    .fc-f2-img-rule { margin-bottom: 12px; }
+    .fc-f2-img-body {
+      font-size: 0.8rem;               /* 12.8px */
+      line-height: 1.6;
+      max-width: 30ch;
+    }
+
+    .fc-f2-form-col { padding: 36px 16px 48px; }
+    .fc-f2-card     { padding: 20px 16px 16px; }
+  }
+</style>
+
+<section id="fc-form-section" aria-label="Join the Founder's Circle — Inquiry Form">
+
+  <div class="fc-f2-outer">
+
+    <!-- =========================================================
+         LEFT — Image panel (1fr)
+         Fills the full 100dvh height via position:absolute+inset:0.
+         overflow:hidden clips the image to the column — structural only.
+         Text is bottom-center aligned.
+         ========================================================= -->
+    <div class="fc-f2-img-col" aria-hidden="true">
+      <img
+        src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc04418(1).jpg"
+        alt="Umoya Afrika Tours — heritage journey"
+      />
+      <div class="fc-f2-img-ov"></div>
+      <div class="fc-f2-img-txt">
+        <span class="fc-f2-img-eye">Inquiry Form</span>
+        <h2 class="fc-f2-img-ttl">Your Umoya Experience Awaits</h2>
+        <span class="fc-f2-img-rule"></span>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         RIGHT — Form panel (2fr)
+         Flex column. Card grows. Textarea absorbs leftover height.
+         No overflow property on this column.
+         ========================================================= -->
+    <div class="fc-f2-form-col">
+      <div class="fc-f2-inner">
+
+        <!-- SECTION HEADER -->
+        <div class="fc-f2-hd fc-f2-rv">
+          <span class="fc-f2-eye">Reserve Your Place</span>
+          <h2 class="fc-f2-ttl">Begin Your Journey</h2>
+          <span class="fc-f2-rule" aria-hidden="true"></span>
+          <p class="fc-f2-sub">Tell us about yourself and the travel experience you're seeking. A dedicated Umoya Travel Expert will personally connect with you to begin planning your experience.</p>
+        </div>
+
+        <!-- FORM CARD -->
+        <div class="fc-f2-card fc-f2-rv d1">
+
+          <!--
+            HUBSPOT INTEGRATION:
+            Paste the HubSpot Portal ID and Form GUID into the data attributes
+            on this form. The JavaScript below maps each visible input to the
+            HubSpot property names used by the published HubSpot form.
+          -->
+          <form
+            class="fc-f2-form"
+            id="fc2Form"
+            action="/wp-json/umoya/v1/submissions"
+            method="post"
+            target="umoyaSubmissionFrame"
+            novalidate
+            aria-label="Founder's Circle Inquiry Form"
+            data-hubspot-portal-id="246097317"
+            data-hubspot-form-id="cb87d460-fb2d-4c53-8c32-7daaa05067d7"
+            data-umoya-form-source="founders_circle_page"
+            data-wordpress-backup-endpoint="/wp-json/umoya/v1/submissions"
+            data-hubspot-consent-text="I consent to Umoya contacting me about the Founder&apos;s Circle and processing my details as set out in the Privacy Policy."
+          >
+            <input type="hidden" name="source" value="founders_circle_page">
+            <input type="hidden" name="hubspotPortalId" value="246097317">
+            <input type="hidden" name="hubspotFormId" value="cb87d460-fb2d-4c53-8c32-7daaa05067d7">
+            <input type="hidden" name="consentText" value="I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the Privacy Policy.">
+            <input type="hidden" name="hutk" value="">
+            <input type="hidden" name="pageUri" value="">
+            <input type="hidden" name="pageName" value="">
+
+            <div class="fc-f2-fg">
+
+              <!-- Row 1: Title | spacer -->
+              <div class="fc-f2-field">
+                <label for="fc2Title">Title</label>
+                <select id="fc2Title" name="MERGE1">
+                  <option value="" disabled selected>Select…</option>
+                  <option value="Mr.">Mr.</option>
+                  <option value="Mrs.">Mrs.</option>
+                  <option value="Ms.">Ms.</option>
+                  <option value="Miss">Miss</option>
+                  <option value="Dr.">Dr.</option>
+                  <option value="Prof.">Prof.</option>
+                </select>
+              </div>
+              <div aria-hidden="true"></div>
+
+              <!-- Row 2: First Name | Last Name -->
+              <div class="fc-f2-field">
+                <label for="fc2First">First Name <span class="fc-f2-req" aria-hidden="true">*</span></label>
+                <input type="text" id="fc2First" name="FNAME" placeholder="First name" required autocomplete="given-name" />
+              </div>
+              <div class="fc-f2-field">
+                <label for="fc2Last">Last Name <span class="fc-f2-req" aria-hidden="true">*</span></label>
+                <input type="text" id="fc2Last" name="LNAME" placeholder="Last name" required autocomplete="family-name" />
+              </div>
+
+              <!-- Row 3: Email | Phone -->
+              <div class="fc-f2-field">
+                <label for="fc2Email">Email Address <span class="fc-f2-req" aria-hidden="true">*</span></label>
+                <input type="email" id="fc2Email" name="EMAIL" placeholder="your@email.com" required autocomplete="email" />
+              </div>
+              <div class="fc-f2-field">
+                <label for="fc2Phone">Phone Number</label>
+                <input type="tel" id="fc2Phone" name="PHONE" placeholder="+1 (000) 000-0000" autocomplete="tel" />
+              </div>
+
+              <!-- Row 4: Country | City -->
+              <div class="fc-f2-field">
+                <label for="fc2Country">Country <span class="fc-f2-req" aria-hidden="true">*</span></label>
+                <select id="fc2Country" name="MERGE2" required>
+                  <option value="" disabled selected>Select country…</option>
+
+                  <!-- Frequently Used Countries Pinned to Top -->
+                  <option value="US">United States</option>
+                  <option value="GB">United Kingdom</option>
+                  <option value="CA">Canada</option>
+                  <option value="ZA">South Africa</option>
+                  <option value="AU">Australia</option>
+                  <option disabled>──────────</option>
+
+                  <!-- Complete ISO Alphabetical List -->
+                  <option value="AF">Afghanistan</option>
+                  <option value="AL">Albania</option>
+                  <option value="DZ">Algeria</option>
+                  <option value="AS">American Samoa</option>
+                  <option value="AD">Andorra</option>
+                  <option value="AO">Angola</option>
+                  <option value="AI">Anguilla</option>
+                  <option value="AG">Antigua and Barbuda</option>
+                  <option value="AR">Argentina</option>
+                  <option value="AM">Armenia</option>
+                  <option value="AW">Aruba</option>
+                  <option value="AT">Austria</option>
+                  <option value="AZ">Azerbaijan</option>
+                  <option value="BS">Bahamas</option>
+                  <option value="BH">Bahrain</option>
+                  <option value="BD">Bangladesh</option>
+                  <option value="BB">Barbados</option>
+                  <option value="BY">Belarus</option>
+                  <option value="BE">Belgium</option>
+                  <option value="BZ">Belize</option>
+                  <option value="BJ">Benin</option>
+                  <option value="BM">Bermuda</option>
+                  <option value="BT">Bhutan</option>
+                  <option value="BO">Bolivia</option>
+                  <option value="BA">Bosnia and Herzegovina</option>
+                  <option value="BW">Botswana</option>
+                  <option value="BR">Brazil</option>
+                  <option value="BN">Brunei Darussalam</option>
+                  <option value="BG">Bulgaria</option>
+                  <option value="BF">Burkina Faso</option>
+                  <option value="BI">Burundi</option>
+                  <option value="CV">Cabo Verde</option>
+                  <option value="KH">Cambodia</option>
+                  <option value="CM">Cameroon</option>
+                  <option value="KY">Cayman Islands</option>
+                  <option value="CF">Central African Republic</option>
+                  <option value="TD">Chad</option>
+                  <option value="CL">Chile</option>
+                  <option value="CN">China</option>
+                  <option value="CO">Colombia</option>
+                  <option value="KM">Comoros</option>
+                  <option value="CG">Congo</option>
+                  <option value="CD">Congo, Democratic Republic of the</option>
+                  <option value="CR">Costa Rica</option>
+                  <option value="HR">Croatia</option>
+                  <option value="CU">Cuba</option>
+                  <option value="CY">Cyprus</option>
+                  <option value="CZ">Czechia</option>
+                  <option value="DK">Denmark</option>
+                  <option value="DJ">Djibouti</option>
+                  <option value="DM">Dominica</option>
+                  <option value="DO">Dominican Republic</option>
+                  <option value="EC">Ecuador</option>
+                  <option value="EG">Egypt</option>
+                  <option value="SV">El Salvador</option>
+                  <option value="GQ">Equatorial Guinea</option>
+                  <option value="ER">Eritrea</option>
+                  <option value="EE">Estonia</option>
+                  <option value="SZ">Eswatini</option>
+                  <option value="ET">Ethiopia</option>
+                  <option value="FJ">Fiji</option>
+                  <option value="FI">Finland</option>
+                  <option value="FR">France</option>
+                  <option value="GF">French Guiana</option>
+                  <option value="PF">French Polynesia</option>
+                  <option value="GA">Gabon</option>
+                  <option value="GM">Gambia</option>
+                  <option value="GE">Georgia</option>
+                  <option value="DE">Germany</option>
+                  <option value="GH">Ghana</option>
+                  <option value="GR">Greece</option>
+                  <option value="GL">Greenland</option>
+                  <option value="GD">Grenada</option>
+                  <option value="GU">Guam</option>
+                  <option value="GT">Guatemala</option>
+                  <option value="GN">Guinea</option>
+                  <option value="GW">Guinea-Bissau</option>
+                  <option value="GY">Guyana</option>
+                  <option value="HT">Haiti</option>
+                  <option value="HN">Honduras</option>
+                  <option value="HK">Hong Kong</option>
+                  <option value="HU">Hungary</option>
+                  <option value="IS">Iceland</option>
+                  <option value="IN">India</option>
+                  <option value="ID">Indonesia</option>
+                  <option value="IR">Iran</option>
+                  <option value="IQ">Iraq</option>
+                  <option value="IE">Ireland</option>
+                  <option value="IL">Israel</option>
+                  <option value="IT">Italy</option>
+                  <option value="JM">Jamaica</option>
+                  <option value="JP">Japan</option>
+                  <option value="JO">Jordan</option>
+                  <option value="KZ">Kazakhstan</option>
+                  <option value="KE">Kenya</option>
+                  <option value="KI">Kiribati</option>
+                  <option value="KP">Korea (North)</option>
+                  <option value="KR">Korea (South)</option>
+                  <option value="KW">Kuwait</option>
+                  <option value="KG">Kyrgyzstan</option>
+                  <option value="LA">Lao People's Democratic Republic</option>
+                  <option value="LV">Latvia</option>
+                  <option value="LB">Lebanon</option>
+                  <option value="LS">Lesotho</option>
+                  <option value="LR">Liberia</option>
+                  <option value="LY">Libya</option>
+                  <option value="LI">Liechtenstein</option>
+                  <option value="LT">Lithuania</option>
+                  <option value="LU">Luxembourg</option>
+                  <option value="MO">Macao</option>
+                  <option value="MG">Madagascar</option>
+                  <option value="MW">Malawi</option>
+                  <option value="MY">Malaysia</option>
+                  <option value="MV">Maldives</option>
+                  <option value="ML">Mali</option>
+                  <option value="MT">Malta</option>
+                  <option value="MR">Mauritania</option>
+                  <option value="MU">Mauritius</option>
+                  <option value="MX">Mexico</option>
+                  <option value="FM">Micronesia</option>
+                  <option value="MD">Moldova</option>
+                  <option value="MC">Monaco</option>
+                  <option value="MN">Mongolia</option>
+                  <option value="ME">Montenegro</option>
+                  <option value="MA">Morocco</option>
+                  <option value="MZ">Mozambique</option>
+                  <option value="MM">Myanmar</option>
+                  <option value="NA">Namibia</option>
+                  <option value="NR">Nauru</option>
+                  <option value="NP">Nepal</option>
+                  <option value="NL">Netherlands</option>
+                  <option value="NC">New Caledonia</option>
+                  <option value="NZ">New Zealand</option>
+                  <option value="NI">Nicaragua</option>
+                  <option value="NE">Niger</option>
+                  <option value="NG">Nigeria</option>
+                  <option value="NO">Norway</option>
+                  <option value="OM">Oman</option>
+                  <option value="PK">Pakistan</option>
+                  <option value="PW">Palau</option>
+                  <option value="PA">Panama</option>
+                  <option value="PG">Papua New Guinea</option>
+                  <option value="PY">Paraguay</option>
+                  <option value="PE">Peru</option>
+                  <option value="PH">Philippines</option>
+                  <option value="PL">Poland</option>
+                  <option value="PT">Portugal</option>
+                  <option value="PR">Puerto Rico</option>
+                  <option value="QA">Qatar</option>
+                  <option value="RO">Romania</option>
+                  <option value="RU">Russian Federation</option>
+                  <option value="RW">Rwanda</option>
+                  <option value="WS">Samoa</option>
+                  <option value="SM">San Marino</option>
+                  <option value="ST">Sao Tome and Principe</option>
+                  <option value="SA">Saudi Arabia</option>
+                  <option value="SN">Senegal</option>
+                  <option value="RS">Serbia</option>
+                  <option value="SC">Seychelles</option>
+                  <option value="SL">Sierra Leone</option>
+                  <option value="SG">Singapore</option>
+                  <option value="SK">Slovakia</option>
+                  <option value="SI">Slovenia</option>
+                  <option value="SB">Solomon Islands</option>
+                  <option value="SO">Somalia</option>
+                  <option value="SS">South Sudan</option>
+                  <option value="ES">Spain</option>
+                  <option value="LK">Sri Lanka</option>
+                  <option value="SD">Sudan</option>
+                  <option value="SR">Suriname</option>
+                  <option value="SE">Sweden</option>
+                  <option value="CH">Switzerland</option>
+                  <option value="SY">Syrian Arab Republic</option>
+                  <option value="TW">Taiwan</option>
+                  <option value="TJ">Tajikistan</option>
+                  <option value="TZ">Tanzania</option>
+                  <option value="TH">Thailand</option>
+                  <option value="TL">Timor-Leste</option>
+                  <option value="TG">Togo</option>
+                  <option value="TO">Tonga</option>
+                  <option value="TT">Trinidad and Tobago</option>
+                  <option value="TN">Tunisia</option>
+                  <option value="TR">Turkey</option>
+                  <option value="TM">Turkmenistan</option>
+                  <option value="TV">Tuvalu</option>
+                  <option value="UG">Uganda</option>
+                  <option value="UA">Ukraine</option>
+                  <option value="AE">United Arab Emirates</option>
+                  <option value="UY">Uruguay</option>
+                  <option value="UZ">Uzbekistan</option>
+                  <option value="VU">Vanuatu</option>
+                  <option value="VE">Venezuela</option>
+                  <option value="VN">Viet Nam</option>
+                  <option value="YE">Yemen</option>
+                  <option value="ZM">Zambia</option>
+                  <option value="ZW">Zimbabwe</option>
+                </select>
+              </div>
+              <div class="fc-f2-field">
+                <label for="fc2City">City</label>
+                <input type="text" id="fc2City" name="MERGE3" placeholder="Your city" autocomplete="address-level2" />
+              </div>
+
+              <!-- Row 5: When are you hoping to travel — Month + Year side by side -->
+              <div class="fc-f2-field fc-f2-span">
+                <label for="fc2Month">When Are You Hoping to Travel?</label>
+                <div class="fc-f2-when">
+                  <select id="fc2Month" name="MERGE4" aria-label="Preferred travel month">
+                    <option value="" disabled selected>Month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                    <option value="Not sure yet">Not sure yet</option>
+                  </select>
+                  <select id="fc2Year" name="MERGE5" aria-label="Preferred travel year">
+                    <option value="" disabled selected>Year</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="Not sure yet">Not sure yet</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Row 6: How many guests will be traveling — full width -->
+              <div class="fc-f2-field fc-f2-span">
+                <label for="fc2Guests">How Many Guests Will Be Traveling?</label>
+                <select id="fc2Guests" name="MERGE6">
+                  <option value="" disabled selected>Select…</option>
+                  <option value="Couple or Singles (2 minimum)">Couple or Singles (2 minimum)</option>
+                  <option value="Small Group (3 to 9)">Small Group (3 to 9)</option>
+                  <option value="Mid-Size Group (10 to 19)">Mid-Size Group (10 to 19)</option>
+                  <option value="Large Group (20 or more)">Large Group (20 or more)</option>
+                  <option value="Just me, or not sure yet">Just me, or not sure yet</option>
+                </select>
+              </div>
+
+              <!-- Row 7: Textarea — full width, 1fr row, fills leftover height -->
+              <div class="fc-f2-field fc-f2-span-grow">
+                <label for="fc2Why">What Are You Hoping to Experience?</label>
+                <textarea
+                  id="fc2Why"
+                  name="MERGE7"
+                  placeholder="Tell us about your travel interests, what you hope to experience, and what draws you to South Africa."
+                ></textarea>
+              </div>
+
+            </div><!-- /.fc-f2-fg -->
+
+            <!-- Consent (POPIA) — required box must be ticked; not pre-checked -->
+            <div class="fc-f2-consent">
+              <label class="fc-f2-consent-item" for="fc2Consent">
+                <input type="checkbox" id="fc2Consent" name="CONSENT" value="yes" aria-required="true" />
+                <span>I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the <a href="#" target="_blank" rel="noopener">Privacy Policy</a>. <span class="fc-f2-consent-tag">(Required)</span></span>
+              </label>
+              <label class="fc-f2-consent-item" for="fc2Marketing">
+                <input type="checkbox" id="fc2Marketing" name="MARKETING_CONSENT" value="yes" />
+                <span>I'd also like to receive Umoya journeys and stories by email. <span class="fc-f2-consent-tag">(Optional)</span></span>
+              </label>
+            </div>
+
+            <!-- Submit -->
+            <div class="fc-f2-submit">
+              <button type="submit" class="fc-f2-sub-btn" id="fc2Btn">
+                Request Your Founder’s Circle Membership
+              </button>
+            </div>
+
+            <!-- Legal -->
+            <p class="fc-f2-legal">
+              Your information is held in strict confidence and never shared. Submission does not guarantee membership — places are strictly limited.
+            </p>
+
+          </form>
+          <iframe name="umoyaSubmissionFrame" title="Umoya submission fallback" style="display:none;width:0;height:0;border:0;"></iframe>
+
+        </div><!-- /.fc-f2-card -->
+
+      </div><!-- /.fc-f2-inner -->
+    </div><!-- /.fc-f2-form-col -->
+
+  </div><!-- /.fc-f2-outer -->
+
+</section>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ── Scroll reveal ──────────────────────────────────────── */
+  var rvEls = document.querySelectorAll('#fc-form-section .fc-f2-rv');
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(e){
+      e.forEach(function(x){
+        if(x.isIntersecting){
+          x.target.classList.add('fc-f2-on');
+          x.target.style.willChange = 'auto';
+          obs.unobserve(x.target);
+        }
+      });
+    },{threshold:.06});
+    rvEls.forEach(function(el){ obs.observe(el); });
+  } else {
+    rvEls.forEach(function(el){ el.classList.add('fc-f2-on'); });
+  }
+
+  /* ── Form validation + AJAX submission ──────────────────── */
+  var form = document.getElementById('fc2Form');
+  var btn  = document.getElementById('fc2Btn');
+
+  var submitting   = false;
+  var originalText = btn ? btn.textContent : '';
+  var pendingBackupKey = 'umoyaPendingFormBackups';
+  var pendingBackupMaxAge = 24 * 60 * 60 * 1000;
+
+  /*
+   * HubSpot setup:
+   * 1. Paste the HubSpot Portal ID into data-hubspot-portal-id on the form.
+   * 2. Paste the HubSpot Form GUID into data-hubspot-form-id on the form.
+   * 3. Make sure each mapped property exists on the HubSpot form.
+   *
+   * NOTE (v4 revamp): the form now collects a travel MONTH (MERGE4) and a
+   * GUEST GROUP SIZE (MERGE6). They are mapped to the existing HubSpot
+   * properties below so the integration keeps working unchanged. If you
+   * want cleaner CRM reporting, create `preferred_travel_month` and
+   * `preferred_group_size` properties in HubSpot, then update the two
+   * mappings flagged below (and the matching aliases in class-submissions.php).
+   */
+  var hubspotFieldMap = {
+    MERGE1: 'salutation',
+    FNAME: 'firstname',
+    LNAME: 'lastname',
+    EMAIL: 'email',
+    PHONE: 'phone',
+    MERGE2: 'country',
+    MERGE3: 'city',
+    MERGE4: 'preferred_travel_season',   /* now carries travel MONTH — see note */
+    MERGE5: 'preferred_travel_year',
+    MERGE6: 'preferred_journey_length',  /* now carries GUEST group size — see note */
+    MERGE7: 'founders_circle_message'
+  };
+
+  function isValidEmail(v){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+
+  function getFieldValue(fieldName) {
+    var field = form.elements[fieldName];
+    if (!field) return '';
+    return String(field.value || '').trim();
+  }
+
+  function getCookie(name) {
+    var parts = document.cookie ? document.cookie.split('; ') : [];
+    for (var i = 0; i < parts.length; i += 1) {
+      var item = parts[i].split('=');
+      if (item[0] === name) return decodeURIComponent(item.slice(1).join('='));
+    }
+    return '';
+  }
+
+  function setHiddenValue(fieldName, value) {
+    var field = form && form.elements ? form.elements[fieldName] : null;
+    if (field) field.value = value || '';
+  }
+
+  function syncTrackingFields() {
+    if (!form) return;
+    setHiddenValue('hutk', getCookie('hubspotutk'));
+    setHiddenValue('pageUri', window.location.href);
+    setHiddenValue('pageName', document.title || 'Umoya Founder\'s Circle');
+  }
+
+  function identifyHubSpotVisitor() {
+    var email = getFieldValue('EMAIL');
+    if (!email || !isValidEmail(email)) return;
+    window._hsq = window._hsq || [];
+    window._hsq.push(['identify', { email: email }]);
+    window._hsq.push(['trackPageView']);
+  }
+
+  function buildHubSpotPayload() {
+    syncTrackingFields();
+    var fields = [];
+
+    Object.keys(hubspotFieldMap).forEach(function(fieldName) {
+      var value = getFieldValue(fieldName);
+      if (value) {
+        fields.push({
+          name: hubspotFieldMap[fieldName],
+          value: value
+        });
+      }
+    });
+
+    var context = {
+      pageUri: window.location.href,
+      pageName: document.title || 'Umoya Founder\'s Circle'
+    };
+    var hutk = getCookie('hubspotutk');
+    if (hutk) context.hutk = hutk;
+
+    var payload = {
+      fields: fields,
+      context: context
+    };
+
+    var consentText = (form.getAttribute('data-hubspot-consent-text') || '').trim();
+    if (consentText) {
+      payload.legalConsentOptions = {
+        consent: {
+          consentToProcess: true,
+          text: consentText
+        }
+      };
+    }
+
+    return payload;
+  }
+
+  function submitToHubSpot() {
+    var portalId = (form.getAttribute('data-hubspot-portal-id') || '').trim();
+    var formId = (form.getAttribute('data-hubspot-form-id') || '').trim();
+
+    if (!portalId || !formId) {
+      return Promise.reject(new Error('HubSpot is not configured yet. Add the Portal ID and Form ID to this form.'));
+    }
+
+    return fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + encodeURIComponent(portalId) + '/' + encodeURIComponent(formId), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(buildHubSpotPayload())
+    }).then(function(response) {
+      return response.text().then(function(text) {
+        var data = null;
+        if (text) {
+          try { data = JSON.parse(text); } catch (ignore) {}
+        }
+
+        if (!response.ok) {
+          var message = data && (data.message || data.error) ? (data.message || data.error) : 'HubSpot could not receive the submission. Please try again.';
+          throw new Error(message);
+        }
+
+        return data;
+      });
+    });
+  }
+
+  function buildWordPressBackupPayload() {
+    var hubspotPayload = buildHubSpotPayload();
+    var rawFields = {};
+
+    Object.keys(hubspotFieldMap).forEach(function(fieldName) {
+      rawFields[fieldName] = getFieldValue(fieldName);
+    });
+
+    /* Record POPIA consent + marketing opt-in alongside the raw fields */
+    var consentBox = form.querySelector('#fc2Consent');
+    var marketingBox = form.querySelector('#fc2Marketing');
+    rawFields.consent_to_process = consentBox && consentBox.checked ? 'yes' : 'no';
+    rawFields.marketing_opt_in = marketingBox && marketingBox.checked ? 'yes' : 'no';
+
+    return {
+      submissionId: createSubmissionId(),
+      source: (form.getAttribute('data-umoya-form-source') || 'founders_circle_page').trim(),
+      hubspotPortalId: (form.getAttribute('data-hubspot-portal-id') || '').trim(),
+      hubspotFormId: (form.getAttribute('data-hubspot-form-id') || '').trim(),
+      consentText: (form.getAttribute('data-hubspot-consent-text') || '').trim(),
+      hutk: getCookie('hubspotutk'),
+      pageUri: window.location.href,
+      pageName: document.title || 'Umoya Founder\'s Circle',
+      rawFields: rawFields,
+      fields: hubspotPayload.fields,
+      context: hubspotPayload.context
+    };
+  }
+
+  function createSubmissionId() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+      return window.crypto.randomUUID();
+    }
+
+    return 'umoya-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12);
+  }
+
+  function getPendingBackups() {
+    try {
+      return JSON.parse(window.localStorage.getItem(pendingBackupKey) || '[]').filter(function(item) {
+        return item && (!item.queuedAt || Date.now() - item.queuedAt < pendingBackupMaxAge);
+      });
+    } catch (ignore) {
+      return [];
+    }
+  }
+
+  function savePendingBackups(items) {
+    try {
+      window.localStorage.setItem(pendingBackupKey, JSON.stringify(items.slice(-8)));
+    } catch (ignore) {}
+  }
+
+  function queuePendingBackup(payload) {
+    payload.hubspotAlreadySent = true;
+    payload.queuedAt = Date.now();
+    var items = getPendingBackups();
+    items.push(payload);
+    savePendingBackups(items);
+  }
+
+  function flushPendingBackups() {
+    var items = getPendingBackups();
+    if (!items.length) return;
+
+    var endpoint = (form.getAttribute('data-wordpress-backup-endpoint') || '/wp-json/umoya/v1/submissions').trim();
+    var remaining = items.slice();
+
+    items.forEach(function(item) {
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify(item)
+      }).then(function(response) {
+        if (!response.ok) return;
+        remaining = remaining.filter(function(entry) {
+          return entry.submissionId !== item.submissionId;
+        });
+        savePendingBackups(remaining);
+      }).catch(function() {});
+    });
+  }
+
+  function submitToWordPressBackup(payload) {
+    var endpoint = (form.getAttribute('data-wordpress-backup-endpoint') || '/wp-json/umoya/v1/submissions').trim();
+
+    return fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify(payload)
+    }).then(function(response) {
+      return response.text().then(function(text) {
+        var data = null;
+        if (text) {
+          try { data = JSON.parse(text); } catch (ignore) {}
+        }
+
+        if (!response.ok || !data || data.saved !== true) {
+          var message = data && data.message ? data.message : 'WordPress could not save the submission. Please try again.';
+          throw new Error(message);
+        }
+
+        return data;
+      });
+    });
+  }
+
+  if (form) window.setTimeout(flushPendingBackups, 1200);
+  if (form) {
+    syncTrackingFields();
+    window.setTimeout(syncTrackingFields, 1500);
+  }
+
+  function handleFounderCircleSubmit(e, submittedForm) {
+    form = submittedForm || form;
+    btn = form ? (form.querySelector('#fc2Btn, .fc-f2-sub-btn') || btn) : btn;
+    if (!form || !btn) return;
+    syncTrackingFields();
+    identifyHubSpotVisitor();
+    if (!btn.getAttribute('data-umoya-original-text')) {
+      btn.setAttribute('data-umoya-original-text', btn.textContent);
+    }
+    originalText = btn.getAttribute('data-umoya-original-text');
+
+    e.preventDefault();
+    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+
+    /* Rate limit: block double-clicks and spam */
+    if(submitting) return;
+
+    /* Client-side validation */
+    var reqs  = form.querySelectorAll('[required]');
+    var valid = true;
+
+    reqs.forEach(function(f){
+      if(!f.value.trim()){
+        valid = false;
+        f.style.borderColor = '#D97E53';
+        f.style.boxShadow   = '0 0 0 3px rgba(217,126,83,.12)';
+      } else {
+        f.style.borderColor = '';
+        f.style.boxShadow   = '';
+      }
+    });
+
+    /* Email-specific validation */
+    var emailField = form.querySelector('[name="EMAIL"], [type="email"]');
+    if(emailField && emailField.value && !isValidEmail(emailField.value)){
+      valid = false;
+      emailField.style.borderColor = '#D97E53';
+      emailField.style.boxShadow   = '0 0 0 3px rgba(217,126,83,.12)';
+    }
+
+    /* POPIA — the required consent box must be ticked before we submit */
+    var consentField = form.querySelector('#fc2Consent');
+    if(consentField && !consentField.checked){
+      valid = false;
+      consentField.style.outline       = '2px solid #D97E53';
+      consentField.style.outlineOffset = '3px';
+    }
+
+    if(!valid){
+      var first = Array.prototype.find.call(reqs, function(f){ return !f.value.trim(); });
+      if(first) first.focus();
+      else if(consentField && !consentField.checked) consentField.focus();
+      return;
+    }
+
+    /* Lock UI */
+    submitting      = true;
+    btn.disabled    = true;
+    btn.textContent = 'Sending\u2026';
+    btn.style.opacity = '0.7';
+
+    var backupPayload = buildWordPressBackupPayload();
+
+    /* Save to WordPress first; the WordPress endpoint forwards the submission to HubSpot. */
+    submitToWordPressBackup(backupPayload)
+      .then(function(){ showSuccess(); })
+      .catch(function(error){
+        submitToHubSpot()
+          .then(function(){
+            queuePendingBackup(backupPayload);
+            showSuccess();
+          })
+          .catch(function(fallbackError){
+            showError((error.message || 'WordPress could not save the submission.') + ' ' + (fallbackError.message || 'HubSpot fallback also failed.'));
+          });
+      });
+  }
+
+  document.addEventListener('submit', function(e) {
+    var submittedForm = e.target;
+    if (!submittedForm || !submittedForm.matches || !submittedForm.matches('#fc2Form, .fc-f2-form')) return;
+    handleFounderCircleSubmit(e, submittedForm);
+  }, true);
+
+  if (form) {
+    form.addEventListener('submit', function(e){
+      handleFounderCircleSubmit(e, form);
+    });
+  }
+
+  function showSuccess(){
+    btn.textContent       = 'Inquiry Received \u2014 We\u2019ll Be in Touch Soon';
+    btn.disabled          = true;
+    btn.style.background  = '#708238';
+    btn.style.borderColor = '#708238';
+    btn.style.opacity     = '1';
+  }
+
+  function showError(msg){
+    btn.textContent   = originalText;
+    btn.disabled      = false;
+    btn.style.opacity = '1';
+    submitting = false;
+
+    /* Show error below button */
+    var existing = form.querySelector('.fc-f2-error');
+    if(existing) existing.remove();
+    var err = document.createElement('p');
+    err.className   = 'fc-f2-error';
+    err.style.cssText = 'color:#D97E53;font-size:0.85rem;text-align:center;margin-top:10px;';
+    err.textContent = msg;
+    btn.parentNode.appendChild(err);
+    setTimeout(function(){ if(err.parentNode) err.remove(); }, 8000);
+  }
+
+  /* Clear validation styling on input */
+  if (form) {
+    form.querySelectorAll('input, select, textarea').forEach(function(f){
+      f.addEventListener('input', function(){
+        f.style.borderColor = '';
+        f.style.boxShadow   = '';
+      });
+    });
+    var consentBox = form.querySelector('#fc2Consent');
+    if (consentBox) {
+      consentBox.addEventListener('change', function(){
+        consentBox.style.outline = '';
+        consentBox.style.outlineOffset = '';
+      });
+    }
+  }
+
+}());
+</script>

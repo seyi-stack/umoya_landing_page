@@ -1,0 +1,107 @@
+<!--
+=================================================================
+  UMOYA — FOR GROUPS — SECTION 02: INTRO
+=================================================================
+  Centred editorial intro on cream.
+  ANCHOR: id="fg-intro"
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #fg-intro {
+    --cream:  #F5F0EB;
+    --brown:  #4B2E2B;
+    --terra:  #D97E53;
+    --muted:  rgba(75,46,43,.68);
+    --ease:   cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--cream);
+    color: var(--brown);
+    padding: clamp(60px, 8vw, 100px) 0;
+    overflow-x: hidden;
+  }
+
+  #fg-intro *, #fg-intro *::before, #fg-intro *::after { box-sizing: border-box; }
+
+  .fg-in-c {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 3.4vw, 32px);
+    text-align: center;
+  }
+
+  .fg-in-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+
+  .fg-in-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--brown);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .fg-in-body {
+    font-family: inherit;
+    font-size: clamp(1.02rem, 1.5vw, 1.14rem);
+    line-height: 1.78;
+    color: var(--muted);
+    max-width: 66ch;
+    margin: 1.4rem auto 0;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .fg-in-rv { opacity: 0; transform: translateY(24px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+  .fg-in-rv.fg-in-on { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    #fg-intro { padding: 46px 0; }
+    .fg-in-eye { margin-bottom: 0.9rem; }
+    .fg-in-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .fg-in-body { font-size: 1rem; line-height: 1.68; margin-top: 1rem; }
+  }
+
+  @media (max-width: 420px) {
+    #fg-intro { padding: 38px 0; }
+    .fg-in-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+    .fg-in-body { font-size: 0.95rem; }
+  }
+</style>
+
+<section id="fg-intro" aria-label="Traveling together">
+  <div class="fg-in-c fg-in-rv">
+    <span class="fg-in-eye">Traveling Together</span>
+    <h2 class="fg-in-ttl">Your group. One unforgettable journey.</h2>
+    <p class="fg-in-body">Most of our travelers come together. There is something about experiencing South Africa beside the people you love, or the people who share your purpose, that makes it land deeper. We design the whole journey around your group, on your dates, with the same named access and the same care that defines every Umoya journey.</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('#fg-intro .fg-in-rv');
+  if(!els.length) return;
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('fg-in-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('fg-in-on'); });
+  }
+}());
+</script>

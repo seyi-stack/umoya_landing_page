@@ -1,0 +1,109 @@
+<!--
+=================================================================
+  UMOYA — FOR GROUPS — SECTION 07: TRAVEL FIT FOR ANY SIZE
+=================================================================
+  Short centred statement on how Umoya scales from a close circle
+  to a full chapter (back-to-back departures).
+
+  ANCHOR: id="fg-sizes"
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #fg-sizes {
+    --cream:  #F5F0EB;
+    --brown:  #4B2E2B;
+    --terra:  #D97E53;
+    --muted:  rgba(75,46,43,.68);
+    --ease:   cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--cream);
+    color: var(--brown);
+    padding: clamp(60px, 8vw, 100px) 0;
+    overflow-x: hidden;
+  }
+
+  #fg-sizes *, #fg-sizes *::before, #fg-sizes *::after { box-sizing: border-box; }
+
+  .fg-sz-c {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 3.4vw, 32px);
+    text-align: center;
+  }
+
+  .fg-sz-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+
+  .fg-sz-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--brown);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .fg-sz-body {
+    font-family: inherit;
+    font-size: clamp(1.02rem, 1.5vw, 1.14rem);
+    line-height: 1.78;
+    color: var(--muted);
+    max-width: 66ch;
+    margin: 1.4rem auto 0;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .fg-sz-rv { opacity: 0; transform: translateY(24px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+  .fg-sz-rv.fg-sz-on { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    #fg-sizes { padding: 46px 0; }
+    .fg-sz-eye { margin-bottom: 0.9rem; }
+    .fg-sz-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .fg-sz-body { font-size: 1rem; line-height: 1.68; margin-top: 1rem; }
+  }
+
+  @media (max-width: 420px) {
+    #fg-sizes { padding: 38px 0; }
+    .fg-sz-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+    .fg-sz-body { font-size: 0.95rem; }
+  }
+</style>
+
+<section id="fg-sizes" aria-label="Travel fit for any size">
+  <div class="fg-sz-c fg-sz-rv">
+    <span class="fg-sz-eye">Travel Fit for Any Size</span>
+    <h2 class="fg-sz-ttl">From a close circle to a full chapter.</h2>
+    <p class="fg-sz-body">Smaller groups travel as one intimate journey. For larger groups, we run back-to-back departures, so everyone travels in a small, personal cohort and still shares the experience together. However many you are, no one is lost in a crowd.</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('#fg-sizes .fg-sz-rv');
+  if(!els.length) return;
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('fg-sz-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('fg-sz-on'); });
+  }
+}());
+</script>

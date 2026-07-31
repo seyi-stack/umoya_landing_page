@@ -1,0 +1,471 @@
+<!--
+=================================================================
+  UMOYA — THE SIGNATURE JOURNEY — SECTION 00: TOP NAVIGATION
+=================================================================
+  Matches the homepage nav pattern: a fixed bar pinned to the top
+  of the page at all times (no hide/reveal on hero scroll).
+
+  BEHAVIOUR:
+  • position: fixed; top: 0 — always visible from first paint.
+  • Active section is tracked via IntersectionObserver and gets a
+    terracotta underline.
+  • Hamburger dropdown lives INSIDE the bar so it follows the
+    fixed position.
+
+  IMPORTANT — ELEMENTOR:
+  • Place this widget FIRST, immediately before the hero widget.
+  • Do NOT wrap in an Elementor section with overflow: hidden.
+
+  BRAND: font-family: inherit everywhere. Palette tokens only.
+=================================================================
+-->
+<style>
+  /* ── Tokens ─────────────────────────────────────────────────── */
+  #sjNavBar {
+    --cream:      #F5F0EB;
+    --brown:      #4B2E2B;
+    --terra:      #D97E53;
+    --terra-dk:   #C06840;
+    --text-muted: #4B2E2B;
+    --white:      #FFFFFF;
+    --ease:       cubic-bezier(.25,.46,.45,.94);
+  }
+
+  #sjNavBar,
+  #sjNavBar *,
+  #sjNavBar *::before,
+  #sjNavBar *::after {
+    box-sizing: border-box;
+  }
+
+  /* ── Bar shell ──────────────────────────────────────────────── */
+  #sjNavBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+
+    height: 64px;
+    background: rgba(245,240,235,0.99);
+    border-bottom: 1px solid rgba(75,46,43,.09);
+    box-shadow: 0 2px 24px rgba(75,46,43,.07);
+    font-family: inherit;
+
+    overflow: visible;
+  }
+
+  /* Section anchors clear the fixed bar when jumped to. */
+  #sj-overview, #sj-journey, #sj-extensions, #sj-stays, #sj-inclusions, #sj-cta {
+    scroll-margin-top: 72px;
+  }
+
+  /* ── Inner row ──────────────────────────────────────────────── */
+  .sj-nav-inner {
+    max-width: min(1280px, 100%);
+    margin: 0 auto;
+    padding: 0 18px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── LOGO (left) ────────────────────────────────────────────── */
+  .sj-nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+    flex-shrink: 0;
+    min-width: 0;
+  }
+
+  .sj-nav-logo img { height: 26px; width: auto; display: block; flex-shrink: 0; }
+
+  .sj-nav-logo-text {
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    color: var(--brown);
+    white-space: nowrap;
+  }
+
+  /* ── NAV LINKS (centre) ─────────────────────────────────────── */
+  .sj-nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .sj-nav-item { position: relative; }
+
+  .sj-nav-link {
+    display: inline-flex;
+    align-items: center;
+    height: 64px;
+    padding: 0 12px;
+    font-family: inherit;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-muted);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color .25s var(--ease);
+    position: relative;
+  }
+
+  .sj-nav-link:hover { color: var(--brown); }
+
+  .sj-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 12px;
+    right: 12px;
+    height: 2px;
+    background: var(--terra);
+    border-radius: 2px 2px 0 0;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .3s var(--ease);
+  }
+
+  .sj-nav-item.sj-active .sj-nav-link { color: var(--brown); font-weight: 600; }
+  .sj-nav-item.sj-active .sj-nav-link::after { transform: scaleX(1); }
+
+  /* ── CTA BUTTON (right) ─────────────────────────────────────── */
+  .sj-nav-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: inherit;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 16px;
+    min-height: 44px;
+    background: var(--terra);
+    color: var(--white);
+    border: 2px solid var(--terra);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background .25s var(--ease), border-color .25s var(--ease),
+                transform .25s var(--ease);
+  }
+
+  .sj-nav-cta:hover {
+    background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    color: var(--white);
+    transform: translateY(-1px);
+  }
+
+  /* ── HAMBURGER (mobile only) ────────────────────────────────── */
+  .sj-nav-burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    transition: background .2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .sj-nav-burger:hover { background: rgba(75,46,43,.06); }
+
+  .sj-nav-burger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--brown);
+    border-radius: 2px;
+    transition: transform .35s var(--ease), opacity .25s, width .25s;
+    transform-origin: center;
+  }
+
+  #sjNavBar.sj-open .sj-nav-burger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  #sjNavBar.sj-open .sj-nav-burger span:nth-child(2) { opacity: 0; width: 0; }
+  #sjNavBar.sj-open .sj-nav-burger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── MOBILE DROPDOWN ────────────────────────────────────────── */
+  .sj-nav-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(245,240,235,0.995);
+    border-bottom: 1px solid rgba(75,46,43,.09);
+    box-shadow: 0 8px 32px rgba(75,46,43,.12);
+    transform: translateY(-6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .35s var(--ease), opacity .3s var(--ease);
+  }
+
+  .sj-nav-dropdown.sj-mob-open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+
+  .sj-nav-dropdown-list { list-style: none; margin: 0; padding: 10px 0 14px; }
+
+  .sj-nav-dropdown-item { border-bottom: 1px solid rgba(75,46,43,.06); }
+  .sj-nav-dropdown-item:last-child { border-bottom: none; }
+
+  .sj-nav-dropdown-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 24px;
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: color .2s, background .2s, padding-left .2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .sj-nav-dropdown-link:hover,
+  .sj-nav-dropdown-item.sj-active .sj-nav-dropdown-link {
+    color: var(--brown);
+    background: rgba(217,126,83,.05);
+    padding-left: 30px;
+  }
+
+  .sj-nav-dropdown-item.sj-active .sj-nav-dropdown-link::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--terra);
+    flex-shrink: 0;
+  }
+
+  .sj-nav-dropdown-cta-row { padding: 14px 24px 10px; }
+
+  .sj-nav-dropdown-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 12px 20px;
+    min-height: 48px;
+    background: var(--terra);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    transition: background .25s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .sj-nav-dropdown-cta:hover { background: var(--terra-dk); color: var(--white); }
+
+  /* ── TABLET ≤1024px ─────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .sj-nav-inner { padding: 0 28px; gap: 16px; }
+    .sj-nav-link  { padding: 0 13px; font-size: 0.75rem; }
+  }
+
+  /* Compact nav → hamburger before desktop links can overflow. */
+  @media (max-width: 1240px) {
+    #sjNavBar         { height: 58px; }
+    .sj-nav-inner     { padding: 0 20px; gap: 12px; height: 58px; }
+    .sj-nav-links     { display: none; }
+    .sj-nav-cta       { display: none; }
+    .sj-nav-burger    { display: flex; }
+    .sj-nav-dropdown  { display: block; }
+  }
+
+  /* ── SMALL MOBILE ≤420px ────────────────────────────────────── */
+  @media (max-width: 420px) {
+    .sj-nav-inner     { padding: 0 16px; }
+    .sj-nav-logo-text { display: none; }
+  }
+</style>
+
+<!-- ── NAV BAR (fixed) ──────────────────────────────────────────── -->
+<nav id="sjNavBar" aria-label="Signature Journey page navigation">
+
+  <div class="sj-nav-inner">
+
+    <!-- Logo -->
+    <a class="sj-nav-logo" href="#sj-hero" aria-label="Umoya Afrika Tours — back to top">
+      <img
+        src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Umoya-Afrika-Logomark.svg"
+        alt="Umoya Afrika Tours logo"
+        onerror="this.style.display='none';document.getElementById('sjNLT').style.display='inline';"
+      />
+      <span class="sj-nav-logo-text" id="sjNLT" style="display:none;">Umoya</span>
+    </a>
+
+    <!-- Desktop section links -->
+    <ul class="sj-nav-links" role="list">
+      <li class="sj-nav-item" data-s="sj-overview"><a class="sj-nav-link" href="#sj-overview">Overview</a></li>
+      <li class="sj-nav-item" data-s="sj-journey"><a class="sj-nav-link" href="#sj-journey">The Journey</a></li>
+      <li class="sj-nav-item" data-s="sj-extensions"><a class="sj-nav-link" href="#sj-extensions">Extensions</a></li>
+      <li class="sj-nav-item" data-s="sj-stays"><a class="sj-nav-link" href="#sj-stays">Where You Stay</a></li>
+      <li class="sj-nav-item" data-s="sj-inclusions"><a class="sj-nav-link" href="#sj-inclusions">What's Included</a></li>
+    </ul>
+
+    <!-- Desktop CTA -->
+    <a class="sj-nav-cta" href="#sj-cta">Speak With a Travel Expert</a>
+
+    <!-- Hamburger -->
+    <button
+      class="sj-nav-burger"
+      id="sjNavBurger"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="sjNavDropdown"
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Mobile dropdown — inside the nav so it follows fixed position -->
+    <div class="sj-nav-dropdown" id="sjNavDropdown" role="menu" aria-label="Page sections">
+      <ul class="sj-nav-dropdown-list" role="list">
+        <li class="sj-nav-dropdown-item" data-s="sj-overview"><a class="sj-nav-dropdown-link" href="#sj-overview" role="menuitem">Overview</a></li>
+        <li class="sj-nav-dropdown-item" data-s="sj-journey"><a class="sj-nav-dropdown-link" href="#sj-journey" role="menuitem">The Journey</a></li>
+        <li class="sj-nav-dropdown-item" data-s="sj-extensions"><a class="sj-nav-dropdown-link" href="#sj-extensions" role="menuitem">Extensions</a></li>
+        <li class="sj-nav-dropdown-item" data-s="sj-stays"><a class="sj-nav-dropdown-link" href="#sj-stays" role="menuitem">Where You Stay</a></li>
+        <li class="sj-nav-dropdown-item" data-s="sj-inclusions"><a class="sj-nav-dropdown-link" href="#sj-inclusions" role="menuitem">What's Included</a></li>
+      </ul>
+      <div class="sj-nav-dropdown-cta-row">
+        <a class="sj-nav-dropdown-cta" href="#sj-cta">Speak With a Travel Expert</a>
+      </div>
+    </div><!-- /.sj-nav-dropdown -->
+
+  </div><!-- /.sj-nav-inner -->
+
+</nav>
+
+<script>
+(function(){
+  'use strict';
+
+  var bar      = document.getElementById('sjNavBar');
+  var burger   = document.getElementById('sjNavBurger');
+  var dropdown = document.getElementById('sjNavDropdown');
+
+  if(!bar) return;
+
+  /* The bar is always visible at the top of the page (homepage-style) —
+     no hide/reveal on hero scroll. */
+
+  /* ── HAMBURGER TOGGLE ───────────────────────────────────── */
+  function open(){
+    bar.classList.add('sj-open');
+    dropdown.classList.add('sj-mob-open');
+    burger.setAttribute('aria-expanded','true');
+    burger.setAttribute('aria-label','Close navigation menu');
+  }
+  function close(){
+    bar.classList.remove('sj-open');
+    dropdown.classList.remove('sj-mob-open');
+    burger.setAttribute('aria-expanded','false');
+    burger.setAttribute('aria-label','Open navigation menu');
+  }
+
+  if(burger){
+    burger.addEventListener('click', function(){
+      bar.classList.contains('sj-open') ? close() : open();
+    });
+    burger.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); burger.click(); }
+    });
+  }
+
+  if(dropdown){
+    dropdown.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ close(); });
+    });
+  }
+
+  document.addEventListener('click', function(e){
+    if(!bar.contains(e.target)) close();
+  });
+
+  /* ── ACTIVE SECTION TRACKING ────────────────────────────── */
+  var ids = ['sj-overview','sj-journey','sj-extensions','sj-stays','sj-inclusions'];
+
+  function setActive(activeId){
+    ids.forEach(function(id){
+      var desktopItem = bar.querySelector('.sj-nav-item[data-s="' + id + '"]');
+      if(desktopItem) desktopItem.classList.toggle('sj-active', id === activeId);
+      var mobileItem = bar.querySelector('.sj-nav-dropdown-item[data-s="' + id + '"]');
+      if(mobileItem) mobileItem.classList.toggle('sj-active', id === activeId);
+    });
+  }
+
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting) setActive(entry.target.id);
+      });
+    },{ rootMargin: '-64px 0px -50% 0px', threshold: 0 });
+    ids.forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) obs.observe(el);
+    });
+  }
+
+  /* ── SMOOTH SCROLL ──────────────────────────────────────── */
+  var navH = bar.offsetHeight || 64;
+
+  var logoLink = bar.querySelector('.sj-nav-logo');
+  if(logoLink){
+    logoLink.addEventListener('click', function(e){
+      e.preventDefault();
+      'scrollBehavior' in document.documentElement.style
+        ? window.scrollTo({top: 0, behavior: 'smooth'})
+        : window.scrollTo(0, 0);
+    });
+  }
+
+  bar.querySelectorAll('a[href^="#"]').forEach(function(a){
+    if(a.classList.contains('sj-nav-logo')) return;
+    a.addEventListener('click', function(e){
+      var target = document.getElementById(a.getAttribute('href').slice(1));
+      if(!target) return;
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + window.pageYOffset - navH;
+      'scrollBehavior' in document.documentElement.style
+        ? window.scrollTo({top: top, behavior: 'smooth'})
+        : window.scrollTo(0, top);
+    });
+  });
+
+}());
+</script>

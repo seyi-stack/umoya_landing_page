@@ -1,0 +1,135 @@
+<!--
+=================================================================
+  UMOYA HOMEPAGE — SPEAK WITH AN EXPERT (CLOSING CTA)
+=================================================================
+  v4 revamp — extracted from the Travel Essentials footer into its
+  own section (mockup copy format). Background stays BROWN per the
+  client's note; the button is transparent with a cream outline and
+  fills on hover.
+  ELEMENTOR: final HTML widget before the footer. The button opens
+  the shared inquiry popup via data-umoya-form-popup.
+=================================================================
+-->
+<section id="umoya-speak-expert" aria-label="Speak with a travel expert">
+  <style>
+    #umoya-speak-expert {
+      --cream:    #F5F0EB;
+      --brown:    #4B2E2B;
+      --terra:    #D97E53;
+      --white:    #FFFFFF;
+      --ease:     cubic-bezier(.25,.46,.45,.94);
+
+      background: var(--brown);
+      padding: clamp(72px, 9vw, 118px) 0;
+      font-family: inherit;
+      color: var(--cream);
+      text-align: center;
+    }
+
+    #umoya-speak-expert,
+    #umoya-speak-expert *,
+    #umoya-speak-expert *::before,
+    #umoya-speak-expert *::after { box-sizing: border-box; }
+
+    #umoya-speak-expert .umoya-spk-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    #umoya-speak-expert .umoya-spk-eye {
+      display: block;
+      margin-bottom: 1rem;
+      color: var(--terra);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+    }
+
+    #umoya-speak-expert h2 {
+      margin: 0 0 1.1rem;
+      color: var(--cream);
+      font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.12;
+    }
+
+    #umoya-speak-expert .umoya-spk-lead {
+      max-width: 52ch;
+      margin: 0 auto 2.2rem;
+      color: rgba(245,240,235,.85);
+      font-size: clamp(1rem, 1.4vw, 1.12rem);
+      line-height: 1.65;
+    }
+
+    /* Transparent outline button — fills on hover */
+    #umoya-speak-expert .umoya-spk-btn {
+      appearance: none;
+      -webkit-appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 16px 36px;
+      background: transparent;
+      border: 1.5px solid rgba(245,240,235,.75);
+      border-radius: 0;
+      color: var(--cream);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      line-height: 1.2;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .3s var(--ease), color .3s var(--ease),
+                  border-color .3s var(--ease), transform .3s var(--ease);
+    }
+
+    #umoya-speak-expert .umoya-spk-btn:hover {
+      background: var(--cream);
+      border-color: var(--cream);
+      color: var(--brown);
+      transform: translateY(-2px);
+    }
+
+    /* Scroll reveal */
+    #umoya-speak-expert .umoya-spk-rv {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .85s var(--ease), transform .85s var(--ease);
+    }
+    #umoya-speak-expert .umoya-spk-rv.on { opacity: 1; transform: none; }
+
+    @media (max-width: 480px) {
+      #umoya-speak-expert .umoya-spk-btn { width: 100%; }
+    }
+  </style>
+
+  <div class="umoya-spk-wrap umoya-spk-rv">
+    <span class="umoya-spk-eye">Still Have Questions?</span>
+    <h2>We'd love to speak with you.</h2>
+    <p class="umoya-spk-lead">Your dedicated Umoya travel expert is ready to help you plan the perfect South African journey, whether for yourself or for your group.</p>
+    <button type="button" class="umoya-spk-btn" data-umoya-form-popup>Speak With a Travel Expert</button>
+  </div>
+
+  <script>
+  (function () {
+    'use strict';
+    var rvEls = document.querySelectorAll('#umoya-speak-expert .umoya-spk-rv');
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      rvEls.forEach(function (el) { obs.observe(el); });
+    } else {
+      rvEls.forEach(function (el) { el.classList.add('on'); });
+    }
+  }());
+  </script>
+</section>

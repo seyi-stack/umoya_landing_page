@@ -1,0 +1,299 @@
+<!--
+=================================================================
+  UMOYA — ABOUT US — SECTION 06: MEET OUR HOSTS
+=================================================================
+  Six host cards. Each is a real, named person (or place) who
+  receives guests on an Umoya journey.
+
+  ANCHOR: id="ab-hosts"
+
+  IMAGES:
+  • Eyethu Heritage Hall uses the photo extracted from the client
+    mockup (uploaded as umoya_about_eyethu_heritage_hall.jpg).
+  • The other five are labelled ★ SWAP placeholders — the mockup
+    supplied no photography for them. To drop one in, replace the
+    .ab-ho-ph block with:
+      <img class="ab-ho-pic" src="…" alt="…" loading="lazy">
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #ab-hosts {
+    --cream:  #F5F0EB;
+    --brown:  #4B2E2B;
+    --terra:  #D97E53;
+    --white:  #FFFFFF;
+    --muted:  rgba(75,46,43,.68);
+    --line:   rgba(75,46,43,.14);
+    --ease:   cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--cream);
+    color: var(--brown);
+    padding: clamp(60px, 8vw, 104px) 0;
+    overflow-x: hidden;
+  }
+
+  #ab-hosts *, #ab-hosts *::before, #ab-hosts *::after { box-sizing: border-box; }
+
+  .ab-ho-c { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 3.4vw, 48px); }
+
+  /* ── Header ──────────────────────────────────────── */
+  .ab-ho-head { max-width: 62ch; margin-bottom: clamp(32px, 4vw, 48px); }
+  .ab-ho-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  .ab-ho-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--brown);
+    margin: 0;
+  }
+  .ab-ho-lead {
+    font-family: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.1rem);
+    line-height: 1.72;
+    color: var(--muted);
+    max-width: 62ch;
+    margin: 1.1rem 0 0;
+  }
+
+  /* ── Grid ────────────────────────────────────────── */
+  .ab-ho-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(18px, 2.2vw, 26px);
+  }
+
+  .ab-ho-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ab-ho-img {
+    position: relative;
+    height: clamp(220px, 22vw, 250px);
+    overflow: hidden;
+    background: var(--brown);
+  }
+  .ab-ho-pic {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    display: block;
+  }
+
+  /* Labelled placeholder — remove when a real photo is dropped in */
+  .ab-ho-ph {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    padding: 16px;
+    background: linear-gradient(135deg, #EFE7DB, #E3D6C4);
+    color: #8A755F;
+  }
+  .ab-ho-ph svg { width: 26px; height: 26px; stroke: var(--terra); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; opacity: .9; }
+  .ab-ho-ph span {
+    font-family: inherit;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.55;
+  }
+
+  .ab-ho-body { padding: clamp(20px, 1.9vw, 24px) clamp(18px, 1.8vw, 22px) clamp(22px, 2.1vw, 26px); }
+  .ab-ho-role {
+    font-family: inherit;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terra);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .ab-ho-name {
+    font-family: inherit;
+    font-size: clamp(1.25rem, 1.8vw, 1.45rem);
+    font-weight: 400;
+    line-height: 1.14;
+    color: var(--brown);
+    margin: 0 0 0.5rem;
+  }
+  .ab-ho-desc {
+    font-family: inherit;
+    font-size: 0.92rem;
+    line-height: 1.64;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .ab-ho-rv { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+  .ab-ho-rv.ab-ho-on { opacity: 1; transform: none; }
+  .ab-ho-rv.d1 { transition-delay: .1s; }
+  .ab-ho-rv.d2 { transition-delay: .2s; }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 980px) {
+    .ab-ho-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    #ab-hosts { padding: 46px 0; }
+    .ab-ho-head { margin-bottom: 28px; }
+    .ab-ho-eye { margin-bottom: 0.9rem; }
+    .ab-ho-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .ab-ho-lead { font-size: 1rem; line-height: 1.62; }
+    .ab-ho-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; gap: 16px; }
+    .ab-ho-name { font-size: 1.2rem; }
+  }
+
+  @media (max-width: 420px) {
+    #ab-hosts { padding: 38px 0; }
+    .ab-ho-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+    .ab-ho-body { padding: 18px 16px 20px; }
+  }
+</style>
+
+<section id="ab-hosts" aria-label="Meet our hosts">
+  <div class="ab-ho-c">
+
+    <div class="ab-ho-head ab-ho-rv">
+      <span class="ab-ho-eye">Meet Our Hosts</span>
+      <h2 class="ab-ho-ttl">Every host has built something remarkable.</h2>
+      <p class="ab-ho-lead">Historians, winemakers, artists, and entrepreneurs who share what they have made with you in person. They are the reason people come back.</p>
+    </div>
+
+    <div class="ab-ho-grid" role="list">
+
+      <!-- ★ SWAP: wine being poured at a Luc Mo dinner -->
+      <article class="ab-ho-card ab-ho-rv" role="listitem">
+        <div class="ab-ho-img">
+          <div class="ab-ho-ph">
+            <svg viewBox="0 0 24 24"><path d="M8 3h8l-1 6a3 3 0 0 1-6 0z"/><path d="M12 15v5"/><path d="M9 20h6"/></svg>
+            <span>Wine being poured<br>at a Luc Mo dinner</span>
+          </div>
+        </div>
+        <div class="ab-ho-body">
+          <div class="ab-ho-role">The Welcome</div>
+          <h3 class="ab-ho-name">Lucia Motloung</h3>
+          <p class="ab-ho-desc">Founder of the Luc Mo wine label, built with the Ndebele Kingdom. She hosts your first dinner and pours what she makes.</p>
+        </div>
+      </article>
+
+      <!-- ★ SWAP: Vilakazi Street or the Hector Pieterson Memorial -->
+      <article class="ab-ho-card ab-ho-rv d1" role="listitem">
+        <div class="ab-ho-img">
+          <div class="ab-ho-ph">
+            <svg viewBox="0 0 24 24"><path d="M8 3h8l-1 6a3 3 0 0 1-6 0z"/><path d="M12 15v5"/><path d="M9 20h6"/></svg>
+            <span>Vilakazi Street or the<br>Hector Pieterson Memorial</span>
+          </div>
+        </div>
+        <div class="ab-ho-body">
+          <div class="ab-ho-role">Soweto</div>
+          <h3 class="ab-ho-name">Antoinette Sithole</h3>
+          <p class="ab-ho-desc">The sister beside Hector Pieterson in the 1976 photograph. She hosts lunch in Soweto and tells the day as she lived it.</p>
+        </div>
+      </article>
+
+      <!-- ★ SWAP: Robben Island -->
+      <article class="ab-ho-card ab-ho-rv d2" role="listitem">
+        <div class="ab-ho-img">
+          <div class="ab-ho-ph">
+            <svg viewBox="0 0 24 24"><path d="M8 3h8l-1 6a3 3 0 0 1-6 0z"/><path d="M12 15v5"/><path d="M9 20h6"/></svg>
+            <span>Robben Island</span>
+          </div>
+        </div>
+        <div class="ab-ho-body">
+          <div class="ab-ho-role">Robben Island</div>
+          <h3 class="ab-ho-name">Christo Brand</h3>
+          <p class="ab-ho-desc">The warder who guarded Nelson Mandela for years, and became his friend. He walks you through the prison himself.</p>
+        </div>
+      </article>
+
+      <!-- ★ SWAP: Winelands / wine barrels -->
+      <article class="ab-ho-card ab-ho-rv" role="listitem">
+        <div class="ab-ho-img">
+          <div class="ab-ho-ph">
+            <svg viewBox="0 0 24 24"><path d="M8 3h8l-1 6a3 3 0 0 1-6 0z"/><path d="M12 15v5"/><path d="M9 20h6"/></svg>
+            <span>Winelands<br>wine barrels</span>
+          </div>
+        </div>
+        <div class="ab-ho-body">
+          <div class="ab-ho-role">The Black Route</div>
+          <h3 class="ab-ho-name">Ntsiki Biyela</h3>
+          <p class="ab-ho-desc">South Africa's first Black female winemaker, behind Aslina. A day among Black-owned estates, with her wines poured by her.</p>
+        </div>
+      </article>
+
+      <!-- ★ SWAP: artwork in the Soweto studio -->
+      <article class="ab-ho-card ab-ho-rv d1" role="listitem">
+        <div class="ab-ho-img">
+          <div class="ab-ho-ph">
+            <svg viewBox="0 0 24 24"><path d="M8 3h8l-1 6a3 3 0 0 1-6 0z"/><path d="M12 15v5"/><path d="M9 20h6"/></svg>
+            <span>Artwork in the<br>Soweto studio</span>
+          </div>
+        </div>
+        <div class="ab-ho-body">
+          <div class="ab-ho-role">Soweto Art</div>
+          <h3 class="ab-ho-name">Senzart911</h3>
+          <p class="ab-ho-desc">The Soweto artist whose studio you step into, watching work made in the place that shaped it.</p>
+        </div>
+      </article>
+
+      <!-- Eyethu Heritage Hall — photo supplied in the client mockup -->
+      <article class="ab-ho-card ab-ho-rv d2" role="listitem">
+        <div class="ab-ho-img">
+          <img class="ab-ho-pic" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_about_eyethu_heritage_hall.jpg" alt="Eyethu Heritage Hall, the restored Soweto cinema" loading="lazy" decoding="async">
+        </div>
+        <div class="ab-ho-body">
+          <div class="ab-ho-role">Soweto Cinema</div>
+          <h3 class="ab-ho-name">Eyethu Heritage Hall</h3>
+          <p class="ab-ho-desc">The Tshabalala family's restored cinema, a Soweto landmark brought back to life and opened to you by the family.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('#ab-hosts .ab-ho-rv');
+  if(!els.length) return;
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('ab-ho-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('ab-ho-on'); });
+  }
+}());
+</script>

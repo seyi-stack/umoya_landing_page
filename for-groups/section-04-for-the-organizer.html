@@ -1,0 +1,213 @@
+<!--
+=================================================================
+  UMOYA — FOR GROUPS — SECTION 04: FOR THE ORGANIZER
+=================================================================
+  The page's dark-brown accent band — the promise made to the
+  person who brings everyone along. Four icon+copy items.
+
+  ANCHOR: id="fg-organizer"
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #fg-organizer {
+    --cream:  #F5F0EB;
+    --brown:  #4B2E2B;
+    --terra:  #D97E53;
+    --white:  #FFFFFF;
+    --ease:   cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--brown);
+    color: var(--cream);
+    padding: clamp(64px, 8vw, 108px) 0;
+    overflow-x: hidden;
+  }
+
+  #fg-organizer *, #fg-organizer *::before, #fg-organizer *::after { box-sizing: border-box; }
+
+  .fg-og-c { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 3.4vw, 48px); }
+
+  .fg-og-head { max-width: 64ch; margin-bottom: clamp(32px, 4vw, 48px); }
+  .fg-og-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  .fg-og-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin: 0;
+    text-wrap: balance;
+  }
+  .fg-og-lead {
+    font-family: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.12rem);
+    line-height: 1.75;
+    color: rgba(245,240,235,.85);
+    max-width: 60ch;
+    margin: 1.2rem 0 0;
+  }
+
+  /* ── Items ───────────────────────────────────────── */
+  .fg-og-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(22px, 2.6vw, 34px);
+  }
+
+  .fg-og-item {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+    padding-top: clamp(20px, 2.2vw, 26px);
+    border-top: 1px solid rgba(245,240,235,.18);
+  }
+
+  .fg-og-ic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(217,126,83,.16);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+  .fg-og-ic svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: var(--terra);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .fg-og-h {
+    font-family: inherit;
+    font-size: clamp(1.12rem, 1.6vw, 1.3rem);
+    font-weight: 400;
+    line-height: 1.22;
+    color: var(--cream);
+    margin: 0 0 0.55rem;
+  }
+
+  .fg-og-p {
+    font-family: inherit;
+    font-size: 0.94rem;
+    line-height: 1.7;
+    color: rgba(245,240,235,.82);
+    margin: 0;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .fg-og-rv { opacity: 0; transform: translateY(26px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+  .fg-og-rv.fg-og-on { opacity: 1; transform: none; }
+  .fg-og-rv.d1 { transition-delay: .1s; }
+  .fg-og-rv.d2 { transition-delay: .2s; }
+  .fg-og-rv.d3 { transition-delay: .3s; }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 900px) {
+    .fg-og-grid { grid-template-columns: 1fr; gap: 20px; }
+  }
+
+  @media (max-width: 768px) {
+    #fg-organizer { padding: 48px 0; }
+    .fg-og-head { margin-bottom: 28px; }
+    .fg-og-eye { margin-bottom: 0.9rem; }
+    .fg-og-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .fg-og-lead { font-size: 1rem; line-height: 1.66; }
+    .fg-og-item { grid-template-columns: 42px minmax(0, 1fr); gap: 14px; }
+    .fg-og-ic { width: 42px; height: 42px; }
+    .fg-og-ic svg { width: 20px; height: 20px; }
+  }
+
+  @media (max-width: 420px) {
+    #fg-organizer { padding: 40px 0; }
+    .fg-og-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+  }
+</style>
+
+<section id="fg-organizer" aria-label="For the organizer">
+  <div class="fg-og-c">
+
+    <div class="fg-og-head fg-og-rv">
+      <span class="fg-og-eye">For the Organizer</span>
+      <h2 class="fg-og-ttl">We look after the one who brings everyone.</h2>
+      <p class="fg-og-lead">Organizing travel for a group is real work. We take it off your shoulders, so you can enjoy the journey too.</p>
+    </div>
+
+    <div class="fg-og-grid" role="list">
+
+      <div class="fg-og-item fg-og-rv" role="listitem">
+        <span class="fg-og-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
+        </span>
+        <div>
+          <h3 class="fg-og-h">One dedicated planner</h3>
+          <p class="fg-og-p">A single point of contact from your first call to the final detail. You speak to one person who knows your group.</p>
+        </div>
+      </div>
+
+      <div class="fg-og-item fg-og-rv d1" role="listitem">
+        <span class="fg-og-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><polyline points="4 12.5 9 17.5 20 6.5"/></svg>
+        </span>
+        <div>
+          <h3 class="fg-og-h">The admin, handled</h3>
+          <p class="fg-og-p">Rooming, payments, dietary needs, and logistics are ours to manage. You are not chasing anyone.</p>
+        </div>
+      </div>
+
+      <div class="fg-og-item fg-og-rv d2" role="listitem">
+        <span class="fg-og-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 8.7l5.4-.8z"/></svg>
+        </span>
+        <div>
+          <h3 class="fg-og-h">The organizer travels as our guest</h3>
+          <p class="fg-og-p">Fill a private departure of 18 and the organizer's own place is complimentary. The person who brings everyone together should not pay to do it. For smaller groups, we reduce the organizer's fare instead.</p>
+        </div>
+      </div>
+
+      <div class="fg-og-item fg-og-rv d3" role="listitem">
+        <span class="fg-og-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="2.8"/><path d="M3 19a6 6 0 0 1 12 0"/><path d="M16.5 6.2a2.8 2.8 0 0 1 0 5.4"/><path d="M17.5 14.4A6 6 0 0 1 21 19"/></svg>
+        </span>
+        <div>
+          <h3 class="fg-og-h">One group, one welcome</h3>
+          <p class="fg-og-p">Everyone travels together and is received the same way. No one is lost in a crowd.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('#fg-organizer .fg-og-rv');
+  if(!els.length) return;
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('fg-og-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('fg-og-on'); });
+  }
+}());
+</script>

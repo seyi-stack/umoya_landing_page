@@ -1,0 +1,201 @@
+<!--
+=================================================================
+  UMOYA — ABOUT US — SECTION 08: CLOSING CTA
+=================================================================
+  Full-bleed image band with a deep brown overlay and the page's
+  final call to action.
+
+  ANCHOR: id="ab-cta"
+  ★ SWAP: background image.
+  NOTE: the footer is a THEME-LEVEL element (like the site header)
+  and is intentionally NOT part of these section widgets.
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #ab-cta {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --terra-dk: #C06840;
+    --white:    #FFFFFF;
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    position: relative;
+    font-family: inherit;
+    text-align: center;
+    color: var(--cream);
+    background: #2a1f17;
+    padding: clamp(72px, 10vw, 122px) 0;
+    overflow: hidden;
+  }
+
+  #ab-cta *, #ab-cta *::before, #ab-cta *::after { box-sizing: border-box; }
+
+  /* Background image + overlay */
+  .ab-ct-bg { position: absolute; inset: 0; z-index: 0; }
+  .ab-ct-bg img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    object-position: center;
+    display: block;
+  }
+  .ab-ct-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(33,24,18,.70), rgba(33,24,18,.82));
+    pointer-events: none;
+  }
+
+  .ab-ct-c {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 3.4vw, 48px);
+  }
+
+  .ab-ct-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  .ab-ct-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.6vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    max-width: 22ch;
+    margin: 0 auto;
+    text-wrap: balance;
+  }
+  .ab-ct-sub {
+    font-family: inherit;
+    font-size: clamp(1.02rem, 1.5vw, 1.16rem);
+    line-height: 1.72;
+    color: rgba(245,240,235,.9);
+    max-width: 60ch;
+    margin: 1.2rem auto 2rem;
+  }
+
+  .ab-ct-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  .ab-ct-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: inherit;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 17px 38px;
+    min-height: 56px;
+    cursor: pointer;
+    transition: background .3s var(--ease), color .3s var(--ease),
+                border-color .3s var(--ease), transform .3s var(--ease);
+  }
+  .ab-ct-btn-primary {
+    background: var(--terra);
+    color: var(--white);
+    border: 1.5px solid var(--terra);
+  }
+  .ab-ct-btn-primary svg { width: 16px; height: 16px; transition: transform .3s var(--ease); }
+  .ab-ct-btn-primary:hover {
+    background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  .ab-ct-btn-primary:hover svg { transform: translateX(4px); }
+
+  .ab-ct-btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border: 1.5px solid rgba(245,240,235,.7);
+  }
+  .ab-ct-btn-ghost:hover {
+    background: rgba(245,240,235,.12);
+    border-color: var(--cream);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .ab-ct-rv { opacity: 0; transform: translateY(24px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+  .ab-ct-rv.ab-ct-on { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    #ab-cta { padding: 56px 0; }
+    .ab-ct-eye { margin-bottom: 0.9rem; }
+    .ab-ct-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .ab-ct-sub { font-size: 1rem; line-height: 1.65; margin: 1rem auto 1.6rem; }
+    .ab-ct-row { flex-direction: column; align-items: stretch; max-width: 360px; margin-inline: auto; }
+    .ab-ct-btn { width: 100%; padding: 15px 26px; min-height: 52px; }
+  }
+
+  @media (max-width: 420px) {
+    #ab-cta { padding: 46px 0; }
+    .ab-ct-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+    .ab-ct-sub { font-size: 0.95rem; }
+  }
+</style>
+
+<section id="ab-cta" aria-label="Travel with us">
+
+  <div class="ab-ct-bg">
+    <!-- ★ SWAP: closing CTA background image -->
+    <img
+      src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05243.jpg"
+      alt="South African landscape at golden hour"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="ab-ct-c ab-ct-rv">
+    <span class="ab-ct-eye">Travel With Us</span>
+    <h2 class="ab-ct-ttl">Every journey is shaped around you.</h2>
+    <p class="ab-ct-sub">Umoya Afrika Tours is designed for curious, discerning travelers who want more than an itinerary. Whether traveling as a couple, a family, an affinity group, or a private party, every journey is shaped around you.</p>
+    <div class="ab-ct-row">
+      <a href="https://umoyaafrikatours.co.za/founders-circle/" class="ab-ct-btn ab-ct-btn-primary">
+        Join the Founder's Circle
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="13 6 19 12 13 18"/>
+        </svg>
+      </a>
+      <a href="https://umoyaafrikatours.co.za/signature-journey/" class="ab-ct-btn ab-ct-btn-ghost">See the Signature Journey</a>
+    </div>
+  </div>
+
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('#ab-cta .ab-ct-rv');
+  if(!els.length) return;
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('ab-ct-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('ab-ct-on'); });
+  }
+}());
+</script>

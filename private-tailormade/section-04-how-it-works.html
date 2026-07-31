@@ -1,0 +1,168 @@
+<!--
+=================================================================
+  UMOYA — PRIVATE & TAILORMADE — SECTION 04: HOW TAILORING WORKS
+=================================================================
+  Three numbered steps on the cream band.
+  ANCHOR: id="pt-how"
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #pt-how {
+    --cream:  #F5F0EB;
+    --brown:  #4B2E2B;
+    --terra:  #D97E53;
+    --white:  #FFFFFF;
+    --muted:  rgba(75,46,43,.68);
+    --line:   rgba(75,46,43,.14);
+    --ease:   cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--cream);
+    color: var(--brown);
+    padding: clamp(60px, 8vw, 104px) 0;
+    overflow-x: hidden;
+  }
+
+  #pt-how *, #pt-how *::before, #pt-how *::after { box-sizing: border-box; }
+
+  .pt-hw-c { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 3.4vw, 48px); }
+
+  .pt-hw-head { max-width: 60ch; margin-bottom: clamp(32px, 4vw, 48px); }
+  .pt-hw-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  .pt-hw-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--brown);
+    margin: 0;
+  }
+
+  /* ── Steps ───────────────────────────────────────── */
+  .pt-hw-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 2.4vw, 30px);
+  }
+
+  .pt-hw-step {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--terra);
+    border-radius: 10px;
+    padding: clamp(26px, 2.6vw, 34px) clamp(22px, 2.2vw, 30px) clamp(28px, 2.8vw, 36px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pt-hw-n {
+    font-family: inherit;
+    font-size: clamp(2rem, 3.4vw, 2.7rem);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--terra);
+    margin-bottom: 1rem;
+  }
+
+  .pt-hw-h {
+    font-family: inherit;
+    font-size: clamp(1.15rem, 1.7vw, 1.35rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--brown);
+    margin: 0 0 0.7rem;
+  }
+
+  .pt-hw-p {
+    font-family: inherit;
+    font-size: 0.94rem;
+    line-height: 1.68;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .pt-hw-rv { opacity: 0; transform: translateY(26px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+  .pt-hw-rv.pt-hw-on { opacity: 1; transform: none; }
+  .pt-hw-rv.d1 { transition-delay: .12s; }
+  .pt-hw-rv.d2 { transition-delay: .24s; }
+  .pt-hw-rv.d3 { transition-delay: .36s; }
+
+  @media (max-width: 900px) {
+    .pt-hw-steps { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; }
+  }
+
+  @media (max-width: 768px) {
+    #pt-how { padding: 46px 0; }
+    .pt-hw-head { margin-bottom: 28px; }
+    .pt-hw-eye { margin-bottom: 0.9rem; }
+    .pt-hw-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .pt-hw-steps { gap: 16px; }
+  }
+
+  @media (max-width: 420px) {
+    #pt-how { padding: 38px 0; }
+    .pt-hw-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+    .pt-hw-step { padding: 22px 18px 24px; }
+  }
+</style>
+
+<section id="pt-how" aria-label="How tailoring works">
+  <div class="pt-hw-c">
+
+    <div class="pt-hw-head pt-hw-rv">
+      <span class="pt-hw-eye">How Tailoring Works</span>
+      <h2 class="pt-hw-ttl">From an idea to your own journey.</h2>
+    </div>
+
+    <div class="pt-hw-steps" role="list">
+      <div class="pt-hw-step pt-hw-rv d1" role="listitem">
+        <div class="pt-hw-n">1</div>
+        <h3 class="pt-hw-h">Tell us what you are hoping for</h3>
+        <p class="pt-hw-p">Share a journey that speaks to you, or simply your dates, your group, and what matters most. We take it from there.</p>
+      </div>
+
+      <div class="pt-hw-step pt-hw-rv d2" role="listitem">
+        <div class="pt-hw-n">2</div>
+        <h3 class="pt-hw-h">We design the journey around you</h3>
+        <p class="pt-hw-p">Your Travel Expert shapes a journey to your brief, with the same hosts, the same access, and a clear proposal built around you.</p>
+      </div>
+
+      <div class="pt-hw-step pt-hw-rv d3" role="listitem">
+        <div class="pt-hw-n">3</div>
+        <h3 class="pt-hw-h">Leave the details to us</h3>
+        <p class="pt-hw-p">From arrival to departure, your host is with you every step of the way. All you have to do is experience South Africa.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('#pt-how .pt-hw-rv');
+  if(!els.length) return;
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('pt-hw-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('pt-hw-on'); });
+  }
+}());
+</script>

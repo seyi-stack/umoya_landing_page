@@ -1,0 +1,112 @@
+<!--
+=================================================================
+  UMOYA — ABOUT US — SECTION 05: HOW WE CHOOSE
+=================================================================
+  Centred statement on white — the honesty/ownership position.
+  Sits between Our Story (cream) and the Hosts grid.
+
+  ANCHOR: id="ab-choose"
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #ab-choose {
+    --cream:  #F5F0EB;
+    --brown:  #4B2E2B;
+    --terra:  #D97E53;
+    --white:  #FFFFFF;
+    --muted:  rgba(75,46,43,.68);
+    --ease:   cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--white);
+    color: var(--brown);
+    padding: clamp(60px, 8vw, 104px) 0;
+    overflow-x: hidden;
+  }
+
+  #ab-choose *, #ab-choose *::before, #ab-choose *::after { box-sizing: border-box; }
+
+  .ab-ch-c {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 3.4vw, 32px);
+    text-align: center;
+  }
+
+  .ab-ch-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+
+  .ab-ch-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--brown);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .ab-ch-p {
+    font-family: inherit;
+    font-size: clamp(1.02rem, 1.5vw, 1.12rem);
+    line-height: 1.8;
+    color: var(--muted);
+    max-width: 68ch;
+    margin: 1.4rem auto 0;
+    text-align: left;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .ab-ch-rv { opacity: 0; transform: translateY(24px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+  .ab-ch-rv.ab-ch-on { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    #ab-choose { padding: 46px 0; }
+    .ab-ch-eye { margin-bottom: 0.9rem; }
+    .ab-ch-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .ab-ch-p { font-size: 1rem; line-height: 1.7; margin-top: 1rem; }
+  }
+
+  @media (max-width: 420px) {
+    #ab-choose { padding: 38px 0; }
+    .ab-ch-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+    .ab-ch-p { font-size: 0.95rem; }
+  }
+</style>
+
+<section id="ab-choose" aria-label="How we choose">
+  <div class="ab-ch-c ab-ch-rv">
+    <span class="ab-ch-eye">How We Choose</span>
+    <h2 class="ab-ch-ttl">The country's own people, at every turn.</h2>
+    <p class="ab-ch-p">Wherever a choice exists, we place your journey in the hands of the people the country belongs to. You sleep at MalaMala because its land was won back through the courts by the community that owns it today. Your first dinner is poured by a winemaker whose label was built with the Ndebele Kingdom. Weddings happen at Seven Sisters, a Black-owned estate in the Winelands. And one afternoon on safari, you leave the reserve to spend time with the Shangani, the people of that corner of Mpumalanga, in their homes and at their market.</p>
+    <p class="ab-ch-p">Not every fine hotel in South Africa is African-owned, and we do not pretend otherwise. But at every point where the choice is ours, we choose the place, the host, or the maker with a community behind it, so the country you meet is the one its people live in.</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('#ab-choose .ab-ch-rv');
+  if(!els.length) return;
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('ab-ch-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('ab-ch-on'); });
+  }
+}());
+</script>

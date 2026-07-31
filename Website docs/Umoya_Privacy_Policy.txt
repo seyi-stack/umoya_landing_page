@@ -1,0 +1,136 @@
+PRIVACY POLICY
+
+Effective date: [INSERT DATE]
+Version 1.0
+
+
+1. INTRODUCTION
+
+Umoya Afrika Tours (Pty) Ltd ("Umoya", "we", "us", "our") is a South African private company. We are committed to protecting your privacy and to processing your personal information lawfully, fairly and transparently in accordance with the Protection of Personal Information Act 4 of 2013 ("POPIA").
+
+This Privacy Policy explains what personal information we collect when you visit our website, enquire about a journey, make a booking or otherwise interact with us; the purposes for which we use it; the parties with whom we may share it; how long we keep it; and the rights you have in relation to it.
+
+Umoya Afrika Tours (Pty) Ltd is the responsible party in terms of POPIA for the personal information processed through this website.
+
+
+2. WHO WE ARE AND HOW TO CONTACT US
+
+Umoya Afrika Tours (Pty) Ltd
+Registration No. 2025/818751/07
+Registered address: West Tower, 2nd Floor, Nelson Mandela Square, Maude Street, Sandown, Johannesburg, 2146, South Africa
+Holding company: Nyanu Heritage Tours LLC (United States)
+Information Officer: Wilson Nyah, Managing Director
+Email for privacy enquiries: info@umoyaafrikatours.co.za
+
+
+3. WHAT PERSONAL INFORMATION WE COLLECT
+
+Depending on how you interact with us, we may collect the following categories of personal information.
+
+3.1 Information you provide directly
+
+- Identity and contact details, including your name, email address, telephone number and country of residence.
+- Booking and travel details, including passport information, nationality, dietary requirements, mobility considerations, emergency contact details and travel preferences.
+- Payment information you submit to us or to our payment processors in connection with a deposit or booking.
+- Any other information you choose to share with us in correspondence, on enquiry forms or during the planning of your journey.
+
+3.2 Information collected automatically
+
+- Technical information such as your IP address, device type, browser type and operating system.
+- Usage information such as the pages you visit on our website, the time and duration of your visit and the pages you came from.
+- Information collected through cookies and similar technologies, as described in our Cookie Policy.
+
+
+4. HOW WE USE YOUR PERSONAL INFORMATION
+
+We process your personal information for the following purposes:
+
+- To respond to your enquiry and provide you with information about our journeys.
+- To prepare quotations, manage bookings and deliver the journey you have selected.
+- To make travel arrangements with accommodation providers, transport operators, guides and other suppliers necessary for the delivery of your journey.
+- To communicate with you about your booking, your journey and any related logistics.
+- To process payments and to manage refunds where applicable.
+- To comply with our legal, regulatory, accounting and tax obligations.
+- To improve our website, our journeys and the way we serve our guests.
+- To send you marketing communications about Umoya, but only where you have given us your consent to do so or where you are an existing client and the law permits.
+
+
+5. LAWFUL BASIS FOR PROCESSING
+
+We process your personal information on one or more of the following lawful bases recognised under POPIA: your consent; the conclusion or performance of a contract with you; compliance with a legal obligation; the protection of your legitimate interests; and our own legitimate interests, balanced against your rights.
+
+
+6. WHO WE SHARE YOUR INFORMATION WITH
+
+We share personal information only where it is necessary to deliver your journey or to operate our business, and always on the basis of appropriate confidentiality and data-protection obligations. We may share information with:
+
+- Destination management companies, accommodation providers, transport operators, guides, restaurants and experience providers contracted to deliver your journey.
+- Our holding company, Nyanu Heritage Tours LLC (United States), where it is the entity that has collected your payment or otherwise supports the delivery of your booking.
+- Service providers that support our business, including our customer-relationship management platform (HubSpot, Inc.), our website, network and security infrastructure (Cloudflare, Inc.) and our payment processor (Stripe, Inc.).
+- Banks, payment processors and card networks involved in receiving your payment.
+- Our professional advisors, including legal, accounting and tax advisors, where the engagement so requires.
+- Regulators, government authorities or law-enforcement agencies where we are required by law to do so.
+
+We do not sell your personal information.
+
+
+7. INTERNATIONAL TRANSFERS
+
+Some of the recipients with whom we share personal information are located outside the Republic of South Africa, or use infrastructure that may store or process information outside the Republic. In particular, HubSpot, Inc., Cloudflare, Inc. and Stripe, Inc. are United States-based service providers, and Nyanu Heritage Tours LLC is located in the United States. Other suppliers and partners may be located in the country where your journey is delivered.
+
+Where we transfer personal information outside the Republic, we do so in accordance with section 72 of POPIA, on the basis that the recipient is subject to laws, binding rules or contractual obligations that provide an adequate level of protection, that you have consented to the transfer, or that the transfer is necessary for the performance or conclusion of a contract with you.
+
+
+8. HOW LONG WE KEEP YOUR INFORMATION
+
+We keep personal information only for as long as is necessary for the purposes for which it was collected, or as required by law. Booking and financial records are typically retained for the periods required under South African tax and company law (generally five years). Marketing information is retained until you withdraw your consent or unsubscribe. We may retain certain information for longer where required for legal, regulatory or accountability reasons.
+
+
+9. HOW WE PROTECT YOUR INFORMATION
+
+We take reasonable technical and organisational measures to protect personal information against loss, damage, unauthorised access and unlawful processing. These measures include access controls and authentication, encryption of data in transit and (where appropriate) at rest, the use of reputable cloud-based service providers bound by their own data-protection terms, antivirus, anti-malware and regular software updates on devices used to access personal information, and confidentiality obligations imposed on our employees, contractors and service providers.
+
+
+10. YOUR RIGHTS
+
+Subject to the conditions set out in POPIA, you have the right to:
+
+- Be notified that we are collecting personal information about you, and that your personal information has been accessed or acquired by an unauthorised person.
+- Request, free of charge, confirmation of whether we hold personal information about you.
+- Request access to your personal information.
+- Request that we correct or delete personal information that is inaccurate, irrelevant, excessive, out of date, incomplete, misleading or unlawfully obtained.
+- Object, on reasonable grounds, to the processing of your personal information.
+- Withdraw any consent you have given us at any time, without affecting the lawfulness of processing carried out before withdrawal.
+- Object to the processing of your personal information for purposes of direct marketing.
+- Lodge a complaint with the Information Regulator (South Africa).
+
+To exercise any of these rights, please contact our Information Officer at the address set out in section 2.
+
+
+11. DIRECT MARKETING
+
+We will send you marketing communications by electronic means (such as email) only where you have given us your consent to do so, or where you are an existing client and the marketing relates to similar journeys or services and the law permits. Every marketing communication we send will identify Umoya as the sender and will include a simple way to opt out of further marketing.
+
+
+12. COOKIES
+
+Our website uses cookies and similar technologies. Information about the cookies we use and how you can manage them is set out in our Cookie Policy.
+
+
+13. CHILDREN
+
+We do not knowingly collect personal information directly from children under the age of 18. Where a child is travelling with us, we collect information relating to that child from a responsible adult, in accordance with POPIA.
+
+
+14. COMPLAINTS
+
+If you have any concerns about how we process your personal information, please contact our Information Officer in the first instance. You also have the right to lodge a complaint with:
+
+The Information Regulator (South Africa)
+Email: complaints.IR@inforegulator.org.za
+Website: https://inforegulator.org.za
+
+
+15. CHANGES TO THIS POLICY
+
+We may update this Privacy Policy from time to time. The effective date at the top of this document indicates when it was last revised. Material changes will be brought to your attention through our website or by direct communication, where appropriate.

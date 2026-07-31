@@ -10,7 +10,7 @@ const homepageCategory = 'umoya-homepage';
 const sections = [
   {
     key: 'fc_nav',
-    source: 'section-00-nav.html',
+    source: 'founders-circle/section-00-nav.html',
     name: 'fc-nav',
     title: 'FC Navigation',
     className: 'FC_Nav',
@@ -20,7 +20,7 @@ const sections = [
   },
   {
     key: 'fc_hero',
-    source: 'section-01-hero.html',
+    source: 'founders-circle/section-01-hero.html',
     name: 'fc-hero',
     title: 'FC Hero',
     className: 'FC_Hero',
@@ -30,7 +30,7 @@ const sections = [
   },
   {
     key: 'fc_intro',
-    source: 'section-02-intro.html',
+    source: 'founders-circle/section-02-intro.html',
     name: 'fc-intro',
     title: 'FC Intro',
     className: 'FC_Intro',
@@ -40,7 +40,7 @@ const sections = [
   },
   {
     key: 'fc_form',
-    source: 'section-02-form.html',
+    source: 'founders-circle/section-02-form.html',
     name: 'fc-form',
     title: 'FC Inquiry Form',
     className: 'FC_Form',
@@ -50,7 +50,7 @@ const sections = [
   },
   {
     key: 'fc_be_first',
-    source: 'section-03-be-first.html',
+    source: 'founders-circle/section-03-be-first.html',
     name: 'fc-be-first',
     title: 'FC Be First',
     className: 'FC_Be_First',
@@ -60,7 +60,7 @@ const sections = [
   },
   {
     key: 'fc_benefits',
-    source: 'section-04-benefits.html',
+    source: 'founders-circle/section-04-benefits.html',
     name: 'fc-benefits',
     title: 'FC Benefits',
     className: 'FC_Benefits',
@@ -70,7 +70,7 @@ const sections = [
   },
   {
     key: 'fc_journey',
-    source: 'section-05-journey.html',
+    source: 'founders-circle/section-05-journey.html',
     name: 'fc-journey-header',
     title: 'FC Journey',
     className: 'FC_Journey_Header',
@@ -80,7 +80,7 @@ const sections = [
   },
   {
     key: 'fc_journey_interactive_map_image',
-    source: 'section-05-journey-interactive-map-image.html',
+    source: 'founders-circle/section-05-journey-interactive-map-image.html',
     name: 'fc-journey-interactive-map-image',
     title: 'FC Journey Interactive Map Image',
     className: 'FC_Journey_Interactive_Map_Image',
@@ -90,7 +90,7 @@ const sections = [
   },
   {
     key: 'fc_journey_map_snapshot',
-    source: 'section-05-journey-map-snapshot.html',
+    source: 'founders-circle/section-05-journey-map-snapshot.html',
     name: 'fc-journey-map-snapshot',
     title: 'FC Journey Map Snapshot',
     className: 'FC_Journey_Map_Snapshot',
@@ -100,7 +100,7 @@ const sections = [
   },
   {
     key: 'fc_journey_no_map',
-    source: 'section-05-journey-no-map.html',
+    source: 'founders-circle/section-05-journey-no-map.html',
     name: 'fc-journey-no-map',
     title: 'FC Journey No Map',
     className: 'FC_Journey_No_Map',
@@ -110,7 +110,7 @@ const sections = [
   },
   {
     key: 'fc_map',
-    source: 'section-05-map.html',
+    source: 'founders-circle/section-05-map.html',
     name: 'fc-map',
     title: 'FC Route Map',
     className: 'FC_Map',
@@ -120,7 +120,7 @@ const sections = [
   },
   {
     key: 'fc_pricing',
-    source: 'section-05a-pricing.html',
+    source: 'founders-circle/section-05a-pricing.html',
     name: 'fc-pricing',
     title: 'FC Pricing',
     className: 'FC_Pricing',
@@ -130,7 +130,7 @@ const sections = [
   },
   {
     key: 'fc_cta',
-    source: 'section-05b-cta.html',
+    source: 'founders-circle/section-05b-cta.html',
     name: 'fc-cta',
     title: 'FC CTA',
     className: 'FC_CTA',
@@ -140,7 +140,7 @@ const sections = [
   },
   {
     key: 'fc_why',
-    source: 'section-06-why.html',
+    source: 'founders-circle/section-06-why.html',
     name: 'fc-why',
     title: 'FC Why Umoya',
     className: 'FC_Why',
@@ -150,7 +150,7 @@ const sections = [
   },
   {
     key: 'fc_pillars',
-    source: 'section-06b-pillars.html',
+    source: 'founders-circle/section-06b-pillars.html',
     name: 'fc-pillars',
     title: 'FC Pillars',
     className: 'FC_Pillars',
@@ -160,7 +160,7 @@ const sections = [
   },
   {
     key: 'fc_details',
-    source: 'section-07-details.html',
+    source: 'founders-circle/section-07-details.html',
     name: 'fc-details',
     title: 'FC Travel Essentials',
     className: 'FC_Details',

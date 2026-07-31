@@ -1,0 +1,178 @@
+<!-- ============================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 2: INTRO STATEMENT
+============================================================ -->
+<style>
+  /* ── Tokens ─────────────────────────────────────── */
+  #fc-intro {
+    --brown:      #4B2E2B;
+    --terra:      #D97E53;
+    --olive:      #708238;
+    --cream:      #F5F0EB;
+    --text-muted: #4B2E2B;
+    --white:      #FFFFFF;
+    --ease:       cubic-bezier(.25,.46,.45,.94);
+
+    background: var(--white);
+    padding: 80px 20px;
+    font-family: inherit;
+    color: var(--brown);
+    display: flex;
+    justify-content: center;
+  }
+
+  #fc-intro *,
+  #fc-intro *::before,
+  #fc-intro *::after {
+    box-sizing: border-box;
+  }
+
+  /* ── Container ───────────────────────────────────── */
+  #fc-intro .fc-intro-wrap {
+    max-width: 1140px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Decorative Line ─────────────────────────────── */
+  #fc-intro .fc-dec-line {
+    width: 1px;
+    height: 60px;
+    background: rgba(217, 126, 83, 0.4);
+    margin: 0 auto 2.5rem auto;
+    transform-origin: top;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  #fc-intro .fc-intro-rv {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
+  }
+  #fc-intro .fc-intro-rv.fc-intro-on { opacity: 1; transform: none; }
+
+  /* Staggered delays */
+  #fc-intro .fc-d0 { transition-delay: 0.1s; }
+  #fc-intro .fc-d1 { transition-delay: 0.25s; }
+  #fc-intro .fc-d2 { transition-delay: 0.4s; }
+  #fc-intro .fc-d3 { transition-delay: 0.55s; }
+  #fc-intro .fc-d4 { transition-delay: 0.7s; }
+
+  /* ── Typography ──────────────────────────────────── */
+  #fc-intro .fc-intro-eyebrow {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin: 0 0 1.4rem 0;
+  }
+
+  #fc-intro .fc-intro-heading {
+    margin: 0 0 2rem 0;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--brown);
+    max-width: 30ch;
+    text-wrap: balance;
+  }
+
+  #fc-intro .fc-intro-body {
+    margin: 0 0 3.5rem 0;
+    font-family: inherit;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-muted);
+    max-width: 900px;
+  }
+
+  /* ── Button ──────────────────────────────────────── */
+  #fc-intro .fc-intro-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 13px 30px;
+    background: transparent;
+    color: var(--brown);
+    border: 1.5px solid var(--brown);
+    cursor: pointer;
+    transition: background 0.35s var(--ease), color 0.35s var(--ease),
+                border-color 0.35s var(--ease);
+  }
+
+  #fc-intro .fc-intro-btn:hover {
+    background: var(--brown);
+    border-color: var(--brown);
+    color: var(--white);
+  }
+
+  /* ── Responsive ≤768px ───────────────────────────── */
+  @media (max-width: 768px) {
+    #fc-intro { padding: 80px 24px; }
+    #fc-intro .fc-dec-line { height: 40px; margin-bottom: 2rem; }
+    #fc-intro .fc-intro-heading { font-size: 1.6rem; margin-bottom: 1.5rem; }
+    #fc-intro .fc-intro-body { margin-bottom: 1.5rem; }
+    #fc-intro .fc-intro-btn {
+      width: auto;
+      padding: 14px 30px;
+      letter-spacing: 0.12em;
+      line-height: 1;
+    }
+  }
+</style>
+
+<section id="fc-intro" aria-label="Founder's Circle Introduction">
+  <div class="fc-intro-wrap">
+
+    <!-- Decorative line draws the eye down -->
+    <div class="fc-dec-line fc-intro-rv fc-d0" aria-hidden="true"></div>
+
+    <span class="fc-intro-eyebrow fc-intro-rv fc-d1">An Exclusive Group</span>
+
+    <h2 class="fc-intro-heading fc-intro-rv fc-d2">
+      The first to travel with us.
+    </h2>
+
+    <p class="fc-intro-body fc-intro-rv fc-d3">
+      The Umoya Founder's Circle is a small group of founding guests who will be the first to experience our Signature Journey. As a founding member you secure your place on one of our inaugural departures, travel at our most preferred rate, and help shape our journeys for everyone who follows.
+    </p>
+
+    <div class="fc-intro-rv fc-d4" style="width: 100%;">
+      <a href="#fc-form-section" class="fc-intro-btn">Become a Founding Member</a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function () {
+  'use strict';
+  var els = document.querySelectorAll('#fc-intro .fc-intro-rv');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('fc-intro-on');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function (el) { obs.observe(el); });
+  } else {
+    els.forEach(function (el) { el.classList.add('fc-intro-on'); });
+  }
+}());
+</script>

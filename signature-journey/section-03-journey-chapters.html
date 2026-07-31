@@ -1,0 +1,424 @@
+<!--
+=================================================================
+  UMOYA — THE SIGNATURE JOURNEY — SECTION 03: THE THREE CHAPTERS
+=================================================================
+  The journey told as three movements, each with a lead image +
+  copy, then three "Signature Moment" cards.
+
+  Chapter One  — History & Culture — Johannesburg & Soweto
+  Chapter Two  — Safari            — The Sabi Sand
+  Chapter Three— The Cape          — Cape Town
+
+  Bands alternate white / cream for tonal rhythm; moment cards
+  invert against their band. Built as ONE widget so the shared CSS
+  is not triplicated across three Elementor HTML widgets.
+
+  ANCHOR: id="sj-journey" is the nav target — do not change.
+
+  IMAGES:
+  • Chapter LEAD images still use live Umoya CDN placeholders — ★ SWAP
+    (no chapter lead images were supplied in this feedback round).
+  • The nine MOMENT cards now hold client-approved photos
+    (.sj-ch-mom-pic), one per Signature Moment.
+
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #sj-journey {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --terra-dk: #C06840;
+    --white:    #FFFFFF;
+    --muted:    rgba(75,46,43,.66);
+    --line:     rgba(75,46,43,.14);
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    color: var(--brown);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  #sj-journey *, #sj-journey *::before, #sj-journey *::after { box-sizing: border-box; }
+
+  .sj-ch-c { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 3.4vw, 48px); }
+
+  /* ── Movement band ─────────────────────────────── */
+  .sj-ch-mv { padding: clamp(60px, 8vw, 100px) 0; border-top: 1px solid var(--line); }
+  .sj-ch-mv:first-child { border-top: 0; }
+  .sj-ch-mv.sj-ch-alt { background: var(--cream); }
+
+  /* ── Head: copy + lead image ───────────────────── */
+  .sj-ch-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(36px, 5vw, 70px);
+    align-items: center;
+    margin-bottom: clamp(38px, 4.6vw, 52px);
+  }
+
+  .sj-ch-num {
+    font-family: inherit;
+    font-size: 0.95rem;
+    letter-spacing: 0.14em;
+    color: var(--terra);
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+  }
+  .sj-ch-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+    color: var(--brown);
+    margin: 0 0 0.5rem;
+  }
+  .sj-ch-where {
+    font-family: inherit;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 1.1rem;
+  }
+  .sj-ch-lead {
+    font-family: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.08rem);
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 48ch;
+    margin: 0;
+  }
+
+  .sj-ch-img {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--brown);
+    aspect-ratio: 3 / 2;
+  }
+  .sj-ch-img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .sj-ch-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(75,46,43,0) 55%, rgba(75,46,43,.28));
+    pointer-events: none;
+  }
+
+  /* ── Moment cards ──────────────────────────────── */
+  .sj-ch-moments {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(18px, 2vw, 24px);
+  }
+
+  .sj-ch-mom {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  /* On the cream band, cards are white */
+  .sj-ch-mv.sj-ch-alt .sj-ch-mom { background: var(--white); }
+
+  .sj-ch-mom-img {
+    position: relative;
+    height: 176px;
+    background: var(--brown);
+    overflow: hidden;
+  }
+  .sj-ch-mom-pic {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Labelled photo placeholder — remove when a real <img> is dropped in */
+  .sj-ch-mom-ph {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    padding: 16px;
+    background: linear-gradient(135deg, #EFE7DB, #E3D6C4);
+    color: #8A755F;
+  }
+  .sj-ch-mom-ph svg { width: 26px; height: 26px; stroke: var(--terra); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; opacity: .9; }
+  .sj-ch-mom-ph span {
+    font-family: inherit;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  .sj-ch-mom-body { padding: 22px 22px 24px; }
+  .sj-ch-mom-role {
+    font-family: inherit;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terra);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .sj-ch-mom-name {
+    font-family: inherit;
+    font-size: 1.3rem;
+    color: var(--brown);
+    font-weight: 400;
+    line-height: 1.12;
+    margin: 0 0 0.5rem;
+  }
+  .sj-ch-mom-desc {
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.58;
+    margin: 0;
+  }
+
+  /* ── Scroll reveal ─────────────────────────────── */
+  .sj-ch-rv { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+  .sj-ch-rv.sj-ch-on { opacity: 1; transform: none; }
+  .sj-ch-rv.d1 { transition-delay: .1s; }
+  .sj-ch-rv.d2 { transition-delay: .2s; }
+  .sj-ch-rv.d3 { transition-delay: .3s; }
+
+  /* ── Tablet / mobile ───────────────────────────── */
+  @media (max-width: 880px) {
+    .sj-ch-head { grid-template-columns: 1fr; gap: clamp(24px, 5vw, 34px); }
+    .sj-ch-img  { order: -1; aspect-ratio: 16 / 10; }
+    .sj-ch-moments { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+  }
+
+  @media (max-width: 768px) {
+    .sj-ch-mv { padding: 44px 0; }
+    .sj-ch-head { margin-bottom: 30px; }
+    .sj-ch-num { font-size: 0.85rem; margin-bottom: 0.6rem; }
+    .sj-ch-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .sj-ch-where { margin-bottom: 0.8rem; }
+    .sj-ch-lead { font-size: 0.98rem; line-height: 1.6; }
+    .sj-ch-moments { gap: 16px; }
+    .sj-ch-mom-name { font-size: 1.2rem; }
+  }
+
+  @media (max-width: 420px) {
+    .sj-ch-mv { padding: 36px 0; }
+    .sj-ch-ttl { font-size: clamp(1.55rem, 8vw, 2rem); }
+    .sj-ch-lead { font-size: 0.94rem; }
+    .sj-ch-mom-body { padding: 18px 16px 20px; }
+  }
+</style>
+
+<section id="sj-journey" aria-label="The journey in three chapters">
+
+  <!-- ═══════════ MOVEMENT I — HISTORY & CULTURE ═══════════ -->
+  <div class="sj-ch-mv">
+    <div class="sj-ch-c">
+      <div class="sj-ch-head">
+        <div class="sj-ch-rv">
+          <div class="sj-ch-num">Chapter One</div>
+          <h2 class="sj-ch-ttl">History &amp; Culture</h2>
+          <div class="sj-ch-where">Johannesburg &amp; Soweto</div>
+          <p class="sj-ch-lead">Where the country's recent history is closest to the surface, and its creative present most alive. You begin with a warm welcome, then spend a full day in Soweto with the township's own people, before standing where the story of freedom was written.</p>
+        </div>
+        <!-- Chapter One lead image (Johannesburg / Soweto) -->
+        <div class="sj-ch-img sj-ch-rv d1">
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img88956217_(1).jpeg" alt="Johannesburg and Soweto — history and culture" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="sj-ch-moments">
+        <!-- Chapter One · The Welcome — umoya_compressed_ZAV_6216.png -->
+        <article class="sj-ch-mom sj-ch-rv">
+          <div class="sj-ch-mom-img">
+            <img class="sj-ch-mom-pic" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6216.png" alt="A welcome dinner hosted by the winemaker behind Luc Mo" loading="lazy" />
+          </div>
+          <div class="sj-ch-mom-body">
+            <div class="sj-ch-mom-role">The Welcome</div>
+            <h3 class="sj-ch-mom-name">Lucia Motloung</h3>
+            <p class="sj-ch-mom-desc">A welcome dinner hosted by the winemaker behind Luc Mo, built with the Ndebele Kingdom.</p>
+          </div>
+        </article>
+
+        <!-- Chapter One · The Soweto Day — umoya_compressed_ZAV_6880.png -->
+        <article class="sj-ch-mom sj-ch-rv d1">
+          <div class="sj-ch-mom-img">
+            <img class="sj-ch-mom-pic" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6880.png" alt="The Hector Pieterson Memorial, Soweto" loading="lazy" />
+          </div>
+          <div class="sj-ch-mom-body">
+            <div class="sj-ch-mom-role">The Soweto Day</div>
+            <h3 class="sj-ch-mom-name">Antoinette Sithole</h3>
+            <p class="sj-ch-mom-desc">A full day through Soweto by tuk-tuk, with local guides, and lunch hosted by the sister of Hector Pieterson.</p>
+          </div>
+        </article>
+
+        <!-- Chapter One · The Story — umoya_compressed_ZAV_7105.png -->
+        <article class="sj-ch-mom sj-ch-rv d2">
+          <div class="sj-ch-mom-img">
+            <img class="sj-ch-mom-pic" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_7105.png" alt="Mandela House and the Apartheid Museum, Soweto" loading="lazy" />
+          </div>
+          <div class="sj-ch-mom-body">
+            <div class="sj-ch-mom-role">The Story</div>
+            <h3 class="sj-ch-mom-name">Mandela House &amp; the Apartheid Museum</h3>
+            <p class="sj-ch-mom-desc">The places where the struggle was lived, told plainly and with care.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ MOVEMENT II — SAFARI ═══════════ -->
+  <div class="sj-ch-mv sj-ch-alt">
+    <div class="sj-ch-c">
+      <div class="sj-ch-head">
+        <div class="sj-ch-rv">
+          <div class="sj-ch-num">Chapter Two</div>
+          <h2 class="sj-ch-ttl">Safari</h2>
+          <div class="sj-ch-where">The Sabi Sand</div>
+          <p class="sj-ch-lead">Into the iconic safari country of the lowveld. Three nights at MalaMala, a private Big Five reserve returned to the community that lives there, with open-vehicle game drives morning and evening, and an afternoon given to the people whose home this land is.</p>
+        </div>
+        <!-- Chapter Two lead image (the Sabi Sand) -->
+        <div class="sj-ch-img sj-ch-rv d1">
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_st_lucia_hippos_636379232.jpg" alt="Open-vehicle game drive in the Sabi Sand" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="sj-ch-moments">
+        <!-- Chapter Two · The Wild — umoya_compressed_SAT001232.jpeg -->
+        <article class="sj-ch-mom sj-ch-rv">
+          <div class="sj-ch-mom-img">
+            <img class="sj-ch-mom-pic" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_SAT001232.jpeg" alt="Big Five game drive in the Sabi Sand" loading="lazy" />
+          </div>
+          <div class="sj-ch-mom-body">
+            <div class="sj-ch-mom-role">The Wild</div>
+            <h3 class="sj-ch-mom-name">Big Five Game Drives</h3>
+            <p class="sj-ch-mom-desc">Morning and evening in open vehicles with private field guides, unhurried and close.</p>
+          </div>
+        </article>
+
+        <!-- Chapter Two · The Land — umoya_compressed_buffalo_maindeck2.png -->
+        <article class="sj-ch-mom sj-ch-rv d1">
+          <div class="sj-ch-mom-img">
+            <img class="sj-ch-mom-pic" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_buffalo_maindeck2.png" alt="MalaMala, the community-owned reserve in the Sabi Sand" loading="lazy" />
+          </div>
+          <div class="sj-ch-mom-body">
+            <div class="sj-ch-mom-role">The Land</div>
+            <h3 class="sj-ch-mom-name">A Legacy Restored</h3>
+            <p class="sj-ch-mom-desc">MalaMala was taken from its community during apartheid. Through decades of determination, they fought for it, won it back, and today they welcome you onto it.</p>
+          </div>
+        </article>
+
+        <!-- Chapter Two · The People — umoya_compressed_shangaan-village-cdp590b-590x390.jpg -->
+        <article class="sj-ch-mom sj-ch-rv d2">
+          <div class="sj-ch-mom-img">
+            <img class="sj-ch-mom-pic" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_shangaan-village-cdp590b-590x390.jpg" alt="A Shangaan village, the community beyond the reserve" loading="lazy" />
+          </div>
+          <div class="sj-ch-mom-body">
+            <div class="sj-ch-mom-role">The People</div>
+            <h3 class="sj-ch-mom-name">An Afternoon Beyond the Reserve</h3>
+            <p class="sj-ch-mom-desc">Time with the community that lives alongside the wilderness.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ MOVEMENT III — THE CAPE ═══════════ -->
+  <div class="sj-ch-mv">
+    <div class="sj-ch-c">
+      <div class="sj-ch-head">
+        <div class="sj-ch-rv">
+          <div class="sj-ch-num">Chapter Three</div>
+          <h2 class="sj-ch-ttl">The Cape</h2>
+          <div class="sj-ch-where">Cape Town</div>
+          <p class="sj-ch-lead">The journey closes where the land meets two oceans. Robben Island and Table Mountain, the Cape Peninsula, a day among the Black-owned wineries of the Cape, and a farewell worthy of the journey behind it.</p>
+        </div>
+        <!-- Chapter Three lead image (Cape Town) -->
+        <div class="sj-ch-img sj-ch-rv d1">
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img639400454.jpeg" alt="Cape Town — where the land meets two oceans" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="sj-ch-moments">
+        <!-- Chapter Three · Robben Island — umoya_compressed_ZAV_1363.png -->
+        <article class="sj-ch-mom sj-ch-rv">
+          <div class="sj-ch-mom-img">
+            <img class="sj-ch-mom-pic" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_1363.png" alt="Robben Island" loading="lazy" />
+          </div>
+          <div class="sj-ch-mom-body">
+            <div class="sj-ch-mom-role">Robben Island</div>
+            <h3 class="sj-ch-mom-name">Christo Brand</h3>
+            <p class="sj-ch-mom-desc">The warder who guarded Nelson Mandela, and became his friend, walks you through himself.</p>
+          </div>
+        </article>
+
+        <!-- Chapter Three · The Black Route — umoya_compressed_img371169908.jpeg -->
+        <article class="sj-ch-mom sj-ch-rv d1">
+          <div class="sj-ch-mom-img">
+            <img class="sj-ch-mom-pic" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img371169908.jpeg" alt="Black-owned wineries of the Cape Winelands" loading="lazy" />
+          </div>
+          <div class="sj-ch-mom-body">
+            <div class="sj-ch-mom-role">The Black Route</div>
+            <h3 class="sj-ch-mom-name">Ntsiki Biyela</h3>
+            <p class="sj-ch-mom-desc">A day among Black-owned wineries, with South Africa's first Black female winemaker pouring her own.</p>
+          </div>
+        </article>
+
+        <!-- Chapter Three · The Farewell — umoya_compressed_GOLD_Venue_5.jpg -->
+        <article class="sj-ch-mom sj-ch-rv d2">
+          <div class="sj-ch-mom-img">
+            <img class="sj-ch-mom-pic" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_GOLD_Venue_5.jpg" alt="The closing dinner at Gold Restaurant, Cape Town" loading="lazy" />
+          </div>
+          <div class="sj-ch-mom-body">
+            <div class="sj-ch-mom-role">The Farewell</div>
+            <h3 class="sj-ch-mom-name">A Closing Dinner</h3>
+            <p class="sj-ch-mom-desc">A final evening with live performance, to mark the journey behind you.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('#sj-journey .sj-ch-rv');
+  if(!els.length) return;
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('sj-ch-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('sj-ch-on'); });
+  }
+}());
+</script>

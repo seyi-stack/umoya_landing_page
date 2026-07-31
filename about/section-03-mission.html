@@ -1,0 +1,110 @@
+<!--
+=================================================================
+  UMOYA — ABOUT US — SECTION 03: OUR MISSION
+=================================================================
+  The page's dark-brown accent band — tonal contrast against the
+  white/cream sections either side. Centred statement copy.
+
+  ANCHOR: id="ab-mission"
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #ab-mission {
+    --cream:  #F5F0EB;
+    --brown:  #4B2E2B;
+    --terra:  #D97E53;
+    --white:  #FFFFFF;
+    --ease:   cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--brown);
+    color: var(--cream);
+    padding: clamp(64px, 8vw, 108px) 0;
+    overflow-x: hidden;
+  }
+
+  #ab-mission *, #ab-mission *::before, #ab-mission *::after { box-sizing: border-box; }
+
+  .ab-ms-c {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 3.4vw, 32px);
+    text-align: center;
+  }
+
+  .ab-ms-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+
+  .ab-ms-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .ab-ms-p {
+    font-family: inherit;
+    font-size: clamp(1.02rem, 1.5vw, 1.14rem);
+    line-height: 1.78;
+    color: rgba(245,240,235,.86);
+    max-width: 64ch;
+    margin: 1.4rem auto 0;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .ab-ms-rv { opacity: 0; transform: translateY(24px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+  .ab-ms-rv.ab-ms-on { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    #ab-mission { padding: 48px 0; }
+    .ab-ms-eye { margin-bottom: 0.9rem; }
+    .ab-ms-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .ab-ms-p { font-size: 1rem; line-height: 1.68; margin-top: 1rem; }
+  }
+
+  @media (max-width: 420px) {
+    #ab-mission { padding: 40px 0; }
+    .ab-ms-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+    .ab-ms-p { font-size: 0.95rem; }
+  }
+</style>
+
+<section id="ab-mission" aria-label="Our mission">
+  <div class="ab-ms-c ab-ms-rv">
+    <span class="ab-ms-eye">Our Mission</span>
+    <h2 class="ab-ms-ttl">Journeys led by the people who know South Africa best.</h2>
+    <p class="ab-ms-p">We craft premium travel grounded in cultural depth, historical honesty, and real human connection. Journeys that honor the places you visit and leave you with a perspective you could not have found any other way.</p>
+    <p class="ab-ms-p">Each experience is shaped by the people who know it best: artists, entrepreneurs, winemakers, activists, and historians who share what they have built, in person.</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('#ab-mission .ab-ms-rv');
+  if(!els.length) return;
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('ab-ms-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('ab-ms-on'); });
+  }
+}());
+</script>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umoya Afrika Tours — Breathe South Africa Differently</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5EFE6;--paper:#FBF8F2;--brown:#4A3526;--ink:#211B16;
+    --terra:#B05A3A;--terra-deep:#974A2E;--line:#E0D6C8;--muted:#7C6F62;
+    --shadow:0 24px 60px -28px rgba(74,53,38,.45);
+    --display:'Cormorant Garamond',Georgia,serif;--body:'Mulish',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--ink);background:var(--cream);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+  .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--terra);margin-bottom:18px}
+  h2{font-family:var(--display);font-weight:600;color:var(--brown);font-size:clamp(2.1rem,4.6vw,3.5rem);line-height:1.05;letter-spacing:-.01em}
+  .lead{font-size:1.075rem;color:var(--muted);max-width:56ch}
+  .section{padding:clamp(70px,9vw,118px) 0}
+
+  .btn{display:inline-block;font-family:var(--body);font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:16px 30px;border-radius:2px;transition:.25s;cursor:pointer;border:1.5px solid transparent}
+  .btn-primary{background:var(--terra);color:#fff}.btn-primary:hover{background:var(--terra-deep);transform:translateY(-2px)}
+  .btn-ghost{border-color:rgba(245,239,230,.6);color:var(--cream)}.btn-ghost:hover{background:rgba(245,239,230,.12);border-color:var(--cream)}
+  .btn-line{border-color:var(--brown);color:var(--brown)}.btn-line:hover{background:var(--brown);color:var(--cream);transform:translateY(-2px)}
+  .btn-lg{padding:19px 40px;font-size:.84rem}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:50;background:rgba(245,239,230,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:74px;max-width:1240px;margin:0 auto;padding:0 32px}
+  .brand{font-family:var(--display);font-weight:600;font-size:1.35rem;letter-spacing:.18em;color:var(--brown);text-transform:uppercase}
+  .navlinks{display:flex;gap:28px;align-items:center}
+  .navlinks a{font-size:.82rem;font-weight:600;color:var(--brown);transition:color .2s}
+  .navlinks a:hover{color:var(--terra)}
+  .nav-cta{font-size:.72rem!important;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:11px 20px;background:var(--terra);border-radius:2px;color:#fff!important}
+  .nav-cta:hover{background:var(--terra-deep)}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+  .menu-btn span{width:24px;height:2px;background:var(--brown);display:block}
+
+  /* hero */
+  .hero{position:relative;min-height:90vh;display:flex;align-items:center;color:var(--cream);background:#2a1f17 center/cover no-repeat;background-image:linear-gradient(180deg,rgba(33,24,18,.42) 0%,rgba(33,24,18,.34) 35%,rgba(33,24,18,.82) 100%),url('https://img.youtube.com/vi/4ZtbEvETrBU/maxresdefault.jpg')}
+  .hero .eyebrow{color:#E9C8B4}
+  .hero-inner{max-width:1240px;margin:0 auto;padding:0 32px;width:100%}
+  .hero h1{font-family:var(--display);font-weight:600;font-size:clamp(3rem,8vw,6rem);line-height:.98;letter-spacing:-.015em;max-width:15ch;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+  .hero p{font-size:clamp(1.05rem,1.6vw,1.28rem);max-width:50ch;margin:24px 0 34px;color:rgba(245,239,230,.94);font-weight:300}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .grouplink{margin-top:26px;font-size:.92rem;color:rgba(245,239,230,.9)}
+  .grouplink a{color:#E9C8B4;font-weight:700;border-bottom:1px solid rgba(233,200,180,.5);padding-bottom:2px}
+  .grouplink a:hover{color:#fff}
+  .play{display:inline-flex;align-items:center;gap:11px}
+  .play .circ{width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(245,239,230,.7);display:flex;align-items:center;justify-content:center}
+  .play .circ svg{width:14px;height:14px;fill:var(--cream);margin-left:2px}
+
+  /* film */
+  .film{background:var(--paper);border-bottom:1px solid var(--line)}
+  .film .head{text-align:center;max-width:60ch;margin:0 auto 40px}
+  .film .head p{margin-top:16px;color:var(--muted);font-size:1.05rem}
+  .filmframe{position:relative;padding-bottom:56.25%;height:0;border-radius:6px;overflow:hidden;box-shadow:var(--shadow);max-width:940px;margin:0 auto;background:#000 center/cover no-repeat}
+  .filmplay{position:absolute;inset:0;width:100%;height:100%;border:none;cursor:pointer;background:linear-gradient(rgba(33,24,18,.22),rgba(33,24,18,.5));display:flex;align-items:center;justify-content:center}
+  .filmplay .bigplay{width:84px;height:84px;border-radius:50%;background:rgba(176,90,58,.94);display:flex;align-items:center;justify-content:center;transition:.25s;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  .filmplay:hover .bigplay{transform:scale(1.08);background:var(--terra)}
+  .filmplay .bigplay svg{width:30px;height:30px;fill:#fff;margin-left:5px}
+  .filmnote{text-align:center;margin-top:16px;font-size:.84rem;color:var(--muted)}
+  .filmnote a{color:var(--terra);font-weight:700;border-bottom:1px solid rgba(176,90,58,.4)}
+
+  /* trust */
+  .trust{background:var(--brown);color:var(--cream)}
+  .trust h2{color:var(--cream)}
+  .trust .eyebrow{color:#E9C8B4}
+  .trust .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:50px}
+  .titem{border-top:2px solid var(--terra);padding-top:20px}
+  .titem h4{font-family:var(--display);font-size:1.45rem;color:#fff;font-weight:600;line-height:1.1;margin-bottom:10px}
+  .titem p{font-size:.93rem;color:rgba(245,239,230,.78)}
+
+  /* founders — dominant */
+  .founders{position:relative;color:var(--cream);text-align:center;background:#2a1f17 center/cover no-repeat;background-image:linear-gradient(rgba(33,24,18,.66),rgba(33,24,18,.78)),url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05243.jpg');padding:clamp(90px,12vw,150px) 0}
+  .founders .eyebrow{color:#E9C8B4}
+  .founders h2{color:var(--cream);font-size:clamp(2.6rem,6vw,4.4rem);max-width:20ch;margin:0 auto}
+  .founders p{color:rgba(245,239,230,.92);max-width:56ch;margin:24px auto 18px;font-size:1.12rem}
+  .fben{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin:26px 0 38px}
+  .fben span{font-size:.92rem;color:#E9C8B4;letter-spacing:.02em}
+  .fben b{color:#fff}
+  .scarce{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#E9C8B4;margin-top:22px}
+
+  /* group */
+  .group{background:var(--cream)}
+  .group .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
+  .group-img{border-radius:4px;overflow:hidden;background:var(--line)}
+  .group-img img{width:100%;height:480px;object-fit:cover}
+  .group-copy p{margin-top:18px;color:var(--muted);max-width:48ch}
+  .glist{list-style:none;margin:24px 0 30px;display:grid;gap:14px}
+  .glist li{display:flex;gap:13px;font-size:.98rem;color:var(--ink)}
+  .glist svg{width:18px;height:18px;fill:var(--terra);flex-shrink:0;margin-top:4px}
+  @media(max-width:880px){.group .split{grid-template-columns:1fr}.group-img{order:-1}.group-img img{height:340px}}
+
+  /* about */
+  .about .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
+  .about-img{position:relative;background:var(--line)}
+  .about-img img{width:100%;height:460px;object-fit:cover;border-radius:2px}
+  .about-img::after{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid var(--terra);border-radius:2px;z-index:-1}
+  .about-copy p{margin-top:20px;color:var(--muted);max-width:50ch}
+  @media(max-width:880px){.about .split{grid-template-columns:1fr}.about-img{order:-1}.about-img img{height:340px}}
+
+  /* journey */
+  .journey{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .journey-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-bottom:30px}
+  .stats{display:flex;gap:38px;margin-top:22px}
+  .stat .n{font-family:var(--display);font-size:2.8rem;font-weight:600;color:var(--terra);line-height:1}
+  .stat .l{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:6px;font-weight:600}
+  .movements{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .move{position:relative;border-radius:2px;overflow:hidden;background:var(--brown);min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;color:var(--cream)}
+  .move img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .7s}
+  .move:hover img{transform:scale(1.06)}
+  .move::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(33,24,18,.05) 30%,rgba(33,24,18,.82) 100%);z-index:1}
+  .move-body{position:relative;z-index:2;padding:28px}
+  .move .num{font-family:var(--display);font-size:1rem;letter-spacing:.3em;color:#E9C8B4;font-weight:600}
+  .move h3{font-family:var(--display);font-size:1.9rem;font-weight:600;margin:6px 0 4px;line-height:1.05}
+  .move span{font-size:.82rem;color:rgba(245,239,230,.85)}
+
+  /* experiences */
+  .exp-head{max-width:60ch;margin-bottom:46px}
+  .exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .exp{background:var(--paper);border:1px solid var(--line);border-radius:2px;overflow:hidden;transition:.3s}
+  .exp:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .exp .ph{height:220px;background:var(--line) center/cover no-repeat}
+  .exp-body{padding:22px 20px 26px}
+  .exp h4{font-family:var(--display);font-size:1.45rem;font-weight:600;color:var(--brown);line-height:1.1}
+  .exp .role{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);font-weight:700;margin:9px 0 11px}
+  .exp p{font-size:.9rem;color:var(--muted);line-height:1.55}
+
+  /* stay */
+  .stay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+  .stay-card{border-radius:2px;overflow:hidden}
+  .stay-card .si{height:330px;background:var(--line) center/cover no-repeat;transition:transform .7s}
+  .stay-card:hover .si{transform:scale(1.05)}
+  .stay-cap{padding:16px 2px 0}
+  .stay-cap .nm{font-family:var(--display);font-size:1.35rem;color:var(--brown);font-weight:600}
+  .stay-cap .pl{font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);font-weight:600;margin-top:3px}
+
+  /* plan */
+  .plan{text-align:center}.plan p{margin:18px auto 28px}
+
+  /* footer */
+  footer{background:var(--brown);color:var(--cream)}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px;padding:70px 0 52px;border-bottom:1px solid rgba(245,239,230,.16)}
+  .foot-brand .bn{font-family:var(--display);font-size:1.4rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+  .foot-brand p{font-size:.9rem;color:rgba(245,239,230,.72);max-width:34ch;margin-bottom:18px}
+  .foot-brand .c{font-size:.86rem;color:rgba(245,239,230,.82);line-height:1.9}
+  .fcol h5{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#E9C8B4;margin-bottom:18px;font-weight:700}
+  .fcol a{display:block;font-size:.9rem;color:rgba(245,239,230,.8);padding:6px 0}
+  .fcol a:hover{color:#fff}
+  .news{padding:28px 0;display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;border-bottom:1px solid rgba(245,239,230,.16)}
+  .news .t{font-family:var(--display);font-size:1.5rem;font-weight:600}
+  .news .sub{font-size:.84rem;color:rgba(245,239,230,.66);margin-top:4px;max-width:46ch}
+  .news form{display:flex;gap:10px;flex-wrap:wrap}
+  .news input{background:rgba(245,239,230,.08);border:1px solid rgba(245,239,230,.3);color:var(--cream);padding:13px 16px;border-radius:2px;font-family:var(--body);font-size:.9rem;min-width:230px}
+  .news input::placeholder{color:rgba(245,239,230,.5)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:24px 0;font-size:.8rem;color:rgba(245,239,230,.6)}
+  .socials{display:flex;gap:18px}.socials a{font-size:.8rem;color:rgba(245,239,230,.7)}.socials a:hover{color:#fff}
+
+  .note{background:var(--terra);color:#fff;text-align:center;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;padding:9px;font-weight:700}
+  .js .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
+  .js .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:980px){
+    .trust .grid{grid-template-columns:1fr 1fr}
+    .movements,.stay-grid{grid-template-columns:1fr 1fr}
+    .exp-grid{grid-template-columns:1fr 1fr}
+    .foot-top{grid-template-columns:1fr 1fr;gap:34px}
+  }
+  @media(max-width:680px){
+    .navlinks{display:none}.menu-btn{display:flex}
+    .navlinks.open{display:flex;position:absolute;top:74px;left:0;right:0;flex-direction:column;background:var(--cream);padding:20px 32px;gap:16px;border-bottom:1px solid var(--line)}
+    .trust .grid,.movements,.stay-grid,.exp-grid,.foot-top{grid-template-columns:1fr}
+    .stats{gap:24px}.stat .n{font-size:2.2rem}
+    .news{flex-direction:column;align-items:flex-start}
+    .wrap{padding:0 22px}nav{padding:0 22px}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}.js .reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<div class="note">Homepage mockup v2 · re-aimed for belonging, safety &amp; the Founder's Circle</div>
+
+<header>
+  <nav>
+    <a href="#" class="brand">Umoya</a>
+    <div class="navlinks" id="nav">
+      <a href="#journey">The Signature Journey</a>
+      <a href="#">Private &amp; Tailormade</a>
+      <a href="#experiences">Experiences</a>
+      <a href="#groups">For Groups</a>
+      <a href="#about">About</a>
+      <a href="#founders" class="nav-cta">Join the Founder's Circle</a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<!-- HERO: belonging + safety -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow reveal">Umoya Afrika Tours</p>
+    <h1 class="reveal">Breathe South Africa Differently.</h1>
+    <p class="reveal">Premium experiential journeys across South Africa for travellers of African descent. Hosted by people who know the country from the inside, with every detail handled from the moment you land.</p>
+    <div class="hero-btns reveal">
+      <a href="#founders" class="btn btn-primary btn-lg">Join the Founder's Circle</a>
+      <a href="#film" class="btn btn-ghost play"><span class="circ"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span> Watch the Film</a>
+    </div>
+    <div class="grouplink reveal">Planning for your circle? <a href="#groups">See how we look after groups</a></div>
+  </div>
+</section>
+
+<!-- FILM -->
+<section class="section film" id="film">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">Two Minutes</p>
+      <h2>See the country that is expecting you.</h2>
+      <p>Our film, Let Your Story Begin, earned a Silver Award at the International Tourism Film Festival Africa 2026. Watch it, then let us talk.</p>
+    </div>
+    <div class="filmframe reveal" id="filmframe" style="background-image:url('https://img.youtube.com/vi/4ZtbEvETrBU/maxresdefault.jpg')">
+      <button class="filmplay" id="filmplay" aria-label="Play the film"><span class="bigplay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
+    </div>
+    <div class="filmnote reveal">Two minutes · <a href="https://youtu.be/4ZtbEvETrBU" target="_blank" rel="noopener">Open on YouTube</a></div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="section trust" id="trust">
+  <div class="wrap">
+    <div class="reveal" style="max-width:60ch">
+      <p class="eyebrow">You Are in Good Hands</p>
+      <h2>A new name,<br>with nothing left to chance.</h2>
+    </div>
+    <div class="grid">
+      <div class="titem reveal"><h4>Never alone</h4><p>You are met at the airport, and a Umoya host stays with your group from the first day to the last.</p></div>
+      <div class="titem reveal"><h4>Operated since 1901</h4><p>Your travel on the ground runs through Thompsons Africa, one of southern Africa's oldest and most trusted operators.</p></div>
+      <div class="titem reveal"><h4>Award-winning</h4><p>Our destination film, Let Your Story Begin, earned a Silver Award at the International Tourism Film Festival Africa, 2026.</p></div>
+      <div class="titem reveal"><h4>A founder you can place</h4><p>Wilson Ningamai Nyah brings serious finance credentials and a decade of creative work across the continent.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER'S CIRCLE — dominant -->
+<section class="founders" id="founders">
+  <div class="wrap">
+    <p class="eyebrow reveal">The Invitation</p>
+    <h2 class="reveal">Join the Founder's Circle.</h2>
+    <p class="reveal">Our first guests travel as founding members on the inaugural departures in 2027, at a preferred rate, with personal consultation with the founder and priority access to every journey that follows.</p>
+    <div class="fben reveal">
+      <span><b>Preferred</b> founding rate</span>
+      <span><b>Personal</b> consultation with the founder</span>
+      <span><b>Priority</b> on every future journey</span>
+    </div>
+    <a href="#" class="btn btn-primary btn-lg reveal">Join the Founder's Circle</a>
+    <div class="scarce reveal">Limited to eighteen guests · Inaugural departures in 2027</div>
+  </div>
+</section>
+
+<!-- BRING YOUR CIRCLE -->
+<section class="section group" id="groups">
+  <div class="wrap split">
+    <div class="group-copy reveal">
+      <p class="eyebrow">For Groups</p>
+      <h2>Bring your circle.</h2>
+      <p>Most of our travellers come together: a sorority chapter, a church, a circle of friends, a professional network. If you are the one planning it, we make it effortless, and we look after the person who brings everyone along.</p>
+      <ul class="glist">
+        <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.4z"/></svg> Reserve a block of places for your group, on dates that suit you.</li>
+        <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.4z"/></svg> One dedicated planner, from the first call to the final detail.</li>
+        <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.4z"/></svg> Benefits for the organiser who brings the group together.</li>
+      </ul>
+      <a href="#" class="btn btn-line">Plan a Group Journey</a>
+    </div>
+    <div class="group-img reveal"><img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img02376.jpeg" alt="A group welcomed with traditional dance in South Africa"></div>
+  </div>
+</section>
+
+<!-- ABOUT / belonging -->
+<section class="section about" id="about">
+  <div class="wrap split">
+    <div class="about-copy reveal">
+      <p class="eyebrow">Who We Are</p>
+      <h2>African-led.<br>Of the diaspora.<br>Yours.</h2>
+      <p>Umoya Afrika Tours is African-led and African-owned, and we are of the diaspora ourselves. We open the country's doors through real relationships with the South African hosts who receive you as their own.</p>
+      <p>You arrive as a guest, and you are welcomed home.</p>
+    </div>
+    <div class="about-img reveal"><img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img103379490.jpeg" alt="Welcomed in South Africa"></div>
+  </div>
+</section>
+
+<!-- JOURNEY — the proof -->
+<section class="section journey" id="journey">
+  <div class="wrap">
+    <div class="journey-head">
+      <div class="reveal">
+        <p class="eyebrow">The Journey You Are Joining</p>
+        <h2>One journey,<br>in three movements.</h2>
+      </div>
+      <div class="stats reveal">
+        <div class="stat"><div class="n">10</div><div class="l">Days</div></div>
+        <div class="stat"><div class="n">3</div><div class="l">Movements</div></div>
+        <div class="stat"><div class="n">18</div><div class="l">Guests</div></div>
+      </div>
+    </div>
+    <p class="lead reveal" style="margin-bottom:44px">From the living history of Johannesburg and Soweto, to the Big Five wilderness of the Sabi Sand, to the beauty of Cape Town where the land meets two oceans. With an optional extension to Victoria Falls and Chobe.</p>
+    <div class="movements">
+      <article class="move reveal"><img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_gauteng.jpg" alt="Johannesburg and Soweto"><div class="move-body"><div class="num">I</div><h3>Heritage</h3><span>Johannesburg &amp; Soweto</span></div></article>
+      <article class="move reveal"><img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img001238.jpeg" alt="Safari in the Sabi Sand"><div class="move-body"><div class="num">II</div><h3>Safari</h3><span>The Sabi Sand</span></div></article>
+      <article class="move reveal"><img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1777576366.jpeg" alt="Cape Town"><div class="move-body"><div class="num">III</div><h3>The Cape</h3><span>Cape Town</span></div></article>
+    </div>
+    <div style="margin-top:40px" class="reveal"><a href="#" class="btn btn-line">Explore the Journey</a></div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section class="section" id="experiences">
+  <div class="wrap">
+    <div class="exp-head reveal">
+      <p class="eyebrow">The Umoya Difference</p>
+      <h2>It is who opens the door.</h2>
+      <p class="lead" style="margin-top:16px">What sets a Umoya journey apart is the people who receive you, South Africans who have built something remarkable and share it with you in person.</p>
+    </div>
+    <div class="exp-grid">
+      <article class="exp reveal"><div class="ph" style="background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img02376.jpeg')"></div><div class="exp-body"><div class="role">The Welcome</div><h4>Lucia Motloung</h4><p>The winemaker who welcomes you, pouring the wines of Luc Mo, built with the Ndebele Kingdom.</p></div></article>
+      <article class="exp reveal"><div class="ph" style="background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05266.jpg')"></div><div class="exp-body"><div class="role">Soweto</div><h4>Antoinette Sithole</h4><p>Sister of Hector Pieterson, the boy in the 1976 photograph. She hosts your lunch and shares the day she lived.</p></div></article>
+      <article class="exp reveal"><div class="ph" style="background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img000916.jpeg')"></div><div class="exp-body"><div class="role">Robben Island</div><h4>Christo Brand</h4><p>The warder who guarded Nelson Mandela for years, and became his friend. He walks you through himself.</p></div></article>
+      <article class="exp reveal"><div class="ph" style="background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img166276458.jpeg')"></div><div class="exp-body"><div class="role">The Black Route</div><h4>Ntsiki Biyela</h4><p>South Africa's first Black female winemaker, who pours her own wines for you among the vineyards.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- STAY -->
+<section class="section" id="stay" style="background:var(--paper);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="reveal" style="max-width:60ch"><p class="eyebrow">Where You Stay</p><h2>Homes worthy of the journey.</h2></div>
+    <div class="stay-grid">
+      <figure class="stay-card reveal"><div class="si" style="background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-5.jpg')"></div><figcaption class="stay-cap"><div class="nm">The Da Vinci</div><div class="pl">Nelson Mandela Square, Sandton</div></figcaption></figure>
+      <figure class="stay-card reveal"><div class="si" style="background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-19.jpg')"></div><figcaption class="stay-cap"><div class="nm">MalaMala</div><div class="pl">Community-owned · The Sabi Sand</div></figcaption></figure>
+      <figure class="stay-card reveal"><div class="si" style="background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-20.jpg')"></div><figcaption class="stay-cap"><div class="nm">Cape Grace</div><div class="pl">A Fairmont Hotel · V&amp;A Waterfront</div></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN -->
+<section class="section plan" id="plan">
+  <div class="wrap">
+    <p class="eyebrow reveal">Plan Your Journey</p>
+    <h2 class="reveal">Speak with an expert.</h2>
+    <p class="lead reveal" style="margin-left:auto;margin-right:auto;text-align:center">Tell us what you are hoping for, whether for yourself or for your group, and a Umoya travel expert will personally help you shape it.</p>
+    <a href="#" class="btn btn-primary reveal">Speak with an Expert</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="bn">Umoya Afrika Tours</div>
+        <p>Premium experiential travel across South Africa, for the global African diaspora.</p>
+        <div class="c">info@umoyaafrikatours.co.za<br>+1 240 313 6344<br>West Tower, 2nd Floor, Nelson Mandela Square,<br>Sandown, Johannesburg, 2146</div>
+      </div>
+      <div class="fcol"><h5>Discover</h5><a href="#founders">Founder's Circle</a><a href="#journey">The Signature Journey</a><a href="#">Private &amp; Tailormade</a><a href="#experiences">Experiences</a><a href="#groups">For Groups</a><a href="#about">About</a></div>
+      <div class="fcol"><h5>Support</h5><a href="#">Travel Essentials</a><a href="#">Travel Brochure</a><a href="#">Travel Insurance Guide</a><a href="#">Visa &amp; Entry Information</a><a href="#">Press &amp; Media</a></div>
+      <div class="fcol"><h5>Legal</h5><a href="#">Booking Terms &amp; Conditions</a><a href="#">Privacy Policy</a><a href="#">Cookie Preferences</a><a href="#">Email Opt-out</a><a href="#">PAIA Manual</a></div>
+    </div>
+    <div class="news">
+      <div><div class="t">Umoya Journeys &amp; Stories</div><div class="sub">Early access to journeys and the people behind them. We will only ever email you about Umoya, and you can unsubscribe anytime.</div></div>
+      <form onsubmit="return false"><input type="email" placeholder="Your email address" aria-label="Email"><button class="btn btn-primary" type="submit">Subscribe</button></form>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 Umoya Afrika Tours (Pty) Ltd · Reg. 2025/818751/07</div>
+      <div class="socials"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a><a href="#">LinkedIn</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var mb=document.getElementById('menuBtn'),nv=document.getElementById('nav');
+  mb&&mb.addEventListener('click',function(){nv.classList.toggle('open')});
+  nv&&nv.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nv.classList.remove('open')})});
+  var fp=document.getElementById('filmplay');
+  fp&&fp.addEventListener('click',function(){document.getElementById('filmframe').innerHTML='<iframe src="https://www.youtube.com/embed/4ZtbEvETrBU?autoplay=1&rel=0" title="Umoya — Let Your Story Begin" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>';});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+</script>
+</body>
+</html>

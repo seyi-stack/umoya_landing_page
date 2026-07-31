@@ -1,0 +1,460 @@
+<!--
+=================================================================
+  UMOYA HOMEPAGE — NEW SECTION: WAYS TO TRAVEL
+=================================================================
+  v4 revamp — NEW section (client-proposed, replaces the mockup's
+  standalone "For Groups" block). An interactive card carousel in
+  the spirit of the A&K / Harmony Mauritius references: each card
+  is a travel style. 6 cards: Large Groups · Solo Travel · Couples
+  Getaway · World Wonders · Safari · Winelands.
+
+  BEHAVIOUR: native scroll-snap track (smooth touch swiping on
+  mobile) + prev/next arrows that scroll one card at a time.
+  ELEMENTOR: place directly after the Signature Journey section.
+  The "Plan Your Journey" button opens the shared inquiry popup
+  via data-umoya-form-popup.
+  IMAGES: Umoya CDN placeholders — see ★ SWAP comments.
+=================================================================
+-->
+<section id="umoya-ways-to-travel" aria-label="Ways to travel with Umoya">
+  <style>
+    #umoya-ways-to-travel {
+      --cream:    #F5F0EB;
+      --brown:    #4B2E2B;
+      --terra:    #D97E53;
+      --terra-dk: #C06840;
+      --white:    #FFFFFF;
+      --muted:    rgba(75,46,43,.72);
+      --ease:     cubic-bezier(.25,.46,.45,.94);
+
+      background: var(--white);
+      color: var(--brown);
+      padding: clamp(64px, 8vw, 112px) 0;
+      font-family: inherit;
+      overflow: hidden;
+    }
+
+    #umoya-ways-to-travel,
+    #umoya-ways-to-travel *,
+    #umoya-ways-to-travel *::before,
+    #umoya-ways-to-travel *::after { box-sizing: border-box; }
+
+    #umoya-ways-to-travel .umoya-wtt-wrap {
+      width: min(1180px, 92vw);
+      margin: 0 auto;
+    }
+
+    /* ── Header row: copy left, controls + CTA right ── */
+    #umoya-ways-to-travel .umoya-wtt-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: clamp(24px, 4vw, 60px);
+      align-items: end;
+      margin-bottom: clamp(30px, 4vw, 46px);
+    }
+
+    #umoya-ways-to-travel .umoya-wtt-eye {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--terra);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .26em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    #umoya-ways-to-travel h2 {
+      margin: 0;
+      color: var(--brown);
+      font-size: clamp(2.05rem, 4.4vw, 3.5rem);
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.06;
+    }
+
+    /* Forces the desktop title to break as "Travel Designed" / "With You in
+       Mind" instead of wrapping wherever the column happens to run out of
+       room (previously stranding "Mind" alone on its own line). Hidden on
+       mobile below, where the full-width single column already wraps the
+       title naturally. */
+    #umoya-ways-to-travel .umoya-wtt-title-break {
+      display: block;
+    }
+
+    #umoya-ways-to-travel .umoya-wtt-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    #umoya-ways-to-travel .umoya-wtt-arrow {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      background: transparent;
+      border: 1.5px solid rgba(75,46,43,.35);
+      border-radius: 50%;
+      color: var(--brown);
+      cursor: pointer;
+      transition: background .22s var(--ease), border-color .22s var(--ease),
+                  color .22s var(--ease), transform .22s var(--ease);
+    }
+
+    #umoya-ways-to-travel .umoya-wtt-arrow:hover {
+      background: var(--terra);
+      border-color: var(--terra);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    #umoya-ways-to-travel .umoya-wtt-arrow svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    #umoya-ways-to-travel .umoya-wtt-cta {
+      appearance: none;
+      -webkit-appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 13px 26px;
+      background: var(--terra);
+      border: 2px solid var(--terra);
+      border-radius: 0;
+      color: var(--white);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      line-height: 1.2;
+      text-transform: uppercase;
+      transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+    }
+
+    #umoya-ways-to-travel .umoya-wtt-cta:hover {
+      background: var(--terra-dk);
+      border-color: var(--terra-dk);
+      transform: translateY(-2px);
+    }
+
+    /* ── Card track — native scroll-snap ── */
+    #umoya-ways-to-travel .umoya-wtt-track {
+      display: flex;
+      gap: clamp(16px, 2vw, 24px);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 8px; /* room so card shadows aren't clipped */
+    }
+
+    #umoya-ways-to-travel .umoya-wtt-track::-webkit-scrollbar { display: none; }
+
+    #umoya-ways-to-travel .umoya-wtt-card {
+      flex: 0 0 calc((100% - 2 * clamp(16px, 2vw, 24px)) / 3);
+      min-width: 0;
+      scroll-snap-align: start;
+      background: var(--cream);
+      border: 1px solid rgba(75,46,43,.10);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform .35s var(--ease);
+    }
+
+    #umoya-ways-to-travel .umoya-wtt-card:hover {
+      transform: translateY(-5px);
+    }
+
+    #umoya-ways-to-travel .umoya-wtt-media {
+      position: relative;
+      height: clamp(200px, 22vw, 250px);
+      overflow: hidden;
+      background: var(--brown);
+    }
+
+    #umoya-ways-to-travel .umoya-wtt-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      transition: transform .6s var(--ease);
+    }
+
+    #umoya-ways-to-travel .umoya-wtt-card:hover .umoya-wtt-media img {
+      transform: scale(1.05);
+    }
+
+    #umoya-ways-to-travel .umoya-wtt-body {
+      padding: clamp(18px, 1.6vw, 24px);
+    }
+
+    #umoya-ways-to-travel .umoya-wtt-title {
+      margin: 0 0 10px;
+      color: var(--brown);
+      font-size: clamp(1.15rem, 1.7vw, 1.35rem);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    #umoya-ways-to-travel .umoya-wtt-desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.62;
+    }
+
+    /* ── Tablet ≤1024px — two cards per view ── */
+    @media (max-width: 1024px) {
+      #umoya-ways-to-travel .umoya-wtt-card {
+        flex-basis: calc((100% - clamp(16px, 2vw, 24px)) / 2);
+      }
+    }
+
+    /* ── Mobile ≤768px — one card + a peek of the next ── */
+    @media (max-width: 768px) {
+      #umoya-ways-to-travel .umoya-wtt-head {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      #umoya-ways-to-travel .umoya-wtt-title-break {
+        display: none;
+      }
+
+      #umoya-ways-to-travel .umoya-wtt-actions {
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      #umoya-ways-to-travel .umoya-wtt-card {
+        flex-basis: 84%;
+      }
+
+      #umoya-ways-to-travel .umoya-wtt-media {
+        height: clamp(190px, 52vw, 240px);
+      }
+    }
+
+    @media (max-width: 420px) {
+      #umoya-ways-to-travel .umoya-wtt-card { flex-basis: 88%; }
+      #umoya-ways-to-travel .umoya-wtt-cta { flex: 1; }
+    }
+
+    /* Scroll reveal */
+    #umoya-ways-to-travel .umoya-wtt-rv {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .85s var(--ease), transform .85s var(--ease);
+    }
+    #umoya-ways-to-travel .umoya-wtt-rv.on { opacity: 1; transform: none; }
+  </style>
+
+  <div class="umoya-wtt-wrap">
+
+    <div class="umoya-wtt-head umoya-wtt-rv">
+      <div>
+        <span class="umoya-wtt-eye">Ways to Travel</span>
+        <h2>Travel Designed<br class="umoya-wtt-title-break"> With You in Mind</h2>
+      </div>
+      <div class="umoya-wtt-actions">
+        <button class="umoya-wtt-arrow" type="button" data-wtt-prev aria-label="Previous travel styles">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="umoya-wtt-arrow" type="button" data-wtt-next aria-label="More travel styles">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="umoya-wtt-cta" type="button" data-umoya-form-popup>Plan Your Journey</button>
+      </div>
+    </div>
+
+    <div class="umoya-wtt-track umoya-wtt-rv" role="list" aria-label="Travel styles">
+
+      <article class="umoya-wtt-card" role="listitem">
+        <div class="umoya-wtt-media">
+          <!-- ★ SWAP: Large Groups image -->
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6198.png" alt="Large-group travel in South Africa with Umoya Afrika Tours" loading="lazy" decoding="async">
+        </div>
+        <div class="umoya-wtt-body">
+          <h3 class="umoya-wtt-title">Large Groups</h3>
+          <p class="umoya-wtt-desc">Corporate, organizational, or group travel designed around you. From incentive trips and leadership retreats to alumni gatherings and community travel, we handle every detail so your group simply arrives and experiences.</p>
+        </div>
+      </article>
+
+      <article class="umoya-wtt-card" role="listitem">
+        <div class="umoya-wtt-media">
+          <!-- ★ SWAP: Solo Travel image -->
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_8994.png" alt="Solo travel in South Africa with Umoya Afrika Tours" loading="lazy" decoding="async">
+        </div>
+        <div class="umoya-wtt-body">
+          <h3 class="umoya-wtt-title">Solo Travel</h3>
+          <p class="umoya-wtt-desc">Arrive alone, leave with connections that last. Umoya's small groups bring together like-minded travelers, so the people you meet along the way become as much a part of the journey as the places you see.</p>
+        </div>
+      </article>
+
+      <article class="umoya-wtt-card" role="listitem">
+        <div class="umoya-wtt-media">
+          <!-- ★ SWAP: Couples Getaway image -->
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_8926.png" alt="A couples getaway in South Africa with Umoya Afrika Tours" loading="lazy" decoding="async">
+        </div>
+        <div class="umoya-wtt-body">
+          <h3 class="umoya-wtt-title">Couples Getaway</h3>
+          <p class="umoya-wtt-desc">Some places are simply better experienced together. From sundowners in the bush to private wine tastings in the Cape, every moment of the Umoya journey is designed to be shared, in settings that stay with you long after you return home.</p>
+        </div>
+      </article>
+
+      <article class="umoya-wtt-card" role="listitem">
+        <div class="umoya-wtt-media">
+          <!-- ★ SWAP: World Wonders image (Victoria Falls / Chobe — TBD) -->
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1777576366.jpeg" alt="Extending the journey to Africa's natural wonders" loading="lazy" decoding="async">
+        </div>
+        <div class="umoya-wtt-body">
+          <h3 class="umoya-wtt-title">World Wonders</h3>
+          <p class="umoya-wtt-desc">For those who want to go further and stay longer, extend your journey into Africa's most breathtaking destinations. Victoria Falls and the vast elephant herds of Chobe are waiting, and we take care of everything to get you there.</p>
+        </div>
+      </article>
+
+      <article class="umoya-wtt-card" role="listitem">
+        <div class="umoya-wtt-media">
+          <!-- ★ SWAP: Safari image -->
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img001238.jpeg" alt="Safari game drive in the Sabi Sand" loading="lazy" decoding="async">
+        </div>
+        <div class="umoya-wtt-body">
+          <h3 class="umoya-wtt-title">Safari</h3>
+          <p class="umoya-wtt-desc">The African bush is unlike anywhere else on earth, and the Sabi Sand is one of the finest places to experience it. With expert guides, open vehicles, and the freedom to follow the animals wherever they go, the Big 5 come to you on your own terms.</p>
+        </div>
+      </article>
+
+      <article class="umoya-wtt-card" role="listitem">
+        <div class="umoya-wtt-media">
+          <!-- ★ SWAP: Winelands image -->
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img166276458.jpeg" alt="Wine tasting in the Cape Winelands" loading="lazy" decoding="async">
+        </div>
+        <div class="umoya-wtt-body">
+          <h3 class="umoya-wtt-title">Winelands</h3>
+          <p class="umoya-wtt-desc">The Cape Winelands move at their own unhurried pace, and that is exactly how we explore them. Private tastings, long lunches, and conversations with the Black winemakers rewriting the story of South African wine, straight from the source.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    'use strict';
+    var root = document.getElementById('umoya-ways-to-travel');
+    if (!root) return;
+
+    var track = root.querySelector('.umoya-wtt-track');
+    var prev = root.querySelector('[data-wtt-prev]');
+    var next = root.querySelector('[data-wtt-next]');
+    if (!track) return;
+
+    /*
+      Infinite loop. Clone a full set of cards on each side so the track
+      reads [clones][originals][clones]. We keep the scroll position in the
+      middle (originals) band and silently fold it back by one set-width
+      whenever it drifts out. Because the clones are identical copies offset
+      by exactly one set-width, the fold is invisible — so next/prev AND
+      touch swipes flow continuously from the last card into the first,
+      with no dead-end and no jump-back-to-start reset.
+    */
+    var originals = Array.prototype.slice.call(track.querySelectorAll('.umoya-wtt-card'));
+    var count = originals.length;
+
+    if (count > 1 && !track.getAttribute('data-wtt-looped')) {
+      track.setAttribute('data-wtt-looped', '1');
+      var preFrag = document.createDocumentFragment();
+      var appFrag = document.createDocumentFragment();
+      originals.forEach(function(card){
+        var before = card.cloneNode(true);
+        var after = card.cloneNode(true);
+        [before, after].forEach(function(clone){
+          clone.setAttribute('aria-hidden', 'true');
+          clone.setAttribute('data-wtt-clone', '1');
+          clone.removeAttribute('role');
+        });
+        preFrag.appendChild(before);
+        appFrag.appendChild(after);
+      });
+      track.insertBefore(preFrag, track.firstChild);
+      track.appendChild(appFrag);
+    }
+
+    function cardStep() {
+      var card = track.querySelector('.umoya-wtt-card');
+      if (!card) return 320;
+      var styles = window.getComputedStyle(track);
+      var gap = parseFloat(styles.columnGap || styles.gap) || 20;
+      return card.offsetWidth + gap;
+    }
+
+    function setWidth() {
+      return cardStep() * count;
+    }
+
+    /* Fold the scroll position into the middle [sw, 2*sw) band. */
+    function normalize() {
+      if (count < 2) return;
+      var sw = setWidth();
+      if (!sw) return;
+      var sl = track.scrollLeft;
+      var rel = ((sl - sw) % sw + sw) % sw;
+      var target = sw + rel;
+      if (Math.abs(target - sl) > 1) track.scrollLeft = target;
+    }
+
+    /* Start inside the originals band (clones on either side look identical). */
+    if (count > 1) track.scrollLeft = setWidth();
+
+    function scrollByCards(direction) {
+      var target = track.scrollLeft + direction * cardStep();
+      if (typeof track.scrollTo === 'function') {
+        try {
+          track.scrollTo({ left: target, behavior: 'smooth' });
+          return;
+        } catch (e) { /* older engines fall through */ }
+      }
+      track.scrollLeft = target;
+    }
+
+    if (prev) prev.addEventListener('click', function(){ scrollByCards(-1); });
+    if (next) next.addEventListener('click', function(){ scrollByCards(1); });
+
+    /* Wrap once scrolling settles — covers arrow clicks and touch swipes. */
+    var idle = null;
+    track.addEventListener('scroll', function(){
+      if (idle) window.clearTimeout(idle);
+      idle = window.setTimeout(normalize, 140);
+    }, { passive: true });
+
+    /* Card widths change across breakpoints — re-fold after a resize. */
+    var resizeIdle = null;
+    window.addEventListener('resize', function(){
+      if (resizeIdle) window.clearTimeout(resizeIdle);
+      resizeIdle = window.setTimeout(normalize, 160);
+    });
+
+    /* Scroll reveal */
+    var rvEls = root.querySelectorAll('.umoya-wtt-rv');
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      rvEls.forEach(function(el){ obs.observe(el); });
+    } else {
+      rvEls.forEach(function(el){ el.classList.add('on'); });
+    }
+  }());
+  </script>
+</section>

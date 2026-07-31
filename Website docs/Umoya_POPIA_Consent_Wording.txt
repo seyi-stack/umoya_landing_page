@@ -1,0 +1,94 @@
+POPIA CONSENT WORDING -- FORM SNIPPETS
+
+For: Umoya Afrika Tours (Pty) Ltd website
+Purpose: Standard POPIA notice and consent wording for inquiry, booking, payment, newsletter, cookie banner and email-footer placements.
+
+Implementation rules (read these before coding):
+- Marketing consent checkboxes must NOT be pre-ticked. The user must take a positive action to agree.
+- On the booking form, the three required confirmations must be SEPARATE checkboxes -- not one bundled "I agree to everything" checkbox.
+- Maintain a consent register (a simple spreadsheet is fine) showing who consented, what they consented to, the date, and the wording used at the time.
+- Every marketing email must contain a working unsubscribe link, and unsubscribes must be honoured promptly.
+
+
+==================================================
+1. INQUIRY FORM
+==================================================
+
+Use this on the journey-enquiry form, the Founder's Circle form, and any other form that collects an email address and name without taking payment.
+
+NOTICE (display as plain text above the submit button):
+
+By submitting this form, you agree that Umoya Afrika Tours (Pty) Ltd may use the information you provide to respond to your enquiry and to prepare a proposal for your journey. We treat your information in accordance with our Privacy Policy. You may withdraw any consent given at any time by emailing info@umoyaafrikatours.co.za.
+
+(The text "Privacy Policy" should be a clickable link to the Privacy Policy page.)
+
+MARKETING CONSENT (unticked checkbox below the notice):
+
+[ ] I would like to receive occasional emails from Umoya about new journeys, events and stories. I understand that I can unsubscribe at any time.
+
+
+==================================================
+2. BOOKING AND PAYMENT FORM
+==================================================
+
+Use this where personal and payment information is being submitted to confirm a booking.
+
+NOTICE (display as plain text above the checkboxes):
+
+The information you provide on this form will be used by Umoya Afrika Tours (Pty) Ltd, and where applicable by Nyanu Heritage Tours LLC as the booking and payment-collection entity, to confirm your booking, deliver your journey and meet our legal, accounting and tax obligations. Your information may be shared with the suppliers and partners who deliver elements of your journey and with our payment processors. Full details are set out in our Privacy Policy.
+
+REQUIRED CONFIRMATIONS (three separate checkboxes, each must be ticked individually):
+
+[ ] I have read and agree to the Terms and Conditions.
+
+[ ] I have read and understood the Privacy Policy.
+
+[ ] I confirm that I am over 18 and authorised to make this booking on behalf of all guests listed.
+
+(The text "Terms and Conditions" and "Privacy Policy" should each be a clickable link to the relevant page.)
+
+OPTIONAL MARKETING CONSENT (unticked checkbox below the required ones):
+
+[ ] I would like to receive occasional emails from Umoya about new journeys, events and stories.
+
+
+==================================================
+3. NEWSLETTER SIGN-UP
+==================================================
+
+Use this where the sole purpose of the form is to collect an email address for marketing.
+
+SINGLE-PURPOSE CONSENT (display as plain text above the submit button):
+
+Sign up to receive occasional emails from Umoya about new journeys, events and stories. By submitting your email address, you consent to receive marketing communications from Umoya Afrika Tours (Pty) Ltd. We will not share your email with third parties for their own marketing, and you may unsubscribe at any time using the link in any email we send.
+
+
+==================================================
+4. COOKIE BANNER
+==================================================
+
+Use this in the cookie banner that appears on the first visit to the website.
+
+BANNER COPY:
+
+We use cookies to make this website work and to understand how it is used. With your consent, we also use analytics and marketing cookies to improve your experience. You can accept all, reject non-essential cookies, or manage your preferences. See our Cookie Policy for more.
+
+BUTTONS (three buttons, in this order):
+- Accept all
+- Reject non-essential
+- Manage preferences
+
+(The text "Cookie Policy" in the banner copy should be a clickable link to the Cookie Policy page.)
+
+
+==================================================
+5. MARKETING EMAIL FOOTER
+==================================================
+
+Use this in the footer of marketing emails. It identifies the sender and provides a simple way to opt out, as required under POPIA section 69 and ECTA.
+
+FOOTER COPY:
+
+This message was sent by Umoya Afrika Tours (Pty) Ltd, Registration No. 2025/818751/07, West Tower, 2nd Floor, Nelson Mandela Square, Sandown, Johannesburg, 2146, South Africa. You are receiving this email because you signed up to hear from Umoya, or because you are an existing client. If you no longer wish to receive these emails, you can unsubscribe here. Our Privacy Policy is available at https://www.umoyaafrikatours.co.za/privacy.
+
+(The text "unsubscribe here" should be a clickable link to the unsubscribe action. The Privacy Policy URL should be clickable.)

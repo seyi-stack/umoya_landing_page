@@ -1,0 +1,667 @@
+<!--
+=================================================================
+  UMOYA — SITE-WIDE NAVIGATION
+=================================================================
+  The single navigation bar shared by every page (Signature
+  Journey, Private & Tailormade, For Groups, About, Founder's
+  Circle, Homepage). Adapted from the homepage-revamp nav.
+
+  BEHAVIOUR — three states:
+  1. DOCKED   At the very top of the page the bar sits in normal
+              document flow, STACKED ABOVE the hero. It does not
+              overlap the section below it, and it scrolls away
+              with the page like any other element.
+  2. STUCK    Once scrolled past, the bar detaches (position: fixed)
+              and hides on a downward scroll, so it never covers
+              content you are reading.
+  3. RECALLED Any upward scroll slides it straight back into view.
+
+  The mount wrapper RESERVES the bar's height at all times, so
+  detaching to fixed never shifts the layout — no jump, no jitter.
+  --nav-h on the mount is the single source of truth for that
+  height (64px desktop / 58px ≤900px) and the JS reads it back.
+
+  • Links are absolute site URLs (not in-page anchors) so the same
+    widget works on every page.
+  • The link matching the current page is marked with .is-active
+    automatically, by comparing pathnames on load.
+  • Hamburger dropdown lives INSIDE the bar so it follows both the
+    docked and fixed positions. The bar never hides while the
+    mobile menu is open.
+
+  ELEMENTOR: place this widget FIRST on every page. Do NOT wrap it
+  in a section with overflow: hidden.
+
+  THEME-HEADER TAKEOVER (Tevily / "Elementor Full Width" pages):
+  On pages that use the Elementor Full Width template, the Tevily
+  theme renders its OWN header with two sibling blocks:
+    .header_default_screen  — holds this widget (hidden ≤1024px)
+    .header-mobile          — the theme's own menu (shown ≤1024px)
+  So below 1024px the theme swapped this nav out for its own menu,
+  which pulls from the WP "primary" menu location and was showing
+  stale links. The rules below hide the theme's block and keep this
+  one visible at every width, so there is a single nav site-wide.
+
+  These are the only selectors here that reach OUTSIDE this widget's
+  root — unavoidable, since the elements being overridden are the
+  widget's ANCESTOR and its SIBLING, which no descendant selector can
+  target. They are kept safe by the .umoya-nav-takeover marker class,
+  which the JS adds only to a theme header that actually contains
+  this nav. If the widget is not inside one (e.g. Elementor Canvas
+  pages), nothing is touched.
+
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<div id="umoyaSiteNavMount">
+  <style>
+    /* ── Theme-header takeover — see the note above ──────────── */
+    .wp-site-header.umoya-nav-takeover .header-mobile,
+    .wp-site-header.umoya-nav-takeover .header_mobile_screen {
+      display: none !important;
+    }
+
+    .wp-site-header.umoya-nav-takeover .header_default_screen {
+      display: block !important;
+    }
+
+    /*
+      The mount RESERVES the bar's height in normal document flow, so at the
+      top of the page the hero stacks BELOW the nav instead of sliding under
+      it. --nav-h is the single source of truth for that height and is
+      inherited by the bar itself (and read back by the JS).
+    */
+    #umoyaSiteNavMount {
+      --nav-h: 64px;
+      position: relative;
+      width: 100%;
+      height: var(--nav-h);
+      z-index: 2147483000;
+      overflow: visible;
+    }
+
+    #umoyaSiteNav {
+      --cream: #F5F0EB;
+      --brown: #4B2E2B;
+      --terra: #D97E53;
+      --terra-dk: #C06840;
+      --white: #FFFFFF;
+      --ease: cubic-bezier(.25,.46,.45,.94);
+
+      /*
+        DOCKED (default) — absolutely placed inside the reserved space, so it
+        occupies the flow slot and scrolls away with the page like any other
+        section. No overlap with the hero.
+      */
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: auto;
+      z-index: 2147483000;
+      width: 100%;
+      height: var(--nav-h);
+      background: rgba(245,240,235,.99);
+      border-bottom: 1px solid rgba(75,46,43,.09);
+      font-family: inherit;
+      overflow: visible;
+    }
+
+    /*
+      STUCK — once the page has scrolled past the bar, it detaches and floats
+      over the content so it can be recalled on an upward scroll.
+    */
+    #umoyaSiteNav.is-stuck {
+      position: fixed;
+      box-shadow: 0 2px 24px rgba(75,46,43,.10);
+      transition: transform .35s var(--ease);
+    }
+
+    /* Hidden while scrolling DOWN; removing the class slides it back in. */
+    #umoyaSiteNav.is-stuck.is-hidden {
+      transform: translateY(-100%);
+    }
+
+    /*
+      Suppresses the slide for the single frame in which the bar switches
+      between docked and stuck, so the state change never animates.
+    */
+    #umoyaSiteNav.no-anim {
+      transition: none !important;
+    }
+
+    /*
+      Anchor jumps clear the floating bar. scroll-padding-top on the scroll
+      container handles every in-page target at once — no blanket [id] rule.
+    */
+    html { scroll-padding-top: 76px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      #umoyaSiteNav.is-stuck { transition: none; }
+    }
+
+    #umoyaSiteNav,
+    #umoyaSiteNav *,
+    #umoyaSiteNav *::before,
+    #umoyaSiteNav *::after {
+      box-sizing: border-box;
+    }
+
+    #umoyaSiteNav .umoya-nav-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      height: var(--nav-h);
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    /* ── Logo (left) ─────────────────────────────────────────── */
+    #umoyaSiteNav .umoya-nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    #umoyaSiteNav .umoya-nav-logo img {
+      display: block;
+      width: auto;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    #umoyaSiteNav .umoya-nav-logo-text {
+      color: var(--brown);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      white-space: nowrap;
+    }
+
+    /* ── Links (centre) ──────────────────────────────────────── */
+    #umoyaSiteNav .umoya-nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    #umoyaSiteNav .umoya-nav-item { position: relative; }
+
+    #umoyaSiteNav .umoya-nav-link {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      height: var(--nav-h);
+      padding: 0 14px;
+      border: 0;
+      background: transparent;
+      color: var(--brown);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .11em;
+      line-height: 1;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: color .25s var(--ease);
+    }
+
+    #umoyaSiteNav .umoya-nav-link::after {
+      content: "";
+      position: absolute;
+      right: 14px;
+      bottom: 0;
+      left: 14px;
+      height: 2px;
+      background: var(--terra);
+      border-radius: 2px 2px 0 0;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform .3s var(--ease);
+    }
+
+    #umoyaSiteNav .umoya-nav-item.is-active .umoya-nav-link { font-weight: 700; }
+    #umoyaSiteNav .umoya-nav-item.is-active .umoya-nav-link::after { transform: scaleX(1); }
+
+    /* ── CTA (right) ─────────────────────────────────────────── */
+    #umoyaSiteNav .umoya-nav-cta {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 20px;
+      flex-shrink: 0;
+      background: var(--terra);
+      border: 2px solid var(--terra);
+      color: var(--white);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      line-height: 1.2;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
+    }
+
+    #umoyaSiteNav .umoya-nav-cta:hover {
+      background: var(--terra-dk);
+      border-color: var(--terra-dk);
+      color: var(--white);
+      box-shadow: 0 6px 18px rgba(217,126,83,.28);
+      transform: translateY(-1px);
+    }
+
+    /* ── Hamburger (mobile) ──────────────────────────────────── */
+    #umoyaSiteNav .umoya-nav-burger {
+      appearance: none;
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 8px;
+      flex-shrink: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      background: transparent;
+      border: 0;
+      border-radius: 4px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: background .2s;
+    }
+
+    #umoyaSiteNav .umoya-nav-burger:hover { background: rgba(75,46,43,.06); }
+
+    #umoyaSiteNav .umoya-nav-burger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--brown);
+      border-radius: 2px;
+      transform-origin: center;
+      transition: transform .35s var(--ease), opacity .25s, width .25s;
+    }
+
+    #umoyaSiteNav.is-open .umoya-nav-burger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    #umoyaSiteNav.is-open .umoya-nav-burger span:nth-child(2) { width: 0; opacity: 0; }
+    #umoyaSiteNav.is-open .umoya-nav-burger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ── Mobile dropdown ─────────────────────────────────────── */
+    #umoyaSiteNav .umoya-nav-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      background: rgba(245,240,235,.995);
+      border-bottom: 1px solid rgba(75,46,43,.09);
+      box-shadow: 0 8px 32px rgba(75,46,43,.12);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-6px);
+      transition: transform .35s var(--ease), opacity .3s var(--ease);
+    }
+
+    #umoyaSiteNav .umoya-nav-dropdown.is-open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    #umoyaSiteNav .umoya-nav-dropdown-list {
+      margin: 0;
+      padding: 10px 0 14px;
+      list-style: none;
+    }
+
+    #umoyaSiteNav .umoya-nav-dropdown-item { border-bottom: 1px solid rgba(75,46,43,.06); }
+    #umoyaSiteNav .umoya-nav-dropdown-item:last-child { border-bottom: 0; }
+
+    #umoyaSiteNav .umoya-nav-dropdown-link {
+      appearance: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 15px 24px;
+      background: transparent;
+      border: 0;
+      color: var(--brown);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      line-height: 1.2;
+      text-align: left;
+      text-decoration: none;
+      text-transform: uppercase;
+      -webkit-tap-highlight-color: transparent;
+      transition: color .2s, background .2s, padding-left .2s;
+    }
+
+    #umoyaSiteNav .umoya-nav-dropdown-link:hover,
+    #umoyaSiteNav .umoya-nav-dropdown-item.is-active .umoya-nav-dropdown-link {
+      background: rgba(217,126,83,.05);
+      color: var(--brown);
+      padding-left: 30px;
+    }
+
+    #umoyaSiteNav .umoya-nav-dropdown-item.is-active .umoya-nav-dropdown-link::after {
+      content: "";
+      display: block;
+      width: 6px;
+      height: 6px;
+      flex-shrink: 0;
+      background: var(--terra);
+      border-radius: 50%;
+    }
+
+    #umoyaSiteNav .umoya-nav-dropdown-cta-row { padding: 14px 24px 10px; }
+
+    #umoyaSiteNav .umoya-nav-dropdown-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 20px;
+      background: var(--terra);
+      border: 0;
+      color: var(--white);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background .25s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    #umoyaSiteNav .umoya-nav-dropdown-cta:hover { background: var(--terra-dk); color: var(--white); }
+
+    /* ── Tablet ──────────────────────────────────────────────── */
+    @media (max-width: 1120px) {
+      #umoyaSiteNav .umoya-nav-inner { gap: 14px; padding: 0 18px; }
+      #umoyaSiteNav .umoya-nav-link { padding: 0 10px; font-size: .68rem; letter-spacing: .09em; }
+      #umoyaSiteNav .umoya-nav-link::after { right: 10px; left: 10px; }
+      #umoyaSiteNav .umoya-nav-cta { padding: 10px 16px; font-size: .68rem; letter-spacing: .12em; }
+    }
+
+    /* ── Mobile ──────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      /* Set on the mount so the reserved flow space shrinks with the bar. */
+      #umoyaSiteNavMount { --nav-h: 58px; }
+      html { scroll-padding-top: 70px; }
+      #umoyaSiteNav .umoya-nav-inner { padding: 0 20px; }
+      #umoyaSiteNav .umoya-nav-links,
+      #umoyaSiteNav .umoya-nav-cta { display: none; }
+      #umoyaSiteNav .umoya-nav-burger { display: flex; }
+      #umoyaSiteNav .umoya-nav-dropdown { display: block; }
+    }
+
+    @media (max-width: 420px) {
+      #umoyaSiteNav .umoya-nav-inner { padding: 0 16px; }
+      #umoyaSiteNav .umoya-nav-logo-text { display: none; }
+    }
+  </style>
+
+  <nav id="umoyaSiteNav" aria-label="Primary navigation">
+    <div class="umoya-nav-inner">
+
+      <a class="umoya-nav-logo" href="https://umoyaafrikatours.co.za/" aria-label="Umoya Afrika Tours — home">
+        <img
+          src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Umoya-Afrika-Logomark.svg"
+          alt="Umoya Afrika Tours logo"
+          onerror="this.style.display='none';document.getElementById('umoyaSiteNavLogoText').style.display='inline';"
+        >
+        <span class="umoya-nav-logo-text" id="umoyaSiteNavLogoText" style="display:none;">Umoya</span>
+      </a>
+
+      <ul class="umoya-nav-links" role="list">
+        <li class="umoya-nav-item" data-path="/signature-journey">
+          <a class="umoya-nav-link" href="https://umoyaafrikatours.co.za/signature-journey/">The Signature Journey</a>
+        </li>
+        <li class="umoya-nav-item" data-path="/private-and-tailormade">
+          <a class="umoya-nav-link" href="https://umoyaafrikatours.co.za/private-and-tailormade/">Private &amp; Tailormade</a>
+        </li>
+        <li class="umoya-nav-item" data-path="/for-groups">
+          <a class="umoya-nav-link" href="https://umoyaafrikatours.co.za/for-groups/">For Groups</a>
+        </li>
+        <li class="umoya-nav-item" data-path="/about">
+          <a class="umoya-nav-link" href="https://umoyaafrikatours.co.za/about/">About</a>
+        </li>
+      </ul>
+
+      <a class="umoya-nav-cta" href="https://umoyaafrikatours.co.za/founders-circle/">Join the Founder's Circle</a>
+
+      <button
+        class="umoya-nav-burger"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="umoyaSiteNavDropdown"
+      >
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="umoya-nav-dropdown" id="umoyaSiteNavDropdown" aria-label="Site sections">
+        <ul class="umoya-nav-dropdown-list" role="list">
+          <li class="umoya-nav-dropdown-item" data-path="/signature-journey">
+            <a class="umoya-nav-dropdown-link" href="https://umoyaafrikatours.co.za/signature-journey/">The Signature Journey</a>
+          </li>
+          <li class="umoya-nav-dropdown-item" data-path="/private-and-tailormade">
+            <a class="umoya-nav-dropdown-link" href="https://umoyaafrikatours.co.za/private-and-tailormade/">Private &amp; Tailormade</a>
+          </li>
+          <li class="umoya-nav-dropdown-item" data-path="/for-groups">
+            <a class="umoya-nav-dropdown-link" href="https://umoyaafrikatours.co.za/for-groups/">For Groups</a>
+          </li>
+          <li class="umoya-nav-dropdown-item" data-path="/about">
+            <a class="umoya-nav-dropdown-link" href="https://umoyaafrikatours.co.za/about/">About</a>
+          </li>
+        </ul>
+
+        <div class="umoya-nav-dropdown-cta-row">
+          <a class="umoya-nav-dropdown-cta" href="https://umoyaafrikatours.co.za/founders-circle/">Join the Founder's Circle</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    (function(){
+      'use strict';
+
+      var bar = document.getElementById('umoyaSiteNav');
+      if (!bar || bar.dataset.ready === 'true') return;
+      bar.dataset.ready = 'true';
+
+      /*
+        THEME-HEADER TAKEOVER — see the CSS note at the top of this file.
+        Marks the Tevily theme header that CONTAINS this nav, so the two
+        override rules apply only there. On Elementor Canvas pages there
+        is no theme header and this simply does nothing.
+        Walks up manually instead of using closest() for max compatibility.
+      */
+      (function markThemeHeader(){
+        var node = bar.parentNode;
+        while (node && node.nodeType === 1) {
+          if (String(node.className || '').indexOf('wp-site-header') !== -1) {
+            node.className += ' umoya-nav-takeover';
+            return;
+          }
+          node = node.parentNode;
+        }
+      }());
+
+      var burger = bar.querySelector('.umoya-nav-burger');
+      var dropdown = bar.querySelector('.umoya-nav-dropdown');
+
+      function openMenu() {
+        bar.classList.add('is-open');
+        dropdown.classList.add('is-open');
+        burger.setAttribute('aria-expanded', 'true');
+        burger.setAttribute('aria-label', 'Close navigation menu');
+      }
+
+      function closeMenu() {
+        bar.classList.remove('is-open');
+        dropdown.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-label', 'Open navigation menu');
+      }
+
+      if (burger) {
+        burger.addEventListener('click', function() {
+          bar.classList.contains('is-open') ? closeMenu() : openMenu();
+        });
+      }
+
+      if (dropdown) {
+        dropdown.querySelectorAll('a').forEach(function(a) {
+          a.addEventListener('click', closeMenu);
+        });
+      }
+
+      document.addEventListener('click', function(event) {
+        if (!bar.contains(event.target)) closeMenu();
+      });
+
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') closeMenu();
+      });
+
+      /* Mark the current page's link active by matching the pathname.
+         Works for /for-groups, /for-groups/, and any deeper child path. */
+      var here = window.location.pathname.replace(/\/+$/, '').toLowerCase();
+      bar.querySelectorAll('[data-path]').forEach(function(item) {
+        var p = (item.getAttribute('data-path') || '').replace(/\/+$/, '').toLowerCase();
+        if (p && (here === p || here.indexOf(p + '/') === 0)) {
+          item.classList.add('is-active');
+        }
+      });
+
+      /* ── DOCK / STICK / HIDE-ON-SCROLL ──────────────────────────
+         Three states:
+           1. Docked  — at the top of the page the bar sits in normal flow
+                        inside the reserved space, stacked ABOVE the hero.
+           2. Stuck   — scrolled past the bar: it detaches and floats, and
+                        hides on a downward scroll.
+           3. Recalled— any upward scroll slides it straight back in.
+         The mount reserves the bar's height at all times, so detaching
+         never shifts the layout.                                        */
+      var mount = document.getElementById('umoyaSiteNavMount');
+      var stuck = false;
+      var hidden = false;
+      var lastY = window.pageYOffset || document.documentElement.scrollTop || 0;
+      var ticking = false;
+      var JITTER = 5;   /* ignore sub-5px wobble (trackpads, iOS rubber-band) */
+
+      function navHeight() {
+        return (mount && mount.offsetHeight) || bar.offsetHeight || 64;
+      }
+
+      /* Applies a class change without animating it (used when crossing
+         between docked and stuck, which should never look like a slide). */
+      function withoutAnimation(fn) {
+        bar.classList.add('no-anim');
+        fn();
+        /* Force a reflow so the browser commits the state, then re-enable. */
+        void bar.offsetHeight;
+        window.requestAnimationFrame(function() {
+          bar.classList.remove('no-anim');
+        });
+      }
+
+      function setStuck(next) {
+        if (stuck === next) return;
+        stuck = next;
+        bar.classList.toggle('is-stuck', next);
+      }
+
+      function setHidden(next) {
+        /* Never hide the bar while the mobile menu is open. */
+        if (next && bar.classList.contains('is-open')) next = false;
+        if (hidden === next) return;
+        hidden = next;
+        bar.classList.toggle('is-hidden', next);
+      }
+
+      function onScroll() {
+        ticking = false;
+        var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+        if (y < 0) y = 0;                       /* iOS overscroll */
+        var goingDown = y > lastY;
+        var moved = Math.abs(y - lastY);
+
+        if (y <= navHeight()) {
+          /* Top zone — return to the docked, in-flow state. */
+          if (stuck) {
+            withoutAnimation(function() {
+              setHidden(false);
+              setStuck(false);
+            });
+          }
+        } else if (!stuck) {
+          /* Crossing into the stuck state. If that happened while scrolling
+             down, start already hidden so the bar doesn't flash into view. */
+          withoutAnimation(function() {
+            setStuck(true);
+            setHidden(goingDown);
+          });
+        } else if (moved > JITTER) {
+          setHidden(goingDown);
+        }
+
+        lastY = y;
+      }
+
+      /*
+        rAF throttles the handler to one run per frame. The setTimeout is a
+        safety net: a backgrounded or non-compositing tab never runs its rAF
+        callbacks, which would otherwise leave `ticking` latched true and
+        silently kill every future scroll update. `runScrollUpdate` is
+        guarded so whichever fires first wins and the other is a no-op.
+      */
+      function runScrollUpdate() {
+        if (!ticking) return;
+        ticking = false;
+        onScroll();
+      }
+
+      function requestScrollUpdate() {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(runScrollUpdate);
+        window.setTimeout(runScrollUpdate, 200);
+      }
+
+      window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+      window.addEventListener('resize', requestScrollUpdate);
+      /* Opening the mobile menu must reveal the bar. */
+      if (burger) burger.addEventListener('click', function(){ setHidden(false); });
+      onScroll();   /* set the correct initial state (e.g. restored scroll) */
+    }());
+    </script>
+  </nav>
+</div>

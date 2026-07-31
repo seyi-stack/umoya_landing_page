@@ -1,0 +1,723 @@
+<!--
+=================================================================
+  UMOYA — FOR GROUPS — SECTION 08: PLAN A GROUP JOURNEY
+=================================================================
+  Two-column: copy left, group enquiry form right (stacks on
+  mobile).
+
+  INTEGRATION — matches the Founder's Circle form:
+  • Posts to /wp-json/umoya/v1/submissions (WordPress stores the
+    submission and forwards it to HubSpot).
+  • If WordPress is unreachable, the browser falls back to posting
+    directly to the HubSpot Forms API and queues the WP backup.
+  • Field names reuse the existing MERGE* aliases so the mapping in
+    class-submissions.php keeps working with no backend change:
+      MERGE2 → country                  (carries GROUP TYPE)
+      MERGE3 → city                     (carries ORGANIZATION)
+      MERGE4 → preferred_travel_season  (carries MONTH)
+      MERGE5 → preferred_travel_year
+      MERGE6 → preferred_journey_length (carries GROUP SIZE)
+      MERGE7 → founders_circle_message  (carries the brief)
+
+  OPEN ITEM: for cleaner reporting, create dedicated HubSpot
+  properties (e.g. group_type, group_size, organization) and update
+  both the map below and the aliases in class-submissions.php.
+
+  ANCHOR: id="fg-plan" — every "Plan a Group Journey" CTA on this
+  page targets it.
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #fg-plan {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --terra-dk: #C06840;
+    --olive:    #708238;
+    --white:    #FFFFFF;
+    --muted:    rgba(75,46,43,.68);
+    --line:     rgba(75,46,43,.18);
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--white);
+    color: var(--brown);
+    padding: clamp(60px, 8vw, 104px) 0;
+    overflow-x: hidden;
+  }
+
+  #fg-plan *, #fg-plan *::before, #fg-plan *::after { box-sizing: border-box; }
+
+  .fg-pl-c { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 3.4vw, 48px); }
+
+  .fg-pl-grid {
+    display: grid;
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+    gap: clamp(32px, 5vw, 68px);
+    align-items: start;
+  }
+
+  /* ── Copy column ─────────────────────────────────── */
+  .fg-pl-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  .fg-pl-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--brown);
+    margin: 0;
+  }
+  .fg-pl-ttl em { font-style: italic; color: var(--terra); }
+  .fg-pl-lead {
+    font-family: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.1rem);
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 46ch;
+    margin: 1.2rem 0 0;
+  }
+
+  /* ── Form card ───────────────────────────────────── */
+  .fg-pl-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--terra);
+    border-radius: 10px;
+    padding: clamp(26px, 3vw, 38px);
+  }
+
+  .fg-pl-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .fg-pl-field { display: flex; flex-direction: column; margin-bottom: 16px; }
+
+  .fg-pl-field label {
+    font-family: inherit;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 8px;
+  }
+  .fg-pl-field label .fg-pl-opt {
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--muted);
+  }
+
+  .fg-pl-field input,
+  .fg-pl-field select,
+  .fg-pl-field textarea {
+    font-family: inherit;
+    /* 16px floor prevents iOS Safari auto-zoom on focus */
+    font-size: max(16px, 0.92rem);
+    line-height: 1.4;
+    color: var(--brown);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 13px 14px;
+    min-height: 48px;
+    width: 100%;
+    transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+  }
+
+  .fg-pl-field textarea { min-height: 96px; resize: vertical; }
+
+  .fg-pl-field input:focus,
+  .fg-pl-field select:focus,
+  .fg-pl-field textarea:focus {
+    outline: none;
+    border-color: var(--terra);
+    box-shadow: 0 0 0 3px rgba(217,126,83,.14);
+  }
+
+  .fg-pl-field select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234B2E2B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  /* Consent checkboxes (POPIA) */
+  .fg-pl-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin-bottom: 14px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .fg-pl-consent input {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    accent-color: var(--terra);
+    cursor: pointer;
+  }
+  .fg-pl-consent a { color: var(--terra); text-decoration: underline; text-underline-offset: 2px; }
+  .fg-pl-consent .fg-pl-flag { color: var(--brown); font-weight: 600; }
+
+  /* Submit */
+  .fg-pl-btn {
+    appearance: none;
+    -webkit-appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 6px;
+    min-height: 54px;
+    padding: 16px 28px;
+    background: var(--terra);
+    border: 2px solid var(--terra);
+    border-radius: 0;
+    color: var(--white);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+  }
+  .fg-pl-btn:hover:not(:disabled) {
+    background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    transform: translateY(-2px);
+  }
+  .fg-pl-btn:disabled { cursor: default; }
+
+  .fg-pl-legal {
+    font-family: inherit;
+    font-size: 0.74rem;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 14px 0 0;
+    text-align: center;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .fg-pl-rv { opacity: 0; transform: translateY(26px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+  .fg-pl-rv.fg-pl-on { opacity: 1; transform: none; }
+  .fg-pl-rv.d1 { transition-delay: .12s; }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .fg-pl-grid { grid-template-columns: 1fr; gap: clamp(26px, 4vw, 36px); }
+    .fg-pl-lead { max-width: none; }
+  }
+
+  @media (max-width: 768px) {
+    #fg-plan { padding: 46px 0; }
+    .fg-pl-eye { margin-bottom: 0.9rem; }
+    .fg-pl-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .fg-pl-lead { font-size: 1rem; line-height: 1.65; }
+    .fg-pl-card { padding: 24px 20px 26px; }
+  }
+
+  @media (max-width: 560px) {
+    .fg-pl-row { grid-template-columns: 1fr; gap: 0; }
+  }
+
+  @media (max-width: 420px) {
+    #fg-plan { padding: 38px 0; }
+    .fg-pl-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+  }
+</style>
+
+<section id="fg-plan" aria-label="Plan a group journey">
+  <div class="fg-pl-c">
+    <div class="fg-pl-grid">
+
+      <div class="fg-pl-rv">
+        <span class="fg-pl-eye">Plan a Group Journey</span>
+        <h2 class="fg-pl-ttl">Let's plan it <em>together</em>.</h2>
+        <p class="fg-pl-lead">Tell us about your group, and a dedicated Umoya Travel Expert will personally help you shape it.</p>
+      </div>
+
+      <div class="fg-pl-card fg-pl-rv d1">
+        <!-- Hidden target keeps the native POST from navigating away if JS is off -->
+        <iframe name="umoyaSubmissionFrame" style="display:none" title="Submission target" aria-hidden="true"></iframe>
+
+        <form
+          class="fg-pl-form"
+          id="fgPlanForm"
+          action="/wp-json/umoya/v1/submissions"
+          method="post"
+          target="umoyaSubmissionFrame"
+          novalidate
+          aria-label="Group Journey Inquiry Form"
+          data-hubspot-portal-id="246097317"
+          data-hubspot-form-id="cb87d460-fb2d-4c53-8c32-7daaa05067d7"
+          data-umoya-form-source="for_groups_page"
+          data-wordpress-backup-endpoint="/wp-json/umoya/v1/submissions"
+          data-hubspot-consent-text="I consent to Umoya contacting me about a group journey and processing my details as set out in the Privacy Policy."
+        >
+          <input type="hidden" name="source" value="for_groups_page">
+          <input type="hidden" name="hubspotPortalId" value="246097317">
+          <input type="hidden" name="hubspotFormId" value="cb87d460-fb2d-4c53-8c32-7daaa05067d7">
+          <input type="hidden" name="consentText" value="I consent to Umoya contacting me about a group journey and processing my details as set out in the Privacy Policy.">
+          <input type="hidden" name="hutk" value="">
+          <input type="hidden" name="pageUri" value="">
+          <input type="hidden" name="pageName" value="">
+
+          <div class="fg-pl-row">
+            <div class="fg-pl-field">
+              <label for="fgFirst">First name</label>
+              <input type="text" id="fgFirst" name="FNAME" required autocomplete="given-name">
+            </div>
+            <div class="fg-pl-field">
+              <label for="fgLast">Last name</label>
+              <input type="text" id="fgLast" name="LNAME" required autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="fg-pl-row">
+            <div class="fg-pl-field">
+              <label for="fgEmail">Email</label>
+              <input type="email" id="fgEmail" name="EMAIL" required autocomplete="email">
+            </div>
+            <div class="fg-pl-field">
+              <label for="fgPhone">Phone</label>
+              <input type="tel" id="fgPhone" name="PHONE" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="fg-pl-field">
+            <label for="fgOrg">Your organization or group <span class="fg-pl-opt">(if any)</span></label>
+            <input type="text" id="fgOrg" name="MERGE3" placeholder="e.g. chapter, church, alumni network">
+          </div>
+
+          <div class="fg-pl-row">
+            <div class="fg-pl-field">
+              <label for="fgType">Group type</label>
+              <select id="fgType" name="MERGE2" required>
+                <option value="" disabled selected>Select a group type</option>
+                <option>Sorority or fraternity</option>
+                <option>Church or faith community</option>
+                <option>Alumni or professional network</option>
+                <option>Family or friends</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="fg-pl-field">
+              <label for="fgSize">Approximate size</label>
+              <select id="fgSize" name="MERGE6" required>
+                <option value="" disabled selected>Select a size</option>
+                <option>6 to 10</option>
+                <option>11 to 15</option>
+                <option>16 to 20</option>
+                <option>21 or more</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="fg-pl-row">
+            <div class="fg-pl-field">
+              <label for="fgMonth">When are you hoping to travel?</label>
+              <select id="fgMonth" name="MERGE4" aria-label="Preferred travel month">
+                <option value="" disabled selected>Month</option>
+                <option>January</option><option>February</option><option>March</option>
+                <option>April</option><option>May</option><option>June</option>
+                <option>July</option><option>August</option><option>September</option>
+                <option>October</option><option>November</option><option>December</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="fg-pl-field">
+              <label for="fgYear">&nbsp;</label>
+              <select id="fgYear" name="MERGE5" aria-label="Preferred travel year">
+                <option value="" disabled selected>Year</option>
+                <option>2026</option><option>2027</option><option>2028</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="fg-pl-field">
+            <label for="fgMessage">Tell us about your group <span class="fg-pl-opt">(optional)</span></label>
+            <textarea id="fgMessage" name="MERGE7" rows="3"></textarea>
+          </div>
+
+          <label class="fg-pl-consent" for="fgConsent">
+            <input type="checkbox" id="fgConsent" name="consentToProcess">
+            <span>I consent to Umoya contacting me about a group journey and processing my details as set out in the <a href="https://umoyaafrikatours.co.za/privacy/" target="_blank" rel="noopener">Privacy Policy</a>. <span class="fg-pl-flag">(Required, POPIA)</span></span>
+          </label>
+
+          <label class="fg-pl-consent" for="fgMarketing">
+            <input type="checkbox" id="fgMarketing" name="marketingOptIn">
+            <span>I'd also like to receive Umoya journeys and stories by email. <span class="fg-pl-flag">(Optional)</span></span>
+          </label>
+
+          <button type="submit" class="fg-pl-btn" id="fgPlanBtn">Plan Our Journey</button>
+          <p class="fg-pl-legal">We reply personally, usually within one business day.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+
+  var form = document.getElementById('fgPlanForm');
+  if (!form) return;
+
+  var btn = document.getElementById('fgPlanBtn');
+  var submitting = false;
+  var originalText = btn ? btn.textContent : 'Plan Our Journey';
+
+  var pendingBackupKey = 'umoyaPendingBackups';
+  var pendingBackupMaxAge = 1000 * 60 * 60 * 24 * 3;
+
+  /* Reuses the existing MERGE* → HubSpot property mapping so the
+     WordPress endpoint needs no change. See the OPEN ITEM note above. */
+  var hubspotFieldMap = {
+    FNAME:  'firstname',
+    LNAME:  'lastname',
+    EMAIL:  'email',
+    PHONE:  'phone',
+    MERGE2: 'country',                   /* carries GROUP TYPE */
+    MERGE3: 'city',                      /* carries ORGANIZATION */
+    MERGE4: 'preferred_travel_season',   /* carries MONTH */
+    MERGE5: 'preferred_travel_year',
+    MERGE6: 'preferred_journey_length',  /* carries GROUP SIZE */
+    MERGE7: 'founders_circle_message'    /* carries the brief */
+  };
+
+  function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  function getFieldValue(fieldName) {
+    var field = form.elements[fieldName];
+    if (!field) return '';
+    return String(field.value || '').trim();
+  }
+
+  function getCookie(name) {
+    var parts = document.cookie ? document.cookie.split('; ') : [];
+    for (var i = 0; i < parts.length; i += 1) {
+      var item = parts[i].split('=');
+      if (item[0] === name) return decodeURIComponent(item.slice(1).join('='));
+    }
+    return '';
+  }
+
+  function setHiddenValue(fieldName, value) {
+    var field = form.elements ? form.elements[fieldName] : null;
+    if (field) field.value = value || '';
+  }
+
+  function syncTrackingFields() {
+    setHiddenValue('hutk', getCookie('hubspotutk'));
+    setHiddenValue('pageUri', window.location.href);
+    setHiddenValue('pageName', document.title || 'Umoya For Groups');
+  }
+
+  function identifyHubSpotVisitor() {
+    var email = getFieldValue('EMAIL');
+    if (!email || !isValidEmail(email)) return;
+    window._hsq = window._hsq || [];
+    window._hsq.push(['identify', { email: email }]);
+    window._hsq.push(['trackPageView']);
+  }
+
+  function buildHubSpotPayload() {
+    syncTrackingFields();
+    var fields = [];
+
+    Object.keys(hubspotFieldMap).forEach(function(fieldName) {
+      var value = getFieldValue(fieldName);
+      if (value) fields.push({ name: hubspotFieldMap[fieldName], value: value });
+    });
+
+    var context = {
+      pageUri: window.location.href,
+      pageName: document.title || 'Umoya For Groups'
+    };
+    var hutk = getCookie('hubspotutk');
+    if (hutk) context.hutk = hutk;
+
+    var payload = { fields: fields, context: context };
+
+    var consentText = (form.getAttribute('data-hubspot-consent-text') || '').trim();
+    if (consentText) {
+      payload.legalConsentOptions = {
+        consent: { consentToProcess: true, text: consentText }
+      };
+    }
+
+    return payload;
+  }
+
+  function createSubmissionId() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+      return window.crypto.randomUUID();
+    }
+    return 'umoya-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12);
+  }
+
+  function buildWordPressBackupPayload() {
+    var hubspotPayload = buildHubSpotPayload();
+    var rawFields = {};
+
+    Object.keys(hubspotFieldMap).forEach(function(fieldName) {
+      rawFields[fieldName] = getFieldValue(fieldName);
+    });
+
+    var consentBox = form.querySelector('#fgConsent');
+    var marketingBox = form.querySelector('#fgMarketing');
+    rawFields.consent_to_process = consentBox && consentBox.checked ? 'yes' : 'no';
+    rawFields.marketing_opt_in = marketingBox && marketingBox.checked ? 'yes' : 'no';
+
+    return {
+      submissionId: createSubmissionId(),
+      source: (form.getAttribute('data-umoya-form-source') || 'for_groups_page').trim(),
+      hubspotPortalId: (form.getAttribute('data-hubspot-portal-id') || '').trim(),
+      hubspotFormId: (form.getAttribute('data-hubspot-form-id') || '').trim(),
+      consentText: (form.getAttribute('data-hubspot-consent-text') || '').trim(),
+      hutk: getCookie('hubspotutk'),
+      pageUri: window.location.href,
+      pageName: document.title || 'Umoya For Groups',
+      rawFields: rawFields,
+      fields: hubspotPayload.fields,
+      context: hubspotPayload.context
+    };
+  }
+
+  function getPendingBackups() {
+    try {
+      return JSON.parse(window.localStorage.getItem(pendingBackupKey) || '[]').filter(function(item) {
+        return item && (!item.queuedAt || Date.now() - item.queuedAt < pendingBackupMaxAge);
+      });
+    } catch (ignore) { return []; }
+  }
+
+  function savePendingBackups(items) {
+    try { window.localStorage.setItem(pendingBackupKey, JSON.stringify(items.slice(-8))); } catch (ignore) {}
+  }
+
+  function queuePendingBackup(payload) {
+    payload.hubspotAlreadySent = true;
+    payload.queuedAt = Date.now();
+    var items = getPendingBackups();
+    items.push(payload);
+    savePendingBackups(items);
+  }
+
+  function flushPendingBackups() {
+    var items = getPendingBackups();
+    if (!items.length) return;
+
+    var endpoint = (form.getAttribute('data-wordpress-backup-endpoint') || '/wp-json/umoya/v1/submissions').trim();
+    var remaining = items.slice();
+
+    items.forEach(function(item) {
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify(item)
+      }).then(function(response) {
+        if (!response.ok) return;
+        remaining = remaining.filter(function(entry) { return entry.submissionId !== item.submissionId; });
+        savePendingBackups(remaining);
+      }).catch(function() {});
+    });
+  }
+
+  function submitToHubSpot() {
+    var portalId = (form.getAttribute('data-hubspot-portal-id') || '').trim();
+    var formId = (form.getAttribute('data-hubspot-form-id') || '').trim();
+
+    if (!portalId || !formId) {
+      return Promise.reject(new Error('HubSpot is not configured yet.'));
+    }
+
+    return fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + encodeURIComponent(portalId) + '/' + encodeURIComponent(formId), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(buildHubSpotPayload())
+    }).then(function(response) {
+      return response.text().then(function(text) {
+        var data = null;
+        if (text) { try { data = JSON.parse(text); } catch (ignore) {} }
+        if (!response.ok) {
+          var message = data && (data.message || data.error) ? (data.message || data.error) : 'HubSpot could not receive the submission. Please try again.';
+          throw new Error(message);
+        }
+        return data;
+      });
+    });
+  }
+
+  function submitToWordPressBackup(payload) {
+    var endpoint = (form.getAttribute('data-wordpress-backup-endpoint') || '/wp-json/umoya/v1/submissions').trim();
+
+    return fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'same-origin',
+      body: JSON.stringify(payload)
+    }).then(function(response) {
+      return response.text().then(function(text) {
+        var data = null;
+        if (text) { try { data = JSON.parse(text); } catch (ignore) {} }
+        if (!response.ok || !data || data.saved !== true) {
+          var message = data && data.message ? data.message : 'WordPress could not save the submission. Please try again.';
+          throw new Error(message);
+        }
+        return data;
+      });
+    });
+  }
+
+  function showSuccess(){
+    btn.textContent       = 'Inquiry Received — We’ll Be in Touch Soon';
+    btn.disabled          = true;
+    btn.style.background  = '#708238';
+    btn.style.borderColor = '#708238';
+    btn.style.opacity     = '1';
+  }
+
+  function showError(msg){
+    btn.textContent   = originalText;
+    btn.disabled      = false;
+    btn.style.opacity = '1';
+    submitting = false;
+
+    var existing = form.querySelector('.fg-pl-error');
+    if (existing) existing.remove();
+    var err = document.createElement('p');
+    err.className = 'fg-pl-error';
+    err.style.cssText = 'color:#D97E53;font-size:0.85rem;text-align:center;margin-top:10px;';
+    err.textContent = msg;
+    btn.parentNode.appendChild(err);
+    setTimeout(function(){ if (err.parentNode) err.remove(); }, 8000);
+  }
+
+  syncTrackingFields();
+  window.setTimeout(syncTrackingFields, 1500);
+  window.setTimeout(flushPendingBackups, 1200);
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (submitting) return;
+
+    syncTrackingFields();
+    identifyHubSpotVisitor();
+
+    /* Client-side validation */
+    var reqs = form.querySelectorAll('[required]');
+    var valid = true;
+
+    reqs.forEach(function(f){
+      if (!f.value.trim()) {
+        valid = false;
+        f.style.borderColor = '#D97E53';
+        f.style.boxShadow = '0 0 0 3px rgba(217,126,83,.12)';
+      } else {
+        f.style.borderColor = '';
+        f.style.boxShadow = '';
+      }
+    });
+
+    var emailField = form.querySelector('[name="EMAIL"]');
+    if (emailField && emailField.value && !isValidEmail(emailField.value)) {
+      valid = false;
+      emailField.style.borderColor = '#D97E53';
+      emailField.style.boxShadow = '0 0 0 3px rgba(217,126,83,.12)';
+    }
+
+    /* POPIA — the required consent box must be ticked */
+    var consentField = form.querySelector('#fgConsent');
+    if (consentField && !consentField.checked) {
+      valid = false;
+      consentField.style.outline = '2px solid #D97E53';
+      consentField.style.outlineOffset = '3px';
+    }
+
+    if (!valid) {
+      var first = Array.prototype.find.call(reqs, function(f){ return !f.value.trim(); });
+      if (first) first.focus();
+      else if (consentField && !consentField.checked) consentField.focus();
+      return;
+    }
+
+    submitting = true;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    btn.style.opacity = '0.7';
+
+    var backupPayload = buildWordPressBackupPayload();
+
+    /* WordPress first; it forwards to HubSpot. Direct HubSpot is the fallback. */
+    submitToWordPressBackup(backupPayload)
+      .then(function(){ showSuccess(); })
+      .catch(function(error){
+        submitToHubSpot()
+          .then(function(){
+            queuePendingBackup(backupPayload);
+            showSuccess();
+          })
+          .catch(function(fallbackError){
+            showError((error.message || 'WordPress could not save the submission.') + ' ' + (fallbackError.message || 'HubSpot fallback also failed.'));
+          });
+      });
+  });
+
+  /* Clear validation styling on input */
+  form.querySelectorAll('input, select, textarea').forEach(function(f){
+    f.addEventListener('input', function(){
+      f.style.borderColor = '';
+      f.style.boxShadow = '';
+    });
+  });
+  var consentBox = form.querySelector('#fgConsent');
+  if (consentBox) {
+    consentBox.addEventListener('change', function(){
+      consentBox.style.outline = '';
+      consentBox.style.outlineOffset = '';
+    });
+  }
+
+  /* Scroll reveal */
+  var rvEls = document.querySelectorAll('#fg-plan .fg-pl-rv');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('fg-pl-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    rvEls.forEach(function(el){ obs.observe(el); });
+  } else {
+    rvEls.forEach(function(el){ el.classList.add('fg-pl-on'); });
+  }
+}());
+</script>

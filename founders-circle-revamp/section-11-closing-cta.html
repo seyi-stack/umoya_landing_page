@@ -1,0 +1,136 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 11: CLOSING CTA
+=================================================================
+  "Speak With a Travel Expert" closing (mockup-aligned, v5).
+  Centered BROWN section with a transparent outline button that
+  fills on hover. Final section before the footer.
+  ANCHOR: id="fc-cta" preserved.
+
+  NOTE: this file had been accidentally overwritten with a copy of
+  the Travel Essentials section (#fc-details) on 2026-07-10; the
+  closing CTA is restored here, with the background set to brown
+  per Feedback v5 ("keep the background brown").
+=================================================================
+-->
+<style>
+  #fc-cta {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --white:    #FFFFFF;
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    background: var(--brown);
+    padding: clamp(72px, 9vw, 120px) 0;
+    font-family: inherit;
+    color: var(--cream);
+    text-align: center;
+  }
+
+  #fc-cta *,
+  #fc-cta *::before,
+  #fc-cta *::after { box-sizing: border-box; }
+
+  .fc-cta-c {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .fc-cta-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1rem;
+  }
+
+  .fc-cta-h2 {
+    font-family: inherit;
+    font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin: 0 0 1.1rem;
+  }
+
+  .fc-cta-lead {
+    font-family: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.12rem);
+    line-height: 1.65;
+    color: rgba(245,240,235,.78);
+    max-width: 52ch;
+    margin: 0 auto 2.2rem;
+  }
+
+  /* Transparent outline button — fills cream on hover */
+  .fc-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 36px;
+    min-height: 52px;
+    background: transparent;
+    color: var(--cream);
+    border: 1.5px solid rgba(245,240,235,.55);
+    cursor: pointer;
+    transition: background .3s var(--ease), color .3s var(--ease),
+                border-color .3s var(--ease), transform .3s var(--ease);
+  }
+
+  .fc-cta-btn:hover {
+    background: var(--cream);
+    color: var(--brown);
+    border-color: var(--cream);
+    transform: translateY(-2px);
+  }
+
+  /* ── Scroll reveal ──────────────────────────────── */
+  .fc-cta-rv {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity .85s var(--ease), transform .85s var(--ease);
+  }
+  .fc-cta-rv.on { opacity: 1; transform: none; }
+
+  @media (max-width: 480px) {
+    .fc-cta-btn { width: 100%; }
+  }
+</style>
+
+<section id="fc-cta" aria-label="Speak with a travel expert">
+  <div class="fc-cta-c fc-cta-rv">
+    <span class="fc-cta-eye">Still Have Questions?</span>
+    <h2 class="fc-cta-h2">We'd love to speak with you.</h2>
+    <p class="fc-cta-lead">Your dedicated Umoya travel expert is ready to help you plan the perfect South African journey.</p>
+    <a href="#fc-form-section" class="fc-cta-btn">Speak With a Travel Expert</a>
+  </div>
+</section>
+
+<script>
+(function () {
+  'use strict';
+  var rvEls = document.querySelectorAll('#fc-cta .fc-cta-rv');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    rvEls.forEach(function (el) { obs.observe(el); });
+  } else {
+    rvEls.forEach(function (el) { el.classList.add('on'); });
+  }
+}());
+</script>

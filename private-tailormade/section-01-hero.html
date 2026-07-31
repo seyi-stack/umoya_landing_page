@@ -1,0 +1,213 @@
+<!--
+=================================================================
+  UMOYA — PRIVATE & TAILORMADE — SECTION 01: HERO
+=================================================================
+  Full-bleed image hero with a cinematic overlay, centred content.
+  ANCHOR: id="pt-hero" — first content widget after the site nav.
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #pt-hero {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --terra-dk: #C06840;
+    --white:    #FFFFFF;
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    position: relative;
+    min-height: max(72dvh, 520px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--brown);
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+
+  #pt-hero *, #pt-hero *::before, #pt-hero *::after { box-sizing: border-box; }
+
+  /* ── Background ──────────────────────────────────── */
+  .pt-h-bg { position: absolute; inset: 0; z-index: 0; }
+  .pt-h-bg img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    object-position: center 35%;
+    display: block;
+  }
+  .pt-h-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(28,13,6,.42)  0%,
+      rgba(28,13,6,.34) 42%,
+      rgba(28,13,6,.66) 78%,
+      rgba(28,13,6,.88) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* ── Content ─────────────────────────────────────── */
+  .pt-h-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 92px 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pt-h-eye {
+    display: inline-block;
+    font-family: inherit;
+    font-size: clamp(0.78rem, 1vw, 0.9rem);
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.4rem;
+    animation: ptHUp .9s .1s both;
+  }
+
+  .pt-h-title {
+    font-family: inherit;
+    font-size: clamp(2.4rem, 6.4vw, 4.6rem);
+    font-weight: 400;
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    max-width: 18ch;
+    text-wrap: balance;
+    margin: 0 0 1.3rem;
+    animation: ptHUp 1s .24s both;
+  }
+
+  .pt-h-sub {
+    font-family: inherit;
+    font-size: clamp(1.02rem, 1.5vw, 1.22rem);
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--cream);
+    opacity: .94;
+    max-width: 56ch;
+    margin: 0 0 2.4rem;
+    animation: ptHUp .9s .38s both;
+  }
+
+  .pt-h-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    animation: ptHUp .9s .52s both;
+  }
+
+  .pt-h-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: inherit;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 17px 36px;
+    min-height: 56px;
+    cursor: pointer;
+    transition: background .3s var(--ease), color .3s var(--ease),
+                border-color .3s var(--ease), transform .3s var(--ease);
+  }
+
+  .pt-h-btn-primary {
+    background: var(--terra);
+    color: var(--white);
+    border: 1.5px solid var(--terra);
+  }
+  .pt-h-btn-primary svg { width: 16px; height: 16px; transition: transform .3s var(--ease); }
+  .pt-h-btn-primary:hover {
+    background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  .pt-h-btn-primary:hover svg { transform: translateX(4px); }
+
+  .pt-h-btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border: 1.5px solid rgba(245,240,235,.7);
+  }
+  .pt-h-btn-ghost:hover {
+    background: rgba(245,240,235,.12);
+    border-color: var(--cream);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  @keyframes ptHUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+
+  /* ── Tablet ≤1024px ──────────────────────────────── */
+  @media (max-width: 1024px) {
+    .pt-h-content { padding: 76px 22px; }
+  }
+
+  /* ── Mobile ≤768px ───────────────────────────────── */
+  @media (max-width: 768px) {
+    #pt-hero { min-height: max(62dvh, 440px); }
+    .pt-h-content { padding: 62px 20px; }
+    .pt-h-eye { font-size: 0.76rem; letter-spacing: 0.22em; margin-bottom: 1rem; }
+    .pt-h-title { font-size: clamp(2rem, 8vw, 3.2rem); margin-bottom: 1rem; }
+    .pt-h-sub { font-size: 1rem; margin-bottom: 1.8rem; }
+    .pt-h-btns { flex-direction: column; align-items: stretch; width: 100%; max-width: 360px; gap: 12px; }
+    .pt-h-btn { width: 100%; padding: 15px 26px; min-height: 52px; }
+  }
+
+  /* ── Small mobile ≤420px ─────────────────────────── */
+  @media (max-width: 420px) {
+    #pt-hero { min-height: max(58dvh, 400px); }
+    .pt-h-content { padding: 52px 16px; }
+    .pt-h-eye { font-size: 0.7rem; letter-spacing: 0.18em; }
+    .pt-h-title { font-size: clamp(1.8rem, 9vw, 2.6rem); }
+    .pt-h-sub { font-size: 0.95rem; }
+  }
+</style>
+
+<section id="pt-hero" aria-label="Private &amp; Tailormade — Hero">
+
+  <div class="pt-h-bg">
+    <img
+      src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1777576366.jpeg"
+      alt="A private journey through South Africa, designed around you"
+    />
+  </div>
+
+  <div class="pt-h-content">
+    <span class="pt-h-eye">Private &amp; Tailormade</span>
+    <h1 class="pt-h-title">A Journey Entirely Your Own</h1>
+    <p class="pt-h-sub">A private South Africa, designed around you and the people you bring, on the dates that suit you. Tell us what you are traveling for, and we build the journey around it.</p>
+    <div class="pt-h-btns">
+      <a href="#pt-design" class="pt-h-btn pt-h-btn-primary">
+        Design Your Journey
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="13 6 19 12 13 18"/>
+        </svg>
+      </a>
+      <a href="#pt-trip-types" class="pt-h-btn pt-h-btn-ghost">See What Is Possible</a>
+    </div>
+  </div>
+
+</section>

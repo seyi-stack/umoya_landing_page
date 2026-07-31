@@ -1,0 +1,258 @@
+<!--
+=================================================================
+  UMOYA HOMEPAGE — NEW SECTION: THE UMOYA DIFFERENCE (LEGENDS)
+=================================================================
+  v4 revamp — NEW section from the mockup ("It is who opens the
+  door"), with the client's updated header and copy:
+  "Signature Moments Guided by South African Legends".
+
+  4 cultural custodians: Lucia Motloung · Antoinette Sithole ·
+  Christo Brand · Ntsiki Biyela.
+
+  IMAGES: per the client (July 19 feedback), good portraits of these
+  people were not available, so each card uses an ASSOCIATIVE image
+  that describes what the person is known for rather than a portrait:
+  Lucia → Luc Mo wines · Antoinette → Hector Pieterson Memorial ·
+  Christo → Robben Island · Ntsiki → the Cape Winelands.
+  These are the intended images (no longer "coming soon" stand-ins).
+  ELEMENTOR: place after the Ways to Travel section.
+=================================================================
+-->
+<section id="umoya-legends" aria-label="Signature moments guided by South African legends">
+  <style>
+    #umoya-legends {
+      --cream:    #F5F0EB;
+      --brown:    #4B2E2B;
+      --terra:    #D97E53;
+      --white:    #FFFFFF;
+      --muted:    rgba(75,46,43,.72);
+      --ease:     cubic-bezier(.25,.46,.45,.94);
+
+      background: var(--cream);
+      color: var(--brown);
+      padding: clamp(64px, 8vw, 112px) 0;
+      font-family: inherit;
+      overflow: hidden;
+    }
+
+    #umoya-legends,
+    #umoya-legends *,
+    #umoya-legends *::before,
+    #umoya-legends *::after { box-sizing: border-box; }
+
+    #umoya-legends .umoya-leg-wrap {
+      width: min(1180px, 92vw);
+      margin: 0 auto;
+    }
+
+    #umoya-legends .umoya-leg-head {
+      max-width: 72ch;
+      margin-bottom: clamp(34px, 4.5vw, 52px);
+    }
+
+    #umoya-legends .umoya-leg-eye {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--terra);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .26em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    #umoya-legends h2 {
+      margin: 0 0 20px;
+      color: var(--brown);
+      font-size: clamp(2.05rem, 4.4vw, 3.5rem);
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.06;
+      max-width: 24ch;
+    }
+
+    #umoya-legends .umoya-leg-lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.3vw, 1.08rem);
+      line-height: 1.78;
+      max-width: 68ch;
+    }
+
+    /* ── Card grid ── */
+    #umoya-legends .umoya-leg-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(16px, 2vw, 24px);
+    }
+
+    #umoya-legends .umoya-leg-card {
+      background: var(--white);
+      border: 1px solid rgba(75,46,43,.10);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+    }
+
+    #umoya-legends .umoya-leg-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Card image — client-chosen associative photo per legend */
+    #umoya-legends .umoya-leg-media {
+      position: relative;
+      height: clamp(210px, 20vw, 240px);
+      overflow: hidden;
+      background: var(--brown); /* fallback while the image loads */
+    }
+
+    #umoya-legends .umoya-leg-media img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+    }
+
+    #umoya-legends .umoya-leg-body {
+      padding: clamp(18px, 1.6vw, 24px);
+    }
+
+    #umoya-legends .umoya-leg-role {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--terra);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    #umoya-legends .umoya-leg-name {
+      margin: 0 0 10px;
+      color: var(--brown);
+      font-size: clamp(1.15rem, 1.7vw, 1.35rem);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    #umoya-legends .umoya-leg-desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: .89rem;
+      line-height: 1.62;
+    }
+
+    /* Scroll reveal */
+    #umoya-legends .umoya-leg-rv {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .85s var(--ease), transform .85s var(--ease);
+    }
+    #umoya-legends .umoya-leg-rv.on { opacity: 1; transform: none; }
+    #umoya-legends .umoya-leg-rv.d1 { transition-delay: .1s; }
+    #umoya-legends .umoya-leg-rv.d2 { transition-delay: .2s; }
+    #umoya-legends .umoya-leg-rv.d3 { transition-delay: .3s; }
+
+    /* ── Tablet ≤1024px — 2×2 grid ── */
+    @media (max-width: 1024px) {
+      #umoya-legends .umoya-leg-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ── Mobile ≤640px — single column ── */
+    @media (max-width: 640px) {
+      #umoya-legends .umoya-leg-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      #umoya-legends .umoya-leg-media {
+        height: clamp(190px, 46vw, 220px);
+      }
+    }
+  </style>
+
+  <div class="umoya-leg-wrap">
+
+    <div class="umoya-leg-head umoya-leg-rv">
+      <span class="umoya-leg-eye">The Umoya Difference</span>
+      <h2>Signature Moments Guided by South African Legends</h2>
+      <p class="umoya-leg-lead">At Umoya Afrika Tours, our journeys are shaped by local legends, not just guides. Throughout each chapter, you will be introduced to South African artists, entrepreneurs, and activists who are still shaping the country, and who share their stories with you directly. These are not arranged encounters. They are rare, personal moments with people whose lives sit at the heart of what makes this country extraordinary, and they are what make an Umoya journey unlike anything else.</p>
+    </div>
+
+    <div class="umoya-leg-grid">
+
+      <article class="umoya-leg-card umoya-leg-rv" aria-label="Lucia Motloung — The Welcome">
+        <div class="umoya-leg-media">
+          <!-- Client-chosen associative image (July 19 feedback): Luc Mo wines / "The Welcome", in place of a portrait -->
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6216.png" alt="Wines of Luc Mo, the welcome pour on the first evening" loading="lazy" decoding="async">
+        </div>
+        <div class="umoya-leg-body">
+          <span class="umoya-leg-role">The Welcome</span>
+          <h3 class="umoya-leg-name">Lucia Motloung</h3>
+          <p class="umoya-leg-desc">She welcomes you on your first evening, pouring wines from Luc Mo, the company she built in partnership with the Ndebele Kingdom.</p>
+        </div>
+      </article>
+
+      <article class="umoya-leg-card umoya-leg-rv d1" aria-label="Antoinette Sithole — Soweto">
+        <div class="umoya-leg-media">
+          <!-- Client-chosen associative image (July 19 feedback): the Hector Pieterson Memorial, in place of a portrait -->
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6880.png" alt="The Hector Pieterson Memorial in Soweto" loading="lazy" decoding="async">
+        </div>
+        <div class="umoya-leg-body">
+          <span class="umoya-leg-role">Soweto</span>
+          <h3 class="umoya-leg-name">Antoinette Sithole</h3>
+          <p class="umoya-leg-desc">Her brother was Hector Pieterson, the boy in the 1976 photograph of the anti-apartheid riots. She sits at your table and tells you about the day she lost her brother.</p>
+        </div>
+      </article>
+
+      <article class="umoya-leg-card umoya-leg-rv d2" aria-label="Christo Brand — Robben Island">
+        <div class="umoya-leg-media">
+          <!-- Client-chosen associative image (July 19 feedback): Robben Island, in place of a portrait -->
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_1363.png" alt="Robben Island, off the coast of Cape Town" loading="lazy" decoding="async">
+        </div>
+        <div class="umoya-leg-body">
+          <span class="umoya-leg-role">Robben Island</span>
+          <h3 class="umoya-leg-name">Christo Brand</h3>
+          <p class="umoya-leg-desc">He spent years as Nelson Mandela's warder, and the two became friends. He walks you through the island and tells you what that looked like up close.</p>
+        </div>
+      </article>
+
+      <article class="umoya-leg-card umoya-leg-rv d3" aria-label="Ntsiki Biyela — The Black Winelands">
+        <div class="umoya-leg-media">
+          <!-- Client-chosen associative image (July 19 feedback): the Cape Winelands, in place of a portrait -->
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img371169908.jpeg" alt="The Cape Winelands" loading="lazy" decoding="async">
+        </div>
+        <div class="umoya-leg-body">
+          <span class="umoya-leg-role">The Black Winelands</span>
+          <h3 class="umoya-leg-name">Ntsiki Biyela</h3>
+          <p class="umoya-leg-desc">South Africa's first Black female winemaker. She pours her own wines for you to experience and takes you through a sommelier experience.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    'use strict';
+    var rvEls = document.querySelectorAll('#umoya-legends .umoya-leg-rv');
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      rvEls.forEach(function(el){ obs.observe(el); });
+    } else {
+      rvEls.forEach(function(el){ el.classList.add('on'); });
+    }
+  }());
+  </script>
+</section>

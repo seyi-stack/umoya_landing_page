@@ -1,0 +1,160 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 05A: THE FOUNDING OFFER
+=================================================================
+  v4 revamp — brown "Founding Offer" break (mockup-aligned).
+  Pricing is intentionally NOT shown here: it is held for a
+  personal consultation. Place immediately after the Early Access
+  (Be Among the First) section.
+  ANCHOR: id="fc-pricing" preserved.
+=================================================================
+-->
+<style>
+  #fc-pricing {
+    --cream: #F5F0EB;
+    --brown: #4B2E2B;
+    --terra: #D97E53;
+    --terra-dk: #C06840;
+    --olive: #708238;
+    --white: #FFFFFF;
+    --ease: cubic-bezier(.25,.46,.45,.94);
+
+    position: relative;
+    overflow: hidden;
+    background: var(--brown);
+    padding: clamp(64px, 8vw, 104px) 0;
+    font-family: inherit;
+    color: var(--cream);
+  }
+
+  #fc-pricing *,
+  #fc-pricing *::before,
+  #fc-pricing *::after { box-sizing: border-box; }
+
+  /* Ambient radial glow for depth */
+  #fc-pricing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 50% 45% at 85% 12%, rgba(217,126,83,.16) 0%, transparent 62%),
+      radial-gradient(ellipse 45% 50% at 8% 90%,  rgba(112,130,56,.10) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .fc-pri-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  .fc-pri-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1rem;
+  }
+
+  .fc-pri-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.2vw, 3.3rem);
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin: 0 0 1.2rem;
+  }
+
+  .fc-pri-body {
+    font-family: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.12rem);
+    line-height: 1.7;
+    color: rgba(245,240,235,.86);
+    max-width: 54ch;
+    margin: 0 auto 2rem;
+  }
+
+  .fc-pri-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 17px 40px;
+    min-height: 54px;
+    background: var(--terra);
+    color: var(--white);
+    border: 2px solid var(--terra);
+    cursor: pointer;
+    transition: background .25s var(--ease), border-color .25s var(--ease),
+                transform .25s var(--ease), box-shadow .25s var(--ease);
+  }
+
+  .fc-pri-btn:hover {
+    background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  .fc-pri-mini {
+    margin: 1.4rem 0 0;
+    font-family: inherit;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245,240,235,.55);
+  }
+
+  /* ── Scroll reveal ──────────────────────────────── */
+  .fc-pri-rv {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .85s var(--ease), transform .85s var(--ease);
+  }
+  .fc-pri-rv.fc-pri-on { opacity: 1; transform: none; }
+
+  @media (max-width: 560px) {
+    .fc-pri-wrap { padding: 0 18px; }
+    .fc-pri-btn { width: 100%; }
+  }
+</style>
+
+<section id="fc-pricing" aria-label="The Founding Offer">
+  <div class="fc-pri-wrap fc-pri-rv">
+    <span class="fc-pri-eye">The Founding Offer</span>
+    <h2 class="fc-pri-ttl">The most preferred rate we will ever offer.</h2>
+    <p class="fc-pri-body">Founding members travel at our best rate, held for our first guests alone. We share it with you personally on your call, along with everything your journey includes. Once the founding group is full, it closes for good.</p>
+    <a href="#fc-form-section" class="fc-pri-btn">Reserve Your Place</a>
+    <p class="fc-pri-mini">Pricing held for personal consultation · limited to eighteen places</p>
+  </div>
+</section>
+
+<script>
+(function () {
+  'use strict';
+  var rvEls = document.querySelectorAll('#fc-pricing .fc-pri-rv');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('fc-pri-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    rvEls.forEach(function (el) { obs.observe(el); });
+  } else {
+    rvEls.forEach(function (el) { el.classList.add('fc-pri-on'); });
+  }
+}());
+</script>

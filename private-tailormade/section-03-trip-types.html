@@ -1,0 +1,400 @@
+<!--
+=================================================================
+  UMOYA — PRIVATE & TAILORMADE — SECTION 03: TRIP TYPES
+=================================================================
+  Horizontal scroll-snap rail of trip-type cards (6 photo cards +
+  one "blank page" card), with prev/next arrows flanking the rail.
+
+  BEHAVIOUR: native scroll-snap track (smooth touch swiping on
+  mobile) + arrows that scroll one card at a time.
+
+  ANCHOR: id="pt-trip-types" — the hero's "See What Is Possible"
+  button targets this section.
+  IMAGES: extracted from the client mockup and uploaded to the
+  Umoya CDN (umoya_pt_*.jpg).
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #pt-trip-types {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --terra-dk: #C06840;
+    --white:    #FFFFFF;
+    --muted:    rgba(75,46,43,.68);
+    --line:     rgba(75,46,43,.14);
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--white);
+    color: var(--brown);
+    padding: clamp(60px, 8vw, 104px) 0;
+    overflow: hidden;
+  }
+
+  #pt-trip-types *, #pt-trip-types *::before, #pt-trip-types *::after { box-sizing: border-box; }
+
+  .pt-tt-c { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 3.4vw, 48px); }
+
+  /* ── Header ──────────────────────────────────────── */
+  .pt-tt-head { max-width: 62ch; margin-bottom: clamp(30px, 4vw, 44px); }
+  .pt-tt-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  .pt-tt-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--brown);
+    margin: 0;
+  }
+  .pt-tt-ttl em { font-style: italic; color: var(--terra); }
+  .pt-tt-lead {
+    font-family: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.1rem);
+    line-height: 1.72;
+    color: var(--muted);
+    max-width: 62ch;
+    margin: 1.1rem 0 0;
+  }
+
+  /* ── Rail stage (arrows flank the cards) ─────────── */
+  .pt-tt-stage { position: relative; }
+
+  .pt-tt-arrow {
+    appearance: none;
+    -webkit-appearance: none;
+    position: absolute;
+    top: calc(clamp(210px, 22vw, 260px) / 2);
+    transform: translateY(-50%);
+    z-index: 4;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    background: var(--white);
+    border: 1px solid rgba(75,46,43,.14);
+    border-radius: 50%;
+    color: var(--brown);
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(75,46,43,.20);
+    transition: background .22s var(--ease), border-color .22s var(--ease),
+                color .22s var(--ease), transform .22s var(--ease),
+                box-shadow .22s var(--ease);
+  }
+  .pt-tt-arrow[data-pt-prev] { left: 10px; }
+  .pt-tt-arrow[data-pt-next] { right: 10px; }
+  .pt-tt-arrow:hover {
+    background: var(--terra);
+    border-color: var(--terra);
+    color: var(--white);
+    transform: translateY(-50%) scale(1.06);
+    box-shadow: 0 10px 26px rgba(217,126,83,.35);
+  }
+  .pt-tt-arrow svg { width: 18px; height: 18px; }
+
+  /* ── Track ───────────────────────────────────────── */
+  .pt-tt-track {
+    display: flex;
+    gap: clamp(16px, 2vw, 24px);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 8px;
+  }
+  .pt-tt-track::-webkit-scrollbar { display: none; }
+
+  .pt-tt-card {
+    flex: 0 0 calc((100% - 2 * clamp(16px, 2vw, 24px)) / 3);
+    min-width: 0;
+    scroll-snap-align: start;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform .35s var(--ease);
+  }
+  .pt-tt-card:hover { transform: translateY(-5px); }
+
+  .pt-tt-media {
+    position: relative;
+    height: clamp(210px, 22vw, 260px);
+    overflow: hidden;
+    background: var(--brown);
+  }
+  .pt-tt-media img {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    display: block;
+    transition: transform .6s var(--ease);
+  }
+  .pt-tt-card:hover .pt-tt-media img { transform: scale(1.05); }
+
+  .pt-tt-body {
+    padding: clamp(20px, 1.8vw, 26px);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .pt-tt-name {
+    font-family: inherit;
+    font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+    font-weight: 400;
+    line-height: 1.14;
+    color: var(--brown);
+    margin: 0 0 0.7rem;
+  }
+  .pt-tt-desc {
+    font-family: inherit;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--muted);
+    margin: 0 0 1.2rem;
+  }
+  .pt-tt-go {
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--terra);
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color .25s var(--ease), gap .25s var(--ease);
+  }
+  .pt-tt-go svg { width: 14px; height: 14px; }
+  .pt-tt-go:hover { color: var(--terra-dk); gap: 12px; }
+
+  /* The "start from a blank page" card — no photo, dashed frame */
+  .pt-tt-card.pt-tt-blank {
+    background: transparent;
+    border-style: dashed;
+    border-color: rgba(75,46,43,.3);
+    justify-content: center;
+  }
+  .pt-tt-card.pt-tt-blank:hover { transform: none; }
+  .pt-tt-card.pt-tt-blank .pt-tt-body { padding: clamp(26px, 2.4vw, 34px); }
+
+  .pt-tt-hint {
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: clamp(18px, 2vw, 24px) 0 0;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .pt-tt-rv { opacity: 0; transform: translateY(26px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+  .pt-tt-rv.pt-tt-on { opacity: 1; transform: none; }
+
+  /* ── Tablet ≤1024px — two cards per view ─────────── */
+  @media (max-width: 1024px) {
+    .pt-tt-card { flex-basis: calc((100% - clamp(16px, 2vw, 24px)) / 2); }
+  }
+
+  /* ── Mobile ≤768px — one card + a peek ───────────── */
+  @media (max-width: 768px) {
+    #pt-trip-types { padding: 46px 0; }
+    .pt-tt-head { margin-bottom: 26px; }
+    .pt-tt-eye { margin-bottom: 0.9rem; }
+    .pt-tt-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .pt-tt-lead { font-size: 1rem; line-height: 1.62; }
+    .pt-tt-card { flex-basis: 84%; }
+    .pt-tt-media { height: clamp(190px, 52vw, 240px); }
+    .pt-tt-arrow { top: calc(clamp(190px, 52vw, 240px) / 2); width: 44px; height: 44px; }
+    .pt-tt-arrow[data-pt-prev] { left: 6px; }
+    .pt-tt-arrow[data-pt-next] { right: 6px; }
+  }
+
+  @media (max-width: 420px) {
+    #pt-trip-types { padding: 38px 0; }
+    .pt-tt-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+    .pt-tt-card { flex-basis: 88%; }
+    .pt-tt-body { padding: 18px 16px 20px; }
+  }
+</style>
+
+<section id="pt-trip-types" aria-label="Trip types">
+  <div class="pt-tt-c">
+
+    <div class="pt-tt-head pt-tt-rv">
+      <span class="pt-tt-eye">Trip Types</span>
+      <h2 class="pt-tt-ttl">Tell us why you're <em>traveling</em>.</h2>
+      <p class="pt-tt-lead">People rarely book a private journey because of a country. They book it for a reason. Here are the reasons we hear most, and every one of them is a starting point, not a package.</p>
+    </div>
+
+    <div class="pt-tt-stage pt-tt-rv">
+      <button class="pt-tt-arrow" type="button" data-pt-prev aria-label="Previous trip types">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="pt-tt-arrow" type="button" data-pt-next aria-label="More trip types">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <div class="pt-tt-track" role="list" aria-label="Trip types">
+
+        <article class="pt-tt-card" role="listitem">
+          <div class="pt-tt-media">
+            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_pt_wedding.jpg" alt="A wedding celebration in the Cape Winelands" loading="lazy" decoding="async">
+          </div>
+          <div class="pt-tt-body">
+            <h3 class="pt-tt-name">The Wedding</h3>
+            <p class="pt-tt-desc">Marry in the Cape Winelands at Seven Sisters, the Black-owned estate that has welcomed couples and families from Lagos, London, and beyond. We shape the celebration and the journey around it, for you and your guests.</p>
+            <a href="#pt-design" class="pt-tt-go">Make it yours
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="pt-tt-card" role="listitem">
+          <div class="pt-tt-media">
+            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_pt_honeymoon.jpg" alt="A honeymoon across the Cape and the bush" loading="lazy" decoding="async">
+          </div>
+          <div class="pt-tt-body">
+            <h3 class="pt-tt-name">The Honeymoon</h3>
+            <p class="pt-tt-desc">The romance of the Cape, the thrill of safari, and one flourish shaped just for the two of you. The trip you will talk about for the rest of your marriage.</p>
+            <a href="#pt-design" class="pt-tt-go">Make it yours
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="pt-tt-card" role="listitem">
+          <div class="pt-tt-media">
+            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_pt_family.jpg" alt="A family journey across South Africa" loading="lazy" decoding="async">
+          </div>
+          <div class="pt-tt-body">
+            <h3 class="pt-tt-name">The Family Journey</h3>
+            <p class="pt-tt-desc">The whole family, the whole country. Cape Town, Big Five safari, and the time to do it together, with pacing and welcomes shaped for every age.</p>
+            <a href="#pt-design" class="pt-tt-go">Make it yours
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="pt-tt-card" role="listitem">
+          <div class="pt-tt-media">
+            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_pt_groups_reunions.jpg" alt="A group travelling together on reunion" loading="lazy" decoding="async">
+          </div>
+          <div class="pt-tt-body">
+            <h3 class="pt-tt-name">Groups &amp; Reunions</h3>
+            <p class="pt-tt-desc">A sorority chapter, a church, an alumni network, a family coming back together. Everyone travels as one group, and the organizer is looked after.</p>
+            <a href="#pt-design" class="pt-tt-go">Make it yours
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="pt-tt-card" role="listitem">
+          <div class="pt-tt-media">
+            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_pt_milestone.jpg" alt="A milestone celebration in South Africa" loading="lazy" decoding="async">
+          </div>
+          <div class="pt-tt-body">
+            <h3 class="pt-tt-name">Milestone Celebrations</h3>
+            <p class="pt-tt-desc">A big anniversary, a landmark birthday, a retirement, a graduation. The reason is yours, and we build South Africa around it.</p>
+            <a href="#pt-design" class="pt-tt-go">Make it yours
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="pt-tt-card" role="listitem">
+          <div class="pt-tt-media">
+            <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_pt_friends.jpg" alt="A friends getaway through Cape Town and the bush" loading="lazy" decoding="async">
+          </div>
+          <div class="pt-tt-body">
+            <h3 class="pt-tt-name">A Friends Getaway</h3>
+            <p class="pt-tt-desc">Cape Town, the Winelands, and the bush, at your own pace, with the people you actually want to travel with.</p>
+            <a href="#pt-design" class="pt-tt-go">Make it yours
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="pt-tt-card pt-tt-blank" role="listitem">
+          <div class="pt-tt-body">
+            <h3 class="pt-tt-name">Something else entirely</h3>
+            <p class="pt-tt-desc">Prefer to start from a blank page? Tell us your dates, your group, and what matters most, and we will design it around you.</p>
+            <a href="#pt-design" class="pt-tt-go">Tell us what you have in mind
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <p class="pt-tt-hint pt-tt-rv">Scroll for more</p>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var root = document.getElementById('pt-trip-types');
+  if (!root) return;
+
+  var track = root.querySelector('.pt-tt-track');
+  var prev  = root.querySelector('[data-pt-prev]');
+  var next  = root.querySelector('[data-pt-next]');
+  if (!track) return;
+
+  function cardStep() {
+    var card = track.querySelector('.pt-tt-card');
+    if (!card) return 320;
+    var styles = window.getComputedStyle(track);
+    var gap = parseFloat(styles.columnGap || styles.gap) || 20;
+    return card.offsetWidth + gap;
+  }
+
+  function scrollByCards(direction) {
+    var target = track.scrollLeft + direction * cardStep();
+    if (typeof track.scrollTo === 'function') {
+      try {
+        track.scrollTo({ left: target, behavior: 'smooth' });
+        return;
+      } catch (e) { /* older engines fall through */ }
+    }
+    track.scrollLeft = target;
+  }
+
+  if (prev) prev.addEventListener('click', function(){ scrollByCards(-1); });
+  if (next) next.addEventListener('click', function(){ scrollByCards(1); });
+
+  /* Scroll reveal */
+  var rvEls = root.querySelectorAll('.pt-tt-rv');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('pt-tt-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    rvEls.forEach(function(el){ obs.observe(el); });
+  } else {
+    rvEls.forEach(function(el){ el.classList.add('pt-tt-on'); });
+  }
+}());
+</script>

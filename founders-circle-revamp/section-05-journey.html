@@ -1,0 +1,441 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 05: YOUR JOURNEY BEGINS HERE
+=================================================================
+  v4 revamp — flat editorial cards.
+  • White journey band with CREAM (--cream) framed-photo cards
+  • Divider, then a full-width CREAM extensions band with WHITE cards
+    on a single row (centered header left, cards right)
+  • Cards are flat: no shadow, no radius, no hover; a terracotta rule
+    runs down the left edge; the photo is matted inside the card.
+  • Header layout matches section-05-journey-interactive-map-image.html
+    (title left · stats right; bordered stat bar on mobile).
+
+  BRAND COLOURS ONLY: --cream (#F5F0EB), --white (#FFFFFF),
+  --brown (#4B2E2B), --terra (#D97E53). Text hierarchy uses opacity
+  tints of the brand brown; no non-brand colours are introduced.
+  Card titles + section headings are real <h2>/<h3> so they inherit
+  the theme's header (serif) font.
+  ANCHOR: id="fc-journey" is the nav target — do not change.
+=================================================================
+-->
+<style>
+  #fc-journey {
+    --cream:     #F5F0EB;
+    --brown:     #4B2E2B;
+    --terra:     #D97E53;
+    --terra-dk:  #C06840;
+    --white:     #FFFFFF;
+    --muted:     rgba(75,46,43,.66);
+    --line:      rgba(75,46,43,.16);
+    --ease:      cubic-bezier(.25,.46,.45,.94);
+
+    background: var(--white);
+    font-family: inherit;
+    color: var(--brown);
+    overflow-x: hidden;   /* guard against any horizontal spill on small screens */
+  }
+
+  #fc-journey *,
+  #fc-journey *::before,
+  #fc-journey *::after { box-sizing: border-box; }
+
+  .fc-jrn-c {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 3.4vw, 48px);
+  }
+
+  /* ── White band: header + chapters ─────────────── */
+  .fc-jrn-top { background: var(--white); padding: clamp(64px, 8vw, 104px) 0 clamp(44px, 5.5vw, 66px); }
+
+  /* ── Header (matches the old interactive-map layout) ──
+     Title + eyebrow on the left, stats on the right. */
+  .fc-jrn-hd {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: clamp(26px, 3vw, 40px);
+  }
+
+  .fc-jrn-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+
+  .fc-jrn-ttl {
+    font-family: inherit;
+    font-size: clamp(1.9rem, 4vw, 3.4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--brown);
+    margin: 0;
+  }
+  .fc-jrn-ttl em { font-style: italic; color: var(--terra); }
+
+  .fc-jrn-stats {
+    display: flex;
+    gap: 28px;
+    flex-shrink: 0;
+    padding-bottom: 6px;
+    flex-wrap: wrap;
+  }
+
+  .fc-jrn-stat { text-align: center; }
+
+  .fc-jrn-stat-n {
+    font-family: inherit;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 400;
+    color: var(--terra);
+    line-height: 1;
+  }
+
+  .fc-jrn-stat-l {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    line-height: 1.25;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+    white-space: nowrap;
+  }
+
+  /* Lead line under the header */
+  .fc-jrn-lead {
+    font-family: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.12rem);
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 46ch;   /* keep the intro on the left, not spilling toward the stats */
+    margin: 0 0 clamp(30px, 3.6vw, 48px);
+  }
+
+  /* ── Card grid ──────────────────────────────────── */
+  .fc-jrn-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(22px, 2.2vw, 34px);
+  }
+
+  /* ── Card (flat: no shadow, no radius, no hover) ──
+     Cream card mats the photo; terracotta rule on the left edge. */
+  .fc-jrn-tile {
+    display: flex;
+    flex-direction: column;
+    background: var(--cream);
+    border-left: 3px solid var(--terra);
+    padding: clamp(12px, 1vw, 15px) clamp(13px, 1.1vw, 16px) clamp(18px, 1.7vw, 26px);
+  }
+
+  .fc-jrn-tile-img {
+    position: relative;
+    height: clamp(190px, 15vw, 226px);
+    background: var(--brown) center/cover no-repeat;
+    overflow: hidden;
+  }
+  .fc-jrn-tile-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(75,46,43,0) 42%, rgba(75,46,43,.8));
+  }
+  .fc-jrn-pic {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .fc-jrn-tag { position: absolute; left: 18px; right: 18px; bottom: 15px; z-index: 2; }
+  .fc-jrn-tile-ttl {
+    font-family: inherit;
+    font-size: clamp(1.4rem, 1.9vw, 1.75rem);
+    font-weight: 400;
+    line-height: 1.08;
+    color: var(--cream);
+    text-shadow: 0 2px 14px rgba(75,46,43,.55);
+    margin: 0;
+  }
+
+  .fc-jrn-tile-body {
+    padding: clamp(15px, 1.3vw, 19px) 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .fc-jrn-loc {
+    font-family: inherit;
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--terra);
+  }
+  .fc-jrn-desc {
+    font-family: inherit;
+    font-size: 0.92rem;
+    line-height: 1.62;
+    color: rgba(75,46,43,.82);
+    margin: 0;
+  }
+  .fc-jrn-nm { color: var(--terra); font-weight: 700; font-style: normal; }
+
+  /* ── Divider between chapters and extensions ────── */
+  .fc-jrn-divider {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: clamp(46px, 6vw, 70px) 0 0;
+  }
+
+  /* ── Cream extensions band (full-width) ─────────── */
+  .fc-jrn-ext {
+    background: var(--cream);
+    padding: clamp(46px, 5.5vw, 70px) 0;
+  }
+
+  /* One row: centered header on the left, cards on the right */
+  .fc-jrn-ext-row {
+    display: flex;
+    align-items: center;
+    gap: clamp(28px, 4vw, 60px);
+  }
+  .fc-jrn-ext-head {
+    flex: 0 0 auto;
+    width: clamp(200px, 22%, 300px);
+    text-align: center;
+  }
+  .fc-jrn-ext-head .fc-jrn-subhead {
+    font-family: inherit;
+    font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+    font-weight: 400;
+    line-height: 1.16;
+    color: var(--brown);
+    margin: 0.6rem 0 0;
+  }
+
+  .fc-jrn-grid-2 {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(20px, 2vw, 30px);
+  }
+
+  /* Extension cards are WHITE on the cream band */
+  .fc-jrn-ext .fc-jrn-tile { background: var(--white); }
+
+  /* ── Tablet ─────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .fc-jrn-ext-row { flex-direction: column; align-items: stretch; gap: clamp(26px, 4vw, 38px); }
+    .fc-jrn-ext-head { width: 100%; }
+  }
+
+  @media (max-width: 900px) {
+    .fc-jrn-grid { grid-template-columns: 1fr; max-width: 600px; margin-inline: auto; }
+  }
+
+  /* ── Mobile ≤768px (header + stat bar from old layout) ── */
+  @media (max-width: 768px) {
+    .fc-jrn-top { padding: 52px 0 34px; }
+
+    .fc-jrn-hd {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: start;
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+
+    .fc-jrn-eye { margin-bottom: 14px; font-size: 0.7rem; letter-spacing: 0.22em; }
+
+    .fc-jrn-ttl {
+      max-width: none;
+      font-size: clamp(1.9rem, 8vw, 2.5rem);
+      line-height: 1.04;
+    }
+
+    .fc-jrn-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      width: 100%;
+      margin: 0;
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .fc-jrn-stat {
+      display: grid;
+      place-items: center;
+      padding: 0 8px;
+    }
+    .fc-jrn-stat + .fc-jrn-stat { border-left: 1px solid var(--line); }
+
+    .fc-jrn-stat-n { font-size: clamp(1.4rem, 6.4vw, 1.8rem); }
+
+    /* Short labels so three stats fit cleanly across a phone. */
+    .fc-jrn-stat-l { font-size: 0; margin-top: 6px; white-space: nowrap; }
+    .fc-jrn-stat-l::after {
+      content: attr(data-short);
+      font-size: 0.56rem;
+      letter-spacing: 0.12em;
+      line-height: 1.2;
+    }
+
+    .fc-jrn-grid-2 { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; }
+    .fc-jrn-tile-img { height: clamp(180px, 46vw, 220px); }
+  }
+
+  /* ── Small mobile ≤420px ────────────────────────── */
+  @media (max-width: 420px) {
+    .fc-jrn-c { padding: 0 16px; }
+    .fc-jrn-ttl { font-size: clamp(1.9rem, 8.8vw, 2.3rem); }
+    .fc-jrn-stat-l::after { font-size: 0.5rem; letter-spacing: 0.09em; }
+  }
+</style>
+
+<section id="fc-journey" aria-label="Your Journey Begins Here — the Signature Journey">
+
+  <!-- ════ White band: header + immersive chapters ════ -->
+  <div class="fc-jrn-top">
+    <div class="fc-jrn-c">
+
+      <!-- Header row: title left · stats right -->
+      <div class="fc-jrn-hd">
+        <div>
+          <span class="fc-jrn-eye">Our Signature Journey</span>
+          <h2 class="fc-jrn-ttl">Your Journey <em>Begins Here</em></h2>
+        </div>
+        <div class="fc-jrn-stats" role="list">
+          <div class="fc-jrn-stat" role="listitem">
+            <div class="fc-jrn-stat-n">10</div>
+            <div class="fc-jrn-stat-l" data-short="Days">Days</div>
+          </div>
+          <div class="fc-jrn-stat" role="listitem">
+            <div class="fc-jrn-stat-n">3</div>
+            <div class="fc-jrn-stat-l" data-short="Chapters">Immersive Chapters</div>
+          </div>
+          <div class="fc-jrn-stat" role="listitem">
+            <div class="fc-jrn-stat-n">2</div>
+            <div class="fc-jrn-stat-l" data-short="Extensions">Optional Extensions</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="fc-jrn-lead">Three immersive chapters, from the culture and history of Johannesburg, to safari in the Sabi Sand, to the Cape.</p>
+
+      <!-- Immersive-chapter cards (cream) -->
+      <div class="fc-jrn-grid">
+
+        <!-- Chapter I -->
+        <article class="fc-jrn-tile">
+          <div class="fc-jrn-tile-img">
+            <img class="fc-jrn-pic" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_gauteng.jpg" alt="Johannesburg & Soweto — history and culture" loading="lazy" />
+            <div class="fc-jrn-tag">
+              <h3 class="fc-jrn-tile-ttl">History &amp; Culture</h3>
+            </div>
+          </div>
+          <div class="fc-jrn-tile-body">
+            <span class="fc-jrn-loc">Johannesburg &amp; Soweto</span>
+            <p class="fc-jrn-desc">A warm welcome from <span class="fc-jrn-nm">Lucia Motloung</span>, a CEO of black-owned wine company Luc Mo Wines, ride through the colorful streets of Soweto, where history and culture come to light before your eyes. Have lunch with <span class="fc-jrn-nm">Antoinette Sithole</span>, sister of the late Hector Pieterson whose legacy in the anti-apartheid movement lives on.</p>
+          </div>
+        </article>
+
+        <!-- Chapter II -->
+        <article class="fc-jrn-tile">
+          <div class="fc-jrn-tile-img">
+            <img class="fc-jrn-pic" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img001238.jpeg" alt="Safari game drives in the Sabi Sand" loading="lazy" />
+            <div class="fc-jrn-tag">
+              <h3 class="fc-jrn-tile-ttl">Safari Game Drives</h3>
+            </div>
+          </div>
+          <div class="fc-jrn-tile-body">
+            <span class="fc-jrn-loc">The Sabi Sand</span>
+            <p class="fc-jrn-desc">There are few places on earth where you can watch lions, leopards, elephants, buffalo, and rhinos move freely through the wild. Days in the Sabi Sand follow the rhythm of the bush: early morning game drives as the light breaks, and golden-hour sundowners as the day slows down.</p>
+          </div>
+        </article>
+
+        <!-- Chapter III -->
+        <article class="fc-jrn-tile">
+          <div class="fc-jrn-tile-img">
+            <img class="fc-jrn-pic" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1777576366.jpeg" alt="Cape Town — where mountain meets ocean" loading="lazy" />
+            <div class="fc-jrn-tag">
+              <h3 class="fc-jrn-tile-ttl">The Cape</h3>
+            </div>
+          </div>
+          <div class="fc-jrn-tile-body">
+            <span class="fc-jrn-loc">Cape Town</span>
+            <p class="fc-jrn-desc">Experience the city where mountain meets ocean: Robben Island with <span class="fc-jrn-nm">Christo Brand</span>, the warder who once guarded Mandela, and a day on the Black-owned Winelands route with <span class="fc-jrn-nm">Ntsiki Biyela</span>, the first Black woman winemaker in South Africa.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Divider between chapters and optional extensions -->
+      <hr class="fc-jrn-divider" aria-hidden="true" />
+
+    </div>
+  </div>
+
+  <!-- ════ Cream band: optional extensions (white cards) ════ -->
+  <div class="fc-jrn-ext">
+    <div class="fc-jrn-c">
+      <div class="fc-jrn-ext-row">
+
+        <div class="fc-jrn-ext-head">
+          <span class="fc-jrn-eye">Optional Extensions</span>
+          <h2 class="fc-jrn-subhead">Experiences Beyond South Africa</h2>
+        </div>
+
+        <div class="fc-jrn-grid-2">
+
+          <!-- Extension 1 — Victoria Falls -->
+          <article class="fc-jrn-tile">
+            <div class="fc-jrn-tile-img">
+              <!-- ★ SWAP: Victoria Falls image (TBD) — placeholder from Umoya CDN -->
+              <img class="fc-jrn-pic" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img233195226.jpeg" alt="Victoria Falls" loading="lazy" />
+              <div class="fc-jrn-tag">
+                <h3 class="fc-jrn-tile-ttl">A World Wonder</h3>
+              </div>
+            </div>
+            <div class="fc-jrn-tile-body">
+              <span class="fc-jrn-loc">Victoria Falls</span>
+              <p class="fc-jrn-desc">The journey extends north to Victoria Falls, one of the world's seven natural wonders straddling the border of Zambia and Zimbabwe. Feel the mist, hear the thunder, and experience the majesty of these incredible falls up-close. Enjoy dinner over the Zambezi river and be in awe as you dine over the fourth-largest river in Africa.</p>
+            </div>
+          </article>
+
+          <!-- Extension 2 — Chobe -->
+          <article class="fc-jrn-tile">
+            <div class="fc-jrn-tile-img">
+              <!-- ★ SWAP: Chobe National Park image (TBD) — placeholder from Umoya CDN -->
+              <img class="fc-jrn-pic" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1949173199.jpeg" alt="Chobe National Park, Botswana" loading="lazy" />
+              <div class="fc-jrn-tag">
+                <h3 class="fc-jrn-tile-ttl">Discover Africa's Eden</h3>
+              </div>
+            </div>
+            <div class="fc-jrn-tile-body">
+              <span class="fc-jrn-loc">Chobe National Park, Botswana</span>
+              <p class="fc-jrn-desc">Cross into Botswana and experience wilderness like never before. Drift down the Chobe River at golden hour on a boat cruise as elephants gather on the banks in numbers found almost nowhere else on earth. A rare ending that outdoes everything before it.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

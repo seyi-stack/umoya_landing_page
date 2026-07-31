@@ -1,0 +1,179 @@
+<!--
+=================================================================
+  UMOYA — ABOUT US — SECTION 04: OUR STORY
+=================================================================
+  Founder's story — portrait left, copy right.
+
+  ANCHOR: id="ab-story"
+  ★ SWAP: the portrait is a labelled placeholder — drop in the
+  Wilson Nyah portrait (or a trip photo of him) by replacing the
+  .ab-st-ph block with an <img class="ab-st-pic" …>.
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #ab-story {
+    --cream:  #F5F0EB;
+    --brown:  #4B2E2B;
+    --terra:  #D97E53;
+    --white:  #FFFFFF;
+    --muted:  rgba(75,46,43,.68);
+    --line:   rgba(75,46,43,.14);
+    --ease:   cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--cream);
+    color: var(--brown);
+    padding: clamp(60px, 8vw, 104px) 0;
+    overflow-x: hidden;
+  }
+
+  #ab-story *, #ab-story *::before, #ab-story *::after { box-sizing: border-box; }
+
+  .ab-st-c { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 3.4vw, 48px); }
+
+  .ab-st-grid {
+    display: grid;
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+    gap: clamp(32px, 5vw, 68px);
+    align-items: center;
+  }
+
+  /* ── Portrait ────────────────────────────────────── */
+  .ab-st-photo {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--brown);
+  }
+  .ab-st-pic {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    display: block;
+  }
+
+  /* Labelled placeholder — remove when the portrait is dropped in */
+  .ab-st-ph {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #EFE7DB, #E3D6C4);
+    color: #8A755F;
+  }
+  .ab-st-ph svg { width: 28px; height: 28px; stroke: var(--terra); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; opacity: .9; }
+  .ab-st-ph span {
+    font-family: inherit;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+
+  /* ── Copy ────────────────────────────────────────── */
+  .ab-st-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  .ab-st-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--brown);
+    margin: 0;
+    text-wrap: balance;
+  }
+  .ab-st-p {
+    font-family: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.08rem);
+    line-height: 1.78;
+    color: var(--muted);
+    margin: 1.1rem 0 0;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .ab-st-rv { opacity: 0; transform: translateY(26px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+  .ab-st-rv.ab-st-on { opacity: 1; transform: none; }
+  .ab-st-rv.d1 { transition-delay: .12s; }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 900px) {
+    .ab-st-grid { grid-template-columns: 1fr; gap: clamp(26px, 4vw, 34px); }
+    .ab-st-photo { order: -1; aspect-ratio: 16 / 10; }
+  }
+
+  @media (max-width: 768px) {
+    #ab-story { padding: 46px 0; }
+    .ab-st-eye { margin-bottom: 0.9rem; }
+    .ab-st-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .ab-st-p { font-size: 1rem; line-height: 1.68; }
+  }
+
+  @media (max-width: 420px) {
+    #ab-story { padding: 38px 0; }
+    .ab-st-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+    .ab-st-p { font-size: 0.95rem; }
+  }
+</style>
+
+<section id="ab-story" aria-label="Our story">
+  <div class="ab-st-c">
+    <div class="ab-st-grid">
+
+      <!-- ★ SWAP: Wilson Nyah portrait — replace .ab-st-ph with
+           <img class="ab-st-pic" src="…" alt="Wilson Nyah, founder of Umoya Afrika Tours" loading="lazy"> -->
+      <div class="ab-st-photo ab-st-rv">
+        <div class="ab-st-ph">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
+          <span>Wilson Nyah<br>portrait or trip photo</span>
+        </div>
+      </div>
+
+      <div class="ab-st-rv d1">
+        <span class="ab-st-eye">Our Story</span>
+        <h2 class="ab-st-ttl">The journey we could not find. So we built it.</h2>
+        <p class="ab-st-p">Umoya began with a question our founder, Wilson Nyah, kept running into: why is premium travel to Africa so rarely designed from inside it? The lodges existed. The itineraries existed. The welcome did not.</p>
+        <p class="ab-st-p">So he built a company that is African-owned and African-led, on a simple belief: the best person to show you South Africa is someone who knows it as home. When Lucia Motloung pours her wine on your first evening, or Christo Brand walks you through Robben Island himself, it is because Wilson knows them by name and they are glad to welcome you.</p>
+        <p class="ab-st-p">He came to travel from a career in finance, and it shows in how an Umoya journey runs: exact, accountable, and seamless. And he built it the slow way, travelling every mile of the route himself and meeting every host in person before the first guest was ever invited.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('#ab-story .ab-st-rv');
+  if(!els.length) return;
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('ab-st-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('ab-st-on'); });
+  }
+}());
+</script>

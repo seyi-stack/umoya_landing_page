@@ -1,6 +1,6 @@
 # CLAUDE.md - Umoya Afrika Tours Project Handoff
 
-Last updated: 2026-06-07
+Last updated: 2026-07-14
 Workspace: `C:\Users\MOVING_SURFACE\Downloads\UM_Claude`
 Remote: `https://github.com/seyi-stack/umoya_landing_page.git`
 Current local branch observed during this update: `codex/elementor-widget-sync`
@@ -58,6 +58,43 @@ These preferences come from the way the project has evolved and should be treate
 - When generating widgets, expose broad editability without breaking the exact source layout.
 - Stage only intentional files in git. The worktree often contains unrelated QA/profile artifacts.
 - The user previously asked to always sync with GitHub after repo changes. When doing that, use a scoped branch and do not blanket-add unrelated files.
+- When a prompt refers to an image by a short filename (e.g. `img6406.jpg`), it is shorthand — expand it per the **Image Link Shorthand** convention below before writing it into any `src`, `poster`, `background-image`, or `<source>`.
+
+---
+
+## Image Link Shorthand (Prompt Convention)
+
+To avoid retyping long media URLs, the user references images in **short form** — just the filename, without the folder path or the shared filename prefix. **Always expand a short reference to the full URL before writing it into any `src`, `href`, `poster`, `background-image`, or `<source>`.**
+
+### Expansion rule
+
+A bare image filename `NAME.ext` expands to:
+
+```
+https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_NAME.ext
+```
+
+That is: prepend the fixed base directory and the fixed filename prefix `umoya_compressed_`.
+
+| Piece | Fixed value |
+|---|---|
+| Base directory | `https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/` |
+| Filename prefix | `umoya_compressed_` |
+
+### Examples
+
+| Given in a prompt | Written in the code |
+|---|---|
+| `XXXX.jpg` | `https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_XXXX.jpg` |
+| `ABCD.png` | `https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ABCD.png` |
+| `img6406.jpg` | `https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img6406.jpg` |
+
+### Rules & edge cases
+
+- **Only applies to bare filenames** — a token with no `http` and no `/`. If a full URL or any path is provided, use it exactly as given (do not re-expand).
+- **Preserve the extension exactly** as written (`.jpg`, `.jpeg`, `.png`, `.webp`, …). Do not "correct" `.jpeg` ↔ `.jpg` — they are different files on the server.
+- **Default prefix is `umoya_compressed_`.** A few older assets in the same folder use the shorter prefix `compressed_` (no `umoya_`), e.g. `compressed_dsc05243.jpg`. If an expanded `umoya_compressed_` link 404s, retry with the `compressed_` prefix — but expand to `umoya_compressed_` first.
+- The optimized-asset folder is fixed at `2026/optimized/`. Legacy assets under `2025/10/`, `2025/12/`, etc. are **not** produced by this shorthand — reference those with their full URLs.
 
 ---
 

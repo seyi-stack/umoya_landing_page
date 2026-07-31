@@ -1,0 +1,3542 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Umoya Homepage QA Preview</title>
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #F5F0EB; color: #4B2E2B; font-family: Georgia, "Times New Roman", serif; }
+  button, input, select, textarea { font: inherit; }
+</style>
+</head>
+<body>
+
+<!-- PREVIEW INCLUDE: homepage/homepage-section-00-nav.html -->
+
+<div id="umoyaHomepageNavMount">
+  <style>
+    #umoyaHomepageNavMount {
+      height: 64px;
+      width: 100%;
+      position: relative;
+      z-index: 2147483000;
+    }
+
+    #umoyaHomepageNav {
+      --cream: #F5F0EB;
+      --brown: #4B2E2B;
+      --terra: #D97E53;
+      --terra-dk: #C06840;
+      --white: #FFFFFF;
+      --ease: cubic-bezier(.25,.46,.45,.94);
+
+      position: fixed !important;
+      top: 0 !important;
+      left: 0;
+      right: 0;
+      bottom: auto;
+      z-index: 2147483000;
+      width: 100%;
+      height: 64px;
+      background: rgba(245,240,235,.99);
+      border-bottom: 1px solid rgba(75,46,43,.09);
+      box-shadow: 0 2px 24px rgba(75,46,43,.07);
+      overflow: visible;
+    }
+
+    #umoyaHomepageNav,
+    #umoyaHomepageNav *,
+    #umoyaHomepageNav *::before,
+    #umoyaHomepageNav *::after {
+      box-sizing: border-box;
+    }
+
+    #umoyaHomepageNav .umoya-nav-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      height: 64px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    #umoyaHomepageNav .umoya-nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    #umoyaHomepageNav .umoya-nav-logo img {
+      display: block;
+      width: auto;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    #umoyaHomepageNav .umoya-nav-logo-text {
+      color: var(--brown);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      white-space: nowrap;
+    }
+
+    #umoyaHomepageNav .umoya-nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    #umoyaHomepageNav .umoya-nav-item {
+      position: relative;
+    }
+
+    #umoyaHomepageNav .umoya-nav-link {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      height: 64px;
+      padding: 0 14px;
+      border: 0;
+      background: transparent;
+      color: var(--brown);
+      cursor: pointer;
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .11em;
+      line-height: 1;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: color .25s var(--ease);
+    }
+
+    #umoyaHomepageNav .umoya-nav-link:hover,
+    #umoyaHomepageNav .umoya-nav-item.is-active .umoya-nav-link {
+      color: var(--brown);
+    }
+
+    #umoyaHomepageNav .umoya-nav-link::after {
+      content: "";
+      position: absolute;
+      right: 14px;
+      bottom: 0;
+      left: 14px;
+      height: 2px;
+      background: var(--terra);
+      border-radius: 2px 2px 0 0;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform .3s var(--ease);
+    }
+
+    #umoyaHomepageNav .umoya-nav-item.is-active .umoya-nav-link {
+      font-weight: 700;
+    }
+
+    #umoyaHomepageNav .umoya-nav-item.is-active .umoya-nav-link::after {
+      transform: scaleX(1);
+    }
+
+    #umoyaHomepageNav .umoya-nav-cta {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 20px;
+      flex-shrink: 0;
+      background: var(--terra);
+      border: 2px solid var(--terra);
+      color: var(--white);
+      cursor: pointer;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      line-height: 1.2;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
+    }
+
+    #umoyaHomepageNav .umoya-nav-cta:hover {
+      background: var(--terra-dk);
+      border-color: var(--terra-dk);
+      color: var(--white);
+      box-shadow: 0 6px 18px rgba(217,126,83,.28);
+      transform: translateY(-1px);
+    }
+
+    #umoyaHomepageNav .umoya-nav-burger {
+      appearance: none;
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 8px;
+      flex-shrink: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      background: transparent;
+      border: 0;
+      border-radius: 4px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: background .2s;
+    }
+
+    #umoyaHomepageNav .umoya-nav-burger:hover {
+      background: rgba(75,46,43,.06);
+    }
+
+    #umoyaHomepageNav .umoya-nav-burger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--brown);
+      border-radius: 2px;
+      transform-origin: center;
+      transition: transform .35s var(--ease), opacity .25s, width .25s;
+    }
+
+    #umoyaHomepageNav.is-open .umoya-nav-burger span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+
+    #umoyaHomepageNav.is-open .umoya-nav-burger span:nth-child(2) {
+      width: 0;
+      opacity: 0;
+    }
+
+    #umoyaHomepageNav.is-open .umoya-nav-burger span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      background: rgba(245,240,235,.995);
+      border-bottom: 1px solid rgba(75,46,43,.09);
+      box-shadow: 0 8px 32px rgba(75,46,43,.12);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-6px);
+      transition: transform .35s var(--ease), opacity .3s var(--ease);
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown.is-open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-list {
+      margin: 0;
+      padding: 10px 0 14px;
+      list-style: none;
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-item {
+      border-bottom: 1px solid rgba(75,46,43,.06);
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-item:last-child {
+      border-bottom: 0;
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-link {
+      appearance: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 15px 24px;
+      background: transparent;
+      border: 0;
+      color: var(--brown);
+      cursor: pointer;
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      line-height: 1.2;
+      text-align: left;
+      text-decoration: none;
+      text-transform: uppercase;
+      -webkit-tap-highlight-color: transparent;
+      transition: color .2s, background .2s, padding-left .2s;
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-link:hover,
+    #umoyaHomepageNav .umoya-nav-dropdown-item.is-active .umoya-nav-dropdown-link {
+      background: rgba(217,126,83,.05);
+      color: var(--brown);
+      padding-left: 30px;
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-item.is-active .umoya-nav-dropdown-link::after {
+      content: "";
+      display: block;
+      width: 6px;
+      height: 6px;
+      flex-shrink: 0;
+      background: var(--terra);
+      border-radius: 50%;
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-cta-row {
+      padding: 14px 24px 10px;
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 20px;
+      background: var(--terra);
+      border: 0;
+      color: var(--white);
+      cursor: pointer;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background .25s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    #umoyaHomepageNav .umoya-nav-dropdown-cta:hover {
+      background: var(--terra-dk);
+      color: var(--white);
+    }
+
+    @media (max-width: 1120px) {
+      #umoyaHomepageNav .umoya-nav-inner {
+        gap: 14px;
+        padding: 0 18px;
+      }
+
+      #umoyaHomepageNav .umoya-nav-link {
+        padding: 0 10px;
+        font-size: .68rem;
+        letter-spacing: .09em;
+      }
+
+      #umoyaHomepageNav .umoya-nav-link::after {
+        right: 10px;
+        left: 10px;
+      }
+
+      #umoyaHomepageNav .umoya-nav-cta {
+        padding: 10px 16px;
+        font-size: .68rem;
+        letter-spacing: .12em;
+      }
+    }
+
+    @media (max-width: 900px) {
+      #umoyaHomepageNavMount,
+      #umoyaHomepageNav {
+        height: 58px;
+      }
+
+      #umoyaHomepageNav .umoya-nav-inner {
+        height: 58px;
+        padding: 0 20px;
+      }
+
+      #umoyaHomepageNav .umoya-nav-links,
+      #umoyaHomepageNav .umoya-nav-cta {
+        display: none;
+      }
+
+      #umoyaHomepageNav .umoya-nav-burger {
+        display: flex;
+      }
+
+      #umoyaHomepageNav .umoya-nav-dropdown {
+        display: block;
+      }
+    }
+
+    @media (max-width: 420px) {
+      #umoyaHomepageNav .umoya-nav-inner {
+        padding: 0 16px;
+      }
+
+      #umoyaHomepageNav .umoya-nav-logo-text {
+        display: none;
+      }
+    }
+  </style>
+
+  <nav id="umoyaHomepageNav" aria-label="Homepage section navigation">
+    <div class="umoya-nav-inner">
+      <a class="umoya-nav-logo" href="#umoya-hero" aria-label="Umoya Afrika Tours - back to homepage top">
+        <img
+          src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Umoya-Afrika-Logomark.svg"
+          alt="Umoya Afrika Tours logo"
+          onerror="this.style.display='none';document.getElementById('umoyaHomeNavLogoText').style.display='inline';"
+        >
+        <span class="umoya-nav-logo-text" id="umoyaHomeNavLogoText" style="display:none;">Umoya</span>
+      </a>
+
+      <ul class="umoya-nav-links" role="list">
+        <li class="umoya-nav-item" data-section="umoya-hero">
+          <a class="umoya-nav-link" href="#umoya-hero">Welcome</a>
+        </li>
+        <li class="umoya-nav-item" data-section="umoya-about">
+          <a class="umoya-nav-link" href="#umoya-about">Our Story</a>
+        </li>
+        <li class="umoya-nav-item" data-section="umoya-journey">
+          <a class="umoya-nav-link" href="#umoya-journey">The Journey</a>
+        </li>
+        <li class="umoya-nav-item" data-section="umoya-founder-cta">
+          <a class="umoya-nav-link" href="#umoya-founder-cta">Experience</a>
+        </li>
+        <li class="umoya-nav-item" data-section="umoya-accommodations">
+          <a class="umoya-nav-link" href="#umoya-accommodations">Accommodations</a>
+        </li>
+        <li class="umoya-nav-item">
+          <button class="umoya-nav-link" type="button" data-umoya-form-popup>Contact Us</button>
+        </li>
+      </ul>
+
+      <a class="umoya-nav-cta" href="https://umoyaafrikatours.co.za/founders-circle/">Join the Founder's Circle</a>
+
+      <button
+        class="umoya-nav-burger"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="umoyaHomepageNavDropdown"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="umoya-nav-dropdown" id="umoyaHomepageNavDropdown" aria-label="Homepage sections">
+        <ul class="umoya-nav-dropdown-list" role="list">
+          <li class="umoya-nav-dropdown-item" data-section="umoya-hero">
+            <a class="umoya-nav-dropdown-link" href="#umoya-hero">Welcome</a>
+          </li>
+          <li class="umoya-nav-dropdown-item" data-section="umoya-about">
+            <a class="umoya-nav-dropdown-link" href="#umoya-about">Our Story</a>
+          </li>
+          <li class="umoya-nav-dropdown-item" data-section="umoya-journey">
+            <a class="umoya-nav-dropdown-link" href="#umoya-journey">The Journey</a>
+          </li>
+          <li class="umoya-nav-dropdown-item" data-section="umoya-founder-cta">
+            <a class="umoya-nav-dropdown-link" href="#umoya-founder-cta">Experience</a>
+          </li>
+          <li class="umoya-nav-dropdown-item" data-section="umoya-accommodations">
+            <a class="umoya-nav-dropdown-link" href="#umoya-accommodations">Accommodations</a>
+          </li>
+          <li class="umoya-nav-dropdown-item">
+            <button class="umoya-nav-dropdown-link" type="button" data-umoya-form-popup>Contact Us</button>
+          </li>
+        </ul>
+
+        <div class="umoya-nav-dropdown-cta-row">
+          <a class="umoya-nav-dropdown-cta" href="https://umoyaafrikatours.co.za/founders-circle/">Join the Founder's Circle</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+  (function(){
+    'use strict';
+
+    var bar = document.getElementById('umoyaHomepageNav');
+    if (!bar || bar.dataset.ready === 'true') return;
+    bar.dataset.ready = 'true';
+
+    var burger = bar.querySelector('.umoya-nav-burger');
+    var dropdown = bar.querySelector('.umoya-nav-dropdown');
+    var sections = ['umoya-hero', 'umoya-about', 'umoya-journey', 'umoya-founder-cta', 'umoya-accommodations'];
+    var ticking = false;
+
+    function openMenu() {
+      bar.classList.add('is-open');
+      dropdown.classList.add('is-open');
+      burger.setAttribute('aria-expanded', 'true');
+      burger.setAttribute('aria-label', 'Close navigation menu');
+    }
+
+    function closeMenu() {
+      bar.classList.remove('is-open');
+      dropdown.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-label', 'Open navigation menu');
+    }
+
+    function setActive(activeId) {
+      sections.forEach(function(id) {
+        bar.querySelectorAll('[data-section="' + id + '"]').forEach(function(item) {
+          item.classList.toggle('is-active', id === activeId);
+        });
+      });
+    }
+
+    function updateActive() {
+      ticking = false;
+      var navHeight = bar.offsetHeight || 64;
+      var activeId = sections[0];
+
+      sections.forEach(function(id) {
+        var section = document.getElementById(id);
+        if (!section) return;
+        var top = section.getBoundingClientRect().top + window.pageYOffset - navHeight - 80;
+        if (window.pageYOffset >= top) activeId = id;
+      });
+
+      setActive(activeId);
+    }
+
+    function requestActiveUpdate() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateActive);
+    }
+
+    function scrollToTarget(targetId) {
+      var target = document.getElementById(targetId);
+      if (!target) return;
+      var navHeight = bar.offsetHeight || 64;
+      var top = targetId === 'umoya-hero' ? 0 : target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+
+      if ('scrollBehavior' in document.documentElement.style) {
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      } else {
+        window.scrollTo(0, top);
+      }
+    }
+
+    burger.addEventListener('click', function() {
+      bar.classList.contains('is-open') ? closeMenu() : openMenu();
+    });
+
+    bar.querySelectorAll('a[href^="#"]').forEach(function(link) {
+      link.addEventListener('click', function(event) {
+        var targetId = link.getAttribute('href').slice(1);
+        if (!document.getElementById(targetId)) return;
+        event.preventDefault();
+        closeMenu();
+        scrollToTarget(targetId);
+      });
+    });
+
+    bar.querySelectorAll('[data-umoya-form-popup]').forEach(function(trigger) {
+      trigger.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('click', function(event) {
+      if (!bar.contains(event.target)) closeMenu();
+    });
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') closeMenu();
+    });
+
+    window.addEventListener('scroll', requestActiveUpdate, { passive: true });
+    window.addEventListener('resize', requestActiveUpdate);
+    updateActive();
+  }());
+    </script>
+  </nav>
+</div>
+
+
+<!-- PREVIEW INCLUDE: homepage/homepage-section-01-hero.html -->
+
+<section id="umoya-hero" class="umoya-hero" aria-label="Umoya Landing Hero">
+  <style>
+    #umoya-hero {
+      --terracotta: #D97E53;
+      --brown: #4B2E2B;
+      --cream: #F5F0EB;
+      --text: #4B2E2B;
+
+      position: relative;
+      width: 100%;
+      min-height: clamp(420px, 54svh, 560px);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: var(--cream);
+      color: var(--text);
+    }
+
+    #umoya-hero,
+    #umoya-hero *,
+    #umoya-hero *::before,
+    #umoya-hero *::after {
+      box-sizing: border-box;
+    }
+
+    #umoya-hero .inner {
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+      padding: clamp(16px, 3.5vw, 40px);
+      display: grid;
+      gap: clamp(24px, 3vw, 40px);
+      text-align: center;
+      transform: translateY(-3vh);
+    }
+
+    #umoya-hero h1 {
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(48px, 8vw, 82px);
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.05;
+    }
+
+    #umoya-hero .sub {
+      margin: 0 auto;
+      max-width: 60ch;
+      color: rgba(75,46,43,.82);
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.6;
+    }
+
+    #umoya-hero .cta-row {
+      display: inline-flex;
+      justify-content: center;
+      margin-top: 12px;
+    }
+
+    #umoya-hero .btn {
+      --btn-bg: var(--terracotta);
+      --btn-bg-hover: #c66c44;
+
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border: 0;
+      border-radius: 14px;
+      background: var(--btn-bg);
+      box-shadow: 0 6px 18px rgba(0,0,0,.25);
+      color: var(--cream);
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-decoration: none;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    #umoya-hero .btn:hover {
+      background: var(--btn-bg-hover);
+      box-shadow: 0 10px 22px rgba(0,0,0,.28);
+      color: var(--cream);
+      transform: translateY(-1px);
+    }
+
+    #umoya-hero .btn svg {
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      #umoya-hero {
+        min-height: 390px;
+      }
+
+      #umoya-hero .inner {
+        transform: none;
+      }
+
+      #umoya-hero .btn {
+        padding: 14px 24px;
+        font-size: 16px;
+      }
+    }
+  </style>
+
+  <div class="inner">
+    <h1>Breathe South Africa Differently.</h1>
+    <h2 class="sub">Premier small-group journeys for discerning travelers who expect more than the ordinary.</h2>
+
+    <div class="cta-row" role="group" aria-label="Primary action">
+      <a class="btn" href="https://umoyaafrikatours.co.za/founders-circle/">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Join the Founders Circle
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- PREVIEW INCLUDE: homepage/homepage-section-02-about.html -->
+
+<!-- UMOYA - HOMEPAGE SECTION 02: ABOUT -->
+<section id="umoya-about" aria-label="About Umoya Afrika Tours">
+  <style>
+    #umoya-about {
+      --cream: #F5F0EB;
+      --brown: #4B2E2B;
+      --terra: #D97E53;
+      --terra-dk: #C06840;
+      --olive: #708238;
+      --ink: #3A2F2C;
+      --white: #FFFFFF;
+      --ease: cubic-bezier(.25,.46,.45,.94);
+
+      background: var(--cream);
+      color: var(--brown);
+      overflow: hidden;
+    }
+
+    #umoya-about,
+    #umoya-about *,
+    #umoya-about *::before,
+    #umoya-about *::after {
+      box-sizing: border-box;
+    }
+
+    #umoya-about .umoya-about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      min-height: clamp(560px, 68vh, 740px);
+    }
+
+    #umoya-about .umoya-about-copy {
+      display: flex;
+      align-items: center;
+      padding: clamp(56px, 8vw, 112px) clamp(28px, 7vw, 96px);
+    }
+
+    #umoya-about .umoya-about-inner {
+      width: min(100%, 560px);
+      margin-left: auto;
+    }
+
+    #umoya-about .umoya-about-eye {
+      display: block;
+      margin-bottom: 18px;
+      color: var(--terra);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.24em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    #umoya-about h2 {
+      margin: 0 0 26px;
+      color: var(--ink);
+      font-size: clamp(2.05rem, 4.5vw, 4.2rem);
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.04;
+    }
+
+    #umoya-about .umoya-about-rule {
+      display: block;
+      width: 54px;
+      height: 2px;
+      margin: 0 0 28px;
+      background: var(--terra);
+    }
+
+    #umoya-about .umoya-about-body {
+      display: grid;
+      gap: 18px;
+      color: rgba(75,46,43,.88);
+      font-size: clamp(1rem, 1.35vw, 1.08rem);
+      line-height: 1.82;
+    }
+
+    #umoya-about .umoya-about-body p {
+      margin: 0;
+    }
+
+    #umoya-about .umoya-about-media {
+      position: relative;
+      min-height: 100%;
+      overflow: hidden;
+      background: var(--brown);
+    }
+
+    #umoya-about .umoya-about-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      object-position: center 34%;
+      display: block;
+      transform: scale(1.01);
+    }
+
+    #umoya-about .umoya-about-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(75,46,43,.08), rgba(75,46,43,.02));
+      pointer-events: none;
+    }
+
+    #umoya-about .umoya-about-rv {
+      opacity: 1;
+      transform: none;
+    }
+
+    #umoya-about .umoya-about-rv.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 900px) {
+      #umoya-about .umoya-about-layout {
+        grid-template-columns: 1fr;
+        min-height: 0;
+      }
+
+      #umoya-about .umoya-about-copy {
+        order: 2;
+        padding: 46px 24px 58px;
+      }
+
+      #umoya-about .umoya-about-inner {
+        margin: 0 auto;
+      }
+
+      #umoya-about .umoya-about-media {
+        order: 1;
+        min-height: clamp(300px, 58vw, 440px);
+      }
+    }
+  </style>
+
+  <div class="umoya-about-layout">
+    <div class="umoya-about-copy">
+      <div class="umoya-about-inner umoya-about-rv">
+        <span class="umoya-about-eye">About Umoya</span>
+        <h2>Move Beyond the Familiar. Step into the Extraordinary.</h2>
+        <span class="umoya-about-rule" aria-hidden="true"></span>
+        <div class="umoya-about-body">
+          <p>At Umoya Afrika Tours, we don't just take you to South Africa. We bring you deeper. Every journey is shaped by on-the-ground local expertise and genuine cultural perspective, offering access to moments, people, and places that most travelers never encounter.</p>
+
+        </div>
+      </div>
+    </div>
+
+    <figure class="umoya-about-media" aria-label="Umoya Afrika Tours cultural journey">
+      <img
+        src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img103379490.jpeg"
+        alt="Umoya Afrika Tours host during a South African cultural journey"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
+    </figure>
+  </div>
+
+  <script>
+  (function(){
+    'use strict';
+    var items = document.querySelectorAll('#umoya-about .umoya-about-rv');
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      items.forEach(function(item) { obs.observe(item); });
+    } else {
+      items.forEach(function(item) { item.classList.add('is-visible'); });
+    }
+  }());
+  </script>
+</section>
+
+
+<!-- PREVIEW INCLUDE: homepage/homepage-section-03-homecoming.html -->
+
+<!--
+  UMOYA HOMEPAGE - SECTION 03: SIGNATURE JOURNEY
+  Purpose: centered journey section with a wide image carousel and copy below.
+  Elementor: paste this as one HTML widget. The CTA uses the shared Umoya popup trigger.
+-->
+<section id="umoya-journey" aria-label="Introducing the Umoya Signature Journey">
+  <style>
+    /* Section shell and shared design tokens */
+    #umoya-journey {
+      --cream: #F5F0EB;
+      --brown: #4B2E2B;
+      --terra: #D97E53;
+      --terra-dk: #C06840;
+      --olive: #708238;
+      --white: #FFFFFF;
+      --ease: cubic-bezier(.25,.46,.45,.94);
+
+      background: var(--cream);
+      color: var(--brown);
+      display: block !important;
+      width: 100%;
+      padding: clamp(54px, 7vw, 92px) 0;
+      overflow: hidden;
+    }
+
+    #umoya-journey,
+    #umoya-journey *,
+    #umoya-journey *::before,
+    #umoya-journey *::after {
+      box-sizing: border-box;
+    }
+
+    /* Shared width keeps the intro, carousel, and text visually aligned. */
+    #umoya-journey .umoya-journey-wrap {
+      display: block !important;
+      width: min(1008px, 92vw);
+      margin: 0 auto;
+    }
+
+    /* Intro band above carousel: title on the left, journey stats on the right. */
+    #umoya-journey .umoya-journey-intro {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: clamp(26px, 5vw, 70px);
+      align-items: end;
+      margin-bottom: clamp(28px, 4.5vw, 46px);
+    }
+
+    #umoya-journey .umoya-journey-intro-copy {
+      min-width: 0;
+    }
+
+    #umoya-journey .umoya-journey-kicker {
+      display: block;
+      margin-bottom: clamp(18px, 2.5vw, 30px);
+      color: var(--terra);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .28em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    #umoya-journey .umoya-journey-heading {
+      margin: 0;
+      color: var(--brown);
+      font-size: clamp(2.45rem, 5.4vw, 4.7rem);
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.04;
+    }
+
+    #umoya-journey .umoya-journey-heading em {
+      color: var(--terra);
+      font-style: italic;
+    }
+
+    #umoya-journey .umoya-journey-stats {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(74px, 1fr));
+      gap: clamp(18px, 3vw, 42px);
+      align-items: end;
+      margin: 0;
+      padding: 0;
+    }
+
+    #umoya-journey .umoya-journey-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 0;
+      text-align: center;
+    }
+
+    #umoya-journey .umoya-journey-stat dt {
+      order: 2;
+      margin-top: 10px;
+      color: var(--brown);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .24em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    #umoya-journey .umoya-journey-stat dd {
+      order: 1;
+      margin: 0;
+      color: var(--terra);
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1;
+    }
+
+    /* Top image carousel */
+    #umoya-journey .umoya-journey-carousel {
+      position: relative;
+      display: block !important;
+      overflow: hidden;
+      width: 100%;
+      aspect-ratio: 16 / 7.5;
+      min-height: 340px;
+      background: var(--brown);
+      border-radius: 10px;
+      box-shadow: 0 24px 60px rgba(75,46,43,.14);
+    }
+
+    #umoya-journey .umoya-journey-image {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.018);
+      transition: opacity .7s var(--ease), transform 1s var(--ease);
+    }
+
+    #umoya-journey .umoya-journey-image.is-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Dot controls sit over the bottom edge of the image. */
+    #umoya-journey .umoya-journey-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 14px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transform: translateX(-50%);
+    }
+
+    #umoya-journey .umoya-journey-dot {
+      appearance: none;
+      width: 11px;
+      height: 11px;
+      padding: 0;
+      border: 1px solid rgba(255,255,255,.85);
+      border-radius: 50%;
+      background: rgba(255,255,255,.48);
+      cursor: pointer;
+      box-shadow: 0 1px 6px rgba(0,0,0,.2);
+      transition: background .22s var(--ease), transform .22s var(--ease);
+    }
+
+    #umoya-journey .umoya-journey-dot.is-active {
+      background: var(--white);
+      transform: scale(1.12);
+    }
+
+    /* Copy block below carousel */
+    #umoya-journey .umoya-journey-copy {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) !important;
+      align-items: start;
+      justify-items: start;
+      gap: 0;
+      width: min(880px, 100%);
+      max-width: 880px;
+      margin-top: clamp(30px, 4vw, 44px);
+    }
+
+    #umoya-journey .umoya-journey-copy > * {
+      grid-column: 1 / -1 !important;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    #umoya-journey .umoya-journey-body {
+      display: block !important;
+      width: 100%;
+      margin: 0;
+      color: rgba(75,46,43,.88);
+      font-size: clamp(1rem, 1.25vw, 1.08rem);
+      line-height: 1.82;
+    }
+
+    /* Compact itinerary rows under the paragraph */
+    #umoya-journey .umoya-journey-highlights {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 12px;
+      width: 100%;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    #umoya-journey .umoya-journey-highlight {
+      display: grid !important;
+      grid-template-columns: 22px minmax(0, 1fr) !important;
+      gap: 12px;
+      align-items: start;
+      color: rgba(75,46,43,.84);
+      font-size: .92rem;
+      line-height: 1.6;
+    }
+
+    #umoya-journey .umoya-journey-check {
+      display: grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      margin-top: 1px;
+      border: 1.5px solid var(--brown);
+      border-radius: 50%;
+      color: var(--brown);
+      flex-shrink: 0;
+    }
+
+    #umoya-journey .umoya-journey-check svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    #umoya-journey .umoya-journey-highlight strong {
+      color: var(--brown);
+      font-weight: 800;
+    }
+
+    #umoya-journey .umoya-journey-cta {
+      appearance: none;
+      -webkit-appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      margin-top: 28px;
+      padding: 14px 28px;
+      background: var(--terra);
+      border: 2px solid var(--terra);
+      border-radius: 7px;
+      color: var(--white);
+      cursor: pointer;
+      font-size: .95rem;
+      font-weight: 800;
+      line-height: 1.2;
+      text-decoration: none;
+      transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
+    }
+
+    #umoya-journey .umoya-journey-cta:hover {
+      background: var(--terra-dk);
+      border-color: var(--terra-dk);
+      color: var(--white);
+      box-shadow: 0 12px 28px rgba(217,126,83,.24);
+      transform: translateY(-1px);
+    }
+
+    #umoya-journey .umoya-journey-cta svg {
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+    }
+
+    /* Keep content visible even if Elementor delays or skips inline scripts. */
+    #umoya-journey .umoya-journey-rv {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 760px) {
+      #umoya-journey {
+        padding: 42px 0 58px;
+      }
+
+      #umoya-journey .umoya-journey-intro {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      #umoya-journey .umoya-journey-stats {
+        width: min(100%, 420px);
+      }
+
+      #umoya-journey .umoya-journey-carousel {
+        aspect-ratio: 4 / 3;
+        min-height: 260px;
+      }
+
+      #umoya-journey .umoya-journey-copy {
+        margin-top: 28px;
+      }
+
+      #umoya-journey .umoya-journey-cta {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #umoya-journey .umoya-journey-stats {
+        gap: 12px;
+      }
+
+      #umoya-journey .umoya-journey-stat dt {
+        font-size: .58rem;
+        letter-spacing: .16em;
+      }
+    }
+  </style>
+
+  <div class="umoya-journey-wrap umoya-journey-rv">
+    <!-- Intro band follows the reference layout: title block left, key numbers right. -->
+    <header class="umoya-journey-intro">
+      <div class="umoya-journey-intro-copy">
+        <span class="umoya-journey-kicker">Our Signature Journey</span>
+        <h2 class="umoya-journey-heading">Introducing the Umoya <em>Signature Journey</em></h2>
+      </div>
+
+      <dl class="umoya-journey-stats" aria-label="Signature Journey facts">
+        <div class="umoya-journey-stat">
+          <dt>Days</dt>
+          <dd>15</dd>
+        </div>
+        <div class="umoya-journey-stat">
+          <dt>Provinces</dt>
+          <dd>4</dd>
+        </div>
+        <div class="umoya-journey-stat">
+          <dt>Guests</dt>
+          <dd>16</dd>
+        </div>
+      </dl>
+    </header>
+
+    <!-- Image carousel. Dot order follows image order. -->
+    <div class="umoya-journey-carousel" aria-label="Signature Journey image slideshow">
+      <img class="umoya-journey-image is-active" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img166276458.jpeg" alt="Umoya Signature Journey moment in South Africa" loading="eager" decoding="async" fetchpriority="high">
+      <img class="umoya-journey-image" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img001238.jpeg" alt="Umoya Signature Journey cultural experience" loading="eager" decoding="async">
+      <img class="umoya-journey-image" src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-1.jpg" alt="Umoya Signature Journey landscape" loading="eager" decoding="async">
+      <img class="umoya-journey-image" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img000916.jpeg" alt="Umoya Signature Journey coastal experience" loading="eager" decoding="async">
+      <img class="umoya-journey-image" src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1777576366.jpeg" alt="Umoya Signature Journey heritage experience" loading="eager" decoding="async">
+
+      <div class="umoya-journey-dots" aria-label="Choose slideshow image">
+        <button class="umoya-journey-dot is-active" type="button" data-journey-dot="0" aria-label="Show image 1" aria-current="true"></button>
+        <button class="umoya-journey-dot" type="button" data-journey-dot="1" aria-label="Show image 2" aria-current="false"></button>
+        <button class="umoya-journey-dot" type="button" data-journey-dot="2" aria-label="Show image 3" aria-current="false"></button>
+        <button class="umoya-journey-dot" type="button" data-journey-dot="3" aria-label="Show image 4" aria-current="false"></button>
+        <button class="umoya-journey-dot" type="button" data-journey-dot="4" aria-label="Show image 5" aria-current="false"></button>
+      </div>
+    </div>
+
+    <!-- Text content sits below the carousel, aligned to the same width. -->
+    <div class="umoya-journey-copy">
+      <p class="umoya-journey-body">The Signature Journey moves through four of South Africa's most extraordinary provinces, from the living history of Johannesburg and Soweto, to private game drives at Kapama River Lodge, the warm coastline of KwaZulu-Natal, and the breathtaking landscapes of Cape Town. Intentionally intimate and anchored by five signature moments, every stop is experienced with privileged local access and every detail taken care of from the moment you land. For those who wish to linger, an optional Winelands extension awaits. This is South Africa as most travelers never see it.</p>
+
+      <ul class="umoya-journey-highlights" aria-label="Itinerary highlights">
+        <li class="umoya-journey-highlight">
+          <span class="umoya-journey-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span><strong>Itinerary at a Glance:</strong> Gauteng, Mpumalanga, KwaZulu-Natal, and the Western Cape.</span>
+        </li>
+      </ul>
+
+      <button class="umoya-journey-cta" type="button" data-umoya-form-popup>
+        Join the Journey
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    'use strict';
+
+    var root = document.getElementById('umoya-journey');
+    if (!root || root.dataset.ready === 'true') return;
+    root.dataset.ready = 'true';
+
+    var images = Array.prototype.slice.call(root.querySelectorAll('.umoya-journey-image'));
+    var dots = Array.prototype.slice.call(root.querySelectorAll('.umoya-journey-dot'));
+    var index = 0;
+    var timer = null;
+    var AUTOPLAY_DELAY = 5000;
+
+    function normalizeIndex(value) {
+      return (value + images.length) % images.length;
+    }
+
+    function imageIsReady(image) {
+      return image && image.complete && image.naturalWidth > 0;
+    }
+
+    function showSlide(nextIndex) {
+      index = normalizeIndex(nextIndex);
+      images.forEach(function(image, imageIndex) {
+        image.classList.toggle('is-active', imageIndex === index);
+      });
+      dots.forEach(function(dot, dotIndex) {
+        var isActive = dotIndex === index;
+        dot.classList.toggle('is-active', isActive);
+        dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+      });
+    }
+
+    function showSlideWhenDecoded(nextIndex) {
+      var targetIndex = normalizeIndex(nextIndex);
+      var targetImage = images[targetIndex];
+
+      if (!targetImage || typeof targetImage.decode !== 'function') {
+        showSlide(targetIndex);
+        return;
+      }
+
+      targetImage.decode().catch(function() {
+        return null;
+      }).then(function() {
+        showSlide(targetIndex);
+      });
+    }
+
+    function requestSlide(nextIndex) {
+      var targetIndex = normalizeIndex(nextIndex);
+      var targetImage = images[targetIndex];
+
+      /* Keep the current slide visible until the next large remote image is ready. */
+      if (imageIsReady(targetImage)) {
+        showSlideWhenDecoded(targetIndex);
+        return;
+      }
+
+      function cleanup() {
+        targetImage.removeEventListener('load', onReady);
+        targetImage.removeEventListener('error', cleanup);
+      }
+
+      function onReady() {
+        cleanup();
+        showSlideWhenDecoded(targetIndex);
+      }
+
+      targetImage.addEventListener('load', onReady, { once: true });
+      targetImage.addEventListener('error', cleanup, { once: true });
+    }
+
+    function startAutoplay() {
+      if (timer || images.length < 2) return;
+      timer = window.setInterval(function() {
+        requestSlide(index + 1);
+      }, AUTOPLAY_DELAY);
+    }
+
+    function stopAutoplay() {
+      if (!timer) return;
+      window.clearInterval(timer);
+      timer = null;
+    }
+
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        stopAutoplay();
+        requestSlide(parseInt(dot.getAttribute('data-journey-dot'), 10));
+        startAutoplay();
+      });
+    });
+
+    root.addEventListener('focusin', stopAutoplay);
+    root.addEventListener('focusout', startAutoplay);
+
+    showSlide(0);
+    startAutoplay();
+  }());
+  </script>
+</section>
+
+
+<!-- PREVIEW INCLUDE: homepage/homepage-section-04-founder-cta.html -->
+
+<section id="umoya-founder-cta" aria-label="Founder's Circle invitation">
+  <style>
+    #umoya-founder-cta {
+      --cream: #F5F0EB;
+      --brown: #4B2E2B;
+      --terra: #D97E53;
+      --terra-dk: #C06840;
+      --white: #FFFFFF;
+      --ease: cubic-bezier(.25,.46,.45,.94);
+
+      position: relative;
+      isolation: isolate;
+      min-height: clamp(430px, 54vw, 620px);
+      display: flex;
+      align-items: center;
+      background: var(--brown);
+      color: var(--cream);
+      overflow: hidden;
+    }
+
+    #umoya-founder-cta,
+    #umoya-founder-cta *,
+    #umoya-founder-cta *::before,
+    #umoya-founder-cta *::after {
+      box-sizing: border-box;
+    }
+
+    #umoya-founder-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(75,46,43,.92) 0%, rgba(75,46,43,.72) 48%, rgba(75,46,43,.34) 100%),
+        url("https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-20.jpg") center/cover no-repeat;
+    }
+
+    #umoya-founder-cta::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.28));
+    }
+
+    #umoya-founder-cta .umoya-founder-inner {
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+      padding: clamp(62px, 8vw, 110px) 0;
+    }
+
+    #umoya-founder-cta .umoya-founder-copy {
+      max-width: 660px;
+    }
+
+    #umoya-founder-cta h2 {
+      margin: 0 0 22px;
+      color: var(--cream);
+      font-size: clamp(2.1rem, 5.2vw, 4.45rem);
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.04;
+    }
+
+    #umoya-founder-cta p {
+      margin: 0;
+      max-width: 620px;
+      color: rgba(245,240,235,.9);
+      font-size: clamp(1rem, 1.35vw, 1.1rem);
+      line-height: 1.78;
+    }
+
+    #umoya-founder-cta .umoya-founder-btn {
+      appearance: none;
+      -webkit-appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 34px;
+      min-height: 50px;
+      padding: 15px 30px;
+      background: var(--terra);
+      border: 2px solid var(--terra);
+      color: var(--white);
+      cursor: pointer;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      line-height: 1.2;
+      text-transform: uppercase;
+      transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+    }
+
+    #umoya-founder-cta .umoya-founder-btn:hover {
+      background: var(--terra-dk);
+      border-color: var(--terra-dk);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 720px) {
+      #umoya-founder-cta::before {
+        background:
+          linear-gradient(180deg, rgba(75,46,43,.88) 0%, rgba(75,46,43,.76) 58%, rgba(75,46,43,.58) 100%),
+          url("https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-20.jpg") center/cover no-repeat;
+      }
+    }
+  </style>
+
+  <div class="umoya-founder-inner">
+    <div class="umoya-founder-copy">
+      <h2>Be among the first to experience South Africa the Umoya way.</h2>
+      <p>Our Founder's Circle is an intimate group of founding travelers who will shape the journey before anyone else with exclusive access, preferred rates, and a seat at the table as we build something extraordinary together.</p>
+      <button type="button" class="umoya-founder-btn" data-umoya-form-popup>Reserve Your Place</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- PREVIEW INCLUDE: homepage/homepage-section-05a-pricing.html -->
+
+<section id="fc-pricing" aria-label="Founder's Circle journey pricing">
+  <style>
+    #fc-pricing {
+      --cream: #F5F0EB;
+      --brown: #4B2E2B;
+      --terra: #D97E53;
+      --white: #FFFFFF;
+      --ease: cubic-bezier(.25,.46,.45,.94);
+
+      background: var(--cream);
+      padding: 26px 0 62px;
+      color: var(--brown);
+      box-sizing: border-box;
+    }
+
+    #fc-pricing *,
+    #fc-pricing *::before,
+    #fc-pricing *::after {
+      box-sizing: border-box;
+    }
+
+    #fc-pricing .fc-pri-wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    #fc-pricing .fc-pri-card {
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 280px);
+      align-items: center;
+      justify-content: center;
+      gap: clamp(24px, 5vw, 48px);
+      min-height: 136px;
+      padding: 34px clamp(34px, 5vw, 52px);
+      background: var(--white);
+      border: 1px solid rgba(75,46,43,.06);
+      border-radius: 8px;
+      box-shadow: 0 14px 38px rgba(75,46,43,.08);
+    }
+
+    #fc-pricing .fc-pri-main {
+      min-width: 0;
+    }
+
+    #fc-pricing .fc-pri-rv {
+      opacity: 1;
+      transform: none;
+    }
+
+    #fc-pricing .fc-pri-rv.fc-pri-on {
+      opacity: 1;
+      transform: none;
+    }
+
+    #fc-pricing .fc-pri-label {
+      margin: 0 0 8px;
+      color: var(--terra);
+      font-size: .52rem;
+      font-weight: 700;
+      letter-spacing: .24em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    #fc-pricing .fc-pri-value {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 0 0 2px;
+    }
+
+    #fc-pricing .fc-pri-price {
+      margin: 0;
+      color: var(--brown);
+      font-size: clamp(2.25rem, 4.2vw, 3.2rem);
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: .82;
+    }
+
+    #fc-pricing .fc-pri-person {
+      color: var(--brown);
+      font-size: .86rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: .4;
+    }
+
+    #fc-pricing .fc-pri-save {
+      margin: 0;
+      color: var(--terra);
+      font-size: clamp(.92rem, .7vw, 1.16rem);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.25;
+    }
+
+    #fc-pricing .fc-pri-side {
+      display: grid;
+      justify-items: center;
+      gap: 14px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    #fc-pricing .fc-pri-limited {
+      margin: 0;
+      color: var(--brown);
+      font-size: .55rem;
+      font-weight: 800;
+      letter-spacing: .24em;
+      line-height: 1.45;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    #fc-pricing .fc-pri-btn {
+      appearance: none;
+      -webkit-appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 42px;
+      padding: 20px 20px;
+      background: var(--terra);
+      border: 2px solid var(--terra);
+      color: var(--white);
+      cursor: pointer;
+      font-size: .98rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      line-height: 1.2;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      overflow-wrap: anywhere;
+      transition: background .25s var(--ease), border-color .25s var(--ease),
+                  box-shadow .25s var(--ease), transform .25s var(--ease);
+    }
+
+    @media (max-width: 1024px) {
+      #fc-pricing .fc-pri-card {
+        grid-template-columns: 1fr;
+        gap: 26px;
+        min-height: 0;
+        text-align: center;
+      }
+
+      #fc-pricing .fc-pri-value {
+        justify-content: center;
+      }
+
+      #fc-pricing .fc-pri-side {
+        width: min(100%, 320px);
+        margin: 0 auto;
+      }
+    }
+
+    #fc-pricing .fc-pri-btn:hover {
+      background: #C06840;
+      border-color: #C06840;
+      color: var(--white);
+      box-shadow: 0 10px 26px rgba(217,126,83,.28);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 560px) {
+      #fc-pricing {
+        padding: 22px 0 56px;
+      }
+
+      #fc-pricing .fc-pri-wrap {
+        padding: 0 18px;
+      }
+
+      #fc-pricing .fc-pri-card {
+        padding: 34px 22px;
+      }
+
+      #fc-pricing .fc-pri-label {
+        letter-spacing: .18em;
+      }
+
+      #fc-pricing .fc-pri-value {
+        display: block;
+      }
+
+      #fc-pricing .fc-pri-person {
+        display: block;
+        margin-top: 10px;
+      }
+
+      #fc-pricing .fc-pri-btn {
+        min-height: 48px;
+        font-size: .82rem;
+        letter-spacing: .12em;
+        padding: 16px 18px;
+      }
+
+      #fc-pricing .fc-pri-limited {
+        letter-spacing: .18em;
+      }
+    }
+  </style>
+
+<div class="fc-pri-wrap">
+    <div class="fc-pri-card fc-pri-rv" role="note">
+      <div class="fc-pri-main">
+        <p class="fc-pri-label">Founder's Circle Exclusive</p>
+        <div class="fc-pri-value">
+          <h3 class="fc-pri-price">$12,500</h3>
+          <p class="fc-pri-person">per person</p>
+        </div>
+        <h3 class="fc-pri-save">Save $2,500 from regular pricing</h3>
+      </div>
+      <div class="fc-pri-side">
+        <button type="button" class="fc-pri-btn" data-umoya-form-popup>CLAIM MY SPECIAL OFFER</button>
+        <p class="fc-pri-limited">Limited to founding guests</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var root = document.getElementById('fc-pricing');
+  if (!root) return;
+
+  var rvEls = root.querySelectorAll('.fc-pri-rv');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('fc-pri-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    rvEls.forEach(function(el) { obs.observe(el); });
+  } else {
+    rvEls.forEach(function(el) { el.classList.add('fc-pri-on'); });
+  }
+})();
+</script>
+
+
+<!-- PREVIEW INCLUDE: homepage/homepage-section-06-accommodations.html -->
+
+<!-- UMOYA - HOMEPAGE SECTION 06: ACCOMMODATIONS -->
+<section id="umoya-accommodations" aria-label="Accommodations">
+  <style>
+    #umoya-accommodations {
+      --cream: #F5F0EB;
+      --brown: #4B2E2B;
+      --terra: #D97E53;
+      --terra-dk: #C06840;
+      --white: #FFFFFF;
+      --ease: cubic-bezier(.25,.46,.45,.94);
+
+      background: var(--cream);
+      color: var(--brown);
+      padding: clamp(64px, 8vw, 112px) 0;
+      overflow: hidden;
+    }
+
+    #umoya-accommodations,
+    #umoya-accommodations *,
+    #umoya-accommodations *::before,
+    #umoya-accommodations *::after {
+      box-sizing: border-box;
+    }
+
+    #umoya-accommodations .umoya-acc-wrap {
+      width: min(1180px, 92vw);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+      gap: clamp(34px, 6vw, 82px);
+      align-items: center;
+    }
+
+    #umoya-accommodations .umoya-acc-eye {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--terra);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .24em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    #umoya-accommodations h2 {
+      margin: 0 0 24px;
+      color: var(--brown);
+      font-size: clamp(2.1rem, 4.8vw, 4.1rem);
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.04;
+    }
+
+    #umoya-accommodations .umoya-acc-body {
+      display: grid;
+      gap: 18px;
+      color: rgba(75,46,43,.86);
+      font-size: clamp(1rem, 1.2vw, 1.06rem);
+      line-height: 1.78;
+    }
+
+    #umoya-accommodations .umoya-acc-body p {
+      margin: 0;
+    }
+
+    #umoya-accommodations .umoya-acc-btn {
+      appearance: none;
+      -webkit-appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 32px;
+      min-height: 48px;
+      padding: 14px 28px;
+      background: var(--terra);
+      border: 2px solid var(--terra);
+      color: var(--white);
+      cursor: pointer;
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      line-height: 1.2;
+      text-transform: uppercase;
+      transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+    }
+
+    #umoya-accommodations .umoya-acc-btn:hover {
+      background: var(--terra-dk);
+      border-color: var(--terra-dk);
+      transform: translateY(-2px);
+    }
+
+    #umoya-accommodations .umoya-acc-gallery {
+      position: relative;
+      min-height: clamp(380px, 46vw, 560px);
+      overflow: hidden;
+      background: var(--brown);
+    }
+
+    #umoya-accommodations .umoya-acc-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity .6s var(--ease), transform .9s var(--ease);
+    }
+
+    #umoya-accommodations .umoya-acc-image.is-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    #umoya-accommodations .umoya-acc-controls {
+      position: absolute;
+      right: 22px;
+      bottom: 22px;
+      display: flex;
+      gap: 10px;
+      z-index: 2;
+    }
+
+    #umoya-accommodations .umoya-acc-arrow {
+      appearance: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 50%;
+      background: rgba(75,46,43,.42);
+      color: var(--white);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      backdrop-filter: blur(8px);
+      transition: background .22s var(--ease), transform .22s var(--ease);
+    }
+
+    #umoya-accommodations .umoya-acc-arrow:hover {
+      background: var(--terra);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 900px) {
+      #umoya-accommodations {
+        padding: 54px 0 72px;
+      }
+
+      #umoya-accommodations .umoya-acc-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      #umoya-accommodations .umoya-acc-gallery {
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+      }
+    }
+  </style>
+
+  <div class="umoya-acc-wrap">
+    <div class="umoya-acc-copy">
+      <span class="umoya-acc-eye">Accommodations</span>
+      <h2>Where Luxury Feels at Home</h2>
+      <div class="umoya-acc-body">
+        <p>Umoya Afrika Tours pairs refined comfort with a deep sense of peace. Guests stay in carefully selected boutique lodges and luxury accommodations that reflect the beauty and character of South Africa's landscapes.</p>
+        <p>Every stay is designed to offer both relaxation and immersion, welcoming travelers to experience the continent with comfort, intention, and care.</p>
+      </div>
+      <button type="button" class="umoya-acc-btn" data-umoya-form-popup>Inquire Now</button>
+    </div>
+
+    <figure class="umoya-acc-gallery" aria-label="Luxury South African accommodations">
+      <img class="umoya-acc-image is-active" src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-5.jpg" alt="Luxury lodge interior in South Africa" loading="eager" decoding="async">
+      <img class="umoya-acc-image" src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-19.jpg" alt="Serene South African landscape near a lodge" loading="eager" decoding="async">
+      <img class="umoya-acc-image" src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-20.jpg" alt="Coastal South African accommodation setting" loading="eager" decoding="async">
+      <img class="umoya-acc-image" src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=1800&auto=format&fit=crop" alt="South African wilderness lodge setting" loading="eager" decoding="async">
+      <div class="umoya-acc-controls" aria-label="Accommodation carousel controls">
+        <button class="umoya-acc-arrow" type="button" data-acc-prev aria-label="Previous accommodation image">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="umoya-acc-arrow" type="button" data-acc-next aria-label="Next accommodation image">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </figure>
+  </div>
+
+  <script>
+  (function(){
+    'use strict';
+    var root = document.getElementById('umoya-accommodations');
+    if (!root) return;
+
+    var images = Array.prototype.slice.call(root.querySelectorAll('.umoya-acc-image'));
+    var prev = root.querySelector('[data-acc-prev]');
+    var next = root.querySelector('[data-acc-next]');
+    var index = 0;
+
+    function normalizeIndex(value) {
+      return (value + images.length) % images.length;
+    }
+
+    function imageIsReady(image) {
+      return image && image.complete && image.naturalWidth > 0;
+    }
+
+    function render(nextIndex) {
+      index = normalizeIndex(nextIndex);
+      images.forEach(function(img, imgIndex) {
+        img.classList.toggle('is-active', imgIndex === index);
+      });
+    }
+
+    function renderWhenDecoded(nextIndex) {
+      var targetIndex = normalizeIndex(nextIndex);
+      var targetImage = images[targetIndex];
+
+      if (!targetImage || typeof targetImage.decode !== 'function') {
+        render(targetIndex);
+        return;
+      }
+
+      targetImage.decode().catch(function() {
+        return null;
+      }).then(function() {
+        render(targetIndex);
+      });
+    }
+
+    function requestImage(nextIndex) {
+      var targetIndex = normalizeIndex(nextIndex);
+      var targetImage = images[targetIndex];
+
+      /* Avoid revealing the gallery background while a remote image is still loading. */
+      if (imageIsReady(targetImage)) {
+        renderWhenDecoded(targetIndex);
+        return;
+      }
+
+      function cleanup() {
+        targetImage.removeEventListener('load', onReady);
+        targetImage.removeEventListener('error', cleanup);
+      }
+
+      function onReady() {
+        cleanup();
+        renderWhenDecoded(targetIndex);
+      }
+
+      targetImage.addEventListener('load', onReady, { once: true });
+      targetImage.addEventListener('error', cleanup, { once: true });
+    }
+
+    prev && prev.addEventListener('click', function() { requestImage(index - 1); });
+    next && next.addEventListener('click', function() { requestImage(index + 1); });
+  }());
+  </script>
+</section>
+
+
+<!-- PREVIEW INCLUDE: homepage/homepage-section-06b-pillars.html -->
+
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 06B: BRAND PILLARS
+=================================================================
+  ELEMENTOR USAGE:
+  • Add an "HTML" widget after Section 06 (Why Umoya).
+  • Layout: full-bleed background image with four text columns
+    anchored to the bottom of the section.
+  • Mobile: horizontal infinite-swipe carousel with partial
+    column visibility to invite scrolling.
+=================================================================
+-->
+<style>
+  /* ── Tokens ─────────────────────────────────────── */
+  #fc-pillars {
+    --cream:      #F5F0EB;
+    --brown:      #4B2E2B;
+    --brown-mid:  #3A2220;
+    --terra:      #D97E53;
+    --terra-dk:   #C06840;
+    --white:      #FFFFFF;
+    --ease:       cubic-bezier(.25,.46,.45,.94);
+  }
+
+  /* ── Section ─────────────────────────────────────── */
+  #fc-pillars {
+    position: relative;
+    min-height: 62vh;
+    min-height: 62dvh;
+    display: flex;
+    align-items: flex-end;
+    font-family: inherit;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  #fc-pillars *, #fc-pillars *::before, #fc-pillars *::after {
+    box-sizing: border-box;
+  }
+
+  /* ── Background image ──────────────────────────── */
+  .fc-pil-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .fc-pil-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .fc-pil-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(28,13,6,.10) 0%,
+      rgba(28,13,6,.18) 25%,
+      rgba(28,13,6,.52) 55%,
+      rgba(28,13,6,.88) 100%
+    );
+    z-index: 1;
+  }
+
+  /* ── Content layer ─────────────────────────────── */
+  .fc-pil-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .fc-pil-header {
+    margin-bottom: 48px;
+  }
+
+  .fc-pil-heading {
+    font-family: inherit;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--white);
+    margin: 0;
+  }
+
+  /* ── Four-column grid ──────────────────────────── */
+  .fc-pil-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  /* ── Individual column ─────────────────────────── */
+  .fc-pil-col {
+    border-top: 2px solid rgba(245,240,235,.2);
+    padding-top: 28px;
+  }
+
+  .fc-pil-col:first-child { border-top-color: rgba(245,240,235,.2); }
+
+  .fc-pil-title {
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--white);
+    margin: 0 0 14px;
+  }
+
+  .fc-pil-body {
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.78;
+    color: rgba(245,240,235,.78);
+    margin: 0;
+  }
+
+  /* ── Scroll reveal ─────────────────────────────── */
+  .fc-pil-rv {
+    opacity: 1;
+    transform: none;
+  }
+  .fc-pil-rv.fc-pil-on { opacity: 1; transform: none; }
+  .fc-pil-rv.d1 { transition-delay: .12s; }
+  .fc-pil-rv.d2 { transition-delay: .24s; }
+  .fc-pil-rv.d3 { transition-delay: .36s; }
+
+  /* ── TABLET ≤1024px ─────────────────────────────── */
+  @media (max-width: 1024px) {
+    #fc-pillars { min-height: 80vh; min-height: 80dvh; }
+    .fc-pil-content { padding-left: 32px; padding-right: 32px; }
+    .fc-pil-grid { gap: 32px; }
+    .fc-pil-title { font-size: 1rem; }
+    .fc-pil-body  { font-size: 0.84rem; }
+  }
+
+  /* ── MOBILE ≤768px ──────────────────────────────── */
+  @media (max-width: 768px) {
+    #fc-pillars { min-height: 72vh; min-height: 72dvh; }
+    .fc-pil-content { padding: 0 0 60px; }
+    .fc-pil-header { padding: 0 24px; }
+
+    .fc-pil-grid {
+      display: flex;
+      overflow: visible;
+      gap: 0;
+      touch-action: pan-x;
+      -webkit-overflow-scrolling: touch;
+      cursor: grab;
+      will-change: transform;
+    }
+
+    .fc-pil-grid.fc-pil-dragging { cursor: grabbing; }
+
+    .fc-pil-col {
+      flex: 0 0 72%;
+      min-width: 72%;
+      padding: 24px 24px 0;
+      border-top: none;
+      border-left: 2px solid rgba(245,240,235,.2);
+    }
+
+    .fc-pil-col:first-child { border-left-color: rgba(245,240,235,.2); }
+
+    /* Reveal all on mobile — carousel handles visibility */
+    .fc-pil-rv { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ── SMALL MOBILE ≤420px ────────────────────────── */
+  @media (max-width: 420px) {
+    #fc-pillars { min-height: 64vh; min-height: 64dvh; }
+    .fc-pil-content { padding: 0 0 48px; }
+    .fc-pil-col {
+      flex: 0 0 80%;
+      min-width: 80%;
+      padding: 20px 20px 0;
+    }
+    .fc-pil-title { font-size: 0.95rem; }
+    .fc-pil-body  { font-size: 0.82rem; }
+  }
+</style>
+
+<section id="fc-pillars" aria-label="What sets Umoya apart">
+
+  <!-- Background image -->
+  <div class="fc-pil-bg" aria-hidden="true">
+    <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05243.jpg"
+         alt="" loading="lazy" />
+  </div>
+
+  <!-- Content -->
+  <div class="fc-pil-content">
+    <div class="fc-pil-header">
+      <h2 class="fc-pil-heading">Why Umoya Afrika Tours?</h2>
+    </div>
+    <div class="fc-pil-grid" role="list">
+
+      <div class="fc-pil-col fc-pil-rv" role="listitem">
+        <h3 class="fc-pil-title">Expert Local Guidance</h3>
+        <p class="fc-pil-body">Each experience is led by professional guides and local specialists who provide insider access and authentic perspectives on South Africa's landscapes, culture, and contemporary life.</p>
+      </div>
+
+      <div class="fc-pil-col fc-pil-rv d1" role="listitem">
+        <h3 class="fc-pil-title">A Community of Like-Minded Travelers</h3>
+        <p class="fc-pil-body">Our journeys are designed for those who seek more than sightseeing, travelers who value authentic connection, cultural depth, and experiences that go beyond the ordinary.</p>
+      </div>
+
+      <div class="fc-pil-col fc-pil-rv d2" role="listitem">
+        <h3 class="fc-pil-title">Intimate by Design</h3>
+        <p class="fc-pil-body">Each journey is limited to 16 guests to ensure personalized service, exclusive access, and the flexibility to customize experiences to your interests.</p>
+      </div>
+
+      <div class="fc-pil-col fc-pil-rv d3" role="listitem">
+        <h3 class="fc-pil-title">Premium Accommodations</h3>
+        <p class="fc-pil-body">Each property is carefully selected for exceptional service, unique character, and prime location. From luxury lodges to boutique hotels, every stay reflects our commitment to quality.</p>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ── Scroll reveal (desktop) ───────────────────── */
+  var rvEls = document.querySelectorAll('#fc-pillars .fc-pil-rv');
+  if ('IntersectionObserver' in window) {
+    var rvObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('fc-pil-on'); rvObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    rvEls.forEach(function(el) { rvObs.observe(el); });
+  } else {
+    rvEls.forEach(function(el) { el.classList.add('fc-pil-on'); });
+  }
+
+  /* ── Infinite swipe carousel (mobile) ──────────── */
+  var MOBILE_BP = 768;
+  var container = document.querySelector('#fc-pillars .fc-pil-grid');
+  if (!container) return;
+
+  var origCols = [];
+  var children = container.children;
+  var i;
+  for (i = 0; i < children.length; i++) {
+    origCols.push(children[i]);
+  }
+  var colCount = origCols.length;
+  var isSetup = false;
+  var offset = 0;
+  var dragging = false;
+  var startX = 0;
+  var startOffset = 0;
+  var colWidth = 0;
+  var totalOrigWidth = 0;
+
+  function getColWidth() {
+    var first = container.querySelector('.fc-pil-col');
+    if (!first) return 0;
+    return first.offsetWidth;
+  }
+
+  function applyTransform(smooth) {
+    if (smooth) {
+      container.style.transition = 'transform 0.35s cubic-bezier(.25,.46,.45,.94)';
+    } else {
+      container.style.transition = 'none';
+    }
+    container.style.transform = 'translateX(' + offset + 'px)';
+  }
+
+  function wrapOffset() {
+    if (offset > 0) {
+      offset -= totalOrigWidth;
+      applyTransform(false);
+    } else if (offset < -totalOrigWidth * 2 + colWidth) {
+      offset += totalOrigWidth;
+      applyTransform(false);
+    }
+  }
+
+  function snapToNearest() {
+    colWidth = getColWidth();
+    totalOrigWidth = colWidth * colCount;
+    var drift = offset - startOffset;
+    var threshold = colWidth * 0.15;
+    var snapped;
+    if (drift < -threshold) {
+      snapped = Math.floor(offset / colWidth) * colWidth;
+    } else if (drift > threshold) {
+      snapped = Math.ceil(offset / colWidth) * colWidth;
+    } else {
+      snapped = Math.round(startOffset / colWidth) * colWidth;
+    }
+    offset = snapped;
+    applyTransform(true);
+    setTimeout(function(){ wrapOffset(); }, 380);
+  }
+
+  function setupCarousel() {
+    if (window.innerWidth > MOBILE_BP) {
+      if (isSetup) teardown();
+      return;
+    }
+    if (isSetup) return;
+    isSetup = true;
+
+    for (i = 0; i < colCount; i++) {
+      var cloneAfter = origCols[i].cloneNode(true);
+      cloneAfter.classList.add('fc-pil-clone');
+      cloneAfter.setAttribute('aria-hidden', 'true');
+      container.appendChild(cloneAfter);
+    }
+    for (i = 0; i < colCount; i++) {
+      var cloneBefore = origCols[i].cloneNode(true);
+      cloneBefore.classList.add('fc-pil-clone');
+      cloneBefore.setAttribute('aria-hidden', 'true');
+      container.insertBefore(cloneBefore, container.children[i]);
+    }
+
+    colWidth = getColWidth();
+    totalOrigWidth = colWidth * colCount;
+    offset = -totalOrigWidth;
+    applyTransform(false);
+
+    container.addEventListener('touchstart', onTouchStart, {passive: true});
+    container.addEventListener('touchmove', onTouchMove, {passive: false});
+    container.addEventListener('touchend', onTouchEnd);
+    container.addEventListener('mousedown', onMouseDown);
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
+  }
+
+  function teardown() {
+    isSetup = false;
+    container.removeEventListener('touchstart', onTouchStart);
+    container.removeEventListener('touchmove', onTouchMove);
+    container.removeEventListener('touchend', onTouchEnd);
+    container.removeEventListener('mousedown', onMouseDown);
+    window.removeEventListener('mousemove', onMouseMove);
+    window.removeEventListener('mouseup', onMouseUp);
+    var clones = container.querySelectorAll('.fc-pil-clone');
+    for (i = 0; i < clones.length; i++) {
+      clones[i].parentNode.removeChild(clones[i]);
+    }
+    container.style.transform = '';
+    container.style.transition = '';
+    container.classList.remove('fc-pil-dragging');
+  }
+
+  /* Touch */
+  function onTouchStart(e) {
+    dragging = true;
+    startX = e.touches[0].clientX;
+    startOffset = offset;
+    container.style.transition = 'none';
+  }
+  function onTouchMove(e) {
+    if (!dragging) return;
+    var dx = e.touches[0].clientX - startX;
+    offset = startOffset + dx;
+    applyTransform(false);
+    if (Math.abs(dx) > 5) e.preventDefault();
+  }
+  function onTouchEnd() {
+    if (!dragging) return;
+    dragging = false;
+    snapToNearest();
+  }
+
+  /* Mouse */
+  function onMouseDown(e) {
+    dragging = true;
+    startX = e.clientX;
+    startOffset = offset;
+    container.style.transition = 'none';
+    container.classList.add('fc-pil-dragging');
+    e.preventDefault();
+  }
+  function onMouseMove(e) {
+    if (!dragging) return;
+    var dx = e.clientX - startX;
+    offset = startOffset + dx;
+    applyTransform(false);
+  }
+  function onMouseUp() {
+    if (!dragging) return;
+    dragging = false;
+    container.classList.remove('fc-pil-dragging');
+    snapToNearest();
+  }
+
+  setupCarousel();
+  var resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      if (window.innerWidth > MOBILE_BP && isSetup) {
+        teardown();
+      } else if (window.innerWidth <= MOBILE_BP && !isSetup) {
+        setupCarousel();
+      } else if (isSetup) {
+        colWidth = getColWidth();
+        totalOrigWidth = colWidth * colCount;
+        offset = -totalOrigWidth;
+        applyTransform(false);
+      }
+    }, 150);
+  });
+})();
+</script>
+
+
+<!-- PREVIEW INCLUDE: homepage/homepage-section-07-details.html -->
+
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE - SECTION 07: JOURNEY DETAILS
+=================================================================
+  ELEMENTOR USAGE:
+  - Add an "HTML" widget as the final section before the footer.
+  - Background: cream-dark (#F5F0EB) - one shade deeper than
+    the cream-light sections above to signal a natural close.
+  - The accordion is collapsible: clicking any item expands it
+    and collapses any previously open item (one open at a time).
+  - Item 1 is open by default via the fc-det-open class.
+  - Elementor note: the [Feature: Section will be collapsible]
+    note from the brief is fulfilled by this accordion.
+  - 6 items: Small-Group, Departures, Personalization,
+    Travel Protection, Journey Lengths, Cuisine and Dietary Care
+=================================================================
+-->
+<style>
+  /* Tokens */
+  #fc-details {
+    --cream:      #F5F0EB;
+    --cream-lt:   #F5F0EB;
+    --cream-dk:   #F5F0EB;
+    --brown:      #4B2E2B;
+    --terra:      #D97E53;
+    --terra-dk:   #C06840;
+    --gold:       #D97E53;
+    --olive:      #708238;
+    --text:       #4B2E2B;
+    --text-mid:   #4B2E2B;
+    --text-muted: #4B2E2B;
+    --white:      #FFFFFF;
+    --ease:       cubic-bezier(.25,.46,.45,.94);
+  }
+
+  /* Section */
+  #fc-details {
+    background: var(--cream-dk);
+    padding: clamp(64px, 9vw, 100px) 0;
+  }
+
+  /* Container */
+  .fc-det-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Scroll reveal */
+  .fc-det-rev {
+    opacity: 1;
+    transform: none;
+  }
+  .fc-det-rev.fc-det-in { opacity: 1; transform: none; }
+  .fc-det-rev.fc-d1 { transition-delay: .14s; }
+
+  /* Section header */
+  .fc-det-hd {
+    text-align: left;
+    margin-bottom: 56px;
+  }
+
+  .fc-det-eyebrow {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+
+  .fc-det-title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--brown);
+  }
+
+  .fc-det-title em {
+    font-style: italic;
+    color: var(--terra);
+  }
+
+  .fc-det-rule {
+    display: block;
+    width: 44px;
+    height: 2px;
+    background: var(--terra);
+    margin: 1.4rem 0 1.6rem;
+  }
+
+  .fc-det-lead {
+    font-size: 0.93rem;
+    color: var(--text-muted);
+    max-width: 680px;
+    margin: 0;
+    line-height: 1.8;
+  }
+
+  /* Accordion wrapper */
+  .fc-acc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Accordion item */
+  .fc-acc-item {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid rgba(75,46,43,.1);
+    overflow: hidden;
+    transition: border-color .25s, box-shadow .25s;
+  }
+
+  .fc-acc-item.fc-det-open {
+    border-color: rgba(217,126,83,.3);
+    box-shadow: 0 4px 20px rgba(75,46,43,.07);
+  }
+
+  /* Trigger button */
+  .fc-acc-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 26px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background .2s;
+  }
+
+  .fc-acc-btn:hover { background: rgba(245,240,235,.65); }
+
+  .fc-acc-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* Icon box */
+  .fc-acc-icon {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
+    background: var(--cream-dk);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .25s;
+  }
+
+  .fc-acc-item.fc-det-open .fc-acc-icon {
+    background: var(--terra);
+  }
+
+  .fc-acc-icon svg {
+    width: 17px;
+    height: 17px;
+    stroke: var(--text-muted);
+    fill: none;
+    stroke-width: 1.5;
+    transition: stroke .25s;
+  }
+
+  .fc-acc-item.fc-det-open .fc-acc-icon svg {
+    stroke: var(--white);
+  }
+
+  /* Title + subtitle */
+  .fc-acc-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--brown);
+    line-height: 1.35;
+    margin: 0;
+  }
+
+  .fc-acc-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin: 4px 0 0;
+    line-height: 1.4;
+  }
+
+  /* Chevron */
+  .fc-acc-chev {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    transition: transform .35s var(--ease);
+  }
+
+  .fc-acc-item.fc-det-open .fc-acc-chev {
+    transform: rotate(180deg);
+  }
+
+  .fc-acc-chev svg {
+    width: 100%;
+    height: 100%;
+    stroke: var(--text-muted);
+    fill: none;
+    stroke-width: 2;
+  }
+
+  /* Body (collapsible) */
+  .fc-acc-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .42s var(--ease);
+  }
+
+  .fc-acc-item.fc-det-open .fc-acc-body {
+    max-height: 480px;
+  }
+
+  .fc-acc-content {
+    padding: 18px 26px 26px calc(26px + 38px + 16px); /* align with title */
+    border-top: 1px solid rgba(75,46,43,.07);
+    font-size: 0.92rem;
+    line-height: 1.82;
+    color: var(--text-muted);
+  }
+
+  .fc-acc-content strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* Footer CTA */
+  .fc-det-foot {
+    text-align: center;
+    margin-top: 72px;
+    padding: 56px 32px;
+    border-top: 0;
+    background: var(--brown);
+    border-radius: 10px;
+  }
+
+  .fc-det-foot h3 {
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--white);
+    max-width: 920px;
+    margin: 0 auto 0.8rem;
+    line-height: 1.35;
+  }
+
+  .fc-det-foot p {
+    font-size: 0.88rem;
+    color: rgba(245,240,235,.82);
+    max-width: 620px;
+    margin: 0 auto 2.4rem;
+    line-height: 1.7;
+  }
+
+  .fc-det-foot-btn {
+    appearance: none;
+    -webkit-appearance: none;
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 13px 28px;
+    background: var(--terra);
+    color: var(--white);
+    border: 2px solid var(--terra);
+    cursor: pointer;
+    transition: background .25s, border-color .25s, transform .25s, box-shadow .25s;
+  }
+
+  .fc-det-foot-btn:hover {
+    background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(217,126,83,.3);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .fc-det-wrap    { padding: 0 24px; }
+    .fc-det-hd      { margin-bottom: 40px; }
+    .fc-acc-btn     { padding: 18px 20px; }
+    .fc-acc-left    { gap: 14px; }
+    .fc-acc-content { padding: 16px 22px 22px; } /* remove indent on small screens */
+    .fc-acc-item.fc-det-open .fc-acc-body { max-height: 600px; }
+    .fc-det-foot    { margin-top: 56px; padding-top: 48px; }
+  }
+
+  @media (max-width: 420px) {
+    .fc-det-wrap    { padding: 0 18px; }
+    .fc-acc-icon    { width: 34px; height: 34px; }
+    .fc-acc-title   { font-size: 0.98rem; }
+    .fc-acc-btn     { padding: 16px 16px; }
+    .fc-acc-content { padding: 14px 18px 20px; font-size: 0.88rem; }
+  }
+  </style>
+
+  <section id="fc-details" aria-label="Journey Details - Frequently Asked Questions">
+    <div class="fc-det-wrap">
+
+      <!-- Section header -->
+      <div class="fc-det-hd fc-det-rev">
+        <span class="fc-det-eyebrow">Everything You Need to Know</span>
+        <h2 class="fc-det-title">Travel <em>Essentials</em></h2>
+        <span class="fc-det-rule" aria-hidden="true"></span>
+        <p class="fc-det-lead">Travel with clarity and confidence, knowing every detail has been carefully considered. From customization to comfort, each element combines cultural depth, local access, and seamless execution.</p>
+      </div>
+
+      <!-- Accordion list -->
+      <div class="fc-acc fc-det-rev fc-d1" role="list">
+
+        <!-- Item 1: Guaranteed Departures (open by default) -->
+        <div class="fc-acc-item fc-det-open" role="listitem">
+          <button
+            class="fc-acc-btn"
+            aria-expanded="true"
+            aria-controls="fc-det-body-2"
+            id="fc-det-btn-2"
+          >
+            <div class="fc-acc-left">
+              <div class="fc-acc-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+              </div>
+              <div>
+                <p class="fc-acc-title">Plan with Absolute Confidence</p>
+                <p class="fc-acc-sub">Guaranteed Departures</p>
+              </div>
+            </div>
+            <div class="fc-acc-chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </button>
+          <div class="fc-acc-body" id="fc-det-body-2" role="region" aria-labelledby="fc-det-btn-2">
+            <div class="fc-acc-content">
+              All journeys are guaranteed to depart, allowing travelers to plan with full confidence. Once you have secured your spot, you can book your flights and make arrangements knowing your journey will proceed as planned.
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2: Personalization -->
+        <div class="fc-acc-item" role="listitem">
+          <button
+            class="fc-acc-btn"
+            aria-expanded="false"
+            aria-controls="fc-det-body-3"
+            id="fc-det-btn-3"
+          >
+            <div class="fc-acc-left">
+              <div class="fc-acc-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 20h9"/>
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="fc-acc-title">Personalize Your Journey, Your Way</p>
+                <p class="fc-acc-sub">Thoughtful Personalization</p>
+              </div>
+            </div>
+            <div class="fc-acc-chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </button>
+          <div class="fc-acc-body" id="fc-det-body-3" role="region" aria-labelledby="fc-det-btn-3">
+            <div class="fc-acc-content">
+              While each itinerary is carefully designed, we understand every traveler's interests are unique. Optional add-on experiences allow guests to explore extended time at particular sites, private wine tastings, or exclusive access to local artists and designers.
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3: Travel Protection -->
+        <div class="fc-acc-item" role="listitem">
+          <button
+            class="fc-acc-btn"
+            aria-expanded="false"
+            aria-controls="fc-det-body-4"
+            id="fc-det-btn-4"
+          >
+            <div class="fc-acc-left">
+              <div class="fc-acc-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="fc-acc-title">Peace of Mind for Your Investment</p>
+                <p class="fc-acc-sub">Travel Protection</p>
+              </div>
+            </div>
+            <div class="fc-acc-chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </button>
+          <div class="fc-acc-body" id="fc-det-body-4" role="region" aria-labelledby="fc-det-btn-4">
+            <div class="fc-acc-content">
+              We <strong>strongly recommend purchasing travel insurance</strong> at the time of booking to ensure coverage for unexpected changes. Our team is happy to provide guidance and recommendations for reputable providers so you can focus entirely on your journey, not logistics.
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4: Flexible Journey Lengths -->
+        <div class="fc-acc-item" role="listitem">
+          <button
+            class="fc-acc-btn"
+            aria-expanded="false"
+            aria-controls="fc-det-body-5"
+            id="fc-det-btn-5"
+          >
+            <div class="fc-acc-left">
+              <div class="fc-acc-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <div>
+                <p class="fc-acc-title">Journeys that reflect Your Schedule</p>
+                <p class="fc-acc-sub">Signature Journey Structure</p>
+              </div>
+            </div>
+            <div class="fc-acc-chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </button>
+          <div class="fc-acc-body" id="fc-det-body-5" role="region" aria-labelledby="fc-det-btn-5">
+            <div class="fc-acc-content">
+              Our Signature Journey spans 15 days across four provinces. This duration allows for the proper pacing and cultural depth that defines the Umoya experience. Speak with your dedicated travel expert about customizing the itinerary to your specific interests within this timeframe.
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5: Cuisine and Dietary Care -->
+        <div class="fc-acc-item" role="listitem">
+          <button
+            class="fc-acc-btn"
+            aria-expanded="false"
+            aria-controls="fc-det-body-6"
+            id="fc-det-btn-6"
+          >
+            <div class="fc-acc-left">
+              <div class="fc-acc-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                  <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                  <line x1="6"  y1="1" x2="6"  y2="4"/>
+                  <line x1="10" y1="1" x2="10" y2="4"/>
+                  <line x1="14" y1="1" x2="14" y2="4"/>
+                </svg>
+              </div>
+              <div>
+                <p class="fc-acc-title">Authentic flavors that meet your specific needs</p>
+                <p class="fc-acc-sub">Regional Cuisine &amp; Dietary Care</p>
+              </div>
+            </div>
+            <div class="fc-acc-chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </button>
+          <div class="fc-acc-body" id="fc-det-body-6" role="region" aria-labelledby="fc-det-btn-6">
+            <div class="fc-acc-content">
+              Guests experience regional cuisine prepared by local chefs throughout the journey. Dietary restrictions are collected in advance so we can coordinate thoughtfully with our culinary partners. We approach all dietary needs with care and transparency, because respecting your wellbeing is part of the journey.
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.fc-acc -->
+
+      <!-- Footer CTA -->
+      <div class="fc-det-foot fc-det-rev">
+        <h3>Still have questions? We'd love to speak with you</h3>
+        <p>Your dedicated Umoya travel expert is ready to help you plan the perfect South African experience.</p>
+        <button type="button" class="fc-det-foot-btn" data-umoya-form-popup>Speak with a Travel Expert</button>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* Scroll reveal */
+    var revEls = document.querySelectorAll('.fc-det-rev');
+    if ('IntersectionObserver' in window) {
+      var revObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('fc-det-in'); e.target.style.willChange = 'auto'; revObs.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      revEls.forEach(function (el) { revObs.observe(el); });
+    } else {
+      revEls.forEach(function (el) { el.classList.add('fc-det-in'); });
+    }
+
+    /* Accordion */
+    var items = document.querySelectorAll('.fc-acc-item');
+
+    items.forEach(function (item) {
+      var btn = item.querySelector('.fc-acc-btn');
+      if (!btn) return;
+
+      btn.addEventListener('click', function () {
+        var isOpen = item.classList.contains('fc-det-open');
+
+        /* Close all */
+        items.forEach(function (i) {
+          i.classList.remove('fc-det-open');
+          var b = i.querySelector('.fc-acc-btn');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+
+        /* Open the clicked one (unless it was already open) */
+        if (!isOpen) {
+          item.classList.add('fc-det-open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+  }());
+  </script>
+
+
+<!-- PREVIEW INCLUDE: homepage/homepage-form-popup.html -->
+
+<div id="umoya-form-popup" class="umoya-form-popup" aria-hidden="true">
+  <style>
+    #umoya-form-popup {
+      --cream: #F5F0EB;
+      --brown: #4B2E2B;
+      --terra: #D97E53;
+      --terra-dk: #C06840;
+      --olive: #708238;
+      --white: #FFFFFF;
+      --ease: cubic-bezier(.25,.46,.45,.94);
+
+      position: fixed !important;
+      inset: 0;
+      z-index: 2147483647 !important;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      background: rgba(28,13,6,.68);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .28s var(--ease), visibility 0s linear .28s;
+    }
+
+    #umoya-form-popup,
+    #umoya-form-popup *,
+    #umoya-form-popup *::before,
+    #umoya-form-popup *::after {
+      box-sizing: border-box;
+    }
+
+    #umoya-form-popup.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition: opacity .28s var(--ease);
+    }
+
+    #umoya-form-popup .umoya-form-dialog {
+      position: relative;
+      width: min(1120px, 96vw);
+      max-height: min(92vh, 900px);
+      display: grid;
+      grid-template-columns: minmax(280px, .78fr) minmax(0, 1.22fr);
+      overflow: hidden;
+      background: var(--cream);
+      box-shadow: 0 28px 80px rgba(0,0,0,.35);
+      transform: translateY(16px) scale(.985);
+      transition: transform .28s var(--ease);
+    }
+
+    #umoya-form-popup.is-open .umoya-form-dialog {
+      transform: none;
+    }
+
+    #umoya-form-popup .umoya-form-close {
+      appearance: none;
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 4;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255,255,255,.45);
+      border-radius: 50%;
+      background: rgba(75,46,43,.55);
+      color: var(--white);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      backdrop-filter: blur(8px);
+    }
+
+    #umoya-form-popup .umoya-form-image {
+      position: relative;
+      min-height: 100%;
+      background: var(--brown);
+      overflow: hidden;
+    }
+
+    #umoya-form-popup .umoya-form-image img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
+
+    #umoya-form-popup .umoya-form-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(28,13,6,.72), rgba(28,13,6,.24) 55%, rgba(28,13,6,.04));
+    }
+
+    #umoya-form-popup .umoya-form-image-copy {
+      position: relative;
+      z-index: 2;
+      padding: clamp(32px, 5vw, 58px) 28px;
+      color: var(--cream);
+      text-align: center;
+    }
+
+    #umoya-form-popup .umoya-form-image-copy span {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--terra);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    #umoya-form-popup .umoya-form-image-copy h2 {
+      margin: 0;
+      color: var(--cream);
+      font-size: clamp(1.7rem, 3vw, 2.7rem);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.08;
+    }
+
+    #umoya-form-popup .umoya-form-panel {
+      max-height: min(92vh, 900px);
+      overflow: auto;
+      padding: clamp(28px, 4vw, 52px);
+      background: var(--cream);
+    }
+
+    #umoya-form-popup .umoya-form-head {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    #umoya-form-popup .umoya-form-head span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--terra);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    #umoya-form-popup .umoya-form-head h2 {
+      margin: 0 0 10px;
+      color: var(--brown);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    #umoya-form-popup .umoya-form-head p {
+      margin: 0 auto;
+      max-width: 580px;
+      color: rgba(75,46,43,.78);
+      font-size: .95rem;
+      line-height: 1.65;
+    }
+
+    #umoya-form-popup .umoya-form-card {
+      background: var(--white);
+      padding: clamp(22px, 3vw, 36px);
+      box-shadow: 0 14px 40px rgba(75,46,43,.1);
+      border-top: 3px solid var(--terra);
+    }
+
+    #umoya-form-popup .umoya-popup-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    #umoya-form-popup .umoya-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 16px;
+    }
+
+    #umoya-form-popup .umoya-field {
+      display: grid;
+      gap: 6px;
+    }
+
+    #umoya-form-popup .umoya-field.full {
+      grid-column: 1 / -1;
+    }
+
+    #umoya-form-popup label {
+      color: rgba(75,46,43,.78);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    #umoya-form-popup input,
+    #umoya-form-popup select,
+    #umoya-form-popup textarea {
+      width: 100%;
+      min-height: 44px;
+      border: 1.5px solid rgba(75,46,43,.13);
+      border-radius: 6px;
+      background: var(--cream);
+      color: var(--brown);
+      font-size: max(16px, .92rem);
+      line-height: 1.45;
+      outline: none;
+      padding: 11px 13px;
+      transition: border-color .22s, box-shadow .22s, background .22s;
+    }
+
+    #umoya-form-popup textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    #umoya-form-popup select {
+      appearance: none;
+      -webkit-appearance: none;
+      padding-right: 34px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234B2E2B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+
+    #umoya-form-popup input:focus,
+    #umoya-form-popup select:focus,
+    #umoya-form-popup textarea:focus {
+      border-color: var(--terra);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(217,126,83,.12);
+    }
+
+    #umoya-form-popup .umoya-form-submit {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      min-height: 52px;
+      border: 2px solid var(--terra);
+      background: var(--terra);
+      color: var(--white);
+      cursor: pointer;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      transition: background .25s, border-color .25s, transform .25s;
+    }
+
+    #umoya-form-popup .umoya-form-submit:hover {
+      background: var(--terra-dk);
+      border-color: var(--terra-dk);
+      transform: translateY(-1px);
+    }
+
+    #umoya-form-popup .umoya-form-submit:disabled {
+      background: var(--olive);
+      border-color: var(--olive);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    #umoya-form-popup .umoya-form-legal,
+    #umoya-form-popup .umoya-form-status {
+      margin: 10px auto 0;
+      max-width: 620px;
+      color: rgba(75,46,43,.72);
+      font-size: .78rem;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    #umoya-form-popup .umoya-form-status {
+      display: none;
+      color: var(--terra);
+    }
+
+    #umoya-form-popup .umoya-form-status.is-visible {
+      display: block;
+    }
+
+    @media (max-width: 860px) {
+      #umoya-form-popup {
+        padding: 12px;
+      }
+
+      #umoya-form-popup .umoya-form-dialog {
+        grid-template-columns: 1fr;
+        max-height: 94vh;
+      }
+
+      #umoya-form-popup .umoya-form-image {
+        min-height: 240px;
+      }
+
+      #umoya-form-popup .umoya-form-panel {
+        max-height: calc(94vh - 240px);
+        padding: 26px 18px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      #umoya-form-popup .umoya-form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <div class="umoya-form-dialog" role="dialog" aria-modal="true" aria-labelledby="umoya-form-title">
+    <button type="button" class="umoya-form-close" data-umoya-form-close aria-label="Close form">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+
+    <div class="umoya-form-image" aria-hidden="true">
+      <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc04418(1).jpg" alt="">
+      <div class="umoya-form-image-copy">
+        <span>Inquiry Form</span>
+        <h2>Inaugural Founder's Journey</h2>
+      </div>
+    </div>
+
+    <div class="umoya-form-panel">
+      <div class="umoya-form-head">
+        <span>Reserve Your Place</span>
+        <h2 id="umoya-form-title">South Africa Awaits</h2>
+        <p>Tell us about yourself and the travel experience you're seeking. A dedicated Umoya Travel Expert will personally connect with you.</p>
+      </div>
+
+      <div class="umoya-form-card">
+        <form id="umoyaPopupForm" class="umoya-popup-form" novalidate>
+          <div class="umoya-form-grid">
+            <div class="umoya-field">
+              <label for="umoyaTitle">Title</label>
+              <select id="umoyaTitle" name="TITLE">
+                <option value="" selected>Select...</option>
+                <option value="Mr.">Mr.</option>
+                <option value="Mrs.">Mrs.</option>
+                <option value="Ms.">Ms.</option>
+                <option value="Dr.">Dr.</option>
+                <option value="Prof.">Prof.</option>
+              </select>
+            </div>
+            <div class="umoya-field">
+              <label for="umoyaCountry">Country *</label>
+              <select id="umoyaCountry" name="COUNTRY" required>
+                <option value="" selected>Select country...</option>
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Canada">Canada</option>
+                <option value="South Africa">South Africa</option>
+                <option value="Australia">Australia</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="umoya-field">
+              <label for="umoyaFirst">First Name *</label>
+              <input id="umoyaFirst" name="FNAME" type="text" placeholder="First name" required autocomplete="given-name">
+            </div>
+            <div class="umoya-field">
+              <label for="umoyaLast">Last Name *</label>
+              <input id="umoyaLast" name="LNAME" type="text" placeholder="Last name" required autocomplete="family-name">
+            </div>
+            <div class="umoya-field">
+              <label for="umoyaEmail">Email Address *</label>
+              <input id="umoyaEmail" name="EMAIL" type="email" placeholder="your@email.com" required autocomplete="email">
+            </div>
+            <div class="umoya-field">
+              <label for="umoyaPhone">Phone Number</label>
+              <input id="umoyaPhone" name="PHONE" type="tel" placeholder="+1 (000) 000-0000" autocomplete="tel">
+            </div>
+            <div class="umoya-field">
+              <label for="umoyaSeason">Travel Season</label>
+              <select id="umoyaSeason" name="SEASON">
+                <option value="" selected>Select season...</option>
+                <option value="Spring">Spring</option>
+                <option value="Summer">Summer</option>
+                <option value="Autumn">Autumn</option>
+                <option value="Winter">Winter</option>
+              </select>
+            </div>
+            <div class="umoya-field">
+              <label for="umoyaYear">Preferred Year</label>
+              <select id="umoyaYear" name="YEAR">
+                <option value="" selected>Select year...</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
+              </select>
+            </div>
+            <div class="umoya-field full">
+              <label for="umoyaLength">Preferred Journey Length</label>
+              <select id="umoyaLength" name="LENGTH">
+                <option value="" selected>Select...</option>
+                <option value="15-Day Signature Journey">15-Day Signature Journey - 4 Provinces</option>
+                <option value="Shorter Regional Experience">Shorter Regional Experience</option>
+                <option value="Open to recommendation">Open to recommendation</option>
+              </select>
+            </div>
+            <div class="umoya-field full">
+              <label for="umoyaMessage">What Are You Hoping to Experience?</label>
+              <textarea id="umoyaMessage" name="MESSAGE" placeholder="Tell us about your travel interests and what draws you to South Africa."></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="umoya-form-submit">Speak to an Expert</button>
+          <p class="umoya-form-status" role="status" aria-live="polite"></p>
+          <p class="umoya-form-legal">By submitting you agree to our Privacy Policy. Your information is held in strict confidence and never shared.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  var popup = document.getElementById('umoya-form-popup');
+  if (!popup || popup.dataset.ready === 'true') return;
+  popup.dataset.ready = 'true';
+
+  var form = document.getElementById('umoyaPopupForm');
+  var closeBtn = popup.querySelector('[data-umoya-form-close]');
+  var lastFocus = null;
+  var submitBtn = form ? form.querySelector('.umoya-form-submit') : null;
+  var statusEl = form ? form.querySelector('.umoya-form-status') : null;
+  var submitText = submitBtn ? submitBtn.textContent : '';
+
+  function movePopupToBody() {
+    if (popup.parentElement !== document.body) {
+      document.body.appendChild(popup);
+    }
+  }
+
+  function openPopup() {
+    lastFocus = document.activeElement;
+    movePopupToBody();
+    if (form && form.getAttribute('data-submitted') === 'true') {
+      resetFormState(true);
+    }
+    popup.classList.add('is-open');
+    popup.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    window.setTimeout(function() {
+      var first = form ? form.querySelector('input:not([type="hidden"]), select, textarea') : closeBtn;
+      if (first) first.focus();
+    }, 40);
+    document.addEventListener('keydown', onKeydown);
+  }
+
+  movePopupToBody();
+
+  function closePopup() {
+    popup.classList.remove('is-open');
+    popup.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onKeydown);
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  function resetFormState(clearValues) {
+    if (!form) return;
+    if (clearValues) form.reset();
+    form.removeAttribute('data-submitted');
+    form.querySelectorAll('input, select, textarea').forEach(function(field) {
+      field.style.borderColor = '';
+      field.style.boxShadow = '';
+    });
+    if (statusEl) {
+      statusEl.textContent = '';
+      statusEl.classList.remove('is-visible');
+    }
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = submitText;
+    }
+  }
+
+  function onKeydown(event) {
+    if (event.key === 'Escape') closePopup();
+  }
+
+  document.addEventListener('click', function(event) {
+    var trigger = event.target.closest('[data-umoya-form-popup], .umoya-open-form-popup');
+    if (!trigger) return;
+    event.preventDefault();
+    openPopup();
+  });
+
+  closeBtn && closeBtn.addEventListener('click', closePopup);
+  popup.addEventListener('click', function(event) {
+    if (event.target === popup) closePopup();
+  });
+
+  if (form) {
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      var required = Array.prototype.slice.call(form.querySelectorAll('[required]'));
+      var valid = true;
+      var firstInvalid = null;
+
+      required.forEach(function(field) {
+        if (!field.value.trim()) {
+          valid = false;
+          if (!firstInvalid) firstInvalid = field;
+          field.style.borderColor = '#D97E53';
+          field.style.boxShadow = '0 0 0 3px rgba(217,126,83,.12)';
+        } else {
+          field.style.borderColor = '';
+          field.style.boxShadow = '';
+        }
+      });
+
+      var email = form.querySelector('[type="email"]');
+      if (email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        valid = false;
+        if (!firstInvalid) firstInvalid = email;
+        email.style.borderColor = '#D97E53';
+        email.style.boxShadow = '0 0 0 3px rgba(217,126,83,.12)';
+      }
+
+      if (!valid) {
+        if (statusEl) {
+          statusEl.textContent = 'Please complete the required fields.';
+          statusEl.classList.add('is-visible');
+        }
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
+
+      form.setAttribute('data-submitted', 'true');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Inquiry Received - We Will Be in Touch Soon';
+      }
+      if (statusEl) {
+        statusEl.textContent = 'Thank you. Your inquiry has been received.';
+        statusEl.classList.add('is-visible');
+      }
+    });
+
+    form.querySelectorAll('input, select, textarea').forEach(function(field) {
+      field.addEventListener('input', function() {
+        field.style.borderColor = '';
+        field.style.boxShadow = '';
+        if (statusEl) statusEl.classList.remove('is-visible');
+      });
+    });
+  }
+}());
+</script>
+
+</body>
+</html>

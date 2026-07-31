@@ -1,0 +1,493 @@
+<!--
+=================================================================
+  UMOYA FOUNDER'S CIRCLE — SECTION 06: WHY UMOYA AFRIKA TOURS
+=================================================================
+  ELEMENTOR USAGE:
+  • v4 order: place after the Founding Offer (Section 05A).
+  • Layout: two-column — "Our Approach" copy left, brand video right.
+  • VIDEO: currently wired to umoya_hd_optimized_720.mp4 — swap the
+    <video> src for the final brand film when it is ready.
+=================================================================
+-->
+<style>
+  /* ── Tokens ─────────────────────────────────────── */
+  #fc-why {
+    --cream:      #F5F0EB;
+    --cream-lt:   #F5F0EB;
+    --cream-dk:   #F5F0EB;
+    --brown:      #4B2E2B;
+    --brown-mid:  #3A2220;
+    --terra:      #D97E53;
+    --terra-dk:   #C06840;
+    --terra-lt:   #D97E53;
+    --gold:       #D97E53;
+    --olive:      #708238;
+    --text:       #4B2E2B;
+    --text-mid:   #4B2E2B;
+    --text-muted: #4B2E2B;
+    --white:      #FFFFFF;
+    --ease:       cubic-bezier(.25,.46,.45,.94);
+  }
+
+  /* ── Section ─────────────────────────────────────── */
+  #fc-why {
+    background: var(--cream-lt);
+    padding: 120px 0;
+    font-family: inherit;
+  }
+
+  /* ── Container ───────────────────────────────────── */
+  .fc-why-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .fc-why-rev {
+    will-change: transform, opacity;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .85s var(--ease), transform .85s var(--ease);
+  }
+  .fc-why-rev.fc-why-in { opacity: 1; transform: none; }
+  .fc-why-rev.fc-d1 { transition-delay: .16s; }
+  .fc-why-rev.fc-d2 { transition-delay: .28s; }
+
+  /* ── Main two-column grid ────────────────────────── */
+  .fc-why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: stretch;
+  }
+
+  /* ── LEFT: Copy ──────────────────────────────────── */
+  .fc-why-eyebrow {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.4rem;
+  }
+
+  .fc-why-title {
+    font-family: inherit;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--brown);
+    margin: 0 0 1.6rem;
+  }
+
+  .fc-why-title em {
+    font-style: italic;
+    color: var(--terra);
+  }
+
+  .fc-why-rule {
+    display: block;
+    width: 44px;
+    height: 2px;
+    background: var(--terra);
+    margin: 0 0 2rem;
+  }
+
+  .fc-why-lead {
+    font-family: inherit;
+    font-size: 1.1rem;
+    line-height: 1.78;
+    color: var(--brown);
+    margin: 0 0 1.6rem;
+  }
+
+  .fc-why-body {
+    font-family: inherit;
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: var(--text-mid);
+    margin: 0 0 1.2rem;
+  }
+
+  .fc-why-body strong {
+    color: var(--text);
+    font-weight: 700;
+  }
+
+  /* Dark CTA button */
+  .fc-why-btn {
+    display: inline-block;
+    align-self: flex-start;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 32px;
+    background: var(--brown);
+    color: var(--white);
+    border: 2px solid var(--brown);
+    cursor: pointer;
+    transition: background .25s, border-color .25s, transform .25s, box-shadow .25s;
+  }
+
+  .fc-why-btn:hover {
+    background: var(--brown-mid);
+    border-color: var(--brown-mid);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  /* ── RIGHT: Video + CTA ──────────────────────────── */
+  .fc-why-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    height: 100%;               /* fill the stretched grid cell */
+  }
+
+  /* Video block — fills the aside so it matches the left column height */
+  .fc-vid-wrap {
+    position: relative;
+    flex: 1;
+    min-height: 440px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(75,46,43,.18);
+  }
+
+  .fc-vid-ph {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--brown);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: opacity .35s ease, visibility .35s ease;
+    border: 0;
+    padding: 0;
+  }
+
+  .fc-vid-ph::before,
+  .fc-vid-ph::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .fc-vid-ph::before {
+    background: url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05243.jpg') center center / cover no-repeat;
+    transform: scale(1.02);
+    z-index: 0;
+  }
+
+  .fc-vid-ph::after {
+    background:
+      radial-gradient(ellipse at center, rgba(75,46,43,.10) 0%, rgba(75,46,43,.30) 58%, rgba(75,46,43,.62) 100%),
+      linear-gradient(180deg, rgba(28,13,6,.10) 0%, rgba(28,13,6,.58) 100%);
+    z-index: 1;
+  }
+
+  .fc-vid-ph.fc-vid-hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Play button */
+  .fc-play {
+    position: relative;
+    z-index: 2;
+    width: 84px;
+    height: 84px;
+    background: rgba(75,46,43,0.35);
+    border: 1.5px solid rgba(245,240,235,.55);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background .25s, transform .25s, border-color .25s;
+    pointer-events: none; /* the parent .fc-vid-ph receives the click */
+  }
+
+  .fc-vid-ph:hover .fc-play {
+    background: rgba(217,126,83,.55);
+    border-color: var(--terra-lt);
+    transform: scale(1.08);
+  }
+
+  .fc-play svg {
+    width: 28px;
+    height: 28px;
+    fill: #F5F0EB;
+    margin-left: 4px;
+  }
+
+  .fc-video-modal[hidden] {
+    display: none;
+  }
+
+  .fc-video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    padding: clamp(16px, 4vw, 48px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .32s ease, visibility 0s linear .32s;
+  }
+
+  .fc-video-modal.fc-video-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+
+  .fc-video-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(28,13,6,.78);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity .32s ease;
+  }
+
+  .fc-video-dialog {
+    position: relative;
+    z-index: 1;
+    width: min(1120px, 100%);
+    background: #120D0B;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 28px 90px rgba(0,0,0,.48);
+    opacity: 0;
+    transform: translateY(18px) scale(.96);
+    transition: opacity .28s ease, transform .42s cubic-bezier(.22,1,.36,1);
+  }
+
+  .fc-video-modal.fc-video-open .fc-video-backdrop,
+  .fc-video-modal.fc-video-open .fc-video-dialog {
+    opacity: 1;
+  }
+
+  .fc-video-modal.fc-video-open .fc-video-dialog {
+    transform: none;
+  }
+
+  .fc-video-player {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 78vh;
+    display: block;
+    background: #000;
+  }
+
+  .fc-video-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    background: rgba(18,13,11,.78);
+    border: 1px solid rgba(245,240,235,.36);
+    border-radius: 50%;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 1.45rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .2s ease, transform .2s ease, border-color .2s ease;
+  }
+
+  .fc-video-close:hover,
+  .fc-video-close:focus-visible {
+    background: var(--terra);
+    border-color: var(--terra);
+    transform: scale(1.04);
+    outline: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fc-video-modal,
+    .fc-video-backdrop,
+    .fc-video-dialog {
+      transition: none;
+    }
+
+    .fc-video-dialog {
+      transform: none;
+    }
+  }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .fc-why-grid  { grid-template-columns: 1fr; gap: 56px; align-items: start; }
+    .fc-why-aside { gap: 24px; height: auto; }
+    /* Stacked: video returns to a normal banner instead of filling column height */
+    .fc-vid-wrap  { flex: none; min-height: 0; aspect-ratio: 16/10; }
+  }
+
+  @media (max-width: 768px) {
+    #fc-why       { padding: 80px 0; }
+    .fc-why-wrap  { padding: 0 24px; }
+    .fc-why-grid  { gap: 42px; }
+    .fc-why-eyebrow { margin-bottom: 1rem; }
+    .fc-why-title { margin-bottom: 1.1rem; }
+    .fc-why-rule { margin-bottom: 1.35rem; }
+    .fc-why-lead  { font-size: 1rem; line-height: 1.55; margin-bottom: 1rem; }
+    .fc-why-body { line-height: 1.65; margin-bottom: .85rem; }
+    .fc-video-modal { padding: 12px; }
+    .fc-video-close { top: 8px; right: 8px; width: 38px; height: 38px; }
+  }
+  </style>
+
+  <section id="fc-why" aria-label="Why Umoya Afrika Tours">
+    <div class="fc-why-wrap">
+
+      <!-- Two-column grid -->
+      <div class="fc-why-grid">
+
+        <!-- ── LEFT: Philosophy copy ───────────────── -->
+        <div class="fc-why-rev">
+          <span class="fc-why-eyebrow">Our Approach</span>
+          <h2 class="fc-why-title">A new company, built on <em>long relationships</em>.</h2>
+          <span class="fc-why-rule" aria-hidden="true"></span>
+
+          <p class="fc-why-lead">It is built on people we know by name.</p>
+
+          <p class="fc-why-body">Umoya is African-led and African-owned, and of the diaspora ourselves. <strong>Wilson Nyah</strong> built it over a decade of work across the continent, and on the relationships that came with it. Those relationships are why <strong>Lucia Motloung</strong> pours her own wine on your first evening, and why <strong>Antoinette Sithole</strong> sits at your table in Soweto and tells you about the day in 1976 she lived herself.</p>
+
+          <p class="fc-why-body">Around those moments, the work is ours. You are met at the airport, a host stays with you the whole way, and what would normally be yours to organise is carried for you. You arrive as a guest of people who are glad to share their home.</p>
+          <a href="#fc-form-section" class="fc-why-btn">Travel with us</a>
+        </div>
+
+        <!-- ── RIGHT: Video + CTA ─────────────────── -->
+        <div class="fc-why-aside fc-why-rev fc-d2">
+
+          <!-- Video block -->
+          <div class="fc-vid-wrap">
+            <button class="fc-vid-ph" type="button" aria-label="Play Umoya brand video" aria-haspopup="dialog" aria-controls="fc-why-video-modal">
+              <span class="fc-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </span>
+            </button>
+          </div>
+
+        </div>
+
+      </div><!-- /.fc-why-grid -->
+
+
+    </div>
+    <div class="fc-video-modal" id="fc-why-video-modal" role="dialog" aria-modal="true" aria-label="Umoya Afrika Tours video" hidden>
+      <div class="fc-video-backdrop" data-fc-video-close></div>
+      <div class="fc-video-dialog">
+        <button class="fc-video-close" type="button" aria-label="Close video" data-fc-video-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <video
+          class="fc-video-player"
+          src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya_hd_optimized_720.mp4"
+          preload="metadata"
+          controls
+          controlsList="nodownload"
+          playsinline
+          aria-label="Umoya Afrika Tours video">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  (function () {
+    'use strict';
+    var els = document.querySelectorAll('#fc-why .fc-why-rev');
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('fc-why-in'); e.target.style.willChange = 'auto'; obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      els.forEach(function (el) { obs.observe(el); });
+    } else {
+      els.forEach(function (el) { el.classList.add('fc-why-in'); });
+    }
+
+    /* ── Video play overlay ──────────────────────── */
+    var section = document.getElementById('fc-why');
+    var trigger = section ? section.querySelector('.fc-vid-ph') : null;
+    var modal = section ? section.querySelector('.fc-video-modal') : null;
+    var player = section ? section.querySelector('.fc-video-player') : null;
+    var closeEls = section ? section.querySelectorAll('[data-fc-video-close]') : [];
+    var closeBtn = section ? section.querySelector('.fc-video-close') : null;
+    var lastFocus = null;
+    var closeTimer = null;
+
+    function closeVideoModal() {
+      if (!modal || !player) return;
+      if (closeTimer) {
+        window.clearTimeout(closeTimer);
+      }
+      player.pause();
+      try { player.currentTime = 0; } catch (err) {}
+      modal.classList.remove('fc-video-open');
+      document.removeEventListener('keydown', onVideoKeydown);
+      closeTimer = window.setTimeout(function () {
+        if (!modal.classList.contains('fc-video-open')) {
+          modal.hidden = true;
+          if (lastFocus && typeof lastFocus.focus === 'function') {
+            lastFocus.focus();
+          }
+          lastFocus = null;
+        }
+      }, 430);
+    }
+
+    function onVideoKeydown(e) {
+      if (e.key === 'Escape') {
+        closeVideoModal();
+      }
+    }
+
+    function openVideoModal() {
+      if (!modal || !player) return;
+      if (closeTimer) {
+        window.clearTimeout(closeTimer);
+      }
+      lastFocus = document.activeElement;
+      modal.hidden = false;
+      modal.offsetHeight;
+      modal.classList.add('fc-video-open');
+      document.addEventListener('keydown', onVideoKeydown);
+      if (closeBtn) closeBtn.focus();
+      var p = player.play();
+      if (p && typeof p.catch === 'function') {
+        p.catch(function () {});
+      }
+    }
+
+    if (trigger && modal && player) {
+      trigger.addEventListener('click', openVideoModal);
+      modal.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+      for (var c = 0; c < closeEls.length; c++) {
+        closeEls[c].addEventListener('click', closeVideoModal);
+      }
+    }
+  }());
+  </script>

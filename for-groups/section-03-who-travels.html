@@ -1,0 +1,210 @@
+<!--
+=================================================================
+  UMOYA — FOR GROUPS — SECTION 03: WHO TRAVELS WITH US
+=================================================================
+  Four photo cards covering the group types Umoya hosts.
+
+  ANCHOR: id="fg-who"
+  IMAGES: extracted from the client mockup and uploaded to the
+  Umoya CDN (umoya_groups_*.jpg).
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #fg-who {
+    --cream:  #F5F0EB;
+    --brown:  #4B2E2B;
+    --terra:  #D97E53;
+    --white:  #FFFFFF;
+    --muted:  rgba(75,46,43,.68);
+    --line:   rgba(75,46,43,.14);
+    --ease:   cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--white);
+    color: var(--brown);
+    padding: clamp(60px, 8vw, 104px) 0;
+    overflow-x: hidden;
+  }
+
+  #fg-who *, #fg-who *::before, #fg-who *::after { box-sizing: border-box; }
+
+  .fg-wh-c { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 3.4vw, 48px); }
+
+  .fg-wh-head { max-width: 60ch; margin-bottom: clamp(30px, 4vw, 44px); }
+  .fg-wh-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  .fg-wh-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--brown);
+    margin: 0;
+  }
+
+  /* ── Cards ───────────────────────────────────────── */
+  .fg-wh-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(16px, 2vw, 24px);
+  }
+
+  .fg-wh-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform .35s var(--ease);
+  }
+  .fg-wh-card:hover { transform: translateY(-5px); }
+
+  .fg-wh-media {
+    position: relative;
+    height: clamp(200px, 20vw, 230px);
+    overflow: hidden;
+    background: var(--brown);
+  }
+  .fg-wh-media img {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    display: block;
+    transition: transform .6s var(--ease);
+  }
+  .fg-wh-card:hover .fg-wh-media img { transform: scale(1.05); }
+
+  .fg-wh-body { padding: clamp(18px, 1.7vw, 24px); }
+  .fg-wh-name {
+    font-family: inherit;
+    font-size: clamp(1.1rem, 1.6vw, 1.28rem);
+    font-weight: 400;
+    line-height: 1.18;
+    color: var(--brown);
+    margin: 0 0 0.5rem;
+  }
+  .fg-wh-desc {
+    font-family: inherit;
+    font-size: 0.9rem;
+    line-height: 1.62;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .fg-wh-rv { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+  .fg-wh-rv.fg-wh-on { opacity: 1; transform: none; }
+  .fg-wh-rv.d1 { transition-delay: .1s; }
+  .fg-wh-rv.d2 { transition-delay: .2s; }
+  .fg-wh-rv.d3 { transition-delay: .3s; }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 1080px) {
+    .fg-wh-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    #fg-who { padding: 46px 0; }
+    .fg-wh-head { margin-bottom: 26px; }
+    .fg-wh-eye { margin-bottom: 0.9rem; }
+    .fg-wh-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .fg-wh-grid { gap: 16px; }
+    .fg-wh-media { height: clamp(180px, 46vw, 220px); }
+  }
+
+  @media (max-width: 540px) {
+    .fg-wh-grid { grid-template-columns: 1fr; max-width: 460px; margin-inline: auto; }
+  }
+
+  @media (max-width: 420px) {
+    #fg-who { padding: 38px 0; }
+    .fg-wh-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+    .fg-wh-body { padding: 18px 16px 20px; }
+  }
+</style>
+
+<section id="fg-who" aria-label="Who travels with us">
+  <div class="fg-wh-c">
+
+    <div class="fg-wh-head fg-wh-rv">
+      <span class="fg-wh-eye">Travel With Us</span>
+      <h2 class="fg-wh-ttl">Travel as Meaningful as the Bond You Share</h2>
+    </div>
+
+    <div class="fg-wh-grid" role="list">
+
+      <article class="fg-wh-card fg-wh-rv" role="listitem">
+        <div class="fg-wh-media">
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_groups_sororities.jpg" alt="A sorority chapter travelling together in South Africa" loading="lazy" decoding="async">
+        </div>
+        <div class="fg-wh-body">
+          <h3 class="fg-wh-name">Sororities &amp; Fraternities</h3>
+          <p class="fg-wh-desc">Chapters and Divine Nine networks traveling as one.</p>
+        </div>
+      </article>
+
+      <article class="fg-wh-card fg-wh-rv d1" role="listitem">
+        <div class="fg-wh-media">
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_groups_churches.jpg" alt="A church or faith community on a fellowship journey" loading="lazy" decoding="async">
+        </div>
+        <div class="fg-wh-body">
+          <h3 class="fg-wh-name">Churches &amp; Faith Communities</h3>
+          <p class="fg-wh-desc">Fellowship journeys with depth, warmth, and meaning.</p>
+        </div>
+      </article>
+
+      <article class="fg-wh-card fg-wh-rv d2" role="listitem">
+        <div class="fg-wh-media">
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_groups_alumni.jpg" alt="An alumni or professional network travelling together" loading="lazy" decoding="async">
+        </div>
+        <div class="fg-wh-body">
+          <h3 class="fg-wh-name">Alumni &amp; Professional Networks</h3>
+          <p class="fg-wh-desc">HBCU alumni, associations, and member organizations.</p>
+        </div>
+      </article>
+
+      <article class="fg-wh-card fg-wh-rv d3" role="listitem">
+        <div class="fg-wh-media">
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_groups_families.jpg" alt="Families and friends travelling together" loading="lazy" decoding="async">
+        </div>
+        <div class="fg-wh-body">
+          <h3 class="fg-wh-name">Families &amp; Friends</h3>
+          <p class="fg-wh-desc">Milestone trips, reunions, and the circle you choose.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('#fg-who .fg-wh-rv');
+  if(!els.length) return;
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('fg-wh-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('fg-wh-on'); });
+  }
+}());
+</script>

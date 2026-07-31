@@ -1,0 +1,182 @@
+<!--
+=================================================================
+  UMOYA — FOR GROUPS — SECTION 05: PLANNING FOR YOUR GROUP
+=================================================================
+  Four numbered steps, from first enquiry to arrival.
+
+  ANCHOR: id="fg-how"
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #fg-how {
+    --cream:  #F5F0EB;
+    --brown:  #4B2E2B;
+    --terra:  #D97E53;
+    --white:  #FFFFFF;
+    --muted:  rgba(75,46,43,.68);
+    --line:   rgba(75,46,43,.14);
+    --ease:   cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--cream);
+    color: var(--brown);
+    padding: clamp(60px, 8vw, 104px) 0;
+    overflow-x: hidden;
+  }
+
+  #fg-how *, #fg-how *::before, #fg-how *::after { box-sizing: border-box; }
+
+  .fg-hw-c { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 3.4vw, 48px); }
+
+  .fg-hw-head { max-width: 60ch; margin-bottom: clamp(32px, 4vw, 48px); }
+  .fg-hw-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  .fg-hw-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--brown);
+    margin: 0;
+  }
+
+  /* ── Steps ───────────────────────────────────────── */
+  .fg-hw-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(16px, 2vw, 24px);
+  }
+
+  .fg-hw-step {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--terra);
+    border-radius: 10px;
+    padding: clamp(24px, 2.4vw, 32px) clamp(20px, 2vw, 26px) clamp(26px, 2.6vw, 32px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fg-hw-n {
+    font-family: inherit;
+    font-size: clamp(1.9rem, 3.2vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--terra);
+    margin-bottom: 0.9rem;
+  }
+
+  .fg-hw-h {
+    font-family: inherit;
+    font-size: clamp(1.08rem, 1.6vw, 1.26rem);
+    font-weight: 400;
+    line-height: 1.22;
+    color: var(--brown);
+    margin: 0 0 0.6rem;
+  }
+
+  .fg-hw-p {
+    font-family: inherit;
+    font-size: 0.92rem;
+    line-height: 1.68;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .fg-hw-rv { opacity: 0; transform: translateY(26px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+  .fg-hw-rv.fg-hw-on { opacity: 1; transform: none; }
+  .fg-hw-rv.d1 { transition-delay: .1s; }
+  .fg-hw-rv.d2 { transition-delay: .2s; }
+  .fg-hw-rv.d3 { transition-delay: .3s; }
+  .fg-hw-rv.d4 { transition-delay: .4s; }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 1080px) {
+    .fg-hw-steps { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    #fg-how { padding: 46px 0; }
+    .fg-hw-head { margin-bottom: 28px; }
+    .fg-hw-eye { margin-bottom: 0.9rem; }
+    .fg-hw-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .fg-hw-steps { gap: 16px; }
+  }
+
+  @media (max-width: 540px) {
+    .fg-hw-steps { grid-template-columns: 1fr; max-width: 460px; margin-inline: auto; }
+  }
+
+  @media (max-width: 420px) {
+    #fg-how { padding: 38px 0; }
+    .fg-hw-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+    .fg-hw-step { padding: 22px 18px 24px; }
+  }
+</style>
+
+<section id="fg-how" aria-label="Planning for your group">
+  <div class="fg-hw-c">
+
+    <div class="fg-hw-head fg-hw-rv">
+      <span class="fg-hw-eye">Planning for Your Group</span>
+      <h2 class="fg-hw-ttl">From your idea to your group's journey.</h2>
+    </div>
+
+    <div class="fg-hw-steps" role="list">
+
+      <div class="fg-hw-step fg-hw-rv d1" role="listitem">
+        <div class="fg-hw-n">1</div>
+        <h3 class="fg-hw-h">Tell us about your group</h3>
+        <p class="fg-hw-p">Who you are, roughly how many, and when you'd like to travel.</p>
+      </div>
+
+      <div class="fg-hw-step fg-hw-rv d2" role="listitem">
+        <div class="fg-hw-n">2</div>
+        <h3 class="fg-hw-h">We shape the journey</h3>
+        <p class="fg-hw-p">A plan built around your group, with a clear proposal to share with everyone.</p>
+      </div>
+
+      <div class="fg-hw-step fg-hw-rv d3" role="listitem">
+        <div class="fg-hw-n">3</div>
+        <h3 class="fg-hw-h">Reserve your block</h3>
+        <p class="fg-hw-p">Secure your places with deposits, on a schedule that suits a group.</p>
+      </div>
+
+      <div class="fg-hw-step fg-hw-rv d4" role="listitem">
+        <div class="fg-hw-n">4</div>
+        <h3 class="fg-hw-h">We handle the rest</h3>
+        <p class="fg-hw-p">From the moment you arrive, every detail is handled. Your only job is to be present.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('#fg-how .fg-hw-rv');
+  if(!els.length) return;
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('fg-hw-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('fg-hw-on'); });
+  }
+}());
+</script>

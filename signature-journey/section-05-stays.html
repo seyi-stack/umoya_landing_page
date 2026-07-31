@@ -1,0 +1,361 @@
+<!--
+=================================================================
+  UMOYA — THE SIGNATURE JOURNEY — SECTION 05: WHERE YOU STAY
+=================================================================
+  Three five-star properties, each shown as a 3-slide slideshow:
+    • The Da Vinci — Nelson Mandela Square, Sandton
+    • MalaMala    — Community-owned · The Sabi Sand
+    • Cape Grace  — A Fairmont Hotel · V&A Waterfront
+
+  Slideshow behaviour:
+  • All three carousels auto-advance together off one shared 5,000ms
+    clock — same moment, same speed, same eased crossfade.
+  • Dot navigation lets you jump to any slide directly.
+  • Keyboard/ARIA accessible (role=tablist / tab, aria-selected).
+
+  ANCHOR: id="sj-stays" is the nav target — do not change.
+
+  IMAGES: each slideshow now shows three client-approved photos, set as
+  inline background-image URLs on the .sj-stay-slide elements (the
+  .sj-stay-ph placeholder markup has been removed).
+
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #sj-stays {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --white:    #FFFFFF;
+    --muted:    rgba(75,46,43,.66);
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--white);
+    color: var(--brown);
+    padding: clamp(64px, 8vw, 104px) 0;
+    overflow-x: hidden;
+  }
+
+  #sj-stays *, #sj-stays *::before, #sj-stays *::after { box-sizing: border-box; }
+
+  .sj-stay-c { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 3.4vw, 48px); }
+
+  /* ── Header ─────────────────────────────────────── */
+  .sj-stay-head { max-width: 64ch; }
+  .sj-stay-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  .sj-stay-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--brown);
+    margin: 0;
+  }
+  .sj-stay-lead {
+    font-family: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.1rem);
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 60ch;
+    margin: 1.2rem 0 0;
+  }
+
+  /* ── Grid ───────────────────────────────────────── */
+  .sj-stay-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 2.4vw, 26px);
+    margin-top: clamp(38px, 4.6vw, 52px);
+  }
+
+  .sj-stay-card { display: flex; flex-direction: column; }
+
+  .sj-stay-frame {
+    position: relative;
+    height: clamp(300px, 30vw, 340px);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--brown);
+  }
+
+  .sj-stay-show { position: absolute; inset: 0; }
+  .sj-stay-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    /* Smooth, uniform crossfade (easy ease) — same for every card. */
+    transition: opacity 1s ease-in-out;
+  }
+  .sj-stay-slide.sj-on { opacity: 1; }
+
+  /* Labelled placeholder — remove per slide when a real image is set */
+  .sj-stay-ph {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    padding: 16px;
+    background: linear-gradient(135deg, #E7DED2, #DAcfBE);
+    color: #8A755F;
+  }
+  .sj-stay-ph svg { width: 26px; height: 26px; stroke: var(--terra); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; opacity: .9; }
+  .sj-stay-ph span {
+    font-family: inherit;
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  /* Dots — tight visual spacing; each button keeps a comfortable tap area */
+  .sj-stay-dots {
+    position: absolute;
+    left: 0; right: 0; bottom: 14px;
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+    z-index: 3;
+  }
+  .sj-stay-dot {
+    width: 20px;
+    height: 34px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sj-stay-dot::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(245,240,235,.55);
+    transition: background .2s, transform .2s;
+  }
+  .sj-stay-dot.sj-on::before { background: var(--cream); transform: scale(1.3); }
+
+  /* Caption */
+  .sj-stay-cap { padding: 16px 2px 0; }
+  .sj-stay-nm {
+    font-family: inherit;
+    font-size: 1.35rem;
+    color: var(--brown);
+    font-weight: 400;
+    line-height: 1.15;
+  }
+  .sj-stay-pl {
+    font-family: inherit;
+    font-size: 0.76rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--terra);
+    font-weight: 600;
+    margin-top: 0.35rem;
+  }
+  .sj-stay-desc {
+    font-family: inherit;
+    font-size: 0.92rem;
+    line-height: 1.62;
+    color: var(--muted);
+    margin: 0.7rem 0 0;
+  }
+
+  /* ── Scroll reveal ─────────────────────────────── */
+  .sj-stay-rv { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+  .sj-stay-rv.sj-stay-vis { opacity: 1; transform: none; }
+  .sj-stay-rv.d1 { transition-delay: .12s; }
+  .sj-stay-rv.d2 { transition-delay: .24s; }
+
+  /* ── Mobile ─────────────────────────────────────── */
+  @media (max-width: 980px) {
+    .sj-stay-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+    .sj-stay-frame { height: clamp(280px, 62vw, 360px); }
+  }
+  @media (max-width: 768px) {
+    #sj-stays { padding: 44px 0; }
+    .sj-stay-eye { margin-bottom: 0.9rem; }
+    .sj-stay-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .sj-stay-lead { font-size: 1rem; line-height: 1.6; margin-top: 1rem; }
+    .sj-stay-grid { margin-top: 28px; gap: 24px; }
+    .sj-stay-nm { font-size: 1.25rem; }
+  }
+  @media (max-width: 420px) {
+    #sj-stays { padding: 38px 0; }
+    .sj-stay-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+    .sj-stay-lead { font-size: 0.95rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    /* Reveal animations fall back to instant; the carousel keeps its
+       gentle eased crossfade so the slideshows still cycle smoothly. */
+    .sj-stay-rv { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+
+<section id="sj-stays" aria-label="Where you stay — hotel stays">
+  <div class="sj-stay-c">
+
+    <div class="sj-stay-head sj-stay-rv">
+      <span class="sj-stay-eye">Where You Rest</span>
+      <h2 class="sj-stay-ttl">Your Home Along the Way</h2>
+      <p class="sj-stay-lead">Every property on an Umoya journey is five-star, chosen as carefully as every moment between. We do not simply book the best-rated hotel in a city. We select each property for where it sits, what it adds to the experience, and in some cases, the story it carries.</p>
+    </div>
+
+    <div class="sj-stay-grid">
+
+      <!-- The Da Vinci -->
+      <figure class="sj-stay-card sj-stay-rv" data-sj-slideshow>
+        <div class="sj-stay-frame">
+          <div class="sj-stay-show">
+            <!-- The Da Vinci — slide 1 · umoya_compressed_Davinci_Outdoor_Pool_(3).jpg -->
+            <div class="sj-stay-slide sj-on" role="group" aria-roledescription="slide" aria-label="The Da Vinci — 1 of 3" style="background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Davinci_Outdoor_Pool_(3).jpg');"></div>
+            <!-- The Da Vinci — slide 2 · umoya_compressed_DAVINCI_Lounge_(2).jpg -->
+            <div class="sj-stay-slide" role="group" aria-roledescription="slide" aria-label="The Da Vinci — 2 of 3" style="background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_DAVINCI_Lounge_(2).jpg');"></div>
+            <!-- The Da Vinci — slide 3 · umoya_compressed_Da_Vinci_Room_801_002.jpg -->
+            <div class="sj-stay-slide" role="group" aria-roledescription="slide" aria-label="The Da Vinci — 3 of 3" style="background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Da_Vinci_Room_801_002.jpg');"></div>
+          </div>
+          <div class="sj-stay-dots" role="tablist" aria-label="The Da Vinci slides">
+            <button class="sj-stay-dot sj-on" role="tab" aria-selected="true" aria-label="Show image 1"></button>
+            <button class="sj-stay-dot" role="tab" aria-selected="false" aria-label="Show image 2"></button>
+            <button class="sj-stay-dot" role="tab" aria-selected="false" aria-label="Show image 3"></button>
+          </div>
+        </div>
+        <figcaption class="sj-stay-cap">
+          <div class="sj-stay-nm">The Da Vinci</div>
+          <div class="sj-stay-pl">Nelson Mandela Square, Sandton</div>
+          <p class="sj-stay-desc">Set on Nelson Mandela Square in the heart of Sandton, The Da Vinci is one of Johannesburg's finest hotels, with an infinity pool, spa, and private art collection in the lobby.</p>
+        </figcaption>
+      </figure>
+
+      <!-- MalaMala -->
+      <figure class="sj-stay-card sj-stay-rv d1" data-sj-slideshow>
+        <div class="sj-stay-frame">
+          <div class="sj-stay-show">
+            <!-- MalaMala — slide 1 · umoya_compressed_buffalo_suite14.png -->
+            <div class="sj-stay-slide sj-on" role="group" aria-roledescription="slide" aria-label="MalaMala — 1 of 3" style="background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_buffalo_suite14.png');"></div>
+            <!-- MalaMala — slide 2 · umoya_compressed_buffalo_maindeck5.png -->
+            <div class="sj-stay-slide" role="group" aria-roledescription="slide" aria-label="MalaMala — 2 of 3" style="background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_buffalo_maindeck5.png');"></div>
+            <!-- MalaMala — slide 3 · umoya_compressed_buffalo_suite_3bathroom.png -->
+            <div class="sj-stay-slide" role="group" aria-roledescription="slide" aria-label="MalaMala — 3 of 3" style="background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_buffalo_suite_3bathroom.png');"></div>
+          </div>
+          <div class="sj-stay-dots" role="tablist" aria-label="MalaMala slides">
+            <button class="sj-stay-dot sj-on" role="tab" aria-selected="true" aria-label="Show image 1"></button>
+            <button class="sj-stay-dot" role="tab" aria-selected="false" aria-label="Show image 2"></button>
+            <button class="sj-stay-dot" role="tab" aria-selected="false" aria-label="Show image 3"></button>
+          </div>
+        </div>
+        <figcaption class="sj-stay-cap">
+          <div class="sj-stay-nm">MalaMala</div>
+          <div class="sj-stay-pl">Community-owned · The Sabi Sand</div>
+          <p class="sj-stay-desc">One of the oldest and most celebrated safari reserves in Africa, MalaMala sits on land that was taken from its Black community during apartheid and won back through the courts, making it the most meaningful place on earth to go on safari.</p>
+        </figcaption>
+      </figure>
+
+      <!-- Cape Grace -->
+      <figure class="sj-stay-card sj-stay-rv d2" data-sj-slideshow>
+        <div class="sj-stay-frame">
+          <div class="sj-stay-show">
+            <!-- Cape Grace — slide 1 · umoya_compressed_Cape_Grace_Marina_View.jpg -->
+            <div class="sj-stay-slide sj-on" role="group" aria-roledescription="slide" aria-label="Cape Grace — 1 of 3" style="background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Cape_Grace_Marina_View.jpg');"></div>
+            <!-- Cape Grace — slide 2 · umoya_compressed_Waterfront_Penthouse_5.jpg -->
+            <div class="sj-stay-slide" role="group" aria-roledescription="slide" aria-label="Cape Grace — 2 of 3" style="background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Waterfront_Penthouse_5.jpg');"></div>
+            <!-- Cape Grace — slide 3 · umoya_compressed_Pool_at_Cape_Grace_4.jpg -->
+            <div class="sj-stay-slide" role="group" aria-roledescription="slide" aria-label="Cape Grace — 3 of 3" style="background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Pool_at_Cape_Grace_4.jpg');"></div>
+          </div>
+          <div class="sj-stay-dots" role="tablist" aria-label="Cape Grace slides">
+            <button class="sj-stay-dot sj-on" role="tab" aria-selected="true" aria-label="Show image 1"></button>
+            <button class="sj-stay-dot" role="tab" aria-selected="false" aria-label="Show image 2"></button>
+            <button class="sj-stay-dot" role="tab" aria-selected="false" aria-label="Show image 3"></button>
+          </div>
+        </div>
+        <figcaption class="sj-stay-cap">
+          <div class="sj-stay-nm">Cape Grace</div>
+          <div class="sj-stay-pl">A Fairmont Hotel · V&amp;A Waterfront</div>
+          <p class="sj-stay-desc">Situated right on the V&amp;A Waterfront with Table Mountain rising behind it, the Cape Grace reopened in 2024 as the first Fairmont hotel in South Africa, its design a celebration of South African heritage, colour, and craft.</p>
+        </figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ── Scroll reveal ──────────────────────────────── */
+  var rvs = document.querySelectorAll('#sj-stays .sj-stay-rv');
+  if('IntersectionObserver' in window){
+    var rvObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('sj-stay-vis'); rvObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    rvs.forEach(function(el){ rvObs.observe(el); });
+  } else {
+    rvs.forEach(function(el){ el.classList.add('sj-stay-vis'); });
+  }
+
+  /* ── Slideshows ─────────────────────────────────────
+     Every carousel runs off ONE shared clock, so all three
+     advance together — same moment, same 5s cadence, same eased
+     crossfade (the .sj-stay-slide `opacity 1s ease-in-out`).
+     Auto-advance is unconditional (it does not stop on hover or
+     pause under reduced-motion); dot clicks still jump directly. */
+  var advancers = [];
+
+  document.querySelectorAll('#sj-stays [data-sj-slideshow]').forEach(function(card){
+    var slides = card.querySelectorAll('.sj-stay-slide');
+    var dots   = card.querySelectorAll('.sj-stay-dot');
+    if(slides.length < 2) return;
+
+    var i = 0;
+
+    function show(n){
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function(s, k){ s.classList.toggle('sj-on', k === i); });
+      dots.forEach(function(d, k){
+        var on = k === i;
+        d.classList.toggle('sj-on', on);
+        d.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+    }
+
+    dots.forEach(function(d, k){
+      d.addEventListener('click', function(){ show(k); });
+    });
+
+    show(0);
+    advancers.push(function(){ show(i + 1); });
+  });
+
+  if(advancers.length){
+    setInterval(function(){
+      advancers.forEach(function(advance){ advance(); });
+    }, 5000);
+  }
+}());
+</script>

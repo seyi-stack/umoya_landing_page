@@ -1,0 +1,211 @@
+<!--
+=================================================================
+  UMOYA — FOR GROUPS — SECTION 01: HERO
+=================================================================
+  Full-bleed image hero, left-aligned content (per the mockup).
+
+  ANCHOR: id="fg-hero" — first content widget after the site nav.
+  IMAGE: extracted from the client mockup and uploaded to the
+  Umoya CDN (umoya_groups_hero.jpg).
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #fg-hero {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --terra-dk: #C06840;
+    --white:    #FFFFFF;
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    position: relative;
+    min-height: max(74dvh, 540px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--brown);
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+
+  #fg-hero *, #fg-hero *::before, #fg-hero *::after { box-sizing: border-box; }
+
+  /* ── Background ──────────────────────────────────── */
+  .fg-h-bg { position: absolute; inset: 0; z-index: 0; }
+  .fg-h-bg img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    object-position: center 30%;
+    display: block;
+  }
+  .fg-h-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(28,13,6,.48)  0%,
+      rgba(28,13,6,.42) 40%,
+      rgba(28,13,6,.72) 76%,
+      rgba(28,13,6,.90) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* ── Content — left aligned ──────────────────────── */
+  .fg-h-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 92px clamp(20px, 3.4vw, 48px);
+    text-align: left;
+  }
+
+  .fg-h-eye {
+    display: inline-block;
+    font-family: inherit;
+    font-size: clamp(0.78rem, 1vw, 0.9rem);
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.4rem;
+    animation: fgHUp .9s .1s both;
+  }
+
+  .fg-h-title {
+    font-family: inherit;
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    font-weight: 400;
+    line-height: 1.03;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    max-width: 14ch;
+    text-wrap: balance;
+    margin: 0 0 1.3rem;
+    animation: fgHUp 1s .24s both;
+  }
+
+  .fg-h-sub {
+    font-family: inherit;
+    font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+    font-weight: 300;
+    line-height: 1.68;
+    color: var(--cream);
+    opacity: .94;
+    max-width: 60ch;
+    margin: 0 0 2.4rem;
+    animation: fgHUp .9s .38s both;
+  }
+
+  .fg-h-btns {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    animation: fgHUp .9s .52s both;
+  }
+
+  .fg-h-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: inherit;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 17px 36px;
+    min-height: 56px;
+    cursor: pointer;
+    transition: background .3s var(--ease), color .3s var(--ease),
+                border-color .3s var(--ease), transform .3s var(--ease);
+  }
+
+  .fg-h-btn-primary {
+    background: var(--terra);
+    color: var(--white);
+    border: 1.5px solid var(--terra);
+  }
+  .fg-h-btn-primary svg { width: 16px; height: 16px; transition: transform .3s var(--ease); }
+  .fg-h-btn-primary:hover {
+    background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  .fg-h-btn-primary:hover svg { transform: translateX(4px); }
+
+  .fg-h-btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border: 1.5px solid rgba(245,240,235,.7);
+  }
+  .fg-h-btn-ghost:hover {
+    background: rgba(245,240,235,.12);
+    border-color: var(--cream);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  @keyframes fgHUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+
+  /* ── Tablet ≤1024px ──────────────────────────────── */
+  @media (max-width: 1024px) {
+    .fg-h-content { padding: 76px 22px; }
+  }
+
+  /* ── Mobile ≤768px ───────────────────────────────── */
+  @media (max-width: 768px) {
+    #fg-hero { min-height: max(64dvh, 460px); }
+    .fg-h-content { padding: 62px 20px; }
+    .fg-h-eye { font-size: 0.76rem; letter-spacing: 0.22em; margin-bottom: 1rem; }
+    .fg-h-title { font-size: clamp(2.1rem, 9vw, 3.4rem); max-width: none; margin-bottom: 1rem; }
+    .fg-h-sub { font-size: 1rem; margin-bottom: 1.8rem; }
+    .fg-h-btns { flex-direction: column; align-items: stretch; width: 100%; max-width: 360px; gap: 12px; }
+    .fg-h-btn { width: 100%; padding: 15px 26px; min-height: 52px; }
+  }
+
+  /* ── Small mobile ≤420px ─────────────────────────── */
+  @media (max-width: 420px) {
+    #fg-hero { min-height: max(60dvh, 420px); }
+    .fg-h-content { padding: 52px 16px; }
+    .fg-h-eye { font-size: 0.7rem; letter-spacing: 0.18em; }
+    .fg-h-title { font-size: clamp(1.9rem, 10vw, 2.8rem); }
+    .fg-h-sub { font-size: 0.95rem; }
+  }
+</style>
+
+<section id="fg-hero" aria-label="For Groups — Hero">
+
+  <div class="fg-h-bg">
+    <img
+      src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_groups_hero.jpg"
+      alt="A group travelling together across South Africa with Umoya"
+    />
+  </div>
+
+  <div class="fg-h-content">
+    <span class="fg-h-eye">For Groups</span>
+    <h1 class="fg-h-title">Bring Your Circle</h1>
+    <p class="fg-h-sub">The best journeys are the ones you share. Whether you are bringing a sorority, a church, an alumni network, or simply your closest friends, we make traveling together effortless, and we look after the person who brings everyone along.</p>
+    <div class="fg-h-btns">
+      <a href="#fg-plan" class="fg-h-btn fg-h-btn-primary">
+        Plan a Group Journey
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="13 6 19 12 13 18"/>
+        </svg>
+      </a>
+      <a href="#fg-journey" class="fg-h-btn fg-h-btn-ghost">See the Journey</a>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,227 @@
+<!--
+=================================================================
+  UMOYA — THE SIGNATURE JOURNEY — SECTION 04: OPTIONAL EXTENSIONS
+=================================================================
+  The page's dark-brown accent section (tonal contrast against the
+  cream/white bands around it). Two extension tiles:
+    • Extension One — Victoria Falls
+    • Extension Two — Chobe (builds on One)
+
+  ANCHOR: id="sj-extensions" is the nav target — do not change.
+  IMAGES: both tiles now use client-approved images.
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #sj-extensions {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --terra-dk: #C06840;
+    --white:    #FFFFFF;
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--brown);
+    color: var(--cream);
+    padding: clamp(64px, 8vw, 104px) 0;
+    overflow-x: hidden;
+  }
+
+  #sj-extensions *, #sj-extensions *::before, #sj-extensions *::after { box-sizing: border-box; }
+
+  .sj-ext-c { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 3.4vw, 48px); }
+
+  /* ── Header ─────────────────────────────────────── */
+  .sj-ext-head { text-align: center; max-width: 62ch; margin: 0 auto; }
+  .sj-ext-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  .sj-ext-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin: 0;
+    text-wrap: balance;
+  }
+  .sj-ext-ttl em { font-style: italic; color: var(--white); }
+  .sj-ext-sub {
+    font-family: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.1rem);
+    line-height: 1.7;
+    color: rgba(245,240,235,.85);
+    margin: 1.2rem auto 0;
+  }
+
+  /* ── Tiles ──────────────────────────────────────── */
+  .sj-ext-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(22px, 2.6vw, 30px);
+    margin-top: clamp(40px, 5vw, 56px);
+  }
+
+  .sj-ext-tile {
+    background: rgba(245,240,235,.05);
+    border: 1px solid rgba(245,240,235,.18);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sj-ext-img {
+    position: relative;
+    height: clamp(220px, 24vw, 288px);
+    background: #2f211a;
+    overflow: hidden;
+  }
+  .sj-ext-img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .8s var(--ease);
+  }
+  .sj-ext-tile:hover .sj-ext-img img { transform: scale(1.05); }
+  .sj-ext-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(33,24,18,0) 45%, rgba(33,24,18,.5));
+    pointer-events: none;
+  }
+
+  .sj-ext-body { padding: clamp(26px, 3vw, 32px) clamp(26px, 3vw, 32px) clamp(30px, 3.4vw, 36px); }
+  .sj-ext-num {
+    font-family: inherit;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terra);
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+  }
+  .sj-ext-name {
+    font-family: inherit;
+    font-size: clamp(1.6rem, 2.4vw, 1.95rem);
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.1;
+    margin: 0;
+  }
+  .sj-ext-where {
+    font-family: inherit;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245,240,235,.6);
+    font-weight: 600;
+    margin: 0.5rem 0 1rem;
+  }
+  .sj-ext-desc {
+    font-family: inherit;
+    font-size: 0.96rem;
+    line-height: 1.68;
+    color: rgba(245,240,235,.84);
+    margin: 0;
+  }
+
+  /* ── Scroll reveal ─────────────────────────────── */
+  .sj-ext-rv { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+  .sj-ext-rv.sj-ext-on { opacity: 1; transform: none; }
+  .sj-ext-rv.d1 { transition-delay: .12s; }
+  .sj-ext-rv.d2 { transition-delay: .24s; }
+
+  /* ── Mobile ─────────────────────────────────────── */
+  @media (max-width: 880px) {
+    .sj-ext-grid { grid-template-columns: 1fr; max-width: 540px; margin-inline: auto; }
+  }
+  @media (max-width: 768px) {
+    #sj-extensions { padding: 44px 0; }
+    .sj-ext-eye { margin-bottom: 0.9rem; }
+    .sj-ext-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .sj-ext-sub { font-size: 1rem; line-height: 1.6; margin-top: 1rem; }
+    .sj-ext-grid { margin-top: 34px; }
+    .sj-ext-name { font-size: clamp(1.4rem, 6vw, 1.7rem); }
+    .sj-ext-desc { font-size: 0.92rem; }
+  }
+  @media (max-width: 420px) {
+    #sj-extensions { padding: 38px 0; }
+    .sj-ext-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+    .sj-ext-sub { font-size: 0.95rem; }
+  }
+</style>
+
+<section id="sj-extensions" aria-label="Two optional extensions beyond South Africa">
+  <div class="sj-ext-c">
+
+    <div class="sj-ext-head sj-ext-rv">
+      <span class="sj-ext-eye">Two Optional Extensions</span>
+      <h2 class="sj-ext-ttl">Experiences Beyond South Africa</h2>
+      <p class="sj-ext-sub">For those who wish to travel on. Both extensions are arranged seamlessly as part of your journey, and Extension Two builds on Extension One.</p>
+    </div>
+
+    <div class="sj-ext-grid">
+
+      <!-- Extension One — Victoria Falls -->
+      <article class="sj-ext-tile sj-ext-rv d1">
+        <!-- Extension One · Victoria Falls — umoya_compressed_img233195226.jpeg -->
+        <div class="sj-ext-img">
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img233195226.jpeg" alt="Victoria Falls, on the border of Zimbabwe and Zambia" loading="lazy" />
+        </div>
+        <div class="sj-ext-body">
+          <div class="sj-ext-num">Extension One · A World Wonder</div>
+          <h3 class="sj-ext-name">Victoria Falls</h3>
+          <div class="sj-ext-where">Victoria Falls, Zimbabwe</div>
+          <p class="sj-ext-desc">The journey carries north to Victoria Falls, one of the seven natural wonders of the world, on the border of Zimbabwe and Zambia. Feel the mist, hear the thunder, and stand close enough to the falls to understand why they are called the smoke that thunders. You stay 3 nights on the banks of the Zambezi at Victoria Falls River Lodge, with a sunset cruise on the river, a guided tour of the falls, and a Boma dinner under the stars.</p>
+        </div>
+      </article>
+
+      <!-- Extension Two — Chobe -->
+      <article class="sj-ext-tile sj-ext-rv d2">
+        <!-- Extension Two · Chobe — umoya_compressed_Chobe-Princess_Exterior_at-Sunset-709-1600x1066.jpg -->
+        <div class="sj-ext-img">
+          <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Chobe-Princess_Exterior_at-Sunset-709-1600x1066.jpg" alt="A houseboat on the Chobe River at sunset, Botswana" loading="lazy" />
+        </div>
+        <div class="sj-ext-body">
+          <div class="sj-ext-num">Extension Two · Africa's Eden</div>
+          <h3 class="sj-ext-name">Chobe</h3>
+          <div class="sj-ext-where">Chobe, Botswana</div>
+          <p class="sj-ext-desc">Everything in Extension One, then you cross into Botswana and finish on the water, aboard a private houseboat on the Chobe River. Drift at golden hour as elephants gather on the banks in numbers found almost nowhere else on earth, and close the journey on the river itself.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('#sj-extensions .sj-ext-rv');
+  if(!els.length) return;
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('sj-ext-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('sj-ext-on'); });
+  }
+}());
+</script>

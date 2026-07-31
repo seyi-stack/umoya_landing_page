@@ -1,0 +1,718 @@
+<!--
+=================================================================
+  UMOYA — PRIVATE & TAILORMADE — SECTION 05: DESIGN YOUR JOURNEY
+=================================================================
+  Two-column: copy left, inquiry form right (stacks on mobile).
+
+  INTEGRATION — matches the Founder's Circle form:
+  • Posts to /wp-json/umoya/v1/submissions (WordPress stores the
+    submission and forwards it to HubSpot).
+  • If WordPress is unreachable, the browser falls back to posting
+    directly to the HubSpot Forms API and queues the WP backup.
+  • Field names reuse the existing MERGE* aliases so the mapping in
+    class-submissions.php keeps working with no backend change:
+      MERGE1 → salutation      (unused here)
+      MERGE4 → preferred_travel_season  (carries MONTH)
+      MERGE5 → preferred_travel_year
+      MERGE6 → preferred_journey_length (carries GUEST COUNT)
+      MERGE7 → founders_circle_message  (carries the brief)
+    The occasion select reuses MERGE2 (country slot) — see the
+    OPEN ITEM note below.
+
+  OPEN ITEM: for cleaner reporting, create dedicated HubSpot
+  properties (e.g. trip_occasion, party_size) and update both the
+  map below and the aliases in class-submissions.php.
+
+  ANCHOR: id="pt-design" — every "Design Your Journey" / "Make it
+  yours" CTA on this page targets it.
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #pt-design {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --terra-dk: #C06840;
+    --olive:    #708238;
+    --white:    #FFFFFF;
+    --muted:    rgba(75,46,43,.68);
+    --line:     rgba(75,46,43,.18);
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--white);
+    color: var(--brown);
+    padding: clamp(60px, 8vw, 104px) 0;
+    overflow-x: hidden;
+  }
+
+  #pt-design *, #pt-design *::before, #pt-design *::after { box-sizing: border-box; }
+
+  .pt-df-c { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 3.4vw, 48px); }
+
+  .pt-df-grid {
+    display: grid;
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+    gap: clamp(32px, 5vw, 68px);
+    align-items: start;
+  }
+
+  /* ── Copy column ─────────────────────────────────── */
+  .pt-df-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  .pt-df-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--brown);
+    margin: 0;
+  }
+  .pt-df-lead {
+    font-family: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.1rem);
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 46ch;
+    margin: 1.2rem 0 0;
+  }
+
+  /* ── Form card ───────────────────────────────────── */
+  .pt-df-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--terra);
+    border-radius: 10px;
+    padding: clamp(26px, 3vw, 38px);
+  }
+
+  .pt-df-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .pt-df-field { display: flex; flex-direction: column; margin-bottom: 16px; }
+
+  .pt-df-field label {
+    font-family: inherit;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 8px;
+  }
+  .pt-df-field label .pt-df-opt {
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--muted);
+  }
+
+  .pt-df-field input,
+  .pt-df-field select,
+  .pt-df-field textarea {
+    font-family: inherit;
+    /* 16px floor prevents iOS Safari auto-zoom on focus */
+    font-size: max(16px, 0.92rem);
+    line-height: 1.4;
+    color: var(--brown);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 13px 14px;
+    min-height: 48px;
+    width: 100%;
+    transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+  }
+
+  .pt-df-field textarea { min-height: 96px; resize: vertical; }
+
+  .pt-df-field input:focus,
+  .pt-df-field select:focus,
+  .pt-df-field textarea:focus {
+    outline: none;
+    border-color: var(--terra);
+    box-shadow: 0 0 0 3px rgba(217,126,83,.14);
+  }
+
+  .pt-df-field select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234B2E2B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  /* Consent checkboxes (POPIA) */
+  .pt-df-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin-bottom: 14px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .pt-df-consent input {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    accent-color: var(--terra);
+    cursor: pointer;
+  }
+  .pt-df-consent a { color: var(--terra); text-decoration: underline; text-underline-offset: 2px; }
+  .pt-df-consent .pt-df-flag { color: var(--brown); font-weight: 600; }
+
+  /* Submit */
+  .pt-df-btn {
+    appearance: none;
+    -webkit-appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 6px;
+    min-height: 54px;
+    padding: 16px 28px;
+    background: var(--terra);
+    border: 2px solid var(--terra);
+    border-radius: 0;
+    color: var(--white);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+  }
+  .pt-df-btn:hover:not(:disabled) {
+    background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    transform: translateY(-2px);
+  }
+  .pt-df-btn:disabled { cursor: default; }
+
+  .pt-df-legal {
+    font-family: inherit;
+    font-size: 0.74rem;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 14px 0 0;
+    text-align: center;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .pt-df-rv { opacity: 0; transform: translateY(26px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+  .pt-df-rv.pt-df-on { opacity: 1; transform: none; }
+  .pt-df-rv.d1 { transition-delay: .12s; }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .pt-df-grid { grid-template-columns: 1fr; gap: clamp(26px, 4vw, 36px); }
+    .pt-df-lead { max-width: none; }
+  }
+
+  @media (max-width: 768px) {
+    #pt-design { padding: 46px 0; }
+    .pt-df-eye { margin-bottom: 0.9rem; }
+    .pt-df-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .pt-df-lead { font-size: 1rem; line-height: 1.65; }
+    .pt-df-card { padding: 24px 20px 26px; }
+  }
+
+  @media (max-width: 560px) {
+    .pt-df-row { grid-template-columns: 1fr; gap: 0; }
+  }
+
+  @media (max-width: 420px) {
+    #pt-design { padding: 38px 0; }
+    .pt-df-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+  }
+</style>
+
+<section id="pt-design" aria-label="Design your journey">
+  <div class="pt-df-c">
+    <div class="pt-df-grid">
+
+      <div class="pt-df-rv">
+        <span class="pt-df-eye">Design Your Journey</span>
+        <h2 class="pt-df-ttl">Let's Begin.</h2>
+        <p class="pt-df-lead">Tell us a little about the journey you have in mind, and a dedicated Umoya Travel Expert will personally help you shape it.</p>
+      </div>
+
+      <div class="pt-df-card pt-df-rv d1">
+        <!-- Hidden target keeps the native POST from navigating away if JS is off -->
+        <iframe name="umoyaSubmissionFrame" style="display:none" title="Submission target" aria-hidden="true"></iframe>
+
+        <form
+          class="pt-df-form"
+          id="ptDesignForm"
+          action="/wp-json/umoya/v1/submissions"
+          method="post"
+          target="umoyaSubmissionFrame"
+          novalidate
+          aria-label="Private &amp; Tailormade Inquiry Form"
+          data-hubspot-portal-id="246097317"
+          data-hubspot-form-id="cb87d460-fb2d-4c53-8c32-7daaa05067d7"
+          data-umoya-form-source="private_tailormade_page"
+          data-wordpress-backup-endpoint="/wp-json/umoya/v1/submissions"
+          data-hubspot-consent-text="I consent to Umoya contacting me about my journey and processing my details as set out in the Privacy Policy."
+        >
+          <input type="hidden" name="source" value="private_tailormade_page">
+          <input type="hidden" name="hubspotPortalId" value="246097317">
+          <input type="hidden" name="hubspotFormId" value="cb87d460-fb2d-4c53-8c32-7daaa05067d7">
+          <input type="hidden" name="consentText" value="I consent to Umoya contacting me about my journey and processing my details as set out in the Privacy Policy.">
+          <input type="hidden" name="hutk" value="">
+          <input type="hidden" name="pageUri" value="">
+          <input type="hidden" name="pageName" value="">
+
+          <div class="pt-df-row">
+            <div class="pt-df-field">
+              <label for="ptFirst">First name</label>
+              <input type="text" id="ptFirst" name="FNAME" required autocomplete="given-name">
+            </div>
+            <div class="pt-df-field">
+              <label for="ptLast">Last name</label>
+              <input type="text" id="ptLast" name="LNAME" required autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="pt-df-row">
+            <div class="pt-df-field">
+              <label for="ptEmail">Email</label>
+              <input type="email" id="ptEmail" name="EMAIL" required autocomplete="email">
+            </div>
+            <div class="pt-df-field">
+              <label for="ptPhone">Phone</label>
+              <input type="tel" id="ptPhone" name="PHONE" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="pt-df-field">
+            <label for="ptOccasion">The occasion</label>
+            <select id="ptOccasion" name="MERGE2" required>
+              <option value="" disabled selected>Select an occasion</option>
+              <option>Honeymoon</option>
+              <option>Anniversary</option>
+              <option>Birthday Celebration</option>
+              <option>Family Reunion</option>
+              <option>Graduation</option>
+              <option>Retirement</option>
+              <option>Wedding Group</option>
+              <option>Bachelorette / Bachelor Trip</option>
+              <option>Sorority or Fraternity Trip</option>
+              <option>Church or Faith Group</option>
+              <option>Alumni or Professional Network</option>
+              <option>Corporate or Incentive Travel</option>
+              <option>Friends Getaway</option>
+              <option>Solo Travel</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="pt-df-row">
+            <div class="pt-df-field">
+              <label for="ptMonth">When are you hoping to travel?</label>
+              <select id="ptMonth" name="MERGE4" aria-label="Preferred travel month">
+                <option value="" disabled selected>Month</option>
+                <option>January</option><option>February</option><option>March</option>
+                <option>April</option><option>May</option><option>June</option>
+                <option>July</option><option>August</option><option>September</option>
+                <option>October</option><option>November</option><option>December</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="pt-df-field">
+              <label for="ptYear">&nbsp;</label>
+              <select id="ptYear" name="MERGE5" aria-label="Preferred travel year">
+                <option value="" disabled selected>Year</option>
+                <option>2026</option><option>2027</option><option>2028</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="pt-df-field">
+            <label for="ptGuests">How many guests will be traveling?</label>
+            <input type="text" id="ptGuests" name="MERGE6" placeholder="e.g. 4" inputmode="numeric">
+          </div>
+
+          <div class="pt-df-field">
+            <label for="ptMessage">Tell us what you have in mind <span class="pt-df-opt">(optional)</span></label>
+            <textarea id="ptMessage" name="MERGE7" rows="3"></textarea>
+          </div>
+
+          <label class="pt-df-consent" for="ptConsent">
+            <input type="checkbox" id="ptConsent" name="consentToProcess">
+            <span>I consent to Umoya contacting me about my journey and processing my details as set out in the <a href="https://umoyaafrikatours.co.za/privacy/" target="_blank" rel="noopener">Privacy Policy</a>. <span class="pt-df-flag">(Required, POPIA)</span></span>
+          </label>
+
+          <label class="pt-df-consent" for="ptMarketing">
+            <input type="checkbox" id="ptMarketing" name="marketingOptIn">
+            <span>I'd also like to receive Umoya journeys and stories by email. <span class="pt-df-flag">(Optional)</span></span>
+          </label>
+
+          <button type="submit" class="pt-df-btn" id="ptDesignBtn">Design My Journey</button>
+          <p class="pt-df-legal">We reply personally, usually within one business day.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+
+  var form = document.getElementById('ptDesignForm');
+  if (!form) return;
+
+  var btn = document.getElementById('ptDesignBtn');
+  var submitting = false;
+  var originalText = btn ? btn.textContent : 'Design My Journey';
+
+  var pendingBackupKey = 'umoyaPendingBackups';
+  var pendingBackupMaxAge = 1000 * 60 * 60 * 24 * 3;
+
+  /* Reuses the existing MERGE* → HubSpot property mapping so the
+     WordPress endpoint needs no change. See the OPEN ITEM note above. */
+  var hubspotFieldMap = {
+    FNAME:  'firstname',
+    LNAME:  'lastname',
+    EMAIL:  'email',
+    PHONE:  'phone',
+    MERGE2: 'country',                   /* carries THE OCCASION */
+    MERGE4: 'preferred_travel_season',   /* carries MONTH */
+    MERGE5: 'preferred_travel_year',
+    MERGE6: 'preferred_journey_length',  /* carries GUEST COUNT */
+    MERGE7: 'founders_circle_message'    /* carries the brief */
+  };
+
+  function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  function getFieldValue(fieldName) {
+    var field = form.elements[fieldName];
+    if (!field) return '';
+    return String(field.value || '').trim();
+  }
+
+  function getCookie(name) {
+    var parts = document.cookie ? document.cookie.split('; ') : [];
+    for (var i = 0; i < parts.length; i += 1) {
+      var item = parts[i].split('=');
+      if (item[0] === name) return decodeURIComponent(item.slice(1).join('='));
+    }
+    return '';
+  }
+
+  function setHiddenValue(fieldName, value) {
+    var field = form.elements ? form.elements[fieldName] : null;
+    if (field) field.value = value || '';
+  }
+
+  function syncTrackingFields() {
+    setHiddenValue('hutk', getCookie('hubspotutk'));
+    setHiddenValue('pageUri', window.location.href);
+    setHiddenValue('pageName', document.title || 'Umoya Private & Tailormade');
+  }
+
+  function identifyHubSpotVisitor() {
+    var email = getFieldValue('EMAIL');
+    if (!email || !isValidEmail(email)) return;
+    window._hsq = window._hsq || [];
+    window._hsq.push(['identify', { email: email }]);
+    window._hsq.push(['trackPageView']);
+  }
+
+  function buildHubSpotPayload() {
+    syncTrackingFields();
+    var fields = [];
+
+    Object.keys(hubspotFieldMap).forEach(function(fieldName) {
+      var value = getFieldValue(fieldName);
+      if (value) fields.push({ name: hubspotFieldMap[fieldName], value: value });
+    });
+
+    var context = {
+      pageUri: window.location.href,
+      pageName: document.title || 'Umoya Private & Tailormade'
+    };
+    var hutk = getCookie('hubspotutk');
+    if (hutk) context.hutk = hutk;
+
+    var payload = { fields: fields, context: context };
+
+    var consentText = (form.getAttribute('data-hubspot-consent-text') || '').trim();
+    if (consentText) {
+      payload.legalConsentOptions = {
+        consent: { consentToProcess: true, text: consentText }
+      };
+    }
+
+    return payload;
+  }
+
+  function createSubmissionId() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+      return window.crypto.randomUUID();
+    }
+    return 'umoya-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12);
+  }
+
+  function buildWordPressBackupPayload() {
+    var hubspotPayload = buildHubSpotPayload();
+    var rawFields = {};
+
+    Object.keys(hubspotFieldMap).forEach(function(fieldName) {
+      rawFields[fieldName] = getFieldValue(fieldName);
+    });
+
+    var consentBox = form.querySelector('#ptConsent');
+    var marketingBox = form.querySelector('#ptMarketing');
+    rawFields.consent_to_process = consentBox && consentBox.checked ? 'yes' : 'no';
+    rawFields.marketing_opt_in = marketingBox && marketingBox.checked ? 'yes' : 'no';
+
+    return {
+      submissionId: createSubmissionId(),
+      source: (form.getAttribute('data-umoya-form-source') || 'private_tailormade_page').trim(),
+      hubspotPortalId: (form.getAttribute('data-hubspot-portal-id') || '').trim(),
+      hubspotFormId: (form.getAttribute('data-hubspot-form-id') || '').trim(),
+      consentText: (form.getAttribute('data-hubspot-consent-text') || '').trim(),
+      hutk: getCookie('hubspotutk'),
+      pageUri: window.location.href,
+      pageName: document.title || 'Umoya Private & Tailormade',
+      rawFields: rawFields,
+      fields: hubspotPayload.fields,
+      context: hubspotPayload.context
+    };
+  }
+
+  function getPendingBackups() {
+    try {
+      return JSON.parse(window.localStorage.getItem(pendingBackupKey) || '[]').filter(function(item) {
+        return item && (!item.queuedAt || Date.now() - item.queuedAt < pendingBackupMaxAge);
+      });
+    } catch (ignore) { return []; }
+  }
+
+  function savePendingBackups(items) {
+    try { window.localStorage.setItem(pendingBackupKey, JSON.stringify(items.slice(-8))); } catch (ignore) {}
+  }
+
+  function queuePendingBackup(payload) {
+    payload.hubspotAlreadySent = true;
+    payload.queuedAt = Date.now();
+    var items = getPendingBackups();
+    items.push(payload);
+    savePendingBackups(items);
+  }
+
+  function flushPendingBackups() {
+    var items = getPendingBackups();
+    if (!items.length) return;
+
+    var endpoint = (form.getAttribute('data-wordpress-backup-endpoint') || '/wp-json/umoya/v1/submissions').trim();
+    var remaining = items.slice();
+
+    items.forEach(function(item) {
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify(item)
+      }).then(function(response) {
+        if (!response.ok) return;
+        remaining = remaining.filter(function(entry) { return entry.submissionId !== item.submissionId; });
+        savePendingBackups(remaining);
+      }).catch(function() {});
+    });
+  }
+
+  function submitToHubSpot() {
+    var portalId = (form.getAttribute('data-hubspot-portal-id') || '').trim();
+    var formId = (form.getAttribute('data-hubspot-form-id') || '').trim();
+
+    if (!portalId || !formId) {
+      return Promise.reject(new Error('HubSpot is not configured yet.'));
+    }
+
+    return fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + encodeURIComponent(portalId) + '/' + encodeURIComponent(formId), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(buildHubSpotPayload())
+    }).then(function(response) {
+      return response.text().then(function(text) {
+        var data = null;
+        if (text) { try { data = JSON.parse(text); } catch (ignore) {} }
+        if (!response.ok) {
+          var message = data && (data.message || data.error) ? (data.message || data.error) : 'HubSpot could not receive the submission. Please try again.';
+          throw new Error(message);
+        }
+        return data;
+      });
+    });
+  }
+
+  function submitToWordPressBackup(payload) {
+    var endpoint = (form.getAttribute('data-wordpress-backup-endpoint') || '/wp-json/umoya/v1/submissions').trim();
+
+    return fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'same-origin',
+      body: JSON.stringify(payload)
+    }).then(function(response) {
+      return response.text().then(function(text) {
+        var data = null;
+        if (text) { try { data = JSON.parse(text); } catch (ignore) {} }
+        if (!response.ok || !data || data.saved !== true) {
+          var message = data && data.message ? data.message : 'WordPress could not save the submission. Please try again.';
+          throw new Error(message);
+        }
+        return data;
+      });
+    });
+  }
+
+  function showSuccess(){
+    btn.textContent       = 'Inquiry Received — We’ll Be in Touch Soon';
+    btn.disabled          = true;
+    btn.style.background  = '#708238';
+    btn.style.borderColor = '#708238';
+    btn.style.opacity     = '1';
+  }
+
+  function showError(msg){
+    btn.textContent   = originalText;
+    btn.disabled      = false;
+    btn.style.opacity = '1';
+    submitting = false;
+
+    var existing = form.querySelector('.pt-df-error');
+    if (existing) existing.remove();
+    var err = document.createElement('p');
+    err.className = 'pt-df-error';
+    err.style.cssText = 'color:#D97E53;font-size:0.85rem;text-align:center;margin-top:10px;';
+    err.textContent = msg;
+    btn.parentNode.appendChild(err);
+    setTimeout(function(){ if (err.parentNode) err.remove(); }, 8000);
+  }
+
+  syncTrackingFields();
+  window.setTimeout(syncTrackingFields, 1500);
+  window.setTimeout(flushPendingBackups, 1200);
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (submitting) return;
+
+    syncTrackingFields();
+    identifyHubSpotVisitor();
+
+    /* Client-side validation */
+    var reqs = form.querySelectorAll('[required]');
+    var valid = true;
+
+    reqs.forEach(function(f){
+      if (!f.value.trim()) {
+        valid = false;
+        f.style.borderColor = '#D97E53';
+        f.style.boxShadow = '0 0 0 3px rgba(217,126,83,.12)';
+      } else {
+        f.style.borderColor = '';
+        f.style.boxShadow = '';
+      }
+    });
+
+    var emailField = form.querySelector('[name="EMAIL"]');
+    if (emailField && emailField.value && !isValidEmail(emailField.value)) {
+      valid = false;
+      emailField.style.borderColor = '#D97E53';
+      emailField.style.boxShadow = '0 0 0 3px rgba(217,126,83,.12)';
+    }
+
+    /* POPIA — the required consent box must be ticked */
+    var consentField = form.querySelector('#ptConsent');
+    if (consentField && !consentField.checked) {
+      valid = false;
+      consentField.style.outline = '2px solid #D97E53';
+      consentField.style.outlineOffset = '3px';
+    }
+
+    if (!valid) {
+      var first = Array.prototype.find.call(reqs, function(f){ return !f.value.trim(); });
+      if (first) first.focus();
+      else if (consentField && !consentField.checked) consentField.focus();
+      return;
+    }
+
+    submitting = true;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    btn.style.opacity = '0.7';
+
+    var backupPayload = buildWordPressBackupPayload();
+
+    /* WordPress first; it forwards to HubSpot. Direct HubSpot is the fallback. */
+    submitToWordPressBackup(backupPayload)
+      .then(function(){ showSuccess(); })
+      .catch(function(error){
+        submitToHubSpot()
+          .then(function(){
+            queuePendingBackup(backupPayload);
+            showSuccess();
+          })
+          .catch(function(fallbackError){
+            showError((error.message || 'WordPress could not save the submission.') + ' ' + (fallbackError.message || 'HubSpot fallback also failed.'));
+          });
+      });
+  });
+
+  /* Clear validation styling on input */
+  form.querySelectorAll('input, select, textarea').forEach(function(f){
+    f.addEventListener('input', function(){
+      f.style.borderColor = '';
+      f.style.boxShadow = '';
+    });
+  });
+  var consentBox = form.querySelector('#ptConsent');
+  if (consentBox) {
+    consentBox.addEventListener('change', function(){
+      consentBox.style.outline = '';
+      consentBox.style.outlineOffset = '';
+    });
+  }
+
+  /* Scroll reveal */
+  var rvEls = document.querySelectorAll('#pt-design .pt-df-rv');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('pt-df-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    rvEls.forEach(function(el){ obs.observe(el); });
+  } else {
+    rvEls.forEach(function(el){ el.classList.add('pt-df-on'); });
+  }
+}());
+</script>

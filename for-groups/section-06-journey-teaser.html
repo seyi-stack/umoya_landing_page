@@ -1,0 +1,255 @@
+<!--
+=================================================================
+  UMOYA — FOR GROUPS — SECTION 06: THE JOURNEY (TEASER)
+=================================================================
+  A short preview of the Signature Journey's three chapters, with
+  a link through to the full journey page.
+
+  ANCHOR: id="fg-journey" — the hero's "See the Journey" button
+  targets this section.
+  IMAGES: Chapter I extracted from the client mockup; Chapters II
+  and III reuse the live Signature Journey photography.
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #fg-journey {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --terra-dk: #C06840;
+    --white:    #FFFFFF;
+    --muted:    rgba(75,46,43,.68);
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--white);
+    color: var(--brown);
+    padding: clamp(60px, 8vw, 104px) 0;
+    overflow-x: hidden;
+  }
+
+  #fg-journey *, #fg-journey *::before, #fg-journey *::after { box-sizing: border-box; }
+
+  .fg-jr-c { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 3.4vw, 48px); }
+
+  .fg-jr-head { margin-bottom: clamp(28px, 3.6vw, 42px); }
+  .fg-jr-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  .fg-jr-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--brown);
+    margin: 0;
+  }
+
+  /* ── Chapter chips ───────────────────────────────── */
+  .fg-jr-chips {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(18px, 2.2vw, 26px);
+  }
+
+  .fg-jr-chip {
+    position: relative;
+    min-height: clamp(380px, 40vw, 460px);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--brown);
+    display: flex;
+    align-items: flex-end;
+  }
+  .fg-jr-chip img {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    display: block;
+    transition: transform .7s var(--ease);
+  }
+  .fg-jr-chip:hover img { transform: scale(1.05); }
+  .fg-jr-chip::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(28,13,6,.12) 0%, rgba(28,13,6,.5) 48%, rgba(28,13,6,.9) 100%);
+    pointer-events: none;
+  }
+
+  .fg-jr-body {
+    position: relative;
+    z-index: 2;
+    padding: clamp(22px, 2.4vw, 30px);
+    color: var(--cream);
+  }
+  .fg-jr-num {
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 0.6rem;
+  }
+  .fg-jr-h {
+    font-family: inherit;
+    font-size: clamp(1.35rem, 2vw, 1.7rem);
+    font-weight: 400;
+    line-height: 1.14;
+    color: var(--cream);
+    margin: 0 0 0.6rem;
+  }
+  .fg-jr-p {
+    font-family: inherit;
+    font-size: 0.9rem;
+    line-height: 1.62;
+    color: rgba(245,240,235,.88);
+    margin: 0;
+  }
+
+  /* ── Closing line + CTA ──────────────────────────── */
+  .fg-jr-lead {
+    font-family: inherit;
+    font-size: clamp(1rem, 1.4vw, 1.12rem);
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 64ch;
+    margin: clamp(26px, 3vw, 34px) 0 clamp(20px, 2.4vw, 26px);
+  }
+
+  .fg-jr-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 32px;
+    min-height: 52px;
+    background: transparent;
+    color: var(--brown);
+    border: 1.5px solid var(--brown);
+    cursor: pointer;
+    transition: background .25s var(--ease), color .25s var(--ease),
+                border-color .25s var(--ease), transform .25s var(--ease);
+  }
+  .fg-jr-btn svg { width: 15px; height: 15px; transition: transform .25s var(--ease); }
+  .fg-jr-btn:hover {
+    background: var(--brown);
+    color: var(--cream);
+    transform: translateY(-2px);
+  }
+  .fg-jr-btn:hover svg { transform: translateX(4px); }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .fg-jr-rv { opacity: 0; transform: translateY(26px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+  .fg-jr-rv.fg-jr-on { opacity: 1; transform: none; }
+  .fg-jr-rv.d1 { transition-delay: .1s; }
+  .fg-jr-rv.d2 { transition-delay: .2s; }
+  .fg-jr-rv.d3 { transition-delay: .3s; }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 900px) {
+    .fg-jr-chips { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+    .fg-jr-chip { min-height: clamp(300px, 62vw, 400px); }
+  }
+
+  @media (max-width: 768px) {
+    #fg-journey { padding: 46px 0; }
+    .fg-jr-head { margin-bottom: 26px; }
+    .fg-jr-eye { margin-bottom: 0.9rem; }
+    .fg-jr-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .fg-jr-chips { gap: 16px; }
+    .fg-jr-lead { font-size: 1rem; line-height: 1.66; }
+    .fg-jr-btn { width: 100%; max-width: 360px; }
+  }
+
+  @media (max-width: 420px) {
+    #fg-journey { padding: 38px 0; }
+    .fg-jr-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+  }
+</style>
+
+<section id="fg-journey" aria-label="The journey">
+  <div class="fg-jr-c">
+
+    <div class="fg-jr-head fg-jr-rv">
+      <span class="fg-jr-eye">The Journey</span>
+      <h2 class="fg-jr-ttl">Ten Days, Three Chapters</h2>
+    </div>
+
+    <div class="fg-jr-chips" role="list">
+
+      <article class="fg-jr-chip fg-jr-rv d1" role="listitem">
+        <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_groups_chapter1_history.jpg" alt="Johannesburg and Soweto — history and culture" loading="lazy" decoding="async">
+        <div class="fg-jr-body">
+          <div class="fg-jr-num">I</div>
+          <h3 class="fg-jr-h">History &amp; Culture</h3>
+          <p class="fg-jr-p">Johannesburg and Soweto, told by the people who lived it. Antoinette Sithole walks you through the day her brother died, and dinner is poured by a winemaker with her own label.</p>
+        </div>
+      </article>
+
+      <article class="fg-jr-chip fg-jr-rv d2" role="listitem">
+        <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img001238.jpeg" alt="Safari in the Sabi Sand at MalaMala" loading="lazy" decoding="async">
+        <div class="fg-jr-body">
+          <div class="fg-jr-num">II</div>
+          <h3 class="fg-jr-h">Safari</h3>
+          <p class="fg-jr-p">Three nights in the Sabi Sand at MalaMala, on land taken from its community under apartheid and won back through the courts. They own it today, and they welcome you onto it.</p>
+        </div>
+      </article>
+
+      <article class="fg-jr-chip fg-jr-rv d3" role="listitem">
+        <img src="https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1777576366.jpeg" alt="Cape Town, Robben Island and the Winelands" loading="lazy" decoding="async">
+        <div class="fg-jr-body">
+          <div class="fg-jr-num">III</div>
+          <h3 class="fg-jr-h">The Cape</h3>
+          <p class="fg-jr-p">Robben Island with Christo Brand, the warder who became Mandela's friend. Then the Winelands, the Atlantic Seaboard, and the food this city is known for.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="fg-jr-lead fg-jr-rv">Ten days, three provinces, welcomed at every turn by the people who call it home. Your group travels it together.</p>
+
+    <a href="https://umoyaafrikatours.co.za/signature-journey/" class="fg-jr-btn fg-jr-rv">
+      See the Full Journey
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('#fg-journey .fg-jr-rv');
+  if(!els.length) return;
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('fg-jr-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('fg-jr-on'); });
+  }
+}());
+</script>

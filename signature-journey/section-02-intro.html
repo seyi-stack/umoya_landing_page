@@ -1,0 +1,182 @@
+<!--
+=================================================================
+  UMOYA — THE SIGNATURE JOURNEY — SECTION 02: OVERVIEW + INTRO
+=================================================================
+  Two stacked bands in one widget:
+   1. Brown overview stat bar (10 Days · 3 Chapters · 2 Extensions)
+   2. Cream intro — centred heading + lead paragraph
+  ANCHOR: id="sj-overview" is the nav target — do not change.
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #sj-overview {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --white:    #FFFFFF;
+    --muted:    rgba(75,46,43,.66);
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    color: var(--brown);
+    background: var(--cream);
+    overflow-x: hidden;
+  }
+
+  #sj-overview *, #sj-overview *::before, #sj-overview *::after { box-sizing: border-box; }
+
+  .sj-ov-c { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 3.4vw, 48px); }
+
+  /* ── Overview stat bar (brown) ─────────────────── */
+  .sj-ov-bar { background: var(--brown); color: var(--cream); }
+  .sj-ov-bar-in {
+    display: flex;
+    justify-content: center;
+    gap: clamp(36px, 6vw, 72px);
+    flex-wrap: wrap;
+    padding: clamp(28px, 4vw, 40px) clamp(20px, 3.4vw, 48px);
+    text-align: center;
+  }
+  .sj-ov-stat { min-width: 0; }
+  .sj-ov-stat-n {
+    font-family: inherit;
+    font-size: clamp(2.1rem, 3.4vw, 2.7rem);
+    font-weight: 400;
+    color: var(--terra);
+    line-height: 1;
+  }
+  .sj-ov-stat-l {
+    display: block;
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245,240,235,.78);
+    margin-top: 8px;
+    white-space: nowrap;
+  }
+
+  /* ── Intro (cream) ─────────────────────────────── */
+  .sj-ov-intro {
+    text-align: center;
+    padding: clamp(64px, 8vw, 104px) 0;
+  }
+  .sj-ov-narrow { max-width: 780px; margin: 0 auto; padding: 0 clamp(20px, 3.4vw, 32px); }
+
+  .sj-ov-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  .sj-ov-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--brown);
+    margin: 0;
+    text-wrap: balance;
+  }
+  .sj-ov-ttl em { font-style: italic; color: var(--terra); }
+  .sj-ov-lead {
+    font-family: inherit;
+    font-size: clamp(1.02rem, 1.5vw, 1.14rem);
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 62ch;
+    margin: 1.4rem auto 0;
+  }
+
+  /* ── Scroll reveal ─────────────────────────────── */
+  .sj-ov-rv { opacity: 0; transform: translateY(24px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+  .sj-ov-rv.sj-ov-on { opacity: 1; transform: none; }
+
+  /* ── Mobile ≤768px ─────────────────────────────── */
+  @media (max-width: 768px) {
+    .sj-ov-bar-in {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      padding: 22px clamp(16px, 4vw, 28px);
+    }
+    .sj-ov-stat { padding: 0 8px; }
+    .sj-ov-stat + .sj-ov-stat { border-left: 1px solid rgba(245,240,235,.18); }
+    .sj-ov-stat-n { font-size: clamp(1.5rem, 7vw, 2rem); }
+    .sj-ov-stat-l { font-size: 0; margin-top: 6px; }
+    .sj-ov-stat-l::after {
+      content: attr(data-short);
+      font-size: 0.56rem;
+      letter-spacing: 0.12em;
+    }
+
+    .sj-ov-intro { padding: 44px 0; }
+    .sj-ov-eye { margin-bottom: 0.9rem; }
+    .sj-ov-ttl { font-size: clamp(1.7rem, 6.6vw, 2.2rem); }
+    .sj-ov-lead { font-size: 1rem; line-height: 1.6; margin-top: 1rem; }
+  }
+
+  /* ── Small mobile ≤420px ───────────────────────── */
+  @media (max-width: 420px) {
+    .sj-ov-stat-l::after { font-size: 0.5rem; letter-spacing: 0.09em; }
+    .sj-ov-intro { padding: 38px 0; }
+    .sj-ov-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+    .sj-ov-lead { font-size: 0.95rem; }
+  }
+</style>
+
+<section id="sj-overview" aria-label="Journey overview">
+
+  <!-- Overview stat bar -->
+  <div class="sj-ov-bar">
+    <div class="sj-ov-bar-in" role="list">
+      <div class="sj-ov-stat" role="listitem">
+        <div class="sj-ov-stat-n">10</div>
+        <div class="sj-ov-stat-l" data-short="Days">Days</div>
+      </div>
+      <div class="sj-ov-stat" role="listitem">
+        <div class="sj-ov-stat-n">3</div>
+        <div class="sj-ov-stat-l" data-short="Chapters">Immersive Chapters</div>
+      </div>
+      <div class="sj-ov-stat" role="listitem">
+        <div class="sj-ov-stat-n">2</div>
+        <div class="sj-ov-stat-l" data-short="Extensions">Optional Extensions</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <div class="sj-ov-intro">
+    <div class="sj-ov-narrow sj-ov-rv">
+      <span class="sj-ov-eye">The Journey</span>
+      <h2 class="sj-ov-ttl">See South Africa the way it deserves to be seen.</h2>
+      <p class="sj-ov-lead">The Signature Journey moves as one arc across South Africa. It begins with the country's living history in Johannesburg and Soweto, opens into the Big Five wilderness of the Sabi Sand, and closes in the beauty of the Cape. An optional extension carries you on to Victoria Falls and Chobe.</p>
+    </div>
+  </div>
+
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('#sj-overview .sj-ov-rv');
+  if(!els.length) return;
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('sj-ov-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('sj-ov-on'); });
+  }
+}());
+</script>

@@ -1,0 +1,196 @@
+<!--
+=================================================================
+  UMOYA — ABOUT US — SECTION 07: THE UMOYA DIFFERENCE
+=================================================================
+  Four icon cards covering what sets an Umoya journey apart.
+  Icons are inline SVG (stroke: terracotta) — no icon fonts.
+
+  ANCHOR: id="ab-difference"
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #ab-difference {
+    --cream:  #F5F0EB;
+    --brown:  #4B2E2B;
+    --terra:  #D97E53;
+    --white:  #FFFFFF;
+    --muted:  rgba(75,46,43,.68);
+    --line:   rgba(75,46,43,.14);
+    --ease:   cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--white);
+    color: var(--brown);
+    padding: clamp(60px, 8vw, 104px) 0;
+    overflow-x: hidden;
+  }
+
+  #ab-difference *, #ab-difference *::before, #ab-difference *::after { box-sizing: border-box; }
+
+  .ab-df-c { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 3.4vw, 48px); }
+
+  .ab-df-head { max-width: 62ch; margin-bottom: clamp(32px, 4vw, 46px); }
+  .ab-df-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.2rem;
+  }
+  .ab-df-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--brown);
+    margin: 0;
+  }
+
+  /* ── Cards ───────────────────────────────────────── */
+  .ab-df-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(18px, 2.2vw, 26px);
+  }
+
+  .ab-df-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: clamp(26px, 2.6vw, 34px) clamp(22px, 2.2vw, 30px);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .ab-df-ic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(217,126,83,.10);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+  .ab-df-ic svg {
+    width: 23px;
+    height: 23px;
+    fill: none;
+    stroke: var(--terra);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .ab-df-h {
+    font-family: inherit;
+    font-size: clamp(1.15rem, 1.7vw, 1.35rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--brown);
+    margin: 0;
+  }
+
+  .ab-df-p {
+    font-family: inherit;
+    font-size: 0.94rem;
+    line-height: 1.7;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .ab-df-rv { opacity: 0; transform: translateY(26px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+  .ab-df-rv.ab-df-on { opacity: 1; transform: none; }
+  .ab-df-rv.d1 { transition-delay: .1s; }
+  .ab-df-rv.d2 { transition-delay: .2s; }
+  .ab-df-rv.d3 { transition-delay: .3s; }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 860px) {
+    .ab-df-grid { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; }
+  }
+
+  @media (max-width: 768px) {
+    #ab-difference { padding: 46px 0; }
+    .ab-df-head { margin-bottom: 28px; }
+    .ab-df-eye { margin-bottom: 0.9rem; }
+    .ab-df-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    .ab-df-grid { gap: 16px; }
+  }
+
+  @media (max-width: 420px) {
+    #ab-difference { padding: 38px 0; }
+    .ab-df-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+    .ab-df-card { padding: 22px 18px; }
+  }
+</style>
+
+<section id="ab-difference" aria-label="The Umoya difference">
+  <div class="ab-df-c">
+
+    <div class="ab-df-head ab-df-rv">
+      <span class="ab-df-eye">The Umoya Difference</span>
+      <h2 class="ab-df-ttl">What makes an Umoya journey distinct?</h2>
+    </div>
+
+    <div class="ab-df-grid" role="list">
+
+      <div class="ab-df-card ab-df-rv" role="listitem">
+        <span class="ab-df-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="2.8"/><path d="M3 19a6 6 0 0 1 12 0"/><path d="M16.5 6.2a2.8 2.8 0 0 1 0 5.4"/><path d="M17.5 14.4A6 6 0 0 1 21 19"/></svg>
+        </span>
+        <h3 class="ab-df-h">Welcomed by name</h3>
+        <p class="ab-df-p">Our journeys are built on relationships earned in person, on the ground. The people who host you are artists, entrepreneurs, activists, and winemakers who open their world to you directly.</p>
+      </div>
+
+      <div class="ab-df-card ab-df-rv d1" role="listitem">
+        <span class="ab-df-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M5 7c2.5-2 4.8-2 7-1 2.2-1 4.5-1 7 1v11c-2.5-2-4.8-2-7-1-2.2-1-4.5-1-7 1z"/></svg>
+        </span>
+        <h3 class="ab-df-h">Bespoke from the start</h3>
+        <p class="ab-df-p">Every Umoya journey is designed around you. Your group, your interests, your pace. We shape the experience around what matters to you and handle every detail along the way.</p>
+      </div>
+
+      <div class="ab-df-card ab-df-rv d2" role="listitem">
+        <span class="ab-df-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3l2.2 4.6 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5L4.8 8.3l5-.7z"/></svg>
+        </span>
+        <h3 class="ab-df-h">Recognized for storytelling</h3>
+        <p class="ab-df-p">Our destination film, Let Your Story Begin, earned a Silver Award at the International Tourism Film Festival Africa 2026. Narrative-led travel shapes every journey we design.</p>
+      </div>
+
+      <div class="ab-df-card ab-df-rv d3" role="listitem">
+        <span class="ab-df-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3.5 2"/></svg>
+        </span>
+        <h3 class="ab-df-h">Leave the logistics to us</h3>
+        <p class="ab-df-p">Planning a journey should be the easy part. We handle every detail from start to finish, so that by the time you arrive, all you have to do is breathe.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('#ab-difference .ab-df-rv');
+  if(!els.length) return;
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('ab-df-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function(el){ obs.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('ab-df-on'); });
+  }
+}());
+</script>
