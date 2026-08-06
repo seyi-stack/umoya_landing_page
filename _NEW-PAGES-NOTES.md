@@ -230,10 +230,38 @@ HubSpot forms instead.
   4 organizer items / 4 steps / 3 chapters / 19 form fields.
 - Nav renders the four specified links + Founder's Circle CTA.
 
+## Deployment status
+
+**None of these three pages has been deployed.** They exist only as source
+files in this repo. To publish one:
+
+1. Create the WordPress page at the slug the nav expects (see table above).
+2. Set its template — **Elementor Canvas** is preferred, since it bypasses
+   the Tevily theme header entirely and avoids the two-header conflict.
+   If Elementor Full Width is used instead, the shared nav's takeover rules
+   handle the theme's stale mobile menu automatically.
+3. Add one Elementor **HTML widget per section file**, in numbered order,
+   with `shared/section-00-nav.html` first.
+4. Preview at desktop / 1024 / 768 / 420.
+
+Editing a file here does **not** change the live site until it is re-pasted.
+
+The shared nav *has* been pasted into the live Signature Journey page's
+header slot (confirmed in the DOM as `#umoyaSiteNav`), but that was an
+older revision — re-paste it to pick up the dock/stick/hide-on-scroll
+behaviour and the theme-header takeover.
+
 ## Open items
 
-- Confirm the page slugs assumed by the nav (table above).
+- Confirm the page slugs assumed by the nav (table above). As of
+  2026-07-31 the Signature Journey page was live at
+  `/signature-journey-unpublished/`, not `/signature-journey/`.
 - Confirm the Privacy Policy URL used in both consent lines
   (`/privacy/`).
 - The P&T hero reuses an existing Cape image — swap if a dedicated hero
   shot is preferred.
+- Decide whether these pages should be registered in the Elementor widget
+  generator, or stay as hand-pasted HTML widgets. Currently they are **not**
+  registered, and the generator's source paths are stale.
+- The About Us hero is video-ready but points at the existing brand film —
+  swap the `<source>` or delete the `<video>` block to ship the still.

@@ -1,9 +1,9 @@
 # CLAUDE.md - Umoya Afrika Tours Project Handoff
 
-Last updated: 2026-07-14
+Last updated: 2026-07-31
 Workspace: `C:\Users\MOVING_SURFACE\Downloads\UM_Claude`
 Remote: `https://github.com/seyi-stack/umoya_landing_page.git`
-Current local branch observed during this update: `codex/elementor-widget-sync`
+Current local branch: `codex/elementor-widget-sync` (pushed through `8bcf974`)
 
 This file is the living handoff for the Umoya Afrika Tours website work. It should help any future assistant, developer, or editor understand what has been built, why it was built, how the pieces connect, and what still needs attention.
 
@@ -16,9 +16,28 @@ It intentionally covers the project in sequence:
 5. The custom Elementor widget plugin.
 6. Legal and footer documentation.
 7. Footer newsletter form routing.
-8. Current workflow rules, validation, and open tasks.
+8. The revamp folders, the Signature Journey page, and three new pages.
+9. The shared site-wide navigation and the Tevily theme-header conflict.
+10. Current workflow rules, validation, and open tasks.
 
-Use this file before making further changes. The project has moved beyond standalone HTML snippets; it now includes a generated Elementor plugin, HubSpot forwarding, WordPress backup submissions, legal content snippets, homepage sections, and GitHub sync expectations.
+Use this file before making further changes. The project has moved beyond standalone HTML snippets; it now includes a generated Elementor plugin, HubSpot forwarding, WordPress backup submissions, legal content snippets, homepage sections, four page-section folders built from client mockups, a shared navigation widget, and GitHub sync expectations.
+
+> **Read Phases 9–14 (Section 5) first if you are picking this up cold.**
+> They cover everything built after the widget-generator work, including
+> the two competing header systems on the live site and an unresolved
+> live-site stability problem.
+
+### Companion notes files
+
+`CLAUDE.md` is the index. Per-area detail lives in these, and they should
+be kept in sync when their area changes:
+
+| File | Covers |
+|---|---|
+| `_NEW-PAGES-NOTES.md` | Private & Tailormade, About Us, For Groups + the shared nav |
+| `signature-journey/_NOTES.md` | The Signature Journey page |
+| `founders-circle-revamp/_REVAMP-NOTES.md` | Founder's Circle v4/v5 revamp |
+| `homepage-revamp/_REVAMP-NOTES.md` | Homepage revamp |
 
 ---
 
@@ -360,6 +379,161 @@ Recommended routes discussed:
 
 The second route is cleaner for a production newsletter signup because it gives explicit field mapping and consent handling instead of relying on auto-captured non-HubSpot form behavior.
 
+### Phase 9 - Revamp Folders and Stash Recovery
+
+Two "revamp" folders were introduced as working copies driven by client
+feedback documents, leaving the original folders untouched:
+
+| Folder | Source feedback |
+|---|---|
+| `founders-circle-revamp/` | `Founder's_Circle_Page_Feedback_v4.docx`, `Founder's-Circle-Page-Feedback-v5.md` |
+| `homepage-revamp/` | `Homepage feedback July 19th.docx` / `.pdf` |
+
+The flat root `section-*.html` files were also moved into a
+`founders-circle/` folder.
+
+**Recovery note (important context for odd git history):** at the start of
+this session these folders existed only inside a `git stash` created on
+`codex/elementor-widget-sync`. A `git stash apply` was first attempted on
+`main`, which conflicted because `main` predates the widget plugin. The
+correct fix was to switch back to `codex/elementor-widget-sync` and apply
+there. The revamp folders and several loose assets were recovered from
+the stash's untracked-files commit (`stash@{3}^3`). Everything is now
+committed, so the stashes are redundant.
+
+### Phase 10 - Signature Journey Page
+
+Built from `3__umoya_signature_journey_mockup_FINAL.html` into
+`signature-journey/` (8 sections). Mockup used for layout/content only;
+its fonts and colours were NOT carried over.
+
+Later refinements, all applied:
+
+- Nav sits at the top of the page rather than hiding until the hero passes.
+- Hero is **image only** — the video element and its autoplay script were removed.
+- "Chapter One/Two/Three" render in Title Case, not uppercase.
+- Hotel carousels advance **together on one shared 5s clock** with an eased
+  crossfade; dot spacing tightened.
+- All `text-shadow` removed site-page-wide on this page.
+- Mobile type scale and vertical rhythm reduced at 768 / 420.
+- Hero height reduced from full-viewport to ~66dvh.
+- Client image swaps applied throughout, plus new "Where You Rest /
+  Your Home Along the Way" copy with per-hotel descriptions.
+
+See `signature-journey/_NOTES.md` for the section table and the remaining
+`★ SWAP` list (several moment photos are still placeholders because the
+source files were RAW/TIFF and were never converted).
+
+### Phase 11 - Three New Pages From Client Mockups
+
+Built from the mockups in
+`Umoya website mockups-20260729T043502Z-1-001/`:
+
+| Folder | Page | Sections |
+|---|---|---|
+| `private-tailormade/` | Private & Tailormade | 5 |
+| `about/` | About Us | 8 |
+| `for-groups/` | For Groups | 8 |
+
+13 images embedded as base64 in the mockups were extracted and uploaded to
+the Mountain Duck synced uploads folder (`umoya_pt_*`, `umoya_about_*`,
+`umoya_groups_*`). Nothing was overwritten — the folder went 246 → 259
+files.
+
+Both new forms (Private & Tailormade, For Groups) reuse the existing
+`MERGE*` aliases so **no backend change was required**. This is
+deliberate but semantically stretched — see Open Items.
+
+Full detail in `_NEW-PAGES-NOTES.md`.
+
+### Phase 12 - Shared Site-Wide Navigation
+
+`shared/section-00-nav.html` is the single nav intended for every page.
+Links: The Signature Journey · Private & Tailormade · For Groups · About,
+plus the Join the Founder's Circle CTA. Uses absolute URLs so one widget
+works everywhere, and marks the active page by matching `location.pathname`
+against each item's `data-path`.
+
+**Three scroll states** (this replaced an always-fixed bar that overlapped
+the hero):
+
+1. **Docked** — at the top it sits in normal flow; the hero stacks *below* it.
+2. **Stuck** — once scrolled past it detaches (`position: fixed`) and hides on downward scroll.
+3. **Recalled** — any upward scroll slides it back in.
+
+The mount reserves the bar height permanently so detaching causes no
+layout jump. `--nav-h` on the mount is the single source of truth
+(64px desktop / 58px ≤900px) and the JS reads it back.
+
+> The older `signature-journey/section-00-nav.html` and
+> `homepage-revamp/homepage-section-00-nav.html` are still the
+> always-fixed versions with `height: 0` mounts and therefore still
+> overlap their heroes. They were intentionally left alone; retire them
+> in favour of the shared nav when convenient.
+
+### Phase 13 - The Two Header Systems (live-site finding)
+
+Investigating the live site revealed the header depends entirely on the
+page's Elementor template:
+
+| Template | Theme header? | What renders |
+|---|---|---|
+| Elementor **Canvas** (homepage, Founder's Circle) | Bypassed entirely | Only the nav pasted into page content |
+| Elementor **Full Width** (Signature Journey) | Yes — `header.php` → `header-builder.php` | Tevily theme header wrapping the nav widget |
+
+On Full Width pages the Tevily header renders two sibling blocks:
+`.header_default_screen` (holds the nav widget, hidden **≤1024px**) and
+`.header-mobile` (the theme's own menu, shown **≤1024px**, fed by the WP
+`primary` menu location). Below 1024px — all tablets and small laptops,
+not just phones — visitors were served a stale menu listing pages that no
+longer reflect the site (Tours & Packages, Sacred Origins, old tour posts).
+
+**Fix shipped:** `shared/section-00-nav.html` now hides the theme's mobile
+block and keeps its own visible at every width. Those are the only
+selectors in that file reaching outside its own root — unavoidable, since
+the targets are the widget's *ancestor* and *sibling*. They are gated
+behind a `.umoya-nav-takeover` marker class that the JS adds only to a
+theme header that actually contains the nav, so Canvas pages are untouched.
+
+**Optional deeper fix (not deployed):**
+`theme-overrides/tevily_child/header.php` removes the theme header
+entirely while keeping the footer. Upload to
+`wp-content/themes/tevily_child/header.php`; delete to revert. It
+reproduces the parent's document opening and **keeps `.wrapper-page` and
+`#page-content` open**, because `footer.php` closes them — deleting those
+would break every page. If used, the nav must be moved into page content.
+
+### Phase 14 - Live Site Stability Investigation (UNRESOLVED)
+
+The live site was throwing intermittent Cloudflare **520 / 525** errors.
+Findings:
+
+- Failures are **intermittent**, not constant. Six consecutive requests
+  returned 520 (14s), 200 (4.5s), 525 (10.5s), 200, 200, timeout (40s).
+- Even successful responses take **3.6–4.5s TTFB** — unhealthy.
+- Static assets are fine (`cf-cache-status: HIT`, never touch origin);
+  only origin-bound `BYPASS` requests fail.
+- The intermittent 525 rules out a broken certificate — a real cert fault
+  would fail every time. The TLS handshake is timing out under load.
+
+This is **origin resource exhaustion**, not a config error. The most
+likely contributor: `wp-content/plugins` contains **50 plugin
+directories**, including genuinely duplicated functions —
+**two page caches** (`litespeed-cache` + `speedycache`), two page builders
+(Elementor + Pagelayer), two SEO suites (AIOSEO + SiteSEO), two image
+optimizers, three booking/events plugins, and two Stripe integrations,
+plus WooCommerce, RevSlider and Redux. This runs directly against the
+project's own "minimal plugins, zero bloat" rule.
+
+**The custom plugin was ruled out** — its only outbound HTTP call
+(`wp_remote_post` in `class-submissions.php`) is inside `send_to_hubspot()`,
+which fires on form submission only, never on page render.
+
+Not confirmed from logs: `/error_log` (474KB) returned *permission denied*
+over the Mountain Duck mount. It was last written 2026-07-25, which argues
+against an active PHP fatal and for resource starvation. **Pull that log
+via cPanel/SSH to confirm.** See Open Items.
+
 ---
 
 ## 6. Repository Map
@@ -369,16 +543,31 @@ The second route is cleaner for a production newsletter signup because it gives 
 | Path | Role |
 |---|---|
 | `CLAUDE.md` | This handoff and project source of truth. |
-| `section-*.html` | Founder's Circle source sections and variants. |
-| `homepage/*.html` | Homepage source sections and popup form. |
+| `_NEW-PAGES-NOTES.md` | Detail for the three new pages + shared nav. |
+| `shared/section-00-nav.html` | **Site-wide navigation.** Place FIRST on every page. |
+| `founders-circle/` | Original Founder's Circle sections (was flat `section-*.html` at root). |
+| `founders-circle-revamp/` | **Current** Founder's Circle working copy (v4/v5 feedback). |
+| `homepage/` | Original homepage sections and popup form. |
+| `homepage-revamp/` | **Current** homepage working copy (July 19 feedback). |
+| `signature-journey/` | Signature Journey page — 8 sections + `_NOTES.md`. |
+| `private-tailormade/` | Private & Tailormade page — 5 sections. |
+| `about/` | About Us page — 8 sections. |
+| `for-groups/` | For Groups page — 8 sections. |
+| `theme-overrides/tevily_child/header.php` | Optional child-theme override removing the Tevily header. Not deployed. |
 | `tools/build-elementor-widgets.mjs` | Generator that rebuilds plugin artifacts from source HTML. |
 | `umoya-elementor-widgets/` | Custom Elementor plugin source. |
 | `Website docs/` | Legal documents, footer URL map, and Elementor-ready legal snippets. |
 | `hubspot-docx/` | Extracted Word document content for the HubSpot integration brief. |
 | `HubSpot Section 02 Integration Brief.docx` | Original HubSpot handoff brief. |
+| `*__umoya_*_mockup*.html` | Client mockups (layout/content reference only — never copy their fonts or colours). |
 | `Umoya_Performance_Uptime_Audit_Report.docx` | Prior audit/report artifact. |
 | `Old files/` | Superseded legacy files; do not treat as current source. |
-| `_visual-check-*.png`, `.edge-visual-profile-*` | QA artifacts and browser profile output; generally do not stage unless explicitly relevant. |
+| `_visual-check-*.png`, `.edge-visual-profile-*`, `.agents/` | QA artifacts, browser profile dumps, and third-party tool configs. **Deliberately untracked — do not commit.** The profile folders may contain cached cookies/session data. |
+
+**Which folder is current?** For Founder's Circle and the homepage, the
+`-revamp/` folders are the live working copies; the originals are kept
+only for reference. The generator (`tools/build-elementor-widgets.mjs`)
+still points at the ORIGINAL paths — see the Elementor Plugin open items.
 
 ### Current Custom Plugin Layout
 
@@ -835,6 +1024,30 @@ Preferred ongoing route:
 | `#umoya-journey-anchor` | Homepage nav scroll target for journey. |
 | `#fc-pillars` | Why Umoya / pillars target in several sections. |
 | `#fc-details` | Travel essentials target. |
+| `#sj-hero` … `#sj-cta` | Signature Journey sections (`sj-overview`, `sj-journey`, `sj-extensions`, `sj-stays`, `sj-inclusions`). |
+| `#pt-design` | Private & Tailormade form — every "Design Your Journey" / "Make it yours" CTA targets it. |
+| `#pt-trip-types` | Private & Tailormade trip-types rail. |
+| `#fg-plan` | For Groups form — every "Plan a Group Journey" CTA targets it. |
+| `#fg-journey` | For Groups journey teaser. |
+| `#ab-hero` … `#ab-cta` | About Us sections. |
+| `#umoyaSiteNavMount` / `#umoyaSiteNav` | Shared nav mount + bar. The mount must keep its reserved height. |
+
+### Page URL slugs assumed by the shared nav
+
+`shared/section-00-nav.html` hardcodes these. If a real slug differs,
+update BOTH the `href` and the `data-path` on that item, or the active
+state will not highlight.
+
+| Nav item | Assumed URL |
+|---|---|
+| The Signature Journey | `/signature-journey/` |
+| Private & Tailormade | `/private-and-tailormade/` |
+| For Groups | `/for-groups/` |
+| About | `/about/` |
+| CTA | `/founders-circle/` |
+
+As of 2026-07-31 the Signature Journey page was live at
+`/signature-journey-unpublished/`, so this needs confirming at launch.
 
 ---
 
@@ -895,6 +1108,48 @@ Guidelines:
 
 ## 16. Known Open Items
 
+### ⚠ Live site stability (highest priority)
+
+- Site throws intermittent Cloudflare **520 / 525**; successful page loads
+  still take 3.6–4.5s TTFB. Diagnosed as origin resource exhaustion
+  (Phase 14).
+- **Pull `/error_log` via cPanel or SSH** — the Mountain Duck mount returns
+  permission denied, so the root cause is not log-confirmed.
+- Ask the host to check PHP worker / memory limits.
+- **Deactivate one of the two page caches** (`litespeed-cache` vs
+  `speedycache`) — highest-impact, lowest-risk single change.
+- Then retire duplicate builders / SEO / image plugins **on staging first**
+  (removing a page builder can break existing layouts).
+- Do not deploy new theme PHP while the origin is unstable — a PHP error on
+  top of this would take the site fully down.
+
+### New pages and shared nav
+
+- Confirm the page slugs the shared nav assumes (table in Section 12).
+- Confirm the Privacy Policy URL used in both new consent lines (`/privacy/`).
+- Decide whether to retire `signature-journey/section-00-nav.html` and
+  `homepage-revamp/homepage-section-00-nav.html` in favour of the shared
+  nav — both are still always-fixed and overlap their heroes.
+- Decide whether to deploy `theme-overrides/tevily_child/header.php`.
+  If deployed, the nav must move into page content on affected pages.
+- The theme's WP `primary` menu still contains stale items. It is no longer
+  displayed (the nav takeover hides it), but tidy it in
+  **Appearance → Menus** so it is not a trap for future templates.
+
+### Outstanding photography
+
+- **Signature Journey:** 4–5 moment photos still placeholders — source
+  files were RAW (`.NEF`) / TIFF and were never converted. See
+  `signature-journey/_NOTES.md`.
+- **About Us:** Wilson Nyah portrait, plus 5 of 6 host cards
+  (Lucia Motloung, Antoinette Sithole, Christo Brand, Ntsiki Biyela,
+  Senzart911). Eyethu Heritage Hall has its photo.
+- **About Us:** hero video `<source>` still points at the existing brand
+  film; carousel reuses existing CDN trip photography.
+- Placeholders render as labelled brand-toned tiles naming the intended
+  subject. To fill one, replace the `.…-ph` block with an
+  `<img class="…-pic" src="…" alt="…" loading="lazy">`.
+
 ### Legal / Footer
 
 - Replace `[INSERT DATE]` in Cookie Policy and Privacy Policy.
@@ -914,13 +1169,34 @@ Guidelines:
 ### HubSpot / Forms
 
 - Confirm whether the current shared HubSpot Form GUID should remain shared by Founder's Circle and homepage popup.
+- **The two new forms also reuse that same GUID** and the existing `MERGE*`
+  aliases, so no backend change was needed — but the mapping is
+  semantically stretched:
+
+  | Field | Alias | Lands in HubSpot as |
+  |---|---|---|
+  | Occasion (P&T) / Group type (FG) | `MERGE2` | `country` |
+  | Organization (FG) | `MERGE3` | `city` |
+  | Guests (P&T) / Size (FG) | `MERGE6` | `preferred_journey_length` |
+
+  For clean reporting, create dedicated properties (`trip_occasion`,
+  `group_type`, `party_size`, `organization`), then update the map in each
+  form's script **and** the aliases in `class-submissions.php`.
 - Confirm whether newsletter contacts should use a separate HubSpot form/list.
 - Confirm marketing subscription type / consent handling in HubSpot.
 - Confirm final unsubscribe and subscription preferences URLs.
 
 ### Elementor Plugin
 
-- Re-run generator after any source HTML change.
+- **The generator is now out of sync with the current source.** Its
+  `source:` paths still point at `founders-circle/` and `homepage/`, but the
+  live working copies are `founders-circle-revamp/` and `homepage-revamp/`.
+  The four newest folders (`signature-journey/`, `private-tailormade/`,
+  `about/`, `for-groups/`) and `shared/` are not registered at all.
+  Decide whether to repoint the generator or keep these as
+  hand-pasted HTML widgets. **Until then, do not assume re-running the
+  generator will pick up recent work.**
+- Re-run generator after any source HTML change *that it covers*.
 - Rebuild `umoya-elementor-widgets.zip` after plugin changes.
 - If committing, stage only intentional plugin/source files.
 - Consider adding a formal package/build command if this becomes recurring.
@@ -934,10 +1210,18 @@ Guidelines:
 
 ### GitHub
 
-- Current branch is `codex/elementor-widget-sync`.
-- The previous commit on that branch is `042040d`.
+- Current branch is `codex/elementor-widget-sync`, pushed through `8bcf974`.
+- Recent history: `9b28240` (restore + three new pages + shared nav),
+  `8bcf974` (revamp content fixes). Prior: `68e9cb7`, `042040d`.
+- A PR into `main` has never been opened. `main` still predates the widget
+  plugin, so a merge will be substantial — review before merging.
 - If making a new kind of change, either continue this branch intentionally or create a new scoped branch.
-- Because the worktree has many unrelated untracked artifacts, never use blanket `git add .`.
+- Because the worktree has many unrelated untracked artifacts, **never use
+  blanket `git add .`**. In particular `.edge-visual-profile-*` (~5,900
+  files, browser cache that may hold cookies/session data) and `.agents/`
+  are deliberately untracked.
+- 4 redundant `git stash` entries remain on this branch; their content is
+  now committed and they can be dropped.
 
 ---
 
@@ -1002,6 +1286,32 @@ Core server-side submission infrastructure:
 ### `tools/build-elementor-widgets.mjs`
 
 Do not delete. This is the sync bridge from source HTML to the plugin.
+**Note:** its `source:` paths are currently stale — see Elementor Plugin
+open items.
+
+### `shared/section-00-nav.html`
+
+The site-wide navigation. Three behaviours are load-bearing and easy to
+break:
+
+1. The mount must keep a real reserved height (`--nav-h`). Setting it to
+   `0` reintroduces the hero-overlap bug.
+2. The `no-anim` class suppresses the transition for the one frame where
+   the bar switches docked↔stuck. Remove it and the state change visibly
+   slides.
+3. The `.umoya-nav-takeover` marker gates the only two selectors that
+   reach outside the widget's root. It must be added by JS to the theme
+   header — never applied globally.
+
+The scroll throttle uses `requestAnimationFrame` **with a `setTimeout`
+fallback**, because rAF never fires in non-compositing contexts and would
+otherwise latch the throttle permanently.
+
+### `theme-overrides/tevily_child/header.php`
+
+Not deployed. Removes the Tevily theme header while keeping the footer.
+**Keeps `.wrapper-page` and `#page-content` open** because `footer.php`
+closes them — do not "tidy" those away.
 
 ### `Website docs/Elementor HTML snippets/`
 
@@ -1013,14 +1323,35 @@ Paste-ready legal snippets for Elementor text/HTML editing. These are fragments,
 
 Before changing anything:
 
-1. Read this `CLAUDE.md`.
+1. Read this `CLAUDE.md`, then the relevant companion notes file.
 2. Check `git status --short`.
-3. Identify whether the change belongs to source HTML, generated plugin output, legal docs, or WordPress integration.
-4. Preserve unrelated local files.
-5. Make the smallest safe edit.
-6. If source HTML changed, run the generator.
-7. Verify with `rg`, `git diff --check`, and targeted file checks.
-8. If syncing to GitHub, stage only the intended scope.
+3. **Confirm which folder is current** — for Founder's Circle and the
+   homepage, edit the `-revamp/` copies, not the originals.
+4. Identify whether the change belongs to source HTML, generated plugin output, legal docs, or WordPress integration.
+5. Preserve unrelated local files.
+6. Make the smallest safe edit.
+7. If source HTML changed, run the generator **only if it actually covers
+   that folder** (see open items).
+8. Verify with `rg`, `git diff --check`, and targeted file checks.
+9. If syncing to GitHub, stage only the intended scope — never `git add .`.
+
+### House rules that are easy to violate
+
+These come from the brief and were enforced throughout; a new assistant
+should not quietly break them:
+
+- **Never copy fonts or colours from the client mockups.** Mockups are
+  layout/content reference only. Every section uses `font-family: inherit`
+  and the brand palette. Verify with a grep for `Cormorant`, `Mulish`,
+  `googleapis`, and the mockup hex values before committing.
+- **Preserve mockup copy verbatim.** An early pass paraphrased hero copy
+  and added buttons the mockup did not have; this had to be reverted. If
+  the copy seems awkward, flag it rather than improving it.
+- **No blanket global selectors** when a section root can scope the
+  behaviour. `scroll-padding-top` on the scroll container is preferred
+  over an `[id]` rule.
+- Scoped CSS under the section root, ES5 IIFE scripts, WCAG AA
+  (12px floor, 44px targets, 16px input floor), four breakpoints.
 
 After changing anything:
 
@@ -1033,25 +1364,43 @@ After changing anything:
 
 ## 20. The Current Mental Model
 
-Think of this project as four connected layers:
+Think of this project as five connected layers:
 
 1. Brand/content layer:
    - Umoya's premium heritage travel narrative.
+   - Client mockups as layout/content reference only — never their styling.
    - Legal policies and footer route map.
 
-2. Source HTML layer:
-   - Root `section-*.html` files for Founder's Circle.
-   - `homepage/*.html` files for homepage.
+2. Source HTML layer (the main working surface):
+   - `founders-circle-revamp/` and `homepage-revamp/` — current copies.
+   - `signature-journey/`, `private-tailormade/`, `about/`, `for-groups/`
+     — pages built from client mockups.
+   - `shared/section-00-nav.html` — one nav for every page.
+   - `founders-circle/` and `homepage/` — earlier originals, reference only.
 
 3. Elementor plugin layer:
    - Generated widgets, controls, assets, and registry.
    - Two Elementor categories: homepage and Founder's Circle.
+   - **Currently trails the source layer** — the newest folders are not
+     registered and the generator's paths are stale.
 
-4. CRM/compliance layer:
+4. WordPress/theme layer (lives on the server, not in this repo):
+   - Two header systems depending on the Elementor template
+     (Canvas bypasses the theme header; Full Width does not).
+   - The Tevily theme and its `primary` menu.
+   - 50 installed plugins with several duplicated functions.
+
+5. CRM/compliance layer:
    - WordPress submission storage.
-   - HubSpot Forms API forwarding.
+   - HubSpot Forms API forwarding (all four custom forms share one GUID).
    - HubSpot tracking code.
    - POPIA consent wording.
    - Footer newsletter and opt-out work still being completed.
 
-When in doubt, preserve the source HTML visual behavior, then sync the plugin layer, then verify HubSpot/legal implications.
+When in doubt, preserve the source HTML visual behavior, then sync the
+plugin layer, then verify HubSpot/legal implications.
+
+**Deployment reality:** most of this work reaches the live site by pasting
+a section file into an Elementor HTML widget — not through the plugin. So
+editing a file here does not change the site until someone re-pastes it.
+Say so explicitly when handing work over.

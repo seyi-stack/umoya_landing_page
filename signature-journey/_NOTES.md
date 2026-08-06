@@ -42,36 +42,66 @@ links and the offers-panel CTA point at the section IDs above. Place
 in an Elementor section with `overflow: hidden`.
 
 The **footer** is a theme-level element (like the global site header) and is
-intentionally not one of these widgets. The nav (00) is fixed to the top of
-the page at all times (homepage-style), so the hero sits beneath it.
+intentionally not one of these widgets.
+
+> **Nav caveat:** `section-00-nav.html` in this folder is the OLD
+> always-fixed bar with a `height: 0` mount, so it still overlaps the hero.
+> The fixed version lives at `shared/section-00-nav.html` (docked → stuck →
+> recalled, no overlap). Prefer the shared nav; this one is kept only so the
+> page still works standalone.
 
 ---
 
-## Image swap list (★ SWAP)
+## Behaviour applied after the first build
 
-The user will supply image preferences — every image slot is marked with a
-`★ SWAP` comment. Current placeholders:
+These were client-requested refinements — do not regress them:
 
-| Section | Slot | Current placeholder |
+- **Hero is image only.** The `<video>` element and its autoplay script were
+  removed. Hero height reduced from full-viewport to `max(66dvh, 440px)`
+  (58dvh / 56dvh at 768 / 420).
+- **Chapter labels are Title Case** ("Chapter One"), not uppercase. The
+  location and moment-role micro-labels remain uppercase, matching the mockup.
+- **Hotel carousels advance together** off one shared 5,000 ms clock with an
+  eased `opacity 1s ease-in-out` crossfade. Auto-advance is unconditional —
+  it does not pause on hover and is not gated behind `prefers-reduced-motion`
+  (that gate was the original reason they appeared not to move at all).
+- **No `text-shadow` anywhere on this page.**
+- Mobile type scale and vertical spacing reduced at 768 / 420.
+
+---
+
+## Images
+
+Nearly everything is now filled with client-approved photography. The
+`.sj-ch-mom-ph` / `.sj-stay-ph` CSS rules still exist but **no markup uses
+them** — all 9 moment cards and all 9 hotel slides carry real images.
+
+| Section | Slot | Image |
 |---|---|---|
-| 01 Hero | background image (no video) | `umoya_compressed_SAT000922.jpeg` |
-| 03 Chapter 1 | lead image | `compressed_gauteng.jpg` |
-| 03 Chapter 1 | 3 moment cards | labelled placeholder tiles (welcome dinner · Hector Pieterson · Mandela House/Apartheid Museum) |
-| 03 Chapter 2 | lead image | `umoya_compressed_img001238.jpeg` |
-| 03 Chapter 2 | 3 moment cards | labelled tiles (Big Five drive · MalaMala · community) |
-| 03 Chapter 3 | lead image | `umoya_compressed_img1777576366.jpeg` |
-| 03 Chapter 3 | 3 moment cards | labelled tiles (Robben Island · Winelands · closing dinner) |
-| 04 Extensions | Victoria Falls | `umoya_compressed_img233195226.jpeg` |
-| 04 Extensions | Chobe | `umoya_compressed_img1949173199.jpeg` |
-| 05 Stays | 3 hotels × 3 slides | labelled placeholder slides (Da Vinci · MalaMala · Cape Grace) |
+| 01 Hero | background | `umoya_compressed_img504253742.jpeg` |
+| 03 Ch.1 | lead | `umoya_compressed_img88956217_(1).jpeg` |
+| 03 Ch.2 | lead | `umoya_compressed_st_lucia_hippos_636379232.jpg` |
+| 03 Ch.3 | lead | `umoya_compressed_img639400454.jpeg` |
+| 04 Ext. | Victoria Falls | `umoya_compressed_img233195226.jpeg` |
+| 04 Ext. | Chobe | `umoya_compressed_Chobe-Princess_Exterior_at-Sunset-709-1600x1066.jpg` |
+| 05 Stays | Da Vinci ×3 | `Davinci_Outdoor_Pool_(3)` · `DAVINCI_Lounge_(2)` · `Da_Vinci_Room_801_002` |
+| 05 Stays | Cape Grace ×3 | `Cape_Grace_Marina_View` · `Waterfront_Penthouse_5` · `Pool_at_Cape_Grace_4` |
 | 07 CTA | background | `compressed_dsc05243.jpg` |
 
-**Moment cards & hotel slides** currently render as clean, brand-toned
-labelled placeholder tiles (subject named on each). To drop in a real photo:
-- *Moment card:* replace the `.sj-ch-mom-ph` block with
-  `<img class="sj-ch-mom-pic" src="…" alt="…" loading="lazy">`.
-- *Hotel slide:* set the slide's `background-image` and remove its
-  `.sj-stay-ph` child (aim for 3 images per property).
+### Still awaiting converted files
+
+These 5 moment/hotel images are **placeholders using older stand-in photos**,
+because the client's source files were RAW (`.NEF`) or TIFF and were never
+converted to web formats:
+
+| Slot | Blocked on |
+|---|---|
+| Ch.1 — Lucia Motloung | `ZAV_6216.NEF` |
+| Ch.1 — Antoinette Sithole | `ZAV_6880.NEF` |
+| Ch.1 — Mandela House / Apartheid Museum | `ZAV_7105.NEF` |
+| Ch.2 — "A Legacy Restored" (MalaMala) | `buffalo_maindeck2.tif` |
+| Ch.3 — Christo Brand | `ZAV_1363.NEF` |
+| 05 Stays — MalaMala ×3 | `buffalo_suite14` / `buffalo_maindeck5` / `buffalo_suite_3bathroom` `.tif` |
 
 Image shorthand (`NAME.ext`) expands per the CLAUDE.md convention to
 `…/2026/optimized/umoya_compressed_NAME.ext`.
@@ -85,12 +115,20 @@ Image shorthand (`NAME.ext`) expands per the CLAUDE.md convention to
 - **Enquiry link:** "Speak With a Travel Expert" buttons are `href="#sj-cta"`
   (closing section) / `href="#"` on the final CTA — wire to the real
   contact/enquiry destination.
-- **Copy:** all page body copy is verbatim from the mockup, including the
-  moment-card / hotel-slide placeholder labels (only the internal
-  "placeholder · for Seyi" working annotation is omitted).
-- **Global nav + footer:** the mockup's global nav (The Signature Journey ·
-  Private & Tailormade · Experiences · For Groups · About · Join the
-  Founder's Circle) and its footer are NOT built into these widgets — they
-  are treated as theme-level, matching the Founder's Circle convention. The
-  nav widget (00) is instead an in-page table-of-contents. Confirm if the
-  client wants the mockup's exact global nav + footer built into the page.
+- **Copy:** all page body copy is verbatim from the mockup, with one
+  deliberate client-requested exception — Section 05's header was changed
+  from "Where You Stay / Hotel Stays Worthy of the Journey" to
+  **"Where You Rest / Your Home Along the Way"**, with a new lead paragraph
+  and a per-hotel description under each tile.
+
+  > An early build paraphrased hero copy and invented extra buttons; that
+  > was reverted. Treat mockup wording as fixed unless the client says
+  > otherwise — flag awkward copy rather than improving it.
+
+- **Global nav + footer:** the mockup's global nav and footer are NOT built
+  into these widgets — they are theme-level. Since this page was built, a
+  proper site-wide nav now exists at `shared/section-00-nav.html`; use that
+  rather than the local `section-00-nav.html`.
+- **Ntsiki image bug (fixed):** the Ch.3 "Black Route" card originally
+  duplicated Christo Brand's `ZAV_1363` photo. It now correctly uses
+  `img371169908`. Worth re-checking if that section is ever regenerated.
