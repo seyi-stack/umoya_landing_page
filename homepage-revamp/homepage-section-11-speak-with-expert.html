@@ -24,6 +24,29 @@
       font-family: inherit;
       color: var(--cream);
       text-align: center;
+
+      /*
+        BOUNDARY vs the footer (client feedback: "it all blends into one
+        section"). The Elementor footer directly below uses the SAME brown
+        (#4B2E2B), so the two blocks were visually continuous. A hairline in
+        cream at low opacity — the same divider treatment used elsewhere in
+        the build — separates them without introducing a new colour.
+      */
+      border-bottom: 1px solid rgba(245, 240, 235, .22);
+    }
+
+    /*
+      A short centred terracotta rule above the content reinforces that this
+      is its own band, not the top of the footer.
+    */
+    #umoya-speak-expert .umoya-spk-wrap::before {
+      content: "";
+      display: block;
+      width: 54px;
+      height: 2px;
+      margin: 0 auto clamp(26px, 3vw, 36px);
+      background: var(--terra);
+      border-radius: 2px;
     }
 
     #umoya-speak-expert,

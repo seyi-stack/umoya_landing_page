@@ -69,10 +69,17 @@
       text-decoration: none;
     }
 
+    /*
+      The logomark is a dense circular emblem (tree + wordmark inside a
+      512px circle). At 26px its interior detail collapsed and read as
+      "pixelated" — it is a true vector SVG, so the fix is size, not a
+      higher-resolution asset. 40px in a 64px bar keeps 12px of breathing
+      room top and bottom.
+    */
     #umoyaHomepageNav .umoya-nav-logo img {
       display: block;
       width: auto;
-      height: 26px;
+      height: 40px;
       flex-shrink: 0;
     }
 
@@ -357,6 +364,11 @@
       #umoyaHomepageNav .umoya-nav-inner {
         height: 58px;
         padding: 0 20px;
+      }
+
+      /* Scaled to the shorter mobile bar */
+      #umoyaHomepageNav .umoya-nav-logo img {
+        height: 36px;
       }
 
       #umoyaHomepageNav .umoya-nav-links,
