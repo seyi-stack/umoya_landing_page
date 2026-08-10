@@ -86,6 +86,13 @@
     #umoya-film .umoya-film-lead p:last-child { margin-bottom: 0; }
     #umoya-film .umoya-film-lead em { font-style: italic; }
 
+    /* Right column wrapper: video with the award badge beneath it. */
+    #umoya-film .umoya-film-media {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
     /* ── Film frame — native YouTube embed (right column) ── */
     #umoya-film .umoya-film-frame {
       position: relative;
@@ -169,13 +176,13 @@
     #umoya-film .umoya-film-rv.on { opacity: 1; transform: none; }
     #umoya-film .umoya-film-rv.d1 { transition-delay: .12s; }
 
-    /* Stack below the two-column breakpoint; video leads, copy follows. */
+    /* Stack below the two-column breakpoint; video (+ award) leads. */
     @media (max-width: 900px) {
       #umoya-film .umoya-film-wrap {
         grid-template-columns: 1fr;
         gap: clamp(24px, 4vw, 34px);
       }
-      #umoya-film .umoya-film-frame { order: -1; }
+      #umoya-film .umoya-film-media { order: -1; }
       #umoya-film h2 { max-width: none; }
       #umoya-film .umoya-film-lead { max-width: none; }
     }
@@ -205,6 +212,23 @@
         <p>Our brand film was awarded a Silver Award for Best Country Tourism Film at the International Tourism Film Festival Africa 2026, recognized for an approach to travel that places storytellers, not sights, at the center of every journey.</p>
         <p>This is our love letter to South Africa. Felt the way it deserves to be felt: <em>slowly, honestly, and in the company of the people who know it best.</em></p>
       </div>
+    </div>
+
+    <!-- RIGHT — film, with the award badge directly beneath it (client
+         feedback: sitting under the body copy "felt a little off"). -->
+    <div class="umoya-film-media umoya-film-rv d1">
+      <!-- Native YouTube player: shows the video's first frame + YouTube
+           controls in place, so visitors press play right on the embed. -->
+      <div class="umoya-film-frame">
+        <iframe
+          src="https://www.youtube.com/embed/4ZtbEvETrBU?rel=0"
+          title="Umoya — Let Your Story Begin"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+      </div>
 
       <!-- Award callout -->
       <div class="umoya-film-award" role="note" aria-label="Award recognition">
@@ -220,19 +244,6 @@
           <span class="umoya-film-award-sub">International Tourism Film Festival Africa 2026</span>
         </span>
       </div>
-    </div>
-
-    <!-- RIGHT — film. Native YouTube player: shows the video's first frame +
-         YouTube controls in place, so visitors press play right on the embed. -->
-    <div class="umoya-film-frame umoya-film-rv d1">
-      <iframe
-        src="https://www.youtube.com/embed/4ZtbEvETrBU?rel=0"
-        title="Umoya — Let Your Story Begin"
-        loading="lazy"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-        referrerpolicy="strict-origin-when-cross-origin"
-      ></iframe>
     </div>
 
   </div>

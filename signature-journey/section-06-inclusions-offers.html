@@ -194,6 +194,10 @@
 
   .sj-offers-end { margin-top: 22px; }
   .sj-offers-btn {
+    /* Rendered as a <button> (popup trigger), so reset the UA styling. */
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -317,11 +321,11 @@
         </div>
 
         <div class="sj-offers-end">
-          <!-- Section 07 (the duplicate closing CTA) was removed at client
-               request, so this no longer points at #sj-cta. It now targets the
-               Founder's Circle inquiry form — confirm if a popup form is
-               preferred here instead, matching the homepage. -->
-          <a href="https://umoyaafrikatours.co.za/founders-circle/#fc-form-section" class="sj-offers-btn">Speak With a Travel Expert</a>
+          <!-- Opens the inquiry popup. REQUIRES section-08-form-popup.html to
+               be on the page — without that widget this button does nothing.
+               (Section 07, the duplicate closing CTA, was removed at client
+               request, so #sj-cta no longer exists.) -->
+          <button type="button" class="sj-offers-btn" data-umoya-form-popup>Speak With a Travel Expert</button>
         </div>
         <p class="sj-offers-fine">Offers apply to new bookings and cannot be combined. Places in the Founder's Circle are limited, and the rate closes once the founding group is full.</p>
       </aside>

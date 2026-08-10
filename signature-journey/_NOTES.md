@@ -34,7 +34,16 @@ ARIA on carousels), and four breakpoints (desktop · 1024 · 768 · 420).
 | 5 | `section-04-extensions.html` | Optional extensions (Vic Falls · Chobe) — dark band | `sj-extensions` |
 | 6 | `section-05-stays.html` | Where You Stay — 3 hotel slideshows | `sj-stays` |
 | 7 | `section-06-inclusions-offers.html` | Inclusions grid + sticky Offers panel | `sj-inclusions` |
-| 8 | `section-07-cta.html` | Closing CTA | `sj-cta` |
+| 8 | `section-08-form-popup.html` | Inquiry popup (renders nothing until opened) | — |
+
+> `section-07-cta.html` was **REMOVED** at client request (it duplicated the
+> "Speak With a Travel Expert" button in Section 06's Offers panel). The file
+> is kept for history but must NOT be pasted. `#sj-cta` no longer exists.
+>
+> Section 06's offers button is now a `data-umoya-form-popup` trigger, so
+> **section-08-form-popup.html must be on the page** or that button does
+> nothing. Its lead attribution is `signature_journey_popup`, distinct from
+> the homepage's `homepage_popup`.
 
 **Anchor IDs must not change** — the nav observer watches `sj-hero`; nav
 links and the offers-panel CTA point at the section IDs above. Place

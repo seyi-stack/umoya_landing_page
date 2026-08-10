@@ -117,6 +117,129 @@ That is: prepend the fixed base directory and the fixed filename prefix `umoya_c
 
 ---
 
+## Image Processing Procedure (client-supplied images)
+
+Follow this whenever the client sends images — usually as Google Drive
+links in a feedback doc. It is the established method for this project.
+
+### 0. Check whether we already have it — DO THIS FIRST
+
+The client frequently re-sends links to photos already on the server, and
+often labels the same file two different ways. Always resolve a Drive link
+to its **original filename** before downloading:
+
+```bash
+curl -sIL "https://drive.google.com/uc?export=download&id=<FILE_ID>" \
+  | grep -i content-disposition
+```
+
+Then check the uploads folder / CDN for that stem (e.g. `ZAV_6354`,
+`AdobeStock_371169908`). If it exists, **reuse it and tell the user** —
+do not create a duplicate. Roughly half of every batch so far has already
+been on the server.
+
+Where the mount is slow, a direct CDN probe is faster than listing:
+
+```bash
+curl -s -o /dev/null -w "%{http_code}" \
+  "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/<NAME>"
+```
+
+### 1. Download
+
+Drive files are shared publicly, so no OAuth is needed:
+
+```
+https://drive.google.com/uc?export=download&id=<FILE_ID>
+```
+
+Guard against Drive returning an HTML permission/quota page instead of
+image bytes — check the first byte is a real image magic number.
+
+### 2. Optimize — this is mandatory, not optional
+
+Sources are full-resolution Lightroom/stock exports. Real examples: a
+4040×6064 portrait at **14.9 MB**, a 6720×4480 at 12.4 MB. One batch of 15
+totalled **131 MB**. Dropping those in raw would be unacceptable on a site
+already showing ~4s TTFB and intermittent 520s.
+
+| Setting | Value | Why |
+|---|---|---|
+| Max long edge | **2400 px** | Ample for full-bleed retina; card images never need more |
+| Format | JPEG | Matches the folder's convention |
+| Quality | **82** | Lands 300–800 KB, in line with existing assets |
+| `optimize` + `progressive` | on | Smaller files, nicer perceived load |
+| EXIF | **apply rotation, then strip** | Order matters — see below |
+
+**EXIF order is load-bearing.** Call `ImageOps.exif_transpose()` *before*
+saving without an `exif=` argument. Applying rotation first keeps portraits
+upright (Wilson and Vivian both came through correctly as 1600×2400);
+stripping afterwards removes camera and GPS metadata from what are personal
+photographs, and saves bytes. Do not skip either half.
+
+Typical result: **131 MB → 8.5 MB (≈94% smaller)** with no visible loss.
+
+### 3. Name and place
+
+- Folder: `.../Mountain Duck/<mount>/wp-content/uploads/2026/optimized/`
+- Name: `umoya_compressed_<descriptive_slug>.jpg`
+  (e.g. `umoya_compressed_about_host_vivian.jpg`)
+- **Never overwrite** an existing file — if the target name exists, report
+  and skip.
+- **Never delete anything**, including superseded files. The old
+  `umoya_groups_sororities.jpg` still sits beside its replacement.
+- Keep the untouched original locally so the step is repeatable.
+
+Mountain Duck syncs to the live server, so files are usually reachable at
+their public URL within a minute. Verify with an HTTP 200 check before
+wiring them into HTML.
+
+### 4. Wire into the HTML and verify
+
+Reference via the standard URL, then confirm in a browser that every image
+actually decodes — `naturalWidth > 0`, not merely "no 404". Note that
+`loading="lazy"` images report `complete === false` until scrolled into
+view, so force-load them before judging:
+
+```js
+document.images.forEach(i => { i.loading='eager'; i.src = i.src; });
+```
+
+### Adjusting framing instead of replacing
+
+When the client says an image is "cut off" or should be "more centered",
+the fix is usually `object-position`, not a new asset. Download the source,
+look at it, work out where the subject sits, and compute the shift —
+don't guess. Applied examples:
+
+| Case | Fix |
+|---|---|
+| For Groups families — person clipped at right edge | `object-position: 70% center` |
+| Signature Journey wine — glasses clipped at bottom | `object-position: center 82%` |
+
+### Brightening
+
+"Too dark" is fixable in-place. Use a **gamma lift** (`gamma ≈ 0.72`), which
+raises midtones and shadows while protecting highlights — a flat brightness
+multiply clips skies. Save under a NEW name; leave the original alone.
+Example: `umoya_about_eyethu_heritage_hall.jpg` (mean 112) →
+`umoya_compressed_about_tshabalala_family.jpg` (mean 133).
+
+### Identity safety — do not guess who is in a photo
+
+Client link lists frequently contain copy-paste errors. One batch had the
+same Drive ID under both "Lucia" and "Eyethu", and that file (`ZAV_6406`)
+turned out to be neither — Lucia was actually `ZAV_6354`.
+
+**If it is unclear which real person a photo shows, do not place it.** Leave
+the placeholder, upload the processed file so the client can view it, and
+ask. Publishing one named person under another's name is a factual claim
+about a real individual and is not recoverable by a later fix. The same
+applies in reverse: if a photo swap requires a name change (Ntsiki →
+Vivian), make both together or neither.
+
+---
+
 ## 3. Technical Stack and Non-Negotiables
 
 | Layer | Current / Intended Technology | Notes |
