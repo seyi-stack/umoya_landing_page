@@ -238,6 +238,20 @@ about a real individual and is not recoverable by a later fix. The same
 applies in reverse: if a photo swap requires a name change (Ntsiki →
 Vivian), make both together or neither.
 
+### Resolved identities (do not re-litigate)
+
+| Subject | Correct file | Note |
+|---|---|---|
+| Lucia Motloung | `umoya_compressed_ZAV_6354.png` | An early link pointed at ZAV_6406 — that is the Eyethu building, not her |
+| Eyethu / Tshabalala Family | `umoya_compressed_ZAV_6406.png` | The **only** approved Eyethu image; used site-wide (About hosts + the FC journey Soweto tile) |
+| Vivian Kleynhans | `umoya_compressed_about_host_vivian.jpg` | Replaced Ntsiki Biyela; name, copy and photo always change together |
+
+Superseded files remain on the server because nothing is ever deleted.
+Do **not** reference these:
+`umoya_about_eyethu_heritage_hall.jpg`,
+`umoya_compressed_about_tshabalala_family.jpg`,
+`umoya_compressed_about_host_lucia.jpg` (actually ZAV_6406 — misnamed).
+
 ---
 
 ## 3. Technical Stack and Non-Negotiables
