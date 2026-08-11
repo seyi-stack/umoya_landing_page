@@ -1,0 +1,786 @@
+<!--
+=================================================================
+  UMOYA — SITE-WIDE FOOTER  (Elementor HTML widget)
+=================================================================
+  Replaces the default Elementor Form newsletter widget and the
+  theme footer's link list with one self-contained, brand-correct
+  block. Place LAST on every page (the counterpart to
+  shared/section-00-nav.html, which goes FIRST).
+
+  NEWSLETTER — wired to its own HubSpot form:
+    Portal 246097317 · Form 40d535ad-fc91-4831-8231-eddc05208624
+    ("Footer Newsletter Signup", fields: email + firstname)
+  It follows the same submit path as every other Umoya form:
+    1. POST /wp-json/umoya/v1/submissions   (WordPress stores it,
+       then forwards to HubSpot)
+    2. if WordPress is unreachable → POST straight to the HubSpot
+       Forms API and queue the WP backup in localStorage
+  source = "footer_newsletter". The default MERGE alias table in
+  class-submissions.php already resolves EMAIL/FNAME, so no
+  server-side change is needed for this form.
+
+  POPIA: the marketing consent box is NOT pre-ticked and IS
+  required — this form exists solely to collect marketing consent.
+  The exact wording submitted is recorded with the submission so
+  the consent register can show what was agreed to.
+
+  LINK SLUGS: the Explore column follows shared/section-00-nav.html
+  (the live structure). The older "FOOTER URL MAP" doc lists
+  /the-journey, /why-umoya and /our-story for three of these —
+  those are stale; the nav's slugs win. See _NOTES at the bottom.
+
+  BRAND: font-family: inherit; palette tokens only. Scoped to
+  #umoya-footer. ES5 IIFE. WCAG AA (44px targets, 16px input floor).
+=================================================================
+-->
+<footer id="umoya-footer" role="contentinfo" aria-label="Site footer">
+  <style>
+    #umoya-footer {
+      --cream:    #F5F0EB;
+      --brown:    #4B2E2B;
+      --terra:    #D97E53;
+      --terra-dk: #C06840;
+      --olive:    #708238;
+      --white:    #FFFFFF;
+      --ease:     cubic-bezier(.25,.46,.45,.94);
+
+      /* Full-bleed: break out of the centered Elementor container */
+      width: 100vw;
+      max-width: 100vw;
+      margin-left: calc(50% - 50vw);
+      background: var(--brown);
+      color: var(--cream);
+      font-family: inherit;
+    }
+
+    #umoya-footer *,
+    #umoya-footer *::before,
+    #umoya-footer *::after { box-sizing: border-box; }
+
+    #umoya-footer a { color: inherit; }
+
+    #umoya-footer .umoya-ft-c {
+      width: min(1180px, 92vw);
+      margin: 0 auto;
+    }
+
+    /* ── Newsletter band ─────────────────────────────────────── */
+    #umoya-footer .umoya-ft-news {
+      border-bottom: 1px solid rgba(245,240,235,.14);
+      padding: clamp(44px, 6vw, 72px) 0;
+    }
+
+    #umoya-footer .umoya-ft-news-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      gap: clamp(28px, 5vw, 64px);
+      align-items: start;
+    }
+
+    #umoya-footer .umoya-ft-eye {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--terra);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    #umoya-footer .umoya-ft-news h2 {
+      margin: 0 0 12px;
+      color: var(--white);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    #umoya-footer .umoya-ft-news p {
+      margin: 0;
+      max-width: 46ch;
+      color: rgba(245,240,235,.82);
+      font-size: clamp(.95rem, 1.1vw, 1.02rem);
+      line-height: 1.65;
+    }
+
+    /* Form */
+    #umoya-footer .umoya-ft-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    #umoya-footer .umoya-ft-field { display: grid; gap: 6px; }
+
+    #umoya-footer .umoya-ft-field label {
+      color: rgba(245,240,235,.78);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    #umoya-footer input[type="email"],
+    #umoya-footer input[type="text"] {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 14px;
+      border: 1.5px solid rgba(245,240,235,.24);
+      border-radius: 4px;
+      background: rgba(245,240,235,.06);
+      color: var(--cream);
+      /* 16px floor stops iOS Safari auto-zooming on focus */
+      font-family: inherit;
+      font-size: max(16px, .92rem);
+      line-height: 1.45;
+      outline: none;
+      transition: border-color .22s var(--ease), background .22s var(--ease), box-shadow .22s var(--ease);
+    }
+
+    #umoya-footer input::placeholder { color: rgba(245,240,235,.42); }
+
+    #umoya-footer input[type="email"]:focus,
+    #umoya-footer input[type="text"]:focus {
+      border-color: var(--terra);
+      background: rgba(245,240,235,.1);
+      box-shadow: 0 0 0 3px rgba(217,126,83,.18);
+    }
+
+    /* Consent (POPIA) — never pre-ticked */
+    #umoya-footer .umoya-ft-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 14px;
+      color: rgba(245,240,235,.78);
+      font-size: .8rem;
+      line-height: 1.55;
+      cursor: pointer;
+    }
+
+    #umoya-footer .umoya-ft-consent input[type="checkbox"] {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: var(--terra);
+      cursor: pointer;
+    }
+
+    #umoya-footer .umoya-ft-consent a {
+      color: var(--terra);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    #umoya-footer .umoya-ft-submit {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      margin-top: 16px;
+      min-height: 52px;
+      padding: 15px 28px;
+      border: 2px solid var(--terra);
+      border-radius: 0;
+      background: var(--terra);
+      color: var(--white);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      -webkit-tap-highlight-color: transparent;
+      transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+    }
+
+    #umoya-footer .umoya-ft-submit:hover:not(:disabled) {
+      background: var(--terra-dk);
+      border-color: var(--terra-dk);
+      transform: translateY(-2px);
+    }
+
+    #umoya-footer .umoya-ft-submit:disabled {
+      background: var(--olive);
+      border-color: var(--olive);
+      cursor: default;
+      transform: none;
+    }
+
+    #umoya-footer .umoya-ft-status {
+      display: none;
+      margin: 10px 0 0;
+      font-size: .82rem;
+      line-height: 1.5;
+      color: rgba(245,240,235,.9);
+    }
+    #umoya-footer .umoya-ft-status.is-visible { display: block; }
+    #umoya-footer .umoya-ft-status.is-error { color: #F0A88A; }
+
+    /* ── Link columns ────────────────────────────────────────── */
+    #umoya-footer .umoya-ft-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr));
+      gap: clamp(28px, 4vw, 52px);
+      padding: clamp(44px, 6vw, 68px) 0 clamp(32px, 4vw, 48px);
+    }
+
+    #umoya-footer .umoya-ft-brand img {
+      width: clamp(128px, 13vw, 168px);
+      height: auto;
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    #umoya-footer .umoya-ft-brand p {
+      margin: 0;
+      max-width: 34ch;
+      color: rgba(245,240,235,.72);
+      font-size: .9rem;
+      line-height: 1.7;
+    }
+
+    #umoya-footer .umoya-ft-col h3 {
+      margin: 0 0 16px;
+      color: var(--terra);
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    #umoya-footer .umoya-ft-col ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    #umoya-footer .umoya-ft-col li { margin: 0; }
+
+    /* 44px min touch target without visually loosening the list */
+    #umoya-footer .umoya-ft-col a,
+    #umoya-footer .umoya-ft-col button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 4px 0;
+      border: 0;
+      background: none;
+      color: rgba(245,240,235,.82);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: .92rem;
+      line-height: 1.45;
+      text-align: left;
+      text-decoration: none;
+      transition: color .2s var(--ease);
+    }
+
+    #umoya-footer .umoya-ft-col a:hover,
+    #umoya-footer .umoya-ft-col button:hover { color: var(--terra); }
+
+    #umoya-footer .umoya-ft-col a:focus-visible,
+    #umoya-footer .umoya-ft-col button:focus-visible {
+      outline: 2px solid var(--cream);
+      outline-offset: 3px;
+    }
+
+    /* ── Legal bar ───────────────────────────────────────────── */
+    #umoya-footer .umoya-ft-legal {
+      border-top: 1px solid rgba(245,240,235,.14);
+      padding: 22px 0 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      color: rgba(245,240,235,.6);
+      font-size: .8rem;
+      line-height: 1.5;
+    }
+
+    #umoya-footer .umoya-ft-legal p { margin: 0; }
+
+    /* ── Tablet ──────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      #umoya-footer .umoya-ft-news-inner { grid-template-columns: 1fr; gap: 26px; }
+      #umoya-footer .umoya-ft-news p { max-width: none; }
+      #umoya-footer .umoya-ft-main { grid-template-columns: 1fr 1fr; }
+      #umoya-footer .umoya-ft-brand { grid-column: 1 / -1; }
+      #umoya-footer .umoya-ft-brand p { max-width: none; }
+    }
+
+    /* ── Mobile ──────────────────────────────────────────────── */
+    @media (max-width: 560px) {
+      #umoya-footer .umoya-ft-row { grid-template-columns: 1fr; }
+      #umoya-footer .umoya-ft-main { grid-template-columns: 1fr; gap: 30px; }
+      #umoya-footer .umoya-ft-legal { justify-content: flex-start; }
+    }
+  </style>
+
+  <div class="umoya-ft-c">
+
+    <!-- ══════════ NEWSLETTER ══════════ -->
+    <section class="umoya-ft-news" aria-labelledby="umoya-ft-news-title">
+      <div class="umoya-ft-news-inner">
+        <div>
+          <span class="umoya-ft-eye">Stay Close to the Journey</span>
+          <h2 id="umoya-ft-news-title">Journeys, Stories &amp; Early Access</h2>
+          <p>Occasional letters from Umoya — new journeys, the people behind them, and first access to Founder's Circle releases. No noise, and you can leave whenever you wish.</p>
+        </div>
+
+        <div>
+          <!-- Hidden target keeps a no-JS POST from navigating away -->
+          <iframe name="umoyaFooterFrame" title="Newsletter submission target" aria-hidden="true" style="display:none;width:0;height:0;border:0;"></iframe>
+
+          <form
+            id="umoyaFooterForm"
+            action="/wp-json/umoya/v1/submissions"
+            method="post"
+            target="umoyaFooterFrame"
+            novalidate
+            aria-label="Newsletter signup"
+            data-hubspot-portal-id="246097317"
+            data-hubspot-form-id="40d535ad-fc91-4831-8231-eddc05208624"
+            data-umoya-form-source="footer_newsletter"
+            data-wordpress-backup-endpoint="/wp-json/umoya/v1/submissions"
+            data-hubspot-consent-text="I agree to receive Umoya Afrika Tours journeys, stories and early-access news by email. I understand I can unsubscribe at any time, and that my details are processed as set out in the Privacy Policy."
+          >
+            <input type="hidden" name="source" value="footer_newsletter">
+            <input type="hidden" name="hubspotPortalId" value="246097317">
+            <input type="hidden" name="hubspotFormId" value="40d535ad-fc91-4831-8231-eddc05208624">
+            <input type="hidden" name="consentText" value="I agree to receive Umoya Afrika Tours journeys, stories and early-access news by email. I understand I can unsubscribe at any time, and that my details are processed as set out in the Privacy Policy.">
+            <input type="hidden" name="hutk" value="">
+            <input type="hidden" name="pageUri" value="">
+            <input type="hidden" name="pageName" value="">
+
+            <div class="umoya-ft-row">
+              <div class="umoya-ft-field">
+                <label for="umoyaFtName">First name</label>
+                <input id="umoyaFtName" name="FNAME" type="text" placeholder="First name" autocomplete="given-name">
+              </div>
+              <div class="umoya-ft-field">
+                <label for="umoyaFtEmail">Email *</label>
+                <input id="umoyaFtEmail" name="EMAIL" type="email" placeholder="your@email.com" required autocomplete="email">
+              </div>
+            </div>
+
+            <label class="umoya-ft-consent" for="umoyaFtConsent">
+              <input type="checkbox" id="umoyaFtConsent" name="MARKETING_CONSENT" value="yes" aria-required="true">
+              <span>I agree to receive Umoya Afrika Tours journeys, stories and early-access news by email. I understand I can unsubscribe at any time, and that my details are processed as set out in the <a href="https://umoyaafrikatours.co.za/privacy/" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+            </label>
+
+            <button type="submit" class="umoya-ft-submit" id="umoyaFtSubmit">Subscribe</button>
+            <p class="umoya-ft-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ LINK COLUMNS ══════════ -->
+    <div class="umoya-ft-main">
+      <div class="umoya-ft-brand">
+        <img
+          src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Property-1Umoya-Afrika-Logo_v3.svg"
+          alt="Umoya Afrika Tours"
+          loading="lazy"
+        >
+        <p>Luxury heritage travel across South Africa, shaped for the global African diaspora — journeys that are historically grounded, diaspora-centered, and intentionally small.</p>
+      </div>
+
+      <nav class="umoya-ft-col" aria-label="Explore">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="https://umoyaafrikatours.co.za/signature-journey/">The Signature Journey</a></li>
+          <li><a href="https://umoyaafrikatours.co.za/private-and-tailormade/">Private &amp; Tailormade</a></li>
+          <li><a href="https://umoyaafrikatours.co.za/for-groups/">For Groups</a></li>
+          <li><a href="https://umoyaafrikatours.co.za/about-us/">About Us</a></li>
+          <li><a href="https://umoyaafrikatours.co.za/founders-circle/">Founder's Circle</a></li>
+        </ul>
+      </nav>
+
+      <nav class="umoya-ft-col" aria-label="Plan your journey">
+        <h3>Plan Your Journey</h3>
+        <ul>
+          <li><a href="https://umoyaafrikatours.co.za/travel-essentials">Travel Essentials</a></li>
+          <li><a href="https://umoyaafrikatours.co.za/travel-essentials#travel-protection">Travel Insurance Guidance</a></li>
+          <li><a href="https://umoyaafrikatours.co.za/visa-and-entry">Visa &amp; Entry Information</a></li>
+          <li><a href="https://umoyaafrikatours.co.za/travel-brochure.pdf">Travel Brochure</a></li>
+          <li><a href="https://umoyaafrikatours.co.za/contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <nav class="umoya-ft-col" aria-label="Company and legal">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="https://umoyaafrikatours.co.za/press">Press &amp; Media</a></li>
+          <li><a href="https://umoyaafrikatours.co.za/booking-terms">Booking Terms &amp; Conditions</a></li>
+          <li><a href="https://umoyaafrikatours.co.za/privacy">Privacy Policy</a></li>
+          <li><a href="https://umoyaafrikatours.co.za/paia-manual.pdf">PAIA Manual</a></li>
+          <li><button type="button" data-umoya-cookie-prefs>Cookie Preferences</button></li>
+          <!--
+            EMAIL OPT-OUT — intentionally not rendered yet.
+            The FOOTER URL MAP lists it as
+            [INSERT_HUBSPOT_SUBSCRIPTION_PREFERENCES_URL], which is still
+            unresolved. Shipping a dead link is worse than omitting it.
+            To enable: paste the real HubSpot subscription-preferences URL
+            and uncomment.
+          <li><a href="REPLACE_WITH_HUBSPOT_SUBSCRIPTION_PREFERENCES_URL">Email Opt-out</a></li>
+          -->
+        </ul>
+      </nav>
+    </div>
+
+    <!-- ══════════ LEGAL BAR ══════════ -->
+    <div class="umoya-ft-legal">
+      <p>&copy; <span data-umoya-year>2026</span> Umoya Afrika Tours. All rights reserved.</p>
+      <p>Crafted for the journey home.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  var root = document.getElementById('umoya-footer');
+  if (!root || root.getAttribute('data-ready') === 'true') return;
+  root.setAttribute('data-ready', 'true');
+
+  /* ── Current year ───────────────────────────────────────────── */
+  var yearEl = root.querySelector('[data-umoya-year]');
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  /* ── Cookie preferences ─────────────────────────────────────────
+   * Different cookie tools expose different globals, so try the ones
+   * commonly paired with this stack, then fall back to the policy page
+   * rather than leaving a dead button. Re-point this once the final
+   * cookie consent tool is confirmed. */
+  var cookieBtn = root.querySelector('[data-umoya-cookie-prefs]');
+  if (cookieBtn) {
+    cookieBtn.addEventListener('click', function(){
+      try {
+        if (window.CookieConsent && typeof window.CookieConsent.showPreferences === 'function') { window.CookieConsent.showPreferences(); return; }
+        if (window.cookieconsent && typeof window.cookieconsent.openPreferencesCenter === 'function') { window.cookieconsent.openPreferencesCenter(); return; }
+        if (typeof window.cookieadmin_show_settings === 'function') { window.cookieadmin_show_settings(); return; }
+        if (window.CLI && typeof window.CLI.openSettings === 'function') { window.CLI.openSettings(); return; }
+      } catch (ignore) {}
+      window.location.href = 'https://umoyaafrikatours.co.za/privacy';
+    });
+  }
+
+  /* ── Newsletter form ────────────────────────────────────────── */
+  var form = document.getElementById('umoyaFooterForm');
+  if (!form) return;
+
+  var btn = document.getElementById('umoyaFtSubmit');
+  var statusEl = form.querySelector('.umoya-ft-status');
+  var originalText = btn ? btn.textContent : 'Subscribe';
+  var submitting = false;
+
+  /* Shared with the other Umoya forms — all flush to the same endpoint */
+  var pendingBackupKey = 'umoyaPendingBackups';
+  var pendingBackupMaxAge = 1000 * 60 * 60 * 24 * 3;
+
+  /* Only two properties; both resolve through the DEFAULT alias table in
+     class-submissions.php, so this form needs no server-side change. */
+  var hubspotFieldMap = {
+    FNAME: 'firstname',
+    EMAIL: 'email'
+  };
+
+  function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  function getFieldValue(name){
+    var f = form.elements[name];
+    return f ? String(f.value || '').trim() : '';
+  }
+
+  function getCookie(name){
+    var parts = document.cookie ? document.cookie.split('; ') : [];
+    for (var i = 0; i < parts.length; i += 1) {
+      var item = parts[i].split('=');
+      if (item[0] === name) return decodeURIComponent(item.slice(1).join('='));
+    }
+    return '';
+  }
+
+  function setHidden(name, value){
+    var f = form.elements ? form.elements[name] : null;
+    if (f) f.value = value || '';
+  }
+
+  function syncTrackingFields(){
+    setHidden('hutk', getCookie('hubspotutk'));
+    setHidden('pageUri', window.location.href);
+    setHidden('pageName', document.title || 'Umoya Afrika Tours');
+  }
+
+  function identifyHubSpotVisitor(){
+    var email = getFieldValue('EMAIL');
+    if (!email || !isValidEmail(email)) return;
+    window._hsq = window._hsq || [];
+    window._hsq.push(['identify', { email: email }]);
+    window._hsq.push(['trackPageView']);
+  }
+
+  function showStatus(msg, isError){
+    if (!statusEl) return;
+    statusEl.textContent = msg;
+    statusEl.classList.toggle('is-error', !!isError);
+    statusEl.classList.add('is-visible');
+  }
+
+  function buildHubSpotPayload(){
+    syncTrackingFields();
+    var fields = [];
+    Object.keys(hubspotFieldMap).forEach(function(name){
+      var v = getFieldValue(name);
+      if (v) fields.push({ name: hubspotFieldMap[name], value: v });
+    });
+
+    var context = { pageUri: window.location.href, pageName: document.title || 'Umoya Afrika Tours' };
+    var hutk = getCookie('hubspotutk');
+    if (hutk) context.hutk = hutk;
+
+    var payload = { fields: fields, context: context };
+
+    /* Record the exact wording the subscriber agreed to, for the
+       POPIA consent register. */
+    var consentText = (form.getAttribute('data-hubspot-consent-text') || '').trim();
+    if (consentText) {
+      payload.legalConsentOptions = { consent: { consentToProcess: true, text: consentText } };
+    }
+    return payload;
+  }
+
+  function createSubmissionId(){
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID();
+    return 'umoya-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12);
+  }
+
+  function buildBackupPayload(){
+    var hs = buildHubSpotPayload();
+    var raw = {};
+    Object.keys(hubspotFieldMap).forEach(function(n){ raw[n] = getFieldValue(n); });
+
+    var consentBox = form.querySelector('#umoyaFtConsent');
+    raw.marketing_opt_in = consentBox && consentBox.checked ? 'yes' : 'no';
+    raw.consent_to_process = raw.marketing_opt_in;
+
+    return {
+      submissionId: createSubmissionId(),
+      source: (form.getAttribute('data-umoya-form-source') || 'footer_newsletter').trim(),
+      hubspotPortalId: (form.getAttribute('data-hubspot-portal-id') || '').trim(),
+      hubspotFormId: (form.getAttribute('data-hubspot-form-id') || '').trim(),
+      consentText: (form.getAttribute('data-hubspot-consent-text') || '').trim(),
+      hutk: getCookie('hubspotutk'),
+      pageUri: window.location.href,
+      pageName: document.title || 'Umoya Afrika Tours',
+      rawFields: raw,
+      fields: hs.fields,
+      context: hs.context
+    };
+  }
+
+  function getPendingBackups(){
+    try {
+      return JSON.parse(window.localStorage.getItem(pendingBackupKey) || '[]').filter(function(i){
+        return i && (!i.queuedAt || Date.now() - i.queuedAt < pendingBackupMaxAge);
+      });
+    } catch (ignore) { return []; }
+  }
+
+  function savePendingBackups(items){
+    try { window.localStorage.setItem(pendingBackupKey, JSON.stringify(items.slice(-8))); } catch (ignore) {}
+  }
+
+  function queuePendingBackup(payload){
+    payload.hubspotAlreadySent = true;
+    payload.queuedAt = Date.now();
+    var items = getPendingBackups();
+    items.push(payload);
+    savePendingBackups(items);
+  }
+
+  function flushPendingBackups(){
+    var items = getPendingBackups();
+    if (!items.length) return;
+    var endpoint = (form.getAttribute('data-wordpress-backup-endpoint') || '/wp-json/umoya/v1/submissions').trim();
+    var remaining = items.slice();
+
+    items.forEach(function(item){
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify(item)
+      }).then(function(res){
+        if (!res.ok) return;
+        remaining = remaining.filter(function(e){ return e.submissionId !== item.submissionId; });
+        savePendingBackups(remaining);
+      }).catch(function(){});
+    });
+  }
+
+  function submitToHubSpot(){
+    var portalId = (form.getAttribute('data-hubspot-portal-id') || '').trim();
+    var formId = (form.getAttribute('data-hubspot-form-id') || '').trim();
+    if (!portalId || !formId) return Promise.reject(new Error('HubSpot is not configured yet.'));
+
+    return fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + encodeURIComponent(portalId) + '/' + encodeURIComponent(formId), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(buildHubSpotPayload())
+    }).then(function(res){
+      return res.text().then(function(text){
+        var data = null;
+        if (text) { try { data = JSON.parse(text); } catch (ignore) {} }
+        if (!res.ok) {
+          throw new Error(data && (data.message || data.error) ? (data.message || data.error) : 'HubSpot could not receive the signup.');
+        }
+        return data;
+      });
+    });
+  }
+
+  function submitToWordPress(payload){
+    var endpoint = (form.getAttribute('data-wordpress-backup-endpoint') || '/wp-json/umoya/v1/submissions').trim();
+    return fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'same-origin',
+      body: JSON.stringify(payload)
+    }).then(function(res){
+      return res.text().then(function(text){
+        var data = null;
+        if (text) { try { data = JSON.parse(text); } catch (ignore) {} }
+        if (!res.ok || !data || data.saved !== true) {
+          throw new Error(data && data.message ? data.message : 'WordPress could not save the signup.');
+        }
+        return data;
+      });
+    });
+  }
+
+  function showSuccess(){
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Subscribed — Welcome';
+    }
+    showStatus('Thank you. Look out for our next letter.', false);
+  }
+
+  function showError(msg){
+    submitting = false;
+    if (btn) { btn.disabled = false; btn.textContent = originalText; }
+    showStatus(msg, true);
+  }
+
+  syncTrackingFields();
+  window.setTimeout(syncTrackingFields, 1500);
+  window.setTimeout(flushPendingBackups, 1400);
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (submitting) return;
+
+    syncTrackingFields();
+
+    var emailField = form.querySelector('[name="EMAIL"]');
+    var consentBox = form.querySelector('#umoyaFtConsent');
+    var valid = true;
+
+    if (!emailField.value.trim() || !isValidEmail(emailField.value)) {
+      valid = false;
+      emailField.style.borderColor = '#D97E53';
+      emailField.style.boxShadow = '0 0 0 3px rgba(217,126,83,.2)';
+    }
+
+    /* POPIA — marketing consent is the whole point of this form */
+    var consentMissing = consentBox && !consentBox.checked;
+    if (consentMissing) {
+      valid = false;
+      consentBox.style.outline = '2px solid #D97E53';
+      consentBox.style.outlineOffset = '3px';
+    }
+
+    if (!valid) {
+      showStatus(consentMissing && emailField.value.trim() && isValidEmail(emailField.value)
+        ? 'Please tick the consent box to subscribe.'
+        : 'Please enter a valid email address.', true);
+      if (!emailField.value.trim() || !isValidEmail(emailField.value)) emailField.focus();
+      else if (consentMissing) consentBox.focus();
+      return;
+    }
+
+    submitting = true;
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+    showStatus('Signing you up…', false);
+    identifyHubSpotVisitor();
+
+    var payload = buildBackupPayload();
+
+    /* WordPress first (it stores + forwards); direct HubSpot is the fallback */
+    submitToWordPress(payload)
+      .then(showSuccess)
+      .catch(function(err){
+        submitToHubSpot()
+          .then(function(){ queuePendingBackup(payload); showSuccess(); })
+          .catch(function(fallbackErr){
+            showError((err.message || 'Could not save the signup.') + ' ' + (fallbackErr.message || ''));
+          });
+      });
+  });
+
+  form.querySelectorAll('input').forEach(function(f){
+    f.addEventListener('input', function(){
+      f.style.borderColor = '';
+      f.style.boxShadow = '';
+      if (statusEl) statusEl.classList.remove('is-visible', 'is-error');
+    });
+  });
+
+  var consentEl = form.querySelector('#umoyaFtConsent');
+  if (consentEl) {
+    consentEl.addEventListener('change', function(){
+      consentEl.style.outline = '';
+      consentEl.style.outlineOffset = '';
+      if (statusEl) statusEl.classList.remove('is-visible', 'is-error');
+    });
+  }
+}());
+</script>
+
+<!--
+=================================================================
+  _NOTES — deployment & open points
+=================================================================
+  1. REPLACES the default Elementor Form newsletter widget. Once
+     this is live, delete that widget, or the HubSpot WordPress
+     plugin will keep auto-capturing it as
+     ".elementor-form … converted (August 11, 2026)".
+
+  2. SLUG CONFLICTS. The Explore column follows the live nav
+     (/signature-journey/, /private-and-tailormade/, /for-groups/,
+     /about-us/, /founders-circle/). The older FOOTER URL MAP doc
+     instead lists /the-journey, /why-umoya and /our-story. Confirm
+     which is correct and align both this file and the doc.
+
+  3. UNVERIFIED SLUGS in the other two columns, taken from the
+     FOOTER URL MAP and never confirmed against live WordPress:
+     /travel-essentials · /visa-and-entry · /contact · /press ·
+     /booking-terms · /privacy · /travel-brochure.pdf ·
+     /paia-manual.pdf
+     Check each resolves before launch.
+
+  4. EMAIL OPT-OUT is commented out until the real HubSpot
+     subscription-preferences URL is known.
+
+  5. COOKIE PREFERENCES tries several common cookie-tool globals
+     and falls back to /privacy. Re-point it once the final cookie
+     consent tool is confirmed.
+=================================================================
+-->

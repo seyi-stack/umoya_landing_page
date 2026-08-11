@@ -682,6 +682,7 @@ via cPanel/SSH to confirm.** See Open Items.
 | `CLAUDE.md` | This handoff and project source of truth. |
 | `_NEW-PAGES-NOTES.md` | Detail for the three new pages + shared nav. |
 | `shared/section-00-nav.html` | **Site-wide navigation.** Place FIRST on every page. |
+| `shared/section-99-footer.html` | **Site-wide footer.** Newsletter (HubSpot-wired) + link columns + legal bar. Place LAST on every page; replaces the Elementor Form newsletter widget. |
 | `founders-circle/` | Original Founder's Circle sections (was flat `section-*.html` at root). |
 | `founders-circle-revamp/` | **Current** Founder's Circle working copy (v4/v5 feedback). |
 | `homepage/` | Original homepage sections and popup form. |
@@ -1308,27 +1309,32 @@ The data-loss fix is complete in this repo but **inert until deployed**:
    `for-groups/section-08-plan-form.html`.
 2. **Re-upload `umoya-elementor-widgets.zip`** for the source-aware alias
    change in `class-submissions.php`.
+3. **Add `shared/section-99-footer.html`** as the last widget on every page,
+   and delete the old Elementor Form newsletter widget.
 
-Until both are done the live site still posts to the retired lossy form.
+Until 1 and 2 are done the live site still posts to the retired lossy form.
 
 ### Footer Newsletter Form
 
-- ✅ A proper **Footer Newsletter Signup** form now exists
-  (GUID `40d535ad-fc91-4831-8231-eddc05208624`, fields `email` + `firstname`,
-  verified end-to-end).
-- ⏳ **Not yet wired.** The footer is still a default Elementor Form widget,
-  and the HubSpot WP plugin keeps auto-capturing it as
-  `.elementor-form … converted (August 11, 2026)` (`b51b9251-…`) — a junk name
-  with no POPIA consent wording. To finish, either:
-  - point the Elementor form at the new GUID via a webhook/bridge, or
-  - replace it with a small custom HTML widget posting to
-    `/wp-json/umoya/v1/submissions` with `source="footer_newsletter"`
-    (matching the other five forms).
-- Marketing-consent copy to render beside the checkbox (unticked by default,
-  per POPIA):
-  > I agree to receive Umoya Afrika Tours journeys, stories and early-access
-  > news by email. I understand I can unsubscribe at any time, and that my
-  > details are processed as set out in the Privacy Policy.
+- ✅ **Built.** `shared/section-99-footer.html` is a complete site-wide footer
+  (newsletter + link columns + legal bar), wired to the dedicated
+  **Footer Newsletter Signup** form (`40d535ad-fc91-4831-8231-eddc05208624`),
+  `source="footer_newsletter"`, POPIA consent required and never pre-ticked.
+  It uses the same WordPress-first / HubSpot-fallback path as every other
+  form, and needs **no** PHP change (EMAIL + FNAME resolve through the
+  default alias table — asserted in `verify-alias-mapping.mjs`).
+- ⏳ **Deploy step:** paste it as the LAST widget on every page, then
+  **delete the old Elementor Form newsletter widget** — otherwise the HubSpot
+  WP plugin keeps auto-capturing it as
+  `.elementor-form … converted (August 11, 2026)` (`b51b9251-…`).
+- ⚠ **Footer link slugs are unverified.** See the `_NOTES` block at the bottom
+  of that file. In particular the old `FOOTER URL MAP.pdf` says
+  `/the-journey`, `/why-umoya`, `/our-story`, but the live nav uses
+  `/signature-journey/`, `/private-and-tailormade/`, `/about-us/`. The footer
+  follows the **nav**; confirm which is right and align the doc.
+- ⚠ `Email Opt-out` is deliberately **commented out** in the footer — the
+  HubSpot subscription-preferences URL is still unknown, and a dead link is
+  worse than an absent one.
 - Create dedicated HubSpot footer newsletter form if using the custom route.
 - Add POPIA marketing consent copy.
 - Test lead capture in HubSpot and Elementor submissions.
@@ -1630,7 +1636,7 @@ also better for per-page conversion reporting.
 | Founder's Circle Inquiry | `b3c06e8a-9bbc-44e1-bc67-00e35528b9b9` | `founders-circle-revamp/section-04-inquiry-form.html` ✅ |
 | Homepage Popup Inquiry | `a9e947b4-cb2e-45da-b2c7-b83b4228dfb5` | `homepage-revamp/homepage-form-popup.html` ✅ |
 | Signature Journey Inquiry | `71181d17-e836-43d6-aa6d-a46e73945504` | `signature-journey/section-08-form-popup.html` ✅ |
-| Footer Newsletter Signup | `40d535ad-fc91-4831-8231-eddc05208624` | **Not yet wired** — see Open Items |
+| Footer Newsletter Signup | `40d535ad-fc91-4831-8231-eddc05208624` | `shared/section-99-footer.html` ✅ |
 | Umoya Website Form Submissions | `cb87d460-…` | **Retired.** Lossy v4 form, no longer referenced by any source file. Leave in place for its historical submissions. |
 | Inquiry Form (Founders Circle Page) | `643fb390-…` | **Nothing** — 3 fields only; abandoned. Left untouched. |
 | `.elementor-form … converted (Aug 11 2026)` | `b51b9251-…` | Junk auto-capture of the footer newsletter by the HubSpot WP plugin |

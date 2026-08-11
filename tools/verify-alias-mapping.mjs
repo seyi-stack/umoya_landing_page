@@ -101,6 +101,14 @@ const CASES = [
               preferred_journey_length: '' },
   })),
   {
+    /* Footer newsletter: only two fields, both handled by the defaults —
+       it deliberately has no source override. */
+    source: 'footer_newsletter',
+    raw: { fname: 'Thandi', email: 'n@example.com' },
+    expect: { firstname: 'Thandi', email: 'n@example.com',
+              country: '', city: '', party_size: undefined },
+  },
+  {
     /* Regression guard: an unknown source must fall back to the defaults. */
     source: 'some_future_form',
     raw: { fname: 'A', email: 'd@example.com', merge2: 'Ghana', merge6: '10 days' },
@@ -114,7 +122,7 @@ for (const c of CASES) {
   const got = resolve(aliases, c.raw);
   console.log(`\n══ source: ${c.source} ══`);
   for (const [k, want] of Object.entries(c.expect)) {
-    const ok = (got[k] ?? '') === want;
+    const ok = want === undefined ? (got[k] === undefined) : ((got[k] ?? '') === want);
     if (!ok) pass = false;
     console.log(`  ${ok ? 'OK  ' : 'FAIL'} ${k.padEnd(26)} want="${want}" got="${got[k] ?? ''}"`);
   }
