@@ -9,19 +9,18 @@
     submission and forwards it to HubSpot).
   • If WordPress is unreachable, the browser falls back to posting
     directly to the HubSpot Forms API and queues the WP backup.
-  • Field names reuse the existing MERGE* aliases so the mapping in
-    class-submissions.php keeps working with no backend change:
-      MERGE1 → salutation      (unused here)
+  • Submits to its OWN HubSpot form, "Private & Tailormade Inquiry"
+    (GUID 28e4e3e3-9a47-47a5-b3de-851981535664), no longer the shared
+    "Umoya Website Form Submissions" form.
+  • The MERGE* input names are kept (they are just DOM field names)
+    but now map to DEDICATED HubSpot contact properties:
+      MERGE2 → trip_occasion            (was borrowing `country`)
       MERGE4 → preferred_travel_season  (carries MONTH)
       MERGE5 → preferred_travel_year
-      MERGE6 → preferred_journey_length (carries GUEST COUNT)
-      MERGE7 → founders_circle_message  (carries the brief)
-    The occasion select reuses MERGE2 (country slot) — see the
-    OPEN ITEM note below.
-
-  OPEN ITEM: for cleaner reporting, create dedicated HubSpot
-  properties (e.g. trip_occasion, party_size) and update both the
-  map below and the aliases in class-submissions.php.
+      MERGE6 → party_size               (was borrowing `preferred_journey_length`)
+      MERGE7 → founders_circle_message  (the brief)
+    class-submissions.php resolves these per-source, so the WordPress
+    backup path writes the same properties as the direct path.
 
   ANCHOR: id="pt-design" — every "Design Your Journey" / "Make it
   yours" CTA on this page targets it.
@@ -271,14 +270,14 @@
           novalidate
           aria-label="Private &amp; Tailormade Inquiry Form"
           data-hubspot-portal-id="246097317"
-          data-hubspot-form-id="cb87d460-fb2d-4c53-8c32-7daaa05067d7"
+          data-hubspot-form-id="28e4e3e3-9a47-47a5-b3de-851981535664"
           data-umoya-form-source="private_tailormade_page"
           data-wordpress-backup-endpoint="/wp-json/umoya/v1/submissions"
           data-hubspot-consent-text="I consent to Umoya contacting me about my journey and processing my details as set out in the Privacy Policy."
         >
           <input type="hidden" name="source" value="private_tailormade_page">
           <input type="hidden" name="hubspotPortalId" value="246097317">
-          <input type="hidden" name="hubspotFormId" value="cb87d460-fb2d-4c53-8c32-7daaa05067d7">
+          <input type="hidden" name="hubspotFormId" value="28e4e3e3-9a47-47a5-b3de-851981535664">
           <input type="hidden" name="consentText" value="I consent to Umoya contacting me about my journey and processing my details as set out in the Privacy Policy.">
           <input type="hidden" name="hutk" value="">
           <input type="hidden" name="pageUri" value="">
@@ -393,18 +392,19 @@
   var pendingBackupKey = 'umoyaPendingBackups';
   var pendingBackupMaxAge = 1000 * 60 * 60 * 24 * 3;
 
-  /* Reuses the existing MERGE* → HubSpot property mapping so the
-     WordPress endpoint needs no change. See the OPEN ITEM note above. */
+  /* Maps this page's MERGE* input names to the DEDICATED HubSpot contact
+     properties on the "Private & Tailormade Inquiry" form. Verified
+     end-to-end 2026-08-11: every property below persists to the contact. */
   var hubspotFieldMap = {
     FNAME:  'firstname',
     LNAME:  'lastname',
     EMAIL:  'email',
     PHONE:  'phone',
-    MERGE2: 'country',                   /* carries THE OCCASION */
+    MERGE2: 'trip_occasion',             /* the occasion */
     MERGE4: 'preferred_travel_season',   /* carries MONTH */
     MERGE5: 'preferred_travel_year',
-    MERGE6: 'preferred_journey_length',  /* carries GUEST COUNT */
-    MERGE7: 'founders_circle_message'    /* carries the brief */
+    MERGE6: 'party_size',                /* guest count */
+    MERGE7: 'founders_circle_message'    /* the brief */
   };
 
   function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }

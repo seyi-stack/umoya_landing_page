@@ -384,6 +384,10 @@ final class Submissions {
             $raw_fields[ sanitize_key( $name ) ] = $this->clean_value( $value );
         }
 
+        /*
+         * Default alias map — used by the Founder's Circle page and the
+         * homepage popup, which both post to the shared HubSpot form.
+         */
         $aliases = array(
             'salutation'                  => array( 'salutation', 'merge1', 'title' ),
             'firstname'                   => array( 'firstname', 'fname' ),
@@ -397,6 +401,58 @@ final class Submissions {
             'preferred_journey_length'    => array( 'preferred_journey_length', 'merge6', 'length' ),
             'founders_circle_message'     => array( 'founders_circle_message', 'merge7', 'message' ),
         );
+
+        /*
+         * Source-aware overrides.
+         *
+         * Private & Tailormade and For Groups now submit to their own HubSpot
+         * forms and write DEDICATED properties, so their MERGE* slots must not
+         * keep landing in country/city/preferred_journey_length. Each override
+         * also re-declares the borrowed key WITHOUT its merge alias, otherwise
+         * e.g. merge2 would populate both trip_occasion and country.
+         *
+         * Keys here mirror the hubspotFieldMap in each page's form script.
+         */
+        $source_aliases = array(
+            'private_tailormade_page'  => array(
+                'trip_occasion'            => array( 'trip_occasion', 'merge2' ),
+                'party_size'               => array( 'party_size', 'merge6' ),
+                'country'                  => array( 'country' ),
+                'preferred_journey_length' => array( 'preferred_journey_length' ),
+            ),
+            'for_groups_page'          => array(
+                'group_type'               => array( 'group_type', 'merge2' ),
+                'organization'             => array( 'organization', 'merge3' ),
+                'party_size'               => array( 'party_size', 'merge6' ),
+                'country'                  => array( 'country' ),
+                'city'                     => array( 'city' ),
+                'preferred_journey_length' => array( 'preferred_journey_length' ),
+            ),
+            /*
+             * These three keep country/city, but their MERGE6 select is
+             * "How Many Guests Will Be Traveling?" — a party size, not a
+             * journey length. Correcting the target loses nothing: the old
+             * `preferred_journey_length` property did not exist until
+             * 2026-08-11, so it never captured a single value.
+             */
+            'founders_circle_page'     => array(
+                'party_size'               => array( 'party_size', 'merge6' ),
+                'preferred_journey_length' => array( 'preferred_journey_length' ),
+            ),
+            'homepage_popup'           => array(
+                'party_size'               => array( 'party_size', 'merge6' ),
+                'preferred_journey_length' => array( 'preferred_journey_length' ),
+            ),
+            'signature_journey_popup'  => array(
+                'party_size'               => array( 'party_size', 'merge6' ),
+                'preferred_journey_length' => array( 'preferred_journey_length' ),
+            ),
+        );
+
+        $source_key = isset( $payload['source'] ) ? sanitize_key( $payload['source'] ) : '';
+        if ( $source_key && isset( $source_aliases[ $source_key ] ) ) {
+            $aliases = array_merge( $aliases, $source_aliases[ $source_key ] );
+        }
 
         $submission = array();
         foreach ( $aliases as $target => $keys ) {
@@ -514,6 +570,14 @@ final class Submissions {
         );
     }
 
+    /**
+     * Every HubSpot contact property any Umoya form can populate.
+     *
+     * This is the union across all sources. send_to_hubspot() skips empty
+     * values, so listing a property a given form never fills is harmless.
+     * The last four are the dedicated properties used by the Private &
+     * Tailormade and For Groups forms instead of borrowing country/city.
+     */
     private function hubspot_field_names() {
         return array(
             'salutation',
@@ -527,6 +591,10 @@ final class Submissions {
             'preferred_travel_year',
             'preferred_journey_length',
             'founders_circle_message',
+            'trip_occasion',
+            'party_size',
+            'group_type',
+            'organization',
         );
     }
 

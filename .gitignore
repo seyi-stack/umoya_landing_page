@@ -1,2 +1,16 @@
 .claude/
 
+# HubSpot Private App credentials — never commit these
+.secrets/
+*.env
+.env*
+
+# Browser profiles captured during visual QA. Thousands of files, and they
+# may contain cached cookies / session data — never commit these.
+.edge-visual-profile*/
+
+# Third-party agent tool configs
+.agents/
+
+# Visual QA screenshots
+_visual-check-*.png

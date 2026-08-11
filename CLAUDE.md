@@ -1296,29 +1296,60 @@ Guidelines:
 - Wire `Cookie Preferences` to the cookie consent modal.
 - Confirm `/travel-brochure.pdf` and `/paia-manual.pdf` assets exist on the live site.
 
+### ⚠ Redeploy required for the HubSpot fixes to reach the live site
+
+The data-loss fix is complete in this repo but **inert until deployed**:
+
+1. **Re-paste 5 HTML widgets** in Elementor (each now carries its own form
+   GUID): `founders-circle-revamp/section-04-inquiry-form.html`,
+   `homepage-revamp/homepage-form-popup.html`,
+   `signature-journey/section-08-form-popup.html`,
+   `private-tailormade/section-05-design-form.html`,
+   `for-groups/section-08-plan-form.html`.
+2. **Re-upload `umoya-elementor-widgets.zip`** for the source-aware alias
+   change in `class-submissions.php`.
+
+Until both are done the live site still posts to the retired lossy form.
+
 ### Footer Newsletter Form
 
-- Decide no-code HubSpot plugin capture vs custom HubSpot Forms API bridge.
+- ✅ A proper **Footer Newsletter Signup** form now exists
+  (GUID `40d535ad-fc91-4831-8231-eddc05208624`, fields `email` + `firstname`,
+  verified end-to-end).
+- ⏳ **Not yet wired.** The footer is still a default Elementor Form widget,
+  and the HubSpot WP plugin keeps auto-capturing it as
+  `.elementor-form … converted (August 11, 2026)` (`b51b9251-…`) — a junk name
+  with no POPIA consent wording. To finish, either:
+  - point the Elementor form at the new GUID via a webhook/bridge, or
+  - replace it with a small custom HTML widget posting to
+    `/wp-json/umoya/v1/submissions` with `source="footer_newsletter"`
+    (matching the other five forms).
+- Marketing-consent copy to render beside the checkbox (unticked by default,
+  per POPIA):
+  > I agree to receive Umoya Afrika Tours journeys, stories and early-access
+  > news by email. I understand I can unsubscribe at any time, and that my
+  > details are processed as set out in the Privacy Policy.
 - Create dedicated HubSpot footer newsletter form if using the custom route.
 - Add POPIA marketing consent copy.
 - Test lead capture in HubSpot and Elementor submissions.
 
 ### HubSpot / Forms
 
-- Confirm whether the current shared HubSpot Form GUID should remain shared by Founder's Circle and homepage popup.
-- **The two new forms also reuse that same GUID** and the existing `MERGE*`
-  aliases, so no backend change was needed — but the mapping is
-  semantically stretched:
+> **Status 2026-08-11: dedicated forms built and verified end-to-end.**
+> See Section 21 for the full HubSpot inventory and the data-loss bug that
+> was found and fixed while doing it.
 
-  | Field | Alias | Lands in HubSpot as |
-  |---|---|---|
-  | Occasion (P&T) / Group type (FG) | `MERGE2` | `country` |
-  | Organization (FG) | `MERGE3` | `city` |
-  | Guests (P&T) / Size (FG) | `MERGE6` | `preferred_journey_length` |
-
-  For clean reporting, create dedicated properties (`trip_occasion`,
-  `group_type`, `party_size`, `organization`), then update the map in each
-  form's script **and** the aliases in `class-submissions.php`.
+- ✅ Private & Tailormade and For Groups now each have their **own** HubSpot
+  form and dedicated properties (`trip_occasion`, `party_size`, `group_type`,
+  `organization`). They no longer borrow `country` / `city` /
+  `preferred_journey_length`.
+- ✅ `class-submissions.php` resolves `MERGE*` aliases **per source**, so the
+  WordPress-backup path writes the same properties as the direct path.
+- ⚠ **The plugin must be re-uploaded** for the PHP change to take effect —
+  `umoya-elementor-widgets.zip` was rebuilt 2026-08-11.
+- Confirm whether the Founder's Circle page and homepage popup should also
+  move off the shared `Umoya Website Form Submissions` form onto dedicated
+  forms (they still share GUID `cb87d460-…`).
 - Confirm whether newsletter contacts should use a separate HubSpot form/list.
 - Confirm marketing subscription type / consent handling in HubSpot.
 - Confirm final unsubscribe and subscription preferences URLs.
@@ -1541,3 +1572,124 @@ plugin layer, then verify HubSpot/legal implications.
 a section file into an Elementor HTML widget — not through the plugin. So
 editing a file here does not change the site until someone re-pastes it.
 Say so explicitly when handing work over.
+
+---
+
+## 21. HubSpot Forms — Inventory & the Silent Data-Loss Bug
+
+*Established 2026-08-11 by querying the live portal via the Marketing Forms
+and CRM Properties APIs.*
+
+### Do NOT use the HubSpot CLI for this
+
+`@hubspot/cli` (`hs init`) targets **HubSpot CMS Hub** — themes and modules
+hosted on HubSpot's own infrastructure. It has **no form-management
+commands**. Umoya's forms live in WordPress/Elementor and submit *into*
+HubSpot, so the correct surface is the **Marketing Forms API**. Tooling for
+that lives in `tools/hubspot-*.mjs` and needs no CLI.
+
+**Auth:** a Private App token in `.secrets/hubspot.env` (git-ignored —
+`.gitignore` covers `.secrets/`, `.env*`). Scopes: `forms`,
+`crm.schemas.contacts.*`, `crm.objects.contacts.*`. Portal **246097317**.
+
+### The rule that governs whether a field is saved
+
+> A submitted field is persisted only if it is **BOTH** a real contact
+> property **AND** defined on that form. If either is missing, HubSpot
+> returns **HTTP 200 and silently discards the value.**
+
+A 200 response therefore proves nothing. Always read the contact back —
+`tools/hubspot-verify-forms.mjs` does exactly this.
+
+### The bug that was found (now fixed)
+
+Every submission from all **five** live forms was **losing the travel month,
+travel year, party size and the customer's own message**, because:
+
+1. `preferred_travel_season`, `preferred_travel_year`,
+   `preferred_journey_length` and `founders_circle_message` **did not exist
+   as contact properties**.
+2. On the legacy shared form, `when_would_you_like_to_travel` and
+   `preferred_year` were defined with `objectTypeId: "0-5"` (**Ticket**)
+   instead of `"0-1"` (**Contact**) — so they could never reach a contact.
+
+Only name, email, phone, country and city were ever captured.
+
+**Why the legacy form was replaced rather than patched:** it is a **v4 form**,
+and `PATCH /marketing/v3/forms/{id}` returns `403 — The client is not
+allowlisted to perform an operation to v4 forms`. It cannot be repaired via
+this API. Every page therefore got its own API-created form instead, which is
+also better for per-page conversion reporting.
+
+### Current forms in the portal
+
+| Form | GUID | Used by |
+|---|---|---|
+| Private & Tailormade Inquiry | `28e4e3e3-9a47-47a5-b3de-851981535664` | `private-tailormade/section-05-design-form.html` ✅ |
+| Group Journey Inquiry | `c201e387-ca7b-4d73-9417-f060566bcf6a` | `for-groups/section-08-plan-form.html` ✅ |
+| Founder's Circle Inquiry | `b3c06e8a-9bbc-44e1-bc67-00e35528b9b9` | `founders-circle-revamp/section-04-inquiry-form.html` ✅ |
+| Homepage Popup Inquiry | `a9e947b4-cb2e-45da-b2c7-b83b4228dfb5` | `homepage-revamp/homepage-form-popup.html` ✅ |
+| Signature Journey Inquiry | `71181d17-e836-43d6-aa6d-a46e73945504` | `signature-journey/section-08-form-popup.html` ✅ |
+| Footer Newsletter Signup | `40d535ad-fc91-4831-8231-eddc05208624` | **Not yet wired** — see Open Items |
+| Umoya Website Form Submissions | `cb87d460-…` | **Retired.** Lossy v4 form, no longer referenced by any source file. Leave in place for its historical submissions. |
+| Inquiry Form (Founders Circle Page) | `643fb390-…` | **Nothing** — 3 fields only; abandoned. Left untouched. |
+| `.elementor-form … converted (Aug 11 2026)` | `b51b9251-…` | Junk auto-capture of the footer newsletter by the HubSpot WP plugin |
+
+✅ = every field verified to persist end-to-end via `hubspot-verify-forms.mjs`.
+
+### Property mapping by source
+
+| Page / source | MERGE2 | MERGE3 | MERGE6 |
+|---|---|---|---|
+| `founders_circle_page` | `country` | `city` | `party_size` |
+| `homepage_popup` | `country` | `city` | `party_size` |
+| `signature_journey_popup` | `country` | `city` | `party_size` |
+| `private_tailormade_page` | `trip_occasion` | — | `party_size` |
+| `for_groups_page` | `group_type` | `organization` | `party_size` |
+
+`MERGE1 → salutation`, `MERGE4 → preferred_travel_season`,
+`MERGE5 → preferred_travel_year`, `MERGE7 → founders_circle_message`
+on every source.
+
+**MERGE6 is `party_size` everywhere**, including the three popups where it
+used to point at `preferred_journey_length`. That select is literally
+"How Many Guests Will Be Traveling?", and no history was lost by correcting
+it because the old target never existed as a property, so it never held a
+single value. `preferred_journey_length` now exists but is **unused** —
+retained only as the fallback for any future form.
+
+This table is implemented **twice** and the two must stay in step:
+- browser side — `hubspotFieldMap` in each page's form `<script>`
+- server side — `$source_aliases` in `class-submissions.php`
+  (`tools/verify-alias-mapping.mjs` asserts the server side, including a
+  regression guard for the untouched Founder's Circle mapping)
+
+### Tooling
+
+```powershell
+node tools/hubspot-sync.mjs info                 # whoami / portal check
+node tools/hubspot-sync.mjs list-forms           # inventory
+node tools/hubspot-sync.mjs list-props           # property inventory + what's missing
+node tools/hubspot-sync.mjs create-props         # the 8 contact properties
+node tools/hubspot-sync.mjs create-forms         # the 5 inquiry forms
+node tools/hubspot-sync.mjs create-newsletter-form
+node tools/hubspot-inspect-form.mjs <formId>     # dump a form's real field definition
+node tools/hubspot-find-props.mjs <keywords>     # search the 404-property schema
+node tools/hubspot-verify-forms.mjs              # end-to-end: submit, read back, assert
+node tools/verify-alias-mapping.mjs              # assert the PHP alias table
+node tools/hubspot-cleanup-tests.mjs             # remove example.com diagnostic contacts
+```
+
+`repair-shared-form` also exists but **cannot succeed** — it is kept only to
+document the 403 v4-forms limitation described above.
+
+**Gotchas worth knowing before editing these:**
+- A form field group may hold **at most 3 fields**; the API rejects more. The
+  legacy form had 11 in one group, which is why it also could not be patched.
+- Creating a form requires `createdAt`/`updatedAt` even though it is a POST.
+- `displayOptions.theme` must be one of
+  `default_style | linear | canvas | legacy | sharp | round`.
+
+`create-props` / `create-forms` are idempotent — they skip anything that
+already exists rather than duplicating it. Diagnostic submissions always use
+RFC-2606 `@example.com` addresses so they can never reach a real inbox.

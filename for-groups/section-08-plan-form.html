@@ -10,18 +10,19 @@
     submission and forwards it to HubSpot).
   • If WordPress is unreachable, the browser falls back to posting
     directly to the HubSpot Forms API and queues the WP backup.
-  • Field names reuse the existing MERGE* aliases so the mapping in
-    class-submissions.php keeps working with no backend change:
-      MERGE2 → country                  (carries GROUP TYPE)
-      MERGE3 → city                     (carries ORGANIZATION)
+  • Submits to its OWN HubSpot form, "Group Journey Inquiry"
+    (GUID c201e387-ca7b-4d73-9417-f060566bcf6a), no longer the shared
+    "Umoya Website Form Submissions" form.
+  • The MERGE* input names are kept (they are just DOM field names)
+    but now map to DEDICATED HubSpot contact properties:
+      MERGE2 → group_type               (was borrowing `country`)
+      MERGE3 → organization             (was borrowing `city`)
       MERGE4 → preferred_travel_season  (carries MONTH)
       MERGE5 → preferred_travel_year
-      MERGE6 → preferred_journey_length (carries GROUP SIZE)
-      MERGE7 → founders_circle_message  (carries the brief)
-
-  OPEN ITEM: for cleaner reporting, create dedicated HubSpot
-  properties (e.g. group_type, group_size, organization) and update
-  both the map below and the aliases in class-submissions.php.
+      MERGE6 → party_size               (was borrowing `preferred_journey_length`)
+      MERGE7 → founders_circle_message  (the brief)
+    class-submissions.php resolves these per-source, so the WordPress
+    backup path writes the same properties as the direct path.
 
   ANCHOR: id="fg-plan" — every "Plan a Group Journey" CTA on this
   page targets it.
@@ -272,14 +273,14 @@
           novalidate
           aria-label="Group Journey Inquiry Form"
           data-hubspot-portal-id="246097317"
-          data-hubspot-form-id="cb87d460-fb2d-4c53-8c32-7daaa05067d7"
+          data-hubspot-form-id="c201e387-ca7b-4d73-9417-f060566bcf6a"
           data-umoya-form-source="for_groups_page"
           data-wordpress-backup-endpoint="/wp-json/umoya/v1/submissions"
           data-hubspot-consent-text="I consent to Umoya contacting me about a group journey and processing my details as set out in the Privacy Policy."
         >
           <input type="hidden" name="source" value="for_groups_page">
           <input type="hidden" name="hubspotPortalId" value="246097317">
-          <input type="hidden" name="hubspotFormId" value="cb87d460-fb2d-4c53-8c32-7daaa05067d7">
+          <input type="hidden" name="hubspotFormId" value="c201e387-ca7b-4d73-9417-f060566bcf6a">
           <input type="hidden" name="consentText" value="I consent to Umoya contacting me about a group journey and processing my details as set out in the Privacy Policy.">
           <input type="hidden" name="hutk" value="">
           <input type="hidden" name="pageUri" value="">
@@ -397,19 +398,20 @@
   var pendingBackupKey = 'umoyaPendingBackups';
   var pendingBackupMaxAge = 1000 * 60 * 60 * 24 * 3;
 
-  /* Reuses the existing MERGE* → HubSpot property mapping so the
-     WordPress endpoint needs no change. See the OPEN ITEM note above. */
+  /* Maps this page's MERGE* input names to the DEDICATED HubSpot contact
+     properties on the "Group Journey Inquiry" form. Verified end-to-end
+     2026-08-11: every property below persists to the contact. */
   var hubspotFieldMap = {
     FNAME:  'firstname',
     LNAME:  'lastname',
     EMAIL:  'email',
     PHONE:  'phone',
-    MERGE2: 'country',                   /* carries GROUP TYPE */
-    MERGE3: 'city',                      /* carries ORGANIZATION */
+    MERGE2: 'group_type',                /* group type */
+    MERGE3: 'organization',              /* organization / chapter */
     MERGE4: 'preferred_travel_season',   /* carries MONTH */
     MERGE5: 'preferred_travel_year',
-    MERGE6: 'preferred_journey_length',  /* carries GROUP SIZE */
-    MERGE7: 'founders_circle_message'    /* carries the brief */
+    MERGE6: 'party_size',                /* group size band */
+    MERGE7: 'founders_circle_message'    /* the brief */
   };
 
   function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
