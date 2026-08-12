@@ -1312,7 +1312,22 @@ The data-loss fix is complete in this repo but **inert until deployed**:
 3. **Add `shared/section-99-footer.html`** as the last widget on every page,
    and delete the old Elementor Form newsletter widget.
 
-Until 1 and 2 are done the live site still posts to the retired lossy form.
+**Deployment status, checked live 2026-08-11 (by fetching each page and
+grepping for the GUID):**
+
+| Page | Deployed GUID | Status |
+|---|---|---|
+| `/founders-circle/` | `b3c06e8a` | ✅ live |
+| `/private-and-tailormade/` | `28e4e3e3` | ✅ live |
+| `/for-groups/` | `c201e387` | ✅ live |
+| `/signature-journey-unpublished/` | `71181d17` | ✅ live |
+| `/` (homepage popup) | `cb87d460` | ⚠️ still the retired form — re-paste `homepage-revamp/homepage-form-popup.html` |
+
+Confirmed working: a real (non-test) submission on 2026-08-11 13:29 landed on
+**Homepage Popup Inquiry** carrying `preferred_travel_season`,
+`preferred_travel_year` and `founders_circle_message` — the exact fields that
+were being discarded before. Note the homepage HTML may be served from cache,
+so re-check after a cache purge.
 
 ### Footer Newsletter Form
 
@@ -1670,6 +1685,44 @@ This table is implemented **twice** and the two must stay in step:
   (`tools/verify-alias-mapping.mjs` asserts the server side, including a
   regression guard for the untouched Founder's Circle mapping)
 
+### "Non-HubSpot / collected forms" — why submissions appear twice
+
+HubSpot's tracking script (`js.hscollectedforms.net/collectedforms.js`, loaded
+by `js.hs-scripts.com/246097317.js`) watches the DOM for **any** form submit
+and files it as a **captured / non-HubSpot form**, independently of the clean
+Forms-API call our JS makes. So one submission produced two records, and the
+HubSpot UI surfaced the ugly captured one:
+
+```
+[captured]  #umoyaPopupForm .umoya-popup-form
+[captured]  #fgPlanForm .fg-pl-form
+[captured]  #footer_subscribers .elementor-form
+[captured]  .elementor-form, .elementor-form-waiting
+```
+
+**Fix applied:** every Umoya form now carries `data-hs-do-not-collect="true"`.
+This is not a guess — the live script was downloaded and read:
+
+```js
+Le = "hs-do-not-collect";
+e = el.hasAttribute(Le) || el.hasAttribute(`data-${Le}`);
+r = el.className.indexOf(Le) > -1;
+return !e && !r && !n;   // true == collect this form
+```
+
+Presence of the attribute (any value) makes the collector skip the form. A
+class containing `hs-do-not-collect` works too.
+
+Belt-and-braces, and the only thing that stops the **Elementor** footer form
+being captured until the new footer widget is deployed: turn off
+**Settings → Tracking & Analytics → Tracking Code → Collect data from website
+forms** (also exposed by the HubSpot WordPress plugin). Do this only AFTER
+`shared/section-99-footer.html` is live, or newsletter signups stop being
+recorded entirely.
+
+The existing `[captured]` form entries are historical records — leave them;
+deleting them would discard past submissions.
+
 ### Tooling
 
 ```powershell
@@ -1684,6 +1737,7 @@ node tools/hubspot-find-props.mjs <keywords>     # search the 404-property schem
 node tools/hubspot-verify-forms.mjs              # end-to-end: submit, read back, assert
 node tools/verify-alias-mapping.mjs              # assert the PHP alias table
 node tools/hubspot-cleanup-tests.mjs             # remove example.com diagnostic contacts
+node tools/hubspot-diagnose-capture.mjs          # all forms by type + submission counts
 ```
 
 `repair-shared-form` also exists but **cannot succeed** — it is kept only to
