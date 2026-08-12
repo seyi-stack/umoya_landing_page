@@ -12,6 +12,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 final class Submissions {
 
     const POST_TYPE = 'umoya_submission';
+
+    /**
+     * Most submissions a single bulk resend will attempt.
+     *
+     * Each one is a blocking HTTP call to HubSpot, so an unbounded batch can
+     * exceed max_execution_time and abort mid-list. Anything beyond this is
+     * reported as deferred and picked up by running the action again.
+     */
+    const MAX_BULK_RESEND = 25;
     const REST_NAMESPACE = 'umoya/v1';
     const REST_ROUTE = '/submissions';
 
@@ -32,6 +41,9 @@ final class Submissions {
         add_filter( 'manage_' . self::POST_TYPE . '_posts_columns', array( $this, 'submission_columns' ) );
         add_action( 'manage_' . self::POST_TYPE . '_posts_custom_column', array( $this, 'render_submission_column' ), 10, 2 );
         add_action( 'admin_post_umoya_resend_submission', array( $this, 'resend_submission' ) );
+        /* Screen id for a CPT list table is edit-{post_type}, hence the extra "edit-". */
+        add_filter( 'bulk_actions-edit-' . self::POST_TYPE, array( $this, 'register_bulk_actions' ) );
+        add_filter( 'handle_bulk_actions-edit-' . self::POST_TYPE, array( $this, 'handle_bulk_resend' ), 10, 3 );
         add_action( 'admin_notices', array( $this, 'admin_notices' ) );
         add_action( 'wp_footer', array( $this, 'render_hubspot_tracking_code' ), 20 );
     }
@@ -291,6 +303,33 @@ final class Submissions {
 
         check_admin_referer( 'umoya_resend_submission_' . $post_id );
 
+        $hubspot = $this->resend_one( $post_id );
+
+        wp_safe_redirect(
+            add_query_arg(
+                array(
+                    'post'                 => $post_id,
+                    'action'               => 'edit',
+                    'umoya_resend_status'  => rawurlencode( $hubspot['status'] ),
+                ),
+                admin_url( 'post.php' )
+            )
+        );
+        exit;
+    }
+
+    /**
+     * Resend a single stored submission to HubSpot and record the outcome.
+     *
+     * Shared by the row action and the bulk action so both paths behave
+     * identically — including get_submission_from_meta()'s re-normalisation,
+     * which is what lets rows saved before the source-aware alias table
+     * succeed on retry.
+     *
+     * @param int $post_id Submission post ID.
+     * @return array{status:string,code:string,response:string}
+     */
+    private function resend_one( $post_id ) {
         $submission = $this->get_submission_from_meta( $post_id );
         $payload    = array(
             'hubspotPortalId' => get_post_meta( $post_id, '_umoya_hubspot_portal_id', true ),
@@ -309,30 +348,147 @@ final class Submissions {
         update_post_meta( $post_id, '_umoya_hubspot_response', $hubspot['response'] );
         update_post_meta( $post_id, '_umoya_hubspot_last_attempt', current_time( 'mysql' ) );
 
-        wp_safe_redirect(
-            add_query_arg(
-                array(
-                    'post'                 => $post_id,
-                    'action'               => 'edit',
-                    'umoya_resend_status'  => rawurlencode( $hubspot['status'] ),
-                ),
-                admin_url( 'post.php' )
-            )
+        return $hubspot;
+    }
+
+    /**
+     * Add the resend options to the submissions list bulk-action dropdown.
+     *
+     * Two variants on purpose: "failed only" is the safe one for fixing a
+     * backlog, because re-sending an already-sent row creates a duplicate
+     * submission record in HubSpot and skews that form's conversion numbers.
+     */
+    public function register_bulk_actions( $actions ) {
+        if ( ! current_user_can( 'manage_options' ) ) {
+            return $actions;
+        }
+
+        $actions['umoya_resend_hubspot_failed'] = __( 'Resend to HubSpot (failed only)', 'umoya-elementor-widgets' );
+        $actions['umoya_resend_hubspot']        = __( 'Resend to HubSpot (all selected)', 'umoya-elementor-widgets' );
+
+        return $actions;
+    }
+
+    /**
+     * Run the bulk resend.
+     *
+     * WordPress verifies the bulk-action nonce before this filter fires, but
+     * the capability is re-checked here because the filter is reachable
+     * independently of the dropdown being rendered.
+     */
+    public function handle_bulk_resend( $redirect_to, $doaction, $post_ids ) {
+        $failed_only = ( 'umoya_resend_hubspot_failed' === $doaction );
+
+        if ( 'umoya_resend_hubspot' !== $doaction && ! $failed_only ) {
+            return $redirect_to;
+        }
+
+        if ( ! current_user_can( 'manage_options' ) ) {
+            return $redirect_to;
+        }
+
+        $sent     = 0;
+        $failed   = 0;
+        $skipped  = 0;
+        $deferred = 0;
+
+        foreach ( (array) $post_ids as $post_id ) {
+            $post_id = absint( $post_id );
+
+            if ( ! $post_id || self::POST_TYPE !== get_post_type( $post_id ) ) {
+                continue;
+            }
+
+            if ( $failed_only && 'sent' === get_post_meta( $post_id, '_umoya_hubspot_status', true ) ) {
+                $skipped++;
+                continue;
+            }
+
+            /*
+             * Every resend is a blocking HTTP round trip, and this origin is
+             * already slow (multi-second TTFB). Cap the batch so a large
+             * selection cannot hit max_execution_time and leave the tail of
+             * the list in an unknown state — the notice tells the user how
+             * many were deferred so they can simply run it again.
+             */
+            if ( ( $sent + $failed ) >= self::MAX_BULK_RESEND ) {
+                $deferred++;
+                continue;
+            }
+
+            $result = $this->resend_one( $post_id );
+
+            if ( 'sent' === $result['status'] ) {
+                $sent++;
+            } else {
+                $failed++;
+            }
+        }
+
+        return add_query_arg(
+            array(
+                'umoya_bulk_sent'     => $sent,
+                'umoya_bulk_failed'   => $failed,
+                'umoya_bulk_skipped'  => $skipped,
+                'umoya_bulk_deferred' => $deferred,
+            ),
+            $redirect_to
         );
-        exit;
     }
 
     public function admin_notices() {
-        if ( ! isset( $_GET['umoya_resend_status'] ) ) {
-            return;
+        // Single-row resend
+        if ( isset( $_GET['umoya_resend_status'] ) ) {
+            $status = sanitize_text_field( wp_unslash( $_GET['umoya_resend_status'] ) );
+            $class  = 'sent' === $status ? 'notice notice-success' : 'notice notice-warning';
+
+            echo '<div class="' . esc_attr( $class ) . '"><p>';
+            echo esc_html( 'HubSpot resend status: ' . $status );
+            echo '</p></div>';
         }
 
-        $status = sanitize_text_field( wp_unslash( $_GET['umoya_resend_status'] ) );
-        $class  = 'sent' === $status ? 'notice notice-success' : 'notice notice-warning';
+        // Bulk resend
+        if ( isset( $_GET['umoya_bulk_sent'] ) || isset( $_GET['umoya_bulk_failed'] ) ) {
+            $sent     = isset( $_GET['umoya_bulk_sent'] ) ? absint( $_GET['umoya_bulk_sent'] ) : 0;
+            $failed   = isset( $_GET['umoya_bulk_failed'] ) ? absint( $_GET['umoya_bulk_failed'] ) : 0;
+            $skipped  = isset( $_GET['umoya_bulk_skipped'] ) ? absint( $_GET['umoya_bulk_skipped'] ) : 0;
+            $deferred = isset( $_GET['umoya_bulk_deferred'] ) ? absint( $_GET['umoya_bulk_deferred'] ) : 0;
 
-        echo '<div class="' . esc_attr( $class ) . '"><p>';
-        echo esc_html( 'HubSpot resend status: ' . $status );
-        echo '</p></div>';
+            $parts = array();
+            /* translators: %d: number of submissions. */
+            $parts[] = sprintf( _n( '%d sent', '%d sent', $sent, 'umoya-elementor-widgets' ), $sent );
+
+            if ( $failed ) {
+                $parts[] = sprintf( _n( '%d failed', '%d failed', $failed, 'umoya-elementor-widgets' ), $failed );
+            }
+            if ( $skipped ) {
+                $parts[] = sprintf( _n( '%d already sent (skipped)', '%d already sent (skipped)', $skipped, 'umoya-elementor-widgets' ), $skipped );
+            }
+
+            $class = $failed ? 'notice notice-warning' : 'notice notice-success';
+
+            echo '<div class="' . esc_attr( $class ) . ' is-dismissible"><p>';
+            echo esc_html( 'HubSpot bulk resend: ' . implode( ', ', $parts ) . '.' );
+
+            if ( $deferred ) {
+                echo ' ';
+                echo esc_html(
+                    sprintf(
+                        /* translators: 1: number deferred, 2: per-run cap. */
+                        __( '%1$d were not attempted because this run hit the %2$d-per-batch limit — run the action again to continue.', 'umoya-elementor-widgets' ),
+                        $deferred,
+                        self::MAX_BULK_RESEND
+                    )
+                );
+            }
+
+            if ( $failed ) {
+                echo ' ';
+                echo esc_html( __( 'Open a failed row to see the HubSpot response code and body.', 'umoya-elementor-widgets' ) );
+            }
+
+            echo '</p></div>';
+        }
     }
 
     public function render_hubspot_tracking_code() {

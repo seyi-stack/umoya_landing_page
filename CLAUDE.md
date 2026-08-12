@@ -908,7 +908,22 @@ Admin features:
 
 - Custom columns for email, phone, source, HubSpot status, date.
 - Status badges for `sent`, `failed`, `skipped`, `sent_direct_from_browser`, and `not attempted`.
-- `Resend to HubSpot` admin action.
+- `Resend to HubSpot` row action on a single submission.
+- **Bulk resend** from the submissions list, in two variants:
+  - *Resend to HubSpot (failed only)* — skips rows already `sent`. Use this
+    for a backlog; re-sending an already-sent row creates a duplicate
+    submission record in HubSpot and skews that form's conversion numbers.
+  - *Resend to HubSpot (all selected)* — no filtering, for deliberate retries.
+
+  Capped at `MAX_BULK_RESEND` (25) per run, because each resend is a blocking
+  HTTP call and this origin already has multi-second TTFB — an unbounded batch
+  can hit `max_execution_time` and abort mid-list. Anything over the cap is
+  reported as deferred; run the action again to continue. The result notice
+  reports sent / failed / skipped / deferred.
+
+  Both paths call the same `resend_one()`, so the bulk action inherits
+  `get_submission_from_meta()`'s re-normalisation — which is what lets rows
+  saved before the source-aware alias table succeed on retry.
 
 ### Rate Limiting
 
