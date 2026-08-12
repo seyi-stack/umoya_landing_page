@@ -1098,10 +1098,24 @@ git diff --check
 5. If packaging is needed, refresh:
 
 ```powershell
-Compress-Archive -Path umoya-elementor-widgets -DestinationPath umoya-elementor-widgets.zip -Force
+python tools/build-plugin-zip.py
 ```
 
-Use PowerShell-native commands on Windows. Avoid shell write tricks for manual file edits.
+> ### ⛔ Never use `Compress-Archive` for the plugin zip
+> Windows PowerShell 5.1 writes ZIP entry names with **backslash**
+> separators (`umoya-elementor-widgets\includes\…`). The ZIP spec requires
+> forward slashes, so Linux/WordPress does not see them as directories, the
+> archive extracts to mangled flat filenames, and installing it fails with
+> **"Plugin file does not exist."** Every zip built this way — including the
+> one committed before 2026-08-13 — has this defect.
+>
+> `tools/build-plugin-zip.py` writes correct forward-slash entries and then
+> re-opens the archive to assert: no backslashes, a single top-level folder,
+> `umoya-elementor-widgets/umoya-elementor-widgets.php` present, and no
+> corrupt entries.
+
+Use PowerShell-native commands on Windows for other tasks. Avoid shell write
+tricks for manual file edits.
 
 ### Generator Guarantees
 
@@ -1432,8 +1446,9 @@ node tools/build-elementor-widgets.mjs
 # Check whitespace problems
 git diff --check
 
-# Rebuild plugin zip if needed
-Compress-Archive -Path umoya-elementor-widgets -DestinationPath umoya-elementor-widgets.zip -Force
+# Rebuild plugin zip if needed (NOT Compress-Archive — it writes backslash
+# paths that WordPress cannot install; see the Generator Workflow section)
+python tools/build-plugin-zip.py
 ```
 
 ---
@@ -1714,6 +1729,13 @@ fallback. **No lead was lost — they are all in Umoya Submissions**, they just
 did not reach HubSpot.
 
 **Fix:** re-upload `umoya-elementor-widgets.zip`.
+
+> **If the upload fails with "Plugin file does not exist"** the zip was built
+> with `Compress-Archive`, which writes backslash paths WordPress cannot read.
+> Rebuild with `python tools/build-plugin-zip.py`. This is a **multisite**
+> install, so activate from **Network Admin → Plugins → Network Activate**.
+> If a mangled `wp-content/plugins/umoya-elementor-widgets/` folder is already
+> there from a failed attempt, delete it before re-uploading.
 
 **Recovering the already-failed rows:** a plain resend would *still* fail,
 because those rows stored the group type under `_umoya_country` and left
