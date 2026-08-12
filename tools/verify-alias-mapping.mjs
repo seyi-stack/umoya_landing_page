@@ -109,6 +109,29 @@ const CASES = [
               country: '', city: '', party_size: undefined },
   },
   {
+    /* RESEND RECOVERY — mirrors get_submission_from_meta() re-normalising a
+       stored _umoya_payload from one of the submissions WordPress logged as
+       "failed". The browser had already been updated (so the payload carries
+       group_type/organization/party_size) while the server plugin had not.
+       Re-normalising must fill the dedicated properties AND leave the
+       borrowed ones empty, or HubSpot rejects the resend with
+       "Required field 'group_type' is missing". */
+    source: 'for_groups_page',
+    raw: {
+      firstname: 'FG_Test', lastname: 'FG', email: 'fg@example.com', phone: '3614007',
+      group_type: 'Sorority or fraternity', organization: 'Delta Chapter',
+      party_size: '11 to 15',
+      merge2: 'Sorority or fraternity', merge3: 'Delta Chapter', merge6: '11 to 15',
+      preferred_travel_season: 'September', preferred_travel_year: '2028',
+      founders_circle_message: 'recovered',
+    },
+    expect: {
+      group_type: 'Sorority or fraternity', organization: 'Delta Chapter',
+      party_size: '11 to 15', founders_circle_message: 'recovered',
+      country: '', city: '', preferred_journey_length: '',
+    },
+  },
+  {
     /* Regression guard: an unknown source must fall back to the defaults. */
     source: 'some_future_form',
     raw: { fname: 'A', email: 'd@example.com', merge2: 'Ghana', merge6: '10 days' },

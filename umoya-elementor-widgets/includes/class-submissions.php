@@ -604,6 +604,32 @@ final class Submissions {
             $submission[ $key ] = get_post_meta( $post_id, '_umoya_' . $key, true );
         }
 
+        /*
+         * Submissions stored before the source-aware alias table shipped put
+         * the group type in `country`, the organisation in `city` and the
+         * party size in `preferred_journey_length`. Their dedicated
+         * properties are therefore empty in meta, so a plain resend would
+         * still fail the "Required field 'group_type' is missing" check on
+         * the Group Journey / Private & Tailormade forms.
+         *
+         * The untouched request body is kept in _umoya_payload, so
+         * re-normalise from that instead. The re-normalised values replace
+         * the whole HubSpot field set rather than merging into it, otherwise
+         * the old value would linger in `country` and be sent alongside the
+         * new `group_type`. This is what lets "Resend to HubSpot" recover
+         * historical failures.
+         */
+        $raw_payload = get_post_meta( $post_id, '_umoya_payload', true );
+        if ( $raw_payload ) {
+            $payload = json_decode( $raw_payload, true );
+            if ( is_array( $payload ) ) {
+                $renormalized = $this->normalize_submission( $payload );
+                foreach ( $this->hubspot_field_names() as $key ) {
+                    $submission[ $key ] = isset( $renormalized[ $key ] ) ? $renormalized[ $key ] : '';
+                }
+            }
+        }
+
         return $submission;
     }
 

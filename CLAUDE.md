@@ -1685,6 +1685,43 @@ This table is implemented **twice** and the two must stay in step:
   (`tools/verify-alias-mapping.mjs` asserts the server side, including a
   regression guard for the untouched Founder's Circle mapping)
 
+### ⚠ "failed" in Umoya Submissions on exactly two sources
+
+*Diagnosed 2026-08-12 by replaying both payload shapes against the live forms.*
+
+WordPress logged `failed` for **every** `for_groups_page` and
+`private_tailormade_page` submission while `founders_circle_page`,
+`homepage_popup` and `signature_journey_popup` all logged `sent`.
+
+Reproduced verdicts:
+
+```
+For Groups → OLD plugin payload   400  Required field 'group_type' is missing
+For Groups → NEW plugin payload   200  accepted
+P&T        → OLD plugin payload   400  Required field 'trip_occasion' is missing
+Founder's  → OLD plugin payload   200  accepted
+```
+
+**Cause.** The pages were re-pasted but **the plugin was not re-uploaded**, so
+the browser sends `group_type` / `trip_occasion` while the server-side
+`normalize_submission()` still maps `merge2 → country`. `group_type` and
+`trip_occasion` are the only two **required** custom fields on any form, so
+those two sources 400 and the other three pass.
+
+Note the flow is WordPress-first: WordPress *saves* the lead, then forwards.
+The save succeeds, so the browser never triggers its direct-to-HubSpot
+fallback. **No lead was lost — they are all in Umoya Submissions**, they just
+did not reach HubSpot.
+
+**Fix:** re-upload `umoya-elementor-widgets.zip`.
+
+**Recovering the already-failed rows:** a plain resend would *still* fail,
+because those rows stored the group type under `_umoya_country` and left
+`_umoya_group_type` empty. `get_submission_from_meta()` now re-normalises
+from the untouched `_umoya_payload` instead of trusting meta, so
+**Resend to HubSpot** works on them once the plugin is updated. Asserted by
+the `for_groups_page` resend-recovery case in `verify-alias-mapping.mjs`.
+
 ### "Non-HubSpot / collected forms" — why submissions appear twice
 
 HubSpot's tracking script (`js.hscollectedforms.net/collectedforms.js`, loaded
