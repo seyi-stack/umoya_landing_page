@@ -925,6 +925,44 @@ Admin features:
   `get_submission_from_meta()`'s re-normalisation — which is what lets rows
   saved before the source-aware alias table succeed on retry.
 
+### Automatic retry (self-healing)
+
+A failed HubSpot send re-queues itself. Every send path — REST submit, row
+action, bulk action, cron retry — funnels through `record_hubspot_result()`,
+so a failure can never be recorded without also being scheduled for another
+attempt.
+
+**Backoff, not a fixed minute:** 1m → 2m → 5m → 15m → 30m → 1h → 3h → 6h →
+12h → then daily, capped at `MAX_RETRY_ATTEMPTS` (20), spanning roughly ten
+days. The first retry is quick because most failures are transient (5xx, rate
+limit, a dropped connection to an origin with multi-second TTFB). The gaps
+widen so a genuinely invalid payload — say HubSpot rejecting
+`Required field 'group_type' is missing` — cannot hammer the API every minute
+forever, while the long tail still lets a submission succeed by itself after a
+deploy or a HubSpot form change fixes it.
+
+Only `failed` retries. `sent`, `sent_direct_from_browser` and `skipped` all
+clear the queue — `skipped` means the portal/form ID is missing, which no
+amount of retrying fixes.
+
+**Hourly sweep** (`sweep_failed_submissions`) re-queues any `failed` row that
+has no pending retry. This covers rows that failed before this feature existed
+and any whose scheduled event was lost to a cron flush, DB restore or
+migration. Without it "fail proof" would only hold for new submissions.
+
+The HubSpot column shows `retry 3/20 · next Aug 14, 09:12`, or
+`auto-retry gave up after 20 attempts` — an exhausted row needs a manual
+resend, so it must be visible rather than silently stuck.
+
+Deactivation clears every scheduled retry and the sweep
+(`clear_all_scheduled_events()` via `register_deactivation_hook`).
+
+> ⚠ **This relies on WP-Cron**, which only fires on page requests. On a quiet
+> site a "1 minute" retry can land much later, and if `DISABLE_WP_CRON` is
+> true it never fires at all. For dependable timing, point a real system cron
+> at `wp-cron.php` (e.g. every 5 minutes) and set
+> `define( 'DISABLE_WP_CRON', true );`.
+
 ### Rate Limiting
 
 The REST handler rate-limits by IP using a transient:

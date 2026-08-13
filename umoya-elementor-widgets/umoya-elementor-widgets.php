@@ -40,3 +40,15 @@ add_action( 'plugins_loaded', 'umoya_ew_init' );
 function umoya_ew_missing_elementor_notice() {
     echo '<div class="notice notice-error"><p><strong>Umoya Elementor Widgets</strong> requires <strong>Elementor</strong> to be installed and activated.</p></div>';
 }
+
+/**
+ * Tidy up the HubSpot auto-retry cron entries on deactivation.
+ *
+ * Without this, every pending per-submission retry stays in the cron array
+ * pointing at a hook nothing listens to any more.
+ */
+function umoya_ew_deactivate() {
+    require_once UMOYA_EW_PATH . 'includes/class-submissions.php';
+    \Umoya_EW\Submissions::clear_all_scheduled_events();
+}
+register_deactivation_hook( __FILE__, 'umoya_ew_deactivate' );

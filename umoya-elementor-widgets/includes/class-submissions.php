@@ -21,6 +21,22 @@ final class Submissions {
      * reported as deferred and picked up by running the action again.
      */
     const MAX_BULK_RESEND = 25;
+
+    /** Cron hook for one automatic retry of a single submission. */
+    const RETRY_HOOK = 'umoya_retry_hubspot_submission';
+
+    /** Hourly safety-net sweep that re-queues failed rows with no pending retry. */
+    const SWEEP_HOOK = 'umoya_sweep_failed_submissions';
+
+    /**
+     * How many automatic retries a submission gets before it stops.
+     *
+     * With the backoff in retry_delays() this spans roughly ten days, which is
+     * long enough to cover a deploy or a HubSpot form change that makes a
+     * previously-rejected payload valid. It is capped rather than infinite so a
+     * permanently-invalid payload cannot hammer the API forever.
+     */
+    const MAX_RETRY_ATTEMPTS = 20;
     const REST_NAMESPACE = 'umoya/v1';
     const REST_ROUTE = '/submissions';
 
@@ -45,6 +61,10 @@ final class Submissions {
         add_filter( 'bulk_actions-edit-' . self::POST_TYPE, array( $this, 'register_bulk_actions' ) );
         add_filter( 'handle_bulk_actions-edit-' . self::POST_TYPE, array( $this, 'handle_bulk_resend' ), 10, 3 );
         add_action( 'admin_notices', array( $this, 'admin_notices' ) );
+        /* Automatic retry queue */
+        add_action( self::RETRY_HOOK, array( $this, 'retry_hubspot_submission' ) );
+        add_action( self::SWEEP_HOOK, array( $this, 'sweep_failed_submissions' ) );
+        add_action( 'init', array( $this, 'ensure_sweep_scheduled' ) );
         add_action( 'wp_footer', array( $this, 'render_hubspot_tracking_code' ), 20 );
     }
 
@@ -171,10 +191,7 @@ final class Submissions {
         } else {
             $hubspot = $this->send_to_hubspot( $submission, $payload );
         }
-        update_post_meta( $post_id, '_umoya_hubspot_status', $hubspot['status'] );
-        update_post_meta( $post_id, '_umoya_hubspot_code', $hubspot['code'] );
-        update_post_meta( $post_id, '_umoya_hubspot_response', $hubspot['response'] );
-        update_post_meta( $post_id, '_umoya_hubspot_last_attempt', current_time( 'mysql' ) );
+        $this->record_hubspot_result( $post_id, $hubspot );
 
         return rest_ensure_response(
             array(
@@ -290,6 +307,40 @@ final class Submissions {
             case 'umoya_hubspot':
                 $status = get_post_meta( $post_id, '_umoya_hubspot_status', true );
                 echo $this->status_badge( $status ? $status : 'not attempted' );
+
+                /*
+                 * Show the auto-retry state so a "failed" row is not mistaken
+                 * for something needing manual chasing — and so an exhausted
+                 * one is obvious, because nothing will pick that up on its own.
+                 */
+                if ( 'failed' === $status ) {
+                    $attempts = (int) get_post_meta( $post_id, '_umoya_hubspot_retry_attempts', true );
+                    $next     = get_post_meta( $post_id, '_umoya_hubspot_next_retry', true );
+
+                    if ( $attempts >= self::MAX_RETRY_ATTEMPTS ) {
+                        echo '<br><span style="color:#8B2B2B;font-size:11px;">';
+                        echo esc_html(
+                            sprintf(
+                                /* translators: %d: retry attempt cap. */
+                                __( 'auto-retry gave up after %d attempts', 'umoya-elementor-widgets' ),
+                                self::MAX_RETRY_ATTEMPTS
+                            )
+                        );
+                        echo '</span>';
+                    } elseif ( $next ) {
+                        echo '<br><span style="color:#7a7a7a;font-size:11px;">';
+                        echo esc_html(
+                            sprintf(
+                                /* translators: 1: attempts used, 2: cap, 3: local time of next retry. */
+                                __( 'retry %1$d/%2$d · next %3$s', 'umoya-elementor-widgets' ),
+                                $attempts,
+                                self::MAX_RETRY_ATTEMPTS,
+                                get_date_from_gmt( $next, 'M j, H:i' )
+                            )
+                        );
+                        echo '</span>';
+                    }
+                }
                 break;
         }
     }
@@ -343,12 +394,181 @@ final class Submissions {
         );
 
         $hubspot = $this->send_to_hubspot( $submission, $payload );
+        $this->record_hubspot_result( $post_id, $hubspot );
+
+        return $hubspot;
+    }
+
+    /**
+     * Persist the outcome of a HubSpot send and drive the auto-retry queue.
+     *
+     * Single place every send path funnels through — the REST submit, the row
+     * action, the bulk action and the cron retry — so a failure can never be
+     * recorded without also being queued for another attempt.
+     */
+    private function record_hubspot_result( $post_id, $hubspot ) {
         update_post_meta( $post_id, '_umoya_hubspot_status', $hubspot['status'] );
         update_post_meta( $post_id, '_umoya_hubspot_code', $hubspot['code'] );
         update_post_meta( $post_id, '_umoya_hubspot_response', $hubspot['response'] );
         update_post_meta( $post_id, '_umoya_hubspot_last_attempt', current_time( 'mysql' ) );
 
-        return $hubspot;
+        if ( 'failed' === $hubspot['status'] ) {
+            $this->schedule_retry( $post_id );
+            return;
+        }
+
+        /*
+         * Anything that is not an outright failure ends the retry cycle:
+         * 'sent' obviously, 'sent_direct_from_browser' because the browser
+         * fallback already delivered it, and 'skipped' because that means the
+         * portal/form ID is missing — no amount of retrying fixes a config gap.
+         */
+        $this->clear_retry( $post_id );
+    }
+
+    /**
+     * Queue the next automatic retry for a failed submission.
+     *
+     * Backoff rather than a fixed interval: the first retry is quick (a minute)
+     * because most failures are transient — a 5xx, a rate limit, a dropped
+     * connection to an origin that already has multi-second TTFB. Later gaps
+     * widen so a genuinely unfixable payload (say HubSpot rejecting it with
+     * "Required field 'group_type' is missing") cannot sit hammering the API
+     * every minute forever. The long tail still spans days, so a submission
+     * that only becomes deliverable after a deploy or a HubSpot form change is
+     * picked up without anyone touching it.
+     */
+    private function schedule_retry( $post_id ) {
+        $attempts = (int) get_post_meta( $post_id, '_umoya_hubspot_retry_attempts', true );
+
+        if ( $attempts >= self::MAX_RETRY_ATTEMPTS ) {
+            delete_post_meta( $post_id, '_umoya_hubspot_next_retry' );
+            return;
+        }
+
+        // Never stack duplicate events for the same submission.
+        if ( wp_next_scheduled( self::RETRY_HOOK, array( $post_id ) ) ) {
+            return;
+        }
+
+        $delays = self::retry_delays();
+        $delay  = isset( $delays[ $attempts ] ) ? $delays[ $attempts ] : end( $delays );
+        $when   = time() + $delay;
+
+        wp_schedule_single_event( $when, self::RETRY_HOOK, array( $post_id ) );
+        update_post_meta( $post_id, '_umoya_hubspot_next_retry', gmdate( 'Y-m-d H:i:s', $when ) );
+    }
+
+    private function clear_retry( $post_id ) {
+        $timestamp = wp_next_scheduled( self::RETRY_HOOK, array( $post_id ) );
+
+        while ( $timestamp ) {
+            wp_unschedule_event( $timestamp, self::RETRY_HOOK, array( $post_id ) );
+            $timestamp = wp_next_scheduled( self::RETRY_HOOK, array( $post_id ) );
+        }
+
+        delete_post_meta( $post_id, '_umoya_hubspot_next_retry' );
+    }
+
+    /**
+     * Seconds to wait before each successive retry.
+     *
+     * 1m, 2m, 5m, 15m, 30m, 1h, 3h, 6h, 12h, then daily to the attempt cap.
+     */
+    private static function retry_delays() {
+        return array( 60, 120, 300, 900, 1800, 3600, 10800, 21600, 43200, DAY_IN_SECONDS );
+    }
+
+    /**
+     * Cron callback: one automatic retry for a single submission.
+     */
+    public function retry_hubspot_submission( $post_id ) {
+        $post_id = absint( $post_id );
+
+        if ( ! $post_id || self::POST_TYPE !== get_post_type( $post_id ) ) {
+            return;
+        }
+
+        if ( 'failed' !== get_post_meta( $post_id, '_umoya_hubspot_status', true ) ) {
+            $this->clear_retry( $post_id );
+            return;
+        }
+
+        $attempts = (int) get_post_meta( $post_id, '_umoya_hubspot_retry_attempts', true );
+        update_post_meta( $post_id, '_umoya_hubspot_retry_attempts', $attempts + 1 );
+
+        // resend_one() records the result, which re-queues the next attempt if
+        // it failed again, or clears the queue if it finally went through.
+        $this->resend_one( $post_id );
+    }
+
+    /**
+     * Safety net: re-queue failed submissions that have no pending retry.
+     *
+     * Covers rows that failed before auto-retry existed, and any whose
+     * scheduled event was lost — cron flushed, a database restore, a migration.
+     * Without this, "fail proof" would only hold for submissions created after
+     * this feature shipped.
+     */
+    public function sweep_failed_submissions() {
+        $query = new WP_Query(
+            array(
+                'post_type'      => self::POST_TYPE,
+                'post_status'    => 'any',
+                'posts_per_page' => 50,
+                'fields'         => 'ids',
+                'no_found_rows'  => true,
+                'meta_query'     => array(
+                    array(
+                        'key'   => '_umoya_hubspot_status',
+                        'value' => 'failed',
+                    ),
+                ),
+            )
+        );
+
+        foreach ( $query->posts as $post_id ) {
+            if ( wp_next_scheduled( self::RETRY_HOOK, array( $post_id ) ) ) {
+                continue;
+            }
+
+            if ( (int) get_post_meta( $post_id, '_umoya_hubspot_retry_attempts', true ) >= self::MAX_RETRY_ATTEMPTS ) {
+                continue;
+            }
+
+            $this->schedule_retry( $post_id );
+        }
+    }
+
+    /**
+     * Make sure the hourly sweep exists. Cheap: wp_next_scheduled() guards it.
+     */
+    public function ensure_sweep_scheduled() {
+        if ( ! wp_next_scheduled( self::SWEEP_HOOK ) ) {
+            wp_schedule_event( time() + 300, 'hourly', self::SWEEP_HOOK );
+        }
+    }
+
+    /**
+     * Remove every scheduled retry/sweep. Called on plugin deactivation so the
+     * site is not left with orphaned cron entries.
+     */
+    public static function clear_all_scheduled_events() {
+        wp_clear_scheduled_hook( self::SWEEP_HOOK );
+
+        $query = new WP_Query(
+            array(
+                'post_type'      => self::POST_TYPE,
+                'post_status'    => 'any',
+                'posts_per_page' => -1,
+                'fields'         => 'ids',
+                'no_found_rows'  => true,
+            )
+        );
+
+        foreach ( $query->posts as $post_id ) {
+            wp_clear_scheduled_hook( self::RETRY_HOOK, array( (int) $post_id ) );
+        }
     }
 
     /**
