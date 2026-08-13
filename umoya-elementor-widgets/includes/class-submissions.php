@@ -37,6 +37,12 @@ final class Submissions {
      * permanently-invalid payload cannot hammer the API forever.
      */
     const MAX_RETRY_ATTEMPTS = 20;
+
+    /** Failed rows the hourly sweep will re-queue in one pass. */
+    const SWEEP_BATCH = 20;
+
+    /** Seconds between each swept retry, so they do not all fire at once. */
+    const SWEEP_STAGGER = 120;
     const REST_NAMESPACE = 'umoya/v1';
     const REST_ROUTE = '/submissions';
 
@@ -438,7 +444,7 @@ final class Submissions {
      * that only becomes deliverable after a deploy or a HubSpot form change is
      * picked up without anyone touching it.
      */
-    private function schedule_retry( $post_id ) {
+    private function schedule_retry( $post_id, $stagger = 0 ) {
         $attempts = (int) get_post_meta( $post_id, '_umoya_hubspot_retry_attempts', true );
 
         if ( $attempts >= self::MAX_RETRY_ATTEMPTS ) {
@@ -453,7 +459,7 @@ final class Submissions {
 
         $delays = self::retry_delays();
         $delay  = isset( $delays[ $attempts ] ) ? $delays[ $attempts ] : end( $delays );
-        $when   = time() + $delay;
+        $when   = time() + $delay + (int) $stagger;
 
         wp_schedule_single_event( $when, self::RETRY_HOOK, array( $post_id ) );
         update_post_meta( $post_id, '_umoya_hubspot_next_retry', gmdate( 'Y-m-d H:i:s', $when ) );
@@ -515,7 +521,7 @@ final class Submissions {
             array(
                 'post_type'      => self::POST_TYPE,
                 'post_status'    => 'any',
-                'posts_per_page' => 50,
+                'posts_per_page' => self::SWEEP_BATCH,
                 'fields'         => 'ids',
                 'no_found_rows'  => true,
                 'meta_query'     => array(
@@ -527,6 +533,17 @@ final class Submissions {
             )
         );
 
+        /*
+         * Stagger the queued retries a couple of minutes apart.
+         *
+         * WP-Cron runs every due event inside ONE wp-cron.php invocation,
+         * sequentially. Queueing a batch for the same moment would mean one PHP
+         * worker held open for batch x (HubSpot round trip) seconds. This
+         * origin is already resource-starved — it currently 522s even on static
+         * files — so a self-healing feature must not add a thundering herd to
+         * it. Spacing them means at most one retry per cron tick.
+         */
+        $index = 0;
         foreach ( $query->posts as $post_id ) {
             if ( wp_next_scheduled( self::RETRY_HOOK, array( $post_id ) ) ) {
                 continue;
@@ -536,7 +553,8 @@ final class Submissions {
                 continue;
             }
 
-            $this->schedule_retry( $post_id );
+            $this->schedule_retry( $post_id, $index * self::SWEEP_STAGGER );
+            $index++;
         }
     }
 

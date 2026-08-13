@@ -653,9 +653,38 @@ Findings:
 - The intermittent 525 rules out a broken certificate — a real cert fault
   would fail every time. The TLS handshake is timing out under load.
 
-This is **origin resource exhaustion**, not a config error. The most
-likely contributor: `wp-content/plugins` contains **50 plugin
-directories**, including genuinely duplicated functions —
+### UPDATE 2026-08-13 — materially worse, and now proven server-level
+
+Re-measured; the picture has changed and the earlier "static assets are fine"
+finding no longer holds:
+
+| Request | Result |
+|---|---|
+| `/founders-circle/` ×6 | 4× **522**, 2× 200 — every one ~20–21s TTFB |
+| `/about-us/`, `/for-groups/` | **522** at ~20.5s |
+| `/` (homepage) | 200 in **1.06s** — Cloudflare cache hit, never touches origin |
+| A static `.jpg` in uploads ×4 | **522** 4/4 at ~20.4s |
+
+**A static JPEG cannot invoke PHP.** It does not load WordPress, the theme, or
+any plugin. Its failing 4/4 proves the fault is the origin web server not
+completing connections — not WordPress, not a plugin, and not any code in this
+repo. The ~20s is Cloudflare's origin-connect timeout, and its consistency
+(20.32–21.75s across every failure) is a timeout being hit, not variable load.
+
+The homepage answering in 1.06s is Cloudflare serving cache; it is masking how
+unreachable the origin actually is.
+
+TTFB on the requests that *do* succeed is now ~20s against the 3.6–4.5s
+recorded above — roughly 5× worse. Treat this as an escalation, not the same
+steady state.
+
+**This is a hosting/server-level fault. It needs the host, not a code change.**
+Ask them specifically: is the web server (LiteSpeed/Apache) accepting and
+completing connections; are PHP workers/memory exhausted; is the disk full or
+is I/O saturated; are there OOM kills in the system log.
+
+The most likely underlying contributor is unchanged: `wp-content/plugins`
+contains **50 plugin directories**, including genuinely duplicated functions —
 **two page caches** (`litespeed-cache` + `speedycache`), two page builders
 (Elementor + Pagelayer), two SEO suites (AIOSEO + SiteSEO), two image
 optimizers, three booking/events plugins, and two Stripe integrations,
