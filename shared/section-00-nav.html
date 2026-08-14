@@ -55,6 +55,19 @@
 -->
 <div id="umoyaSiteNavMount">
   <style>
+    /*
+     * ── Colour scheme lock ───────────────────────────────────
+     * Chrome on Android ("Auto dark theme for web contents"),
+     * Samsung Internet and Opera force-darken pages that have not
+     * declared which schemes they support, which turns the cream
+     * palette near-black. We define no dark-mode rules anywhere, so
+     * this is entirely the browser's doing; `only light` opts out.
+     * Root-level by necessity — color-scheme cannot be scoped to a
+     * section. See shared/color-scheme-lock.html for pages that do
+     * not use this nav.
+     */
+    :root, html, body { color-scheme: only light; }
+
     /* ── Theme-header takeover — see the note above ──────────── */
     .wp-site-header.umoya-nav-takeover .header-mobile,
     .wp-site-header.umoya-nav-takeover .header_mobile_screen {

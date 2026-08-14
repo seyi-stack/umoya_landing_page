@@ -1,0 +1,77 @@
+<!--
+=================================================================
+  UMOYA — COLOUR SCHEME LOCK
+=================================================================
+  Stops mobile browsers auto-inverting the site into dark mode.
+
+  THE PROBLEM
+  Chrome on Android ("Auto dark theme for web contents"), Samsung
+  Internet and Opera can force-darken any page that has not said
+  which schemes it supports. They rewrite backgrounds and text
+  colours themselves, so the cream turns near-black and the brand
+  palette is lost. Nothing in our CSS causes this — we declare no
+  dark-mode rules at all — the browser is doing it unasked.
+
+  THE FIX
+  Declare that the design supports light only. `only light` is the
+  documented opt-out: browsers that would otherwise auto-darken
+  leave the page alone, and native form controls keep rendering
+  light instead of turning into dark inputs.
+
+  WHERE TO PUT IT — pick ONE:
+
+  A. BEST, once for the whole site:
+     Elementor → Site Settings → Custom Code → add to <head>:
+         <meta name="color-scheme" content="only light">
+     (or add that meta to the child theme's header.php)
+
+  B. If you cannot edit the head: paste this widget as the FIRST
+     HTML widget on each page. The CSS applies wherever it loads,
+     and the script also injects the <meta> into <head> for the
+     browsers that only honour the meta form.
+
+  Already built into shared/section-00-nav.html and
+  shared/section-99-footer.html, so any page using those is
+  already covered and does not need this snippet.
+
+  NOTE ON SCOPE: `color-scheme` only works on the root element, so
+  this is deliberately global rather than scoped to a section root
+  — one of the few justified exceptions to the house rule, along
+  with the nav's theme-header takeover.
+=================================================================
+-->
+<style>
+  /* Root-level by necessity: color-scheme is not inheritable from a section. */
+  :root {
+    color-scheme: only light;
+  }
+
+  /* Belt and braces for engines that read it off the body. */
+  html, body {
+    color-scheme: only light;
+  }
+</style>
+
+<script>
+(function(){
+  'use strict';
+
+  /* Some browsers honour the <meta> form but not the CSS property, and an
+     HTML widget renders in <body> where a bare <meta> would be ignored —
+     so place it in <head> explicitly. Guarded so repeated widgets on one
+     page cannot stack duplicates. */
+  var head = document.head || document.getElementsByTagName('head')[0];
+  if (!head) return;
+
+  var existing = head.querySelector('meta[name="color-scheme"]');
+  if (existing) {
+    existing.setAttribute('content', 'only light');
+    return;
+  }
+
+  var meta = document.createElement('meta');
+  meta.setAttribute('name', 'color-scheme');
+  meta.setAttribute('content', 'only light');
+  head.appendChild(meta);
+}());
+</script>

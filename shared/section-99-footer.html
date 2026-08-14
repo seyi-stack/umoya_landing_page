@@ -35,6 +35,14 @@
 -->
 <footer id="umoya-footer" role="contentinfo" aria-label="Site footer">
   <style>
+    /*
+     * Colour scheme lock — stops Chrome Android / Samsung Internet
+     * auto-darkening the palette. Root-level by necessity; duplicated
+     * in shared/section-00-nav.html so a page is covered whether or
+     * not it uses both. See shared/color-scheme-lock.html.
+     */
+    :root, html, body { color-scheme: only light; }
+
     #umoya-footer {
       --cream:    #F5F0EB;
       --brown:    #4B2E2B;

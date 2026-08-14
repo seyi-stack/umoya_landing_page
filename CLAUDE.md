@@ -712,6 +712,7 @@ via cPanel/SSH to confirm.** See Open Items.
 | `_NEW-PAGES-NOTES.md` | Detail for the three new pages + shared nav. |
 | `shared/section-00-nav.html` | **Site-wide navigation.** Place FIRST on every page. |
 | `shared/section-99-footer.html` | **Site-wide footer.** Newsletter (HubSpot-wired) + link columns + legal bar. Place LAST on every page; replaces the Elementor Form newsletter widget. |
+| `shared/color-scheme-lock.html` | Stops mobile browsers auto-darkening the palette. Only needed on pages that use neither the shared nav nor the shared footer — see Dark Mode below. |
 | `founders-circle/` | Original Founder's Circle sections (was flat `section-*.html` at root). |
 | `founders-circle-revamp/` | **Current** Founder's Circle working copy (v4/v5 feedback). |
 | `homepage/` | Original homepage sections and popup form. |
@@ -1297,6 +1298,52 @@ Keep these standards for future changes:
 - Use no-JS fallbacks for reveal animations.
 - Do not hide real content permanently behind JS-only behavior.
 - Keep carousel copy inserted with `textContent` or safe templating.
+
+---
+
+## 13b. Dark Mode — the palette must never invert
+
+Mobile browsers force-darken pages that never declare which colour schemes
+they support: Chrome on Android ("Auto dark theme for web contents"), Samsung
+Internet and Opera all do this. The cream (`#F5F0EB`) renders near-black and
+the brand palette is lost. **Nothing in our CSS causes it** — a grep for
+`prefers-color-scheme` across every section returns nothing, so we never asked
+for a dark variant; the browser rewrites the colours unasked.
+
+The opt-out is `color-scheme: only light`, which also keeps native form
+controls rendering light instead of turning into dark inputs.
+
+**Already applied to** `shared/section-00-nav.html`,
+`shared/section-99-footer.html`, `signature-journey/section-00-nav.html`,
+`founders-circle-revamp/section-00-nav.html`,
+`homepage-revamp/homepage-section-00-nav.html` and `about/section-01-hero.html`
+— i.e. the first widget of every current page. Any page using one of those is
+covered.
+
+**Best fix, once, for the whole site** (do this and the per-page copies become
+belt-and-braces): Elementor → Site Settings → Custom Code → `<head>`:
+
+```html
+<meta name="color-scheme" content="only light">
+```
+
+`shared/color-scheme-lock.html` is a standalone widget for any future page
+that has none of the above as its first widget.
+
+> **Scope exception.** `color-scheme` only works on the root element, so these
+> are `:root, html, body` rules rather than section-scoped — one of the few
+> justified breaks from the house rule, alongside the nav's theme-header
+> takeover.
+
+Two caveats worth knowing:
+- A user's **OS-level or extension-based** forced dark mode (Android's
+  system-wide "Force dark on all websites" developer flag, Firefox's
+  `browser.display.document_color_use`, high-contrast modes) overrides page
+  intent by design and cannot be opted out of. That is correct behaviour —
+  accessibility beats branding.
+- Samsung Internet's older "Dark mode" honoured this inconsistently across
+  versions. `only light` is the standard mechanism and covers Chrome Android,
+  which is what produced the reported screenshot.
 
 ---
 
