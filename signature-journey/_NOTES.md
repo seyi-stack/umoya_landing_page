@@ -29,8 +29,8 @@ ARIA on carousels), and four breakpoints (desktop · 1024 · 768 · 420).
 |---|------|---------|-----------|
 | 1 | `section-00-nav.html` | Top nav (fixed, always visible — homepage-style) | — |
 | 2 | `section-01-hero.html` | Hero — "One Journey, in Three Chapters" (image only) | `sj-hero` |
-| 3 | `section-02-intro.html` | Overview stat bar + intro | `sj-overview` |
-| 4 | `section-03-journey-chapters.html` | The three chapters (History · Safari · Cape) | `sj-journey` |
+| 3 | `section-02-intro.html` | Intro copy only | `sj-overview` |
+| 4 | `section-03-journey-chapters.html` | The three chapters (History · Safari · Cape) **+ the journey-at-a-glance stat band** | `sj-journey` |
 | 5 | `section-04-extensions.html` | Optional extensions (Vic Falls · Chobe) — dark band | `sj-extensions` |
 | 6 | `section-05-stays.html` | Where You Stay — 3 hotel slideshows | `sj-stays` |
 | 7 | `section-06-inclusions-offers.html` | Inclusions grid + sticky Offers panel | `sj-inclusions` |
@@ -44,6 +44,13 @@ ARIA on carousels), and four breakpoints (desktop · 1024 · 768 · 420).
 > **section-08-form-popup.html must be on the page** or that button does
 > nothing. Its lead attribution is `signature_journey_popup`, distinct from
 > the homepage's `homepage_popup`.
+
+> **Stat band moved (client request).** The 10 Days / 3 Chapters /
+> 2 Extensions row used to open section 02, directly under the hero. It now
+> CLOSES section 03, below the chapters it summarises, and gained a fourth
+> stat: **7 Signature Moments** (matching the homepage set). It carries a
+> cream hairline on its bottom edge because the Extensions section that
+> follows is the same brand brown and the two would otherwise merge.
 
 **Anchor IDs must not change** — the nav observer watches `sj-hero`; nav
 links and the offers-panel CTA point at the section IDs above. Place
