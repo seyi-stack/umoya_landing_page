@@ -2,11 +2,20 @@
 =================================================================
   UMOYA — THE SIGNATURE JOURNEY — SECTION 02: OVERVIEW + INTRO
 =================================================================
-  Cream intro — centred heading + lead paragraph.
+  Two stacked bands in one widget, in this order:
+   1. Cream intro — centred heading + lead paragraph
+   2. Brown overview stat bar
+      (10 Days · 3 Chapters · 2 Extensions · 7 Signature Moments)
 
-  The high-level stat bar that used to live here moved to the END of
-  section 03, below the journey chapters (client: it read oddly sitting
-  directly under the hero).
+  The stat bar used to come FIRST, directly under the hero, where it
+  stated the shape of a journey the reader had not been introduced to
+  yet. It now closes the section, so the intro sets the scene and the
+  numbers summarise it.
+
+  The bar is safe as the section's last band: section 03 below is white
+  and the intro above is cream, so the brown reads as a deliberate rule
+  between them.
+
   ANCHOR: id="sj-overview" is the nav target — do not change.
   BRAND: font-family: inherit; palette tokens only.
 =================================================================
@@ -67,6 +76,36 @@
     margin: 1.4rem auto 0;
   }
 
+  /* ── Overview stat bar (brown) ─────────────────── */
+  .sj-ov-bar { background: var(--brown); color: var(--cream); }
+  .sj-ov-bar-in {
+    display: flex;
+    justify-content: center;
+    gap: clamp(28px, 5vw, 64px);
+    flex-wrap: wrap;
+    padding: clamp(28px, 4vw, 40px) clamp(20px, 3.4vw, 48px);
+    text-align: center;
+  }
+  .sj-ov-stat { min-width: 0; }
+  .sj-ov-stat-n {
+    font-family: inherit;
+    font-size: clamp(2.1rem, 3.4vw, 2.7rem);
+    font-weight: 400;
+    color: var(--terra);
+    line-height: 1;
+  }
+  .sj-ov-stat-l {
+    display: block;
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245,240,235,.78);
+    margin-top: 8px;
+    white-space: nowrap;
+  }
+
   /* ── Scroll reveal ─────────────────────────────── */
   .sj-ov-rv { opacity: 0; transform: translateY(24px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
   .sj-ov-rv.sj-ov-on { opacity: 1; transform: none; }
@@ -77,6 +116,23 @@
     .sj-ov-eye { margin-bottom: 0.9rem; }
     .sj-ov-ttl { font-size: clamp(1.7rem, 6.6vw, 2.2rem); }
     .sj-ov-lead { font-size: 1rem; line-height: 1.6; margin-top: 1rem; }
+
+    /* Four stats sit 2x2 on phones — four columns crush the labels. */
+    .sj-ov-bar-in {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px 0;
+      padding: 26px clamp(16px, 4vw, 28px);
+    }
+    .sj-ov-stat { padding: 0 8px; }
+    .sj-ov-stat:nth-child(even) { border-left: 1px solid rgba(245,240,235,.18); }
+    .sj-ov-stat-n { font-size: clamp(1.5rem, 7vw, 2rem); }
+    .sj-ov-stat-l { font-size: 0; margin-top: 6px; }
+    .sj-ov-stat-l::after {
+      content: attr(data-short);
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+    }
   }
 
   /* ── Small mobile ≤420px ───────────────────────── */
@@ -84,6 +140,7 @@
     .sj-ov-intro { padding: 38px 0; }
     .sj-ov-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
     .sj-ov-lead { font-size: 0.95rem; }
+    .sj-ov-stat-l::after { font-size: 0.52rem; letter-spacing: 0.09em; }
   }
 </style>
 
@@ -95,6 +152,28 @@
       <span class="sj-ov-eye">The Journey</span>
       <h2 class="sj-ov-ttl">See South Africa the Way it Deserves to be Seen</h2>
       <p class="sj-ov-lead">The Signature Journey moves as one arc across South Africa. It begins with the country's living history in Johannesburg and Soweto, opens into the Big Five wilderness of the Sabi Sand, and closes in the beauty of the Cape. An optional extension carries you on to Victoria Falls and Chobe.</p>
+    </div>
+  </div>
+
+  <!-- Overview stat bar -->
+  <div class="sj-ov-bar">
+    <div class="sj-ov-bar-in" role="list">
+      <div class="sj-ov-stat" role="listitem">
+        <div class="sj-ov-stat-n">10</div>
+        <div class="sj-ov-stat-l" data-short="Days">Days</div>
+      </div>
+      <div class="sj-ov-stat" role="listitem">
+        <div class="sj-ov-stat-n">3</div>
+        <div class="sj-ov-stat-l" data-short="Chapters">Immersive Chapters</div>
+      </div>
+      <div class="sj-ov-stat" role="listitem">
+        <div class="sj-ov-stat-n">2</div>
+        <div class="sj-ov-stat-l" data-short="Extensions">Optional Extensions</div>
+      </div>
+      <div class="sj-ov-stat" role="listitem">
+        <div class="sj-ov-stat-n">7</div>
+        <div class="sj-ov-stat-l" data-short="Moments">Signature Moments</div>
+      </div>
     </div>
   </div>
 

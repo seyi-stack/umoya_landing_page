@@ -5,11 +5,6 @@
   The journey told as three movements, each with a lead image +
   copy, then three "Signature Moment" cards.
 
-  Closes with the JOURNEY-AT-A-GLANCE stat band (10 Days · 3 Chapters ·
-  2 Extensions · 7 Signature Moments). That band used to sit in section
-  02 directly under the hero; the client moved it here so the numbers
-  summarise the chapters they follow.
-
   Chapter One  — History & Culture — Johannesburg & Soweto
   Chapter Two  — Safari            — The Sabi Sand
   Chapter Three— The Cape          — Cape Town
@@ -212,48 +207,6 @@
   .sj-ch-rv.d2 { transition-delay: .2s; }
   .sj-ch-rv.d3 { transition-delay: .3s; }
 
-  /* ── Journey at a glance — stat band closing the three chapters ──
-     Moved here from section 02 at client request. */
-  .sj-ch-stats {
-    background: var(--brown);
-    color: var(--cream);
-    /*
-      The Extensions section that follows is ALSO brand brown, so without
-      this hairline the two bands merge into one continuous block — the
-      same issue that had to be fixed between the homepage CTA and footer.
-    */
-    border-bottom: 1px solid rgba(245,240,235,.22);
-  }
-  .sj-ch-stats-in {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: clamp(28px, 5vw, 64px);
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: clamp(28px, 4vw, 40px) clamp(20px, 3.4vw, 48px);
-    text-align: center;
-  }
-  .sj-ch-stat { min-width: 0; }
-  .sj-ch-stat-n {
-    font-family: inherit;
-    font-size: clamp(2.1rem, 3.4vw, 2.7rem);
-    font-weight: 400;
-    color: var(--terra);
-    line-height: 1;
-  }
-  .sj-ch-stat-l {
-    display: block;
-    font-family: inherit;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(245,240,235,.78);
-    margin-top: 8px;
-    white-space: nowrap;
-  }
-
   /* ── Tablet / mobile ───────────────────────────── */
   @media (max-width: 880px) {
     .sj-ch-head { grid-template-columns: 1fr; gap: clamp(24px, 5vw, 34px); }
@@ -270,23 +223,6 @@
     .sj-ch-lead { font-size: 0.98rem; line-height: 1.6; }
     .sj-ch-moments { gap: 16px; }
     .sj-ch-mom-name { font-size: 1.2rem; }
-
-    /* Four stats sit 2x2 on phones — four columns would crush the labels. */
-    .sj-ch-stats-in {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px 0;
-      padding: 26px clamp(16px, 4vw, 28px);
-    }
-    .sj-ch-stat { padding: 0 8px; }
-    .sj-ch-stat:nth-child(even) { border-left: 1px solid rgba(245,240,235,.18); }
-    .sj-ch-stat-n { font-size: clamp(1.5rem, 7vw, 2rem); }
-    .sj-ch-stat-l { font-size: 0; margin-top: 6px; }
-    .sj-ch-stat-l::after {
-      content: attr(data-short);
-      font-size: 0.58rem;
-      letter-spacing: 0.12em;
-    }
   }
 
   @media (max-width: 420px) {
@@ -294,7 +230,6 @@
     .sj-ch-ttl { font-size: clamp(1.55rem, 8vw, 2rem); }
     .sj-ch-lead { font-size: 0.94rem; }
     .sj-ch-mom-body { padding: 18px 16px 20px; }
-    .sj-ch-stat-l::after { font-size: 0.52rem; letter-spacing: 0.09em; }
   }
 </style>
 
@@ -466,28 +401,6 @@
             <p class="sj-ch-mom-desc">A final evening with live performance, to mark the journey behind you.</p>
           </div>
         </article>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══════════ JOURNEY AT A GLANCE ═══════════ -->
-  <div class="sj-ch-stats sj-ch-rv">
-    <div class="sj-ch-stats-in" role="list">
-      <div class="sj-ch-stat" role="listitem">
-        <div class="sj-ch-stat-n">10</div>
-        <div class="sj-ch-stat-l" data-short="Days">Days</div>
-      </div>
-      <div class="sj-ch-stat" role="listitem">
-        <div class="sj-ch-stat-n">3</div>
-        <div class="sj-ch-stat-l" data-short="Chapters">Immersive Chapters</div>
-      </div>
-      <div class="sj-ch-stat" role="listitem">
-        <div class="sj-ch-stat-n">2</div>
-        <div class="sj-ch-stat-l" data-short="Extensions">Optional Extensions</div>
-      </div>
-      <div class="sj-ch-stat" role="listitem">
-        <div class="sj-ch-stat-n">7</div>
-        <div class="sj-ch-stat-l" data-short="Moments">Signature Moments</div>
       </div>
     </div>
   </div>
