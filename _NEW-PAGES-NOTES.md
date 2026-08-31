@@ -40,8 +40,17 @@ pages if you want one nav everywhere.
 
 The mount wrapper reserves the bar's height at all times, so detaching
 never shifts the layout. `--nav-h` on the mount is the single source of
-truth for that height (64px desktop / 58px ≤900px); the CSS and the JS
+truth for that height (64px desktop / 58px ≤1024px); the CSS and the JS
 both read it, so changing it in one place is enough.
+
+> **The hamburger breakpoint moved 900px → 1024px on 2026-08-22**, when
+> Contact became the fifth link. Logo + five nav items + the CTA need
+> roughly 970px on one line, so the row collided with the CTA between 900
+> and 970px. 1024px is also where the Tevily header swaps
+> `.header_default_screen` for `.header-mobile`, so our bar and the
+> theme's now change state together instead of 124px apart. Reverting is
+> a one-line change if the inline nav is wanted down to 900px again —
+> but shorten a link label first.
 
 The bar never hides while the mobile menu is open, and opening the menu
 reveals it. Anchor jumps clear the floating bar via `scroll-padding-top`.
@@ -71,7 +80,8 @@ widget's *ancestor* and *sibling*. They're gated behind a
 header that actually contains this nav, so Canvas pages are untouched.
 
 Verified live and in an isolated harness at 375 / 1024 / 1400px:
-theme menu suppressed, correct nav shown (hamburger ≤900px), hero
+theme menu suppressed, correct nav shown (hamburger ≤1024px as of
+2026-08-22, ≤900px when that harness run was done), hero
 stacks below with no overlap, dock/stick/hide-on-scroll still works
 inside the theme header, and on a Canvas-style page the marker is
 never applied.
@@ -253,9 +263,10 @@ behaviour and the theme-header takeover.
 
 ## Open items
 
-- Confirm the page slugs assumed by the nav (table above). As of
-  2026-07-31 the Signature Journey page was live at
-  `/signature-journey-unpublished/`, not `/signature-journey/`.
+- ✅ Page slugs assumed by the nav are all confirmed live (2026-08-22,
+  uncached 200s). The Signature Journey has moved onto
+  `/signature-journey/`, so the old `-unpublished` caveat is closed.
+  `Contact` was added as a fifth link on 2026-08-22 → `/contact/`.
 - Confirm the Privacy Policy URL used in both consent lines
   (`/privacy/`).
 - The P&T hero reuses an existing Cape image — swap if a dedicated hero

@@ -1,6 +1,6 @@
 # CLAUDE.md - Umoya Afrika Tours Project Handoff
 
-Last updated: 2026-07-31
+Last updated: 2026-08-29
 Workspace: `C:\Users\MOVING_SURFACE\Downloads\UM_Claude`
 Remote: `https://github.com/seyi-stack/umoya_landing_page.git`
 Current local branch: `codex/elementor-widget-sync` (pushed through `8bcf974`)
@@ -36,6 +36,7 @@ be kept in sync when their area changes:
 |---|---|
 | `_NEW-PAGES-NOTES.md` | Private & Tailormade, About Us, For Groups + the shared nav |
 | `signature-journey/_NOTES.md` | The Signature Journey page |
+| `contact/_NOTES.md` | The Contact page + its two HubSpot forms |
 | `founders-circle-revamp/_REVAMP-NOTES.md` | Founder's Circle v4/v5 revamp |
 | `homepage-revamp/_REVAMP-NOTES.md` | Homepage revamp |
 
@@ -700,6 +701,56 @@ over the Mountain Duck mount. It was last written 2026-07-25, which argues
 against an active PHP fatal and for resource starvation. **Pull that log
 via cPanel/SSH to confirm.** See Open Items.
 
+### Phase 16 - Contact page + footer rebuild, 2026-08-29
+
+Built from the client's two new mockups in `Mockups (footer, contact)/`,
+with routing from `Umoya_Footer_Routing_and_Implementation.docx`.
+
+**New `contact/` page** (3 sections, targets `/contact/`): centred hero,
+two side-by-side enquiry panels, and a direct-contact band carrying the
+office address. Detail in `contact/_NOTES.md`.
+
+> WARNING: `/contact/` AND `/contact-us/` both already exist live, and both
+> are still the **Tevily demo template** - "Lorem ipsum", "88 Broklyn Street
+> NY, USA", a fake phone number. Replace `/contact/`, and decide whether
+> `/contact-us/` is redirected or unpublished.
+
+**Two new HubSpot forms** so contact leads report separately, plus one new
+contact property `enquiry_type`. Both verified end-to-end. See Section 21.
+
+**`shared/section-99-footer.html` rebuilt** to the footer mockup: brand
+block, Journeys / Support / Legal columns, a "Join the Founder's Circle"
+signup, and a bottom bar with the registration number, tagline and social
+icons. Two behavioural changes worth knowing:
+
+- **Cookie Settings is now a CookieYes trigger.** The routing doc confirms
+  the site is standardising on CookieYes, which re-opens its preference
+  centre for any element carrying `.cky-banner-element`. The previous
+  guess-the-global JS is gone; a small guard only fires if CookieYes is
+  absent at click time.
+- **The newsletter consent model changed.** The old footer used a required,
+  never-pre-ticked checkbox. The mockup and doc instead specify
+  statement-style consent ("By subscribing you consent to...") with no
+  checkbox, and require that wording verbatim. That is what shipped; the
+  exact wording is still stored with every submission for the POPIA
+  consent register. **Flag this to whoever owns POPIA compliance** - it is
+  a deliberate client instruction, not an oversight.
+
+**Slugs checked live** (2026-08-29), which closes a long-standing open item:
+`/terms-and-conditions/` is the real page - the old FOOTER URL MAP's
+`/booking-terms` 404s. `/travel-essentials/`, `/email-preferences/`,
+`/travel-brochure.pdf` and `/paia-manual.pdf` do **not** exist yet.
+
+**Also fixed:** the footer's full-bleed `width: 100vw` included the vertical
+scrollbar, making it a scrollbar-width too wide and giving every page a
+small horizontal scroll. It now uses a `--umoya-ft-vw` custom property set
+from `documentElement.clientWidth`, with `100vw` as the no-JS fallback.
+
+**`shared/page-email-preferences.html`** was added so the footer's Email
+Opt-out link has somewhere to land - the copy is the routing doc's,
+verbatim, with the HubSpot preference-centre button commented out until
+that URL exists.
+
 ### Phase 15 - Full outage, 2026-08-22 (RESOLVED)
 
 The site returned WordPress's **"There has been a critical error on this
@@ -790,7 +841,9 @@ nothing.
 | `CLAUDE.md` | This handoff and project source of truth. |
 | `_NEW-PAGES-NOTES.md` | Detail for the three new pages + shared nav. |
 | `shared/section-00-nav.html` | **Site-wide navigation.** Place FIRST on every page. |
-| `shared/section-99-footer.html` | **Site-wide footer.** Newsletter (HubSpot-wired) + link columns + legal bar. Place LAST on every page; replaces the Elementor Form newsletter widget. |
+| `shared/section-99-footer.html` | **Site-wide footer.** Rebuilt 2026-08-29 to the client mockup: brand block + Journeys/Support/Legal columns + Founder's Circle signup (HubSpot-wired) + legal bar. Place LAST on every page; replaces the Elementor Form newsletter widget. |
+| `shared/page-email-preferences.html` | Small standalone page for `/email-preferences/`, the footer's Email Opt-out destination. |
+| `contact/` | Contact page — 3 sections + `_NOTES.md`. Targets `/contact/`. |
 | `shared/color-scheme-lock.html` | Stops mobile browsers auto-darkening the palette. Only needed on pages that use neither the shared nav nor the shared footer — see Dark Mode below. |
 | `founders-circle/` | Original Founder's Circle sections (was flat `section-*.html` at root). |
 | `founders-circle-revamp/` | **Current** Founder's Circle working copy (v4/v5 feedback). |
@@ -1344,6 +1397,8 @@ Preferred ongoing route:
 | `#fg-plan` | For Groups form — every "Plan a Group Journey" CTA targets it. |
 | `#fg-journey` | For Groups journey teaser. |
 | `#ab-hero` … `#ab-cta` | About Us sections. |
+| `#ct-plan` / `#ct-general` | Contact page panels — link straight to one form. |
+| `#umoya-contact-hero` / `#umoya-contact-forms` / `#umoya-contact-direct` | Contact page section roots. |
 | `#umoyaSiteNavMount` / `#umoyaSiteNav` | Shared nav mount + bar. The mount must keep its reserved height. |
 
 ### Page URL slugs assumed by the shared nav
@@ -1358,10 +1413,16 @@ state will not highlight.
 | Private & Tailormade | `/private-and-tailormade/` |
 | For Groups | `/for-groups/` |
 | About | `/about/` |
+| Contact | `/contact/` |
 | CTA | `/founders-circle/` |
 
-As of 2026-07-31 the Signature Journey page was live at
-`/signature-journey-unpublished/`, so this needs confirming at launch.
+**All six verified live 2026-08-22** (200, uncached). The Signature Journey
+has moved off `/signature-journey-unpublished/` onto `/signature-journey/`,
+so the nav's assumed slug is now correct and the old caveat is closed.
+
+`Contact` was added to the nav on 2026-08-22. Note its `data-path` is
+`/contact`, which deliberately does NOT match the retired `/contact-us`
+(the active-state test is `here === p || here.indexOf(p + '/') === 0`).
 
 ---
 
@@ -1574,30 +1635,55 @@ Confirmed working: a real (non-test) submission on 2026-08-11 13:29 landed on
 were being discarded before. Note the homepage HTML may be served from cache,
 so re-check after a cache purge.
 
-### Footer Newsletter Form
+### Footer (rebuilt 2026-08-29)
 
-- ✅ **Built.** `shared/section-99-footer.html` is a complete site-wide footer
-  (newsletter + link columns + legal bar), wired to the dedicated
+- ✅ **Built to the client mockup.** `shared/section-99-footer.html` — brand
+  block, Journeys / Support / Legal columns, Founder's Circle signup, legal
+  bar with social icons. The signup still posts to the dedicated
   **Footer Newsletter Signup** form (`40d535ad-fc91-4831-8231-eddc05208624`),
-  `source="footer_newsletter"`, POPIA consent required and never pre-ticked.
-  It uses the same WordPress-first / HubSpot-fallback path as every other
-  form, and needs **no** PHP change (EMAIL + FNAME resolve through the
-  default alias table — asserted in `verify-alias-mapping.mjs`).
-- ⏳ **Deploy step:** paste it as the LAST widget on every page, then
-  **delete the old Elementor Form newsletter widget** — otherwise the HubSpot
-  WP plugin keeps auto-capturing it as
-  `.elementor-form … converted (August 11, 2026)` (`b51b9251-…`).
-- ⚠ **Footer link slugs are unverified.** See the `_NOTES` block at the bottom
-  of that file. In particular the old `FOOTER URL MAP.pdf` says
-  `/the-journey`, `/why-umoya`, `/our-story`, but the live nav uses
-  `/signature-journey/`, `/private-and-tailormade/`, `/about-us/`. The footer
-  follows the **nav**; confirm which is right and align the doc.
-- ⚠ `Email Opt-out` is deliberately **commented out** in the footer — the
-  HubSpot subscription-preferences URL is still unknown, and a dead link is
-  worse than an absent one.
-- Create dedicated HubSpot footer newsletter form if using the custom route.
-- Add POPIA marketing consent copy.
-- Test lead capture in HubSpot and Elementor submissions.
+  `source="footer_newsletter"`, same WordPress-first / HubSpot-fallback path,
+  and needs **no** PHP change (EMAIL + FNAME resolve through the default
+  alias table — asserted in `verify-alias-mapping.mjs`).
+- ⏳ **Deploy step:** paste it as the LAST widget on **every** page, Founder's
+  Circle included (the routing doc names that page), then **delete the old
+  Elementor Form newsletter widget** — otherwise the HubSpot WP plugin keeps
+  auto-capturing it as `.elementor-form … converted (August 11, 2026)`
+  (`b51b9251-…`).
+- ✅ **Slugs verified live 2026-08-29.** `/terms-and-conditions/` replaces the
+  FOOTER URL MAP's `/booking-terms`, which 404s. The nav's slugs
+  (`/signature-journey/`, `/private-and-tailormade/`, `/for-groups/`,
+  `/about-us/`) all resolve. **Update the FOOTER URL MAP doc to match.**
+- ❌ **Four footer destinations do not exist yet** and will 404 until built:
+  `/travel-essentials/` (copy is in `Revised footer docs/`),
+  `/email-preferences/` (page is ready — `shared/page-email-preferences.html`),
+  `/travel-brochure.pdf` (Ashley to supply),
+  `/paia-manual.pdf` (final file is in `Revised footer docs/`).
+- ⏳ **CookieYes, two non-code steps** from the routing doc: replace the
+  current CookieYes script with the one for the new Umoya account (emailed
+  separately) so consent records live under Umoya's own account; and publish
+  the Cookie Policy from the Drive, then set it as the cookie policy link
+  inside the CookieYes banner configuration.
+- ⚠ **Consent model changed** from a required checkbox to statement-style
+  consent, on the client's explicit instruction ("the consent fine print
+  under the form must ship exactly as written in the mockup"). Raise with
+  whoever owns POPIA compliance before launch.
+- Optional: rename the HubSpot form to match the new "Join the Founder's
+  Circle" label, and point it at the Founder's Circle list/workflow. The GUID
+  does not change, so no code change either.
+- Test lead capture in HubSpot and Umoya Submissions once live.
+
+### Contact page (built 2026-08-29)
+
+- ✅ **Built.** `contact/` — 3 sections, two dedicated HubSpot forms, both
+  verified end-to-end. Full detail in `contact/_NOTES.md`.
+- ✅ **Published at `/contact/`** — confirmed live 2026-08-22: the page
+  serves `umoya-contact-hero` / `umoya-contact-forms` / `umoya-contact-direct`
+  with no Tevily demo copy left.
+- ✅ **`/contact-us/` is gone** (404s as of 2026-08-22), so the duplicate
+  demo page no longer needs a decision.
+- ✅ **Linked from the shared nav** as of 2026-08-22.
+- ⚠ **Re-upload the plugin** for `contact_page_general` to forward
+  `enquiry_type` / `organization` from the WordPress backup path.
 
 ### HubSpot / Forms
 
@@ -1898,6 +1984,8 @@ also better for per-page conversion reporting.
 | Homepage Popup Inquiry | `a9e947b4-cb2e-45da-b2c7-b83b4228dfb5` | `homepage-revamp/homepage-form-popup.html` ✅ |
 | Signature Journey Inquiry | `71181d17-e836-43d6-aa6d-a46e73945504` | `signature-journey/section-08-form-popup.html` ✅ |
 | Footer Newsletter Signup | `40d535ad-fc91-4831-8231-eddc05208624` | `shared/section-99-footer.html` ✅ |
+| Contact Page Journey Inquiry | `1e38d41f-3e99-4605-94cc-9057857a4e82` | `contact/section-02-forms.html` (panel 1) ✅ |
+| Contact Page General & Media Inquiry | `ffececd7-b401-43cb-8ee2-858b5d62892c` | `contact/section-02-forms.html` (panel 2) ✅ |
 | Umoya Website Form Submissions | `cb87d460-…` | **Retired.** Lossy v4 form, no longer referenced by any source file. Leave in place for its historical submissions. |
 | Inquiry Form (Founders Circle Page) | `643fb390-…` | **Nothing** — 3 fields only; abandoned. Left untouched. |
 | `.elementor-form … converted (Aug 11 2026)` | `b51b9251-…` | Junk auto-capture of the footer newsletter by the HubSpot WP plugin |
@@ -1911,6 +1999,8 @@ also better for per-page conversion reporting.
 | `founders_circle_page` | `country` | `city` | `party_size` |
 | `homepage_popup` | `country` | `city` | `party_size` |
 | `signature_journey_popup` | `country` | `city` | `party_size` |
+| `contact_page_journey` | `country` | `city` | `party_size` |
+| `contact_page_general` | `enquiry_type` | `organization` | — |
 | `private_tailormade_page` | `trip_occasion` | — | `party_size` |
 | `for_groups_page` | `group_type` | `organization` | `party_size` |
 
@@ -1924,6 +2014,12 @@ used to point at `preferred_journey_length`. That select is literally
 it because the old target never existed as a property, so it never held a
 single value. `preferred_journey_length` now exists but is **unused** —
 retained only as the fallback for any future form.
+
+`contact_page_general` also sends no MERGE1/4/5 — it is a lean routing form
+(full name, email, organisation, enquiry type, message). Its `enquiry_type`
+is an **enumeration** created 2026-08-29, so its `<option>` values and the
+property's options must be edited together or HubSpot rejects the value. It is
+deliberately NOT required on the HubSpot form; see `contact/_NOTES.md` for why.
 
 This table is implemented **twice** and the two must stay in step:
 - browser side — `hubspotFieldMap` in each page's form `<script>`
@@ -1975,6 +2071,57 @@ from the untouched `_umoya_payload` instead of trusting meta, so
 **Resend to HubSpot** works on them once the plugin is updated. Asserted by
 the `for_groups_page` resend-recovery case in `verify-alias-mapping.mjs`.
 
+### "This submission didn't include an IP address"
+
+*Diagnosed 2026-08-29 from a live test submission on the contact page.*
+
+HubSpot shows this banner on a form submission whose `context.ipAddress` is
+absent. It is an **analytics** warning, not data loss — every field still
+lands on the contact; what HubSpot cannot do is derive `ip_city` /
+`ip_country` or attribute the visit geographically.
+
+There are two ways a submission arrives without one, and they need different
+responses:
+
+**1. The browser's direct-to-HubSpot fallback (by design, not fixable).**
+When `/wp-json/umoya/v1/submissions` does not answer, every Umoya form falls
+back to posting straight to the HubSpot Forms API. A browser cannot know its
+own public IP, so that payload has none. On this origin — with its documented
+522s and multi-second TTFB — this is the likely explanation for any one-off.
+
+Tell them apart by looking for the lead in **Umoya Submissions**:
+
+| In Umoya Submissions? | HubSpot column | What happened |
+|---|---|---|
+| Yes, `sent` | sent | went through WordPress — an IP *should* be present |
+| Yes, `sent_direct_from_browser` | blue badge | fallback fired, backup flushed later |
+| **Not there at all** | — | fallback fired and the backup is still queued in that browser's `localStorage`; it flushes on the visitor's next page view, within 3 days |
+
+Do **not** try to back-fill the IP by resending such a row: the record is
+already in HubSpot, and a resend would create a duplicate submission to gain
+one analytics field.
+
+**2. Resends and automatic retries (was a real bug — fixed 2026-08-29).**
+`get_submission_from_meta()` rebuilt the submission without reading
+`_umoya_ip_address`, so `send_to_hubspot()` read an undefined key. Every
+**row-action resend, bulk resend and cron retry** therefore forwarded with no
+IP — and emitted an `Undefined array key` warning each time, up to 20 attempts
+per submission. `ip_address` is now read back from meta alongside
+`page_uri` / `page_name` / `hutk`, so a resend carries the ORIGINAL
+submitter's IP rather than nothing (and never the cron's).
+
+`ipAddress` is now also run through `valid_ip()` — HubSpot would rather have
+the key absent than malformed. It is deliberately **not** accepted from
+`$payload['context']`: that arrives from the browser, and trusting it would
+let a client write any IP it liked into form analytics.
+
+`get_client_ip()` was already correct, and Cloudflare-aware
+(`HTTP_CF_CONNECTING_IP` → `HTTP_X_FORWARDED_FOR` → `REMOTE_ADDR`) — without
+that first header every lead would carry a Cloudflare edge IP instead of the
+visitor's.
+
+> Requires the rebuilt `umoya-elementor-widgets.zip` to be uploaded.
+
 ### "Non-HubSpot / collected forms" — why submissions appear twice
 
 HubSpot's tracking script (`js.hscollectedforms.net/collectedforms.js`, loaded
@@ -2025,6 +2172,7 @@ node tools/hubspot-sync.mjs create-newsletter-form
 node tools/hubspot-inspect-form.mjs <formId>     # dump a form's real field definition
 node tools/hubspot-find-props.mjs <keywords>     # search the 404-property schema
 node tools/hubspot-verify-forms.mjs              # end-to-end: submit, read back, assert
+node tools/hubspot-verify-forms.mjs contact      # ...just the forms whose label matches
 node tools/verify-alias-mapping.mjs              # assert the PHP alias table
 node tools/hubspot-cleanup-tests.mjs             # remove example.com diagnostic contacts
 node tools/hubspot-diagnose-capture.mjs          # all forms by type + submission counts
