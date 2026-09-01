@@ -824,6 +824,8 @@ icons. Two behavioural changes worth knowing:
 `/terms-and-conditions/` is the real page - the old FOOTER URL MAP's
 `/booking-terms` 404s. `/travel-essentials/`, `/email-preferences/`,
 `/travel-brochure.pdf` and `/paia-manual.pdf` do **not** exist yet.
+*(Superseded 2026-09-01: both footer PDFs were renamed to the `umoya_`
+prefix, and the PAIA manual was uploaded. See Phase 19.)*
 
 **Also fixed:** the footer's full-bleed `width: 100vw` included the vertical
 scrollbar, making it a scrollbar-width too wide and giving every page a
@@ -955,6 +957,20 @@ read badly in a serif. Flagged here so it is not mistaken for a slip.
 `/paia_manual.pdf` (**underscore**) returns 200 and is byte-identical to
 `Revised footer docs/Umoya_PAIA_Manual (final).pdf`. The footer had been
 pointing at `/paia-manual.pdf` (hyphen), which 404s.
+
+**Renamed again on client request, same day:** both footer PDFs now use an
+`umoya_` prefix — `/umoya_paia_manual.pdf` (uploaded and verified) and
+`/umoya_travel_brochure.pdf` (still to be supplied). Older PAIA spellings
+were left resolving rather than deleted.
+
+> **Mount trap worth knowing.** Copying the file to
+> `umoya_paia_manual.pdf` appeared to succeed but never reached the server —
+> 404 after 25 polls — because a ghost entry already sat at that name in the
+> Mountain Duck cache, so it saw nothing to upload. A *fresh* filename synced
+> in two polls. The fix that worked: write under a throwaway name, confirm it
+> serves, then `mv` it onto the target. Diagnose this by writing a
+> differently-named file first — if that syncs and yours does not, the name
+> is poisoned, not the mount.
 
 A hyphenated entry *does* appear in the Mountain Duck listing at the same
 byte size, but the server neither serves it (404, not 403) nor allows it to
@@ -1408,21 +1424,32 @@ Current footer routes:
 
 | Footer label | Destination |
 |---|---|
-| Journey | `/the-journey` |
-| Experience | `/why-umoya` |
-| Founder's Circle | `/founders-circle` |
-| About | `/our-story` |
-| Contact | `/contact` |
-| Travel Essentials | `/travel-essentials` |
-| Travel Brochure | `/travel-brochure.pdf` |
-| Travel Insurance Guidance | `/travel-essentials#travel-protection` |
-| Visa & Entry Information | `/visa-and-entry` |
-| Press & Media | `/press` |
-| Booking Terms & Conditions | `/booking-terms` |
-| Privacy Policy | `/privacy` |
-| Cookie Preferences | Opens cookie consent modal, not a normal URL |
-| Email Opt-out | HubSpot subscription preferences URL, still needs final URL |
-| PAIA Manual | `/paia-manual.pdf` |
+> ⚠ **The table below is what `shared/section-99-footer.html` actually
+> links to, as of 2026-09-01.** It is NOT the old `FOOTER URL MAP.pdf`,
+> which is stale in several places — that doc still lists `/the-journey`,
+> `/why-umoya`, `/our-story`, `/booking-terms`, `/visa-and-entry` and
+> `/press`, none of which the footer uses. **Update the PDF to match this,
+> not the other way round.** Its decoded copy at
+> `Website docs/Elementor HTML snippets/FOOTER_URL_MAP.elementor.html` is
+> equally stale and is kept only as a record of the original brief.
+
+| Footer label | Destination | Live? |
+|---|---|---|
+| The Signature Journey | `/signature-journey/` | ✅ |
+| Private & Tailormade | `/private-and-tailormade/` | ✅ |
+| For Groups | `/for-groups/` | ✅ |
+| About Us | `/about-us/` | ✅ |
+| Travel Essentials | `/travel-essentials/` | ⏳ page built, not published |
+| Travel Brochure | `/umoya_travel_brochure.pdf` | ❌ Ashley to supply |
+| Contact | `/contact/` | ✅ |
+| Terms & Conditions | `/terms-and-conditions/` | ✅ |
+| Privacy Policy | `/privacy/` | ⚠ live but still v1.0 |
+| Cookie Settings | CookieYes trigger — no URL | ⚠ CookieYes not installed yet |
+| Email Opt-out | `/email-preferences/` | ⏳ page built, not published |
+| PAIA Manual | `/umoya_paia_manual.pdf` | ✅ |
+
+Both PDFs open in a new tab (`target="_blank" rel="noopener"`) and both use
+the `umoya_` filename prefix.
 
 ### Legal Snippet Placeholders Still Open
 
@@ -1891,14 +1918,15 @@ this out, from Network Admin → Plugins:
 - ✅ **Cookie Preferences is wired** — `.cky-banner-element` in the footer,
   and now also mid-page in the Cookie Policy where the copy tells the reader
   they can change their preferences.
-- ✅ **The PAIA manual is live at `/paia_manual.pdf`** — byte-identical to
-  `Revised footer docs/Umoya_PAIA_Manual (final).pdf`. **Note the
-  underscore.** `/paia-manual.pdf` 404s; a hyphenated entry shows in the
-  Mountain Duck listing but the server neither serves nor reads it, so it is
-  a ghost. The footer now points at the underscore URL. Nothing was deleted.
+- ✅ **The PAIA manual is live at `/umoya_paia_manual.pdf`** — uploaded
+  2026-09-01, verified byte-identical to
+  `Revised footer docs/Umoya_PAIA_Manual (final).pdf`. Older spellings
+  (`/paia_manual.pdf`, `/Umoya_PAIA_Manual.pdf`) still resolve and were left
+  in place; `/paia-manual.pdf` is a ghost listing and 404s. Nothing deleted.
 - Replace `[INSERT_UNSUBSCRIBE_URL]`.
 - Replace `[INSERT_HUBSPOT_SUBSCRIPTION_PREFERENCES_URL]`.
-- ❌ `/travel-brochure.pdf` still 404s — Ashley to supply.
+- ❌ **`/umoya_travel_brochure.pdf` still 404s** — Ashley to supply. It must
+  be uploaded under exactly that name; the footer already links to it.
 
 ### ⚠ Redeploy required for the HubSpot fixes to reach the live site
 
@@ -1963,11 +1991,11 @@ so re-check after a cache purge.
   FOOTER URL MAP's `/booking-terms`, which 404s. The nav's slugs
   (`/signature-journey/`, `/private-and-tailormade/`, `/for-groups/`,
   `/about-us/`) all resolve. **Update the FOOTER URL MAP doc to match.**
-- ❌ **Four footer destinations do not exist yet** and will 404 until built:
-  `/travel-essentials/` (copy is in `Revised footer docs/`),
-  `/email-preferences/` (page is ready — `shared/page-email-preferences.html`),
-  `/travel-brochure.pdf` (Ashley to supply),
-  `/paia-manual.pdf` (final file is in `Revised footer docs/`).
+- ⏳ **Three footer destinations still 404**, down from four:
+  `/travel-essentials/` (page BUILT — `shared/page-travel-essentials.html`),
+  `/email-preferences/` (page BUILT — `shared/page-email-preferences.html`),
+  and `/umoya_travel_brochure.pdf` (Ashley to supply; upload under exactly
+  that name). The PAIA manual is now live at `/umoya_paia_manual.pdf`.
 - ⏳ **CookieYes, two non-code steps** from the routing doc: replace the
   current CookieYes script with the one for the new Umoya account (emailed
   separately) so consent records live under Umoya's own account; and publish

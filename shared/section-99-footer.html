@@ -416,7 +416,12 @@
                page is shared/page-travel-essentials.html -->
           <li><a href="https://umoyaafrikatours.co.za/travel-essentials/">Travel Essentials</a></li>
           <!-- ⚠ PDF not uploaded yet. Opens in a new tab per the routing doc. -->
-          <li><a href="https://umoyaafrikatours.co.za/travel-brochure.pdf" target="_blank" rel="noopener">Travel Brochure</a></li>
+          <!--
+            ⚠ NOT UPLOADED YET - this 404s until Ashley supplies the file.
+            Name it exactly umoya_travel_brochure.pdf at the web root, to
+            match the umoya_ prefix used by the PAIA manual.
+          -->
+          <li><a href="https://umoyaafrikatours.co.za/umoya_travel_brochure.pdf" target="_blank" rel="noopener">Travel Brochure</a></li>
           <li><a href="https://umoyaafrikatours.co.za/contact/">Contact</a></li>
         </ul>
       </nav>
@@ -438,14 +443,22 @@
                shared/page-email-preferences.html for the ready-to-paste page. -->
           <li><a href="https://umoyaafrikatours.co.za/email-preferences/">Email Opt-out</a></li>
           <!--
-            UNDERSCORE, not a hyphen. The final manual is already live at
-            /paia_manual.pdf and is byte-identical to
-            "Revised footer docs/Umoya_PAIA_Manual (final).pdf".
-            /paia-manual.pdf 404s - a hyphenated entry does appear in the
-            Mountain Duck listing but the server does not serve it and it
-            cannot be read, so treat it as a ghost. Verified 2026-09-01.
+            umoya_paia_manual.pdf - underscores, umoya_ prefix. Uploaded and
+            verified byte-identical to
+            "Revised footer docs/Umoya_PAIA_Manual (final).pdf" on
+            2026-09-01 (HTTP 200, 110300 bytes).
+
+            Several other spellings of this file exist at the web root and
+            are NOT interchangeable. Confirm with an HTTP request, never the
+            Mountain Duck listing, which shows entries the server does not
+            serve:
+              /umoya_paia_manual.pdf   200  <- use this one
+              /paia_manual.pdf         200  superseded, left in place
+              /Umoya_PAIA_Manual.pdf   200  superseded, left in place
+              /paia-manual.pdf         404  ghost listing only
+            Nothing was deleted.
           -->
-          <li><a href="https://umoyaafrikatours.co.za/paia_manual.pdf" target="_blank" rel="noopener">PAIA Manual</a></li>
+          <li><a href="https://umoyaafrikatours.co.za/umoya_paia_manual.pdf" target="_blank" rel="noopener">PAIA Manual</a></li>
         </ul>
       </nav>
 
@@ -881,10 +894,13 @@
                                        shared/page-travel-essentials.html
        ⏳ /email-preferences/          404 — page BUILT, not yet published:
                                        shared/page-email-preferences.html
-       ❌ /travel-brochure.pdf         404 — Ashley to supply
-       ✅ /paia_manual.pdf             200 — live, byte-identical to the
-                                       final manual. NOTE the underscore;
-                                       /paia-manual.pdf 404s.
+       ❌ /umoya_travel_brochure.pdf   404 — Ashley to supply. Upload
+                                       under exactly this name.
+       ✅ /umoya_paia_manual.pdf       200 — uploaded 2026-09-01,
+                                       byte-identical to the final manual.
+                                       Older spellings still resolve and
+                                       were left in place; /paia-manual.pdf
+                                       is a ghost listing and 404s.
 
      Not linked from this footer but part of the same set:
        ⚠ /cookie-policy/               200, but still v1.0 with
