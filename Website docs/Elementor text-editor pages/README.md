@@ -76,11 +76,19 @@ styled versions in `shared/`:
 > **Do not replace the word `selector`** in the widget version — Elementor
 > substitutes it for that widget's own ID.
 
-> **Paste the whole file.** A partial paste produces
-> `Expected LBRACE at line 1, col 11` — that error means the editor received
-> a selector with no `{` after it, i.e. the paste was cut short. The widget
-> version is deliberately small (3.6 KB, plain ASCII, no long comment
-> banner) to make that less likely.
+### Reading Elementor's CSS box
+
+> **Red ✕ is an error. Amber ⚠ is not.** The box uses CSSLint, which is old
+> enough to predate custom properties and `clamp()`, so it warns about valid,
+> universally supported CSS. The widget file is written to avoid every
+> construct it complains about — colours are written out in full and type
+> sizes step at the breakpoints rather than scaling fluidly — so it should
+> paste with **no markers at all**. Same result on screen either way.
+
+> `Expected LBRACE at line 1, col 11` **is** a real error, and it means the
+> paste was cut short: the editor received a selector with no `{` after it.
+> Re-copy the whole file. The widget version is deliberately small (4 KB,
+> plain ASCII, no long comment banner) to make that less likely.
 
 Either way, the three `doc-*` classes the CSS references are already in the
 `.html` files, so there is nothing extra to add by hand.

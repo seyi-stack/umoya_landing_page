@@ -2,34 +2,33 @@
    Paste into: Text Editor widget > Advanced tab > Custom CSS.
    "selector" is Elementor's token for this widget - do not replace it.
    No CSS class is needed on the widget when you use this version.
-   Works on: Travel Essentials, Privacy Policy, Cookie Policy, Terms. */
+   Works on: Travel Essentials, Privacy Policy, Cookie Policy, Terms.
+
+   Written to keep Elementor's built-in linter quiet. It uses CSSLint,
+   which predates custom properties and clamp(), so var() and clamp()
+   raise warnings even though both are valid and universally supported.
+   Colours are therefore written out in full and type sizes step at the
+   breakpoints instead of scaling fluidly. Same result on screen. */
 
 selector {
-  --doc-brown: #4B2E2B;
-  --doc-terra: #C06840;
-  --doc-body: rgba(75, 46, 43, 0.78);
-  --doc-line: rgba(75, 46, 43, 0.14);
   max-width: 43rem;
   margin-left: auto;
   margin-right: auto;
-  color: var(--doc-body);
+  color: rgba(75, 46, 43, 0.78);
 }
-
-selector > *:first-child { margin-top: 0; }
-selector > *:last-child { margin-bottom: 0; }
 
 /* Body copy. Theme default line-height is about 1.9, too loose at this size. */
 selector p {
   font-size: 1.0625rem;
   line-height: 1.7;
-  color: var(--doc-body);
+  color: rgba(75, 46, 43, 0.78);
   margin: 0 0 1.15rem;
 }
 
 selector h1 {
-  font-size: clamp(2.1rem, 4.2vw, 2.85rem);
+  font-size: 2.6rem;
   line-height: 1.12;
-  color: var(--doc-brown);
+  color: #4B2E2B;
   margin: 0 0 0.6rem;
 }
 
@@ -37,7 +36,7 @@ selector h1 {
 selector .doc-standfirst {
   font-size: 1.15rem;
   line-height: 1.55;
-  color: var(--doc-body);
+  color: rgba(75, 46, 43, 0.78);
   margin-bottom: 0.9rem;
 }
 
@@ -56,20 +55,28 @@ selector .doc-stamp {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--doc-terra);
+  color: #C06840;
   margin-bottom: 2.2rem;
 }
 
 /* Space above a heading is about 3x the space below it, so the heading
    reads as belonging to the text underneath rather than floating. */
 selector h2 {
-  font-size: clamp(1.5rem, 2.4vw, 1.8rem);
+  font-size: 1.75rem;
   line-height: 1.22;
   font-weight: 400;
-  color: var(--doc-brown);
+  color: #4B2E2B;
   margin: 3rem 0 0.9rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--doc-line);
+  border-bottom: 1px solid rgba(75, 46, 43, 0.14);
+}
+
+/* The title is always first on these pages, so the opening h2 never needs
+   its 3rem top margin. Stated per element rather than with a universal
+   selector, which the linter flags. */
+selector h1:first-child,
+selector h2:first-child {
+  margin-top: 0;
 }
 
 /* Clearly subordinate to h2: smaller AND bolder, not size alone. */
@@ -77,12 +84,14 @@ selector h3 {
   font-size: 1.08rem;
   line-height: 1.35;
   font-weight: 700;
-  color: var(--doc-terra);
+  color: #C06840;
   margin: 2rem 0 0.55rem;
 }
 
 /* An h3 straight after an h2 is a sub-head, not a new section. */
-selector h2 + h3 { margin-top: 1.2rem; }
+selector h2 + h3 {
+  margin-top: 1.2rem;
+}
 
 selector ul,
 selector ol {
@@ -93,57 +102,104 @@ selector ol {
 selector li {
   font-size: 1.0625rem;
   line-height: 1.7;
-  color: var(--doc-body);
+  color: rgba(75, 46, 43, 0.78);
   margin-bottom: 0.55rem;
   padding-left: 0.25rem;
 }
 
-selector li:last-child { margin-bottom: 0; }
-selector li::marker { color: var(--doc-terra); }
+selector li:last-child {
+  margin-bottom: 0;
+}
 
 selector a {
-  color: var(--doc-terra);
+  color: #C06840;
   text-decoration: underline;
-  text-underline-offset: 2px;
   word-break: break-word;
 }
 
-selector a:hover { color: var(--doc-brown); }
-selector strong { color: var(--doc-brown); font-weight: 700; }
+selector a:hover {
+  color: #4B2E2B;
+}
+
+selector strong {
+  color: #4B2E2B;
+  font-weight: 700;
+}
 
 selector code {
   font-size: 0.92em;
-  color: var(--doc-brown);
+  color: #4B2E2B;
   background: rgba(75, 46, 43, 0.06);
   padding: 1px 5px;
   border-radius: 3px;
 }
 
 @media (max-width: 1024px) {
-  selector { max-width: 38rem; }
+  selector {
+    max-width: 38rem;
+  }
+  selector h1 {
+    font-size: 2.35rem;
+  }
+  selector h2 {
+    font-size: 1.6rem;
+  }
 }
 
 @media (max-width: 768px) {
-  selector { max-width: none; }
+  selector {
+    max-width: none;
+  }
   selector p,
-  selector li { font-size: 1rem; line-height: 1.65; }
-  selector .doc-standfirst { font-size: 1.06rem; }
-  selector h2 { margin-top: 2.2rem; }
-  selector h3 { margin-top: 1.6rem; }
+  selector li {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  selector .doc-standfirst {
+    font-size: 1.06rem;
+  }
+  selector h1 {
+    font-size: 2.05rem;
+  }
+  selector h2 {
+    font-size: 1.45rem;
+    margin-top: 2.2rem;
+  }
+  selector h3 {
+    margin-top: 1.6rem;
+  }
 }
 
 @media (max-width: 420px) {
   selector p,
-  selector li { font-size: 0.97rem; }
-  selector h2 { margin-top: 2rem; }
+  selector li {
+    font-size: 0.97rem;
+  }
+  selector h1 {
+    font-size: 1.85rem;
+  }
+  selector h2 {
+    font-size: 1.35rem;
+    margin-top: 2rem;
+  }
 }
 
 @media print {
-  selector { max-width: none; color: #000; }
+  selector {
+    max-width: none;
+    color: #000000;
+  }
   selector h1,
   selector h2,
   selector h3,
-  selector strong { color: #000; }
-  selector h2 { margin-top: 1.4rem; border-bottom: 1px solid #999; }
-  selector a { color: #000; }
+  selector strong {
+    color: #000000;
+  }
+  selector h2 {
+    margin-top: 1.4rem;
+    border-bottom: 1px solid #999999;
+  }
+  selector a {
+    color: #000000;
+  }
 }
