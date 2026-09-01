@@ -928,5 +928,29 @@
   7. ADDRESS. The mockup omits "Maude Street"; the live site footer
      includes it. The fuller live version is used here and in
      contact/section-03-direct.html.
+
+  8. INSTAGRAM GLYPH REPLACED (2026-09-01). The mockup's Instagram path
+     drew the camera lens as a subpath wound the SAME direction as the
+     outer squircle, so under SVG's default nonzero fill rule it never
+     punched through — it rendered as a solid rounded square with a
+     filled dot, no lens ring and no corner dot. Its lens radius was
+     7.8 against the real mark's ~6.2 as well. Swapped for the official
+     glyph (Simple Icons), whose counters are wound to cut out. Still a
+     single filled path on currentColor, so no CSS change and the same
+     visual weight as Facebook / TikTok / LinkedIn beside it. The
+     commented-out YouTube path was checked at the same time and is
+     fine — its play triangle knocks out correctly.
+
+  9. FULL-BLEED WIDTH. Do not "simplify" --umoya-ft-vw back to a plain
+     100vw. 100vw includes the vertical scrollbar, so on any page tall
+     enough to scroll this footer became a scrollbar-width too wide and
+     gave the WHOLE page a horizontal scrollbar. Measured before the
+     fix: viewport 822px, footer 838px, starting at left: -8px.
+
+ 10. FOUNDER'S CIRCLE PAGE CAVEAT. As of 2026-09-01 /founders-circle/
+     is served without most plugin assets, CookieYes included — so the
+     Cookie Settings button on THAT page will hit the fallback rather
+     than a preference centre even once CookieYes is installed
+     site-wide. See CLAUDE.md Section 21.
 =================================================================
 -->
