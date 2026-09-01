@@ -87,10 +87,25 @@ inherited (`font-family: inherit`) and all colours are brand tokens (cream
   two POPIA consent checkboxes added (required + optional marketing, not
   pre-ticked) with submit gating; consent + marketing opt-in recorded in the
   WordPress backup payload (`consent_to_process`, `marketing_opt_in`); consent
-  text updated on the form attributes. MERGE4/MERGE6 still map to
-  `preferred_travel_season` / `preferred_journey_length` so HubSpot keeps
-  working unchanged (same note as the FC form). The Privacy Policy link in the
+  text updated on the form attributes. The Privacy Policy link in the
   consent line is `href="#"` — point it at the live policy URL.
+
+  **Updated 2026-08-13/14 (see CLAUDE.md Section 21 for the full story):**
+  this form no longer shares a HubSpot form with Founder's Circle. It now
+  posts to its own dedicated **Homepage Popup Inquiry** form
+  (`a9e947b4-cb2e-45da-b2c7-b83b4228dfb5`), because the shared form was
+  found to be **silently discarding** travel month/year, guest count and the
+  message on every submission (it never declared those fields, and two were
+  typed as Ticket properties, not Contact). `MERGE6` now maps to
+  `party_size`, not `preferred_journey_length` — the field is literally
+  "How Many Guests Will Be Traveling?", and no history was lost by
+  correcting it because the old target never existed as a property. The
+  form also now carries `data-hs-do-not-collect="true"` so HubSpot's
+  tracking script does not additionally file it as a duplicate
+  "non-HubSpot / collected" form. **The `marketing_opt_in` checkbox is
+  captured into the WordPress payload but is not yet wired to anything in
+  HubSpot** — traced end-to-end and logged as an open item in CLAUDE.md
+  Section 16/21; nobody who ticks it is currently added to a list.
 
 ## Removed
 
@@ -120,8 +135,12 @@ inherited (`font-family: inherit`) and all colours are brand tokens (cream
   named properties (Da Vinci / MalaMala / Cape Grace).
 - The film section links to YouTube ID `4ZtbEvETrBU` (from the mockup) —
   confirm this is the final cut of *Let Your Story Begin*.
-- Footer newsletter form (Elementor widget) is outside these files — HubSpot
-  routing still an open task from CLAUDE.md.
+- Footer newsletter form (Elementor widget) is outside these files.
+  `shared/section-99-footer.html` now exists with its own dedicated
+  **Footer Newsletter Signup** HubSpot form
+  (`40d535ad-fc91-4831-8231-eddc05208624`) built and verified 2026-08-13 —
+  but check CLAUDE.md for its current status, since the footer has had at
+  least one further rebuild pass since (2026-08-29) that this note predates.
 - When approved: sync `tools/build-elementor-widgets.mjs` to the new file
   names/sections (including the three new sections + removed pricing), re-run
   the generator, and rebuild the plugin zip.

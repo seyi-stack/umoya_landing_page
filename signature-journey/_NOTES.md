@@ -79,6 +79,15 @@ These were client-requested refinements — do not regress them:
 - **Hero is image only.** The `<video>` element and its autoplay script were
   removed. Hero height reduced from full-viewport to `max(66dvh, 440px)`
   (58dvh / 56dvh at 768 / 420).
+- **No "Scroll" indicator on the hero — do not re-add it.** Removed at client
+  request: at 9.6px / 42% opacity, sitting just under the CTA on the
+  shortened hero, it read as stray small text behind the button. It briefly
+  reappeared in a later edit (2026-08-13) when its markup was left in the
+  working tree and committed alongside an unrelated change without checking
+  it against the removal note already in the file — removed again the same
+  day. The CSS (`.sj-h1-scroll`, `.sj-h1-track`) is deliberately kept, unused,
+  in case the cue is ever wanted back; only the `<div class="sj-h1-scroll">`
+  markup itself must stay out.
 - **Chapter labels are Title Case** ("Chapter One"), not uppercase. The
   location and moment-role micro-labels remain uppercase, matching the mockup.
 - **Hotel carousels advance together** off one shared 5,000 ms clock with an

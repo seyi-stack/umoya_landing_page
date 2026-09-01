@@ -2720,6 +2720,7 @@ node tools/hubspot-verify-forms.mjs contact      # ...just the forms whose label
 node tools/verify-alias-mapping.mjs              # assert the PHP alias table
 node tools/hubspot-cleanup-tests.mjs             # remove example.com diagnostic contacts
 node tools/hubspot-diagnose-capture.mjs          # all forms by type + submission counts
+node tools/hubspot-diagnose-failed.mjs           # reproduce the old-vs-new payload 400s
 ```
 
 `repair-shared-form` also exists but **cannot succeed** — it is kept only to

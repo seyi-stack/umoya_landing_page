@@ -124,14 +124,23 @@ was aligned to this flow (Membership precedes the form).
 
 ## Open items
 
-- **HubSpot mapping:** the new Month field reuses `MERGE4 → preferred_travel_season`
-  and the guest-count field reuses `MERGE6 → preferred_journey_length`, so the
-  integration keeps working with no backend change. For cleaner reporting,
-  create `preferred_travel_month` and `preferred_group_size` properties in
-  HubSpot and update those two mappings (and the aliases in
-  `umoya-elementor-widgets/includes/class-submissions.php`). Consent +
-  marketing opt-in are recorded in the WordPress backup payload
-  (`consent_to_process`, `marketing_opt_in`).
+- ✅ **HubSpot mapping — resolved 2026-08-13/14, see CLAUDE.md Section 21.**
+  `MERGE4 → preferred_travel_season` is unchanged, but `MERGE6` now maps to
+  `party_size`, not `preferred_journey_length` — the field is literally
+  "How Many Guests Will Be Traveling?". This correction was free: the old
+  target had never existed as a HubSpot property, so no submitted value was
+  ever lost by the rename. More importantly, this form no longer shares
+  HubSpot's `Umoya Website Form Submissions` form with every other page — it
+  now posts to its own dedicated **Founder's Circle Inquiry** form
+  (`b3c06e8a-9bbc-44e1-bc67-00e35528b9b9`), created after the shared form was
+  found to be silently discarding travel month/year, guest count and the
+  message on every submission across the whole site. It also carries
+  `data-hs-do-not-collect="true"` so HubSpot's tracking script stops filing a
+  duplicate "non-HubSpot / collected" copy of every submission. Consent +
+  marketing opt-in are still recorded in the WordPress backup payload
+  (`consent_to_process`, `marketing_opt_in`), but **the marketing checkbox
+  itself is not yet wired to any HubSpot property or list** — traced
+  end-to-end and logged as an open item in CLAUDE.md Section 16/21.
 - **Privacy Policy link** in the form consent is still `href="#"` — point it
   at the live policy URL.
 - **Images:** Victoria Falls and Chobe tiles use CDN placeholders marked with
