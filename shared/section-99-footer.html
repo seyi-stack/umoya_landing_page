@@ -2,32 +2,50 @@
 =================================================================
   UMOYA — SITE-WIDE FOOTER  (Elementor HTML widget)
 =================================================================
-  Replaces the default Elementor Form newsletter widget and the
-  theme footer's link list with one self-contained, brand-correct
-  block. Place LAST on every page (the counterpart to
-  shared/section-00-nav.html, which goes FIRST).
+  Rebuilt 2026-08-29 from
+    Mockups (footer, contact)/Umoya_Footer_Mockup.html
+    Mockups (footer, contact)/Umoya_Footer_Routing_and_Implementation.docx
+  Replaces BOTH the previous version of this file and the theme
+  footer. Place LAST on every page — including Founder's Circle,
+  which the routing doc calls out explicitly.
 
-  NEWSLETTER — wired to its own HubSpot form:
+  Layout, column grouping, link set, fine print and bottom bar are
+  the mockup's. Its colours are NOT: the routing doc states "the
+  colors used in the mockup are illustrative so do not change the
+  site's colors", so this uses the brand tokens and
+  font-family: inherit throughout.
+
+  ── FOUNDER'S CIRCLE SIGNUP ────────────────────────────────────
+  Name + email, wired to the dedicated HubSpot form
     Portal 246097317 · Form 40d535ad-fc91-4831-8231-eddc05208624
-    ("Footer Newsletter Signup", fields: email + firstname)
-  It follows the same submit path as every other Umoya form:
-    1. POST /wp-json/umoya/v1/submissions   (WordPress stores it,
+    ("Footer Newsletter Signup" — fields: email + firstname)
+  source = "footer_newsletter". Both properties resolve through the
+  DEFAULT alias table in class-submissions.php, so this form needs
+  no server-side change.
+
+  Same submit path as every other Umoya form:
+    1. POST /wp-json/umoya/v1/submissions (WordPress stores it,
        then forwards to HubSpot)
     2. if WordPress is unreachable → POST straight to the HubSpot
-       Forms API and queue the WP backup in localStorage
-  source = "footer_newsletter". The default MERGE alias table in
-  class-submissions.php already resolves EMAIL/FNAME, so no
-  server-side change is needed for this form.
+       Forms API and queue the WordPress backup in localStorage
 
-  POPIA: the marketing consent box is NOT pre-ticked and IS
-  required — this form exists solely to collect marketing consent.
-  The exact wording submitted is recorded with the submission so
-  the consent register can show what was agreed to.
+  CONSENT: the routing doc requires the fine print to "ship exactly
+  as written in the mockup", and the mockup states consent rather
+  than collecting a tick ("By subscribing you consent to…"). That
+  wording is reproduced verbatim below and is also sent as the
+  submission's consentText, so the POPIA consent register records
+  exactly what each subscriber agreed to and when. Note this is a
+  deliberate change from the previous version of this file, which
+  used a required checkbox — see _NOTES.
 
-  LINK SLUGS: the Explore column follows shared/section-00-nav.html
-  (the live structure). The older "FOOTER URL MAP" doc lists
-  /the-journey, /why-umoya and /our-story for three of these —
-  those are stale; the nav's slugs win. See _NOTES at the bottom.
+  ── COOKIE SETTINGS ────────────────────────────────────────────
+  CookieYes exposes a built-in trigger: any element carrying the
+  class `cky-banner-element` re-opens the preference centre. No
+  href is needed, so this is a <button> rather than a dead "#" link.
+
+  ── LINK SLUGS ─────────────────────────────────────────────────
+  Every destination below was checked against the live site on
+  2026-08-29. Four do not exist yet and are flagged in _NOTES.
 
   BRAND: font-family: inherit; palette tokens only. Scoped to
   #umoya-footer. ES5 IIFE. WCAG AA (44px targets, 16px input floor).
@@ -46,16 +64,25 @@
     #umoya-footer {
       --cream:    #F5F0EB;
       --brown:    #4B2E2B;
+      --brown-dk: #3B2523;
       --terra:    #D97E53;
       --terra-dk: #C06840;
       --olive:    #708238;
       --white:    #FFFFFF;
+      --dim:      rgba(245,240,235,.72);
       --ease:     cubic-bezier(.25,.46,.45,.94);
 
-      /* Full-bleed: break out of the centered Elementor container */
-      width: 100vw;
-      max-width: 100vw;
-      margin-left: calc(50% - 50vw);
+      /*
+       * Full-bleed: break out of the centered Elementor container.
+       * 100vw INCLUDES the vertical scrollbar, so on any page tall enough to
+       * scroll the footer ends up a scrollbar-width too wide and the WHOLE
+       * page gains a horizontal scrollbar. --umoya-ft-vw is set from
+       * documentElement.clientWidth by the script below, which excludes it.
+       * 100vw remains the no-JS fallback.
+       */
+      width: var(--umoya-ft-vw, 100vw);
+      max-width: var(--umoya-ft-vw, 100vw);
+      margin-left: calc(50% - var(--umoya-ft-vw, 100vw) / 2);
       background: var(--brown);
       color: var(--cream);
       font-family: inherit;
@@ -72,192 +99,74 @@
       margin: 0 auto;
     }
 
-    /* ── Newsletter band ─────────────────────────────────────── */
-    #umoya-footer .umoya-ft-news {
-      border-bottom: 1px solid rgba(245,240,235,.14);
-      padding: clamp(44px, 6vw, 72px) 0;
-    }
-
-    #umoya-footer .umoya-ft-news-inner {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-      gap: clamp(28px, 5vw, 64px);
-      align-items: start;
-    }
-
-    #umoya-footer .umoya-ft-eye {
-      display: block;
-      margin-bottom: 12px;
-      color: var(--terra);
-      font-size: .72rem;
-      font-weight: 800;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-    }
-
-    #umoya-footer .umoya-ft-news h2 {
-      margin: 0 0 12px;
-      color: var(--white);
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 400;
-      line-height: 1.1;
-    }
-
-    #umoya-footer .umoya-ft-news p {
-      margin: 0;
-      max-width: 46ch;
-      color: rgba(245,240,235,.82);
-      font-size: clamp(.95rem, 1.1vw, 1.02rem);
-      line-height: 1.65;
-    }
-
-    /* Form */
-    #umoya-footer .umoya-ft-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    #umoya-footer .umoya-ft-field { display: grid; gap: 6px; }
-
-    #umoya-footer .umoya-ft-field label {
-      color: rgba(245,240,235,.78);
-      font-size: .68rem;
-      font-weight: 800;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    #umoya-footer input[type="email"],
-    #umoya-footer input[type="text"] {
-      width: 100%;
-      min-height: 48px;
-      padding: 12px 14px;
-      border: 1.5px solid rgba(245,240,235,.24);
-      border-radius: 4px;
-      background: rgba(245,240,235,.06);
-      color: var(--cream);
-      /* 16px floor stops iOS Safari auto-zooming on focus */
-      font-family: inherit;
-      font-size: max(16px, .92rem);
-      line-height: 1.45;
-      outline: none;
-      transition: border-color .22s var(--ease), background .22s var(--ease), box-shadow .22s var(--ease);
-    }
-
-    #umoya-footer input::placeholder { color: rgba(245,240,235,.42); }
-
-    #umoya-footer input[type="email"]:focus,
-    #umoya-footer input[type="text"]:focus {
-      border-color: var(--terra);
-      background: rgba(245,240,235,.1);
-      box-shadow: 0 0 0 3px rgba(217,126,83,.18);
-    }
-
-    /* Consent (POPIA) — never pre-ticked */
-    #umoya-footer .umoya-ft-consent {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-top: 14px;
-      color: rgba(245,240,235,.78);
-      font-size: .8rem;
-      line-height: 1.55;
-      cursor: pointer;
-    }
-
-    #umoya-footer .umoya-ft-consent input[type="checkbox"] {
-      flex-shrink: 0;
-      width: 18px;
-      height: 18px;
-      margin-top: 2px;
-      accent-color: var(--terra);
-      cursor: pointer;
-    }
-
-    #umoya-footer .umoya-ft-consent a {
-      color: var(--terra);
-      font-weight: 600;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-
-    #umoya-footer .umoya-ft-submit {
-      appearance: none;
-      -webkit-appearance: none;
-      width: 100%;
-      margin-top: 16px;
-      min-height: 52px;
-      padding: 15px 28px;
-      border: 2px solid var(--terra);
-      border-radius: 0;
-      background: var(--terra);
-      color: var(--white);
-      cursor: pointer;
-      font-family: inherit;
-      font-size: .76rem;
-      font-weight: 800;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      -webkit-tap-highlight-color: transparent;
-      transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
-    }
-
-    #umoya-footer .umoya-ft-submit:hover:not(:disabled) {
-      background: var(--terra-dk);
-      border-color: var(--terra-dk);
-      transform: translateY(-2px);
-    }
-
-    #umoya-footer .umoya-ft-submit:disabled {
-      background: var(--olive);
-      border-color: var(--olive);
-      cursor: default;
-      transform: none;
-    }
-
-    #umoya-footer .umoya-ft-status {
-      display: none;
-      margin: 10px 0 0;
-      font-size: .82rem;
-      line-height: 1.5;
-      color: rgba(245,240,235,.9);
-    }
-    #umoya-footer .umoya-ft-status.is-visible { display: block; }
-    #umoya-footer .umoya-ft-status.is-error { color: #F0A88A; }
-
-    /* ── Link columns ────────────────────────────────────────── */
+    /* ── Main grid ───────────────────────────────────────────── */
     #umoya-footer .umoya-ft-main {
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr));
-      gap: clamp(28px, 4vw, 52px);
-      padding: clamp(44px, 6vw, 68px) 0 clamp(32px, 4vw, 48px);
+      grid-template-columns:
+        minmax(0, 1.35fr) minmax(0, .85fr) minmax(0, .95fr)
+        minmax(0, .85fr)  minmax(0, 1.35fr);
+      gap: clamp(28px, 3.4vw, 46px);
+      padding: clamp(48px, 6vw, 76px) 0 clamp(34px, 4vw, 52px);
     }
 
+    /* ── Brand block ─────────────────────────────────────────── */
     #umoya-footer .umoya-ft-brand img {
-      width: clamp(128px, 13vw, 168px);
+      width: clamp(132px, 13vw, 172px);
       height: auto;
       display: block;
       margin-bottom: 18px;
     }
 
-    #umoya-footer .umoya-ft-brand p {
-      margin: 0;
-      max-width: 34ch;
-      color: rgba(245,240,235,.72);
+    #umoya-footer .umoya-ft-descriptor {
+      margin: 0 0 22px;
+      max-width: 32ch;
+      color: var(--dim);
+      font-size: .94rem;
+      line-height: 1.65;
+    }
+
+    #umoya-footer .umoya-ft-contact {
       font-size: .9rem;
       line-height: 1.7;
+      color: var(--dim);
     }
 
-    #umoya-footer .umoya-ft-col h3 {
-      margin: 0 0 16px;
-      color: var(--terra);
-      font-size: .7rem;
-      font-weight: 800;
-      letter-spacing: .2em;
-      text-transform: uppercase;
+    #umoya-footer .umoya-ft-contact a {
+      /* inline-block, not flex: the 44px target is met by padding while the
+         underline still hugs the text */
+      display: inline-block;
+      padding: 11px 0;
+      color: var(--white);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(217,126,83,.55);
+      transition: border-color .2s var(--ease), color .2s var(--ease);
+    }
+    #umoya-footer .umoya-ft-contact a:hover { color: var(--terra); border-bottom-color: var(--terra); }
+
+    #umoya-footer .umoya-ft-addr { margin: 8px 0 0; }
+
+    /* ── Column headings (shared by link columns + signup) ───── */
+    #umoya-footer .umoya-ft-h {
+      position: relative;
+      margin: 0 0 20px;
+      padding-bottom: 12px;
+      color: var(--white);
+      font-family: inherit;
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+    #umoya-footer .umoya-ft-h::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 28px;
+      height: 2px;
+      background: var(--terra);
     }
 
+    /* ── Link columns ────────────────────────────────────────── */
     #umoya-footer .umoya-ft-col ul {
       margin: 0;
       padding: 0;
@@ -271,14 +180,14 @@
     #umoya-footer .umoya-ft-col button {
       display: inline-flex;
       align-items: center;
-      min-height: 40px;
+      min-height: 42px;
       padding: 4px 0;
       border: 0;
       background: none;
-      color: rgba(245,240,235,.82);
+      color: var(--dim);
       cursor: pointer;
       font-family: inherit;
-      font-size: .92rem;
+      font-size: .93rem;
       line-height: 1.45;
       text-align: left;
       text-decoration: none;
@@ -294,159 +203,341 @@
       outline-offset: 3px;
     }
 
-    /* ── Legal bar ───────────────────────────────────────────── */
-    #umoya-footer .umoya-ft-legal {
-      border-top: 1px solid rgba(245,240,235,.14);
-      padding: 22px 0 30px;
+    /* ── Founder's Circle signup ─────────────────────────────── */
+    #umoya-footer .umoya-ft-sr {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    #umoya-footer input[type="email"],
+    #umoya-footer input[type="text"] {
+      width: 100%;
+      min-height: 48px;
+      margin-bottom: 12px;
+      padding: 12px 14px;
+      border: 1px solid rgba(245,240,235,.24);
+      border-radius: 4px;
+      background: var(--cream);
+      color: var(--brown);
+      /* 16px floor stops iOS Safari auto-zooming on focus */
+      font-family: inherit;
+      font-size: max(16px, .92rem);
+      line-height: 1.45;
+      outline: none;
+      transition: border-color .22s var(--ease), box-shadow .22s var(--ease);
+    }
+
+    #umoya-footer input::placeholder { color: rgba(75,46,43,.55); }
+
+    #umoya-footer input[type="email"]:focus,
+    #umoya-footer input[type="text"]:focus {
+      border-color: var(--terra);
+      box-shadow: 0 0 0 3px rgba(217,126,83,.28);
+    }
+
+    #umoya-footer .umoya-ft-submit {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      min-height: 48px;
+      padding: 13px 20px;
+      border: 2px solid var(--terra);
+      border-radius: 4px;
+      background: var(--terra);
+      color: var(--white);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: .92rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      -webkit-tap-highlight-color: transparent;
+      transition: background .25s var(--ease), border-color .25s var(--ease);
+    }
+
+    #umoya-footer .umoya-ft-submit:hover:not(:disabled) {
+      background: var(--terra-dk);
+      border-color: var(--terra-dk);
+    }
+
+    #umoya-footer .umoya-ft-submit:disabled {
+      background: var(--olive);
+      border-color: var(--olive);
+      cursor: default;
+    }
+
+    #umoya-footer .umoya-ft-fine {
+      margin: 12px 0 0;
+      color: rgba(245,240,235,.7);
+      font-size: .74rem;
+      font-style: italic;
+      line-height: 1.55;
+    }
+    #umoya-footer .umoya-ft-fine a { color: var(--cream); text-decoration: underline; text-underline-offset: 2px; }
+
+    #umoya-footer .umoya-ft-status {
+      display: none;
+      margin: 10px 0 0;
+      color: rgba(245,240,235,.9);
+      font-size: .82rem;
+      line-height: 1.5;
+    }
+    #umoya-footer .umoya-ft-status.is-visible { display: block; }
+    #umoya-footer .umoya-ft-status.is-error { color: #F0A88A; }
+
+    /* ── Bottom bar ──────────────────────────────────────────── */
+    #umoya-footer .umoya-ft-bottom {
+      background: var(--brown-dk);
+      border-top: 1px solid rgba(245,240,235,.10);
+    }
+
+    #umoya-footer .umoya-ft-bottom-inner {
+      width: min(1180px, 92vw);
+      margin: 0 auto;
+      padding: 20px 0 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 20px;
       flex-wrap: wrap;
-      color: rgba(245,240,235,.6);
-      font-size: .8rem;
+    }
+
+    #umoya-footer .umoya-ft-legalline {
+      margin: 0;
+      color: var(--dim);
+      font-size: .82rem;
       line-height: 1.5;
     }
 
-    #umoya-footer .umoya-ft-legal p { margin: 0; }
+    #umoya-footer .umoya-ft-tag {
+      margin: 0;
+      color: var(--terra);
+      font-size: .95rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    #umoya-footer .umoya-ft-social {
+      display: flex;
+      gap: 10px;
+    }
+
+    #umoya-footer .umoya-ft-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(245,240,235,.3);
+      border-radius: 50%;
+      color: var(--cream);
+      text-decoration: none;
+      transition: background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
+    }
+    #umoya-footer .umoya-ft-social a:hover {
+      background: var(--terra);
+      border-color: var(--terra);
+      color: var(--white);
+    }
+    #umoya-footer .umoya-ft-social a:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
+    #umoya-footer .umoya-ft-social svg { width: 17px; height: 17px; fill: currentColor; }
 
     /* ── Tablet ──────────────────────────────────────────────── */
     @media (max-width: 900px) {
-      #umoya-footer .umoya-ft-news-inner { grid-template-columns: 1fr; gap: 26px; }
-      #umoya-footer .umoya-ft-news p { max-width: none; }
-      #umoya-footer .umoya-ft-main { grid-template-columns: 1fr 1fr; }
+      #umoya-footer .umoya-ft-main {
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(26px, 5vw, 38px);
+      }
+      /* Brand and signup are the two wide blocks — give each a full row */
       #umoya-footer .umoya-ft-brand { grid-column: 1 / -1; }
-      #umoya-footer .umoya-ft-brand p { max-width: none; }
+      #umoya-footer .umoya-ft-signup { grid-column: 1 / -1; max-width: 440px; }
+      #umoya-footer .umoya-ft-descriptor { max-width: none; }
     }
 
     /* ── Mobile ──────────────────────────────────────────────── */
     @media (max-width: 560px) {
-      #umoya-footer .umoya-ft-row { grid-template-columns: 1fr; }
       #umoya-footer .umoya-ft-main { grid-template-columns: 1fr; gap: 30px; }
-      #umoya-footer .umoya-ft-legal { justify-content: flex-start; }
+      #umoya-footer .umoya-ft-signup { max-width: none; }
+      #umoya-footer .umoya-ft-bottom-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 
   <div class="umoya-ft-c">
-
-    <!-- ══════════ NEWSLETTER ══════════ -->
-    <section class="umoya-ft-news" aria-labelledby="umoya-ft-news-title">
-      <div class="umoya-ft-news-inner">
-        <div>
-          <span class="umoya-ft-eye">Stay Close to the Journey</span>
-          <h2 id="umoya-ft-news-title">Journeys, Stories &amp; Early Access</h2>
-          <p>Occasional letters from Umoya — new journeys, the people behind them, and first access to Founder's Circle releases. No noise, and you can leave whenever you wish.</p>
-        </div>
-
-        <div>
-          <!-- Hidden target keeps a no-JS POST from navigating away -->
-          <iframe name="umoyaFooterFrame" title="Newsletter submission target" aria-hidden="true" style="display:none;width:0;height:0;border:0;"></iframe>
-
-          <form
-            data-hs-do-not-collect="true"
-            id="umoyaFooterForm"
-            action="/wp-json/umoya/v1/submissions"
-            method="post"
-            target="umoyaFooterFrame"
-            novalidate
-            aria-label="Newsletter signup"
-            data-hubspot-portal-id="246097317"
-            data-hubspot-form-id="40d535ad-fc91-4831-8231-eddc05208624"
-            data-umoya-form-source="footer_newsletter"
-            data-wordpress-backup-endpoint="/wp-json/umoya/v1/submissions"
-            data-hubspot-consent-text="I agree to receive Umoya Afrika Tours journeys, stories and early-access news by email. I understand I can unsubscribe at any time, and that my details are processed as set out in the Privacy Policy."
-          >
-            <input type="hidden" name="source" value="footer_newsletter">
-            <input type="hidden" name="hubspotPortalId" value="246097317">
-            <input type="hidden" name="hubspotFormId" value="40d535ad-fc91-4831-8231-eddc05208624">
-            <input type="hidden" name="consentText" value="I agree to receive Umoya Afrika Tours journeys, stories and early-access news by email. I understand I can unsubscribe at any time, and that my details are processed as set out in the Privacy Policy.">
-            <input type="hidden" name="hutk" value="">
-            <input type="hidden" name="pageUri" value="">
-            <input type="hidden" name="pageName" value="">
-
-            <div class="umoya-ft-row">
-              <div class="umoya-ft-field">
-                <label for="umoyaFtName">First name</label>
-                <input id="umoyaFtName" name="FNAME" type="text" placeholder="First name" autocomplete="given-name">
-              </div>
-              <div class="umoya-ft-field">
-                <label for="umoyaFtEmail">Email *</label>
-                <input id="umoyaFtEmail" name="EMAIL" type="email" placeholder="your@email.com" required autocomplete="email">
-              </div>
-            </div>
-
-            <label class="umoya-ft-consent" for="umoyaFtConsent">
-              <input type="checkbox" id="umoyaFtConsent" name="MARKETING_CONSENT" value="yes" aria-required="true">
-              <span>I agree to receive Umoya Afrika Tours journeys, stories and early-access news by email. I understand I can unsubscribe at any time, and that my details are processed as set out in the <a href="https://umoyaafrikatours.co.za/privacy/" target="_blank" rel="noopener">Privacy Policy</a>.</span>
-            </label>
-
-            <button type="submit" class="umoya-ft-submit" id="umoyaFtSubmit">Subscribe</button>
-            <p class="umoya-ft-status" role="status" aria-live="polite"></p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════ LINK COLUMNS ══════════ -->
     <div class="umoya-ft-main">
+
+      <!-- ══════════ BRAND ══════════ -->
       <div class="umoya-ft-brand">
         <img
           src="https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Property-1Umoya-Afrika-Logo_v3.svg"
           alt="Umoya Afrika Tours"
+          width="1050"
+          height="412"
           loading="lazy"
         >
-        <p>Luxury heritage travel across South Africa, shaped for the global African diaspora — journeys that are historically grounded, diaspora-centered, and intentionally small.</p>
+        <p class="umoya-ft-descriptor">Premium culturally immersive journeys across South Africa.</p>
+        <div class="umoya-ft-contact">
+          <a href="mailto:info@umoyaafrikatours.co.za">info@umoyaafrikatours.co.za</a>
+          <address class="umoya-ft-addr" style="font-style:normal;">
+            West Tower, 2nd Floor,<br>
+            Nelson Mandela Square,<br>
+            Maude Street, Sandown,<br>
+            Johannesburg, 2146
+          </address>
+        </div>
       </div>
 
-      <nav class="umoya-ft-col" aria-label="Explore">
-        <h3>Explore</h3>
+      <!-- ══════════ JOURNEYS ══════════ -->
+      <nav class="umoya-ft-col" aria-label="Journeys">
+        <h3 class="umoya-ft-h">Journeys</h3>
         <ul>
           <li><a href="https://umoyaafrikatours.co.za/signature-journey/">The Signature Journey</a></li>
           <li><a href="https://umoyaafrikatours.co.za/private-and-tailormade/">Private &amp; Tailormade</a></li>
           <li><a href="https://umoyaafrikatours.co.za/for-groups/">For Groups</a></li>
           <li><a href="https://umoyaafrikatours.co.za/about-us/">About Us</a></li>
-          <li><a href="https://umoyaafrikatours.co.za/founders-circle/">Founder's Circle</a></li>
         </ul>
       </nav>
 
-      <nav class="umoya-ft-col" aria-label="Plan your journey">
-        <h3>Plan Your Journey</h3>
+      <!-- ══════════ SUPPORT ══════════ -->
+      <nav class="umoya-ft-col" aria-label="Support">
+        <h3 class="umoya-ft-h">Support</h3>
         <ul>
-          <li><a href="https://umoyaafrikatours.co.za/travel-essentials">Travel Essentials</a></li>
-          <li><a href="https://umoyaafrikatours.co.za/travel-essentials#travel-protection">Travel Insurance Guidance</a></li>
-          <li><a href="https://umoyaafrikatours.co.za/visa-and-entry">Visa &amp; Entry Information</a></li>
-          <li><a href="https://umoyaafrikatours.co.za/travel-brochure.pdf">Travel Brochure</a></li>
-          <li><a href="https://umoyaafrikatours.co.za/contact">Contact</a></li>
+          <!-- ⚠ /travel-essentials/ does not exist yet — copy is in
+               "Revised footer docs/Umoya_Travel_Essentials_Page_Copy.txt" -->
+          <!-- ⚠ /travel-essentials/ not published yet - the ready-to-paste
+               page is shared/page-travel-essentials.html -->
+          <li><a href="https://umoyaafrikatours.co.za/travel-essentials/">Travel Essentials</a></li>
+          <!-- ⚠ PDF not uploaded yet. Opens in a new tab per the routing doc. -->
+          <li><a href="https://umoyaafrikatours.co.za/travel-brochure.pdf" target="_blank" rel="noopener">Travel Brochure</a></li>
+          <li><a href="https://umoyaafrikatours.co.za/contact/">Contact</a></li>
         </ul>
       </nav>
 
-      <nav class="umoya-ft-col" aria-label="Company and legal">
-        <h3>Company</h3>
+      <!-- ══════════ LEGAL ══════════ -->
+      <nav class="umoya-ft-col" aria-label="Legal">
+        <h3 class="umoya-ft-h">Legal</h3>
         <ul>
-          <li><a href="https://umoyaafrikatours.co.za/press">Press &amp; Media</a></li>
-          <li><a href="https://umoyaafrikatours.co.za/booking-terms">Booking Terms &amp; Conditions</a></li>
-          <li><a href="https://umoyaafrikatours.co.za/privacy">Privacy Policy</a></li>
-          <li><a href="https://umoyaafrikatours.co.za/paia-manual.pdf">PAIA Manual</a></li>
-          <li><button type="button" data-umoya-cookie-prefs>Cookie Preferences</button></li>
+          <li><a href="https://umoyaafrikatours.co.za/terms-and-conditions/">Terms &amp; Conditions</a></li>
+          <li><a href="https://umoyaafrikatours.co.za/privacy/">Privacy Policy</a></li>
           <!--
-            EMAIL OPT-OUT — intentionally not rendered yet.
-            The FOOTER URL MAP lists it as
-            [INSERT_HUBSPOT_SUBSCRIPTION_PREFERENCES_URL], which is still
-            unresolved. Shipping a dead link is worse than omitting it.
-            To enable: paste the real HubSpot subscription-preferences URL
-            and uncomment.
-          <li><a href="REPLACE_WITH_HUBSPOT_SUBSCRIPTION_PREFERENCES_URL">Email Opt-out</a></li>
+            CookieYes binds its own click handler to .cky-banner-element and
+            re-opens the preference centre, so this needs no href. A <button>
+            rather than <a href="#"> so it never jumps the page to the top if
+            CookieYes has not loaded.
           -->
+          <li><button type="button" class="cky-banner-element" data-umoya-cookie-prefs>Cookie Settings</button></li>
+          <!-- ⚠ /email-preferences/ does not exist yet — see
+               shared/page-email-preferences.html for the ready-to-paste page. -->
+          <li><a href="https://umoyaafrikatours.co.za/email-preferences/">Email Opt-out</a></li>
+          <!--
+            UNDERSCORE, not a hyphen. The final manual is already live at
+            /paia_manual.pdf and is byte-identical to
+            "Revised footer docs/Umoya_PAIA_Manual (final).pdf".
+            /paia-manual.pdf 404s - a hyphenated entry does appear in the
+            Mountain Duck listing but the server does not serve it and it
+            cannot be read, so treat it as a ghost. Verified 2026-09-01.
+          -->
+          <li><a href="https://umoyaafrikatours.co.za/paia_manual.pdf" target="_blank" rel="noopener">PAIA Manual</a></li>
         </ul>
       </nav>
-    </div>
 
-    <!-- ══════════ LEGAL BAR ══════════ -->
-    <div class="umoya-ft-legal">
-      <p>&copy; <span data-umoya-year>2026</span> Umoya Afrika Tours. All rights reserved.</p>
-      <p>Crafted for the journey home.</p>
-    </div>
+      <!-- ══════════ FOUNDER'S CIRCLE SIGNUP ══════════ -->
+      <div class="umoya-ft-signup">
+        <h3 class="umoya-ft-h">Join the Founder&rsquo;s Circle</h3>
 
+        <!-- Hidden target keeps a no-JS POST from navigating away -->
+        <iframe name="umoyaFooterFrame" title="Newsletter submission target" aria-hidden="true" style="display:none;width:0;height:0;border:0;"></iframe>
+
+        <form
+          data-hs-do-not-collect="true"
+          id="umoyaFooterForm"
+          action="/wp-json/umoya/v1/submissions"
+          method="post"
+          target="umoyaFooterFrame"
+          novalidate
+          aria-label="Join the Founder's Circle"
+          data-hubspot-portal-id="246097317"
+          data-hubspot-form-id="40d535ad-fc91-4831-8231-eddc05208624"
+          data-umoya-form-source="footer_newsletter"
+          data-wordpress-backup-endpoint="/wp-json/umoya/v1/submissions"
+          data-hubspot-consent-text="By subscribing you consent to receive marketing communications from Umoya Afrika Tours (Pty) Ltd. We never share your email, and you may unsubscribe at any time. See our Privacy Policy."
+        >
+          <input type="hidden" name="source" value="footer_newsletter">
+          <input type="hidden" name="hubspotPortalId" value="246097317">
+          <input type="hidden" name="hubspotFormId" value="40d535ad-fc91-4831-8231-eddc05208624">
+          <input type="hidden" name="consentText" value="By subscribing you consent to receive marketing communications from Umoya Afrika Tours (Pty) Ltd. We never share your email, and you may unsubscribe at any time. See our Privacy Policy.">
+          <input type="hidden" name="hutk" value="">
+          <input type="hidden" name="pageUri" value="">
+          <input type="hidden" name="pageName" value="">
+
+          <label class="umoya-ft-sr" for="umoyaFtName">Name</label>
+          <input id="umoyaFtName" name="FNAME" type="text" placeholder="Name" autocomplete="given-name">
+
+          <label class="umoya-ft-sr" for="umoyaFtEmail">Email address</label>
+          <input id="umoyaFtEmail" name="EMAIL" type="email" placeholder="Email address" required autocomplete="email">
+
+          <button type="submit" class="umoya-ft-submit" id="umoyaFtSubmit">Join</button>
+          <p class="umoya-ft-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <!--
+          VERBATIM from the mockup. The routing doc: "The consent fine print
+          under the form must ship exactly as written in the mockup." The same
+          wording is sent as consentText with every submission, so the POPIA
+          consent register records exactly what was agreed to.
+        -->
+        <p class="umoya-ft-fine">By subscribing you consent to receive marketing communications from
+          Umoya Afrika Tours (Pty) Ltd. We never share your email, and you may unsubscribe at any time.
+          See our <a href="https://umoyaafrikatours.co.za/privacy/" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════ BOTTOM BAR ══════════ -->
+  <div class="umoya-ft-bottom">
+    <div class="umoya-ft-bottom-inner">
+      <p class="umoya-ft-legalline">&copy; <span data-umoya-year>2026</span> Umoya Afrika Tours (Pty) Ltd &middot; Reg. 2025/818751/07</p>
+      <p class="umoya-ft-tag">Breathe South Africa Differently</p>
+      <div class="umoya-ft-social">
+        <!-- Only accounts confirmed to exist on the live site are linked.
+             The mockup also shows YouTube; no channel URL has been supplied,
+             so it stays commented out rather than shipping as a dead link.
+
+             INSTAGRAM GLYPH: not the mockup's. The mockup's path draws the
+             lens as a same-direction subpath, so under the default nonzero
+             fill rule it never punches through — it rendered as a solid
+             rounded square with a filled dot, not a camera. Replaced with the
+             official mark (Simple Icons), whose counters are wound to cut out
+             correctly. Still a single filled path using currentColor, so it
+             needs no CSS change and matches the weight of the other three. -->
+        <a href="https://www.instagram.com/umoyaafrikatours/" target="_blank" rel="noopener" aria-label="Umoya Afrika Tours on Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/umoyaafrikatours" target="_blank" rel="noopener" aria-label="Umoya Afrika Tours on Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.7-1.6h1.6V3.2c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.6H7.6V13h2.8v8h3.1z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@umoyaafrikatours" target="_blank" rel="noopener" aria-label="Umoya Afrika Tours on TikTok">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.8 5.6c-.9-.6-1.5-1.6-1.7-2.6h-3v12.3a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.6V9.4c1 .7 2.3 1.2 3.6 1.2V7.5c-.7 0-1.4-.2-2-.6-.4-.2-.7-.5-1-.8z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/umoyaafrikatours/" target="_blank" rel="noopener" aria-label="Umoya Afrika Tours on LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm6 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9V9z"/></svg>
+        </a>
+        <!-- YouTube — enable once the channel URL is confirmed:
+        <a href="REPLACE_WITH_YOUTUBE_CHANNEL_URL" target="_blank" rel="noopener" aria-label="Umoya Afrika Tours on YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg>
+        </a>
+        -->
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -458,35 +549,58 @@
   if (!root || root.getAttribute('data-ready') === 'true') return;
   root.setAttribute('data-ready', 'true');
 
+  /* ── Full-bleed width, minus the scrollbar ──────────────────────
+   * See the note on --umoya-ft-vw in the CSS above. Throttled through rAF
+   * with a setTimeout fallback, because rAF never fires in non-compositing
+   * contexts and would otherwise latch the throttle permanently. */
+  var vwTick = 0;
+  function syncFullBleedWidth(){
+    document.documentElement.style.setProperty('--umoya-ft-vw', document.documentElement.clientWidth + 'px');
+  }
+  function scheduleWidthSync(){
+    if (vwTick) return;
+    if (window.requestAnimationFrame) {
+      vwTick = window.requestAnimationFrame(function(){ vwTick = 0; syncFullBleedWidth(); });
+    } else {
+      vwTick = window.setTimeout(function(){ vwTick = 0; syncFullBleedWidth(); }, 16);
+    }
+  }
+  syncFullBleedWidth();
+  window.addEventListener('resize', scheduleWidthSync);
+  window.addEventListener('orientationchange', scheduleWidthSync);
+  /* Late-loading images/fonts can introduce or remove the scrollbar */
+  window.setTimeout(syncFullBleedWidth, 800);
+
   /* ── Current year ───────────────────────────────────────────── */
   var yearEl = root.querySelector('[data-umoya-year]');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
   /* ── Cookie preferences ─────────────────────────────────────────
-   * Different cookie tools expose different globals, so try the ones
-   * commonly paired with this stack, then fall back to the policy page
-   * rather than leaving a dead button. Re-point this once the final
-   * cookie consent tool is confirmed. */
+   * CookieYes owns this button via the .cky-banner-element class and
+   * binds its own click handler. The only job here is to stop the
+   * button being inert if CookieYes has not loaded — checked AT CLICK
+   * TIME, so when CookieYes is present this handler does nothing and
+   * lets the real preference centre open. */
   var cookieBtn = root.querySelector('[data-umoya-cookie-prefs]');
   if (cookieBtn) {
     cookieBtn.addEventListener('click', function(){
-      try {
-        if (window.CookieConsent && typeof window.CookieConsent.showPreferences === 'function') { window.CookieConsent.showPreferences(); return; }
-        if (window.cookieconsent && typeof window.cookieconsent.openPreferencesCenter === 'function') { window.cookieconsent.openPreferencesCenter(); return; }
-        if (typeof window.cookieadmin_show_settings === 'function') { window.cookieadmin_show_settings(); return; }
-        if (window.CLI && typeof window.CLI.openSettings === 'function') { window.CLI.openSettings(); return; }
-      } catch (ignore) {}
-      window.location.href = 'https://umoyaafrikatours.co.za/privacy';
+      var cookieYesPresent = !!(
+        window.CookieYes ||
+        window.cookieyes ||
+        document.querySelector('.cky-consent-container, .cky-modal, #cookieyes')
+      );
+      if (cookieYesPresent) return;
+      window.location.href = 'https://umoyaafrikatours.co.za/privacy/';
     });
   }
 
-  /* ── Newsletter form ────────────────────────────────────────── */
+  /* ── Founder's Circle signup ────────────────────────────────── */
   var form = document.getElementById('umoyaFooterForm');
   if (!form) return;
 
   var btn = document.getElementById('umoyaFtSubmit');
   var statusEl = form.querySelector('.umoya-ft-status');
-  var originalText = btn ? btn.textContent : 'Subscribe';
+  var originalText = btn ? btn.textContent : 'Join';
   var submitting = false;
 
   /* Shared with the other Umoya forms — all flush to the same endpoint */
@@ -575,9 +689,10 @@
     var raw = {};
     Object.keys(hubspotFieldMap).forEach(function(n){ raw[n] = getFieldValue(n); });
 
-    var consentBox = form.querySelector('#umoyaFtConsent');
-    raw.marketing_opt_in = consentBox && consentBox.checked ? 'yes' : 'no';
-    raw.consent_to_process = raw.marketing_opt_in;
+    /* Submitting the form IS the affirmative act the fine print describes,
+       so consent is recorded as given — alongside the exact wording. */
+    raw.marketing_opt_in = 'yes';
+    raw.consent_to_process = 'yes';
 
     return {
       submissionId: createSubmissionId(),
@@ -677,7 +792,7 @@
   function showSuccess(){
     if (btn) {
       btn.disabled = true;
-      btn.textContent = 'Subscribed — Welcome';
+      btn.textContent = 'Welcome';
     }
     showStatus('Thank you. Look out for our next letter.', false);
   }
@@ -699,29 +814,11 @@
     syncTrackingFields();
 
     var emailField = form.querySelector('[name="EMAIL"]');
-    var consentBox = form.querySelector('#umoyaFtConsent');
-    var valid = true;
-
     if (!emailField.value.trim() || !isValidEmail(emailField.value)) {
-      valid = false;
       emailField.style.borderColor = '#D97E53';
-      emailField.style.boxShadow = '0 0 0 3px rgba(217,126,83,.2)';
-    }
-
-    /* POPIA — marketing consent is the whole point of this form */
-    var consentMissing = consentBox && !consentBox.checked;
-    if (consentMissing) {
-      valid = false;
-      consentBox.style.outline = '2px solid #D97E53';
-      consentBox.style.outlineOffset = '3px';
-    }
-
-    if (!valid) {
-      showStatus(consentMissing && emailField.value.trim() && isValidEmail(emailField.value)
-        ? 'Please tick the consent box to subscribe.'
-        : 'Please enter a valid email address.', true);
-      if (!emailField.value.trim() || !isValidEmail(emailField.value)) emailField.focus();
-      else if (consentMissing) consentBox.focus();
+      emailField.style.boxShadow = '0 0 0 3px rgba(217,126,83,.28)';
+      showStatus('Please enter a valid email address.', true);
+      emailField.focus();
       return;
     }
 
@@ -751,15 +848,6 @@
       if (statusEl) statusEl.classList.remove('is-visible', 'is-error');
     });
   });
-
-  var consentEl = form.querySelector('#umoyaFtConsent');
-  if (consentEl) {
-    consentEl.addEventListener('change', function(){
-      consentEl.style.outline = '';
-      consentEl.style.outlineOffset = '';
-      if (statusEl) statusEl.classList.remove('is-visible', 'is-error');
-    });
-  }
 }());
 </script>
 
@@ -767,29 +855,78 @@
 =================================================================
   _NOTES — deployment & open points
 =================================================================
-  1. REPLACES the default Elementor Form newsletter widget. Once
-     this is live, delete that widget, or the HubSpot WordPress
-     plugin will keep auto-capturing it as
+  1. PLACE LAST ON EVERY PAGE, Founder's Circle included (the
+     routing doc calls that page out by name). Then DELETE the old
+     Elementor Form newsletter widget — otherwise the HubSpot
+     WordPress plugin keeps auto-capturing it as
      ".elementor-form … converted (August 11, 2026)".
 
-  2. SLUG CONFLICTS. The Explore column follows the live nav
-     (/signature-journey/, /private-and-tailormade/, /for-groups/,
-     /about-us/, /founders-circle/). The older FOOTER URL MAP doc
-     instead lists /the-journey, /why-umoya and /our-story. Confirm
-     which is correct and align both this file and the doc.
+  2. SLUGS — checked live 2026-08-29:
+       ✅ /signature-journey/          200 (redirects to
+                                       /signature-journey-unpublished/)
+       ✅ /private-and-tailormade/     200
+       ✅ /for-groups/                 200
+       ✅ /about-us/                   200
+       ✅ /contact/                    200 — the real page is live; the
+                                       Tevily demo copy is gone, and the
+                                       duplicate /contact-us/ now 404s.
+       ✅ /terms-and-conditions/       200 — this REPLACES the
+                                       /booking-terms path in the old
+                                       FOOTER URL MAP doc, which 404s.
+       ⚠ /privacy/                    200, but still the v1.0 page with
+                                       "Effective date: [INSERT DATE]".
+                                       Replace with the v1.1 widget in
+                                       shared/page-privacy-policy.html
+       ⏳ /travel-essentials/          404 — page BUILT, not yet published:
+                                       shared/page-travel-essentials.html
+       ⏳ /email-preferences/          404 — page BUILT, not yet published:
+                                       shared/page-email-preferences.html
+       ❌ /travel-brochure.pdf         404 — Ashley to supply
+       ✅ /paia_manual.pdf             200 — live, byte-identical to the
+                                       final manual. NOTE the underscore;
+                                       /paia-manual.pdf 404s.
 
-  3. UNVERIFIED SLUGS in the other two columns, taken from the
-     FOOTER URL MAP and never confirmed against live WordPress:
-     /travel-essentials · /visa-and-entry · /contact · /press ·
-     /booking-terms · /privacy · /travel-brochure.pdf ·
-     /paia-manual.pdf
-     Check each resolves before launch.
+     Not linked from this footer but part of the same set:
+       ⚠ /cookie-policy/               200, but still v1.0 with
+                                       "[INSERT DATE]". Replace with
+                                       shared/page-cookie-policy.html.
+                                       This is the URL to set as the
+                                       cookie policy link in CookieYes.
+     Re-checked 2026-09-01.
 
-  4. EMAIL OPT-OUT is commented out until the real HubSpot
-     subscription-preferences URL is known.
+  3. COOKIE SETTINGS uses CookieYes's own `.cky-banner-element`
+     trigger, so it needs no URL. The routing doc also asks for two
+     CookieYes changes that are NOT code:
+       • replace the current CookieYes script with the one for the
+         new Umoya account (emailed separately), so consent records
+         live under Umoya's own account;
+       • publish the Cookie Policy from the Drive and set it as the
+         cookie policy link inside the CookieYes banner config.
 
-  5. COOKIE PREFERENCES tries several common cookie-tool globals
-     and falls back to /privacy. Re-point it once the final cookie
-     consent tool is confirmed.
+  4. CONSENT MODEL CHANGED. The previous version of this footer used
+     a required, never-pre-ticked marketing checkbox. The mockup and
+     routing doc instead specify statement-style consent ("By
+     subscribing you consent to…") with no checkbox, and require that
+     wording to ship exactly. That is what is implemented. Submitting
+     the form is the affirmative act; the exact wording is stored with
+     every submission. If legal counsel prefers the explicit tick,
+     re-adding the checkbox is a small change — but it will then differ
+     from the signed-off mockup.
+
+  5. HUBSPOT FORM NAME. The signup still posts to the form named
+     "Footer Newsletter Signup" (GUID unchanged). The routing doc says
+     it should feed "the Founder's Circle list in HubSpot" — that is a
+     HubSpot-side active list / workflow fed by this form, not a code
+     change. Optionally rename the form in HubSpot to match the new
+     footer label; the GUID, and therefore this file, stays the same.
+
+  6. SOCIAL. Instagram, Facebook, TikTok and LinkedIn are all
+     confirmed live accounts linked from the site. The mockup also
+     shows YouTube; no channel URL exists, so it is commented out
+     rather than shipped as a dead link.
+
+  7. ADDRESS. The mockup omits "Maude Street"; the live site footer
+     includes it. The fuller live version is used here and in
+     contact/section-03-direct.html.
 =================================================================
 -->

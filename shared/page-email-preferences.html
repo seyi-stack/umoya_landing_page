@@ -1,0 +1,127 @@
+<!--
+=================================================================
+  UMOYA — EMAIL OPT-OUT  (Elementor HTML widget)
+=================================================================
+  The destination for the footer's "Email Opt-out" link. Publish at
+  /email-preferences/ — that is the URL hard-coded in
+  shared/section-99-footer.html.
+
+  Specified in
+  "Mockups (footer, contact)/Umoya_Footer_Routing_and_Implementation.docx":
+
+    "Point Email Opt-out at a short page with two elements: one line
+     of copy … and a link to the HubSpot subscription preferences
+     page for our portal, which I will send you once the HubSpot
+     email domain setup is finalised. Until the HubSpot preference
+     URL exists, ship the page with the copy and the mailto link
+     only."
+
+  So the HubSpot preferences link is COMMENTED OUT below, ready to
+  enable in one edit. The line of copy is reproduced verbatim.
+
+  ELEMENTOR: nav first, this widget, footer last.
+  BRAND: font-family: inherit; palette tokens only.
+=================================================================
+-->
+<style>
+  #umoya-email-prefs {
+    --cream: #F5F0EB;
+    --brown: #4B2E2B;
+    --terra: #D97E53;
+    --muted: rgba(75,46,43,.72);
+    --line:  rgba(75,46,43,.16);
+
+    font-family: inherit;
+    background: var(--cream);
+    color: var(--brown);
+    padding: clamp(52px, 7vw, 96px) 0 clamp(60px, 8vw, 110px);
+  }
+
+  #umoya-email-prefs *,
+  #umoya-email-prefs *::before,
+  #umoya-email-prefs *::after { box-sizing: border-box; }
+
+  .ep-c {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 3.4vw, 48px);
+  }
+
+  .ep-eye {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.1rem;
+  }
+
+  .ep-ttl {
+    font-family: inherit;
+    font-size: clamp(1.9rem, 4.4vw, 2.9rem);
+    font-weight: 400;
+    line-height: 1.08;
+    color: var(--brown);
+    margin: 0 0 clamp(18px, 2.4vw, 26px);
+  }
+
+  .ep-rule { width: 64px; height: 3px; background: var(--terra); border: 0; margin: 0 0 clamp(20px, 2.6vw, 28px); }
+
+  .ep-body {
+    font-size: clamp(1rem, 1.35vw, 1.08rem);
+    line-height: 1.8;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .ep-body a {
+    color: var(--terra);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .ep-body a:hover { color: var(--brown); }
+
+  .ep-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    margin-top: clamp(24px, 3vw, 34px);
+    padding: 15px 30px;
+    background: var(--terra);
+    border: 2px solid var(--terra);
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background .25s ease, border-color .25s ease;
+  }
+  .ep-cta:hover { background: #C06840; border-color: #C06840; }
+
+  @media (max-width: 768px) {
+    #umoya-email-prefs { padding: 42px 0 56px; }
+  }
+</style>
+
+<section id="umoya-email-prefs" aria-labelledby="ep-title">
+  <div class="ep-c">
+    <span class="ep-eye">Email Preferences</span>
+    <h1 class="ep-ttl" id="ep-title">Email Opt-out</h1>
+    <hr class="ep-rule">
+
+    <!-- Copy verbatim from the routing doc. -->
+    <p class="ep-body">To stop receiving marketing email from Umoya, use the unsubscribe link in any of our emails, or write to <a href="mailto:info@umoyaafrikatours.co.za?subject=Unsubscribe">info@umoyaafrikatours.co.za</a> with the subject <strong>Unsubscribe</strong> and we will remove you within 7 days.</p>
+
+    <!--
+      ENABLE ONCE THE HUBSPOT SUBSCRIPTION-PREFERENCES URL IS KNOWN.
+      It arrives after the HubSpot email domain setup is finalised.
+      Paste it into the href and delete these comment markers.
+
+    <a class="ep-cta" href="REPLACE_WITH_HUBSPOT_SUBSCRIPTION_PREFERENCES_URL" target="_blank" rel="noopener">Manage Email Preferences</a>
+    -->
+  </div>
+</section>
