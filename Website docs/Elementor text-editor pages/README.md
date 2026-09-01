@@ -18,7 +18,12 @@ Elementor's **Text Editor** widget, not an HTML widget.
 2. In the widget panel, switch from **Visual** to **Code**.
 3. Select everything already in the box and delete it.
 4. Paste the entire contents of the file.
-5. Switch back to **Visual** to eyeball it, then **Update**.
+5. Go to the widget's **Advanced** tab → **CSS Classes** → type `umoya-doc`.
+6. Switch back to **Visual** to eyeball it, then **Update**.
+
+Step 5 is what applies `document-page-styling.css`. Without it the page
+falls back to the theme's defaults, which are wrong for long-form reading —
+see below.
 
 **Use the Code tab, not Visual.** Pasting HTML into the Visual tab makes
 TinyMCE escape the tags, and you end up with `<h2>` printed on the page as
@@ -37,9 +42,10 @@ Only the tags a Text Editor handles cleanly:
 
 `h1` `h2` `h3` `p` `ul` `li` `strong` `em` `a` `br` `code`
 
-No `<style>`, no `<div>`, no classes, no ids, no inline styles. **All
-styling comes from the theme**, which is why these look consistent with the
-rest of the site without carrying any CSS of their own.
+No `<style>`, no `<div>`, no ids, no inline styles. Three paragraphs carry a
+class so they can be styled distinctly — `doc-standfirst` (the line under the
+title on Travel Essentials), `doc-meta` (effective date / version) and
+`doc-stamp` ("Verified August 2026"). Nothing else has one.
 
 Internal links are root-relative (`/privacy/`, `/cookie-policy/`,
 `/terms-and-conditions/`). External links carry `target="_blank"
@@ -51,20 +57,50 @@ styled versions in `shared/`:
 - **The Privacy Policy's contents list.** It relies on `id` anchors on each
   heading, and Elementor's editor is not reliable about preserving those.
   A contents list whose links do nothing is worse than none.
-- **The Cookie Policy's "Cookie Settings" button.** It needs the
-  `cky-banner-element` class to work, and classes do not survive here. The
-  footer's Cookie Settings button still works and is what section 4 of that
-  policy refers you to.
+- **The Cookie Policy's "Cookie Settings" button.** Not because of the
+  class — classes survive fine — but because TinyMCE is unreliable about
+  `<button>` elements and may strip or mangle one. The footer's Cookie
+  Settings button still works and is what section 4 of that policy points
+  you to, so nothing is lost.
 - **Decorative eyebrow labels** ("Legal", "Before You Travel") and rules.
 
 ---
+
+## Styling: `document-page-styling.css`
+
+Install once, in **Elementor → Site Settings → Custom CSS**, then add the
+`umoya-doc` class to each of the four Text Editor widgets. One stylesheet
+covers all four pages; without the class it does nothing, so it is safe to
+install before every page is tagged.
+
+The theme's defaults make these pages hard to read, and the reason is not
+mainly the spacing:
+
+| | Theme default | Fixed |
+|---|---|---|
+| **Measure** | ~110 characters a line | ~68 |
+| Line-height | ~1.9 | 1.7 |
+| Space above vs below a heading | roughly equal | ~3:1 |
+| h2 vs h3 | nearly the same size | clearly distinct |
+
+**Measure is the big one.** Comfortable reading is 60–75 characters; past
+about 90 the eye starts losing its place on the return sweep. That is what
+made the page feel badly spaced even though the individual numbers were not
+extreme — capping the column fixes more than any margin change.
+
+The heading spacing was a proximity problem: with equal space above and
+below, a heading floats between two blocks instead of introducing the one
+underneath it. And h2/h3 were rendering at almost the same size, so
+"Visas and entry" and "South Africa" read as the same level.
+
+Fonts are untouched — everything still inherits the theme's typefaces.
 
 ## Two versions exist — pick deliberately
 
 | | These files | `shared/page-*.html` |
 |---|---|---|
 | Widget | **Text Editor** | HTML widget |
-| Styling | inherited from the theme | brand-styled, self-contained CSS |
+| Styling | `document-page-styling.css` + theme | brand-styled, self-contained CSS |
 | Extras | — | contents list, CookieYes button, brand cards |
 
 Both carry **identical copy**. Use whichever matches how the page is built.

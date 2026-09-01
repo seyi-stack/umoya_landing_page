@@ -1,0 +1,220 @@
+/* ===================================================================
+   UMOYA — DOCUMENT PAGE STYLING
+   For the four long-form Text Editor pages:
+   Travel Essentials · Privacy Policy · Cookie Policy · Terms & Conditions
+   ===================================================================
+
+   HOW TO INSTALL (once, for all four pages)
+
+   1. Elementor → Site Settings → Custom CSS. Paste this whole file.
+   2. On each of the four pages, select the Text Editor widget →
+      Advanced tab → CSS Classes → type:  umoya-doc
+   3. Update. Purge LiteSpeed + Cloudflare.
+
+   Step 2 is what switches it on. Without the class nothing changes, so
+   this is safe to install before you have tagged every page.
+
+   ALTERNATIVE, one page at a time: select the Text Editor widget →
+   Advanced → Custom CSS, and paste this file with every
+   `.umoya-doc` replaced by `selector`. Site Settings is preferable —
+   one copy instead of four that drift apart.
+
+   -------------------------------------------------------------------
+   WHAT THIS FIXES, and why each rule is here
+
+   1. MEASURE — the big one. In a full-width container these pages run
+      to about 110 characters a line. Comfortable reading is 60–75; past
+      roughly 90 the eye loses its place on the return sweep, which is
+      what makes the page feel like work. Capping the text at ~68
+      characters is the single largest improvement, and it is why the
+      spacing looked wrong even though the numbers were not extreme.
+
+   2. LINE-HEIGHT — the theme's ~1.9 is airy display leading applied to
+      body copy. At this measure 1.7 holds the paragraph together as a
+      block while staying comfortable.
+
+   3. PROXIMITY — a heading belongs to what FOLLOWS it. The theme gave
+      roughly equal space above and below, so headings floated between
+      two blocks instead of introducing one. Space above each heading is
+      now roughly three times the space below it.
+
+   4. HIERARCHY — h2 and h3 were rendering at nearly the same size
+      ("Visas and entry" vs "South Africa"), so the sub-structure read as
+      flat. h3 is now clearly subordinate, separated by size AND weight
+      rather than size alone.
+
+   Fonts are untouched — everything inherits the theme's typefaces, per
+   the project's font-family: inherit rule. Only size, spacing, weight
+   and colour are set, all from the brand palette.
+
+   Three paragraphs carry a class so they can be styled distinctly:
+   .doc-standfirst (the line under the title on Travel Essentials),
+   .doc-meta (effective date / version) and .doc-stamp
+   ("Verified August 2026"). They are already in the .html files.
+   =================================================================== */
+
+.umoya-doc {
+  /* Brand tokens, so nothing here hard-codes an off-palette colour. */
+  --doc-brown: #4B2E2B;
+  --doc-terra: #C06840;
+  --doc-body:  rgba(75, 46, 43, 0.78);
+  --doc-line:  rgba(75, 46, 43, 0.14);
+
+  /* 1. MEASURE. ~68 characters. The page container stays full width;
+        only the text column is constrained, and it centres itself. */
+  max-width: 43rem;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--doc-body);
+}
+
+/* Never let the first element push the page down. */
+.umoya-doc > *:first-child { margin-top: 0; }
+.umoya-doc > *:last-child  { margin-bottom: 0; }
+
+/* ── Body copy ──────────────────────────────────────────────────── */
+.umoya-doc p {
+  font-size: 1.0625rem;      /* 17px */
+  line-height: 1.7;          /* 2. was ~1.9 */
+  color: var(--doc-body);
+  margin: 0 0 1.15rem;
+}
+
+/* ── Page title ─────────────────────────────────────────────────── */
+.umoya-doc h1 {
+  font-size: clamp(2.1rem, 4.2vw, 2.85rem);
+  line-height: 1.12;
+  color: var(--doc-brown);
+  margin: 0 0 0.6rem;
+}
+
+/* The standfirst under the title (Travel Essentials). Larger than body,
+   and tied to the title by a small gap rather than a full break.
+   Tagged with a class rather than `h1 + p`, because on the three policy
+   pages the paragraph after the title is the date line, which wants the
+   opposite treatment. */
+.umoya-doc .doc-standfirst {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--doc-body);
+  margin-bottom: 0.9rem;
+}
+
+/* Effective date / version. Reference information, so it recedes. */
+.umoya-doc .doc-meta {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: rgba(75, 46, 43, 0.62);
+  margin-bottom: 2.4rem;
+}
+
+/* "Verified August 2026" — a currency stamp, which matters on a page
+   documenting rules that change. */
+.umoya-doc .doc-stamp {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--doc-terra);
+  margin-bottom: 2.2rem;
+}
+
+/* ── Section headings ───────────────────────────────────────────── */
+/* 3. Space above is ~3x the space below, so each heading reads as
+      belonging to the text underneath it. */
+.umoya-doc h2 {
+  font-size: clamp(1.5rem, 2.4vw, 1.8rem);
+  line-height: 1.22;
+  font-weight: 400;
+  color: var(--doc-brown);
+  margin: 3rem 0 0.9rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--doc-line);
+}
+
+/* 4. Clearly subordinate to h2 — smaller AND bolder, so the two never
+      read as the same level even at a glance. */
+.umoya-doc h3 {
+  font-size: 1.08rem;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--doc-terra);
+  margin: 2rem 0 0.55rem;
+}
+
+/* An h3 immediately after an h2 is a sub-head, not a new section —
+   pull it up so the pair reads as one unit. */
+.umoya-doc h2 + h3 { margin-top: 1.2rem; }
+
+/* ── Lists ──────────────────────────────────────────────────────── */
+.umoya-doc ul,
+.umoya-doc ol {
+  margin: 0 0 1.3rem;
+  padding-left: 1.35rem;
+}
+.umoya-doc li {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--doc-body);
+  margin-bottom: 0.55rem;
+  padding-left: 0.25rem;
+}
+.umoya-doc li:last-child { margin-bottom: 0; }
+.umoya-doc li::marker { color: var(--doc-terra); }
+
+/* ── Links ──────────────────────────────────────────────────────── */
+.umoya-doc a {
+  color: var(--doc-terra);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  /* Long support URLs in the Cookie Policy must not overflow on phones. */
+  word-break: break-word;
+}
+.umoya-doc a:hover { color: var(--doc-brown); }
+
+.umoya-doc strong { color: var(--doc-brown); font-weight: 700; }
+
+/* Cookie names (__cf_bm, _ga_*) read as identifiers. */
+.umoya-doc code {
+  font-size: 0.92em;
+  color: var(--doc-brown);
+  background: rgba(75, 46, 43, 0.06);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+/* ── Tablet ─────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .umoya-doc { max-width: 38rem; }
+}
+
+/* ── Mobile ─────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .umoya-doc { max-width: none; }
+  .umoya-doc p,
+  .umoya-doc li { font-size: 1rem; line-height: 1.65; }
+  .umoya-doc .doc-standfirst { font-size: 1.06rem; }
+  .umoya-doc h2 { margin-top: 2.2rem; }
+  .umoya-doc h3 { margin-top: 1.6rem; }
+}
+
+/* ── Small mobile ───────────────────────────────────────────────── */
+@media (max-width: 420px) {
+  .umoya-doc p,
+  .umoya-doc li { font-size: 0.97rem; }
+  .umoya-doc h2 { margin-top: 2rem; }
+}
+
+/* ── Print ──────────────────────────────────────────────────────── */
+/* People do print policies. Without this the constrained measure and
+   terracotta headings carry over into a narrow, ink-heavy printout. */
+@media print {
+  .umoya-doc { max-width: none; color: #000; }
+  .umoya-doc h1,
+  .umoya-doc h2,
+  .umoya-doc h3,
+  .umoya-doc strong { color: #000; }
+  .umoya-doc h2 { margin-top: 1.4rem; border-bottom: 1px solid #999; }
+  .umoya-doc a { color: #000; }
+}
