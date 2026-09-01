@@ -1,0 +1,360 @@
+<!--
+=================================================================
+  UMOYA — COOKIE POLICY  (Elementor HTML widget)
+=================================================================
+  Publish at /cookie-policy/. The footer does NOT link here directly —
+  its "Cookie Settings" entry is a CookieYes trigger — but this page
+  is the URL to set as the cookie policy link INSIDE the CookieYes
+  banner configuration, which is an outstanding non-code step.
+  Section 3 of the Privacy Policy links here too.
+
+  REPLACES the version currently live. That page is still v1.0 and
+  still renders the literal placeholder "Effective date: [INSERT DATE]".
+  This is v1.2 from "Revised footer docs/Umoya_Cookie_Policy (v2).txt",
+  with real dates and, new in this revision, the named per-cookie
+  inventory (__cf_bm, m, _ga_*, the CookieYes consent cookie) and
+  CookieYes itself identified as the consent platform. Copy is VERBATIM.
+
+  ONE ADDITION, no copy changed: section 4 tells the reader they can
+  "change your preferences at any time by clicking the cookie-settings
+  link in the footer". A CookieYes trigger button is placed right there
+  so they can do it without hunting for the footer. It uses the same
+  .cky-banner-element hook and the same not-loaded guard as
+  shared/section-99-footer.html — see the comment on that button.
+
+  ELEMENTOR: nav first, this widget, footer last.
+  BRAND: font-family: inherit; palette tokens only. ES5 IIFE.
+=================================================================
+-->
+<style>
+  #umoya-cookie-policy {
+    --cream:    #F5F0EB;
+    --white:    #FFFFFF;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --terra-dk: #C06840;
+    --muted:    rgba(75,46,43,.76);
+    --line:     rgba(75,46,43,.14);
+
+    font-family: inherit;
+    background: var(--cream);
+    color: var(--brown);
+    padding: clamp(48px, 6.5vw, 88px) 0 clamp(60px, 8vw, 110px);
+    overflow-x: hidden;
+  }
+
+  #umoya-cookie-policy *,
+  #umoya-cookie-policy *::before,
+  #umoya-cookie-policy *::after { box-sizing: border-box; }
+
+  .ck-c {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 3.4vw, 48px);
+  }
+
+  /* ── Page header ─────────────────────────────────── */
+  .ck-eye {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.1rem;
+  }
+  .ck-ttl {
+    font-family: inherit;
+    font-size: clamp(2rem, 4.6vw, 3rem);
+    font-weight: 400;
+    line-height: 1.08;
+    color: var(--brown);
+    margin: 0;
+  }
+  .ck-rule { width: 64px; height: 3px; background: var(--terra); border: 0; margin: clamp(22px, 2.8vw, 30px) 0 clamp(18px, 2.2vw, 24px); }
+
+  .ck-meta {
+    font-size: 0.86rem;
+    line-height: 1.7;
+    color: var(--muted);
+    margin: 0;
+  }
+  .ck-meta strong { color: var(--brown); font-weight: 700; }
+
+  /* ── Sections ────────────────────────────────────── */
+  .ck-sec { margin-top: clamp(34px, 4.4vw, 54px); }
+
+  .ck-h2 {
+    font-family: inherit;
+    font-size: clamp(1.28rem, 2.2vw, 1.6rem);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--brown);
+    margin: 0 0 clamp(13px, 1.7vw, 18px);
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .ck-h2 .ck-num { color: var(--terra); font-weight: 700; margin-right: 0.5rem; }
+
+  .ck-h3 {
+    font-family: inherit;
+    font-size: clamp(0.98rem, 1.5vw, 1.08rem);
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--terra-dk);
+    margin: clamp(22px, 2.8vw, 30px) 0 0.6rem;
+  }
+
+  .ck-p {
+    font-size: clamp(0.96rem, 1.28vw, 1.03rem);
+    line-height: 1.8;
+    color: var(--muted);
+    margin: 0 0 1.05rem;
+  }
+  .ck-p:last-child { margin-bottom: 0; }
+
+  .ck-p a, .ck-li a {
+    color: var(--terra-dk);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    word-break: break-word;
+  }
+  .ck-p a:hover, .ck-li a:hover { color: var(--brown); }
+
+  .ck-list { margin: 0 0 1.05rem; padding: 0; list-style: none; }
+  .ck-li {
+    position: relative;
+    padding-left: 22px;
+    font-size: clamp(0.96rem, 1.28vw, 1.03rem);
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 0.7rem;
+  }
+  .ck-li::before {
+    content: "";
+    position: absolute;
+    top: 0.72em;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    background: var(--terra);
+    border-radius: 50%;
+  }
+  /* Cookie names read as identifiers, so give them a monospace face —
+     the one deliberate exception to inherit on this page. */
+  .ck-li code {
+    font-family: Consolas, Monaco, "Courier New", monospace;
+    font-size: 0.92em;
+    color: var(--brown);
+    background: rgba(75,46,43,.06);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  /* Browser-control links wrap hard on phones without this. */
+  .ck-li--link { word-break: break-word; }
+
+  /* ── Cookie settings trigger ─────────────────────── */
+  .ck-prefs {
+    margin: clamp(20px, 2.6vw, 28px) 0 1.05rem;
+    padding: clamp(20px, 2.6vw, 28px);
+    background: var(--white);
+    border-left: 3px solid var(--terra);
+  }
+  .ck-prefs-p {
+    font-size: clamp(0.94rem, 1.25vw, 1rem);
+    line-height: 1.7;
+    color: var(--muted);
+    margin: 0 0 1rem;
+  }
+  .ck-prefs-btn {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 13px 26px;
+    background: var(--terra);
+    border: 2px solid var(--terra);
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    transition: background .25s ease, border-color .25s ease;
+  }
+  .ck-prefs-btn:hover { background: var(--terra-dk); border-color: var(--terra-dk); }
+
+  /* ── Contact block ───────────────────────────────── */
+  .ck-ct {
+    padding: clamp(20px, 2.6vw, 28px);
+    background: var(--white);
+    border-left: 3px solid var(--terra);
+    font-size: clamp(0.94rem, 1.25vw, 1rem);
+    line-height: 1.85;
+    color: var(--muted);
+  }
+  .ck-ct strong { color: var(--brown); font-weight: 700; }
+  .ck-ct a { display: inline-block; min-height: 24px; padding: 6px 0; }
+
+  /* ── Tablet ──────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .ck-c { max-width: 720px; }
+  }
+
+  /* ── Mobile ──────────────────────────────────────── */
+  @media (max-width: 768px) {
+    #umoya-cookie-policy { padding: 38px 0 56px; }
+    .ck-sec { margin-top: 30px; }
+    .ck-p, .ck-li { font-size: 0.95rem; line-height: 1.75; }
+  }
+
+  /* ── Small mobile ────────────────────────────────── */
+  @media (max-width: 420px) {
+    #umoya-cookie-policy { padding: 32px 0 46px; }
+    .ck-ttl { font-size: clamp(1.7rem, 8vw, 2.1rem); }
+    .ck-prefs, .ck-ct { padding: 18px 16px; }
+    .ck-prefs-btn { width: 100%; }
+  }
+</style>
+
+<section id="umoya-cookie-policy" aria-labelledby="ck-title">
+  <div class="ck-c">
+
+    <header>
+      <span class="ck-eye">Legal</span>
+      <h1 class="ck-ttl" id="ck-title">Cookie Policy</h1>
+      <hr class="ck-rule">
+      <p class="ck-meta">
+        <strong>Effective date:</strong> 1 June 2026<br>
+        <strong>Last updated:</strong> 26 August 2026<br>
+        Version 1.2
+      </p>
+    </header>
+
+    <!-- ═══════════ 1 ═══════════ -->
+    <div class="ck-sec">
+      <h2 class="ck-h2"><span class="ck-num">1.</span>About this policy</h2>
+      <p class="ck-p">This Cookie Policy explains how Umoya Afrika Tours (Pty) Ltd ("Umoya", "we", "us") uses cookies and similar technologies when you visit our website. It should be read together with our <a href="https://umoyaafrikatours.co.za/privacy/">Privacy Policy</a>, which sets out how we process personal information more generally.</p>
+    </div>
+
+    <!-- ═══════════ 2 ═══════════ -->
+    <div class="ck-sec">
+      <h2 class="ck-h2"><span class="ck-num">2.</span>What are cookies?</h2>
+      <p class="ck-p">A cookie is a small text file that is stored on your device when you visit a website. Cookies allow a website to recognise your device, remember your preferences and understand how you use the site. Similar technologies, such as web beacons and pixels, perform comparable functions and are treated as cookies for the purposes of this policy.</p>
+      <p class="ck-p">Like most websites, ours uses both first-party cookies (set by us) and third-party cookies (set by services we use to run the site, understand how it performs, and keep it secure).</p>
+    </div>
+
+    <!-- ═══════════ 3 ═══════════ -->
+    <div class="ck-sec">
+      <h2 class="ck-h2"><span class="ck-num">3.</span>The cookies we use</h2>
+      <p class="ck-p">We use the following categories of cookies on our website. The specific cookies currently set on your visit, together with their name, provider, purpose and duration, are listed in our cookie preferences panel and are updated automatically by our consent management platform, CookieYes.</p>
+
+      <h3 class="ck-h3">Necessary</h3>
+      <p class="ck-p">Necessary cookies are required to enable the basic features of this site, including security, page navigation, form use, and the storage of your consent preferences. The website cannot function properly without these cookies, and they do not require your consent.</p>
+      <p class="ck-p">The Necessary cookies currently set on our website include:</p>
+      <ul class="ck-list">
+        <li class="ck-li"><code>__cf_bm</code> (Cloudflare, 1 hour) &mdash; supports Cloudflare's bot management service, which protects the site from automated abuse.</li>
+        <li class="ck-li"><code>m</code> (Stripe, approximately 1 year) &mdash; set by Stripe to identify the device you are using, for fraud-prevention purposes, whether or not you complete a payment.</li>
+        <li class="ck-li">A cookie set by the website's page-building engine (session-based) &mdash; allows us to publish and update site content.</li>
+        <li class="ck-li">A cookie related to display formatting (session-based) &mdash; ensures the site renders correctly across browsers.</li>
+        <li class="ck-li">The CookieYes consent cookie &mdash; stores the cookie preferences you set on your first visit, so that we do not ask you again.</li>
+      </ul>
+
+      <h3 class="ck-h3">Performance and analytics</h3>
+      <p class="ck-p">These cookies help us understand how visitors use our website, including which pages are visited, how visitors arrive at the site, and how they move through it, so that we can improve the experience. They require your consent.</p>
+      <p class="ck-p">The Performance and analytics cookies currently set on our website include:</p>
+      <ul class="ck-list">
+        <li class="ck-li"><code>_ga_*</code> (Google Analytics, approximately 1 year) &mdash; used by Google Analytics to count and record page views, enabling us to understand overall site traffic and visitor behaviour in aggregate.</li>
+      </ul>
+      <p class="ck-p">We may also use HubSpot analytics tools in support of our marketing and communications work, which set additional cookies in this category from time to time.</p>
+
+      <h3 class="ck-h3">Functional</h3>
+      <p class="ck-p">These cookies remember preferences you have selected, such as language or region, so that we can offer you a more personalised experience on return visits. They require your consent.</p>
+
+      <h3 class="ck-h3">Marketing</h3>
+      <p class="ck-p">These cookies are used by us or our advertising partners to measure the effectiveness of our marketing and, where applicable, to show you content that may be of interest. They require your consent.</p>
+      <p class="ck-p">We do not currently run advertising campaigns that set marketing cookies. This category will be updated if that changes.</p>
+    </div>
+
+    <!-- ═══════════ 4 ═══════════ -->
+    <div class="ck-sec">
+      <h2 class="ck-h2"><span class="ck-num">4.</span>Your choices</h2>
+      <p class="ck-p">When you first visit our website, you are presented with a cookie banner that allows you to accept all cookies, reject non-essential cookies, or manage your preferences by category. You can change your preferences at any time by clicking the cookie-settings link in the footer of our website.</p>
+
+      <!--
+        Same CookieYes hook and same not-loaded guard as the footer's
+        button. A <button>, not <a href="#">, so it never jumps the page
+        to the top if CookieYes has not loaded.
+      -->
+      <div class="ck-prefs">
+        <p class="ck-prefs-p">Or change them here:</p>
+        <button type="button" class="ck-prefs-btn cky-banner-element" data-umoya-cookie-prefs>Cookie Settings</button>
+      </div>
+
+      <p class="ck-p">Our website does not currently respond to Do Not Track browser signals. You can manage your cookie preferences using the tools described above, or through your browser settings, which allow you to delete cookies that are already on your device and to prevent new cookies from being set. Please be aware that disabling certain cookies may affect the functionality of the website.</p>
+      <p class="ck-p">Your browser's own cookie controls are documented here:</p>
+      <ul class="ck-list">
+        <li class="ck-li ck-li--link">Chrome: <a href="https://support.google.com/accounts/answer/32050" target="_blank" rel="noopener">https://support.google.com/accounts/answer/32050</a></li>
+        <li class="ck-li ck-li--link">Safari: <a href="https://support.apple.com/en-in/guide/safari/sfri11471/mac" target="_blank" rel="noopener">https://support.apple.com/en-in/guide/safari/sfri11471/mac</a></li>
+        <li class="ck-li ck-li--link">Firefox: <a href="https://support.mozilla.org/en-US/kb/clear-cookies-and-site-data-firefox" target="_blank" rel="noopener">https://support.mozilla.org/en-US/kb/clear-cookies-and-site-data-firefox</a></li>
+        <li class="ck-li ck-li--link">Edge: <a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09</a></li>
+      </ul>
+      <p class="ck-p">If you use a different browser, please refer to its official support documentation.</p>
+    </div>
+
+    <!-- ═══════════ 5 ═══════════ -->
+    <div class="ck-sec">
+      <h2 class="ck-h2"><span class="ck-num">5.</span>Third-party cookies</h2>
+      <p class="ck-p">Some cookies on our website are set by third parties, including our analytics, payment, marketing and infrastructure providers. These third parties may collect information about your interaction with our website over time and across other websites. Their use of cookies is governed by their own policies, which you can review on their websites. The third parties currently supporting our site include Cloudflare, Inc., Stripe, Inc., Google LLC (Google Analytics), HubSpot, Inc. and CookieYes Limited.</p>
+    </div>
+
+    <!-- ═══════════ 6 ═══════════ -->
+    <div class="ck-sec">
+      <h2 class="ck-h2"><span class="ck-num">6.</span>Changes to this policy</h2>
+      <p class="ck-p">We may update this Cookie Policy from time to time to reflect changes to the cookies we use or for other operational, legal or regulatory reasons. The dates at the top of this document indicate when it was first issued and when it was last revised.</p>
+    </div>
+
+    <!-- ═══════════ 7 ═══════════ -->
+    <div class="ck-sec">
+      <h2 class="ck-h2"><span class="ck-num">7.</span>Contact us</h2>
+      <div class="ck-ct">
+        For any questions about this Cookie Policy or about our use of cookies, please contact our Information Officer at
+        <a href="mailto:info@umoyaafrikatours.co.za">info@umoyaafrikatours.co.za</a>,
+        or by telephone on <a href="tel:+27789504410">+27 78 950 4410</a>.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+
+  var root = document.getElementById('umoya-cookie-policy');
+  if (!root) return;
+
+  /* CookieYes owns this button via .cky-banner-element and binds its own
+     click handler. The only job here is to stop the button being inert if
+     CookieYes has not loaded — checked AT CLICK TIME, so when CookieYes is
+     present this handler does nothing and lets the preference centre open. */
+  var btn = root.querySelector('[data-umoya-cookie-prefs]');
+  if (!btn) return;
+
+  btn.addEventListener('click', function(){
+    var present = !!(
+      window.CookieYes ||
+      window.cookieyes ||
+      document.querySelector('.cky-consent-container, .cky-modal, #cookieyes')
+    );
+    if (present) return;   /* CookieYes will handle it */
+
+    /* No consent tool on the page: say so rather than appearing broken. */
+    window.alert('The cookie preferences panel is still loading. Please try again in a moment, or use your browser settings as described below.');
+  });
+}());
+</script>

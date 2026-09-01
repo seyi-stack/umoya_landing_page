@@ -843,6 +843,10 @@ nothing.
 | `shared/section-00-nav.html` | **Site-wide navigation.** Place FIRST on every page. |
 | `shared/section-99-footer.html` | **Site-wide footer.** Rebuilt 2026-08-29 to the client mockup: brand block + Journeys/Support/Legal columns + Founder's Circle signup (HubSpot-wired) + legal bar. Place LAST on every page; replaces the Elementor Form newsletter widget. |
 | `shared/page-email-preferences.html` | Small standalone page for `/email-preferences/`, the footer's Email Opt-out destination. |
+| `shared/page-travel-essentials.html` | **New page** for `/travel-essentials/`. Consolidates the former Visa & Entry Information and Travel Insurance Guide pages. |
+| `shared/page-privacy-policy.html` | Privacy Policy **v1.1** for `/privacy/`. Replaces the live v1.0, which still shows `[INSERT DATE]`. |
+| `shared/page-cookie-policy.html` | Cookie Policy **v1.2** for `/cookie-policy/`. Replaces the live v1.0. Adds the named cookie inventory and an in-page CookieYes trigger. |
+| `Revised footer docs/` | Client's final legal/essentials copy — the source for the three pages above, plus the final PAIA manual PDF. |
 | `contact/` | Contact page — 3 sections + `_NOTES.md`. Targets `/contact/`. |
 | `shared/color-scheme-lock.html` | Stops mobile browsers auto-darkening the palette. Only needed on pages that use neither the shared nav nor the shared footer — see Dark Mode below. |
 | `founders-circle/` | Original Founder's Circle sections (was flat `section-*.html` at root). |
@@ -1596,12 +1600,25 @@ this out, from Network Admin → Plugins:
 
 ### Legal / Footer
 
-- Replace `[INSERT DATE]` in Cookie Policy and Privacy Policy.
+- ✅ **`[INSERT DATE]` is resolved** — the revised docs give real dates
+  (Privacy v1.1, effective 1 June 2026; Cookie v1.2, effective 1 June 2026,
+  last updated 26 August 2026). Both are built as
+  `shared/page-privacy-policy.html` and `shared/page-cookie-policy.html`.
+  ⏳ **The live pages are still v1.0 and still render the placeholder** —
+  they are only fixed once those two widgets are pasted in.
+- ✅ **`/cookie-policy/` is confirmed** as its own live slug, and is the URL
+  to set as the cookie policy link inside the CookieYes banner config.
+- ✅ **Cookie Preferences is wired** — `.cky-banner-element` in the footer,
+  and now also mid-page in the Cookie Policy where the copy tells the reader
+  they can change their preferences.
+- ✅ **The PAIA manual is live at `/paia_manual.pdf`** — byte-identical to
+  `Revised footer docs/Umoya_PAIA_Manual (final).pdf`. **Note the
+  underscore.** `/paia-manual.pdf` 404s; a hyphenated entry shows in the
+  Mountain Duck listing but the server neither serves nor reads it, so it is
+  a ghost. The footer now points at the underscore URL. Nothing was deleted.
 - Replace `[INSERT_UNSUBSCRIBE_URL]`.
 - Replace `[INSERT_HUBSPOT_SUBSCRIPTION_PREFERENCES_URL]`.
-- Confirm the final `/cookie-policy` slug if the cookie policy will exist as its own page.
-- Wire `Cookie Preferences` to the cookie consent modal.
-- Confirm `/travel-brochure.pdf` and `/paia-manual.pdf` assets exist on the live site.
+- ❌ `/travel-brochure.pdf` still 404s — Ashley to supply.
 
 ### ⚠ Redeploy required for the HubSpot fixes to reach the live site
 
@@ -2070,6 +2087,114 @@ because those rows stored the group type under `_umoya_country` and left
 from the untouched `_umoya_payload` instead of trusting meta, so
 **Resend to HubSpot** works on them once the plugin is updated. Asserted by
 the `for_groups_page` resend-recovery case in `verify-alias-mapping.mjs`.
+
+### Why "Page views" and "Submissions / page view" are always 0
+
+*Checked 2026-08-29 against the live portal.*
+
+In **Marketing → Forms**, every Umoya form shows `0` page views and `0%`
+submissions-per-page-view, while the **Form submissions** column is correct.
+This is expected, not a misconfiguration.
+
+HubSpot only counts a page view for a form it **renders itself** — through the
+forms embed script (`js.hsforms.net/forms/embed/v2.js`) or on a HubSpot-hosted
+page. Every Umoya form is hand-built HTML that merely *submits* to the Forms
+API, so HubSpot never observes an impression and cannot compute a rate. The
+"Appears on" column saying **"No HubSpot placements"** is HubSpot stating
+exactly this. The occasional stray `1` is someone opening the form preview
+inside HubSpot.
+
+That is the direct consequence of the choice in the HubSpot Section 02
+Integration Brief — keep the custom-designed form, submit behind the scenes,
+do not drop in a generic embed. The submission counts are real; only the view
+denominator is missing.
+
+**Getting the conversion rate anyway (no code change).** The tracking script
+IS installed, so *page* views are recorded per URL under
+**Reports → Traffic Analytics → Pages**. Divide a form's submissions by the
+page views of the URL it lives on. GA4 gives the same thing.
+
+**Why not just re-enable form collection?** `collectedforms.js` does record
+views and submissions for non-HubSpot forms — it is the only mechanism that
+would populate these columns. But it files a **second, separate** form record
+(`[captured] #ctPlanForm .ct-f-form`) beside the clean API form, splitting the
+data across two objects. That is why every Umoya form carries
+`data-hs-do-not-collect="true"`. Keep it that way; a split record is worse
+than a missing denominator. There is no `_hsq` event for reporting a form
+impression, so there is no third option short of replacing the forms with
+HubSpot embeds.
+
+**Submission counts include diagnostics.** `hubspot-verify-forms.mjs` submits
+one payload per form. `hubspot-cleanup-tests.mjs` deletes the resulting
+*contacts*, but HubSpot keeps the form *submission* records, so each verified
+form carries one extra submission that was never a real lead.
+
+### ⚠ /founders-circle/ is served without most plugin assets (UNRESOLVED)
+
+*Established 2026-09-01. This supersedes the 2026-08-29 guess that it was
+stale cache — it is not.*
+
+`/founders-circle/` renders **freshly from PHP** (`x-litespeed-cache: miss`,
+`cf-cache-status: MISS`, reproduced across several forced misses and with a
+real browser User-Agent) and still comes back missing a large share of the
+plugin JavaScript that comparable pages load.
+
+| | `/founders-circle/` | `/contact/`, `/for-groups/`, `/` |
+|---|---|---|
+| `<script src>` tags | **18** | **47–48** |
+| Elementor `frontend.min.js` | ✗ | ✓ |
+| pro-elements | ✗ | ✓ |
+| Contact Form 7 | ✗ | ✓ |
+| jQuery UI (core, datepicker) | ✗ | ✓ |
+| Stripe | ✗ | ✓ |
+| `tevily-themer/main.min.js` | ✗ | ✓ |
+| HubSpot WP plugin (`js-na2.hs-scripts.com/246097317.js`) | ✗ | ✓ |
+| our `render_hubspot_tracking_code()` snippet | ✗ | ✓ |
+
+What still works there: jQuery, the Tevily theme's own scripts, RevSlider,
+`cookieadmin`, gtag — and **our Founder's Circle form**, because its script is
+inline in the widget rather than enqueued. Form GUID `b3c06e8a` and
+`/wp-json/umoya/v1/submissions` are both present in the rendered HTML.
+
+**Ruled out:**
+- *Stale cache* — forced `x-litespeed-cache: miss` every time.
+- *User-Agent sniffing* — identical result with a Chrome UA.
+- *`wp_footer` not running* — the page ends with `</body></html>` and the
+  theme's own footer scripts print.
+- *Our plugin being at fault* — `render_hubspot_tracking_code()` hooks
+  `wp_footer` at priority 20 behind only an `is_admin()` guard, and it prints
+  on every other page.
+
+The page is Elementor Canvas (`body.elementor-template-canvas`,
+`elementor-page-8402`), same template the homepage uses — and the homepage is
+fine. So the template is not the discriminator.
+
+**Most likely cause: a per-page asset-unload rule on post ID 8402** — Asset
+CleanUp / Perfmatters / LiteSpeed page-specific JS exclusions, or similar.
+With 52 plugins installed this is exactly the kind of thing that gets set once
+and forgotten. **Check page 8402's asset settings in wp-admin first.**
+
+**Why it matters:**
+- No `hubspotutk` is set on that page, so submissions from the Founder's
+  Circle form carry no visitor attribution, and HubSpot Traffic Analytics
+  records no page view for the site's highest-intent URL.
+- Elementor's frontend JS is absent, so any Elementor widget behaviour on
+  that page (as opposed to our inline-scripted HTML widgets) is not running.
+- Lead capture itself is NOT affected.
+
+### ⚠ CookieYes is not actually installed yet
+
+Also found 2026-09-01: `cdn-cookieyes.com` appears on **no** live page. The
+cookie tool currently loading is `cookieadmin` + `cookieadmin-pro` (two
+copies), which is what `class-console-cleanup.php` was written to quieten.
+
+The footer routing doc states "You have already implemented CookieYes on the
+site" — that is not the case on the live site today. The footer's
+`Cookie Settings` button is built on CookieYes's `.cky-banner-element` trigger
+per that doc, so it will not open a preference centre until CookieYes is
+actually installed. It degrades safely in the meantime: the guard in
+`shared/section-99-footer.html` checks for CookieYes **at click time** and
+falls back to `/privacy/` when it is absent.
 
 ### "This submission didn't include an IP address"
 
