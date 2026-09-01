@@ -1071,6 +1071,7 @@ The footer's Cookie Settings button degrades safely until it is. Section 21.
 | `shared/page-privacy-policy.html` | Privacy Policy **v1.1** for `/privacy/`. Replaces the live v1.0, which still shows `[INSERT DATE]`. |
 | `shared/page-cookie-policy.html` | Cookie Policy **v1.2** for `/cookie-policy/`. Replaces the live v1.0. Adds the named cookie inventory and an in-page CookieYes trigger. |
 | `Revised footer docs/` | Client's final legal/essentials copy — the source for the three pages above, plus the final PAIA manual PDF. |
+| `Website docs/Elementor text-editor pages/` | **Paste-ready copy for the four Text Editor pages** — Privacy, Cookie, Terms, Travel Essentials. Same copy as the `shared/page-*.html` widgets, reduced to plain semantic HTML. See its `README.md`. |
 | `contact/` | Contact page — 3 sections + `_NOTES.md`. Targets `/contact/`. |
 | `shared/color-scheme-lock.html` | Stops mobile browsers auto-darkening the palette. Only needed on pages that use neither the shared nav nor the shared footer — see Dark Mode below. |
 | `founders-circle/` | Original Founder's Circle sections (was flat `section-*.html` at root). |
@@ -1603,9 +1604,10 @@ Elementor HTML widget. This is the current backlog, most urgent first.
 
 | # | Paste | Into | Why it matters |
 |---|---|---|---|
-| 1 | `shared/page-privacy-policy.html` | the EXISTING `/privacy/` page | The live page still shows `Effective date: [INSERT DATE]` publicly |
-| 2 | `shared/page-cookie-policy.html` | the EXISTING `/cookie-policy/` page | Same placeholder; also the URL CookieYes should point at |
-| 3 | `shared/page-travel-essentials.html` | a NEW page at `/travel-essentials/` | The footer has linked here against a 404 since August |
+| 1 | `Elementor text-editor pages/Privacy Policy.html` | Text Editor on the EXISTING `/privacy/` page | The live page still shows `Effective date: [INSERT DATE]` publicly |
+| 2 | `Elementor text-editor pages/Cookie Policy.html` | Text Editor on the EXISTING `/cookie-policy/` page | Same placeholder; also the URL CookieYes should point at |
+| 3 | `Elementor text-editor pages/Travel Essentials.html` | Text Editor on a NEW page at `/travel-essentials/` | The footer has linked here against a 404 since August |
+| 3b | `Elementor text-editor pages/Terms and Conditions.html` | Text Editor on the EXISTING `/terms-and-conditions/` page | Optional — the live copy is already v1.1; this only tidies markup and the `/privacy/` link |
 | 4 | `shared/page-email-preferences.html` | a NEW page at `/email-preferences/` | Footer Email Opt-out currently 404s |
 | 5 | `shared/section-00-nav.html` | the nav widget on EVERY page | Contact link + the 1024px breakpoint |
 | 6 | `shared/section-99-footer.html` | LAST widget on EVERY page | Then delete the old Elementor Form newsletter widget |
@@ -2218,6 +2220,32 @@ and CTA need ~970px on one line and cannot shrink (`white-space: nowrap`
 items, `flex-shrink: 0` logo and CTA), so they collided in the 900–970px
 band. See Phase 18 for why the type was not reduced instead. `--nav-h` drops
 to 58px at the same breakpoint.
+
+### Two formats exist for the legal pages — pick deliberately
+
+These pages are built in Elementor with a **Text Editor** widget, not an HTML
+widget. That is the client's established workflow and what is live today.
+
+| | `Website docs/Elementor text-editor pages/*.html` | `shared/page-*.html` |
+|---|---|---|
+| Widget | **Text Editor** (paste into the **Code** tab) | HTML widget |
+| Styling | inherited from the theme | brand-styled, self-contained CSS |
+| Extras | — | contents list, CookieYes button, brand cards |
+| Covers | Privacy · Cookie · **Terms** · Travel Essentials | Privacy · Cookie · Travel Essentials |
+
+**The copy is identical in both** — generated from the same verified source
+and sentence-diffed against the client documents. Only Terms and Conditions
+lacks a styled counterpart. If a page is switched from one format to the
+other, delete the old widget rather than leaving both.
+
+> Paste into the Text Editor's **Code** tab. Pasting HTML into the Visual tab
+> makes TinyMCE escape it, and the tags render as literal text on the page.
+
+The Text Editor versions deliberately drop three things that cannot survive
+without classes or ids: the Privacy Policy's contents list (needs heading
+anchors), the Cookie Policy's settings button (needs `cky-banner-element`),
+and the decorative eyebrow labels. The footer's Cookie Settings button still
+works and is what section 4 of that policy points you to.
 
 ### `shared/page-travel-essentials.html`, `page-privacy-policy.html`, `page-cookie-policy.html`
 
