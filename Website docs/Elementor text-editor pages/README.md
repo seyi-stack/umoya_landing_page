@@ -18,12 +18,12 @@ Elementor's **Text Editor** widget, not an HTML widget.
 2. In the widget panel, switch from **Visual** to **Code**.
 3. Select everything already in the box and delete it.
 4. Paste the entire contents of the file.
-5. Go to the widget's **Advanced** tab → **CSS Classes** → type `umoya-doc`.
+5. Go to the widget's **Advanced** tab → **Custom CSS**, and paste
+   `document-page-styling (widget Custom CSS).css`.
 6. Switch back to **Visual** to eyeball it, then **Update**.
 
-Step 5 is what applies `document-page-styling.css`. Without it the page
-falls back to the theme's defaults, which are wrong for long-form reading —
-see below.
+Step 5 is what makes it readable. Without it the page falls back to the
+theme's defaults, which are wrong for long-form reading — see below.
 
 **Use the Code tab, not Visual.** Pasting HTML into the Visual tab makes
 TinyMCE escape the tags, and you end up with `<h2>` printed on the page as
@@ -66,12 +66,24 @@ styled versions in `shared/`:
 
 ---
 
-## Styling: `document-page-styling.css`
+## Styling — two files, pick one
 
-Install once, in **Elementor → Site Settings → Custom CSS**, then add the
-`umoya-doc` class to each of the four Text Editor widgets. One stylesheet
-covers all four pages; without the class it does nothing, so it is safe to
-install before every page is tagged.
+| File | Where it goes | Notes |
+|---|---|---|
+| **`document-page-styling (widget Custom CSS).css`** | Text Editor widget → **Advanced → Custom CSS** | **Use this one.** No CSS class needed; `selector` is Elementor's token for the widget. Paste it on each of the four pages. |
+| `document-page-styling.css` | **Site Settings → Custom CSS** | One copy for all four pages, but each widget must also be given the CSS class `umoya-doc` (Advanced → CSS Classes). |
+
+> **Do not replace the word `selector`** in the widget version — Elementor
+> substitutes it for that widget's own ID.
+
+> **Paste the whole file.** A partial paste produces
+> `Expected LBRACE at line 1, col 11` — that error means the editor received
+> a selector with no `{` after it, i.e. the paste was cut short. The widget
+> version is deliberately small (3.6 KB, plain ASCII, no long comment
+> banner) to make that less likely.
+
+Either way, the three `doc-*` classes the CSS references are already in the
+`.html` files, so there is nothing extra to add by hand.
 
 The theme's defaults make these pages hard to read, and the reason is not
 mainly the spacing:
