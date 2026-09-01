@@ -168,6 +168,61 @@ hamburger breakpoint from 900px to 1024px; see CLAUDE.md Phase 18.
 
 ---
 
+## Follow-ups from live testing, 2026-09-01
+
+### "This submission didn't include an IP address"
+
+Seen on a real test submission through panel 1. It is an **analytics**
+warning, not data loss — every field still lands on the contact; HubSpot just
+cannot derive `ip_city` / `ip_country` from it.
+
+Two causes, and they need different responses:
+
+1. **The browser's direct-to-HubSpot fallback.** When
+   `/wp-json/umoya/v1/submissions` does not answer, the form posts straight to
+   the Forms API so the lead is never lost. A browser cannot know its own
+   public IP, so that payload has none. Not fixable, and on this origin (522s,
+   multi-second TTFB) it is the likely explanation for a one-off.
+2. **Resends and cron retries** — this WAS a real bug, fixed 2026-09-01.
+   `get_submission_from_meta()` never read `_umoya_ip_address`, so every
+   resend forwarded without one. Now fixed; requires the plugin re-upload.
+
+Tell them apart by looking for the lead in **Umoya Submissions**: a row marked
+`sent` went through WordPress; `sent_direct_from_browser` means the fallback
+fired; no row at all means the fallback fired and the backup is still queued
+in that visitor's `localStorage`, flushing within 3 days.
+
+**Do not resend a fallback row to attach an IP** — the record is already in
+HubSpot and you would create a duplicate submission for one analytics field.
+
+Full write-up in `CLAUDE.md` Section 21.
+
+### These forms will always show 0 page views in HubSpot
+
+HubSpot only counts a form page view for a form **it renders itself**, via its
+embed script or on a HubSpot-hosted page. Both contact forms are hand-built
+HTML that only submits to the Forms API, so the "Page views" and
+"Submissions / page view" columns stay at 0 and "Appears on" reads
+"No HubSpot placements". The **Form submissions** count is real.
+
+For a conversion rate, divide submissions by `/contact/` page views from
+**Reports → Traffic Analytics → Pages** (the tracking script IS present on
+`/contact/`, verified 2026-09-01) or from GA4. Do not re-enable HubSpot's
+form collection to fix the column — it files a second `[captured]` record
+beside the clean API form and splits the data.
+
+Note the submission counts include one diagnostic each from
+`hubspot-verify-forms.mjs`; deleting the test *contacts* does not delete the
+form *submission* records.
+
+### The /founders-circle/ asset gap does not affect this page
+
+`/contact/` was checked at the same time and loads the full script set,
+including the HubSpot tracking loader. The missing-assets problem is specific
+to page 8402 — see `CLAUDE.md` Section 21.
+
+---
+
 ## Still open
 
 - The page inherits the live site's origin problems — see the stability

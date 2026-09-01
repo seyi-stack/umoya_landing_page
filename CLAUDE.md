@@ -2013,7 +2013,12 @@ so re-check after a cache purge.
   move off the shared `Umoya Website Form Submissions` form onto dedicated
   forms (they still share GUID `cb87d460-…`).
 - Confirm whether newsletter contacts should use a separate HubSpot form/list.
-- Confirm marketing subscription type / consent handling in HubSpot.
+- ⚠ **The "I'd also like to receive Umoya journeys and stories" checkbox is
+  fully wired client-side and goes nowhere** — traced end-to-end, zero
+  references anywhere server-side, not even saved as its own field. No leads
+  are lost and nobody is emailed without consent, but nobody who opts in is
+  captured either. Full trace, the two fix options, and the required Private
+  App scope for option (B) are in Section 21.
 - Confirm final unsubscribe and subscription preferences URLs.
 
 ### Elementor Plugin
@@ -2119,6 +2124,44 @@ Core server-side submission infrastructure:
 Do not delete. This is the sync bridge from source HTML to the plugin.
 **Note:** its `source:` paths are currently stale — see Elementor Plugin
 open items.
+
+### `shared/section-99-footer.html`
+
+The site-wide footer. Four things in it are load-bearing and easy to undo by
+accident:
+
+1. **`--umoya-ft-vw`, not `100vw`.** `100vw` includes the vertical scrollbar,
+   so on any scrollable page the footer became a scrollbar-width too wide and
+   gave the whole page a horizontal scrollbar (measured: viewport 822px,
+   footer 838px, `left: -8px`). The JS sets the custom property from
+   `documentElement.clientWidth`; `100vw` stays only as the no-JS fallback.
+2. **The Instagram path is the official mark, deliberately not the mockup's.**
+   The mockup's version does not punch out its lens under the nonzero fill
+   rule and renders as a solid blob. See note 8 in the file's own `_NOTES`.
+3. **The consent fine print is verbatim client copy** and doubles as the
+   `consentText` sent with every submission. Editing the visible wording
+   without editing the two `data-hubspot-consent-text` / hidden-input copies
+   would silently desynchronise the POPIA consent register.
+4. **Cookie Settings is a `<button class="cky-banner-element">`**, not a link.
+   CookieYes binds itself to that class; the JS guard only fires when
+   CookieYes is absent at click time, so it must stay a click-time check
+   rather than a load-time one.
+
+### `contact/section-02-forms.html`
+
+Both contact panels in one widget, with the submit path written once and
+instantiated twice via `wireForm(cfg)` — the two forms differ only in their
+elements, field map and success wording.
+
+- Panel 2's single "Full name" box is split into hidden `FNAME` / `LNAME`
+  inputs on every keystroke, on the FIRST space, so compound surnames
+  survive. Do not "tidy" the hidden inputs away.
+- `enquiry_type` is a HubSpot **enumeration**: the `<option>` values here and
+  the property's options in HubSpot must be edited together or submissions
+  are rejected.
+- The `@media (min-width: 901px)` flex chain on `#ct-general` is what lets the
+  message box absorb the height difference between the two cards. It is
+  scoped above the stacking breakpoint on purpose.
 
 ### `shared/section-00-nav.html`
 
@@ -2570,6 +2613,58 @@ that first header every lead would carry a Cloudflare edge IP instead of the
 visitor's.
 
 > Requires the rebuilt `umoya-elementor-widgets.zip` to be uploaded.
+
+### ⚠ "I'd also like to receive Umoya journeys and stories by email" does nothing
+
+*Traced end-to-end 2026-08-13/14. Not yet fixed — logged here as an open item.*
+
+Every form's optional marketing checkbox (`MARKETING_CONSENT` on four forms,
+inconsistently `marketingOptIn` on Private & Tailormade and For Groups) is
+captured client-side into `rawFields.marketing_opt_in` — and then goes
+nowhere. Traced the whole path with nothing assumed:
+
+| Stage | Result |
+|---|---|
+| Browser sets `rawFields.marketing_opt_in` | ✅ captured |
+| Present in any page's `hubspotFieldMap` | ❌ 0 of 6 forms — never sent to HubSpot |
+| Referenced anywhere in `class-submissions.php` | ❌ zero occurrences |
+| Saved as its own post meta | ❌ `save_submission_meta()` only loops the alias-table keys |
+| Shown in the Umoya Submissions admin screen | ❌ not in the meta-box field list |
+| Survives anywhere at all | ⚠️ only inside the raw `_umoya_payload` JSON blob |
+
+So today: **no HubSpot list, no subscription, no property, no segmentable
+record.** Nobody who ticks the box is added to anything, but — the reassuring
+half — nobody is emailed who didn't ask to be, either. Nothing is leaking; the
+gap is that consent is currently unrecoverable at scale (only visible by
+opening one submission's raw JSON at a time), which is a weak record against
+the POPIA consent-register requirement (Section 8) if it's ever challenged,
+and there is no way to actually export "everyone who opted in" to mail them.
+
+Related: the `legalConsentOptions.consentToProcess` sent to HubSpot on every
+form carries the **processing** consent text, never the marketing wording —
+and every form's HubSpot-side `legalConsentOptions` is `type: none` (matching
+the pre-existing working form, deliberately — see the note in
+`tools/hubspot-sync.mjs`), so HubSpot most likely discards that block anyway.
+
+**Two ways to close this, not mutually exclusive:**
+
+- **(A) Contact property, quick.** Create a `marketing_opt_in` HubSpot
+  property, add it to all six `hubspotFieldMap`s and to the server alias
+  table, unify the input name (pick one of `MARKETING_CONSENT` /
+  `marketingOptIn`), surface it in the admin meta box. Gives a segmentable
+  Yes/No and a visible record. Does **not** manage sends or unsubscribes.
+- **(B) Real HubSpot subscription type, correct long-term.** Register a
+  subscription (e.g. "Umoya Journeys & Stories") via the Communication
+  Preferences API and set it on submit. This is what should actually govern
+  a marketing send and gives working unsubscribe handling — which would also
+  finally resolve the long-open `[INSERT_HUBSPOT_SUBSCRIPTION_PREFERENCES_URL]`
+  placeholder (Section 9) and the footer's Email Opt-out link (Section 16).
+  Needs `communication_preferences.read_write` added to the Private App —
+  the current token got `403` probing
+  `communication-preferences/v3/definitions` without it.
+
+Recommendation: do (A) now so nothing further is lost and there is a visible
+record, then (B) before the first real marketing send goes out.
 
 ### "Non-HubSpot / collected forms" — why submissions appear twice
 
