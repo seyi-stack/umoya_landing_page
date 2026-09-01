@@ -1703,14 +1703,30 @@ controls rendering light instead of turning into dark inputs.
 covered.
 
 **Best fix, once, for the whole site** (do this and the per-page copies become
-belt-and-braces): Elementor → Site Settings → Custom Code → `<head>`:
+belt-and-braces): **Elementor → Custom Code** in the WP admin sidebar (a
+top-level Elementor Pro item, not under Site Settings — Site Settings only
+exposes Custom *CSS*, which cannot hold a `<meta>` tag). Add a snippet:
 
 ```html
 <meta name="color-scheme" content="only light">
 ```
 
+Location: `<head>` (not Body Start/End). On **Publish**, a Conditions dialog
+appears — set **Include → Entire Site**, or the snippet publishes but renders
+nowhere. Purge LiteSpeed + Cloudflare afterward so the next load isn't served
+from cache. If **Custom Code** isn't in the sidebar (Pro not active), the
+fallback is a one-line `wp_head` hook in `tevily-child/functions.php`.
+Verify with `Ctrl+U` → search `color-scheme` for the meta tag in `<head>`,
+or turn on Chrome Android's dark theme and reload a page.
+
+On a **multisite** install (confirmed the case here — see the plugin zip
+Open Item below), Custom Code snippets are per-site; the child-theme
+`wp_head` hook is the only route that covers every site in the network in
+one place.
+
 `shared/color-scheme-lock.html` is a standalone widget for any future page
-that has none of the above as its first widget.
+that has none of the above as its first widget, and stays useful as a
+fallback even after the sitewide meta tag is added.
 
 > **Scope exception.** `color-scheme` only works on the root element, so these
 > are `:root, html, body` rules rather than section-scoped — one of the few
@@ -1793,6 +1809,32 @@ Guidelines:
 - Do not deploy new theme PHP while the origin is unstable — a PHP error on
   top of this would take the site fully down.
 
+### ⚠ /founders-circle/ is served without most plugin assets (UNRESOLVED)
+
+*Found 2026-09-01. Full evidence in Section 21.*
+
+That page renders **freshly from PHP** and still comes back with 18
+`<script src>` tags against 47–48 on `/contact/`, `/for-groups/` and `/`.
+Missing: Elementor `frontend.min.js`, pro-elements, Contact Form 7, jQuery UI,
+Stripe, `tevily-themer/main.min.js`, the HubSpot WordPress plugin loader and
+our own `render_hubspot_tracking_code()` snippet.
+
+Ruled out: stale cache (forced `x-litespeed-cache: miss` every time),
+User-Agent sniffing, `wp_footer` not running, and our plugin.
+
+- **Check page 8402's per-page asset settings in wp-admin first** — Asset
+  CleanUp / Perfmatters / LiteSpeed page-specific JS exclusions are the most
+  likely culprit on a 52-plugin install.
+- Consequence: no `hubspotutk` on the site's highest-intent URL, so its
+  submissions carry no visitor attribution and Traffic Analytics logs no page
+  views for it — which also removes the denominator for the form conversion
+  rate (Section 21).
+- Consequence: CookieYes, once installed, will not load there either, so the
+  footer's Cookie Settings button will hit its fallback on that page.
+- **Lead capture is NOT affected** — the form's script is inline in the
+  widget, and GUID `b3c06e8a` plus `/wp-json/umoya/v1/submissions` are both
+  present in the rendered HTML.
+
 ### Decide what to do with the disabled Events Calendar
 
 `wp-content/plugins/the-events-calendar.DISABLED-2026-08-22-broken-install`
@@ -1872,6 +1914,19 @@ The data-loss fix is complete in this repo but **inert until deployed**:
    change in `class-submissions.php`.
 3. **Add `shared/section-99-footer.html`** as the last widget on every page,
    and delete the old Elementor Form newsletter widget.
+4. **Paste the 3 `contact/` sections** at `/contact/`, replacing the Tevily
+   demo content.
+
+The plugin re-upload in step 2 now also delivers (added 2026-08-29 →
+2026-09-01):
+- `contact_page_journey` / `contact_page_general` source aliases and the
+  `enquiry_type` field name, so the WordPress backup path writes the same
+  properties as the direct path;
+- the custom properties (`enquiry_type`, `trip_occasion`, `group_type`,
+  `organization`, `party_size`) in the Umoya Submissions detail panel, which
+  previously showed none of them;
+- the IP-address fix, so resends and cron retries stop forwarding without
+  `context.ipAddress`.
 
 **Deployment status, checked live 2026-08-11 (by fetching each page and
 grepping for the GUID):**
