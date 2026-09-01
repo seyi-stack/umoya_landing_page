@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umoya Afrika Tours — Footer Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /*
+    UMOYA AFRIKA TOURS — SITE FOOTER (all pages)
+    Brand tokens per Brand Guidelines:
+      Terracotta  #D97E53   Deep Brown #4B2E2B
+      Olive       #708238   Cream      #F5F0EB
+    Fonts: swap Georgia -> Canela Deck, Arial/Helvetica -> Noto Sans in production.
+  */
+  :root{
+    --terracotta:#D86954;      /* sampled from live site accent block */
+    --brown:#472F2C;           /* sampled footer background */
+    --olive:#708238;
+    --accent-2:#CD825B;        /* sampled active-nav underline, use for hovers */
+    --bar:#3B2523;             /* deepened brown for bottom bar */
+    --cream:#F4F0EB;           /* sampled nav/cream */
+    --cream-dim:rgba(245,240,235,.72);
+    --display:'Canela Deck', Georgia, 'Times New Roman', serif;
+    --body:'Poppins', 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;   /* site body font */
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--body);background:#FBF8F4;color:#2E2E2E}
+
+  /* placeholder page content above the footer */
+  .page-demo{max-width:1160px;margin:0 auto;padding:72px 32px 96px;color:#8a8a8a;font-size:14px}
+
+  /* ---------- FOUNDER'S CIRCLE (corner column) ---------- */
+  .fc-col h3{
+    font-family:var(--display);font-size:19px;font-weight:700;color:#FFFFFF;
+    margin-bottom:20px;padding-bottom:12px;position:relative}
+  .fc-col h3::after{content:"";position:absolute;left:0;bottom:0;width:28px;height:2px;background:var(--terracotta)}
+  .fc-col input{
+    width:100%;font-family:var(--body);font-size:14.5px;color:var(--brown);
+    background:var(--cream);border:none;border-radius:4px;
+    padding:12px 14px;margin-bottom:12px;outline-offset:2px}
+  .fc-col input::placeholder{color:#8a7364}
+  .fc-col button{
+    width:100%;font-family:var(--body);font-weight:700;font-size:14.5px;letter-spacing:.4px;
+    background:var(--terracotta);color:#fff;border:none;border-radius:4px;
+    padding:13px 20px;cursor:pointer;transition:background .2s}
+  .fc-col button:hover{background:#c65a44}
+  .fc-fineprint{font-size:11px;font-style:italic;line-height:1.55;
+    color:rgba(244,240,235,.7);margin-top:12px}
+  .fc-fineprint a{color:var(--cream);text-decoration:underline}
+
+  /* ---------- MAIN FOOTER ---------- */
+  footer{background:var(--brown);color:var(--cream)}
+  .ft-inner{max-width:1160px;margin:0 auto;padding:72px 32px 56px;
+    display:grid;grid-template-columns:1.35fr .85fr .95fr .85fr 1.35fr;gap:44px}
+
+  /* brand block */
+  .ft-brand .logo{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+  .ft-brand .logo-mark{
+    width:56px;height:56px;border-radius:50%;flex:0 0 auto;
+    border:2px solid var(--terracotta);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--terracotta);font-family:var(--display);font-size:11px;text-align:center;line-height:1.1}
+  .ft-brand .logo-word{font-family:var(--display);line-height:1.02}
+  .ft-brand .logo-word .l1{font-size:30px;font-weight:700;letter-spacing:.3px}
+  .ft-brand .logo-word .l2{font-size:16px;letter-spacing:1.2px}
+  .ft-brand .descriptor{font-size:15px;line-height:1.6;color:var(--cream-dim);max-width:300px;margin-bottom:26px}
+  .ft-contact{font-size:14.5px;line-height:1.75;color:var(--cream-dim)}
+  .ft-contact a{color:var(--cream);text-decoration:none;border-bottom:1px solid rgba(217,126,83,.55)}
+  .ft-contact a:hover{border-bottom-color:var(--accent-2)}
+  .ft-contact .addr{margin-top:10px}
+
+  /* link columns */
+  .ft-col h3{
+    font-family:var(--display);font-size:19px;font-weight:700;color:#FFFFFF;
+    margin-bottom:20px;padding-bottom:12px;position:relative}
+  .ft-col h3::after{content:"";position:absolute;left:0;bottom:0;width:28px;height:2px;background:var(--terracotta)}
+  .ft-col ul{list-style:none}
+  .ft-col li{margin-bottom:12px}
+  .ft-col a{color:var(--cream-dim);text-decoration:none;font-size:15px;transition:color .15s}
+  .ft-col a:hover,.ft-col a:focus-visible{color:var(--accent-2)}
+
+  /* ---------- BOTTOM BAR ---------- */
+  .ft-bottom{background:var(--bar);border-top:1px solid rgba(244,240,235,.10)}
+  .ft-bottom-inner{max-width:1160px;margin:0 auto;padding:24px 32px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .ft-legalline{font-size:13.5px;color:var(--cream-dim)}
+  .ft-tag{font-family:var(--display);font-style:italic;font-size:15px;color:var(--terracotta)}
+  .ft-social{display:flex;gap:12px}
+  .ft-social a{
+    width:38px;height:38px;border-radius:50%;
+    border:1px solid rgba(245,240,235,.3);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--cream);text-decoration:none;transition:all .2s}
+  .ft-social a:hover{background:var(--terracotta);border-color:var(--terracotta)}
+  .ft-social svg{width:16px;height:16px;fill:currentColor}
+
+  @media (max-width:900px){
+    .ft-inner{grid-template-columns:1fr 1fr;gap:40px}
+    .fc-col{grid-column:1 / -1;max-width:440px}
+  }
+  @media (max-width:560px){
+    .ft-inner{grid-template-columns:1fr}
+    .ft-bottom-inner{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<div class="page-demo">[ page content ends here — footer begins ]</div>
+
+<footer>
+  <div class="ft-inner">
+
+    <div class="ft-brand">
+      <div class="logo">
+        <div class="logo-mark">LOGO<br>(white)</div>
+        <div class="logo-word">
+          <div class="l1">Umoya</div>
+          <div class="l2">Afrika Tours</div>
+        </div>
+      </div>
+      <p class="descriptor">Premium culturally immersive journeys across South Africa.</p>
+      <div class="ft-contact">
+        <a href="mailto:info@umoyaafrikatours.co.za">info@umoyaafrikatours.co.za</a>
+        <div class="addr">
+          West Tower, 2nd Floor, Nelson Mandela Square,<br>
+          Sandown, Johannesburg, 2146
+        </div>
+      </div>
+    </div>
+
+    <nav class="ft-col" aria-label="Journeys">
+      <h3>Journeys</h3>
+      <ul>
+        <li><a href="#">The Signature Journey</a></li>
+        <li><a href="#">Private &amp; Tailormade</a></li>
+        <li><a href="#">For Groups</a></li>
+        <li><a href="#">About Us</a></li>
+      </ul>
+    </nav>
+
+    <nav class="ft-col" aria-label="Support">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="#">Travel Essentials</a></li>
+        <li><a href="#">Travel Brochure</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    <nav class="ft-col" aria-label="Legal">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#" class="cky-banner-element">Cookie Settings</a></li>
+        <li><a href="#">Email Opt-out</a></li>
+        <li><a href="#">PAIA Manual</a></li>
+      </ul>
+    </nav>
+
+    <div class="fc-col">
+      <h3>Join the Founder&rsquo;s Circle</h3>
+      <form onsubmit="return false">
+        <input type="text" placeholder="Name" aria-label="Name">
+        <input type="email" placeholder="Email address" aria-label="Email">
+        <button type="submit">Join</button>
+      </form>
+      <p class="fc-fineprint">By subscribing you consent to receive marketing communications from
+        Umoya Afrika Tours (Pty) Ltd. We never share your email, and you may unsubscribe at any time.
+        See our <a href="#">Privacy Policy</a>.</p>
+    </div>
+
+  </div>
+
+  <div class="ft-bottom">
+    <div class="ft-bottom-inner">
+      <div class="ft-legalline">&copy; 2026 Umoya Afrika Tours (Pty) Ltd &middot; Reg. 2025/818751/07</div>
+      <div class="ft-tag">Breathe South Africa Differently</div>
+      <div class="ft-social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2m0 2A7.8 7.8 0 1 0 12 19.8 7.8 7.8 0 0 0 12 4.2m0 2.9a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8m6.4-3.3a1.1 1.1 0 1 1 0 2.3 1.1 1.1 0 0 1 0-2.3"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.7-1.6h1.6V3.2c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.6H7.6V13h2.8v8h3.1z"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.8 5.6c-.9-.6-1.5-1.6-1.7-2.6h-3v12.3a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.6V9.4c1 .7 2.3 1.2 3.6 1.2V7.5c-.7 0-1.4-.2-2-.6-.4-.2-.7-.5-1-.8z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

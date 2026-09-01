@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Umoya Afrika Tours (Mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /*
+    UMOYA CONTACT PAGE — mockup
+    Two-panel structure borrowed from Nyanu contact page,
+    styled to the Umoya "Begin Your Journey" form language:
+    cream page, letterspaced uppercase labels, cream-filled inputs,
+    serif display headings, terracotta primary button.
+    Sampled site tokens: bg cream #F2EDE4-ish page, brown #472F2C, accent #D86954 / #CD825B.
+    Swap Georgia -> Canela Deck in production.
+  */
+  :root{
+    --page:#F2EEE6;
+    --card:#FFFFFF;
+    --input:#F2EDE4;
+    --brown:#472F2C;
+    --accent:#D86954;
+    --accent2:#CD825B;
+    --display:'Canela Deck', Georgia, serif;
+    --body:'Poppins','Noto Sans',Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--page);font-family:var(--body);color:var(--brown)}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+
+  /* hero */
+  .hero{text-align:center;padding:88px 0 56px}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:3.5px;color:var(--accent2);text-transform:uppercase}
+  .hero h1{font-family:var(--display);font-size:56px;font-weight:600;margin:14px 0 18px}
+  .hero .rule{width:64px;height:3px;background:var(--accent);margin:0 auto 22px}
+  .hero p{font-size:16.5px;line-height:1.7;color:#6b5a54;max-width:620px;margin:0 auto}
+
+  /* panels */
+  .panels{display:grid;grid-template-columns:1fr 1fr;gap:36px;padding-bottom:40px}
+  .card{background:var(--card);border-radius:10px;padding:44px 40px;
+    border-top:3px solid var(--accent);box-shadow:0 2px 18px rgba(71,47,44,.06)}
+  .card h2{font-family:var(--display);font-size:27px;font-weight:600;margin-bottom:8px}
+  .card .sub{font-size:14.5px;line-height:1.65;color:#6b5a54;margin-bottom:30px}
+
+  label{display:block;font-size:12px;font-weight:600;letter-spacing:2.2px;
+    text-transform:uppercase;margin:0 0 8px}
+  label .req{color:var(--accent)}
+  input,select,textarea{
+    width:100%;font-family:var(--body);font-size:15px;color:var(--brown);
+    background:var(--input);border:1px solid #E3DBCE;border-radius:8px;
+    padding:14px 16px;margin-bottom:22px;outline:none}
+  input::placeholder,textarea::placeholder{color:#A99686}
+  input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+  textarea{min-height:120px;resize:vertical}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .consent{display:flex;gap:10px;align-items:flex-start;margin-bottom:14px}
+  .consent input{width:auto;margin:3px 0 0}
+  .consent-label{font-size:13.5px;font-weight:400;letter-spacing:0;text-transform:none;line-height:1.5;margin:0}
+  .consent-label a{color:var(--accent);text-decoration:none;font-weight:600}
+  .fineprint{font-size:12.5px;color:#8a7566;text-align:center;margin-top:14px}
+
+  .btn{
+    width:100%;font-family:var(--body);font-weight:600;font-size:14px;
+    letter-spacing:2.5px;text-transform:uppercase;
+    background:var(--accent);color:#fff;border:none;border-radius:8px;
+    padding:18px 24px;cursor:pointer;transition:background .2s}
+  .btn:hover{background:#c65a44}
+  .btn.secondary{background:var(--brown)}
+  .btn.secondary:hover{background:#392420}
+
+  /* direct contact strip */
+  .direct{background:var(--brown);border-radius:10px;margin:8px 0 88px;padding:26px 32px;text-align:center}
+  .direct-line{font-size:15px;color:rgba(244,240,235,.9)}
+  .direct-line a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(216,105,84,.7)}
+  .direct-line a:hover{border-bottom-color:var(--accent)}
+
+  @media(max-width:860px){
+    .panels{grid-template-columns:1fr}
+    .hero h1{font-size:40px}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow">Get in touch</div>
+    <h1>Talk to Us</h1>
+    <div class="rule"></div>
+    <p>Whether you are planning a journey, working with clients as a travel advisor,
+       or writing about what we do, this is where the conversation starts.
+       We reply within one business day.</p>
+  </section>
+
+  <section class="panels">
+
+    <!-- Panel 1: journey planning (replicates Founder's Circle form) -->
+    <div class="card">
+      <h2>Plan a Journey</h2>
+      <p class="sub">Tell us about yourself and the travel experience you're seeking.
+        A dedicated Umoya Travel Expert will personally connect with you.</p>
+      <label>Title</label>
+      <select><option>Select...</option><option>Mr</option><option>Mrs</option><option>Ms</option><option>Mx</option><option>Dr</option></select>
+      <div class="row2">
+        <div><label>First name <span class="req">*</span></label><input type="text" placeholder="First name"></div>
+        <div><label>Last name <span class="req">*</span></label><input type="text" placeholder="Last name"></div>
+      </div>
+      <div class="row2">
+        <div><label>Email address <span class="req">*</span></label><input type="email" placeholder="your@email.com"></div>
+        <div><label>Phone number</label><input type="tel" placeholder="+1 (000) 000-0000"></div>
+      </div>
+      <div class="row2">
+        <div><label>Country <span class="req">*</span></label><select><option>Select country...</option></select></div>
+        <div><label>City</label><input type="text" placeholder="Your city"></div>
+      </div>
+      <label>When are you hoping to travel?</label>
+      <div class="row2">
+        <div><select><option>Month</option><option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option></select></div>
+        <div><select><option>Year</option><option>2026</option><option>2027</option><option>2028</option></select></div>
+      </div>
+      <label>How many guests will be traveling?</label>
+      <select>
+        <option>Select...</option>
+        <option>Couple or Singles (2 minimum)</option>
+        <option>Small Group (3 to 9)</option>
+        <option>Mid-Size Group (10 to 19)</option>
+        <option>Large Group (20 or more)</option>
+        <option>Just me, or not sure yet</option>
+      </select>
+      <label>What are you hoping to experience?</label>
+      <textarea placeholder="Tell us about your travel interests, what you hope to experience, and what draws you to South Africa."></textarea>
+      <div class="consent"><input type="checkbox" id="c1"><label for="c1" class="consent-label">I consent to Umoya contacting me about my enquiry and processing my details as set out in the <a href="#">Privacy Policy</a>. <span class="req">(Required)</span></label></div>
+      <div class="consent"><input type="checkbox" id="c2"><label for="c2" class="consent-label">I'd also like to receive Umoya journeys and stories by email. <span class="req">(Optional)</span></label></div>
+      <button class="btn" type="button">Start the Conversation</button>
+      <p class="fineprint">Your information is held in strict confidence and never shared.</p>
+    </div>
+
+    <!-- Panel 2: general & media -->
+    <div class="card">
+      <h2>General &amp; Media Enquiries</h2>
+      <p class="sub">For travel advisors, wedding and event planners, group leaders,
+        press, partnerships, and existing bookings.</p>
+      <label>Full name <span class="req">*</span></label>
+      <input type="text" placeholder="Your name">
+      <label>Email address <span class="req">*</span></label>
+      <input type="email" placeholder="your@email.com">
+      <label>Organisation</label>
+      <input type="text" placeholder="Company, agency, or publication">
+      <label>Enquiry type <span class="req">*</span></label>
+      <select>
+        <option>Select...</option>
+        <option>Travel advisor or agency partnership</option>
+        <option>Group leader: reunions, churches, alumni &amp; organisations</option>
+        <option>Wedding or event planner</option>
+        <option>Press and media</option>
+        <option>Existing booking</option>
+        <option>General question</option>
+      </select>
+      <label>Message</label>
+      <textarea placeholder="How can we help?"></textarea>
+      <button class="btn secondary" type="button">Send Message</button>
+    </div>
+
+  </section>
+
+  <!-- Direct contact strip -->
+  <section class="direct">
+    <p class="direct-line">Prefer email? Write to <a href="mailto:info@umoyaafrikatours.co.za">info@umoyaafrikatours.co.za</a>
+    &nbsp;&middot;&nbsp; Media enquiries: same address, subject line <em>Media</em></p>
+  </section>
+
+</div>
+
+</body>
+</html>

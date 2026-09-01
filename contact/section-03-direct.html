@@ -1,0 +1,165 @@
+<!--
+=================================================================
+  UMOYA — CONTACT — SECTION 03: DIRECT CONTACT STRIP
+=================================================================
+  The "prefer email?" band from the mockup, plus the registered
+  office address. Someone who does not want to fill in a form —
+  a journalist on deadline, an advisor with one quick question —
+  should not have to hunt for an address.
+
+  The address matches the one already rendered in the live site
+  footer. The mockup's shorter version omits "Maude Street"; the
+  fuller live version is used here. See _NOTES.md.
+
+  ELEMENTOR: place after contact/section-02-forms.html on /contact/,
+  before shared/section-99-footer.html.
+  BRAND: font-family: inherit; palette tokens only. ES5 IIFE.
+=================================================================
+-->
+<style>
+  #umoya-contact-direct {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --white:    #FFFFFF;
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--cream);
+    color: var(--brown);
+    padding: 0 0 clamp(56px, 7vw, 96px);
+    overflow-x: hidden;
+  }
+
+  #umoya-contact-direct *,
+  #umoya-contact-direct *::before,
+  #umoya-contact-direct *::after { box-sizing: border-box; }
+
+  .ct-dir-c {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 3.4vw, 48px);
+  }
+
+  .ct-dir-band {
+    background: var(--brown);
+    border-radius: 10px;
+    padding: clamp(26px, 3.4vw, 38px) clamp(22px, 3.4vw, 44px);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(14px, 3vw, 40px);
+    text-align: center;
+  }
+
+  .ct-dir-item {
+    display: block;
+    font-family: inherit;
+    font-size: clamp(0.92rem, 1.1vw, 1rem);
+    line-height: 1.7;
+    color: rgba(245,240,235,.82);
+    margin: 0;
+  }
+
+  .ct-dir-lbl {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 6px;
+  }
+
+  .ct-dir-item a {
+    /* 44px target without visually inflating a one-line link */
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--white);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(217,126,83,.7);
+    transition: border-color .2s var(--ease), color .2s var(--ease);
+  }
+  .ct-dir-item a:hover { color: var(--terra); border-bottom-color: var(--terra); }
+  .ct-dir-item a:focus-visible { outline: 2px solid var(--terra); outline-offset: 3px; }
+
+  .ct-dir-sep {
+    width: 1px;
+    align-self: stretch;
+    min-height: 44px;
+    background: rgba(245,240,235,.18);
+  }
+
+  .ct-dir-note {
+    font-family: inherit;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: rgba(245,240,235,.62);
+    margin: 14px 0 0;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .ct-dir-rv { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+  .ct-dir-rv.ct-dir-on { opacity: 1; transform: none; }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 768px) {
+    #umoya-contact-direct { padding-bottom: 46px; }
+    .ct-dir-band { flex-direction: column; gap: 20px; }
+    .ct-dir-sep { display: none; }
+  }
+
+  @media (max-width: 420px) {
+    .ct-dir-band { padding: 24px 18px; border-radius: 8px; }
+  }
+</style>
+
+<section id="umoya-contact-direct" aria-label="Contact Umoya directly">
+  <div class="ct-dir-c">
+    <div class="ct-dir-band ct-dir-rv">
+
+      <p class="ct-dir-item">
+        <span class="ct-dir-lbl">Prefer Email?</span>
+        <a href="mailto:info@umoyaafrikatours.co.za">info@umoyaafrikatours.co.za</a>
+      </p>
+
+      <div class="ct-dir-sep" aria-hidden="true"></div>
+
+      <p class="ct-dir-item">
+        <span class="ct-dir-lbl">Media Enquiries</span>
+        <a href="mailto:info@umoyaafrikatours.co.za?subject=Media">Same address, subject line <em>Media</em></a>
+      </p>
+
+      <div class="ct-dir-sep" aria-hidden="true"></div>
+
+      <p class="ct-dir-item">
+        <span class="ct-dir-lbl">Our Office</span>
+        West Tower, 2nd Floor, Nelson Mandela Square,<br>
+        Maude Street, Sandown, Johannesburg, 2146
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+
+  var els = document.querySelectorAll('#umoya-contact-direct .ct-dir-rv');
+  if (!els.length) return;
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('ct-dir-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    Array.prototype.forEach.call(els, function(el){ obs.observe(el); });
+  } else {
+    Array.prototype.forEach.call(els, function(el){ el.classList.add('ct-dir-on'); });
+  }
+}());
+</script>

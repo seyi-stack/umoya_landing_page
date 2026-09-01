@@ -87,6 +87,11 @@ These were client-requested refinements — do not regress them:
   (that gate was the original reason they appeared not to move at all).
 - **No `text-shadow` anywhere on this page.**
 - Mobile type scale and vertical spacing reduced at 768 / 420.
+- **Cape Grace spelling, 2026-08-22.** Section 05's Cape Grace description
+  reads "heritage, color, and craft" — "colour" was changed to **color**
+  because the site's guest-facing copy is US English. This applies to page
+  copy only; the legal documents under `Revised footer docs/` keep their
+  British spellings and are reproduced verbatim.
 
 ---
 

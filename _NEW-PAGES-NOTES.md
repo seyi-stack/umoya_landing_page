@@ -80,8 +80,9 @@ widget's *ancestor* and *sibling*. They're gated behind a
 header that actually contains this nav, so Canvas pages are untouched.
 
 Verified live and in an isolated harness at 375 / 1024 / 1400px:
-theme menu suppressed, correct nav shown (hamburger ≤1024px as of
-2026-08-22, ≤900px when that harness run was done), hero
+theme menu suppressed, correct nav shown (the harness run predates the
+2026-08-22 move of the hamburger from ≤900px to ≤1024px, so re-check the
+901–1024px band if that matters), hero
 stacks below with no overlap, dock/stick/hide-on-scroll still works
 inside the theme header, and on a Canvas-style page the marker is
 never applied.
@@ -128,6 +129,25 @@ If a real slug differs (e.g. `/private-tailormade/`), update both the
 | 6 | `section-06-hosts.html` | Meet Our Hosts (6 cards) | `ab-hosts` |
 | 7 | `section-07-difference.html` | The Umoya Difference (4 cards) | `ab-difference` |
 | 8 | `section-08-cta.html` | Closing CTA | `ab-cta` |
+
+### Host card copy — corrected 2026-08-22
+
+Three of the six host descriptions in `section-06-hosts.html` were rewritten
+from the "Overview of Edits for Mock ups" client feedback doc. **These are
+statements about real, named people — do not paraphrase them back.**
+
+| Host | Was | Now |
+|---|---|---|
+| **Lucia Motloung** | "Founder of the Luc Mo wine label, built with the Ndebele Kingdom. She hosts your first dinner and pours what she makes." | "Founder of Luc Mo Wine, a pioneering wine brand built with the Ndebele Kingdom." |
+| **Antoinette Sithole** | "The sister beside Hector Pieterson in the 1976 photograph. She hosts lunch in Soweto and tells the day as she lived it." | "The sister beside Hector Pieterson in the photograph that showed the world the 1976 Soweto Uprising. She hosts your lunch and tells the story as she lived it." |
+| **Tshabalala Family** | "The Tshabalala family's restored cinema, a Soweto landmark brought back to life and opened to you by the family." | "The family behind Eyethu Heritage Hall, one of the first Black-owned cinemas in Soweto, restored and opened to you by the people who built it." |
+
+Note what changed and why: the brand is **Luc Mo Wine**, and the
+dinner-hosting claim was dropped; Antoinette's entry now spells out what the
+1976 photograph *was* rather than assuming the reader recognises it; and the
+Tshabalala card names **Eyethu Heritage Hall** explicitly. The photo on that
+card is `umoya_compressed_ZAV_6406.png`, the only approved Eyethu image —
+see the resolved-identities table in `CLAUDE.md`.
 
 ## Page 3 — For Groups (`for-groups/`)
 

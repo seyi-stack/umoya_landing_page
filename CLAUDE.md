@@ -1,9 +1,9 @@
 # CLAUDE.md - Umoya Afrika Tours Project Handoff
 
-Last updated: 2026-08-29
+Last updated: 2026-09-01
 Workspace: `C:\Users\MOVING_SURFACE\Downloads\UM_Claude`
 Remote: `https://github.com/seyi-stack/umoya_landing_page.git`
-Current local branch: `codex/elementor-widget-sync` (pushed through `8bcf974`)
+Current local branch: `codex/elementor-widget-sync` (pushed through `1b62ef9`)
 
 This file is the living handoff for the Umoya Afrika Tours website work. It should help any future assistant, developer, or editor understand what has been built, why it was built, how the pieces connect, and what still needs attention.
 
@@ -39,6 +39,11 @@ be kept in sync when their area changes:
 | `contact/_NOTES.md` | The Contact page + its two HubSpot forms |
 | `founders-circle-revamp/_REVAMP-NOTES.md` | Founder's Circle v4/v5 revamp |
 | `homepage-revamp/_REVAMP-NOTES.md` | Homepage revamp |
+
+The three footer content pages (`shared/page-travel-essentials.html`,
+`page-privacy-policy.html`, `page-cookie-policy.html`) have no separate
+notes file - Phase 19 below is their documentation, and each file carries a
+header comment explaining its own decisions.
 
 ---
 
@@ -601,7 +606,8 @@ the hero):
 
 The mount reserves the bar height permanently so detaching causes no
 layout jump. `--nav-h` on the mount is the single source of truth
-(64px desktop / 58px ≤900px) and the JS reads it back.
+(64px desktop / 58px ≤1024px, raised from 900px in Phase 18) and the JS
+reads it back.
 
 > The older `signature-journey/section-00-nav.html` and
 > `homepage-revamp/homepage-section-00-nav.html` are still the
@@ -701,56 +707,6 @@ over the Mountain Duck mount. It was last written 2026-07-25, which argues
 against an active PHP fatal and for resource starvation. **Pull that log
 via cPanel/SSH to confirm.** See Open Items.
 
-### Phase 16 - Contact page + footer rebuild, 2026-08-29
-
-Built from the client's two new mockups in `Mockups (footer, contact)/`,
-with routing from `Umoya_Footer_Routing_and_Implementation.docx`.
-
-**New `contact/` page** (3 sections, targets `/contact/`): centred hero,
-two side-by-side enquiry panels, and a direct-contact band carrying the
-office address. Detail in `contact/_NOTES.md`.
-
-> WARNING: `/contact/` AND `/contact-us/` both already exist live, and both
-> are still the **Tevily demo template** - "Lorem ipsum", "88 Broklyn Street
-> NY, USA", a fake phone number. Replace `/contact/`, and decide whether
-> `/contact-us/` is redirected or unpublished.
-
-**Two new HubSpot forms** so contact leads report separately, plus one new
-contact property `enquiry_type`. Both verified end-to-end. See Section 21.
-
-**`shared/section-99-footer.html` rebuilt** to the footer mockup: brand
-block, Journeys / Support / Legal columns, a "Join the Founder's Circle"
-signup, and a bottom bar with the registration number, tagline and social
-icons. Two behavioural changes worth knowing:
-
-- **Cookie Settings is now a CookieYes trigger.** The routing doc confirms
-  the site is standardising on CookieYes, which re-opens its preference
-  centre for any element carrying `.cky-banner-element`. The previous
-  guess-the-global JS is gone; a small guard only fires if CookieYes is
-  absent at click time.
-- **The newsletter consent model changed.** The old footer used a required,
-  never-pre-ticked checkbox. The mockup and doc instead specify
-  statement-style consent ("By subscribing you consent to...") with no
-  checkbox, and require that wording verbatim. That is what shipped; the
-  exact wording is still stored with every submission for the POPIA
-  consent register. **Flag this to whoever owns POPIA compliance** - it is
-  a deliberate client instruction, not an oversight.
-
-**Slugs checked live** (2026-08-29), which closes a long-standing open item:
-`/terms-and-conditions/` is the real page - the old FOOTER URL MAP's
-`/booking-terms` 404s. `/travel-essentials/`, `/email-preferences/`,
-`/travel-brochure.pdf` and `/paia-manual.pdf` do **not** exist yet.
-
-**Also fixed:** the footer's full-bleed `width: 100vw` included the vertical
-scrollbar, making it a scrollbar-width too wide and giving every page a
-small horizontal scroll. It now uses a `--umoya-ft-vw` custom property set
-from `documentElement.clientWidth`, with `100vw` as the no-JS fallback.
-
-**`shared/page-email-preferences.html`** was added so the footer's Email
-Opt-out link has somewhere to land - the copy is the routing doc's,
-verbatim, with the HubSpot preference-centre button commented out until
-that URL exists.
-
 ### Phase 15 - Full outage, 2026-08-22 (RESOLVED)
 
 The site returned WordPress's **"There has been a critical error on this
@@ -829,6 +785,258 @@ nothing.
   underlying risk. A half-extracted auto-update is exactly the failure mode a
   bloated, duplicated plugin set invites.
 
+### Phase 16 - Contact page + footer rebuild, 2026-08-29
+
+Built from the client's two new mockups in `Mockups (footer, contact)/`,
+with routing from `Umoya_Footer_Routing_and_Implementation.docx`.
+
+**New `contact/` page** (3 sections, targets `/contact/`): centred hero,
+two side-by-side enquiry panels, and a direct-contact band carrying the
+office address. Detail in `contact/_NOTES.md`.
+
+> ~~WARNING: `/contact/` AND `/contact-us/` both already exist live, and
+> both are still the Tevily demo template.~~
+> **RESOLVED 2026-08-22.** `/contact/` now serves the real page and
+> `/contact-us/` 404s, so no redirect decision is needed. See Phase 18.
+
+**Two new HubSpot forms** so contact leads report separately, plus one new
+contact property `enquiry_type`. Both verified end-to-end. See Section 21.
+
+**`shared/section-99-footer.html` rebuilt** to the footer mockup: brand
+block, Journeys / Support / Legal columns, a "Join the Founder's Circle"
+signup, and a bottom bar with the registration number, tagline and social
+icons. Two behavioural changes worth knowing:
+
+- **Cookie Settings is now a CookieYes trigger.** The routing doc confirms
+  the site is standardising on CookieYes, which re-opens its preference
+  centre for any element carrying `.cky-banner-element`. The previous
+  guess-the-global JS is gone; a small guard only fires if CookieYes is
+  absent at click time.
+- **The newsletter consent model changed.** The old footer used a required,
+  never-pre-ticked checkbox. The mockup and doc instead specify
+  statement-style consent ("By subscribing you consent to...") with no
+  checkbox, and require that wording verbatim. That is what shipped; the
+  exact wording is still stored with every submission for the POPIA
+  consent register. **Flag this to whoever owns POPIA compliance** - it is
+  a deliberate client instruction, not an oversight.
+
+**Slugs checked live** (2026-08-29), which closes a long-standing open item:
+`/terms-and-conditions/` is the real page - the old FOOTER URL MAP's
+`/booking-terms` 404s. `/travel-essentials/`, `/email-preferences/`,
+`/travel-brochure.pdf` and `/paia-manual.pdf` do **not** exist yet.
+
+**Also fixed:** the footer's full-bleed `width: 100vw` included the vertical
+scrollbar, making it a scrollbar-width too wide and giving every page a
+small horizontal scroll. It now uses a `--umoya-ft-vw` custom property set
+from `documentElement.clientWidth`, with `100vw` as the no-JS fallback.
+
+**`shared/page-email-preferences.html`** was added so the footer's Email
+Opt-out link has somewhere to land - the copy is the routing doc's,
+verbatim, with the HubSpot preference-centre button commented out until
+that URL exists.
+
+
+### Phase 17 - Signature Journey stat band + client copy corrections, 2026-08-22
+
+**The stat band moved WITHIN section 02, not out of it.** Worth reading
+before touching it, because the first attempt got this wrong.
+
+The 10 Days / 3 Chapters / 2 Extensions row used to OPEN
+`signature-journey/section-02-intro.html`, sitting directly under the hero
+where it stated the shape of a journey the reader had not been introduced to
+yet. The client asked for it "below the overview". That means section 02 now
+holds two bands in this order: **intro copy first, stat bar second.** A
+fourth stat, **7 Signature Moments**, was added at the same time.
+
+> The first pass moved the band out of section 02 entirely and into the end
+> of section 03. That was reverted in `6d8a369`; section 03 is byte-identical
+> to its pre-change state. If a future request says "move the stats", check
+> whether it means *within* section 02 before relocating anything.
+
+Placement detail that is load-bearing: the bar is safe as section 02's last
+band because **section 03 below is white** and the intro above is cream, so
+the brown reads as a deliberate rule. At the end of section 03 it butted
+straight against section 04 Extensions, which is *also* brand brown, and
+needed a hairline to stop the two merging - the same problem previously
+fixed between the homepage CTA and the footer.
+
+On phones the four stats sit **2x2**, not in one row, and each label swaps to
+a short form via `data-short` ("Immersive Chapters" -> "Chapters"). Four
+columns crushed the labels at 360px.
+
+**Client copy corrections applied the same day** (`178a049`), from the
+"Overview of Edits for Mock ups" feedback doc:
+
+| File | Change |
+|---|---|
+| `about/section-06-hosts.html` | Lucia Motloung - brand named as "Luc Mo Wine"; the dinner-hosting claim dropped |
+| `about/section-06-hosts.html` | Antoinette Sithole - spells out what the 1976 photograph was rather than assuming recognition |
+| `about/section-06-hosts.html` | Tshabalala Family - identifies Eyethu Heritage Hall by name, and as one of the first Black-owned cinemas in Soweto |
+| `signature-journey/section-05-stays.html` | Cape Grace - "colour" -> "color"; site copy is US English |
+
+> The US-English rule applies to **site copy**. It does NOT apply to the
+> legal documents in `Revised footer docs/`, which are the client's own
+> drafting and are reproduced verbatim, British spellings included
+> ("travellers", "recognised", "authorised").
+
+### Phase 18 - Contact added to the shared nav, 2026-08-22
+
+`shared/section-00-nav.html` gained a fifth link, **Contact ->
+`/contact/`**, in both the inline row and the mobile dropdown. Its
+`data-path` is `/contact`, which deliberately does NOT match the retired
+`/contact-us` - the active-state test is
+`here === p || here.indexOf(p + '/') === 0`.
+
+**The hamburger breakpoint moved 900px -> 1024px to make room.** Logo + five
+nav items + the CTA need roughly 970px on one line, and the items are
+`white-space: nowrap` inside a flex row with `flex-shrink: 0` on the logo and
+CTA, so between 900 and 970px they would have pushed into the CTA rather than
+shrinking. Dropping the type further was the alternative and was rejected:
+tablet links are already `0.68rem` (~10.9px), under the project's own 12px
+floor. 1024px is also where the Tevily header swaps
+`.header_default_screen` for `.header-mobile`, so our bar and the theme's now
+change state together instead of 124px apart.
+
+Reverting is a one-line change if the inline nav is wanted down to 900px
+again - but shorten a link label first.
+
+**Two long-standing open items closed while verifying the destinations:**
+
+- `/signature-journey/` now resolves. The page has moved off
+  `/signature-journey-unpublished/`, so the slug the nav already assumed is
+  correct.
+- `/contact-us/` now 404s, and `/contact/` serves the real page
+  (`umoya-contact-hero` / `-forms` / `-direct`), not the Tevily demo copy.
+
+All six nav destinations return uncached 200s.
+
+### Phase 19 - Footer content pages from the revised legal docs, 2026-09-01
+
+`Revised footer docs/` holds the client's final copy. It became three
+brand-styled Elementor HTML widgets in `shared/`:
+
+| File | Publish at | Status |
+|---|---|---|
+| `page-travel-essentials.html` | `/travel-essentials/` | **New page.** The footer had been linking here against a 404 since August. Consolidates the former Visa & Entry Information and Travel Insurance Guide pages - redirect those here if they still exist. |
+| `page-privacy-policy.html` | `/privacy/` | **v1.1**, replaces the live v1.0 |
+| `page-cookie-policy.html` | `/cookie-policy/` | **v1.2**, replaces the live v1.0 |
+
+**The main reason the policy pages matter:** the live `/privacy/` and
+`/cookie-policy/` still render the literal string
+`Effective date: [INSERT DATE]`. That placeholder has been public since July.
+The revised docs supply real dates - both effective 1 June 2026, cookie
+policy last updated 26 August 2026 - so pasting these in finally closes it.
+
+Copy is **verbatim**, asserted by a sentence-level diff against each source
+file (zero unmatched sentences across all three). Two deliberate departures,
+both flagged in the files themselves:
+
+1. Travel Essentials drops the internal document-header clauses
+   ("Website page copy | Combines the former ... pages"), keeping only
+   **"Verified August 2026"** as a currency stamp. Those clauses are
+   production notes, not guest-facing copy.
+2. The insurance minimum-cover sentence is rendered as a **list**. Every word
+   is the source's; only the semicolons between items become markup. The
+   lead-in already announces a list, and guests use it as a checklist
+   against a quote.
+
+The Cookie Policy also carries an **in-page CookieYes trigger** at the point
+where the copy says you can change your preferences, reusing the footer's
+`.cky-banner-element` hook and its at-click-time not-loaded guard. It is the
+only page of the three with JS.
+
+It also uses a monospace stack on cookie identifiers (`__cf_bm`, `_ga_*`) -
+**the only `font-family` on these pages that is not `inherit`.** It is a
+system stack, so nothing is imported, and cookie names are identifiers that
+read badly in a serif. Flagged here so it is not mistaken for a slip.
+
+#### The PAIA manual was already live - at the OTHER spelling
+
+`/paia_manual.pdf` (**underscore**) returns 200 and is byte-identical to
+`Revised footer docs/Umoya_PAIA_Manual (final).pdf`. The footer had been
+pointing at `/paia-manual.pdf` (hyphen), which 404s.
+
+A hyphenated entry *does* appear in the Mountain Duck listing at the same
+byte size, but the server neither serves it (404, not 403) nor allows it to
+be read over the mount. Treat it as a ghost listing. It was **left in place**,
+not deleted, and the footer now points at the underscore URL.
+
+> Generalisable: the mount's file listing is not proof a file is served.
+> Confirm with an HTTP request before wiring a URL into markup.
+
+### Phase 20 - Post-launch fixes and analytics findings, 2026-09-01
+
+Follow-up pass on the contact page and footer after the client began
+testing them. Two code fixes, three findings. Nothing here changed page
+layout or copy.
+
+#### Fixed: the footer's Instagram icon was not the Instagram mark
+
+The glyph inherited from the footer mockup drew the camera lens as a
+subpath wound the SAME direction as the outer squircle, so under SVG's
+default **nonzero** fill rule it never punched through. It rendered as a
+solid rounded square with a filled dot in the middle — no lens ring, no
+corner dot. The lens radius was also 7.8 against the real mark's ~6.2, so
+even the proportions were wrong.
+
+Replaced with the official mark (Simple Icons), whose counters are wound
+to cut out correctly. It is still a single filled path on `currentColor`,
+so no CSS changed and it matches the weight of Facebook / TikTok /
+LinkedIn beside it. Verified side by side at 17px (the real footer size)
+and 64px.
+
+The commented-out YouTube path came from the same mockup and was checked
+at the same time — it is fine, its play triangle knocks out correctly.
+
+> Lesson worth keeping: a hand-rolled brand glyph can look plausible in
+> the file and render as a blob. Check icons at their ACTUAL size against
+> their real neighbours, not just in isolation.
+
+#### Fixed: resends and retries forwarded to HubSpot with no IP address
+
+HubSpot flags a submission with no `context.ipAddress`
+("This custom form submission didn't include an IP address. This could
+affect your form analytics."). It is an analytics warning, not data loss.
+
+`get_submission_from_meta()` rebuilt the submission without ever reading
+`_umoya_ip_address`, so `send_to_hubspot()` was reading an undefined key.
+Every **row-action resend, bulk resend and cron retry** therefore
+forwarded with no IP — and emitted an `Undefined array key` warning each
+time, up to 20 attempts per submission.
+
+`ip_address` is now read back from meta alongside `page_uri` / `page_name`
+/ `hutk`. Because the re-normalisation loop under it only overwrites
+HubSpot *field* keys, a resend now carries the ORIGINAL submitter's IP
+rather than nothing — and never the cron's. A new `valid_ip()` helper
+gates it, since HubSpot would rather have the key absent than malformed.
+
+Deliberately NOT accepted from `$payload['context']`: that arrives from
+the browser, and trusting it would let a client write any IP it liked into
+form analytics.
+
+Full detail, including how to tell this cause apart from the browser
+fallback, is in Section 21.
+
+#### Finding: form "Page views" and "Submissions / page view" are always 0
+
+Expected, not a misconfiguration. HubSpot only counts a page view for a
+form it renders itself. Every Umoya form is hand-built HTML that merely
+submits to the Forms API. Section 21 has the reasoning and the way to get
+a conversion rate anyway.
+
+#### Finding: /founders-circle/ is served without most plugin assets
+
+Chased down after the tracking script appeared to be missing there. It is
+missing — and so are Elementor's frontend JS, pro-elements, CF7, jQuery
+UI, Stripe, tevily-themer and the HubSpot WordPress plugin. 18 script tags
+against 47–48 on comparable pages, reproducible on forced cache misses.
+**Unresolved, needs wp-admin.** Section 21.
+
+#### Finding: CookieYes is not installed on the live site
+
+The footer routing doc states it already is. It is not — `cdn-cookieyes.com`
+appears on no live page; the site still runs `cookieadmin` + `cookieadmin-pro`.
+The footer's Cookie Settings button degrades safely until it is. Section 21.
 
 ---
 
@@ -1361,6 +1569,32 @@ During the widget sync rollout:
 
 ## 12. Deployment and Elementor Editing Guidance
 
+### ⏳ Pending Elementor deployments (as of 2026-09-01)
+
+Nothing in this repo reaches the live site until someone pastes it into an
+Elementor HTML widget. This is the current backlog, most urgent first.
+
+| # | Paste | Into | Why it matters |
+|---|---|---|---|
+| 1 | `shared/page-privacy-policy.html` | the EXISTING `/privacy/` page | The live page still shows `Effective date: [INSERT DATE]` publicly |
+| 2 | `shared/page-cookie-policy.html` | the EXISTING `/cookie-policy/` page | Same placeholder; also the URL CookieYes should point at |
+| 3 | `shared/page-travel-essentials.html` | a NEW page at `/travel-essentials/` | The footer has linked here against a 404 since August |
+| 4 | `shared/page-email-preferences.html` | a NEW page at `/email-preferences/` | Footer Email Opt-out currently 404s |
+| 5 | `shared/section-00-nav.html` | the nav widget on EVERY page | Contact link + the 1024px breakpoint |
+| 6 | `shared/section-99-footer.html` | LAST widget on EVERY page | Then delete the old Elementor Form newsletter widget |
+| 7 | `signature-journey/section-02-intro.html` | Signature Journey | Stat bar reordered + 7 Signature Moments |
+| 8 | `homepage-revamp/homepage-form-popup.html` | homepage | Still on the retired lossy HubSpot GUID `cb87d460` |
+| 9 | `umoya-elementor-widgets.zip` (re-upload) | Network Admin → Plugins | `contact_page_general` field forwarding + the resend IP fix |
+
+> ⚠ **Items 1 and 2 replace the CONTENT of pages that already exist.** Do not
+> create new pages for them — the footer, the Privacy Policy's own section 12,
+> and the footer signup's redirect all point at `/privacy/` and
+> `/cookie-policy/`. New slugs would break those links.
+
+> Item 3 consolidates the former **Visa & Entry Information** and **Travel
+> Insurance Guide** pages. If either still exists, redirect it to
+> `/travel-essentials/`.
+
 ### For Standalone HTML Widgets
 
 If using raw HTML snippets manually:
@@ -1403,6 +1637,10 @@ Preferred ongoing route:
 | `#ab-hero` … `#ab-cta` | About Us sections. |
 | `#ct-plan` / `#ct-general` | Contact page panels — link straight to one form. |
 | `#umoya-contact-hero` / `#umoya-contact-forms` / `#umoya-contact-direct` | Contact page section roots. |
+| `#umoya-travel-essentials` | Travel Essentials page root. |
+| `#umoya-privacy` | Privacy Policy page root. `#pv-1`…`#pv-15` are its contents-list anchors — renumbering a section means renumbering both. |
+| `#umoya-cookie-policy` | Cookie Policy page root. |
+| `#umoya-email-prefs` | Email Opt-out page root. |
 | `#umoyaSiteNavMount` / `#umoyaSiteNav` | Shared nav mount + bar. The mount must keep its reserved height. |
 
 ### Page URL slugs assumed by the shared nav
@@ -1643,7 +1881,7 @@ grepping for the GUID):**
 | `/founders-circle/` | `b3c06e8a` | ✅ live |
 | `/private-and-tailormade/` | `28e4e3e3` | ✅ live |
 | `/for-groups/` | `c201e387` | ✅ live |
-| `/signature-journey-unpublished/` | `71181d17` | ✅ live |
+| `/signature-journey/` | `71181d17` | ✅ live (the page moved off `/signature-journey-unpublished/` — confirmed 2026-08-22) |
 | `/` (homepage popup) | `cb87d460` | ⚠️ still the retired form — re-paste `homepage-revamp/homepage-form-popup.html` |
 
 Confirmed working: a real (non-test) submission on 2026-08-11 13:29 landed on
@@ -1845,6 +2083,36 @@ The scroll throttle uses `requestAnimationFrame` **with a `setTimeout`
 fallback**, because rAF never fires in non-compositing contexts and would
 otherwise latch the throttle permanently.
 
+**Five links since 2026-08-22** — The Signature Journey · Private &
+Tailormade · For Groups · About · **Contact** — in BOTH the inline row and
+the mobile dropdown. Adding a link means editing two lists, not one.
+
+**The hamburger breakpoint is 1024px, not 900px.** Five links plus the logo
+and CTA need ~970px on one line and cannot shrink (`white-space: nowrap`
+items, `flex-shrink: 0` logo and CTA), so they collided in the 900–970px
+band. See Phase 18 for why the type was not reduced instead. `--nav-h` drops
+to 58px at the same breakpoint.
+
+### `shared/page-travel-essentials.html`, `page-privacy-policy.html`, `page-cookie-policy.html`
+
+The three footer content pages, built 2026-09-01 from `Revised footer docs/`.
+Each is a self-contained Elementor HTML widget: nav first, the page widget,
+footer last. Full rationale in Phase 19. Things not to undo:
+
+- **The copy is verbatim and was diff-asserted.** If you edit wording, you
+  are editing a legal document the client drafted — check with them first.
+  British spellings are correct here and must NOT be Americanised the way
+  site copy is.
+- **The dates are real now.** `[INSERT DATE]` is gone. Privacy is v1.1,
+  Cookie is v1.2 (last updated 26 August 2026). Bump the version and date
+  together whenever the text changes.
+- The Cookie Policy's monospace on `<code>` cookie names is the one
+  deliberate non-`inherit` `font-family` in the set. It imports nothing.
+- The Privacy Policy's contents list is plain anchors, no JS; the nav's
+  `scroll-padding-top` is what stops the sticky bar covering the target.
+- The Cookie Policy is the only one of the three with a `<script>` — the
+  CookieYes not-loaded guard.
+
 ### `theme-overrides/tevily_child/header.php`
 
 Not deployed. Removes the Tevily theme header while keeping the footer.
@@ -1930,7 +2198,8 @@ Think of this project as five connected layers:
 
 5. CRM/compliance layer:
    - WordPress submission storage.
-   - HubSpot Forms API forwarding (all four custom forms share one GUID).
+   - HubSpot Forms API forwarding (eight live forms, each page on its own
+     GUID — the shared lossy form was retired; see Section 21).
    - HubSpot tracking code.
    - POPIA consent wording.
    - Footer newsletter and opt-out work still being completed.

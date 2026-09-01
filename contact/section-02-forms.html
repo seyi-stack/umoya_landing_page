@@ -1,0 +1,1164 @@
+<!--
+=================================================================
+  UMOYA — CONTACT — SECTION 02: THE TWO ENQUIRY PANELS
+=================================================================
+  Built from "Mockups (footer, contact)/Umoya_Contact_Page_Mockup.html".
+  Field order, labels, placeholders, option lists and button text
+  are the mockup's, verbatim. The mockup's fonts and sampled hexes
+  are NOT carried over — the routing doc states the mockup colours
+  are illustrative — so this uses font-family: inherit and the
+  brand palette.
+
+  TWO PANELS, TWO HUBSPOT FORMS
+    Panel 1  Plan a Journey    → "Contact Page Journey Inquiry"
+                                 1e38d41f-3e99-4605-94cc-9057857a4e82
+                                 source = contact_page_journey
+    Panel 2  General & Media   → "Contact Page General & Media Inquiry"
+                                 ffececd7-b401-43cb-8ee2-858b5d62892c
+                                 source = contact_page_general
+
+  Separate forms so "plan my trip" and "I am a journalist" never
+  land in the same conversion number. Both created 2026-08-29 via
+  tools/hubspot-sync.mjs create-forms.
+
+  SUBMIT PATH — identical to every other Umoya form:
+    1. POST /wp-json/umoya/v1/submissions (WordPress stores the lead,
+       then forwards it to HubSpot)
+    2. if WordPress is unreachable → POST straight to the HubSpot
+       Forms API and queue the WordPress backup in localStorage
+  WordPress-first means a HubSpot outage never loses a lead.
+
+  PROPERTY MAPPING — mirrored server-side in class-submissions.php
+  ($source_aliases). Both tables must stay in step; asserted by
+  tools/verify-alias-mapping.mjs.
+
+    Panel 1  MERGE1 → salutation             MERGE2 → country
+             MERGE3 → city                   MERGE4 → preferred_travel_season
+             MERGE5 → preferred_travel_year  MERGE6 → party_size
+             MERGE7 → founders_circle_message
+    Panel 2  MERGE2 → enquiry_type           MERGE3 → organization
+             MERGE7 → founders_circle_message
+
+  FULL NAME: panel 2 asks for one "Full name" field, as the mockup
+  does, but HubSpot stores firstname/lastname. The visible field is
+  split into two hidden inputs on every keystroke, so the split is
+  already in the DOM if a no-JS native POST ever fires.
+
+  POPIA: consent boxes are never pre-ticked, and the exact wording
+  agreed to is sent with the submission so the consent register can
+  show what was consented to. The required consent box on panel 2
+  is NOT in the mockup — it was added for parity with every other
+  Umoya form, since panel 2 also processes personal data. See
+  _NOTES.md.
+
+  data-hs-do-not-collect stops HubSpot's collectedforms.js filing a
+  duplicate "captured form" record alongside our clean API call.
+
+  ANCHORS: #ct-plan and #ct-general — link straight to a panel.
+  ELEMENTOR: place between section-01-hero and section-03-direct.
+  BRAND: font-family: inherit; palette tokens only. ES5 IIFE.
+  A11y: 44px targets, 16px input floor, one <h2> per panel.
+=================================================================
+-->
+<style>
+  #umoya-contact-forms {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --terra:    #D97E53;
+    --terra-dk: #C06840;
+    --olive:    #708238;
+    --white:    #FFFFFF;
+    --muted:    rgba(75,46,43,.68);
+    --line:     rgba(75,46,43,.16);
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    font-family: inherit;
+    background: var(--cream);
+    color: var(--brown);
+    padding: clamp(18px, 2.4vw, 30px) 0 clamp(34px, 4.4vw, 56px);
+    overflow-x: hidden;
+  }
+
+  #umoya-contact-forms *,
+  #umoya-contact-forms *::before,
+  #umoya-contact-forms *::after { box-sizing: border-box; }
+
+  .ct-f-c {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 3.4vw, 48px);
+  }
+
+  .ct-f-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(24px, 3.2vw, 40px);
+    /* stretch, as in the mockup: two cards of unequal content still read as
+       one pair rather than a tall card beside a floating short one */
+    align-items: stretch;
+  }
+
+  /*
+   * Panel 2 has far fewer fields than panel 1, so stretching it alone would
+   * leave dead space under its button. Instead the message box absorbs the
+   * difference — a press or partnership enquiry is exactly the case where a
+   * bigger box helps. Side-by-side widths only; below 900px the grid is a
+   * single column and every card takes its natural height.
+   */
+  @media (min-width: 901px) {
+    #ct-general { display: flex; flex-direction: column; }
+    #ct-general .ct-f-form { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+    #ct-general .ct-f-grow { flex: 1; min-height: 0; }
+    #ct-general .ct-f-grow textarea { height: 100%; }
+  }
+
+  /* ── Panel card ──────────────────────────────────── */
+  .ct-f-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--terra);
+    border-radius: 10px;
+    padding: clamp(26px, 3vw, 42px) clamp(20px, 2.6vw, 38px) clamp(28px, 3vw, 40px);
+    /* Scroll target clears the sticky nav when a #ct-plan link is followed */
+    scroll-margin-top: 88px;
+  }
+
+  .ct-f-ttl {
+    font-family: inherit;
+    font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+    font-weight: 400;
+    line-height: 1.16;
+    color: var(--brown);
+    margin: 0 0 8px;
+  }
+
+  .ct-f-sub {
+    font-family: inherit;
+    font-size: clamp(0.9rem, 1.1vw, 0.95rem);
+    line-height: 1.68;
+    color: var(--muted);
+    margin: 0 0 clamp(22px, 2.6vw, 30px);
+  }
+
+  /* ── Fields ──────────────────────────────────────── */
+  .ct-f-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .ct-f-field { display: flex; flex-direction: column; margin-bottom: 18px; }
+
+  .ct-f-field label {
+    font-family: inherit;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 8px;
+  }
+
+  .ct-f-req { color: var(--terra); }
+
+  .ct-f-field input,
+  .ct-f-field select,
+  .ct-f-field textarea {
+    font-family: inherit;
+    /* 16px floor prevents iOS Safari auto-zooming the page on focus */
+    font-size: max(16px, 0.92rem);
+    line-height: 1.4;
+    color: var(--brown);
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 13px 14px;
+    min-height: 48px;
+    width: 100%;
+    transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+  }
+
+  .ct-f-field input::placeholder,
+  .ct-f-field textarea::placeholder { color: rgba(75,46,43,.42); }
+
+  .ct-f-field textarea { min-height: 118px; resize: vertical; }
+
+  .ct-f-field input:focus,
+  .ct-f-field select:focus,
+  .ct-f-field textarea:focus {
+    outline: none;
+    border-color: var(--terra);
+    box-shadow: 0 0 0 3px rgba(217,126,83,.14);
+  }
+
+  .ct-f-field select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234B2E2B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  /* One label above a paired month/year row, rather than one per select */
+  .ct-f-grouplabel {
+    display: block;
+    font-family: inherit;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 8px;
+  }
+
+  /* Visually hidden, still announced — the two selects under a shared
+     group label each need their own accessible name. */
+  .ct-f-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ── Consent (POPIA) ─────────────────────────────── */
+  .ct-f-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin-bottom: 14px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .ct-f-consent input {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    accent-color: var(--terra);
+    cursor: pointer;
+  }
+  .ct-f-consent a { color: var(--terra); text-decoration: underline; text-underline-offset: 2px; }
+  .ct-f-consent .ct-f-flag { color: var(--brown); font-weight: 600; }
+
+  /* ── Submit ──────────────────────────────────────── */
+  .ct-f-btn {
+    appearance: none;
+    -webkit-appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 6px;
+    min-height: 54px;
+    padding: 16px 26px;
+    background: var(--terra);
+    border: 2px solid var(--terra);
+    border-radius: 0;
+    color: var(--white);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    line-height: 1.25;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+  }
+  .ct-f-btn:hover:not(:disabled) {
+    background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    transform: translateY(-2px);
+  }
+  .ct-f-btn:disabled { cursor: default; transform: none; }
+
+  /* Panel 2 is the secondary path — brown keeps one primary CTA per screen */
+  .ct-f-btn.is-secondary { background: var(--brown); border-color: var(--brown); }
+  .ct-f-btn.is-secondary:hover:not(:disabled) { background: #3A231F; border-color: #3A231F; }
+
+  .ct-f-legal {
+    font-family: inherit;
+    font-size: 0.74rem;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 14px 0 0;
+    text-align: center;
+  }
+
+  .ct-f-error {
+    font-family: inherit;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--terra-dk);
+    text-align: center;
+    margin: 10px 0 0;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────── */
+  .ct-f-rv { opacity: 0; transform: translateY(26px); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+  .ct-f-rv.ct-f-on { opacity: 1; transform: none; }
+  .ct-f-rv.d1 { transition-delay: .12s; }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 900px) {
+    .ct-f-grid { grid-template-columns: 1fr; gap: clamp(22px, 3.4vw, 32px); }
+  }
+
+  @media (max-width: 768px) {
+    #umoya-contact-forms { padding: 14px 0 40px; }
+    .ct-f-card { padding: 24px 20px 28px; }
+  }
+
+  @media (max-width: 560px) {
+    .ct-f-row { grid-template-columns: 1fr; gap: 0; }
+    /* Month/year stay side by side — two short selects read fine at 320px */
+    .ct-f-row.ct-f-keep2 { grid-template-columns: 1fr 1fr; gap: 12px; }
+  }
+
+  @media (max-width: 420px) {
+    .ct-f-card { border-radius: 8px; padding: 22px 16px 24px; }
+    .ct-f-ttl { font-size: 1.35rem; }
+  }
+</style>
+
+<section id="umoya-contact-forms" aria-label="Contact forms">
+  <div class="ct-f-c">
+    <!-- One hidden target for both forms: keeps a no-JS native POST from
+         navigating the visitor away from the page. -->
+    <iframe name="umoyaContactFrame" title="Submission target" aria-hidden="true" style="display:none;width:0;height:0;border:0;"></iframe>
+
+    <div class="ct-f-grid">
+
+      <!-- ══════════ PANEL 1 — PLAN A JOURNEY ══════════ -->
+      <div class="ct-f-card ct-f-rv" id="ct-plan">
+        <h2 class="ct-f-ttl">Plan a Journey</h2>
+        <p class="ct-f-sub">Tell us about yourself and the travel experience you're seeking. A dedicated Umoya Travel Expert will personally connect with you.</p>
+
+        <form
+          data-hs-do-not-collect="true"
+          class="ct-f-form"
+          id="ctPlanForm"
+          action="/wp-json/umoya/v1/submissions"
+          method="post"
+          target="umoyaContactFrame"
+          novalidate
+          aria-label="Plan a Journey enquiry form"
+          data-hubspot-portal-id="246097317"
+          data-hubspot-form-id="1e38d41f-3e99-4605-94cc-9057857a4e82"
+          data-umoya-form-source="contact_page_journey"
+          data-wordpress-backup-endpoint="/wp-json/umoya/v1/submissions"
+          data-hubspot-consent-text="I consent to Umoya contacting me about my enquiry and processing my details as set out in the Privacy Policy."
+        >
+          <input type="hidden" name="source" value="contact_page_journey">
+          <input type="hidden" name="hubspotPortalId" value="246097317">
+          <input type="hidden" name="hubspotFormId" value="1e38d41f-3e99-4605-94cc-9057857a4e82">
+          <input type="hidden" name="consentText" value="I consent to Umoya contacting me about my enquiry and processing my details as set out in the Privacy Policy.">
+          <input type="hidden" name="hutk" value="">
+          <input type="hidden" name="pageUri" value="">
+          <input type="hidden" name="pageName" value="">
+
+          <div class="ct-f-field">
+            <label for="ctTitle">Title</label>
+            <select id="ctTitle" name="MERGE1">
+              <option value="" disabled selected>Select...</option>
+              <option value="Mr">Mr</option>
+              <option value="Mrs">Mrs</option>
+              <option value="Ms">Ms</option>
+              <option value="Mx">Mx</option>
+              <option value="Dr">Dr</option>
+            </select>
+          </div>
+
+          <div class="ct-f-row">
+            <div class="ct-f-field">
+              <label for="ctFirst">First name <span class="ct-f-req" aria-hidden="true">*</span></label>
+              <input type="text" id="ctFirst" name="FNAME" placeholder="First name" required autocomplete="given-name">
+            </div>
+            <div class="ct-f-field">
+              <label for="ctLast">Last name <span class="ct-f-req" aria-hidden="true">*</span></label>
+              <input type="text" id="ctLast" name="LNAME" placeholder="Last name" required autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="ct-f-row">
+            <div class="ct-f-field">
+              <label for="ctEmail">Email address <span class="ct-f-req" aria-hidden="true">*</span></label>
+              <input type="email" id="ctEmail" name="EMAIL" placeholder="your@email.com" required autocomplete="email">
+            </div>
+            <div class="ct-f-field">
+              <label for="ctPhone">Phone number</label>
+              <input type="tel" id="ctPhone" name="PHONE" placeholder="+1 (000) 000-0000" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="ct-f-row">
+            <div class="ct-f-field">
+              <label for="ctCountry">Country <span class="ct-f-req" aria-hidden="true">*</span></label>
+              <!-- Same list and same ISO values as the Founder's Circle form,
+                   so the `country` property stays consistent across pages. -->
+              <select id="ctCountry" name="MERGE2" required>
+                <option value="" disabled selected>Select country…</option>
+                <!-- Frequently Used Countries Pinned to Top -->
+                <option value="US">United States</option>
+                <option value="GB">United Kingdom</option>
+                <option value="CA">Canada</option>
+                <option value="ZA">South Africa</option>
+                <option value="AU">Australia</option>
+                <option disabled>──────────</option>
+                <!-- Complete ISO Alphabetical List -->
+                <option value="AF">Afghanistan</option>
+                <option value="AL">Albania</option>
+                <option value="DZ">Algeria</option>
+                <option value="AS">American Samoa</option>
+                <option value="AD">Andorra</option>
+                <option value="AO">Angola</option>
+                <option value="AI">Anguilla</option>
+                <option value="AG">Antigua and Barbuda</option>
+                <option value="AR">Argentina</option>
+                <option value="AM">Armenia</option>
+                <option value="AW">Aruba</option>
+                <option value="AT">Austria</option>
+                <option value="AZ">Azerbaijan</option>
+                <option value="BS">Bahamas</option>
+                <option value="BH">Bahrain</option>
+                <option value="BD">Bangladesh</option>
+                <option value="BB">Barbados</option>
+                <option value="BY">Belarus</option>
+                <option value="BE">Belgium</option>
+                <option value="BZ">Belize</option>
+                <option value="BJ">Benin</option>
+                <option value="BM">Bermuda</option>
+                <option value="BT">Bhutan</option>
+                <option value="BO">Bolivia</option>
+                <option value="BA">Bosnia and Herzegovina</option>
+                <option value="BW">Botswana</option>
+                <option value="BR">Brazil</option>
+                <option value="BN">Brunei Darussalam</option>
+                <option value="BG">Bulgaria</option>
+                <option value="BF">Burkina Faso</option>
+                <option value="BI">Burundi</option>
+                <option value="CV">Cabo Verde</option>
+                <option value="KH">Cambodia</option>
+                <option value="CM">Cameroon</option>
+                <option value="KY">Cayman Islands</option>
+                <option value="CF">Central African Republic</option>
+                <option value="TD">Chad</option>
+                <option value="CL">Chile</option>
+                <option value="CN">China</option>
+                <option value="CO">Colombia</option>
+                <option value="KM">Comoros</option>
+                <option value="CG">Congo</option>
+                <option value="CD">Congo, Democratic Republic of the</option>
+                <option value="CR">Costa Rica</option>
+                <option value="HR">Croatia</option>
+                <option value="CU">Cuba</option>
+                <option value="CY">Cyprus</option>
+                <option value="CZ">Czechia</option>
+                <option value="DK">Denmark</option>
+                <option value="DJ">Djibouti</option>
+                <option value="DM">Dominica</option>
+                <option value="DO">Dominican Republic</option>
+                <option value="EC">Ecuador</option>
+                <option value="EG">Egypt</option>
+                <option value="SV">El Salvador</option>
+                <option value="GQ">Equatorial Guinea</option>
+                <option value="ER">Eritrea</option>
+                <option value="EE">Estonia</option>
+                <option value="SZ">Eswatini</option>
+                <option value="ET">Ethiopia</option>
+                <option value="FJ">Fiji</option>
+                <option value="FI">Finland</option>
+                <option value="FR">France</option>
+                <option value="GF">French Guiana</option>
+                <option value="PF">French Polynesia</option>
+                <option value="GA">Gabon</option>
+                <option value="GM">Gambia</option>
+                <option value="GE">Georgia</option>
+                <option value="DE">Germany</option>
+                <option value="GH">Ghana</option>
+                <option value="GR">Greece</option>
+                <option value="GL">Greenland</option>
+                <option value="GD">Grenada</option>
+                <option value="GU">Guam</option>
+                <option value="GT">Guatemala</option>
+                <option value="GN">Guinea</option>
+                <option value="GW">Guinea-Bissau</option>
+                <option value="GY">Guyana</option>
+                <option value="HT">Haiti</option>
+                <option value="HN">Honduras</option>
+                <option value="HK">Hong Kong</option>
+                <option value="HU">Hungary</option>
+                <option value="IS">Iceland</option>
+                <option value="IN">India</option>
+                <option value="ID">Indonesia</option>
+                <option value="IR">Iran</option>
+                <option value="IQ">Iraq</option>
+                <option value="IE">Ireland</option>
+                <option value="IL">Israel</option>
+                <option value="IT">Italy</option>
+                <option value="JM">Jamaica</option>
+                <option value="JP">Japan</option>
+                <option value="JO">Jordan</option>
+                <option value="KZ">Kazakhstan</option>
+                <option value="KE">Kenya</option>
+                <option value="KI">Kiribati</option>
+                <option value="KP">Korea (North)</option>
+                <option value="KR">Korea (South)</option>
+                <option value="KW">Kuwait</option>
+                <option value="KG">Kyrgyzstan</option>
+                <option value="LA">Lao People's Democratic Republic</option>
+                <option value="LV">Latvia</option>
+                <option value="LB">Lebanon</option>
+                <option value="LS">Lesotho</option>
+                <option value="LR">Liberia</option>
+                <option value="LY">Libya</option>
+                <option value="LI">Liechtenstein</option>
+                <option value="LT">Lithuania</option>
+                <option value="LU">Luxembourg</option>
+                <option value="MO">Macao</option>
+                <option value="MG">Madagascar</option>
+                <option value="MW">Malawi</option>
+                <option value="MY">Malaysia</option>
+                <option value="MV">Maldives</option>
+                <option value="ML">Mali</option>
+                <option value="MT">Malta</option>
+                <option value="MR">Mauritania</option>
+                <option value="MU">Mauritius</option>
+                <option value="MX">Mexico</option>
+                <option value="FM">Micronesia</option>
+                <option value="MD">Moldova</option>
+                <option value="MC">Monaco</option>
+                <option value="MN">Mongolia</option>
+                <option value="ME">Montenegro</option>
+                <option value="MA">Morocco</option>
+                <option value="MZ">Mozambique</option>
+                <option value="MM">Myanmar</option>
+                <option value="NA">Namibia</option>
+                <option value="NR">Nauru</option>
+                <option value="NP">Nepal</option>
+                <option value="NL">Netherlands</option>
+                <option value="NC">New Caledonia</option>
+                <option value="NZ">New Zealand</option>
+                <option value="NI">Nicaragua</option>
+                <option value="NE">Niger</option>
+                <option value="NG">Nigeria</option>
+                <option value="NO">Norway</option>
+                <option value="OM">Oman</option>
+                <option value="PK">Pakistan</option>
+                <option value="PW">Palau</option>
+                <option value="PA">Panama</option>
+                <option value="PG">Papua New Guinea</option>
+                <option value="PY">Paraguay</option>
+                <option value="PE">Peru</option>
+                <option value="PH">Philippines</option>
+                <option value="PL">Poland</option>
+                <option value="PT">Portugal</option>
+                <option value="PR">Puerto Rico</option>
+                <option value="QA">Qatar</option>
+                <option value="RO">Romania</option>
+                <option value="RU">Russian Federation</option>
+                <option value="RW">Rwanda</option>
+                <option value="WS">Samoa</option>
+                <option value="SM">San Marino</option>
+                <option value="ST">Sao Tome and Principe</option>
+                <option value="SA">Saudi Arabia</option>
+                <option value="SN">Senegal</option>
+                <option value="RS">Serbia</option>
+                <option value="SC">Seychelles</option>
+                <option value="SL">Sierra Leone</option>
+                <option value="SG">Singapore</option>
+                <option value="SK">Slovakia</option>
+                <option value="SI">Slovenia</option>
+                <option value="SB">Solomon Islands</option>
+                <option value="SO">Somalia</option>
+                <option value="SS">South Sudan</option>
+                <option value="ES">Spain</option>
+                <option value="LK">Sri Lanka</option>
+                <option value="SD">Sudan</option>
+                <option value="SR">Suriname</option>
+                <option value="SE">Sweden</option>
+                <option value="CH">Switzerland</option>
+                <option value="SY">Syrian Arab Republic</option>
+                <option value="TW">Taiwan</option>
+                <option value="TJ">Tajikistan</option>
+                <option value="TZ">Tanzania</option>
+                <option value="TH">Thailand</option>
+                <option value="TL">Timor-Leste</option>
+                <option value="TG">Togo</option>
+                <option value="TO">Tonga</option>
+                <option value="TT">Trinidad and Tobago</option>
+                <option value="TN">Tunisia</option>
+                <option value="TR">Turkey</option>
+                <option value="TM">Turkmenistan</option>
+                <option value="TV">Tuvalu</option>
+                <option value="UG">Uganda</option>
+                <option value="UA">Ukraine</option>
+                <option value="AE">United Arab Emirates</option>
+                <option value="UY">Uruguay</option>
+                <option value="UZ">Uzbekistan</option>
+                <option value="VU">Vanuatu</option>
+                <option value="VE">Venezuela</option>
+                <option value="VN">Viet Nam</option>
+                <option value="YE">Yemen</option>
+                <option value="ZM">Zambia</option>
+                <option value="ZW">Zimbabwe</option>
+              </select>
+            </div>
+            <div class="ct-f-field">
+              <label for="ctCity">City</label>
+              <input type="text" id="ctCity" name="MERGE3" placeholder="Your city" autocomplete="address-level2">
+            </div>
+          </div>
+
+          <span class="ct-f-grouplabel" id="ctWhenLbl">When are you hoping to travel?</span>
+          <div class="ct-f-row ct-f-keep2">
+            <div class="ct-f-field">
+              <label for="ctMonth" class="ct-f-sr">Preferred travel month</label>
+              <select id="ctMonth" name="MERGE4">
+                <option value="" disabled selected>Month</option>
+                <option>January</option><option>February</option><option>March</option>
+                <option>April</option><option>May</option><option>June</option>
+                <option>July</option><option>August</option><option>September</option>
+                <option>October</option><option>November</option><option>December</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="ct-f-field">
+              <label for="ctYear" class="ct-f-sr">Preferred travel year</label>
+              <select id="ctYear" name="MERGE5">
+                <option value="" disabled selected>Year</option>
+                <option>2026</option><option>2027</option><option>2028</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="ct-f-field">
+            <label for="ctGuests">How many guests will be traveling?</label>
+            <select id="ctGuests" name="MERGE6">
+              <option value="" disabled selected>Select...</option>
+              <option>Couple or Singles (2 minimum)</option>
+              <option>Small Group (3 to 9)</option>
+              <option>Mid-Size Group (10 to 19)</option>
+              <option>Large Group (20 or more)</option>
+              <option>Just me, or not sure yet</option>
+            </select>
+          </div>
+
+          <div class="ct-f-field">
+            <label for="ctMessage">What are you hoping to experience?</label>
+            <textarea id="ctMessage" name="MERGE7" rows="4" placeholder="Tell us about your travel interests, what you hope to experience, and what draws you to South Africa."></textarea>
+          </div>
+
+          <label class="ct-f-consent" for="ctConsent">
+            <input type="checkbox" id="ctConsent" name="consentToProcess">
+            <span>I consent to Umoya contacting me about my enquiry and processing my details as set out in the <a href="https://umoyaafrikatours.co.za/privacy/" target="_blank" rel="noopener">Privacy Policy</a>. <span class="ct-f-flag">(Required)</span></span>
+          </label>
+
+          <label class="ct-f-consent" for="ctMarketing">
+            <input type="checkbox" id="ctMarketing" name="marketingOptIn">
+            <span>I'd also like to receive Umoya journeys and stories by email. <span class="ct-f-flag">(Optional)</span></span>
+          </label>
+
+          <button type="submit" class="ct-f-btn" id="ctPlanBtn">Start the Conversation</button>
+          <p class="ct-f-legal">Your information is held in strict confidence and never shared.</p>
+        </form>
+      </div>
+
+      <!-- ══════════ PANEL 2 — GENERAL &amp; MEDIA ══════════ -->
+      <div class="ct-f-card ct-f-rv d1" id="ct-general">
+        <h2 class="ct-f-ttl">General &amp; Media Enquiries</h2>
+        <p class="ct-f-sub">For travel advisors, wedding and event planners, group leaders, press, partnerships, and existing bookings.</p>
+
+        <form
+          data-hs-do-not-collect="true"
+          class="ct-f-form"
+          id="ctGeneralForm"
+          action="/wp-json/umoya/v1/submissions"
+          method="post"
+          target="umoyaContactFrame"
+          novalidate
+          aria-label="General and media enquiry form"
+          data-hubspot-portal-id="246097317"
+          data-hubspot-form-id="ffececd7-b401-43cb-8ee2-858b5d62892c"
+          data-umoya-form-source="contact_page_general"
+          data-wordpress-backup-endpoint="/wp-json/umoya/v1/submissions"
+          data-hubspot-consent-text="I consent to Umoya contacting me about my enquiry and processing my details as set out in the Privacy Policy."
+        >
+          <input type="hidden" name="source" value="contact_page_general">
+          <input type="hidden" name="hubspotPortalId" value="246097317">
+          <input type="hidden" name="hubspotFormId" value="ffececd7-b401-43cb-8ee2-858b5d62892c">
+          <input type="hidden" name="consentText" value="I consent to Umoya contacting me about my enquiry and processing my details as set out in the Privacy Policy.">
+          <input type="hidden" name="hutk" value="">
+          <input type="hidden" name="pageUri" value="">
+          <input type="hidden" name="pageName" value="">
+          <!-- Split from the visible "Full name" field on every keystroke -->
+          <input type="hidden" name="FNAME" value="">
+          <input type="hidden" name="LNAME" value="">
+
+          <div class="ct-f-field">
+            <label for="ctGenName">Full name <span class="ct-f-req" aria-hidden="true">*</span></label>
+            <input type="text" id="ctGenName" name="FULLNAME" placeholder="Your name" required autocomplete="name">
+          </div>
+
+          <div class="ct-f-field">
+            <label for="ctGenEmail">Email address <span class="ct-f-req" aria-hidden="true">*</span></label>
+            <input type="email" id="ctGenEmail" name="EMAIL" placeholder="your@email.com" required autocomplete="email">
+          </div>
+
+          <div class="ct-f-field">
+            <label for="ctGenOrg">Organisation</label>
+            <input type="text" id="ctGenOrg" name="MERGE3" placeholder="Company, agency, or publication" autocomplete="organization">
+          </div>
+
+          <div class="ct-f-field">
+            <label for="ctGenType">Enquiry type <span class="ct-f-req" aria-hidden="true">*</span></label>
+            <!-- These values must match the enquiry_type property options in
+                 HubSpot exactly, or the enumeration rejects them. -->
+            <select id="ctGenType" name="MERGE2" required>
+              <option value="" disabled selected>Select...</option>
+              <option>Travel advisor or agency partnership</option>
+              <option>Group leader: reunions, churches, alumni &amp; organisations</option>
+              <option>Wedding or event planner</option>
+              <option>Press and media</option>
+              <option>Existing booking</option>
+              <option>General question</option>
+            </select>
+          </div>
+
+          <div class="ct-f-field ct-f-grow">
+            <label for="ctGenMessage">Message</label>
+            <textarea id="ctGenMessage" name="MERGE7" rows="4" placeholder="How can we help?"></textarea>
+          </div>
+
+          <label class="ct-f-consent" for="ctGenConsent">
+            <input type="checkbox" id="ctGenConsent" name="consentToProcess">
+            <span>I consent to Umoya contacting me about my enquiry and processing my details as set out in the <a href="https://umoyaafrikatours.co.za/privacy/" target="_blank" rel="noopener">Privacy Policy</a>. <span class="ct-f-flag">(Required)</span></span>
+          </label>
+
+          <button type="submit" class="ct-f-btn is-secondary" id="ctGeneralBtn">Send Message</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+
+  var section = document.getElementById('umoya-contact-forms');
+  if (!section || section.getAttribute('data-ready') === 'true') return;
+  section.setAttribute('data-ready', 'true');
+
+  /* Shared with every other Umoya form — one queue, one endpoint. */
+  var PENDING_KEY = 'umoyaPendingBackups';
+  var PENDING_MAX_AGE = 1000 * 60 * 60 * 24 * 3;
+  var DEFAULT_ENDPOINT = '/wp-json/umoya/v1/submissions';
+
+  function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  function getCookie(name){
+    var parts = document.cookie ? document.cookie.split('; ') : [];
+    for (var i = 0; i < parts.length; i += 1) {
+      var item = parts[i].split('=');
+      if (item[0] === name) return decodeURIComponent(item.slice(1).join('='));
+    }
+    return '';
+  }
+
+  function createSubmissionId(){
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID();
+    return 'umoya-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12);
+  }
+
+  /* ── The localStorage queue is shared, so these live outside wireForm ── */
+  function getPendingBackups(){
+    try {
+      return JSON.parse(window.localStorage.getItem(PENDING_KEY) || '[]').filter(function(item){
+        return item && (!item.queuedAt || Date.now() - item.queuedAt < PENDING_MAX_AGE);
+      });
+    } catch (ignore) { return []; }
+  }
+
+  function savePendingBackups(items){
+    try { window.localStorage.setItem(PENDING_KEY, JSON.stringify(items.slice(-8))); } catch (ignore) {}
+  }
+
+  function queuePendingBackup(payload){
+    payload.hubspotAlreadySent = true;
+    payload.queuedAt = Date.now();
+    var items = getPendingBackups();
+    items.push(payload);
+    savePendingBackups(items);
+  }
+
+  function flushPendingBackups(){
+    var items = getPendingBackups();
+    if (!items.length) return;
+    var remaining = items.slice();
+
+    items.forEach(function(item){
+      fetch(DEFAULT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify(item)
+      }).then(function(res){
+        if (!res.ok) return;
+        remaining = remaining.filter(function(e){ return e.submissionId !== item.submissionId; });
+        savePendingBackups(remaining);
+      }).catch(function(){});
+    });
+  }
+
+  /*
+   * Both panels submit identically, so the whole submit path is written once
+   * and instantiated twice. cfg carries only what actually differs: the
+   * elements, the field map, and the success wording.
+   */
+  function wireForm(cfg){
+    var form = document.getElementById(cfg.formId);
+    if (!form) return;
+
+    var btn = document.getElementById(cfg.btnId);
+    var originalText = btn ? btn.textContent : 'Send';
+    var submitting = false;
+
+    function value(name){
+      var f = form.elements[name];
+      return f ? String(f.value || '').trim() : '';
+    }
+
+    function setHidden(name, v){
+      var f = form.elements ? form.elements[name] : null;
+      if (f) f.value = v || '';
+    }
+
+    /*
+     * Panel 2 shows one "Full name" box but HubSpot stores firstname and
+     * lastname. Split on the FIRST space: everything before it is the given
+     * name, the remainder is the family name, so compound surnames such as
+     * "van der Merwe" survive intact. A single word leaves lastname empty,
+     * which HubSpot accepts.
+     */
+    function syncFullName(){
+      if (!cfg.fullNameId) return;
+      var el = document.getElementById(cfg.fullNameId);
+      if (!el) return;
+      var whole = String(el.value || '').trim().replace(/\s+/g, ' ');
+      var cut = whole.indexOf(' ');
+      setHidden('FNAME', cut === -1 ? whole : whole.slice(0, cut));
+      setHidden('LNAME', cut === -1 ? '' : whole.slice(cut + 1));
+    }
+
+    function syncTrackingFields(){
+      setHidden('hutk', getCookie('hubspotutk'));
+      setHidden('pageUri', window.location.href);
+      setHidden('pageName', document.title || 'Umoya Contact');
+    }
+
+    function identifyHubSpotVisitor(){
+      var email = value('EMAIL');
+      if (!email || !isValidEmail(email)) return;
+      window._hsq = window._hsq || [];
+      window._hsq.push(['identify', { email: email }]);
+      window._hsq.push(['trackPageView']);
+    }
+
+    function buildHubSpotPayload(){
+      syncFullName();
+      syncTrackingFields();
+
+      var fields = [];
+      Object.keys(cfg.fieldMap).forEach(function(name){
+        var v = value(name);
+        if (v) fields.push({ name: cfg.fieldMap[name], value: v });
+      });
+
+      var context = {
+        pageUri: window.location.href,
+        pageName: document.title || 'Umoya Contact'
+      };
+      var hutk = getCookie('hubspotutk');
+      if (hutk) context.hutk = hutk;
+
+      var payload = { fields: fields, context: context };
+
+      var consentText = (form.getAttribute('data-hubspot-consent-text') || '').trim();
+      if (consentText) {
+        payload.legalConsentOptions = { consent: { consentToProcess: true, text: consentText } };
+      }
+      return payload;
+    }
+
+    function buildBackupPayload(){
+      var hs = buildHubSpotPayload();
+      var raw = {};
+      Object.keys(cfg.fieldMap).forEach(function(n){ raw[n] = value(n); });
+
+      var consentBox = form.querySelector('#' + cfg.consentId);
+      raw.consent_to_process = consentBox && consentBox.checked ? 'yes' : 'no';
+
+      /* Only panel 1 offers a marketing opt-in; panel 2 has none. */
+      if (cfg.marketingId) {
+        var marketingBox = form.querySelector('#' + cfg.marketingId);
+        raw.marketing_opt_in = marketingBox && marketingBox.checked ? 'yes' : 'no';
+      }
+
+      return {
+        submissionId: createSubmissionId(),
+        source: (form.getAttribute('data-umoya-form-source') || '').trim(),
+        hubspotPortalId: (form.getAttribute('data-hubspot-portal-id') || '').trim(),
+        hubspotFormId: (form.getAttribute('data-hubspot-form-id') || '').trim(),
+        consentText: (form.getAttribute('data-hubspot-consent-text') || '').trim(),
+        hutk: getCookie('hubspotutk'),
+        pageUri: window.location.href,
+        pageName: document.title || 'Umoya Contact',
+        rawFields: raw,
+        fields: hs.fields,
+        context: hs.context
+      };
+    }
+
+    function submitToHubSpot(){
+      var portalId = (form.getAttribute('data-hubspot-portal-id') || '').trim();
+      var formId = (form.getAttribute('data-hubspot-form-id') || '').trim();
+      if (!portalId || !formId) return Promise.reject(new Error('HubSpot is not configured yet.'));
+
+      return fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + encodeURIComponent(portalId) + '/' + encodeURIComponent(formId), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(buildHubSpotPayload())
+      }).then(function(res){
+        return res.text().then(function(text){
+          var data = null;
+          if (text) { try { data = JSON.parse(text); } catch (ignore) {} }
+          if (!res.ok) {
+            throw new Error(data && (data.message || data.error) ? (data.message || data.error) : 'HubSpot could not receive the message.');
+          }
+          return data;
+        });
+      });
+    }
+
+    function submitToWordPress(payload){
+      var endpoint = (form.getAttribute('data-wordpress-backup-endpoint') || DEFAULT_ENDPOINT).trim();
+      return fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify(payload)
+      }).then(function(res){
+        return res.text().then(function(text){
+          var data = null;
+          if (text) { try { data = JSON.parse(text); } catch (ignore) {} }
+          if (!res.ok || !data || data.saved !== true) {
+            throw new Error(data && data.message ? data.message : 'WordPress could not save the message.');
+          }
+          return data;
+        });
+      });
+    }
+
+    function clearError(){
+      var existing = form.querySelector('.ct-f-error');
+      if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+    }
+
+    function showSuccess(){
+      if (!btn) return;
+      clearError();
+      btn.textContent = cfg.successText;
+      btn.disabled = true;
+      btn.style.background = '#708238';
+      btn.style.borderColor = '#708238';
+      btn.style.opacity = '1';
+    }
+
+    function showError(msg){
+      submitting = false;
+      if (btn) {
+        btn.textContent = originalText;
+        btn.disabled = false;
+        btn.style.opacity = '1';
+      }
+      clearError();
+      var err = document.createElement('p');
+      err.className = 'ct-f-error';
+      err.setAttribute('role', 'status');
+      err.textContent = msg;
+      if (btn && btn.parentNode) btn.parentNode.appendChild(err);
+      window.setTimeout(function(){
+        if (err.parentNode) err.parentNode.removeChild(err);
+      }, 9000);
+    }
+
+    syncTrackingFields();
+    window.setTimeout(syncTrackingFields, 1500);
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (submitting) return;
+
+      syncFullName();
+      syncTrackingFields();
+      identifyHubSpotVisitor();
+
+      var required = form.querySelectorAll('[required]');
+      var valid = true;
+
+      Array.prototype.forEach.call(required, function(f){
+        if (!String(f.value || '').trim()) {
+          valid = false;
+          f.style.borderColor = '#D97E53';
+          f.style.boxShadow = '0 0 0 3px rgba(217,126,83,.12)';
+        } else {
+          f.style.borderColor = '';
+          f.style.boxShadow = '';
+        }
+      });
+
+      var emailField = form.querySelector('[name="EMAIL"]');
+      if (emailField && emailField.value && !isValidEmail(emailField.value)) {
+        valid = false;
+        emailField.style.borderColor = '#D97E53';
+        emailField.style.boxShadow = '0 0 0 3px rgba(217,126,83,.12)';
+      }
+
+      /* POPIA — the required consent box must be ticked */
+      var consentField = form.querySelector('#' + cfg.consentId);
+      if (consentField && !consentField.checked) {
+        valid = false;
+        consentField.style.outline = '2px solid #D97E53';
+        consentField.style.outlineOffset = '3px';
+      }
+
+      if (!valid) {
+        var firstEmpty = null;
+        Array.prototype.forEach.call(required, function(f){
+          if (!firstEmpty && !String(f.value || '').trim()) firstEmpty = f;
+        });
+        if (firstEmpty) firstEmpty.focus();
+        else if (emailField && emailField.value && !isValidEmail(emailField.value)) emailField.focus();
+        else if (consentField && !consentField.checked) consentField.focus();
+        showError(consentField && !consentField.checked && !firstEmpty
+          ? 'Please tick the consent box so we may reply.'
+          : 'Please complete the required fields.');
+        return;
+      }
+
+      submitting = true;
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        btn.style.opacity = '0.7';
+      }
+      clearError();
+
+      var payload = buildBackupPayload();
+
+      /* WordPress first — it stores the lead, then forwards it to HubSpot.
+         Direct HubSpot is only the fallback. */
+      submitToWordPress(payload)
+        .then(showSuccess)
+        .catch(function(err){
+          submitToHubSpot()
+            .then(function(){ queuePendingBackup(payload); showSuccess(); })
+            .catch(function(fallbackErr){
+              showError((err.message || 'We could not save your message.') + ' ' + (fallbackErr.message || ''));
+            });
+        });
+    });
+
+    /* Clear validation styling as soon as the visitor corrects a field */
+    form.querySelectorAll('input, select, textarea').forEach(function(f){
+      f.addEventListener('input', function(){
+        f.style.borderColor = '';
+        f.style.boxShadow = '';
+      });
+      f.addEventListener('change', function(){
+        f.style.borderColor = '';
+        f.style.boxShadow = '';
+      });
+    });
+
+    var consentEl = form.querySelector('#' + cfg.consentId);
+    if (consentEl) {
+      consentEl.addEventListener('change', function(){
+        consentEl.style.outline = '';
+        consentEl.style.outlineOffset = '';
+      });
+    }
+
+    if (cfg.fullNameId) {
+      var nameEl = document.getElementById(cfg.fullNameId);
+      if (nameEl) nameEl.addEventListener('input', syncFullName);
+    }
+  }
+
+  /* Panel 1 — same field set as the Founder's Circle form. */
+  wireForm({
+    formId: 'ctPlanForm',
+    btnId: 'ctPlanBtn',
+    consentId: 'ctConsent',
+    marketingId: 'ctMarketing',
+    successText: 'Received — We’ll Be in Touch Soon',
+    fieldMap: {
+      MERGE1: 'salutation',
+      FNAME:  'firstname',
+      LNAME:  'lastname',
+      EMAIL:  'email',
+      PHONE:  'phone',
+      MERGE2: 'country',
+      MERGE3: 'city',
+      MERGE4: 'preferred_travel_season',   /* carries MONTH */
+      MERGE5: 'preferred_travel_year',
+      MERGE6: 'party_size',                /* "How many guests…" */
+      MERGE7: 'founders_circle_message'
+    }
+  });
+
+  /* Panel 2 — lean routing form. FNAME/LNAME are the hidden split fields. */
+  wireForm({
+    formId: 'ctGeneralForm',
+    btnId: 'ctGeneralBtn',
+    consentId: 'ctGenConsent',
+    fullNameId: 'ctGenName',
+    successText: 'Message Sent — Thank You',
+    fieldMap: {
+      FNAME:  'firstname',
+      LNAME:  'lastname',
+      EMAIL:  'email',
+      MERGE3: 'organization',
+      MERGE2: 'enquiry_type',
+      MERGE7: 'founders_circle_message'
+    }
+  });
+
+  window.setTimeout(flushPendingBackups, 1200);
+
+  /* ── Scroll reveal ────────────────────────────────────────── */
+  var rvEls = section.querySelectorAll('.ct-f-rv');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('ct-f-on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.05 });
+    Array.prototype.forEach.call(rvEls, function(el){ obs.observe(el); });
+  } else {
+    Array.prototype.forEach.call(rvEls, function(el){ el.classList.add('ct-f-on'); });
+  }
+}());
+</script>
