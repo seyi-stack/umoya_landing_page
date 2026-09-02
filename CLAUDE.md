@@ -1054,6 +1054,51 @@ The footer routing doc states it already is. It is not — `cdn-cookieyes.com`
 appears on no live page; the site still runs `cookieadmin` + `cookieadmin-pro`.
 The footer's Cookie Settings button degrades safely until it is. Section 21.
 
+### Phase 21 - Email Opt-out became a footer popup, 2026-09-02
+
+The footer's **Email Opt-out** link pointed at `/email-preferences/`, a page
+that was built in August but never published — so the link had been a live
+404 the whole time. It is now a **popup carried inside the footer widget**,
+which means it works the moment the footer is pasted in, needs no second page
+created, and does not send the reader off whatever page they were reading.
+
+`shared/page-email-preferences.html` is **deliberately kept, unchanged and
+unpublished**, in case the standalone route is wanted later. The two carry
+identical, verbatim routing-doc copy, and both hold the same commented-out
+HubSpot subscription-preferences CTA — so if that URL ever arrives, or the
+client revises the wording, change **both** or delete whichever is not in use.
+Reverting is a one-line edit on the Email Opt-out `<li>` plus deleting the
+popup block; both are flagged in the file.
+
+Three details are load-bearing:
+
+- **The dialog has its own root and moves itself to `document.body`.** Its
+  CSS is scoped to `#umoya-email-optout`, not `#umoya-footer`. This mirrors
+  `homepage-revamp/homepage-form-popup.html` and exists because a
+  `position: fixed` element inside an ancestor carrying
+  transform / filter / will-change is positioned against *that ancestor*
+  instead of the viewport — something an Elementor motion effect can
+  introduce at any time.
+- **The trigger keeps a real `mailto:` href**, not `#`. With JS unavailable
+  the item still does exactly what the popup copy tells the reader to do;
+  `preventDefault()` only runs once the script is live. Any element on any
+  page can open the dialog by carrying `data-umoya-email-optout`.
+- **The scroll lock does not disturb `--umoya-ft-vw`.** Setting
+  `overflow: hidden` widens `documentElement.clientWidth`, but the footer
+  only re-reads that on resize, so the full-bleed footer keeps its
+  scrollbar-excluded width and the horizontal-scrollbar bug in _NOTES 9 does
+  not come back. Verified: `--umoya-ft-vw` held at 987px with the viewport at
+  1002px while the dialog was open.
+
+Verified in a browser against a local harness: opens from the footer link,
+closes on Esc / backdrop click / the close button, restores focus to the
+trigger, releases the scroll lock, and traps Tab and Shift+Tab in both
+directions — including the window before focus lands in the dialog, which
+an earlier revision let Tab escape through. A press starting inside the
+dialog and released on the backdrop deliberately does **not** close it, so
+selecting the email address is not punished. Rendered clean at 375px and
+desktop, no console errors.
+
 ---
 
 ## 6. Repository Map
@@ -1065,8 +1110,8 @@ The footer's Cookie Settings button degrades safely until it is. Section 21.
 | `CLAUDE.md` | This handoff and project source of truth. |
 | `_NEW-PAGES-NOTES.md` | Detail for the three new pages + shared nav. |
 | `shared/section-00-nav.html` | **Site-wide navigation.** Place FIRST on every page. |
-| `shared/section-99-footer.html` | **Site-wide footer.** Rebuilt 2026-08-29 to the client mockup: brand block + Journeys/Support/Legal columns + Founder's Circle signup (HubSpot-wired) + legal bar. Place LAST on every page; replaces the Elementor Form newsletter widget. |
-| `shared/page-email-preferences.html` | Small standalone page for `/email-preferences/`, the footer's Email Opt-out destination. |
+| `shared/section-99-footer.html` | **Site-wide footer.** Rebuilt 2026-08-29 to the client mockup: brand block + Journeys/Support/Legal columns + Founder's Circle signup (HubSpot-wired) + legal bar. Also carries the **Email Opt-out popup** (`#umoya-email-optout`, added 2026-09-02). Place LAST on every page; replaces the Elementor Form newsletter widget. |
+| `shared/page-email-preferences.html` | Small standalone page for `/email-preferences/`. **No longer the footer's destination** — Email Opt-out became a popup inside the footer on 2026-09-02. Kept, unchanged and unpublished, in case the standalone route is wanted later. |
 | `shared/page-travel-essentials.html` | **New page** for `/travel-essentials/`. Consolidates the former Visa & Entry Information and Travel Insurance Guide pages. |
 | `shared/page-privacy-policy.html` | Privacy Policy **v1.1** for `/privacy/`. Replaces the live v1.0, which still shows `[INSERT DATE]`. |
 | `shared/page-cookie-policy.html` | Cookie Policy **v1.2** for `/cookie-policy/`. Replaces the live v1.0. Adds the named cookie inventory and an in-page CookieYes trigger. |
@@ -1446,7 +1491,7 @@ Current footer routes:
 | Terms & Conditions | `/terms-and-conditions/` | ✅ |
 | Privacy Policy | `/privacy/` | ⚠ live but still v1.0 |
 | Cookie Settings | CookieYes trigger — no URL | ⚠ CookieYes not installed yet |
-| Email Opt-out | `/email-preferences/` | ⏳ page built, not published |
+| Email Opt-out | popup inside the footer — no URL | ✅ ships with the footer |
 | PAIA Manual | `/umoya_paia_manual.pdf` | ✅ |
 
 Both PDFs open in a new tab (`target="_blank" rel="noopener"`) and both use
@@ -1608,7 +1653,7 @@ Elementor HTML widget. This is the current backlog, most urgent first.
 | 2 | `Elementor text-editor pages/Cookie Policy.html` | Text Editor on the EXISTING `/cookie-policy/` page | Same placeholder; also the URL CookieYes should point at |
 | 3 | `Elementor text-editor pages/Travel Essentials.html` | Text Editor on a NEW page at `/travel-essentials/` | The footer has linked here against a 404 since August |
 | 3b | `Elementor text-editor pages/Terms and Conditions.html` | Text Editor on the EXISTING `/terms-and-conditions/` page | Optional — the live copy is already v1.1; this only tidies markup and the `/privacy/` link |
-| 4 | `shared/page-email-preferences.html` | a NEW page at `/email-preferences/` | Footer Email Opt-out currently 404s |
+| ~~4~~ | ~~`shared/page-email-preferences.html`~~ | — | **Dropped 2026-09-02.** Email Opt-out is now a popup carried inside `shared/section-99-footer.html`, so it needs no page. The page file is kept, unchanged, if the standalone route is ever wanted back. |
 | 5 | `shared/section-00-nav.html` | the nav widget on EVERY page | Contact link + the 1024px breakpoint |
 | 6 | `shared/section-99-footer.html` | LAST widget on EVERY page | Then delete the old Elementor Form newsletter widget |
 | 7 | `signature-journey/section-02-intro.html` | Signature Journey | Stat bar reordered + 7 Signature Moments |
@@ -1669,7 +1714,8 @@ Preferred ongoing route:
 | `#umoya-travel-essentials` | Travel Essentials page root. |
 | `#umoya-privacy` | Privacy Policy page root. `#pv-1`…`#pv-15` are its contents-list anchors — renumbering a section means renumbering both. |
 | `#umoya-cookie-policy` | Cookie Policy page root. |
-| `#umoya-email-prefs` | Email Opt-out page root. |
+| `#umoya-email-prefs` | Email Opt-out page root (the standalone page, no longer linked). |
+| `#umoya-email-optout` | Email Opt-out **popup** root, carried in the footer widget. Triggered by any element with `data-umoya-email-optout`. |
 | `#umoyaSiteNavMount` / `#umoyaSiteNav` | Shared nav mount + bar. The mount must keep its reserved height. |
 
 ### Page URL slugs assumed by the shared nav
@@ -1993,11 +2039,16 @@ so re-check after a cache purge.
   FOOTER URL MAP's `/booking-terms`, which 404s. The nav's slugs
   (`/signature-journey/`, `/private-and-tailormade/`, `/for-groups/`,
   `/about-us/`) all resolve. **Update the FOOTER URL MAP doc to match.**
-- ⏳ **Three footer destinations still 404**, down from four:
-  `/travel-essentials/` (page BUILT — `shared/page-travel-essentials.html`),
-  `/email-preferences/` (page BUILT — `shared/page-email-preferences.html`),
+- ⏳ **Two footer destinations still 404**, down from four:
+  `/travel-essentials/` (page BUILT — `shared/page-travel-essentials.html`)
   and `/umoya_travel_brochure.pdf` (Ashley to supply; upload under exactly
   that name). The PAIA manual is now live at `/umoya_paia_manual.pdf`.
+- ✅ **Email Opt-out no longer needs a page** (2026-09-02). It opens a popup
+  carried inside `shared/section-99-footer.html`, so it works the moment the
+  footer is pasted in. `shared/page-email-preferences.html` is kept,
+  unchanged and unpublished, in case the standalone route is wanted later —
+  if the copy or the HubSpot preferences CTA changes, change BOTH files or
+  delete whichever is not in use.
 - ⏳ **CookieYes, two non-code steps** from the routing doc: replace the
   current CookieYes script with the one for the new Umoya account (emailed
   separately) so consent records live under Umoya's own account; and publish
@@ -2176,6 +2227,16 @@ accident:
    CookieYes binds itself to that class; the JS guard only fires when
    CookieYes is absent at click time, so it must stay a click-time check
    rather than a load-time one.
+5. **Email Opt-out is a popup, not a link** (2026-09-02). The dialog lives at
+   the bottom of the same widget under its own root, `#umoya-email-optout`,
+   and **moves itself to `document.body`** on init — which is why its CSS is
+   scoped to that id rather than `#umoya-footer`. Do not move it back: a
+   `position: fixed` element inside a transformed ancestor is positioned
+   against that ancestor, and Elementor motion effects can add a transform at
+   any time. The trigger's `href` is a real `mailto:`, not `#`, so the item
+   still does something useful before the script runs. Copy is duplicated
+   verbatim in `shared/page-email-preferences.html` — change both or delete
+   the unused one.
 
 ### `contact/section-02-forms.html`
 
