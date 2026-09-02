@@ -1090,6 +1090,52 @@ Three details are load-bearing:
   not come back. Verified: `--umoya-ft-vw` held at 987px with the viewport at
   1002px while the dialog was open.
 
+#### ⚠ The live minifier ate the popup — never put a style/script tag inside a comment
+
+Reported the same day: the opt-out copy was rendering as an unstyled strip at
+the foot of every page. The popup's opening `div`, its **entire stylesheet**,
+the dialog wrapper, the close button, the eyebrow, the heading and the rule
+were all missing from the served HTML — only the body paragraph and two
+closing `</div>`s survived.
+
+**Cause: a literal `<style>` tag written inside an HTML comment**, six lines
+above the real one. The live pipeline minifies inline CSS *before* it strips
+comments, and it finds style blocks by regex. So:
+
+1. The CSS pass matched from the `<style>` **inside the comment** to the real
+   `</style>`, and replaced the lot — taking the comment's own `-->`
+   terminator and the opening `div` with it.
+2. The comment pass then found an unterminated `<!--` and ran on to the next
+   `-->` further down the file, swallowing every element in between.
+
+Reproduced exactly by simulating that two-step order against the committed
+file — same seven elements lost, same two survivors — and the fix verified
+against the same simulation. The wording now says "style block"; the file
+carries a warning so it is not reintroduced.
+
+**Generalisable, and it applies to every widget in this repo:** in a file
+destined for an Elementor HTML widget, never write a literal `style` or
+`script` tag inside a comment. Other tags are safe; those two are special-cased
+by minifiers. Scan with:
+
+```powershell
+rg -U '<!--[\s\S]*?-->' --pcre2 -o | rg '</?(style|script)\b'
+```
+
+Three other files still carry the same latent hazard, all mentioning a
+`script` tag in a comment before a real one — `section-05-journey.html`,
+`founders-circle/section-05-journey.html`, and the generated
+`umoya-elementor-widgets/templates/html/fc_journey.html`. They are the
+superseded originals (the current copy is `founders-circle-revamp/`, which is
+clean) and the generated template, so they were left alone — but fix them
+before deploying any of them.
+
+**Hardening applied at the same time:** the overlay now also ships with the
+`hidden` attribute, plus a `#umoya-email-optout[hidden] { display: none; }`
+rule, and the script clears it on open (forcing a reflow first so the fade
+still runs) and restores it 320ms after close. If the stylesheet is ever lost
+again the dialog stays invisible instead of dumping its copy onto the page.
+
 Verified in a browser against a local harness: opens from the footer link,
 closes on Esc / backdrop click / the close button, restores focus to the
 trigger, releases the scroll lock, and traps Tab and Shift+Tab in both
@@ -2361,6 +2407,13 @@ Before changing anything:
 These come from the brief and were enforced throughout; a new assistant
 should not quietly break them:
 
+- **Never write a literal `style` or `script` tag inside an HTML comment.**
+  The live site minifies inline CSS before it strips comments and locates
+  style blocks by regex, so a mention of the tag in a comment opens a
+  "stylesheet" that swallows the comment's terminator — and the runaway
+  comment then deletes every element up to the next `-->`. This silently
+  deleted most of the footer's Email Opt-out popup in September 2026; see
+  Phase 21. Write "style block" / "the script" instead.
 - **Never copy fonts or colours from the client mockups.** Mockups are
   layout/content reference only. Every section uses `font-family: inherit`
   and the brand palette. Verify with a grep for `Cormorant`, `Mulish`,

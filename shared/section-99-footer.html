@@ -922,14 +922,28 @@
   motion effects can introduce at any time. So, exactly like
   homepage-revamp/homepage-form-popup.html, this moves itself to
   document.body on init and therefore carries its own id and its own
-  scoped CSS. Its <style> lives inside the element, so it travels
+  scoped CSS. The style block lives inside the element, so it travels
   with it.
+
+  ⚠ NEVER WRITE A LITERAL style OR script TAG INSIDE A COMMENT IN
+  THIS FILE. The live site minifies inline CSS BEFORE it strips HTML
+  comments, and it finds style blocks by regex. A mention of that tag
+  in a comment therefore opens a "stylesheet" that only closes at the
+  next real closing tag — swallowing the comment's own terminator.
+  The comment then runs on to the NEXT terminator further down the
+  file and takes every element in between with it.
+
+  This is not hypothetical: it silently deleted this popup's opening
+  div, its entire stylesheet, the dialog wrapper, the close button,
+  the eyebrow, the heading and the rule on the live site, leaving the
+  body copy stranded and unstyled at the foot of every page. Write
+  "style block" or "the script", never the tag itself.
 
   BRAND: font-family: inherit; palette tokens only. ES5 IIFE.
   WCAG AA (44px close target, focus trap, Esc, restored focus).
 =================================================================
 -->
-<div id="umoya-email-optout" aria-hidden="true">
+<div id="umoya-email-optout" aria-hidden="true" hidden>
   <style>
     #umoya-email-optout {
       --cream:  #F5F0EB;
@@ -970,6 +984,15 @@
       pointer-events: none;
       transition: opacity .28s var(--ease), visibility 0s linear .28s;
     }
+
+    /*
+     * Belt-and-braces. The element also ships with the `hidden` attribute, so
+     * if this stylesheet ever goes missing again the browser's own UA rule
+     * still hides it rather than dumping the copy at the foot of the page.
+     * The attribute raises specificity above the display:flex above, and the
+     * script clears it on open.
+     */
+    #umoya-email-optout[hidden] { display: none; }
 
     #umoya-email-optout *,
     #umoya-email-optout *::before,
@@ -1146,6 +1169,7 @@
   var dialog = popup.querySelector('.umoya-ep-dialog');
   var closeBtn = popup.querySelector('[data-umoya-ep-close]');
   var lastFocus = null;
+  var closeTimer = 0;
 
   /* See the header note: fixed positioning is only reliable against the
      viewport when the element is not inside a transformed ancestor. */
@@ -1201,6 +1225,12 @@
   function openPopup(){
     lastFocus = document.activeElement;
     moveToBody();
+    if (closeTimer) { window.clearTimeout(closeTimer); closeTimer = 0; }
+    /* Drop the hard hide, then force a reflow so the browser has a starting
+       frame to transition FROM — without it the fade is skipped. */
+    popup.hidden = false;
+    /* eslint-disable-next-line no-unused-expressions */
+    popup.offsetHeight;
     popup.classList.add('is-open');
     popup.setAttribute('aria-hidden', 'false');
     /*
@@ -1230,6 +1260,12 @@
     document.removeEventListener('keydown', onKeydown);
     if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
     lastFocus = null;
+    /* Restore the hard hide once the fade has finished. */
+    if (closeTimer) window.clearTimeout(closeTimer);
+    closeTimer = window.setTimeout(function(){
+      closeTimer = 0;
+      if (!popup.classList.contains('is-open')) popup.hidden = true;
+    }, 320);
   }
 
   if (closeBtn) closeBtn.addEventListener('click', closePopup);
