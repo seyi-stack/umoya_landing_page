@@ -218,7 +218,37 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 		row.byTab = panel.byTab;
 
 		if ( wantShots ) {
-			await page.screenshot( { path: path.join( shotDir, 'editor-' + key + '.png' ) } );
+			// Elementor keeps a full-screen loading splash up until the editor is
+			// fully booted. Screenshotting before it clears photographs the splash,
+			// not the panel.
+			await page.waitForFunction( () => {
+				const loader = document.querySelector( '#elementor-loading' );
+				return ! loader || 'none' === getComputedStyle( loader ).display || 0 === parseFloat( getComputedStyle( loader ).opacity );
+			}, { timeout: 60000 } ).catch( () => {} );
+			await new Promise( ( resolve ) => setTimeout( resolve, 800 ) );
+
+			// The panel is the subject; the canvas beside it is not.
+			const panel = await page.$( '#elementor-panel' );
+			await ( panel || page ).screenshot( { path: path.join( shotDir, 'editor-' + key + '-content.png' ) } );
+
+			// The Style tab is where the panel naming has to earn its keep, so it
+			// gets its own shot. Switching tabs goes through Elementor's router
+			// rather than a DOM click: the tab markup has moved between versions,
+			// the route has not.
+			const switched = await page.evaluate( () => {
+				try {
+					window.$e.route( 'panel/editor/style' );
+					return true;
+				} catch ( error ) {
+					return false;
+				}
+			} );
+
+			if ( switched ) {
+				await new Promise( ( resolve ) => setTimeout( resolve, 1200 ) );
+				const stylePanel = await page.$( '#elementor-panel' );
+				await ( stylePanel || page ).screenshot( { path: path.join( shotDir, 'editor-' + key + '-style.png' ) } );
+			}
 		}
 	} catch ( error ) {
 		row.notes.push( String( error.message || error ).slice( 0, 180 ) );
