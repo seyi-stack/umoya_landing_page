@@ -1,0 +1,724 @@
+{
+	"key": "fc_privileges",
+	"name": "umoya-fc-privileges",
+	"title": "FC Membership Privileges",
+	"description": "Membership privileges checklist beside a portrait image.",
+	"icon": "eicon-check-circle",
+	"category": "umoya-fc",
+	"source": "founders-circle-revamp/section-03-membership-privileges.html",
+	"class_name": "FC_Privileges",
+	"widget_file": "widgets/class-fc-privileges.php",
+	"root_selector": "#fc-benefits",
+	"template": "templates/sections/fc_privileges.php",
+	"style": {
+		"handle": "uew-umoya-fc-privileges",
+		"file": "assets/css/sections/fc_privileges.css"
+	},
+	"script": {
+		"handle": "uew-umoya-fc-privileges",
+		"file": "assets/js/sections/fc_privileges.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"fc",
+		"membership",
+		"privileges"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "cream-lt",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream Lt"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "brown-mid",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown Mid"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "gold",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Gold"
+		},
+		{
+			"name": "gold-lt",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Gold Lt"
+		},
+		{
+			"name": "olive",
+			"value": "#708238",
+			"kind": "color",
+			"label": "Olive"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "text-mid",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Text Mid"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Section – Aria Label",
+					"default": "Founder's Circle Member Benefits",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "eyebrow_membership_privileges_text",
+					"control": "text",
+					"label": "Eyebrow — Membership Privileges",
+					"description": "",
+					"default": "Membership Privileges",
+					"esc": "post",
+					"group": "p_fc_ben_eyebrow",
+					"sort": 0
+				},
+				{
+					"id": "title_what_your_membership_includ_text",
+					"control": "textarea",
+					"label": "Title — What Your Membership Includ…",
+					"description": "Inline formatting tags are preserved.",
+					"default": "What Your <em>Membership</em> Includes",
+					"esc": "post",
+					"group": "p_fc_ben_title",
+					"sort": 0
+				},
+				{
+					"id": "list_aria_label",
+					"control": "text",
+					"label": "List – Aria Label",
+					"default": "Founder's Circle member benefits",
+					"esc": "attr",
+					"group": "p_fc_ben_list",
+					"tab": "content",
+					"sort": 1
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_ben_btn",
+			"label": "Reveal › Button — Request Your Membership",
+			"controls": [
+				{
+					"id": "button_request_your_membership_text",
+					"control": "text",
+					"label": "Button — Request Your Membership",
+					"description": "",
+					"default": "Request Your Membership",
+					"esc": "post",
+					"group": "p_fc_ben_btn",
+					"sort": 0
+				},
+				{
+					"id": "button_request_your_membership_href",
+					"control": "url",
+					"label": "Button — Request Your Membership – Href",
+					"default": {
+						"url": "#fc-form-section"
+					},
+					"esc": "url",
+					"group": "p_fc_ben_btn",
+					"tab": "content",
+					"sort": 1
+				}
+			]
+		},
+		{
+			"id": "content_p_img",
+			"label": "Grid › Image",
+			"controls": [
+				{
+					"id": "image_src",
+					"control": "media",
+					"label": "Image – Src",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img259584315.jpeg"
+					},
+					"esc": "url",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "image_alt",
+					"control": "text",
+					"label": "Image – Alt",
+					"default": "Umoya Founder's Circle — heritage traveler",
+					"esc": "attr",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [
+		{
+			"id": "image_loading",
+			"control": "text",
+			"label": "Image – Loading",
+			"default": "lazy",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"inline_style_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_li",
+			"label": "Li",
+			"item_label": "{{{ li }}}",
+			"controls": [
+				{
+					"id": "aria_hidden",
+					"control": "text",
+					"label": "Aria Hidden",
+					"esc": "attr",
+					"default": "true"
+				},
+				{
+					"id": "viewbox",
+					"control": "text",
+					"label": "Viewbox",
+					"esc": "attr",
+					"default": "0 0 12 12"
+				},
+				{
+					"id": "icon_points",
+					"control": "hidden",
+					"label": "Icon Points",
+					"esc": "attr",
+					"default": "2 6 5 9 10 3"
+				},
+				{
+					"id": "li",
+					"control": "textarea",
+					"label": "Li",
+					"esc": "post",
+					"default": "A preferred founding rate, the most favourable we will ever offer, on this journey and those that follow."
+				}
+			],
+			"rows": [
+				{
+					"aria_hidden": "true",
+					"viewbox": "0 0 12 12",
+					"icon_points": "2 6 5 9 10 3",
+					"li": "A preferred founding rate, the most favourable we will ever offer, on this journey and those that follow."
+				},
+				{
+					"aria_hidden": "true",
+					"viewbox": "0 0 12 12",
+					"icon_points": "2 6 5 9 10 3",
+					"li": "Priority booking, before we open to the public."
+				},
+				{
+					"aria_hidden": "true",
+					"viewbox": "0 0 12 12",
+					"icon_points": "2 6 5 9 10 3",
+					"li": "Personal consultation with the founder, who designed the journey."
+				},
+				{
+					"aria_hidden": "true",
+					"viewbox": "0 0 12 12",
+					"icon_points": "2 6 5 9 10 3",
+					"li": "A dedicated travel expert, from inquiry to return."
+				},
+				{
+					"aria_hidden": "true",
+					"viewbox": "0 0 12 12",
+					"icon_points": "2 6 5 9 10 3",
+					"li": "Early access to every future journey and Umoya experience."
+				}
+			],
+			"selector": null
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_ben_wrap",
+			"label": "Wrapper",
+			"short_label": "Wrapper",
+			"selector": ".fc-ben-wrap",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_ben_grid",
+			"label": "Wrapper › Grid",
+			"short_label": "Grid",
+			"selector": ".fc-ben-grid",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_ben_reveal",
+			"label": "Grid › Reveal",
+			"short_label": "Reveal",
+			"selector": ".fc-ben-reveal",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": true,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_ben_eyebrow",
+			"label": "Reveal › Eyebrow — Membership Privileges",
+			"short_label": "Eyebrow",
+			"selector": ".fc-ben-eyebrow",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_ben_title",
+			"label": "Reveal › Title — What Your Membership Includ…",
+			"short_label": "Title",
+			"selector": ".fc-ben-title",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_em",
+			"label": "Title › Em — Membership",
+			"short_label": "Em",
+			"selector": "em",
+			"tag": "em",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_ben_rule",
+			"label": "Reveal › Rule",
+			"short_label": "Rule",
+			"selector": ".fc-ben-rule",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_ben_list",
+			"label": "Reveal › List",
+			"short_label": "List",
+			"selector": ".fc-ben-list",
+			"tag": "ul",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_li",
+			"label": "List › Li",
+			"short_label": "Li",
+			"selector": "li",
+			"tag": "li",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": true,
+			"repeater": "li"
+		},
+		{
+			"id": "p_li_span_nth_of_type_1",
+			"label": "Li › Check",
+			"short_label": "Check",
+			"selector": "li > span:nth-of-type(1)",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_li_span_nth_of_type_1_svg_nth_of_type_1",
+			"label": "Check › Svg",
+			"short_label": "Svg",
+			"selector": "li > span:nth-of-type(1) > svg:nth-of-type(1)",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_ben_btn",
+			"label": "Reveal › Button — Request Your Membership",
+			"short_label": "Button",
+			"selector": ".fc-ben-btn",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_img",
+			"label": "Grid › Image",
+			"short_label": "Image",
+			"selector": "img",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Section – Aria Label",
+			"default": "Founder's Circle Member Benefits",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_membership_privileges_text",
+			"control": "text",
+			"label": "Eyebrow — Membership Privileges",
+			"description": "",
+			"default": "Membership Privileges",
+			"esc": "post",
+			"group": "p_fc_ben_eyebrow",
+			"sort": 0
+		},
+		{
+			"id": "title_what_your_membership_includ_text",
+			"control": "textarea",
+			"label": "Title — What Your Membership Includ…",
+			"description": "Inline formatting tags are preserved.",
+			"default": "What Your <em>Membership</em> Includes",
+			"esc": "post",
+			"group": "p_fc_ben_title",
+			"sort": 0
+		},
+		{
+			"id": "list_aria_label",
+			"control": "text",
+			"label": "List – Aria Label",
+			"default": "Founder's Circle member benefits",
+			"esc": "attr",
+			"group": "p_fc_ben_list",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "button_request_your_membership_text",
+			"control": "text",
+			"label": "Button — Request Your Membership",
+			"description": "",
+			"default": "Request Your Membership",
+			"esc": "post",
+			"group": "p_fc_ben_btn",
+			"sort": 0
+		},
+		{
+			"id": "button_request_your_membership_href",
+			"control": "url",
+			"label": "Button — Request Your Membership – Href",
+			"default": {
+				"url": "#fc-form-section"
+			},
+			"esc": "url",
+			"group": "p_fc_ben_btn",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src",
+			"control": "media",
+			"label": "Image – Src",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img259584315.jpeg"
+			},
+			"esc": "url",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt",
+			"control": "text",
+			"label": "Image – Alt",
+			"default": "Umoya Founder's Circle — heritage traveler",
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading",
+			"control": "text",
+			"label": "Image – Loading",
+			"default": "lazy",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		}
+	]
+}

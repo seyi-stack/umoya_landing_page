@@ -1,0 +1,20 @@
+{
+  "name": "umoya-widget-compiler",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Compiles Umoya section HTML into native Elementor widgets, and proves nothing was lost.",
+  "scripts": {
+    "setup": "node setup-local-env.mjs",
+    "serve": "node setup-local-env.mjs --serve",
+    "build": "node build.mjs",
+    "check:render": "node render-check.mjs",
+    "check:browser": "node browser-check.mjs",
+    "check:editor": "node editor-check.mjs",
+    "check": "node build.mjs && node render-check.mjs && node browser-check.mjs && node editor-check.mjs"
+  },
+  "dependencies": {
+    "parse5": "^7.2.1",
+    "puppeteer-core": "^25.9.0"
+  }
+}

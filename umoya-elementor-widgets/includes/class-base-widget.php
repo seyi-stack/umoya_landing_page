@@ -5,6 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+/**
+ * First-generation section widget (homepage only).
+ *
+ * Superseded by Section_Widget for the Founder's Circle sections. Kept so the
+ * homepage widgets keep rendering until they are migrated.
+ */
 abstract class Base_Widget extends \Elementor\Widget_Base {
 
     protected function section_key() {
@@ -12,7 +18,7 @@ abstract class Base_Widget extends \Elementor\Widget_Base {
     }
 
     protected function section_config() {
-        return Section_Registry::get( $this->section_key() );
+        return Legacy_Registry::get( $this->section_key() );
     }
 
     public function get_name() {
@@ -113,7 +119,7 @@ abstract class Base_Widget extends \Elementor\Widget_Base {
     }
 
     public function render_editable_section( $section_key ) {
-        $config = Section_Registry::get( $section_key );
+        $config = Legacy_Registry::get( $section_key );
         if ( empty( $config ) ) {
             return;
         }

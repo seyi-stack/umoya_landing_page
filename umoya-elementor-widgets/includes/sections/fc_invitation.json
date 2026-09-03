@@ -1,0 +1,454 @@
+{
+	"key": "fc_invitation",
+	"name": "umoya-fc-invitation",
+	"title": "FC Invitation",
+	"description": "Centred invitation statement: eyebrow, heading, body copy and outline CTA.",
+	"icon": "eicon-info-circle-o",
+	"category": "umoya-fc",
+	"source": "founders-circle-revamp/section-02-invitation.html",
+	"class_name": "FC_Invitation",
+	"widget_file": "widgets/class-fc-invitation.php",
+	"root_selector": "#fc-intro",
+	"template": "templates/sections/fc_invitation.php",
+	"style": {
+		"handle": "uew-umoya-fc-invitation",
+		"file": "assets/css/sections/fc_invitation.css"
+	},
+	"script": {
+		"handle": "uew-umoya-fc-invitation",
+		"file": "assets/js/sections/fc_invitation.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"fc",
+		"invitation"
+	],
+	"tokens": [
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "olive",
+			"value": "#708238",
+			"kind": "color",
+			"label": "Olive"
+		},
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "text-muted",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Text Muted"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Section – Aria Label",
+					"default": "Founder's Circle Introduction",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "eyebrow_an_exclusive_group_text",
+					"control": "text",
+					"label": "Eyebrow — An Exclusive Group",
+					"description": "",
+					"default": "An Exclusive Group",
+					"esc": "post",
+					"group": "p_fc_intro_eyebrow",
+					"sort": 0
+				},
+				{
+					"id": "heading_the_first_to_travel_with_us_text",
+					"control": "text",
+					"label": "Heading — The first to travel with us.",
+					"description": "",
+					"default": "The first to travel with us.",
+					"esc": "post",
+					"group": "p_fc_intro_heading",
+					"sort": 0
+				},
+				{
+					"id": "body_the_umoya_founder_s_circle_text",
+					"control": "textarea",
+					"label": "Body — The Umoya Founder's Circle …",
+					"description": "",
+					"default": "The Umoya Founder's Circle is a small group of founding guests who will be the first to experience our Signature Journey. As a founding member you secure your place on one of our inaugural departures, travel at our most preferred rate, and help shape our journeys for everyone who follows.",
+					"esc": "post",
+					"group": "p_fc_intro_body",
+					"sort": 0
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_intro_btn",
+			"label": "Div › Button — Become a Founding Member",
+			"controls": [
+				{
+					"id": "button_become_a_founding_member_text",
+					"control": "text",
+					"label": "Button — Become a Founding Member",
+					"description": "",
+					"default": "Become a Founding Member",
+					"esc": "post",
+					"group": "p_fc_intro_btn",
+					"sort": 0
+				},
+				{
+					"id": "button_become_a_founding_member_href",
+					"control": "url",
+					"label": "Button — Become a Founding Member – Href",
+					"default": {
+						"url": "#fc-form-section"
+					},
+					"esc": "url",
+					"group": "p_fc_intro_btn",
+					"tab": "content",
+					"sort": 1
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [
+		{
+			"id": "div_css_width",
+			"control": "text",
+			"label": "Div – Width",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_fc_d4_fc_intro_rv",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Wrapper › Div"
+		}
+	],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_intro_wrap",
+			"label": "Wrapper",
+			"short_label": "Wrapper",
+			"selector": ".fc-intro-wrap",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_dec_line",
+			"label": "Wrapper › Decorative Line",
+			"short_label": "Decorative Line",
+			"selector": ".fc-dec-line",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_intro_eyebrow",
+			"label": "Wrapper › Eyebrow — An Exclusive Group",
+			"short_label": "Eyebrow",
+			"selector": ".fc-intro-eyebrow",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_intro_heading",
+			"label": "Wrapper › Heading — The first to travel with us.",
+			"short_label": "Heading",
+			"selector": ".fc-intro-heading",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_intro_body",
+			"label": "Wrapper › Body — The Umoya Founder's Circle …",
+			"short_label": "Body",
+			"selector": ".fc-intro-body",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_d4_fc_intro_rv",
+			"label": "Wrapper › Div",
+			"short_label": "Div",
+			"selector": ".fc-d4.fc-intro-rv",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_intro_btn",
+			"label": "Div › Button — Become a Founding Member",
+			"short_label": "Button",
+			"selector": ".fc-intro-btn",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [
+		{
+			"id": "div_inline_style",
+			"control": "inline_style_group",
+			"declarations": [
+				{
+					"prefix": "width: ",
+					"id": "div_css_width"
+				}
+			],
+			"tail": ";",
+			"internal": true
+		}
+	],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Section – Aria Label",
+			"default": "Founder's Circle Introduction",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_an_exclusive_group_text",
+			"control": "text",
+			"label": "Eyebrow — An Exclusive Group",
+			"description": "",
+			"default": "An Exclusive Group",
+			"esc": "post",
+			"group": "p_fc_intro_eyebrow",
+			"sort": 0
+		},
+		{
+			"id": "heading_the_first_to_travel_with_us_text",
+			"control": "text",
+			"label": "Heading — The first to travel with us.",
+			"description": "",
+			"default": "The first to travel with us.",
+			"esc": "post",
+			"group": "p_fc_intro_heading",
+			"sort": 0
+		},
+		{
+			"id": "body_the_umoya_founder_s_circle_text",
+			"control": "textarea",
+			"label": "Body — The Umoya Founder's Circle …",
+			"description": "",
+			"default": "The Umoya Founder's Circle is a small group of founding guests who will be the first to experience our Signature Journey. As a founding member you secure your place on one of our inaugural departures, travel at our most preferred rate, and help shape our journeys for everyone who follows.",
+			"esc": "post",
+			"group": "p_fc_intro_body",
+			"sort": 0
+		},
+		{
+			"id": "div_css_width",
+			"control": "text",
+			"label": "Div – Width",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_fc_d4_fc_intro_rv",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "button_become_a_founding_member_text",
+			"control": "text",
+			"label": "Button — Become a Founding Member",
+			"description": "",
+			"default": "Become a Founding Member",
+			"esc": "post",
+			"group": "p_fc_intro_btn",
+			"sort": 0
+		},
+		{
+			"id": "button_become_a_founding_member_href",
+			"control": "url",
+			"label": "Button — Become a Founding Member – Href",
+			"default": {
+				"url": "#fc-form-section"
+			},
+			"esc": "url",
+			"group": "p_fc_intro_btn",
+			"tab": "content",
+			"sort": 1
+		}
+	]
+}

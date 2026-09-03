@@ -1,0 +1,963 @@
+{
+	"key": "fc_nav",
+	"name": "umoya-fc-nav",
+	"title": "FC Navigation",
+	"description": "Sticky Founder’s Circle navigation with the section table-of-contents bar.",
+	"icon": "eicon-nav-menu",
+	"category": "umoya-fc",
+	"source": "founders-circle-revamp/section-00-nav.html",
+	"class_name": "FC_Nav",
+	"widget_file": "widgets/class-fc-nav.php",
+	"root_selector": "#fcNavBar",
+	"template": "templates/sections/fc_nav.php",
+	"style": {
+		"handle": "uew-umoya-fc-nav",
+		"file": "assets/css/sections/fc_nav.css"
+	},
+	"script": {
+		"handle": "uew-umoya-fc-nav",
+		"file": "assets/js/sections/fc_nav.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"fc",
+		"navigation"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "text-muted",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Text Muted"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Section – Aria Label",
+					"default": "Founder's Circle page navigation",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_nav_logo",
+			"label": "Inner › Logo",
+			"controls": [
+				{
+					"id": "logo_href",
+					"control": "url",
+					"label": "Logo – Href",
+					"default": {
+						"url": "#fc-hero"
+					},
+					"esc": "url",
+					"group": "p_fc_nav_logo",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "logo_aria_label",
+					"control": "text",
+					"label": "Logo – Aria Label",
+					"default": "Umoya Afrika Tours — back to top",
+					"esc": "attr",
+					"group": "p_fc_nav_logo",
+					"tab": "content",
+					"sort": 1
+				}
+			]
+		},
+		{
+			"id": "content_p_img",
+			"label": "Logo › Image",
+			"controls": [
+				{
+					"id": "image_src",
+					"control": "media",
+					"label": "Image – Src",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Umoya-Afrika-Logomark.svg"
+					},
+					"esc": "url",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "image_alt",
+					"control": "text",
+					"label": "Image – Alt",
+					"default": "Umoya Afrika Tours logo",
+					"esc": "attr",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "logo_text_umoya_text",
+					"control": "text",
+					"label": "Logo Text — Umoya",
+					"description": "",
+					"default": "Umoya",
+					"esc": "post",
+					"group": "p_fc_nav_logo_text",
+					"sort": 0
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_nav_cta",
+			"label": "Inner › CTA — Reserve Your Place",
+			"controls": [
+				{
+					"id": "cta_reserve_your_place_text",
+					"control": "text",
+					"label": "CTA — Reserve Your Place",
+					"description": "",
+					"default": "Reserve Your Place",
+					"esc": "post",
+					"group": "p_fc_nav_cta",
+					"sort": 0
+				},
+				{
+					"id": "cta_reserve_your_place_href",
+					"control": "url",
+					"label": "CTA — Reserve Your Place – Href",
+					"default": {
+						"url": "#fc-form-section"
+					},
+					"esc": "url",
+					"group": "p_fc_nav_cta",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "burger_aria_label",
+					"control": "text",
+					"label": "Burger – Aria Label",
+					"default": "Open navigation menu",
+					"esc": "attr",
+					"group": "p_fc_nav_burger",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "dropdown_aria_label",
+					"control": "text",
+					"label": "Dropdown – Aria Label",
+					"default": "Page sections",
+					"esc": "attr",
+					"group": "p_fc_nav_dropdown",
+					"tab": "content",
+					"sort": 1
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_nav_dropdown_cta",
+			"label": "CTA Row › CTA — Reserve Your Place",
+			"controls": [
+				{
+					"id": "cta_reserve_your_place_text_2",
+					"control": "text",
+					"label": "CTA — Reserve Your Place",
+					"description": "",
+					"default": "Reserve Your Place",
+					"esc": "post",
+					"group": "p_fc_nav_dropdown_cta",
+					"sort": 0
+				},
+				{
+					"id": "cta_reserve_your_place_href_2",
+					"control": "url",
+					"label": "CTA — Reserve Your Place – Href",
+					"default": {
+						"url": "#fc-form-section"
+					},
+					"esc": "url",
+					"group": "p_fc_nav_dropdown_cta",
+					"tab": "content",
+					"sort": 1
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [
+		{
+			"id": "logo_text_umoya_css_display",
+			"control": "text",
+			"label": "Logo Text — Umoya – Display",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "none",
+			"esc": "attr",
+			"group": "p_fc_nav_logo_text",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Logo › Logo Text — Umoya"
+		}
+	],
+	"repeaters": [
+		{
+			"id": "rep_li_fc_nav_item",
+			"label": "Li Fc Nav Item",
+			"item_label": "{{{ link }}}",
+			"controls": [
+				{
+					"id": "data_s",
+					"control": "text",
+					"label": "S",
+					"esc": "attr",
+					"default": "fc-intro"
+				},
+				{
+					"id": "href",
+					"control": "url",
+					"label": "Href",
+					"esc": "url",
+					"default": "#fc-intro"
+				},
+				{
+					"id": "link",
+					"control": "text",
+					"label": "Link",
+					"esc": "post",
+					"default": "Overview"
+				}
+			],
+			"rows": [
+				{
+					"data_s": "fc-intro",
+					"href": "#fc-intro",
+					"link": "Overview"
+				},
+				{
+					"data_s": "fc-benefits",
+					"href": "#fc-benefits",
+					"link": "Membership Offers"
+				},
+				{
+					"data_s": "fc-form-section",
+					"href": "#fc-form-section",
+					"link": "How to Inquire"
+				},
+				{
+					"data_s": "fc-journey",
+					"href": "#fc-journey",
+					"link": "Signature Journey Details"
+				},
+				{
+					"data_s": "fc-why",
+					"href": "#fc-why",
+					"link": "Why Umoya Afrika Tours?"
+				},
+				{
+					"data_s": "fc-details",
+					"href": "#fc-details",
+					"link": "Travel Essentials"
+				}
+			],
+			"selector": ".fc-nav-item"
+		},
+		{
+			"id": "rep_li_fc_nav_dropdown_item",
+			"label": "Li Fc Nav Dropdown Item",
+			"item_label": "{{{ dropdown_link }}}",
+			"controls": [
+				{
+					"id": "data_s",
+					"control": "text",
+					"label": "S",
+					"esc": "attr",
+					"default": "fc-intro"
+				},
+				{
+					"id": "href",
+					"control": "url",
+					"label": "Href",
+					"esc": "url",
+					"default": "#fc-intro"
+				},
+				{
+					"id": "role",
+					"control": "text",
+					"label": "Role",
+					"esc": "attr",
+					"default": "menuitem"
+				},
+				{
+					"id": "dropdown_link",
+					"control": "text",
+					"label": "Dropdown Link",
+					"esc": "post",
+					"default": "Overview"
+				}
+			],
+			"rows": [
+				{
+					"data_s": "fc-intro",
+					"href": "#fc-intro",
+					"role": "menuitem",
+					"dropdown_link": "Overview"
+				},
+				{
+					"data_s": "fc-benefits",
+					"href": "#fc-benefits",
+					"role": "menuitem",
+					"dropdown_link": "Membership Offers"
+				},
+				{
+					"data_s": "fc-form-section",
+					"href": "#fc-form-section",
+					"role": "menuitem",
+					"dropdown_link": "How to Inquire"
+				},
+				{
+					"data_s": "fc-journey",
+					"href": "#fc-journey",
+					"role": "menuitem",
+					"dropdown_link": "Signature Journey Details"
+				},
+				{
+					"data_s": "fc-why",
+					"href": "#fc-why",
+					"role": "menuitem",
+					"dropdown_link": "Why Umoya Afrika Tours?"
+				},
+				{
+					"data_s": "fc-details",
+					"href": "#fc-details",
+					"role": "menuitem",
+					"dropdown_link": "Travel Essentials"
+				}
+			],
+			"selector": ".fc-nav-dropdown-item"
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"selector": "",
+			"tag": "nav",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_nav_inner",
+			"label": "Inner",
+			"short_label": "Inner",
+			"selector": ".fc-nav-inner",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_nav_logo",
+			"label": "Inner › Logo",
+			"short_label": "Logo",
+			"selector": ".fc-nav-logo",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_img",
+			"label": "Logo › Image",
+			"short_label": "Image",
+			"selector": "img",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_nav_logo_text",
+			"label": "Logo › Logo Text — Umoya",
+			"short_label": "Logo Text",
+			"selector": ".fc-nav-logo-text",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_nav_links",
+			"label": "Inner › Links",
+			"short_label": "Links",
+			"selector": ".fc-nav-links",
+			"tag": "ul",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_nav_item",
+			"label": "Links › Item",
+			"short_label": "Item",
+			"selector": ".fc-nav-item",
+			"tag": "li",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": true,
+			"repeater": "li_fc_nav_item"
+		},
+		{
+			"id": "p_fc_nav_item_a_nth_of_type_1",
+			"label": "Item › Link — Overview",
+			"short_label": "Link",
+			"selector": ".fc-nav-item > a:nth-of-type(1)",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_nav_cta",
+			"label": "Inner › CTA — Reserve Your Place",
+			"short_label": "CTA",
+			"selector": ".fc-nav-cta",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_nav_burger",
+			"label": "Inner › Burger",
+			"short_label": "Burger",
+			"selector": ".fc-nav-burger",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_nav_burger_span",
+			"label": "Burger › Span",
+			"short_label": "Span",
+			"selector": ".fc-nav-burger > span",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": true,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_nav_dropdown",
+			"label": "Inner › Dropdown",
+			"short_label": "Dropdown",
+			"selector": ".fc-nav-dropdown",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_nav_dropdown_list",
+			"label": "Dropdown › List",
+			"short_label": "List",
+			"selector": ".fc-nav-dropdown-list",
+			"tag": "ul",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_nav_dropdown_item",
+			"label": "List › Item",
+			"short_label": "Item",
+			"selector": ".fc-nav-dropdown-item",
+			"tag": "li",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": true,
+			"repeater": "li_fc_nav_dropdown_item"
+		},
+		{
+			"id": "p_fc_nav_dropdown_item_a_nth_of_type_1",
+			"label": "Item › Link — Overview",
+			"short_label": "Link",
+			"selector": ".fc-nav-dropdown-item > a:nth-of-type(1)",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_nav_dropdown_cta_row",
+			"label": "Dropdown › CTA Row",
+			"short_label": "CTA Row",
+			"selector": ".fc-nav-dropdown-cta-row",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_nav_dropdown_cta",
+			"label": "CTA Row › CTA — Reserve Your Place",
+			"short_label": "CTA",
+			"selector": ".fc-nav-dropdown-cta",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [
+		{
+			"id": "logo_text_umoya_inline_style",
+			"control": "inline_style_group",
+			"declarations": [
+				{
+					"prefix": "display:",
+					"id": "logo_text_umoya_css_display"
+				}
+			],
+			"tail": ";",
+			"internal": true
+		}
+	],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Section – Aria Label",
+			"default": "Founder's Circle page navigation",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "logo_href",
+			"control": "url",
+			"label": "Logo – Href",
+			"default": {
+				"url": "#fc-hero"
+			},
+			"esc": "url",
+			"group": "p_fc_nav_logo",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "logo_aria_label",
+			"control": "text",
+			"label": "Logo – Aria Label",
+			"default": "Umoya Afrika Tours — back to top",
+			"esc": "attr",
+			"group": "p_fc_nav_logo",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src",
+			"control": "media",
+			"label": "Image – Src",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Umoya-Afrika-Logomark.svg"
+			},
+			"esc": "url",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt",
+			"control": "text",
+			"label": "Image – Alt",
+			"default": "Umoya Afrika Tours logo",
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "logo_text_umoya_text",
+			"control": "text",
+			"label": "Logo Text — Umoya",
+			"description": "",
+			"default": "Umoya",
+			"esc": "post",
+			"group": "p_fc_nav_logo_text",
+			"sort": 0
+		},
+		{
+			"id": "logo_text_umoya_css_display",
+			"control": "text",
+			"label": "Logo Text — Umoya – Display",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "none",
+			"esc": "attr",
+			"group": "p_fc_nav_logo_text",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "cta_reserve_your_place_text",
+			"control": "text",
+			"label": "CTA — Reserve Your Place",
+			"description": "",
+			"default": "Reserve Your Place",
+			"esc": "post",
+			"group": "p_fc_nav_cta",
+			"sort": 0
+		},
+		{
+			"id": "cta_reserve_your_place_href",
+			"control": "url",
+			"label": "CTA — Reserve Your Place – Href",
+			"default": {
+				"url": "#fc-form-section"
+			},
+			"esc": "url",
+			"group": "p_fc_nav_cta",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "burger_aria_label",
+			"control": "text",
+			"label": "Burger – Aria Label",
+			"default": "Open navigation menu",
+			"esc": "attr",
+			"group": "p_fc_nav_burger",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "dropdown_aria_label",
+			"control": "text",
+			"label": "Dropdown – Aria Label",
+			"default": "Page sections",
+			"esc": "attr",
+			"group": "p_fc_nav_dropdown",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "cta_reserve_your_place_text_2",
+			"control": "text",
+			"label": "CTA — Reserve Your Place",
+			"description": "",
+			"default": "Reserve Your Place",
+			"esc": "post",
+			"group": "p_fc_nav_dropdown_cta",
+			"sort": 0
+		},
+		{
+			"id": "cta_reserve_your_place_href_2",
+			"control": "url",
+			"label": "CTA — Reserve Your Place – Href",
+			"default": {
+				"url": "#fc-form-section"
+			},
+			"esc": "url",
+			"group": "p_fc_nav_dropdown_cta",
+			"tab": "content",
+			"sort": 1
+		}
+	]
+}

@@ -1,0 +1,413 @@
+{
+	"key": "fc_founding_offer",
+	"name": "umoya-fc-founding-offer",
+	"title": "FC Founding Offer",
+	"description": "The founding offer statement on brand brown, with the reserve CTA.",
+	"icon": "eicon-price-table",
+	"category": "umoya-fc",
+	"source": "founders-circle-revamp/section-07-founding-offer.html",
+	"class_name": "FC_Founding_Offer",
+	"widget_file": "widgets/class-fc-founding-offer.php",
+	"root_selector": "#fc-pricing",
+	"template": "templates/sections/fc_founding_offer.php",
+	"style": {
+		"handle": "uew-umoya-fc-founding-offer",
+		"file": "assets/css/sections/fc_founding_offer.css"
+	},
+	"script": {
+		"handle": "uew-umoya-fc-founding-offer",
+		"file": "assets/js/sections/fc_founding_offer.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"fc",
+		"founding",
+		"offer"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "olive",
+			"value": "#708238",
+			"kind": "color",
+			"label": "Olive"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Section – Aria Label",
+					"default": "The Founding Offer",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "eyebrow_the_founding_offer_text",
+					"control": "text",
+					"label": "Eyebrow — The Founding Offer",
+					"description": "",
+					"default": "The Founding Offer",
+					"esc": "post",
+					"group": "p_fc_pri_eye",
+					"sort": 0
+				},
+				{
+					"id": "title_the_most_preferred_rate_we_text",
+					"control": "text",
+					"label": "Title — The most preferred rate we …",
+					"description": "",
+					"default": "The most preferred rate we will ever offer.",
+					"esc": "post",
+					"group": "p_fc_pri_ttl",
+					"sort": 0
+				},
+				{
+					"id": "body_founding_members_travel_at_text",
+					"control": "textarea",
+					"label": "Body — Founding members travel at …",
+					"description": "",
+					"default": "Founding members travel at our best rate, held for our first guests alone. We share it with you personally on your call, along with everything your journey includes. Once the founding group is full, it closes for good.",
+					"esc": "post",
+					"group": "p_fc_pri_body",
+					"sort": 0
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_pri_btn",
+			"label": "Wrapper › Button — Reserve Your Place",
+			"controls": [
+				{
+					"id": "button_reserve_your_place_text",
+					"control": "text",
+					"label": "Button — Reserve Your Place",
+					"description": "",
+					"default": "Reserve Your Place",
+					"esc": "post",
+					"group": "p_fc_pri_btn",
+					"sort": 0
+				},
+				{
+					"id": "button_reserve_your_place_href",
+					"control": "url",
+					"label": "Button — Reserve Your Place – Href",
+					"default": {
+						"url": "#fc-form-section"
+					},
+					"esc": "url",
+					"group": "p_fc_pri_btn",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "mini_pricing_held_for_personal_c_text",
+					"control": "text",
+					"label": "Mini — Pricing held for personal c…",
+					"description": "",
+					"default": "Pricing held for personal consultation · limited to eighteen places",
+					"esc": "post",
+					"group": "p_fc_pri_mini",
+					"sort": 0
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_pri_wrap",
+			"label": "Wrapper",
+			"short_label": "Wrapper",
+			"selector": ".fc-pri-wrap",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_pri_eye",
+			"label": "Wrapper › Eyebrow — The Founding Offer",
+			"short_label": "Eyebrow",
+			"selector": ".fc-pri-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_pri_ttl",
+			"label": "Wrapper › Title — The most preferred rate we …",
+			"short_label": "Title",
+			"selector": ".fc-pri-ttl",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_pri_body",
+			"label": "Wrapper › Body — Founding members travel at …",
+			"short_label": "Body",
+			"selector": ".fc-pri-body",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_pri_btn",
+			"label": "Wrapper › Button — Reserve Your Place",
+			"short_label": "Button",
+			"selector": ".fc-pri-btn",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_pri_mini",
+			"label": "Wrapper › Mini — Pricing held for personal c…",
+			"short_label": "Mini",
+			"selector": ".fc-pri-mini",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Section – Aria Label",
+			"default": "The Founding Offer",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_the_founding_offer_text",
+			"control": "text",
+			"label": "Eyebrow — The Founding Offer",
+			"description": "",
+			"default": "The Founding Offer",
+			"esc": "post",
+			"group": "p_fc_pri_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_the_most_preferred_rate_we_text",
+			"control": "text",
+			"label": "Title — The most preferred rate we …",
+			"description": "",
+			"default": "The most preferred rate we will ever offer.",
+			"esc": "post",
+			"group": "p_fc_pri_ttl",
+			"sort": 0
+		},
+		{
+			"id": "body_founding_members_travel_at_text",
+			"control": "textarea",
+			"label": "Body — Founding members travel at …",
+			"description": "",
+			"default": "Founding members travel at our best rate, held for our first guests alone. We share it with you personally on your call, along with everything your journey includes. Once the founding group is full, it closes for good.",
+			"esc": "post",
+			"group": "p_fc_pri_body",
+			"sort": 0
+		},
+		{
+			"id": "button_reserve_your_place_text",
+			"control": "text",
+			"label": "Button — Reserve Your Place",
+			"description": "",
+			"default": "Reserve Your Place",
+			"esc": "post",
+			"group": "p_fc_pri_btn",
+			"sort": 0
+		},
+		{
+			"id": "button_reserve_your_place_href",
+			"control": "url",
+			"label": "Button — Reserve Your Place – Href",
+			"default": {
+				"url": "#fc-form-section"
+			},
+			"esc": "url",
+			"group": "p_fc_pri_btn",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "mini_pricing_held_for_personal_c_text",
+			"control": "text",
+			"label": "Mini — Pricing held for personal c…",
+			"description": "",
+			"default": "Pricing held for personal consultation · limited to eighteen places",
+			"esc": "post",
+			"group": "p_fc_pri_mini",
+			"sort": 0
+		}
+	]
+}

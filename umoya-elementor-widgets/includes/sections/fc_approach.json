@@ -1,0 +1,1043 @@
+{
+	"key": "fc_approach",
+	"name": "umoya-fc-approach",
+	"title": "FC Our Approach",
+	"description": "Our Approach copy balanced against the brand video panel.",
+	"icon": "eicon-play-o",
+	"category": "umoya-fc",
+	"source": "founders-circle-revamp/section-08-our-approach.html",
+	"class_name": "FC_Approach",
+	"widget_file": "widgets/class-fc-approach.php",
+	"root_selector": "#fc-why",
+	"template": "templates/sections/fc_approach.php",
+	"style": {
+		"handle": "uew-umoya-fc-approach",
+		"file": "assets/css/sections/fc_approach.css"
+	},
+	"script": {
+		"handle": "uew-umoya-fc-approach",
+		"file": "assets/js/sections/fc_approach.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"fc",
+		"our",
+		"approach"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "cream-lt",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream Lt"
+		},
+		{
+			"name": "cream-dk",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream Dk"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "brown-mid",
+			"value": "#3A2220",
+			"kind": "color",
+			"label": "Brown Mid"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "terra-lt",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra Lt"
+		},
+		{
+			"name": "gold",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Gold"
+		},
+		{
+			"name": "olive",
+			"value": "#708238",
+			"kind": "color",
+			"label": "Olive"
+		},
+		{
+			"name": "text",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Text"
+		},
+		{
+			"name": "text-mid",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Text Mid"
+		},
+		{
+			"name": "text-muted",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Text Muted"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Section – Aria Label",
+					"default": "Why Umoya Afrika Tours",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "eyebrow_our_approach_text",
+					"control": "text",
+					"label": "Eyebrow — Our Approach",
+					"description": "",
+					"default": "Our Approach",
+					"esc": "post",
+					"group": "p_fc_why_eyebrow",
+					"sort": 0
+				},
+				{
+					"id": "title_a_new_company_built_on_lon_text",
+					"control": "textarea",
+					"label": "Title — A new company, built on lon…",
+					"description": "Inline formatting tags are preserved.",
+					"default": "A new company, built on <em>long relationships</em>.",
+					"esc": "post",
+					"group": "p_fc_why_title",
+					"sort": 0
+				},
+				{
+					"id": "lead_it_is_built_on_people_we_kn_text",
+					"control": "text",
+					"label": "Lead — It is built on people we kn…",
+					"description": "",
+					"default": "It is built on people we know by name.",
+					"esc": "post",
+					"group": "p_fc_why_lead",
+					"sort": 0
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_why_btn",
+			"label": "Rev › Button — Travel with us",
+			"controls": [
+				{
+					"id": "button_travel_with_us_text",
+					"control": "text",
+					"label": "Button — Travel with us",
+					"description": "",
+					"default": "Travel with us",
+					"esc": "post",
+					"group": "p_fc_why_btn",
+					"sort": 0
+				},
+				{
+					"id": "button_travel_with_us_href",
+					"control": "url",
+					"label": "Button — Travel with us – Href",
+					"default": {
+						"url": "#fc-form-section"
+					},
+					"esc": "url",
+					"group": "p_fc_why_btn",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "video_placeholder_aria_label",
+					"control": "text",
+					"label": "Video Placeholder – Aria Label",
+					"default": "Play Umoya brand video",
+					"esc": "attr",
+					"group": "p_fc_vid_ph",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "modal_aria_label",
+					"control": "text",
+					"label": "Modal – Aria Label",
+					"default": "Umoya Afrika Tours video",
+					"esc": "attr",
+					"group": "p_fc_video_modal",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "close_aria_label",
+					"control": "text",
+					"label": "Close – Aria Label",
+					"default": "Close video",
+					"esc": "attr",
+					"group": "p_fc_video_close",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "span_text",
+					"control": "text",
+					"label": "Span — ×",
+					"description": "",
+					"default": "&times;",
+					"esc": "post",
+					"group": "p_fc_video_close_span",
+					"sort": 0
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_video_player",
+			"label": "Dialog › Player",
+			"controls": [
+				{
+					"id": "player_src",
+					"control": "url",
+					"label": "Player – Src",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya_hd_optimized_720.mp4"
+					},
+					"esc": "url",
+					"group": "p_fc_video_player",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "player_aria_label",
+					"control": "text",
+					"label": "Player – Aria Label",
+					"default": "Umoya Afrika Tours video",
+					"esc": "attr",
+					"group": "p_fc_video_player",
+					"tab": "content",
+					"sort": 1
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [
+		{
+			"id": "video_placeholder_type",
+			"control": "text",
+			"label": "Video Placeholder – Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "close_type",
+			"control": "text",
+			"label": "Close – Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"behaviour_controls": [
+		{
+			"id": "player_preload",
+			"control": "text",
+			"label": "Player – Preload",
+			"default": "metadata",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"inline_style_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_p_fc_why_body",
+			"label": "P Fc Why Body",
+			"item_label": "",
+			"controls": [
+				{
+					"id": "body_markup",
+					"control": "textarea",
+					"label": "Body markup (HTML)",
+					"esc": "raw",
+					"default": "Umoya is African-led and African-owned, and of the diaspora ourselves. <strong>Wilson Nyah</strong> built it over a decade of work across the continent, and on the relationships that came with it. Those relationships are why <strong>Lucia Motloung</strong> pours her own wine on your first evening, and why <strong>Antoinette Sithole</strong> sits at your table in Soweto and tells you about the day in 1976 she lived herself."
+				}
+			],
+			"rows": [
+				{
+					"body_markup": "Umoya is African-led and African-owned, and of the diaspora ourselves. <strong>Wilson Nyah</strong> built it over a decade of work across the continent, and on the relationships that came with it. Those relationships are why <strong>Lucia Motloung</strong> pours her own wine on your first evening, and why <strong>Antoinette Sithole</strong> sits at your table in Soweto and tells you about the day in 1976 she lived herself."
+				},
+				{
+					"body_markup": "Around those moments, the work is ours. You are met at the airport, a host stays with you the whole way, and what would normally be yours to organise is carried for you. You arrive as a guest of people who are glad to share their home."
+				}
+			],
+			"selector": ".fc-why-body"
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_why_wrap",
+			"label": "Wrapper",
+			"short_label": "Wrapper",
+			"selector": ".fc-why-wrap",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_why_grid",
+			"label": "Wrapper › Grid",
+			"short_label": "Grid",
+			"selector": ".fc-why-grid",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_why_rev",
+			"label": "Grid › Rev",
+			"short_label": "Rev",
+			"selector": ".fc-why-rev",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": true,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_why_eyebrow",
+			"label": "Rev › Eyebrow — Our Approach",
+			"short_label": "Eyebrow",
+			"selector": ".fc-why-eyebrow",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_why_title",
+			"label": "Rev › Title — A new company, built on lon…",
+			"short_label": "Title",
+			"selector": ".fc-why-title",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_em",
+			"label": "Title › Em — long relationships",
+			"short_label": "Em",
+			"selector": "em",
+			"tag": "em",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_why_rule",
+			"label": "Rev › Rule",
+			"short_label": "Rule",
+			"selector": ".fc-why-rule",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_why_lead",
+			"label": "Rev › Lead — It is built on people we kn…",
+			"short_label": "Lead",
+			"selector": ".fc-why-lead",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_why_body",
+			"label": "Rev › Body — Umoya is African-led and Af…",
+			"short_label": "Body",
+			"selector": ".fc-why-body",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": true,
+			"repeater": "p_fc_why_body"
+		},
+		{
+			"id": "p_strong",
+			"label": "Body › Strong — Wilson Nyah",
+			"short_label": "Strong",
+			"selector": "strong",
+			"tag": "strong",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": true,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_why_btn",
+			"label": "Rev › Button — Travel with us",
+			"short_label": "Button",
+			"selector": ".fc-why-btn",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_why_aside",
+			"label": "Grid › Aside",
+			"short_label": "Aside",
+			"selector": ".fc-why-aside",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_vid_wrap",
+			"label": "Aside › Video Wrapper",
+			"short_label": "Video Wrapper",
+			"selector": ".fc-vid-wrap",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_vid_ph",
+			"label": "Video Wrapper › Video Placeholder",
+			"short_label": "Video Placeholder",
+			"selector": ".fc-vid-ph",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_play",
+			"label": "Video Placeholder › Play",
+			"short_label": "Play",
+			"selector": ".fc-play",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_svg",
+			"label": "Play › Svg",
+			"short_label": "Svg",
+			"selector": "svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_video_modal",
+			"label": "Modal",
+			"short_label": "Modal",
+			"selector": ".fc-video-modal",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_video_backdrop",
+			"label": "Modal › Backdrop",
+			"short_label": "Backdrop",
+			"selector": ".fc-video-backdrop",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_video_dialog",
+			"label": "Modal › Dialog",
+			"short_label": "Dialog",
+			"selector": ".fc-video-dialog",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_video_close",
+			"label": "Dialog › Close",
+			"short_label": "Close",
+			"selector": ".fc-video-close",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_video_close_span",
+			"label": "Close › Span — ×",
+			"short_label": "Span",
+			"selector": ".fc-video-close > span",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_video_player",
+			"label": "Dialog › Player",
+			"short_label": "Player",
+			"selector": ".fc-video-player",
+			"tag": "video",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Section – Aria Label",
+			"default": "Why Umoya Afrika Tours",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_our_approach_text",
+			"control": "text",
+			"label": "Eyebrow — Our Approach",
+			"description": "",
+			"default": "Our Approach",
+			"esc": "post",
+			"group": "p_fc_why_eyebrow",
+			"sort": 0
+		},
+		{
+			"id": "title_a_new_company_built_on_lon_text",
+			"control": "textarea",
+			"label": "Title — A new company, built on lon…",
+			"description": "Inline formatting tags are preserved.",
+			"default": "A new company, built on <em>long relationships</em>.",
+			"esc": "post",
+			"group": "p_fc_why_title",
+			"sort": 0
+		},
+		{
+			"id": "lead_it_is_built_on_people_we_kn_text",
+			"control": "text",
+			"label": "Lead — It is built on people we kn…",
+			"description": "",
+			"default": "It is built on people we know by name.",
+			"esc": "post",
+			"group": "p_fc_why_lead",
+			"sort": 0
+		},
+		{
+			"id": "button_travel_with_us_text",
+			"control": "text",
+			"label": "Button — Travel with us",
+			"description": "",
+			"default": "Travel with us",
+			"esc": "post",
+			"group": "p_fc_why_btn",
+			"sort": 0
+		},
+		{
+			"id": "button_travel_with_us_href",
+			"control": "url",
+			"label": "Button — Travel with us – Href",
+			"default": {
+				"url": "#fc-form-section"
+			},
+			"esc": "url",
+			"group": "p_fc_why_btn",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "video_placeholder_type",
+			"control": "text",
+			"label": "Video Placeholder – Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "video_placeholder_aria_label",
+			"control": "text",
+			"label": "Video Placeholder – Aria Label",
+			"default": "Play Umoya brand video",
+			"esc": "attr",
+			"group": "p_fc_vid_ph",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "modal_aria_label",
+			"control": "text",
+			"label": "Modal – Aria Label",
+			"default": "Umoya Afrika Tours video",
+			"esc": "attr",
+			"group": "p_fc_video_modal",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "close_type",
+			"control": "text",
+			"label": "Close – Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "close_aria_label",
+			"control": "text",
+			"label": "Close – Aria Label",
+			"default": "Close video",
+			"esc": "attr",
+			"group": "p_fc_video_close",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "span_text",
+			"control": "text",
+			"label": "Span — ×",
+			"description": "",
+			"default": "&times;",
+			"esc": "post",
+			"group": "p_fc_video_close_span",
+			"sort": 0
+		},
+		{
+			"id": "player_src",
+			"control": "url",
+			"label": "Player – Src",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya_hd_optimized_720.mp4"
+			},
+			"esc": "url",
+			"group": "p_fc_video_player",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "player_preload",
+			"control": "text",
+			"label": "Player – Preload",
+			"default": "metadata",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "player_aria_label",
+			"control": "text",
+			"label": "Player – Aria Label",
+			"default": "Umoya Afrika Tours video",
+			"esc": "attr",
+			"group": "p_fc_video_player",
+			"tab": "content",
+			"sort": 1
+		}
+	]
+}

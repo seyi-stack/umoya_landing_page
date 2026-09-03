@@ -1,0 +1,1141 @@
+{
+	"key": "fc_early_access",
+	"name": "umoya-fc-early-access",
+	"title": "FC Early Access",
+	"description": "Exclusive early-access copy with the supporting image collage.",
+	"icon": "eicon-star",
+	"category": "umoya-fc",
+	"source": "founders-circle-revamp/section-06-early-access.html",
+	"class_name": "FC_Early_Access",
+	"widget_file": "widgets/class-fc-early-access.php",
+	"root_selector": "#fc-be-first",
+	"template": "templates/sections/fc_early_access.php",
+	"style": {
+		"handle": "uew-umoya-fc-early-access",
+		"file": "assets/css/sections/fc_early_access.css"
+	},
+	"script": {
+		"handle": "uew-umoya-fc-early-access",
+		"file": "assets/js/sections/fc_early_access.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"fc",
+		"early",
+		"access"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "cream-lt",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream Lt"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "terra-lt",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra Lt"
+		},
+		{
+			"name": "gold-lt",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Gold Lt"
+		},
+		{
+			"name": "text",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Text"
+		},
+		{
+			"name": "text-mid",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Text Mid"
+		},
+		{
+			"name": "text-muted",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Text Muted"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Section – Aria Label",
+					"default": "Experience South Africa Differently",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "eyebrow_exclusive_early_access_text",
+					"control": "text",
+					"label": "Eyebrow — Exclusive Early Access",
+					"description": "",
+					"default": "Exclusive Early Access",
+					"esc": "post",
+					"group": "p_fc_bf_eyebrow",
+					"sort": 0
+				},
+				{
+					"id": "title_experience_south_africa_dif_text",
+					"control": "textarea",
+					"label": "Title — Experience South Africa Dif…",
+					"description": "Inline formatting tags are preserved.",
+					"default": "Experience South Africa <em>Differently</em>",
+					"esc": "post",
+					"group": "p_fc_bf_title",
+					"sort": 0
+				},
+				{
+					"id": "pull_join_now_to_secure_your_pla_text",
+					"control": "textarea",
+					"label": "Pull — Join now to secure your pla…",
+					"description": "",
+					"default": "Join now to secure your place on our inaugural journey before we open to the public. Once this founding cohort is complete, these exclusive benefits close permanently.",
+					"esc": "post",
+					"group": "p_fc_bf_pull",
+					"sort": 0
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_bf_btn",
+			"label": "Reveal › Button — Join Now",
+			"controls": [
+				{
+					"id": "button_join_now_text",
+					"control": "text",
+					"label": "Button — Join Now",
+					"description": "",
+					"default": "Join Now",
+					"esc": "post",
+					"group": "p_fc_bf_btn",
+					"sort": 0
+				},
+				{
+					"id": "button_join_now_href",
+					"control": "url",
+					"label": "Button — Join Now – Href",
+					"default": {
+						"url": "#fc-form-section"
+					},
+					"esc": "url",
+					"group": "p_fc_bf_btn",
+					"tab": "content",
+					"sort": 1
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_ss_slide",
+			"label": "Track › Slide",
+			"controls": [
+				{
+					"id": "slide_aria_label",
+					"control": "text",
+					"label": "Slide – Aria Label",
+					"default": "1 of 5",
+					"esc": "attr",
+					"group": "p_fc_ss_slide",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "slide_aria_roledescription",
+					"control": "text",
+					"label": "Slide – Aria Roledescription",
+					"default": "slide",
+					"esc": "attr",
+					"group": "p_fc_ss_slide",
+					"tab": "content",
+					"sort": 1
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_ss_slide_img_nth_of_type_1",
+			"label": "Slide › Image",
+			"controls": [
+				{
+					"id": "image_src",
+					"control": "media",
+					"label": "Image – Src",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1850384162.jpeg"
+					},
+					"esc": "url",
+					"group": "p_fc_ss_slide_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "image_alt",
+					"control": "text",
+					"label": "Image – Alt",
+					"default": "Gauteng heritage and city experience",
+					"esc": "attr",
+					"group": "p_fc_ss_slide_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "arrow_aria_label",
+					"control": "text",
+					"label": "Arrow – Aria Label",
+					"default": "Previous slide",
+					"esc": "attr",
+					"group": "p_fc_ss_arrow",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "dots_aria_label",
+					"control": "text",
+					"label": "Dots – Aria Label",
+					"default": "Slide navigation",
+					"esc": "attr",
+					"group": "p_fc_ss_dots",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "dot_aria_label",
+					"control": "text",
+					"label": "Dot – Aria Label",
+					"default": "Slide 1",
+					"esc": "attr",
+					"group": "p_fc_ss_dot",
+					"tab": "content",
+					"sort": 1
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_bf_reveal_2",
+			"label": "Other content",
+			"controls": [
+				{
+					"id": "reveal_aria_label",
+					"control": "text",
+					"label": "Reveal – Aria Label",
+					"default": "Journey imagery — slideshow",
+					"esc": "attr",
+					"group": "p_fc_bf_reveal_2",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "reveal_aria_roledescription",
+					"control": "text",
+					"label": "Reveal – Aria Roledescription",
+					"default": "carousel",
+					"esc": "attr",
+					"group": "p_fc_bf_reveal_2",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "arrow_aria_label_2",
+					"control": "text",
+					"label": "Arrow – Aria Label",
+					"default": "Next slide",
+					"esc": "attr",
+					"group": "p_fc_ss_arrow_2",
+					"tab": "content",
+					"sort": 1
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [
+		{
+			"id": "image_loading",
+			"control": "text",
+			"label": "Image – Loading",
+			"default": "lazy",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "dot_data_fci",
+			"control": "text",
+			"label": "Dot – Fci",
+			"default": "0",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"inline_style_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_p",
+			"label": "P",
+			"item_label": "{{{ p }}}",
+			"controls": [
+				{
+					"id": "p",
+					"control": "textarea",
+					"label": "P",
+					"esc": "post",
+					"default": "This is more than early registration. It is an invitation to join the founding chapter of Umoya Afrika Tours."
+				}
+			],
+			"rows": [
+				{
+					"p": "This is more than early registration. It is an invitation to join the founding chapter of Umoya Afrika Tours."
+				},
+				{
+					"p": "While our Signature Journey serves as our flagship experience, every Umoya journey can be tailored for couples, families, affinity groups, and private travelers seeking a more personalized experience."
+				}
+			],
+			"selector": null
+		},
+		{
+			"id": "rep_div_fc_ss_slide",
+			"label": "Div Fc Ss Slide",
+			"item_label": "{{{ role }}}",
+			"controls": [
+				{
+					"id": "role",
+					"control": "text",
+					"label": "Role",
+					"esc": "attr",
+					"default": "group"
+				},
+				{
+					"id": "aria_label",
+					"control": "text",
+					"label": "Aria Label",
+					"esc": "attr",
+					"default": "2 of 5"
+				},
+				{
+					"id": "aria_roledescription",
+					"control": "text",
+					"label": "Aria Roledescription",
+					"esc": "attr",
+					"default": "slide"
+				},
+				{
+					"id": "src",
+					"control": "media",
+					"label": "Src",
+					"esc": "url",
+					"default": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_SAT000724.jpeg"
+				},
+				{
+					"id": "alt",
+					"control": "text",
+					"label": "Alt",
+					"esc": "attr",
+					"default": "Umoya Afrika Tours journey moment"
+				},
+				{
+					"id": "loading",
+					"control": "text",
+					"label": "Loading",
+					"esc": "attr",
+					"default": "lazy"
+				},
+				{
+					"id": "_uew_sep",
+					"control": "hidden",
+					"label": "Separator markup",
+					"esc": "raw",
+					"default": "\n\n          <!-- Slide 3 -->\n          "
+				}
+			],
+			"rows": [
+				{
+					"role": "group",
+					"aria_label": "2 of 5",
+					"aria_roledescription": "slide",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_SAT000724.jpeg",
+					"alt": "Umoya Afrika Tours journey moment",
+					"loading": "lazy",
+					"_uew_sep": ""
+				},
+				{
+					"role": "group",
+					"aria_label": "3 of 5",
+					"aria_roledescription": "slide",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1903111562.jpeg",
+					"alt": "Cultural experience on an Umoya journey",
+					"loading": "lazy",
+					"_uew_sep": "\n\n          <!-- Slide 3 -->\n          "
+				},
+				{
+					"role": "group",
+					"aria_label": "4 of 5",
+					"aria_roledescription": "slide",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img751442577.jpeg",
+					"alt": "Premium South African travel experience",
+					"loading": "lazy",
+					"_uew_sep": "\n\n          <!-- Slide 4 -->\n          "
+				},
+				{
+					"role": "group",
+					"aria_label": "5 of 5",
+					"aria_roledescription": "slide",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1530880413.jpeg",
+					"alt": "Founder's Circle journey guest experience",
+					"loading": "lazy",
+					"_uew_sep": "\n\n          <!-- Slide 5 -->\n          "
+				}
+			],
+			"selector": ".fc-ss-slide"
+		},
+		{
+			"id": "rep_button_fc_ss_dot",
+			"label": "Button Fc Ss Dot",
+			"item_label": "{{{ role }}}",
+			"controls": [
+				{
+					"id": "role",
+					"control": "text",
+					"label": "Role",
+					"esc": "attr",
+					"default": "tab"
+				},
+				{
+					"id": "aria_selected",
+					"control": "text",
+					"label": "Aria Selected",
+					"esc": "attr",
+					"default": "false"
+				},
+				{
+					"id": "aria_label",
+					"control": "text",
+					"label": "Aria Label",
+					"esc": "attr",
+					"default": "Slide 2"
+				}
+			],
+			"rows": [
+				{
+					"role": "tab",
+					"aria_selected": "false",
+					"aria_label": "Slide 2"
+				},
+				{
+					"role": "tab",
+					"aria_selected": "false",
+					"aria_label": "Slide 3"
+				},
+				{
+					"role": "tab",
+					"aria_selected": "false",
+					"aria_label": "Slide 4"
+				},
+				{
+					"role": "tab",
+					"aria_selected": "false",
+					"aria_label": "Slide 5"
+				}
+			],
+			"selector": ".fc-ss-dot"
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_bf_wrap",
+			"label": "Wrapper",
+			"short_label": "Wrapper",
+			"selector": ".fc-bf-wrap",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_bf_grid",
+			"label": "Wrapper › Grid",
+			"short_label": "Grid",
+			"selector": ".fc-bf-grid",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_bf_reveal",
+			"label": "Grid › Reveal",
+			"short_label": "Reveal",
+			"selector": ".fc-bf-reveal",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": true,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_bf_eyebrow",
+			"label": "Reveal › Eyebrow — Exclusive Early Access",
+			"short_label": "Eyebrow",
+			"selector": ".fc-bf-eyebrow",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_bf_title",
+			"label": "Reveal › Title — Experience South Africa Dif…",
+			"short_label": "Title",
+			"selector": ".fc-bf-title",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_em",
+			"label": "Title › Em — Differently",
+			"short_label": "Em",
+			"selector": "em",
+			"tag": "em",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_bf_rule",
+			"label": "Reveal › Rule",
+			"short_label": "Rule",
+			"selector": ".fc-bf-rule",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_bf_body",
+			"label": "Reveal › Body",
+			"short_label": "Body",
+			"selector": ".fc-bf-body",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_p",
+			"label": "Body › Paragraph — This is more than early reg…",
+			"short_label": "Paragraph",
+			"selector": "p",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": true,
+			"repeater": "p"
+		},
+		{
+			"id": "p_fc_bf_pull",
+			"label": "Reveal › Pull — Join now to secure your pla…",
+			"short_label": "Pull",
+			"selector": ".fc-bf-pull",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_bf_btn",
+			"label": "Reveal › Button — Join Now",
+			"short_label": "Button",
+			"selector": ".fc-bf-btn",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_ss_track",
+			"label": "Grid › Track",
+			"short_label": "Track",
+			"selector": ".fc-ss-track",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_ss_slide",
+			"label": "Track › Slide",
+			"short_label": "Slide",
+			"selector": ".fc-ss-slide",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": true,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_ss_slide_img_nth_of_type_1",
+			"label": "Slide › Image",
+			"short_label": "Image",
+			"selector": ".fc-ss-slide > img:nth-of-type(1)",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_ss_arrow",
+			"label": "Grid › Arrow",
+			"short_label": "Arrow",
+			"selector": ".fc-ss-arrow",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": true,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_ss_arrow_svg_nth_of_type_1",
+			"label": "Arrow › Svg",
+			"short_label": "Svg",
+			"selector": ".fc-ss-arrow > svg:nth-of-type(1)",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_ss_dots",
+			"label": "Grid › Dots",
+			"short_label": "Dots",
+			"selector": ".fc-ss-dots",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_ss_dot",
+			"label": "Dots › Dot",
+			"short_label": "Dot",
+			"selector": ".fc-ss-dot",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": true,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Section – Aria Label",
+			"default": "Experience South Africa Differently",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_exclusive_early_access_text",
+			"control": "text",
+			"label": "Eyebrow — Exclusive Early Access",
+			"description": "",
+			"default": "Exclusive Early Access",
+			"esc": "post",
+			"group": "p_fc_bf_eyebrow",
+			"sort": 0
+		},
+		{
+			"id": "title_experience_south_africa_dif_text",
+			"control": "textarea",
+			"label": "Title — Experience South Africa Dif…",
+			"description": "Inline formatting tags are preserved.",
+			"default": "Experience South Africa <em>Differently</em>",
+			"esc": "post",
+			"group": "p_fc_bf_title",
+			"sort": 0
+		},
+		{
+			"id": "pull_join_now_to_secure_your_pla_text",
+			"control": "textarea",
+			"label": "Pull — Join now to secure your pla…",
+			"description": "",
+			"default": "Join now to secure your place on our inaugural journey before we open to the public. Once this founding cohort is complete, these exclusive benefits close permanently.",
+			"esc": "post",
+			"group": "p_fc_bf_pull",
+			"sort": 0
+		},
+		{
+			"id": "button_join_now_text",
+			"control": "text",
+			"label": "Button — Join Now",
+			"description": "",
+			"default": "Join Now",
+			"esc": "post",
+			"group": "p_fc_bf_btn",
+			"sort": 0
+		},
+		{
+			"id": "button_join_now_href",
+			"control": "url",
+			"label": "Button — Join Now – Href",
+			"default": {
+				"url": "#fc-form-section"
+			},
+			"esc": "url",
+			"group": "p_fc_bf_btn",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "reveal_aria_label",
+			"control": "text",
+			"label": "Reveal – Aria Label",
+			"default": "Journey imagery — slideshow",
+			"esc": "attr",
+			"group": "p_fc_bf_reveal_2",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "reveal_aria_roledescription",
+			"control": "text",
+			"label": "Reveal – Aria Roledescription",
+			"default": "carousel",
+			"esc": "attr",
+			"group": "p_fc_bf_reveal_2",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "slide_aria_label",
+			"control": "text",
+			"label": "Slide – Aria Label",
+			"default": "1 of 5",
+			"esc": "attr",
+			"group": "p_fc_ss_slide",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "slide_aria_roledescription",
+			"control": "text",
+			"label": "Slide – Aria Roledescription",
+			"default": "slide",
+			"esc": "attr",
+			"group": "p_fc_ss_slide",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src",
+			"control": "media",
+			"label": "Image – Src",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1850384162.jpeg"
+			},
+			"esc": "url",
+			"group": "p_fc_ss_slide_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt",
+			"control": "text",
+			"label": "Image – Alt",
+			"default": "Gauteng heritage and city experience",
+			"esc": "attr",
+			"group": "p_fc_ss_slide_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading",
+			"control": "text",
+			"label": "Image – Loading",
+			"default": "lazy",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "arrow_aria_label",
+			"control": "text",
+			"label": "Arrow – Aria Label",
+			"default": "Previous slide",
+			"esc": "attr",
+			"group": "p_fc_ss_arrow",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "arrow_aria_label_2",
+			"control": "text",
+			"label": "Arrow – Aria Label",
+			"default": "Next slide",
+			"esc": "attr",
+			"group": "p_fc_ss_arrow_2",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "dots_aria_label",
+			"control": "text",
+			"label": "Dots – Aria Label",
+			"default": "Slide navigation",
+			"esc": "attr",
+			"group": "p_fc_ss_dots",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "dot_aria_label",
+			"control": "text",
+			"label": "Dot – Aria Label",
+			"default": "Slide 1",
+			"esc": "attr",
+			"group": "p_fc_ss_dot",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "dot_data_fci",
+			"control": "text",
+			"label": "Dot – Fci",
+			"default": "0",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		}
+	]
+}

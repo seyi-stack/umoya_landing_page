@@ -1,0 +1,356 @@
+{
+	"key": "fc_closing_cta",
+	"name": "umoya-fc-closing-cta",
+	"title": "FC Closing CTA",
+	"description": "Closing \"Speak With a Travel Expert\" band.",
+	"icon": "eicon-call-to-action",
+	"category": "umoya-fc",
+	"source": "founders-circle-revamp/section-11-closing-cta.html",
+	"class_name": "FC_Closing_CTA",
+	"widget_file": "widgets/class-fc-closing-cta.php",
+	"root_selector": "#fc-cta",
+	"template": "templates/sections/fc_closing_cta.php",
+	"style": {
+		"handle": "uew-umoya-fc-closing-cta",
+		"file": "assets/css/sections/fc_closing_cta.css"
+	},
+	"script": {
+		"handle": "uew-umoya-fc-closing-cta",
+		"file": "assets/js/sections/fc_closing_cta.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"fc",
+		"closing",
+		"cta"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Section – Aria Label",
+					"default": "Speak with a travel expert",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "eyebrow_still_have_questions_text",
+					"control": "text",
+					"label": "Eyebrow — Still Have Questions?",
+					"description": "",
+					"default": "Still Have Questions?",
+					"esc": "post",
+					"group": "p_fc_cta_eye",
+					"sort": 0
+				},
+				{
+					"id": "h2_we_d_love_to_speak_with_you_text",
+					"control": "text",
+					"label": "H2 — We'd love to speak with you.",
+					"description": "",
+					"default": "We'd love to speak with you.",
+					"esc": "post",
+					"group": "p_fc_cta_h2",
+					"sort": 0
+				},
+				{
+					"id": "lead_your_dedicated_umoya_travel_text",
+					"control": "textarea",
+					"label": "Lead — Your dedicated Umoya travel…",
+					"description": "",
+					"default": "Your dedicated Umoya travel expert is ready to help you plan the perfect South African journey.",
+					"esc": "post",
+					"group": "p_fc_cta_lead",
+					"sort": 0
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_cta_btn",
+			"label": "Container › Button — Speak With a Travel Expert",
+			"controls": [
+				{
+					"id": "button_speak_with_a_travel_expert_text",
+					"control": "text",
+					"label": "Button — Speak With a Travel Expert",
+					"description": "",
+					"default": "Speak With a Travel Expert",
+					"esc": "post",
+					"group": "p_fc_cta_btn",
+					"sort": 0
+				},
+				{
+					"id": "button_speak_with_a_travel_expert_href",
+					"control": "url",
+					"label": "Button — Speak With a Travel Expert – Href",
+					"default": {
+						"url": "#fc-form-section"
+					},
+					"esc": "url",
+					"group": "p_fc_cta_btn",
+					"tab": "content",
+					"sort": 1
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_cta_rv",
+			"label": "Container",
+			"short_label": "Container",
+			"selector": ".fc-cta-rv",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_cta_eye",
+			"label": "Container › Eyebrow — Still Have Questions?",
+			"short_label": "Eyebrow",
+			"selector": ".fc-cta-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_cta_h2",
+			"label": "Container › H2 — We'd love to speak with you.",
+			"short_label": "H2",
+			"selector": ".fc-cta-h2",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_cta_lead",
+			"label": "Container › Lead — Your dedicated Umoya travel…",
+			"short_label": "Lead",
+			"selector": ".fc-cta-lead",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_cta_btn",
+			"label": "Container › Button — Speak With a Travel Expert",
+			"short_label": "Button",
+			"selector": ".fc-cta-btn",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Section – Aria Label",
+			"default": "Speak with a travel expert",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_still_have_questions_text",
+			"control": "text",
+			"label": "Eyebrow — Still Have Questions?",
+			"description": "",
+			"default": "Still Have Questions?",
+			"esc": "post",
+			"group": "p_fc_cta_eye",
+			"sort": 0
+		},
+		{
+			"id": "h2_we_d_love_to_speak_with_you_text",
+			"control": "text",
+			"label": "H2 — We'd love to speak with you.",
+			"description": "",
+			"default": "We'd love to speak with you.",
+			"esc": "post",
+			"group": "p_fc_cta_h2",
+			"sort": 0
+		},
+		{
+			"id": "lead_your_dedicated_umoya_travel_text",
+			"control": "textarea",
+			"label": "Lead — Your dedicated Umoya travel…",
+			"description": "",
+			"default": "Your dedicated Umoya travel expert is ready to help you plan the perfect South African journey.",
+			"esc": "post",
+			"group": "p_fc_cta_lead",
+			"sort": 0
+		},
+		{
+			"id": "button_speak_with_a_travel_expert_text",
+			"control": "text",
+			"label": "Button — Speak With a Travel Expert",
+			"description": "",
+			"default": "Speak With a Travel Expert",
+			"esc": "post",
+			"group": "p_fc_cta_btn",
+			"sort": 0
+		},
+		{
+			"id": "button_speak_with_a_travel_expert_href",
+			"control": "url",
+			"label": "Button — Speak With a Travel Expert – Href",
+			"default": {
+				"url": "#fc-form-section"
+			},
+			"esc": "url",
+			"group": "p_fc_cta_btn",
+			"tab": "content",
+			"sort": 1
+		}
+	]
+}

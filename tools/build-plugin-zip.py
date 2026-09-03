@@ -32,8 +32,10 @@ OUT = os.path.join(ROOT, "umoya-elementor-widgets.zip")
 TOP = "umoya-elementor-widgets"          # required top-level folder in the zip
 MAIN = "umoya-elementor-widgets.php"     # WP looks for TOP/MAIN
 
-# Never ship editor/OS cruft inside a plugin
-SKIP_DIRS = {".git", ".svn", "__pycache__", "node_modules", ".idea", ".vscode"}
+# Never ship editor/OS cruft inside a plugin.
+# `.verify` holds the widget compiler's fidelity-check artefacts (a bare template
+# per section plus its expected output). They are build scratch, not runtime.
+SKIP_DIRS = {".git", ".svn", "__pycache__", "node_modules", ".idea", ".vscode", ".verify"}
 SKIP_FILES = {".DS_Store", "Thumbs.db", "desktop.ini"}
 
 

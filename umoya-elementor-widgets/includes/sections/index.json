@@ -1,0 +1,331 @@
+{
+	"fc_nav": {
+		"key": "fc_nav",
+		"name": "umoya-fc-nav",
+		"title": "FC Navigation",
+		"description": "Sticky Founder’s Circle navigation with the section table-of-contents bar.",
+		"icon": "eicon-nav-menu",
+		"category": "umoya-fc",
+		"source": "founders-circle-revamp/section-00-nav.html",
+		"class_name": "FC_Nav",
+		"widget_file": "widgets/class-fc-nav.php",
+		"root_selector": "#fcNavBar",
+		"template": "templates/sections/fc_nav.php",
+		"style": {
+			"handle": "uew-umoya-fc-nav",
+			"file": "assets/css/sections/fc_nav.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fc-nav",
+			"file": "assets/js/sections/fc_nav.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"fc",
+			"navigation"
+		]
+	},
+	"fc_hero": {
+		"key": "fc_hero",
+		"name": "umoya-fc-hero",
+		"title": "FC Hero",
+		"description": "Full-viewport hero with poster image, optional background video and a single CTA.",
+		"icon": "eicon-banner",
+		"category": "umoya-fc",
+		"source": "founders-circle-revamp/section-01-hero.html",
+		"class_name": "FC_Hero",
+		"widget_file": "widgets/class-fc-hero.php",
+		"root_selector": "#fc-hero",
+		"template": "templates/sections/fc_hero.php",
+		"style": {
+			"handle": "uew-umoya-fc-hero",
+			"file": "assets/css/sections/fc_hero.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fc-hero",
+			"file": "assets/js/sections/fc_hero.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"fc",
+			"hero"
+		]
+	},
+	"fc_invitation": {
+		"key": "fc_invitation",
+		"name": "umoya-fc-invitation",
+		"title": "FC Invitation",
+		"description": "Centred invitation statement: eyebrow, heading, body copy and outline CTA.",
+		"icon": "eicon-info-circle-o",
+		"category": "umoya-fc",
+		"source": "founders-circle-revamp/section-02-invitation.html",
+		"class_name": "FC_Invitation",
+		"widget_file": "widgets/class-fc-invitation.php",
+		"root_selector": "#fc-intro",
+		"template": "templates/sections/fc_invitation.php",
+		"style": {
+			"handle": "uew-umoya-fc-invitation",
+			"file": "assets/css/sections/fc_invitation.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fc-invitation",
+			"file": "assets/js/sections/fc_invitation.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"fc",
+			"invitation"
+		]
+	},
+	"fc_privileges": {
+		"key": "fc_privileges",
+		"name": "umoya-fc-privileges",
+		"title": "FC Membership Privileges",
+		"description": "Membership privileges checklist beside a portrait image.",
+		"icon": "eicon-check-circle",
+		"category": "umoya-fc",
+		"source": "founders-circle-revamp/section-03-membership-privileges.html",
+		"class_name": "FC_Privileges",
+		"widget_file": "widgets/class-fc-privileges.php",
+		"root_selector": "#fc-benefits",
+		"template": "templates/sections/fc_privileges.php",
+		"style": {
+			"handle": "uew-umoya-fc-privileges",
+			"file": "assets/css/sections/fc_privileges.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fc-privileges",
+			"file": "assets/js/sections/fc_privileges.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"fc",
+			"membership",
+			"privileges"
+		]
+	},
+	"fc_form": {
+		"key": "fc_form",
+		"name": "umoya-fc-form",
+		"title": "FC Inquiry Form",
+		"description": "Founder's Circle inquiry form. Posts to WordPress first, then HubSpot.",
+		"icon": "eicon-form-horizontal",
+		"category": "umoya-fc",
+		"source": "founders-circle-revamp/section-04-inquiry-form.html",
+		"class_name": "FC_Form",
+		"widget_file": "widgets/class-fc-form.php",
+		"root_selector": "#fc-form-section",
+		"template": "templates/sections/fc_form.php",
+		"style": {
+			"handle": "uew-umoya-fc-form",
+			"file": "assets/css/sections/fc_form.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fc-form",
+			"file": "assets/js/sections/fc_form.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"fc",
+			"inquiry",
+			"form"
+		]
+	},
+	"fc_journey": {
+		"key": "fc_journey",
+		"name": "umoya-fc-journey",
+		"title": "FC Journey",
+		"description": "Journey stats, the three immersive-chapter tiles and the two extension tiles.",
+		"icon": "eicon-map-pin",
+		"category": "umoya-fc",
+		"source": "founders-circle-revamp/section-05-journey.html",
+		"class_name": "FC_Journey",
+		"widget_file": "widgets/class-fc-journey.php",
+		"root_selector": "#fc-journey",
+		"template": "templates/sections/fc_journey.php",
+		"style": {
+			"handle": "uew-umoya-fc-journey",
+			"file": "assets/css/sections/fc_journey.css"
+		},
+		"script": null,
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"fc",
+			"journey"
+		]
+	},
+	"fc_early_access": {
+		"key": "fc_early_access",
+		"name": "umoya-fc-early-access",
+		"title": "FC Early Access",
+		"description": "Exclusive early-access copy with the supporting image collage.",
+		"icon": "eicon-star",
+		"category": "umoya-fc",
+		"source": "founders-circle-revamp/section-06-early-access.html",
+		"class_name": "FC_Early_Access",
+		"widget_file": "widgets/class-fc-early-access.php",
+		"root_selector": "#fc-be-first",
+		"template": "templates/sections/fc_early_access.php",
+		"style": {
+			"handle": "uew-umoya-fc-early-access",
+			"file": "assets/css/sections/fc_early_access.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fc-early-access",
+			"file": "assets/js/sections/fc_early_access.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"fc",
+			"early",
+			"access"
+		]
+	},
+	"fc_founding_offer": {
+		"key": "fc_founding_offer",
+		"name": "umoya-fc-founding-offer",
+		"title": "FC Founding Offer",
+		"description": "The founding offer statement on brand brown, with the reserve CTA.",
+		"icon": "eicon-price-table",
+		"category": "umoya-fc",
+		"source": "founders-circle-revamp/section-07-founding-offer.html",
+		"class_name": "FC_Founding_Offer",
+		"widget_file": "widgets/class-fc-founding-offer.php",
+		"root_selector": "#fc-pricing",
+		"template": "templates/sections/fc_founding_offer.php",
+		"style": {
+			"handle": "uew-umoya-fc-founding-offer",
+			"file": "assets/css/sections/fc_founding_offer.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fc-founding-offer",
+			"file": "assets/js/sections/fc_founding_offer.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"fc",
+			"founding",
+			"offer"
+		]
+	},
+	"fc_approach": {
+		"key": "fc_approach",
+		"name": "umoya-fc-approach",
+		"title": "FC Our Approach",
+		"description": "Our Approach copy balanced against the brand video panel.",
+		"icon": "eicon-play-o",
+		"category": "umoya-fc",
+		"source": "founders-circle-revamp/section-08-our-approach.html",
+		"class_name": "FC_Approach",
+		"widget_file": "widgets/class-fc-approach.php",
+		"root_selector": "#fc-why",
+		"template": "templates/sections/fc_approach.php",
+		"style": {
+			"handle": "uew-umoya-fc-approach",
+			"file": "assets/css/sections/fc_approach.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fc-approach",
+			"file": "assets/js/sections/fc_approach.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"fc",
+			"our",
+			"approach"
+		]
+	},
+	"fc_why": {
+		"key": "fc_why",
+		"name": "umoya-fc-why",
+		"title": "FC Why Umoya",
+		"description": "The four Why Umoya pillars over a darkened image.",
+		"icon": "eicon-columns",
+		"category": "umoya-fc",
+		"source": "founders-circle-revamp/section-09-why-umoya.html",
+		"class_name": "FC_Why",
+		"widget_file": "widgets/class-fc-why.php",
+		"root_selector": "#fc-pillars",
+		"template": "templates/sections/fc_why.php",
+		"style": {
+			"handle": "uew-umoya-fc-why",
+			"file": "assets/css/sections/fc_why.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fc-why",
+			"file": "assets/js/sections/fc_why.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"fc",
+			"why",
+			"umoya"
+		]
+	},
+	"fc_essentials": {
+		"key": "fc_essentials",
+		"name": "umoya-fc-essentials",
+		"title": "FC Travel Essentials",
+		"description": "Travel Essentials accordion; one item open at a time.",
+		"icon": "eicon-accordion",
+		"category": "umoya-fc",
+		"source": "founders-circle-revamp/section-10-travel-essentials.html",
+		"class_name": "FC_Essentials",
+		"widget_file": "widgets/class-fc-essentials.php",
+		"root_selector": "#fc-details",
+		"template": "templates/sections/fc_essentials.php",
+		"style": {
+			"handle": "uew-umoya-fc-essentials",
+			"file": "assets/css/sections/fc_essentials.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fc-essentials",
+			"file": "assets/js/sections/fc_essentials.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"fc",
+			"travel",
+			"essentials"
+		]
+	},
+	"fc_closing_cta": {
+		"key": "fc_closing_cta",
+		"name": "umoya-fc-closing-cta",
+		"title": "FC Closing CTA",
+		"description": "Closing \"Speak With a Travel Expert\" band.",
+		"icon": "eicon-call-to-action",
+		"category": "umoya-fc",
+		"source": "founders-circle-revamp/section-11-closing-cta.html",
+		"class_name": "FC_Closing_CTA",
+		"widget_file": "widgets/class-fc-closing-cta.php",
+		"root_selector": "#fc-cta",
+		"template": "templates/sections/fc_closing_cta.php",
+		"style": {
+			"handle": "uew-umoya-fc-closing-cta",
+			"file": "assets/css/sections/fc_closing_cta.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fc-closing-cta",
+			"file": "assets/js/sections/fc_closing_cta.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"fc",
+			"closing",
+			"cta"
+		]
+	}
+}

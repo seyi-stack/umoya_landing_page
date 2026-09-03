@@ -1,77 +1,122 @@
 <?php
+/**
+ * Loads the compiled section schemas.
+ *
+ * `includes/sections/index.json` is the manifest -- one entry per widget, with
+ * everything needed to register it. The full schema (controls, repeaters, style
+ * parts) lives in a file per section and is only read when that widget is
+ * actually built, so a page using one section does not parse the other eleven.
+ *
+ * @package Umoya_EW
+ */
+
 namespace Umoya_EW;
 
 if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+	exit;
 }
 
 final class Section_Registry {
 
-    private static $sections = null;
+	private static $manifest = null;
+	private static $schemas  = array();
 
-    public static function all() {
-        if ( null === self::$sections ) {
-            $path = UMOYA_EW_PATH . 'includes/section-definitions.json';
-            $json = file_exists( $path ) ? file_get_contents( $path ) : '';
-            $data = $json ? json_decode( $json, true ) : array();
+	/** @return array Manifest entries keyed by section key. */
+	public static function manifest() {
+		if ( null === self::$manifest ) {
+			self::$manifest = self::read_json( UMOYA_EW_PATH . 'includes/sections/index.json' );
+		}
 
-            self::$sections = is_array( $data ) ? $data : array();
-        }
+		return self::$manifest;
+	}
 
-        return self::$sections;
-    }
+	/**
+	 * Full schema for one section, manifest fields included.
+	 *
+	 * @param string $key Section key.
+	 * @return array
+	 */
+	public static function get( $key ) {
+		if ( ! isset( self::$schemas[ $key ] ) ) {
+			$schema = self::read_json( UMOYA_EW_PATH . 'includes/sections/' . sanitize_file_name( $key ) . '.json' );
 
-    public static function get( $key ) {
-        $sections = self::all();
+			// Defaults so a widget never has to guard every lookup.
+			self::$schemas[ $key ] = array_merge(
+				array(
+					'content_panels'      => array(),
+					'integration_controls' => array(),
+					'form_controls'       => array(),
+					'behaviour_controls'  => array(),
+					'inline_style_controls' => array(),
+					'repeaters'           => array(),
+					'style_parts'         => array(),
+					'inline_styles'       => array(),
+					'fields'              => array(),
+					'tokens'              => array(),
+				),
+				$schema
+			);
+		}
 
-        return isset( $sections[ $key ] ) && is_array( $sections[ $key ] ) ? $sections[ $key ] : array();
-    }
+		return self::$schemas[ $key ];
+	}
 
-    public static function widgets() {
-        $widgets = array();
+	/** @return array Manifest entries that have a widget class to register. */
+	public static function widgets() {
+		return array_filter(
+			self::manifest(),
+			function ( $section ) {
+				return ! empty( $section['widget_file'] ) && ! empty( $section['class_name'] );
+			}
+		);
+	}
 
-        foreach ( self::all() as $section ) {
-            if ( empty( $section['widget_file'] ) || empty( $section['class_name'] ) ) {
-                continue;
-            }
+	/** @return array handle => [file, deps] for every section stylesheet. */
+	public static function styles() {
+		$styles = array();
 
-            $widgets[] = $section;
-        }
+		foreach ( self::manifest() as $section ) {
+			if ( empty( $section['style']['handle'] ) ) {
+				continue;
+			}
 
-        return $widgets;
-    }
+			$styles[ $section['style']['handle'] ] = array(
+				'file' => $section['style']['file'],
+				'deps' => array(),
+			);
+		}
 
-    public static function styles() {
-        $styles = array();
+		return $styles;
+	}
 
-        foreach ( self::all() as $section ) {
-            if ( empty( $section['style_handle'] ) || empty( $section['style_file'] ) ) {
-                continue;
-            }
+	/** @return array handle => [file, deps] for every section script. */
+	public static function scripts() {
+		$scripts = array();
 
-            $styles[ $section['style_handle'] ] = array(
-                'file' => $section['style_file'],
-                'deps' => array( 'fc-shared' ),
-            );
-        }
+		foreach ( self::manifest() as $section ) {
+			if ( empty( $section['script']['handle'] ) ) {
+				continue;
+			}
 
-        return $styles;
-    }
+			$scripts[ $section['script']['handle'] ] = array(
+				'file' => $section['script']['file'],
+				// Load after Elementor's frontend so `elementorFrontend.hooks` is
+				// already there when the section registers its element_ready
+				// handler, rather than having to wait for an event.
+				'deps' => array( 'elementor-frontend' ),
+			);
+		}
 
-    public static function scripts() {
-        $scripts = array();
+		return $scripts;
+	}
 
-        foreach ( self::all() as $section ) {
-            if ( empty( $section['script_handle'] ) || empty( $section['script_file'] ) ) {
-                continue;
-            }
+	private static function read_json( $path ) {
+		if ( ! file_exists( $path ) ) {
+			return array();
+		}
 
-            $scripts[ $section['script_handle'] ] = array(
-                'file' => $section['script_file'],
-                'deps' => array(),
-            );
-        }
+		$data = json_decode( file_get_contents( $path ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions
 
-        return $scripts;
-    }
+		return is_array( $data ) ? $data : array();
+	}
 }

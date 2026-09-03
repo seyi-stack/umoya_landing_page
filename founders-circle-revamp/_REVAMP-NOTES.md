@@ -145,7 +145,17 @@ was aligned to this flow (Membership precedes the form).
   at the live policy URL.
 - **Images:** Victoria Falls and Chobe tiles use CDN placeholders marked with
   `★ SWAP` — replace with final approved images.
-- **Plugin sync (when approved):** update the FC `source:` paths in
-  `tools/build-elementor-widgets.mjs` to `founders-circle-revamp/…` (or copy
-  the approved files back into `founders-circle/`), re-run the generator, and
-  rebuild `umoya-elementor-widgets.zip`.
+- ✅ **Plugin sync — done 2026-09-03.** All twelve sections in this folder are
+  now compiled into Elementor widgets by **`tools/uew/`**, which reads this
+  folder directly. The old generator's Founder's Circle entries were removed so
+  it can no longer overwrite them from the superseded `founders-circle/` copy.
+
+  After editing any file here:
+
+  ```powershell
+  npm --prefix tools/uew run check    # compile + prove nothing was lost
+  python tools/build-plugin-zip.py
+  ```
+
+  The build **fails** if a template stops reproducing its source file byte for
+  byte. See `tools/uew/README.md` and CLAUDE.md Phase 22.

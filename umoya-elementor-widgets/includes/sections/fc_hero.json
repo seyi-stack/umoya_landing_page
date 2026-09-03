@@ -1,0 +1,1239 @@
+{
+	"key": "fc_hero",
+	"name": "umoya-fc-hero",
+	"title": "FC Hero",
+	"description": "Full-viewport hero with poster image, optional background video and a single CTA.",
+	"icon": "eicon-banner",
+	"category": "umoya-fc",
+	"source": "founders-circle-revamp/section-01-hero.html",
+	"class_name": "FC_Hero",
+	"widget_file": "widgets/class-fc-hero.php",
+	"root_selector": "#fc-hero",
+	"template": "templates/sections/fc_hero.php",
+	"style": {
+		"handle": "uew-umoya-fc-hero",
+		"file": "assets/css/sections/fc_hero.css"
+	},
+	"script": {
+		"handle": "uew-umoya-fc-hero",
+		"file": "assets/js/sections/fc_hero.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"fc",
+		"hero"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "gold-lt",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Gold Lt"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Section – Aria Label",
+					"default": "Founder's Circle — Hero",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_h1_bg_img",
+			"label": "Background › Image",
+			"controls": [
+				{
+					"id": "image_src",
+					"control": "media",
+					"label": "Image – Src",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-1.jpg"
+					},
+					"esc": "url",
+					"group": "p_fc_h1_bg_img",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "image_alt",
+					"control": "text",
+					"label": "Image – Alt",
+					"default": "Umoya Afrika Tours — heritage journey through South Africa",
+					"esc": "attr",
+					"group": "p_fc_h1_bg_img",
+					"tab": "content",
+					"sort": 1
+				}
+			]
+		},
+		{
+			"id": "content_p_video",
+			"label": "Background › Video",
+			"controls": [
+				{
+					"id": "video_poster",
+					"control": "media",
+					"label": "Video – Poster",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-1.jpg"
+					},
+					"esc": "url",
+					"group": "p_video",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "video_aria_label",
+					"control": "text",
+					"label": "Video – Aria Label",
+					"default": "Umoya Afrika Tours — heritage journey through South Africa",
+					"esc": "attr",
+					"group": "p_video",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "source_src",
+					"control": "url",
+					"label": "Source – Src",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya-fc-hero-1080p.mp4"
+					},
+					"esc": "url",
+					"group": "p_source",
+					"tab": "content",
+					"sort": 1
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_h1_brand_img",
+			"label": "Brand › Image",
+			"controls": [
+				{
+					"id": "image_src_2",
+					"control": "media",
+					"label": "Image – Src",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Property-1Umoya-Afrika-Logo_v3.svg"
+					},
+					"esc": "url",
+					"group": "p_fc_h1_brand_img",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "image_alt_2",
+					"control": "text",
+					"label": "Image – Alt",
+					"default": "Umoya Afrika Tours",
+					"esc": "attr",
+					"group": "p_fc_h1_brand_img",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "eyebrow_an_invitation_to_our_guests_text",
+					"control": "text",
+					"label": "Eyebrow — An Invitation to Our Guests",
+					"description": "",
+					"default": "An Invitation to Our Guests",
+					"esc": "post",
+					"group": "p_fc_h1_eye",
+					"sort": 0
+				},
+				{
+					"id": "title_join_the_founders_circle_text",
+					"control": "text",
+					"label": "Title — Join the Founders Circle",
+					"description": "",
+					"default": "Join the Founders Circle",
+					"esc": "post",
+					"group": "p_fc_h1_title",
+					"sort": 0
+				},
+				{
+					"id": "subtitle_be_among_the_first_guests_t_text",
+					"control": "textarea",
+					"label": "Subtitle — Be among the first guests t…",
+					"description": "",
+					"default": "Be among the first guests to experience Umoya's flagship Signature Journey and discover a new approach to private, tailor-made travel across South Africa and beyond.",
+					"esc": "post",
+					"group": "p_fc_h1_sub",
+					"sort": 0
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_h1_btn_primary",
+			"label": "Btns › Button Primary",
+			"controls": [
+				{
+					"id": "button_primary_text",
+					"control": "text",
+					"label": "Button Primary",
+					"default": "Reserve Your Place",
+					"esc": "post",
+					"group": "p_fc_h1_btn_primary",
+					"sort": 0
+				},
+				{
+					"id": "button_primary_href",
+					"control": "url",
+					"label": "Button Primary – Href",
+					"default": {
+						"url": "#fc-form-section"
+					},
+					"esc": "url",
+					"group": "p_fc_h1_btn_primary",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "scroll_label_scroll_text",
+					"control": "text",
+					"label": "Scroll Label — Scroll",
+					"description": "",
+					"default": "Scroll",
+					"esc": "post",
+					"group": "p_fc_h1_scroll_lbl",
+					"sort": 0
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [
+		{
+			"id": "source_type",
+			"control": "text",
+			"label": "Source – Type",
+			"default": "video/mp4",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"behaviour_controls": [
+		{
+			"id": "video_preload",
+			"control": "text",
+			"label": "Video – Preload",
+			"default": "auto",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"inline_style_controls": [
+		{
+			"id": "image_css_width",
+			"control": "text",
+			"label": "Image – Width",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_fc_h1_bg_img",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Background › Image"
+		},
+		{
+			"id": "image_css_height",
+			"control": "text",
+			"label": "Image – Height",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_fc_h1_bg_img",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Background › Image"
+		},
+		{
+			"id": "image_css_object_fit",
+			"control": "select",
+			"label": "Image – Object Fit",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "cover",
+			"options": [
+				"cover",
+				"contain",
+				"fill",
+				"none",
+				"scale-down"
+			],
+			"esc": "attr",
+			"group": "p_fc_h1_bg_img",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Background › Image"
+		},
+		{
+			"id": "image_css_object_position",
+			"control": "text",
+			"label": "Image – Object Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "center 25%",
+			"esc": "attr",
+			"group": "p_fc_h1_bg_img",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Background › Image"
+		},
+		{
+			"id": "video_css_position",
+			"control": "select",
+			"label": "Video – Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "absolute",
+			"options": [
+				"static",
+				"relative",
+				"absolute",
+				"fixed",
+				"sticky"
+			],
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Background › Video"
+		},
+		{
+			"id": "video_css_inset",
+			"control": "text",
+			"label": "Video – Inset",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Background › Video"
+		},
+		{
+			"id": "video_css_width",
+			"control": "text",
+			"label": "Video – Width",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Background › Video"
+		},
+		{
+			"id": "video_css_height",
+			"control": "text",
+			"label": "Video – Height",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Background › Video"
+		},
+		{
+			"id": "video_css_object_fit",
+			"control": "select",
+			"label": "Video – Object Fit",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "cover",
+			"options": [
+				"cover",
+				"contain",
+				"fill",
+				"none",
+				"scale-down"
+			],
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Background › Video"
+		},
+		{
+			"id": "video_css_object_position",
+			"control": "text",
+			"label": "Video – Object Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "center 25%",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Background › Video"
+		},
+		{
+			"id": "video_css_opacity",
+			"control": "text",
+			"label": "Video – Opacity",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Background › Video"
+		},
+		{
+			"id": "video_css_transition",
+			"control": "text",
+			"label": "Video – Transition",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "opacity .8s ease",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Background › Video"
+		}
+	],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_h1_bg",
+			"label": "Background",
+			"short_label": "Background",
+			"selector": ".fc-h1-bg",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_h1_bg_img",
+			"label": "Background › Image",
+			"short_label": "Image",
+			"selector": ".fc-h1-bg > img",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_video",
+			"label": "Background › Video",
+			"short_label": "Video",
+			"selector": "video",
+			"tag": "video",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_source",
+			"label": "Video › Source",
+			"short_label": "Source",
+			"selector": "source",
+			"tag": "source",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_h1_content",
+			"label": "Content",
+			"short_label": "Content",
+			"selector": ".fc-h1-content",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_h1_brand",
+			"label": "Content › Brand",
+			"short_label": "Brand",
+			"selector": ".fc-h1-brand",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_h1_brand_img",
+			"label": "Brand › Image",
+			"short_label": "Image",
+			"selector": ".fc-h1-brand > img",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_h1_eye",
+			"label": "Content › Eyebrow — An Invitation to Our Guests",
+			"short_label": "Eyebrow",
+			"selector": ".fc-h1-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_h1_title",
+			"label": "Content › Title — Join the Founders Circle",
+			"short_label": "Title",
+			"selector": ".fc-h1-title",
+			"tag": "h1",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_h1_sub",
+			"label": "Content › Subtitle — Be among the first guests t…",
+			"short_label": "Subtitle",
+			"selector": ".fc-h1-sub",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_h1_btns",
+			"label": "Content › Btns",
+			"short_label": "Btns",
+			"selector": ".fc-h1-btns",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_h1_btn_primary",
+			"label": "Btns › Button Primary",
+			"short_label": "Button Primary",
+			"selector": ".fc-h1-btn-primary",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_svg",
+			"label": "Button Primary › Svg",
+			"short_label": "Svg",
+			"selector": "svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_h1_scroll",
+			"label": "Scroll",
+			"short_label": "Scroll",
+			"selector": ".fc-h1-scroll",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_h1_scroll_lbl",
+			"label": "Scroll › Scroll Label — Scroll",
+			"short_label": "Scroll Label",
+			"selector": ".fc-h1-scroll-lbl",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_h1_track",
+			"label": "Scroll › Track",
+			"short_label": "Track",
+			"selector": ".fc-h1-track",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [
+		{
+			"id": "image_inline_style",
+			"control": "inline_style_group",
+			"declarations": [
+				{
+					"prefix": "width:",
+					"id": "image_css_width"
+				},
+				{
+					"prefix": ";height:",
+					"id": "image_css_height"
+				},
+				{
+					"prefix": ";object-fit:",
+					"id": "image_css_object_fit"
+				},
+				{
+					"prefix": ";object-position:",
+					"id": "image_css_object_position"
+				}
+			],
+			"tail": ";",
+			"internal": true
+		},
+		{
+			"id": "video_inline_style",
+			"control": "inline_style_group",
+			"declarations": [
+				{
+					"prefix": "position:",
+					"id": "video_css_position"
+				},
+				{
+					"prefix": ";inset:",
+					"id": "video_css_inset"
+				},
+				{
+					"prefix": ";width:",
+					"id": "video_css_width"
+				},
+				{
+					"prefix": ";height:",
+					"id": "video_css_height"
+				},
+				{
+					"prefix": ";object-fit:",
+					"id": "video_css_object_fit"
+				},
+				{
+					"prefix": ";object-position:",
+					"id": "video_css_object_position"
+				},
+				{
+					"prefix": ";opacity:",
+					"id": "video_css_opacity"
+				},
+				{
+					"prefix": ";transition:",
+					"id": "video_css_transition"
+				}
+			],
+			"tail": ";",
+			"internal": true
+		}
+	],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Section – Aria Label",
+			"default": "Founder's Circle — Hero",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src",
+			"control": "media",
+			"label": "Image – Src",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-1.jpg"
+			},
+			"esc": "url",
+			"group": "p_fc_h1_bg_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt",
+			"control": "text",
+			"label": "Image – Alt",
+			"default": "Umoya Afrika Tours — heritage journey through South Africa",
+			"esc": "attr",
+			"group": "p_fc_h1_bg_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_css_width",
+			"control": "text",
+			"label": "Image – Width",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_fc_h1_bg_img",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "image_css_height",
+			"control": "text",
+			"label": "Image – Height",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_fc_h1_bg_img",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "image_css_object_fit",
+			"control": "select",
+			"label": "Image – Object Fit",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "cover",
+			"options": [
+				"cover",
+				"contain",
+				"fill",
+				"none",
+				"scale-down"
+			],
+			"esc": "attr",
+			"group": "p_fc_h1_bg_img",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "image_css_object_position",
+			"control": "text",
+			"label": "Image – Object Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "center 25%",
+			"esc": "attr",
+			"group": "p_fc_h1_bg_img",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_preload",
+			"control": "text",
+			"label": "Video – Preload",
+			"default": "auto",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "video_poster",
+			"control": "media",
+			"label": "Video – Poster",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-1.jpg"
+			},
+			"esc": "url",
+			"group": "p_video",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "video_aria_label",
+			"control": "text",
+			"label": "Video – Aria Label",
+			"default": "Umoya Afrika Tours — heritage journey through South Africa",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "video_css_position",
+			"control": "select",
+			"label": "Video – Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "absolute",
+			"options": [
+				"static",
+				"relative",
+				"absolute",
+				"fixed",
+				"sticky"
+			],
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_css_inset",
+			"control": "text",
+			"label": "Video – Inset",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_css_width",
+			"control": "text",
+			"label": "Video – Width",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_css_height",
+			"control": "text",
+			"label": "Video – Height",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_css_object_fit",
+			"control": "select",
+			"label": "Video – Object Fit",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "cover",
+			"options": [
+				"cover",
+				"contain",
+				"fill",
+				"none",
+				"scale-down"
+			],
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_css_object_position",
+			"control": "text",
+			"label": "Video – Object Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "center 25%",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_css_opacity",
+			"control": "text",
+			"label": "Video – Opacity",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_css_transition",
+			"control": "text",
+			"label": "Video – Transition",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "opacity .8s ease",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "source_src",
+			"control": "url",
+			"label": "Source – Src",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya-fc-hero-1080p.mp4"
+			},
+			"esc": "url",
+			"group": "p_source",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "source_type",
+			"control": "text",
+			"label": "Source – Type",
+			"default": "video/mp4",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "image_src_2",
+			"control": "media",
+			"label": "Image – Src",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Property-1Umoya-Afrika-Logo_v3.svg"
+			},
+			"esc": "url",
+			"group": "p_fc_h1_brand_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt_2",
+			"control": "text",
+			"label": "Image – Alt",
+			"default": "Umoya Afrika Tours",
+			"esc": "attr",
+			"group": "p_fc_h1_brand_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_an_invitation_to_our_guests_text",
+			"control": "text",
+			"label": "Eyebrow — An Invitation to Our Guests",
+			"description": "",
+			"default": "An Invitation to Our Guests",
+			"esc": "post",
+			"group": "p_fc_h1_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_join_the_founders_circle_text",
+			"control": "text",
+			"label": "Title — Join the Founders Circle",
+			"description": "",
+			"default": "Join the Founders Circle",
+			"esc": "post",
+			"group": "p_fc_h1_title",
+			"sort": 0
+		},
+		{
+			"id": "subtitle_be_among_the_first_guests_t_text",
+			"control": "textarea",
+			"label": "Subtitle — Be among the first guests t…",
+			"description": "",
+			"default": "Be among the first guests to experience Umoya's flagship Signature Journey and discover a new approach to private, tailor-made travel across South Africa and beyond.",
+			"esc": "post",
+			"group": "p_fc_h1_sub",
+			"sort": 0
+		},
+		{
+			"id": "button_primary_text",
+			"control": "text",
+			"label": "Button Primary",
+			"default": "Reserve Your Place",
+			"esc": "post",
+			"group": "p_fc_h1_btn_primary",
+			"sort": 0
+		},
+		{
+			"id": "button_primary_href",
+			"control": "url",
+			"label": "Button Primary – Href",
+			"default": {
+				"url": "#fc-form-section"
+			},
+			"esc": "url",
+			"group": "p_fc_h1_btn_primary",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "scroll_label_scroll_text",
+			"control": "text",
+			"label": "Scroll Label — Scroll",
+			"description": "",
+			"default": "Scroll",
+			"esc": "post",
+			"group": "p_fc_h1_scroll_lbl",
+			"sort": 0
+		}
+	]
+}

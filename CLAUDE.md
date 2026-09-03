@@ -1,6 +1,6 @@
 # CLAUDE.md - Umoya Afrika Tours Project Handoff
 
-Last updated: 2026-09-01
+Last updated: 2026-09-03
 Workspace: `C:\Users\MOVING_SURFACE\Downloads\UM_Claude`
 Remote: `https://github.com/seyi-stack/umoya_landing_page.git`
 Current local branch: `codex/elementor-widget-sync` (pushed through `1b62ef9`)
@@ -39,6 +39,7 @@ be kept in sync when their area changes:
 | `contact/_NOTES.md` | The Contact page + its two HubSpot forms |
 | `founders-circle-revamp/_REVAMP-NOTES.md` | Founder's Circle v4/v5 revamp |
 | `homepage-revamp/_REVAMP-NOTES.md` | Homepage revamp |
+| `tools/uew/README.md` | The widget compiler + the local WordPress/Elementor harness |
 
 The three footer content pages (`shared/page-travel-essentials.html`,
 `page-privacy-policy.html`, `page-cookie-policy.html`) have no separate
@@ -1145,6 +1146,119 @@ dialog and released on the backdrop deliberately does **not** close it, so
 selecting the email address is not punished. Rendered clean at 375px and
 desktop, no console errors.
 
+### Phase 22 - The Founder's Circle widgets were rebuilt, and are now provable, 2026-09-03
+
+The twelve Founder's Circle sections moved off `tools/build-elementor-widgets.mjs`
+onto a new compiler at **`tools/uew/`**, and the project gained a **local
+WordPress + Elementor environment** so widget work can be verified before it
+reaches the site instead of after.
+
+**Why.** The old generator located editable text with `>([^<]+)<` and attributes
+with a regex, then round-tripped the result **in JavaScript**. JavaScript cannot
+see what PHP escaping will later do to a string, so the round-trip proved
+nothing — and a regex cannot see comments, nested inline tags or entities. That
+is the mechanism behind "the widgets kept losing functionality and content from
+the HTML". It also pointed at `founders-circle/`, the superseded folder, so
+re-running it silently reverted months of revamp work.
+
+#### The local harness — `local-env/` (git-ignored)
+
+```powershell
+node tools/uew/setup-local-env.mjs           # one-time install
+node tools/uew/setup-local-env.mjs --serve   # start it
+```
+
+Portable PHP 8.2, WordPress on **SQLite** (WordPress's own
+`sqlite-database-integration` drop-in), Elementor pinned to **4.2.4 — the
+version the live site runs**, and `umoya-elementor-widgets/` linked in as a
+junction so edits are live. **No MySQL, no Docker, no admin rights, nothing
+installed system-wide.** Admin: `admin` / `admin` at
+<http://127.0.0.1:8765/wp-admin/>.
+
+#### Four checks, each proving something different
+
+| Command | What it proves |
+|---|---|
+| `node tools/uew/build.mjs` | The template reproduces its source **byte for byte** when rendered with its own defaults — in real PHP with WordPress loaded, so `wp_kses_post` / `esc_attr` / `esc_url` are the functions that will actually run |
+| `node tools/uew/render-check.mjs` | It survives the real path — Elementor builds the page, WordPress filters the output — compared node by node, plus the section's CSS and JS are enqueued |
+| `node tools/uew/browser-check.mjs` | Each widget renders and behaves **identically to the same section pasted into an HTML widget**, at 1440 / 768 / 390, across geometry and ~30 computed properties |
+| `node tools/uew/editor-check.mjs` | It renders **in the editor canvas**, its script initialises there, and its panel opens |
+
+`npm --prefix tools/uew run check` runs all four. Full detail in
+**`tools/uew/README.md`**.
+
+The browser check is the one that answers the original complaint directly: it
+measures the new widget against today's deployment method, so "identical" means
+identical to what is already on the site.
+
+#### Results
+
+All twelve sections: byte-fidelity **OK**, render **OK**, browser
+**identical**, editor **rendered / script ok**, panel opening in 109–436 ms.
+Control counts run 305 (Closing CTA) to 1378 (Inquiry Form), against 175–227
+for Elementor's own widgets — organised into 19–71 collapsible panels per
+widget across Content / Style / Advanced, labelled by position and content
+("Header › Title — Begin Your Journey") because Elementor's panel has no
+control search.
+
+#### Four traps found by the checks, all fixed
+
+1. **PHP discards the newline immediately after `?>`.** Every echo at the end
+   of a line swallowed its own line break and closing tags rode up. Fixed in
+   `guardPhpNewlines()` — and it must capture the **whole** run of line breaks
+   and indentation, because taking only the first leaves a second one for PHP
+   to eat.
+2. **Elementor caches each element's rendered HTML in post meta**
+   (`Document::CACHE_META_KEY`, on by default). Pages kept serving markup from
+   the *previous* version of a widget, so measurements were of stale output.
+   → **After re-uploading the plugin to the live site, purge Elementor's cache**
+   (Elementor → Tools → Regenerate CSS & Data), or the new widgets will not
+   appear to have changed anything.
+3. **`elementor/frontend/init` is fired through jQuery, not as a native DOM
+   event.** A `window.addEventListener` for it never fires. Section scripts now
+   declare `elementor-frontend` as a dependency and register on
+   `frontend/element_ready/<widget>.default`, with a jQuery listener as fallback.
+4. **Inline `style` attributes beat anything Elementor can generate.** They are
+   never hoisted into CSS (that would need specificity tricks and could reorder
+   the cascade); instead each declaration becomes its own control and the
+   attribute is rebuilt preserving the author's exact spacing and semicolons.
+
+#### Three rules the compiler keeps
+
+- **Styling never touches markup.** Every style control is an Elementor
+  `selectors` entry, so the section's own stylesheet stays the baseline and an
+  empty control means "leave it alone".
+- **No style control is seeded from the CSS.** Seeding `font-size: 0.75rem`
+  from a desktop rule would emit un-mediaqueried CSS at higher specificity and
+  silently defeat the section's own 768px override. Content controls *do* carry
+  defaults — those are literal text.
+- **A repeater must prove itself.** Every item is re-rendered from its own
+  extracted values and byte-compared with the original; one that does not
+  reproduce is rejected, with the reason printed, and its items stay individual
+  panels. A repeater whose rows would collapse into >600 characters of raw
+  markup is also rejected — which is what keeps the inquiry form's six field
+  rows separate, one of them holding a 200-option country list.
+
+#### What changed in the plugin
+
+- **New:** `includes/class-section-widget.php` (the native widget base),
+  `class-control-factory.php` (Style-tab controls), `class-value-formatter.php`
+  (escaping, shared with the build's fidelity check so it tests the real logic),
+  `includes/sections/*.json` (one schema per section),
+  `templates/sections/*.php`.
+- **Legacy, homepage only:** `class-base-widget.php` and
+  `section-definitions.json` still drive the ten homepage widgets, now read
+  through `class-legacy-registry.php`. `tools/build-elementor-widgets.mjs`
+  covers **homepage only** — its Founder's Circle entries were removed so
+  re-running it cannot resurrect them.
+- **Removed:** the 16 old FC widget classes and their assets, plus 24
+  orphaned pre-generator files (`assets/css/fc-section-*.css`,
+  `assets/js/fc-section-*.js`) that nothing had referenced since the generator
+  was introduced.
+- **Version 1.1.0 → 2.0.0.** Major, because the FC widget names and every
+  control ID changed. Confirmed safe first: no live page uses the plugin's
+  section widgets — every Umoya page is a pasted HTML widget.
+
 ---
 
 ## 6. Repository Map
@@ -1174,7 +1288,9 @@ desktop, no console errors.
 | `about/` | About Us page — 8 sections. |
 | `for-groups/` | For Groups page — 8 sections. |
 | `theme-overrides/tevily_child/header.php` | Optional child-theme override removing the Tevily header. Not deployed. |
-| `tools/build-elementor-widgets.mjs` | Generator that rebuilds plugin artifacts from source HTML. |
+| `tools/uew/` | **The Founder's Circle widget compiler** + the local WordPress/Elementor test harness. Has its own `README.md`. |
+| `local-env/` | The harness itself — portable PHP, WordPress on SQLite, Elementor 4.2.4. **Git-ignored, generated;** rebuild with `node tools/uew/setup-local-env.mjs`. |
+| `tools/build-elementor-widgets.mjs` | First-generation generator — **homepage only** now. No fidelity check; regex-based. Retire it when the homepage migrates. |
 | `umoya-elementor-widgets/` | Custom Elementor plugin source. |
 | `Website docs/` | Legal documents, footer URL map, and Elementor-ready legal snippets. |
 | `hubspot-docx/` | Extracted Word document content for the HubSpot integration brief. |
@@ -1259,30 +1375,36 @@ umoya-elementor-widgets/
 
 ## 7. Elementor Widget Registry
 
-The plugin currently exposes 26 generated section widgets.
+The plugin exposes 22 section widgets: **12 Founder's Circle** built by the new
+compiler (`tools/uew/`), and **10 homepage** still on the first-generation
+generator.
 
 ### Founder's Circle Category
 
 Category: `Umoya - Founder's Circle`
+Compiled by `tools/uew/build.mjs` from **`founders-circle-revamp/`**, in
+Elementor placement order. Schemas live in
+`umoya-elementor-widgets/includes/sections/*.json`.
 
-| Key | Widget title | Source | Root |
+| Key | Widget title | Source (`founders-circle-revamp/`) | Root |
 |---|---|---|---|
 | `fc_nav` | FC Navigation | `section-00-nav.html` | `#fcNavBar` |
 | `fc_hero` | FC Hero | `section-01-hero.html` | `#fc-hero` |
-| `fc_intro` | FC Intro | `section-02-intro.html` | `#fc-intro` |
-| `fc_form` | FC Inquiry Form | `section-02-form.html` | `#fc-form-section` |
-| `fc_be_first` | FC Be First | `section-03-be-first.html` | `#fc-be-first` |
-| `fc_benefits` | FC Benefits | `section-04-benefits.html` | `#fc-benefits` |
+| `fc_invitation` | FC Invitation | `section-02-invitation.html` | `#fc-intro` |
+| `fc_privileges` | FC Membership Privileges | `section-03-membership-privileges.html` | `#fc-benefits` |
+| `fc_form` | FC Inquiry Form | `section-04-inquiry-form.html` | `#fc-form-section` |
 | `fc_journey` | FC Journey | `section-05-journey.html` | `#fc-journey` |
-| `fc_journey_interactive_map_image` | FC Journey Interactive Map Image | `section-05-journey-interactive-map-image.html` | `#fc-journey` |
-| `fc_journey_map_snapshot` | FC Journey Map Snapshot | `section-05-journey-map-snapshot.html` | `#fc-journey` |
-| `fc_journey_no_map` | FC Journey No Map | `section-05-journey-no-map.html` | `#fc-journey` |
-| `fc_map` | FC Route Map | `section-05-map.html` | `#fc-route-map-section` |
-| `fc_pricing` | FC Pricing | `section-05a-pricing.html` | `#fc-pricing` |
-| `fc_cta` | FC CTA | `section-05b-cta.html` | `#fc-cta` |
-| `fc_why` | FC Why Umoya | `section-06-why.html` | `#fc-why` |
-| `fc_pillars` | FC Pillars | `section-06b-pillars.html` | `#fc-pillars` |
-| `fc_details` | FC Travel Essentials | `section-07-details.html` | `#fc-details` |
+| `fc_early_access` | FC Early Access | `section-06-early-access.html` | `#fc-be-first` |
+| `fc_founding_offer` | FC Founding Offer | `section-07-founding-offer.html` | `#fc-pricing` |
+| `fc_approach` | FC Our Approach | `section-08-our-approach.html` | `#fc-why` |
+| `fc_why` | FC Why Umoya | `section-09-why-umoya.html` | `#fc-pillars` |
+| `fc_essentials` | FC Travel Essentials | `section-10-travel-essentials.html` | `#fc-details` |
+| `fc_closing_cta` | FC Closing CTA | `section-11-closing-cta.html` | `#fc-cta` |
+
+> The old FC widget set (`fc_intro`, `fc_be_first`, `fc_benefits`, `fc_map`,
+> `fc_pricing`, `fc_cta`, `fc_pillars`, `fc_details` and the three journey-map
+> variants) was **removed** in Phase 22. It was generated from the superseded
+> `founders-circle/` folder, and nothing live used it.
 
 ### Homepage Category
 
@@ -1303,19 +1425,31 @@ Category: `Umoya - Homepage`
 
 ### Important Registry Rule
 
-The standalone source HTML files are the visual source of truth. If changing a section:
+The source HTML files are the visual source of truth. Never hand-edit generated
+plugin templates, schemas or widget classes — they are overwritten on the next
+build, and the fidelity check is what makes them trustworthy.
 
-1. Edit the root HTML source file first.
-2. Run the generator:
+**Founder's Circle** — edit `founders-circle-revamp/`, then:
+
+```powershell
+npm --prefix tools/uew run check   # build + fidelity + render + browser + editor
+python tools/build-plugin-zip.py
+```
+
+The build **fails** if a template stops reproducing its source. That is the
+point; do not pass `--no-verify` to get around it.
+
+**Homepage** — edit `homepage/`, then the first-generation generator:
 
 ```powershell
 node tools/build-elementor-widgets.mjs
 ```
 
-3. Verify generated outputs.
-4. Package or deploy the plugin if needed.
-
-Avoid manually editing generated plugin templates unless the task is explicitly to hotfix the generated plugin only.
+> That generator has no fidelity check and rewrites markup with regular
+> expressions. It also still reads `homepage/`, not `homepage-revamp/`.
+> Migrate the homepage onto `tools/uew/` and delete it,
+> `includes/class-base-widget.php`, `includes/class-legacy-registry.php` and
+> `includes/section-definitions.json`.
 
 ---
 
@@ -2150,18 +2284,26 @@ so re-check after a cache purge.
 
 ### Elementor Plugin
 
-- **The generator is now out of sync with the current source.** Its
-  `source:` paths still point at `founders-circle/` and `homepage/`, but the
-  live working copies are `founders-circle-revamp/` and `homepage-revamp/`.
-  The four newest folders (`signature-journey/`, `private-tailormade/`,
-  `about/`, `for-groups/`) and `shared/` are not registered at all.
-  Decide whether to repoint the generator or keep these as
-  hand-pasted HTML widgets. **Until then, do not assume re-running the
-  generator will pick up recent work.**
-- Re-run generator after any source HTML change *that it covers*.
-- Rebuild `umoya-elementor-widgets.zip` after plugin changes.
+- ✅ **Founder's Circle is resolved** (Phase 22). Its twelve widgets are
+  compiled from `founders-circle-revamp/` by `tools/uew/`, with a byte-fidelity
+  assertion plus render, browser and editor checks. Plugin at **2.0.0**.
+- ⏳ **The homepage is still on the first-generation generator**, and that
+  generator still reads `homepage/` rather than `homepage-revamp/`. So
+  re-running `node tools/build-elementor-widgets.mjs` still will not pick up the
+  homepage revamp. Migrating it onto `tools/uew/` closes this and lets
+  `class-base-widget.php`, `class-legacy-registry.php` and
+  `section-definitions.json` be deleted.
+- ⏳ **Four folders are registered nowhere** — `signature-journey/`,
+  `private-tailormade/`, `about/`, `for-groups/` — plus `shared/`. They remain
+  hand-pasted HTML widgets. Decide per page whether that is worth changing;
+  the compiler handles any section file as-is.
+- **After re-uploading the plugin, purge Elementor's cache** (Elementor →
+  Tools → Regenerate CSS & Data). Elementor caches rendered widget HTML in post
+  meta, so without this a page keeps serving the previous version's markup —
+  which looks exactly like a failed deploy. See Phase 22.
+- Rebuild `umoya-elementor-widgets.zip` with `python tools/build-plugin-zip.py`
+  after plugin changes — never `Compress-Archive`.
 - If committing, stage only intentional plugin/source files.
-- Consider adding a formal package/build command if this becomes recurring.
 
 ### Homepage / Founder's Circle
 
@@ -2199,7 +2341,13 @@ git status --short
 # Search fast
 rg -n "HubSpot|hubspot|fc-form-section|umoya-form-popup"
 
-# Rebuild generated Elementor plugin artifacts
+# Founder's Circle widgets: compile + prove nothing was lost
+npm --prefix tools/uew run check
+
+# Start the local WordPress + Elementor harness (leave running)
+node tools/uew/setup-local-env.mjs --serve
+
+# Homepage widgets only (first-generation generator, no fidelity check)
 node tools/build-elementor-widgets.mjs
 
 # Check whitespace problems
@@ -2246,11 +2394,26 @@ Core server-side submission infrastructure:
 - Injects HubSpot tracking script.
 - Provides admin resend.
 
+### `tools/uew/` — the Founder's Circle widget compiler
+
+Read `tools/uew/README.md` before changing anything here. The short version:
+the template **is** the section file, rewritten only at byte offsets a real
+HTML parser reported, and the build refuses to finish unless rendering it with
+its own defaults reproduces the source exactly. Styling never touches markup —
+every style control is an Elementor `selectors` entry layered over the
+section's own stylesheet.
+
+`lib/emit.mjs`'s `guardPhpNewlines()` is load-bearing and non-obvious: PHP
+discards the newline immediately after `?>`, so without it every end-of-line
+echo swallows its own line break.
+
 ### `tools/build-elementor-widgets.mjs`
 
-Do not delete. This is the sync bridge from source HTML to the plugin.
-**Note:** its `source:` paths are currently stale — see Elementor Plugin
-open items.
+**Homepage only** since Phase 22. Its Founder's Circle entries were removed so
+re-running it cannot resurrect the superseded widget set. It rewrites markup
+with regular expressions and has no way to check its own work — that is why the
+Founder's Circle moved off it. It also still reads `homepage/`, not
+`homepage-revamp/`.
 
 ### `shared/section-99-footer.html`
 
@@ -2453,10 +2616,14 @@ Think of this project as five connected layers:
    - `founders-circle/` and `homepage/` — earlier originals, reference only.
 
 3. Elementor plugin layer:
-   - Generated widgets, controls, assets, and registry.
    - Two Elementor categories: homepage and Founder's Circle.
-   - **Currently trails the source layer** — the newest folders are not
-     registered and the generator's paths are stale.
+   - **Founder's Circle** — compiled by `tools/uew/` from
+     `founders-circle-revamp/`, verified against a local WordPress +
+     Elementor 4.2.4 harness on four axes (byte fidelity, render, browser,
+     editor). This layer is current.
+   - **Homepage** — still on the first-generation generator, still reading
+     `homepage/` rather than `homepage-revamp/`. This layer trails.
+   - The four newest page folders and `shared/` are not registered at all.
 
 4. WordPress/theme layer (lives on the server, not in this repo):
    - Two header systems depending on the Elementor template

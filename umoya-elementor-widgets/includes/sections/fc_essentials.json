@@ -1,0 +1,944 @@
+{
+	"key": "fc_essentials",
+	"name": "umoya-fc-essentials",
+	"title": "FC Travel Essentials",
+	"description": "Travel Essentials accordion; one item open at a time.",
+	"icon": "eicon-accordion",
+	"category": "umoya-fc",
+	"source": "founders-circle-revamp/section-10-travel-essentials.html",
+	"class_name": "FC_Essentials",
+	"widget_file": "widgets/class-fc-essentials.php",
+	"root_selector": "#fc-details",
+	"template": "templates/sections/fc_essentials.php",
+	"style": {
+		"handle": "uew-umoya-fc-essentials",
+		"file": "assets/css/sections/fc_essentials.css"
+	},
+	"script": {
+		"handle": "uew-umoya-fc-essentials",
+		"file": "assets/js/sections/fc_essentials.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"fc",
+		"travel",
+		"essentials"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "cream-lt",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream Lt"
+		},
+		{
+			"name": "cream-dk",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream Dk"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "gold",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Gold"
+		},
+		{
+			"name": "olive",
+			"value": "#708238",
+			"kind": "color",
+			"label": "Olive"
+		},
+		{
+			"name": "text",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Text"
+		},
+		{
+			"name": "text-mid",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Text Mid"
+		},
+		{
+			"name": "text-muted",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Text Muted"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Section – Aria Label",
+					"default": "Journey Details — Frequently Asked Questions",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "eyebrow_everything_you_need_to_know_text",
+					"control": "text",
+					"label": "Eyebrow — Everything You Need to Know",
+					"description": "",
+					"default": "Everything You Need to Know",
+					"esc": "post",
+					"group": "p_fc_det_eyebrow",
+					"sort": 0
+				},
+				{
+					"id": "title_travel_essentials_text",
+					"control": "textarea",
+					"label": "Title — Travel Essentials",
+					"description": "Inline formatting tags are preserved.",
+					"default": "Travel <em>Essentials</em>",
+					"esc": "post",
+					"group": "p_fc_det_title",
+					"sort": 0
+				},
+				{
+					"id": "lead_travel_with_clarity_and_con_text",
+					"control": "textarea",
+					"label": "Lead — Travel with clarity and con…",
+					"description": "",
+					"default": "Travel with clarity and confidence, knowing every detail has been carefully considered. From customization to comfort, each element combines cultural depth, local access, and seamless execution.",
+					"esc": "post",
+					"group": "p_fc_det_lead",
+					"sort": 0
+				},
+				{
+					"id": "title_plan_with_absolute_confiden_text",
+					"control": "text",
+					"label": "Title — Plan with absolute confiden…",
+					"description": "",
+					"default": "Plan with absolute confidence",
+					"esc": "post",
+					"group": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_p_nth_of_type_1",
+					"sort": 0
+				},
+				{
+					"id": "subtitle_guaranteed_departures_text",
+					"control": "text",
+					"label": "Subtitle — Guaranteed departures",
+					"description": "",
+					"default": "Guaranteed departures",
+					"esc": "post",
+					"group": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_p_nth_of_type_2",
+					"sort": 0
+				},
+				{
+					"id": "content_once_your_departure_is_conf_text",
+					"control": "textarea",
+					"label": "Content — Once your departure is conf…",
+					"description": "",
+					"default": "Once your departure is confirmed, it is guaranteed. From that point you can book flights and make arrangements knowing your journey will proceed as planned.",
+					"esc": "post",
+					"group": "p_fc_acc_item_div_nth_of_type_1_div_nth_of_type_1",
+					"sort": 0
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_div_fc_acc_item",
+			"label": "Div Fc Acc Item",
+			"item_label": "{{{ title }}}",
+			"controls": [
+				{
+					"id": "role",
+					"control": "text",
+					"label": "Role",
+					"esc": "attr",
+					"default": "listitem"
+				},
+				{
+					"id": "aria_expanded",
+					"control": "text",
+					"label": "Aria Expanded",
+					"esc": "attr",
+					"default": "false"
+				},
+				{
+					"id": "aria_controls",
+					"control": "text",
+					"label": "Aria Controls",
+					"esc": "attr",
+					"default": "fc-det-body-3"
+				},
+				{
+					"id": "id",
+					"control": "text",
+					"label": "Id",
+					"esc": "attr",
+					"default": "fc-det-btn-3"
+				},
+				{
+					"id": "aria_hidden",
+					"control": "text",
+					"label": "Aria Hidden",
+					"esc": "attr",
+					"default": "true"
+				},
+				{
+					"id": "viewbox",
+					"control": "text",
+					"label": "Viewbox",
+					"esc": "attr",
+					"default": "0 0 24 24"
+				},
+				{
+					"id": "svg_markup",
+					"control": "textarea",
+					"label": "Svg markup (HTML)",
+					"esc": "raw",
+					"default": "\n                  <path d=\"M12 20h9\"/>\n                  <path d=\"M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z\"/>\n                "
+				},
+				{
+					"id": "title",
+					"control": "text",
+					"label": "Title",
+					"esc": "post",
+					"default": "Your journey, your way"
+				},
+				{
+					"id": "sub",
+					"control": "text",
+					"label": "Sub",
+					"esc": "post",
+					"default": "Thoughtful personalization"
+				},
+				{
+					"id": "aria_hidden_2",
+					"control": "text",
+					"label": "Aria Hidden",
+					"esc": "attr",
+					"default": "true"
+				},
+				{
+					"id": "viewbox_2",
+					"control": "text",
+					"label": "Viewbox",
+					"esc": "attr",
+					"default": "0 0 24 24"
+				},
+				{
+					"id": "icon_points",
+					"control": "hidden",
+					"label": "Icon Points",
+					"esc": "attr",
+					"default": "6 9 12 15 18 9"
+				},
+				{
+					"id": "id_2",
+					"control": "text",
+					"label": "Id",
+					"esc": "attr",
+					"default": "fc-det-body-3"
+				},
+				{
+					"id": "role_2",
+					"control": "text",
+					"label": "Role",
+					"esc": "attr",
+					"default": "region"
+				},
+				{
+					"id": "aria_labelledby",
+					"control": "text",
+					"label": "Aria Labelledby",
+					"esc": "attr",
+					"default": "fc-det-btn-3"
+				},
+				{
+					"id": "content_markup",
+					"control": "textarea",
+					"label": "Content markup (HTML)",
+					"esc": "raw",
+					"default": "\n              Each itinerary is carefully designed, and yours can flex to your interests. Optional experiences let you add private tastings, extended time at a site, or access to a particular host.\n            "
+				},
+				{
+					"id": "_uew_sep",
+					"control": "hidden",
+					"label": "Separator markup",
+					"esc": "raw",
+					"default": "\n\n        <!-- ── Item 4: Travel Protection ─────────────── -->\n        "
+				}
+			],
+			"rows": [
+				{
+					"role": "listitem",
+					"aria_expanded": "false",
+					"aria_controls": "fc-det-body-3",
+					"id": "fc-det-btn-3",
+					"aria_hidden": "true",
+					"viewbox": "0 0 24 24",
+					"svg_markup": "\n                  <path d=\"M12 20h9\"/>\n                  <path d=\"M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z\"/>\n                ",
+					"title": "Your journey, your way",
+					"sub": "Thoughtful personalization",
+					"aria_hidden_2": "true",
+					"viewbox_2": "0 0 24 24",
+					"icon_points": "6 9 12 15 18 9",
+					"id_2": "fc-det-body-3",
+					"role_2": "region",
+					"aria_labelledby": "fc-det-btn-3",
+					"content_markup": "\n              Each itinerary is carefully designed, and yours can flex to your interests. Optional experiences let you add private tastings, extended time at a site, or access to a particular host.\n            ",
+					"_uew_sep": ""
+				},
+				{
+					"role": "listitem",
+					"aria_expanded": "false",
+					"aria_controls": "fc-det-body-4",
+					"id": "fc-det-btn-4",
+					"aria_hidden": "true",
+					"viewbox": "0 0 24 24",
+					"svg_markup": "\n                  <path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/>\n                ",
+					"title": "Peace of mind for your investment",
+					"sub": "Travel protection",
+					"aria_hidden_2": "true",
+					"viewbox_2": "0 0 24 24",
+					"icon_points": "6 9 12 15 18 9",
+					"id_2": "fc-det-body-4",
+					"role_2": "region",
+					"aria_labelledby": "fc-det-btn-4",
+					"content_markup": "\n              We <strong>strongly recommend travel insurance</strong> at the time of booking. Your travel expert can guide you to reputable providers so you can focus on the journey, not the logistics.\n            ",
+					"_uew_sep": "\n\n        <!-- ── Item 4: Travel Protection ─────────────── -->\n        "
+				},
+				{
+					"role": "listitem",
+					"aria_expanded": "false",
+					"aria_controls": "fc-det-body-5",
+					"id": "fc-det-btn-5",
+					"aria_hidden": "true",
+					"viewbox": "0 0 24 24",
+					"svg_markup": "\n                  <circle cx=\"12\" cy=\"12\" r=\"10\"/>\n                  <polyline points=\"12 6 12 12 16 14\"/>\n                ",
+					"title": "Paced for depth",
+					"sub": "Signature Journey structure",
+					"aria_hidden_2": "true",
+					"viewbox_2": "0 0 24 24",
+					"icon_points": "6 9 12 15 18 9",
+					"id_2": "fc-det-body-5",
+					"role_2": "region",
+					"aria_labelledby": "fc-det-btn-5",
+					"content_markup": "\n              The Signature Journey runs 10 days across three movements, Heritage, Safari, and the Cape, with optional extensions to Victoria Falls and Chobe. This pacing is what gives the journey its depth.\n            ",
+					"_uew_sep": "\n\n        <!-- ── Item 5: Flexible Journey Lengths ───────── -->\n        "
+				},
+				{
+					"role": "listitem",
+					"aria_expanded": "false",
+					"aria_controls": "fc-det-body-6",
+					"id": "fc-det-btn-6",
+					"aria_hidden": "true",
+					"viewbox": "0 0 24 24",
+					"svg_markup": "\n                  <path d=\"M18 8h1a4 4 0 0 1 0 8h-1\"/>\n                  <path d=\"M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z\"/>\n                  <line x1=\"6\"  y1=\"1\" x2=\"6\"  y2=\"4\"/>\n                  <line x1=\"10\" y1=\"1\" x2=\"10\" y2=\"4\"/>\n                  <line x1=\"14\" y1=\"1\" x2=\"14\" y2=\"4\"/>\n                ",
+					"title": "Flavours that meet your needs",
+					"sub": "Regional cuisine &amp; dietary care",
+					"aria_hidden_2": "true",
+					"viewbox_2": "0 0 24 24",
+					"icon_points": "6 9 12 15 18 9",
+					"id_2": "fc-det-body-6",
+					"role_2": "region",
+					"aria_labelledby": "fc-det-btn-6",
+					"content_markup": "\n              You taste regional cuisine prepared by local hosts and chefs throughout. Dietary needs are collected in advance and handled with care, because your wellbeing is part of the journey.\n            ",
+					"_uew_sep": "\n\n        <!-- ── Item 6: Cuisine & Dietary Care ─────────── -->\n        "
+				}
+			],
+			"selector": ".fc-acc-item"
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_det_wrap",
+			"label": "Wrapper",
+			"short_label": "Wrapper",
+			"selector": ".fc-det-wrap",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_det_rev",
+			"label": "Wrapper › Rev",
+			"short_label": "Rev",
+			"selector": ".fc-det-rev",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": true,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_det_eyebrow",
+			"label": "Rev › Eyebrow — Everything You Need to Know",
+			"short_label": "Eyebrow",
+			"selector": ".fc-det-eyebrow",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_det_title",
+			"label": "Rev › Title — Travel Essentials",
+			"short_label": "Title",
+			"selector": ".fc-det-title",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_em",
+			"label": "Title › Em — Essentials",
+			"short_label": "Em",
+			"selector": "em",
+			"tag": "em",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_det_rule",
+			"label": "Rev › Rule",
+			"short_label": "Rule",
+			"selector": ".fc-det-rule",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_det_lead",
+			"label": "Rev › Lead — Travel with clarity and con…",
+			"short_label": "Lead",
+			"selector": ".fc-det-lead",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_acc_item",
+			"label": "Wrapper › Item",
+			"short_label": "Item",
+			"selector": ".fc-acc-item",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": true,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_acc_item_button_nth_of_type_1",
+			"label": "Item › Button",
+			"short_label": "Button",
+			"selector": ".fc-acc-item > button:nth-of-type(1)",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_1",
+			"label": "Button › Left",
+			"short_label": "Left",
+			"selector": ".fc-acc-item > button:nth-of-type(1) > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
+			"label": "Left › Icon",
+			"short_label": "Icon",
+			"selector": ".fc-acc-item > button:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_svg_nth_of_type_1",
+			"label": "Icon › Svg",
+			"short_label": "Svg",
+			"selector": ".fc-acc-item > button:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2",
+			"label": "Left › Div",
+			"short_label": "Div",
+			"selector": ".fc-acc-item > button:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_p_nth_of_type_1",
+			"label": "Div › Title — Plan with absolute confiden…",
+			"short_label": "Title",
+			"selector": ".fc-acc-item > button:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_p_nth_of_type_2",
+			"label": "Div › Subtitle — Guaranteed departures",
+			"short_label": "Subtitle",
+			"selector": ".fc-acc-item > button:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > p:nth-of-type(2)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_2",
+			"label": "Button › Chev",
+			"short_label": "Chev",
+			"selector": ".fc-acc-item > button:nth-of-type(1) > div:nth-of-type(2)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_2_svg_nth_of_type_1",
+			"label": "Chev › Svg",
+			"short_label": "Svg",
+			"selector": ".fc-acc-item > button:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_acc_item_div_nth_of_type_1",
+			"label": "Item › Body",
+			"short_label": "Body",
+			"selector": ".fc-acc-item > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fc_acc_item_div_nth_of_type_1_div_nth_of_type_1",
+			"label": "Body › Content — Once your departure is conf…",
+			"short_label": "Content",
+			"selector": ".fc-acc-item > div:nth-of-type(1) > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Section – Aria Label",
+			"default": "Journey Details — Frequently Asked Questions",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_everything_you_need_to_know_text",
+			"control": "text",
+			"label": "Eyebrow — Everything You Need to Know",
+			"description": "",
+			"default": "Everything You Need to Know",
+			"esc": "post",
+			"group": "p_fc_det_eyebrow",
+			"sort": 0
+		},
+		{
+			"id": "title_travel_essentials_text",
+			"control": "textarea",
+			"label": "Title — Travel Essentials",
+			"description": "Inline formatting tags are preserved.",
+			"default": "Travel <em>Essentials</em>",
+			"esc": "post",
+			"group": "p_fc_det_title",
+			"sort": 0
+		},
+		{
+			"id": "lead_travel_with_clarity_and_con_text",
+			"control": "textarea",
+			"label": "Lead — Travel with clarity and con…",
+			"description": "",
+			"default": "Travel with clarity and confidence, knowing every detail has been carefully considered. From customization to comfort, each element combines cultural depth, local access, and seamless execution.",
+			"esc": "post",
+			"group": "p_fc_det_lead",
+			"sort": 0
+		},
+		{
+			"id": "title_plan_with_absolute_confiden_text",
+			"control": "text",
+			"label": "Title — Plan with absolute confiden…",
+			"description": "",
+			"default": "Plan with absolute confidence",
+			"esc": "post",
+			"group": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "subtitle_guaranteed_departures_text",
+			"control": "text",
+			"label": "Subtitle — Guaranteed departures",
+			"description": "",
+			"default": "Guaranteed departures",
+			"esc": "post",
+			"group": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_p_nth_of_type_2",
+			"sort": 0
+		},
+		{
+			"id": "content_once_your_departure_is_conf_text",
+			"control": "textarea",
+			"label": "Content — Once your departure is conf…",
+			"description": "",
+			"default": "Once your departure is confirmed, it is guaranteed. From that point you can book flights and make arrangements knowing your journey will proceed as planned.",
+			"esc": "post",
+			"group": "p_fc_acc_item_div_nth_of_type_1_div_nth_of_type_1",
+			"sort": 0
+		}
+	]
+}

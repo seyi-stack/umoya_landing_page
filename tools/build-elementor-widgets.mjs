@@ -1,3 +1,16 @@
+/**
+ * FIRST-GENERATION widget generator -- HOMEPAGE ONLY.
+ *
+ * The Founder's Circle sections have moved to tools/uew/build.mjs, which parses
+ * the HTML properly, verifies that each template still reproduces its source
+ * byte for byte, and emits native Elementor controls. They were removed from
+ * the list below so re-running this file cannot resurrect them.
+ *
+ * This generator rewrites markup with regular expressions and has no fidelity
+ * check; it survives only because the homepage widgets have not been migrated
+ * yet. Migrate them and delete this file, includes/class-base-widget.php,
+ * includes/class-legacy-registry.php and includes/section-definitions.json.
+ */
 import fs from 'fs';
 import path from 'path';
 
@@ -8,166 +21,6 @@ const fcCategory = 'umoya-fc';
 const homepageCategory = 'umoya-homepage';
 
 const sections = [
-  {
-    key: 'fc_nav',
-    source: 'founders-circle/section-00-nav.html',
-    name: 'fc-nav',
-    title: 'FC Navigation',
-    className: 'FC_Nav',
-    widgetFile: 'class-fc-nav.php',
-    icon: 'eicon-nav-menu',
-    category: fcCategory,
-  },
-  {
-    key: 'fc_hero',
-    source: 'founders-circle/section-01-hero.html',
-    name: 'fc-hero',
-    title: 'FC Hero',
-    className: 'FC_Hero',
-    widgetFile: 'class-fc-hero.php',
-    icon: 'eicon-banner',
-    category: fcCategory,
-  },
-  {
-    key: 'fc_intro',
-    source: 'founders-circle/section-02-intro.html',
-    name: 'fc-intro',
-    title: 'FC Intro',
-    className: 'FC_Intro',
-    widgetFile: 'class-fc-intro.php',
-    icon: 'eicon-info-circle-o',
-    category: fcCategory,
-  },
-  {
-    key: 'fc_form',
-    source: 'founders-circle/section-02-form.html',
-    name: 'fc-form',
-    title: 'FC Inquiry Form',
-    className: 'FC_Form',
-    widgetFile: 'class-fc-form.php',
-    icon: 'eicon-form-horizontal',
-    category: fcCategory,
-  },
-  {
-    key: 'fc_be_first',
-    source: 'founders-circle/section-03-be-first.html',
-    name: 'fc-be-first',
-    title: 'FC Be First',
-    className: 'FC_Be_First',
-    widgetFile: 'class-fc-be-first.php',
-    icon: 'eicon-star',
-    category: fcCategory,
-  },
-  {
-    key: 'fc_benefits',
-    source: 'founders-circle/section-04-benefits.html',
-    name: 'fc-benefits',
-    title: 'FC Benefits',
-    className: 'FC_Benefits',
-    widgetFile: 'class-fc-benefits.php',
-    icon: 'eicon-check-circle',
-    category: fcCategory,
-  },
-  {
-    key: 'fc_journey',
-    source: 'founders-circle/section-05-journey.html',
-    name: 'fc-journey-header',
-    title: 'FC Journey',
-    className: 'FC_Journey_Header',
-    widgetFile: 'class-fc-journey-header.php',
-    icon: 'eicon-map-pin',
-    category: fcCategory,
-  },
-  {
-    key: 'fc_journey_interactive_map_image',
-    source: 'founders-circle/section-05-journey-interactive-map-image.html',
-    name: 'fc-journey-interactive-map-image',
-    title: 'FC Journey Interactive Map Image',
-    className: 'FC_Journey_Interactive_Map_Image',
-    widgetFile: 'class-fc-journey-interactive-map-image.php',
-    icon: 'eicon-map-pin',
-    category: fcCategory,
-  },
-  {
-    key: 'fc_journey_map_snapshot',
-    source: 'founders-circle/section-05-journey-map-snapshot.html',
-    name: 'fc-journey-map-snapshot',
-    title: 'FC Journey Map Snapshot',
-    className: 'FC_Journey_Map_Snapshot',
-    widgetFile: 'class-fc-journey-map-snapshot.php',
-    icon: 'eicon-map-pin',
-    category: fcCategory,
-  },
-  {
-    key: 'fc_journey_no_map',
-    source: 'founders-circle/section-05-journey-no-map.html',
-    name: 'fc-journey-no-map',
-    title: 'FC Journey No Map',
-    className: 'FC_Journey_No_Map',
-    widgetFile: 'class-fc-journey-no-map.php',
-    icon: 'eicon-map-pin',
-    category: fcCategory,
-  },
-  {
-    key: 'fc_map',
-    source: 'founders-circle/section-05-map.html',
-    name: 'fc-map',
-    title: 'FC Route Map',
-    className: 'FC_Map',
-    widgetFile: 'class-fc-map.php',
-    icon: 'eicon-map-pin',
-    category: fcCategory,
-  },
-  {
-    key: 'fc_pricing',
-    source: 'founders-circle/section-05a-pricing.html',
-    name: 'fc-pricing',
-    title: 'FC Pricing',
-    className: 'FC_Pricing',
-    widgetFile: 'class-fc-pricing.php',
-    icon: 'eicon-price-table',
-    category: fcCategory,
-  },
-  {
-    key: 'fc_cta',
-    source: 'founders-circle/section-05b-cta.html',
-    name: 'fc-cta',
-    title: 'FC CTA',
-    className: 'FC_CTA',
-    widgetFile: 'class-fc-cta.php',
-    icon: 'eicon-call-to-action',
-    category: fcCategory,
-  },
-  {
-    key: 'fc_why',
-    source: 'founders-circle/section-06-why.html',
-    name: 'fc-why',
-    title: 'FC Why Umoya',
-    className: 'FC_Why',
-    widgetFile: 'class-fc-why.php',
-    icon: 'eicon-heart-o',
-    category: fcCategory,
-  },
-  {
-    key: 'fc_pillars',
-    source: 'founders-circle/section-06b-pillars.html',
-    name: 'fc-pillars',
-    title: 'FC Pillars',
-    className: 'FC_Pillars',
-    widgetFile: 'class-fc-pillars.php',
-    icon: 'eicon-columns',
-    category: fcCategory,
-  },
-  {
-    key: 'fc_details',
-    source: 'founders-circle/section-07-details.html',
-    name: 'fc-details',
-    title: 'FC Travel Essentials',
-    className: 'FC_Details',
-    widgetFile: 'class-fc-details.php',
-    icon: 'eicon-accordion',
-    category: fcCategory,
-  },
   {
     key: 'homepage_form_popup',
     source: 'homepage/homepage-form-popup.html',
