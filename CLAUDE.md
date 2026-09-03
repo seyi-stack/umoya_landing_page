@@ -1239,6 +1239,49 @@ control search.
   markup is also rejected — which is what keeps the inquiry form's six field
   rows separate, one of them holding a 200-option country list.
 
+#### Follow-up, same day: native options and Elementor's naming
+
+Reviewing the first pass against Elementor's own widgets surfaced two real gaps.
+
+**1. Boolean attributes were invisible, so media had no controls.** The
+compiler bound attributes by *value*, and `autoplay`, `muted`, `loop`,
+`playsinline`, `controls`, `required`, `disabled`, `checked` carry none. The
+hero's video therefore had no playback options at all — the complaint that "the
+video loader doesn't have the native functions the Elementor video widget
+would". Each flag is now a switcher named as Elementor names it (**Autoplay**,
+**Mute**, **Play On Mobile**, **Loop**, **Player Controls**), and a flag an
+element *supports but does not carry* is offered too, defaulting to off so the
+markup is unchanged until it is switched on. Enumerable attributes
+(`preload`, `loading`, `target`, `method`…) became dropdowns rather than
+free-text boxes.
+
+> The switcher stores the whitespace that preceded the attribute, not a plain
+> space. The hero's `<video>` puts every attribute on its own line; assuming a
+> space folded them together, and the fidelity check failed on the first run —
+> working exactly as intended.
+
+**2. Panel names read like CSS, not like Elementor.** They were built from class
+names and carried a copy preview and an ancestor chain:
+`Rv › Eyebrow — Our Signature Journey`. Now a role vocabulary maps class stems
+and tags onto Elementor's own words — Header, Title, Eyebrow, Icon, Divider,
+Card, Item — made unique by the shortest form that distinguishes it (bare role,
+then parent's role in front, then a number). Generic ancestors never prefix a
+child, because `Container Title` says no more than `Title`. Control labels are
+the property alone (`Poster`, `Alt Text`, `Link`); the panel already names the
+element. Controls are grouped under headings inside each panel, as Elementor's
+Accordion separates *Title* from *Icon*, and the copy preview moved inside the
+panel as a descriptor line.
+
+**Also fixed: `build.mjs --only=<key>` used to truncate the registry.** It wrote
+a manifest containing only the sections it had just built, which unregistered
+the other eleven widgets — indistinguishable from the widgets breaking. `--only`
+now merges into the existing manifest and preserves placement order.
+
+> If autoplay ever appears not to work, check **Mute** first. Browsers only
+> permit autoplay while a video is muted; the native Video widget screenshot
+> that prompted this had Autoplay on and Mute off, which Chrome blocks. The
+> compiled hero carries `muted` in its markup, which is why it plays.
+
 #### What changed in the plugin
 
 - **New:** `includes/class-section-widget.php` (the native widget base),

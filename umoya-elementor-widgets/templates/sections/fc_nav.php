@@ -52,7 +52,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           alt="<?php echo $c['image_alt']; ?>"
           onerror="this.style.display='none';document.getElementById('fcNLT').style.display='inline';"
         />
-        <span class="fc-nav-logo-text" id="fcNLT" style="<?php echo $s['logo_text_umoya_inline_style']; ?>"><?php echo $c['logo_text_umoya_text']; ?></span>
+        <span class="fc-nav-logo-text" id="fcNLT" style="<?php echo $s['text_inline_style']; ?>"><?php echo $c['text_text']; ?></span>
       </a>
 
       <!-- Desktop section links -->
@@ -63,23 +63,22 @@ if ( ! defined( 'ABSPATH' ) ) {
         </li><?php endforeach; echo "\n      "; ?></ul>
 
       <!-- Desktop CTA -->
-      <a class="fc-nav-cta" href="<?php echo $c['cta_reserve_your_place_href']; ?>"><?php echo $c['cta_reserve_your_place_text']; ?></a>
+      <a class="fc-nav-cta" href="<?php echo $c['button_href']; ?>"><?php echo $c['button_text']; ?></a>
 
       <!-- Hamburger -->
       <button
         class="fc-nav-burger"
         id="fcNavBurger"
-        aria-label="<?php echo $c['burger_aria_label']; ?>"
+        aria-label="<?php echo $c['button_aria_label']; ?>"
         aria-expanded="false"
-        aria-controls="fcNavDropdown"
-      >
+        aria-controls="fcNavDropdown"<?php echo $c['button_disabled']; echo "\n      "; ?>>
         <span></span>
         <span></span>
         <span></span>
       </button>
 
       <!-- Mobile dropdown — inside the nav so it follows sticky position -->
-      <div class="fc-nav-dropdown" id="fcNavDropdown" role="menu" aria-label="<?php echo $c['dropdown_aria_label']; ?>">
+      <div class="fc-nav-dropdown" id="fcNavDropdown" role="menu" aria-label="<?php echo $c['container_aria_label']; ?>">
 
         <ul class="fc-nav-dropdown-list" role="list">
           <?php $__i = 0; foreach ( $r['rep_li_fc_nav_dropdown_item'] as $it ) : if ( $__i ++ ) { echo '
@@ -88,7 +87,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           </li><?php endforeach; echo "\n        "; ?></ul>
 
         <div class="fc-nav-dropdown-cta-row">
-          <a class="fc-nav-dropdown-cta" href="<?php echo $c['cta_reserve_your_place_href_2']; ?>"><?php echo $c['cta_reserve_your_place_text_2']; ?></a>
+          <a class="fc-nav-dropdown-cta" href="<?php echo $c['button_href_2']; ?>"><?php echo $c['button_text_2']; ?></a>
         </div>
 
       </div><!-- /.fc-nav-dropdown -->

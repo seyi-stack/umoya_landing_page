@@ -32,8 +32,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         <!-- ── COPY + CHECKLIST (left) ────────────── -->
         <div class="fc-ben-reveal">
-          <span class="fc-ben-eyebrow"><?php echo $c['eyebrow_membership_privileges_text']; ?></span>
-          <h2 class="fc-ben-title"><?php echo $c['title_what_your_membership_includ_text']; ?></h2>
+          <span class="fc-ben-eyebrow"><?php echo $c['eyebrow_text']; ?></span>
+          <h2 class="fc-ben-title"><?php echo $c['title_text']; ?></h2>
           <span class="fc-ben-rule" aria-hidden="true"></span>
 
           <ul class="fc-ben-list" aria-label="<?php echo $c['list_aria_label']; ?>">
@@ -46,7 +46,7 @@ if ( ! defined( 'ABSPATH' ) ) {
               </span>
               <?php echo $it['li']; echo "\n            "; ?></li><?php endforeach; echo "\n\n          "; ?></ul>
 
-          <a href="<?php echo $c['button_request_your_membership_href']; ?>" class="fc-ben-btn"><?php echo $c['button_request_your_membership_text']; ?></a>
+          <a href="<?php echo $c['button_href']; ?>" class="fc-ben-btn"><?php echo $c['button_text']; ?></a>
         </div>
 
         <!-- ── IMAGE (right) ──────────────────────── -->

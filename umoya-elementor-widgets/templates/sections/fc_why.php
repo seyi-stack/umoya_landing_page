@@ -37,28 +37,28 @@ if ( ! defined( 'ABSPATH' ) ) {
   <!-- Content -->
   <div class="fc-pil-content">
     <div class="fc-pil-header">
-      <h2 class="fc-pil-heading"><?php echo $c['heading_why_umoya_afrika_tours_text']; ?></h2>
+      <h2 class="fc-pil-heading"><?php echo $c['title_text']; ?></h2>
     </div>
     <div class="fc-pil-grid" role="list">
 
       <div class="fc-pil-col fc-pil-rv" role="listitem">
-        <h3 class="fc-pil-title"><?php echo $c['title_african_led_african_owned_text']; ?></h3>
-        <p class="fc-pil-body"><?php echo $c['body_of_the_diaspora_with_relat_text']; ?></p>
+        <h3 class="fc-pil-title"><?php echo $c['title_text_2']; ?></h3>
+        <p class="fc-pil-body"><?php echo $c['text_text']; ?></p>
       </div>
 
       <div class="fc-pil-col fc-pil-rv d1" role="listitem">
-        <h3 class="fc-pil-title"><?php echo $c['title_cultural_custodians_who_kno_text']; ?></h3>
-        <p class="fc-pil-body"><?php echo $c['body_our_cultural_custodians_wel_text']; ?></p>
+        <h3 class="fc-pil-title"><?php echo $c['title_text_3']; ?></h3>
+        <p class="fc-pil-body"><?php echo $c['text_text_2']; ?></p>
       </div>
 
       <div class="fc-pil-col fc-pil-rv d2" role="listitem">
-        <h3 class="fc-pil-title"><?php echo $c['title_premium_accommodations_text']; ?></h3>
-        <p class="fc-pil-body"><?php echo $c['body_each_property_is_carefully_text']; ?></p>
+        <h3 class="fc-pil-title"><?php echo $c['title_text_4']; ?></h3>
+        <p class="fc-pil-body"><?php echo $c['text_text_3']; ?></p>
       </div>
 
       <div class="fc-pil-col fc-pil-rv d3" role="listitem">
-        <h3 class="fc-pil-title"><?php echo $c['title_looked_after_end_to_end_text']; ?></h3>
-        <p class="fc-pil-body"><?php echo $c['body_from_the_moment_you_land_y_text']; ?></p>
+        <h3 class="fc-pil-title"><?php echo $c['title_text_5']; ?></h3>
+        <p class="fc-pil-body"><?php echo $c['text_text_4']; ?></p>
       </div>
 
     </div>

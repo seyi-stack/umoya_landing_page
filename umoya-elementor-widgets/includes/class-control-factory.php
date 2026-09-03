@@ -59,12 +59,26 @@ class Control_Factory {
 			)
 		);
 
+		// The panel header names the element; this line says which one it is.
+		// It replaces the copy preview that used to be appended to the header and
+		// made the panel list hard to scan.
+		if ( ! empty( $part['sample'] ) ) {
+			$widget->add_control(
+				$id . '_sample',
+				array(
+					'type'            => Controls_Manager::RAW_HTML,
+					'raw'             => '&ldquo;' . esc_html( $part['sample'] ) . '&rdquo;',
+					'content_classes' => 'elementor-descriptor',
+				)
+			);
+		}
+
 		if ( ! empty( $part['shared'] ) ) {
 			$widget->add_control(
 				$id . '_shared_notice',
 				array(
 					'type'            => Controls_Manager::RAW_HTML,
-					'raw'             => 'These settings apply to every element matching <code>' . esc_html( $part['selector'] ) . '</code>.',
+					'raw'             => 'Applies to every <code>' . esc_html( $part['selector'] ) . '</code> in this section.',
 					'content_classes' => 'elementor-descriptor',
 				)
 			);
@@ -79,6 +93,22 @@ class Control_Factory {
 		self::add_states( $widget, $id, $target, $features );
 
 		$widget->end_controls_section();
+	}
+
+	/**
+	 * Elementor breaks a long panel into named groups with a HEADING rather than
+	 * running forty controls together -- see the Accordion widget's Header panel,
+	 * which separates "Title" from "Icon" exactly this way.
+	 */
+	private static function heading( $widget, $id, $label ) {
+		$widget->add_control(
+			$id,
+			array(
+				'label'     => $label,
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			)
+		);
 	}
 
 	/**
@@ -97,6 +127,8 @@ class Control_Factory {
 		if ( ! in_array( 'typography', $features, true ) ) {
 			return;
 		}
+
+		self::heading( $widget, $id . '_typography_heading', 'Typography' );
 
 		$widget->add_group_control(
 			Group_Control_Typography::get_type(),
@@ -168,6 +200,10 @@ class Control_Factory {
 	/* ------------------------------------------------------------------- box */
 
 	private static function add_box( $widget, $id, $target, array $features ) {
+		if ( in_array( 'background', $features, true ) || in_array( 'border', $features, true ) || in_array( 'shadow', $features, true ) ) {
+			self::heading( $widget, $id . '_box_heading', 'Background & Border' );
+		}
+
 		if ( in_array( 'background', $features, true ) ) {
 			$widget->add_group_control(
 				Group_Control_Background::get_type(),
@@ -213,6 +249,8 @@ class Control_Factory {
 		}
 
 		if ( in_array( 'spacing', $features, true ) ) {
+			self::heading( $widget, $id . '_spacing_heading', 'Spacing' );
+
 			$widget->add_responsive_control(
 				$id . '_padding',
 				array(
@@ -244,6 +282,8 @@ class Control_Factory {
 
 	private static function add_layout( $widget, $id, $target, array $features ) {
 		if ( in_array( 'sizing', $features, true ) ) {
+			self::heading( $widget, $id . '_sizing_heading', 'Size' );
+
 			foreach ( array(
 				'width'      => 'Width',
 				'max_width'  => 'Max Width',
@@ -476,6 +516,8 @@ class Control_Factory {
 			return;
 		}
 
+		self::heading( $widget, $id . '_media_heading', 'Image Fit' );
+
 		$widget->add_control(
 			$id . '_object_fit',
 			array(
@@ -532,6 +574,8 @@ class Control_Factory {
 			return;
 		}
 
+		self::heading( $widget, $id . '_icon_heading', 'Icon' );
+
 		$widget->add_control(
 			$id . '_svg_stroke',
 			array(
@@ -578,6 +622,8 @@ class Control_Factory {
 		if ( ! in_array( 'effects', $features, true ) ) {
 			return;
 		}
+
+		self::heading( $widget, $id . '_effects_heading', 'Effects' );
 
 		$widget->add_responsive_control(
 			$id . '_opacity',
@@ -633,6 +679,8 @@ class Control_Factory {
 		if ( ! in_array( 'states', $features, true ) ) {
 			return;
 		}
+
+		self::heading( $widget, $id . '_states_heading', 'States' );
 
 		$widget->start_controls_tabs( $id . '_state_tabs' );
 

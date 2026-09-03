@@ -36,10 +36,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
       <!-- Section header -->
       <div class="fc-det-hd fc-det-rev">
-        <span class="fc-det-eyebrow"><?php echo $c['eyebrow_everything_you_need_to_know_text']; ?></span>
-        <h2 class="fc-det-title"><?php echo $c['title_travel_essentials_text']; ?></h2>
+        <span class="fc-det-eyebrow"><?php echo $c['eyebrow_text']; ?></span>
+        <h2 class="fc-det-title"><?php echo $c['title_text']; ?></h2>
         <span class="fc-det-rule" aria-hidden="true"></span>
-        <p class="fc-det-lead"><?php echo $c['lead_travel_with_clarity_and_con_text']; ?></p>
+        <p class="fc-det-lead"><?php echo $c['text_text']; ?></p>
       </div>
 
       <!-- Accordion list -->
@@ -51,8 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             class="fc-acc-btn"
             aria-expanded="true"
             aria-controls="fc-det-body-2"
-            id="fc-det-btn-2"
-          >
+            id="fc-det-btn-2"<?php echo $c['button_disabled']; echo "\n          "; ?>>
             <div class="fc-acc-left">
               <div class="fc-acc-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24">
@@ -63,8 +62,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </svg>
               </div>
               <div>
-                <p class="fc-acc-title"><?php echo $c['title_plan_with_absolute_confiden_text']; ?></p>
-                <p class="fc-acc-sub"><?php echo $c['subtitle_guaranteed_departures_text']; ?></p>
+                <p class="fc-acc-title"><?php echo $c['title_text_2']; ?></p>
+                <p class="fc-acc-sub"><?php echo $c['subtitle_text']; ?></p>
               </div>
             </div>
             <div class="fc-acc-chev" aria-hidden="true">
@@ -73,7 +72,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           </button>
           <div class="fc-acc-body" id="fc-det-body-2" role="region" aria-labelledby="fc-det-btn-2">
             <div class="fc-acc-content">
-              <?php echo $c['content_once_your_departure_is_conf_text']; echo "\n            "; ?></div>
+              <?php echo $c['content_text']; echo "\n            "; ?></div>
           </div>
         </div>
 

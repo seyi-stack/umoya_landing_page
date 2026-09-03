@@ -33,15 +33,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         <!-- ── LEFT: Philosophy copy ───────────────── -->
         <div class="fc-why-rev">
-          <span class="fc-why-eyebrow"><?php echo $c['eyebrow_our_approach_text']; ?></span>
-          <h2 class="fc-why-title"><?php echo $c['title_a_new_company_built_on_lon_text']; ?></h2>
+          <span class="fc-why-eyebrow"><?php echo $c['eyebrow_text']; ?></span>
+          <h2 class="fc-why-title"><?php echo $c['title_text']; ?></h2>
           <span class="fc-why-rule" aria-hidden="true"></span>
 
-          <p class="fc-why-lead"><?php echo $c['lead_it_is_built_on_people_we_kn_text']; ?></p>
+          <p class="fc-why-lead"><?php echo $c['text_text']; ?></p>
 
           <?php $__i = 0; foreach ( $r['rep_p_fc_why_body'] as $it ) : if ( $__i ++ ) { echo '
 
-          '; } ?><p class="fc-why-body <?php echo $it['_uew_item_class']; ?>"><?php echo $it['body_markup']; ?></p><?php endforeach; echo "\n          "; ?><a href="<?php echo $c['button_travel_with_us_href']; ?>" class="fc-why-btn"><?php echo $c['button_travel_with_us_text']; ?></a>
+          '; } ?><p class="fc-why-body <?php echo $it['_uew_item_class']; ?>"><?php echo $it['body_markup']; ?></p><?php endforeach; echo "\n          "; ?><a href="<?php echo $c['button_href']; ?>" class="fc-why-btn"><?php echo $c['button_text']; ?></a>
         </div>
 
         <!-- ── RIGHT: Video + CTA ─────────────────── -->
@@ -49,7 +49,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
           <!-- Video block -->
           <div class="fc-vid-wrap">
-            <button class="fc-vid-ph" type="<?php echo $c['video_placeholder_type']; ?>" aria-label="<?php echo $c['video_placeholder_aria_label']; ?>" aria-haspopup="dialog" aria-controls="fc-why-video-modal">
+            <button class="fc-vid-ph" type="<?php echo $c['button_type']; ?>" aria-label="<?php echo $c['button_aria_label']; ?>" aria-haspopup="dialog" aria-controls="fc-why-video-modal"<?php echo $c['button_disabled']; ?>>
               <span class="fc-play" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
               </span>
@@ -62,20 +62,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
     </div>
-    <div class="fc-video-modal" id="fc-why-video-modal" role="dialog" aria-modal="true" aria-label="<?php echo $c['modal_aria_label']; ?>" hidden>
+    <div class="fc-video-modal" id="fc-why-video-modal" role="dialog" aria-modal="true" aria-label="<?php echo $c['container_aria_label']; ?>" hidden>
       <div class="fc-video-backdrop" data-fc-video-close></div>
       <div class="fc-video-dialog">
-        <button class="fc-video-close" type="<?php echo $c['close_type']; ?>" aria-label="<?php echo $c['close_aria_label']; ?>" data-fc-video-close>
-          <span aria-hidden="true"><?php echo $c['span_text']; ?></span>
+        <button class="fc-video-close" type="<?php echo $c['button_type_2']; ?>" aria-label="<?php echo $c['button_aria_label_2']; ?>" data-fc-video-close<?php echo $c['button_disabled_2']; ?>>
+          <span aria-hidden="true"><?php echo $c['text_text_2']; ?></span>
         </button>
         <video
           class="fc-video-player"
-          src="<?php echo $c['player_src']; ?>"
-          preload="<?php echo $c['player_preload']; ?>"
-          controls
-          controlsList="nodownload"
-          playsinline
-          aria-label="<?php echo $c['player_aria_label']; ?>">
+          src="<?php echo $c['video_src']; ?>"
+          preload="<?php echo $c['video_preload']; ?>"<?php echo $c['video_controls']; echo "\n          "; ?>controlsList="nodownload"<?php echo $c['video_playsinline']; echo "\n          "; ?>aria-label="<?php echo $c['video_aria_label']; ?>"<?php echo $c['video_autoplay']; ?><?php echo $c['video_muted']; ?><?php echo $c['video_loop']; ?><?php echo $c['video_disablepictureinpicture']; ?>>
         </video>
       </div>
     </div>

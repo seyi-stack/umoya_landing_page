@@ -47,6 +47,7 @@ final class Section_Registry {
 					'integration_controls' => array(),
 					'form_controls'       => array(),
 					'behaviour_controls'  => array(),
+					'media_controls'      => array(),
 					'inline_style_controls' => array(),
 					'repeaters'           => array(),
 					'style_parts'         => array(),

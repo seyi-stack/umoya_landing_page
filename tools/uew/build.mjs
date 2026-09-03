@@ -116,7 +116,7 @@ function buildContentPanels( fields, parts ) {
 	// Fields carrying a `tab` belong to a dedicated panel -- CRM wiring, field
 	// behaviour, media attributes -- rather than to the element they sit on.
 	// Splitting first is what stops them landing in an unnamed catch-all.
-	const tabbed = { integration: [], form: [], behaviour: [], inline_style: [] };
+	const tabbed = { integration: [], form: [], behaviour: [], inline_style: [], media: [] };
 	const labelByPart = new Map( parts.map( ( part ) => [ part.id, part.label ] ) );
 
 	const byGroup = new Map();
@@ -139,7 +139,13 @@ function buildContentPanels( fields, parts ) {
 		const controls = byGroup.get( part.id );
 		byGroup.delete( part.id );
 		if ( ! controls || ! controls.length ) continue;
-		panels.push( { id: 'content_' + part.id, label: part.label, controls: sortControls( controls ) } );
+		panels.push( {
+			id: 'content_' + part.id,
+			label: part.label,
+			sample: part.sample || '',
+			region_label: part.parent_label || '',
+			controls: sortControls( controls ).map( ( c ) => ( { ...c, part_label: part.label } ) ),
+		} );
 	}
 
 	// Anything unattached (shouldn't happen, but never drop a control silently).
@@ -155,21 +161,49 @@ function sortControls( controls ) {
 	return [ ...controls ].sort( ( a, b ) => ( a.sort || 0 ) - ( b.sort || 0 ) );
 }
 
-/** Fold single-control panels into the previous one, up to the size cap. */
+/**
+ * Fold single-control panels into the previous one, up to the size cap.
+ *
+ * Merging is what keeps the Content tab from being forty panels of one control
+ * each. The catch is that two different elements can share a control label --
+ * a section with a header Title and a button Title ends up with two controls
+ * both called "Title" and no way to tell them apart. When that happens the
+ * control takes its part's (already unique) name instead.
+ *
+ * The root Section panel is never merged into: it holds attributes of the
+ * section itself, which is a different kind of thing from its contents.
+ */
 function mergeSmallPanels( panels ) {
 	const out = [];
+
 	for ( const panel of panels ) {
 		const previous = out[ out.length - 1 ];
-		if (
-			previous &&
+		const mergeable = previous &&
+			'Section' !== previous.label &&
 			panel.controls.length === 1 &&
-			previous.controls.length + 1 <= MAX_CONTROLS_PER_PANEL
-		) {
-			previous.controls.push( ...panel.controls );
+			previous.controls.length + 1 <= MAX_CONTROLS_PER_PANEL;
+
+		if ( ! mergeable ) {
+			out.push( panel );
 			continue;
 		}
-		out.push( panel );
+
+		const taken = new Set( previous.controls.map( ( c ) => c.label ) );
+		for ( const control of panel.controls ) {
+			if ( taken.has( control.label ) && control.part_label && control.part_label !== control.label ) {
+				control.label = control.part_label;
+			}
+			taken.add( control.label );
+			previous.controls.push( control );
+		}
+
+		// Once a panel holds more than one element it is a region, not that
+		// element, and keeping the first one's name ("Eyebrow" for a panel of
+		// six controls) misdescribes it.
+		previous.merged = true;
+		previous.label = previous.region_label || 'Content';
 	}
+
 	return out;
 }
 
@@ -227,6 +261,7 @@ for ( const registry of registries ) {
 			form_controls: tabbed.form,
 			behaviour_controls: tabbed.behaviour,
 			inline_style_controls: tabbed.inline_style,
+			media_controls: tabbed.media,
 			repeaters: derived.repeaters,
 			style_parts: derived.parts,
 			inline_styles: derived.fields.filter( ( f ) => f.control === 'inline_style_group' ),
@@ -262,7 +297,31 @@ for ( const registry of registries ) {
 	}
 }
 
-writeFile( 'includes/sections/index.json', JSON.stringify( manifest, null, '\t' ) + '\n' );
+/*
+ * The manifest is the registry: a key missing from it is a widget WordPress
+ * will not register. A `--only` run must therefore merge into what is already
+ * there, not replace it -- writing just the section being worked on silently
+ * unregisters the other eleven, which is exactly what happened once here and
+ * looked for all the world like the widgets had broken.
+ */
+const manifestPath = path.join( pluginRoot, 'includes', 'sections', 'index.json' );
+let merged = manifest;
+if ( onlyKeys && fs.existsSync( manifestPath ) ) {
+	const existing = JSON.parse( fs.readFileSync( manifestPath, 'utf8' ) );
+	merged = { ...existing, ...manifest };
+
+	// Keep the registry in the registries' own order, so the widget panel lists
+	// sections in the order they are placed on the page.
+	const ordered = {};
+	for ( const registry of registries ) {
+		for ( const section of registry.sections ) {
+			if ( merged[ section.key ] ) ordered[ section.key ] = merged[ section.key ];
+		}
+	}
+	merged = ordered;
+}
+
+writeFile( 'includes/sections/index.json', JSON.stringify( merged, null, '\t' ) + '\n' );
 
 /* ----------------------------------------------------------- verification */
 

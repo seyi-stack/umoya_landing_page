@@ -107,6 +107,7 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 		$this->register_grouped_controls( $config, 'integration_controls', 'uew_integration', 'CRM & Form Wiring', Controls_Manager::TAB_CONTENT );
 		$this->register_grouped_controls( $config, 'form_controls', 'uew_form', 'Field Behaviour', Controls_Manager::TAB_CONTENT );
 		$this->register_grouped_controls( $config, 'behaviour_controls', 'uew_behaviour', 'Media & Link Behaviour', Controls_Manager::TAB_CONTENT );
+		$this->register_grouped_controls( $config, 'media_controls', 'uew_media', 'Video &amp; Media Options', Controls_Manager::TAB_CONTENT );
 		$this->register_grouped_controls( $config, 'inline_style_controls', 'uew_inline_style', 'Inline Styles', Controls_Manager::TAB_STYLE );
 		$this->register_token_controls( $config );
 		$this->register_style_controls( $config );
@@ -397,6 +398,15 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 				$args['default'] = isset( $field['default'] ) ? $field['default'] : '';
 				break;
 
+			case 'switcher':
+				$args['type']         = Controls_Manager::SWITCHER;
+				$args['default']      = isset( $field['default'] ) ? $field['default'] : '';
+				$args['label_on']     = 'Yes';
+				$args['label_off']    = 'No';
+				$args['return_value'] = 'yes';
+				$args['label_block']  = false;
+				break;
+
 			case 'hidden':
 				$args['type']    = Controls_Manager::HIDDEN;
 				$args['default'] = isset( $field['default'] ) ? $field['default'] : '';
@@ -460,6 +470,15 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 			$esc = isset( $field['esc'] ) ? $field['esc'] : 'post';
 
 			$value = array_key_exists( $id, $settings ) ? $settings[ $id ] : ( isset( $field['default'] ) ? $field['default'] : '' );
+
+			if ( ! empty( $field['flag_attr'] ) ) {
+				$values[ $id ] = Value_Formatter::flag(
+					$value,
+					$field['flag_attr'],
+					isset( $field['flag_prefix'] ) ? $field['flag_prefix'] : ' '
+				);
+				continue;
+			}
 
 			$values[ $id ] = Value_Formatter::scalar( $value, $esc, isset( $field['default'] ) ? $field['default'] : null );
 		}

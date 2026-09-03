@@ -75,74 +75,92 @@
 		{
 			"id": "content_p_section",
 			"label": "Section",
+			"sample": "",
+			"region_label": "",
 			"controls": [
 				{
 					"id": "section_aria_label",
 					"control": "text",
-					"label": "Section – Aria Label",
+					"label": "Accessible Name",
 					"default": "Your Journey Begins Here — the Signature Journey",
 					"esc": "attr",
 					"group": "p_section",
 					"tab": "content",
-					"sort": 1
-				},
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_jrn_hd_div_fc_jrn_eye",
+			"label": "Header",
+			"sample": "Our Signature Journey",
+			"region_label": "Header",
+			"controls": [
 				{
-					"id": "eyebrow_our_signature_journey_text",
+					"id": "eyebrow_text",
 					"control": "text",
-					"label": "Eyebrow — Our Signature Journey",
+					"label": "Eyebrow",
 					"description": "",
 					"default": "Our Signature Journey",
 					"esc": "post",
 					"group": "p_fc_jrn_hd_div_fc_jrn_eye",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Header Eyebrow 1"
 				},
 				{
-					"id": "title_your_journey_begins_here_text",
+					"id": "title_text",
 					"control": "textarea",
-					"label": "Title — Your Journey Begins Here",
+					"label": "Title",
 					"description": "Inline formatting tags are preserved.",
 					"default": "Your Journey <em>Begins Here</em>",
 					"esc": "post",
 					"group": "p_fc_jrn_ttl",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Header Title"
 				},
 				{
-					"id": "lead_three_immersive_chapters_f_text",
+					"id": "text_text",
 					"control": "textarea",
-					"label": "Lead — Three immersive chapters, f…",
+					"label": "Text",
 					"description": "",
 					"default": "Three immersive chapters, from the culture and history of Johannesburg, to safari in the Sabi Sand, to the Cape.",
 					"esc": "post",
 					"group": "p_fc_jrn_lead",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Header Text"
 				},
 				{
-					"id": "eyebrow_optional_extensions_text",
+					"id": "eyebrow_text_2",
 					"control": "text",
-					"label": "Eyebrow — Optional Extensions",
+					"label": "Header Eyebrow 2",
 					"description": "",
 					"default": "Optional Extensions",
 					"esc": "post",
 					"group": "p_fc_jrn_ext_head_fc_jrn_eye",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Header Eyebrow 2"
 				},
 				{
-					"id": "subhead_experiences_beyond_south_af_text",
+					"id": "heading_text",
 					"control": "text",
-					"label": "Subhead — Experiences Beyond South Af…",
+					"label": "Heading",
 					"description": "",
 					"default": "Experiences Beyond South Africa",
 					"esc": "post",
 					"group": "p_fc_jrn_subhead",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Heading"
 				}
-			]
+			],
+			"merged": true
 		}
 	],
 	"integration_controls": [],
 	"form_controls": [],
 	"behaviour_controls": [],
 	"inline_style_controls": [],
+	"media_controls": [],
 	"repeaters": [
 		{
 			"id": "rep_div_fc_jrn_stat",
@@ -339,6 +357,8 @@
 			"id": "p_section",
 			"label": "Section",
 			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
 			"selector": "",
 			"tag": "section",
 			"features": [
@@ -360,8 +380,10 @@
 		},
 		{
 			"id": "p_fc_jrn_top",
-			"label": "Top",
-			"short_label": "Top",
+			"label": "Header 1",
+			"short_label": "Header",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-jrn-top",
 			"tag": "div",
 			"features": [
@@ -384,8 +406,10 @@
 		},
 		{
 			"id": "p_fc_jrn_top_fc_jrn_c",
-			"label": "Top › Container",
+			"label": "Header Container 1",
 			"short_label": "Container",
+			"parent_label": "Header",
+			"sample": "",
 			"selector": ".fc-jrn-top > .fc-jrn-c",
 			"tag": "div",
 			"features": [
@@ -408,8 +432,10 @@
 		},
 		{
 			"id": "p_fc_jrn_hd",
-			"label": "Container › Header",
+			"label": "Header 2",
 			"short_label": "Header",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-jrn-hd",
 			"tag": "div",
 			"features": [
@@ -432,8 +458,10 @@
 		},
 		{
 			"id": "p_fc_jrn_hd_div",
-			"label": "Header › Div",
-			"short_label": "Div",
+			"label": "Header Container 2",
+			"short_label": "Container",
+			"parent_label": "Header",
+			"sample": "",
 			"selector": ".fc-jrn-hd > div",
 			"tag": "div",
 			"features": [
@@ -456,8 +484,10 @@
 		},
 		{
 			"id": "p_fc_jrn_hd_div_fc_jrn_eye",
-			"label": "Div › Eyebrow — Our Signature Journey",
+			"label": "Header Eyebrow 1",
 			"short_label": "Eyebrow",
+			"parent_label": "Header",
+			"sample": "Our Signature Journey",
 			"selector": ".fc-jrn-hd > div > .fc-jrn-eye",
 			"tag": "span",
 			"features": [
@@ -481,8 +511,10 @@
 		},
 		{
 			"id": "p_fc_jrn_ttl",
-			"label": "Div › Title — Your Journey Begins Here",
+			"label": "Header Title",
 			"short_label": "Title",
+			"parent_label": "Header",
+			"sample": "Your Journey Begins Here",
 			"selector": ".fc-jrn-ttl",
 			"tag": "h2",
 			"features": [
@@ -506,8 +538,10 @@
 		},
 		{
 			"id": "p_em",
-			"label": "Title › Em — Begins Here",
-			"short_label": "Em",
+			"label": "Emphasis",
+			"short_label": "Emphasis",
+			"parent_label": "Title",
+			"sample": "Begins Here",
 			"selector": "em",
 			"tag": "em",
 			"features": [
@@ -531,8 +565,10 @@
 		},
 		{
 			"id": "p_fc_jrn_stats",
-			"label": "Header › Stats",
+			"label": "Stats",
 			"short_label": "Stats",
+			"parent_label": "Header",
+			"sample": "",
 			"selector": ".fc-jrn-stats",
 			"tag": "div",
 			"features": [
@@ -555,8 +591,10 @@
 		},
 		{
 			"id": "p_fc_jrn_stat",
-			"label": "Stats › Stat",
+			"label": "Stat",
 			"short_label": "Stat",
+			"parent_label": "Stats",
+			"sample": "",
 			"selector": ".fc-jrn-stat",
 			"tag": "div",
 			"features": [
@@ -579,8 +617,10 @@
 		},
 		{
 			"id": "p_fc_jrn_stat_div_nth_of_type_1",
-			"label": "Stat › Number — 10",
-			"short_label": "Number",
+			"label": "Stat Text 1",
+			"short_label": "Text",
+			"parent_label": "Stat",
+			"sample": "10",
 			"selector": ".fc-jrn-stat > div:nth-of-type(1)",
 			"tag": "div",
 			"features": [
@@ -603,8 +643,10 @@
 		},
 		{
 			"id": "p_fc_jrn_stat_div_nth_of_type_2",
-			"label": "Stat › Label — Days",
-			"short_label": "Label",
+			"label": "Stat Text 2",
+			"short_label": "Text",
+			"parent_label": "Stat",
+			"sample": "Days",
 			"selector": ".fc-jrn-stat > div:nth-of-type(2)",
 			"tag": "div",
 			"features": [
@@ -627,8 +669,10 @@
 		},
 		{
 			"id": "p_fc_jrn_lead",
-			"label": "Container › Lead — Three immersive chapters, f…",
-			"short_label": "Lead",
+			"label": "Header Text",
+			"short_label": "Text",
+			"parent_label": "Header",
+			"sample": "Three immersive chapters, from the culture and …",
 			"selector": ".fc-jrn-lead",
 			"tag": "p",
 			"features": [
@@ -652,8 +696,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid",
-			"label": "Container › Grid",
-			"short_label": "Grid",
+			"label": "List",
+			"short_label": "List",
+			"parent_label": "Header",
+			"sample": "",
 			"selector": ".fc-jrn-grid",
 			"tag": "div",
 			"features": [
@@ -676,8 +722,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_fc_jrn_tile",
-			"label": "Grid › Tile",
-			"short_label": "Tile",
+			"label": "List Card",
+			"short_label": "Card",
+			"parent_label": "List",
+			"sample": "",
 			"selector": ".fc-jrn-grid > .fc-jrn-tile",
 			"tag": "article",
 			"features": [
@@ -700,8 +748,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_fc_jrn_tile_div_nth_of_type_1",
-			"label": "Tile › Image",
+			"label": "Card Image 1",
 			"short_label": "Image",
+			"parent_label": "Card",
+			"sample": "",
 			"selector": ".fc-jrn-grid > .fc-jrn-tile > div:nth-of-type(1)",
 			"tag": "div",
 			"features": [
@@ -724,8 +774,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_fc_jrn_tile_div_nth_of_type_1_img_nth_of_type_1",
-			"label": "Image › Picture",
-			"short_label": "Picture",
+			"label": "Image 1",
+			"short_label": "Image",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-jrn-grid > .fc-jrn-tile > div:nth-of-type(1) > img:nth-of-type(1)",
 			"tag": "img",
 			"features": [
@@ -746,8 +798,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_fc_jrn_tile_div_nth_of_type_1_div_nth_of_type_1",
-			"label": "Image › Tag",
-			"short_label": "Tag",
+			"label": "Image Label 1",
+			"short_label": "Label",
+			"parent_label": "Image",
+			"sample": "",
 			"selector": ".fc-jrn-grid > .fc-jrn-tile > div:nth-of-type(1) > div:nth-of-type(1)",
 			"tag": "div",
 			"features": [
@@ -770,8 +824,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_fc_jrn_tile_div_nth_of_type_1_div_nth_of_type_1_h3_nth_of_type_1",
-			"label": "Tag › Title — History & Culture",
+			"label": "Label Title 1",
 			"short_label": "Title",
+			"parent_label": "Label",
+			"sample": "History & Culture",
 			"selector": ".fc-jrn-grid > .fc-jrn-tile > div:nth-of-type(1) > div:nth-of-type(1) > h3:nth-of-type(1)",
 			"tag": "h3",
 			"features": [
@@ -795,8 +851,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_fc_jrn_tile_div_nth_of_type_2",
-			"label": "Tile › Body",
-			"short_label": "Body",
+			"label": "Card Content 1",
+			"short_label": "Content",
+			"parent_label": "Card",
+			"sample": "",
 			"selector": ".fc-jrn-grid > .fc-jrn-tile > div:nth-of-type(2)",
 			"tag": "div",
 			"features": [
@@ -819,8 +877,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_fc_jrn_tile_div_nth_of_type_2_span_nth_of_type_1",
-			"label": "Body › Location — Johannesburg & Soweto",
-			"short_label": "Location",
+			"label": "Card Text 1",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "Johannesburg & Soweto",
 			"selector": ".fc-jrn-grid > .fc-jrn-tile > div:nth-of-type(2) > span:nth-of-type(1)",
 			"tag": "span",
 			"features": [
@@ -844,8 +904,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_fc_jrn_tile_div_nth_of_type_2_p_nth_of_type_1",
-			"label": "Body › Description",
-			"short_label": "Description",
+			"label": "Card Content 2",
+			"short_label": "Content",
+			"parent_label": "Card",
+			"sample": "",
 			"selector": ".fc-jrn-grid > .fc-jrn-tile > div:nth-of-type(2) > p:nth-of-type(1)",
 			"tag": "p",
 			"features": [
@@ -869,8 +931,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_fc_jrn_tile_div_nth_of_type_2_p_nth_of_type_1_span_nth_of_type_1",
-			"label": "Description › Name — Lucia Motloung",
-			"short_label": "Name",
+			"label": "Card Text 2",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "Lucia Motloung",
 			"selector": ".fc-jrn-grid > .fc-jrn-tile > div:nth-of-type(2) > p:nth-of-type(1) > span:nth-of-type(1)",
 			"tag": "span",
 			"features": [
@@ -894,8 +958,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_fc_jrn_tile_div_nth_of_type_2_p_nth_of_type_1_span_nth_of_type_2",
-			"label": "Description › Name — Antoinette Sithole",
-			"short_label": "Name",
+			"label": "Card Text 3",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "Antoinette Sithole",
 			"selector": ".fc-jrn-grid > .fc-jrn-tile > div:nth-of-type(2) > p:nth-of-type(1) > span:nth-of-type(2)",
 			"tag": "span",
 			"features": [
@@ -919,8 +985,10 @@
 		},
 		{
 			"id": "p_fc_jrn_divider",
-			"label": "Container › Divider",
+			"label": "Divider",
 			"short_label": "Divider",
+			"parent_label": "Header",
+			"sample": "",
 			"selector": ".fc-jrn-divider",
 			"tag": "hr",
 			"features": [
@@ -943,8 +1011,10 @@
 		},
 		{
 			"id": "p_fc_jrn_ext",
-			"label": "Extension",
-			"short_label": "Extension",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-jrn-ext",
 			"tag": "div",
 			"features": [
@@ -967,8 +1037,10 @@
 		},
 		{
 			"id": "p_fc_jrn_ext_fc_jrn_c",
-			"label": "Extension › Container",
+			"label": "Container 2",
 			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-jrn-ext > .fc-jrn-c",
 			"tag": "div",
 			"features": [
@@ -991,8 +1063,10 @@
 		},
 		{
 			"id": "p_fc_jrn_ext_row",
-			"label": "Container › Extension Row",
-			"short_label": "Extension Row",
+			"label": "Item",
+			"short_label": "Item",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-jrn-ext-row",
 			"tag": "div",
 			"features": [
@@ -1015,8 +1089,10 @@
 		},
 		{
 			"id": "p_fc_jrn_ext_head",
-			"label": "Extension Row › Extension Header",
-			"short_label": "Extension Header",
+			"label": "Item Header",
+			"short_label": "Header",
+			"parent_label": "Item",
+			"sample": "",
 			"selector": ".fc-jrn-ext-head",
 			"tag": "div",
 			"features": [
@@ -1039,8 +1115,10 @@
 		},
 		{
 			"id": "p_fc_jrn_ext_head_fc_jrn_eye",
-			"label": "Extension Header › Eyebrow — Optional Extensions",
+			"label": "Header Eyebrow 2",
 			"short_label": "Eyebrow",
+			"parent_label": "Header",
+			"sample": "Optional Extensions",
 			"selector": ".fc-jrn-ext-head > .fc-jrn-eye",
 			"tag": "span",
 			"features": [
@@ -1064,8 +1142,10 @@
 		},
 		{
 			"id": "p_fc_jrn_subhead",
-			"label": "Extension Header › Subhead — Experiences Beyond South Af…",
-			"short_label": "Subhead",
+			"label": "Heading",
+			"short_label": "Heading",
+			"parent_label": "Header",
+			"sample": "Experiences Beyond South Africa",
 			"selector": ".fc-jrn-subhead",
 			"tag": "h2",
 			"features": [
@@ -1089,8 +1169,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_2",
-			"label": "Extension Row › Grid 2",
-			"short_label": "Grid 2",
+			"label": "Item Container",
+			"short_label": "Container",
+			"parent_label": "Item",
+			"sample": "",
 			"selector": ".fc-jrn-grid-2",
 			"tag": "div",
 			"features": [
@@ -1113,8 +1195,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_2_fc_jrn_tile",
-			"label": "Grid 2 › Tile",
-			"short_label": "Tile",
+			"label": "Item Card",
+			"short_label": "Card",
+			"parent_label": "Item",
+			"sample": "",
 			"selector": ".fc-jrn-grid-2 > .fc-jrn-tile",
 			"tag": "article",
 			"features": [
@@ -1137,8 +1221,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_2_fc_jrn_tile_div_nth_of_type_1",
-			"label": "Tile › Image",
+			"label": "Card Image 2",
 			"short_label": "Image",
+			"parent_label": "Card",
+			"sample": "",
 			"selector": ".fc-jrn-grid-2 > .fc-jrn-tile > div:nth-of-type(1)",
 			"tag": "div",
 			"features": [
@@ -1161,8 +1247,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_2_fc_jrn_tile_div_nth_of_type_1_img_nth_of_type_1",
-			"label": "Image › Picture",
-			"short_label": "Picture",
+			"label": "Image 2",
+			"short_label": "Image",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-jrn-grid-2 > .fc-jrn-tile > div:nth-of-type(1) > img:nth-of-type(1)",
 			"tag": "img",
 			"features": [
@@ -1183,8 +1271,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_2_fc_jrn_tile_div_nth_of_type_1_div_nth_of_type_1",
-			"label": "Image › Tag",
-			"short_label": "Tag",
+			"label": "Image Label 2",
+			"short_label": "Label",
+			"parent_label": "Image",
+			"sample": "",
 			"selector": ".fc-jrn-grid-2 > .fc-jrn-tile > div:nth-of-type(1) > div:nth-of-type(1)",
 			"tag": "div",
 			"features": [
@@ -1207,8 +1297,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_2_fc_jrn_tile_div_nth_of_type_1_div_nth_of_type_1_h3_nth_of_type_1",
-			"label": "Tag › Title — A World Wonder",
+			"label": "Label Title 2",
 			"short_label": "Title",
+			"parent_label": "Label",
+			"sample": "A World Wonder",
 			"selector": ".fc-jrn-grid-2 > .fc-jrn-tile > div:nth-of-type(1) > div:nth-of-type(1) > h3:nth-of-type(1)",
 			"tag": "h3",
 			"features": [
@@ -1232,8 +1324,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_2_fc_jrn_tile_div_nth_of_type_2",
-			"label": "Tile › Body",
-			"short_label": "Body",
+			"label": "Card Content 3",
+			"short_label": "Content",
+			"parent_label": "Card",
+			"sample": "",
 			"selector": ".fc-jrn-grid-2 > .fc-jrn-tile > div:nth-of-type(2)",
 			"tag": "div",
 			"features": [
@@ -1256,8 +1350,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_2_fc_jrn_tile_div_nth_of_type_2_span_nth_of_type_1",
-			"label": "Body › Location — Victoria Falls",
-			"short_label": "Location",
+			"label": "Card Text 4",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "Victoria Falls",
 			"selector": ".fc-jrn-grid-2 > .fc-jrn-tile > div:nth-of-type(2) > span:nth-of-type(1)",
 			"tag": "span",
 			"features": [
@@ -1281,8 +1377,10 @@
 		},
 		{
 			"id": "p_fc_jrn_grid_2_fc_jrn_tile_div_nth_of_type_2_p_nth_of_type_1",
-			"label": "Body › Description — The journey extends north t…",
-			"short_label": "Description",
+			"label": "Card Text 5",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "The journey extends north to Victoria Falls, on…",
 			"selector": ".fc-jrn-grid-2 > .fc-jrn-tile > div:nth-of-type(2) > p:nth-of-type(1)",
 			"tag": "p",
 			"features": [
@@ -1310,7 +1408,7 @@
 		{
 			"id": "section_aria_label",
 			"control": "text",
-			"label": "Section – Aria Label",
+			"label": "Accessible Name",
 			"default": "Your Journey Begins Here — the Signature Journey",
 			"esc": "attr",
 			"group": "p_section",
@@ -1318,9 +1416,9 @@
 			"sort": 1
 		},
 		{
-			"id": "eyebrow_our_signature_journey_text",
+			"id": "eyebrow_text",
 			"control": "text",
-			"label": "Eyebrow — Our Signature Journey",
+			"label": "Eyebrow",
 			"description": "",
 			"default": "Our Signature Journey",
 			"esc": "post",
@@ -1328,9 +1426,9 @@
 			"sort": 0
 		},
 		{
-			"id": "title_your_journey_begins_here_text",
+			"id": "title_text",
 			"control": "textarea",
-			"label": "Title — Your Journey Begins Here",
+			"label": "Title",
 			"description": "Inline formatting tags are preserved.",
 			"default": "Your Journey <em>Begins Here</em>",
 			"esc": "post",
@@ -1338,9 +1436,9 @@
 			"sort": 0
 		},
 		{
-			"id": "lead_three_immersive_chapters_f_text",
+			"id": "text_text",
 			"control": "textarea",
-			"label": "Lead — Three immersive chapters, f…",
+			"label": "Text",
 			"description": "",
 			"default": "Three immersive chapters, from the culture and history of Johannesburg, to safari in the Sabi Sand, to the Cape.",
 			"esc": "post",
@@ -1348,9 +1446,9 @@
 			"sort": 0
 		},
 		{
-			"id": "eyebrow_optional_extensions_text",
+			"id": "eyebrow_text_2",
 			"control": "text",
-			"label": "Eyebrow — Optional Extensions",
+			"label": "Eyebrow",
 			"description": "",
 			"default": "Optional Extensions",
 			"esc": "post",
@@ -1358,9 +1456,9 @@
 			"sort": 0
 		},
 		{
-			"id": "subhead_experiences_beyond_south_af_text",
+			"id": "heading_text",
 			"control": "text",
-			"label": "Subhead — Experiences Beyond South Af…",
+			"label": "Heading",
 			"description": "",
 			"default": "Experiences Beyond South Africa",
 			"esc": "post",

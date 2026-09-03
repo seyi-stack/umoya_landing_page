@@ -23,16 +23,16 @@ if ( ! defined( 'ABSPATH' ) ) {
     <!-- Decorative line draws the eye down -->
     <div class="fc-dec-line fc-intro-rv fc-d0" aria-hidden="true"></div>
 
-    <span class="fc-intro-eyebrow fc-intro-rv fc-d1"><?php echo $c['eyebrow_an_exclusive_group_text']; ?></span>
+    <span class="fc-intro-eyebrow fc-intro-rv fc-d1"><?php echo $c['eyebrow_text']; ?></span>
 
     <h2 class="fc-intro-heading fc-intro-rv fc-d2">
-      <?php echo $c['heading_the_first_to_travel_with_us_text']; echo "\n    "; ?></h2>
+      <?php echo $c['title_text']; echo "\n    "; ?></h2>
 
     <p class="fc-intro-body fc-intro-rv fc-d3">
-      <?php echo $c['body_the_umoya_founder_s_circle_text']; echo "\n    "; ?></p>
+      <?php echo $c['text_text']; echo "\n    "; ?></p>
 
-    <div class="fc-intro-rv fc-d4" style="<?php echo $s['div_inline_style']; ?>">
-      <a href="<?php echo $c['button_become_a_founding_member_href']; ?>" class="fc-intro-btn"><?php echo $c['button_become_a_founding_member_text']; ?></a>
+    <div class="fc-intro-rv fc-d4" style="<?php echo $s['container_inline_style']; ?>">
+      <a href="<?php echo $c['button_href']; ?>" class="fc-intro-btn"><?php echo $c['button_text']; ?></a>
     </div>
 
   </div>

@@ -31,9 +31,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 -->
 <section id="fc-cta" aria-label="<?php echo $c['section_aria_label']; ?>">
   <div class="fc-cta-c fc-cta-rv">
-    <span class="fc-cta-eye"><?php echo $c['eyebrow_still_have_questions_text']; ?></span>
-    <h2 class="fc-cta-h2"><?php echo $c['h2_we_d_love_to_speak_with_you_text']; ?></h2>
-    <p class="fc-cta-lead"><?php echo $c['lead_your_dedicated_umoya_travel_text']; ?></p>
-    <a href="<?php echo $c['button_speak_with_a_travel_expert_href']; ?>" class="fc-cta-btn"><?php echo $c['button_speak_with_a_travel_expert_text']; ?></a>
+    <span class="fc-cta-eye"><?php echo $c['eyebrow_text']; ?></span>
+    <h2 class="fc-cta-h2"><?php echo $c['heading_text']; ?></h2>
+    <p class="fc-cta-lead"><?php echo $c['text_text']; ?></p>
+    <a href="<?php echo $c['button_href']; ?>" class="fc-cta-btn"><?php echo $c['button_text']; ?></a>
   </div>
 </section>

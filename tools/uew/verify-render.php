@@ -52,6 +52,14 @@ function uew_prepare_defaults( array $schema ) {
 
 	$c = array();
 	foreach ( $schema['fields'] as $field ) {
+		if ( ! empty( $field['flag_attr'] ) ) {
+			$c[ $field['id'] ] = Value_Formatter::flag(
+				$field['default'],
+				$field['flag_attr'],
+				isset( $field['flag_prefix'] ) ? $field['flag_prefix'] : ' '
+			);
+			continue;
+		}
 		$c[ $field['id'] ] = Value_Formatter::scalar( $field['default'], isset( $field['esc'] ) ? $field['esc'] : 'post' );
 	}
 

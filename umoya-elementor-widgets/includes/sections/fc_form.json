@@ -115,241 +115,270 @@
 		{
 			"id": "content_p_section",
 			"label": "Section",
+			"sample": "",
+			"region_label": "",
 			"controls": [
 				{
 					"id": "section_aria_label",
 					"control": "text",
-					"label": "Section – Aria Label",
+					"label": "Accessible Name",
 					"default": "Join the Founder's Circle — Inquiry Form",
 					"esc": "attr",
 					"group": "p_section",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Section"
 				}
 			]
 		},
 		{
 			"id": "content_p_img",
-			"label": "Column › Image",
+			"label": "Content",
+			"sample": "",
+			"region_label": "",
 			"controls": [
 				{
 					"id": "image_src",
 					"control": "media",
-					"label": "Image – Src",
+					"label": "Source",
 					"default": {
 						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc04418(1).jpg"
 					},
 					"esc": "url",
 					"group": "p_img",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Image"
 				},
 				{
 					"id": "image_alt",
 					"control": "text",
-					"label": "Image – Alt",
+					"label": "Alt Text",
 					"default": "Umoya Afrika Tours — heritage journey",
 					"esc": "attr",
 					"group": "p_img",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Image"
 				},
 				{
-					"id": "eyebrow_inquiry_form_text",
+					"id": "eyebrow_text",
 					"control": "text",
-					"label": "Eyebrow — Inquiry Form",
+					"label": "Eyebrow",
 					"description": "",
 					"default": "Inquiry Form",
 					"esc": "post",
 					"group": "p_fc_f2_img_eye",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Eyebrow"
 				},
 				{
-					"id": "title_your_umoya_experience_awaits_text",
+					"id": "title_text",
 					"control": "text",
-					"label": "Title — Your Umoya Experience Awaits",
+					"label": "Title",
 					"description": "",
 					"default": "Your Umoya Experience Awaits",
 					"esc": "post",
 					"group": "p_fc_f2_img_ttl",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Title"
 				},
 				{
-					"id": "eyebrow_reserve_your_place_text",
+					"id": "eyebrow_text_2",
 					"control": "text",
-					"label": "Eyebrow — Reserve Your Place",
+					"label": "Header Eyebrow",
 					"description": "",
 					"default": "Reserve Your Place",
 					"esc": "post",
 					"group": "p_fc_f2_eye",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Header Eyebrow"
 				},
 				{
-					"id": "title_begin_your_journey_text",
+					"id": "title_text_2",
 					"control": "text",
-					"label": "Title — Begin Your Journey",
+					"label": "Header Title",
 					"description": "",
 					"default": "Begin Your Journey",
 					"esc": "post",
 					"group": "p_fc_f2_ttl",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Header Title"
 				},
 				{
-					"id": "subtitle_tell_us_about_yourself_and_text",
+					"id": "subtitle_text",
 					"control": "textarea",
-					"label": "Subtitle — Tell us about yourself and …",
+					"label": "Subtitle",
 					"description": "",
 					"default": "Tell us about yourself and the travel experience you're seeking. A dedicated Umoya Travel Expert will personally connect with you to begin planning your experience.",
 					"esc": "post",
 					"group": "p_fc_f2_sub",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Subtitle"
 				}
-			]
+			],
+			"merged": true
 		},
 		{
 			"id": "content_p_fc_f2_form",
-			"label": "Card › Form",
+			"label": "Card",
+			"sample": "",
+			"region_label": "Card",
 			"controls": [
 				{
 					"id": "form_action",
 					"control": "url",
-					"label": "Form – Action",
+					"label": "Form Action",
 					"default": {
 						"url": "/wp-json/umoya/v1/submissions"
 					},
 					"esc": "url",
 					"group": "p_fc_f2_form",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Form"
 				},
 				{
 					"id": "form_aria_label",
 					"control": "text",
-					"label": "Form – Aria Label",
+					"label": "Accessible Name",
 					"default": "Founder's Circle Inquiry Form",
 					"esc": "attr",
 					"group": "p_fc_f2_form",
 					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "label_title_text",
-					"control": "text",
-					"label": "Label — Title",
-					"description": "",
-					"default": "Title",
-					"esc": "post",
-					"group": "p_fc_f2_field_label_nth_of_type_1",
-					"sort": 0
-				},
-				{
-					"id": "required_text",
-					"control": "text",
-					"label": "Required — *",
-					"description": "",
-					"default": "*",
-					"esc": "post",
-					"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1",
-					"sort": 0
-				},
-				{
-					"id": "input_placeholder",
-					"control": "text",
-					"label": "Input – Placeholder",
-					"default": "First name",
-					"esc": "attr",
-					"group": "p_fc_f2_field_input_nth_of_type_1",
-					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "select_aria_label",
-					"control": "text",
-					"label": "Select – Aria Label",
-					"default": "Preferred travel month",
-					"esc": "attr",
-					"group": "p_fc_f2_when_select",
-					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "label_what_are_you_hoping_to_expe_text",
-					"control": "text",
-					"label": "Label — What Are You Hoping to Expe…",
-					"description": "",
-					"default": "What Are You Hoping to Experience?",
-					"esc": "post",
-					"group": "p_fc_f2_span_grow_label",
-					"sort": 0
-				},
-				{
-					"id": "textarea_placeholder",
-					"control": "text",
-					"label": "Textarea – Placeholder",
-					"default": "Tell us about your travel interests, what you hope to experience, and what draws you to South Africa.",
-					"esc": "attr",
-					"group": "p_textarea",
-					"tab": "content",
-					"sort": 1
-				}
-			]
-		},
-		{
-			"id": "content_p_fc_f2_sub_btn",
-			"label": "Submit › Subtitle Button — Request Your Founder’s Circ…",
-			"controls": [
-				{
-					"id": "subtitle_button_request_your_founder_s_circ_text",
-					"control": "text",
-					"label": "Subtitle Button — Request Your Founder’s Circ…",
-					"description": "",
-					"default": "Request Your Founder’s Circle Membership",
-					"esc": "post",
-					"group": "p_fc_f2_sub_btn",
-					"sort": 0
-				},
-				{
-					"id": "legal_your_information_is_held_in_text",
-					"control": "textarea",
-					"label": "Legal — Your information is held in…",
-					"description": "",
-					"default": "Your information is held in strict confidence and never shared. Submission does not guarantee membership — places are strictly limited.",
-					"esc": "post",
-					"group": "p_fc_f2_legal",
-					"sort": 0
-				},
-				{
-					"id": "iframe_title",
-					"control": "text",
-					"label": "Iframe – Title",
-					"default": "Umoya submission fallback",
-					"esc": "attr",
-					"group": "p_iframe",
-					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Form"
 				},
 				{
 					"id": "label_text",
 					"control": "text",
 					"label": "Label",
+					"description": "",
+					"default": "Title",
+					"esc": "post",
+					"group": "p_fc_f2_field_label_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Field Label 1"
+				},
+				{
+					"id": "text_text",
+					"control": "text",
+					"label": "Text",
+					"description": "",
+					"default": "*",
+					"esc": "post",
+					"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Form Text"
+				},
+				{
+					"id": "field_placeholder",
+					"control": "text",
+					"label": "Placeholder",
+					"default": "First name",
+					"esc": "attr",
+					"group": "p_fc_f2_field_input_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Form Field 3"
+				},
+				{
+					"id": "select_aria_label",
+					"control": "text",
+					"label": "Form Select",
+					"default": "Preferred travel month",
+					"esc": "attr",
+					"group": "p_fc_f2_when_select",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Form Select"
+				},
+				{
+					"id": "label_text_10",
+					"control": "text",
+					"label": "Field Label 2",
+					"description": "",
+					"default": "What Are You Hoping to Experience?",
+					"esc": "post",
+					"group": "p_fc_f2_span_grow_label",
+					"sort": 0,
+					"part_label": "Field Label 2"
+				},
+				{
+					"id": "message_placeholder",
+					"control": "text",
+					"label": "Message",
+					"default": "Tell us about your travel interests, what you hope to experience, and what draws you to South Africa.",
+					"esc": "attr",
+					"group": "p_textarea",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Message"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_fc_f2_sub_btn",
+			"label": "Form",
+			"sample": "Request Your Founder’s Circle Membership",
+			"region_label": "Form",
+			"controls": [
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Button",
+					"description": "",
+					"default": "Request Your Founder’s Circle Membership",
+					"esc": "post",
+					"group": "p_fc_f2_sub_btn",
+					"sort": 0,
+					"part_label": "Button"
+				},
+				{
+					"id": "consent_text",
+					"control": "textarea",
+					"label": "Consent",
+					"description": "",
+					"default": "Your information is held in strict confidence and never shared. Submission does not guarantee membership — places are strictly limited.",
+					"esc": "post",
+					"group": "p_fc_f2_legal",
+					"sort": 0,
+					"part_label": "Form Consent 2"
+				},
+				{
+					"id": "embed_title",
+					"control": "text",
+					"label": "Title Attribute",
+					"default": "Umoya submission fallback",
+					"esc": "attr",
+					"group": "p_iframe",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Embed"
+				},
+				{
+					"id": "label_text_2",
+					"control": "text",
+					"label": "Text",
 					"default": "First Name",
 					"esc": "post",
 					"group": "p_fc_f2_field_label_nth_of_type_1_2",
 					"sort": 0
 				},
 				{
-					"id": "label_text_2",
+					"id": "label_text_3",
 					"control": "text",
-					"label": "Label",
+					"label": "Text",
 					"default": "Last Name",
 					"esc": "post",
 					"group": "p_fc_f2_field_label_nth_of_type_1_3",
 					"sort": 0
 				},
 				{
-					"id": "required_text_2",
+					"id": "text_text_2",
 					"control": "text",
-					"label": "Required — *",
+					"label": "Text",
 					"description": "",
 					"default": "*",
 					"esc": "post",
@@ -357,9 +386,9 @@
 					"sort": 0
 				},
 				{
-					"id": "input_placeholder_2",
+					"id": "field_placeholder_2",
 					"control": "text",
-					"label": "Input – Placeholder",
+					"label": "Placeholder",
 					"default": "Last name",
 					"esc": "attr",
 					"group": "p_fc_f2_field_input_nth_of_type_1_2",
@@ -367,24 +396,25 @@
 					"sort": 1
 				},
 				{
-					"id": "label_text_3",
+					"id": "label_text_4",
 					"control": "text",
-					"label": "Label",
+					"label": "Text",
 					"default": "Email Address",
 					"esc": "post",
 					"group": "p_fc_f2_field_label_nth_of_type_1_4",
 					"sort": 0
 				}
-			]
+			],
+			"merged": true
 		},
 		{
 			"id": "content_p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1_3",
-			"label": "Other content",
+			"label": "Content",
 			"controls": [
 				{
-					"id": "required_text_3",
+					"id": "text_text_3",
 					"control": "text",
-					"label": "Required — *",
+					"label": "Text",
 					"description": "",
 					"default": "*",
 					"esc": "post",
@@ -392,9 +422,9 @@
 					"sort": 0
 				},
 				{
-					"id": "input_placeholder_3",
+					"id": "field_placeholder_3",
 					"control": "text",
-					"label": "Input – Placeholder",
+					"label": "Placeholder",
 					"default": "your@email.com",
 					"esc": "attr",
 					"group": "p_fc_f2_field_input_nth_of_type_1_3",
@@ -402,9 +432,9 @@
 					"sort": 1
 				},
 				{
-					"id": "label_phone_number_text",
+					"id": "label_text_5",
 					"control": "text",
-					"label": "Label — Phone Number",
+					"label": "Label",
 					"description": "",
 					"default": "Phone Number",
 					"esc": "post",
@@ -412,9 +442,9 @@
 					"sort": 0
 				},
 				{
-					"id": "input_placeholder_4",
+					"id": "field_placeholder_4",
 					"control": "text",
-					"label": "Input – Placeholder",
+					"label": "Placeholder",
 					"default": "+1 (000) 000-0000",
 					"esc": "attr",
 					"group": "p_fc_f2_field_input_nth_of_type_1_4",
@@ -422,18 +452,18 @@
 					"sort": 1
 				},
 				{
-					"id": "label_text_4",
+					"id": "label_text_6",
 					"control": "text",
-					"label": "Label",
+					"label": "Text",
 					"default": "Country",
 					"esc": "post",
 					"group": "p_fc_f2_field_label_nth_of_type_1_6",
 					"sort": 0
 				},
 				{
-					"id": "required_text_4",
+					"id": "text_text_4",
 					"control": "text",
-					"label": "Required — *",
+					"label": "Text",
 					"description": "",
 					"default": "*",
 					"esc": "post",
@@ -441,9 +471,9 @@
 					"sort": 0
 				},
 				{
-					"id": "label_city_text",
+					"id": "label_text_7",
 					"control": "text",
-					"label": "Label — City",
+					"label": "Label",
 					"description": "",
 					"default": "City",
 					"esc": "post",
@@ -451,25 +481,26 @@
 					"sort": 0
 				},
 				{
-					"id": "input_placeholder_5",
+					"id": "field_placeholder_5",
 					"control": "text",
-					"label": "Input – Placeholder",
+					"label": "Placeholder",
 					"default": "Your city",
 					"esc": "attr",
 					"group": "p_fc_f2_field_input_nth_of_type_1_5",
 					"tab": "content",
 					"sort": 1
 				}
-			]
+			],
+			"merged": true
 		},
 		{
 			"id": "content_p_fc_f2_field_label_nth_of_type_1_8",
-			"label": "Other content",
+			"label": "Content",
 			"controls": [
 				{
-					"id": "label_when_are_you_hoping_to_trav_text",
+					"id": "label_text_8",
 					"control": "text",
-					"label": "Label — When Are You Hoping to Trav…",
+					"label": "Label",
 					"description": "",
 					"default": "When Are You Hoping to Travel?",
 					"esc": "post",
@@ -479,7 +510,7 @@
 				{
 					"id": "select_aria_label_2",
 					"control": "text",
-					"label": "Select – Aria Label",
+					"label": "Accessible Name",
 					"default": "Preferred travel year",
 					"esc": "attr",
 					"group": "p_fc_f2_when_select_2",
@@ -487,23 +518,24 @@
 					"sort": 1
 				},
 				{
-					"id": "label_how_many_guests_will_be_tra_text",
+					"id": "label_text_9",
 					"control": "text",
-					"label": "Label — How Many Guests Will Be Tra…",
+					"label": "Label",
 					"description": "",
 					"default": "How Many Guests Will Be Traveling?",
 					"esc": "post",
 					"group": "p_fc_f2_field_label_nth_of_type_1_9",
 					"sort": 0
 				}
-			]
+			],
+			"merged": true
 		}
 	],
 	"integration_controls": [
 		{
 			"id": "form_data_hs_do_not_collect",
 			"control": "text",
-			"label": "Form – Hs Do Not Collect",
+			"label": "Hs Do Not Collect",
 			"default": "true",
 			"esc": "attr",
 			"group": "integration",
@@ -514,7 +546,7 @@
 		{
 			"id": "form_data_hubspot_portal_id",
 			"control": "text",
-			"label": "Form – Hubspot Portal Id",
+			"label": "Hubspot Portal Id",
 			"default": "246097317",
 			"esc": "attr",
 			"group": "integration",
@@ -525,7 +557,7 @@
 		{
 			"id": "form_data_hubspot_form_id",
 			"control": "text",
-			"label": "Form – Hubspot Form Id",
+			"label": "Hubspot Form Id",
 			"default": "b3c06e8a-9bbc-44e1-bc67-00e35528b9b9",
 			"esc": "attr",
 			"group": "integration",
@@ -536,7 +568,7 @@
 		{
 			"id": "form_data_umoya_form_source",
 			"control": "text",
-			"label": "Form – Umoya Form Source",
+			"label": "Umoya Form Source",
 			"default": "founders_circle_page",
 			"esc": "attr",
 			"group": "integration",
@@ -547,7 +579,7 @@
 		{
 			"id": "form_data_wordpress_backup_endpoint",
 			"control": "text",
-			"label": "Form – Wordpress Backup Endpoint",
+			"label": "Wordpress Backup Endpoint",
 			"default": "/wp-json/umoya/v1/submissions",
 			"esc": "attr",
 			"group": "integration",
@@ -558,7 +590,7 @@
 		{
 			"id": "form_data_hubspot_consent_text",
 			"control": "text",
-			"label": "Form – Hubspot Consent Text",
+			"label": "Hubspot Consent Text",
 			"default": "I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the Privacy Policy.",
 			"esc": "attr",
 			"group": "integration",
@@ -569,7 +601,7 @@
 		{
 			"id": "select_name",
 			"control": "text",
-			"label": "Select – Name",
+			"label": "Field Name",
 			"default": "MERGE1",
 			"esc": "attr",
 			"group": "integration",
@@ -578,9 +610,9 @@
 			"part_label": ""
 		},
 		{
-			"id": "input_name",
+			"id": "field_name",
 			"control": "text",
-			"label": "Input – Name",
+			"label": "Field Name",
 			"default": "FNAME",
 			"esc": "attr",
 			"group": "integration",
@@ -589,9 +621,9 @@
 			"part_label": ""
 		},
 		{
-			"id": "input_name_2",
+			"id": "field_name_2",
 			"control": "text",
-			"label": "Input – Name",
+			"label": "Field Name",
 			"default": "LNAME",
 			"esc": "attr",
 			"group": "integration",
@@ -600,9 +632,9 @@
 			"part_label": ""
 		},
 		{
-			"id": "input_name_3",
+			"id": "field_name_3",
 			"control": "text",
-			"label": "Input – Name",
+			"label": "Field Name",
 			"default": "EMAIL",
 			"esc": "attr",
 			"group": "integration",
@@ -611,9 +643,9 @@
 			"part_label": ""
 		},
 		{
-			"id": "input_name_4",
+			"id": "field_name_4",
 			"control": "text",
-			"label": "Input – Name",
+			"label": "Field Name",
 			"default": "PHONE",
 			"esc": "attr",
 			"group": "integration",
@@ -624,7 +656,7 @@
 		{
 			"id": "select_name_2",
 			"control": "text",
-			"label": "Select – Name",
+			"label": "Field Name",
 			"default": "MERGE2",
 			"esc": "attr",
 			"group": "integration",
@@ -633,9 +665,9 @@
 			"part_label": ""
 		},
 		{
-			"id": "input_name_5",
+			"id": "field_name_5",
 			"control": "text",
-			"label": "Input – Name",
+			"label": "Field Name",
 			"default": "MERGE3",
 			"esc": "attr",
 			"group": "integration",
@@ -646,7 +678,7 @@
 		{
 			"id": "select_name_3",
 			"control": "text",
-			"label": "Select – Name",
+			"label": "Field Name",
 			"default": "MERGE4",
 			"esc": "attr",
 			"group": "integration",
@@ -657,7 +689,7 @@
 		{
 			"id": "select_name_4",
 			"control": "text",
-			"label": "Select – Name",
+			"label": "Field Name",
 			"default": "MERGE5",
 			"esc": "attr",
 			"group": "integration",
@@ -668,7 +700,7 @@
 		{
 			"id": "select_name_5",
 			"control": "text",
-			"label": "Select – Name",
+			"label": "Field Name",
 			"default": "MERGE6",
 			"esc": "attr",
 			"group": "integration",
@@ -677,9 +709,9 @@
 			"part_label": ""
 		},
 		{
-			"id": "textarea_name",
+			"id": "message_name",
 			"control": "text",
-			"label": "Textarea – Name",
+			"label": "Field Name",
 			"default": "MERGE7",
 			"esc": "attr",
 			"group": "integration",
@@ -690,10 +722,28 @@
 	],
 	"form_controls": [
 		{
+			"id": "form_novalidate",
+			"control": "switcher",
+			"label": "Skip Browser Validation",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "novalidate",
+			"flag_prefix": "\n            ",
+			"esc": "raw",
+			"group": "p_fc_f2_form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Form"
+		},
+		{
 			"id": "form_method",
-			"control": "text",
-			"label": "Form – Method",
+			"control": "select",
+			"label": "Method",
 			"default": "post",
+			"options": [
+				"get",
+				"post"
+			],
 			"esc": "attr",
 			"group": "form",
 			"tab": "form",
@@ -701,9 +751,107 @@
 			"part_label": ""
 		},
 		{
-			"id": "input_type",
+			"id": "select_required",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field Select"
+		},
+		{
+			"id": "select_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field Select"
+		},
+		{
+			"id": "select_multiple",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field Select"
+		},
+		{
+			"id": "field_required",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Form Field 3"
+		},
+		{
+			"id": "field_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Form Field 3"
+		},
+		{
+			"id": "field_readonly",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Form Field 3"
+		},
+		{
+			"id": "field_checked",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Form Field 3"
+		},
+		{
+			"id": "field_type",
 			"control": "text",
-			"label": "Input – Type",
+			"label": "Type",
 			"default": "text",
 			"esc": "attr",
 			"group": "form",
@@ -712,9 +860,9 @@
 			"part_label": ""
 		},
 		{
-			"id": "input_autocomplete",
+			"id": "field_autocomplete",
 			"control": "text",
-			"label": "Input – Autocomplete",
+			"label": "Autocomplete",
 			"default": "given-name",
 			"esc": "attr",
 			"group": "form",
@@ -723,9 +871,65 @@
 			"part_label": ""
 		},
 		{
-			"id": "input_type_2",
+			"id": "field_required_2",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_readonly_2",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_checked_2",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_type_2",
 			"control": "text",
-			"label": "Input – Type",
+			"label": "Type",
 			"default": "text",
 			"esc": "attr",
 			"group": "form",
@@ -734,9 +938,9 @@
 			"part_label": ""
 		},
 		{
-			"id": "input_autocomplete_2",
+			"id": "field_autocomplete_2",
 			"control": "text",
-			"label": "Input – Autocomplete",
+			"label": "Autocomplete",
 			"default": "family-name",
 			"esc": "attr",
 			"group": "form",
@@ -745,9 +949,65 @@
 			"part_label": ""
 		},
 		{
-			"id": "input_type_3",
+			"id": "field_required_3",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_disabled_3",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_readonly_3",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_checked_3",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_type_3",
 			"control": "text",
-			"label": "Input – Type",
+			"label": "Type",
 			"default": "email",
 			"esc": "attr",
 			"group": "form",
@@ -756,9 +1016,9 @@
 			"part_label": ""
 		},
 		{
-			"id": "input_autocomplete_3",
+			"id": "field_autocomplete_3",
 			"control": "text",
-			"label": "Input – Autocomplete",
+			"label": "Autocomplete",
 			"default": "email",
 			"esc": "attr",
 			"group": "form",
@@ -767,9 +1027,65 @@
 			"part_label": ""
 		},
 		{
-			"id": "input_type_4",
+			"id": "field_required_4",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_disabled_4",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_readonly_4",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_checked_4",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_type_4",
 			"control": "text",
-			"label": "Input – Type",
+			"label": "Type",
 			"default": "tel",
 			"esc": "attr",
 			"group": "form",
@@ -778,9 +1094,9 @@
 			"part_label": ""
 		},
 		{
-			"id": "input_autocomplete_4",
+			"id": "field_autocomplete_4",
 			"control": "text",
-			"label": "Input – Autocomplete",
+			"label": "Autocomplete",
 			"default": "tel",
 			"esc": "attr",
 			"group": "form",
@@ -789,9 +1105,107 @@
 			"part_label": ""
 		},
 		{
-			"id": "input_type_5",
+			"id": "select_required_2",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_multiple_2",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_required_5",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_5",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_disabled_5",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_5",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_readonly_5",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_5",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_checked_5",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_5",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_type_5",
 			"control": "text",
-			"label": "Input – Type",
+			"label": "Type",
 			"default": "text",
 			"esc": "attr",
 			"group": "form",
@@ -800,9 +1214,9 @@
 			"part_label": ""
 		},
 		{
-			"id": "input_autocomplete_5",
+			"id": "field_autocomplete_5",
 			"control": "text",
-			"label": "Input – Autocomplete",
+			"label": "Autocomplete",
 			"default": "address-level2",
 			"esc": "attr",
 			"group": "form",
@@ -811,9 +1225,191 @@
 			"part_label": ""
 		},
 		{
-			"id": "subtitle_button_request_your_founder_s_circ_type",
+			"id": "select_required_3",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_when_select",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Form Select"
+		},
+		{
+			"id": "select_disabled_3",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_when_select",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Form Select"
+		},
+		{
+			"id": "select_multiple_3",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_when_select",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Form Select"
+		},
+		{
+			"id": "select_required_4",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_when_select_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_disabled_4",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_when_select_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_multiple_4",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_when_select_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_required_5",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_disabled_5",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_multiple_5",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "message_required",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_textarea",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Message"
+		},
+		{
+			"id": "message_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_textarea",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Message"
+		},
+		{
+			"id": "message_readonly",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_textarea",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Message"
+		},
+		{
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_sub_btn",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Button"
+		},
+		{
+			"id": "button_type",
 			"control": "text",
-			"label": "Subtitle Button — Request Your Founder’s Circ… – Type",
+			"label": "Type",
 			"default": "submit",
 			"esc": "attr",
 			"group": "form",
@@ -825,9 +1421,15 @@
 	"behaviour_controls": [
 		{
 			"id": "form_target",
-			"control": "text",
-			"label": "Form – Target",
+			"control": "select",
+			"label": "Link Target",
 			"default": "umoyaSubmissionFrame",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
 			"esc": "attr",
 			"group": "behaviour",
 			"tab": "behaviour",
@@ -837,52 +1439,68 @@
 	],
 	"inline_style_controls": [
 		{
-			"id": "iframe_css_display",
+			"id": "embed_css_display",
 			"control": "text",
-			"label": "Iframe – Display",
+			"label": "Display",
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "none",
 			"esc": "attr",
 			"group": "p_iframe",
 			"tab": "inline_style",
 			"sort": 3,
-			"part_label": "Card › Iframe"
+			"part_label": "Embed"
 		},
 		{
-			"id": "iframe_css_width",
+			"id": "embed_css_width",
 			"control": "text",
-			"label": "Iframe – Width",
+			"label": "Width",
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "0",
 			"esc": "attr",
 			"group": "p_iframe",
 			"tab": "inline_style",
 			"sort": 3,
-			"part_label": "Card › Iframe"
+			"part_label": "Embed"
 		},
 		{
-			"id": "iframe_css_height",
+			"id": "embed_css_height",
 			"control": "text",
-			"label": "Iframe – Height",
+			"label": "Height",
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "0",
 			"esc": "attr",
 			"group": "p_iframe",
 			"tab": "inline_style",
 			"sort": 3,
-			"part_label": "Card › Iframe"
+			"part_label": "Embed"
 		},
 		{
-			"id": "iframe_css_border",
+			"id": "embed_css_border",
 			"control": "text",
-			"label": "Iframe – Border",
+			"label": "Border",
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "0",
 			"esc": "attr",
 			"group": "p_iframe",
 			"tab": "inline_style",
 			"sort": 3,
-			"part_label": "Card › Iframe"
+			"part_label": "Embed"
+		}
+	],
+	"media_controls": [
+		{
+			"id": "embed_allowfullscreen",
+			"control": "switcher",
+			"label": "Allow Fullscreen",
+			"description": "",
+			"default": "",
+			"flag_attr": "allowfullscreen",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_iframe",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Embed"
 		}
 	],
 	"repeaters": [
@@ -2845,6 +3463,8 @@
 			"id": "p_section",
 			"label": "Section",
 			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
 			"selector": "",
 			"tag": "section",
 			"features": [
@@ -2866,8 +3486,10 @@
 		},
 		{
 			"id": "p_fc_f2_outer",
-			"label": "Outer",
-			"short_label": "Outer",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-f2-outer",
 			"tag": "div",
 			"features": [
@@ -2890,8 +3512,10 @@
 		},
 		{
 			"id": "p_fc_f2_img_col",
-			"label": "Outer › Column",
+			"label": "Column 1",
 			"short_label": "Column",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-f2-img-col",
 			"tag": "div",
 			"features": [
@@ -2914,8 +3538,10 @@
 		},
 		{
 			"id": "p_img",
-			"label": "Column › Image",
+			"label": "Image",
 			"short_label": "Image",
+			"parent_label": "",
+			"sample": "",
 			"selector": "img",
 			"tag": "img",
 			"features": [
@@ -2936,8 +3562,10 @@
 		},
 		{
 			"id": "p_fc_f2_img_ov",
-			"label": "Column › Overlay",
+			"label": "Overlay",
 			"short_label": "Overlay",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-f2-img-ov",
 			"tag": "div",
 			"features": [
@@ -2960,8 +3588,10 @@
 		},
 		{
 			"id": "p_fc_f2_img_txt",
-			"label": "Column › Text",
-			"short_label": "Text",
+			"label": "Content",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-f2-img-txt",
 			"tag": "div",
 			"features": [
@@ -2984,8 +3614,10 @@
 		},
 		{
 			"id": "p_fc_f2_img_eye",
-			"label": "Text › Eyebrow — Inquiry Form",
+			"label": "Eyebrow",
 			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "Inquiry Form",
 			"selector": ".fc-f2-img-eye",
 			"tag": "span",
 			"features": [
@@ -3009,8 +3641,10 @@
 		},
 		{
 			"id": "p_fc_f2_img_ttl",
-			"label": "Text › Title — Your Umoya Experience Awaits",
+			"label": "Title",
 			"short_label": "Title",
+			"parent_label": "",
+			"sample": "Your Umoya Experience Awaits",
 			"selector": ".fc-f2-img-ttl",
 			"tag": "h2",
 			"features": [
@@ -3034,8 +3668,10 @@
 		},
 		{
 			"id": "p_fc_f2_img_rule",
-			"label": "Text › Rule",
-			"short_label": "Rule",
+			"label": "Divider",
+			"short_label": "Divider",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-f2-img-rule",
 			"tag": "span",
 			"features": [
@@ -3059,8 +3695,10 @@
 		},
 		{
 			"id": "p_fc_f2_form_col",
-			"label": "Outer › Form Column",
-			"short_label": "Form Column",
+			"label": "Column 2",
+			"short_label": "Column",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-f2-form-col",
 			"tag": "div",
 			"features": [
@@ -3083,8 +3721,10 @@
 		},
 		{
 			"id": "p_fc_f2_inner",
-			"label": "Form Column › Inner",
-			"short_label": "Inner",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-f2-inner",
 			"tag": "div",
 			"features": [
@@ -3107,8 +3747,10 @@
 		},
 		{
 			"id": "p_fc_f2_hd",
-			"label": "Inner › Header",
+			"label": "Header",
 			"short_label": "Header",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-f2-hd",
 			"tag": "div",
 			"features": [
@@ -3131,8 +3773,10 @@
 		},
 		{
 			"id": "p_fc_f2_eye",
-			"label": "Header › Eyebrow — Reserve Your Place",
+			"label": "Header Eyebrow",
 			"short_label": "Eyebrow",
+			"parent_label": "Header",
+			"sample": "Reserve Your Place",
 			"selector": ".fc-f2-eye",
 			"tag": "span",
 			"features": [
@@ -3156,8 +3800,10 @@
 		},
 		{
 			"id": "p_fc_f2_ttl",
-			"label": "Header › Title — Begin Your Journey",
+			"label": "Header Title",
 			"short_label": "Title",
+			"parent_label": "Header",
+			"sample": "Begin Your Journey",
 			"selector": ".fc-f2-ttl",
 			"tag": "h2",
 			"features": [
@@ -3181,8 +3827,10 @@
 		},
 		{
 			"id": "p_fc_f2_rule",
-			"label": "Header › Rule",
-			"short_label": "Rule",
+			"label": "Header Divider",
+			"short_label": "Divider",
+			"parent_label": "Header",
+			"sample": "",
 			"selector": ".fc-f2-rule",
 			"tag": "span",
 			"features": [
@@ -3206,8 +3854,10 @@
 		},
 		{
 			"id": "p_fc_f2_sub",
-			"label": "Header › Subtitle — Tell us about yourself and …",
+			"label": "Subtitle",
 			"short_label": "Subtitle",
+			"parent_label": "Header",
+			"sample": "Tell us about yourself and the travel experienc…",
 			"selector": ".fc-f2-sub",
 			"tag": "p",
 			"features": [
@@ -3231,8 +3881,10 @@
 		},
 		{
 			"id": "p_fc_f2_card",
-			"label": "Inner › Card",
+			"label": "Card",
 			"short_label": "Card",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-f2-card",
 			"tag": "div",
 			"features": [
@@ -3255,8 +3907,10 @@
 		},
 		{
 			"id": "p_fc_f2_form",
-			"label": "Card › Form",
+			"label": "Form",
 			"short_label": "Form",
+			"parent_label": "Card",
+			"sample": "",
 			"selector": ".fc-f2-form",
 			"tag": "form",
 			"features": [
@@ -3279,8 +3933,10 @@
 		},
 		{
 			"id": "p_fc_f2_form_input",
-			"label": "Form › Input",
-			"short_label": "Input",
+			"label": "Form Field 1",
+			"short_label": "Field",
+			"parent_label": "Form",
+			"sample": "",
 			"selector": ".fc-f2-form > input",
 			"tag": "input",
 			"features": [
@@ -3304,8 +3960,10 @@
 		},
 		{
 			"id": "p_fc_f2_fg",
-			"label": "Form › Fg",
-			"short_label": "Fg",
+			"label": "Form Container 1",
+			"short_label": "Container",
+			"parent_label": "Form",
+			"sample": "",
 			"selector": ".fc-f2-fg",
 			"tag": "div",
 			"features": [
@@ -3328,8 +3986,10 @@
 		},
 		{
 			"id": "p_fc_f2_field",
-			"label": "Fg › Field",
+			"label": "Form Field 2",
 			"short_label": "Field",
+			"parent_label": "Form",
+			"sample": "",
 			"selector": ".fc-f2-field",
 			"tag": "div",
 			"features": [
@@ -3352,8 +4012,10 @@
 		},
 		{
 			"id": "p_fc_f2_field_label_nth_of_type_1",
-			"label": "Field › Label — Title",
+			"label": "Field Label 1",
 			"short_label": "Label",
+			"parent_label": "Field",
+			"sample": "Title",
 			"selector": ".fc-f2-field > label:nth-of-type(1)",
 			"tag": "label",
 			"features": [
@@ -3377,8 +4039,10 @@
 		},
 		{
 			"id": "p_fc_f2_field_select_nth_of_type_1",
-			"label": "Field › Select",
+			"label": "Field Select",
 			"short_label": "Select",
+			"parent_label": "Field",
+			"sample": "",
 			"selector": ".fc-f2-field > select:nth-of-type(1)",
 			"tag": "select",
 			"features": [
@@ -3402,8 +4066,10 @@
 		},
 		{
 			"id": "p_fc_f2_field_select_nth_of_type_1_option_nth_of_type_1",
-			"label": "Select › Option — Select…",
+			"label": "Select Option 1",
 			"short_label": "Option",
+			"parent_label": "Select",
+			"sample": "Select…",
 			"selector": ".fc-f2-field > select:nth-of-type(1) > option:nth-of-type(1)",
 			"tag": "option",
 			"features": [
@@ -3426,8 +4092,10 @@
 		},
 		{
 			"id": "p_fc_f2_fg_div",
-			"label": "Fg › Div",
-			"short_label": "Div",
+			"label": "Form Container 2",
+			"short_label": "Container",
+			"parent_label": "Form",
+			"sample": "",
 			"selector": ".fc-f2-fg > div",
 			"tag": "div",
 			"features": [
@@ -3450,8 +4118,10 @@
 		},
 		{
 			"id": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1",
-			"label": "Fg › Required — *",
-			"short_label": "Required",
+			"label": "Form Text",
+			"short_label": "Text",
+			"parent_label": "Form",
+			"sample": "*",
 			"selector": ".fc-f2-field > label:nth-of-type(1) > span:nth-of-type(1)",
 			"tag": "span",
 			"features": [
@@ -3475,8 +4145,10 @@
 		},
 		{
 			"id": "p_fc_f2_field_input_nth_of_type_1",
-			"label": "Fg › Input",
-			"short_label": "Input",
+			"label": "Form Field 3",
+			"short_label": "Field",
+			"parent_label": "Form",
+			"sample": "",
 			"selector": ".fc-f2-field > input:nth-of-type(1)",
 			"tag": "input",
 			"features": [
@@ -3500,8 +4172,10 @@
 		},
 		{
 			"id": "p_fc_f2_when",
-			"label": "Fg › When",
-			"short_label": "When",
+			"label": "Form Container 3",
+			"short_label": "Container",
+			"parent_label": "Form",
+			"sample": "",
 			"selector": ".fc-f2-when",
 			"tag": "div",
 			"features": [
@@ -3524,8 +4198,10 @@
 		},
 		{
 			"id": "p_fc_f2_when_select",
-			"label": "When › Select",
+			"label": "Form Select",
 			"short_label": "Select",
+			"parent_label": "Form",
+			"sample": "",
 			"selector": ".fc-f2-when > select",
 			"tag": "select",
 			"features": [
@@ -3549,8 +4225,10 @@
 		},
 		{
 			"id": "p_fc_f2_when_select_option_nth_of_type_1",
-			"label": "Select › Option — Month",
+			"label": "Select Option 2",
 			"short_label": "Option",
+			"parent_label": "Select",
+			"sample": "Month",
 			"selector": ".fc-f2-when > select > option:nth-of-type(1)",
 			"tag": "option",
 			"features": [
@@ -3573,8 +4251,10 @@
 		},
 		{
 			"id": "p_fc_f2_span_grow",
-			"label": "Fg › Span Grow",
-			"short_label": "Span Grow",
+			"label": "Form Field 4",
+			"short_label": "Field",
+			"parent_label": "Form",
+			"sample": "",
 			"selector": ".fc-f2-span-grow",
 			"tag": "div",
 			"features": [
@@ -3597,8 +4277,10 @@
 		},
 		{
 			"id": "p_fc_f2_span_grow_label",
-			"label": "Span Grow › Label — What Are You Hoping to Expe…",
+			"label": "Field Label 2",
 			"short_label": "Label",
+			"parent_label": "Field",
+			"sample": "What Are You Hoping to Experience?",
 			"selector": ".fc-f2-span-grow > label",
 			"tag": "label",
 			"features": [
@@ -3622,8 +4304,10 @@
 		},
 		{
 			"id": "p_textarea",
-			"label": "Span Grow › Textarea",
-			"short_label": "Textarea",
+			"label": "Message",
+			"short_label": "Message",
+			"parent_label": "Field",
+			"sample": "",
 			"selector": "textarea",
 			"tag": "textarea",
 			"features": [
@@ -3647,8 +4331,10 @@
 		},
 		{
 			"id": "p_fc_f2_consent",
-			"label": "Form › Consent",
+			"label": "Form Consent 1",
 			"short_label": "Consent",
+			"parent_label": "Form",
+			"sample": "",
 			"selector": ".fc-f2-consent",
 			"tag": "div",
 			"features": [
@@ -3671,8 +4357,10 @@
 		},
 		{
 			"id": "p_fc_f2_consent_item",
-			"label": "Consent › Item",
+			"label": "Item",
 			"short_label": "Item",
+			"parent_label": "Consent",
+			"sample": "",
 			"selector": ".fc-f2-consent-item",
 			"tag": "label",
 			"features": [
@@ -3696,8 +4384,10 @@
 		},
 		{
 			"id": "p_fc_f2_consent_item_input_nth_of_type_1",
-			"label": "Item › Input",
-			"short_label": "Input",
+			"label": "Item Field",
+			"short_label": "Field",
+			"parent_label": "Item",
+			"sample": "",
 			"selector": ".fc-f2-consent-item > input:nth-of-type(1)",
 			"tag": "input",
 			"features": [
@@ -3721,8 +4411,10 @@
 		},
 		{
 			"id": "p_fc_f2_consent_item_span_nth_of_type_1",
-			"label": "Item › Span",
-			"short_label": "Span",
+			"label": "Item Text",
+			"short_label": "Text",
+			"parent_label": "Item",
+			"sample": "",
 			"selector": ".fc-f2-consent-item > span:nth-of-type(1)",
 			"tag": "span",
 			"features": [
@@ -3746,8 +4438,10 @@
 		},
 		{
 			"id": "p_a",
-			"label": "Span › A — Privacy Policy",
-			"short_label": "A",
+			"label": "Link",
+			"short_label": "Link",
+			"parent_label": "Text",
+			"sample": "Privacy Policy",
 			"selector": "a",
 			"tag": "a",
 			"features": [
@@ -3772,8 +4466,10 @@
 		},
 		{
 			"id": "p_fc_f2_consent_item_span_nth_of_type_1_span_nth_of_type_1",
-			"label": "Span › Tag — (Required)",
-			"short_label": "Tag",
+			"label": "Text Label",
+			"short_label": "Label",
+			"parent_label": "Text",
+			"sample": "(Required)",
 			"selector": ".fc-f2-consent-item > span:nth-of-type(1) > span:nth-of-type(1)",
 			"tag": "span",
 			"features": [
@@ -3797,8 +4493,10 @@
 		},
 		{
 			"id": "p_fc_f2_submit",
-			"label": "Form › Submit",
-			"short_label": "Submit",
+			"label": "Form Container 4",
+			"short_label": "Container",
+			"parent_label": "Form",
+			"sample": "",
 			"selector": ".fc-f2-submit",
 			"tag": "div",
 			"features": [
@@ -3821,8 +4519,10 @@
 		},
 		{
 			"id": "p_fc_f2_sub_btn",
-			"label": "Submit › Subtitle Button — Request Your Founder’s Circ…",
-			"short_label": "Subtitle Button",
+			"label": "Button",
+			"short_label": "Button",
+			"parent_label": "Form",
+			"sample": "Request Your Founder’s Circle Membership",
 			"selector": ".fc-f2-sub-btn",
 			"tag": "button",
 			"features": [
@@ -3847,8 +4547,10 @@
 		},
 		{
 			"id": "p_fc_f2_legal",
-			"label": "Form › Legal — Your information is held in…",
-			"short_label": "Legal",
+			"label": "Form Consent 2",
+			"short_label": "Consent",
+			"parent_label": "Form",
+			"sample": "Your information is held in strict confidence a…",
 			"selector": ".fc-f2-legal",
 			"tag": "p",
 			"features": [
@@ -3872,8 +4574,10 @@
 		},
 		{
 			"id": "p_iframe",
-			"label": "Card › Iframe",
-			"short_label": "Iframe",
+			"label": "Embed",
+			"short_label": "Embed",
+			"parent_label": "Card",
+			"sample": "",
 			"selector": "iframe",
 			"tag": "iframe",
 			"features": [
@@ -3895,24 +4599,24 @@
 	],
 	"inline_styles": [
 		{
-			"id": "iframe_inline_style",
+			"id": "embed_inline_style",
 			"control": "inline_style_group",
 			"declarations": [
 				{
 					"prefix": "display:",
-					"id": "iframe_css_display"
+					"id": "embed_css_display"
 				},
 				{
 					"prefix": ";width:",
-					"id": "iframe_css_width"
+					"id": "embed_css_width"
 				},
 				{
 					"prefix": ";height:",
-					"id": "iframe_css_height"
+					"id": "embed_css_height"
 				},
 				{
 					"prefix": ";border:",
-					"id": "iframe_css_border"
+					"id": "embed_css_border"
 				}
 			],
 			"tail": ";",
@@ -3923,7 +4627,7 @@
 		{
 			"id": "section_aria_label",
 			"control": "text",
-			"label": "Section – Aria Label",
+			"label": "Accessible Name",
 			"default": "Join the Founder's Circle — Inquiry Form",
 			"esc": "attr",
 			"group": "p_section",
@@ -3933,7 +4637,7 @@
 		{
 			"id": "image_src",
 			"control": "media",
-			"label": "Image – Src",
+			"label": "Source",
 			"default": {
 				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc04418(1).jpg"
 			},
@@ -3945,7 +4649,7 @@
 		{
 			"id": "image_alt",
 			"control": "text",
-			"label": "Image – Alt",
+			"label": "Alt Text",
 			"default": "Umoya Afrika Tours — heritage journey",
 			"esc": "attr",
 			"group": "p_img",
@@ -3953,9 +4657,9 @@
 			"sort": 1
 		},
 		{
-			"id": "eyebrow_inquiry_form_text",
+			"id": "eyebrow_text",
 			"control": "text",
-			"label": "Eyebrow — Inquiry Form",
+			"label": "Eyebrow",
 			"description": "",
 			"default": "Inquiry Form",
 			"esc": "post",
@@ -3963,9 +4667,9 @@
 			"sort": 0
 		},
 		{
-			"id": "title_your_umoya_experience_awaits_text",
+			"id": "title_text",
 			"control": "text",
-			"label": "Title — Your Umoya Experience Awaits",
+			"label": "Title",
 			"description": "",
 			"default": "Your Umoya Experience Awaits",
 			"esc": "post",
@@ -3973,9 +4677,9 @@
 			"sort": 0
 		},
 		{
-			"id": "eyebrow_reserve_your_place_text",
+			"id": "eyebrow_text_2",
 			"control": "text",
-			"label": "Eyebrow — Reserve Your Place",
+			"label": "Eyebrow",
 			"description": "",
 			"default": "Reserve Your Place",
 			"esc": "post",
@@ -3983,9 +4687,9 @@
 			"sort": 0
 		},
 		{
-			"id": "title_begin_your_journey_text",
+			"id": "title_text_2",
 			"control": "text",
-			"label": "Title — Begin Your Journey",
+			"label": "Title",
 			"description": "",
 			"default": "Begin Your Journey",
 			"esc": "post",
@@ -3993,9 +4697,9 @@
 			"sort": 0
 		},
 		{
-			"id": "subtitle_tell_us_about_yourself_and_text",
+			"id": "subtitle_text",
 			"control": "textarea",
-			"label": "Subtitle — Tell us about yourself and …",
+			"label": "Subtitle",
 			"description": "",
 			"default": "Tell us about yourself and the travel experience you're seeking. A dedicated Umoya Travel Expert will personally connect with you to begin planning your experience.",
 			"esc": "post",
@@ -4003,9 +4707,22 @@
 			"sort": 0
 		},
 		{
+			"id": "form_novalidate",
+			"control": "switcher",
+			"label": "Skip Browser Validation",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "novalidate",
+			"flag_prefix": "\n            ",
+			"esc": "raw",
+			"group": "p_fc_f2_form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
 			"id": "form_data_hs_do_not_collect",
 			"control": "text",
-			"label": "Form – Hs Do Not Collect",
+			"label": "Hs Do Not Collect",
 			"default": "true",
 			"esc": "attr",
 			"group": "integration",
@@ -4015,7 +4732,7 @@
 		{
 			"id": "form_action",
 			"control": "url",
-			"label": "Form – Action",
+			"label": "Form Action",
 			"default": {
 				"url": "/wp-json/umoya/v1/submissions"
 			},
@@ -4026,9 +4743,13 @@
 		},
 		{
 			"id": "form_method",
-			"control": "text",
-			"label": "Form – Method",
+			"control": "select",
+			"label": "Method",
 			"default": "post",
+			"options": [
+				"get",
+				"post"
+			],
 			"esc": "attr",
 			"group": "form",
 			"tab": "form",
@@ -4036,9 +4757,15 @@
 		},
 		{
 			"id": "form_target",
-			"control": "text",
-			"label": "Form – Target",
+			"control": "select",
+			"label": "Link Target",
 			"default": "umoyaSubmissionFrame",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
 			"esc": "attr",
 			"group": "behaviour",
 			"tab": "behaviour",
@@ -4047,7 +4774,7 @@
 		{
 			"id": "form_aria_label",
 			"control": "text",
-			"label": "Form – Aria Label",
+			"label": "Accessible Name",
 			"default": "Founder's Circle Inquiry Form",
 			"esc": "attr",
 			"group": "p_fc_f2_form",
@@ -4057,7 +4784,7 @@
 		{
 			"id": "form_data_hubspot_portal_id",
 			"control": "text",
-			"label": "Form – Hubspot Portal Id",
+			"label": "Hubspot Portal Id",
 			"default": "246097317",
 			"esc": "attr",
 			"group": "integration",
@@ -4067,7 +4794,7 @@
 		{
 			"id": "form_data_hubspot_form_id",
 			"control": "text",
-			"label": "Form – Hubspot Form Id",
+			"label": "Hubspot Form Id",
 			"default": "b3c06e8a-9bbc-44e1-bc67-00e35528b9b9",
 			"esc": "attr",
 			"group": "integration",
@@ -4077,7 +4804,7 @@
 		{
 			"id": "form_data_umoya_form_source",
 			"control": "text",
-			"label": "Form – Umoya Form Source",
+			"label": "Umoya Form Source",
 			"default": "founders_circle_page",
 			"esc": "attr",
 			"group": "integration",
@@ -4087,7 +4814,7 @@
 		{
 			"id": "form_data_wordpress_backup_endpoint",
 			"control": "text",
-			"label": "Form – Wordpress Backup Endpoint",
+			"label": "Wordpress Backup Endpoint",
 			"default": "/wp-json/umoya/v1/submissions",
 			"esc": "attr",
 			"group": "integration",
@@ -4097,28 +4824,8 @@
 		{
 			"id": "form_data_hubspot_consent_text",
 			"control": "text",
-			"label": "Form – Hubspot Consent Text",
+			"label": "Hubspot Consent Text",
 			"default": "I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the Privacy Policy.",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1
-		},
-		{
-			"id": "label_title_text",
-			"control": "text",
-			"label": "Label — Title",
-			"description": "",
-			"default": "Title",
-			"esc": "post",
-			"group": "p_fc_f2_field_label_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "select_name",
-			"control": "text",
-			"label": "Select – Name",
-			"default": "MERGE1",
 			"esc": "attr",
 			"group": "integration",
 			"tab": "integration",
@@ -4128,15 +4835,74 @@
 			"id": "label_text",
 			"control": "text",
 			"label": "Label",
+			"description": "",
+			"default": "Title",
+			"esc": "post",
+			"group": "p_fc_f2_field_label_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "select_required",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_multiple",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_name",
+			"control": "text",
+			"label": "Field Name",
+			"default": "MERGE1",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "label_text_2",
+			"control": "text",
+			"label": "Text",
 			"default": "First Name",
 			"esc": "post",
 			"group": "p_fc_f2_field_label_nth_of_type_1_2",
 			"sort": 0
 		},
 		{
-			"id": "required_text",
+			"id": "text_text",
 			"control": "text",
-			"label": "Required — *",
+			"label": "Text",
 			"description": "",
 			"default": "*",
 			"esc": "post",
@@ -4144,9 +4910,61 @@
 			"sort": 0
 		},
 		{
-			"id": "input_type",
+			"id": "field_required",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_readonly",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_checked",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_type",
 			"control": "text",
-			"label": "Input – Type",
+			"label": "Type",
 			"default": "text",
 			"esc": "attr",
 			"group": "form",
@@ -4154,9 +4972,9 @@
 			"sort": 1
 		},
 		{
-			"id": "input_name",
+			"id": "field_name",
 			"control": "text",
-			"label": "Input – Name",
+			"label": "Field Name",
 			"default": "FNAME",
 			"esc": "attr",
 			"group": "integration",
@@ -4164,9 +4982,9 @@
 			"sort": 1
 		},
 		{
-			"id": "input_placeholder",
+			"id": "field_placeholder",
 			"control": "text",
-			"label": "Input – Placeholder",
+			"label": "Placeholder",
 			"default": "First name",
 			"esc": "attr",
 			"group": "p_fc_f2_field_input_nth_of_type_1",
@@ -4174,69 +4992,10 @@
 			"sort": 1
 		},
 		{
-			"id": "input_autocomplete",
+			"id": "field_autocomplete",
 			"control": "text",
-			"label": "Input – Autocomplete",
+			"label": "Autocomplete",
 			"default": "given-name",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "label_text_2",
-			"control": "text",
-			"label": "Label",
-			"default": "Last Name",
-			"esc": "post",
-			"group": "p_fc_f2_field_label_nth_of_type_1_3",
-			"sort": 0
-		},
-		{
-			"id": "required_text_2",
-			"control": "text",
-			"label": "Required — *",
-			"description": "",
-			"default": "*",
-			"esc": "post",
-			"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1_2",
-			"sort": 0
-		},
-		{
-			"id": "input_type_2",
-			"control": "text",
-			"label": "Input – Type",
-			"default": "text",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "input_name_2",
-			"control": "text",
-			"label": "Input – Name",
-			"default": "LNAME",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1
-		},
-		{
-			"id": "input_placeholder_2",
-			"control": "text",
-			"label": "Input – Placeholder",
-			"default": "Last name",
-			"esc": "attr",
-			"group": "p_fc_f2_field_input_nth_of_type_1_2",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "input_autocomplete_2",
-			"control": "text",
-			"label": "Input – Autocomplete",
-			"default": "family-name",
 			"esc": "attr",
 			"group": "form",
 			"tab": "form",
@@ -4245,107 +5004,109 @@
 		{
 			"id": "label_text_3",
 			"control": "text",
-			"label": "Label",
-			"default": "Email Address",
+			"label": "Text",
+			"default": "Last Name",
 			"esc": "post",
-			"group": "p_fc_f2_field_label_nth_of_type_1_4",
+			"group": "p_fc_f2_field_label_nth_of_type_1_3",
 			"sort": 0
 		},
 		{
-			"id": "required_text_3",
+			"id": "text_text_2",
 			"control": "text",
-			"label": "Required — *",
+			"label": "Text",
 			"description": "",
 			"default": "*",
 			"esc": "post",
-			"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1_3",
+			"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1_2",
 			"sort": 0
 		},
 		{
-			"id": "input_type_3",
-			"control": "text",
-			"label": "Input – Type",
-			"default": "email",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "input_name_3",
-			"control": "text",
-			"label": "Input – Name",
-			"default": "EMAIL",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1
-		},
-		{
-			"id": "input_placeholder_3",
-			"control": "text",
-			"label": "Input – Placeholder",
-			"default": "your@email.com",
-			"esc": "attr",
-			"group": "p_fc_f2_field_input_nth_of_type_1_3",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "input_autocomplete_3",
-			"control": "text",
-			"label": "Input – Autocomplete",
-			"default": "email",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "label_phone_number_text",
-			"control": "text",
-			"label": "Label — Phone Number",
+			"id": "field_required_2",
+			"control": "switcher",
+			"label": "Required",
 			"description": "",
-			"default": "Phone Number",
-			"esc": "post",
-			"group": "p_fc_f2_field_label_nth_of_type_1_5",
-			"sort": 0
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1
 		},
 		{
-			"id": "input_type_4",
+			"id": "field_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_readonly_2",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_checked_2",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_type_2",
 			"control": "text",
-			"label": "Input – Type",
-			"default": "tel",
+			"label": "Type",
+			"default": "text",
 			"esc": "attr",
 			"group": "form",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "input_name_4",
+			"id": "field_name_2",
 			"control": "text",
-			"label": "Input – Name",
-			"default": "PHONE",
+			"label": "Field Name",
+			"default": "LNAME",
 			"esc": "attr",
 			"group": "integration",
 			"tab": "integration",
 			"sort": 1
 		},
 		{
-			"id": "input_placeholder_4",
+			"id": "field_placeholder_2",
 			"control": "text",
-			"label": "Input – Placeholder",
-			"default": "+1 (000) 000-0000",
+			"label": "Placeholder",
+			"default": "Last name",
 			"esc": "attr",
-			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"group": "p_fc_f2_field_input_nth_of_type_1_2",
 			"tab": "content",
 			"sort": 1
 		},
 		{
-			"id": "input_autocomplete_4",
+			"id": "field_autocomplete_2",
 			"control": "text",
-			"label": "Input – Autocomplete",
-			"default": "tel",
+			"label": "Autocomplete",
+			"default": "family-name",
 			"esc": "attr",
 			"group": "form",
 			"tab": "form",
@@ -4354,16 +5115,229 @@
 		{
 			"id": "label_text_4",
 			"control": "text",
+			"label": "Text",
+			"default": "Email Address",
+			"esc": "post",
+			"group": "p_fc_f2_field_label_nth_of_type_1_4",
+			"sort": 0
+		},
+		{
+			"id": "text_text_3",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "*",
+			"esc": "post",
+			"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1_3",
+			"sort": 0
+		},
+		{
+			"id": "field_required_3",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_disabled_3",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_readonly_3",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_checked_3",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_type_3",
+			"control": "text",
+			"label": "Type",
+			"default": "email",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_name_3",
+			"control": "text",
+			"label": "Field Name",
+			"default": "EMAIL",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "field_placeholder_3",
+			"control": "text",
+			"label": "Placeholder",
+			"default": "your@email.com",
+			"esc": "attr",
+			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "field_autocomplete_3",
+			"control": "text",
+			"label": "Autocomplete",
+			"default": "email",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "label_text_5",
+			"control": "text",
 			"label": "Label",
+			"description": "",
+			"default": "Phone Number",
+			"esc": "post",
+			"group": "p_fc_f2_field_label_nth_of_type_1_5",
+			"sort": 0
+		},
+		{
+			"id": "field_required_4",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_disabled_4",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_readonly_4",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_checked_4",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_type_4",
+			"control": "text",
+			"label": "Type",
+			"default": "tel",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_name_4",
+			"control": "text",
+			"label": "Field Name",
+			"default": "PHONE",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "field_placeholder_4",
+			"control": "text",
+			"label": "Placeholder",
+			"default": "+1 (000) 000-0000",
+			"esc": "attr",
+			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "field_autocomplete_4",
+			"control": "text",
+			"label": "Autocomplete",
+			"default": "tel",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "label_text_6",
+			"control": "text",
+			"label": "Text",
 			"default": "Country",
 			"esc": "post",
 			"group": "p_fc_f2_field_label_nth_of_type_1_6",
 			"sort": 0
 		},
 		{
-			"id": "required_text_4",
+			"id": "text_text_4",
 			"control": "text",
-			"label": "Required — *",
+			"label": "Text",
 			"description": "",
 			"default": "*",
 			"esc": "post",
@@ -4371,9 +5345,48 @@
 			"sort": 0
 		},
 		{
+			"id": "select_required_2",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_multiple_2",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
 			"id": "select_name_2",
 			"control": "text",
-			"label": "Select – Name",
+			"label": "Field Name",
 			"default": "MERGE2",
 			"esc": "attr",
 			"group": "integration",
@@ -4381,9 +5394,9 @@
 			"sort": 1
 		},
 		{
-			"id": "label_city_text",
+			"id": "label_text_7",
 			"control": "text",
-			"label": "Label — City",
+			"label": "Label",
 			"description": "",
 			"default": "City",
 			"esc": "post",
@@ -4391,9 +5404,61 @@
 			"sort": 0
 		},
 		{
-			"id": "input_type_5",
+			"id": "field_required_5",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_5",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_disabled_5",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_5",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_readonly_5",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_5",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_checked_5",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_input_nth_of_type_1_5",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_type_5",
 			"control": "text",
-			"label": "Input – Type",
+			"label": "Type",
 			"default": "text",
 			"esc": "attr",
 			"group": "form",
@@ -4401,9 +5466,9 @@
 			"sort": 1
 		},
 		{
-			"id": "input_name_5",
+			"id": "field_name_5",
 			"control": "text",
-			"label": "Input – Name",
+			"label": "Field Name",
 			"default": "MERGE3",
 			"esc": "attr",
 			"group": "integration",
@@ -4411,9 +5476,9 @@
 			"sort": 1
 		},
 		{
-			"id": "input_placeholder_5",
+			"id": "field_placeholder_5",
 			"control": "text",
-			"label": "Input – Placeholder",
+			"label": "Placeholder",
 			"default": "Your city",
 			"esc": "attr",
 			"group": "p_fc_f2_field_input_nth_of_type_1_5",
@@ -4421,9 +5486,9 @@
 			"sort": 1
 		},
 		{
-			"id": "input_autocomplete_5",
+			"id": "field_autocomplete_5",
 			"control": "text",
-			"label": "Input – Autocomplete",
+			"label": "Autocomplete",
 			"default": "address-level2",
 			"esc": "attr",
 			"group": "form",
@@ -4431,9 +5496,9 @@
 			"sort": 1
 		},
 		{
-			"id": "label_when_are_you_hoping_to_trav_text",
+			"id": "label_text_8",
 			"control": "text",
-			"label": "Label — When Are You Hoping to Trav…",
+			"label": "Label",
 			"description": "",
 			"default": "When Are You Hoping to Travel?",
 			"esc": "post",
@@ -4441,9 +5506,48 @@
 			"sort": 0
 		},
 		{
+			"id": "select_required_3",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_when_select",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_disabled_3",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_when_select",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_multiple_3",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_when_select",
+			"tab": "form",
+			"sort": 1
+		},
+		{
 			"id": "select_name_3",
 			"control": "text",
-			"label": "Select – Name",
+			"label": "Field Name",
 			"default": "MERGE4",
 			"esc": "attr",
 			"group": "integration",
@@ -4453,7 +5557,7 @@
 		{
 			"id": "select_aria_label",
 			"control": "text",
-			"label": "Select – Aria Label",
+			"label": "Accessible Name",
 			"default": "Preferred travel month",
 			"esc": "attr",
 			"group": "p_fc_f2_when_select",
@@ -4461,9 +5565,48 @@
 			"sort": 1
 		},
 		{
+			"id": "select_required_4",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_when_select_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_disabled_4",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_when_select_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_multiple_4",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_when_select_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
 			"id": "select_name_4",
 			"control": "text",
-			"label": "Select – Name",
+			"label": "Field Name",
 			"default": "MERGE5",
 			"esc": "attr",
 			"group": "integration",
@@ -4473,7 +5616,7 @@
 		{
 			"id": "select_aria_label_2",
 			"control": "text",
-			"label": "Select – Aria Label",
+			"label": "Accessible Name",
 			"default": "Preferred travel year",
 			"esc": "attr",
 			"group": "p_fc_f2_when_select_2",
@@ -4481,9 +5624,9 @@
 			"sort": 1
 		},
 		{
-			"id": "label_how_many_guests_will_be_tra_text",
+			"id": "label_text_9",
 			"control": "text",
-			"label": "Label — How Many Guests Will Be Tra…",
+			"label": "Label",
 			"description": "",
 			"default": "How Many Guests Will Be Traveling?",
 			"esc": "post",
@@ -4491,9 +5634,48 @@
 			"sort": 0
 		},
 		{
+			"id": "select_required_5",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_disabled_5",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_multiple_5",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_field_select_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1
+		},
+		{
 			"id": "select_name_5",
 			"control": "text",
-			"label": "Select – Name",
+			"label": "Field Name",
 			"default": "MERGE6",
 			"esc": "attr",
 			"group": "integration",
@@ -4501,9 +5683,9 @@
 			"sort": 1
 		},
 		{
-			"id": "label_what_are_you_hoping_to_expe_text",
+			"id": "label_text_10",
 			"control": "text",
-			"label": "Label — What Are You Hoping to Expe…",
+			"label": "Label",
 			"description": "",
 			"default": "What Are You Hoping to Experience?",
 			"esc": "post",
@@ -4511,9 +5693,48 @@
 			"sort": 0
 		},
 		{
-			"id": "textarea_name",
+			"id": "message_required",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_textarea",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "message_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_textarea",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "message_readonly",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_textarea",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "message_name",
 			"control": "text",
-			"label": "Textarea – Name",
+			"label": "Field Name",
 			"default": "MERGE7",
 			"esc": "attr",
 			"group": "integration",
@@ -4521,9 +5742,9 @@
 			"sort": 1
 		},
 		{
-			"id": "textarea_placeholder",
+			"id": "message_placeholder",
 			"control": "text",
-			"label": "Textarea – Placeholder",
+			"label": "Placeholder",
 			"default": "Tell us about your travel interests, what you hope to experience, and what draws you to South Africa.",
 			"esc": "attr",
 			"group": "p_textarea",
@@ -4531,9 +5752,9 @@
 			"sort": 1
 		},
 		{
-			"id": "subtitle_button_request_your_founder_s_circ_text",
+			"id": "button_text",
 			"control": "text",
-			"label": "Subtitle Button — Request Your Founder’s Circ…",
+			"label": "Button",
 			"description": "",
 			"default": "Request Your Founder’s Circle Membership",
 			"esc": "post",
@@ -4541,9 +5762,22 @@
 			"sort": 0
 		},
 		{
-			"id": "subtitle_button_request_your_founder_s_circ_type",
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_f2_sub_btn",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "button_type",
 			"control": "text",
-			"label": "Subtitle Button — Request Your Founder’s Circ… – Type",
+			"label": "Type",
 			"default": "submit",
 			"esc": "attr",
 			"group": "form",
@@ -4551,9 +5785,9 @@
 			"sort": 1
 		},
 		{
-			"id": "legal_your_information_is_held_in_text",
+			"id": "consent_text",
 			"control": "textarea",
-			"label": "Legal — Your information is held in…",
+			"label": "Consent",
 			"description": "",
 			"default": "Your information is held in strict confidence and never shared. Submission does not guarantee membership — places are strictly limited.",
 			"esc": "post",
@@ -4561,9 +5795,22 @@
 			"sort": 0
 		},
 		{
-			"id": "iframe_title",
+			"id": "embed_allowfullscreen",
+			"control": "switcher",
+			"label": "Allow Fullscreen",
+			"description": "",
+			"default": "",
+			"flag_attr": "allowfullscreen",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_iframe",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "embed_title",
 			"control": "text",
-			"label": "Iframe – Title",
+			"label": "Title Attribute",
 			"default": "Umoya submission fallback",
 			"esc": "attr",
 			"group": "p_iframe",
@@ -4571,9 +5818,9 @@
 			"sort": 1
 		},
 		{
-			"id": "iframe_css_display",
+			"id": "embed_css_display",
 			"control": "text",
-			"label": "Iframe – Display",
+			"label": "Display",
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "none",
 			"esc": "attr",
@@ -4582,9 +5829,9 @@
 			"sort": 3
 		},
 		{
-			"id": "iframe_css_width",
+			"id": "embed_css_width",
 			"control": "text",
-			"label": "Iframe – Width",
+			"label": "Width",
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "0",
 			"esc": "attr",
@@ -4593,9 +5840,9 @@
 			"sort": 3
 		},
 		{
-			"id": "iframe_css_height",
+			"id": "embed_css_height",
 			"control": "text",
-			"label": "Iframe – Height",
+			"label": "Height",
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "0",
 			"esc": "attr",
@@ -4604,9 +5851,9 @@
 			"sort": 3
 		},
 		{
-			"id": "iframe_css_border",
+			"id": "embed_css_border",
 			"control": "text",
-			"label": "Iframe – Border",
+			"label": "Border",
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "0",
 			"esc": "attr",

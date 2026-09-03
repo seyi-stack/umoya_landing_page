@@ -58,8 +58,85 @@ function isIntegrationAttr( name, node ) {
 /** Attributes that describe form behaviour. */
 const FORM_ATTRS = new Set( [ 'type', 'required', 'maxlength', 'minlength', 'min', 'max', 'step', 'pattern', 'autocomplete', 'inputmode', 'rows', 'cols', 'multiple', 'accept', 'novalidate', 'method', 'enctype', 'checked', 'selected', 'disabled', 'readonly' ] );
 
+/**
+ * Attributes with a fixed set of legal values become dropdowns, the way
+ * Elementor's own Video widget offers Preload as a select rather than a text
+ * box. A free-text field here is an invitation to typo an attribute into
+ * silence.
+ */
+const ATTRIBUTE_OPTIONS = {
+	preload: [ 'auto', 'metadata', 'none' ],
+	loading: [ 'eager', 'lazy' ],
+	decoding: [ 'sync', 'async', 'auto' ],
+	fetchpriority: [ 'high', 'low', 'auto' ],
+	target: [ '_self', '_blank', '_parent', '_top' ],
+	referrerpolicy: [ 'no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin', 'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url' ],
+	crossorigin: [ 'anonymous', 'use-credentials' ],
+	method: [ 'get', 'post' ],
+	enctype: [ 'application/x-www-form-urlencoded', 'multipart/form-data', 'text/plain' ],
+	inputmode: [ 'text', 'numeric', 'tel', 'email', 'url', 'decimal', 'search', 'none' ],
+	wrap: [ 'soft', 'hard' ],
+};
+
 /** Attributes that describe media behaviour. */
 const MEDIA_BEHAVIOUR_ATTRS = new Set( [ 'loading', 'decoding', 'fetchpriority', 'sizes', 'srcset', 'autoplay', 'muted', 'loop', 'playsinline', 'controls', 'preload', 'target', 'rel', 'referrerpolicy', 'allow', 'allowfullscreen', 'frameborder', 'crossorigin' ] );
+
+/* ------------------------------------------------------- boolean attributes */
+
+/**
+ * Boolean attributes an element type should be able to toggle, named the way
+ * Elementor's own widgets name them.
+ *
+ * The video row is deliberately Elementor's Video widget vocabulary -- Autoplay,
+ * Play On Mobile, Mute, Loop, Player Controls, Download Button -- because that
+ * is what an editor coming from the native widget will look for. `playsinline`
+ * is what "Play On Mobile" actually means in HTML: without it, iOS takes the
+ * video fullscreen instead of playing it in place.
+ *
+ * A flag listed here but absent from the source is still offered, defaulting to
+ * off, so the markup is unchanged until someone switches it on.
+ */
+const FLAGS_BY_TAG = {
+	video: [
+		{ attr: 'autoplay', label: 'Autoplay', tab: 'media', description: 'Browsers only allow autoplay while the video is muted.' },
+		{ attr: 'muted', label: 'Mute', tab: 'media' },
+		{ attr: 'playsinline', label: 'Play On Mobile', tab: 'media', description: 'Without this, iOS opens the video fullscreen instead of playing it in place.' },
+		{ attr: 'loop', label: 'Loop', tab: 'media' },
+		{ attr: 'controls', label: 'Player Controls', tab: 'media' },
+		{ attr: 'disablepictureinpicture', label: 'Disable Picture-in-Picture', tab: 'media' },
+	],
+	audio: [
+		{ attr: 'autoplay', label: 'Autoplay', tab: 'media' },
+		{ attr: 'muted', label: 'Mute', tab: 'media' },
+		{ attr: 'loop', label: 'Loop', tab: 'media' },
+		{ attr: 'controls', label: 'Player Controls', tab: 'media' },
+	],
+	iframe: [
+		{ attr: 'allowfullscreen', label: 'Allow Fullscreen', tab: 'media' },
+	],
+	input: [
+		{ attr: 'required', label: 'Required', tab: 'form' },
+		{ attr: 'disabled', label: 'Disabled', tab: 'form' },
+		{ attr: 'readonly', label: 'Read Only', tab: 'form' },
+		{ attr: 'checked', label: 'Checked By Default', tab: 'form' },
+	],
+	select: [
+		{ attr: 'required', label: 'Required', tab: 'form' },
+		{ attr: 'disabled', label: 'Disabled', tab: 'form' },
+		{ attr: 'multiple', label: 'Allow Multiple', tab: 'form' },
+	],
+	textarea: [
+		{ attr: 'required', label: 'Required', tab: 'form' },
+		{ attr: 'disabled', label: 'Disabled', tab: 'form' },
+		{ attr: 'readonly', label: 'Read Only', tab: 'form' },
+	],
+	form: [
+		{ attr: 'novalidate', label: 'Skip Browser Validation', tab: 'form' },
+	],
+	button: [
+		{ attr: 'disabled', label: 'Disabled', tab: 'form' },
+	],
+};
 
 /* ------------------------------------------------- inline-style control map */
 
@@ -150,6 +227,140 @@ const NAME_EXPANSIONS = {
 	c: 'Container', n: 'Number', l: 'Label', t: 'Text', p: 'Paragraph',
 	inner: 'Inner', outer: 'Outer', body: 'Body', head: 'Header', top: 'Top',
 };
+
+/**
+ * What an element *is*, in the words Elementor uses for its own widgets.
+ *
+ * A panel called "Title" or "Icon" is findable; one called "Ttl" or
+ * "Rv › Div › Em" is not. Class names are only a hint towards the answer -- the
+ * tag is often the better one, so both are consulted, class first.
+ */
+const ROLE_BY_KEYWORD = [
+	[ /(^|-)(eyebrow|eye|kicker|overline)$/, 'Eyebrow' ],
+	[ /(^|-)(title|ttl|heading|headline)$/, 'Title' ],
+	[ /(^|-)(subtitle|sub|standfirst|deck)$/, 'Subtitle' ],
+	[ /(^|-)(lead|intro|body|copy|text|txt|desc|description|p)$/, 'Text' ],
+	[ /(^|-)(btn|button|cta)$/, 'Button' ],
+	[ /(^|-)(link|anchor)$/, 'Link' ],
+	[ /(^|-)(img|image|pic|picture|photo)$/, 'Image' ],
+	[ /(^|-)(vid|video|player)$/, 'Video' ],
+	[ /(^|-)(icon|ico|svg|mark|glyph)$/, 'Icon' ],
+	[ /(^|-)(rule|divider|line|hr|sep|separator)$/, 'Divider' ],
+	[ /(^|-)(overlay|ov|scrim|veil)$/, 'Overlay' ],
+	[ /(^|-)(badge|tag|pill|chip|label|lbl)$/, 'Label' ],
+	[ /(^|-)(card|tile|panel)$/, 'Card' ],
+	[ /(^|-)(item|entry|row)$/, 'Item' ],
+	[ /(^|-)(list|items|grid|stack)$/, 'List' ],
+	[ /(^|-)(nav|menu)$/, 'Navigation' ],
+	[ /(^|-)(header|head|hd|hdr|top|masthead)$/, 'Header' ],
+	[ /(^|-)(footer|foot|bottom)$/, 'Footer' ],
+	[ /(^|-)(wrap|wrapper|inner|outer|container|shell|frame|c)$/, 'Container' ],
+	[ /(^|-)(col|column)$/, 'Column' ],
+	[ /(^|-)(stats|metrics)$/, 'Stats' ],
+	[ /(^|-)(stat|metric|figure)$/, 'Stat' ],
+	[ /(^|-)(slide|slideshow|ss|carousel)$/, 'Slide' ],
+	[ /(^|-)(dot|dots|bullet)$/, 'Dot' ],
+	[ /(^|-)(arw|arrow|prev|next)$/, 'Arrow' ],
+	[ /(^|-)(field|input)$/, 'Field' ],
+	[ /(^|-)(form)$/, 'Form' ],
+	[ /(^|-)(consent|legal|fineprint)$/, 'Consent' ],
+	[ /(^|-)(scroll|cue)$/, 'Scroll Cue' ],
+	[ /(^|-)(accordion|acc|toggle|tgl)$/, 'Accordion' ],
+	[ /(^|-)(brand|logo)$/, 'Logo' ],
+	[ /(^|-)(bg|background)$/, 'Background' ],
+	[ /(^|-)(content|main|copy-col)$/, 'Content' ],
+];
+
+const ROLE_BY_TAG = {
+	h1: 'Heading', h2: 'Heading', h3: 'Heading', h4: 'Heading', h5: 'Heading', h6: 'Heading',
+	p: 'Text', span: 'Text', em: 'Emphasis', strong: 'Strong', small: 'Small Print',
+	a: 'Link', button: 'Button',
+	img: 'Image', video: 'Video', source: 'Video Source', iframe: 'Embed', svg: 'Icon',
+	ul: 'List', ol: 'List', li: 'Item', dl: 'List', dt: 'Term', dd: 'Definition',
+	form: 'Form', label: 'Label', input: 'Field', select: 'Select', textarea: 'Message',
+	fieldset: 'Field Group', legend: 'Legend',
+	nav: 'Navigation', header: 'Header', footer: 'Footer', main: 'Content',
+	article: 'Card', aside: 'Aside', figure: 'Figure', figcaption: 'Caption',
+	blockquote: 'Quote', section: 'Section', div: 'Container',
+};
+
+/** The Elementor-style name for an element. */
+export function semanticName( node, prefixes ) {
+	const tag = node.tagName.toLowerCase();
+
+	const textual = isTextual( node, { allowLinks: true } );
+
+	for ( const cls of classList( node ).filter( ( c ) => ! isUtilityClass( c ) ) ) {
+		let stem = cls;
+		for ( const prefix of prefixes ) {
+			if ( stem.startsWith( prefix ) && stem.length > prefix.length ) {
+				stem = stem.slice( prefix.length );
+				break;
+			}
+		}
+		for ( const [ pattern, role ] of ROLE_BY_KEYWORD ) {
+			if ( ! pattern.test( stem ) ) continue;
+			// A `-txt` wrapper that holds an eyebrow and a title is the content
+			// region, not a piece of text. Calling it Text makes every child read
+			// as "Text Eyebrow", "Text Title".
+			if ( 'Text' === role && ! textual ) return 'Content';
+			return role;
+		}
+	}
+
+	const byTag = ROLE_BY_TAG[ tag ];
+
+	// An unnamed <div> holding "10" is not a container, it is a piece of text.
+	// Calling it Container hides what it is and makes every sibling look alike.
+	if ( byTag && GENERIC_ROLES.has( byTag ) && textual ) {
+		return 'Text';
+	}
+
+	if ( byTag ) return byTag;
+
+	return humanizeClass( namingClass( node ), prefixes );
+}
+
+/**
+ * Roles that say nothing about what an element is for. They are still used as
+ * panel names when there is nothing better, but never as a prefix on a child --
+ * "Container Title" is no more informative than "Title".
+ */
+const GENERIC_ROLES = new Set( [ 'Container', 'Column', 'Wrapper', 'Section', 'Content' ] );
+
+/** Attribute control labels, in Elementor's wording. */
+const ATTRIBUTE_LABELS = {
+	src: 'Source',
+	href: 'Link',
+	poster: 'Poster',
+	alt: 'Alt Text',
+	title: 'Title Attribute',
+	'aria-label': 'Accessible Name',
+	'aria-roledescription': 'Accessible Role',
+	placeholder: 'Placeholder',
+	action: 'Form Action',
+	method: 'Method',
+	target: 'Link Target',
+	rel: 'Link Relationship',
+	loading: 'Loading',
+	preload: 'Preload',
+	type: 'Type',
+	name: 'Field Name',
+	value: 'Value',
+	autocomplete: 'Autocomplete',
+	maxlength: 'Maximum Length',
+	rows: 'Rows',
+	srcset: 'Source Set',
+	sizes: 'Sizes',
+	allow: 'Permissions',
+};
+
+function attributeLabel( name, node ) {
+	if ( ATTRIBUTE_LABELS[ name ] ) return ATTRIBUTE_LABELS[ name ];
+	if ( 'src' === name && 'img' === node.tagName.toLowerCase() ) return 'Choose Image';
+
+	return titleCase( name.replace( /^data-/, '' ) );
+}
 
 /** Classes that carry behaviour, not identity: reveal hooks and stagger delays. */
 function isUtilityClass( cls ) {
@@ -398,19 +609,18 @@ export function deriveSection( options ) {
 		const fullSelector = isRoot ? rootSelector : rootSelector + ' ' + selectorInfo.selector;
 		const layoutMode = layoutModeFor( cssIndex, normalizeSelector( fullSelector ) );
 
-		// A panel is far easier to find by the words it contains than by a class
-		// name, so text-bearing elements carry a short preview of their own copy.
+		// Panels are named the way Elementor names its own -- "Header", "Title",
+		// "Icon" -- not after the CSS class that happens to be on the element.
+		// The copy preview that used to be appended to the header moves inside the
+		// panel as a descriptor, so the header stays scannable but an editor can
+		// still tell two "Title" panels apart.
 		const baseLabel = isRoot
 			? 'Section'
-			: overrides[ selectorInfo.selector ]?.label || humanizeClass( namingClass( node ), prefixes );
-		// Only leaf text elements get a preview. On a wrapper it would just be the
-		// whole subtree's copy run together, which is noise.
+			: overrides[ selectorInfo.selector ]?.label || semanticName( node, prefixes );
 		const sample = ! isRoot && isTextual( node, { allowLinks: true } )
-			? previewText( innerText( node ), 28 )
+			? previewText( innerText( node ), 48 )
 			: '';
-		const label = sample && ! overrides[ selectorInfo.selector ]?.label
-			? baseLabel + ' — ' + sample
-			: baseLabel;
+		const label = baseLabel;
 
 		// --- style part -------------------------------------------------
 		const partId = uniqueId( 'p_' + ( isRoot ? 'section' : ( slug( selectorInfo.selector ) || node.tagName ) ) );
@@ -423,8 +633,10 @@ export function deriveSection( options ) {
 
 			const part = {
 				id: partId,
-				label: parentLabel && parentLabel !== baseLabel ? parentLabel + ' › ' + label : label,
+				label,
 				short_label: baseLabel,
+				parent_label: parentLabel && parentLabel !== baseLabel ? parentLabel : '',
+				sample,
 				selector: isRoot ? '' : selectorInfo.selector,
 				tag: node.tagName.toLowerCase(),
 				features: overrides[ selectorInfo.selector ]?.features || featuresFor( node, layoutMode, isRoot ),
@@ -460,6 +672,11 @@ export function deriveSection( options ) {
 	}
 
 	/* --------------------------------------------------------- assemble */
+
+	// Panel names are assigned last, once every part is known, so a repeated name
+	// can be told apart by the region it sits in rather than by a chain of every
+	// ancestor. "Header Title" and "Card Title", not "Rv > Div > Title".
+	assignPartLabels( parts );
 
 	const template = splice( markup, edits );
 	// Identical template minus the Elementor repeater-item classes. build.mjs
@@ -530,7 +747,7 @@ export function deriveSection( options ) {
 						{
 							id,
 							control: value.length > 90 ? 'textarea' : 'text',
-							label: ctx.prefixLabel + ( runIndex > 1 ? ' (part ' + runIndex + ')' : '' ),
+							label: runIndex > 1 ? 'Text ' + runIndex : 'Text',
 							default: value,
 							esc: 'post',
 							group: ctx.group,
@@ -546,13 +763,20 @@ export function deriveSection( options ) {
 			}
 		}
 
+		// Boolean attributes carry no value, so the loop below cannot bind them --
+		// which is why the hero video had no autoplay, mute or loop control at
+		// all. Each becomes a switcher that writes the attribute or omits it, and
+		// an element that SHOULD offer a flag it does not currently carry (a video
+		// with no `controls`) gets an insertion point for it.
+		collectFlags( node, ctx );
+
 		// Attributes.
 		for ( const a of node.attrs || [] ) {
 			const name = a.name.toLowerCase();
 			if ( LOCKED_ATTRS.has( name ) ) continue;
 			if ( name === 'value' && tag === 'option' ) continue; // handled by the option repeater
 			const range = attrValueRange( markup, node, name );
-			if ( ! range ) continue; // valueless boolean attribute
+			if ( ! range ) continue; // valueless boolean attribute -- see collectFlags
 
 			const info = classifyAttr( name, node, a.value );
 			if ( ! info ) continue;
@@ -562,7 +786,7 @@ export function deriveSection( options ) {
 				{
 					id,
 					control: info.control,
-					label: ctx.prefixLabel + ' – ' + titleCase( name.replace( /^data-/, '' ) ),
+					label: info.label || attributeLabel( name, node ),
 					default: info.control === 'url' || info.control === 'media' ? { url: a.value } : a.value,
 					options: info.options,
 					esc: info.esc,
@@ -594,7 +818,7 @@ export function deriveSection( options ) {
 				ctx.push( {
 					id,
 					control: map.type,
-					label: ctx.prefixLabel + ' – ' + titleCase( decl.prop ),
+					label: titleCase( decl.prop ),
 					description: 'Inline style on the element itself; overrides any CSS rule.',
 					default: decl.value,
 					options: map.options,
@@ -625,6 +849,84 @@ export function deriveSection( options ) {
 		return consumedSubtree;
 	}
 
+	/**
+	 * Bind an element's boolean attributes, and offer the ones its type supports
+	 * but does not currently have.
+	 *
+	 * A present flag binds its own span (with the leading space) so switching it
+	 * off removes the attribute cleanly. An absent flag gets a zero-width
+	 * insertion point before the `>`, which renders nothing until switched on --
+	 * so the default output is still byte-identical to the source.
+	 */
+	function collectFlags( node, ctx ) {
+		const tag = node.tagName.toLowerCase();
+		const offered = FLAGS_BY_TAG[ tag ];
+		if ( ! offered ) return;
+
+		const present = new Set( ( node.attrs || [] ).map( ( a ) => a.name.toLowerCase() ) );
+		const additions = [];
+
+		for ( const flag of offered ) {
+			const id = ctx.uniqueId( ctx.prefixLabel + '_' + flag.attr );
+
+			if ( present.has( flag.attr ) ) {
+				const range = attrWholeRange( markup, node, flag.attr );
+				if ( ! range ) continue;
+
+				// Keep the author's own separator. The hero's <video> puts every
+				// attribute on its own line; assuming a single space would fold
+				// them all onto one and the render would stop matching the source.
+				const prefix = markup.slice( range.start, range.end - flag.attr.length );
+
+				ctx.push(
+					{
+						id,
+						control: 'switcher',
+						label: flag.label,
+						description: flag.description || '',
+						default: 'yes',
+						flag_attr: flag.attr,
+						flag_prefix: prefix,
+						esc: 'raw',
+						group: ctx.group,
+						tab: flag.tab || 'behaviour',
+						sort: 1,
+					},
+					{ start: range.start, end: range.end, replacement: phpEcho( id ) }
+				);
+				continue;
+			}
+
+			// Not in the source: offer it, defaulting to off.
+			ctx.push(
+				{
+					id,
+					control: 'switcher',
+					label: flag.label,
+					description: flag.description || '',
+					default: '',
+					flag_attr: flag.attr,
+					flag_prefix: ' ',
+					esc: 'raw',
+					group: ctx.group,
+					tab: flag.tab || 'behaviour',
+					sort: 1,
+				},
+				null
+			);
+			additions.push( id );
+		}
+
+		if ( additions.length ) {
+			const at = startTagInsertOffset( markup, node );
+			edits.push( {
+				start: at,
+				end: at,
+				replacement: additions.map( ( id ) => phpEcho( id ) ).join( '' ),
+			} );
+		}
+	}
+
 	function classifyAttr( name, node, value ) {
 		if ( isIntegrationAttr( name, node ) ) {
 			return { control: 'text', esc: 'attr', tab: 'integration' };
@@ -635,11 +937,56 @@ export function deriveSection( options ) {
 			return { control: isVideo ? 'url' : 'media', esc: 'url', tab: 'content' };
 		}
 		if ( TEXT_ATTRS.has( name ) ) return { control: 'text', esc: 'attr', tab: 'content' };
-		if ( FORM_ATTRS.has( name ) ) return { control: 'text', esc: 'attr', tab: 'form' };
-		if ( MEDIA_BEHAVIOUR_ATTRS.has( name ) ) return { control: 'text', esc: 'attr', tab: 'behaviour' };
+
+		const options = ATTRIBUTE_OPTIONS[ name ];
+		const owner = node.tagName.toLowerCase();
+
+		// `type` means two different things. On an <input> it is the control kind;
+		// on a <source>, <link> or <script> it is a MIME type, and filing it under
+		// "Field Behaviour" sends the editor looking in the wrong place.
+		if ( 'type' === name && [ 'source', 'link', 'script', 'style', 'embed', 'object' ].includes( owner ) ) {
+			return { control: 'text', esc: 'attr', tab: 'media', label: 'MIME Type' };
+		}
+
+		if ( FORM_ATTRS.has( name ) ) {
+			return { control: options ? 'select' : 'text', options, esc: 'attr', tab: 'form' };
+		}
+		if ( MEDIA_BEHAVIOUR_ATTRS.has( name ) ) {
+			// A media attribute on a <video>/<audio> belongs with its playback
+			// options, not in a separate list the editor has to go find.
+			const tab = ( 'video' === owner || 'audio' === owner || 'source' === owner ) ? 'media' : 'behaviour';
+			return { control: options ? 'select' : 'text', options, esc: 'attr', tab };
+		}
 		if ( name.startsWith( 'data-' ) ) return { control: 'text', esc: 'attr', tab: 'behaviour' };
 		return null;
 	}
+}
+
+/**
+ * Give every part a name that is unique within the section, preferring the
+ * shortest form that still distinguishes it: the bare role, then the parent's
+ * role in front of it, then a number.
+ */
+function assignPartLabels( parts ) {
+	const count = ( key, list ) => list.filter( ( p ) => p === key ).length;
+
+	const bare = parts.map( ( part ) => part.label );
+	const withParent = parts.map( ( part, index ) =>
+		count( bare[ index ], bare ) > 1 && part.parent_label
+			? part.parent_label + ' ' + part.label
+			: bare[ index ]
+	);
+
+	const seen = new Map();
+	parts.forEach( ( part, index ) => {
+		let name = withParent[ index ];
+		if ( count( name, withParent ) > 1 ) {
+			const n = ( seen.get( name ) || 0 ) + 1;
+			seen.set( name, n );
+			name = name + ' ' + n;
+		}
+		part.label = name;
+	} );
 }
 
 /**
@@ -652,7 +999,7 @@ function nearestPartLabel( doc, node, partByNode ) {
 
 	while ( current ) {
 		const part = partByNode.get( current );
-		if ( part && 'Section' !== part.short_label ) return part.short_label;
+		if ( part && ! GENERIC_ROLES.has( part.short_label ) ) return part.short_label;
 		current = doc.parentsOf.get( current )?.node;
 	}
 

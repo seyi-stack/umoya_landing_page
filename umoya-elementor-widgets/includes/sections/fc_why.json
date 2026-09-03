@@ -73,79 +73,89 @@
 		{
 			"id": "content_p_section",
 			"label": "Section",
+			"sample": "",
+			"region_label": "",
 			"controls": [
 				{
 					"id": "section_aria_label",
 					"control": "text",
-					"label": "Section – Aria Label",
+					"label": "Accessible Name",
 					"default": "What sets Umoya apart",
 					"esc": "attr",
 					"group": "p_section",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Section"
 				}
 			]
 		},
 		{
 			"id": "content_p_img",
-			"label": "Background › Image",
+			"label": "Background",
+			"sample": "",
+			"region_label": "Background",
 			"controls": [
 				{
 					"id": "image_src",
 					"control": "media",
-					"label": "Image – Src",
+					"label": "Source",
 					"default": {
 						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05243.jpg"
 					},
 					"esc": "url",
 					"group": "p_img",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Image"
 				},
 				{
 					"id": "image_alt",
 					"control": "text",
-					"label": "Image – Alt",
+					"label": "Alt Text",
 					"default": "",
 					"esc": "attr",
 					"group": "p_img",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Image"
 				},
 				{
-					"id": "heading_why_umoya_afrika_tours_text",
+					"id": "title_text",
 					"control": "text",
-					"label": "Heading — Why Umoya Afrika Tours?",
+					"label": "Title",
 					"description": "",
 					"default": "Why Umoya Afrika Tours?",
 					"esc": "post",
 					"group": "p_fc_pil_heading",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Header Title"
 				},
 				{
-					"id": "title_african_led_african_owned_text",
+					"id": "title_text_2",
 					"control": "text",
-					"label": "Title — African-Led & African-Owned",
+					"label": "List Title",
 					"description": "",
 					"default": "African-Led &amp; African-Owned",
 					"esc": "post",
 					"group": "p_fc_pil_col_h3_nth_of_type_1",
-					"sort": 0
+					"sort": 0,
+					"part_label": "List Title"
 				},
 				{
-					"id": "body_of_the_diaspora_with_relat_text",
+					"id": "text_text",
 					"control": "textarea",
-					"label": "Body — Of the diaspora, with relat…",
+					"label": "Text",
 					"description": "",
 					"default": "Of the diaspora, with relationships across Southern Africa we have built over years. Experience South Africa through those who not only welcome you but receive you with care.",
 					"esc": "post",
 					"group": "p_fc_pil_col_p_nth_of_type_1",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Text"
 				},
 				{
-					"id": "title_cultural_custodians_who_kno_text",
+					"id": "title_text_3",
 					"control": "text",
-					"label": "Title — Cultural Custodians Who Kno…",
+					"label": "Title",
 					"description": "",
 					"default": "Cultural Custodians Who Know South Africa Best",
 					"esc": "post",
@@ -153,9 +163,9 @@
 					"sort": 0
 				},
 				{
-					"id": "body_our_cultural_custodians_wel_text",
+					"id": "text_text_2",
 					"control": "textarea",
-					"label": "Body — Our cultural custodians wel…",
+					"label": "Text",
 					"description": "",
 					"default": "Our cultural custodians welcome you in person and show you South Africa with local privilege. Experience the country through rare insider access by our artists, entrepreneurs, and trailblazers who share their perspectives on South Africa's landscapes, culture, and contemporary life through one of a kind experiences.",
 					"esc": "post",
@@ -163,25 +173,26 @@
 					"sort": 0
 				},
 				{
-					"id": "title_premium_accommodations_text",
+					"id": "title_text_4",
 					"control": "text",
-					"label": "Title — Premium Accommodations",
+					"label": "Title",
 					"description": "",
 					"default": "Premium Accommodations",
 					"esc": "post",
 					"group": "p_fc_pil_col_h3_nth_of_type_1_3",
 					"sort": 0
 				}
-			]
+			],
+			"merged": true
 		},
 		{
 			"id": "content_p_fc_pil_col_p_nth_of_type_1_3",
-			"label": "Other content",
+			"label": "Content",
 			"controls": [
 				{
-					"id": "body_each_property_is_carefully_text",
+					"id": "text_text_3",
 					"control": "textarea",
-					"label": "Body — Each property is carefully …",
+					"label": "Text",
 					"description": "",
 					"default": "Each property is carefully selected for exceptional service, unique character, and prime location. From luxury lodges to boutique hotels, every stay reflects our commitment to quality.",
 					"esc": "post",
@@ -189,9 +200,9 @@
 					"sort": 0
 				},
 				{
-					"id": "title_looked_after_end_to_end_text",
+					"id": "title_text_5",
 					"control": "text",
-					"label": "Title — Looked After, End to End",
+					"label": "Title",
 					"description": "",
 					"default": "Looked After, End to End",
 					"esc": "post",
@@ -199,16 +210,17 @@
 					"sort": 0
 				},
 				{
-					"id": "body_from_the_moment_you_land_y_text",
+					"id": "text_text_4",
 					"control": "textarea",
-					"label": "Body — From the moment you land, y…",
+					"label": "Text",
 					"description": "",
 					"default": "From the moment you land, your dedicated Umoya host is with you every step of the way. On the ground, your journey runs through Thompsons Africa, one of southern Africa's oldest and most trusted operators, with over a century of experience since 1901.",
 					"esc": "post",
 					"group": "p_fc_pil_col_p_nth_of_type_1_4",
 					"sort": 0
 				}
-			]
+			],
+			"merged": true
 		}
 	],
 	"integration_controls": [],
@@ -216,9 +228,13 @@
 	"behaviour_controls": [
 		{
 			"id": "image_loading",
-			"control": "text",
-			"label": "Image – Loading",
+			"control": "select",
+			"label": "Loading",
 			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
 			"esc": "attr",
 			"group": "behaviour",
 			"tab": "behaviour",
@@ -227,12 +243,15 @@
 		}
 	],
 	"inline_style_controls": [],
+	"media_controls": [],
 	"repeaters": [],
 	"style_parts": [
 		{
 			"id": "p_section",
 			"label": "Section",
 			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
 			"selector": "",
 			"tag": "section",
 			"features": [
@@ -257,6 +276,8 @@
 			"id": "p_fc_pil_bg",
 			"label": "Background",
 			"short_label": "Background",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-pil-bg",
 			"tag": "div",
 			"features": [
@@ -279,8 +300,10 @@
 		},
 		{
 			"id": "p_img",
-			"label": "Background › Image",
+			"label": "Image",
 			"short_label": "Image",
+			"parent_label": "Background",
+			"sample": "",
 			"selector": "img",
 			"tag": "img",
 			"features": [
@@ -303,6 +326,8 @@
 			"id": "p_fc_pil_content",
 			"label": "Content",
 			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-pil-content",
 			"tag": "div",
 			"features": [
@@ -325,8 +350,10 @@
 		},
 		{
 			"id": "p_fc_pil_header",
-			"label": "Content › Header",
+			"label": "Header",
 			"short_label": "Header",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-pil-header",
 			"tag": "div",
 			"features": [
@@ -349,8 +376,10 @@
 		},
 		{
 			"id": "p_fc_pil_heading",
-			"label": "Header › Heading — Why Umoya Afrika Tours?",
-			"short_label": "Heading",
+			"label": "Header Title",
+			"short_label": "Title",
+			"parent_label": "Header",
+			"sample": "Why Umoya Afrika Tours?",
 			"selector": ".fc-pil-heading",
 			"tag": "h2",
 			"features": [
@@ -374,8 +403,10 @@
 		},
 		{
 			"id": "p_fc_pil_grid",
-			"label": "Content › Grid",
-			"short_label": "Grid",
+			"label": "List",
+			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-pil-grid",
 			"tag": "div",
 			"features": [
@@ -398,8 +429,10 @@
 		},
 		{
 			"id": "p_fc_pil_col",
-			"label": "Grid › Column",
+			"label": "Column",
 			"short_label": "Column",
+			"parent_label": "List",
+			"sample": "",
 			"selector": ".fc-pil-col",
 			"tag": "div",
 			"features": [
@@ -422,8 +455,10 @@
 		},
 		{
 			"id": "p_fc_pil_col_h3_nth_of_type_1",
-			"label": "Column › Title — African-Led & African-Owned",
+			"label": "List Title",
 			"short_label": "Title",
+			"parent_label": "List",
+			"sample": "African-Led & African-Owned",
 			"selector": ".fc-pil-col > h3:nth-of-type(1)",
 			"tag": "h3",
 			"features": [
@@ -447,8 +482,10 @@
 		},
 		{
 			"id": "p_fc_pil_col_p_nth_of_type_1",
-			"label": "Column › Body — Of the diaspora, with relat…",
-			"short_label": "Body",
+			"label": "Text",
+			"short_label": "Text",
+			"parent_label": "List",
+			"sample": "Of the diaspora, with relationships across Sout…",
 			"selector": ".fc-pil-col > p:nth-of-type(1)",
 			"tag": "p",
 			"features": [
@@ -476,7 +513,7 @@
 		{
 			"id": "section_aria_label",
 			"control": "text",
-			"label": "Section – Aria Label",
+			"label": "Accessible Name",
 			"default": "What sets Umoya apart",
 			"esc": "attr",
 			"group": "p_section",
@@ -486,7 +523,7 @@
 		{
 			"id": "image_src",
 			"control": "media",
-			"label": "Image – Src",
+			"label": "Source",
 			"default": {
 				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05243.jpg"
 			},
@@ -498,7 +535,7 @@
 		{
 			"id": "image_alt",
 			"control": "text",
-			"label": "Image – Alt",
+			"label": "Alt Text",
 			"default": "",
 			"esc": "attr",
 			"group": "p_img",
@@ -507,18 +544,22 @@
 		},
 		{
 			"id": "image_loading",
-			"control": "text",
-			"label": "Image – Loading",
+			"control": "select",
+			"label": "Loading",
 			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
 			"esc": "attr",
 			"group": "behaviour",
 			"tab": "behaviour",
 			"sort": 1
 		},
 		{
-			"id": "heading_why_umoya_afrika_tours_text",
+			"id": "title_text",
 			"control": "text",
-			"label": "Heading — Why Umoya Afrika Tours?",
+			"label": "Title",
 			"description": "",
 			"default": "Why Umoya Afrika Tours?",
 			"esc": "post",
@@ -526,9 +567,9 @@
 			"sort": 0
 		},
 		{
-			"id": "title_african_led_african_owned_text",
+			"id": "title_text_2",
 			"control": "text",
-			"label": "Title — African-Led & African-Owned",
+			"label": "Title",
 			"description": "",
 			"default": "African-Led &amp; African-Owned",
 			"esc": "post",
@@ -536,9 +577,9 @@
 			"sort": 0
 		},
 		{
-			"id": "body_of_the_diaspora_with_relat_text",
+			"id": "text_text",
 			"control": "textarea",
-			"label": "Body — Of the diaspora, with relat…",
+			"label": "Text",
 			"description": "",
 			"default": "Of the diaspora, with relationships across Southern Africa we have built over years. Experience South Africa through those who not only welcome you but receive you with care.",
 			"esc": "post",
@@ -546,9 +587,9 @@
 			"sort": 0
 		},
 		{
-			"id": "title_cultural_custodians_who_kno_text",
+			"id": "title_text_3",
 			"control": "text",
-			"label": "Title — Cultural Custodians Who Kno…",
+			"label": "Title",
 			"description": "",
 			"default": "Cultural Custodians Who Know South Africa Best",
 			"esc": "post",
@@ -556,9 +597,9 @@
 			"sort": 0
 		},
 		{
-			"id": "body_our_cultural_custodians_wel_text",
+			"id": "text_text_2",
 			"control": "textarea",
-			"label": "Body — Our cultural custodians wel…",
+			"label": "Text",
 			"description": "",
 			"default": "Our cultural custodians welcome you in person and show you South Africa with local privilege. Experience the country through rare insider access by our artists, entrepreneurs, and trailblazers who share their perspectives on South Africa's landscapes, culture, and contemporary life through one of a kind experiences.",
 			"esc": "post",
@@ -566,9 +607,9 @@
 			"sort": 0
 		},
 		{
-			"id": "title_premium_accommodations_text",
+			"id": "title_text_4",
 			"control": "text",
-			"label": "Title — Premium Accommodations",
+			"label": "Title",
 			"description": "",
 			"default": "Premium Accommodations",
 			"esc": "post",
@@ -576,9 +617,9 @@
 			"sort": 0
 		},
 		{
-			"id": "body_each_property_is_carefully_text",
+			"id": "text_text_3",
 			"control": "textarea",
-			"label": "Body — Each property is carefully …",
+			"label": "Text",
 			"description": "",
 			"default": "Each property is carefully selected for exceptional service, unique character, and prime location. From luxury lodges to boutique hotels, every stay reflects our commitment to quality.",
 			"esc": "post",
@@ -586,9 +627,9 @@
 			"sort": 0
 		},
 		{
-			"id": "title_looked_after_end_to_end_text",
+			"id": "title_text_5",
 			"control": "text",
-			"label": "Title — Looked After, End to End",
+			"label": "Title",
 			"description": "",
 			"default": "Looked After, End to End",
 			"esc": "post",
@@ -596,9 +637,9 @@
 			"sort": 0
 		},
 		{
-			"id": "body_from_the_moment_you_land_y_text",
+			"id": "text_text_4",
 			"control": "textarea",
-			"label": "Body — From the moment you land, y…",
+			"label": "Text",
 			"description": "",
 			"default": "From the moment you land, your dedicated Umoya host is with you every step of the way. On the ground, your journey runs through Thompsons Africa, one of southern Africa's oldest and most trusted operators, with over a century of experience since 1901.",
 			"esc": "post",

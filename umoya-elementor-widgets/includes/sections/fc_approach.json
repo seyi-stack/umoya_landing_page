@@ -121,142 +121,170 @@
 		{
 			"id": "content_p_section",
 			"label": "Section",
+			"sample": "",
+			"region_label": "",
 			"controls": [
 				{
 					"id": "section_aria_label",
 					"control": "text",
-					"label": "Section – Aria Label",
+					"label": "Accessible Name",
 					"default": "Why Umoya Afrika Tours",
 					"esc": "attr",
 					"group": "p_section",
 					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "eyebrow_our_approach_text",
-					"control": "text",
-					"label": "Eyebrow — Our Approach",
-					"description": "",
-					"default": "Our Approach",
-					"esc": "post",
-					"group": "p_fc_why_eyebrow",
-					"sort": 0
-				},
-				{
-					"id": "title_a_new_company_built_on_lon_text",
-					"control": "textarea",
-					"label": "Title — A new company, built on lon…",
-					"description": "Inline formatting tags are preserved.",
-					"default": "A new company, built on <em>long relationships</em>.",
-					"esc": "post",
-					"group": "p_fc_why_title",
-					"sort": 0
-				},
-				{
-					"id": "lead_it_is_built_on_people_we_kn_text",
-					"control": "text",
-					"label": "Lead — It is built on people we kn…",
-					"description": "",
-					"default": "It is built on people we know by name.",
-					"esc": "post",
-					"group": "p_fc_why_lead",
-					"sort": 0
+					"sort": 1,
+					"part_label": "Section"
 				}
 			]
 		},
 		{
-			"id": "content_p_fc_why_btn",
-			"label": "Rev › Button — Travel with us",
+			"id": "content_p_fc_why_eyebrow",
+			"label": "List",
+			"sample": "Our Approach",
+			"region_label": "List",
 			"controls": [
 				{
-					"id": "button_travel_with_us_text",
+					"id": "eyebrow_text",
 					"control": "text",
-					"label": "Button — Travel with us",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Our Approach",
+					"esc": "post",
+					"group": "p_fc_why_eyebrow",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "textarea",
+					"label": "Title",
+					"description": "Inline formatting tags are preserved.",
+					"default": "A new company, built on <em>long relationships</em>.",
+					"esc": "post",
+					"group": "p_fc_why_title",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "text_text",
+					"control": "text",
+					"label": "Text",
+					"description": "",
+					"default": "It is built on people we know by name.",
+					"esc": "post",
+					"group": "p_fc_why_lead",
+					"sort": 0,
+					"part_label": "List Text 1"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_fc_why_btn",
+			"label": "List",
+			"sample": "Travel with us",
+			"region_label": "List",
+			"controls": [
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Button",
 					"description": "",
 					"default": "Travel with us",
 					"esc": "post",
 					"group": "p_fc_why_btn",
-					"sort": 0
+					"sort": 0,
+					"part_label": "List Button 1"
 				},
 				{
-					"id": "button_travel_with_us_href",
+					"id": "button_href",
 					"control": "url",
-					"label": "Button — Travel with us – Href",
+					"label": "Link",
 					"default": {
 						"url": "#fc-form-section"
 					},
 					"esc": "url",
 					"group": "p_fc_why_btn",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "List Button 1"
 				},
 				{
-					"id": "video_placeholder_aria_label",
+					"id": "button_aria_label",
 					"control": "text",
-					"label": "Video Placeholder – Aria Label",
+					"label": "Accessible Name",
 					"default": "Play Umoya brand video",
 					"esc": "attr",
 					"group": "p_fc_vid_ph",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "List Button 2"
 				},
 				{
-					"id": "modal_aria_label",
+					"id": "container_aria_label",
 					"control": "text",
-					"label": "Modal – Aria Label",
+					"label": "Container 2",
 					"default": "Umoya Afrika Tours video",
 					"esc": "attr",
 					"group": "p_fc_video_modal",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Container 2"
 				},
 				{
-					"id": "close_aria_label",
+					"id": "button_aria_label_2",
 					"control": "text",
-					"label": "Close – Aria Label",
+					"label": "Button",
 					"default": "Close video",
 					"esc": "attr",
 					"group": "p_fc_video_close",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Button"
 				},
 				{
-					"id": "span_text",
+					"id": "text_text_2",
 					"control": "text",
-					"label": "Span — ×",
+					"label": "Text",
 					"description": "",
 					"default": "&times;",
 					"esc": "post",
 					"group": "p_fc_video_close_span",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Button Text 2"
 				}
-			]
+			],
+			"merged": true
 		},
 		{
 			"id": "content_p_fc_video_player",
-			"label": "Dialog › Player",
+			"label": "Video",
+			"sample": "",
+			"region_label": "",
 			"controls": [
 				{
-					"id": "player_src",
+					"id": "video_src",
 					"control": "url",
-					"label": "Player – Src",
+					"label": "Source",
 					"default": {
 						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya_hd_optimized_720.mp4"
 					},
 					"esc": "url",
 					"group": "p_fc_video_player",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Video"
 				},
 				{
-					"id": "player_aria_label",
+					"id": "video_aria_label",
 					"control": "text",
-					"label": "Player – Aria Label",
+					"label": "Accessible Name",
 					"default": "Umoya Afrika Tours video",
 					"esc": "attr",
 					"group": "p_fc_video_player",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Video"
 				}
 			]
 		}
@@ -264,9 +292,23 @@
 	"integration_controls": [],
 	"form_controls": [
 		{
-			"id": "video_placeholder_type",
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_vid_ph",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "List Button 2"
+		},
+		{
+			"id": "button_type",
 			"control": "text",
-			"label": "Video Placeholder – Type",
+			"label": "Type",
 			"default": "button",
 			"esc": "attr",
 			"group": "form",
@@ -275,9 +317,23 @@
 			"part_label": ""
 		},
 		{
-			"id": "close_type",
+			"id": "button_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_video_close",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Button"
+		},
+		{
+			"id": "button_type_2",
 			"control": "text",
-			"label": "Close – Type",
+			"label": "Type",
 			"default": "button",
 			"esc": "attr",
 			"group": "form",
@@ -286,20 +342,110 @@
 			"part_label": ""
 		}
 	],
-	"behaviour_controls": [
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [
 		{
-			"id": "player_preload",
-			"control": "text",
-			"label": "Player – Preload",
+			"id": "video_autoplay",
+			"control": "switcher",
+			"label": "Autoplay",
+			"description": "Browsers only allow autoplay while the video is muted.",
+			"default": "",
+			"flag_attr": "autoplay",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_video_player",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_muted",
+			"control": "switcher",
+			"label": "Mute",
+			"description": "",
+			"default": "",
+			"flag_attr": "muted",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_video_player",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_playsinline",
+			"control": "switcher",
+			"label": "Play On Mobile",
+			"description": "Without this, iOS opens the video fullscreen instead of playing it in place.",
+			"default": "yes",
+			"flag_attr": "playsinline",
+			"flag_prefix": "\n          ",
+			"esc": "raw",
+			"group": "p_fc_video_player",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_loop",
+			"control": "switcher",
+			"label": "Loop",
+			"description": "",
+			"default": "",
+			"flag_attr": "loop",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_video_player",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_controls",
+			"control": "switcher",
+			"label": "Player Controls",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "controls",
+			"flag_prefix": "\n          ",
+			"esc": "raw",
+			"group": "p_fc_video_player",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_disablepictureinpicture",
+			"control": "switcher",
+			"label": "Disable Picture-in-Picture",
+			"description": "",
+			"default": "",
+			"flag_attr": "disablepictureinpicture",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_video_player",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_preload",
+			"control": "select",
+			"label": "Preload",
 			"default": "metadata",
+			"options": [
+				"auto",
+				"metadata",
+				"none"
+			],
 			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
+			"group": "media",
+			"tab": "media",
 			"sort": 1,
 			"part_label": ""
 		}
 	],
-	"inline_style_controls": [],
 	"repeaters": [
 		{
 			"id": "rep_p_fc_why_body",
@@ -330,6 +476,8 @@
 			"id": "p_section",
 			"label": "Section",
 			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
 			"selector": "",
 			"tag": "section",
 			"features": [
@@ -351,8 +499,10 @@
 		},
 		{
 			"id": "p_fc_why_wrap",
-			"label": "Wrapper",
-			"short_label": "Wrapper",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-why-wrap",
 			"tag": "div",
 			"features": [
@@ -375,8 +525,10 @@
 		},
 		{
 			"id": "p_fc_why_grid",
-			"label": "Wrapper › Grid",
-			"short_label": "Grid",
+			"label": "List",
+			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-why-grid",
 			"tag": "div",
 			"features": [
@@ -399,8 +551,10 @@
 		},
 		{
 			"id": "p_fc_why_rev",
-			"label": "Grid › Rev",
-			"short_label": "Rev",
+			"label": "List Container 1",
+			"short_label": "Container",
+			"parent_label": "List",
+			"sample": "",
 			"selector": ".fc-why-rev",
 			"tag": "div",
 			"features": [
@@ -423,8 +577,10 @@
 		},
 		{
 			"id": "p_fc_why_eyebrow",
-			"label": "Rev › Eyebrow — Our Approach",
+			"label": "Eyebrow",
 			"short_label": "Eyebrow",
+			"parent_label": "List",
+			"sample": "Our Approach",
 			"selector": ".fc-why-eyebrow",
 			"tag": "span",
 			"features": [
@@ -448,8 +604,10 @@
 		},
 		{
 			"id": "p_fc_why_title",
-			"label": "Rev › Title — A new company, built on lon…",
+			"label": "Title",
 			"short_label": "Title",
+			"parent_label": "List",
+			"sample": "A new company, built on long relationships.",
 			"selector": ".fc-why-title",
 			"tag": "h2",
 			"features": [
@@ -473,8 +631,10 @@
 		},
 		{
 			"id": "p_em",
-			"label": "Title › Em — long relationships",
-			"short_label": "Em",
+			"label": "Emphasis",
+			"short_label": "Emphasis",
+			"parent_label": "Title",
+			"sample": "long relationships",
 			"selector": "em",
 			"tag": "em",
 			"features": [
@@ -498,8 +658,10 @@
 		},
 		{
 			"id": "p_fc_why_rule",
-			"label": "Rev › Rule",
-			"short_label": "Rule",
+			"label": "Divider",
+			"short_label": "Divider",
+			"parent_label": "List",
+			"sample": "",
 			"selector": ".fc-why-rule",
 			"tag": "span",
 			"features": [
@@ -523,8 +685,10 @@
 		},
 		{
 			"id": "p_fc_why_lead",
-			"label": "Rev › Lead — It is built on people we kn…",
-			"short_label": "Lead",
+			"label": "List Text 1",
+			"short_label": "Text",
+			"parent_label": "List",
+			"sample": "It is built on people we know by name.",
 			"selector": ".fc-why-lead",
 			"tag": "p",
 			"features": [
@@ -548,8 +712,10 @@
 		},
 		{
 			"id": "p_fc_why_body",
-			"label": "Rev › Body — Umoya is African-led and Af…",
-			"short_label": "Body",
+			"label": "List Text 2",
+			"short_label": "Text",
+			"parent_label": "List",
+			"sample": "Umoya is African-led and African-owned, and of …",
 			"selector": ".fc-why-body",
 			"tag": "p",
 			"features": [
@@ -573,8 +739,10 @@
 		},
 		{
 			"id": "p_strong",
-			"label": "Body › Strong — Wilson Nyah",
+			"label": "Strong",
 			"short_label": "Strong",
+			"parent_label": "Text",
+			"sample": "Wilson Nyah",
 			"selector": "strong",
 			"tag": "strong",
 			"features": [
@@ -598,8 +766,10 @@
 		},
 		{
 			"id": "p_fc_why_btn",
-			"label": "Rev › Button — Travel with us",
+			"label": "List Button 1",
 			"short_label": "Button",
+			"parent_label": "List",
+			"sample": "Travel with us",
 			"selector": ".fc-why-btn",
 			"tag": "a",
 			"features": [
@@ -624,8 +794,10 @@
 		},
 		{
 			"id": "p_fc_why_aside",
-			"label": "Grid › Aside",
-			"short_label": "Aside",
+			"label": "List Container 2",
+			"short_label": "Container",
+			"parent_label": "List",
+			"sample": "",
 			"selector": ".fc-why-aside",
 			"tag": "div",
 			"features": [
@@ -648,8 +820,10 @@
 		},
 		{
 			"id": "p_fc_vid_wrap",
-			"label": "Aside › Video Wrapper",
-			"short_label": "Video Wrapper",
+			"label": "List Container 3",
+			"short_label": "Container",
+			"parent_label": "List",
+			"sample": "",
 			"selector": ".fc-vid-wrap",
 			"tag": "div",
 			"features": [
@@ -672,8 +846,10 @@
 		},
 		{
 			"id": "p_fc_vid_ph",
-			"label": "Video Wrapper › Video Placeholder",
-			"short_label": "Video Placeholder",
+			"label": "List Button 2",
+			"short_label": "Button",
+			"parent_label": "List",
+			"sample": "",
 			"selector": ".fc-vid-ph",
 			"tag": "button",
 			"features": [
@@ -698,8 +874,10 @@
 		},
 		{
 			"id": "p_fc_play",
-			"label": "Video Placeholder › Play",
-			"short_label": "Play",
+			"label": "Button Text 1",
+			"short_label": "Text",
+			"parent_label": "Button",
+			"sample": "",
 			"selector": ".fc-play",
 			"tag": "span",
 			"features": [
@@ -723,8 +901,10 @@
 		},
 		{
 			"id": "p_svg",
-			"label": "Play › Svg",
-			"short_label": "Svg",
+			"label": "Icon",
+			"short_label": "Icon",
+			"parent_label": "Text",
+			"sample": "",
 			"selector": "svg",
 			"tag": "svg",
 			"features": [
@@ -739,8 +919,10 @@
 		},
 		{
 			"id": "p_fc_video_modal",
-			"label": "Modal",
-			"short_label": "Modal",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-video-modal",
 			"tag": "div",
 			"features": [
@@ -763,8 +945,10 @@
 		},
 		{
 			"id": "p_fc_video_backdrop",
-			"label": "Modal › Backdrop",
-			"short_label": "Backdrop",
+			"label": "Container 3",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-video-backdrop",
 			"tag": "div",
 			"features": [
@@ -787,8 +971,10 @@
 		},
 		{
 			"id": "p_fc_video_dialog",
-			"label": "Modal › Dialog",
-			"short_label": "Dialog",
+			"label": "Container 4",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-video-dialog",
 			"tag": "div",
 			"features": [
@@ -811,8 +997,10 @@
 		},
 		{
 			"id": "p_fc_video_close",
-			"label": "Dialog › Close",
-			"short_label": "Close",
+			"label": "Button",
+			"short_label": "Button",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-video-close",
 			"tag": "button",
 			"features": [
@@ -837,8 +1025,10 @@
 		},
 		{
 			"id": "p_fc_video_close_span",
-			"label": "Close › Span — ×",
-			"short_label": "Span",
+			"label": "Button Text 2",
+			"short_label": "Text",
+			"parent_label": "Button",
+			"sample": "×",
 			"selector": ".fc-video-close > span",
 			"tag": "span",
 			"features": [
@@ -862,8 +1052,10 @@
 		},
 		{
 			"id": "p_fc_video_player",
-			"label": "Dialog › Player",
-			"short_label": "Player",
+			"label": "Video",
+			"short_label": "Video",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-video-player",
 			"tag": "video",
 			"features": [
@@ -888,7 +1080,7 @@
 		{
 			"id": "section_aria_label",
 			"control": "text",
-			"label": "Section – Aria Label",
+			"label": "Accessible Name",
 			"default": "Why Umoya Afrika Tours",
 			"esc": "attr",
 			"group": "p_section",
@@ -896,9 +1088,9 @@
 			"sort": 1
 		},
 		{
-			"id": "eyebrow_our_approach_text",
+			"id": "eyebrow_text",
 			"control": "text",
-			"label": "Eyebrow — Our Approach",
+			"label": "Eyebrow",
 			"description": "",
 			"default": "Our Approach",
 			"esc": "post",
@@ -906,9 +1098,9 @@
 			"sort": 0
 		},
 		{
-			"id": "title_a_new_company_built_on_lon_text",
+			"id": "title_text",
 			"control": "textarea",
-			"label": "Title — A new company, built on lon…",
+			"label": "Title",
 			"description": "Inline formatting tags are preserved.",
 			"default": "A new company, built on <em>long relationships</em>.",
 			"esc": "post",
@@ -916,9 +1108,9 @@
 			"sort": 0
 		},
 		{
-			"id": "lead_it_is_built_on_people_we_kn_text",
+			"id": "text_text",
 			"control": "text",
-			"label": "Lead — It is built on people we kn…",
+			"label": "Text",
 			"description": "",
 			"default": "It is built on people we know by name.",
 			"esc": "post",
@@ -926,9 +1118,9 @@
 			"sort": 0
 		},
 		{
-			"id": "button_travel_with_us_text",
+			"id": "button_text",
 			"control": "text",
-			"label": "Button — Travel with us",
+			"label": "Button",
 			"description": "",
 			"default": "Travel with us",
 			"esc": "post",
@@ -936,9 +1128,9 @@
 			"sort": 0
 		},
 		{
-			"id": "button_travel_with_us_href",
+			"id": "button_href",
 			"control": "url",
-			"label": "Button — Travel with us – Href",
+			"label": "Link",
 			"default": {
 				"url": "#fc-form-section"
 			},
@@ -948,9 +1140,22 @@
 			"sort": 1
 		},
 		{
-			"id": "video_placeholder_type",
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_vid_ph",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "button_type",
 			"control": "text",
-			"label": "Video Placeholder – Type",
+			"label": "Type",
 			"default": "button",
 			"esc": "attr",
 			"group": "form",
@@ -958,9 +1163,9 @@
 			"sort": 1
 		},
 		{
-			"id": "video_placeholder_aria_label",
+			"id": "button_aria_label",
 			"control": "text",
-			"label": "Video Placeholder – Aria Label",
+			"label": "Accessible Name",
 			"default": "Play Umoya brand video",
 			"esc": "attr",
 			"group": "p_fc_vid_ph",
@@ -968,9 +1173,9 @@
 			"sort": 1
 		},
 		{
-			"id": "modal_aria_label",
+			"id": "container_aria_label",
 			"control": "text",
-			"label": "Modal – Aria Label",
+			"label": "Accessible Name",
 			"default": "Umoya Afrika Tours video",
 			"esc": "attr",
 			"group": "p_fc_video_modal",
@@ -978,9 +1183,22 @@
 			"sort": 1
 		},
 		{
-			"id": "close_type",
+			"id": "button_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_video_close",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "button_type_2",
 			"control": "text",
-			"label": "Close – Type",
+			"label": "Type",
 			"default": "button",
 			"esc": "attr",
 			"group": "form",
@@ -988,9 +1206,9 @@
 			"sort": 1
 		},
 		{
-			"id": "close_aria_label",
+			"id": "button_aria_label_2",
 			"control": "text",
-			"label": "Close – Aria Label",
+			"label": "Accessible Name",
 			"default": "Close video",
 			"esc": "attr",
 			"group": "p_fc_video_close",
@@ -998,9 +1216,9 @@
 			"sort": 1
 		},
 		{
-			"id": "span_text",
+			"id": "text_text_2",
 			"control": "text",
-			"label": "Span — ×",
+			"label": "Text",
 			"description": "",
 			"default": "&times;",
 			"esc": "post",
@@ -1008,9 +1226,87 @@
 			"sort": 0
 		},
 		{
-			"id": "player_src",
+			"id": "video_autoplay",
+			"control": "switcher",
+			"label": "Autoplay",
+			"description": "Browsers only allow autoplay while the video is muted.",
+			"default": "",
+			"flag_attr": "autoplay",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_video_player",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_muted",
+			"control": "switcher",
+			"label": "Mute",
+			"description": "",
+			"default": "",
+			"flag_attr": "muted",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_video_player",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_playsinline",
+			"control": "switcher",
+			"label": "Play On Mobile",
+			"description": "Without this, iOS opens the video fullscreen instead of playing it in place.",
+			"default": "yes",
+			"flag_attr": "playsinline",
+			"flag_prefix": "\n          ",
+			"esc": "raw",
+			"group": "p_fc_video_player",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_loop",
+			"control": "switcher",
+			"label": "Loop",
+			"description": "",
+			"default": "",
+			"flag_attr": "loop",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_video_player",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_controls",
+			"control": "switcher",
+			"label": "Player Controls",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "controls",
+			"flag_prefix": "\n          ",
+			"esc": "raw",
+			"group": "p_fc_video_player",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_disablepictureinpicture",
+			"control": "switcher",
+			"label": "Disable Picture-in-Picture",
+			"description": "",
+			"default": "",
+			"flag_attr": "disablepictureinpicture",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_video_player",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_src",
 			"control": "url",
-			"label": "Player – Src",
+			"label": "Source",
 			"default": {
 				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya_hd_optimized_720.mp4"
 			},
@@ -1020,19 +1316,24 @@
 			"sort": 1
 		},
 		{
-			"id": "player_preload",
-			"control": "text",
-			"label": "Player – Preload",
+			"id": "video_preload",
+			"control": "select",
+			"label": "Preload",
 			"default": "metadata",
+			"options": [
+				"auto",
+				"metadata",
+				"none"
+			],
 			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
+			"group": "media",
+			"tab": "media",
 			"sort": 1
 		},
 		{
-			"id": "player_aria_label",
+			"id": "video_aria_label",
 			"control": "text",
-			"label": "Player – Aria Label",
+			"label": "Accessible Name",
 			"default": "Umoya Afrika Tours video",
 			"esc": "attr",
 			"group": "p_fc_video_player",

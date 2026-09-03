@@ -73,98 +73,122 @@
 		{
 			"id": "content_p_section",
 			"label": "Section",
+			"sample": "",
+			"region_label": "",
 			"controls": [
 				{
 					"id": "section_aria_label",
 					"control": "text",
-					"label": "Section – Aria Label",
+					"label": "Accessible Name",
 					"default": "The Founding Offer",
 					"esc": "attr",
 					"group": "p_section",
 					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "eyebrow_the_founding_offer_text",
-					"control": "text",
-					"label": "Eyebrow — The Founding Offer",
-					"description": "",
-					"default": "The Founding Offer",
-					"esc": "post",
-					"group": "p_fc_pri_eye",
-					"sort": 0
-				},
-				{
-					"id": "title_the_most_preferred_rate_we_text",
-					"control": "text",
-					"label": "Title — The most preferred rate we …",
-					"description": "",
-					"default": "The most preferred rate we will ever offer.",
-					"esc": "post",
-					"group": "p_fc_pri_ttl",
-					"sort": 0
-				},
-				{
-					"id": "body_founding_members_travel_at_text",
-					"control": "textarea",
-					"label": "Body — Founding members travel at …",
-					"description": "",
-					"default": "Founding members travel at our best rate, held for our first guests alone. We share it with you personally on your call, along with everything your journey includes. Once the founding group is full, it closes for good.",
-					"esc": "post",
-					"group": "p_fc_pri_body",
-					"sort": 0
+					"sort": 1,
+					"part_label": "Section"
 				}
 			]
 		},
 		{
-			"id": "content_p_fc_pri_btn",
-			"label": "Wrapper › Button — Reserve Your Place",
+			"id": "content_p_fc_pri_eye",
+			"label": "Content",
+			"sample": "The Founding Offer",
+			"region_label": "",
 			"controls": [
 				{
-					"id": "button_reserve_your_place_text",
+					"id": "eyebrow_text",
 					"control": "text",
-					"label": "Button — Reserve Your Place",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "The Founding Offer",
+					"esc": "post",
+					"group": "p_fc_pri_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "The most preferred rate we will ever offer.",
+					"esc": "post",
+					"group": "p_fc_pri_ttl",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "text_text",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "Founding members travel at our best rate, held for our first guests alone. We share it with you personally on your call, along with everything your journey includes. Once the founding group is full, it closes for good.",
+					"esc": "post",
+					"group": "p_fc_pri_body",
+					"sort": 0,
+					"part_label": "Text 1"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_fc_pri_btn",
+			"label": "Content",
+			"sample": "Reserve Your Place",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Button",
 					"description": "",
 					"default": "Reserve Your Place",
 					"esc": "post",
 					"group": "p_fc_pri_btn",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Button"
 				},
 				{
-					"id": "button_reserve_your_place_href",
+					"id": "button_href",
 					"control": "url",
-					"label": "Button — Reserve Your Place – Href",
+					"label": "Link",
 					"default": {
 						"url": "#fc-form-section"
 					},
 					"esc": "url",
 					"group": "p_fc_pri_btn",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Button"
 				},
 				{
-					"id": "mini_pricing_held_for_personal_c_text",
+					"id": "text_text_2",
 					"control": "text",
-					"label": "Mini — Pricing held for personal c…",
+					"label": "Text",
 					"description": "",
 					"default": "Pricing held for personal consultation · limited to eighteen places",
 					"esc": "post",
 					"group": "p_fc_pri_mini",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Text 2"
 				}
-			]
+			],
+			"merged": true
 		}
 	],
 	"integration_controls": [],
 	"form_controls": [],
 	"behaviour_controls": [],
 	"inline_style_controls": [],
+	"media_controls": [],
 	"repeaters": [],
 	"style_parts": [
 		{
 			"id": "p_section",
 			"label": "Section",
 			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
 			"selector": "",
 			"tag": "section",
 			"features": [
@@ -186,8 +210,10 @@
 		},
 		{
 			"id": "p_fc_pri_wrap",
-			"label": "Wrapper",
-			"short_label": "Wrapper",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-pri-wrap",
 			"tag": "div",
 			"features": [
@@ -210,8 +236,10 @@
 		},
 		{
 			"id": "p_fc_pri_eye",
-			"label": "Wrapper › Eyebrow — The Founding Offer",
+			"label": "Eyebrow",
 			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "The Founding Offer",
 			"selector": ".fc-pri-eye",
 			"tag": "span",
 			"features": [
@@ -235,8 +263,10 @@
 		},
 		{
 			"id": "p_fc_pri_ttl",
-			"label": "Wrapper › Title — The most preferred rate we …",
+			"label": "Title",
 			"short_label": "Title",
+			"parent_label": "",
+			"sample": "The most preferred rate we will ever offer.",
 			"selector": ".fc-pri-ttl",
 			"tag": "h2",
 			"features": [
@@ -260,8 +290,10 @@
 		},
 		{
 			"id": "p_fc_pri_body",
-			"label": "Wrapper › Body — Founding members travel at …",
-			"short_label": "Body",
+			"label": "Text 1",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "Founding members travel at our best rate, held …",
 			"selector": ".fc-pri-body",
 			"tag": "p",
 			"features": [
@@ -285,8 +317,10 @@
 		},
 		{
 			"id": "p_fc_pri_btn",
-			"label": "Wrapper › Button — Reserve Your Place",
+			"label": "Button",
 			"short_label": "Button",
+			"parent_label": "",
+			"sample": "Reserve Your Place",
 			"selector": ".fc-pri-btn",
 			"tag": "a",
 			"features": [
@@ -311,8 +345,10 @@
 		},
 		{
 			"id": "p_fc_pri_mini",
-			"label": "Wrapper › Mini — Pricing held for personal c…",
-			"short_label": "Mini",
+			"label": "Text 2",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "Pricing held for personal consultation · limite…",
 			"selector": ".fc-pri-mini",
 			"tag": "p",
 			"features": [
@@ -340,7 +376,7 @@
 		{
 			"id": "section_aria_label",
 			"control": "text",
-			"label": "Section – Aria Label",
+			"label": "Accessible Name",
 			"default": "The Founding Offer",
 			"esc": "attr",
 			"group": "p_section",
@@ -348,9 +384,9 @@
 			"sort": 1
 		},
 		{
-			"id": "eyebrow_the_founding_offer_text",
+			"id": "eyebrow_text",
 			"control": "text",
-			"label": "Eyebrow — The Founding Offer",
+			"label": "Eyebrow",
 			"description": "",
 			"default": "The Founding Offer",
 			"esc": "post",
@@ -358,9 +394,9 @@
 			"sort": 0
 		},
 		{
-			"id": "title_the_most_preferred_rate_we_text",
+			"id": "title_text",
 			"control": "text",
-			"label": "Title — The most preferred rate we …",
+			"label": "Title",
 			"description": "",
 			"default": "The most preferred rate we will ever offer.",
 			"esc": "post",
@@ -368,9 +404,9 @@
 			"sort": 0
 		},
 		{
-			"id": "body_founding_members_travel_at_text",
+			"id": "text_text",
 			"control": "textarea",
-			"label": "Body — Founding members travel at …",
+			"label": "Text",
 			"description": "",
 			"default": "Founding members travel at our best rate, held for our first guests alone. We share it with you personally on your call, along with everything your journey includes. Once the founding group is full, it closes for good.",
 			"esc": "post",
@@ -378,9 +414,9 @@
 			"sort": 0
 		},
 		{
-			"id": "button_reserve_your_place_text",
+			"id": "button_text",
 			"control": "text",
-			"label": "Button — Reserve Your Place",
+			"label": "Button",
 			"description": "",
 			"default": "Reserve Your Place",
 			"esc": "post",
@@ -388,9 +424,9 @@
 			"sort": 0
 		},
 		{
-			"id": "button_reserve_your_place_href",
+			"id": "button_href",
 			"control": "url",
-			"label": "Button — Reserve Your Place – Href",
+			"label": "Link",
 			"default": {
 				"url": "#fc-form-section"
 			},
@@ -400,9 +436,9 @@
 			"sort": 1
 		},
 		{
-			"id": "mini_pricing_held_for_personal_c_text",
+			"id": "text_text_2",
 			"control": "text",
-			"label": "Mini — Pricing held for personal c…",
+			"label": "Text",
 			"description": "",
 			"default": "Pricing held for personal consultation · limited to eighteen places",
 			"esc": "post",

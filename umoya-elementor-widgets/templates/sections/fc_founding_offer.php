@@ -27,10 +27,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 -->
 <section id="fc-pricing" aria-label="<?php echo $c['section_aria_label']; ?>">
   <div class="fc-pri-wrap fc-pri-rv">
-    <span class="fc-pri-eye"><?php echo $c['eyebrow_the_founding_offer_text']; ?></span>
-    <h2 class="fc-pri-ttl"><?php echo $c['title_the_most_preferred_rate_we_text']; ?></h2>
-    <p class="fc-pri-body"><?php echo $c['body_founding_members_travel_at_text']; ?></p>
-    <a href="<?php echo $c['button_reserve_your_place_href']; ?>" class="fc-pri-btn"><?php echo $c['button_reserve_your_place_text']; ?></a>
-    <p class="fc-pri-mini"><?php echo $c['mini_pricing_held_for_personal_c_text']; ?></p>
+    <span class="fc-pri-eye"><?php echo $c['eyebrow_text']; ?></span>
+    <h2 class="fc-pri-ttl"><?php echo $c['title_text']; ?></h2>
+    <p class="fc-pri-body"><?php echo $c['text_text']; ?></p>
+    <a href="<?php echo $c['button_href']; ?>" class="fc-pri-btn"><?php echo $c['button_text']; ?></a>
+    <p class="fc-pri-mini"><?php echo $c['text_text_2']; ?></p>
   </div>
 </section>

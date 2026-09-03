@@ -91,6 +91,39 @@ class Value_Formatter {
 	}
 
 	/**
+	 * Render a boolean HTML attribute from a switcher.
+	 *
+	 * `autoplay`, `muted`, `loop`, `playsinline`, `required` and friends carry no
+	 * value: they are either present or absent. The whitespace that preceded the
+	 * attribute belongs to it, so switching it off leaves no double space behind
+	 * -- and switching it on restores the author's own formatting. The hero's
+	 * <video> puts each attribute on its own line; assuming a single space would
+	 * fold them together and the render would stop matching the source.
+	 *
+	 * @param mixed  $value  Switcher setting ('yes' or '').
+	 * @param string $attr   Attribute name.
+	 * @param string $prefix Whitespace that preceded it in the source.
+	 * @return string
+	 */
+	public static function flag( $value, $attr, $prefix = ' ' ) {
+		$on = 'yes' === $value || '1' === $value || true === $value;
+
+		if ( ! $on ) {
+			return '';
+		}
+
+		$attr = preg_replace( '/[^a-z0-9-]/', '', strtolower( (string) $attr ) );
+		if ( ! $attr ) {
+			return '';
+		}
+
+		// Only whitespace may separate attributes; anything else would be markup.
+		$prefix = preg_replace( '/[^\s]/', '', (string) $prefix );
+
+		return ( '' === $prefix ? ' ' : $prefix ) . $attr;
+	}
+
+	/**
 	 * Elementor's MEDIA and URL controls store arrays. Everything else is scalar.
 	 *
 	 * @param mixed $value Setting value.

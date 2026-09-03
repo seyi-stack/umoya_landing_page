@@ -36,18 +36,12 @@ if ( ! defined( 'ABSPATH' ) ) {
         style="<?php echo $s['image_inline_style']; ?>"
       />
       <video
-        id="fc-hero-vid"
-        autoplay
-        muted
-        loop
-        playsinline
-        webkit-playsinline
+        id="fc-hero-vid"<?php echo $c['video_autoplay']; ?><?php echo $c['video_muted']; ?><?php echo $c['video_loop']; ?><?php echo $c['video_playsinline']; echo "\n        "; ?>webkit-playsinline
         preload="<?php echo $c['video_preload']; ?>"
         poster="<?php echo $c['video_poster']; ?>"
         aria-label="<?php echo $c['video_aria_label']; ?>"
-        style="<?php echo $s['video_inline_style']; ?>"
-      >
-        <source src="<?php echo $c['source_src']; ?>" type="<?php echo $c['source_type']; ?>" />
+        style="<?php echo $s['video_inline_style']; ?>"<?php echo $c['video_controls']; ?><?php echo $c['video_disablepictureinpicture']; echo "\n      "; ?>>
+        <source src="<?php echo $c['video_source_src']; ?>" type="<?php echo $c['video_source_type']; ?>" />
       </video>
     </div>
 
@@ -59,13 +53,13 @@ if ( ! defined( 'ABSPATH' ) ) {
           alt="<?php echo $c['image_alt_2']; ?>"
         />
       </div>
-      <span class="fc-h1-eye"><?php echo $c['eyebrow_an_invitation_to_our_guests_text']; ?></span>
+      <span class="fc-h1-eye"><?php echo $c['eyebrow_text']; ?></span>
       <h1 class="fc-h1-title">
-        <?php echo $c['title_join_the_founders_circle_text']; echo "\n      "; ?></h1>
-      <p class="fc-h1-sub"><?php echo $c['subtitle_be_among_the_first_guests_t_text']; ?></p>
+        <?php echo $c['title_text']; echo "\n      "; ?></h1>
+      <p class="fc-h1-sub"><?php echo $c['subtitle_text']; ?></p>
       <div class="fc-h1-btns">
-        <a href="<?php echo $c['button_primary_href']; ?>" class="fc-h1-btn fc-h1-btn-primary">
-          <?php echo $c['button_primary_text']; echo "\n          "; ?><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+        <a href="<?php echo $c['button_href']; ?>" class="fc-h1-btn fc-h1-btn-primary">
+          <?php echo $c['button_text']; echo "\n          "; ?><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"/>
             <polyline points="13 6 19 12 13 18"/>
           </svg>
@@ -74,7 +68,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>
 
     <div class="fc-h1-scroll" aria-hidden="true">
-      <span class="fc-h1-scroll-lbl"><?php echo $c['scroll_label_scroll_text']; ?></span>
+      <span class="fc-h1-scroll-lbl"><?php echo $c['label_text']; ?></span>
       <div class="fc-h1-track"></div>
     </div>
 

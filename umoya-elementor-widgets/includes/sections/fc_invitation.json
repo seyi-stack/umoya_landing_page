@@ -72,74 +72,93 @@
 		{
 			"id": "content_p_section",
 			"label": "Section",
+			"sample": "",
+			"region_label": "",
 			"controls": [
 				{
 					"id": "section_aria_label",
 					"control": "text",
-					"label": "Section – Aria Label",
+					"label": "Accessible Name",
 					"default": "Founder's Circle Introduction",
 					"esc": "attr",
 					"group": "p_section",
 					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "eyebrow_an_exclusive_group_text",
-					"control": "text",
-					"label": "Eyebrow — An Exclusive Group",
-					"description": "",
-					"default": "An Exclusive Group",
-					"esc": "post",
-					"group": "p_fc_intro_eyebrow",
-					"sort": 0
-				},
-				{
-					"id": "heading_the_first_to_travel_with_us_text",
-					"control": "text",
-					"label": "Heading — The first to travel with us.",
-					"description": "",
-					"default": "The first to travel with us.",
-					"esc": "post",
-					"group": "p_fc_intro_heading",
-					"sort": 0
-				},
-				{
-					"id": "body_the_umoya_founder_s_circle_text",
-					"control": "textarea",
-					"label": "Body — The Umoya Founder's Circle …",
-					"description": "",
-					"default": "The Umoya Founder's Circle is a small group of founding guests who will be the first to experience our Signature Journey. As a founding member you secure your place on one of our inaugural departures, travel at our most preferred rate, and help shape our journeys for everyone who follows.",
-					"esc": "post",
-					"group": "p_fc_intro_body",
-					"sort": 0
+					"sort": 1,
+					"part_label": "Section"
 				}
 			]
 		},
 		{
-			"id": "content_p_fc_intro_btn",
-			"label": "Div › Button — Become a Founding Member",
+			"id": "content_p_fc_intro_eyebrow",
+			"label": "Content",
+			"sample": "An Exclusive Group",
+			"region_label": "",
 			"controls": [
 				{
-					"id": "button_become_a_founding_member_text",
+					"id": "eyebrow_text",
 					"control": "text",
-					"label": "Button — Become a Founding Member",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "An Exclusive Group",
+					"esc": "post",
+					"group": "p_fc_intro_eyebrow",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "The first to travel with us.",
+					"esc": "post",
+					"group": "p_fc_intro_heading",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "text_text",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "The Umoya Founder's Circle is a small group of founding guests who will be the first to experience our Signature Journey. As a founding member you secure your place on one of our inaugural departures, travel at our most preferred rate, and help shape our journeys for everyone who follows.",
+					"esc": "post",
+					"group": "p_fc_intro_body",
+					"sort": 0,
+					"part_label": "Text"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_fc_intro_btn",
+			"label": "Button",
+			"sample": "Become a Founding Member",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Button",
 					"description": "",
 					"default": "Become a Founding Member",
 					"esc": "post",
 					"group": "p_fc_intro_btn",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Button"
 				},
 				{
-					"id": "button_become_a_founding_member_href",
+					"id": "button_href",
 					"control": "url",
-					"label": "Button — Become a Founding Member – Href",
+					"label": "Link",
 					"default": {
 						"url": "#fc-form-section"
 					},
 					"esc": "url",
 					"group": "p_fc_intro_btn",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Button"
 				}
 			]
 		}
@@ -149,24 +168,27 @@
 	"behaviour_controls": [],
 	"inline_style_controls": [
 		{
-			"id": "div_css_width",
+			"id": "container_css_width",
 			"control": "text",
-			"label": "Div – Width",
+			"label": "Width",
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "100%",
 			"esc": "attr",
 			"group": "p_fc_d4_fc_intro_rv",
 			"tab": "inline_style",
 			"sort": 3,
-			"part_label": "Wrapper › Div"
+			"part_label": "Container 2"
 		}
 	],
+	"media_controls": [],
 	"repeaters": [],
 	"style_parts": [
 		{
 			"id": "p_section",
 			"label": "Section",
 			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
 			"selector": "",
 			"tag": "section",
 			"features": [
@@ -189,8 +211,10 @@
 		},
 		{
 			"id": "p_fc_intro_wrap",
-			"label": "Wrapper",
-			"short_label": "Wrapper",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-intro-wrap",
 			"tag": "div",
 			"features": [
@@ -214,8 +238,10 @@
 		},
 		{
 			"id": "p_fc_dec_line",
-			"label": "Wrapper › Decorative Line",
-			"short_label": "Decorative Line",
+			"label": "Divider",
+			"short_label": "Divider",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-dec-line",
 			"tag": "div",
 			"features": [
@@ -238,8 +264,10 @@
 		},
 		{
 			"id": "p_fc_intro_eyebrow",
-			"label": "Wrapper › Eyebrow — An Exclusive Group",
+			"label": "Eyebrow",
 			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "An Exclusive Group",
 			"selector": ".fc-intro-eyebrow",
 			"tag": "span",
 			"features": [
@@ -263,8 +291,10 @@
 		},
 		{
 			"id": "p_fc_intro_heading",
-			"label": "Wrapper › Heading — The first to travel with us.",
-			"short_label": "Heading",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "",
+			"sample": "The first to travel with us.",
 			"selector": ".fc-intro-heading",
 			"tag": "h2",
 			"features": [
@@ -288,8 +318,10 @@
 		},
 		{
 			"id": "p_fc_intro_body",
-			"label": "Wrapper › Body — The Umoya Founder's Circle …",
-			"short_label": "Body",
+			"label": "Text",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "The Umoya Founder's Circle is a small group of …",
 			"selector": ".fc-intro-body",
 			"tag": "p",
 			"features": [
@@ -313,8 +345,10 @@
 		},
 		{
 			"id": "p_fc_d4_fc_intro_rv",
-			"label": "Wrapper › Div",
-			"short_label": "Div",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-d4.fc-intro-rv",
 			"tag": "div",
 			"features": [
@@ -337,8 +371,10 @@
 		},
 		{
 			"id": "p_fc_intro_btn",
-			"label": "Div › Button — Become a Founding Member",
+			"label": "Button",
 			"short_label": "Button",
+			"parent_label": "",
+			"sample": "Become a Founding Member",
 			"selector": ".fc-intro-btn",
 			"tag": "a",
 			"features": [
@@ -364,12 +400,12 @@
 	],
 	"inline_styles": [
 		{
-			"id": "div_inline_style",
+			"id": "container_inline_style",
 			"control": "inline_style_group",
 			"declarations": [
 				{
 					"prefix": "width: ",
-					"id": "div_css_width"
+					"id": "container_css_width"
 				}
 			],
 			"tail": ";",
@@ -380,7 +416,7 @@
 		{
 			"id": "section_aria_label",
 			"control": "text",
-			"label": "Section – Aria Label",
+			"label": "Accessible Name",
 			"default": "Founder's Circle Introduction",
 			"esc": "attr",
 			"group": "p_section",
@@ -388,9 +424,9 @@
 			"sort": 1
 		},
 		{
-			"id": "eyebrow_an_exclusive_group_text",
+			"id": "eyebrow_text",
 			"control": "text",
-			"label": "Eyebrow — An Exclusive Group",
+			"label": "Eyebrow",
 			"description": "",
 			"default": "An Exclusive Group",
 			"esc": "post",
@@ -398,9 +434,9 @@
 			"sort": 0
 		},
 		{
-			"id": "heading_the_first_to_travel_with_us_text",
+			"id": "title_text",
 			"control": "text",
-			"label": "Heading — The first to travel with us.",
+			"label": "Title",
 			"description": "",
 			"default": "The first to travel with us.",
 			"esc": "post",
@@ -408,9 +444,9 @@
 			"sort": 0
 		},
 		{
-			"id": "body_the_umoya_founder_s_circle_text",
+			"id": "text_text",
 			"control": "textarea",
-			"label": "Body — The Umoya Founder's Circle …",
+			"label": "Text",
 			"description": "",
 			"default": "The Umoya Founder's Circle is a small group of founding guests who will be the first to experience our Signature Journey. As a founding member you secure your place on one of our inaugural departures, travel at our most preferred rate, and help shape our journeys for everyone who follows.",
 			"esc": "post",
@@ -418,9 +454,9 @@
 			"sort": 0
 		},
 		{
-			"id": "div_css_width",
+			"id": "container_css_width",
 			"control": "text",
-			"label": "Div – Width",
+			"label": "Width",
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "100%",
 			"esc": "attr",
@@ -429,9 +465,9 @@
 			"sort": 3
 		},
 		{
-			"id": "button_become_a_founding_member_text",
+			"id": "button_text",
 			"control": "text",
-			"label": "Button — Become a Founding Member",
+			"label": "Button",
 			"description": "",
 			"default": "Become a Founding Member",
 			"esc": "post",
@@ -439,9 +475,9 @@
 			"sort": 0
 		},
 		{
-			"id": "button_become_a_founding_member_href",
+			"id": "button_href",
 			"control": "url",
-			"label": "Button — Become a Founding Member – Href",
+			"label": "Link",
 			"default": {
 				"url": "#fc-form-section"
 			},

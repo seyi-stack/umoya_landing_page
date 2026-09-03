@@ -72,179 +72,219 @@
 		{
 			"id": "content_p_section",
 			"label": "Section",
+			"sample": "",
+			"region_label": "",
 			"controls": [
 				{
 					"id": "section_aria_label",
 					"control": "text",
-					"label": "Section – Aria Label",
+					"label": "Accessible Name",
 					"default": "Founder's Circle page navigation",
 					"esc": "attr",
 					"group": "p_section",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Section"
 				}
 			]
 		},
 		{
 			"id": "content_p_fc_nav_logo",
-			"label": "Inner › Logo",
+			"label": "Logo",
+			"sample": "",
+			"region_label": "",
 			"controls": [
 				{
 					"id": "logo_href",
 					"control": "url",
-					"label": "Logo – Href",
+					"label": "Link",
 					"default": {
 						"url": "#fc-hero"
 					},
 					"esc": "url",
 					"group": "p_fc_nav_logo",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Logo"
 				},
 				{
 					"id": "logo_aria_label",
 					"control": "text",
-					"label": "Logo – Aria Label",
+					"label": "Accessible Name",
 					"default": "Umoya Afrika Tours — back to top",
 					"esc": "attr",
 					"group": "p_fc_nav_logo",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Logo"
 				}
 			]
 		},
 		{
 			"id": "content_p_img",
-			"label": "Logo › Image",
+			"label": "Logo",
+			"sample": "",
+			"region_label": "Logo",
 			"controls": [
 				{
 					"id": "image_src",
 					"control": "media",
-					"label": "Image – Src",
+					"label": "Source",
 					"default": {
 						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Umoya-Afrika-Logomark.svg"
 					},
 					"esc": "url",
 					"group": "p_img",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Image"
 				},
 				{
 					"id": "image_alt",
 					"control": "text",
-					"label": "Image – Alt",
+					"label": "Alt Text",
 					"default": "Umoya Afrika Tours logo",
 					"esc": "attr",
 					"group": "p_img",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Image"
 				},
 				{
-					"id": "logo_text_umoya_text",
+					"id": "text_text",
 					"control": "text",
-					"label": "Logo Text — Umoya",
+					"label": "Text",
 					"description": "",
 					"default": "Umoya",
 					"esc": "post",
 					"group": "p_fc_nav_logo_text",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Logo Text"
 				}
-			]
+			],
+			"merged": true
 		},
 		{
 			"id": "content_p_fc_nav_cta",
-			"label": "Inner › CTA — Reserve Your Place",
+			"label": "Content",
+			"sample": "Reserve Your Place",
+			"region_label": "",
 			"controls": [
 				{
-					"id": "cta_reserve_your_place_text",
+					"id": "button_text",
 					"control": "text",
-					"label": "CTA — Reserve Your Place",
+					"label": "Button",
 					"description": "",
 					"default": "Reserve Your Place",
 					"esc": "post",
 					"group": "p_fc_nav_cta",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Button 1"
 				},
 				{
-					"id": "cta_reserve_your_place_href",
+					"id": "button_href",
 					"control": "url",
-					"label": "CTA — Reserve Your Place – Href",
+					"label": "Link",
 					"default": {
 						"url": "#fc-form-section"
 					},
 					"esc": "url",
 					"group": "p_fc_nav_cta",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Button 1"
 				},
 				{
-					"id": "burger_aria_label",
+					"id": "button_aria_label",
 					"control": "text",
-					"label": "Burger – Aria Label",
+					"label": "Accessible Name",
 					"default": "Open navigation menu",
 					"esc": "attr",
 					"group": "p_fc_nav_burger",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Button 2"
 				},
 				{
-					"id": "dropdown_aria_label",
+					"id": "container_aria_label",
 					"control": "text",
-					"label": "Dropdown – Aria Label",
+					"label": "Container 2",
 					"default": "Page sections",
 					"esc": "attr",
 					"group": "p_fc_nav_dropdown",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Container 2"
 				}
-			]
+			],
+			"merged": true
 		},
 		{
 			"id": "content_p_fc_nav_dropdown_cta",
-			"label": "CTA Row › CTA — Reserve Your Place",
+			"label": "Item Button",
+			"sample": "Reserve Your Place",
+			"region_label": "Item",
 			"controls": [
 				{
-					"id": "cta_reserve_your_place_text_2",
+					"id": "button_text_2",
 					"control": "text",
-					"label": "CTA — Reserve Your Place",
+					"label": "Button",
 					"description": "",
 					"default": "Reserve Your Place",
 					"esc": "post",
 					"group": "p_fc_nav_dropdown_cta",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Item Button"
 				},
 				{
-					"id": "cta_reserve_your_place_href_2",
+					"id": "button_href_2",
 					"control": "url",
-					"label": "CTA — Reserve Your Place – Href",
+					"label": "Link",
 					"default": {
 						"url": "#fc-form-section"
 					},
 					"esc": "url",
 					"group": "p_fc_nav_dropdown_cta",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Item Button"
 				}
 			]
 		}
 	],
 	"integration_controls": [],
-	"form_controls": [],
+	"form_controls": [
+		{
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_nav_burger",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Button 2"
+		}
+	],
 	"behaviour_controls": [],
 	"inline_style_controls": [
 		{
-			"id": "logo_text_umoya_css_display",
+			"id": "text_css_display",
 			"control": "text",
-			"label": "Logo Text — Umoya – Display",
+			"label": "Display",
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "none",
 			"esc": "attr",
 			"group": "p_fc_nav_logo_text",
 			"tab": "inline_style",
 			"sort": 3,
-			"part_label": "Logo › Logo Text — Umoya"
+			"part_label": "Logo Text"
 		}
 	],
+	"media_controls": [],
 	"repeaters": [
 		{
 			"id": "rep_li_fc_nav_item",
@@ -387,6 +427,8 @@
 			"id": "p_section",
 			"label": "Section",
 			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
 			"selector": "",
 			"tag": "nav",
 			"features": [
@@ -408,8 +450,10 @@
 		},
 		{
 			"id": "p_fc_nav_inner",
-			"label": "Inner",
-			"short_label": "Inner",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-nav-inner",
 			"tag": "div",
 			"features": [
@@ -432,8 +476,10 @@
 		},
 		{
 			"id": "p_fc_nav_logo",
-			"label": "Inner › Logo",
+			"label": "Logo",
 			"short_label": "Logo",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-nav-logo",
 			"tag": "a",
 			"features": [
@@ -458,8 +504,10 @@
 		},
 		{
 			"id": "p_img",
-			"label": "Logo › Image",
+			"label": "Image",
 			"short_label": "Image",
+			"parent_label": "Logo",
+			"sample": "",
 			"selector": "img",
 			"tag": "img",
 			"features": [
@@ -480,8 +528,10 @@
 		},
 		{
 			"id": "p_fc_nav_logo_text",
-			"label": "Logo › Logo Text — Umoya",
-			"short_label": "Logo Text",
+			"label": "Logo Text",
+			"short_label": "Text",
+			"parent_label": "Logo",
+			"sample": "Umoya",
 			"selector": ".fc-nav-logo-text",
 			"tag": "span",
 			"features": [
@@ -505,8 +555,10 @@
 		},
 		{
 			"id": "p_fc_nav_links",
-			"label": "Inner › Links",
-			"short_label": "Links",
+			"label": "List 1",
+			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-nav-links",
 			"tag": "ul",
 			"features": [
@@ -529,8 +581,10 @@
 		},
 		{
 			"id": "p_fc_nav_item",
-			"label": "Links › Item",
+			"label": "List Item 1",
 			"short_label": "Item",
+			"parent_label": "List",
+			"sample": "",
 			"selector": ".fc-nav-item",
 			"tag": "li",
 			"features": [
@@ -554,8 +608,10 @@
 		},
 		{
 			"id": "p_fc_nav_item_a_nth_of_type_1",
-			"label": "Item › Link — Overview",
+			"label": "Item Link 1",
 			"short_label": "Link",
+			"parent_label": "Item",
+			"sample": "Overview",
 			"selector": ".fc-nav-item > a:nth-of-type(1)",
 			"tag": "a",
 			"features": [
@@ -580,8 +636,10 @@
 		},
 		{
 			"id": "p_fc_nav_cta",
-			"label": "Inner › CTA — Reserve Your Place",
-			"short_label": "CTA",
+			"label": "Button 1",
+			"short_label": "Button",
+			"parent_label": "",
+			"sample": "Reserve Your Place",
 			"selector": ".fc-nav-cta",
 			"tag": "a",
 			"features": [
@@ -606,8 +664,10 @@
 		},
 		{
 			"id": "p_fc_nav_burger",
-			"label": "Inner › Burger",
-			"short_label": "Burger",
+			"label": "Button 2",
+			"short_label": "Button",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-nav-burger",
 			"tag": "button",
 			"features": [
@@ -632,8 +692,10 @@
 		},
 		{
 			"id": "p_fc_nav_burger_span",
-			"label": "Burger › Span",
-			"short_label": "Span",
+			"label": "Button Text",
+			"short_label": "Text",
+			"parent_label": "Button",
+			"sample": "",
 			"selector": ".fc-nav-burger > span",
 			"tag": "span",
 			"features": [
@@ -657,8 +719,10 @@
 		},
 		{
 			"id": "p_fc_nav_dropdown",
-			"label": "Inner › Dropdown",
-			"short_label": "Dropdown",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-nav-dropdown",
 			"tag": "div",
 			"features": [
@@ -681,8 +745,10 @@
 		},
 		{
 			"id": "p_fc_nav_dropdown_list",
-			"label": "Dropdown › List",
+			"label": "List 2",
 			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-nav-dropdown-list",
 			"tag": "ul",
 			"features": [
@@ -705,8 +771,10 @@
 		},
 		{
 			"id": "p_fc_nav_dropdown_item",
-			"label": "List › Item",
+			"label": "List Item 2",
 			"short_label": "Item",
+			"parent_label": "List",
+			"sample": "",
 			"selector": ".fc-nav-dropdown-item",
 			"tag": "li",
 			"features": [
@@ -730,8 +798,10 @@
 		},
 		{
 			"id": "p_fc_nav_dropdown_item_a_nth_of_type_1",
-			"label": "Item › Link — Overview",
+			"label": "Item Link 2",
 			"short_label": "Link",
+			"parent_label": "Item",
+			"sample": "Overview",
 			"selector": ".fc-nav-dropdown-item > a:nth-of-type(1)",
 			"tag": "a",
 			"features": [
@@ -756,8 +826,10 @@
 		},
 		{
 			"id": "p_fc_nav_dropdown_cta_row",
-			"label": "Dropdown › CTA Row",
-			"short_label": "CTA Row",
+			"label": "Item",
+			"short_label": "Item",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-nav-dropdown-cta-row",
 			"tag": "div",
 			"features": [
@@ -780,8 +852,10 @@
 		},
 		{
 			"id": "p_fc_nav_dropdown_cta",
-			"label": "CTA Row › CTA — Reserve Your Place",
-			"short_label": "CTA",
+			"label": "Item Button",
+			"short_label": "Button",
+			"parent_label": "Item",
+			"sample": "Reserve Your Place",
 			"selector": ".fc-nav-dropdown-cta",
 			"tag": "a",
 			"features": [
@@ -807,12 +881,12 @@
 	],
 	"inline_styles": [
 		{
-			"id": "logo_text_umoya_inline_style",
+			"id": "text_inline_style",
 			"control": "inline_style_group",
 			"declarations": [
 				{
 					"prefix": "display:",
-					"id": "logo_text_umoya_css_display"
+					"id": "text_css_display"
 				}
 			],
 			"tail": ";",
@@ -823,7 +897,7 @@
 		{
 			"id": "section_aria_label",
 			"control": "text",
-			"label": "Section – Aria Label",
+			"label": "Accessible Name",
 			"default": "Founder's Circle page navigation",
 			"esc": "attr",
 			"group": "p_section",
@@ -833,7 +907,7 @@
 		{
 			"id": "logo_href",
 			"control": "url",
-			"label": "Logo – Href",
+			"label": "Link",
 			"default": {
 				"url": "#fc-hero"
 			},
@@ -845,7 +919,7 @@
 		{
 			"id": "logo_aria_label",
 			"control": "text",
-			"label": "Logo – Aria Label",
+			"label": "Accessible Name",
 			"default": "Umoya Afrika Tours — back to top",
 			"esc": "attr",
 			"group": "p_fc_nav_logo",
@@ -855,7 +929,7 @@
 		{
 			"id": "image_src",
 			"control": "media",
-			"label": "Image – Src",
+			"label": "Source",
 			"default": {
 				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Umoya-Afrika-Logomark.svg"
 			},
@@ -867,7 +941,7 @@
 		{
 			"id": "image_alt",
 			"control": "text",
-			"label": "Image – Alt",
+			"label": "Alt Text",
 			"default": "Umoya Afrika Tours logo",
 			"esc": "attr",
 			"group": "p_img",
@@ -875,9 +949,9 @@
 			"sort": 1
 		},
 		{
-			"id": "logo_text_umoya_text",
+			"id": "text_text",
 			"control": "text",
-			"label": "Logo Text — Umoya",
+			"label": "Text",
 			"description": "",
 			"default": "Umoya",
 			"esc": "post",
@@ -885,9 +959,9 @@
 			"sort": 0
 		},
 		{
-			"id": "logo_text_umoya_css_display",
+			"id": "text_css_display",
 			"control": "text",
-			"label": "Logo Text — Umoya – Display",
+			"label": "Display",
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "none",
 			"esc": "attr",
@@ -896,9 +970,9 @@
 			"sort": 3
 		},
 		{
-			"id": "cta_reserve_your_place_text",
+			"id": "button_text",
 			"control": "text",
-			"label": "CTA — Reserve Your Place",
+			"label": "Button",
 			"description": "",
 			"default": "Reserve Your Place",
 			"esc": "post",
@@ -906,9 +980,9 @@
 			"sort": 0
 		},
 		{
-			"id": "cta_reserve_your_place_href",
+			"id": "button_href",
 			"control": "url",
-			"label": "CTA — Reserve Your Place – Href",
+			"label": "Link",
 			"default": {
 				"url": "#fc-form-section"
 			},
@@ -918,9 +992,22 @@
 			"sort": 1
 		},
 		{
-			"id": "burger_aria_label",
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_nav_burger",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "button_aria_label",
 			"control": "text",
-			"label": "Burger – Aria Label",
+			"label": "Accessible Name",
 			"default": "Open navigation menu",
 			"esc": "attr",
 			"group": "p_fc_nav_burger",
@@ -928,9 +1015,9 @@
 			"sort": 1
 		},
 		{
-			"id": "dropdown_aria_label",
+			"id": "container_aria_label",
 			"control": "text",
-			"label": "Dropdown – Aria Label",
+			"label": "Accessible Name",
 			"default": "Page sections",
 			"esc": "attr",
 			"group": "p_fc_nav_dropdown",
@@ -938,9 +1025,9 @@
 			"sort": 1
 		},
 		{
-			"id": "cta_reserve_your_place_text_2",
+			"id": "button_text_2",
 			"control": "text",
-			"label": "CTA — Reserve Your Place",
+			"label": "Button",
 			"description": "",
 			"default": "Reserve Your Place",
 			"esc": "post",
@@ -948,9 +1035,9 @@
 			"sort": 0
 		},
 		{
-			"id": "cta_reserve_your_place_href_2",
+			"id": "button_href_2",
 			"control": "url",
-			"label": "CTA — Reserve Your Place – Href",
+			"label": "Link",
 			"default": {
 				"url": "#fc-form-section"
 			},

@@ -103,169 +103,200 @@
 		{
 			"id": "content_p_section",
 			"label": "Section",
+			"sample": "",
+			"region_label": "",
 			"controls": [
 				{
 					"id": "section_aria_label",
 					"control": "text",
-					"label": "Section – Aria Label",
+					"label": "Accessible Name",
 					"default": "Experience South Africa Differently",
 					"esc": "attr",
 					"group": "p_section",
 					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "eyebrow_exclusive_early_access_text",
-					"control": "text",
-					"label": "Eyebrow — Exclusive Early Access",
-					"description": "",
-					"default": "Exclusive Early Access",
-					"esc": "post",
-					"group": "p_fc_bf_eyebrow",
-					"sort": 0
-				},
-				{
-					"id": "title_experience_south_africa_dif_text",
-					"control": "textarea",
-					"label": "Title — Experience South Africa Dif…",
-					"description": "Inline formatting tags are preserved.",
-					"default": "Experience South Africa <em>Differently</em>",
-					"esc": "post",
-					"group": "p_fc_bf_title",
-					"sort": 0
-				},
-				{
-					"id": "pull_join_now_to_secure_your_pla_text",
-					"control": "textarea",
-					"label": "Pull — Join now to secure your pla…",
-					"description": "",
-					"default": "Join now to secure your place on our inaugural journey before we open to the public. Once this founding cohort is complete, these exclusive benefits close permanently.",
-					"esc": "post",
-					"group": "p_fc_bf_pull",
-					"sort": 0
+					"sort": 1,
+					"part_label": "Section"
 				}
 			]
 		},
 		{
-			"id": "content_p_fc_bf_btn",
-			"label": "Reveal › Button — Join Now",
+			"id": "content_p_fc_bf_eyebrow",
+			"label": "List",
+			"sample": "Exclusive Early Access",
+			"region_label": "List",
 			"controls": [
 				{
-					"id": "button_join_now_text",
+					"id": "eyebrow_text",
 					"control": "text",
-					"label": "Button — Join Now",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Exclusive Early Access",
+					"esc": "post",
+					"group": "p_fc_bf_eyebrow",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "textarea",
+					"label": "Title",
+					"description": "Inline formatting tags are preserved.",
+					"default": "Experience South Africa <em>Differently</em>",
+					"esc": "post",
+					"group": "p_fc_bf_title",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "text_text",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "Join now to secure your place on our inaugural journey before we open to the public. Once this founding cohort is complete, these exclusive benefits close permanently.",
+					"esc": "post",
+					"group": "p_fc_bf_pull",
+					"sort": 0,
+					"part_label": "List Text 2"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_fc_bf_btn",
+			"label": "Button",
+			"sample": "Join Now",
+			"region_label": "List",
+			"controls": [
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Button",
 					"description": "",
 					"default": "Join Now",
 					"esc": "post",
 					"group": "p_fc_bf_btn",
-					"sort": 0
+					"sort": 0,
+					"part_label": "Button"
 				},
 				{
-					"id": "button_join_now_href",
+					"id": "button_href",
 					"control": "url",
-					"label": "Button — Join Now – Href",
+					"label": "Link",
 					"default": {
 						"url": "#fc-form-section"
 					},
 					"esc": "url",
 					"group": "p_fc_bf_btn",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Button"
 				}
 			]
 		},
 		{
 			"id": "content_p_fc_ss_slide",
-			"label": "Track › Slide",
+			"label": "Slide",
+			"sample": "",
+			"region_label": "List",
 			"controls": [
 				{
 					"id": "slide_aria_label",
 					"control": "text",
-					"label": "Slide – Aria Label",
+					"label": "Accessible Name",
 					"default": "1 of 5",
 					"esc": "attr",
 					"group": "p_fc_ss_slide",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Slide"
 				},
 				{
 					"id": "slide_aria_roledescription",
 					"control": "text",
-					"label": "Slide – Aria Roledescription",
+					"label": "Accessible Role",
 					"default": "slide",
 					"esc": "attr",
 					"group": "p_fc_ss_slide",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Slide"
 				}
 			]
 		},
 		{
 			"id": "content_p_fc_ss_slide_img_nth_of_type_1",
-			"label": "Slide › Image",
+			"label": "Slide",
+			"sample": "",
+			"region_label": "Slide",
 			"controls": [
 				{
 					"id": "image_src",
 					"control": "media",
-					"label": "Image – Src",
+					"label": "Source",
 					"default": {
 						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1850384162.jpeg"
 					},
 					"esc": "url",
 					"group": "p_fc_ss_slide_img_nth_of_type_1",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Image"
 				},
 				{
 					"id": "image_alt",
 					"control": "text",
-					"label": "Image – Alt",
+					"label": "Alt Text",
 					"default": "Gauteng heritage and city experience",
 					"esc": "attr",
 					"group": "p_fc_ss_slide_img_nth_of_type_1",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Image"
 				},
 				{
 					"id": "arrow_aria_label",
 					"control": "text",
-					"label": "Arrow – Aria Label",
+					"label": "Accessible Name",
 					"default": "Previous slide",
 					"esc": "attr",
 					"group": "p_fc_ss_arrow",
 					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "dots_aria_label",
-					"control": "text",
-					"label": "Dots – Aria Label",
-					"default": "Slide navigation",
-					"esc": "attr",
-					"group": "p_fc_ss_dots",
-					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Arrow"
 				},
 				{
 					"id": "dot_aria_label",
 					"control": "text",
-					"label": "Dot – Aria Label",
+					"label": "List Dot",
+					"default": "Slide navigation",
+					"esc": "attr",
+					"group": "p_fc_ss_dots",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "List Dot"
+				},
+				{
+					"id": "dot_aria_label_2",
+					"control": "text",
+					"label": "Dot",
 					"default": "Slide 1",
 					"esc": "attr",
 					"group": "p_fc_ss_dot",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Dot"
 				}
-			]
+			],
+			"merged": true
 		},
 		{
 			"id": "content_p_fc_bf_reveal_2",
-			"label": "Other content",
+			"label": "Content",
 			"controls": [
 				{
-					"id": "reveal_aria_label",
+					"id": "container_aria_label",
 					"control": "text",
-					"label": "Reveal – Aria Label",
+					"label": "Accessible Name",
 					"default": "Journey imagery — slideshow",
 					"esc": "attr",
 					"group": "p_fc_bf_reveal_2",
@@ -273,9 +304,9 @@
 					"sort": 1
 				},
 				{
-					"id": "reveal_aria_roledescription",
+					"id": "container_aria_roledescription",
 					"control": "text",
-					"label": "Reveal – Aria Roledescription",
+					"label": "Accessible Role",
 					"default": "carousel",
 					"esc": "attr",
 					"group": "p_fc_bf_reveal_2",
@@ -285,24 +316,72 @@
 				{
 					"id": "arrow_aria_label_2",
 					"control": "text",
-					"label": "Arrow – Aria Label",
+					"label": "Accessible Name",
 					"default": "Next slide",
 					"esc": "attr",
 					"group": "p_fc_ss_arrow_2",
 					"tab": "content",
 					"sort": 1
 				}
-			]
+			],
+			"merged": true
 		}
 	],
 	"integration_controls": [],
-	"form_controls": [],
+	"form_controls": [
+		{
+			"id": "arrow_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_ss_arrow",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Arrow"
+		},
+		{
+			"id": "arrow_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_ss_arrow_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "dot_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_ss_dot",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Dot"
+		}
+	],
 	"behaviour_controls": [
 		{
 			"id": "image_loading",
-			"control": "text",
-			"label": "Image – Loading",
+			"control": "select",
+			"label": "Loading",
 			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
 			"esc": "attr",
 			"group": "behaviour",
 			"tab": "behaviour",
@@ -312,7 +391,7 @@
 		{
 			"id": "dot_data_fci",
 			"control": "text",
-			"label": "Dot – Fci",
+			"label": "Fci",
 			"default": "0",
 			"esc": "attr",
 			"group": "behaviour",
@@ -322,6 +401,7 @@
 		}
 	],
 	"inline_style_controls": [],
+	"media_controls": [],
 	"repeaters": [
 		{
 			"id": "rep_p",
@@ -498,6 +578,8 @@
 			"id": "p_section",
 			"label": "Section",
 			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
 			"selector": "",
 			"tag": "section",
 			"features": [
@@ -519,8 +601,10 @@
 		},
 		{
 			"id": "p_fc_bf_wrap",
-			"label": "Wrapper",
-			"short_label": "Wrapper",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-bf-wrap",
 			"tag": "div",
 			"features": [
@@ -543,8 +627,10 @@
 		},
 		{
 			"id": "p_fc_bf_grid",
-			"label": "Wrapper › Grid",
-			"short_label": "Grid",
+			"label": "List",
+			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-bf-grid",
 			"tag": "div",
 			"features": [
@@ -567,8 +653,10 @@
 		},
 		{
 			"id": "p_fc_bf_reveal",
-			"label": "Grid › Reveal",
-			"short_label": "Reveal",
+			"label": "List Container 1",
+			"short_label": "Container",
+			"parent_label": "List",
+			"sample": "",
 			"selector": ".fc-bf-reveal",
 			"tag": "div",
 			"features": [
@@ -591,8 +679,10 @@
 		},
 		{
 			"id": "p_fc_bf_eyebrow",
-			"label": "Reveal › Eyebrow — Exclusive Early Access",
+			"label": "Eyebrow",
 			"short_label": "Eyebrow",
+			"parent_label": "List",
+			"sample": "Exclusive Early Access",
 			"selector": ".fc-bf-eyebrow",
 			"tag": "span",
 			"features": [
@@ -616,8 +706,10 @@
 		},
 		{
 			"id": "p_fc_bf_title",
-			"label": "Reveal › Title — Experience South Africa Dif…",
+			"label": "Title",
 			"short_label": "Title",
+			"parent_label": "List",
+			"sample": "Experience South Africa Differently",
 			"selector": ".fc-bf-title",
 			"tag": "h2",
 			"features": [
@@ -641,8 +733,10 @@
 		},
 		{
 			"id": "p_em",
-			"label": "Title › Em — Differently",
-			"short_label": "Em",
+			"label": "Emphasis",
+			"short_label": "Emphasis",
+			"parent_label": "Title",
+			"sample": "Differently",
 			"selector": "em",
 			"tag": "em",
 			"features": [
@@ -666,8 +760,10 @@
 		},
 		{
 			"id": "p_fc_bf_rule",
-			"label": "Reveal › Rule",
-			"short_label": "Rule",
+			"label": "Divider",
+			"short_label": "Divider",
+			"parent_label": "List",
+			"sample": "",
 			"selector": ".fc-bf-rule",
 			"tag": "span",
 			"features": [
@@ -691,8 +787,10 @@
 		},
 		{
 			"id": "p_fc_bf_body",
-			"label": "Reveal › Body",
-			"short_label": "Body",
+			"label": "Content",
+			"short_label": "Content",
+			"parent_label": "List",
+			"sample": "",
 			"selector": ".fc-bf-body",
 			"tag": "div",
 			"features": [
@@ -715,8 +813,10 @@
 		},
 		{
 			"id": "p_p",
-			"label": "Body › Paragraph — This is more than early reg…",
-			"short_label": "Paragraph",
+			"label": "List Text 1",
+			"short_label": "Text",
+			"parent_label": "List",
+			"sample": "This is more than early registration. It is an …",
 			"selector": "p",
 			"tag": "p",
 			"features": [
@@ -740,8 +840,10 @@
 		},
 		{
 			"id": "p_fc_bf_pull",
-			"label": "Reveal › Pull — Join now to secure your pla…",
-			"short_label": "Pull",
+			"label": "List Text 2",
+			"short_label": "Text",
+			"parent_label": "List",
+			"sample": "Join now to secure your place on our inaugural …",
 			"selector": ".fc-bf-pull",
 			"tag": "div",
 			"features": [
@@ -764,8 +866,10 @@
 		},
 		{
 			"id": "p_fc_bf_btn",
-			"label": "Reveal › Button — Join Now",
+			"label": "Button",
 			"short_label": "Button",
+			"parent_label": "List",
+			"sample": "Join Now",
 			"selector": ".fc-bf-btn",
 			"tag": "a",
 			"features": [
@@ -790,8 +894,10 @@
 		},
 		{
 			"id": "p_fc_ss_track",
-			"label": "Grid › Track",
-			"short_label": "Track",
+			"label": "List Container 2",
+			"short_label": "Container",
+			"parent_label": "List",
+			"sample": "",
 			"selector": ".fc-ss-track",
 			"tag": "div",
 			"features": [
@@ -814,8 +920,10 @@
 		},
 		{
 			"id": "p_fc_ss_slide",
-			"label": "Track › Slide",
+			"label": "Slide",
 			"short_label": "Slide",
+			"parent_label": "List",
+			"sample": "",
 			"selector": ".fc-ss-slide",
 			"tag": "div",
 			"features": [
@@ -838,8 +946,10 @@
 		},
 		{
 			"id": "p_fc_ss_slide_img_nth_of_type_1",
-			"label": "Slide › Image",
+			"label": "Image",
 			"short_label": "Image",
+			"parent_label": "Slide",
+			"sample": "",
 			"selector": ".fc-ss-slide > img:nth-of-type(1)",
 			"tag": "img",
 			"features": [
@@ -860,8 +970,10 @@
 		},
 		{
 			"id": "p_fc_ss_arrow",
-			"label": "Grid › Arrow",
+			"label": "Arrow",
 			"short_label": "Arrow",
+			"parent_label": "List",
+			"sample": "",
 			"selector": ".fc-ss-arrow",
 			"tag": "button",
 			"features": [
@@ -886,8 +998,10 @@
 		},
 		{
 			"id": "p_fc_ss_arrow_svg_nth_of_type_1",
-			"label": "Arrow › Svg",
-			"short_label": "Svg",
+			"label": "Icon",
+			"short_label": "Icon",
+			"parent_label": "Arrow",
+			"sample": "",
 			"selector": ".fc-ss-arrow > svg:nth-of-type(1)",
 			"tag": "svg",
 			"features": [
@@ -902,8 +1016,10 @@
 		},
 		{
 			"id": "p_fc_ss_dots",
-			"label": "Grid › Dots",
-			"short_label": "Dots",
+			"label": "List Dot",
+			"short_label": "Dot",
+			"parent_label": "List",
+			"sample": "",
 			"selector": ".fc-ss-dots",
 			"tag": "div",
 			"features": [
@@ -926,8 +1042,10 @@
 		},
 		{
 			"id": "p_fc_ss_dot",
-			"label": "Dots › Dot",
+			"label": "Dot",
 			"short_label": "Dot",
+			"parent_label": "",
+			"sample": "",
 			"selector": ".fc-ss-dot",
 			"tag": "button",
 			"features": [
@@ -956,7 +1074,7 @@
 		{
 			"id": "section_aria_label",
 			"control": "text",
-			"label": "Section – Aria Label",
+			"label": "Accessible Name",
 			"default": "Experience South Africa Differently",
 			"esc": "attr",
 			"group": "p_section",
@@ -964,9 +1082,9 @@
 			"sort": 1
 		},
 		{
-			"id": "eyebrow_exclusive_early_access_text",
+			"id": "eyebrow_text",
 			"control": "text",
-			"label": "Eyebrow — Exclusive Early Access",
+			"label": "Eyebrow",
 			"description": "",
 			"default": "Exclusive Early Access",
 			"esc": "post",
@@ -974,9 +1092,9 @@
 			"sort": 0
 		},
 		{
-			"id": "title_experience_south_africa_dif_text",
+			"id": "title_text",
 			"control": "textarea",
-			"label": "Title — Experience South Africa Dif…",
+			"label": "Title",
 			"description": "Inline formatting tags are preserved.",
 			"default": "Experience South Africa <em>Differently</em>",
 			"esc": "post",
@@ -984,9 +1102,9 @@
 			"sort": 0
 		},
 		{
-			"id": "pull_join_now_to_secure_your_pla_text",
+			"id": "text_text",
 			"control": "textarea",
-			"label": "Pull — Join now to secure your pla…",
+			"label": "Text",
 			"description": "",
 			"default": "Join now to secure your place on our inaugural journey before we open to the public. Once this founding cohort is complete, these exclusive benefits close permanently.",
 			"esc": "post",
@@ -994,9 +1112,9 @@
 			"sort": 0
 		},
 		{
-			"id": "button_join_now_text",
+			"id": "button_text",
 			"control": "text",
-			"label": "Button — Join Now",
+			"label": "Button",
 			"description": "",
 			"default": "Join Now",
 			"esc": "post",
@@ -1004,9 +1122,9 @@
 			"sort": 0
 		},
 		{
-			"id": "button_join_now_href",
+			"id": "button_href",
 			"control": "url",
-			"label": "Button — Join Now – Href",
+			"label": "Link",
 			"default": {
 				"url": "#fc-form-section"
 			},
@@ -1016,9 +1134,9 @@
 			"sort": 1
 		},
 		{
-			"id": "reveal_aria_label",
+			"id": "container_aria_label",
 			"control": "text",
-			"label": "Reveal – Aria Label",
+			"label": "Accessible Name",
 			"default": "Journey imagery — slideshow",
 			"esc": "attr",
 			"group": "p_fc_bf_reveal_2",
@@ -1026,9 +1144,9 @@
 			"sort": 1
 		},
 		{
-			"id": "reveal_aria_roledescription",
+			"id": "container_aria_roledescription",
 			"control": "text",
-			"label": "Reveal – Aria Roledescription",
+			"label": "Accessible Role",
 			"default": "carousel",
 			"esc": "attr",
 			"group": "p_fc_bf_reveal_2",
@@ -1038,7 +1156,7 @@
 		{
 			"id": "slide_aria_label",
 			"control": "text",
-			"label": "Slide – Aria Label",
+			"label": "Accessible Name",
 			"default": "1 of 5",
 			"esc": "attr",
 			"group": "p_fc_ss_slide",
@@ -1048,7 +1166,7 @@
 		{
 			"id": "slide_aria_roledescription",
 			"control": "text",
-			"label": "Slide – Aria Roledescription",
+			"label": "Accessible Role",
 			"default": "slide",
 			"esc": "attr",
 			"group": "p_fc_ss_slide",
@@ -1058,7 +1176,7 @@
 		{
 			"id": "image_src",
 			"control": "media",
-			"label": "Image – Src",
+			"label": "Source",
 			"default": {
 				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1850384162.jpeg"
 			},
@@ -1070,7 +1188,7 @@
 		{
 			"id": "image_alt",
 			"control": "text",
-			"label": "Image – Alt",
+			"label": "Alt Text",
 			"default": "Gauteng heritage and city experience",
 			"esc": "attr",
 			"group": "p_fc_ss_slide_img_nth_of_type_1",
@@ -1079,18 +1197,35 @@
 		},
 		{
 			"id": "image_loading",
-			"control": "text",
-			"label": "Image – Loading",
+			"control": "select",
+			"label": "Loading",
 			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
 			"esc": "attr",
 			"group": "behaviour",
 			"tab": "behaviour",
 			"sort": 1
 		},
 		{
+			"id": "arrow_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_ss_arrow",
+			"tab": "form",
+			"sort": 1
+		},
+		{
 			"id": "arrow_aria_label",
 			"control": "text",
-			"label": "Arrow – Aria Label",
+			"label": "Accessible Name",
 			"default": "Previous slide",
 			"esc": "attr",
 			"group": "p_fc_ss_arrow",
@@ -1098,9 +1233,22 @@
 			"sort": 1
 		},
 		{
+			"id": "arrow_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_ss_arrow_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
 			"id": "arrow_aria_label_2",
 			"control": "text",
-			"label": "Arrow – Aria Label",
+			"label": "Accessible Name",
 			"default": "Next slide",
 			"esc": "attr",
 			"group": "p_fc_ss_arrow_2",
@@ -1108,9 +1256,9 @@
 			"sort": 1
 		},
 		{
-			"id": "dots_aria_label",
+			"id": "dot_aria_label",
 			"control": "text",
-			"label": "Dots – Aria Label",
+			"label": "Accessible Name",
 			"default": "Slide navigation",
 			"esc": "attr",
 			"group": "p_fc_ss_dots",
@@ -1118,9 +1266,22 @@
 			"sort": 1
 		},
 		{
-			"id": "dot_aria_label",
+			"id": "dot_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_fc_ss_dot",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "dot_aria_label_2",
 			"control": "text",
-			"label": "Dot – Aria Label",
+			"label": "Accessible Name",
 			"default": "Slide 1",
 			"esc": "attr",
 			"group": "p_fc_ss_dot",
@@ -1130,7 +1291,7 @@
 		{
 			"id": "dot_data_fci",
 			"control": "text",
-			"label": "Dot – Fci",
+			"label": "Fci",
 			"default": "0",
 			"esc": "attr",
 			"group": "behaviour",

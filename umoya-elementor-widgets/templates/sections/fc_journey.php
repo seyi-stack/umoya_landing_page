@@ -44,8 +44,8 @@ if ( ! defined( 'ABSPATH' ) ) {
       <!-- Header row: title left · stats right -->
       <div class="fc-jrn-hd">
         <div>
-          <span class="fc-jrn-eye"><?php echo $c['eyebrow_our_signature_journey_text']; ?></span>
-          <h2 class="fc-jrn-ttl"><?php echo $c['title_your_journey_begins_here_text']; ?></h2>
+          <span class="fc-jrn-eye"><?php echo $c['eyebrow_text']; ?></span>
+          <h2 class="fc-jrn-ttl"><?php echo $c['title_text']; ?></h2>
         </div>
         <div class="fc-jrn-stats" role="list">
           <?php $__i = 0; foreach ( $r['rep_div_fc_jrn_stat'] as $it ) : if ( $__i ++ ) { echo '
@@ -55,7 +55,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           </div><?php endforeach; echo "\n        "; ?></div>
       </div>
 
-      <p class="fc-jrn-lead"><?php echo $c['lead_three_immersive_chapters_f_text']; ?></p>
+      <p class="fc-jrn-lead"><?php echo $c['text_text']; ?></p>
 
       <!-- Immersive-chapter cards (cream) -->
       <div class="fc-jrn-grid">
@@ -81,8 +81,8 @@ if ( ! defined( 'ABSPATH' ) ) {
       <div class="fc-jrn-ext-row">
 
         <div class="fc-jrn-ext-head">
-          <span class="fc-jrn-eye"><?php echo $c['eyebrow_optional_extensions_text']; ?></span>
-          <h2 class="fc-jrn-subhead"><?php echo $c['subhead_experiences_beyond_south_af_text']; ?></h2>
+          <span class="fc-jrn-eye"><?php echo $c['eyebrow_text_2']; ?></span>
+          <h2 class="fc-jrn-subhead"><?php echo $c['heading_text']; ?></h2>
         </div>
 
         <div class="fc-jrn-grid-2">

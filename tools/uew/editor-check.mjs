@@ -89,6 +89,26 @@ async function login( page ) {
 	if ( ! page.url().includes( '/wp-admin' ) ) throw new Error( 'Login failed; still at ' + page.url() );
 }
 
+/**
+ * Elementor's own AI ("Angie") and MCP editor packages throw on load when the
+ * editor has no AI connection, which is the normal state of a local harness
+ * with no Pro licence. Every symbol below was confirmed to live in Elementor's
+ * own bundles under assets/js/packages, not in anything this plugin ships.
+ *
+ * They are counted and reported separately rather than suppressed outright, so
+ * a genuine error thrown from inside Elementor by one of our widgets still
+ * fails the run.
+ */
+const HOST_EDITOR_SYMBOLS = [
+	'getMCPByDomain', 'toolPrompts', 'createTransformer', 'injectIntoCssClassConvert',
+	'getAngieSdk', 'isAngieAvailable', 'McpServer', 'GLOBAL_STYLES_IMPORTED_EVENT',
+	'GlobalStylesImportListener', 'InjectedComponent',
+];
+
+function isHostEditorNoise( text ) {
+	return HOST_EDITOR_SYMBOLS.some( ( symbol ) => text.includes( symbol ) );
+}
+
 /* -------------------------------------------------------------------- main */
 
 console.log( '\nUmoya widget editor check' );
@@ -118,6 +138,7 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 
 	const entry = pages[ key ];
 	const errors = [];
+	const hostNoise = [];
 	const row = { key, rendered: false, scriptRan: null, panels: 0, ms: 0, notes: [] };
 
 	const onError = ( error ) => errors.push( String( error ).slice( 0, 160 ) );
@@ -125,6 +146,10 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 		if ( 'error' !== message.type() ) return;
 		const text = message.text();
 		if ( text.includes( '404' ) || text.includes( 'net::ERR' ) ) return; // live CDN, not us
+		if ( isHostEditorNoise( text ) ) {
+			hostNoise.push( text.slice( 0, 120 ) );
+			return;
+		}
 		errors.push( text.slice( 0, 160 ) );
 	};
 	page.on( 'pageerror', onError );
@@ -203,6 +228,7 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 	page.off( 'console', onConsole );
 
 	row.errors = [ ...new Set( errors ) ];
+	row.hostNoise = [ ...new Set( hostNoise ) ];
 	row.total = Date.now() - started;
 
 	const ok = row.rendered && row.panels > 0 && ! row.errors.length &&
@@ -218,7 +244,8 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 		( ! section.script ? 'no script' : ( '1' === row.scriptRan ? 'script ok' : 'SCRIPT DID NOT RUN' ) ).padEnd( 20 ) +
 		String( row.ms ).padStart( 6 ) + 'ms  ' +
 		String( row.panels ).padStart( 3 ) + ' panels (' + tabs + ')' +
-		( row.errors.length ? '   ' + row.errors.length + ' console error(s)' : '' )
+		( row.errors.length ? '   ' + row.errors.length + ' console error(s)' : '' ) +
+		( row.hostNoise.length ? '   (' + row.hostNoise.length + ' Elementor AI/MCP warnings ignored)' : '' )
 	);
 }
 

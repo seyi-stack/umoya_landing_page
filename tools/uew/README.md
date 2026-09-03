@@ -61,6 +61,43 @@ through byte for byte: comments, entities, SVG, whitespace, attribute order.
 | Write the plugin files | `lib/emit.mjs` | PHP template, section CSS/JS, widget class, schema |
 | Orchestrate & verify | `build.mjs` | plus the byte-fidelity assertion |
 
+### How things get named
+
+Panels are named the way Elementor names its own — **Header**, **Title**,
+**Icon**, **Content** — not after whatever class happens to be on the element.
+`lib/derive.mjs` maps class stems and tags onto that vocabulary, then makes each
+name unique using the shortest form that still distinguishes it: the bare role,
+then the parent's role in front of it (`Header Title`), then a number. Generic
+ancestors — Container, Column, Wrapper, Section, Content — are never used as a
+prefix, because `Container Title` says no more than `Title`.
+
+Control labels are the property alone (`Poster`, `Alt Text`, `Link`, `Preload`);
+the panel already says which element they belong to. Inside each panel the
+controls are grouped under headings — Typography, Background & Border, Spacing,
+Size, Effects, States — as Elementor's Accordion widget separates *Title* from
+*Icon*.
+
+The copy preview that used to be appended to a panel header now sits **inside**
+the panel as a quiet descriptor line, so the panel list stays scannable and two
+`Title` panels are still tellable apart.
+
+### Native options, not raw attributes
+
+Boolean attributes carry no value, so an attribute-by-value binding cannot see
+them — which is why the hero's video had no autoplay, mute or loop control at
+all. Each is bound as a switcher named the way Elementor's Video widget names
+it (**Autoplay**, **Mute**, **Play On Mobile**, **Loop**, **Player Controls**),
+and a flag the element *supports but does not currently carry* is offered too,
+defaulting to off so the markup is unchanged until someone switches it on.
+`FLAGS_BY_TAG` in `lib/derive.mjs` holds the vocabulary.
+
+The switcher stores the whitespace that preceded the attribute in the source,
+not a plain space: the hero's `<video>` puts every attribute on its own line,
+and assuming a space would fold them together.
+
+Attributes with a fixed set of legal values (`preload`, `loading`, `target`,
+`method`…) become dropdowns rather than free-text boxes.
+
 ### Three rules the compiler keeps
 
 1. **Styling never touches markup.** Every style control is an Elementor
@@ -140,6 +177,12 @@ stylesheets — can do that by itself. It shows up as a one-off
 `ERR_CONNECTION_REFUSED` partway through a run, not as a real failure, so both
 browser checks retry a refused navigation. If a whole run dies, restart the
 server and run it again rather than hunting for a widget bug.
+
+**`--only` merges into the manifest, it does not replace it.**
+`includes/sections/index.json` *is* the registry: a key missing from it is a
+widget WordPress will not register. An early version of `build.mjs` wrote only
+the sections it had just built, which silently unregistered the other eleven and
+looked exactly like the widgets had broken.
 
 **Elementor caches each element's rendered HTML in post meta**
 (`Document::CACHE_META_KEY`, on by default). A page will happily keep serving
