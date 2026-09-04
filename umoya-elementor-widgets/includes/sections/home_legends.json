@@ -1,0 +1,1334 @@
+{
+	"key": "home_legends",
+	"name": "umoya-home-legends",
+	"title": "Home Legends",
+	"description": "Signature Moments Guided by South African Legends — the custodian cards.",
+	"icon": "eicon-person",
+	"category": "umoya-homepage",
+	"source": "homepage-revamp/homepage-section-05-legends.html",
+	"class_name": "Home_Legends",
+	"widget_file": "widgets/class-home-legends.php",
+	"root_selector": "#umoya-legends",
+	"template": "templates/sections/home_legends.php",
+	"style": {
+		"handle": "uew-umoya-home-legends",
+		"file": "assets/css/sections/home_legends.css"
+	},
+	"script": {
+		"handle": "uew-umoya-home-legends",
+		"file": "assets/js/sections/home_legends.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"home",
+		"legends"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.72)",
+			"kind": "color",
+			"label": "Muted"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Signature moments guided by South African legends",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_leg_eye",
+			"label": "Header",
+			"sample": "The Umoya Difference",
+			"region_label": "Header",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "The Umoya Difference",
+					"esc": "post",
+					"group": "p_umoya_leg_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "heading_text",
+					"control": "text",
+					"label": "Heading",
+					"description": "",
+					"default": "Signature Moments Guided by South African Legends",
+					"esc": "post",
+					"group": "p_h2",
+					"sort": 0,
+					"part_label": "Header Heading"
+				},
+				{
+					"id": "text_text",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "At Umoya Afrika Tours, our journeys are shaped by local legends, not just guides. Throughout each chapter, you will be introduced to South African artists, entrepreneurs, and activists who are still shaping the country, and who share their stories with you directly. These are not arranged encounters. They are rare, personal moments with people whose lives sit at the heart of what makes this country extraordinary, and they are what make an Umoya journey unlike anything else.",
+					"esc": "post",
+					"group": "p_umoya_leg_lead",
+					"sort": 0,
+					"part_label": "Header Text"
+				},
+				{
+					"id": "card_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Lucia Motloung — The Welcome",
+					"esc": "attr",
+					"group": "p_umoya_leg_card",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Card"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
+			"label": "Card",
+			"sample": "",
+			"region_label": "Card",
+			"controls": [
+				{
+					"id": "image_src",
+					"control": "media",
+					"label": "Source",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6216.png"
+					},
+					"esc": "url",
+					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "image_alt",
+					"control": "text",
+					"label": "Alt Text",
+					"default": "Wines of Luc Mo, the welcome pour on the first evening",
+					"esc": "attr",
+					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "text_text_2",
+					"control": "text",
+					"label": "Text",
+					"description": "",
+					"default": "The Welcome",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 1"
+				},
+				{
+					"id": "heading_text_2",
+					"control": "text",
+					"label": "Heading",
+					"description": "",
+					"default": "Lucia Motloung",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Heading"
+				},
+				{
+					"id": "text_text_3",
+					"control": "textarea",
+					"label": "Card Text 2",
+					"description": "",
+					"default": "She welcomes you on your first evening, pouring wines from Luc Mo, the company she built in partnership with the Ndebele Kingdom.",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 2"
+				},
+				{
+					"id": "card_aria_label_2",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Antoinette Sithole — Soweto",
+					"esc": "attr",
+					"group": "p_umoya_leg_card_2",
+					"tab": "content",
+					"sort": 1
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_2",
+			"label": "Content",
+			"controls": [
+				{
+					"id": "image_src_2",
+					"control": "media",
+					"label": "Source",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6880.png"
+					},
+					"esc": "url",
+					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_2",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "image_alt_2",
+					"control": "text",
+					"label": "Alt Text",
+					"default": "The Hector Pieterson Memorial in Soweto",
+					"esc": "attr",
+					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_2",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "text_text_4",
+					"control": "text",
+					"label": "Text",
+					"description": "",
+					"default": "Soweto",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1_2",
+					"sort": 0
+				},
+				{
+					"id": "heading_text_3",
+					"control": "text",
+					"label": "Heading",
+					"description": "",
+					"default": "Antoinette Sithole",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1_2",
+					"sort": 0
+				},
+				{
+					"id": "text_text_5",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "Her brother was Hector Pieterson, the boy in the 1976 photograph of the anti-apartheid riots. She sits at your table and tells you about the day she lost her brother.",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1_2",
+					"sort": 0
+				},
+				{
+					"id": "card_aria_label_3",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Christo Brand — Robben Island",
+					"esc": "attr",
+					"group": "p_umoya_leg_card_3",
+					"tab": "content",
+					"sort": 1
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_3",
+			"label": "Content",
+			"controls": [
+				{
+					"id": "image_src_3",
+					"control": "media",
+					"label": "Source",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_1363.png"
+					},
+					"esc": "url",
+					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_3",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "image_alt_3",
+					"control": "text",
+					"label": "Alt Text",
+					"default": "Robben Island, off the coast of Cape Town",
+					"esc": "attr",
+					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_3",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "text_text_6",
+					"control": "text",
+					"label": "Text",
+					"description": "",
+					"default": "Robben Island",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1_3",
+					"sort": 0
+				},
+				{
+					"id": "heading_text_4",
+					"control": "text",
+					"label": "Heading",
+					"description": "",
+					"default": "Christo Brand",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1_3",
+					"sort": 0
+				},
+				{
+					"id": "text_text_7",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "He spent years as Nelson Mandela's warder, and the two became friends. He walks you through the island and tells you what that looked like up close.",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1_3",
+					"sort": 0
+				},
+				{
+					"id": "card_aria_label_4",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Vivian Kleynhans — The Black Winelands",
+					"esc": "attr",
+					"group": "p_umoya_leg_card_4",
+					"tab": "content",
+					"sort": 1
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_4",
+			"label": "Content",
+			"controls": [
+				{
+					"id": "image_src_4",
+					"control": "media",
+					"label": "Source",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img371169908.jpeg"
+					},
+					"esc": "url",
+					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_4",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "image_alt_4",
+					"control": "text",
+					"label": "Alt Text",
+					"default": "The Cape Winelands",
+					"esc": "attr",
+					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_4",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "text_text_8",
+					"control": "text",
+					"label": "Text",
+					"description": "",
+					"default": "The Black Winelands",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1_4",
+					"sort": 0
+				},
+				{
+					"id": "heading_text_5",
+					"control": "text",
+					"label": "Heading",
+					"description": "",
+					"default": "Vivian Kleynhans",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1_4",
+					"sort": 0
+				},
+				{
+					"id": "text_text_9",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "CEO of Seven Sisters Vineyards, Vivian built one of the most prominent 100% Black-owned wine brands in Stellenbosch at a time when the industry was closed to women like her.",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1_4",
+					"sort": 0
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [
+		{
+			"id": "image_loading",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_decoding",
+			"control": "select",
+			"label": "Decoding",
+			"default": "async",
+			"options": [
+				"sync",
+				"async",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_loading_2",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_decoding_2",
+			"control": "select",
+			"label": "Decoding",
+			"default": "async",
+			"options": [
+				"sync",
+				"async",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_loading_3",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_decoding_3",
+			"control": "select",
+			"label": "Decoding",
+			"default": "async",
+			"options": [
+				"sync",
+				"async",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_loading_4",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_decoding_4",
+			"control": "select",
+			"label": "Decoding",
+			"default": "async",
+			"options": [
+				"sync",
+				"async",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_leg_wrap",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-leg-wrap",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_leg_head",
+			"label": "Header",
+			"short_label": "Header",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-leg-head",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_leg_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "Header",
+			"sample": "The Umoya Difference",
+			"selector": ".umoya-leg-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_h2",
+			"label": "Header Heading",
+			"short_label": "Heading",
+			"parent_label": "Header",
+			"sample": "Signature Moments Guided by South African Legen…",
+			"selector": "h2",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_leg_lead",
+			"label": "Header Text",
+			"short_label": "Text",
+			"parent_label": "Header",
+			"sample": "At Umoya Afrika Tours, our journeys are shaped …",
+			"selector": ".umoya-leg-lead",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_leg_grid",
+			"label": "List",
+			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-leg-grid",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_leg_card",
+			"label": "Card",
+			"short_label": "Card",
+			"parent_label": "List",
+			"sample": "",
+			"selector": ".umoya-leg-card",
+			"tag": "article",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_leg_card_div_nth_of_type_1",
+			"label": "Card Container",
+			"short_label": "Container",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".umoya-leg-card > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
+			"label": "Image",
+			"short_label": "Image",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".umoya-leg-card > div:nth-of-type(1) > img:nth-of-type(1)",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_leg_card_div_nth_of_type_2",
+			"label": "Content",
+			"short_label": "Content",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".umoya-leg-card > div:nth-of-type(2)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1",
+			"label": "Card Text 1",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "The Welcome",
+			"selector": ".umoya-leg-card > div:nth-of-type(2) > span:nth-of-type(1)",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1",
+			"label": "Card Heading",
+			"short_label": "Heading",
+			"parent_label": "Card",
+			"sample": "Lucia Motloung",
+			"selector": ".umoya-leg-card > div:nth-of-type(2) > h3:nth-of-type(1)",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1",
+			"label": "Card Text 2",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "She welcomes you on your first evening, pouring…",
+			"selector": ".umoya-leg-card > div:nth-of-type(2) > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Signature moments guided by South African legends",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "The Umoya Difference",
+			"esc": "post",
+			"group": "p_umoya_leg_eye",
+			"sort": 0
+		},
+		{
+			"id": "heading_text",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Signature Moments Guided by South African Legends",
+			"esc": "post",
+			"group": "p_h2",
+			"sort": 0
+		},
+		{
+			"id": "text_text",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "At Umoya Afrika Tours, our journeys are shaped by local legends, not just guides. Throughout each chapter, you will be introduced to South African artists, entrepreneurs, and activists who are still shaping the country, and who share their stories with you directly. These are not arranged encounters. They are rare, personal moments with people whose lives sit at the heart of what makes this country extraordinary, and they are what make an Umoya journey unlike anything else.",
+			"esc": "post",
+			"group": "p_umoya_leg_lead",
+			"sort": 0
+		},
+		{
+			"id": "card_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Lucia Motloung — The Welcome",
+			"esc": "attr",
+			"group": "p_umoya_leg_card",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6216.png"
+			},
+			"esc": "url",
+			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "Wines of Luc Mo, the welcome pour on the first evening",
+			"esc": "attr",
+			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "image_decoding",
+			"control": "select",
+			"label": "Decoding",
+			"default": "async",
+			"options": [
+				"sync",
+				"async",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "text_text_2",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "The Welcome",
+			"esc": "post",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_2",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Lucia Motloung",
+			"esc": "post",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_3",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "She welcomes you on your first evening, pouring wines from Luc Mo, the company she built in partnership with the Ndebele Kingdom.",
+			"esc": "post",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "card_aria_label_2",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Antoinette Sithole — Soweto",
+			"esc": "attr",
+			"group": "p_umoya_leg_card_2",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src_2",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6880.png"
+			},
+			"esc": "url",
+			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_2",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt_2",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "The Hector Pieterson Memorial in Soweto",
+			"esc": "attr",
+			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_2",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading_2",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "image_decoding_2",
+			"control": "select",
+			"label": "Decoding",
+			"default": "async",
+			"options": [
+				"sync",
+				"async",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "text_text_4",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Soweto",
+			"esc": "post",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1_2",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_3",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Antoinette Sithole",
+			"esc": "post",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1_2",
+			"sort": 0
+		},
+		{
+			"id": "text_text_5",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "Her brother was Hector Pieterson, the boy in the 1976 photograph of the anti-apartheid riots. She sits at your table and tells you about the day she lost her brother.",
+			"esc": "post",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1_2",
+			"sort": 0
+		},
+		{
+			"id": "card_aria_label_3",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Christo Brand — Robben Island",
+			"esc": "attr",
+			"group": "p_umoya_leg_card_3",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src_3",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_1363.png"
+			},
+			"esc": "url",
+			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_3",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt_3",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "Robben Island, off the coast of Cape Town",
+			"esc": "attr",
+			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_3",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading_3",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "image_decoding_3",
+			"control": "select",
+			"label": "Decoding",
+			"default": "async",
+			"options": [
+				"sync",
+				"async",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "text_text_6",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Robben Island",
+			"esc": "post",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1_3",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_4",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Christo Brand",
+			"esc": "post",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1_3",
+			"sort": 0
+		},
+		{
+			"id": "text_text_7",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "He spent years as Nelson Mandela's warder, and the two became friends. He walks you through the island and tells you what that looked like up close.",
+			"esc": "post",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1_3",
+			"sort": 0
+		},
+		{
+			"id": "card_aria_label_4",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Vivian Kleynhans — The Black Winelands",
+			"esc": "attr",
+			"group": "p_umoya_leg_card_4",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src_4",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img371169908.jpeg"
+			},
+			"esc": "url",
+			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_4",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt_4",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "The Cape Winelands",
+			"esc": "attr",
+			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_4",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading_4",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "image_decoding_4",
+			"control": "select",
+			"label": "Decoding",
+			"default": "async",
+			"options": [
+				"sync",
+				"async",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "text_text_8",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "The Black Winelands",
+			"esc": "post",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1_4",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_5",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Vivian Kleynhans",
+			"esc": "post",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1_4",
+			"sort": 0
+		},
+		{
+			"id": "text_text_9",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "CEO of Seven Sisters Vineyards, Vivian built one of the most prominent 100% Black-owned wine brands in Stellenbosch at a time when the industry was closed to women like her.",
+			"esc": "post",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1_4",
+			"sort": 0
+		}
+	]
+}

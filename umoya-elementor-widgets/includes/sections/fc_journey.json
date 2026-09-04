@@ -164,7 +164,7 @@
 	"repeaters": [
 		{
 			"id": "rep_div_fc_jrn_stat",
-			"label": "Div Fc Jrn Stat",
+			"label": "Stats",
 			"item_label": "{{{ stat_n }}}",
 			"controls": [
 				{
@@ -220,7 +220,7 @@
 		},
 		{
 			"id": "rep_article_fc_jrn_tile",
-			"label": "Article Fc Jrn Tile",
+			"label": "Cards 1",
 			"item_label": "{{{ loc }}}",
 			"controls": [
 				{
@@ -276,7 +276,7 @@
 		},
 		{
 			"id": "rep_article_fc_jrn_tile_2",
-			"label": "Article Fc Jrn Tile 2",
+			"label": "Cards",
 			"item_label": "{{{ tile_ttl }}}",
 			"controls": [
 				{
@@ -376,6 +376,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -402,6 +403,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -428,6 +430,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -454,6 +457,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -480,6 +484,7 @@
 				"flex_item"
 			],
 			"shared": true,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -507,6 +512,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -534,6 +540,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -561,6 +568,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -587,6 +595,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -613,6 +622,7 @@
 				"flex_item"
 			],
 			"shared": true,
+			"absolute": false,
 			"repeater": "div_fc_jrn_stat"
 		},
 		{
@@ -639,6 +649,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -665,6 +676,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -692,6 +704,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -718,6 +731,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -744,6 +758,7 @@
 				"flex_item"
 			],
 			"shared": true,
+			"absolute": false,
 			"repeater": "article_fc_jrn_tile"
 		},
 		{
@@ -770,6 +785,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -794,6 +810,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -820,6 +837,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -847,6 +865,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -873,6 +892,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -900,6 +920,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -927,6 +948,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -954,6 +976,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -981,6 +1004,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1007,6 +1031,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1033,6 +1058,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1059,6 +1085,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1085,6 +1112,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1111,6 +1139,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1138,6 +1167,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1165,6 +1195,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1191,6 +1222,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1217,6 +1249,7 @@
 				"flex_item"
 			],
 			"shared": true,
+			"absolute": false,
 			"repeater": "article_fc_jrn_tile_2"
 		},
 		{
@@ -1243,6 +1276,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1267,6 +1301,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1293,6 +1328,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1320,6 +1356,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1346,6 +1383,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1373,6 +1411,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1400,6 +1439,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		}
 	],

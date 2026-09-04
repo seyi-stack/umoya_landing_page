@@ -1,0 +1,1058 @@
+{
+	"key": "home_ways_to_travel",
+	"name": "umoya-home-ways-to-travel",
+	"title": "Home Ways to Travel",
+	"description": "Scroll-snap card carousel of the six ways to travel.",
+	"icon": "eicon-posts-carousel",
+	"category": "umoya-homepage",
+	"source": "homepage-revamp/homepage-section-04-ways-to-travel.html",
+	"class_name": "Home_Ways_To_Travel",
+	"widget_file": "widgets/class-home-ways-to-travel.php",
+	"root_selector": "#umoya-ways-to-travel",
+	"template": "templates/sections/home_ways_to_travel.php",
+	"style": {
+		"handle": "uew-umoya-home-ways-to-travel",
+		"file": "assets/css/sections/home_ways_to_travel.css"
+	},
+	"script": {
+		"handle": "uew-umoya-home-ways-to-travel",
+		"file": "assets/js/sections/home_ways_to_travel.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"home",
+		"ways",
+		"to",
+		"travel"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.72)",
+			"kind": "color",
+			"label": "Muted"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Ways to travel with Umoya",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_wtt_eye",
+			"label": "Eyebrow",
+			"sample": "Ways to Travel",
+			"region_label": "Header",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Ways to Travel",
+					"esc": "post",
+					"group": "p_umoya_wtt_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				}
+			]
+		},
+		{
+			"id": "content_p_h2",
+			"label": "Header",
+			"sample": "",
+			"region_label": "Header",
+			"controls": [
+				{
+					"id": "heading_text",
+					"control": "text",
+					"label": "Text",
+					"default": "Travel Designed",
+					"esc": "post",
+					"group": "p_h2",
+					"sort": 0,
+					"part_label": "Heading"
+				},
+				{
+					"id": "heading_text_2",
+					"control": "text",
+					"label": "Text 2",
+					"default": "With You in Mind",
+					"esc": "post",
+					"group": "p_h2",
+					"sort": 0,
+					"part_label": "Heading"
+				},
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Button",
+					"description": "",
+					"default": "Plan Your Journey",
+					"esc": "post",
+					"group": "p_umoya_wtt_cta",
+					"sort": 0,
+					"part_label": "Button"
+				},
+				{
+					"id": "arrow_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Previous travel styles",
+					"esc": "attr",
+					"group": "p_umoya_wtt_arrow",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Arrow"
+				},
+				{
+					"id": "container_aria_label",
+					"control": "text",
+					"label": "Container 3",
+					"default": "Travel styles",
+					"esc": "attr",
+					"group": "p_umoya_wtt_track",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Container 3"
+				},
+				{
+					"id": "arrow_aria_label_2",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "More travel styles",
+					"esc": "attr",
+					"group": "p_umoya_wtt_arrow_2",
+					"tab": "content",
+					"sort": 1
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [
+		{
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_wtt_cta",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Button"
+		},
+		{
+			"id": "button_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "arrow_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_wtt_arrow",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Arrow"
+		},
+		{
+			"id": "arrow_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "arrow_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_wtt_arrow_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "arrow_type_2",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_article_umoya_wtt_card",
+			"label": "Cards",
+			"item_label": "{{{ title }}}",
+			"controls": [
+				{
+					"id": "role",
+					"control": "text",
+					"label": "Role",
+					"esc": "attr",
+					"default": "listitem"
+				},
+				{
+					"id": "note",
+					"control": "hidden",
+					"label": "Note",
+					"esc": "raw",
+					"default": " ★ SWAP: Large Groups image "
+				},
+				{
+					"id": "src",
+					"control": "media",
+					"label": "Src",
+					"esc": "url",
+					"default": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6198.png"
+				},
+				{
+					"id": "alt",
+					"control": "text",
+					"label": "Alt",
+					"esc": "attr",
+					"default": "Large-group travel in South Africa with Umoya Afrika Tours"
+				},
+				{
+					"id": "loading",
+					"control": "text",
+					"label": "Loading",
+					"esc": "attr",
+					"default": "lazy"
+				},
+				{
+					"id": "decoding",
+					"control": "text",
+					"label": "Decoding",
+					"esc": "attr",
+					"default": "async"
+				},
+				{
+					"id": "title",
+					"control": "text",
+					"label": "Title",
+					"esc": "post",
+					"default": "Large Groups"
+				},
+				{
+					"id": "desc",
+					"control": "textarea",
+					"label": "Desc",
+					"esc": "post",
+					"default": "Corporate, organizational, or group travel designed around you. From incentive trips and leadership retreats to alumni gatherings and community travel, we handle every detail so your group simply arrives and experiences."
+				}
+			],
+			"rows": [
+				{
+					"role": "listitem",
+					"note": " ★ SWAP: Large Groups image ",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6198.png",
+					"alt": "Large-group travel in South Africa with Umoya Afrika Tours",
+					"loading": "lazy",
+					"decoding": "async",
+					"title": "Large Groups",
+					"desc": "Corporate, organizational, or group travel designed around you. From incentive trips and leadership retreats to alumni gatherings and community travel, we handle every detail so your group simply arrives and experiences."
+				},
+				{
+					"role": "listitem",
+					"note": " Solo Travel — client-supplied image ",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_home_solo_travel.jpg",
+					"alt": "Solo travel in South Africa with Umoya Afrika Tours",
+					"loading": "lazy",
+					"decoding": "async",
+					"title": "Solo Travel",
+					"desc": "Arrive alone, leave with connections that last. Umoya's small groups bring together like-minded travelers, so the people you meet along the way become as much a part of the journey as the places you see."
+				},
+				{
+					"role": "listitem",
+					"note": " ★ SWAP: Couples Getaway image ",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_8926.png",
+					"alt": "A couples getaway in South Africa with Umoya Afrika Tours",
+					"loading": "lazy",
+					"decoding": "async",
+					"title": "Couples Getaway",
+					"desc": "Some places are simply better experienced together. From sundowners in the bush to private wine tastings in the Cape, every moment of the Umoya journey is designed to be shared, in settings that stay with you long after you return home."
+				},
+				{
+					"role": "listitem",
+					"note": " ★ SWAP: World Wonders image (Victoria Falls / Chobe — TBD) ",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1777576366.jpeg",
+					"alt": "Extending the journey to Africa's natural wonders",
+					"loading": "lazy",
+					"decoding": "async",
+					"title": "World Wonders",
+					"desc": "For those who want to go further and stay longer, extend your journey into Africa's most breathtaking destinations. Victoria Falls and the vast elephant herds of Chobe are waiting, and we take care of everything to get you there."
+				},
+				{
+					"role": "listitem",
+					"note": " ★ SWAP: Safari image ",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img001238.jpeg",
+					"alt": "Safari game drive in the Sabi Sand",
+					"loading": "lazy",
+					"decoding": "async",
+					"title": "Safari",
+					"desc": "The African bush is unlike anywhere else on earth, and the Sabi Sand is one of the finest places to experience it. With expert guides, open vehicles, and the freedom to follow the animals wherever they go, the Big Five come to you on your own terms."
+				},
+				{
+					"role": "listitem",
+					"note": " ★ SWAP: Winelands image ",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img166276458.jpeg",
+					"alt": "Wine tasting in the Cape Winelands",
+					"loading": "lazy",
+					"decoding": "async",
+					"title": "Winelands",
+					"desc": "The Cape Winelands move at their own unhurried pace, and that is exactly how we explore them. Private tastings, long lunches, and conversations with the Black winemakers rewriting the story of South African wine, straight from the source."
+				}
+			],
+			"selector": ".umoya-wtt-card"
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_wtt_wrap",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-wtt-wrap",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_wtt_head",
+			"label": "Header",
+			"short_label": "Header",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-wtt-head",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_wtt_head_div",
+			"label": "Header Container 1",
+			"short_label": "Container",
+			"parent_label": "Header",
+			"sample": "",
+			"selector": ".umoya-wtt-head > div",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_wtt_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "Header",
+			"sample": "Ways to Travel",
+			"selector": ".umoya-wtt-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_h2",
+			"label": "Heading",
+			"short_label": "Heading",
+			"parent_label": "Header",
+			"sample": "",
+			"selector": "h2",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_wtt_title_break",
+			"label": "Title Break",
+			"short_label": "Title Break",
+			"parent_label": "Heading",
+			"sample": "",
+			"selector": ".umoya-wtt-title-break",
+			"tag": "br",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_wtt_actions",
+			"label": "Header Container 2",
+			"short_label": "Container",
+			"parent_label": "Header",
+			"sample": "",
+			"selector": ".umoya-wtt-actions",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_wtt_cta",
+			"label": "Button",
+			"short_label": "Button",
+			"parent_label": "Header",
+			"sample": "Plan Your Journey",
+			"selector": ".umoya-wtt-cta",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_wtt_stage",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-wtt-stage",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_wtt_arrow",
+			"label": "Arrow",
+			"short_label": "Arrow",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-wtt-arrow",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_wtt_arrow_svg_nth_of_type_1",
+			"label": "Icon",
+			"short_label": "Icon",
+			"parent_label": "Arrow",
+			"sample": "",
+			"selector": ".umoya-wtt-arrow > svg:nth-of-type(1)",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_wtt_track",
+			"label": "Container 3",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-wtt-track",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_wtt_card",
+			"label": "Card",
+			"short_label": "Card",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-wtt-card",
+			"tag": "article",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": "article_umoya_wtt_card"
+		},
+		{
+			"id": "p_umoya_wtt_card_div_nth_of_type_1",
+			"label": "Card Container",
+			"short_label": "Container",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".umoya-wtt-card > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_wtt_card_div_nth_of_type_1_img_nth_of_type_1",
+			"label": "Image",
+			"short_label": "Image",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".umoya-wtt-card > div:nth-of-type(1) > img:nth-of-type(1)",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_wtt_card_div_nth_of_type_2",
+			"label": "Content",
+			"short_label": "Content",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".umoya-wtt-card > div:nth-of-type(2)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_wtt_card_div_nth_of_type_2_h3_nth_of_type_1",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "Card",
+			"sample": "Large Groups",
+			"selector": ".umoya-wtt-card > div:nth-of-type(2) > h3:nth-of-type(1)",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_wtt_card_div_nth_of_type_2_p_nth_of_type_1",
+			"label": "Text",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "Corporate, organizational, or group travel desi…",
+			"selector": ".umoya-wtt-card > div:nth-of-type(2) > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Ways to travel with Umoya",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Ways to Travel",
+			"esc": "post",
+			"group": "p_umoya_wtt_eye",
+			"sort": 0
+		},
+		{
+			"id": "heading_text",
+			"control": "text",
+			"label": "Text",
+			"default": "Travel Designed",
+			"esc": "post",
+			"group": "p_h2",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_2",
+			"control": "text",
+			"label": "Text 2",
+			"default": "With You in Mind",
+			"esc": "post",
+			"group": "p_h2",
+			"sort": 0
+		},
+		{
+			"id": "button_text",
+			"control": "text",
+			"label": "Button",
+			"description": "",
+			"default": "Plan Your Journey",
+			"esc": "post",
+			"group": "p_umoya_wtt_cta",
+			"sort": 0
+		},
+		{
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_wtt_cta",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "button_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "arrow_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_wtt_arrow",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "arrow_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "arrow_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Previous travel styles",
+			"esc": "attr",
+			"group": "p_umoya_wtt_arrow",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "arrow_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_wtt_arrow_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "arrow_type_2",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "arrow_aria_label_2",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "More travel styles",
+			"esc": "attr",
+			"group": "p_umoya_wtt_arrow_2",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "container_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Travel styles",
+			"esc": "attr",
+			"group": "p_umoya_wtt_track",
+			"tab": "content",
+			"sort": 1
+		}
+	]
+}

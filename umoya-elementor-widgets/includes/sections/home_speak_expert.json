@@ -1,0 +1,412 @@
+{
+	"key": "home_speak_expert",
+	"name": "umoya-home-speak-expert",
+	"title": "Home Speak With an Expert",
+	"description": "Closing “We’d love to speak with you” band.",
+	"icon": "eicon-chat",
+	"category": "umoya-homepage",
+	"source": "homepage-revamp/homepage-section-11-speak-with-expert.html",
+	"class_name": "Home_Speak_Expert",
+	"widget_file": "widgets/class-home-speak-expert.php",
+	"root_selector": "#umoya-speak-expert",
+	"template": "templates/sections/home_speak_expert.php",
+	"style": {
+		"handle": "uew-umoya-home-speak-expert",
+		"file": "assets/css/sections/home_speak_expert.css"
+	},
+	"script": {
+		"handle": "uew-umoya-home-speak-expert",
+		"file": "assets/js/sections/home_speak_expert.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"home",
+		"speak",
+		"with",
+		"an",
+		"expert"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Speak with a travel expert",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_spk_eye",
+			"label": "Content",
+			"sample": "Still Have Questions?",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Still Have Questions?",
+					"esc": "post",
+					"group": "p_umoya_spk_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "heading_text",
+					"control": "text",
+					"label": "Heading",
+					"description": "",
+					"default": "We'd love to speak with you.",
+					"esc": "post",
+					"group": "p_h2",
+					"sort": 0,
+					"part_label": "Heading"
+				},
+				{
+					"id": "text_text",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "Your dedicated Umoya travel expert is ready to help you plan the perfect South African journey, whether for yourself or for your group.",
+					"esc": "post",
+					"group": "p_umoya_spk_lead",
+					"sort": 0,
+					"part_label": "Text"
+				},
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Button",
+					"description": "",
+					"default": "Speak With a Travel Expert",
+					"esc": "post",
+					"group": "p_umoya_spk_btn",
+					"sort": 0,
+					"part_label": "Button"
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [
+		{
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_spk_btn",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Button"
+		},
+		{
+			"id": "button_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_spk_wrap",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-spk-wrap",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_spk_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "Still Have Questions?",
+			"selector": ".umoya-spk-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_h2",
+			"label": "Heading",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "We'd love to speak with you.",
+			"selector": "h2",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_spk_lead",
+			"label": "Text",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "Your dedicated Umoya travel expert is ready to …",
+			"selector": ".umoya-spk-lead",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_spk_btn",
+			"label": "Button",
+			"short_label": "Button",
+			"parent_label": "",
+			"sample": "Speak With a Travel Expert",
+			"selector": ".umoya-spk-btn",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Speak with a travel expert",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Still Have Questions?",
+			"esc": "post",
+			"group": "p_umoya_spk_eye",
+			"sort": 0
+		},
+		{
+			"id": "heading_text",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "We'd love to speak with you.",
+			"esc": "post",
+			"group": "p_h2",
+			"sort": 0
+		},
+		{
+			"id": "text_text",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "Your dedicated Umoya travel expert is ready to help you plan the perfect South African journey, whether for yourself or for your group.",
+			"esc": "post",
+			"group": "p_umoya_spk_lead",
+			"sort": 0
+		},
+		{
+			"id": "button_text",
+			"control": "text",
+			"label": "Button",
+			"description": "",
+			"default": "Speak With a Travel Expert",
+			"esc": "post",
+			"group": "p_umoya_spk_btn",
+			"sort": 0
+		},
+		{
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_spk_btn",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "button_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		}
+	]
+}

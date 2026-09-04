@@ -327,5 +327,366 @@
 			"closing",
 			"cta"
 		]
+	},
+	"home_nav": {
+		"key": "home_nav",
+		"name": "umoya-home-nav",
+		"title": "Home Navigation",
+		"description": "Sticky homepage navigation, including the Ways to Travel link.",
+		"icon": "eicon-nav-menu",
+		"category": "umoya-homepage",
+		"source": "homepage-revamp/homepage-section-00-nav.html",
+		"class_name": "Home_Nav",
+		"widget_file": "widgets/class-home-nav.php",
+		"root_selector": "#umoyaHomepageNavMount",
+		"template": "templates/sections/home_nav.php",
+		"style": {
+			"handle": "uew-umoya-home-nav",
+			"file": "assets/css/sections/home_nav.css"
+		},
+		"script": {
+			"handle": "uew-umoya-home-nav",
+			"file": "assets/js/sections/home_nav.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"home",
+			"navigation"
+		]
+	},
+	"home_hero": {
+		"key": "home_hero",
+		"name": "umoya-home-hero",
+		"title": "Home Hero",
+		"description": "Homepage hero with the single Founder’s Circle call to action.",
+		"icon": "eicon-banner",
+		"category": "umoya-homepage",
+		"source": "homepage-revamp/homepage-section-01-hero.html",
+		"class_name": "Home_Hero",
+		"widget_file": "widgets/class-home-hero.php",
+		"root_selector": "#umoya-hero",
+		"template": "templates/sections/home_hero.php",
+		"style": {
+			"handle": "uew-umoya-home-hero",
+			"file": "assets/css/sections/home_hero.css"
+		},
+		"script": {
+			"handle": "uew-umoya-home-hero",
+			"file": "assets/js/sections/home_hero.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"home",
+			"hero"
+		]
+	},
+	"home_about": {
+		"key": "home_about",
+		"name": "umoya-home-about",
+		"title": "Home About",
+		"description": "About Umoya, directly below the hero.",
+		"icon": "eicon-info-circle-o",
+		"category": "umoya-homepage",
+		"source": "homepage-revamp/homepage-section-02-about.html",
+		"class_name": "Home_About",
+		"widget_file": "widgets/class-home-about.php",
+		"root_selector": "#umoya-about",
+		"template": "templates/sections/home_about.php",
+		"style": {
+			"handle": "uew-umoya-home-about",
+			"file": "assets/css/sections/home_about.css"
+		},
+		"script": {
+			"handle": "uew-umoya-home-about",
+			"file": "assets/js/sections/home_about.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"home",
+			"about"
+		]
+	},
+	"home_signature_journey": {
+		"key": "home_signature_journey",
+		"name": "umoya-home-signature-journey",
+		"title": "Home Signature Journey",
+		"description": "Our Flagship Experience: stats plus the three-chapter carousel.",
+		"icon": "eicon-slider-push",
+		"category": "umoya-homepage",
+		"source": "homepage-revamp/homepage-section-03-signature-journey.html",
+		"class_name": "Home_Signature_Journey",
+		"widget_file": "widgets/class-home-signature-journey.php",
+		"root_selector": "#umoya-journey",
+		"template": "templates/sections/home_signature_journey.php",
+		"style": {
+			"handle": "uew-umoya-home-signature-journey",
+			"file": "assets/css/sections/home_signature_journey.css"
+		},
+		"script": {
+			"handle": "uew-umoya-home-signature-journey",
+			"file": "assets/js/sections/home_signature_journey.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"home",
+			"signature",
+			"journey"
+		]
+	},
+	"home_ways_to_travel": {
+		"key": "home_ways_to_travel",
+		"name": "umoya-home-ways-to-travel",
+		"title": "Home Ways to Travel",
+		"description": "Scroll-snap card carousel of the six ways to travel.",
+		"icon": "eicon-posts-carousel",
+		"category": "umoya-homepage",
+		"source": "homepage-revamp/homepage-section-04-ways-to-travel.html",
+		"class_name": "Home_Ways_To_Travel",
+		"widget_file": "widgets/class-home-ways-to-travel.php",
+		"root_selector": "#umoya-ways-to-travel",
+		"template": "templates/sections/home_ways_to_travel.php",
+		"style": {
+			"handle": "uew-umoya-home-ways-to-travel",
+			"file": "assets/css/sections/home_ways_to_travel.css"
+		},
+		"script": {
+			"handle": "uew-umoya-home-ways-to-travel",
+			"file": "assets/js/sections/home_ways_to_travel.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"home",
+			"ways",
+			"to",
+			"travel"
+		]
+	},
+	"home_legends": {
+		"key": "home_legends",
+		"name": "umoya-home-legends",
+		"title": "Home Legends",
+		"description": "Signature Moments Guided by South African Legends — the custodian cards.",
+		"icon": "eicon-person",
+		"category": "umoya-homepage",
+		"source": "homepage-revamp/homepage-section-05-legends.html",
+		"class_name": "Home_Legends",
+		"widget_file": "widgets/class-home-legends.php",
+		"root_selector": "#umoya-legends",
+		"template": "templates/sections/home_legends.php",
+		"style": {
+			"handle": "uew-umoya-home-legends",
+			"file": "assets/css/sections/home_legends.css"
+		},
+		"script": {
+			"handle": "uew-umoya-home-legends",
+			"file": "assets/js/sections/home_legends.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"home",
+			"legends"
+		]
+	},
+	"home_hotel_stays": {
+		"key": "home_hotel_stays",
+		"name": "umoya-home-hotel-stays",
+		"title": "Home Hotel Stays",
+		"description": "Hotel Stays Worthy of the Journey — the three named properties.",
+		"icon": "eicon-image-rollover",
+		"category": "umoya-homepage",
+		"source": "homepage-revamp/homepage-section-06-hotel-stays.html",
+		"class_name": "Home_Hotel_Stays",
+		"widget_file": "widgets/class-home-hotel-stays.php",
+		"root_selector": "#umoya-accommodations",
+		"template": "templates/sections/home_hotel_stays.php",
+		"style": {
+			"handle": "uew-umoya-home-hotel-stays",
+			"file": "assets/css/sections/home_hotel_stays.css"
+		},
+		"script": {
+			"handle": "uew-umoya-home-hotel-stays",
+			"file": "assets/js/sections/home_hotel_stays.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"home",
+			"hotel",
+			"stays"
+		]
+	},
+	"home_founders_circle": {
+		"key": "home_founders_circle",
+		"name": "umoya-home-founders-circle",
+		"title": "Home Founder’s Circle",
+		"description": "The condensed Founder’s Circle invitation.",
+		"icon": "eicon-call-to-action",
+		"category": "umoya-homepage",
+		"source": "homepage-revamp/homepage-section-07-founders-circle.html",
+		"class_name": "Home_Founders_Circle",
+		"widget_file": "widgets/class-home-founders-circle.php",
+		"root_selector": "#umoya-founder-cta",
+		"template": "templates/sections/home_founders_circle.php",
+		"style": {
+			"handle": "uew-umoya-home-founders-circle",
+			"file": "assets/css/sections/home_founders_circle.css"
+		},
+		"script": null,
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"home",
+			"founder",
+			"s",
+			"circle"
+		]
+	},
+	"home_film_award": {
+		"key": "home_film_award",
+		"name": "umoya-home-film-award",
+		"title": "Home Film & Award",
+		"description": "Brand film (click to load) plus the ITFFA award callout.",
+		"icon": "eicon-play-o",
+		"category": "umoya-homepage",
+		"source": "homepage-revamp/homepage-section-08-film-award.html",
+		"class_name": "Home_Film_Award",
+		"widget_file": "widgets/class-home-film-award.php",
+		"root_selector": "#umoya-film",
+		"template": "templates/sections/home_film_award.php",
+		"style": {
+			"handle": "uew-umoya-home-film-award",
+			"file": "assets/css/sections/home_film_award.css"
+		},
+		"script": {
+			"handle": "uew-umoya-home-film-award",
+			"file": "assets/js/sections/home_film_award.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"home",
+			"film",
+			"award"
+		]
+	},
+	"home_why": {
+		"key": "home_why",
+		"name": "umoya-home-why",
+		"title": "Home Why Umoya",
+		"description": "The four Why Umoya pillars.",
+		"icon": "eicon-columns",
+		"category": "umoya-homepage",
+		"source": "homepage-revamp/homepage-section-09-why-umoya.html",
+		"class_name": "Home_Why",
+		"widget_file": "widgets/class-home-why.php",
+		"root_selector": "#fc-pillars",
+		"template": "templates/sections/home_why.php",
+		"style": {
+			"handle": "uew-umoya-home-why",
+			"file": "assets/css/sections/home_why.css"
+		},
+		"script": {
+			"handle": "uew-umoya-home-why",
+			"file": "assets/js/sections/home_why.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"home",
+			"why",
+			"umoya"
+		]
+	},
+	"home_essentials": {
+		"key": "home_essentials",
+		"name": "umoya-home-essentials",
+		"title": "Home Travel Essentials",
+		"description": "Travel Essentials FAQ accordion.",
+		"icon": "eicon-accordion",
+		"category": "umoya-homepage",
+		"source": "homepage-revamp/homepage-section-10-travel-essentials.html",
+		"class_name": "Home_Essentials",
+		"widget_file": "widgets/class-home-essentials.php",
+		"root_selector": "#fc-details",
+		"template": "templates/sections/home_essentials.php",
+		"style": {
+			"handle": "uew-umoya-home-essentials",
+			"file": "assets/css/sections/home_essentials.css"
+		},
+		"script": {
+			"handle": "uew-umoya-home-essentials",
+			"file": "assets/js/sections/home_essentials.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"home",
+			"travel",
+			"essentials"
+		]
+	},
+	"home_speak_expert": {
+		"key": "home_speak_expert",
+		"name": "umoya-home-speak-expert",
+		"title": "Home Speak With an Expert",
+		"description": "Closing “We’d love to speak with you” band.",
+		"icon": "eicon-chat",
+		"category": "umoya-homepage",
+		"source": "homepage-revamp/homepage-section-11-speak-with-expert.html",
+		"class_name": "Home_Speak_Expert",
+		"widget_file": "widgets/class-home-speak-expert.php",
+		"root_selector": "#umoya-speak-expert",
+		"template": "templates/sections/home_speak_expert.php",
+		"style": {
+			"handle": "uew-umoya-home-speak-expert",
+			"file": "assets/css/sections/home_speak_expert.css"
+		},
+		"script": {
+			"handle": "uew-umoya-home-speak-expert",
+			"file": "assets/js/sections/home_speak_expert.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"home",
+			"speak",
+			"with",
+			"an",
+			"expert"
+		]
+	},
+	"home_form_popup": {
+		"key": "home_form_popup",
+		"name": "umoya-home-form-popup",
+		"title": "Home Inquiry Popup",
+		"description": "Shared inquiry popup. Must be on the page for any data-umoya-form-popup trigger to open.",
+		"icon": "eicon-form-horizontal",
+		"category": "umoya-homepage",
+		"source": "homepage-revamp/homepage-form-popup.html",
+		"class_name": "Home_Form_Popup",
+		"widget_file": "widgets/class-home-form-popup.php",
+		"root_selector": "#umoya-form-popup",
+		"template": "templates/sections/home_form_popup.php",
+		"style": {
+			"handle": "uew-umoya-home-form-popup",
+			"file": "assets/css/sections/home_form_popup.css"
+		},
+		"script": {
+			"handle": "uew-umoya-home-form-popup",
+			"file": "assets/js/sections/home_form_popup.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"home",
+			"inquiry",
+			"popup"
+		]
 	}
 }

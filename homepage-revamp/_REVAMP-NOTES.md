@@ -144,3 +144,30 @@ inherited (`font-family: inherit`) and all colours are brand tokens (cream
 - When approved: sync `tools/build-elementor-widgets.mjs` to the new file
   names/sections (including the three new sections + removed pricing), re-run
   the generator, and rebuild the plugin zip.
+
+---
+
+## Plugin sync — done 2026-09-04
+
+All thirteen files in this folder are compiled into Elementor widgets by
+**`tools/uew/`**, which reads this folder directly. The first-generation
+generator (which read the superseded `homepage/` folder) has been deleted, so
+nothing can overwrite these from the old page any more.
+
+After editing any file here:
+
+```powershell
+npm --prefix tools/uew run check    # compile + prove nothing was lost
+python tools/build-plugin-zip.py
+```
+
+The build **fails** if a template stops reproducing its source file byte for
+byte. See `tools/uew/README.md` and CLAUDE.md Phase 23.
+
+Two things that section files here should know about:
+
+- **`<style>` inside the `<section>` is fine** — every file here does it, and the
+  compiler separates it into an asset either way.
+- **A section may have more than one top-level element.** This page's journey
+  section is preceded by `<span id="umoya-journey-anchor">`; the compiler treats
+  the largest top-level element as the styling root and reports the situation.

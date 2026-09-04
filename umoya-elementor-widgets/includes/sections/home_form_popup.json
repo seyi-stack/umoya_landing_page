@@ -1,0 +1,5673 @@
+{
+	"key": "home_form_popup",
+	"name": "umoya-home-form-popup",
+	"title": "Home Inquiry Popup",
+	"description": "Shared inquiry popup. Must be on the page for any data-umoya-form-popup trigger to open.",
+	"icon": "eicon-form-horizontal",
+	"category": "umoya-homepage",
+	"source": "homepage-revamp/homepage-form-popup.html",
+	"class_name": "Home_Form_Popup",
+	"widget_file": "widgets/class-home-form-popup.php",
+	"root_selector": "#umoya-form-popup",
+	"template": "templates/sections/home_form_popup.php",
+	"style": {
+		"handle": "uew-umoya-home-form-popup",
+		"file": "assets/css/sections/home_form_popup.css"
+	},
+	"script": {
+		"handle": "uew-umoya-home-form-popup",
+		"file": "assets/js/sections/home_form_popup.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"home",
+		"inquiry",
+		"popup"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "olive",
+			"value": "#708238",
+			"kind": "color",
+			"label": "Olive"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_umoya_form_close",
+			"label": "Button",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "button_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Close form",
+					"esc": "attr",
+					"group": "p_umoya_form_close",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Button"
+				}
+			]
+		},
+		{
+			"id": "content_p_img",
+			"label": "Content",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "image_src",
+					"control": "media",
+					"label": "Source",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc04418(1).jpg"
+					},
+					"esc": "url",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 2"
+				},
+				{
+					"id": "image_alt",
+					"control": "text",
+					"label": "Alt Text",
+					"default": "",
+					"esc": "attr",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 2"
+				},
+				{
+					"id": "text_text",
+					"control": "text",
+					"label": "Text",
+					"description": "",
+					"default": "Inquiry Form",
+					"esc": "post",
+					"group": "p_umoya_form_image_copy_span",
+					"sort": 0,
+					"part_label": "Image Text"
+				},
+				{
+					"id": "heading_text",
+					"control": "text",
+					"label": "Heading",
+					"description": "",
+					"default": "Your Umoya Experience Awaits",
+					"esc": "post",
+					"group": "p_umoya_form_image_copy_h2",
+					"sort": 0,
+					"part_label": "Image Heading"
+				},
+				{
+					"id": "text_text_2",
+					"control": "text",
+					"label": "Header Text 1",
+					"description": "",
+					"default": "Reserve Your Place",
+					"esc": "post",
+					"group": "p_umoya_form_head_span",
+					"sort": 0,
+					"part_label": "Header Text 1"
+				},
+				{
+					"id": "heading_text_2",
+					"control": "text",
+					"label": "Header Heading",
+					"description": "",
+					"default": "Begin Your Journey",
+					"esc": "post",
+					"group": "p_umoya_form_head_h2",
+					"sort": 0,
+					"part_label": "Header Heading"
+				},
+				{
+					"id": "text_text_3",
+					"control": "textarea",
+					"label": "Header Text 2",
+					"description": "",
+					"default": "Tell us about yourself and the travel experience you're seeking. A dedicated Umoya Travel Expert will personally connect with you to begin planning your experience.",
+					"esc": "post",
+					"group": "p_umoya_form_head_p",
+					"sort": 0,
+					"part_label": "Header Text 2"
+				},
+				{
+					"id": "form_action",
+					"control": "url",
+					"label": "Form Action",
+					"default": {
+						"url": "/wp-json/umoya/v1/submissions"
+					},
+					"esc": "url",
+					"group": "p_umoya_popup_form",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Form"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_field_label_nth_of_type_1",
+			"label": "Field",
+			"sample": "Title",
+			"region_label": "Field",
+			"controls": [
+				{
+					"id": "label_text",
+					"control": "text",
+					"label": "Label",
+					"description": "",
+					"default": "Title",
+					"esc": "post",
+					"group": "p_umoya_field_label_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Field Label"
+				},
+				{
+					"id": "anchor_placeholder",
+					"control": "text",
+					"label": "Placeholder",
+					"default": "First name",
+					"esc": "attr",
+					"group": "p_umoya_field_input_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "List Anchor 1"
+				},
+				{
+					"id": "select_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Preferred travel month",
+					"esc": "attr",
+					"group": "p_umoya_when_select",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "List Select"
+				},
+				{
+					"id": "anchor_placeholder_6",
+					"control": "text",
+					"label": "List Anchor 2",
+					"default": "Tell us about your travel interests, what you hope to experience, and what draws you to South Africa.",
+					"esc": "attr",
+					"group": "p_textarea",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "List Anchor 2"
+				},
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Button",
+					"description": "",
+					"default": "Speak to an Expert",
+					"esc": "post",
+					"group": "p_umoya_form_submit",
+					"sort": 0,
+					"part_label": "Form Button"
+				},
+				{
+					"id": "consent_text",
+					"control": "text",
+					"label": "Consent",
+					"description": "",
+					"default": "Your information is held in strict confidence and never shared.",
+					"esc": "post",
+					"group": "p_umoya_form_legal",
+					"sort": 0,
+					"part_label": "Form Consent 2"
+				},
+				{
+					"id": "embed_title",
+					"control": "text",
+					"label": "Title Attribute",
+					"default": "Umoya popup submission fallback",
+					"esc": "attr",
+					"group": "p_iframe",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Embed"
+				},
+				{
+					"id": "label_text_2",
+					"control": "text",
+					"label": "Label",
+					"description": "",
+					"default": "First Name *",
+					"esc": "post",
+					"group": "p_umoya_field_label_nth_of_type_1_2",
+					"sort": 0
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_field_label_nth_of_type_1_3",
+			"label": "Content",
+			"controls": [
+				{
+					"id": "label_text_3",
+					"control": "text",
+					"label": "Label",
+					"description": "",
+					"default": "Last Name *",
+					"esc": "post",
+					"group": "p_umoya_field_label_nth_of_type_1_3",
+					"sort": 0
+				},
+				{
+					"id": "anchor_placeholder_2",
+					"control": "text",
+					"label": "Placeholder",
+					"default": "Last name",
+					"esc": "attr",
+					"group": "p_umoya_field_input_nth_of_type_1_2",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "label_text_4",
+					"control": "text",
+					"label": "Label",
+					"description": "",
+					"default": "Email Address *",
+					"esc": "post",
+					"group": "p_umoya_field_label_nth_of_type_1_4",
+					"sort": 0
+				},
+				{
+					"id": "anchor_placeholder_3",
+					"control": "text",
+					"label": "Placeholder",
+					"default": "your@email.com",
+					"esc": "attr",
+					"group": "p_umoya_field_input_nth_of_type_1_3",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "label_text_5",
+					"control": "text",
+					"label": "Label",
+					"description": "",
+					"default": "Phone Number",
+					"esc": "post",
+					"group": "p_umoya_field_label_nth_of_type_1_5",
+					"sort": 0
+				},
+				{
+					"id": "anchor_placeholder_4",
+					"control": "text",
+					"label": "Placeholder",
+					"default": "+1 (000) 000-0000",
+					"esc": "attr",
+					"group": "p_umoya_field_input_nth_of_type_1_4",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "label_text_6",
+					"control": "text",
+					"label": "Label",
+					"description": "",
+					"default": "Country *",
+					"esc": "post",
+					"group": "p_umoya_field_label_nth_of_type_1_6",
+					"sort": 0
+				},
+				{
+					"id": "label_text_7",
+					"control": "text",
+					"label": "Label",
+					"description": "",
+					"default": "City",
+					"esc": "post",
+					"group": "p_umoya_field_label_nth_of_type_1_7",
+					"sort": 0
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_field_input_nth_of_type_1_5",
+			"label": "Content",
+			"controls": [
+				{
+					"id": "anchor_placeholder_5",
+					"control": "text",
+					"label": "Placeholder",
+					"default": "Your city",
+					"esc": "attr",
+					"group": "p_umoya_field_input_nth_of_type_1_5",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "label_text_8",
+					"control": "text",
+					"label": "Label",
+					"description": "",
+					"default": "When Are You Hoping to Travel?",
+					"esc": "post",
+					"group": "p_umoya_field_label_nth_of_type_1_8",
+					"sort": 0
+				},
+				{
+					"id": "select_aria_label_2",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Preferred travel year",
+					"esc": "attr",
+					"group": "p_umoya_when_select_2",
+					"tab": "content",
+					"sort": 1
+				},
+				{
+					"id": "label_text_9",
+					"control": "text",
+					"label": "Label",
+					"description": "",
+					"default": "How Many Guests Will Be Traveling?",
+					"esc": "post",
+					"group": "p_umoya_field_label_nth_of_type_1_9",
+					"sort": 0
+				},
+				{
+					"id": "label_text_10",
+					"control": "text",
+					"label": "Label",
+					"description": "",
+					"default": "What Are You Hoping to Experience?",
+					"esc": "post",
+					"group": "p_umoya_field_label_nth_of_type_1_10",
+					"sort": 0
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [
+		{
+			"id": "form_data_hs_do_not_collect",
+			"control": "text",
+			"label": "Hs Do Not Collect",
+			"default": "true",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "form_data_hubspot_portal_id",
+			"control": "text",
+			"label": "Hubspot Portal Id",
+			"default": "246097317",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "form_data_hubspot_form_id",
+			"control": "text",
+			"label": "Hubspot Form Id",
+			"default": "a9e947b4-cb2e-45da-b2c7-b83b4228dfb5",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "form_data_umoya_form_source",
+			"control": "text",
+			"label": "Umoya Form Source",
+			"default": "homepage_popup",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "form_data_wordpress_backup_endpoint",
+			"control": "text",
+			"label": "Wordpress Backup Endpoint",
+			"default": "/wp-json/umoya/v1/submissions",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "form_data_hubspot_consent_text",
+			"control": "text",
+			"label": "Hubspot Consent Text",
+			"default": "I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the Privacy Policy.",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_name",
+			"control": "text",
+			"label": "Field Name",
+			"default": "MERGE1",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_name",
+			"control": "text",
+			"label": "Field Name",
+			"default": "FNAME",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_name_2",
+			"control": "text",
+			"label": "Field Name",
+			"default": "LNAME",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_name_3",
+			"control": "text",
+			"label": "Field Name",
+			"default": "EMAIL",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_name_4",
+			"control": "text",
+			"label": "Field Name",
+			"default": "PHONE",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_name_2",
+			"control": "text",
+			"label": "Field Name",
+			"default": "MERGE2",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_name_5",
+			"control": "text",
+			"label": "Field Name",
+			"default": "MERGE3",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_name_3",
+			"control": "text",
+			"label": "Field Name",
+			"default": "MERGE4",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_name_4",
+			"control": "text",
+			"label": "Field Name",
+			"default": "MERGE5",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_name_5",
+			"control": "text",
+			"label": "Field Name",
+			"default": "MERGE6",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_name_6",
+			"control": "text",
+			"label": "Field Name",
+			"default": "MERGE7",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"form_controls": [
+		{
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_form_close",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Button"
+		},
+		{
+			"id": "button_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "form_novalidate",
+			"control": "switcher",
+			"label": "Skip Browser Validation",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "novalidate",
+			"flag_prefix": "\n          ",
+			"esc": "raw",
+			"group": "p_umoya_popup_form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Form"
+		},
+		{
+			"id": "form_method",
+			"control": "select",
+			"label": "Method",
+			"default": "post",
+			"options": [
+				"get",
+				"post"
+			],
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_required",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field Select"
+		},
+		{
+			"id": "select_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field Select"
+		},
+		{
+			"id": "select_multiple",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field Select"
+		},
+		{
+			"id": "anchor_required",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "List Anchor 1"
+		},
+		{
+			"id": "anchor_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "List Anchor 1"
+		},
+		{
+			"id": "anchor_readonly",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "List Anchor 1"
+		},
+		{
+			"id": "anchor_checked",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "List Anchor 1"
+		},
+		{
+			"id": "anchor_type",
+			"control": "text",
+			"label": "Type",
+			"default": "text",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_autocomplete",
+			"control": "text",
+			"label": "Autocomplete",
+			"default": "given-name",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_required_2",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_readonly_2",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_checked_2",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_type_2",
+			"control": "text",
+			"label": "Type",
+			"default": "text",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_autocomplete_2",
+			"control": "text",
+			"label": "Autocomplete",
+			"default": "family-name",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_required_3",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_disabled_3",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_readonly_3",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_checked_3",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_type_3",
+			"control": "text",
+			"label": "Type",
+			"default": "email",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_autocomplete_3",
+			"control": "text",
+			"label": "Autocomplete",
+			"default": "email",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_required_4",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_4",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_disabled_4",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_4",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_readonly_4",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_4",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_checked_4",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_4",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_type_4",
+			"control": "text",
+			"label": "Type",
+			"default": "tel",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_autocomplete_4",
+			"control": "text",
+			"label": "Autocomplete",
+			"default": "tel",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_required_2",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_multiple_2",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_required_5",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_5",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_disabled_5",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_5",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_readonly_5",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_5",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_checked_5",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_5",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_type_5",
+			"control": "text",
+			"label": "Type",
+			"default": "text",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_autocomplete_5",
+			"control": "text",
+			"label": "Autocomplete",
+			"default": "address-level2",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_required_3",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_when_select",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "List Select"
+		},
+		{
+			"id": "select_disabled_3",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_when_select",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "List Select"
+		},
+		{
+			"id": "select_multiple_3",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_when_select",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "List Select"
+		},
+		{
+			"id": "select_required_4",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_when_select_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_disabled_4",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_when_select_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_multiple_4",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_when_select_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_required_5",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_disabled_5",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "select_multiple_5",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_required_6",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_textarea",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "List Anchor 2"
+		},
+		{
+			"id": "anchor_disabled_6",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_textarea",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "List Anchor 2"
+		},
+		{
+			"id": "anchor_readonly_6",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_textarea",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "List Anchor 2"
+		},
+		{
+			"id": "button_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_form_submit",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Form Button"
+		},
+		{
+			"id": "button_type_2",
+			"control": "text",
+			"label": "Type",
+			"default": "submit",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"behaviour_controls": [
+		{
+			"id": "form_target",
+			"control": "select",
+			"label": "Link Target",
+			"default": "umoyaPopupSubmissionFrame",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"inline_style_controls": [
+		{
+			"id": "embed_css_display",
+			"control": "text",
+			"label": "Display",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "none",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Embed"
+		},
+		{
+			"id": "embed_css_width",
+			"control": "text",
+			"label": "Width",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Embed"
+		},
+		{
+			"id": "embed_css_height",
+			"control": "text",
+			"label": "Height",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Embed"
+		},
+		{
+			"id": "embed_css_border",
+			"control": "text",
+			"label": "Border",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Embed"
+		}
+	],
+	"media_controls": [
+		{
+			"id": "embed_allowfullscreen",
+			"control": "switcher",
+			"label": "Allow Fullscreen",
+			"description": "",
+			"default": "",
+			"flag_attr": "allowfullscreen",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_iframe",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Embed"
+		}
+	],
+	"repeaters": [
+		{
+			"id": "rep_input",
+			"label": "Fields",
+			"item_label": "{{{ type }}}",
+			"controls": [
+				{
+					"id": "type",
+					"control": "text",
+					"label": "Type",
+					"esc": "attr",
+					"default": "hidden"
+				},
+				{
+					"id": "name",
+					"control": "text",
+					"label": "Name",
+					"esc": "attr",
+					"default": "source"
+				},
+				{
+					"id": "value",
+					"control": "text",
+					"label": "Value",
+					"esc": "attr",
+					"default": "homepage_popup"
+				}
+			],
+			"rows": [
+				{
+					"type": "hidden",
+					"name": "source",
+					"value": "homepage_popup"
+				},
+				{
+					"type": "hidden",
+					"name": "hubspotPortalId",
+					"value": "246097317"
+				},
+				{
+					"type": "hidden",
+					"name": "hubspotFormId",
+					"value": "a9e947b4-cb2e-45da-b2c7-b83b4228dfb5"
+				},
+				{
+					"type": "hidden",
+					"name": "consentText",
+					"value": "I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the Privacy Policy."
+				},
+				{
+					"type": "hidden",
+					"name": "hutk",
+					"value": ""
+				},
+				{
+					"type": "hidden",
+					"name": "pageUri",
+					"value": ""
+				},
+				{
+					"type": "hidden",
+					"name": "pageName",
+					"value": ""
+				}
+			],
+			"selector": null
+		},
+		{
+			"id": "rep_option",
+			"label": "Title Options",
+			"item_label": "{{{ label }}}",
+			"controls": [
+				{
+					"id": "value",
+					"control": "text",
+					"label": "Value",
+					"esc": "attr",
+					"default": ""
+				},
+				{
+					"id": "disabled",
+					"control": "hidden",
+					"label": "Disabled (optional attribute)",
+					"esc": "raw",
+					"default": " disabled"
+				},
+				{
+					"id": "selected",
+					"control": "hidden",
+					"label": "Selected (optional attribute)",
+					"esc": "raw",
+					"default": " selected"
+				},
+				{
+					"id": "label",
+					"control": "text",
+					"label": "Label",
+					"esc": "html",
+					"default": "Select..."
+				}
+			],
+			"rows": [
+				{
+					"value": "",
+					"disabled": " disabled",
+					"selected": " selected",
+					"label": "Select..."
+				},
+				{
+					"value": "Mr.",
+					"disabled": "",
+					"selected": "",
+					"label": "Mr."
+				},
+				{
+					"value": "Mrs.",
+					"disabled": "",
+					"selected": "",
+					"label": "Mrs."
+				},
+				{
+					"value": "Ms.",
+					"disabled": "",
+					"selected": "",
+					"label": "Ms."
+				},
+				{
+					"value": "Miss",
+					"disabled": "",
+					"selected": "",
+					"label": "Miss"
+				},
+				{
+					"value": "Dr.",
+					"disabled": "",
+					"selected": "",
+					"label": "Dr."
+				},
+				{
+					"value": "Prof.",
+					"disabled": "",
+					"selected": "",
+					"label": "Prof."
+				}
+			],
+			"selector": null
+		},
+		{
+			"id": "rep_option_2",
+			"label": "Country Options",
+			"item_label": "{{{ label }}}",
+			"controls": [
+				{
+					"id": "value",
+					"control": "hidden",
+					"label": "Value (optional attribute)",
+					"esc": "raw",
+					"default": " value=\"\""
+				},
+				{
+					"id": "disabled",
+					"control": "hidden",
+					"label": "Disabled (optional attribute)",
+					"esc": "raw",
+					"default": " disabled"
+				},
+				{
+					"id": "selected",
+					"control": "hidden",
+					"label": "Selected (optional attribute)",
+					"esc": "raw",
+					"default": " selected"
+				},
+				{
+					"id": "label",
+					"control": "text",
+					"label": "Label",
+					"esc": "html",
+					"default": "Select country…"
+				},
+				{
+					"id": "_uew_sep",
+					"control": "hidden",
+					"label": "Separator markup",
+					"esc": "raw",
+					"default": "\n\n                  <!-- Frequently Used Countries Pinned to Top -->\n                  "
+				}
+			],
+			"rows": [
+				{
+					"value": " value=\"\"",
+					"disabled": " disabled",
+					"selected": " selected",
+					"label": "Select country…",
+					"_uew_sep": ""
+				},
+				{
+					"value": " value=\"US\"",
+					"disabled": "",
+					"selected": "",
+					"label": "United States",
+					"_uew_sep": "\n\n                  <!-- Frequently Used Countries Pinned to Top -->\n                  "
+				},
+				{
+					"value": " value=\"GB\"",
+					"disabled": "",
+					"selected": "",
+					"label": "United Kingdom",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"CA\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Canada",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"ZA\"",
+					"disabled": "",
+					"selected": "",
+					"label": "South Africa",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"AU\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Australia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": "",
+					"disabled": " disabled",
+					"selected": "",
+					"label": "──────────",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"AF\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Afghanistan",
+					"_uew_sep": "\n\n                  <!-- Complete ISO Alphabetical List -->\n                  "
+				},
+				{
+					"value": " value=\"AL\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Albania",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"DZ\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Algeria",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"AS\"",
+					"disabled": "",
+					"selected": "",
+					"label": "American Samoa",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"AD\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Andorra",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"AO\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Angola",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"AI\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Anguilla",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"AG\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Antigua and Barbuda",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"AR\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Argentina",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"AM\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Armenia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"AW\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Aruba",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"AT\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Austria",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"AZ\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Azerbaijan",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BS\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Bahamas",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BH\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Bahrain",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BD\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Bangladesh",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BB\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Barbados",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BY\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Belarus",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BE\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Belgium",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BZ\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Belize",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BJ\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Benin",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BM\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Bermuda",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BT\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Bhutan",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BO\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Bolivia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BA\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Bosnia and Herzegovina",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BW\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Botswana",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BR\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Brazil",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BN\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Brunei Darussalam",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BG\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Bulgaria",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BF\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Burkina Faso",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"BI\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Burundi",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"CV\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Cabo Verde",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"KH\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Cambodia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"CM\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Cameroon",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"KY\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Cayman Islands",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"CF\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Central African Republic",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"TD\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Chad",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"CL\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Chile",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"CN\"",
+					"disabled": "",
+					"selected": "",
+					"label": "China",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"CO\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Colombia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"KM\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Comoros",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"CG\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Congo",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"CD\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Congo, Democratic Republic of the",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"CR\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Costa Rica",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"HR\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Croatia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"CU\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Cuba",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"CY\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Cyprus",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"CZ\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Czechia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"DK\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Denmark",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"DJ\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Djibouti",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"DM\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Dominica",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"DO\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Dominican Republic",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"EC\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Ecuador",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"EG\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Egypt",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"SV\"",
+					"disabled": "",
+					"selected": "",
+					"label": "El Salvador",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"GQ\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Equatorial Guinea",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"ER\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Eritrea",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"EE\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Estonia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"SZ\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Eswatini",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"ET\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Ethiopia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"FJ\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Fiji",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"FI\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Finland",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"FR\"",
+					"disabled": "",
+					"selected": "",
+					"label": "France",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"GF\"",
+					"disabled": "",
+					"selected": "",
+					"label": "French Guiana",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"PF\"",
+					"disabled": "",
+					"selected": "",
+					"label": "French Polynesia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"GA\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Gabon",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"GM\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Gambia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"GE\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Georgia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"DE\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Germany",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"GH\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Ghana",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"GR\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Greece",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"GL\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Greenland",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"GD\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Grenada",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"GU\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Guam",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"GT\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Guatemala",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"GN\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Guinea",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"GW\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Guinea-Bissau",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"GY\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Guyana",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"HT\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Haiti",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"HN\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Honduras",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"HK\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Hong Kong",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"HU\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Hungary",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"IS\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Iceland",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"IN\"",
+					"disabled": "",
+					"selected": "",
+					"label": "India",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"ID\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Indonesia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"IR\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Iran",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"IQ\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Iraq",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"IE\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Ireland",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"IL\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Israel",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"IT\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Italy",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"JM\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Jamaica",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"JP\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Japan",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"JO\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Jordan",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"KZ\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Kazakhstan",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"KE\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Kenya",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"KI\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Kiribati",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"KP\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Korea (North)",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"KR\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Korea (South)",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"KW\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Kuwait",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"KG\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Kyrgyzstan",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"LA\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Lao People's Democratic Republic",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"LV\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Latvia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"LB\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Lebanon",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"LS\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Lesotho",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"LR\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Liberia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"LY\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Libya",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"LI\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Liechtenstein",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"LT\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Lithuania",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"LU\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Luxembourg",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"MO\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Macao",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"MG\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Madagascar",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"MW\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Malawi",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"MY\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Malaysia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"MV\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Maldives",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"ML\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Mali",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"MT\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Malta",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"MR\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Mauritania",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"MU\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Mauritius",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"MX\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Mexico",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"FM\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Micronesia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"MD\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Moldova",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"MC\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Monaco",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"MN\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Mongolia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"ME\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Montenegro",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"MA\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Morocco",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"MZ\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Mozambique",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"MM\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Myanmar",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"NA\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Namibia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"NR\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Nauru",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"NP\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Nepal",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"NL\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Netherlands",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"NC\"",
+					"disabled": "",
+					"selected": "",
+					"label": "New Caledonia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"NZ\"",
+					"disabled": "",
+					"selected": "",
+					"label": "New Zealand",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"NI\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Nicaragua",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"NE\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Niger",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"NG\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Nigeria",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"NO\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Norway",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"OM\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Oman",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"PK\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Pakistan",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"PW\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Palau",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"PA\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Panama",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"PG\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Papua New Guinea",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"PY\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Paraguay",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"PE\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Peru",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"PH\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Philippines",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"PL\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Poland",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"PT\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Portugal",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"PR\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Puerto Rico",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"QA\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Qatar",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"RO\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Romania",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"RU\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Russian Federation",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"RW\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Rwanda",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"WS\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Samoa",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"SM\"",
+					"disabled": "",
+					"selected": "",
+					"label": "San Marino",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"ST\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Sao Tome and Principe",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"SA\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Saudi Arabia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"SN\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Senegal",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"RS\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Serbia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"SC\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Seychelles",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"SL\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Sierra Leone",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"SG\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Singapore",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"SK\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Slovakia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"SI\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Slovenia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"SB\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Solomon Islands",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"SO\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Somalia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"SS\"",
+					"disabled": "",
+					"selected": "",
+					"label": "South Sudan",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"ES\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Spain",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"LK\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Sri Lanka",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"SD\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Sudan",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"SR\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Suriname",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"SE\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Sweden",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"CH\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Switzerland",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"SY\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Syrian Arab Republic",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"TW\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Taiwan",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"TJ\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Tajikistan",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"TZ\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Tanzania",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"TH\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Thailand",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"TL\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Timor-Leste",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"TG\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Togo",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"TO\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Tonga",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"TT\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Trinidad and Tobago",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"TN\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Tunisia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"TR\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Turkey",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"TM\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Turkmenistan",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"TV\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Tuvalu",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"UG\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Uganda",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"UA\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Ukraine",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"AE\"",
+					"disabled": "",
+					"selected": "",
+					"label": "United Arab Emirates",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"UY\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Uruguay",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"UZ\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Uzbekistan",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"VU\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Vanuatu",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"VE\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Venezuela",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"VN\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Viet Nam",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"YE\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Yemen",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"ZM\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Zambia",
+					"_uew_sep": "\n                  "
+				},
+				{
+					"value": " value=\"ZW\"",
+					"disabled": "",
+					"selected": "",
+					"label": "Zimbabwe",
+					"_uew_sep": "\n                  "
+				}
+			],
+			"selector": null
+		},
+		{
+			"id": "rep_option_3",
+			"label": "Month Options",
+			"item_label": "{{{ label }}}",
+			"controls": [
+				{
+					"id": "value",
+					"control": "text",
+					"label": "Value",
+					"esc": "attr",
+					"default": ""
+				},
+				{
+					"id": "disabled",
+					"control": "hidden",
+					"label": "Disabled (optional attribute)",
+					"esc": "raw",
+					"default": " disabled"
+				},
+				{
+					"id": "selected",
+					"control": "hidden",
+					"label": "Selected (optional attribute)",
+					"esc": "raw",
+					"default": " selected"
+				},
+				{
+					"id": "label",
+					"control": "text",
+					"label": "Label",
+					"esc": "html",
+					"default": "Month"
+				}
+			],
+			"rows": [
+				{
+					"value": "",
+					"disabled": " disabled",
+					"selected": " selected",
+					"label": "Month"
+				},
+				{
+					"value": "January",
+					"disabled": "",
+					"selected": "",
+					"label": "January"
+				},
+				{
+					"value": "February",
+					"disabled": "",
+					"selected": "",
+					"label": "February"
+				},
+				{
+					"value": "March",
+					"disabled": "",
+					"selected": "",
+					"label": "March"
+				},
+				{
+					"value": "April",
+					"disabled": "",
+					"selected": "",
+					"label": "April"
+				},
+				{
+					"value": "May",
+					"disabled": "",
+					"selected": "",
+					"label": "May"
+				},
+				{
+					"value": "June",
+					"disabled": "",
+					"selected": "",
+					"label": "June"
+				},
+				{
+					"value": "July",
+					"disabled": "",
+					"selected": "",
+					"label": "July"
+				},
+				{
+					"value": "August",
+					"disabled": "",
+					"selected": "",
+					"label": "August"
+				},
+				{
+					"value": "September",
+					"disabled": "",
+					"selected": "",
+					"label": "September"
+				},
+				{
+					"value": "October",
+					"disabled": "",
+					"selected": "",
+					"label": "October"
+				},
+				{
+					"value": "November",
+					"disabled": "",
+					"selected": "",
+					"label": "November"
+				},
+				{
+					"value": "December",
+					"disabled": "",
+					"selected": "",
+					"label": "December"
+				},
+				{
+					"value": "Not sure yet",
+					"disabled": "",
+					"selected": "",
+					"label": "Not sure yet"
+				}
+			],
+			"selector": null
+		},
+		{
+			"id": "rep_option_4",
+			"label": "Year Options",
+			"item_label": "{{{ label }}}",
+			"controls": [
+				{
+					"id": "value",
+					"control": "text",
+					"label": "Value",
+					"esc": "attr",
+					"default": ""
+				},
+				{
+					"id": "disabled",
+					"control": "hidden",
+					"label": "Disabled (optional attribute)",
+					"esc": "raw",
+					"default": " disabled"
+				},
+				{
+					"id": "selected",
+					"control": "hidden",
+					"label": "Selected (optional attribute)",
+					"esc": "raw",
+					"default": " selected"
+				},
+				{
+					"id": "label",
+					"control": "text",
+					"label": "Label",
+					"esc": "html",
+					"default": "Year"
+				}
+			],
+			"rows": [
+				{
+					"value": "",
+					"disabled": " disabled",
+					"selected": " selected",
+					"label": "Year"
+				},
+				{
+					"value": "2026",
+					"disabled": "",
+					"selected": "",
+					"label": "2026"
+				},
+				{
+					"value": "2027",
+					"disabled": "",
+					"selected": "",
+					"label": "2027"
+				},
+				{
+					"value": "2028",
+					"disabled": "",
+					"selected": "",
+					"label": "2028"
+				},
+				{
+					"value": "Not sure yet",
+					"disabled": "",
+					"selected": "",
+					"label": "Not sure yet"
+				}
+			],
+			"selector": null
+		},
+		{
+			"id": "rep_option_5",
+			"label": "Guests Options",
+			"item_label": "{{{ label }}}",
+			"controls": [
+				{
+					"id": "value",
+					"control": "text",
+					"label": "Value",
+					"esc": "attr",
+					"default": ""
+				},
+				{
+					"id": "disabled",
+					"control": "hidden",
+					"label": "Disabled (optional attribute)",
+					"esc": "raw",
+					"default": " disabled"
+				},
+				{
+					"id": "selected",
+					"control": "hidden",
+					"label": "Selected (optional attribute)",
+					"esc": "raw",
+					"default": " selected"
+				},
+				{
+					"id": "label",
+					"control": "text",
+					"label": "Label",
+					"esc": "html",
+					"default": "Select..."
+				}
+			],
+			"rows": [
+				{
+					"value": "",
+					"disabled": " disabled",
+					"selected": " selected",
+					"label": "Select..."
+				},
+				{
+					"value": "Couple or Singles (2 minimum)",
+					"disabled": "",
+					"selected": "",
+					"label": "Couple or Singles (2 minimum)"
+				},
+				{
+					"value": "Small Group (3 to 9)",
+					"disabled": "",
+					"selected": "",
+					"label": "Small Group (3 to 9)"
+				},
+				{
+					"value": "Mid-Size Group (10 to 19)",
+					"disabled": "",
+					"selected": "",
+					"label": "Mid-Size Group (10 to 19)"
+				},
+				{
+					"value": "Large Group (20 or more)",
+					"disabled": "",
+					"selected": "",
+					"label": "Large Group (20 or more)"
+				},
+				{
+					"value": "Just me, or not sure yet",
+					"disabled": "",
+					"selected": "",
+					"label": "Just me, or not sure yet"
+				}
+			],
+			"selector": null
+		},
+		{
+			"id": "rep_label_umoya_consent_item",
+			"label": "Items",
+			"item_label": "{{{ for }}}",
+			"controls": [
+				{
+					"id": "for",
+					"control": "text",
+					"label": "For",
+					"esc": "attr",
+					"default": "umoyaConsent"
+				},
+				{
+					"id": "type",
+					"control": "text",
+					"label": "Type",
+					"esc": "attr",
+					"default": "checkbox"
+				},
+				{
+					"id": "id",
+					"control": "text",
+					"label": "Id",
+					"esc": "attr",
+					"default": "umoyaConsent"
+				},
+				{
+					"id": "name",
+					"control": "text",
+					"label": "Name",
+					"esc": "attr",
+					"default": "CONSENT"
+				},
+				{
+					"id": "value",
+					"control": "text",
+					"label": "Value",
+					"esc": "attr",
+					"default": "yes"
+				},
+				{
+					"id": "aria_required",
+					"control": "hidden",
+					"label": "Aria Required (optional attribute)",
+					"esc": "raw",
+					"default": " aria-required=\"true\""
+				},
+				{
+					"id": "span_markup",
+					"control": "textarea",
+					"label": "Span markup (HTML)",
+					"esc": "raw",
+					"default": "I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the <a href=\"#\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. <span class=\"umoya-consent-tag\">(Required)</span>"
+				}
+			],
+			"rows": [
+				{
+					"for": "umoyaConsent",
+					"type": "checkbox",
+					"id": "umoyaConsent",
+					"name": "CONSENT",
+					"value": "yes",
+					"aria_required": " aria-required=\"true\"",
+					"span_markup": "I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the <a href=\"#\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>. <span class=\"umoya-consent-tag\">(Required)</span>"
+				},
+				{
+					"for": "umoyaMarketing",
+					"type": "checkbox",
+					"id": "umoyaMarketing",
+					"name": "MARKETING_CONSENT",
+					"value": "yes",
+					"aria_required": "",
+					"span_markup": "I'd also like to receive Umoya journeys and stories by email. <span class=\"umoya-consent-tag\">(Optional)</span>"
+				}
+			],
+			"selector": ".umoya-consent-item"
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_form_dialog",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-form-dialog",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_form_close",
+			"label": "Button",
+			"short_label": "Button",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-form-close",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_svg",
+			"label": "Icon",
+			"short_label": "Icon",
+			"parent_label": "Button",
+			"sample": "",
+			"selector": "svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_form_image",
+			"label": "Image 1",
+			"short_label": "Image",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-form-image",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_img",
+			"label": "Image 2",
+			"short_label": "Image",
+			"parent_label": "",
+			"sample": "",
+			"selector": "img",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_form_image_copy",
+			"label": "Content",
+			"short_label": "Content",
+			"parent_label": "Image",
+			"sample": "",
+			"selector": ".umoya-form-image-copy",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_form_image_copy_span",
+			"label": "Image Text",
+			"short_label": "Text",
+			"parent_label": "Image",
+			"sample": "Inquiry Form",
+			"selector": ".umoya-form-image-copy > span",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_form_image_copy_h2",
+			"label": "Image Heading",
+			"short_label": "Heading",
+			"parent_label": "Image",
+			"sample": "Your Umoya Experience Awaits",
+			"selector": ".umoya-form-image-copy > h2",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_form_panel",
+			"label": "Card 1",
+			"short_label": "Card",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-form-panel",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_form_head",
+			"label": "Header",
+			"short_label": "Header",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".umoya-form-head",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_form_head_span",
+			"label": "Header Text 1",
+			"short_label": "Text",
+			"parent_label": "Header",
+			"sample": "Reserve Your Place",
+			"selector": ".umoya-form-head > span",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_form_head_h2",
+			"label": "Header Heading",
+			"short_label": "Heading",
+			"parent_label": "Header",
+			"sample": "Begin Your Journey",
+			"selector": ".umoya-form-head > h2",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_form_head_p",
+			"label": "Header Text 2",
+			"short_label": "Text",
+			"parent_label": "Header",
+			"sample": "Tell us about yourself and the travel experienc…",
+			"selector": ".umoya-form-head > p",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_form_card",
+			"label": "Card 2",
+			"short_label": "Card",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-form-card",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_popup_form",
+			"label": "Form",
+			"short_label": "Form",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".umoya-popup-form",
+			"tag": "form",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_popup_form_input",
+			"label": "Form Field",
+			"short_label": "Field",
+			"parent_label": "Form",
+			"sample": "",
+			"selector": ".umoya-popup-form > input",
+			"tag": "input",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"placeholder_color",
+				"align",
+				"transition",
+				"states"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": "input"
+		},
+		{
+			"id": "p_umoya_form_grid",
+			"label": "List",
+			"short_label": "List",
+			"parent_label": "Form",
+			"sample": "",
+			"selector": ".umoya-form-grid",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_field",
+			"label": "List Field",
+			"short_label": "Field",
+			"parent_label": "List",
+			"sample": "",
+			"selector": ".umoya-field",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_field_label_nth_of_type_1",
+			"label": "Field Label",
+			"short_label": "Label",
+			"parent_label": "Field",
+			"sample": "Title",
+			"selector": ".umoya-field > label:nth-of-type(1)",
+			"tag": "label",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_field_select_nth_of_type_1",
+			"label": "Field Select",
+			"short_label": "Select",
+			"parent_label": "Field",
+			"sample": "",
+			"selector": ".umoya-field > select:nth-of-type(1)",
+			"tag": "select",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"placeholder_color",
+				"align",
+				"transition",
+				"states"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_field_select_nth_of_type_1_option_nth_of_type_1",
+			"label": "Select Option 1",
+			"short_label": "Option",
+			"parent_label": "Select",
+			"sample": "Select...",
+			"selector": ".umoya-field > select:nth-of-type(1) > option:nth-of-type(1)",
+			"tag": "option",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": "option"
+		},
+		{
+			"id": "p_umoya_field_spacer",
+			"label": "List Container 1",
+			"short_label": "Container",
+			"parent_label": "List",
+			"sample": "",
+			"selector": ".umoya-field-spacer",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_field_input_nth_of_type_1",
+			"label": "List Anchor 1",
+			"short_label": "Anchor",
+			"parent_label": "List",
+			"sample": "",
+			"selector": ".umoya-field > input:nth-of-type(1)",
+			"tag": "input",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"placeholder_color",
+				"align",
+				"transition",
+				"states"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_when",
+			"label": "List Container 2",
+			"short_label": "Container",
+			"parent_label": "List",
+			"sample": "",
+			"selector": ".umoya-when",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_when_select",
+			"label": "List Select",
+			"short_label": "Select",
+			"parent_label": "List",
+			"sample": "",
+			"selector": ".umoya-when > select",
+			"tag": "select",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"placeholder_color",
+				"align",
+				"transition",
+				"states"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_when_select_option_nth_of_type_1",
+			"label": "Select Option 2",
+			"short_label": "Option",
+			"parent_label": "Select",
+			"sample": "Month",
+			"selector": ".umoya-when > select > option:nth-of-type(1)",
+			"tag": "option",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": "option_3"
+		},
+		{
+			"id": "p_textarea",
+			"label": "List Anchor 2",
+			"short_label": "Anchor",
+			"parent_label": "List",
+			"sample": "",
+			"selector": "textarea",
+			"tag": "textarea",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"placeholder_color",
+				"align",
+				"transition",
+				"states"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_consent",
+			"label": "Form Consent 1",
+			"short_label": "Consent",
+			"parent_label": "Form",
+			"sample": "",
+			"selector": ".umoya-consent",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_consent_item",
+			"label": "Item",
+			"short_label": "Item",
+			"parent_label": "Consent",
+			"sample": "",
+			"selector": ".umoya-consent-item",
+			"tag": "label",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": "label_umoya_consent_item"
+		},
+		{
+			"id": "p_umoya_consent_item_input_nth_of_type_1",
+			"label": "Item Anchor",
+			"short_label": "Anchor",
+			"parent_label": "Item",
+			"sample": "",
+			"selector": ".umoya-consent-item > input:nth-of-type(1)",
+			"tag": "input",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"placeholder_color",
+				"align",
+				"transition",
+				"states"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_consent_item_span_nth_of_type_1",
+			"label": "Item Text",
+			"short_label": "Text",
+			"parent_label": "Item",
+			"sample": "",
+			"selector": ".umoya-consent-item > span:nth-of-type(1)",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_a",
+			"label": "Link",
+			"short_label": "Link",
+			"parent_label": "Text",
+			"sample": "Privacy Policy",
+			"selector": "a",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_consent_item_span_nth_of_type_1_span_nth_of_type_1",
+			"label": "Text Label",
+			"short_label": "Label",
+			"parent_label": "Text",
+			"sample": "(Required)",
+			"selector": ".umoya-consent-item > span:nth-of-type(1) > span:nth-of-type(1)",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_form_submit",
+			"label": "Form Button",
+			"short_label": "Button",
+			"parent_label": "Form",
+			"sample": "Speak to an Expert",
+			"selector": ".umoya-form-submit",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_form_status",
+			"label": "Form Text",
+			"short_label": "Text",
+			"parent_label": "Form",
+			"sample": "",
+			"selector": ".umoya-form-status",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_form_legal",
+			"label": "Form Consent 2",
+			"short_label": "Consent",
+			"parent_label": "Form",
+			"sample": "Your information is held in strict confidence a…",
+			"selector": ".umoya-form-legal",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_iframe",
+			"label": "Embed",
+			"short_label": "Embed",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": "iframe",
+			"tag": "iframe",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [
+		{
+			"id": "embed_inline_style",
+			"control": "inline_style_group",
+			"declarations": [
+				{
+					"prefix": "display:",
+					"id": "embed_css_display"
+				},
+				{
+					"prefix": ";width:",
+					"id": "embed_css_width"
+				},
+				{
+					"prefix": ";height:",
+					"id": "embed_css_height"
+				},
+				{
+					"prefix": ";border:",
+					"id": "embed_css_border"
+				}
+			],
+			"tail": ";",
+			"internal": true
+		}
+	],
+	"fields": [
+		{
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_form_close",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "button_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "button_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Close form",
+			"esc": "attr",
+			"group": "p_umoya_form_close",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc04418(1).jpg"
+			},
+			"esc": "url",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "",
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "text_text",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Inquiry Form",
+			"esc": "post",
+			"group": "p_umoya_form_image_copy_span",
+			"sort": 0
+		},
+		{
+			"id": "heading_text",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Your Umoya Experience Awaits",
+			"esc": "post",
+			"group": "p_umoya_form_image_copy_h2",
+			"sort": 0
+		},
+		{
+			"id": "text_text_2",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Reserve Your Place",
+			"esc": "post",
+			"group": "p_umoya_form_head_span",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_2",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Begin Your Journey",
+			"esc": "post",
+			"group": "p_umoya_form_head_h2",
+			"sort": 0
+		},
+		{
+			"id": "text_text_3",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "Tell us about yourself and the travel experience you're seeking. A dedicated Umoya Travel Expert will personally connect with you to begin planning your experience.",
+			"esc": "post",
+			"group": "p_umoya_form_head_p",
+			"sort": 0
+		},
+		{
+			"id": "form_novalidate",
+			"control": "switcher",
+			"label": "Skip Browser Validation",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "novalidate",
+			"flag_prefix": "\n          ",
+			"esc": "raw",
+			"group": "p_umoya_popup_form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "form_data_hs_do_not_collect",
+			"control": "text",
+			"label": "Hs Do Not Collect",
+			"default": "true",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "form_action",
+			"control": "url",
+			"label": "Form Action",
+			"default": {
+				"url": "/wp-json/umoya/v1/submissions"
+			},
+			"esc": "url",
+			"group": "p_umoya_popup_form",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "form_method",
+			"control": "select",
+			"label": "Method",
+			"default": "post",
+			"options": [
+				"get",
+				"post"
+			],
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "form_target",
+			"control": "select",
+			"label": "Link Target",
+			"default": "umoyaPopupSubmissionFrame",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "form_data_hubspot_portal_id",
+			"control": "text",
+			"label": "Hubspot Portal Id",
+			"default": "246097317",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "form_data_hubspot_form_id",
+			"control": "text",
+			"label": "Hubspot Form Id",
+			"default": "a9e947b4-cb2e-45da-b2c7-b83b4228dfb5",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "form_data_umoya_form_source",
+			"control": "text",
+			"label": "Umoya Form Source",
+			"default": "homepage_popup",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "form_data_wordpress_backup_endpoint",
+			"control": "text",
+			"label": "Wordpress Backup Endpoint",
+			"default": "/wp-json/umoya/v1/submissions",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "form_data_hubspot_consent_text",
+			"control": "text",
+			"label": "Hubspot Consent Text",
+			"default": "I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the Privacy Policy.",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "label_text",
+			"control": "text",
+			"label": "Label",
+			"description": "",
+			"default": "Title",
+			"esc": "post",
+			"group": "p_umoya_field_label_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "select_required",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_multiple",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_name",
+			"control": "text",
+			"label": "Field Name",
+			"default": "MERGE1",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "label_text_2",
+			"control": "text",
+			"label": "Label",
+			"description": "",
+			"default": "First Name *",
+			"esc": "post",
+			"group": "p_umoya_field_label_nth_of_type_1_2",
+			"sort": 0
+		},
+		{
+			"id": "anchor_required",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_readonly",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_checked",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_name",
+			"control": "text",
+			"label": "Field Name",
+			"default": "FNAME",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "anchor_type",
+			"control": "text",
+			"label": "Type",
+			"default": "text",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_placeholder",
+			"control": "text",
+			"label": "Placeholder",
+			"default": "First name",
+			"esc": "attr",
+			"group": "p_umoya_field_input_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "anchor_autocomplete",
+			"control": "text",
+			"label": "Autocomplete",
+			"default": "given-name",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "label_text_3",
+			"control": "text",
+			"label": "Label",
+			"description": "",
+			"default": "Last Name *",
+			"esc": "post",
+			"group": "p_umoya_field_label_nth_of_type_1_3",
+			"sort": 0
+		},
+		{
+			"id": "anchor_required_2",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_readonly_2",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_checked_2",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_name_2",
+			"control": "text",
+			"label": "Field Name",
+			"default": "LNAME",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "anchor_type_2",
+			"control": "text",
+			"label": "Type",
+			"default": "text",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_placeholder_2",
+			"control": "text",
+			"label": "Placeholder",
+			"default": "Last name",
+			"esc": "attr",
+			"group": "p_umoya_field_input_nth_of_type_1_2",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "anchor_autocomplete_2",
+			"control": "text",
+			"label": "Autocomplete",
+			"default": "family-name",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "label_text_4",
+			"control": "text",
+			"label": "Label",
+			"description": "",
+			"default": "Email Address *",
+			"esc": "post",
+			"group": "p_umoya_field_label_nth_of_type_1_4",
+			"sort": 0
+		},
+		{
+			"id": "anchor_required_3",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_disabled_3",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_readonly_3",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_checked_3",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_name_3",
+			"control": "text",
+			"label": "Field Name",
+			"default": "EMAIL",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "anchor_type_3",
+			"control": "text",
+			"label": "Type",
+			"default": "email",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_placeholder_3",
+			"control": "text",
+			"label": "Placeholder",
+			"default": "your@email.com",
+			"esc": "attr",
+			"group": "p_umoya_field_input_nth_of_type_1_3",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "anchor_autocomplete_3",
+			"control": "text",
+			"label": "Autocomplete",
+			"default": "email",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "label_text_5",
+			"control": "text",
+			"label": "Label",
+			"description": "",
+			"default": "Phone Number",
+			"esc": "post",
+			"group": "p_umoya_field_label_nth_of_type_1_5",
+			"sort": 0
+		},
+		{
+			"id": "anchor_required_4",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_4",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_disabled_4",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_4",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_readonly_4",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_4",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_checked_4",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_4",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_name_4",
+			"control": "text",
+			"label": "Field Name",
+			"default": "PHONE",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "anchor_type_4",
+			"control": "text",
+			"label": "Type",
+			"default": "tel",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_placeholder_4",
+			"control": "text",
+			"label": "Placeholder",
+			"default": "+1 (000) 000-0000",
+			"esc": "attr",
+			"group": "p_umoya_field_input_nth_of_type_1_4",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "anchor_autocomplete_4",
+			"control": "text",
+			"label": "Autocomplete",
+			"default": "tel",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "label_text_6",
+			"control": "text",
+			"label": "Label",
+			"description": "",
+			"default": "Country *",
+			"esc": "post",
+			"group": "p_umoya_field_label_nth_of_type_1_6",
+			"sort": 0
+		},
+		{
+			"id": "select_required_2",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_multiple_2",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_name_2",
+			"control": "text",
+			"label": "Field Name",
+			"default": "MERGE2",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "label_text_7",
+			"control": "text",
+			"label": "Label",
+			"description": "",
+			"default": "City",
+			"esc": "post",
+			"group": "p_umoya_field_label_nth_of_type_1_7",
+			"sort": 0
+		},
+		{
+			"id": "anchor_required_5",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_5",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_disabled_5",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_5",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_readonly_5",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_5",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_checked_5",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_input_nth_of_type_1_5",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_name_5",
+			"control": "text",
+			"label": "Field Name",
+			"default": "MERGE3",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "anchor_type_5",
+			"control": "text",
+			"label": "Type",
+			"default": "text",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_placeholder_5",
+			"control": "text",
+			"label": "Placeholder",
+			"default": "Your city",
+			"esc": "attr",
+			"group": "p_umoya_field_input_nth_of_type_1_5",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "anchor_autocomplete_5",
+			"control": "text",
+			"label": "Autocomplete",
+			"default": "address-level2",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "label_text_8",
+			"control": "text",
+			"label": "Label",
+			"description": "",
+			"default": "When Are You Hoping to Travel?",
+			"esc": "post",
+			"group": "p_umoya_field_label_nth_of_type_1_8",
+			"sort": 0
+		},
+		{
+			"id": "select_required_3",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_when_select",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_disabled_3",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_when_select",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_multiple_3",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_when_select",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_name_3",
+			"control": "text",
+			"label": "Field Name",
+			"default": "MERGE4",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "select_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Preferred travel month",
+			"esc": "attr",
+			"group": "p_umoya_when_select",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "select_required_4",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_when_select_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_disabled_4",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_when_select_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_multiple_4",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_when_select_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_name_4",
+			"control": "text",
+			"label": "Field Name",
+			"default": "MERGE5",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "select_aria_label_2",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Preferred travel year",
+			"esc": "attr",
+			"group": "p_umoya_when_select_2",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "label_text_9",
+			"control": "text",
+			"label": "Label",
+			"description": "",
+			"default": "How Many Guests Will Be Traveling?",
+			"esc": "post",
+			"group": "p_umoya_field_label_nth_of_type_1_9",
+			"sort": 0
+		},
+		{
+			"id": "select_required_5",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_disabled_5",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_multiple_5",
+			"control": "switcher",
+			"label": "Allow Multiple",
+			"description": "",
+			"default": "",
+			"flag_attr": "multiple",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_field_select_nth_of_type_1_3",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "select_name_5",
+			"control": "text",
+			"label": "Field Name",
+			"default": "MERGE6",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "label_text_10",
+			"control": "text",
+			"label": "Label",
+			"description": "",
+			"default": "What Are You Hoping to Experience?",
+			"esc": "post",
+			"group": "p_umoya_field_label_nth_of_type_1_10",
+			"sort": 0
+		},
+		{
+			"id": "anchor_required_6",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_textarea",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_disabled_6",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_textarea",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_readonly_6",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_textarea",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_name_6",
+			"control": "text",
+			"label": "Field Name",
+			"default": "MERGE7",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "anchor_placeholder_6",
+			"control": "text",
+			"label": "Placeholder",
+			"default": "Tell us about your travel interests, what you hope to experience, and what draws you to South Africa.",
+			"esc": "attr",
+			"group": "p_textarea",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "button_text",
+			"control": "text",
+			"label": "Button",
+			"description": "",
+			"default": "Speak to an Expert",
+			"esc": "post",
+			"group": "p_umoya_form_submit",
+			"sort": 0
+		},
+		{
+			"id": "button_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_form_submit",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "button_type_2",
+			"control": "text",
+			"label": "Type",
+			"default": "submit",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "consent_text",
+			"control": "text",
+			"label": "Consent",
+			"description": "",
+			"default": "Your information is held in strict confidence and never shared.",
+			"esc": "post",
+			"group": "p_umoya_form_legal",
+			"sort": 0
+		},
+		{
+			"id": "embed_allowfullscreen",
+			"control": "switcher",
+			"label": "Allow Fullscreen",
+			"description": "",
+			"default": "",
+			"flag_attr": "allowfullscreen",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_iframe",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "embed_title",
+			"control": "text",
+			"label": "Title Attribute",
+			"default": "Umoya popup submission fallback",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "embed_css_display",
+			"control": "text",
+			"label": "Display",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "none",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "embed_css_width",
+			"control": "text",
+			"label": "Width",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "embed_css_height",
+			"control": "text",
+			"label": "Height",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "embed_css_border",
+			"control": "text",
+			"label": "Border",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "inline_style",
+			"sort": 3
+		}
+	]
+}

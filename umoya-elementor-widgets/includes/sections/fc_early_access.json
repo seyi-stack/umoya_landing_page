@@ -405,7 +405,7 @@
 	"repeaters": [
 		{
 			"id": "rep_p",
-			"label": "P",
+			"label": "Texts",
 			"item_label": "{{{ p }}}",
 			"controls": [
 				{
@@ -428,7 +428,7 @@
 		},
 		{
 			"id": "rep_div_fc_ss_slide",
-			"label": "Div Fc Ss Slide",
+			"label": "Slides",
 			"item_label": "{{{ role }}}",
 			"controls": [
 				{
@@ -523,7 +523,7 @@
 		},
 		{
 			"id": "rep_button_fc_ss_dot",
-			"label": "Button Fc Ss Dot",
+			"label": "Dots",
 			"item_label": "{{{ role }}}",
 			"controls": [
 				{
@@ -597,6 +597,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -623,6 +624,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -649,6 +651,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -675,6 +678,7 @@
 				"flex_item"
 			],
 			"shared": true,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -702,6 +706,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -729,6 +734,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -756,6 +762,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -783,6 +790,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -809,6 +817,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -836,6 +845,7 @@
 				"transition"
 			],
 			"shared": true,
+			"absolute": false,
 			"repeater": "p"
 		},
 		{
@@ -862,6 +872,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -890,6 +901,7 @@
 				"flex_container"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -916,6 +928,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -942,6 +955,7 @@
 				"flex_item"
 			],
 			"shared": true,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -966,6 +980,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -994,6 +1009,7 @@
 				"flex_container"
 			],
 			"shared": true,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1012,6 +1028,7 @@
 				"visibility"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1038,6 +1055,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -1066,6 +1084,7 @@
 				"flex_container"
 			],
 			"shared": true,
+			"absolute": false,
 			"repeater": null
 		}
 	],

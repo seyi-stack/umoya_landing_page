@@ -1,0 +1,426 @@
+{
+	"key": "home_founders_circle",
+	"name": "umoya-home-founders-circle",
+	"title": "Home Founder’s Circle",
+	"description": "The condensed Founder’s Circle invitation.",
+	"icon": "eicon-call-to-action",
+	"category": "umoya-homepage",
+	"source": "homepage-revamp/homepage-section-07-founders-circle.html",
+	"class_name": "Home_Founders_Circle",
+	"widget_file": "widgets/class-home-founders-circle.php",
+	"root_selector": "#umoya-founder-cta",
+	"template": "templates/sections/home_founders_circle.php",
+	"style": {
+		"handle": "uew-umoya-home-founders-circle",
+		"file": "assets/css/sections/home_founders_circle.css"
+	},
+	"script": null,
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"home",
+		"founder",
+		"s",
+		"circle"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Founder's Circle invitation",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_founder_eye",
+			"label": "Content",
+			"sample": "The Invitation",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "The Invitation",
+					"esc": "post",
+					"group": "p_umoya_founder_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "heading_text",
+					"control": "text",
+					"label": "Heading",
+					"description": "",
+					"default": "Join the Founder's Circle",
+					"esc": "post",
+					"group": "p_h2",
+					"sort": 0,
+					"part_label": "Heading"
+				},
+				{
+					"id": "text_text",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "Our first guests travel as founding members on the inaugural departures at a preferred rate, with personal consultation with the founder and priority access to every journey that follows.",
+					"esc": "post",
+					"group": "p_p",
+					"sort": 0,
+					"part_label": "Text"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_founder_btn",
+			"label": "Button",
+			"sample": "Become a Founding Member",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Button",
+					"description": "",
+					"default": "Become a Founding Member",
+					"esc": "post",
+					"group": "p_umoya_founder_btn",
+					"sort": 0,
+					"part_label": "Button"
+				},
+				{
+					"id": "button_href",
+					"control": "url",
+					"label": "Link",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/founders-circle/"
+					},
+					"esc": "url",
+					"group": "p_umoya_founder_btn",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Button"
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_founder_inner",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-founder-inner",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_founder_copy",
+			"label": "Content",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-founder-copy",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_founder_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "The Invitation",
+			"selector": ".umoya-founder-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_h2",
+			"label": "Heading",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "Join the Founder's Circle",
+			"selector": "h2",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_p",
+			"label": "Text",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "Our first guests travel as founding members on …",
+			"selector": "p",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_founder_btn",
+			"label": "Button",
+			"short_label": "Button",
+			"parent_label": "",
+			"sample": "Become a Founding Member",
+			"selector": ".umoya-founder-btn",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Founder's Circle invitation",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "The Invitation",
+			"esc": "post",
+			"group": "p_umoya_founder_eye",
+			"sort": 0
+		},
+		{
+			"id": "heading_text",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Join the Founder's Circle",
+			"esc": "post",
+			"group": "p_h2",
+			"sort": 0
+		},
+		{
+			"id": "text_text",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "Our first guests travel as founding members on the inaugural departures at a preferred rate, with personal consultation with the founder and priority access to every journey that follows.",
+			"esc": "post",
+			"group": "p_p",
+			"sort": 0
+		},
+		{
+			"id": "button_text",
+			"control": "text",
+			"label": "Button",
+			"description": "",
+			"default": "Become a Founding Member",
+			"esc": "post",
+			"group": "p_umoya_founder_btn",
+			"sort": 0
+		},
+		{
+			"id": "button_href",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/founders-circle/"
+			},
+			"esc": "url",
+			"group": "p_umoya_founder_btn",
+			"tab": "content",
+			"sort": 1
+		}
+	]
+}

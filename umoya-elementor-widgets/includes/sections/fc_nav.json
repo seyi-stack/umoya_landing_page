@@ -288,7 +288,7 @@
 	"repeaters": [
 		{
 			"id": "rep_li_fc_nav_item",
-			"label": "Li Fc Nav Item",
+			"label": "Items 1",
 			"item_label": "{{{ link }}}",
 			"controls": [
 				{
@@ -349,7 +349,7 @@
 		},
 		{
 			"id": "rep_li_fc_nav_dropdown_item",
-			"label": "Li Fc Nav Dropdown Item",
+			"label": "Items",
 			"item_label": "{{{ dropdown_link }}}",
 			"controls": [
 				{
@@ -446,6 +446,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -472,6 +473,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -500,6 +502,7 @@
 				"flex_container"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -524,6 +527,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -551,6 +555,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -577,6 +582,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -604,6 +610,7 @@
 				"transition"
 			],
 			"shared": true,
+			"absolute": false,
 			"repeater": "li_fc_nav_item"
 		},
 		{
@@ -632,6 +639,7 @@
 				"flex_container"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -660,6 +668,7 @@
 				"flex_container"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -688,6 +697,7 @@
 				"flex_container"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -715,6 +725,7 @@
 				"transition"
 			],
 			"shared": true,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -741,6 +752,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -767,6 +779,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -794,6 +807,7 @@
 				"transition"
 			],
 			"shared": true,
+			"absolute": false,
 			"repeater": "li_fc_nav_dropdown_item"
 		},
 		{
@@ -822,6 +836,7 @@
 				"flex_container"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -848,6 +863,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -876,6 +892,7 @@
 				"flex_container"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		}
 	],

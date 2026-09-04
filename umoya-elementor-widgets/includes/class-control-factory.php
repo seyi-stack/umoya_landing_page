@@ -47,8 +47,14 @@ class Control_Factory {
 	 * @param string                 $root_selector The section root, e.g. `#fc-hero`.
 	 */
 	public static function register_part( $widget, array $part, $root_selector ) {
-		$id       = $part['id'];
-		$target   = self::selector( $root_selector, $part['selector'] );
+		$id = $part['id'];
+
+		// An element outside the section root -- a sibling scroll anchor, say --
+		// is addressed from the widget wrapper. Scoping it under the root would
+		// produce a selector that matches nothing.
+		$target = empty( $part['absolute'] )
+			? self::selector( $root_selector, $part['selector'] )
+			: self::selector( '', $part['selector'] );
 		$features = isset( $part['features'] ) ? (array) $part['features'] : array();
 
 		$widget->start_controls_section(

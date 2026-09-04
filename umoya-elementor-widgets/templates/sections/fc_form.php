@@ -106,21 +106,21 @@ if ( ! defined( 'ABSPATH' ) ) {
               <!-- Row 2: First Name | Last Name -->
               <div class="fc-f2-field">
                 <label for="fc2First"><?php echo $c['label_text_2']; ?> <span class="fc-f2-req" aria-hidden="true"><?php echo $c['text_text']; ?></span></label>
-                <input type="<?php echo $c['field_type']; ?>" id="fc2First" name="<?php echo $c['field_name']; ?>" placeholder="<?php echo $c['field_placeholder']; ?>"<?php echo $c['field_required']; ?> autocomplete="<?php echo $c['field_autocomplete']; ?>"<?php echo $c['field_disabled']; ?><?php echo $c['field_readonly']; ?><?php echo $c['field_checked']; ?> />
+                <input type="<?php echo $c['anchor_type']; ?>" id="fc2First" name="<?php echo $c['anchor_name']; ?>" placeholder="<?php echo $c['anchor_placeholder']; ?>"<?php echo $c['anchor_required']; ?> autocomplete="<?php echo $c['anchor_autocomplete']; ?>"<?php echo $c['anchor_disabled']; ?><?php echo $c['anchor_readonly']; ?><?php echo $c['anchor_checked']; ?> />
               </div>
               <div class="fc-f2-field">
                 <label for="fc2Last"><?php echo $c['label_text_3']; ?> <span class="fc-f2-req" aria-hidden="true"><?php echo $c['text_text_2']; ?></span></label>
-                <input type="<?php echo $c['field_type_2']; ?>" id="fc2Last" name="<?php echo $c['field_name_2']; ?>" placeholder="<?php echo $c['field_placeholder_2']; ?>"<?php echo $c['field_required_2']; ?> autocomplete="<?php echo $c['field_autocomplete_2']; ?>"<?php echo $c['field_disabled_2']; ?><?php echo $c['field_readonly_2']; ?><?php echo $c['field_checked_2']; ?> />
+                <input type="<?php echo $c['anchor_type_2']; ?>" id="fc2Last" name="<?php echo $c['anchor_name_2']; ?>" placeholder="<?php echo $c['anchor_placeholder_2']; ?>"<?php echo $c['anchor_required_2']; ?> autocomplete="<?php echo $c['anchor_autocomplete_2']; ?>"<?php echo $c['anchor_disabled_2']; ?><?php echo $c['anchor_readonly_2']; ?><?php echo $c['anchor_checked_2']; ?> />
               </div>
 
               <!-- Row 3: Email | Phone -->
               <div class="fc-f2-field">
                 <label for="fc2Email"><?php echo $c['label_text_4']; ?> <span class="fc-f2-req" aria-hidden="true"><?php echo $c['text_text_3']; ?></span></label>
-                <input type="<?php echo $c['field_type_3']; ?>" id="fc2Email" name="<?php echo $c['field_name_3']; ?>" placeholder="<?php echo $c['field_placeholder_3']; ?>"<?php echo $c['field_required_3']; ?> autocomplete="<?php echo $c['field_autocomplete_3']; ?>"<?php echo $c['field_disabled_3']; ?><?php echo $c['field_readonly_3']; ?><?php echo $c['field_checked_3']; ?> />
+                <input type="<?php echo $c['anchor_type_3']; ?>" id="fc2Email" name="<?php echo $c['anchor_name_3']; ?>" placeholder="<?php echo $c['anchor_placeholder_3']; ?>"<?php echo $c['anchor_required_3']; ?> autocomplete="<?php echo $c['anchor_autocomplete_3']; ?>"<?php echo $c['anchor_disabled_3']; ?><?php echo $c['anchor_readonly_3']; ?><?php echo $c['anchor_checked_3']; ?> />
               </div>
               <div class="fc-f2-field">
                 <label for="fc2Phone"><?php echo $c['label_text_5']; ?></label>
-                <input type="<?php echo $c['field_type_4']; ?>" id="fc2Phone" name="<?php echo $c['field_name_4']; ?>" placeholder="<?php echo $c['field_placeholder_4']; ?>" autocomplete="<?php echo $c['field_autocomplete_4']; ?>"<?php echo $c['field_required_4']; ?><?php echo $c['field_disabled_4']; ?><?php echo $c['field_readonly_4']; ?><?php echo $c['field_checked_4']; ?> />
+                <input type="<?php echo $c['anchor_type_4']; ?>" id="fc2Phone" name="<?php echo $c['anchor_name_4']; ?>" placeholder="<?php echo $c['anchor_placeholder_4']; ?>" autocomplete="<?php echo $c['anchor_autocomplete_4']; ?>"<?php echo $c['anchor_required_4']; ?><?php echo $c['anchor_disabled_4']; ?><?php echo $c['anchor_readonly_4']; ?><?php echo $c['anchor_checked_4']; ?> />
               </div>
 
               <!-- Row 4: Country | City -->
@@ -131,7 +131,7 @@ if ( ! defined( 'ABSPATH' ) ) {
               </div>
               <div class="fc-f2-field">
                 <label for="fc2City"><?php echo $c['label_text_7']; ?></label>
-                <input type="<?php echo $c['field_type_5']; ?>" id="fc2City" name="<?php echo $c['field_name_5']; ?>" placeholder="<?php echo $c['field_placeholder_5']; ?>" autocomplete="<?php echo $c['field_autocomplete_5']; ?>"<?php echo $c['field_required_5']; ?><?php echo $c['field_disabled_5']; ?><?php echo $c['field_readonly_5']; ?><?php echo $c['field_checked_5']; ?> />
+                <input type="<?php echo $c['anchor_type_5']; ?>" id="fc2City" name="<?php echo $c['anchor_name_5']; ?>" placeholder="<?php echo $c['anchor_placeholder_5']; ?>" autocomplete="<?php echo $c['anchor_autocomplete_5']; ?>"<?php echo $c['anchor_required_5']; ?><?php echo $c['anchor_disabled_5']; ?><?php echo $c['anchor_readonly_5']; ?><?php echo $c['anchor_checked_5']; ?> />
               </div>
 
               <!-- Row 5: When are you hoping to travel — Month + Year side by side -->
@@ -160,8 +160,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <label for="fc2Why"><?php echo $c['label_text_10']; ?></label>
                 <textarea
                   id="fc2Why"
-                  name="<?php echo $c['message_name']; ?>"
-                  placeholder="<?php echo $c['message_placeholder']; ?>"<?php echo $c['message_required']; ?><?php echo $c['message_disabled']; ?><?php echo $c['message_readonly']; echo "\n                "; ?>></textarea>
+                  name="<?php echo $c['anchor_name_6']; ?>"
+                  placeholder="<?php echo $c['anchor_placeholder_6']; ?>"<?php echo $c['anchor_required_6']; ?><?php echo $c['anchor_disabled_6']; ?><?php echo $c['anchor_readonly_6']; echo "\n                "; ?>></textarea>
               </div>
 
             </div><!-- /.fc-f2-fg -->

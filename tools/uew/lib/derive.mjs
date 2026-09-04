@@ -308,6 +308,12 @@ export function semanticName( node, prefixes ) {
 		}
 	}
 
+	// An element with an id, no content and no children exists to be scrolled
+	// to. Calling it "Text" describes neither what it is nor what it does.
+	if ( attr( node, 'id' ) && ! elementChildren( node ).length && ! innerText( node ).trim() ) {
+		return 'Anchor';
+	}
+
 	const byTag = ROLE_BY_TAG[ tag ];
 
 	// An unnamed <div> holding "10" is not a container, it is a piece of text.
@@ -506,10 +512,31 @@ function featuresFor( node, layoutMode, isRoot ) {
 
 export function deriveSection( options ) {
 	const { key, markup, css, spec = {} } = options;
+	const notes = [];       // build-report lines
 
 	const doc = createDocument( markup );
-	const rootNode = doc.entries.map( ( e ) => e.node ).find( ( n ) => ! doc.parentsOf.get( n )?.node );
-	if ( ! rootNode ) throw new Error( key + ': no root element found' );
+
+	// A section file can have more than one top-level element: the homepage
+	// journey section is preceded by a bare <span id="umoya-journey-anchor">
+	// scroll target. Taking the FIRST parentless element made that anchor the
+	// styling root, which silently pointed every style selector at an empty
+	// span. The root is the top-level element with the most descendants.
+	const topLevel = doc.entries.filter( ( e ) => ! doc.parentsOf.get( e.node )?.node );
+	if ( ! topLevel.length ) throw new Error( key + ': no root element found' );
+
+	const descendantCount = ( node ) =>
+		doc.entries.filter( ( e ) => contains( doc, node, e.node ) ).length;
+
+	const rootNode = topLevel
+		.map( ( e ) => ( { node: e.node, size: descendantCount( e.node ) } ) )
+		.reduce( ( best, current ) => ( current.size > best.size ? current : best ) ).node;
+
+	if ( topLevel.length > 1 ) {
+		notes.push(
+			'section has ' + topLevel.length + ' top-level elements; ' +
+			rootSelectorOf( rootNode ) + ' is the styling root, the others are styled from the widget wrapper'
+		);
+	}
 
 	const rootSelector = rootSelectorOf( rootNode );
 	const parsedCss = parseStylesheet( css );
@@ -524,7 +551,6 @@ export function deriveSection( options ) {
 	const fields = [];      // flat list of scalar content controls
 	const repeaters = [];   // repeater definitions
 	const parts = [];       // style panels
-	const notes = [];       // build-report lines
 	const usedIds = new Set();
 	const skip = new Set();      // nodes consumed by a repeater
 	const textOwned = new Set(); // nodes inside another element's rich-text control
@@ -553,6 +579,7 @@ export function deriveSection( options ) {
 	// never a loss of editability or of markup.
 	const bareEdits = [];
 	const accepted = [];
+	const repeaterLabels = [];
 	for ( const group of detectRepeaters( doc, rootNode, spec ) ) {
 		// Elementor repeaters do not nest. A run inside an already-accepted
 		// repeater is skipped: its values are still bound individually inside
@@ -562,9 +589,13 @@ export function deriveSection( options ) {
 		);
 		if ( nested ) continue;
 
-		const built = buildRepeater( doc, group, { uniqueId, markup, notes } );
+		const built = buildRepeater( doc, group, { uniqueId, markup, notes, prefixes } );
 		if ( ! built ) continue;
 		accepted.push( group );
+		// Several selects each yield a list of options, so "Options" alone names
+		// five different panels. Qualify by the owning element -- its id reads
+		// best: fc2Country becomes "Country Options".
+		repeaterLabels.push( { definition: built.definition, owner: doc.parentsOf.get( group.nodes[ 0 ] )?.node } );
 		repeaters.push( built.definition );
 		edits.push( built.edit );
 		bareEdits.push( built.editBare );
@@ -605,8 +636,18 @@ export function deriveSection( options ) {
 		const isRepeaterItem = accepted.some( ( g ) => g.nodes[ 0 ] === node );
 		const isRoot = node === rootNode;
 
-		const selectorInfo = isRoot ? { selector: '', shared: false } : buildSelector( doc, node, rootNode );
-		const fullSelector = isRoot ? rootSelector : rootSelector + ' ' + selectorInfo.selector;
+		const insideRoot = contains( doc, rootNode, node );
+		const selectorInfo = isRoot
+			? { selector: '', shared: false }
+			: insideRoot
+				? buildSelector( doc, node, rootNode )
+				// Outside the root -- a sibling scroll anchor, say. Its selector is
+				// absolute against the widget wrapper; scoping it under the root
+				// would match nothing.
+				: { selector: rootSelectorOf( node ), shared: false, absolute: true };
+		const fullSelector = isRoot
+			? rootSelector
+			: ( selectorInfo.absolute ? selectorInfo.selector : rootSelector + ' ' + selectorInfo.selector );
 		const layoutMode = layoutModeFor( cssIndex, normalizeSelector( fullSelector ) );
 
 		// Panels are named the way Elementor names its own -- "Header", "Title",
@@ -641,6 +682,7 @@ export function deriveSection( options ) {
 				tag: node.tagName.toLowerCase(),
 				features: overrides[ selectorInfo.selector ]?.features || featuresFor( node, layoutMode, isRoot ),
 				shared: !! selectorInfo.shared,
+				absolute: !! selectorInfo.absolute,
 				repeater: isRepeaterItem ? accepted.find( ( g ) => g.nodes[ 0 ] === node ).id : null,
 			};
 			parts.push( part );
@@ -677,6 +719,7 @@ export function deriveSection( options ) {
 	// can be told apart by the region it sits in rather than by a chain of every
 	// ancestor. "Header Title" and "Card Title", not "Rv > Div > Title".
 	assignPartLabels( parts );
+	assignRepeaterLabels( repeaterLabels, prefixes );
 
 	const template = splice( markup, edits );
 	// Identical template minus the Elementor repeater-item classes. build.mjs
@@ -1232,7 +1275,7 @@ function buildRepeater( doc, group, ctx ) {
 	return {
 		definition: {
 			id,
-			label: titleCase( group.id.replace( /_/g, ' ' ) ),
+			label: pluralise( semanticName( template, ctx.prefixes || [] ) ),
 			item_label: labelBinding ? '{{{ ' + labelBinding.id + ' }}}' : '',
 			controls: bindings
 				.filter( ( b ) => ! indexedIds.has( b.id ) )
@@ -1574,6 +1617,75 @@ function isPresentOnAll( presence, node, name, path ) {
 	const bucket = presence.counts.get( path.join( '.' ) );
 	if ( ! bucket ) return true;
 	return ( bucket.get( name ) || 0 ) === presence.total;
+}
+
+/**
+ * Make repeater panel names unique. A form with five dropdowns produces five
+ * panels called "Options"; each is qualified by the element that owns it, whose
+ * id usually reads best (`fc2Country` -> "Country Options").
+ */
+function assignRepeaterLabels( entries, prefixes ) {
+	// Work out which names collide BEFORE renaming any of them. Counting as we
+	// go would qualify the first few and leave the last one bare, because by
+	// then it is the only panel still called "Options".
+	const tally = new Map();
+	for ( const entry of entries ) {
+		tally.set( entry.definition.label, ( tally.get( entry.definition.label ) || 0 ) + 1 );
+	}
+
+	for ( const entry of entries ) {
+		if ( ( tally.get( entry.definition.label ) || 0 ) < 2 || ! entry.owner ) continue;
+
+		const hint = ownerHint( entry.owner, prefixes );
+		if ( hint ) entry.definition.label = hint + ' ' + entry.definition.label;
+	}
+
+	const seen = new Map();
+	for ( const entry of entries ) {
+		const name = entry.definition.label;
+		if ( entries.filter( ( e ) => e.definition.label === name ).length < 2 ) continue;
+		const n = ( seen.get( name ) || 0 ) + 1;
+		seen.set( name, n );
+		entry.definition.label = name + ' ' + n;
+	}
+}
+
+/** A human name for the element that owns a list: its id, name, or label. */
+function ownerHint( node, prefixes ) {
+	const id = attr( node, 'id' ) || '';
+	const name = attr( node, 'name' ) || '';
+	const aria = attr( node, 'aria-label' ) || '';
+
+	// `fc2Country` -> "Country". Strip a short lowercase/numeric prefix and split
+	// camelCase; an id like MERGE2 says nothing, so it is not used.
+	// `fc2Country` -> `Country`, `umoyaTitle` -> `Title`. Only the section's own
+	// namespace is stripped, and only when a capitalised word follows it:
+	// guessing at any lowercase run would turn `emailAddress` into `Address`.
+	const namespaces = [ ...new Set( prefixes.flatMap( ( prefix ) => prefix.split( '-' ) ).filter( Boolean ) ) ]
+		.sort( ( a, b ) => b.length - a.length );
+	// `[0-9]` rather than `\d`: this pattern is assembled as a string, and a lone
+	// backslash in a string literal is an escape, not a backslash.
+	const pattern = namespaces.length ? '^(?:' + namespaces.join( '|' ) + ')[0-9]*([A-Z].*)$' : '^$';
+	const fromId = ( id.match( new RegExp( pattern ) ) || [ '', id ] )[ 1 ]
+		.replace( /([a-z])([A-Z])/g, '$1 $2' )
+		.trim();
+	if ( fromId && ! /^\d+$/.test( fromId ) ) return titleCase( fromId );
+
+	if ( aria ) return titleCase( previewText( aria, 22 ) );
+	if ( name && ! /^MERGE\d+$/i.test( name ) ) return titleCase( name );
+
+	return '';
+}
+
+/**
+ * A repeater panel holds a list, so its name says so: Slides, Stats, Items.
+ * English being English, a couple of endings need care.
+ */
+function pluralise( name ) {
+	if ( /s$/i.test( name ) ) return name;
+	if ( /(ch|sh|x|z)$/i.test( name ) ) return name + 'es';
+	if ( /[^aeiou]y$/i.test( name ) ) return name.slice( 0, -1 ) + 'ies';
+	return name + 's';
 }
 
 /** A short, human name for a node: its most descriptive class, else its tag. */

@@ -3,10 +3,15 @@
 Turns each section HTML file into a native Elementor widget, and proves the
 conversion lost nothing.
 
-This replaces `tools/build-elementor-widgets.mjs` for the Founder's Circle
-sections. That generator rewrote markup with regular expressions and had no way
-to check its own work, which is why sections came back from the editor with
-pieces missing.
+It compiles **25 sections**: the twelve Founder's Circle sections from
+`founders-circle-revamp/` and the thirteen homepage sections from
+`homepage-revamp/`. Registries live in `sections/`.
+
+It replaced `tools/build-elementor-widgets.mjs`, now deleted. That generator
+rewrote markup with regular expressions and had no way to check its own work,
+which is why sections came back from the editor with pieces missing. It also
+read the superseded `founders-circle/` and `homepage/` folders, so re-running it
+reverted months of work.
 
 ---
 
@@ -56,10 +61,20 @@ through byte for byte: comments, entities, SVG, whitespace, attribute order.
 | Stage | File | What it does |
 |---|---|---|
 | Parse & locate | `lib/html.mjs` | parse5 wrapper, a small CSS-selector subset, non-overlapping splices |
+| Separate markup from assets | `lib/split.mjs` | shared by the build and the render check, so they cannot disagree |
 | Read the stylesheet | `lib/css.mjs` | design tokens, flex/grid detection, inline-style splitting |
 | Decide what is editable | `lib/derive.mjs` | content fields, repeaters, style parts |
 | Write the plugin files | `lib/emit.mjs` | PHP template, section CSS/JS, widget class, schema |
 | Orchestrate & verify | `build.mjs` | plus the byte-fidelity assertion |
+
+### Which element is the root
+
+A section file can have more than one top-level element — the homepage journey
+section is preceded by a bare `<span id="umoya-journey-anchor">` scroll target.
+The root is the top-level element with the **most descendants**, not the first
+one: taking the first made that anchor the styling root and pointed every style
+selector at an empty span. Anything outside the root is styled from the widget
+wrapper instead, and the build reports when a section has more than one.
 
 ### How things get named
 
@@ -171,6 +186,15 @@ real tag from one named inside a comment, which is how the footer's opt-out
 popup was destroyed (CLAUDE.md phase 21). `splitSection()` uses parser-reported
 offsets.
 
+**A geometry difference is only believed if it reproduces.** The browser check
+measures a live browser against a single-threaded PHP server; images and fonts
+settle at slightly different moments on the two pages, and a few pixels of drift
+on centred text follows. Every difference chased this way vanished on a second
+look — the same section differed on one run and was identical on the next. So a
+difference is re-measured before being reported, and one that does not survive
+is named as unstable rather than failed. Without that the check cries wolf, and
+a check that cries wolf gets ignored.
+
 **PHP's built-in server is single-threaded.** On Windows it refuses new
 connections once its backlog fills, and one Elementor page — ~48 scripts and
 stylesheets — can do that by itself. It shows up as a one-off
@@ -183,6 +207,12 @@ server and run it again rather than hunting for a widget bug.
 widget WordPress will not register. An early version of `build.mjs` wrote only
 the sections it had just built, which silently unregistered the other eleven and
 looked exactly like the widgets had broken.
+
+**Some sections put `<style>` INSIDE the section root.** The homepage ones do.
+A check that reads the raw section file therefore counts the stylesheet as
+markup and reports every one of them as having lost content. `lib/split.mjs`
+exists so the build and the render check separate markup from assets the same
+way; neither reads the raw file directly.
 
 **Elementor caches each element's rendered HTML in post meta**
 (`Document::CACHE_META_KEY`, on by default). A page will happily keep serving

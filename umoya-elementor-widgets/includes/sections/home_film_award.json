@@ -1,0 +1,861 @@
+{
+	"key": "home_film_award",
+	"name": "umoya-home-film-award",
+	"title": "Home Film & Award",
+	"description": "Brand film (click to load) plus the ITFFA award callout.",
+	"icon": "eicon-play-o",
+	"category": "umoya-homepage",
+	"source": "homepage-revamp/homepage-section-08-film-award.html",
+	"class_name": "Home_Film_Award",
+	"widget_file": "widgets/class-home-film-award.php",
+	"root_selector": "#umoya-film",
+	"template": "templates/sections/home_film_award.php",
+	"style": {
+		"handle": "uew-umoya-home-film-award",
+		"file": "assets/css/sections/home_film_award.css"
+	},
+	"script": {
+		"handle": "uew-umoya-home-film-award",
+		"file": "assets/js/sections/home_film_award.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"home",
+		"film",
+		"award"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.72)",
+			"kind": "color",
+			"label": "Muted"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Our award-winning brand film",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_film_eye",
+			"label": "Content",
+			"sample": "Our Love Letter to South Africa",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Our Love Letter to South Africa",
+					"esc": "post",
+					"group": "p_umoya_film_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "heading_text",
+					"control": "text",
+					"label": "Heading",
+					"description": "",
+					"default": "Where Intentional Travel Meets Award-Winning Storytelling",
+					"esc": "post",
+					"group": "p_h2",
+					"sort": 0,
+					"part_label": "Heading"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_iframe",
+			"label": "Content",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "embed_src",
+					"control": "media",
+					"label": "Source",
+					"default": {
+						"url": "https://www.youtube.com/embed/4ZtbEvETrBU?rel=0"
+					},
+					"esc": "url",
+					"group": "p_iframe",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Embed"
+				},
+				{
+					"id": "embed_title",
+					"control": "text",
+					"label": "Title Attribute",
+					"default": "Umoya — Let Your Story Begin",
+					"esc": "attr",
+					"group": "p_iframe",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Embed"
+				},
+				{
+					"id": "container_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Award recognition",
+					"esc": "attr",
+					"group": "p_umoya_film_award",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Container 4"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "Silver Award — Best Country Tourism Film",
+					"esc": "post",
+					"group": "p_umoya_film_award_title",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "subtitle_text",
+					"control": "text",
+					"label": "Subtitle",
+					"description": "",
+					"default": "International Tourism Film Festival Africa 2026",
+					"esc": "post",
+					"group": "p_umoya_film_award_sub",
+					"sort": 0,
+					"part_label": "Subtitle"
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [
+		{
+			"id": "embed_loading",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "embed_allow",
+			"control": "text",
+			"label": "Permissions",
+			"default": "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "embed_referrerpolicy",
+			"control": "select",
+			"label": "Referrerpolicy",
+			"default": "strict-origin-when-cross-origin",
+			"options": [
+				"no-referrer",
+				"no-referrer-when-downgrade",
+				"origin",
+				"origin-when-cross-origin",
+				"same-origin",
+				"strict-origin",
+				"strict-origin-when-cross-origin",
+				"unsafe-url"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"inline_style_controls": [],
+	"media_controls": [
+		{
+			"id": "embed_allowfullscreen",
+			"control": "switcher",
+			"label": "Allow Fullscreen",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "allowfullscreen",
+			"flag_prefix": "\n          ",
+			"esc": "raw",
+			"group": "p_iframe",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Embed"
+		}
+	],
+	"repeaters": [
+		{
+			"id": "rep_p",
+			"label": "Texts",
+			"item_label": "",
+			"controls": [
+				{
+					"id": "p_markup",
+					"control": "textarea",
+					"label": "P markup (HTML)",
+					"esc": "raw",
+					"default": "Every journey we design is built around the people who know this country best. Their stories, their roads, their South Africa."
+				}
+			],
+			"rows": [
+				{
+					"p_markup": "Every journey we design is built around the people who know this country best. Their stories, their roads, their South Africa."
+				},
+				{
+					"p_markup": "Our brand film was awarded a Silver Award for Best Country Tourism Film at the International Tourism Film Festival Africa 2026, recognized for an approach to travel that places storytellers, not sights, at the center of every journey."
+				},
+				{
+					"p_markup": "This is our love letter to South Africa. Felt the way it deserves to be felt: <em>slowly, honestly, and in the company of the people who know it best.</em>"
+				}
+			],
+			"selector": null
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_film_wrap",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-film-wrap",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_film_copy",
+			"label": "Content 1",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-film-copy",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_film_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "Our Love Letter to South Africa",
+			"selector": ".umoya-film-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_h2",
+			"label": "Heading",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "Where Intentional Travel Meets Award-Winning St…",
+			"selector": "h2",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_film_lead",
+			"label": "Content 2",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-film-lead",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_p",
+			"label": "Text 1",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "Every journey we design is built around the peo…",
+			"selector": "p",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": "p"
+		},
+		{
+			"id": "p_umoya_film_media",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-film-media",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_film_frame",
+			"label": "Container 3",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-film-frame",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_iframe",
+			"label": "Embed",
+			"short_label": "Embed",
+			"parent_label": "",
+			"sample": "",
+			"selector": "iframe",
+			"tag": "iframe",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_film_award",
+			"label": "Container 4",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-film-award",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_film_award_icon",
+			"label": "Icon 1",
+			"short_label": "Icon",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-film-award-icon",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_svg",
+			"label": "Icon 2",
+			"short_label": "Icon",
+			"parent_label": "",
+			"sample": "",
+			"selector": "svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_film_award_span",
+			"label": "Text 2",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-film-award > span",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_film_award_title",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "Text",
+			"sample": "Silver Award — Best Country Tourism Film",
+			"selector": ".umoya-film-award-title",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_film_award_sub",
+			"label": "Subtitle",
+			"short_label": "Subtitle",
+			"parent_label": "Text",
+			"sample": "International Tourism Film Festival Africa 2026",
+			"selector": ".umoya-film-award-sub",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Our award-winning brand film",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Our Love Letter to South Africa",
+			"esc": "post",
+			"group": "p_umoya_film_eye",
+			"sort": 0
+		},
+		{
+			"id": "heading_text",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Where Intentional Travel Meets Award-Winning Storytelling",
+			"esc": "post",
+			"group": "p_h2",
+			"sort": 0
+		},
+		{
+			"id": "embed_allowfullscreen",
+			"control": "switcher",
+			"label": "Allow Fullscreen",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "allowfullscreen",
+			"flag_prefix": "\n          ",
+			"esc": "raw",
+			"group": "p_iframe",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "embed_src",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://www.youtube.com/embed/4ZtbEvETrBU?rel=0"
+			},
+			"esc": "url",
+			"group": "p_iframe",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "embed_title",
+			"control": "text",
+			"label": "Title Attribute",
+			"default": "Umoya — Let Your Story Begin",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "embed_loading",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "embed_allow",
+			"control": "text",
+			"label": "Permissions",
+			"default": "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "embed_referrerpolicy",
+			"control": "select",
+			"label": "Referrerpolicy",
+			"default": "strict-origin-when-cross-origin",
+			"options": [
+				"no-referrer",
+				"no-referrer-when-downgrade",
+				"origin",
+				"origin-when-cross-origin",
+				"same-origin",
+				"strict-origin",
+				"strict-origin-when-cross-origin",
+				"unsafe-url"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "container_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Award recognition",
+			"esc": "attr",
+			"group": "p_umoya_film_award",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "Silver Award — Best Country Tourism Film",
+			"esc": "post",
+			"group": "p_umoya_film_award_title",
+			"sort": 0
+		},
+		{
+			"id": "subtitle_text",
+			"control": "text",
+			"label": "Subtitle",
+			"description": "",
+			"default": "International Tourism Film Festival Africa 2026",
+			"esc": "post",
+			"group": "p_umoya_film_award_sub",
+			"sort": 0
+		}
+	]
+}

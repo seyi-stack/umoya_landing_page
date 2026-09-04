@@ -269,7 +269,7 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 	rows.push( row );
 	const tabs = row.byTab ? Object.entries( row.byTab ).map( ( [ tab, n ] ) => n + ' ' + tab ).join( ', ' ) : '';
 	console.log(
-		row.key.padEnd( 20 ) +
+		row.key.padEnd( 26 ) +
 		( row.rendered ? 'rendered' : 'NOT RENDERED' ).padEnd( 14 ) +
 		( ! section.script ? 'no script' : ( '1' === row.scriptRan ? 'script ok' : 'SCRIPT DID NOT RUN' ) ).padEnd( 20 ) +
 		String( row.ms ).padStart( 6 ) + 'ms  ' +

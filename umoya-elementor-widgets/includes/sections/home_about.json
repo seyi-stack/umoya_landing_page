@@ -1,0 +1,659 @@
+{
+	"key": "home_about",
+	"name": "umoya-home-about",
+	"title": "Home About",
+	"description": "About Umoya, directly below the hero.",
+	"icon": "eicon-info-circle-o",
+	"category": "umoya-homepage",
+	"source": "homepage-revamp/homepage-section-02-about.html",
+	"class_name": "Home_About",
+	"widget_file": "widgets/class-home-about.php",
+	"root_selector": "#umoya-about",
+	"template": "templates/sections/home_about.php",
+	"style": {
+		"handle": "uew-umoya-home-about",
+		"file": "assets/css/sections/home_about.css"
+	},
+	"script": {
+		"handle": "uew-umoya-home-about",
+		"file": "assets/js/sections/home_about.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"home",
+		"about"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "olive",
+			"value": "#708238",
+			"kind": "color",
+			"label": "Olive"
+		},
+		{
+			"name": "ink",
+			"value": "#3A2F2C",
+			"kind": "color",
+			"label": "Ink"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "About Umoya Afrika Tours",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_about_eye",
+			"label": "Content",
+			"sample": "About Umoya",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "About Umoya",
+					"esc": "post",
+					"group": "p_umoya_about_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "heading_text",
+					"control": "text",
+					"label": "Heading",
+					"description": "",
+					"default": "Move Beyond the Familiar. Step into the Extraordinary.",
+					"esc": "post",
+					"group": "p_h2",
+					"sort": 0,
+					"part_label": "Heading"
+				},
+				{
+					"id": "text_text",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "At Umoya Afrika Tours, we don't just take you to South Africa. We bring you deeper. Every journey is shaped by on-the-ground local expertise and genuine cultural perspective, offering access to moments, people, and places that most travelers never encounter.",
+					"esc": "post",
+					"group": "p_p",
+					"sort": 0,
+					"part_label": "Text"
+				},
+				{
+					"id": "figure_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Umoya Afrika Tours cultural journey",
+					"esc": "attr",
+					"group": "p_umoya_about_media",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Figure"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_img",
+			"label": "Image",
+			"sample": "",
+			"region_label": "Figure",
+			"controls": [
+				{
+					"id": "image_src",
+					"control": "media",
+					"label": "Source",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_White_Rhino_Hluhluwe_Umfolozi-683739915.jpg"
+					},
+					"esc": "url",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "image_alt",
+					"control": "text",
+					"label": "Alt Text",
+					"default": "A white rhino in Hluhluwe-iMfolozi Park, South Africa",
+					"esc": "attr",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [
+		{
+			"id": "image_loading",
+			"control": "select",
+			"label": "Loading",
+			"default": "eager",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_decoding",
+			"control": "select",
+			"label": "Decoding",
+			"default": "async",
+			"options": [
+				"sync",
+				"async",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_fetchpriority",
+			"control": "select",
+			"label": "Fetchpriority",
+			"default": "high",
+			"options": [
+				"high",
+				"low",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_about_layout",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-about-layout",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_about_copy",
+			"label": "Content 1",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-about-copy",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_about_inner",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-about-inner",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_about_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "About Umoya",
+			"selector": ".umoya-about-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_h2",
+			"label": "Heading",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "Move Beyond the Familiar. Step into the Extraor…",
+			"selector": "h2",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_about_rule",
+			"label": "Divider",
+			"short_label": "Divider",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-about-rule",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_about_body",
+			"label": "Content 2",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-about-body",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_p",
+			"label": "Text",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "At Umoya Afrika Tours, we don't just take you t…",
+			"selector": "p",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_about_media",
+			"label": "Figure",
+			"short_label": "Figure",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-about-media",
+			"tag": "figure",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_img",
+			"label": "Image",
+			"short_label": "Image",
+			"parent_label": "Figure",
+			"sample": "",
+			"selector": "img",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "About Umoya Afrika Tours",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "About Umoya",
+			"esc": "post",
+			"group": "p_umoya_about_eye",
+			"sort": 0
+		},
+		{
+			"id": "heading_text",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Move Beyond the Familiar. Step into the Extraordinary.",
+			"esc": "post",
+			"group": "p_h2",
+			"sort": 0
+		},
+		{
+			"id": "text_text",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "At Umoya Afrika Tours, we don't just take you to South Africa. We bring you deeper. Every journey is shaped by on-the-ground local expertise and genuine cultural perspective, offering access to moments, people, and places that most travelers never encounter.",
+			"esc": "post",
+			"group": "p_p",
+			"sort": 0
+		},
+		{
+			"id": "figure_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Umoya Afrika Tours cultural journey",
+			"esc": "attr",
+			"group": "p_umoya_about_media",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_White_Rhino_Hluhluwe_Umfolozi-683739915.jpg"
+			},
+			"esc": "url",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "A white rhino in Hluhluwe-iMfolozi Park, South Africa",
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading",
+			"control": "select",
+			"label": "Loading",
+			"default": "eager",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "image_decoding",
+			"control": "select",
+			"label": "Decoding",
+			"default": "async",
+			"options": [
+				"sync",
+				"async",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "image_fetchpriority",
+			"control": "select",
+			"label": "Fetchpriority",
+			"default": "high",
+			"options": [
+				"high",
+				"low",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		}
+	]
+}

@@ -1,0 +1,1281 @@
+{
+	"key": "home_hotel_stays",
+	"name": "umoya-home-hotel-stays",
+	"title": "Home Hotel Stays",
+	"description": "Hotel Stays Worthy of the Journey — the three named properties.",
+	"icon": "eicon-image-rollover",
+	"category": "umoya-homepage",
+	"source": "homepage-revamp/homepage-section-06-hotel-stays.html",
+	"class_name": "Home_Hotel_Stays",
+	"widget_file": "widgets/class-home-hotel-stays.php",
+	"root_selector": "#umoya-accommodations",
+	"template": "templates/sections/home_hotel_stays.php",
+	"style": {
+		"handle": "uew-umoya-home-hotel-stays",
+		"file": "assets/css/sections/home_hotel_stays.css"
+	},
+	"script": {
+		"handle": "uew-umoya-home-hotel-stays",
+		"file": "assets/js/sections/home_hotel_stays.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"home",
+		"hotel",
+		"stays"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_roledescription",
+					"control": "text",
+					"label": "Accessible Role",
+					"default": "carousel",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				},
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Featured hotel stay — Cape Grace",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_hs_eye",
+			"label": "Content",
+			"sample": "Where You'll Stay",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Where You'll Stay",
+					"esc": "post",
+					"group": "p_umoya_hs_eye",
+					"sort": 0,
+					"part_label": "Eyebrow 2"
+				},
+				{
+					"id": "label_text",
+					"control": "text",
+					"label": "Text",
+					"default": "Featured Hotel",
+					"esc": "post",
+					"group": "p_umoya_hs_badge",
+					"sort": 0,
+					"part_label": "Label"
+				},
+				{
+					"id": "heading_text",
+					"control": "text",
+					"label": "Heading",
+					"description": "",
+					"default": "Cape Grace",
+					"esc": "post",
+					"group": "p_umoya_hs_name",
+					"sort": 0,
+					"part_label": "Heading"
+				},
+				{
+					"id": "text_text",
+					"control": "text",
+					"label": "Text",
+					"description": "",
+					"default": "A Fairmont Hotel &middot; V&amp;A Waterfront, Cape Town",
+					"esc": "post",
+					"group": "p_umoya_hs_place",
+					"sort": 0,
+					"part_label": "Text"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_hs_btn",
+			"label": "Button",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Text",
+					"default": "Explore All Stays",
+					"esc": "post",
+					"group": "p_umoya_hs_btn",
+					"sort": 0,
+					"part_label": "Button"
+				},
+				{
+					"id": "button_href",
+					"control": "url",
+					"label": "Link",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/signature-journey/#sj-stays"
+					},
+					"esc": "url",
+					"group": "p_umoya_hs_btn",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Button"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_hs_note",
+			"label": "Footer Text",
+			"sample": "",
+			"region_label": "Footer",
+			"controls": [
+				{
+					"id": "text_text_2",
+					"control": "text",
+					"label": "Text",
+					"default": "This is our featured stay — explore the full collection on the",
+					"esc": "post",
+					"group": "p_umoya_hs_note",
+					"sort": 0,
+					"part_label": "Footer Text"
+				},
+				{
+					"id": "text_text_2_2",
+					"control": "text",
+					"label": "Text 2",
+					"default": ".",
+					"esc": "post",
+					"group": "p_umoya_hs_note",
+					"sort": 0,
+					"part_label": "Footer Text"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_hs_note_a",
+			"label": "Text",
+			"sample": "Signature Journey stays",
+			"region_label": "Text",
+			"controls": [
+				{
+					"id": "link_text",
+					"control": "text",
+					"label": "Link",
+					"description": "",
+					"default": "Signature Journey stays",
+					"esc": "post",
+					"group": "p_umoya_hs_note_a",
+					"sort": 0,
+					"part_label": "Link"
+				},
+				{
+					"id": "link_href",
+					"control": "url",
+					"label": "Link",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/signature-journey/#sj-stays"
+					},
+					"esc": "url",
+					"group": "p_umoya_hs_note_a",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Link"
+				},
+				{
+					"id": "arrow_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Previous image",
+					"esc": "attr",
+					"group": "p_umoya_hs_arrow",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Arrow"
+				},
+				{
+					"id": "arrow_aria_label_2",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Next image",
+					"esc": "attr",
+					"group": "p_umoya_hs_arrow_2",
+					"tab": "content",
+					"sort": 1
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [
+		{
+			"id": "arrow_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_hs_arrow",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Arrow"
+		},
+		{
+			"id": "arrow_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "arrow_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_hs_arrow_2",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "arrow_type_2",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"behaviour_controls": [
+		{
+			"id": "button_target",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "button_rel",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "link_target",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "link_rel",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_div_umoya_hs_slide",
+			"label": "Slides",
+			"item_label": "{{{ role }}}",
+			"controls": [
+				{
+					"id": "role",
+					"control": "text",
+					"label": "Role",
+					"esc": "attr",
+					"default": "group"
+				},
+				{
+					"id": "aria_roledescription",
+					"control": "text",
+					"label": "Aria Roledescription",
+					"esc": "attr",
+					"default": "slide"
+				},
+				{
+					"id": "style",
+					"control": "text",
+					"label": "Style",
+					"esc": "attr",
+					"default": "background:linear-gradient(135deg,#4B2E2B,#241310);"
+				},
+				{
+					"id": "src",
+					"control": "media",
+					"label": "Src",
+					"esc": "url",
+					"default": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Hero_Shot_Table_Mountain_(1).jpg"
+				},
+				{
+					"id": "alt",
+					"control": "text",
+					"label": "Alt",
+					"esc": "attr",
+					"default": "Cape Grace on the V&amp;A Waterfront marina, with Table Mountain beyond"
+				},
+				{
+					"id": "loading",
+					"control": "text",
+					"label": "Loading",
+					"esc": "attr",
+					"default": "eager"
+				},
+				{
+					"id": "fetchpriority",
+					"control": "hidden",
+					"label": "Fetchpriority (optional attribute)",
+					"esc": "raw",
+					"default": " fetchpriority=\"high\""
+				},
+				{
+					"id": "decoding",
+					"control": "text",
+					"label": "Decoding",
+					"esc": "attr",
+					"default": "async"
+				}
+			],
+			"rows": [
+				{
+					"role": "group",
+					"aria_roledescription": "slide",
+					"style": "background:linear-gradient(135deg,#4B2E2B,#241310);",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Hero_Shot_Table_Mountain_(1).jpg",
+					"alt": "Cape Grace on the V&amp;A Waterfront marina, with Table Mountain beyond",
+					"loading": "eager",
+					"fetchpriority": " fetchpriority=\"high\"",
+					"decoding": "async"
+				},
+				{
+					"role": "group",
+					"aria_roledescription": "slide",
+					"style": "background:linear-gradient(135deg,#6a4a2e,#2f1e12);",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Junior_Suite_2.jpg",
+					"alt": "A Junior Suite at Cape Grace",
+					"loading": "eager",
+					"fetchpriority": "",
+					"decoding": "async"
+				},
+				{
+					"role": "group",
+					"aria_roledescription": "slide",
+					"style": "background:linear-gradient(135deg,#3f5237,#20291c);",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Fairmont_Spa_Salt_Room.jpg",
+					"alt": "The salt room at the Fairmont Spa, Cape Grace",
+					"loading": "eager",
+					"fetchpriority": "",
+					"decoding": "async"
+				},
+				{
+					"role": "group",
+					"aria_roledescription": "slide",
+					"style": "background:linear-gradient(135deg,#7a4b3a,#341f18);",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Cape_Grace_Suite_Terrace.jpg",
+					"alt": "A suite terrace overlooking the marina at Cape Grace",
+					"loading": "eager",
+					"fetchpriority": "",
+					"decoding": "async"
+				}
+			],
+			"selector": ".umoya-hs-slide"
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_viewport",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-hs-viewport",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_track",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-hs-track",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_slide",
+			"label": "Slide",
+			"short_label": "Slide",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-hs-slide",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": "div_umoya_hs_slide"
+		},
+		{
+			"id": "p_umoya_hs_slide_img_nth_of_type_1",
+			"label": "Image",
+			"short_label": "Image",
+			"parent_label": "Slide",
+			"sample": "",
+			"selector": ".umoya-hs-slide > img:nth-of-type(1)",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_scrim",
+			"label": "Overlay",
+			"short_label": "Overlay",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-hs-scrim",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_content",
+			"label": "Content",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-hs-content",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_inner",
+			"label": "Container 3",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-hs-inner",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_kicker",
+			"label": "Eyebrow 1",
+			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-hs-kicker",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_eye",
+			"label": "Eyebrow 2",
+			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "Where You'll Stay",
+			"selector": ".umoya-hs-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_badge",
+			"label": "Label",
+			"short_label": "Label",
+			"parent_label": "Eyebrow",
+			"sample": "",
+			"selector": ".umoya-hs-badge",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_badge_svg",
+			"label": "Label Icon",
+			"short_label": "Icon",
+			"parent_label": "Label",
+			"sample": "",
+			"selector": ".umoya-hs-badge > svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_name",
+			"label": "Heading",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "Cape Grace",
+			"selector": ".umoya-hs-name",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_place",
+			"label": "Text",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "A Fairmont Hotel · V&A Waterfront, Cape Town",
+			"selector": ".umoya-hs-place",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_btn",
+			"label": "Button",
+			"short_label": "Button",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-hs-btn",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_btn_svg",
+			"label": "Button Icon",
+			"short_label": "Icon",
+			"parent_label": "Button",
+			"sample": "",
+			"selector": ".umoya-hs-btn > svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_foot",
+			"label": "Footer",
+			"short_label": "Footer",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-hs-foot",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_note",
+			"label": "Footer Text",
+			"short_label": "Text",
+			"parent_label": "Footer",
+			"sample": "",
+			"selector": ".umoya-hs-note",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_note_a",
+			"label": "Link",
+			"short_label": "Link",
+			"parent_label": "Text",
+			"sample": "Signature Journey stays",
+			"selector": ".umoya-hs-note > a",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_arrow",
+			"label": "Arrow",
+			"short_label": "Arrow",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-hs-arrow",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hs_arrow_svg_nth_of_type_1",
+			"label": "Arrow Icon",
+			"short_label": "Icon",
+			"parent_label": "Arrow",
+			"sample": "",
+			"selector": ".umoya-hs-arrow > svg:nth-of-type(1)",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_roledescription",
+			"control": "text",
+			"label": "Accessible Role",
+			"default": "carousel",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Featured hotel stay — Cape Grace",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Where You'll Stay",
+			"esc": "post",
+			"group": "p_umoya_hs_eye",
+			"sort": 0
+		},
+		{
+			"id": "label_text",
+			"control": "text",
+			"label": "Text",
+			"default": "Featured Hotel",
+			"esc": "post",
+			"group": "p_umoya_hs_badge",
+			"sort": 0
+		},
+		{
+			"id": "heading_text",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Cape Grace",
+			"esc": "post",
+			"group": "p_umoya_hs_name",
+			"sort": 0
+		},
+		{
+			"id": "text_text",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "A Fairmont Hotel &middot; V&amp;A Waterfront, Cape Town",
+			"esc": "post",
+			"group": "p_umoya_hs_place",
+			"sort": 0
+		},
+		{
+			"id": "button_text",
+			"control": "text",
+			"label": "Text",
+			"default": "Explore All Stays",
+			"esc": "post",
+			"group": "p_umoya_hs_btn",
+			"sort": 0
+		},
+		{
+			"id": "button_href",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/signature-journey/#sj-stays"
+			},
+			"esc": "url",
+			"group": "p_umoya_hs_btn",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "button_target",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "button_rel",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "text_text_2",
+			"control": "text",
+			"label": "Text",
+			"default": "This is our featured stay — explore the full collection on the",
+			"esc": "post",
+			"group": "p_umoya_hs_note",
+			"sort": 0
+		},
+		{
+			"id": "text_text_2_2",
+			"control": "text",
+			"label": "Text 2",
+			"default": ".",
+			"esc": "post",
+			"group": "p_umoya_hs_note",
+			"sort": 0
+		},
+		{
+			"id": "link_text",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "Signature Journey stays",
+			"esc": "post",
+			"group": "p_umoya_hs_note_a",
+			"sort": 0
+		},
+		{
+			"id": "link_href",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/signature-journey/#sj-stays"
+			},
+			"esc": "url",
+			"group": "p_umoya_hs_note_a",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "link_target",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "link_rel",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "arrow_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_hs_arrow",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "arrow_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "arrow_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Previous image",
+			"esc": "attr",
+			"group": "p_umoya_hs_arrow",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "arrow_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_hs_arrow_2",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "arrow_type_2",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "arrow_aria_label_2",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Next image",
+			"esc": "attr",
+			"group": "p_umoya_hs_arrow_2",
+			"tab": "content",
+			"sort": 1
+		}
+	]
+}

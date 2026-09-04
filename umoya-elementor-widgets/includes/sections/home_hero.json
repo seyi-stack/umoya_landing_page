@@ -1,0 +1,1290 @@
+{
+	"key": "home_hero",
+	"name": "umoya-home-hero",
+	"title": "Home Hero",
+	"description": "Homepage hero with the single Founder’s Circle call to action.",
+	"icon": "eicon-banner",
+	"category": "umoya-homepage",
+	"source": "homepage-revamp/homepage-section-01-hero.html",
+	"class_name": "Home_Hero",
+	"widget_file": "widgets/class-home-hero.php",
+	"root_selector": "#umoya-hero",
+	"template": "templates/sections/home_hero.php",
+	"style": {
+		"handle": "uew-umoya-home-hero",
+		"file": "assets/css/sections/home_hero.css"
+	},
+	"script": {
+		"handle": "uew-umoya-home-hero",
+		"file": "assets/js/sections/home_hero.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"home",
+		"hero"
+	],
+	"tokens": [
+		{
+			"name": "terracotta",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terracotta"
+		},
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "text",
+			"value": "#FDFCF9",
+			"kind": "color",
+			"label": "Text"
+		},
+		{
+			"name": "btn-bg",
+			"value": "var(--terracotta)",
+			"kind": "text",
+			"label": "Btn Bg"
+		},
+		{
+			"name": "btn-bg-hover",
+			"value": "#c66c44",
+			"kind": "color",
+			"label": "Btn Bg Hover"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Umoya Landing Hero",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_img",
+			"label": "Image",
+			"sample": "",
+			"region_label": "Background",
+			"controls": [
+				{
+					"id": "image_src",
+					"control": "media",
+					"label": "Source",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-1.jpg"
+					},
+					"esc": "url",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "image_alt",
+					"control": "text",
+					"label": "Alt Text",
+					"default": "Umoya Afrika Tours - South Africa journey",
+					"esc": "attr",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				}
+			]
+		},
+		{
+			"id": "content_p_video",
+			"label": "Background",
+			"sample": "",
+			"region_label": "Background",
+			"controls": [
+				{
+					"id": "video_poster",
+					"control": "media",
+					"label": "Poster",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-1.jpg"
+					},
+					"esc": "url",
+					"group": "p_video",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Video"
+				},
+				{
+					"id": "video_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Umoya Afrika Tours - South Africa journey",
+					"esc": "attr",
+					"group": "p_video",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Video"
+				},
+				{
+					"id": "video_source_src",
+					"control": "url",
+					"label": "Source",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya_content_1.mp4"
+					},
+					"esc": "url",
+					"group": "p_source",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Video Source"
+				},
+				{
+					"id": "heading_text",
+					"control": "text",
+					"label": "Heading",
+					"description": "",
+					"default": "Breathe South Africa Differently.",
+					"esc": "post",
+					"group": "p_h1",
+					"sort": 0,
+					"part_label": "Heading"
+				},
+				{
+					"id": "subtitle_text",
+					"control": "textarea",
+					"label": "Subtitle",
+					"description": "",
+					"default": "Premier tailor-made journeys for those ready to experience South Africa through rare and exclusive access.",
+					"esc": "post",
+					"group": "p_sub",
+					"sort": 0,
+					"part_label": "Subtitle"
+				},
+				{
+					"id": "item_aria_label",
+					"control": "text",
+					"label": "Item",
+					"default": "Primary action",
+					"esc": "attr",
+					"group": "p_cta_row",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Item"
+				},
+				{
+					"id": "button_href",
+					"control": "url",
+					"label": "Link",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/signature-journey/"
+					},
+					"esc": "url",
+					"group": "p_btn",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Button"
+				},
+				{
+					"id": "label_text",
+					"control": "textarea",
+					"label": "Label",
+					"description": "Inline formatting tags are preserved.",
+					"default": "<span>Plan Your Trip</span>",
+					"esc": "post",
+					"group": "p_btn_label",
+					"sort": 0,
+					"part_label": "Label"
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [
+		{
+			"id": "image_css_width",
+			"control": "text",
+			"label": "Width",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Image"
+		},
+		{
+			"id": "image_css_height",
+			"control": "text",
+			"label": "Height",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Image"
+		},
+		{
+			"id": "image_css_object_fit",
+			"control": "select",
+			"label": "Object Fit",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "cover",
+			"options": [
+				"cover",
+				"contain",
+				"fill",
+				"none",
+				"scale-down"
+			],
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Image"
+		},
+		{
+			"id": "image_css_object_position",
+			"control": "text",
+			"label": "Object Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "center 25%",
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Image"
+		},
+		{
+			"id": "video_css_position",
+			"control": "select",
+			"label": "Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "absolute",
+			"options": [
+				"static",
+				"relative",
+				"absolute",
+				"fixed",
+				"sticky"
+			],
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_css_inset",
+			"control": "text",
+			"label": "Inset",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_css_width",
+			"control": "text",
+			"label": "Width",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_css_height",
+			"control": "text",
+			"label": "Height",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_css_object_fit",
+			"control": "select",
+			"label": "Object Fit",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "cover",
+			"options": [
+				"cover",
+				"contain",
+				"fill",
+				"none",
+				"scale-down"
+			],
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_css_object_position",
+			"control": "text",
+			"label": "Object Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "center 25%",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_css_opacity",
+			"control": "text",
+			"label": "Opacity",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_css_transition",
+			"control": "text",
+			"label": "Transition",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "opacity .8s ease",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Video"
+		}
+	],
+	"media_controls": [
+		{
+			"id": "video_autoplay",
+			"control": "switcher",
+			"label": "Autoplay",
+			"description": "Browsers only allow autoplay while the video is muted.",
+			"default": "yes",
+			"flag_attr": "autoplay",
+			"flag_prefix": "\n      ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_muted",
+			"control": "switcher",
+			"label": "Mute",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "muted",
+			"flag_prefix": "\n      ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_playsinline",
+			"control": "switcher",
+			"label": "Play On Mobile",
+			"description": "Without this, iOS opens the video fullscreen instead of playing it in place.",
+			"default": "yes",
+			"flag_attr": "playsinline",
+			"flag_prefix": "\n      ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_loop",
+			"control": "switcher",
+			"label": "Loop",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "loop",
+			"flag_prefix": "\n      ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_controls",
+			"control": "switcher",
+			"label": "Player Controls",
+			"description": "",
+			"default": "",
+			"flag_attr": "controls",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_disablepictureinpicture",
+			"control": "switcher",
+			"label": "Disable Picture-in-Picture",
+			"description": "",
+			"default": "",
+			"flag_attr": "disablepictureinpicture",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_preload",
+			"control": "select",
+			"label": "Preload",
+			"default": "auto",
+			"options": [
+				"auto",
+				"metadata",
+				"none"
+			],
+			"esc": "attr",
+			"group": "media",
+			"tab": "media",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "video_source_type",
+			"control": "text",
+			"label": "MIME Type",
+			"default": "video/mp4",
+			"esc": "attr",
+			"group": "media",
+			"tab": "media",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_hero_bg",
+			"label": "Background",
+			"short_label": "Background",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-hero-bg",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_img",
+			"label": "Image",
+			"short_label": "Image",
+			"parent_label": "Background",
+			"sample": "",
+			"selector": "img",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_video",
+			"label": "Video",
+			"short_label": "Video",
+			"parent_label": "Background",
+			"sample": "",
+			"selector": "video",
+			"tag": "video",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_source",
+			"label": "Video Source",
+			"short_label": "Video Source",
+			"parent_label": "Video",
+			"sample": "",
+			"selector": "source",
+			"tag": "source",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_inner",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".inner",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_h1",
+			"label": "Heading",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "Breathe South Africa Differently.",
+			"selector": "h1",
+			"tag": "h1",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sub",
+			"label": "Subtitle",
+			"short_label": "Subtitle",
+			"parent_label": "",
+			"sample": "Premier tailor-made journeys for those ready to…",
+			"selector": ".sub",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_cta_row",
+			"label": "Item",
+			"short_label": "Item",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".cta-row",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_btn",
+			"label": "Button",
+			"short_label": "Button",
+			"parent_label": "Item",
+			"sample": "",
+			"selector": ".btn",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_svg",
+			"label": "Icon",
+			"short_label": "Icon",
+			"parent_label": "Button",
+			"sample": "",
+			"selector": "svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_btn_label",
+			"label": "Label",
+			"short_label": "Label",
+			"parent_label": "Button",
+			"sample": "Plan Your Trip",
+			"selector": ".btn-label",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_btn_label_span",
+			"label": "Text",
+			"short_label": "Text",
+			"parent_label": "Label",
+			"sample": "Plan Your Trip",
+			"selector": ".btn-label > span",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [
+		{
+			"id": "image_inline_style",
+			"control": "inline_style_group",
+			"declarations": [
+				{
+					"prefix": "width:",
+					"id": "image_css_width"
+				},
+				{
+					"prefix": ";height:",
+					"id": "image_css_height"
+				},
+				{
+					"prefix": ";object-fit:",
+					"id": "image_css_object_fit"
+				},
+				{
+					"prefix": ";object-position:",
+					"id": "image_css_object_position"
+				}
+			],
+			"tail": ";",
+			"internal": true
+		},
+		{
+			"id": "video_inline_style",
+			"control": "inline_style_group",
+			"declarations": [
+				{
+					"prefix": "position:",
+					"id": "video_css_position"
+				},
+				{
+					"prefix": ";inset:",
+					"id": "video_css_inset"
+				},
+				{
+					"prefix": ";width:",
+					"id": "video_css_width"
+				},
+				{
+					"prefix": ";height:",
+					"id": "video_css_height"
+				},
+				{
+					"prefix": ";object-fit:",
+					"id": "video_css_object_fit"
+				},
+				{
+					"prefix": ";object-position:",
+					"id": "video_css_object_position"
+				},
+				{
+					"prefix": ";opacity:",
+					"id": "video_css_opacity"
+				},
+				{
+					"prefix": ";transition:",
+					"id": "video_css_transition"
+				}
+			],
+			"tail": ";",
+			"internal": true
+		}
+	],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Umoya Landing Hero",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-1.jpg"
+			},
+			"esc": "url",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "Umoya Afrika Tours - South Africa journey",
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_css_width",
+			"control": "text",
+			"label": "Width",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "image_css_height",
+			"control": "text",
+			"label": "Height",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "image_css_object_fit",
+			"control": "select",
+			"label": "Object Fit",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "cover",
+			"options": [
+				"cover",
+				"contain",
+				"fill",
+				"none",
+				"scale-down"
+			],
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "image_css_object_position",
+			"control": "text",
+			"label": "Object Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "center 25%",
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_autoplay",
+			"control": "switcher",
+			"label": "Autoplay",
+			"description": "Browsers only allow autoplay while the video is muted.",
+			"default": "yes",
+			"flag_attr": "autoplay",
+			"flag_prefix": "\n      ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_muted",
+			"control": "switcher",
+			"label": "Mute",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "muted",
+			"flag_prefix": "\n      ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_playsinline",
+			"control": "switcher",
+			"label": "Play On Mobile",
+			"description": "Without this, iOS opens the video fullscreen instead of playing it in place.",
+			"default": "yes",
+			"flag_attr": "playsinline",
+			"flag_prefix": "\n      ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_loop",
+			"control": "switcher",
+			"label": "Loop",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "loop",
+			"flag_prefix": "\n      ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_controls",
+			"control": "switcher",
+			"label": "Player Controls",
+			"description": "",
+			"default": "",
+			"flag_attr": "controls",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_disablepictureinpicture",
+			"control": "switcher",
+			"label": "Disable Picture-in-Picture",
+			"description": "",
+			"default": "",
+			"flag_attr": "disablepictureinpicture",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_preload",
+			"control": "select",
+			"label": "Preload",
+			"default": "auto",
+			"options": [
+				"auto",
+				"metadata",
+				"none"
+			],
+			"esc": "attr",
+			"group": "media",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_poster",
+			"control": "media",
+			"label": "Poster",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-1.jpg"
+			},
+			"esc": "url",
+			"group": "p_video",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "video_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Umoya Afrika Tours - South Africa journey",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "video_css_position",
+			"control": "select",
+			"label": "Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "absolute",
+			"options": [
+				"static",
+				"relative",
+				"absolute",
+				"fixed",
+				"sticky"
+			],
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_css_inset",
+			"control": "text",
+			"label": "Inset",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_css_width",
+			"control": "text",
+			"label": "Width",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_css_height",
+			"control": "text",
+			"label": "Height",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_css_object_fit",
+			"control": "select",
+			"label": "Object Fit",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "cover",
+			"options": [
+				"cover",
+				"contain",
+				"fill",
+				"none",
+				"scale-down"
+			],
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_css_object_position",
+			"control": "text",
+			"label": "Object Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "center 25%",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_css_opacity",
+			"control": "text",
+			"label": "Opacity",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_css_transition",
+			"control": "text",
+			"label": "Transition",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "opacity .8s ease",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_source_src",
+			"control": "url",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya_content_1.mp4"
+			},
+			"esc": "url",
+			"group": "p_source",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "video_source_type",
+			"control": "text",
+			"label": "MIME Type",
+			"default": "video/mp4",
+			"esc": "attr",
+			"group": "media",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "heading_text",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Breathe South Africa Differently.",
+			"esc": "post",
+			"group": "p_h1",
+			"sort": 0
+		},
+		{
+			"id": "subtitle_text",
+			"control": "textarea",
+			"label": "Subtitle",
+			"description": "",
+			"default": "Premier tailor-made journeys for those ready to experience South Africa through rare and exclusive access.",
+			"esc": "post",
+			"group": "p_sub",
+			"sort": 0
+		},
+		{
+			"id": "item_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Primary action",
+			"esc": "attr",
+			"group": "p_cta_row",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "button_href",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/signature-journey/"
+			},
+			"esc": "url",
+			"group": "p_btn",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "label_text",
+			"control": "textarea",
+			"label": "Label",
+			"description": "Inline formatting tags are preserved.",
+			"default": "<span>Plan Your Trip</span>",
+			"esc": "post",
+			"group": "p_btn_label",
+			"sort": 0
+		}
+	]
+}

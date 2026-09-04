@@ -1,0 +1,1720 @@
+{
+	"key": "home_signature_journey",
+	"name": "umoya-home-signature-journey",
+	"title": "Home Signature Journey",
+	"description": "Our Flagship Experience: stats plus the three-chapter carousel.",
+	"icon": "eicon-slider-push",
+	"category": "umoya-homepage",
+	"source": "homepage-revamp/homepage-section-03-signature-journey.html",
+	"class_name": "Home_Signature_Journey",
+	"widget_file": "widgets/class-home-signature-journey.php",
+	"root_selector": "#umoya-journey",
+	"template": "templates/sections/home_signature_journey.php",
+	"style": {
+		"handle": "uew-umoya-home-signature-journey",
+		"file": "assets/css/sections/home_signature_journey.css"
+	},
+	"script": {
+		"handle": "uew-umoya-home-signature-journey",
+		"file": "assets/js/sections/home_signature_journey.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"home",
+		"signature",
+		"journey"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "olive",
+			"value": "#708238",
+			"kind": "color",
+			"label": "Olive"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Introducing the Umoya Signature Journey",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_journey_kicker",
+			"label": "Content",
+			"sample": "Our Flagship Experience",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Our Flagship Experience",
+					"esc": "post",
+					"group": "p_umoya_journey_kicker",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "textarea",
+					"label": "Title",
+					"description": "Inline formatting tags are preserved.",
+					"default": "Our Signature Journey: </br> Into the Heart of <em>Southern Africa</em>",
+					"esc": "post",
+					"group": "p_umoya_journey_heading",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "stats_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Signature Journey facts",
+					"esc": "attr",
+					"group": "p_umoya_journey_stats",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Stats"
+				},
+				{
+					"id": "slide_aria_label",
+					"control": "text",
+					"label": "Slide",
+					"default": "Signature Journey image slideshow",
+					"esc": "attr",
+					"group": "p_umoya_journey_carousel",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Slide"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_journey_image",
+			"label": "Slide",
+			"sample": "",
+			"region_label": "Slide",
+			"controls": [
+				{
+					"id": "image_src",
+					"control": "media",
+					"label": "Source",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6901.png"
+					},
+					"esc": "url",
+					"group": "p_umoya_journey_image",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "image_alt",
+					"control": "text",
+					"label": "Alt Text",
+					"default": "Johannesburg and Soweto — history and culture",
+					"esc": "attr",
+					"group": "p_umoya_journey_image",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "eyebrow_text_2",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Chapter 1: History &amp; Culture",
+					"esc": "post",
+					"group": "p_umoya_journey_slide_cap_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Slide Eyebrow"
+				},
+				{
+					"id": "title_text_2",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "Johannesburg &amp; Soweto",
+					"esc": "post",
+					"group": "p_umoya_journey_slide_cap_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Slide Title"
+				},
+				{
+					"id": "dot_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Choose slideshow image",
+					"esc": "attr",
+					"group": "p_umoya_journey_dots",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Slide Dot"
+				},
+				{
+					"id": "dot_aria_label_2",
+					"control": "text",
+					"label": "Dot",
+					"default": "Show image 1",
+					"esc": "attr",
+					"group": "p_umoya_journey_dot",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Dot"
+				},
+				{
+					"id": "text_text",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "The Umoya Signature Journey moves through three immersive chapters, from the living history of Johannesburg and Soweto, where you meet the people who lived the story, to the wild beauty of the Sabi Sand, where Africa's great animals roam freely across land returned to its rightful community. It ends at the dramatic meeting of mountain and ocean in Cape Town, with optional extensions to the thundering spectacle of Victoria Falls and the elephant herds of Chobe. A journey shaped with intention, moving through heritage, wilderness, and wonder, and offering a depth of access most travelers never find.",
+					"esc": "post",
+					"group": "p_umoya_journey_body",
+					"sort": 0,
+					"part_label": "Text"
+				},
+				{
+					"id": "list_aria_label",
+					"control": "text",
+					"label": "List",
+					"default": "Itinerary highlights",
+					"esc": "attr",
+					"group": "p_umoya_journey_highlights",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "List"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_journey_highlight_span",
+			"label": "Item Text 2",
+			"sample": "Itinerary at a Glance: Johannesburg & Soweto, t…",
+			"region_label": "Item",
+			"controls": [
+				{
+					"id": "text_text_2",
+					"control": "textarea",
+					"label": "Text",
+					"description": "Inline formatting tags are preserved.",
+					"default": "<strong>Itinerary at a Glance:</strong> Johannesburg &amp; Soweto, the Sabi Sand, and Cape Town — with optional extensions to Victoria Falls and Chobe.",
+					"esc": "post",
+					"group": "p_umoya_journey_highlight_span",
+					"sort": 0,
+					"part_label": "Item Text 2"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_journey_cta",
+			"label": "Button",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Text",
+					"default": "View the Journey",
+					"esc": "post",
+					"group": "p_umoya_journey_cta",
+					"sort": 0,
+					"part_label": "Button"
+				},
+				{
+					"id": "button_href",
+					"control": "url",
+					"label": "Link",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/signature-journey/"
+					},
+					"esc": "url",
+					"group": "p_umoya_journey_cta",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Button"
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [
+		{
+			"id": "dot_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_journey_dot",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Dot"
+		},
+		{
+			"id": "dot_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"behaviour_controls": [
+		{
+			"id": "image_loading",
+			"control": "select",
+			"label": "Loading",
+			"default": "eager",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_decoding",
+			"control": "select",
+			"label": "Decoding",
+			"default": "async",
+			"options": [
+				"sync",
+				"async",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_fetchpriority",
+			"control": "select",
+			"label": "Fetchpriority",
+			"default": "high",
+			"options": [
+				"high",
+				"low",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "container_data_journey_cap",
+			"control": "text",
+			"label": "Journey Cap",
+			"default": "0",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "dot_data_journey_dot",
+			"control": "text",
+			"label": "Journey Dot",
+			"default": "0",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"inline_style_controls": [
+		{
+			"id": "anchor_css_display",
+			"control": "text",
+			"label": "Display",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "block",
+			"esc": "attr",
+			"group": "p_umoya_journey_anchor",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Anchor"
+		},
+		{
+			"id": "anchor_css_height",
+			"control": "text",
+			"label": "Height",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_umoya_journey_anchor",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Anchor"
+		},
+		{
+			"id": "anchor_css_scroll_margin_top",
+			"control": "text",
+			"label": "Scroll Margin Top",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "76px",
+			"esc": "attr",
+			"group": "p_umoya_journey_anchor",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Anchor"
+		}
+	],
+	"media_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_div_umoya_journey_stat",
+			"label": "Stats",
+			"item_label": "{{{ dt }}}",
+			"controls": [
+				{
+					"id": "dt",
+					"control": "text",
+					"label": "Dt",
+					"esc": "post",
+					"default": "Days"
+				},
+				{
+					"id": "dd",
+					"control": "text",
+					"label": "Dd",
+					"esc": "post",
+					"default": "10"
+				}
+			],
+			"rows": [
+				{
+					"dt": "Days",
+					"dd": "10"
+				},
+				{
+					"dt": "Immersive Chapters",
+					"dd": "3"
+				},
+				{
+					"dt": "Optional Extensions",
+					"dd": "2"
+				},
+				{
+					"dt": "Signature Moments",
+					"dd": "7"
+				}
+			],
+			"selector": ".umoya-journey-stat"
+		},
+		{
+			"id": "rep_img_umoya_journey_image",
+			"label": "Images",
+			"item_label": "{{{ alt }}}",
+			"controls": [
+				{
+					"id": "src",
+					"control": "media",
+					"label": "Src",
+					"esc": "url",
+					"default": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_home_sabi_sand.jpg"
+				},
+				{
+					"id": "alt",
+					"control": "text",
+					"label": "Alt",
+					"esc": "attr",
+					"default": "Safari game drives in the Sabi Sand"
+				},
+				{
+					"id": "loading",
+					"control": "text",
+					"label": "Loading",
+					"esc": "attr",
+					"default": "eager"
+				},
+				{
+					"id": "decoding",
+					"control": "text",
+					"label": "Decoding",
+					"esc": "attr",
+					"default": "async"
+				}
+			],
+			"rows": [
+				{
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_home_sabi_sand.jpg",
+					"alt": "Safari game drives in the Sabi Sand",
+					"loading": "eager",
+					"decoding": "async"
+				},
+				{
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img166276458.jpeg",
+					"alt": "Cape Town — wine tasting in the Cape Winelands",
+					"loading": "eager",
+					"decoding": "async"
+				}
+			],
+			"selector": ".umoya-journey-image"
+		},
+		{
+			"id": "rep_div_umoya_journey_slide_cap",
+			"label": "Containers",
+			"item_label": "{{{ slide_kicker }}}",
+			"controls": [
+				{
+					"id": "slide_kicker",
+					"control": "text",
+					"label": "Slide Kicker",
+					"esc": "post",
+					"default": "Chapter 2: Safari Game Drives"
+				},
+				{
+					"id": "slide_title",
+					"control": "text",
+					"label": "Slide Title",
+					"esc": "post",
+					"default": "The Sabi Sand"
+				}
+			],
+			"rows": [
+				{
+					"slide_kicker": "Chapter 2: Safari Game Drives",
+					"slide_title": "The Sabi Sand"
+				},
+				{
+					"slide_kicker": "Chapter 3: The Cape",
+					"slide_title": "Cape Town"
+				}
+			],
+			"selector": ".umoya-journey-slide-cap"
+		},
+		{
+			"id": "rep_button_umoya_journey_dot",
+			"label": "Dots",
+			"item_label": "{{{ type }}}",
+			"controls": [
+				{
+					"id": "type",
+					"control": "text",
+					"label": "Type",
+					"esc": "attr",
+					"default": "button"
+				},
+				{
+					"id": "aria_label",
+					"control": "text",
+					"label": "Aria Label",
+					"esc": "attr",
+					"default": "Show image 2"
+				},
+				{
+					"id": "aria_current",
+					"control": "text",
+					"label": "Aria Current",
+					"esc": "attr",
+					"default": "false"
+				}
+			],
+			"rows": [
+				{
+					"type": "button",
+					"aria_label": "Show image 2",
+					"aria_current": "false"
+				},
+				{
+					"type": "button",
+					"aria_label": "Show image 3",
+					"aria_current": "false"
+				}
+			],
+			"selector": ".umoya-journey-dot"
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_umoya_journey_anchor",
+			"label": "Anchor",
+			"short_label": "Anchor",
+			"parent_label": "",
+			"sample": "",
+			"selector": "#umoya-journey-anchor",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": true,
+			"repeater": null
+		},
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_wrap",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-journey-wrap",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_intro",
+			"label": "Content 1",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-journey-intro",
+			"tag": "header",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_intro_copy",
+			"label": "Content 2",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-journey-intro-copy",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_kicker",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "Our Flagship Experience",
+			"selector": ".umoya-journey-kicker",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_heading",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "",
+			"sample": "Our Signature Journey: Into the Heart of Southe…",
+			"selector": ".umoya-journey-heading",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_br",
+			"label": "Br",
+			"short_label": "Br",
+			"parent_label": "Title",
+			"sample": "",
+			"selector": "br",
+			"tag": "br",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_em",
+			"label": "Emphasis",
+			"short_label": "Emphasis",
+			"parent_label": "Title",
+			"sample": "Southern Africa",
+			"selector": "em",
+			"tag": "em",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_stats",
+			"label": "Stats",
+			"short_label": "Stats",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-journey-stats",
+			"tag": "dl",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_stat",
+			"label": "Stat",
+			"short_label": "Stat",
+			"parent_label": "Stats",
+			"sample": "",
+			"selector": ".umoya-journey-stat",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": "div_umoya_journey_stat"
+		},
+		{
+			"id": "p_umoya_journey_stat_dt_nth_of_type_1",
+			"label": "Term",
+			"short_label": "Term",
+			"parent_label": "Stat",
+			"sample": "Days",
+			"selector": ".umoya-journey-stat > dt:nth-of-type(1)",
+			"tag": "dt",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_stat_dd_nth_of_type_1",
+			"label": "Definition",
+			"short_label": "Definition",
+			"parent_label": "Stat",
+			"sample": "10",
+			"selector": ".umoya-journey-stat > dd:nth-of-type(1)",
+			"tag": "dd",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_carousel",
+			"label": "Slide",
+			"short_label": "Slide",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-journey-carousel",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_image",
+			"label": "Image",
+			"short_label": "Image",
+			"parent_label": "Slide",
+			"sample": "",
+			"selector": ".umoya-journey-image",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_slide_cap",
+			"label": "Slide Container",
+			"short_label": "Container",
+			"parent_label": "Slide",
+			"sample": "",
+			"selector": ".umoya-journey-slide-cap",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_slide_cap_span_nth_of_type_1",
+			"label": "Slide Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "Slide",
+			"sample": "Chapter 1: History & Culture",
+			"selector": ".umoya-journey-slide-cap > span:nth-of-type(1)",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_slide_cap_p_nth_of_type_1",
+			"label": "Slide Title",
+			"short_label": "Title",
+			"parent_label": "Slide",
+			"sample": "Johannesburg & Soweto",
+			"selector": ".umoya-journey-slide-cap > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_dots",
+			"label": "Slide Dot",
+			"short_label": "Dot",
+			"parent_label": "Slide",
+			"sample": "",
+			"selector": ".umoya-journey-dots",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_dot",
+			"label": "Dot",
+			"short_label": "Dot",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-journey-dot",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_copy",
+			"label": "Content 3",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-journey-copy",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_body",
+			"label": "Text",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "The Umoya Signature Journey moves through three…",
+			"selector": ".umoya-journey-body",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_highlights",
+			"label": "List",
+			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-journey-highlights",
+			"tag": "ul",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_highlight",
+			"label": "Item",
+			"short_label": "Item",
+			"parent_label": "List",
+			"sample": "",
+			"selector": ".umoya-journey-highlight",
+			"tag": "li",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_check",
+			"label": "Item Text 1",
+			"short_label": "Text",
+			"parent_label": "Item",
+			"sample": "",
+			"selector": ".umoya-journey-check",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_check_svg",
+			"label": "Text Icon",
+			"short_label": "Icon",
+			"parent_label": "Text",
+			"sample": "",
+			"selector": ".umoya-journey-check > svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_highlight_span",
+			"label": "Item Text 2",
+			"short_label": "Text",
+			"parent_label": "Item",
+			"sample": "Itinerary at a Glance: Johannesburg & Soweto, t…",
+			"selector": ".umoya-journey-highlight > span",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_strong",
+			"label": "Strong",
+			"short_label": "Strong",
+			"parent_label": "Text",
+			"sample": "Itinerary at a Glance:",
+			"selector": "strong",
+			"tag": "strong",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_cta",
+			"label": "Button",
+			"short_label": "Button",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-journey-cta",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_journey_cta_svg",
+			"label": "Button Icon",
+			"short_label": "Icon",
+			"parent_label": "Button",
+			"sample": "",
+			"selector": ".umoya-journey-cta > svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [
+		{
+			"id": "anchor_inline_style",
+			"control": "inline_style_group",
+			"declarations": [
+				{
+					"prefix": "display:",
+					"id": "anchor_css_display"
+				},
+				{
+					"prefix": ";height:",
+					"id": "anchor_css_height"
+				},
+				{
+					"prefix": ";scroll-margin-top:",
+					"id": "anchor_css_scroll_margin_top"
+				}
+			],
+			"tail": ";",
+			"internal": true
+		}
+	],
+	"fields": [
+		{
+			"id": "anchor_css_display",
+			"control": "text",
+			"label": "Display",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "block",
+			"esc": "attr",
+			"group": "p_umoya_journey_anchor",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "anchor_css_height",
+			"control": "text",
+			"label": "Height",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_umoya_journey_anchor",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "anchor_css_scroll_margin_top",
+			"control": "text",
+			"label": "Scroll Margin Top",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "76px",
+			"esc": "attr",
+			"group": "p_umoya_journey_anchor",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Introducing the Umoya Signature Journey",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Our Flagship Experience",
+			"esc": "post",
+			"group": "p_umoya_journey_kicker",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "textarea",
+			"label": "Title",
+			"description": "Inline formatting tags are preserved.",
+			"default": "Our Signature Journey: </br> Into the Heart of <em>Southern Africa</em>",
+			"esc": "post",
+			"group": "p_umoya_journey_heading",
+			"sort": 0
+		},
+		{
+			"id": "stats_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Signature Journey facts",
+			"esc": "attr",
+			"group": "p_umoya_journey_stats",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "slide_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Signature Journey image slideshow",
+			"esc": "attr",
+			"group": "p_umoya_journey_carousel",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6901.png"
+			},
+			"esc": "url",
+			"group": "p_umoya_journey_image",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "Johannesburg and Soweto — history and culture",
+			"esc": "attr",
+			"group": "p_umoya_journey_image",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading",
+			"control": "select",
+			"label": "Loading",
+			"default": "eager",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "image_decoding",
+			"control": "select",
+			"label": "Decoding",
+			"default": "async",
+			"options": [
+				"sync",
+				"async",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "image_fetchpriority",
+			"control": "select",
+			"label": "Fetchpriority",
+			"default": "high",
+			"options": [
+				"high",
+				"low",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "container_data_journey_cap",
+			"control": "text",
+			"label": "Journey Cap",
+			"default": "0",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text_2",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Chapter 1: History &amp; Culture",
+			"esc": "post",
+			"group": "p_umoya_journey_slide_cap_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "title_text_2",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "Johannesburg &amp; Soweto",
+			"esc": "post",
+			"group": "p_umoya_journey_slide_cap_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "dot_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Choose slideshow image",
+			"esc": "attr",
+			"group": "p_umoya_journey_dots",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "dot_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_journey_dot",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "dot_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "dot_data_journey_dot",
+			"control": "text",
+			"label": "Journey Dot",
+			"default": "0",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "dot_aria_label_2",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Show image 1",
+			"esc": "attr",
+			"group": "p_umoya_journey_dot",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "text_text",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "The Umoya Signature Journey moves through three immersive chapters, from the living history of Johannesburg and Soweto, where you meet the people who lived the story, to the wild beauty of the Sabi Sand, where Africa's great animals roam freely across land returned to its rightful community. It ends at the dramatic meeting of mountain and ocean in Cape Town, with optional extensions to the thundering spectacle of Victoria Falls and the elephant herds of Chobe. A journey shaped with intention, moving through heritage, wilderness, and wonder, and offering a depth of access most travelers never find.",
+			"esc": "post",
+			"group": "p_umoya_journey_body",
+			"sort": 0
+		},
+		{
+			"id": "list_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Itinerary highlights",
+			"esc": "attr",
+			"group": "p_umoya_journey_highlights",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "text_text_2",
+			"control": "textarea",
+			"label": "Text",
+			"description": "Inline formatting tags are preserved.",
+			"default": "<strong>Itinerary at a Glance:</strong> Johannesburg &amp; Soweto, the Sabi Sand, and Cape Town — with optional extensions to Victoria Falls and Chobe.",
+			"esc": "post",
+			"group": "p_umoya_journey_highlight_span",
+			"sort": 0
+		},
+		{
+			"id": "button_text",
+			"control": "text",
+			"label": "Text",
+			"default": "View the Journey",
+			"esc": "post",
+			"group": "p_umoya_journey_cta",
+			"sort": 0
+		},
+		{
+			"id": "button_href",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/signature-journey/"
+			},
+			"esc": "url",
+			"group": "p_umoya_journey_cta",
+			"tab": "content",
+			"sort": 1
+		}
+	]
+}

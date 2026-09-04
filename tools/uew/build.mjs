@@ -19,10 +19,11 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { execFileSync } from 'child_process';
 
-import { createDocument, outerRange } from './lib/html.mjs';
+import { splitSection, readSectionFile } from './lib/split.mjs';
 import { deriveSection } from './lib/derive.mjs';
 import { emitTemplate, emitScript, emitCss, emitWidgetClass, emitSchema, guardPhpNewlines } from './lib/emit.mjs';
 import * as fcRegistry from './sections/founders-circle.mjs';
+import * as homepageRegistry from './sections/homepage.mjs';
 
 const here = path.dirname( fileURLToPath( import.meta.url ) );
 const repoRoot = path.resolve( here, '..', '..' );
@@ -36,7 +37,7 @@ const only = ( args.find( ( a ) => a.startsWith( '--only=' ) ) || '' ).replace( 
 const onlyKeys = only ? new Set( only.split( ',' ).map( ( s ) => s.trim() ) ) : null;
 const verify = ! args.includes( '--no-verify' );
 
-const registries = [ fcRegistry ];
+const registries = [ fcRegistry, homepageRegistry ];
 
 /* ------------------------------------------------------------------- utils */
 
@@ -58,48 +59,6 @@ function writeFile( relativePath, contents ) {
 		.join( '\n' );
 	fs.writeFileSync( full, normalized, 'utf8' );
 	return normalized;
-}
-
-/**
- * Pull `<style>` and `<script>` blocks out of the section, using parser-reported
- * offsets rather than a regex -- a regex for `<style>` is exactly the failure
- * that ate the footer's opt-out popup (CLAUDE.md phase 21), because it cannot
- * tell a real tag from one named inside a comment.
- *
- * Each block is removed together with the whitespace-only remainder of its own
- * line, so the leftover markup has no orphan blank lines. That trimmed markup is
- * the contract: it is what the template must reproduce exactly.
- */
-function splitSection( raw ) {
-	const doc = createDocument( raw );
-	const styles = [];
-	const scripts = [];
-	const edits = [];
-
-	for ( const { node } of doc.entries ) {
-		const tag = node.tagName.toLowerCase();
-		if ( tag !== 'style' && tag !== 'script' ) continue;
-		// Leave SVG-embedded style blocks alone; they belong to the graphic.
-		const range = outerRange( node );
-		const inner = ( node.childNodes || [] ).map( ( c ) => c.value || '' ).join( '' );
-		( tag === 'style' ? styles : scripts ).push( inner.trim() );
-
-		let start = range.start;
-		while ( start > 0 && ( raw[ start - 1 ] === ' ' || raw[ start - 1 ] === '\t' ) ) start -= 1;
-		let end = range.end;
-		while ( end < raw.length && ( raw[ end ] === ' ' || raw[ end ] === '\t' ) ) end += 1;
-		if ( raw[ end ] === '\n' ) end += 1;
-		if ( start > 0 && raw[ start - 1 ] === '\n' && raw[ end ] === '\n' ) end += 1;
-
-		edits.push( { start, end, replacement: '' } );
-	}
-
-	let markup = raw;
-	for ( const edit of edits.sort( ( a, b ) => b.start - a.start ) ) {
-		markup = markup.slice( 0, edit.start ) + edit.replacement + markup.slice( edit.end );
-	}
-
-	return { markup: markup.trim() + '\n', css: styles.join( '\n\n' ), scripts };
 }
 
 /* ----------------------------------------------------------------- panels */

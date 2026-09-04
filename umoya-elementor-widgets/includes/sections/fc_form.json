@@ -272,7 +272,7 @@
 					"part_label": "Form Text"
 				},
 				{
-					"id": "field_placeholder",
+					"id": "anchor_placeholder",
 					"control": "text",
 					"label": "Placeholder",
 					"default": "First name",
@@ -280,7 +280,7 @@
 					"group": "p_fc_f2_field_input_nth_of_type_1",
 					"tab": "content",
 					"sort": 1,
-					"part_label": "Form Field 3"
+					"part_label": "Form Anchor"
 				},
 				{
 					"id": "select_aria_label",
@@ -305,15 +305,15 @@
 					"part_label": "Field Label 2"
 				},
 				{
-					"id": "message_placeholder",
+					"id": "anchor_placeholder_6",
 					"control": "text",
-					"label": "Message",
+					"label": "Field Anchor",
 					"default": "Tell us about your travel interests, what you hope to experience, and what draws you to South Africa.",
 					"esc": "attr",
 					"group": "p_textarea",
 					"tab": "content",
 					"sort": 1,
-					"part_label": "Message"
+					"part_label": "Field Anchor"
 				}
 			],
 			"merged": true
@@ -386,7 +386,7 @@
 					"sort": 0
 				},
 				{
-					"id": "field_placeholder_2",
+					"id": "anchor_placeholder_2",
 					"control": "text",
 					"label": "Placeholder",
 					"default": "Last name",
@@ -422,7 +422,7 @@
 					"sort": 0
 				},
 				{
-					"id": "field_placeholder_3",
+					"id": "anchor_placeholder_3",
 					"control": "text",
 					"label": "Placeholder",
 					"default": "your@email.com",
@@ -442,7 +442,7 @@
 					"sort": 0
 				},
 				{
-					"id": "field_placeholder_4",
+					"id": "anchor_placeholder_4",
 					"control": "text",
 					"label": "Placeholder",
 					"default": "+1 (000) 000-0000",
@@ -481,7 +481,7 @@
 					"sort": 0
 				},
 				{
-					"id": "field_placeholder_5",
+					"id": "anchor_placeholder_5",
 					"control": "text",
 					"label": "Placeholder",
 					"default": "Your city",
@@ -610,7 +610,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_name",
+			"id": "anchor_name",
 			"control": "text",
 			"label": "Field Name",
 			"default": "FNAME",
@@ -621,7 +621,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_name_2",
+			"id": "anchor_name_2",
 			"control": "text",
 			"label": "Field Name",
 			"default": "LNAME",
@@ -632,7 +632,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_name_3",
+			"id": "anchor_name_3",
 			"control": "text",
 			"label": "Field Name",
 			"default": "EMAIL",
@@ -643,7 +643,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_name_4",
+			"id": "anchor_name_4",
 			"control": "text",
 			"label": "Field Name",
 			"default": "PHONE",
@@ -665,7 +665,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_name_5",
+			"id": "anchor_name_5",
 			"control": "text",
 			"label": "Field Name",
 			"default": "MERGE3",
@@ -709,7 +709,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "message_name",
+			"id": "anchor_name_6",
 			"control": "text",
 			"label": "Field Name",
 			"default": "MERGE7",
@@ -793,7 +793,7 @@
 			"part_label": "Field Select"
 		},
 		{
-			"id": "field_required",
+			"id": "anchor_required",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -804,10 +804,10 @@
 			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": "Form Field 3"
+			"part_label": "Form Anchor"
 		},
 		{
-			"id": "field_disabled",
+			"id": "anchor_disabled",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -818,10 +818,10 @@
 			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": "Form Field 3"
+			"part_label": "Form Anchor"
 		},
 		{
-			"id": "field_readonly",
+			"id": "anchor_readonly",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -832,10 +832,10 @@
 			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": "Form Field 3"
+			"part_label": "Form Anchor"
 		},
 		{
-			"id": "field_checked",
+			"id": "anchor_checked",
 			"control": "switcher",
 			"label": "Checked By Default",
 			"description": "",
@@ -846,10 +846,10 @@
 			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": "Form Field 3"
+			"part_label": "Form Anchor"
 		},
 		{
-			"id": "field_type",
+			"id": "anchor_type",
 			"control": "text",
 			"label": "Type",
 			"default": "text",
@@ -860,7 +860,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_autocomplete",
+			"id": "anchor_autocomplete",
 			"control": "text",
 			"label": "Autocomplete",
 			"default": "given-name",
@@ -871,7 +871,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_required_2",
+			"id": "anchor_required_2",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -885,7 +885,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_disabled_2",
+			"id": "anchor_disabled_2",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -899,7 +899,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_readonly_2",
+			"id": "anchor_readonly_2",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -913,7 +913,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_checked_2",
+			"id": "anchor_checked_2",
 			"control": "switcher",
 			"label": "Checked By Default",
 			"description": "",
@@ -927,7 +927,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_type_2",
+			"id": "anchor_type_2",
 			"control": "text",
 			"label": "Type",
 			"default": "text",
@@ -938,7 +938,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_autocomplete_2",
+			"id": "anchor_autocomplete_2",
 			"control": "text",
 			"label": "Autocomplete",
 			"default": "family-name",
@@ -949,7 +949,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_required_3",
+			"id": "anchor_required_3",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -963,7 +963,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_disabled_3",
+			"id": "anchor_disabled_3",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -977,7 +977,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_readonly_3",
+			"id": "anchor_readonly_3",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -991,7 +991,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_checked_3",
+			"id": "anchor_checked_3",
 			"control": "switcher",
 			"label": "Checked By Default",
 			"description": "",
@@ -1005,7 +1005,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_type_3",
+			"id": "anchor_type_3",
 			"control": "text",
 			"label": "Type",
 			"default": "email",
@@ -1016,7 +1016,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_autocomplete_3",
+			"id": "anchor_autocomplete_3",
 			"control": "text",
 			"label": "Autocomplete",
 			"default": "email",
@@ -1027,7 +1027,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_required_4",
+			"id": "anchor_required_4",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -1041,7 +1041,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_disabled_4",
+			"id": "anchor_disabled_4",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -1055,7 +1055,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_readonly_4",
+			"id": "anchor_readonly_4",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -1069,7 +1069,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_checked_4",
+			"id": "anchor_checked_4",
 			"control": "switcher",
 			"label": "Checked By Default",
 			"description": "",
@@ -1083,7 +1083,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_type_4",
+			"id": "anchor_type_4",
 			"control": "text",
 			"label": "Type",
 			"default": "tel",
@@ -1094,7 +1094,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_autocomplete_4",
+			"id": "anchor_autocomplete_4",
 			"control": "text",
 			"label": "Autocomplete",
 			"default": "tel",
@@ -1147,7 +1147,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_required_5",
+			"id": "anchor_required_5",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -1161,7 +1161,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_disabled_5",
+			"id": "anchor_disabled_5",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -1175,7 +1175,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_readonly_5",
+			"id": "anchor_readonly_5",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -1189,7 +1189,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_checked_5",
+			"id": "anchor_checked_5",
 			"control": "switcher",
 			"label": "Checked By Default",
 			"description": "",
@@ -1203,7 +1203,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_type_5",
+			"id": "anchor_type_5",
 			"control": "text",
 			"label": "Type",
 			"default": "text",
@@ -1214,7 +1214,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "field_autocomplete_5",
+			"id": "anchor_autocomplete_5",
 			"control": "text",
 			"label": "Autocomplete",
 			"default": "address-level2",
@@ -1351,7 +1351,7 @@
 			"part_label": ""
 		},
 		{
-			"id": "message_required",
+			"id": "anchor_required_6",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -1362,10 +1362,10 @@
 			"group": "p_textarea",
 			"tab": "form",
 			"sort": 1,
-			"part_label": "Message"
+			"part_label": "Field Anchor"
 		},
 		{
-			"id": "message_disabled",
+			"id": "anchor_disabled_6",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -1376,10 +1376,10 @@
 			"group": "p_textarea",
 			"tab": "form",
 			"sort": 1,
-			"part_label": "Message"
+			"part_label": "Field Anchor"
 		},
 		{
-			"id": "message_readonly",
+			"id": "anchor_readonly_6",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -1390,7 +1390,7 @@
 			"group": "p_textarea",
 			"tab": "form",
 			"sort": 1,
-			"part_label": "Message"
+			"part_label": "Field Anchor"
 		},
 		{
 			"id": "button_disabled",
@@ -1506,7 +1506,7 @@
 	"repeaters": [
 		{
 			"id": "rep_input",
-			"label": "Input",
+			"label": "Fields",
 			"item_label": "{{{ type }}}",
 			"controls": [
 				{
@@ -1572,7 +1572,7 @@
 		},
 		{
 			"id": "rep_option",
-			"label": "Option",
+			"label": "Title Options",
 			"item_label": "{{{ label }}}",
 			"controls": [
 				{
@@ -1652,7 +1652,7 @@
 		},
 		{
 			"id": "rep_option_2",
-			"label": "Option 2",
+			"label": "Country Options",
 			"item_label": "{{{ label }}}",
 			"controls": [
 				{
@@ -3118,7 +3118,7 @@
 		},
 		{
 			"id": "rep_option_3",
-			"label": "Option 3",
+			"label": "Month Options",
 			"item_label": "{{{ label }}}",
 			"controls": [
 				{
@@ -3240,7 +3240,7 @@
 		},
 		{
 			"id": "rep_option_4",
-			"label": "Option 4",
+			"label": "Year Options",
 			"item_label": "{{{ label }}}",
 			"controls": [
 				{
@@ -3308,7 +3308,7 @@
 		},
 		{
 			"id": "rep_option_5",
-			"label": "Option 5",
+			"label": "Guests Options",
 			"item_label": "{{{ label }}}",
 			"controls": [
 				{
@@ -3382,7 +3382,7 @@
 		},
 		{
 			"id": "rep_label_fc_f2_consent_item",
-			"label": "Label Fc F2 Consent Item",
+			"label": "Items",
 			"item_label": "{{{ for }}}",
 			"controls": [
 				{
@@ -3482,6 +3482,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3508,6 +3509,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3534,6 +3536,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3558,6 +3561,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3584,6 +3588,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3610,6 +3615,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3637,6 +3643,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3664,6 +3671,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3691,6 +3699,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3717,6 +3726,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3743,6 +3753,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3769,6 +3780,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3796,6 +3808,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3823,6 +3836,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3850,6 +3864,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3877,6 +3892,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3903,6 +3919,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3929,6 +3946,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -3956,6 +3974,7 @@
 				"states"
 			],
 			"shared": true,
+			"absolute": false,
 			"repeater": "input"
 		},
 		{
@@ -3982,6 +4001,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4008,6 +4028,7 @@
 				"flex_item"
 			],
 			"shared": true,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4035,6 +4056,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4062,6 +4084,7 @@
 				"states"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4088,6 +4111,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": "option"
 		},
 		{
@@ -4114,6 +4138,7 @@
 				"flex_item"
 			],
 			"shared": true,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4141,12 +4166,13 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
 			"id": "p_fc_f2_field_input_nth_of_type_1",
-			"label": "Form Field 3",
-			"short_label": "Field",
+			"label": "Form Anchor",
+			"short_label": "Anchor",
 			"parent_label": "Form",
 			"sample": "",
 			"selector": ".fc-f2-field > input:nth-of-type(1)",
@@ -4168,6 +4194,7 @@
 				"states"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4194,6 +4221,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4221,6 +4249,7 @@
 				"states"
 			],
 			"shared": true,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4247,11 +4276,12 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": "option_3"
 		},
 		{
 			"id": "p_fc_f2_span_grow",
-			"label": "Form Field 4",
+			"label": "Form Field 3",
 			"short_label": "Field",
 			"parent_label": "Form",
 			"sample": "",
@@ -4273,6 +4303,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4300,12 +4331,13 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
 			"id": "p_textarea",
-			"label": "Message",
-			"short_label": "Message",
+			"label": "Field Anchor",
+			"short_label": "Anchor",
 			"parent_label": "Field",
 			"sample": "",
 			"selector": "textarea",
@@ -4327,6 +4359,7 @@
 				"states"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4353,6 +4386,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4380,12 +4414,13 @@
 				"transition"
 			],
 			"shared": true,
+			"absolute": false,
 			"repeater": "label_fc_f2_consent_item"
 		},
 		{
 			"id": "p_fc_f2_consent_item_input_nth_of_type_1",
-			"label": "Item Field",
-			"short_label": "Field",
+			"label": "Item Anchor",
+			"short_label": "Anchor",
 			"parent_label": "Item",
 			"sample": "",
 			"selector": ".fc-f2-consent-item > input:nth-of-type(1)",
@@ -4407,6 +4442,7 @@
 				"states"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4434,6 +4470,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4462,6 +4499,7 @@
 				"flex_container"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4489,6 +4527,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4515,6 +4554,7 @@
 				"flex_item"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4543,6 +4583,7 @@
 				"flex_container"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4570,6 +4611,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		},
 		{
@@ -4594,6 +4636,7 @@
 				"transition"
 			],
 			"shared": false,
+			"absolute": false,
 			"repeater": null
 		}
 	],
@@ -4910,7 +4953,7 @@
 			"sort": 0
 		},
 		{
-			"id": "field_required",
+			"id": "anchor_required",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -4923,7 +4966,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_disabled",
+			"id": "anchor_disabled",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -4936,7 +4979,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_readonly",
+			"id": "anchor_readonly",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -4949,7 +4992,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_checked",
+			"id": "anchor_checked",
 			"control": "switcher",
 			"label": "Checked By Default",
 			"description": "",
@@ -4962,7 +5005,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_type",
+			"id": "anchor_type",
 			"control": "text",
 			"label": "Type",
 			"default": "text",
@@ -4972,7 +5015,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_name",
+			"id": "anchor_name",
 			"control": "text",
 			"label": "Field Name",
 			"default": "FNAME",
@@ -4982,7 +5025,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_placeholder",
+			"id": "anchor_placeholder",
 			"control": "text",
 			"label": "Placeholder",
 			"default": "First name",
@@ -4992,7 +5035,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_autocomplete",
+			"id": "anchor_autocomplete",
 			"control": "text",
 			"label": "Autocomplete",
 			"default": "given-name",
@@ -5021,7 +5064,7 @@
 			"sort": 0
 		},
 		{
-			"id": "field_required_2",
+			"id": "anchor_required_2",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -5034,7 +5077,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_disabled_2",
+			"id": "anchor_disabled_2",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -5047,7 +5090,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_readonly_2",
+			"id": "anchor_readonly_2",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -5060,7 +5103,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_checked_2",
+			"id": "anchor_checked_2",
 			"control": "switcher",
 			"label": "Checked By Default",
 			"description": "",
@@ -5073,7 +5116,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_type_2",
+			"id": "anchor_type_2",
 			"control": "text",
 			"label": "Type",
 			"default": "text",
@@ -5083,7 +5126,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_name_2",
+			"id": "anchor_name_2",
 			"control": "text",
 			"label": "Field Name",
 			"default": "LNAME",
@@ -5093,7 +5136,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_placeholder_2",
+			"id": "anchor_placeholder_2",
 			"control": "text",
 			"label": "Placeholder",
 			"default": "Last name",
@@ -5103,7 +5146,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_autocomplete_2",
+			"id": "anchor_autocomplete_2",
 			"control": "text",
 			"label": "Autocomplete",
 			"default": "family-name",
@@ -5132,7 +5175,7 @@
 			"sort": 0
 		},
 		{
-			"id": "field_required_3",
+			"id": "anchor_required_3",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -5145,7 +5188,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_disabled_3",
+			"id": "anchor_disabled_3",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -5158,7 +5201,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_readonly_3",
+			"id": "anchor_readonly_3",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -5171,7 +5214,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_checked_3",
+			"id": "anchor_checked_3",
 			"control": "switcher",
 			"label": "Checked By Default",
 			"description": "",
@@ -5184,7 +5227,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_type_3",
+			"id": "anchor_type_3",
 			"control": "text",
 			"label": "Type",
 			"default": "email",
@@ -5194,7 +5237,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_name_3",
+			"id": "anchor_name_3",
 			"control": "text",
 			"label": "Field Name",
 			"default": "EMAIL",
@@ -5204,7 +5247,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_placeholder_3",
+			"id": "anchor_placeholder_3",
 			"control": "text",
 			"label": "Placeholder",
 			"default": "your@email.com",
@@ -5214,7 +5257,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_autocomplete_3",
+			"id": "anchor_autocomplete_3",
 			"control": "text",
 			"label": "Autocomplete",
 			"default": "email",
@@ -5234,7 +5277,7 @@
 			"sort": 0
 		},
 		{
-			"id": "field_required_4",
+			"id": "anchor_required_4",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -5247,7 +5290,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_disabled_4",
+			"id": "anchor_disabled_4",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -5260,7 +5303,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_readonly_4",
+			"id": "anchor_readonly_4",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -5273,7 +5316,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_checked_4",
+			"id": "anchor_checked_4",
 			"control": "switcher",
 			"label": "Checked By Default",
 			"description": "",
@@ -5286,7 +5329,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_type_4",
+			"id": "anchor_type_4",
 			"control": "text",
 			"label": "Type",
 			"default": "tel",
@@ -5296,7 +5339,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_name_4",
+			"id": "anchor_name_4",
 			"control": "text",
 			"label": "Field Name",
 			"default": "PHONE",
@@ -5306,7 +5349,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_placeholder_4",
+			"id": "anchor_placeholder_4",
 			"control": "text",
 			"label": "Placeholder",
 			"default": "+1 (000) 000-0000",
@@ -5316,7 +5359,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_autocomplete_4",
+			"id": "anchor_autocomplete_4",
 			"control": "text",
 			"label": "Autocomplete",
 			"default": "tel",
@@ -5404,7 +5447,7 @@
 			"sort": 0
 		},
 		{
-			"id": "field_required_5",
+			"id": "anchor_required_5",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -5417,7 +5460,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_disabled_5",
+			"id": "anchor_disabled_5",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -5430,7 +5473,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_readonly_5",
+			"id": "anchor_readonly_5",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -5443,7 +5486,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_checked_5",
+			"id": "anchor_checked_5",
 			"control": "switcher",
 			"label": "Checked By Default",
 			"description": "",
@@ -5456,7 +5499,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_type_5",
+			"id": "anchor_type_5",
 			"control": "text",
 			"label": "Type",
 			"default": "text",
@@ -5466,7 +5509,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_name_5",
+			"id": "anchor_name_5",
 			"control": "text",
 			"label": "Field Name",
 			"default": "MERGE3",
@@ -5476,7 +5519,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_placeholder_5",
+			"id": "anchor_placeholder_5",
 			"control": "text",
 			"label": "Placeholder",
 			"default": "Your city",
@@ -5486,7 +5529,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_autocomplete_5",
+			"id": "anchor_autocomplete_5",
 			"control": "text",
 			"label": "Autocomplete",
 			"default": "address-level2",
@@ -5693,7 +5736,7 @@
 			"sort": 0
 		},
 		{
-			"id": "message_required",
+			"id": "anchor_required_6",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -5706,7 +5749,7 @@
 			"sort": 1
 		},
 		{
-			"id": "message_disabled",
+			"id": "anchor_disabled_6",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -5719,7 +5762,7 @@
 			"sort": 1
 		},
 		{
-			"id": "message_readonly",
+			"id": "anchor_readonly_6",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -5732,7 +5775,7 @@
 			"sort": 1
 		},
 		{
-			"id": "message_name",
+			"id": "anchor_name_6",
 			"control": "text",
 			"label": "Field Name",
 			"default": "MERGE7",
@@ -5742,7 +5785,7 @@
 			"sort": 1
 		},
 		{
-			"id": "message_placeholder",
+			"id": "anchor_placeholder_6",
 			"control": "text",
 			"label": "Placeholder",
 			"default": "Tell us about your travel interests, what you hope to experience, and what draws you to South Africa.",

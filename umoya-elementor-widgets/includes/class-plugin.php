@@ -2,11 +2,11 @@
 /**
  * Elementor integration: categories, widget registration and asset handles.
  *
- * Two generations of widget live here at the moment. The Founder's Circle
- * sections are compiled by tools/uew and registered from
- * includes/sections/index.json; the homepage sections are still on the original
- * generator and registered from includes/section-definitions.json. Both are
- * wired up below, and the second set goes away when the homepage is migrated.
+ * Every section widget is compiled by tools/uew and registered from
+ * includes/sections/index.json. There is one code path now; the
+ * first-generation generator and its Base_Widget were retired once the homepage
+ * migrated, so a section can no longer be half on one system and half on the
+ * other.
  *
  * @package Umoya_EW
  */
@@ -39,18 +39,18 @@ final class Plugin {
 
 	public function register_categories( $elements_manager ) {
 		$elements_manager->add_category(
-			'umoya-fc',
-			array(
-				'title' => "Umoya - Founder's Circle",
-				'icon'  => 'eicon-globe',
-			)
-		);
-
-		$elements_manager->add_category(
 			'umoya-homepage',
 			array(
 				'title' => 'Umoya - Homepage',
 				'icon'  => 'eicon-home',
+			)
+		);
+
+		$elements_manager->add_category(
+			'umoya-fc',
+			array(
+				'title' => "Umoya - Founder's Circle",
+				'icon'  => 'eicon-globe',
 			)
 		);
 	}
@@ -62,33 +62,22 @@ final class Plugin {
 		require_once UMOYA_EW_PATH . 'includes/class-section-widget.php';
 
 		foreach ( Section_Registry::widgets() as $section ) {
-			$this->register_one( $widgets_manager, $section['widget_file'], $section['class_name'] );
-		}
+			$file = UMOYA_EW_PATH . ltrim( $section['widget_file'], '/\\' );
+			if ( ! file_exists( $file ) ) {
+				continue;
+			}
 
-		require_once UMOYA_EW_PATH . 'includes/class-legacy-registry.php';
-		require_once UMOYA_EW_PATH . 'includes/class-base-widget.php';
+			require_once $file;
 
-		foreach ( Legacy_Registry::widgets() as $section ) {
-			$this->register_one( $widgets_manager, 'widgets/' . $section['widget_file'], $section['class_name'] );
-		}
-	}
-
-	private function register_one( $widgets_manager, $relative_file, $class_name ) {
-		$file = UMOYA_EW_PATH . ltrim( $relative_file, '/\\' );
-		if ( ! file_exists( $file ) ) {
-			return;
-		}
-
-		require_once $file;
-
-		$class = '\\Umoya_EW\\Widgets\\' . $class_name;
-		if ( class_exists( $class ) ) {
-			$widgets_manager->register( new $class() );
+			$class = '\\Umoya_EW\\Widgets\\' . $section['class_name'];
+			if ( class_exists( $class ) ) {
+				$widgets_manager->register( new $class() );
+			}
 		}
 	}
 
 	public function register_styles() {
-		foreach ( $this->styles() as $handle => $style ) {
+		foreach ( Section_Registry::styles() as $handle => $style ) {
 			wp_register_style(
 				$handle,
 				UMOYA_EW_URL . ltrim( $style['file'], '/\\' ),
@@ -99,7 +88,7 @@ final class Plugin {
 	}
 
 	public function register_scripts() {
-		foreach ( $this->scripts() as $handle => $script ) {
+		foreach ( Section_Registry::scripts() as $handle => $script ) {
 			wp_register_script(
 				$handle,
 				UMOYA_EW_URL . ltrim( $script['file'], '/\\' ),
@@ -118,34 +107,8 @@ final class Plugin {
 	public function enqueue_editor_styles() {
 		$this->register_styles();
 
-		foreach ( array_keys( $this->styles() ) as $handle ) {
+		foreach ( array_keys( Section_Registry::styles() ) as $handle ) {
 			wp_enqueue_style( $handle );
 		}
-	}
-
-	private function styles() {
-		require_once UMOYA_EW_PATH . 'includes/class-section-registry.php';
-		require_once UMOYA_EW_PATH . 'includes/class-legacy-registry.php';
-
-		return array_merge(
-			array(
-				'fc-shared' => array(
-					'file' => 'assets/css/fc-shared.css',
-					'deps' => array(),
-				),
-			),
-			Section_Registry::styles(),
-			Legacy_Registry::styles()
-		);
-	}
-
-	private function scripts() {
-		require_once UMOYA_EW_PATH . 'includes/class-section-registry.php';
-		require_once UMOYA_EW_PATH . 'includes/class-legacy-registry.php';
-
-		return array_merge(
-			Section_Registry::scripts(),
-			Legacy_Registry::scripts()
-		);
 	}
 }

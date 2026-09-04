@@ -15,7 +15,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { execFileSync } from 'child_process';
 
-import { createDocument, outerRange, allElements, attr, classList, children, isComment, isTextNode } from './lib/html.mjs';
+import { createDocument, classList, children, isComment, isTextNode } from './lib/html.mjs';
+import { splitSection, readSectionFile } from './lib/split.mjs';
 
 const here = path.dirname( fileURLToPath( import.meta.url ) );
 const repoRoot = path.resolve( here, '..', '..' );
@@ -212,8 +213,12 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 	}
 
 	const { status, body } = await fetchPage( page.url );
+	// Compare against the SPLIT markup, not the raw file. Several homepage
+	// sections put their <style> block inside the section root; reading the raw
+	// file counts that stylesheet as markup and reports every one of them as
+	// having lost content when nothing was lost at all.
 	const sourceFile = path.join( repoRoot, section.source );
-	const sourceHtml = fs.readFileSync( sourceFile, 'utf8' ).replace( /^﻿/, '' ).replace( /\r\n/g, '\n' );
+	const { markup: sourceHtml } = splitSection( readSectionFile( fs, sourceFile ) );
 
 	const expected = fingerprint( sourceHtml, section.root_selector );
 	const actual = fingerprint( body, section.root_selector );
@@ -257,10 +262,10 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 }
 
 const pad = ( value, width ) => String( value ).padEnd( width );
-console.log( pad( 'section', 20 ) + pad( 'nodes', 7 ) + 'result' );
+console.log( pad( 'section', 26 ) + pad( 'nodes', 7 ) + 'result' );
 console.log( '-'.repeat( 62 ) );
 for ( const row of rows ) {
-	console.log( pad( row.key, 20 ) + pad( row.nodes ?? '-', 7 ) + row.status );
+	console.log( pad( row.key, 26 ) + pad( row.nodes ?? '-', 7 ) + row.status );
 }
 for ( const row of rows ) {
 	if ( row.detail ) {

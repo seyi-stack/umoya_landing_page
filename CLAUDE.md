@@ -1302,6 +1302,87 @@ now merges into the existing manifest and preserves placement order.
   control ID changed. Confirmed safe first: no live page uses the plugin's
   section widgets — every Umoya page is a pasted HTML widget.
 
+### Phase 23 - The homepage migrated; the first-generation generator is gone, 2026-09-04
+
+The thirteen homepage sections moved onto `tools/uew/` as well, and
+`tools/build-elementor-widgets.mjs` — along with `class-base-widget.php`,
+`class-legacy-registry.php` and `section-definitions.json` — was **deleted**.
+There is one code path now, so a section can no longer be half on one system and
+half on the other.
+
+**The old homepage widgets were built from a page that no longer exists.** The
+generator read `homepage/`, but the current working copy is `homepage-revamp/`,
+and the revamp is not a newer spelling of the same page: it added Ways to
+Travel, Legends and Film + Award, and dropped the old pricing, homecoming and
+accommodations sections. So the ten `umoya-homepage-*` widgets were removed
+rather than renamed; the thirteen new ones are `umoya-home-*`.
+
+**Version 2.0.0 → 3.0.0.** Major again, and for the same reason as last time:
+every homepage widget name and control id changed, and ten widgets were removed.
+Safe on the same evidence — no live page uses the plugin's section widgets.
+
+#### Two real bugs the migration exposed
+
+1. **A section with more than one top-level element got the wrong root.** The
+   homepage journey section is preceded by a bare
+   `<span id="umoya-journey-anchor">` scroll target, and the compiler took the
+   FIRST parentless element as the styling root. Every style selector for that
+   section was therefore scoped under an empty span and matched nothing — the
+   panel would have looked complete and done nothing. The root is now the
+   top-level element with the most descendants, anything outside it is styled
+   from the widget wrapper, and the build reports the situation.
+
+   > It surfaced only because the render check printed `nodes=1` for that
+   > section and the number looked wrong. Worth remembering: the checks report
+   > numbers as well as verdicts, and the numbers are worth reading.
+
+2. **`<style>` inside the section root broke the render check.** Every homepage
+   section puts its stylesheet inside `<section>`, not before it. The check read
+   the raw file, counted the stylesheet as markup, and reported ten sections as
+   having lost content when nothing was lost. Splitting markup from assets now
+   lives in one place, `tools/uew/lib/split.mjs`, used by both the build and the
+   check so they cannot disagree.
+
+#### Naming, continued
+
+Repeater panels now use the same vocabulary as everything else, pluralised —
+Slides, Stats, Cards, Fields, Options — and a name that would repeat is
+qualified by the element that owns it, taken from its id with the section's own
+namespace stripped: `fc2Country` and `umoyaCountry` both become
+**Country Options**. Only the section's own namespace is stripped, so
+`emailAddress` does not become "Address".
+
+An element with an id, no children and no content is named **Anchor** rather
+than "Text": it exists to be scrolled to.
+
+#### The browser check now confirms a difference before reporting it
+
+Migrating the homepage made the browser check noisy: sections that had been
+identical started reporting 3–14px shifts on centred text, always at the 768px
+tablet width, and always inconsistently — the same section differed on one run
+and was identical on the next. Measuring with a slightly longer settle made both
+pages agree exactly, and blocking images entirely made them agree exactly.
+
+It was the fixed wait, not the widgets: images and fonts settle at different
+moments on the two pages, and the check was sampling mid-settle. The check now
+waits for `document.fonts.ready` and for every image (forcing lazy ones to load,
+since `complete` stays false until they scroll into view), and — the part that
+actually matters — **re-measures any section that differs and reports only what
+survives the second measurement**. Anything that does not is named as unstable
+rather than failed.
+
+> A check that cries wolf gets ignored, and then it is worth nothing. If this
+> one reports a difference now, go and look.
+
+#### One repeater is deliberately rejected
+
+The Ways to Travel carousel's two arrow buttons differ by `data-wtt-prev` and
+`data-wtt-next` — different attributes, not different values — so the second
+cannot be reproduced from the first and the run is rejected. That is correct:
+both arrows become individually editable panels instead, and the build prints
+the reason. Supporting it would need attribute *slots* rather than attribute
+names, which is not worth the machinery for a pair of buttons.
+
 ---
 
 ## 6. Repository Map
@@ -1331,9 +1412,8 @@ now merges into the existing manifest and preserves placement order.
 | `about/` | About Us page — 8 sections. |
 | `for-groups/` | For Groups page — 8 sections. |
 | `theme-overrides/tevily_child/header.php` | Optional child-theme override removing the Tevily header. Not deployed. |
-| `tools/uew/` | **The Founder's Circle widget compiler** + the local WordPress/Elementor test harness. Has its own `README.md`. |
+| `tools/uew/` | **The widget compiler** (all 25 sections) + the local WordPress/Elementor test harness. Has its own `README.md`. |
 | `local-env/` | The harness itself — portable PHP, WordPress on SQLite, Elementor 4.2.4. **Git-ignored, generated;** rebuild with `node tools/uew/setup-local-env.mjs`. |
-| `tools/build-elementor-widgets.mjs` | First-generation generator — **homepage only** now. No fidelity check; regex-based. Retire it when the homepage migrates. |
 | `umoya-elementor-widgets/` | Custom Elementor plugin source. |
 | `Website docs/` | Legal documents, footer URL map, and Elementor-ready legal snippets. |
 | `hubspot-docx/` | Extracted Word document content for the HubSpot integration brief. |
@@ -1344,9 +1424,9 @@ now merges into the existing manifest and preserves placement order.
 | `_visual-check-*.png`, `.edge-visual-profile-*`, `.agents/` | QA artifacts, browser profile dumps, and third-party tool configs. **Deliberately untracked — do not commit.** The profile folders may contain cached cookies/session data. |
 
 **Which folder is current?** For Founder's Circle and the homepage, the
-`-revamp/` folders are the live working copies; the originals are kept
-only for reference. The generator (`tools/build-elementor-widgets.mjs`)
-still points at the ORIGINAL paths — see the Elementor Plugin open items.
+`-revamp/` folders are the live working copies; the originals are kept only for
+reference and are not compiled by anything. `tools/uew/` reads the `-revamp/`
+folders, and the generator that read the originals has been deleted.
 
 ### Current Custom Plugin Layout
 
@@ -1418,9 +1498,10 @@ umoya-elementor-widgets/
 
 ## 7. Elementor Widget Registry
 
-The plugin exposes 22 section widgets: **12 Founder's Circle** built by the new
-compiler (`tools/uew/`), and **10 homepage** still on the first-generation
-generator.
+The plugin exposes 25 section widgets, all compiled by `tools/uew/`:
+**12 Founder's Circle** from `founders-circle-revamp/` and **13 homepage** from
+`homepage-revamp/`. Schemas live in
+`umoya-elementor-widgets/includes/sections/*.json`.
 
 ### Founder's Circle Category
 
@@ -1452,19 +1533,32 @@ Elementor placement order. Schemas live in
 ### Homepage Category
 
 Category: `Umoya - Homepage`
+Compiled from **`homepage-revamp/`**, in Elementor placement order.
 
-| Key | Widget title | Source | Root |
+| Key | Widget title | Source (`homepage-revamp/`) | Root |
 |---|---|---|---|
-| `homepage_form_popup` | Homepage Form Popup | `homepage/homepage-form-popup.html` | `#umoya-form-popup` |
-| `homepage_nav` | Homepage Navigation | `homepage/homepage-section-00-nav.html` | `#umoyaHomepageNavMount` |
-| `homepage_hero` | Homepage Hero | `homepage/homepage-section-01-hero.html` | `#umoya-hero` |
-| `homepage_about` | Homepage About | `homepage/homepage-section-02-about.html` | `#umoya-about` |
-| `homepage_homecoming` | Homepage Homecoming Journey | `homepage/homepage-section-03-homecoming.html` | `#umoya-journey` |
-| `homepage_founder_cta` | Homepage Founder CTA | `homepage/homepage-section-04-founder-cta.html` | `#umoya-founder-cta` |
-| `homepage_pricing` | Homepage Pricing | `homepage/homepage-section-05a-pricing.html` | `#fc-pricing` |
-| `homepage_accommodations` | Homepage Accommodations | `homepage/homepage-section-06-accommodations.html` | `#umoya-accommodations` |
-| `homepage_pillars` | Homepage Pillars | `homepage/homepage-section-06b-pillars.html` | `#fc-pillars` |
-| `homepage_details` | Homepage Travel Essentials | `homepage/homepage-section-07-details.html` | `#fc-details` |
+| `home_nav` | Home Navigation | `homepage-section-00-nav.html` | `#umoyaHomepageNavMount` |
+| `home_hero` | Home Hero | `homepage-section-01-hero.html` | `#umoya-hero` |
+| `home_about` | Home About | `homepage-section-02-about.html` | `#umoya-about` |
+| `home_signature_journey` | Home Signature Journey | `homepage-section-03-signature-journey.html` | `#umoya-journey` |
+| `home_ways_to_travel` | Home Ways to Travel | `homepage-section-04-ways-to-travel.html` | `#umoya-ways-to-travel` |
+| `home_legends` | Home Legends | `homepage-section-05-legends.html` | `#umoya-legends` |
+| `home_hotel_stays` | Home Hotel Stays | `homepage-section-06-hotel-stays.html` | `#umoya-accommodations` |
+| `home_founders_circle` | Home Founder's Circle | `homepage-section-07-founders-circle.html` | `#umoya-founder-cta` |
+| `home_film_award` | Home Film & Award | `homepage-section-08-film-award.html` | `#umoya-film` |
+| `home_why` | Home Why Umoya | `homepage-section-09-why-umoya.html` | `#fc-pillars` |
+| `home_essentials` | Home Travel Essentials | `homepage-section-10-travel-essentials.html` | `#fc-details` |
+| `home_speak_expert` | Home Speak With an Expert | `homepage-section-11-speak-with-expert.html` | `#umoya-speak-expert` |
+| `home_form_popup` | Home Inquiry Popup | `homepage-form-popup.html` | `#umoya-form-popup` |
+
+> The ten `umoya-homepage-*` widgets were **removed** in Phase 23. They were
+> generated from `homepage/`, which is a different page from the revamp — it had
+> pricing, homecoming and accommodations sections the revamp does not.
+>
+> `home_why` and `home_essentials` share their root ids (`#fc-pillars`,
+> `#fc-details`) with the Founder's Circle widgets `fc_why` and `fc_essentials`,
+> because the source files do. That is fine while the two never appear on one
+> page, which they do not — but do not put them together.
 
 ### Important Registry Rule
 
@@ -1482,17 +1576,9 @@ python tools/build-plugin-zip.py
 The build **fails** if a template stops reproducing its source. That is the
 point; do not pass `--no-verify` to get around it.
 
-**Homepage** — edit `homepage/`, then the first-generation generator:
-
-```powershell
-node tools/build-elementor-widgets.mjs
-```
-
-> That generator has no fidelity check and rewrites markup with regular
-> expressions. It also still reads `homepage/`, not `homepage-revamp/`.
-> Migrate the homepage onto `tools/uew/` and delete it,
-> `includes/class-base-widget.php`, `includes/class-legacy-registry.php` and
-> `includes/section-definitions.json`.
+**Homepage** — edit `homepage-revamp/`, then exactly the same commands. Both
+page families go through one compiler; `--only=<key>` narrows a run and merges
+into the manifest rather than replacing it.
 
 ---
 
@@ -1791,25 +1877,30 @@ MailChimp can collect newsletter contacts, but the project already uses HubSpot 
 
 ---
 
-## 11. Generator Workflow
+## 11. Compiler Workflow
 
 Use this when updating source sections and keeping the plugin synchronized.
 
 ### Edit Flow
 
 1. Edit the relevant source HTML:
-   - Founder's Circle: root `section-*.html`.
-   - Homepage: `homepage/*.html`.
-2. Run:
+   - Founder's Circle: `founders-circle-revamp/section-*.html`
+   - Homepage: `homepage-revamp/homepage-*.html`
+2. Compile and prove nothing was lost:
 
 ```powershell
-node tools/build-elementor-widgets.mjs
+npm --prefix tools/uew run check
 ```
+
+   That runs the build (which **fails** if a template stops reproducing its
+   source byte for byte), then the render, browser and editor checks. Narrow a
+   run with `node tools/uew/build.mjs --only=fc_hero,home_hero`; `--only` merges
+   into the manifest rather than replacing it.
 
 3. Review generated changes:
 
 ```powershell
-git diff -- umoya-elementor-widgets tools/build-elementor-widgets.mjs
+git diff -- umoya-elementor-widgets tools/uew
 ```
 
 4. Check for whitespace:
@@ -1840,16 +1931,18 @@ python tools/build-plugin-zip.py
 Use PowerShell-native commands on Windows for other tasks. Avoid shell write
 tricks for manual file edits.
 
-### Generator Guarantees
+### Compiler Guarantees
 
-The generator:
-
-- Removes hidden BOMs from source input.
-- Splits `<style>` and `<script>` into plugin asset files.
-- Masks comments so comments do not become editable Elementor text fields.
-- Performs round-trip validation on placeholders.
-- Creates registry entries with fields and design tokens.
-- Writes normalized line endings and strips trailing spaces.
+- Removes hidden BOMs and normalises line endings.
+- Separates `<style>` and `<script>` into plugin asset files using
+  parser-reported offsets, never a regex.
+- Rewrites markup only at byte offsets a real HTML5 parser reported, so comments,
+  entities, SVG, whitespace and attribute order survive untouched.
+- **Refuses to finish unless rendering the template with its own defaults
+  reproduces the source file exactly**, in real PHP with WordPress loaded.
+- Rejects any repeater whose items cannot be reproduced, and prints why.
+- Styling never touches markup: every style control is an Elementor `selectors`
+  entry layered over the section's own stylesheet.
 
 ### Prior Validation Achieved
 
@@ -2330,12 +2423,10 @@ so re-check after a cache purge.
 - ✅ **Founder's Circle is resolved** (Phase 22). Its twelve widgets are
   compiled from `founders-circle-revamp/` by `tools/uew/`, with a byte-fidelity
   assertion plus render, browser and editor checks. Plugin at **2.0.0**.
-- ⏳ **The homepage is still on the first-generation generator**, and that
-  generator still reads `homepage/` rather than `homepage-revamp/`. So
-  re-running `node tools/build-elementor-widgets.mjs` still will not pick up the
-  homepage revamp. Migrating it onto `tools/uew/` closes this and lets
-  `class-base-widget.php`, `class-legacy-registry.php` and
-  `section-definitions.json` be deleted.
+- ✅ **The homepage is resolved too** (Phase 23). Its thirteen widgets are
+  compiled from `homepage-revamp/`, and the first-generation generator and its
+  Base_Widget/Legacy_Registry/section-definitions.json were deleted. Plugin at
+  **3.0.0**.
 - ⏳ **Four folders are registered nowhere** — `signature-journey/`,
   `private-tailormade/`, `about/`, `for-groups/` — plus `shared/`. They remain
   hand-pasted HTML widgets. Decide per page whether that is worth changing;
@@ -2384,14 +2475,11 @@ git status --short
 # Search fast
 rg -n "HubSpot|hubspot|fc-form-section|umoya-form-popup"
 
-# Founder's Circle widgets: compile + prove nothing was lost
+# Compile all 25 section widgets + prove nothing was lost
 npm --prefix tools/uew run check
 
 # Start the local WordPress + Elementor harness (leave running)
 node tools/uew/setup-local-env.mjs --serve
-
-# Homepage widgets only (first-generation generator, no fidelity check)
-node tools/build-elementor-widgets.mjs
 
 # Check whitespace problems
 git diff --check
@@ -2437,7 +2525,7 @@ Core server-side submission infrastructure:
 - Injects HubSpot tracking script.
 - Provides admin resend.
 
-### `tools/uew/` — the Founder's Circle widget compiler
+### `tools/uew/` — the widget compiler
 
 Read `tools/uew/README.md` before changing anything here. The short version:
 the template **is** the section file, rewritten only at byte offsets a real
@@ -2450,13 +2538,14 @@ section's own stylesheet.
 discards the newline immediately after `?>`, so without it every end-of-line
 echo swallows its own line break.
 
-### `tools/build-elementor-widgets.mjs`
+### `tools/build-elementor-widgets.mjs` — DELETED (Phase 23)
 
-**Homepage only** since Phase 22. Its Founder's Circle entries were removed so
-re-running it cannot resurrect the superseded widget set. It rewrites markup
-with regular expressions and has no way to check its own work — that is why the
-Founder's Circle moved off it. It also still reads `homepage/`, not
-`homepage-revamp/`.
+The first-generation generator. It rewrote markup with regular expressions and
+had no way to check its own work, and it read the superseded `founders-circle/`
+and `homepage/` folders. Removed with `class-base-widget.php`,
+`class-legacy-registry.php` and `section-definitions.json` once the homepage
+migrated. If you are looking for it because something references it, that
+reference is stale.
 
 ### `shared/section-99-footer.html`
 
@@ -2660,12 +2749,9 @@ Think of this project as five connected layers:
 
 3. Elementor plugin layer:
    - Two Elementor categories: homepage and Founder's Circle.
-   - **Founder's Circle** — compiled by `tools/uew/` from
-     `founders-circle-revamp/`, verified against a local WordPress +
-     Elementor 4.2.4 harness on four axes (byte fidelity, render, browser,
-     editor). This layer is current.
-   - **Homepage** — still on the first-generation generator, still reading
-     `homepage/` rather than `homepage-revamp/`. This layer trails.
+   - All 25 widgets are compiled by `tools/uew/` from the `-revamp/` folders
+     and verified against a local WordPress + Elementor 4.2.4 harness on four
+     axes (byte fidelity, render, browser, editor). One code path, no legacy.
    - The four newest page folders and `shared/` are not registered at all.
 
 4. WordPress/theme layer (lives on the server, not in this repo):
