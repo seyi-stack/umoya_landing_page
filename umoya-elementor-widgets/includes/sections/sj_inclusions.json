@@ -1,0 +1,1164 @@
+{
+	"key": "sj_inclusions",
+	"name": "umoya-sj-inclusions",
+	"title": "SJ Inclusions & Offers",
+	"description": "Inclusions grid plus the sticky Offers panel. Its button opens the inquiry popup.",
+	"icon": "eicon-price-list",
+	"category": "umoya-sj",
+	"source": "signature-journey/section-06-inclusions-offers.html",
+	"class_name": "SJ_Inclusions",
+	"widget_file": "widgets/class-sj-inclusions.php",
+	"root_selector": "#sj-inclusions",
+	"template": "templates/sections/sj_inclusions.php",
+	"style": {
+		"handle": "uew-umoya-sj-inclusions",
+		"file": "assets/css/sections/sj_inclusions.css"
+	},
+	"script": {
+		"handle": "uew-umoya-sj-inclusions",
+		"file": "assets/js/sections/sj_inclusions.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"sj",
+		"inclusions",
+		"offers"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "ink",
+			"value": "#211B16",
+			"kind": "color",
+			"label": "Ink"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.66)",
+			"kind": "color",
+			"label": "Muted"
+		},
+		{
+			"name": "line",
+			"value": "rgba(75,46,43,.16)",
+			"kind": "color",
+			"label": "Line"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "What your journey includes, and current offers",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_inc_eye",
+			"label": "Header",
+			"sample": "Inclusions & Offers",
+			"region_label": "Header",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Inclusions &amp; Offers",
+					"esc": "post",
+					"group": "p_sj_inc_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "What Your Journey Includes",
+					"esc": "post",
+					"group": "p_sj_inc_ttl",
+					"sort": 0,
+					"part_label": "Header Title"
+				},
+				{
+					"id": "heading_text",
+					"control": "text",
+					"label": "Heading",
+					"description": "",
+					"default": "Not included",
+					"esc": "post",
+					"group": "p_sj_inc_plain_h4",
+					"sort": 0,
+					"part_label": "Card Heading"
+				},
+				{
+					"id": "text_text",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "International flights, visas, travel insurance, and anything you choose along the way. Your Travel Expert will walk you through all of it.",
+					"esc": "post",
+					"group": "p_sj_inc_plain_p",
+					"sort": 0,
+					"part_label": "Card Text 3"
+				},
+				{
+					"id": "aside_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Current offers",
+					"esc": "attr",
+					"group": "p_sj_offers",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Aside"
+				},
+				{
+					"id": "subtitle_text",
+					"control": "text",
+					"label": "Subtitle",
+					"description": "",
+					"default": "Offers",
+					"esc": "post",
+					"group": "p_sj_offers_sub",
+					"sort": 0,
+					"part_label": "Subtitle"
+				},
+				{
+					"id": "title_text_2",
+					"control": "text",
+					"label": "Aside Title",
+					"description": "",
+					"default": "Preferred rates, held for our first guests.",
+					"esc": "post",
+					"group": "p_sj_offers_ttl",
+					"sort": 0,
+					"part_label": "Aside Title"
+				},
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Button",
+					"description": "",
+					"default": "Speak With a Travel Expert",
+					"esc": "post",
+					"group": "p_sj_offers_btn",
+					"sort": 0,
+					"part_label": "Button"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_sj_offers_fine",
+			"label": "Aside Text 2",
+			"sample": "Offers apply to new bookings and cannot be comb…",
+			"region_label": "Aside",
+			"controls": [
+				{
+					"id": "text_text_2",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "Offers apply to new bookings and cannot be combined. Places in the Founder's Circle are limited, and the rate closes once the founding group is full.",
+					"esc": "post",
+					"group": "p_sj_offers_fine",
+					"sort": 0,
+					"part_label": "Aside Text 2"
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [
+		{
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_sj_offers_btn",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Button"
+		},
+		{
+			"id": "button_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_div_sj_inc_card",
+			"label": "Cards",
+			"item_label": "{{{ p }}}",
+			"controls": [
+				{
+					"id": "viewbox",
+					"control": "text",
+					"label": "Viewbox",
+					"esc": "attr",
+					"default": "0 0 24 24"
+				},
+				{
+					"id": "svg_markup",
+					"control": "textarea",
+					"label": "Svg markup (HTML)",
+					"esc": "raw",
+					"default": "<path d=\"M3 10.5 12 4l9 6.5\"/><path d=\"M5 10v10h14V10\"/><path d=\"M10 20v-6h4v6\"/>"
+				},
+				{
+					"id": "p",
+					"control": "text",
+					"label": "P",
+					"esc": "post",
+					"default": "All accommodations during your stay"
+				}
+			],
+			"rows": [
+				{
+					"viewbox": "0 0 24 24",
+					"svg_markup": "<path d=\"M3 10.5 12 4l9 6.5\"/><path d=\"M5 10v10h14V10\"/><path d=\"M10 20v-6h4v6\"/>",
+					"p": "All accommodations during your stay"
+				},
+				{
+					"viewbox": "0 0 24 24",
+					"svg_markup": "<path d=\"M2 20h20\"/><path d=\"M4.5 15.5 3 11l2.2-.4 2.3 2.6 4.3-.9-3.4-5.6 2.4-.5 5 5.3 4.2-.9a1.6 1.6 0 0 1 .6 3.1L4.5 17z\"/>",
+					"p": "Internal flights and ground transfers"
+				},
+				{
+					"viewbox": "0 0 24 24",
+					"svg_markup": "<circle cx=\"12\" cy=\"7.5\" r=\"3.2\"/><path d=\"M5.5 20a6.5 6.5 0 0 1 13 0\"/>",
+					"p": "Private guides and exclusive Signature Moments"
+				},
+				{
+					"viewbox": "0 0 24 24",
+					"svg_markup": "<path d=\"M6 3v7a2.5 2.5 0 0 0 5 0V3\"/><path d=\"M8.5 10v11\"/><path d=\"M17.8 3c-1.5 1.4-2.2 3.3-2.2 5.4 0 1.7.8 2.9 2.2 3.4V21\"/>",
+					"p": "Most meals, with dietary needs taken care of"
+				},
+				{
+					"viewbox": "0 0 24 24",
+					"svg_markup": "<path d=\"M12 21s7-5.2 7-10.4A7 7 0 0 0 5 10.6C5 15.8 12 21 12 21z\"/><circle cx=\"12\" cy=\"10.4\" r=\"2.4\"/>",
+					"p": "A dedicated Umoya host, arrival to departure"
+				}
+			],
+			"selector": ".sj-inc-card"
+		},
+		{
+			"id": "rep_div_sj_ofr",
+			"label": "Containers",
+			"item_label": "{{{ h4 }}}",
+			"controls": [
+				{
+					"id": "viewbox",
+					"control": "text",
+					"label": "Viewbox",
+					"esc": "attr",
+					"default": "0 0 24 24"
+				},
+				{
+					"id": "svg_markup",
+					"control": "textarea",
+					"label": "Svg markup (HTML)",
+					"esc": "raw",
+					"default": "<path d=\"M20.5 12.5 12.6 20.4a1.8 1.8 0 0 1-2.5 0l-6.5-6.5a1.8 1.8 0 0 1-.5-1.3V4.8c0-1 .8-1.8 1.8-1.8h7.8c.5 0 .9.2 1.3.5l6.5 6.5a1.8 1.8 0 0 1 0 2.5z\"/><circle cx=\"8\" cy=\"8\" r=\"1.2\"/>"
+				},
+				{
+					"id": "h4",
+					"control": "text",
+					"label": "H4",
+					"esc": "post",
+					"default": "The Founder's Circle rate"
+				},
+				{
+					"id": "p",
+					"control": "textarea",
+					"label": "P",
+					"esc": "post",
+					"default": "Founding members travel at our best rate, held for our first guests alone. Speak with a Travel Expert to lock in your offer."
+				}
+			],
+			"rows": [
+				{
+					"viewbox": "0 0 24 24",
+					"svg_markup": "<path d=\"M20.5 12.5 12.6 20.4a1.8 1.8 0 0 1-2.5 0l-6.5-6.5a1.8 1.8 0 0 1-.5-1.3V4.8c0-1 .8-1.8 1.8-1.8h7.8c.5 0 .9.2 1.3.5l6.5 6.5a1.8 1.8 0 0 1 0 2.5z\"/><circle cx=\"8\" cy=\"8\" r=\"1.2\"/>",
+					"h4": "The Founder's Circle rate",
+					"p": "Founding members travel at our best rate, held for our first guests alone. Speak with a Travel Expert to lock in your offer."
+				},
+				{
+					"viewbox": "0 0 24 24",
+					"svg_markup": "<path d=\"M4 17h13\"/><path d=\"M6 17v-4h5l4 4\"/><path d=\"M11 13V9h2l3 4\"/><path d=\"M13 9V7\"/><path d=\"M9 7h8\"/><circle cx=\"7\" cy=\"19\" r=\"1.4\"/><circle cx=\"16\" cy=\"19\" r=\"1.4\"/>",
+					"h4": "Add Victoria Falls, and the helicopter is ours",
+					"p": "Book Extension One and your Flight of Angels helicopter over the falls is included, with our compliments."
+				},
+				{
+					"viewbox": "0 0 24 24",
+					"svg_markup": "<circle cx=\"9\" cy=\"8\" r=\"2.8\"/><path d=\"M3 19a6 6 0 0 1 12 0\"/><path d=\"M16.5 6.2a2.8 2.8 0 0 1 0 5.4\"/><path d=\"M17.5 14.4A6 6 0 0 1 21 19\"/>",
+					"h4": "The organizer travels as our guest",
+					"p": "Fill a private departure of 18 and the organizer's own place is complimentary. For smaller groups, we reduce the organizer's fare instead."
+				}
+			],
+			"selector": ".sj-ofr"
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_inc_c",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-inc-c",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_inc_head",
+			"label": "Header",
+			"short_label": "Header",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-inc-head",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_inc_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "Header",
+			"sample": "Inclusions & Offers",
+			"selector": ".sj-inc-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_inc_ttl",
+			"label": "Header Title",
+			"short_label": "Title",
+			"parent_label": "Header",
+			"sample": "What Your Journey Includes",
+			"selector": ".sj-inc-ttl",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_inc_layout",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-inc-layout",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_inc_cards",
+			"label": "Container 3",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-inc-cards",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_inc_card",
+			"label": "Card 1",
+			"short_label": "Card",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-inc-card",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": "div_sj_inc_card"
+		},
+		{
+			"id": "p_sj_inc_card_span_nth_of_type_1",
+			"label": "Card Text 1",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".sj-inc-card > span:nth-of-type(1)",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_inc_card_span_nth_of_type_1_svg_nth_of_type_1",
+			"label": "Text Icon",
+			"short_label": "Icon",
+			"parent_label": "Text",
+			"sample": "",
+			"selector": ".sj-inc-card > span:nth-of-type(1) > svg:nth-of-type(1)",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_inc_card_p_nth_of_type_1",
+			"label": "Card Text 2",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "All accommodations during your stay",
+			"selector": ".sj-inc-card > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_inc_plain",
+			"label": "Card 2",
+			"short_label": "Card",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-inc-plain",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_inc_plain_h4",
+			"label": "Card Heading",
+			"short_label": "Heading",
+			"parent_label": "Card",
+			"sample": "Not included",
+			"selector": ".sj-inc-plain > h4",
+			"tag": "h4",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_inc_plain_p",
+			"label": "Card Text 3",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "International flights, visas, travel insurance,…",
+			"selector": ".sj-inc-plain > p",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_offers",
+			"label": "Aside",
+			"short_label": "Aside",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-offers",
+			"tag": "aside",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_offers_sub",
+			"label": "Subtitle",
+			"short_label": "Subtitle",
+			"parent_label": "Aside",
+			"sample": "Offers",
+			"selector": ".sj-offers-sub",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_offers_ttl",
+			"label": "Aside Title",
+			"short_label": "Title",
+			"parent_label": "Aside",
+			"sample": "Preferred rates, held for our first guests.",
+			"selector": ".sj-offers-ttl",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ofr",
+			"label": "Aside Container 1",
+			"short_label": "Container",
+			"parent_label": "Aside",
+			"sample": "",
+			"selector": ".sj-ofr",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": "div_sj_ofr"
+		},
+		{
+			"id": "p_sj_ofr_svg_nth_of_type_1",
+			"label": "Aside Icon",
+			"short_label": "Icon",
+			"parent_label": "Aside",
+			"sample": "",
+			"selector": ".sj-ofr > svg:nth-of-type(1)",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ofr_div_nth_of_type_1",
+			"label": "Aside Container 2",
+			"short_label": "Container",
+			"parent_label": "Aside",
+			"sample": "",
+			"selector": ".sj-ofr > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ofr_div_nth_of_type_1_h4_nth_of_type_1",
+			"label": "Aside Heading",
+			"short_label": "Heading",
+			"parent_label": "Aside",
+			"sample": "The Founder's Circle rate",
+			"selector": ".sj-ofr > div:nth-of-type(1) > h4:nth-of-type(1)",
+			"tag": "h4",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ofr_div_nth_of_type_1_p_nth_of_type_1",
+			"label": "Aside Text 1",
+			"short_label": "Text",
+			"parent_label": "Aside",
+			"sample": "Founding members travel at our best rate, held …",
+			"selector": ".sj-ofr > div:nth-of-type(1) > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_offers_end",
+			"label": "Aside Container 3",
+			"short_label": "Container",
+			"parent_label": "Aside",
+			"sample": "",
+			"selector": ".sj-offers-end",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_offers_btn",
+			"label": "Button",
+			"short_label": "Button",
+			"parent_label": "Aside",
+			"sample": "Speak With a Travel Expert",
+			"selector": ".sj-offers-btn",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_offers_fine",
+			"label": "Aside Text 2",
+			"short_label": "Text",
+			"parent_label": "Aside",
+			"sample": "Offers apply to new bookings and cannot be comb…",
+			"selector": ".sj-offers-fine",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "What your journey includes, and current offers",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Inclusions &amp; Offers",
+			"esc": "post",
+			"group": "p_sj_inc_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "What Your Journey Includes",
+			"esc": "post",
+			"group": "p_sj_inc_ttl",
+			"sort": 0
+		},
+		{
+			"id": "heading_text",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Not included",
+			"esc": "post",
+			"group": "p_sj_inc_plain_h4",
+			"sort": 0
+		},
+		{
+			"id": "text_text",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "International flights, visas, travel insurance, and anything you choose along the way. Your Travel Expert will walk you through all of it.",
+			"esc": "post",
+			"group": "p_sj_inc_plain_p",
+			"sort": 0
+		},
+		{
+			"id": "aside_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Current offers",
+			"esc": "attr",
+			"group": "p_sj_offers",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "subtitle_text",
+			"control": "text",
+			"label": "Subtitle",
+			"description": "",
+			"default": "Offers",
+			"esc": "post",
+			"group": "p_sj_offers_sub",
+			"sort": 0
+		},
+		{
+			"id": "title_text_2",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "Preferred rates, held for our first guests.",
+			"esc": "post",
+			"group": "p_sj_offers_ttl",
+			"sort": 0
+		},
+		{
+			"id": "button_text",
+			"control": "text",
+			"label": "Button",
+			"description": "",
+			"default": "Speak With a Travel Expert",
+			"esc": "post",
+			"group": "p_sj_offers_btn",
+			"sort": 0
+		},
+		{
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_sj_offers_btn",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "button_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "text_text_2",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "Offers apply to new bookings and cannot be combined. Places in the Founder's Circle are limited, and the rate closes once the founding group is full.",
+			"esc": "post",
+			"group": "p_sj_offers_fine",
+			"sort": 0
+		}
+	]
+}

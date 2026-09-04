@@ -1,27 +1,27 @@
 {
-	"key": "home_form_popup",
-	"name": "umoya-home-form-popup",
-	"title": "Home Inquiry Popup",
-	"description": "Shared inquiry popup. Must be on the page for any data-umoya-form-popup trigger to open.",
+	"key": "sj_form_popup",
+	"name": "umoya-sj-form-popup",
+	"title": "SJ Inquiry Popup",
+	"description": "Inquiry popup, lead source signature_journey_popup. Required on the page or the Offers button does nothing.",
 	"icon": "eicon-form-horizontal",
-	"category": "umoya-homepage",
-	"source": "homepage-revamp/homepage-form-popup.html",
-	"class_name": "Home_Form_Popup",
-	"widget_file": "widgets/class-home-form-popup.php",
+	"category": "umoya-sj",
+	"source": "signature-journey/section-08-form-popup.html",
+	"class_name": "SJ_Form_Popup",
+	"widget_file": "widgets/class-sj-form-popup.php",
 	"root_selector": "#umoya-form-popup",
-	"template": "templates/sections/home_form_popup.php",
+	"template": "templates/sections/sj_form_popup.php",
 	"style": {
-		"handle": "uew-umoya-home-form-popup",
-		"file": "assets/css/sections/home_form_popup.css"
+		"handle": "uew-umoya-sj-form-popup",
+		"file": "assets/css/sections/sj_form_popup.css"
 	},
 	"script": {
-		"handle": "uew-umoya-home-form-popup",
-		"file": "assets/js/sections/home_form_popup.js"
+		"handle": "uew-umoya-sj-form-popup",
+		"file": "assets/js/sections/sj_form_popup.js"
 	},
 	"keywords": [
 		"umoya",
 		"founders circle",
-		"home",
+		"sj",
 		"inquiry",
 		"popup"
 	],
@@ -474,7 +474,7 @@
 			"id": "form_data_hubspot_form_id",
 			"control": "text",
 			"label": "Hubspot Form Id",
-			"default": "a9e947b4-cb2e-45da-b2c7-b83b4228dfb5",
+			"default": "71181d17-e836-43d6-aa6d-a46e73945504",
 			"esc": "attr",
 			"group": "integration",
 			"tab": "integration",
@@ -485,7 +485,7 @@
 			"id": "form_data_umoya_form_source",
 			"control": "text",
 			"label": "Umoya Form Source",
-			"default": "homepage_popup",
+			"default": "signature_journey_popup",
 			"esc": "attr",
 			"group": "integration",
 			"tab": "integration",
@@ -1469,14 +1469,14 @@
 					"control": "text",
 					"label": "Value",
 					"esc": "attr",
-					"default": "homepage_popup"
+					"default": "signature_journey_popup"
 				}
 			],
 			"rows": [
 				{
 					"type": "hidden",
 					"name": "source",
-					"value": "homepage_popup"
+					"value": "signature_journey_popup"
 				},
 				{
 					"type": "hidden",
@@ -1486,7 +1486,7 @@
 				{
 					"type": "hidden",
 					"name": "hubspotFormId",
-					"value": "a9e947b4-cb2e-45da-b2c7-b83b4228dfb5"
+					"value": "71181d17-e836-43d6-aa6d-a46e73945504"
 				},
 				{
 					"type": "hidden",
@@ -4655,7 +4655,7 @@
 			"id": "form_data_hubspot_form_id",
 			"control": "text",
 			"label": "Hubspot Form Id",
-			"default": "a9e947b4-cb2e-45da-b2c7-b83b4228dfb5",
+			"default": "71181d17-e836-43d6-aa6d-a46e73945504",
 			"esc": "attr",
 			"group": "integration",
 			"tab": "integration",
@@ -4665,7 +4665,7 @@
 			"id": "form_data_umoya_form_source",
 			"control": "text",
 			"label": "Umoya Form Source",
-			"default": "homepage_popup",
+			"default": "signature_journey_popup",
 			"esc": "attr",
 			"group": "integration",
 			"tab": "integration",

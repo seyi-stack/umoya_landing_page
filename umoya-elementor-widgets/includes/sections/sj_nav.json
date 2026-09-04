@@ -1,27 +1,27 @@
 {
-	"key": "home_nav",
-	"name": "umoya-home-nav",
-	"title": "Home Navigation",
-	"description": "Sticky homepage navigation, including the Ways to Travel link.",
+	"key": "sj_nav",
+	"name": "umoya-sj-nav",
+	"title": "SJ Navigation",
+	"description": "Fixed top navigation for the Signature Journey page.",
 	"icon": "eicon-nav-menu",
-	"category": "umoya-homepage",
-	"source": "homepage-revamp/homepage-section-00-nav.html",
-	"class_name": "Home_Nav",
-	"widget_file": "widgets/class-home-nav.php",
-	"root_selector": "#umoyaHomepageNavMount",
-	"template": "templates/sections/home_nav.php",
+	"category": "umoya-sj",
+	"source": "signature-journey/section-00-nav.html",
+	"class_name": "SJ_Nav",
+	"widget_file": "widgets/class-sj-nav.php",
+	"root_selector": "#sjNavBar",
+	"template": "templates/sections/sj_nav.php",
 	"style": {
-		"handle": "uew-umoya-home-nav",
-		"file": "assets/css/sections/home_nav.css"
+		"handle": "uew-umoya-sj-nav",
+		"file": "assets/css/sections/sj_nav.css"
 	},
 	"script": {
-		"handle": "uew-umoya-home-nav",
-		"file": "assets/js/sections/home_nav.js"
+		"handle": "uew-umoya-sj-nav",
+		"file": "assets/js/sections/sj_nav.js"
 	},
 	"keywords": [
 		"umoya",
 		"founders circle",
-		"home",
+		"sj",
 		"navigation"
 	],
 	"tokens": [
@@ -50,6 +50,12 @@
 			"label": "Terra Dk"
 		},
 		{
+			"name": "text-muted",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Text Muted"
+		},
+		{
 			"name": "white",
 			"value": "#FFFFFF",
 			"kind": "color",
@@ -64,39 +70,39 @@
 	],
 	"content_panels": [
 		{
-			"id": "content_p_nav",
-			"label": "Navigation",
+			"id": "content_p_section",
+			"label": "Section",
 			"sample": "",
 			"region_label": "",
 			"controls": [
 				{
-					"id": "navigation_aria_label",
+					"id": "section_aria_label",
 					"control": "text",
 					"label": "Accessible Name",
-					"default": "Homepage section navigation",
+					"default": "Signature Journey page navigation",
 					"esc": "attr",
-					"group": "p_nav",
+					"group": "p_section",
 					"tab": "content",
 					"sort": 1,
-					"part_label": "Navigation"
+					"part_label": "Section"
 				}
 			]
 		},
 		{
-			"id": "content_p_umoya_nav_logo",
+			"id": "content_p_sj_nav_logo",
 			"label": "Logo",
 			"sample": "",
-			"region_label": "Navigation",
+			"region_label": "",
 			"controls": [
 				{
 					"id": "logo_href",
 					"control": "url",
 					"label": "Link",
 					"default": {
-						"url": "#umoya-hero"
+						"url": "#sj-hero"
 					},
 					"esc": "url",
-					"group": "p_umoya_nav_logo",
+					"group": "p_sj_nav_logo",
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Logo"
@@ -105,9 +111,9 @@
 					"id": "logo_aria_label",
 					"control": "text",
 					"label": "Accessible Name",
-					"default": "Umoya Afrika Tours - back to homepage top",
+					"default": "Umoya Afrika Tours — back to top",
 					"esc": "attr",
-					"group": "p_umoya_nav_logo",
+					"group": "p_sj_nav_logo",
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Logo"
@@ -151,7 +157,7 @@
 					"description": "",
 					"default": "Umoya",
 					"esc": "post",
-					"group": "p_umoya_nav_logo_text",
+					"group": "p_sj_nav_logo_text",
 					"sort": 0,
 					"part_label": "Logo Text"
 				}
@@ -159,10 +165,10 @@
 			"merged": true
 		},
 		{
-			"id": "content_p_umoya_nav_cta",
-			"label": "Navigation",
+			"id": "content_p_sj_nav_cta",
+			"label": "Content",
 			"sample": "Join the Founder's Circle",
-			"region_label": "Navigation",
+			"region_label": "",
 			"controls": [
 				{
 					"id": "button_text",
@@ -171,9 +177,9 @@
 					"description": "",
 					"default": "Join the Founder's Circle",
 					"esc": "post",
-					"group": "p_umoya_nav_cta",
+					"group": "p_sj_nav_cta",
 					"sort": 0,
-					"part_label": "Navigation Button 1"
+					"part_label": "Button 1"
 				},
 				{
 					"id": "button_href",
@@ -183,10 +189,10 @@
 						"url": "https://umoyaafrikatours.co.za/founders-circle/"
 					},
 					"esc": "url",
-					"group": "p_umoya_nav_cta",
+					"group": "p_sj_nav_cta",
 					"tab": "content",
 					"sort": 1,
-					"part_label": "Navigation Button 1"
+					"part_label": "Button 1"
 				},
 				{
 					"id": "button_aria_label",
@@ -194,27 +200,27 @@
 					"label": "Accessible Name",
 					"default": "Open navigation menu",
 					"esc": "attr",
-					"group": "p_umoya_nav_burger",
+					"group": "p_sj_nav_burger",
 					"tab": "content",
 					"sort": 1,
-					"part_label": "Navigation Button 2"
+					"part_label": "Button 2"
 				},
 				{
 					"id": "container_aria_label",
 					"control": "text",
-					"label": "Navigation Container 2",
-					"default": "Homepage sections",
+					"label": "Container 2",
+					"default": "Page sections",
 					"esc": "attr",
-					"group": "p_umoya_nav_dropdown",
+					"group": "p_sj_nav_dropdown",
 					"tab": "content",
 					"sort": 1,
-					"part_label": "Navigation Container 2"
+					"part_label": "Container 2"
 				}
 			],
 			"merged": true
 		},
 		{
-			"id": "content_p_umoya_nav_dropdown_cta",
+			"id": "content_p_sj_nav_dropdown_cta",
 			"label": "Item Button",
 			"sample": "Join the Founder's Circle",
 			"region_label": "Item",
@@ -226,7 +232,7 @@
 					"description": "",
 					"default": "Join the Founder's Circle",
 					"esc": "post",
-					"group": "p_umoya_nav_dropdown_cta",
+					"group": "p_sj_nav_dropdown_cta",
 					"sort": 0,
 					"part_label": "Item Button"
 				},
@@ -238,7 +244,7 @@
 						"url": "https://umoyaafrikatours.co.za/founders-circle/"
 					},
 					"esc": "url",
-					"group": "p_umoya_nav_dropdown_cta",
+					"group": "p_sj_nav_dropdown_cta",
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Item Button"
@@ -257,21 +263,10 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_nav_burger",
+			"group": "p_sj_nav_burger",
 			"tab": "form",
 			"sort": 1,
-			"part_label": "Navigation Button 2"
-		},
-		{
-			"id": "button_type",
-			"control": "text",
-			"label": "Type",
-			"default": "button",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
+			"part_label": "Button 2"
 		}
 	],
 	"behaviour_controls": [],
@@ -283,7 +278,7 @@
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "none",
 			"esc": "attr",
-			"group": "p_umoya_nav_logo_text",
+			"group": "p_sj_nav_logo_text",
 			"tab": "inline_style",
 			"sort": 3,
 			"part_label": "Logo Text"
@@ -292,126 +287,128 @@
 	"media_controls": [],
 	"repeaters": [
 		{
-			"id": "rep_li_umoya_nav_item",
-			"label": "Homepage Nav Items",
+			"id": "rep_li_sj_nav_item",
+			"label": "Nav Bar Items",
 			"item_label": "{{{ link }}}",
 			"controls": [
 				{
-					"id": "data_section",
+					"id": "data_s",
 					"control": "text",
-					"label": "Section",
+					"label": "S",
 					"esc": "attr",
-					"default": "umoya-hero"
+					"default": "sj-overview"
 				},
 				{
 					"id": "href",
 					"control": "url",
 					"label": "Href",
 					"esc": "url",
-					"default": "#umoya-hero"
+					"default": "#sj-overview"
 				},
 				{
 					"id": "link",
 					"control": "text",
 					"label": "Link",
 					"esc": "post",
-					"default": "Welcome"
+					"default": "Overview"
 				}
 			],
 			"rows": [
 				{
-					"data_section": "umoya-hero",
-					"href": "#umoya-hero",
-					"link": "Welcome"
+					"data_s": "sj-overview",
+					"href": "#sj-overview",
+					"link": "Overview"
 				},
 				{
-					"data_section": "umoya-about",
-					"href": "#umoya-about",
-					"link": "Our Story"
-				},
-				{
-					"data_section": "umoya-journey-anchor",
-					"href": "#umoya-journey-anchor",
+					"data_s": "sj-journey",
+					"href": "#sj-journey",
 					"link": "The Journey"
 				},
 				{
-					"data_section": "umoya-ways-to-travel",
-					"href": "#umoya-ways-to-travel",
-					"link": "Ways to Travel"
+					"data_s": "sj-extensions",
+					"href": "#sj-extensions",
+					"link": "Extensions"
 				},
 				{
-					"data_section": "fc-pillars",
-					"href": "#fc-pillars",
-					"link": "Why Umoya"
+					"data_s": "sj-stays",
+					"href": "#sj-stays",
+					"link": "Where You Stay"
 				},
 				{
-					"data_section": "fc-details",
-					"href": "#fc-details",
-					"link": "Travel Essentials"
+					"data_s": "sj-inclusions",
+					"href": "#sj-inclusions",
+					"link": "What's Included"
 				}
 			],
-			"selector": ".umoya-nav-item"
+			"selector": ".sj-nav-item"
 		},
 		{
-			"id": "rep_li_umoya_nav_dropdown_item",
-			"label": "Homepage Nav Dropdown Items",
+			"id": "rep_li_sj_nav_dropdown_item",
+			"label": "Nav Dropdown Items",
 			"item_label": "{{{ dropdown_link }}}",
 			"controls": [
 				{
-					"id": "data_section",
+					"id": "data_s",
 					"control": "text",
-					"label": "Section",
+					"label": "S",
 					"esc": "attr",
-					"default": "umoya-hero"
+					"default": "sj-overview"
 				},
 				{
 					"id": "href",
 					"control": "url",
 					"label": "Href",
 					"esc": "url",
-					"default": "#umoya-hero"
+					"default": "#sj-overview"
+				},
+				{
+					"id": "role",
+					"control": "text",
+					"label": "Role",
+					"esc": "attr",
+					"default": "menuitem"
 				},
 				{
 					"id": "dropdown_link",
 					"control": "text",
 					"label": "Dropdown Link",
 					"esc": "post",
-					"default": "Welcome"
+					"default": "Overview"
 				}
 			],
 			"rows": [
 				{
-					"data_section": "umoya-hero",
-					"href": "#umoya-hero",
-					"dropdown_link": "Welcome"
+					"data_s": "sj-overview",
+					"href": "#sj-overview",
+					"role": "menuitem",
+					"dropdown_link": "Overview"
 				},
 				{
-					"data_section": "umoya-about",
-					"href": "#umoya-about",
-					"dropdown_link": "Our Story"
-				},
-				{
-					"data_section": "umoya-journey-anchor",
-					"href": "#umoya-journey-anchor",
+					"data_s": "sj-journey",
+					"href": "#sj-journey",
+					"role": "menuitem",
 					"dropdown_link": "The Journey"
 				},
 				{
-					"data_section": "umoya-ways-to-travel",
-					"href": "#umoya-ways-to-travel",
-					"dropdown_link": "Ways to Travel"
+					"data_s": "sj-extensions",
+					"href": "#sj-extensions",
+					"role": "menuitem",
+					"dropdown_link": "Extensions"
 				},
 				{
-					"data_section": "fc-pillars",
-					"href": "#fc-pillars",
-					"dropdown_link": "Why Umoya"
+					"data_s": "sj-stays",
+					"href": "#sj-stays",
+					"role": "menuitem",
+					"dropdown_link": "Where You Stay"
 				},
 				{
-					"data_section": "fc-details",
-					"href": "#fc-details",
-					"dropdown_link": "Travel Essentials"
+					"data_s": "sj-inclusions",
+					"href": "#sj-inclusions",
+					"role": "menuitem",
+					"dropdown_link": "What's Included"
 				}
 			],
-			"selector": ".umoya-nav-dropdown-item"
+			"selector": ".sj-nav-dropdown-item"
 		}
 	],
 	"style_parts": [
@@ -422,7 +419,7 @@
 			"parent_label": "",
 			"sample": "",
 			"selector": "",
-			"tag": "div",
+			"tag": "nav",
 			"features": [
 				"spacing",
 				"sizing",
@@ -442,39 +439,12 @@
 			"repeater": null
 		},
 		{
-			"id": "p_nav",
-			"label": "Navigation",
-			"short_label": "Navigation",
+			"id": "p_sj_nav_inner",
+			"label": "Container 1",
+			"short_label": "Container",
 			"parent_label": "",
 			"sample": "",
-			"selector": "nav",
-			"tag": "nav",
-			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
-			],
-			"shared": false,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_umoya_nav_inner",
-			"label": "Navigation Container 1",
-			"short_label": "Container",
-			"parent_label": "Navigation",
-			"sample": "",
-			"selector": ".umoya-nav-inner",
+			"selector": ".sj-nav-inner",
 			"tag": "div",
 			"features": [
 				"spacing",
@@ -496,12 +466,12 @@
 			"repeater": null
 		},
 		{
-			"id": "p_umoya_nav_logo",
+			"id": "p_sj_nav_logo",
 			"label": "Logo",
 			"short_label": "Logo",
-			"parent_label": "Navigation",
+			"parent_label": "",
 			"sample": "",
-			"selector": ".umoya-nav-logo",
+			"selector": ".sj-nav-logo",
 			"tag": "a",
 			"features": [
 				"spacing",
@@ -550,12 +520,12 @@
 			"repeater": null
 		},
 		{
-			"id": "p_umoya_nav_logo_text",
+			"id": "p_sj_nav_logo_text",
 			"label": "Logo Text",
 			"short_label": "Text",
 			"parent_label": "Logo",
 			"sample": "Umoya",
-			"selector": ".umoya-nav-logo-text",
+			"selector": ".sj-nav-logo-text",
 			"tag": "span",
 			"features": [
 				"spacing",
@@ -578,12 +548,12 @@
 			"repeater": null
 		},
 		{
-			"id": "p_umoya_nav_links",
-			"label": "Navigation List 1",
+			"id": "p_sj_nav_links",
+			"label": "List 1",
 			"short_label": "List",
-			"parent_label": "Navigation",
+			"parent_label": "",
 			"sample": "",
-			"selector": ".umoya-nav-links",
+			"selector": ".sj-nav-links",
 			"tag": "ul",
 			"features": [
 				"spacing",
@@ -605,12 +575,12 @@
 			"repeater": null
 		},
 		{
-			"id": "p_umoya_nav_item",
+			"id": "p_sj_nav_item",
 			"label": "List Item 1",
 			"short_label": "Item",
 			"parent_label": "List",
 			"sample": "",
-			"selector": ".umoya-nav-item",
+			"selector": ".sj-nav-item",
 			"tag": "li",
 			"features": [
 				"spacing",
@@ -630,15 +600,15 @@
 			],
 			"shared": true,
 			"absolute": false,
-			"repeater": "li_umoya_nav_item"
+			"repeater": "li_sj_nav_item"
 		},
 		{
-			"id": "p_umoya_nav_item_a_nth_of_type_1",
+			"id": "p_sj_nav_item_a_nth_of_type_1",
 			"label": "Item Link 1",
 			"short_label": "Link",
 			"parent_label": "Item",
-			"sample": "Welcome",
-			"selector": ".umoya-nav-item > a:nth-of-type(1)",
+			"sample": "Overview",
+			"selector": ".sj-nav-item > a:nth-of-type(1)",
 			"tag": "a",
 			"features": [
 				"spacing",
@@ -662,12 +632,12 @@
 			"repeater": null
 		},
 		{
-			"id": "p_umoya_nav_cta",
-			"label": "Navigation Button 1",
+			"id": "p_sj_nav_cta",
+			"label": "Button 1",
 			"short_label": "Button",
-			"parent_label": "Navigation",
+			"parent_label": "",
 			"sample": "Join the Founder's Circle",
-			"selector": ".umoya-nav-cta",
+			"selector": ".sj-nav-cta",
 			"tag": "a",
 			"features": [
 				"spacing",
@@ -691,12 +661,12 @@
 			"repeater": null
 		},
 		{
-			"id": "p_umoya_nav_burger",
-			"label": "Navigation Button 2",
+			"id": "p_sj_nav_burger",
+			"label": "Button 2",
 			"short_label": "Button",
-			"parent_label": "Navigation",
+			"parent_label": "",
 			"sample": "",
-			"selector": ".umoya-nav-burger",
+			"selector": ".sj-nav-burger",
 			"tag": "button",
 			"features": [
 				"spacing",
@@ -720,12 +690,12 @@
 			"repeater": null
 		},
 		{
-			"id": "p_umoya_nav_burger_span",
+			"id": "p_sj_nav_burger_span",
 			"label": "Button Text",
 			"short_label": "Text",
 			"parent_label": "Button",
 			"sample": "",
-			"selector": ".umoya-nav-burger > span",
+			"selector": ".sj-nav-burger > span",
 			"tag": "span",
 			"features": [
 				"spacing",
@@ -748,12 +718,12 @@
 			"repeater": null
 		},
 		{
-			"id": "p_umoya_nav_dropdown",
-			"label": "Navigation Container 2",
+			"id": "p_sj_nav_dropdown",
+			"label": "Container 2",
 			"short_label": "Container",
-			"parent_label": "Navigation",
+			"parent_label": "",
 			"sample": "",
-			"selector": ".umoya-nav-dropdown",
+			"selector": ".sj-nav-dropdown",
 			"tag": "div",
 			"features": [
 				"spacing",
@@ -775,12 +745,12 @@
 			"repeater": null
 		},
 		{
-			"id": "p_umoya_nav_dropdown_list",
-			"label": "Navigation List 2",
+			"id": "p_sj_nav_dropdown_list",
+			"label": "List 2",
 			"short_label": "List",
-			"parent_label": "Navigation",
+			"parent_label": "",
 			"sample": "",
-			"selector": ".umoya-nav-dropdown-list",
+			"selector": ".sj-nav-dropdown-list",
 			"tag": "ul",
 			"features": [
 				"spacing",
@@ -802,12 +772,12 @@
 			"repeater": null
 		},
 		{
-			"id": "p_umoya_nav_dropdown_item",
+			"id": "p_sj_nav_dropdown_item",
 			"label": "List Item 2",
 			"short_label": "Item",
 			"parent_label": "List",
 			"sample": "",
-			"selector": ".umoya-nav-dropdown-item",
+			"selector": ".sj-nav-dropdown-item",
 			"tag": "li",
 			"features": [
 				"spacing",
@@ -827,15 +797,15 @@
 			],
 			"shared": true,
 			"absolute": false,
-			"repeater": "li_umoya_nav_dropdown_item"
+			"repeater": "li_sj_nav_dropdown_item"
 		},
 		{
-			"id": "p_umoya_nav_dropdown_item_a_nth_of_type_1",
+			"id": "p_sj_nav_dropdown_item_a_nth_of_type_1",
 			"label": "Item Link 2",
 			"short_label": "Link",
 			"parent_label": "Item",
-			"sample": "Welcome",
-			"selector": ".umoya-nav-dropdown-item > a:nth-of-type(1)",
+			"sample": "Overview",
+			"selector": ".sj-nav-dropdown-item > a:nth-of-type(1)",
 			"tag": "a",
 			"features": [
 				"spacing",
@@ -859,12 +829,12 @@
 			"repeater": null
 		},
 		{
-			"id": "p_umoya_nav_dropdown_cta_row",
-			"label": "Navigation Item",
+			"id": "p_sj_nav_dropdown_cta_row",
+			"label": "Item",
 			"short_label": "Item",
-			"parent_label": "Navigation",
+			"parent_label": "",
 			"sample": "",
-			"selector": ".umoya-nav-dropdown-cta-row",
+			"selector": ".sj-nav-dropdown-cta-row",
 			"tag": "div",
 			"features": [
 				"spacing",
@@ -886,12 +856,12 @@
 			"repeater": null
 		},
 		{
-			"id": "p_umoya_nav_dropdown_cta",
+			"id": "p_sj_nav_dropdown_cta",
 			"label": "Item Button",
 			"short_label": "Button",
 			"parent_label": "Item",
 			"sample": "Join the Founder's Circle",
-			"selector": ".umoya-nav-dropdown-cta",
+			"selector": ".sj-nav-dropdown-cta",
 			"tag": "a",
 			"features": [
 				"spacing",
@@ -931,12 +901,12 @@
 	],
 	"fields": [
 		{
-			"id": "navigation_aria_label",
+			"id": "section_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
-			"default": "Homepage section navigation",
+			"default": "Signature Journey page navigation",
 			"esc": "attr",
-			"group": "p_nav",
+			"group": "p_section",
 			"tab": "content",
 			"sort": 1
 		},
@@ -945,10 +915,10 @@
 			"control": "url",
 			"label": "Link",
 			"default": {
-				"url": "#umoya-hero"
+				"url": "#sj-hero"
 			},
 			"esc": "url",
-			"group": "p_umoya_nav_logo",
+			"group": "p_sj_nav_logo",
 			"tab": "content",
 			"sort": 1
 		},
@@ -956,9 +926,9 @@
 			"id": "logo_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
-			"default": "Umoya Afrika Tours - back to homepage top",
+			"default": "Umoya Afrika Tours — back to top",
 			"esc": "attr",
-			"group": "p_umoya_nav_logo",
+			"group": "p_sj_nav_logo",
 			"tab": "content",
 			"sort": 1
 		},
@@ -991,7 +961,7 @@
 			"description": "",
 			"default": "Umoya",
 			"esc": "post",
-			"group": "p_umoya_nav_logo_text",
+			"group": "p_sj_nav_logo_text",
 			"sort": 0
 		},
 		{
@@ -1001,7 +971,7 @@
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "none",
 			"esc": "attr",
-			"group": "p_umoya_nav_logo_text",
+			"group": "p_sj_nav_logo_text",
 			"tab": "inline_style",
 			"sort": 3
 		},
@@ -1012,7 +982,7 @@
 			"description": "",
 			"default": "Join the Founder's Circle",
 			"esc": "post",
-			"group": "p_umoya_nav_cta",
+			"group": "p_sj_nav_cta",
 			"sort": 0
 		},
 		{
@@ -1023,7 +993,7 @@
 				"url": "https://umoyaafrikatours.co.za/founders-circle/"
 			},
 			"esc": "url",
-			"group": "p_umoya_nav_cta",
+			"group": "p_sj_nav_cta",
 			"tab": "content",
 			"sort": 1
 		},
@@ -1036,17 +1006,7 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_nav_burger",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "button_type",
-			"control": "text",
-			"label": "Type",
-			"default": "button",
-			"esc": "attr",
-			"group": "form",
+			"group": "p_sj_nav_burger",
 			"tab": "form",
 			"sort": 1
 		},
@@ -1056,7 +1016,7 @@
 			"label": "Accessible Name",
 			"default": "Open navigation menu",
 			"esc": "attr",
-			"group": "p_umoya_nav_burger",
+			"group": "p_sj_nav_burger",
 			"tab": "content",
 			"sort": 1
 		},
@@ -1064,9 +1024,9 @@
 			"id": "container_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
-			"default": "Homepage sections",
+			"default": "Page sections",
 			"esc": "attr",
-			"group": "p_umoya_nav_dropdown",
+			"group": "p_sj_nav_dropdown",
 			"tab": "content",
 			"sort": 1
 		},
@@ -1077,7 +1037,7 @@
 			"description": "",
 			"default": "Join the Founder's Circle",
 			"esc": "post",
-			"group": "p_umoya_nav_dropdown_cta",
+			"group": "p_sj_nav_dropdown_cta",
 			"sort": 0
 		},
 		{
@@ -1088,7 +1048,7 @@
 				"url": "https://umoyaafrikatours.co.za/founders-circle/"
 			},
 			"esc": "url",
-			"group": "p_umoya_nav_dropdown_cta",
+			"group": "p_sj_nav_dropdown_cta",
 			"tab": "content",
 			"sort": 1
 		}

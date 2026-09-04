@@ -3,9 +3,17 @@
 Turns each section HTML file into a native Elementor widget, and proves the
 conversion lost nothing.
 
-It compiles **25 sections**: the twelve Founder's Circle sections from
-`founders-circle-revamp/` and the thirteen homepage sections from
-`homepage-revamp/`. Registries live in `sections/`.
+It compiles **33 sections** across three Elementor categories: twelve Founder's
+Circle from `founders-circle-revamp/`, thirteen homepage from
+`homepage-revamp/`, and eight Signature Journey from `signature-journey/`.
+Registries live in `sections/`, one file per page family, and each declares its
+own category — the build emits `categories.json`, so adding a page family needs
+no PHP change.
+
+A registry lists what should **ship**, not what is on disk. The Signature
+Journey folder has nine section files and eight entries: `section-07-cta.html`
+was removed at the client's request and is kept only for history. Read the
+page's `_NOTES.md` before adding entries.
 
 It replaced `tools/build-elementor-widgets.mjs`, now deleted. That generator
 rewrote markup with regular expressions and had no way to check its own work,
@@ -186,6 +194,14 @@ real tag from one named inside a comment, which is how the footer's opt-out
 popup was destroyed (CLAUDE.md phase 21). `splitSection()` uses parser-reported
 offsets.
 
+**A failure is only believed if it reproduces — in both browser checks.**
+Booting 33 editors in a row against a single-threaded PHP server drops the
+occasional script, which surfaces as `wp is not defined` and an empty canvas.
+That is a WordPress bootstrap race, not a widget fault: the section that failed
+in the crowd passed twice in isolation immediately afterwards. `editor-check`
+now re-inspects a failing section once and marks a recovered one
+`[passed on retry]`.
+
 **A geometry difference is only believed if it reproduces.** The browser check
 measures a live browser against a single-threaded PHP server; images and fonts
 settle at slightly different moments on the two pages, and a few pixels of drift
@@ -231,6 +247,10 @@ Elementor → Tools → Regenerate CSS & Data.
 3. `npm --prefix tools/uew run check` (build + all three checks)
 4. `python tools/build-plugin-zip.py` — never `Compress-Archive`, which writes
    backslash paths WordPress cannot install.
+
+Run the checks with nothing else heavy on the machine. Two browser checks at
+once will fight for the single-threaded PHP server and produce failures that
+say more about the harness than the widgets.
 
 To register a new section, add an entry to `sections/founders-circle.mjs`. A
 section entry may carry a `spec`:

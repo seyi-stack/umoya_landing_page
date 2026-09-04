@@ -221,7 +221,7 @@
 		},
 		{
 			"id": "content_p_fc_f2_form",
-			"label": "Card",
+			"label": "Form",
 			"sample": "",
 			"region_label": "Card",
 			"controls": [
@@ -248,11 +248,19 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Form"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_f2_field_label_nth_of_type_1",
+			"label": "Field Label 1",
+			"sample": "Title",
+			"region_label": "Field",
+			"controls": [
 				{
 					"id": "label_text",
 					"control": "text",
-					"label": "Label",
+					"label": "Label 1",
 					"description": "",
 					"default": "Title",
 					"esc": "post",
@@ -261,9 +269,101 @@
 					"part_label": "Field Label 1"
 				},
 				{
+					"id": "label_text_2",
+					"control": "text",
+					"label": "Text 1",
+					"default": "First Name",
+					"esc": "post",
+					"group": "p_fc_f2_field_label_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Field Label 1"
+				},
+				{
+					"id": "label_text_3",
+					"control": "text",
+					"label": "Text 2",
+					"default": "Last Name",
+					"esc": "post",
+					"group": "p_fc_f2_field_label_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Field Label 1"
+				},
+				{
+					"id": "label_text_4",
+					"control": "text",
+					"label": "Text 3",
+					"default": "Email Address",
+					"esc": "post",
+					"group": "p_fc_f2_field_label_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Field Label 1"
+				},
+				{
+					"id": "label_text_5",
+					"control": "text",
+					"label": "Label 2",
+					"description": "",
+					"default": "Phone Number",
+					"esc": "post",
+					"group": "p_fc_f2_field_label_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Field Label 1"
+				},
+				{
+					"id": "label_text_6",
+					"control": "text",
+					"label": "Text 4",
+					"default": "Country",
+					"esc": "post",
+					"group": "p_fc_f2_field_label_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Field Label 1"
+				},
+				{
+					"id": "label_text_7",
+					"control": "text",
+					"label": "Label 3",
+					"description": "",
+					"default": "City",
+					"esc": "post",
+					"group": "p_fc_f2_field_label_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Field Label 1"
+				},
+				{
+					"id": "label_text_8",
+					"control": "text",
+					"label": "Label 4",
+					"description": "",
+					"default": "When Are You Hoping to Travel?",
+					"esc": "post",
+					"group": "p_fc_f2_field_label_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Field Label 1"
+				},
+				{
+					"id": "label_text_9",
+					"control": "text",
+					"label": "Label 5",
+					"description": "",
+					"default": "How Many Guests Will Be Traveling?",
+					"esc": "post",
+					"group": "p_fc_f2_field_label_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Field Label 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1",
+			"label": "Form Text",
+			"sample": "*",
+			"region_label": "Form",
+			"controls": [
+				{
 					"id": "text_text",
 					"control": "text",
-					"label": "Text",
+					"label": "Text 1",
 					"description": "",
 					"default": "*",
 					"esc": "post",
@@ -272,9 +372,50 @@
 					"part_label": "Form Text"
 				},
 				{
+					"id": "text_text_2",
+					"control": "text",
+					"label": "Text 2",
+					"description": "",
+					"default": "*",
+					"esc": "post",
+					"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Form Text"
+				},
+				{
+					"id": "text_text_3",
+					"control": "text",
+					"label": "Text 3",
+					"description": "",
+					"default": "*",
+					"esc": "post",
+					"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Form Text"
+				},
+				{
+					"id": "text_text_4",
+					"control": "text",
+					"label": "Text 4",
+					"description": "",
+					"default": "*",
+					"esc": "post",
+					"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Form Text"
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_f2_field_input_nth_of_type_1",
+			"label": "Form Anchor",
+			"sample": "",
+			"region_label": "Form",
+			"controls": [
+				{
 					"id": "anchor_placeholder",
 					"control": "text",
-					"label": "Placeholder",
+					"label": "Placeholder 1",
 					"default": "First name",
 					"esc": "attr",
 					"group": "p_fc_f2_field_input_nth_of_type_1",
@@ -283,10 +424,73 @@
 					"part_label": "Form Anchor"
 				},
 				{
+					"id": "anchor_placeholder_2",
+					"control": "text",
+					"label": "Placeholder 2",
+					"default": "Last name",
+					"esc": "attr",
+					"group": "p_fc_f2_field_input_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Form Anchor"
+				},
+				{
+					"id": "anchor_placeholder_3",
+					"control": "text",
+					"label": "Placeholder 3",
+					"default": "your@email.com",
+					"esc": "attr",
+					"group": "p_fc_f2_field_input_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Form Anchor"
+				},
+				{
+					"id": "anchor_placeholder_4",
+					"control": "text",
+					"label": "Placeholder 4",
+					"default": "+1 (000) 000-0000",
+					"esc": "attr",
+					"group": "p_fc_f2_field_input_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Form Anchor"
+				},
+				{
+					"id": "anchor_placeholder_5",
+					"control": "text",
+					"label": "Placeholder 5",
+					"default": "Your city",
+					"esc": "attr",
+					"group": "p_fc_f2_field_input_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Form Anchor"
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_f2_when_select",
+			"label": "Form",
+			"sample": "",
+			"region_label": "Form",
+			"controls": [
+				{
 					"id": "select_aria_label",
 					"control": "text",
-					"label": "Form Select",
+					"label": "Accessible Name 1",
 					"default": "Preferred travel month",
+					"esc": "attr",
+					"group": "p_fc_f2_when_select",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Form Select"
+				},
+				{
+					"id": "select_aria_label_2",
+					"control": "text",
+					"label": "Accessible Name 2",
+					"default": "Preferred travel year",
 					"esc": "attr",
 					"group": "p_fc_f2_when_select",
 					"tab": "content",
@@ -296,7 +500,7 @@
 				{
 					"id": "label_text_10",
 					"control": "text",
-					"label": "Field Label 2",
+					"label": "Label",
 					"description": "",
 					"default": "What Are You Hoping to Experience?",
 					"esc": "post",
@@ -307,23 +511,14 @@
 				{
 					"id": "anchor_placeholder_6",
 					"control": "text",
-					"label": "Field Anchor",
+					"label": "Placeholder",
 					"default": "Tell us about your travel interests, what you hope to experience, and what draws you to South Africa.",
 					"esc": "attr",
 					"group": "p_textarea",
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Field Anchor"
-				}
-			],
-			"merged": true
-		},
-		{
-			"id": "content_p_fc_f2_sub_btn",
-			"label": "Form",
-			"sample": "Request Your Founder’s Circle Membership",
-			"region_label": "Form",
-			"controls": [
+				},
 				{
 					"id": "button_text",
 					"control": "text",
@@ -356,176 +551,6 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Embed"
-				},
-				{
-					"id": "label_text_2",
-					"control": "text",
-					"label": "Text",
-					"default": "First Name",
-					"esc": "post",
-					"group": "p_fc_f2_field_label_nth_of_type_1_2",
-					"sort": 0
-				},
-				{
-					"id": "label_text_3",
-					"control": "text",
-					"label": "Text",
-					"default": "Last Name",
-					"esc": "post",
-					"group": "p_fc_f2_field_label_nth_of_type_1_3",
-					"sort": 0
-				},
-				{
-					"id": "text_text_2",
-					"control": "text",
-					"label": "Text",
-					"description": "",
-					"default": "*",
-					"esc": "post",
-					"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1_2",
-					"sort": 0
-				},
-				{
-					"id": "anchor_placeholder_2",
-					"control": "text",
-					"label": "Placeholder",
-					"default": "Last name",
-					"esc": "attr",
-					"group": "p_fc_f2_field_input_nth_of_type_1_2",
-					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "label_text_4",
-					"control": "text",
-					"label": "Text",
-					"default": "Email Address",
-					"esc": "post",
-					"group": "p_fc_f2_field_label_nth_of_type_1_4",
-					"sort": 0
-				}
-			],
-			"merged": true
-		},
-		{
-			"id": "content_p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1_3",
-			"label": "Content",
-			"controls": [
-				{
-					"id": "text_text_3",
-					"control": "text",
-					"label": "Text",
-					"description": "",
-					"default": "*",
-					"esc": "post",
-					"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1_3",
-					"sort": 0
-				},
-				{
-					"id": "anchor_placeholder_3",
-					"control": "text",
-					"label": "Placeholder",
-					"default": "your@email.com",
-					"esc": "attr",
-					"group": "p_fc_f2_field_input_nth_of_type_1_3",
-					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "label_text_5",
-					"control": "text",
-					"label": "Label",
-					"description": "",
-					"default": "Phone Number",
-					"esc": "post",
-					"group": "p_fc_f2_field_label_nth_of_type_1_5",
-					"sort": 0
-				},
-				{
-					"id": "anchor_placeholder_4",
-					"control": "text",
-					"label": "Placeholder",
-					"default": "+1 (000) 000-0000",
-					"esc": "attr",
-					"group": "p_fc_f2_field_input_nth_of_type_1_4",
-					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "label_text_6",
-					"control": "text",
-					"label": "Text",
-					"default": "Country",
-					"esc": "post",
-					"group": "p_fc_f2_field_label_nth_of_type_1_6",
-					"sort": 0
-				},
-				{
-					"id": "text_text_4",
-					"control": "text",
-					"label": "Text",
-					"description": "",
-					"default": "*",
-					"esc": "post",
-					"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1_4",
-					"sort": 0
-				},
-				{
-					"id": "label_text_7",
-					"control": "text",
-					"label": "Label",
-					"description": "",
-					"default": "City",
-					"esc": "post",
-					"group": "p_fc_f2_field_label_nth_of_type_1_7",
-					"sort": 0
-				},
-				{
-					"id": "anchor_placeholder_5",
-					"control": "text",
-					"label": "Placeholder",
-					"default": "Your city",
-					"esc": "attr",
-					"group": "p_fc_f2_field_input_nth_of_type_1_5",
-					"tab": "content",
-					"sort": 1
-				}
-			],
-			"merged": true
-		},
-		{
-			"id": "content_p_fc_f2_field_label_nth_of_type_1_8",
-			"label": "Content",
-			"controls": [
-				{
-					"id": "label_text_8",
-					"control": "text",
-					"label": "Label",
-					"description": "",
-					"default": "When Are You Hoping to Travel?",
-					"esc": "post",
-					"group": "p_fc_f2_field_label_nth_of_type_1_8",
-					"sort": 0
-				},
-				{
-					"id": "select_aria_label_2",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Preferred travel year",
-					"esc": "attr",
-					"group": "p_fc_f2_when_select_2",
-					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "label_text_9",
-					"control": "text",
-					"label": "Label",
-					"description": "",
-					"default": "How Many Guests Will Be Traveling?",
-					"esc": "post",
-					"group": "p_fc_f2_field_label_nth_of_type_1_9",
-					"sort": 0
 				}
 			],
 			"merged": true
@@ -879,10 +904,10 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_2",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Anchor"
 		},
 		{
 			"id": "anchor_disabled_2",
@@ -893,10 +918,10 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_2",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Anchor"
 		},
 		{
 			"id": "anchor_readonly_2",
@@ -907,10 +932,10 @@
 			"flag_attr": "readonly",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_2",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Anchor"
 		},
 		{
 			"id": "anchor_checked_2",
@@ -921,10 +946,10 @@
 			"flag_attr": "checked",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_2",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Anchor"
 		},
 		{
 			"id": "anchor_type_2",
@@ -957,10 +982,10 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Anchor"
 		},
 		{
 			"id": "anchor_disabled_3",
@@ -971,10 +996,10 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Anchor"
 		},
 		{
 			"id": "anchor_readonly_3",
@@ -985,10 +1010,10 @@
 			"flag_attr": "readonly",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Anchor"
 		},
 		{
 			"id": "anchor_checked_3",
@@ -999,10 +1024,10 @@
 			"flag_attr": "checked",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Anchor"
 		},
 		{
 			"id": "anchor_type_3",
@@ -1035,10 +1060,10 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Anchor"
 		},
 		{
 			"id": "anchor_disabled_4",
@@ -1049,10 +1074,10 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Anchor"
 		},
 		{
 			"id": "anchor_readonly_4",
@@ -1063,10 +1088,10 @@
 			"flag_attr": "readonly",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Anchor"
 		},
 		{
 			"id": "anchor_checked_4",
@@ -1077,10 +1102,10 @@
 			"flag_attr": "checked",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Anchor"
 		},
 		{
 			"id": "anchor_type_4",
@@ -1113,10 +1138,10 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_select_nth_of_type_1_2",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Field Select"
 		},
 		{
 			"id": "select_disabled_2",
@@ -1127,10 +1152,10 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_select_nth_of_type_1_2",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Field Select"
 		},
 		{
 			"id": "select_multiple_2",
@@ -1141,10 +1166,10 @@
 			"flag_attr": "multiple",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_select_nth_of_type_1_2",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Field Select"
 		},
 		{
 			"id": "anchor_required_5",
@@ -1155,10 +1180,10 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_5",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Anchor"
 		},
 		{
 			"id": "anchor_disabled_5",
@@ -1169,10 +1194,10 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_5",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Anchor"
 		},
 		{
 			"id": "anchor_readonly_5",
@@ -1183,10 +1208,10 @@
 			"flag_attr": "readonly",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_5",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Anchor"
 		},
 		{
 			"id": "anchor_checked_5",
@@ -1197,10 +1222,10 @@
 			"flag_attr": "checked",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_5",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Anchor"
 		},
 		{
 			"id": "anchor_type_5",
@@ -1275,10 +1300,10 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_when_select_2",
+			"group": "p_fc_f2_when_select",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Select"
 		},
 		{
 			"id": "select_disabled_4",
@@ -1289,10 +1314,10 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_when_select_2",
+			"group": "p_fc_f2_when_select",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Select"
 		},
 		{
 			"id": "select_multiple_4",
@@ -1303,10 +1328,10 @@
 			"flag_attr": "multiple",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_when_select_2",
+			"group": "p_fc_f2_when_select",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Form Select"
 		},
 		{
 			"id": "select_required_5",
@@ -1317,10 +1342,10 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_select_nth_of_type_1_3",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Field Select"
 		},
 		{
 			"id": "select_disabled_5",
@@ -1331,10 +1356,10 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_select_nth_of_type_1_3",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Field Select"
 		},
 		{
 			"id": "select_multiple_5",
@@ -1345,10 +1370,10 @@
 			"flag_attr": "multiple",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_select_nth_of_type_1_3",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Field Select"
 		},
 		{
 			"id": "anchor_required_6",
@@ -4939,7 +4964,7 @@
 			"label": "Text",
 			"default": "First Name",
 			"esc": "post",
-			"group": "p_fc_f2_field_label_nth_of_type_1_2",
+			"group": "p_fc_f2_field_label_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -5050,7 +5075,7 @@
 			"label": "Text",
 			"default": "Last Name",
 			"esc": "post",
-			"group": "p_fc_f2_field_label_nth_of_type_1_3",
+			"group": "p_fc_f2_field_label_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -5060,7 +5085,7 @@
 			"description": "",
 			"default": "*",
 			"esc": "post",
-			"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1_2",
+			"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -5072,7 +5097,7 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_2",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5085,7 +5110,7 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_2",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5098,7 +5123,7 @@
 			"flag_attr": "readonly",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_2",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5111,7 +5136,7 @@
 			"flag_attr": "checked",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_2",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5141,7 +5166,7 @@
 			"label": "Placeholder",
 			"default": "Last name",
 			"esc": "attr",
-			"group": "p_fc_f2_field_input_nth_of_type_1_2",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "content",
 			"sort": 1
 		},
@@ -5161,7 +5186,7 @@
 			"label": "Text",
 			"default": "Email Address",
 			"esc": "post",
-			"group": "p_fc_f2_field_label_nth_of_type_1_4",
+			"group": "p_fc_f2_field_label_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -5171,7 +5196,7 @@
 			"description": "",
 			"default": "*",
 			"esc": "post",
-			"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1_3",
+			"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -5183,7 +5208,7 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5196,7 +5221,7 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5209,7 +5234,7 @@
 			"flag_attr": "readonly",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5222,7 +5247,7 @@
 			"flag_attr": "checked",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5252,7 +5277,7 @@
 			"label": "Placeholder",
 			"default": "your@email.com",
 			"esc": "attr",
-			"group": "p_fc_f2_field_input_nth_of_type_1_3",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "content",
 			"sort": 1
 		},
@@ -5273,7 +5298,7 @@
 			"description": "",
 			"default": "Phone Number",
 			"esc": "post",
-			"group": "p_fc_f2_field_label_nth_of_type_1_5",
+			"group": "p_fc_f2_field_label_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -5285,7 +5310,7 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5298,7 +5323,7 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5311,7 +5336,7 @@
 			"flag_attr": "readonly",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5324,7 +5349,7 @@
 			"flag_attr": "checked",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5354,7 +5379,7 @@
 			"label": "Placeholder",
 			"default": "+1 (000) 000-0000",
 			"esc": "attr",
-			"group": "p_fc_f2_field_input_nth_of_type_1_4",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "content",
 			"sort": 1
 		},
@@ -5374,7 +5399,7 @@
 			"label": "Text",
 			"default": "Country",
 			"esc": "post",
-			"group": "p_fc_f2_field_label_nth_of_type_1_6",
+			"group": "p_fc_f2_field_label_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -5384,7 +5409,7 @@
 			"description": "",
 			"default": "*",
 			"esc": "post",
-			"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1_4",
+			"group": "p_fc_f2_field_label_nth_of_type_1_span_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -5396,7 +5421,7 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_select_nth_of_type_1_2",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5409,7 +5434,7 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_select_nth_of_type_1_2",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5422,7 +5447,7 @@
 			"flag_attr": "multiple",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_select_nth_of_type_1_2",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5443,7 +5468,7 @@
 			"description": "",
 			"default": "City",
 			"esc": "post",
-			"group": "p_fc_f2_field_label_nth_of_type_1_7",
+			"group": "p_fc_f2_field_label_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -5455,7 +5480,7 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_5",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5468,7 +5493,7 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_5",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5481,7 +5506,7 @@
 			"flag_attr": "readonly",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_5",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5494,7 +5519,7 @@
 			"flag_attr": "checked",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_input_nth_of_type_1_5",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5524,7 +5549,7 @@
 			"label": "Placeholder",
 			"default": "Your city",
 			"esc": "attr",
-			"group": "p_fc_f2_field_input_nth_of_type_1_5",
+			"group": "p_fc_f2_field_input_nth_of_type_1",
 			"tab": "content",
 			"sort": 1
 		},
@@ -5545,7 +5570,7 @@
 			"description": "",
 			"default": "When Are You Hoping to Travel?",
 			"esc": "post",
-			"group": "p_fc_f2_field_label_nth_of_type_1_8",
+			"group": "p_fc_f2_field_label_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -5616,7 +5641,7 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_when_select_2",
+			"group": "p_fc_f2_when_select",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5629,7 +5654,7 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_when_select_2",
+			"group": "p_fc_f2_when_select",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5642,7 +5667,7 @@
 			"flag_attr": "multiple",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_when_select_2",
+			"group": "p_fc_f2_when_select",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5662,7 +5687,7 @@
 			"label": "Accessible Name",
 			"default": "Preferred travel year",
 			"esc": "attr",
-			"group": "p_fc_f2_when_select_2",
+			"group": "p_fc_f2_when_select",
 			"tab": "content",
 			"sort": 1
 		},
@@ -5673,7 +5698,7 @@
 			"description": "",
 			"default": "How Many Guests Will Be Traveling?",
 			"esc": "post",
-			"group": "p_fc_f2_field_label_nth_of_type_1_9",
+			"group": "p_fc_f2_field_label_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -5685,7 +5710,7 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_select_nth_of_type_1_3",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5698,7 +5723,7 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_select_nth_of_type_1_3",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},
@@ -5711,7 +5736,7 @@
 			"flag_attr": "multiple",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_f2_field_select_nth_of_type_1_3",
+			"group": "p_fc_f2_field_select_nth_of_type_1",
 			"tab": "form",
 			"sort": 1
 		},

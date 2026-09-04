@@ -120,11 +120,33 @@
 			]
 		},
 		{
-			"id": "content_p_fc_bf_eyebrow",
+			"id": "content_p_fc_bf_reveal",
 			"label": "List",
-			"sample": "Exclusive Early Access",
+			"sample": "",
 			"region_label": "List",
 			"controls": [
+				{
+					"id": "container_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Journey imagery — slideshow",
+					"esc": "attr",
+					"group": "p_fc_bf_reveal",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "List Container 1"
+				},
+				{
+					"id": "container_aria_roledescription",
+					"control": "text",
+					"label": "Accessible Role",
+					"default": "carousel",
+					"esc": "attr",
+					"group": "p_fc_bf_reveal",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "List Container 1"
+				},
 				{
 					"id": "eyebrow_text",
 					"control": "text",
@@ -225,7 +247,7 @@
 		},
 		{
 			"id": "content_p_fc_ss_slide_img_nth_of_type_1",
-			"label": "Slide",
+			"label": "Image",
 			"sample": "",
 			"region_label": "Slide",
 			"controls": [
@@ -252,12 +274,31 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Image"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_ss_arrow",
+			"label": "List",
+			"sample": "",
+			"region_label": "List",
+			"controls": [
 				{
 					"id": "arrow_aria_label",
 					"control": "text",
-					"label": "Accessible Name",
+					"label": "Accessible Name 1",
 					"default": "Previous slide",
+					"esc": "attr",
+					"group": "p_fc_ss_arrow",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Arrow"
+				},
+				{
+					"id": "arrow_aria_label_2",
+					"control": "text",
+					"label": "Accessible Name 2",
+					"default": "Next slide",
 					"esc": "attr",
 					"group": "p_fc_ss_arrow",
 					"tab": "content",
@@ -288,43 +329,6 @@
 				}
 			],
 			"merged": true
-		},
-		{
-			"id": "content_p_fc_bf_reveal_2",
-			"label": "Content",
-			"controls": [
-				{
-					"id": "container_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Journey imagery — slideshow",
-					"esc": "attr",
-					"group": "p_fc_bf_reveal_2",
-					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "container_aria_roledescription",
-					"control": "text",
-					"label": "Accessible Role",
-					"default": "carousel",
-					"esc": "attr",
-					"group": "p_fc_bf_reveal_2",
-					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "arrow_aria_label_2",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Next slide",
-					"esc": "attr",
-					"group": "p_fc_ss_arrow_2",
-					"tab": "content",
-					"sort": 1
-				}
-			],
-			"merged": true
 		}
 	],
 	"integration_controls": [],
@@ -352,10 +356,10 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_ss_arrow_2",
+			"group": "p_fc_ss_arrow",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Arrow"
 		},
 		{
 			"id": "dot_disabled",
@@ -1158,7 +1162,7 @@
 			"label": "Accessible Name",
 			"default": "Journey imagery — slideshow",
 			"esc": "attr",
-			"group": "p_fc_bf_reveal_2",
+			"group": "p_fc_bf_reveal",
 			"tab": "content",
 			"sort": 1
 		},
@@ -1168,7 +1172,7 @@
 			"label": "Accessible Role",
 			"default": "carousel",
 			"esc": "attr",
-			"group": "p_fc_bf_reveal_2",
+			"group": "p_fc_bf_reveal",
 			"tab": "content",
 			"sort": 1
 		},
@@ -1260,7 +1264,7 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_fc_ss_arrow_2",
+			"group": "p_fc_ss_arrow",
 			"tab": "form",
 			"sort": 1
 		},
@@ -1270,7 +1274,7 @@
 			"label": "Accessible Name",
 			"default": "Next slide",
 			"esc": "attr",
-			"group": "p_fc_ss_arrow_2",
+			"group": "p_fc_ss_arrow",
 			"tab": "content",
 			"sort": 1
 		},

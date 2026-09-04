@@ -688,5 +688,223 @@
 			"inquiry",
 			"popup"
 		]
+	},
+	"sj_nav": {
+		"key": "sj_nav",
+		"name": "umoya-sj-nav",
+		"title": "SJ Navigation",
+		"description": "Fixed top navigation for the Signature Journey page.",
+		"icon": "eicon-nav-menu",
+		"category": "umoya-sj",
+		"source": "signature-journey/section-00-nav.html",
+		"class_name": "SJ_Nav",
+		"widget_file": "widgets/class-sj-nav.php",
+		"root_selector": "#sjNavBar",
+		"template": "templates/sections/sj_nav.php",
+		"style": {
+			"handle": "uew-umoya-sj-nav",
+			"file": "assets/css/sections/sj_nav.css"
+		},
+		"script": {
+			"handle": "uew-umoya-sj-nav",
+			"file": "assets/js/sections/sj_nav.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"sj",
+			"navigation"
+		]
+	},
+	"sj_hero": {
+		"key": "sj_hero",
+		"name": "umoya-sj-hero",
+		"title": "SJ Hero",
+		"description": "One Journey, in Three Chapters — image only; the video was removed.",
+		"icon": "eicon-banner",
+		"category": "umoya-sj",
+		"source": "signature-journey/section-01-hero.html",
+		"class_name": "SJ_Hero",
+		"widget_file": "widgets/class-sj-hero.php",
+		"root_selector": "#sj-hero",
+		"template": "templates/sections/sj_hero.php",
+		"style": {
+			"handle": "uew-umoya-sj-hero",
+			"file": "assets/css/sections/sj_hero.css"
+		},
+		"script": null,
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"sj",
+			"hero"
+		]
+	},
+	"sj_overview": {
+		"key": "sj_overview",
+		"name": "umoya-sj-overview",
+		"title": "SJ Overview",
+		"description": "Intro copy, then the stat bar (10 Days · 3 Chapters · 2 Extensions · 7 Signature Moments).",
+		"icon": "eicon-info-circle-o",
+		"category": "umoya-sj",
+		"source": "signature-journey/section-02-intro.html",
+		"class_name": "SJ_Overview",
+		"widget_file": "widgets/class-sj-overview.php",
+		"root_selector": "#sj-overview",
+		"template": "templates/sections/sj_overview.php",
+		"style": {
+			"handle": "uew-umoya-sj-overview",
+			"file": "assets/css/sections/sj_overview.css"
+		},
+		"script": {
+			"handle": "uew-umoya-sj-overview",
+			"file": "assets/js/sections/sj_overview.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"sj",
+			"overview"
+		]
+	},
+	"sj_chapters": {
+		"key": "sj_chapters",
+		"name": "umoya-sj-chapters",
+		"title": "SJ Journey Chapters",
+		"description": "The three chapters: History & Culture, Safari, The Cape.",
+		"icon": "eicon-post-list",
+		"category": "umoya-sj",
+		"source": "signature-journey/section-03-journey-chapters.html",
+		"class_name": "SJ_Chapters",
+		"widget_file": "widgets/class-sj-chapters.php",
+		"root_selector": "#sj-journey",
+		"template": "templates/sections/sj_chapters.php",
+		"style": {
+			"handle": "uew-umoya-sj-chapters",
+			"file": "assets/css/sections/sj_chapters.css"
+		},
+		"script": {
+			"handle": "uew-umoya-sj-chapters",
+			"file": "assets/js/sections/sj_chapters.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"sj",
+			"journey",
+			"chapters"
+		]
+	},
+	"sj_extensions": {
+		"key": "sj_extensions",
+		"name": "umoya-sj-extensions",
+		"title": "SJ Extensions",
+		"description": "Optional extensions — Victoria Falls and Chobe — on the dark band.",
+		"icon": "eicon-plus-square",
+		"category": "umoya-sj",
+		"source": "signature-journey/section-04-extensions.html",
+		"class_name": "SJ_Extensions",
+		"widget_file": "widgets/class-sj-extensions.php",
+		"root_selector": "#sj-extensions",
+		"template": "templates/sections/sj_extensions.php",
+		"style": {
+			"handle": "uew-umoya-sj-extensions",
+			"file": "assets/css/sections/sj_extensions.css"
+		},
+		"script": {
+			"handle": "uew-umoya-sj-extensions",
+			"file": "assets/js/sections/sj_extensions.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"sj",
+			"extensions"
+		]
+	},
+	"sj_stays": {
+		"key": "sj_stays",
+		"name": "umoya-sj-stays",
+		"title": "SJ Where You Stay",
+		"description": "Three hotel slideshows, advancing together on one shared clock.",
+		"icon": "eicon-image-rollover",
+		"category": "umoya-sj",
+		"source": "signature-journey/section-05-stays.html",
+		"class_name": "SJ_Stays",
+		"widget_file": "widgets/class-sj-stays.php",
+		"root_selector": "#sj-stays",
+		"template": "templates/sections/sj_stays.php",
+		"style": {
+			"handle": "uew-umoya-sj-stays",
+			"file": "assets/css/sections/sj_stays.css"
+		},
+		"script": {
+			"handle": "uew-umoya-sj-stays",
+			"file": "assets/js/sections/sj_stays.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"sj",
+			"where",
+			"you",
+			"stay"
+		]
+	},
+	"sj_inclusions": {
+		"key": "sj_inclusions",
+		"name": "umoya-sj-inclusions",
+		"title": "SJ Inclusions & Offers",
+		"description": "Inclusions grid plus the sticky Offers panel. Its button opens the inquiry popup.",
+		"icon": "eicon-price-list",
+		"category": "umoya-sj",
+		"source": "signature-journey/section-06-inclusions-offers.html",
+		"class_name": "SJ_Inclusions",
+		"widget_file": "widgets/class-sj-inclusions.php",
+		"root_selector": "#sj-inclusions",
+		"template": "templates/sections/sj_inclusions.php",
+		"style": {
+			"handle": "uew-umoya-sj-inclusions",
+			"file": "assets/css/sections/sj_inclusions.css"
+		},
+		"script": {
+			"handle": "uew-umoya-sj-inclusions",
+			"file": "assets/js/sections/sj_inclusions.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"sj",
+			"inclusions",
+			"offers"
+		]
+	},
+	"sj_form_popup": {
+		"key": "sj_form_popup",
+		"name": "umoya-sj-form-popup",
+		"title": "SJ Inquiry Popup",
+		"description": "Inquiry popup, lead source signature_journey_popup. Required on the page or the Offers button does nothing.",
+		"icon": "eicon-form-horizontal",
+		"category": "umoya-sj",
+		"source": "signature-journey/section-08-form-popup.html",
+		"class_name": "SJ_Form_Popup",
+		"widget_file": "widgets/class-sj-form-popup.php",
+		"root_selector": "#umoya-form-popup",
+		"template": "templates/sections/sj_form_popup.php",
+		"style": {
+			"handle": "uew-umoya-sj-form-popup",
+			"file": "assets/css/sections/sj_form_popup.css"
+		},
+		"script": {
+			"handle": "uew-umoya-sj-form-popup",
+			"file": "assets/js/sections/sj_form_popup.js"
+		},
+		"keywords": [
+			"umoya",
+			"founders circle",
+			"sj",
+			"inquiry",
+			"popup"
+		]
 	}
 }

@@ -1,0 +1,810 @@
+{
+	"key": "sj_hero",
+	"name": "umoya-sj-hero",
+	"title": "SJ Hero",
+	"description": "One Journey, in Three Chapters — image only; the video was removed.",
+	"icon": "eicon-banner",
+	"category": "umoya-sj",
+	"source": "signature-journey/section-01-hero.html",
+	"class_name": "SJ_Hero",
+	"widget_file": "widgets/class-sj-hero.php",
+	"root_selector": "#sj-hero",
+	"template": "templates/sections/sj_hero.php",
+	"style": {
+		"handle": "uew-umoya-sj-hero",
+		"file": "assets/css/sections/sj_hero.css"
+	},
+	"script": null,
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"sj",
+		"hero"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "gold-lt",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Gold Lt"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "The Signature Journey — Hero",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_h1_bg_img",
+			"label": "Background Image",
+			"sample": "",
+			"region_label": "Background",
+			"controls": [
+				{
+					"id": "image_src",
+					"control": "media",
+					"label": "Source",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img504253742.jpeg"
+					},
+					"esc": "url",
+					"group": "p_sj_h1_bg_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Background Image"
+				},
+				{
+					"id": "image_alt",
+					"control": "text",
+					"label": "Alt Text",
+					"default": "The Signature Journey — across South Africa with Umoya Afrika Tours",
+					"esc": "attr",
+					"group": "p_sj_h1_bg_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Background Image"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_h1_brand_img",
+			"label": "Logo",
+			"sample": "",
+			"region_label": "Logo",
+			"controls": [
+				{
+					"id": "image_src_2",
+					"control": "media",
+					"label": "Source",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Property-1Umoya-Afrika-Logo_v3.svg"
+					},
+					"esc": "url",
+					"group": "p_sj_h1_brand_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Logo Image"
+				},
+				{
+					"id": "image_alt_2",
+					"control": "text",
+					"label": "Alt Text",
+					"default": "Umoya Afrika Tours",
+					"esc": "attr",
+					"group": "p_sj_h1_brand_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Logo Image"
+				},
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "The Signature Journey",
+					"esc": "post",
+					"group": "p_sj_h1_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "textarea",
+					"label": "Title",
+					"description": "Inline formatting tags are preserved.",
+					"default": "One Journey,<br>in Three Chapters.",
+					"esc": "post",
+					"group": "p_sj_h1_title",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "subtitle_text",
+					"control": "text",
+					"label": "Subtitle",
+					"description": "",
+					"default": "Welcome into the heart of South Africa.",
+					"esc": "post",
+					"group": "p_sj_h1_sub",
+					"sort": 0,
+					"part_label": "Subtitle"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_sj_h1_btn_primary",
+			"label": "Button",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Text",
+					"default": "Download the Brochure",
+					"esc": "post",
+					"group": "p_sj_h1_btn_primary",
+					"sort": 0,
+					"part_label": "Button"
+				},
+				{
+					"id": "button_href",
+					"control": "url",
+					"label": "Link",
+					"default": {
+						"url": "#"
+					},
+					"esc": "url",
+					"group": "p_sj_h1_btn_primary",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Button"
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [
+		{
+			"id": "image_css_width",
+			"control": "text",
+			"label": "Width",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_sj_h1_bg_img",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Background Image"
+		},
+		{
+			"id": "image_css_height",
+			"control": "text",
+			"label": "Height",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_sj_h1_bg_img",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Background Image"
+		},
+		{
+			"id": "image_css_object_fit",
+			"control": "select",
+			"label": "Object Fit",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "cover",
+			"options": [
+				"cover",
+				"contain",
+				"fill",
+				"none",
+				"scale-down"
+			],
+			"esc": "attr",
+			"group": "p_sj_h1_bg_img",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Background Image"
+		},
+		{
+			"id": "image_css_object_position",
+			"control": "text",
+			"label": "Object Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "center 30%",
+			"esc": "attr",
+			"group": "p_sj_h1_bg_img",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Background Image"
+		}
+	],
+	"media_controls": [],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_h1_bg",
+			"label": "Background",
+			"short_label": "Background",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-h1-bg",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_h1_bg_img",
+			"label": "Background Image",
+			"short_label": "Image",
+			"parent_label": "Background",
+			"sample": "",
+			"selector": ".sj-h1-bg > img",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_h1_content",
+			"label": "Content",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-h1-content",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_h1_brand",
+			"label": "Logo",
+			"short_label": "Logo",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-h1-brand",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_h1_brand_img",
+			"label": "Logo Image",
+			"short_label": "Image",
+			"parent_label": "Logo",
+			"sample": "",
+			"selector": ".sj-h1-brand > img",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_h1_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "The Signature Journey",
+			"selector": ".sj-h1-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_h1_title",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "",
+			"sample": "One Journey,in Three Chapters.",
+			"selector": ".sj-h1-title",
+			"tag": "h1",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_br",
+			"label": "Br",
+			"short_label": "Br",
+			"parent_label": "Title",
+			"sample": "",
+			"selector": "br",
+			"tag": "br",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_h1_sub",
+			"label": "Subtitle",
+			"short_label": "Subtitle",
+			"parent_label": "",
+			"sample": "Welcome into the heart of South Africa.",
+			"selector": ".sj-h1-sub",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_h1_btns",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-h1-btns",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_h1_btn_primary",
+			"label": "Button",
+			"short_label": "Button",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-h1-btn-primary",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_svg",
+			"label": "Icon",
+			"short_label": "Icon",
+			"parent_label": "Button",
+			"sample": "",
+			"selector": "svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [
+		{
+			"id": "image_inline_style",
+			"control": "inline_style_group",
+			"declarations": [
+				{
+					"prefix": "width:",
+					"id": "image_css_width"
+				},
+				{
+					"prefix": ";height:",
+					"id": "image_css_height"
+				},
+				{
+					"prefix": ";object-fit:",
+					"id": "image_css_object_fit"
+				},
+				{
+					"prefix": ";object-position:",
+					"id": "image_css_object_position"
+				}
+			],
+			"tail": ";",
+			"internal": true
+		}
+	],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "The Signature Journey — Hero",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img504253742.jpeg"
+			},
+			"esc": "url",
+			"group": "p_sj_h1_bg_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "The Signature Journey — across South Africa with Umoya Afrika Tours",
+			"esc": "attr",
+			"group": "p_sj_h1_bg_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_css_width",
+			"control": "text",
+			"label": "Width",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_sj_h1_bg_img",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "image_css_height",
+			"control": "text",
+			"label": "Height",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "100%",
+			"esc": "attr",
+			"group": "p_sj_h1_bg_img",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "image_css_object_fit",
+			"control": "select",
+			"label": "Object Fit",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "cover",
+			"options": [
+				"cover",
+				"contain",
+				"fill",
+				"none",
+				"scale-down"
+			],
+			"esc": "attr",
+			"group": "p_sj_h1_bg_img",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "image_css_object_position",
+			"control": "text",
+			"label": "Object Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "center 30%",
+			"esc": "attr",
+			"group": "p_sj_h1_bg_img",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "image_src_2",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Property-1Umoya-Afrika-Logo_v3.svg"
+			},
+			"esc": "url",
+			"group": "p_sj_h1_brand_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt_2",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "Umoya Afrika Tours",
+			"esc": "attr",
+			"group": "p_sj_h1_brand_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "The Signature Journey",
+			"esc": "post",
+			"group": "p_sj_h1_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "textarea",
+			"label": "Title",
+			"description": "Inline formatting tags are preserved.",
+			"default": "One Journey,<br>in Three Chapters.",
+			"esc": "post",
+			"group": "p_sj_h1_title",
+			"sort": 0
+		},
+		{
+			"id": "subtitle_text",
+			"control": "text",
+			"label": "Subtitle",
+			"description": "",
+			"default": "Welcome into the heart of South Africa.",
+			"esc": "post",
+			"group": "p_sj_h1_sub",
+			"sort": 0
+		},
+		{
+			"id": "button_text",
+			"control": "text",
+			"label": "Text",
+			"default": "Download the Brochure",
+			"esc": "post",
+			"group": "p_sj_h1_btn_primary",
+			"sort": 0
+		},
+		{
+			"id": "button_href",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "#"
+			},
+			"esc": "url",
+			"group": "p_sj_h1_btn_primary",
+			"tab": "content",
+			"sort": 1
+		}
+	]
+}

@@ -129,11 +129,20 @@
 					"group": "p_fc_pil_heading",
 					"sort": 0,
 					"part_label": "Header Title"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_fc_pil_col_h3_nth_of_type_1",
+			"label": "List Title",
+			"sample": "African-Led & African-Owned",
+			"region_label": "List",
+			"controls": [
 				{
 					"id": "title_text_2",
 					"control": "text",
-					"label": "List Title",
+					"label": "Title 1",
 					"description": "",
 					"default": "African-Led &amp; African-Owned",
 					"esc": "post",
@@ -142,9 +151,50 @@
 					"part_label": "List Title"
 				},
 				{
+					"id": "title_text_3",
+					"control": "text",
+					"label": "Title 2",
+					"description": "",
+					"default": "Cultural Custodians Who Know South Africa Best",
+					"esc": "post",
+					"group": "p_fc_pil_col_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "List Title"
+				},
+				{
+					"id": "title_text_4",
+					"control": "text",
+					"label": "Title 3",
+					"description": "",
+					"default": "Premium Accommodations",
+					"esc": "post",
+					"group": "p_fc_pil_col_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "List Title"
+				},
+				{
+					"id": "title_text_5",
+					"control": "text",
+					"label": "Title 4",
+					"description": "",
+					"default": "Looked After, End to End",
+					"esc": "post",
+					"group": "p_fc_pil_col_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "List Title"
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_pil_col_p_nth_of_type_1",
+			"label": "Text",
+			"sample": "Of the diaspora, with relationships across Sout…",
+			"region_label": "List",
+			"controls": [
+				{
 					"id": "text_text",
 					"control": "textarea",
-					"label": "Text",
+					"label": "Text 1",
 					"description": "",
 					"default": "Of the diaspora, with relationships across Southern Africa we have built over years. Experience South Africa through those who not only welcome you but receive you with care.",
 					"esc": "post",
@@ -153,74 +203,39 @@
 					"part_label": "Text"
 				},
 				{
-					"id": "title_text_3",
-					"control": "text",
-					"label": "Title",
-					"description": "",
-					"default": "Cultural Custodians Who Know South Africa Best",
-					"esc": "post",
-					"group": "p_fc_pil_col_h3_nth_of_type_1_2",
-					"sort": 0
-				},
-				{
 					"id": "text_text_2",
 					"control": "textarea",
-					"label": "Text",
+					"label": "Text 2",
 					"description": "",
 					"default": "Our cultural custodians welcome you in person and show you South Africa with local privilege. Experience the country through rare insider access by our artists, entrepreneurs, and trailblazers who share their perspectives on South Africa's landscapes, culture, and contemporary life through one of a kind experiences.",
 					"esc": "post",
-					"group": "p_fc_pil_col_p_nth_of_type_1_2",
-					"sort": 0
+					"group": "p_fc_pil_col_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text"
 				},
-				{
-					"id": "title_text_4",
-					"control": "text",
-					"label": "Title",
-					"description": "",
-					"default": "Premium Accommodations",
-					"esc": "post",
-					"group": "p_fc_pil_col_h3_nth_of_type_1_3",
-					"sort": 0
-				}
-			],
-			"merged": true
-		},
-		{
-			"id": "content_p_fc_pil_col_p_nth_of_type_1_3",
-			"label": "Content",
-			"controls": [
 				{
 					"id": "text_text_3",
 					"control": "textarea",
-					"label": "Text",
+					"label": "Text 3",
 					"description": "",
 					"default": "Each property is carefully selected for exceptional service, unique character, and prime location. From luxury lodges to boutique hotels, every stay reflects our commitment to quality.",
 					"esc": "post",
-					"group": "p_fc_pil_col_p_nth_of_type_1_3",
-					"sort": 0
-				},
-				{
-					"id": "title_text_5",
-					"control": "text",
-					"label": "Title",
-					"description": "",
-					"default": "Looked After, End to End",
-					"esc": "post",
-					"group": "p_fc_pil_col_h3_nth_of_type_1_4",
-					"sort": 0
+					"group": "p_fc_pil_col_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text"
 				},
 				{
 					"id": "text_text_4",
 					"control": "textarea",
-					"label": "Text",
+					"label": "Text 4",
 					"description": "",
 					"default": "From the moment you land, your dedicated Umoya host is with you every step of the way. On the ground, your journey runs through Thompsons Africa, one of southern Africa's oldest and most trusted operators, with over a century of experience since 1901.",
 					"esc": "post",
-					"group": "p_fc_pil_col_p_nth_of_type_1_4",
-					"sort": 0
+					"group": "p_fc_pil_col_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text"
 				}
-			],
-			"merged": true
+			]
 		}
 	],
 	"integration_controls": [],
@@ -603,7 +618,7 @@
 			"description": "",
 			"default": "Cultural Custodians Who Know South Africa Best",
 			"esc": "post",
-			"group": "p_fc_pil_col_h3_nth_of_type_1_2",
+			"group": "p_fc_pil_col_h3_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -613,7 +628,7 @@
 			"description": "",
 			"default": "Our cultural custodians welcome you in person and show you South Africa with local privilege. Experience the country through rare insider access by our artists, entrepreneurs, and trailblazers who share their perspectives on South Africa's landscapes, culture, and contemporary life through one of a kind experiences.",
 			"esc": "post",
-			"group": "p_fc_pil_col_p_nth_of_type_1_2",
+			"group": "p_fc_pil_col_p_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -623,7 +638,7 @@
 			"description": "",
 			"default": "Premium Accommodations",
 			"esc": "post",
-			"group": "p_fc_pil_col_h3_nth_of_type_1_3",
+			"group": "p_fc_pil_col_h3_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -633,7 +648,7 @@
 			"description": "",
 			"default": "Each property is carefully selected for exceptional service, unique character, and prime location. From luxury lodges to boutique hotels, every stay reflects our commitment to quality.",
 			"esc": "post",
-			"group": "p_fc_pil_col_p_nth_of_type_1_3",
+			"group": "p_fc_pil_col_p_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -643,7 +658,7 @@
 			"description": "",
 			"default": "Looked After, End to End",
 			"esc": "post",
-			"group": "p_fc_pil_col_h3_nth_of_type_1_4",
+			"group": "p_fc_pil_col_h3_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -653,7 +668,7 @@
 			"description": "",
 			"default": "From the moment you land, your dedicated Umoya host is with you every step of the way. On the ground, your journey runs through Thompsons Africa, one of southern Africa's oldest and most trusted operators, with over a century of experience since 1901.",
 			"esc": "post",
-			"group": "p_fc_pil_col_p_nth_of_type_1_4",
+			"group": "p_fc_pil_col_p_nth_of_type_1",
 			"sort": 0
 		}
 	]

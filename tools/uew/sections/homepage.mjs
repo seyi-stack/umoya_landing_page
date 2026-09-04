@@ -17,6 +17,7 @@
 export const category = {
 	slug: 'umoya-homepage',
 	title: 'Umoya - Homepage',
+	icon: 'eicon-home',
 };
 
 export const sections = [

@@ -114,7 +114,7 @@
 				{
 					"id": "label_text",
 					"control": "text",
-					"label": "Text",
+					"label": "Text 1",
 					"default": "Featured Hotel",
 					"esc": "post",
 					"group": "p_umoya_hs_badge",
@@ -135,7 +135,7 @@
 				{
 					"id": "text_text",
 					"control": "text",
-					"label": "Text",
+					"label": "Text 2",
 					"description": "",
 					"default": "A Fairmont Hotel &middot; V&amp;A Waterfront, Cape Town",
 					"esc": "post",
@@ -207,14 +207,14 @@
 		},
 		{
 			"id": "content_p_umoya_hs_note_a",
-			"label": "Text",
+			"label": "Link",
 			"sample": "Signature Journey stays",
 			"region_label": "Text",
 			"controls": [
 				{
 					"id": "link_text",
 					"control": "text",
-					"label": "Link",
+					"label": "Link 1",
 					"description": "",
 					"default": "Signature Journey stays",
 					"esc": "post",
@@ -225,7 +225,7 @@
 				{
 					"id": "link_href",
 					"control": "url",
-					"label": "Link",
+					"label": "Link 2",
 					"default": {
 						"url": "https://umoyaafrikatours.co.za/signature-journey/#sj-stays"
 					},
@@ -234,11 +234,19 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Link"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_hs_arrow",
+			"label": "Arrow",
+			"sample": "",
+			"region_label": "",
+			"controls": [
 				{
 					"id": "arrow_aria_label",
 					"control": "text",
-					"label": "Accessible Name",
+					"label": "Accessible Name 1",
 					"default": "Previous image",
 					"esc": "attr",
 					"group": "p_umoya_hs_arrow",
@@ -249,15 +257,15 @@
 				{
 					"id": "arrow_aria_label_2",
 					"control": "text",
-					"label": "Accessible Name",
+					"label": "Accessible Name 2",
 					"default": "Next image",
 					"esc": "attr",
-					"group": "p_umoya_hs_arrow_2",
+					"group": "p_umoya_hs_arrow",
 					"tab": "content",
-					"sort": 1
+					"sort": 1,
+					"part_label": "Arrow"
 				}
-			],
-			"merged": true
+			]
 		}
 	],
 	"integration_controls": [],
@@ -296,10 +304,10 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_hs_arrow_2",
+			"group": "p_umoya_hs_arrow",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Arrow"
 		},
 		{
 			"id": "arrow_type_2",
@@ -1253,7 +1261,7 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_hs_arrow_2",
+			"group": "p_umoya_hs_arrow",
 			"tab": "form",
 			"sort": 1
 		},
@@ -1273,7 +1281,7 @@
 			"label": "Accessible Name",
 			"default": "Next image",
 			"esc": "attr",
-			"group": "p_umoya_hs_arrow_2",
+			"group": "p_umoya_hs_arrow",
 			"tab": "content",
 			"sort": 1
 		}

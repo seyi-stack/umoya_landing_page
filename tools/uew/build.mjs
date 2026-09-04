@@ -24,6 +24,7 @@ import { deriveSection } from './lib/derive.mjs';
 import { emitTemplate, emitScript, emitCss, emitWidgetClass, emitSchema, guardPhpNewlines } from './lib/emit.mjs';
 import * as fcRegistry from './sections/founders-circle.mjs';
 import * as homepageRegistry from './sections/homepage.mjs';
+import * as signatureJourneyRegistry from './sections/signature-journey.mjs';
 
 const here = path.dirname( fileURLToPath( import.meta.url ) );
 const repoRoot = path.resolve( here, '..', '..' );
@@ -37,7 +38,7 @@ const only = ( args.find( ( a ) => a.startsWith( '--only=' ) ) || '' ).replace( 
 const onlyKeys = only ? new Set( only.split( ',' ).map( ( s ) => s.trim() ) ) : null;
 const verify = ! args.includes( '--no-verify' );
 
-const registries = [ fcRegistry, homepageRegistry ];
+const registries = [ fcRegistry, homepageRegistry, signatureJourneyRegistry ];
 
 /* ------------------------------------------------------------------- utils */
 
@@ -113,7 +114,32 @@ function buildContentPanels( fields, parts ) {
 		panels.push( { id: 'content_' + group, label: 'Other content', controls: sortControls( controls ) } );
 	}
 
-	return { panels: mergeSmallPanels( panels ), tabbed };
+	const merged = mergeSmallPanels( panels );
+	merged.forEach( dedupeControlLabels );
+
+	return { panels: merged, tabbed };
+}
+
+/**
+ * Number repeated control labels within a panel.
+ *
+ * Two elements that share a CSS selector share a style panel -- correctly, they
+ * are styled together -- but their content is separate, so the panel ends up
+ * with two controls both called "Text" and no way to tell which is which.
+ */
+function dedupeControlLabels( panel ) {
+	const counts = new Map();
+	for ( const control of panel.controls ) {
+		counts.set( control.label, ( counts.get( control.label ) || 0 ) + 1 );
+	}
+
+	const seen = new Map();
+	for ( const control of panel.controls ) {
+		if ( ( counts.get( control.label ) || 0 ) < 2 ) continue;
+		const n = ( seen.get( control.label ) || 0 ) + 1;
+		seen.set( control.label, n );
+		control.label = control.label + ' ' + n;
+	}
 }
 
 function sortControls( controls ) {
@@ -281,6 +307,24 @@ if ( onlyKeys && fs.existsSync( manifestPath ) ) {
 }
 
 writeFile( 'includes/sections/index.json', JSON.stringify( merged, null, '\t' ) + '\n' );
+
+/*
+ * Categories are emitted rather than hardcoded in PHP, so adding a page family
+ * is a registry file and nothing else. Written from every registry, not only the
+ * ones this run touched, or a `--only` run would drop the others.
+ */
+writeFile(
+	'includes/sections/categories.json',
+	JSON.stringify(
+		registries.map( ( registry ) => ( {
+			slug: registry.category.slug,
+			title: registry.category.title,
+			icon: registry.category.icon || 'eicon-globe',
+		} ) ),
+		null,
+		'\t'
+	) + '\n'
+);
 
 /* ----------------------------------------------------------- verification */
 

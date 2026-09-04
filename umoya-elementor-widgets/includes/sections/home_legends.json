@@ -120,31 +120,72 @@
 					"group": "p_umoya_leg_lead",
 					"sort": 0,
 					"part_label": "Header Text"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_leg_card",
+			"label": "Card",
+			"sample": "",
+			"region_label": "List",
+			"controls": [
 				{
 					"id": "card_aria_label",
 					"control": "text",
-					"label": "Accessible Name",
+					"label": "Accessible Name 1",
 					"default": "Lucia Motloung — The Welcome",
 					"esc": "attr",
 					"group": "p_umoya_leg_card",
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Card"
+				},
+				{
+					"id": "card_aria_label_2",
+					"control": "text",
+					"label": "Accessible Name 2",
+					"default": "Antoinette Sithole — Soweto",
+					"esc": "attr",
+					"group": "p_umoya_leg_card",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Card"
+				},
+				{
+					"id": "card_aria_label_3",
+					"control": "text",
+					"label": "Accessible Name 3",
+					"default": "Christo Brand — Robben Island",
+					"esc": "attr",
+					"group": "p_umoya_leg_card",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Card"
+				},
+				{
+					"id": "card_aria_label_4",
+					"control": "text",
+					"label": "Accessible Name 4",
+					"default": "Vivian Kleynhans — The Black Winelands",
+					"esc": "attr",
+					"group": "p_umoya_leg_card",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Card"
 				}
-			],
-			"merged": true
+			]
 		},
 		{
 			"id": "content_p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
-			"label": "Card",
+			"label": "Image",
 			"sample": "",
 			"region_label": "Card",
 			"controls": [
 				{
 					"id": "image_src",
 					"control": "media",
-					"label": "Source",
+					"label": "Source 1",
 					"default": {
 						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6216.png"
 					},
@@ -157,7 +198,7 @@
 				{
 					"id": "image_alt",
 					"control": "text",
-					"label": "Alt Text",
+					"label": "Alt Text 1",
 					"default": "Wines of Luc Mo, the welcome pour on the first evening",
 					"esc": "attr",
 					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
@@ -166,9 +207,89 @@
 					"part_label": "Image"
 				},
 				{
+					"id": "image_src_2",
+					"control": "media",
+					"label": "Source 2",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6880.png"
+					},
+					"esc": "url",
+					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "image_alt_2",
+					"control": "text",
+					"label": "Alt Text 2",
+					"default": "The Hector Pieterson Memorial in Soweto",
+					"esc": "attr",
+					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "image_src_3",
+					"control": "media",
+					"label": "Source 3",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_1363.png"
+					},
+					"esc": "url",
+					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "image_alt_3",
+					"control": "text",
+					"label": "Alt Text 3",
+					"default": "Robben Island, off the coast of Cape Town",
+					"esc": "attr",
+					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "image_src_4",
+					"control": "media",
+					"label": "Source 4",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img371169908.jpeg"
+					},
+					"esc": "url",
+					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "image_alt_4",
+					"control": "text",
+					"label": "Alt Text 4",
+					"default": "The Cape Winelands",
+					"esc": "attr",
+					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1",
+			"label": "Card Text 1",
+			"sample": "The Welcome",
+			"region_label": "Card",
+			"controls": [
+				{
 					"id": "text_text_2",
 					"control": "text",
-					"label": "Text",
+					"label": "Text 1",
 					"description": "",
 					"default": "The Welcome",
 					"esc": "post",
@@ -177,9 +298,50 @@
 					"part_label": "Card Text 1"
 				},
 				{
+					"id": "text_text_4",
+					"control": "text",
+					"label": "Text 2",
+					"description": "",
+					"default": "Soweto",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 1"
+				},
+				{
+					"id": "text_text_6",
+					"control": "text",
+					"label": "Text 3",
+					"description": "",
+					"default": "Robben Island",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 1"
+				},
+				{
+					"id": "text_text_8",
+					"control": "text",
+					"label": "Text 4",
+					"description": "",
+					"default": "The Black Winelands",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1",
+			"label": "Card Heading",
+			"sample": "Lucia Motloung",
+			"region_label": "Card",
+			"controls": [
+				{
 					"id": "heading_text_2",
 					"control": "text",
-					"label": "Heading",
+					"label": "Heading 1",
 					"description": "",
 					"default": "Lucia Motloung",
 					"esc": "post",
@@ -188,9 +350,50 @@
 					"part_label": "Card Heading"
 				},
 				{
+					"id": "heading_text_3",
+					"control": "text",
+					"label": "Heading 2",
+					"description": "",
+					"default": "Antoinette Sithole",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Heading"
+				},
+				{
+					"id": "heading_text_4",
+					"control": "text",
+					"label": "Heading 3",
+					"description": "",
+					"default": "Christo Brand",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Heading"
+				},
+				{
+					"id": "heading_text_5",
+					"control": "text",
+					"label": "Heading 4",
+					"description": "",
+					"default": "Vivian Kleynhans",
+					"esc": "post",
+					"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Heading"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1",
+			"label": "Card Text 2",
+			"sample": "She welcomes you on your first evening, pouring…",
+			"region_label": "Card",
+			"controls": [
+				{
 					"id": "text_text_3",
 					"control": "textarea",
-					"label": "Card Text 2",
+					"label": "Text 1",
 					"description": "",
 					"default": "She welcomes you on your first evening, pouring wines from Luc Mo, the company she built in partnership with the Ndebele Kingdom.",
 					"esc": "post",
@@ -199,214 +402,39 @@
 					"part_label": "Card Text 2"
 				},
 				{
-					"id": "card_aria_label_2",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Antoinette Sithole — Soweto",
-					"esc": "attr",
-					"group": "p_umoya_leg_card_2",
-					"tab": "content",
-					"sort": 1
-				}
-			],
-			"merged": true
-		},
-		{
-			"id": "content_p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_2",
-			"label": "Content",
-			"controls": [
-				{
-					"id": "image_src_2",
-					"control": "media",
-					"label": "Source",
-					"default": {
-						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6880.png"
-					},
-					"esc": "url",
-					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_2",
-					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "image_alt_2",
-					"control": "text",
-					"label": "Alt Text",
-					"default": "The Hector Pieterson Memorial in Soweto",
-					"esc": "attr",
-					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_2",
-					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "text_text_4",
-					"control": "text",
-					"label": "Text",
-					"description": "",
-					"default": "Soweto",
-					"esc": "post",
-					"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1_2",
-					"sort": 0
-				},
-				{
-					"id": "heading_text_3",
-					"control": "text",
-					"label": "Heading",
-					"description": "",
-					"default": "Antoinette Sithole",
-					"esc": "post",
-					"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1_2",
-					"sort": 0
-				},
-				{
 					"id": "text_text_5",
 					"control": "textarea",
-					"label": "Text",
+					"label": "Text 2",
 					"description": "",
 					"default": "Her brother was Hector Pieterson, the boy in the 1976 photograph of the anti-apartheid riots. She sits at your table and tells you about the day she lost her brother.",
 					"esc": "post",
-					"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1_2",
-					"sort": 0
-				},
-				{
-					"id": "card_aria_label_3",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Christo Brand — Robben Island",
-					"esc": "attr",
-					"group": "p_umoya_leg_card_3",
-					"tab": "content",
-					"sort": 1
-				}
-			],
-			"merged": true
-		},
-		{
-			"id": "content_p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_3",
-			"label": "Content",
-			"controls": [
-				{
-					"id": "image_src_3",
-					"control": "media",
-					"label": "Source",
-					"default": {
-						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_1363.png"
-					},
-					"esc": "url",
-					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_3",
-					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "image_alt_3",
-					"control": "text",
-					"label": "Alt Text",
-					"default": "Robben Island, off the coast of Cape Town",
-					"esc": "attr",
-					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_3",
-					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "text_text_6",
-					"control": "text",
-					"label": "Text",
-					"description": "",
-					"default": "Robben Island",
-					"esc": "post",
-					"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1_3",
-					"sort": 0
-				},
-				{
-					"id": "heading_text_4",
-					"control": "text",
-					"label": "Heading",
-					"description": "",
-					"default": "Christo Brand",
-					"esc": "post",
-					"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1_3",
-					"sort": 0
+					"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 2"
 				},
 				{
 					"id": "text_text_7",
 					"control": "textarea",
-					"label": "Text",
+					"label": "Text 3",
 					"description": "",
 					"default": "He spent years as Nelson Mandela's warder, and the two became friends. He walks you through the island and tells you what that looked like up close.",
 					"esc": "post",
-					"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1_3",
-					"sort": 0
-				},
-				{
-					"id": "card_aria_label_4",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Vivian Kleynhans — The Black Winelands",
-					"esc": "attr",
-					"group": "p_umoya_leg_card_4",
-					"tab": "content",
-					"sort": 1
-				}
-			],
-			"merged": true
-		},
-		{
-			"id": "content_p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_4",
-			"label": "Content",
-			"controls": [
-				{
-					"id": "image_src_4",
-					"control": "media",
-					"label": "Source",
-					"default": {
-						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img371169908.jpeg"
-					},
-					"esc": "url",
-					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_4",
-					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "image_alt_4",
-					"control": "text",
-					"label": "Alt Text",
-					"default": "The Cape Winelands",
-					"esc": "attr",
-					"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_4",
-					"tab": "content",
-					"sort": 1
-				},
-				{
-					"id": "text_text_8",
-					"control": "text",
-					"label": "Text",
-					"description": "",
-					"default": "The Black Winelands",
-					"esc": "post",
-					"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1_4",
-					"sort": 0
-				},
-				{
-					"id": "heading_text_5",
-					"control": "text",
-					"label": "Heading",
-					"description": "",
-					"default": "Vivian Kleynhans",
-					"esc": "post",
-					"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1_4",
-					"sort": 0
+					"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 2"
 				},
 				{
 					"id": "text_text_9",
 					"control": "textarea",
-					"label": "Text",
+					"label": "Text 4",
 					"description": "",
 					"default": "CEO of Seven Sisters Vineyards, Vivian built one of the most prominent 100% Black-owned wine brands in Stellenbosch at a time when the industry was closed to women like her.",
 					"esc": "post",
-					"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1_4",
-					"sort": 0
+					"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 2"
 				}
-			],
-			"merged": true
+			]
 		}
 	],
 	"integration_controls": [],
@@ -1063,7 +1091,7 @@
 			"label": "Accessible Name",
 			"default": "Antoinette Sithole — Soweto",
 			"esc": "attr",
-			"group": "p_umoya_leg_card_2",
+			"group": "p_umoya_leg_card",
 			"tab": "content",
 			"sort": 1
 		},
@@ -1075,7 +1103,7 @@
 				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6880.png"
 			},
 			"esc": "url",
-			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_2",
+			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
 			"tab": "content",
 			"sort": 1
 		},
@@ -1085,7 +1113,7 @@
 			"label": "Alt Text",
 			"default": "The Hector Pieterson Memorial in Soweto",
 			"esc": "attr",
-			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_2",
+			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
 			"tab": "content",
 			"sort": 1
 		},
@@ -1125,7 +1153,7 @@
 			"description": "",
 			"default": "Soweto",
 			"esc": "post",
-			"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1_2",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -1135,7 +1163,7 @@
 			"description": "",
 			"default": "Antoinette Sithole",
 			"esc": "post",
-			"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1_2",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -1145,7 +1173,7 @@
 			"description": "",
 			"default": "Her brother was Hector Pieterson, the boy in the 1976 photograph of the anti-apartheid riots. She sits at your table and tells you about the day she lost her brother.",
 			"esc": "post",
-			"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1_2",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -1154,7 +1182,7 @@
 			"label": "Accessible Name",
 			"default": "Christo Brand — Robben Island",
 			"esc": "attr",
-			"group": "p_umoya_leg_card_3",
+			"group": "p_umoya_leg_card",
 			"tab": "content",
 			"sort": 1
 		},
@@ -1166,7 +1194,7 @@
 				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_1363.png"
 			},
 			"esc": "url",
-			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_3",
+			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
 			"tab": "content",
 			"sort": 1
 		},
@@ -1176,7 +1204,7 @@
 			"label": "Alt Text",
 			"default": "Robben Island, off the coast of Cape Town",
 			"esc": "attr",
-			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_3",
+			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
 			"tab": "content",
 			"sort": 1
 		},
@@ -1216,7 +1244,7 @@
 			"description": "",
 			"default": "Robben Island",
 			"esc": "post",
-			"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1_3",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -1226,7 +1254,7 @@
 			"description": "",
 			"default": "Christo Brand",
 			"esc": "post",
-			"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1_3",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -1236,7 +1264,7 @@
 			"description": "",
 			"default": "He spent years as Nelson Mandela's warder, and the two became friends. He walks you through the island and tells you what that looked like up close.",
 			"esc": "post",
-			"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1_3",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -1245,7 +1273,7 @@
 			"label": "Accessible Name",
 			"default": "Vivian Kleynhans — The Black Winelands",
 			"esc": "attr",
-			"group": "p_umoya_leg_card_4",
+			"group": "p_umoya_leg_card",
 			"tab": "content",
 			"sort": 1
 		},
@@ -1257,7 +1285,7 @@
 				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img371169908.jpeg"
 			},
 			"esc": "url",
-			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_4",
+			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
 			"tab": "content",
 			"sort": 1
 		},
@@ -1267,7 +1295,7 @@
 			"label": "Alt Text",
 			"default": "The Cape Winelands",
 			"esc": "attr",
-			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1_4",
+			"group": "p_umoya_leg_card_div_nth_of_type_1_img_nth_of_type_1",
 			"tab": "content",
 			"sort": 1
 		},
@@ -1307,7 +1335,7 @@
 			"description": "",
 			"default": "The Black Winelands",
 			"esc": "post",
-			"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1_4",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_span_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -1317,7 +1345,7 @@
 			"description": "",
 			"default": "Vivian Kleynhans",
 			"esc": "post",
-			"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1_4",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_h3_nth_of_type_1",
 			"sort": 0
 		},
 		{
@@ -1327,7 +1355,7 @@
 			"description": "",
 			"default": "CEO of Seven Sisters Vineyards, Vivian built one of the most prominent 100% Black-owned wine brands in Stellenbosch at a time when the industry was closed to women like her.",
 			"esc": "post",
-			"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1_4",
+			"group": "p_umoya_leg_card_div_nth_of_type_2_p_nth_of_type_1",
 			"sort": 0
 		}
 	]

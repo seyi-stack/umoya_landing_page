@@ -188,7 +188,7 @@
 				{
 					"id": "button_text",
 					"control": "text",
-					"label": "Button",
+					"label": "Button 1",
 					"description": "",
 					"default": "Travel with us",
 					"esc": "post",
@@ -234,7 +234,7 @@
 				{
 					"id": "button_aria_label_2",
 					"control": "text",
-					"label": "Button",
+					"label": "Button 2",
 					"default": "Close video",
 					"esc": "attr",
 					"group": "p_fc_video_close",

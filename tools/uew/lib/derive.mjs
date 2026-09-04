@@ -595,7 +595,11 @@ export function deriveSection( options ) {
 		// Several selects each yield a list of options, so "Options" alone names
 		// five different panels. Qualify by the owning element -- its id reads
 		// best: fc2Country becomes "Country Options".
-		repeaterLabels.push( { definition: built.definition, owner: doc.parentsOf.get( group.nodes[ 0 ] )?.node } );
+		repeaterLabels.push( {
+			definition: built.definition,
+			owner: doc.parentsOf.get( group.nodes[ 0 ] )?.node,
+			item: group.nodes[ 0 ],
+		} );
 		repeaters.push( built.definition );
 		edits.push( built.edit );
 		bareEdits.push( built.editBare );
@@ -664,8 +668,18 @@ export function deriveSection( options ) {
 		const label = baseLabel;
 
 		// --- style part -------------------------------------------------
-		const partId = uniqueId( 'p_' + ( isRoot ? 'section' : ( slug( selectorInfo.selector ) || node.tagName ) ) );
-		if ( ! hidden.has( selectorInfo.selector ) && ! partBySelector.has( selectorInfo.selector ) ) {
+		//
+		// Two elements can resolve to the same selector -- a shared class that
+		// matches a run of siblings. Only the first gets a panel, and the rest
+		// must file their content controls under THAT panel's id. Minting a fresh
+		// id for them left their controls pointing at a panel that was never
+		// created, and they fell into an unnamed "Other content" bucket.
+		const existingPart = partBySelector.get( selectorInfo.selector );
+		const partId = existingPart
+			? existingPart.id
+			: uniqueId( 'p_' + ( isRoot ? 'section' : ( slug( selectorInfo.selector ) || node.tagName ) ) );
+
+		if ( ! hidden.has( selectorInfo.selector ) && ! existingPart ) {
 			// The Elementor panel has no control search, so a section with 70-odd
 			// style panels needs its list to be scannable. Panels are in document
 			// order and each carries its nearest named ancestor, which groups
@@ -719,7 +733,7 @@ export function deriveSection( options ) {
 	// can be told apart by the region it sits in rather than by a chain of every
 	// ancestor. "Header Title" and "Card Title", not "Rv > Div > Title".
 	assignPartLabels( parts );
-	assignRepeaterLabels( repeaterLabels, prefixes );
+	assignRepeaterLabels( repeaterLabels, prefixes, doc );
 
 	const template = splice( markup, edits );
 	// Identical template minus the Elementor repeater-item classes. build.mjs
@@ -1624,7 +1638,7 @@ function isPresentOnAll( presence, node, name, path ) {
  * panels called "Options"; each is qualified by the element that owns it, whose
  * id usually reads best (`fc2Country` -> "Country Options").
  */
-function assignRepeaterLabels( entries, prefixes ) {
+function assignRepeaterLabels( entries, prefixes, doc ) {
 	// Work out which names collide BEFORE renaming any of them. Counting as we
 	// go would qualify the first few and leave the last one bare, because by
 	// then it is the only panel still called "Options".
@@ -1636,7 +1650,10 @@ function assignRepeaterLabels( entries, prefixes ) {
 	for ( const entry of entries ) {
 		if ( ( tally.get( entry.definition.label ) || 0 ) < 2 || ! entry.owner ) continue;
 
-		const hint = ownerHint( entry.owner, prefixes );
+		// The hotel slideshows name themselves on the slides, not on the track:
+		// `aria-label="The Da Vinci — 1 of 3"`. Fall back to the first item once
+		// the owner chain has nothing to offer.
+		const hint = ownerHint( entry.owner, prefixes, doc ) || firstItemHint( entry.item );
 		if ( hint ) entry.definition.label = hint + ' ' + entry.definition.label;
 	}
 
@@ -1650,8 +1667,40 @@ function assignRepeaterLabels( entries, prefixes ) {
 	}
 }
 
-/** A human name for the element that owns a list: its id, name, or label. */
-function ownerHint( node, prefixes ) {
+/**
+ * A human name for the element that owns a list: its id, name or label. When
+ * the immediate parent says nothing -- an unnamed <div> wrapping a slide track --
+ * look a couple of levels up, so the three hotel slideshows come out as
+ * "The Da Vinci Slides" rather than "Slides 1", "Slides 2", "Slides".
+ */
+function ownerHint( node, prefixes, doc, depth = 3 ) {
+	let current = node;
+	for ( let level = 0; level < depth && current; level += 1 ) {
+		const hint = ownerHintFrom( current, prefixes );
+		if ( hint ) return hint;
+		current = doc ? doc.parentsOf.get( current )?.node : null;
+	}
+	return '';
+}
+
+/**
+ * A name taken from the first item of a list, for when the list itself is
+ * anonymous. `aria-label="The Da Vinci — 1 of 3"` gives "The Da Vinci": the
+ * counter after the dash is what makes each item unique, so it is dropped.
+ */
+function firstItemHint( node ) {
+	if ( ! node ) return '';
+
+	const label = attr( node, 'aria-label' ) || attr( node, 'title' ) || '';
+	if ( ! label ) return '';
+
+	const stem = label.split( /\s+[—–-]\s+/ )[ 0 ].trim();
+	if ( ! stem || /^\d/.test( stem ) || stem.length > 28 ) return '';
+
+	return titleCase( previewText( stem, 28 ) );
+}
+
+function ownerHintFrom( node, prefixes ) {
 	const id = attr( node, 'id' ) || '';
 	const name = attr( node, 'name' ) || '';
 	const aria = attr( node, 'aria-label' ) || '';

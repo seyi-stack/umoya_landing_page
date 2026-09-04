@@ -1,0 +1,3430 @@
+{
+	"key": "sj_chapters",
+	"name": "umoya-sj-chapters",
+	"title": "SJ Journey Chapters",
+	"description": "The three chapters: History & Culture, Safari, The Cape.",
+	"icon": "eicon-post-list",
+	"category": "umoya-sj",
+	"source": "signature-journey/section-03-journey-chapters.html",
+	"class_name": "SJ_Chapters",
+	"widget_file": "widgets/class-sj-chapters.php",
+	"root_selector": "#sj-journey",
+	"template": "templates/sections/sj_chapters.php",
+	"style": {
+		"handle": "uew-umoya-sj-chapters",
+		"file": "assets/css/sections/sj_chapters.css"
+	},
+	"script": {
+		"handle": "uew-umoya-sj-chapters",
+		"file": "assets/js/sections/sj_chapters.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"sj",
+		"journey",
+		"chapters"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.66)",
+			"kind": "color",
+			"label": "Muted"
+		},
+		{
+			"name": "line",
+			"value": "rgba(75,46,43,.14)",
+			"kind": "color",
+			"label": "Line"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "The journey in three chapters",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
+			"label": "Header Text 1",
+			"sample": "Chapter One",
+			"region_label": "Header",
+			"controls": [
+				{
+					"id": "text_text",
+					"control": "text",
+					"label": "Text 1",
+					"description": "",
+					"default": "Chapter One",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Header Text 1"
+				},
+				{
+					"id": "text_text_19",
+					"control": "text",
+					"label": "Text 2",
+					"description": "",
+					"default": "Chapter Three",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Header Text 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_h2_nth_of_type_1",
+			"label": "Header Title 1",
+			"sample": "History & Culture",
+			"region_label": "Header",
+			"controls": [
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title 1",
+					"description": "",
+					"default": "History &amp; Culture",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Header Title 1"
+				},
+				{
+					"id": "title_text_3",
+					"control": "text",
+					"label": "Title 2",
+					"description": "",
+					"default": "The Cape",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Header Title 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2",
+			"label": "Header Text 2",
+			"sample": "Johannesburg & Soweto",
+			"region_label": "Header",
+			"controls": [
+				{
+					"id": "text_text_2",
+					"control": "text",
+					"label": "Text 1",
+					"description": "",
+					"default": "Johannesburg &amp; Soweto",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2",
+					"sort": 0,
+					"part_label": "Header Text 2"
+				},
+				{
+					"id": "text_text_20",
+					"control": "text",
+					"label": "Text 2",
+					"description": "",
+					"default": "Cape Town",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2",
+					"sort": 0,
+					"part_label": "Header Text 2"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_p_nth_of_type_1",
+			"label": "Header Text 3",
+			"sample": "Where the country's recent history is closest t…",
+			"region_label": "Header",
+			"controls": [
+				{
+					"id": "text_text_3",
+					"control": "textarea",
+					"label": "Text 1",
+					"description": "",
+					"default": "Where the country's recent history is closest to the surface, and its creative present most alive. You begin with a warm welcome, then spend a full day in Soweto with the township's own people, before standing where the story of freedom was written.",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Header Text 3"
+				},
+				{
+					"id": "text_text_21",
+					"control": "textarea",
+					"label": "Text 2",
+					"description": "",
+					"default": "The journey closes where the land meets two oceans. Robben Island and Table Mountain, the Cape Peninsula, a day among the Black-owned wineries of the Cape, and a farewell worthy of the journey behind it.",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Header Text 3"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_img_nth_of_type_1",
+			"label": "Image 1",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "image_src",
+					"control": "media",
+					"label": "Source 1",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img88956217_(1).jpeg"
+					},
+					"esc": "url",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 1"
+				},
+				{
+					"id": "image_alt",
+					"control": "text",
+					"label": "Alt Text 1",
+					"default": "Johannesburg and Soweto — history and culture",
+					"esc": "attr",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 1"
+				},
+				{
+					"id": "image_src_9",
+					"control": "media",
+					"label": "Source 2",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img639400454.jpeg"
+					},
+					"esc": "url",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 1"
+				},
+				{
+					"id": "image_alt_9",
+					"control": "text",
+					"label": "Alt Text 2",
+					"default": "Cape Town — where the land meets two oceans",
+					"esc": "attr",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_1_img_nth_of_type_1",
+			"label": "Image 2",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "image_src_2",
+					"control": "media",
+					"label": "Source 1",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6216.png"
+					},
+					"esc": "url",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 2"
+				},
+				{
+					"id": "image_alt_2",
+					"control": "text",
+					"label": "Alt Text 1",
+					"default": "A welcome dinner hosted by the winemaker behind Luc Mo",
+					"esc": "attr",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 2"
+				},
+				{
+					"id": "image_src_10",
+					"control": "media",
+					"label": "Source 2",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_1363.png"
+					},
+					"esc": "url",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 2"
+				},
+				{
+					"id": "image_alt_10",
+					"control": "text",
+					"label": "Alt Text 2",
+					"default": "Robben Island",
+					"esc": "attr",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 2"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_div_nth_of_type_1",
+			"label": "Card Text 1",
+			"sample": "The Welcome",
+			"region_label": "Card",
+			"controls": [
+				{
+					"id": "text_text_4",
+					"control": "text",
+					"label": "Text 1",
+					"description": "",
+					"default": "The Welcome",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_div_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 1"
+				},
+				{
+					"id": "text_text_22",
+					"control": "text",
+					"label": "Text 2",
+					"description": "",
+					"default": "Robben Island",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_div_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_h3_nth_of_type_1",
+			"label": "Card Heading 1",
+			"sample": "Lucia Motloung",
+			"region_label": "Card",
+			"controls": [
+				{
+					"id": "heading_text",
+					"control": "text",
+					"label": "Heading 1",
+					"description": "",
+					"default": "Lucia Motloung",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Heading 1"
+				},
+				{
+					"id": "heading_text_7",
+					"control": "text",
+					"label": "Heading 2",
+					"description": "",
+					"default": "Christo Brand",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Heading 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_p_nth_of_type_1",
+			"label": "Card Text 2",
+			"sample": "A welcome dinner hosted by the winemaker behind…",
+			"region_label": "Card",
+			"controls": [
+				{
+					"id": "text_text_5",
+					"control": "text",
+					"label": "Text 1",
+					"description": "",
+					"default": "A welcome dinner hosted by the winemaker behind Luc Mo, built with the Ndebele Kingdom.",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 2"
+				},
+				{
+					"id": "text_text_23",
+					"control": "text",
+					"label": "Text 2",
+					"description": "",
+					"default": "The warder who guarded Nelson Mandela, and became his friend, walks you through himself.",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 2"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_1_img_nth_of_type_1",
+			"label": "Image 3",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "image_src_3",
+					"control": "media",
+					"label": "Source 1",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6880.png"
+					},
+					"esc": "url",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 3"
+				},
+				{
+					"id": "image_alt_3",
+					"control": "text",
+					"label": "Alt Text 1",
+					"default": "The Hector Pieterson Memorial, Soweto",
+					"esc": "attr",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 3"
+				},
+				{
+					"id": "image_src_11",
+					"control": "media",
+					"label": "Source 2",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img371169908.jpeg"
+					},
+					"esc": "url",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 3"
+				},
+				{
+					"id": "image_alt_11",
+					"control": "text",
+					"label": "Alt Text 2",
+					"default": "Black-owned wineries of the Cape Winelands",
+					"esc": "attr",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 3"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_div_nth_of_type_1",
+			"label": "Card Text 3",
+			"sample": "The Soweto Day",
+			"region_label": "Card",
+			"controls": [
+				{
+					"id": "text_text_6",
+					"control": "text",
+					"label": "Text 1",
+					"description": "",
+					"default": "The Soweto Day",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_div_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 3"
+				},
+				{
+					"id": "text_text_24",
+					"control": "text",
+					"label": "Text 2",
+					"description": "",
+					"default": "The Black Route",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_div_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 3"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_h3_nth_of_type_1",
+			"label": "Card Heading 2",
+			"sample": "Antoinette Sithole",
+			"region_label": "Card",
+			"controls": [
+				{
+					"id": "heading_text_2",
+					"control": "text",
+					"label": "Heading 1",
+					"description": "",
+					"default": "Antoinette Sithole",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Heading 2"
+				},
+				{
+					"id": "heading_text_8",
+					"control": "text",
+					"label": "Heading 2",
+					"description": "",
+					"default": "Vivian Kleynhans",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Heading 2"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_p_nth_of_type_1",
+			"label": "Card Text 4",
+			"sample": "A full day through Soweto by tuk-tuk, with loca…",
+			"region_label": "Card",
+			"controls": [
+				{
+					"id": "text_text_7",
+					"control": "textarea",
+					"label": "Text 1",
+					"description": "",
+					"default": "A full day through Soweto by tuk-tuk, with local guides, and lunch hosted by the sister of Hector Pieterson.",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 4"
+				},
+				{
+					"id": "text_text_25",
+					"control": "textarea",
+					"label": "Text 2",
+					"description": "",
+					"default": "A day among Black-owned wineries, with the CEO of Seven Sisters Vineyards, a pioneer who established the prominent, 100% black-owned wine brand in Stellenbosch.",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 4"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_1_img_nth_of_type_1",
+			"label": "Image 4",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "image_src_4",
+					"control": "media",
+					"label": "Source 1",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_7105.png"
+					},
+					"esc": "url",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 4"
+				},
+				{
+					"id": "image_alt_4",
+					"control": "text",
+					"label": "Alt Text 1",
+					"default": "Mandela House and the Apartheid Museum, Soweto",
+					"esc": "attr",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 4"
+				},
+				{
+					"id": "image_src_12",
+					"control": "media",
+					"label": "Source 2",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_GOLD_Venue_5.jpg"
+					},
+					"esc": "url",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 4"
+				},
+				{
+					"id": "image_alt_12",
+					"control": "text",
+					"label": "Alt Text 2",
+					"default": "The closing dinner at Gold Restaurant, Cape Town",
+					"esc": "attr",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 4"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_div_nth_of_type_1",
+			"label": "Card Text 5",
+			"sample": "The Story",
+			"region_label": "Card",
+			"controls": [
+				{
+					"id": "text_text_8",
+					"control": "text",
+					"label": "Text 1",
+					"description": "",
+					"default": "The Story",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_div_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 5"
+				},
+				{
+					"id": "text_text_26",
+					"control": "text",
+					"label": "Text 2",
+					"description": "",
+					"default": "The Farewell",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_div_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 5"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_h3_nth_of_type_1",
+			"label": "Card Heading 3",
+			"sample": "Mandela House & the Apartheid Museum",
+			"region_label": "Card",
+			"controls": [
+				{
+					"id": "heading_text_3",
+					"control": "text",
+					"label": "Heading 1",
+					"description": "",
+					"default": "Mandela House &amp; the Apartheid Museum",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Heading 3"
+				},
+				{
+					"id": "heading_text_9",
+					"control": "text",
+					"label": "Heading 2",
+					"description": "",
+					"default": "A Closing Dinner",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Heading 3"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_p_nth_of_type_1",
+			"label": "Card",
+			"sample": "The places where the struggle was lived, told p…",
+			"region_label": "Card",
+			"controls": [
+				{
+					"id": "text_text_9",
+					"control": "text",
+					"label": "Text 1",
+					"description": "",
+					"default": "The places where the struggle was lived, told plainly and with care.",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 6"
+				},
+				{
+					"id": "text_text_27",
+					"control": "text",
+					"label": "Text 2",
+					"description": "",
+					"default": "A final evening with live performance, to mark the journey behind you.",
+					"esc": "post",
+					"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 6"
+				},
+				{
+					"id": "text_text_10",
+					"control": "text",
+					"label": "Header Text 4",
+					"description": "",
+					"default": "Chapter Two",
+					"esc": "post",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv_sj_ch_num",
+					"sort": 0,
+					"part_label": "Header Text 4"
+				},
+				{
+					"id": "title_text_2",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "Safari",
+					"esc": "post",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv_sj_ch_ttl",
+					"sort": 0,
+					"part_label": "Header Title 2"
+				},
+				{
+					"id": "text_text_11",
+					"control": "text",
+					"label": "Header Text 5",
+					"description": "",
+					"default": "The Sabi Sand",
+					"esc": "post",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv_sj_ch_where",
+					"sort": 0,
+					"part_label": "Header Text 5"
+				},
+				{
+					"id": "text_text_12",
+					"control": "textarea",
+					"label": "Header Text 6",
+					"description": "",
+					"default": "Into the iconic safari country of the lowveld. Three nights at MalaMala, a private Big Five reserve returned to the community that lives there, with open-vehicle game drives morning and evening, and an afternoon given to the people whose home this land is.",
+					"esc": "post",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv_sj_ch_lead",
+					"sort": 0,
+					"part_label": "Header Text 6"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_img_img",
+			"label": "Image 5",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "image_src_5",
+					"control": "media",
+					"label": "Source",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_sj_safari_sabi_sand.jpg"
+					},
+					"esc": "url",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_img_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 5"
+				},
+				{
+					"id": "image_alt_5",
+					"control": "text",
+					"label": "Alt Text",
+					"default": "Open-vehicle game drive in the Sabi Sand",
+					"esc": "attr",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_img_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 5"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_1_img_nth_of_type_1",
+			"label": "Image 6",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "image_src_6",
+					"control": "media",
+					"label": "Source 1",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_SAT001232.jpeg"
+					},
+					"esc": "url",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 6"
+				},
+				{
+					"id": "image_alt_6",
+					"control": "text",
+					"label": "Alt Text 1",
+					"default": "Big Five game drive in the Sabi Sand",
+					"esc": "attr",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 6"
+				},
+				{
+					"id": "image_src_7",
+					"control": "media",
+					"label": "Source 2",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_buffalo_maindeck2.png"
+					},
+					"esc": "url",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 6"
+				},
+				{
+					"id": "image_alt_7",
+					"control": "text",
+					"label": "Alt Text 2",
+					"default": "MalaMala, the community-owned reserve in the Sabi Sand",
+					"esc": "attr",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 6"
+				},
+				{
+					"id": "image_src_8",
+					"control": "media",
+					"label": "Source 3",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_shangaan-village-cdp590b-590x390.jpg"
+					},
+					"esc": "url",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 6"
+				},
+				{
+					"id": "image_alt_8",
+					"control": "text",
+					"label": "Alt Text 3",
+					"default": "A Shangaan village, the community beyond the reserve",
+					"esc": "attr",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_1_img_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image 6"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_div_nth_of_type_1",
+			"label": "Card Text 7",
+			"sample": "The Wild",
+			"region_label": "Card",
+			"controls": [
+				{
+					"id": "text_text_13",
+					"control": "text",
+					"label": "Text 1",
+					"description": "",
+					"default": "The Wild",
+					"esc": "post",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_div_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 7"
+				},
+				{
+					"id": "text_text_15",
+					"control": "text",
+					"label": "Text 2",
+					"description": "",
+					"default": "The Land",
+					"esc": "post",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_div_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 7"
+				},
+				{
+					"id": "text_text_17",
+					"control": "text",
+					"label": "Text 3",
+					"description": "",
+					"default": "The People",
+					"esc": "post",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_div_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 7"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_h3_nth_of_type_1",
+			"label": "Card Heading 4",
+			"sample": "Big Five Game Drives",
+			"region_label": "Card",
+			"controls": [
+				{
+					"id": "heading_text_4",
+					"control": "text",
+					"label": "Heading 1",
+					"description": "",
+					"default": "Big Five Game Drives",
+					"esc": "post",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Heading 4"
+				},
+				{
+					"id": "heading_text_5",
+					"control": "text",
+					"label": "Heading 2",
+					"description": "",
+					"default": "A Legacy Restored",
+					"esc": "post",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Heading 4"
+				},
+				{
+					"id": "heading_text_6",
+					"control": "text",
+					"label": "Heading 3",
+					"description": "",
+					"default": "An Afternoon Beyond the Reserve",
+					"esc": "post",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Heading 4"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_p_nth_of_type_1",
+			"label": "Card Text 8",
+			"sample": "Morning and evening in open vehicles with priva…",
+			"region_label": "Card",
+			"controls": [
+				{
+					"id": "text_text_14",
+					"control": "text",
+					"label": "Text 1",
+					"description": "",
+					"default": "Morning and evening in open vehicles with private field guides, unhurried and close.",
+					"esc": "post",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 8"
+				},
+				{
+					"id": "text_text_16",
+					"control": "textarea",
+					"label": "Text 2",
+					"description": "",
+					"default": "MalaMala was taken from its community during apartheid. Through decades of determination, they fought for it, won it back, and today they welcome you onto it.",
+					"esc": "post",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 8"
+				},
+				{
+					"id": "text_text_18",
+					"control": "text",
+					"label": "Text 3",
+					"description": "",
+					"default": "Time with the community that lives alongside the wilderness.",
+					"esc": "post",
+					"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Card Text 8"
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [
+		{
+			"id": "image_loading",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_loading_2",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_loading_3",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_loading_4",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_loading_5",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_loading_6",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_loading_7",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_loading_8",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_loading_9",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_loading_10",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_loading_11",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_loading_12",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"inline_style_controls": [
+		{
+			"id": "image_css_object_position",
+			"control": "text",
+			"label": "Object Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "center 82%",
+			"esc": "attr",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Image 3"
+		}
+	],
+	"media_controls": [],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-mv",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1",
+			"label": "Header 1",
+			"short_label": "Header",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
+			"label": "Header Container 1",
+			"short_label": "Container",
+			"parent_label": "Header",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
+			"label": "Header Text 1",
+			"short_label": "Text",
+			"parent_label": "Header",
+			"sample": "Chapter One",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_h2_nth_of_type_1",
+			"label": "Header Title 1",
+			"short_label": "Title",
+			"parent_label": "Header",
+			"sample": "History & Culture",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2",
+			"label": "Header Text 2",
+			"short_label": "Text",
+			"parent_label": "Header",
+			"sample": "Johannesburg & Soweto",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_p_nth_of_type_1",
+			"label": "Header Text 3",
+			"short_label": "Text",
+			"parent_label": "Header",
+			"sample": "Where the country's recent history is closest t…",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2",
+			"label": "Header Image 1",
+			"short_label": "Image",
+			"parent_label": "Header",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_img_nth_of_type_1",
+			"label": "Image 1",
+			"short_label": "Image",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > img:nth-of-type(1)",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2",
+			"label": "Container 3",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1",
+			"label": "Card 1",
+			"short_label": "Card",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(1)",
+			"tag": "article",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_1",
+			"label": "Card Image 1",
+			"short_label": "Image",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(1) > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_1_img_nth_of_type_1",
+			"label": "Image 2",
+			"short_label": "Image",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(1) > div:nth-of-type(1) > img:nth-of-type(1)",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2",
+			"label": "Card Content 1",
+			"short_label": "Content",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(1) > div:nth-of-type(2)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_div_nth_of_type_1",
+			"label": "Card Text 1",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "The Welcome",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_h3_nth_of_type_1",
+			"label": "Card Heading 1",
+			"short_label": "Heading",
+			"parent_label": "Card",
+			"sample": "Lucia Motloung",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(1) > div:nth-of-type(2) > h3:nth-of-type(1)",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_p_nth_of_type_1",
+			"label": "Card Text 2",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "A welcome dinner hosted by the winemaker behind…",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(1) > div:nth-of-type(2) > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2",
+			"label": "Card 2",
+			"short_label": "Card",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(2)",
+			"tag": "article",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_1",
+			"label": "Card Image 2",
+			"short_label": "Image",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(2) > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_1_img_nth_of_type_1",
+			"label": "Image 3",
+			"short_label": "Image",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(2) > div:nth-of-type(1) > img:nth-of-type(1)",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2",
+			"label": "Card Content 2",
+			"short_label": "Content",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(2) > div:nth-of-type(2)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_div_nth_of_type_1",
+			"label": "Card Text 3",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "The Soweto Day",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_h3_nth_of_type_1",
+			"label": "Card Heading 2",
+			"short_label": "Heading",
+			"parent_label": "Card",
+			"sample": "Antoinette Sithole",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(2) > div:nth-of-type(2) > h3:nth-of-type(1)",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_p_nth_of_type_1",
+			"label": "Card Text 4",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "A full day through Soweto by tuk-tuk, with loca…",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(2) > div:nth-of-type(2) > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3",
+			"label": "Card 3",
+			"short_label": "Card",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(3)",
+			"tag": "article",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_1",
+			"label": "Card Image 3",
+			"short_label": "Image",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(3) > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_1_img_nth_of_type_1",
+			"label": "Image 4",
+			"short_label": "Image",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(3) > div:nth-of-type(1) > img:nth-of-type(1)",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2",
+			"label": "Card Content 3",
+			"short_label": "Content",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(3) > div:nth-of-type(2)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_div_nth_of_type_1",
+			"label": "Card Text 5",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "The Story",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_h3_nth_of_type_1",
+			"label": "Card Heading 3",
+			"short_label": "Heading",
+			"parent_label": "Card",
+			"sample": "Mandela House & the Apartheid Museum",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(3) > div:nth-of-type(2) > h3:nth-of-type(1)",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_p_nth_of_type_1",
+			"label": "Card Text 6",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "The places where the struggle was lived, told p…",
+			"selector": ".sj-ch-mv > div:nth-of-type(1) > div:nth-of-type(2) > article:nth-of-type(3) > div:nth-of-type(2) > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt",
+			"label": "Container 4",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-alt",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt_sj_ch_c",
+			"label": "Container 5",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-alt > .sj-ch-c",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt_sj_ch_c_sj_ch_head",
+			"label": "Header 2",
+			"short_label": "Header",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-alt > .sj-ch-c > .sj-ch-head",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv",
+			"label": "Header Container 2",
+			"short_label": "Container",
+			"parent_label": "Header",
+			"sample": "",
+			"selector": ".sj-ch-alt > .sj-ch-c > .sj-ch-head > .sj-ch-rv",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv_sj_ch_num",
+			"label": "Header Text 4",
+			"short_label": "Text",
+			"parent_label": "Header",
+			"sample": "Chapter Two",
+			"selector": ".sj-ch-alt > .sj-ch-c > .sj-ch-head > .sj-ch-rv > .sj-ch-num",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv_sj_ch_ttl",
+			"label": "Header Title 2",
+			"short_label": "Title",
+			"parent_label": "Header",
+			"sample": "Safari",
+			"selector": ".sj-ch-alt > .sj-ch-c > .sj-ch-head > .sj-ch-rv > .sj-ch-ttl",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv_sj_ch_where",
+			"label": "Header Text 5",
+			"short_label": "Text",
+			"parent_label": "Header",
+			"sample": "The Sabi Sand",
+			"selector": ".sj-ch-alt > .sj-ch-c > .sj-ch-head > .sj-ch-rv > .sj-ch-where",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv_sj_ch_lead",
+			"label": "Header Text 6",
+			"short_label": "Text",
+			"parent_label": "Header",
+			"sample": "Into the iconic safari country of the lowveld. …",
+			"selector": ".sj-ch-alt > .sj-ch-c > .sj-ch-head > .sj-ch-rv > .sj-ch-lead",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_img",
+			"label": "Header Image 2",
+			"short_label": "Image",
+			"parent_label": "Header",
+			"sample": "",
+			"selector": ".sj-ch-alt > .sj-ch-c > .sj-ch-head > .sj-ch-img",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_img_img",
+			"label": "Image 5",
+			"short_label": "Image",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-alt > .sj-ch-c > .sj-ch-head > .sj-ch-img > img",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt_sj_ch_c_sj_ch_moments",
+			"label": "Container 6",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-alt > .sj-ch-c > .sj-ch-moments",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom",
+			"label": "Card 4",
+			"short_label": "Card",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-alt > .sj-ch-c > .sj-ch-moments > .sj-ch-mom",
+			"tag": "article",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_1",
+			"label": "Card Image 4",
+			"short_label": "Image",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".sj-ch-alt > .sj-ch-c > .sj-ch-moments > .sj-ch-mom > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_1_img_nth_of_type_1",
+			"label": "Image 6",
+			"short_label": "Image",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ch-alt > .sj-ch-c > .sj-ch-moments > .sj-ch-mom > div:nth-of-type(1) > img:nth-of-type(1)",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2",
+			"label": "Card Content 4",
+			"short_label": "Content",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".sj-ch-alt > .sj-ch-c > .sj-ch-moments > .sj-ch-mom > div:nth-of-type(2)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_div_nth_of_type_1",
+			"label": "Card Text 7",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "The Wild",
+			"selector": ".sj-ch-alt > .sj-ch-c > .sj-ch-moments > .sj-ch-mom > div:nth-of-type(2) > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_h3_nth_of_type_1",
+			"label": "Card Heading 4",
+			"short_label": "Heading",
+			"parent_label": "Card",
+			"sample": "Big Five Game Drives",
+			"selector": ".sj-ch-alt > .sj-ch-c > .sj-ch-moments > .sj-ch-mom > div:nth-of-type(2) > h3:nth-of-type(1)",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_p_nth_of_type_1",
+			"label": "Card Text 8",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "Morning and evening in open vehicles with priva…",
+			"selector": ".sj-ch-alt > .sj-ch-c > .sj-ch-moments > .sj-ch-mom > div:nth-of-type(2) > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [
+		{
+			"id": "image_inline_style",
+			"control": "inline_style_group",
+			"declarations": [
+				{
+					"prefix": "object-position: ",
+					"id": "image_css_object_position"
+				}
+			],
+			"tail": ";",
+			"internal": true
+		}
+	],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "The journey in three chapters",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "text_text",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Chapter One",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "History &amp; Culture",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_2",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Johannesburg &amp; Soweto",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2",
+			"sort": 0
+		},
+		{
+			"id": "text_text_3",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "Where the country's recent history is closest to the surface, and its creative present most alive. You begin with a warm welcome, then spend a full day in Soweto with the township's own people, before standing where the story of freedom was written.",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "image_src",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img88956217_(1).jpeg"
+			},
+			"esc": "url",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "Johannesburg and Soweto — history and culture",
+			"esc": "attr",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "image_src_2",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6216.png"
+			},
+			"esc": "url",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt_2",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "A welcome dinner hosted by the winemaker behind Luc Mo",
+			"esc": "attr",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading_2",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "text_text_4",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "The Welcome",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_div_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Lucia Motloung",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_h3_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_5",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "A welcome dinner hosted by the winemaker behind Luc Mo, built with the Ndebele Kingdom.",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "image_src_3",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6880.png"
+			},
+			"esc": "url",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt_3",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "The Hector Pieterson Memorial, Soweto",
+			"esc": "attr",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading_3",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "text_text_6",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "The Soweto Day",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_div_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_2",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Antoinette Sithole",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_h3_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_7",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "A full day through Soweto by tuk-tuk, with local guides, and lunch hosted by the sister of Hector Pieterson.",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "image_src_4",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_7105.png"
+			},
+			"esc": "url",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt_4",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "Mandela House and the Apartheid Museum, Soweto",
+			"esc": "attr",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading_4",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "text_text_8",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "The Story",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_div_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_3",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Mandela House &amp; the Apartheid Museum",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_h3_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_9",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "The places where the struggle was lived, told plainly and with care.",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_10",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Chapter Two",
+			"esc": "post",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv_sj_ch_num",
+			"sort": 0
+		},
+		{
+			"id": "title_text_2",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "Safari",
+			"esc": "post",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv_sj_ch_ttl",
+			"sort": 0
+		},
+		{
+			"id": "text_text_11",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "The Sabi Sand",
+			"esc": "post",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv_sj_ch_where",
+			"sort": 0
+		},
+		{
+			"id": "text_text_12",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "Into the iconic safari country of the lowveld. Three nights at MalaMala, a private Big Five reserve returned to the community that lives there, with open-vehicle game drives morning and evening, and an afternoon given to the people whose home this land is.",
+			"esc": "post",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv_sj_ch_lead",
+			"sort": 0
+		},
+		{
+			"id": "image_src_5",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_sj_safari_sabi_sand.jpg"
+			},
+			"esc": "url",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_img_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt_5",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "Open-vehicle game drive in the Sabi Sand",
+			"esc": "attr",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_img_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading_5",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "image_src_6",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_SAT001232.jpeg"
+			},
+			"esc": "url",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt_6",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "Big Five game drive in the Sabi Sand",
+			"esc": "attr",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading_6",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "text_text_13",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "The Wild",
+			"esc": "post",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_div_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_4",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Big Five Game Drives",
+			"esc": "post",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_h3_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_14",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Morning and evening in open vehicles with private field guides, unhurried and close.",
+			"esc": "post",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "image_src_7",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_buffalo_maindeck2.png"
+			},
+			"esc": "url",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt_7",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "MalaMala, the community-owned reserve in the Sabi Sand",
+			"esc": "attr",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading_7",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "text_text_15",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "The Land",
+			"esc": "post",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_div_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_5",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "A Legacy Restored",
+			"esc": "post",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_h3_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_16",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "MalaMala was taken from its community during apartheid. Through decades of determination, they fought for it, won it back, and today they welcome you onto it.",
+			"esc": "post",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "image_src_8",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_shangaan-village-cdp590b-590x390.jpg"
+			},
+			"esc": "url",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt_8",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "A Shangaan village, the community beyond the reserve",
+			"esc": "attr",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading_8",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "text_text_17",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "The People",
+			"esc": "post",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_div_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_6",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "An Afternoon Beyond the Reserve",
+			"esc": "post",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_h3_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_18",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Time with the community that lives alongside the wilderness.",
+			"esc": "post",
+			"group": "p_sj_ch_alt_sj_ch_c_sj_ch_moments_sj_ch_mom_div_nth_of_type_2_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_19",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Chapter Three",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "title_text_3",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "The Cape",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_20",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Cape Town",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2",
+			"sort": 0
+		},
+		{
+			"id": "text_text_21",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "The journey closes where the land meets two oceans. Robben Island and Table Mountain, the Cape Peninsula, a day among the Black-owned wineries of the Cape, and a farewell worthy of the journey behind it.",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "image_src_9",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img639400454.jpeg"
+			},
+			"esc": "url",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt_9",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "Cape Town — where the land meets two oceans",
+			"esc": "attr",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading_9",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "image_src_10",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_1363.png"
+			},
+			"esc": "url",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt_10",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "Robben Island",
+			"esc": "attr",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading_10",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "text_text_22",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Robben Island",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_div_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_7",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Christo Brand",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_h3_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_23",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "The warder who guarded Nelson Mandela, and became his friend, walks you through himself.",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_1_div_nth_of_type_2_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "image_src_11",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img371169908.jpeg"
+			},
+			"esc": "url",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt_11",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "Black-owned wineries of the Cape Winelands",
+			"esc": "attr",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading_11",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "image_css_object_position",
+			"control": "text",
+			"label": "Object Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "center 82%",
+			"esc": "attr",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "text_text_24",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "The Black Route",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_div_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_8",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Vivian Kleynhans",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_h3_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_25",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "A day among Black-owned wineries, with the CEO of Seven Sisters Vineyards, a pioneer who established the prominent, 100% black-owned wine brand in Stellenbosch.",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_2_div_nth_of_type_2_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "image_src_12",
+			"control": "media",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_GOLD_Venue_5.jpg"
+			},
+			"esc": "url",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt_12",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "The closing dinner at Gold Restaurant, Cape Town",
+			"esc": "attr",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_1_img_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading_12",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "text_text_26",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "The Farewell",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_div_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_9",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "A Closing Dinner",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_h3_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_27",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "A final evening with live performance, to mark the journey behind you.",
+			"esc": "post",
+			"group": "p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_2_article_nth_of_type_3_div_nth_of_type_2_p_nth_of_type_1",
+			"sort": 0
+		}
+	]
+}

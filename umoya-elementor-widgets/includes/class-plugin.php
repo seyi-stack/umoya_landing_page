@@ -38,21 +38,17 @@ final class Plugin {
 	}
 
 	public function register_categories( $elements_manager ) {
-		$elements_manager->add_category(
-			'umoya-homepage',
-			array(
-				'title' => 'Umoya - Homepage',
-				'icon'  => 'eicon-home',
-			)
-		);
+		require_once UMOYA_EW_PATH . 'includes/class-section-registry.php';
 
-		$elements_manager->add_category(
-			'umoya-fc',
-			array(
-				'title' => "Umoya - Founder's Circle",
-				'icon'  => 'eicon-globe',
-			)
-		);
+		foreach ( Section_Registry::categories() as $category ) {
+			$elements_manager->add_category(
+				$category['slug'],
+				array(
+					'title' => $category['title'],
+					'icon'  => ! empty( $category['icon'] ) ? $category['icon'] : 'eicon-globe',
+				)
+			);
+		}
 	}
 
 	public function register_widgets( $widgets_manager ) {

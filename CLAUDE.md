@@ -1383,6 +1383,64 @@ both arrows become individually editable panels instead, and the build prints
 the reason. Supporting it would need attribute *slots* rather than attribute
 names, which is not worth the machinery for a pair of buttons.
 
+### Phase 24 - The Signature Journey page, 2026-09-04
+
+Eight more widgets, in a third Elementor category **Umoya - Signature Journey**
+(`umoya-sj`), compiled from `signature-journey/`. Plugin now exposes **33**
+section widgets across three categories.
+
+**Eight widgets from nine files.** `section-07-cta.html` is deliberately NOT
+compiled. The client had that section removed because it duplicated the "Speak
+With a Travel Expert" button in section 06's Offers panel, and `#sj-cta` no
+longer exists on the page; the file is kept only for history. Compiling it would
+have handed an editor a section that was explicitly taken off the page — the
+kind of thing that only comes from reading `signature-journey/_NOTES.md` rather
+than globbing the folder.
+
+**Categories are now data-driven.** `tools/uew/build.mjs` emits
+`includes/sections/categories.json` from the registries, and
+`Plugin::register_categories()` loops over it. Adding a page family is a
+registry file and nothing else.
+
+#### One real bug, found by looking at the panel output
+
+**Content controls were being orphaned into an unnamed "Other content" panel.**
+When two elements resolve to the same CSS selector — a shared class across a run
+of siblings — only the first gets a style panel, but every one of them was
+minting a *fresh* panel id for its content controls. Those ids matched no panel,
+so the controls fell into a catch-all. They now file under the panel that
+actually exists.
+
+That exposed a second thing worth keeping: two elements sharing a selector
+legitimately share a panel, so the panel can hold two controls both called
+"Text". Repeated control labels within a panel are now numbered.
+
+#### Naming, continued
+
+A list whose container is anonymous takes its name from its first item. The
+three hotel slideshows label their slides
+`aria-label="The Da Vinci — 1 of 3"`, so the panels read **The Da Vinci
+Slides**, **MalaMala Slides**, **Cape Grace Slides** — and their dot navigations
+likewise — instead of "Slides 1", "Slides 2", "Slides". The counter after the
+dash is dropped, since it is what makes each item different rather than what
+names the set.
+
+#### The editor check now confirms a failure too
+
+One section came back `NOT RENDERED` with `ReferenceError: wp is not defined`.
+It was a WordPress bootstrap race, not a widget fault — booting 33 editors in a
+row against a single-threaded PHP server drops the occasional script — and the
+same section passed twice in isolation immediately afterwards. `editor-check`
+now re-inspects a failing section once, marking a recovered one
+`[passed on retry]`, and gives each section its own browser page: reusing one
+left Elementor's preview iframe detached from the previous document, so every
+section after the first failure reported the same stale frame id and seven
+widgets looked broken when one page object was.
+
+> Run the checks with nothing else heavy on the machine. Two browser checks at
+> once fight over the single-threaded PHP server and produce failures that say
+> more about the harness than the widgets.
+
 ---
 
 ## 6. Repository Map
@@ -1498,10 +1556,12 @@ umoya-elementor-widgets/
 
 ## 7. Elementor Widget Registry
 
-The plugin exposes 25 section widgets, all compiled by `tools/uew/`:
-**12 Founder's Circle** from `founders-circle-revamp/` and **13 homepage** from
-`homepage-revamp/`. Schemas live in
-`umoya-elementor-widgets/includes/sections/*.json`.
+The plugin exposes 33 section widgets, all compiled by `tools/uew/`:
+**12 Founder's Circle** from `founders-circle-revamp/`, **13 homepage** from
+`homepage-revamp/`, and **8 Signature Journey** from `signature-journey/`.
+Schemas live in `umoya-elementor-widgets/includes/sections/*.json`; the Elementor
+categories are emitted to `includes/sections/categories.json`, so adding a page
+family needs no PHP change.
 
 ### Founder's Circle Category
 
@@ -1551,6 +1611,31 @@ Compiled from **`homepage-revamp/`**, in Elementor placement order.
 | `home_speak_expert` | Home Speak With an Expert | `homepage-section-11-speak-with-expert.html` | `#umoya-speak-expert` |
 | `home_form_popup` | Home Inquiry Popup | `homepage-form-popup.html` | `#umoya-form-popup` |
 
+### Signature Journey Category
+
+Category: `Umoya - Signature Journey`
+Compiled from **`signature-journey/`**, in Elementor placement order.
+
+| Key | Widget title | Source (`signature-journey/`) | Root |
+|---|---|---|---|
+| `sj_nav` | SJ Navigation | `section-00-nav.html` | `#sjNavBar` |
+| `sj_hero` | SJ Hero | `section-01-hero.html` | `#sj-hero` |
+| `sj_overview` | SJ Overview | `section-02-intro.html` | `#sj-overview` |
+| `sj_chapters` | SJ Journey Chapters | `section-03-journey-chapters.html` | `#sj-journey` |
+| `sj_extensions` | SJ Extensions | `section-04-extensions.html` | `#sj-extensions` |
+| `sj_stays` | SJ Where You Stay | `section-05-stays.html` | `#sj-stays` |
+| `sj_inclusions` | SJ Inclusions & Offers | `section-06-inclusions-offers.html` | `#sj-inclusions` |
+| `sj_form_popup` | SJ Inquiry Popup | `section-08-form-popup.html` | `#umoya-form-popup` |
+
+> **`section-07-cta.html` has no widget, deliberately.** The client had that
+> section removed — it duplicated the Offers panel's "Speak With a Travel Expert"
+> button — and `#sj-cta` no longer exists on the page. The file is kept for
+> history only. Do not add it to the registry.
+>
+> `sj_form_popup` shares the root id `#umoya-form-popup` with `home_form_popup`,
+> because both source files use it. Fine while they are on different pages. Its
+> lead attribution is `signature_journey_popup`, distinct from the homepage's.
+
 > The ten `umoya-homepage-*` widgets were **removed** in Phase 23. They were
 > generated from `homepage/`, which is a different page from the revamp — it had
 > pricing, homecoming and accommodations sections the revamp does not.
@@ -1576,9 +1661,10 @@ python tools/build-plugin-zip.py
 The build **fails** if a template stops reproducing its source. That is the
 point; do not pass `--no-verify` to get around it.
 
-**Homepage** — edit `homepage-revamp/`, then exactly the same commands. Both
-page families go through one compiler; `--only=<key>` narrows a run and merges
-into the manifest rather than replacing it.
+**Homepage** — edit `homepage-revamp/`. **Signature Journey** — edit
+`signature-journey/`. Then exactly the same commands: all three page families go
+through one compiler, and `--only=<key>` narrows a run while merging into the
+manifest rather than replacing it.
 
 ---
 
@@ -2427,10 +2513,10 @@ so re-check after a cache purge.
   compiled from `homepage-revamp/`, and the first-generation generator and its
   Base_Widget/Legacy_Registry/section-definitions.json were deleted. Plugin at
   **3.0.0**.
-- ⏳ **Four folders are registered nowhere** — `signature-journey/`,
-  `private-tailormade/`, `about/`, `for-groups/` — plus `shared/`. They remain
-  hand-pasted HTML widgets. Decide per page whether that is worth changing;
-  the compiler handles any section file as-is.
+- ⏳ **Three folders are registered nowhere** — `private-tailormade/`,
+  `about/`, `for-groups/` — plus `shared/`. They remain hand-pasted HTML
+  widgets. Decide per page whether that is worth changing; the compiler handles
+  any section file as-is. (`signature-journey/` was done in Phase 24.)
 - **After re-uploading the plugin, purge Elementor's cache** (Elementor →
   Tools → Regenerate CSS & Data). Elementor caches rendered widget HTML in post
   meta, so without this a page keeps serving the previous version's markup —
@@ -2752,7 +2838,8 @@ Think of this project as five connected layers:
    - All 25 widgets are compiled by `tools/uew/` from the `-revamp/` folders
      and verified against a local WordPress + Elementor 4.2.4 harness on four
      axes (byte fidelity, render, browser, editor). One code path, no legacy.
-   - The four newest page folders and `shared/` are not registered at all.
+   - `private-tailormade/`, `about/`, `for-groups/` and `shared/` are not
+     registered yet; they remain hand-pasted HTML widgets.
 
 4. WordPress/theme layer (lives on the server, not in this repo):
    - Two header systems depending on the Elementor template

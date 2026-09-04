@@ -145,12 +145,32 @@
 					"group": "p_umoya_wtt_cta",
 					"sort": 0,
 					"part_label": "Button"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_wtt_arrow",
+			"label": "Content",
+			"sample": "",
+			"region_label": "",
+			"controls": [
 				{
 					"id": "arrow_aria_label",
 					"control": "text",
-					"label": "Accessible Name",
+					"label": "Accessible Name 1",
 					"default": "Previous travel styles",
+					"esc": "attr",
+					"group": "p_umoya_wtt_arrow",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Arrow"
+				},
+				{
+					"id": "arrow_aria_label_2",
+					"control": "text",
+					"label": "Accessible Name 2",
+					"default": "More travel styles",
 					"esc": "attr",
 					"group": "p_umoya_wtt_arrow",
 					"tab": "content",
@@ -167,16 +187,6 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Container 3"
-				},
-				{
-					"id": "arrow_aria_label_2",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "More travel styles",
-					"esc": "attr",
-					"group": "p_umoya_wtt_arrow_2",
-					"tab": "content",
-					"sort": 1
 				}
 			],
 			"merged": true
@@ -243,10 +253,10 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_wtt_arrow_2",
+			"group": "p_umoya_wtt_arrow",
 			"tab": "form",
 			"sort": 1,
-			"part_label": ""
+			"part_label": "Arrow"
 		},
 		{
 			"id": "arrow_type_2",
@@ -1020,7 +1030,7 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_wtt_arrow_2",
+			"group": "p_umoya_wtt_arrow",
 			"tab": "form",
 			"sort": 1
 		},
@@ -1040,7 +1050,7 @@
 			"label": "Accessible Name",
 			"default": "More travel styles",
 			"esc": "attr",
-			"group": "p_umoya_wtt_arrow_2",
+			"group": "p_umoya_wtt_arrow",
 			"tab": "content",
 			"sort": 1
 		},

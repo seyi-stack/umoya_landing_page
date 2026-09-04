@@ -1,0 +1,17 @@
+[
+	{
+		"slug": "umoya-fc",
+		"title": "Umoya - Founder's Circle",
+		"icon": "eicon-globe"
+	},
+	{
+		"slug": "umoya-homepage",
+		"title": "Umoya - Homepage",
+		"icon": "eicon-home"
+	},
+	{
+		"slug": "umoya-sj",
+		"title": "Umoya - Signature Journey",
+		"icon": "eicon-map-pin"
+	}
+]

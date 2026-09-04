@@ -126,9 +126,12 @@ const browser = await puppeteer.launch( {
 	args: [ '--no-sandbox', '--disable-dev-shm-usage' ],
 } );
 
-const page = await browser.newPage();
-await page.setViewport( { width: 1600, height: 1000 } );
-await login( page );
+// Log in once; the session cookie lives on the browser context, so every
+// section can then open its own page without logging in again.
+const loginPage = await browser.newPage();
+await loginPage.setViewport( { width: 1600, height: 1000 } );
+await login( loginPage );
+await loginPage.close();
 
 const rows = [];
 let failures = 0;
@@ -137,6 +140,47 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 	if ( onlyKeys && ! onlyKeys.has( key ) ) continue;
 
 	const entry = pages[ key ];
+
+	// Booting an Elementor editor pulls ~50 assets through a single-threaded PHP
+	// server. Thirty-three of them back to back saturates it, and the dropped
+	// request lands on whichever section is unlucky. A short pause between
+	// sections costs a minute and removes the cause rather than retrying past it.
+	if ( rows.length ) {
+		await new Promise( ( resolve ) => setTimeout( resolve, 1500 ) );
+	}
+
+	let row = await inspect( key, section, entry );
+
+	// Confirm before reporting, as the browser check does. Booting 33 editors in
+	// a row against a single-threaded PHP server drops the occasional script,
+	// which surfaces as `wp is not defined` and an empty canvas -- a WordPress
+	// bootstrap race, not a widget fault. It was reproducible only in the crowd:
+	// the same section passed twice in isolation immediately afterwards.
+	const failed = ( candidate ) => ! candidate.rendered || ! candidate.panels ||
+		candidate.errors.length || ( section.script && '1' !== candidate.scriptRan );
+
+	if ( failed( row ) ) {
+		// Let the server drain before looking again. The failures here are the
+		// editor's own bundle not loading -- `@elementor/env was not loaded`, and
+		// no preview iframe at all -- which is a dropped request, not a widget
+		// fault: the same section passes twice in isolation straight afterwards.
+		await new Promise( ( resolve ) => setTimeout( resolve, 4000 ) );
+		const second = await inspect( key, section, entry );
+		if ( ! failed( second ) ) {
+			second.recovered = true;
+			row = second;
+		}
+	}
+
+	const ok = ! failed( row );
+	if ( ! ok ) failures += 1;
+	row.ok = ok;
+
+	rows.push( row );
+	console.log( describeRow( row, section ) );
+}
+
+async function inspect( key, section, entry ) {
 	const errors = [];
 	const hostNoise = [];
 	const row = { key, rendered: false, scriptRan: null, panels: 0, ms: 0, notes: [] };
@@ -152,10 +196,16 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 		}
 		errors.push( text.slice( 0, 160 ) );
 	};
+	const started = Date.now();
+
+	// A page per section. Reusing one page left Elementor's preview iframe
+	// detached from the previous document -- every section after the first
+	// failure reported the same stale frame id, which looked like seven broken
+	// widgets and was one broken page object.
+	const page = await browser.newPage();
+	await page.setViewport( { width: 1600, height: 1000 } );
 	page.on( 'pageerror', onError );
 	page.on( 'console', onConsole );
-
-	const started = Date.now();
 
 	try {
 		await gotoWithRetry( page, BASE + '/wp-admin/post.php?post=' + entry.id + '&action=elementor', { waitUntil: 'domcontentloaded', timeout: 90000 } );
@@ -254,30 +304,31 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 		row.notes.push( String( error.message || error ).slice( 0, 180 ) );
 	}
 
-	page.off( 'pageerror', onError );
-	page.off( 'console', onConsole );
+	await page.close();
 
 	row.errors = [ ...new Set( errors ) ];
 	row.hostNoise = [ ...new Set( hostNoise ) ];
 	row.total = Date.now() - started;
 
-	const ok = row.rendered && row.panels > 0 && ! row.errors.length &&
-		( ! section.script || '1' === row.scriptRan );
-	if ( ! ok ) failures += 1;
-	row.ok = ok;
+	return row;
+}
 
-	rows.push( row );
+function describeRow( row, section ) {
 	const tabs = row.byTab ? Object.entries( row.byTab ).map( ( [ tab, n ] ) => n + ' ' + tab ).join( ', ' ) : '';
-	console.log(
+
+	return (
 		row.key.padEnd( 26 ) +
 		( row.rendered ? 'rendered' : 'NOT RENDERED' ).padEnd( 14 ) +
 		( ! section.script ? 'no script' : ( '1' === row.scriptRan ? 'script ok' : 'SCRIPT DID NOT RUN' ) ).padEnd( 20 ) +
 		String( row.ms ).padStart( 6 ) + 'ms  ' +
 		String( row.panels ).padStart( 3 ) + ' panels (' + tabs + ')' +
 		( row.errors.length ? '   ' + row.errors.length + ' console error(s)' : '' ) +
-		( row.hostNoise.length ? '   (' + row.hostNoise.length + ' Elementor AI/MCP warnings ignored)' : '' )
+		( row.hostNoise.length ? '   (' + row.hostNoise.length + ' Elementor AI/MCP warnings ignored)' : '' ) +
+		( row.recovered ? '   [passed on retry]' : '' )
 	);
 }
+
+
 
 await browser.close();
 

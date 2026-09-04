@@ -1,0 +1,541 @@
+{
+	"key": "sj_overview",
+	"name": "umoya-sj-overview",
+	"title": "SJ Overview",
+	"description": "Intro copy, then the stat bar (10 Days · 3 Chapters · 2 Extensions · 7 Signature Moments).",
+	"icon": "eicon-info-circle-o",
+	"category": "umoya-sj",
+	"source": "signature-journey/section-02-intro.html",
+	"class_name": "SJ_Overview",
+	"widget_file": "widgets/class-sj-overview.php",
+	"root_selector": "#sj-overview",
+	"template": "templates/sections/sj_overview.php",
+	"style": {
+		"handle": "uew-umoya-sj-overview",
+		"file": "assets/css/sections/sj_overview.css"
+	},
+	"script": {
+		"handle": "uew-umoya-sj-overview",
+		"file": "assets/js/sections/sj_overview.js"
+	},
+	"keywords": [
+		"umoya",
+		"founders circle",
+		"sj",
+		"overview"
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"label": "Terra"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"label": "White"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.66)",
+			"kind": "color",
+			"label": "Muted"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Journey overview",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ov_eye",
+			"label": "Content",
+			"sample": "The Journey",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "The Journey",
+					"esc": "post",
+					"group": "p_sj_ov_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "See South Africa the Way it Deserves to be Seen",
+					"esc": "post",
+					"group": "p_sj_ov_ttl",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "text_text",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "The Signature Journey moves as one arc across South Africa. It begins with the country's living history in Johannesburg and Soweto, opens into the Big Five wilderness of the Sabi Sand, and closes in the beauty of the Cape. An optional extension carries you on to Victoria Falls and Chobe.",
+					"esc": "post",
+					"group": "p_sj_ov_lead",
+					"sort": 0,
+					"part_label": "Text"
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_div_sj_ov_stat",
+			"label": "Stats",
+			"item_label": "{{{ stat_n }}}",
+			"controls": [
+				{
+					"id": "role",
+					"control": "text",
+					"label": "Role",
+					"esc": "attr",
+					"default": "listitem"
+				},
+				{
+					"id": "stat_n",
+					"control": "text",
+					"label": "Stat N",
+					"esc": "post",
+					"default": "10"
+				},
+				{
+					"id": "data_short",
+					"control": "text",
+					"label": "Short",
+					"esc": "attr",
+					"default": "Days"
+				},
+				{
+					"id": "stat_l",
+					"control": "text",
+					"label": "Stat L",
+					"esc": "post",
+					"default": "Days"
+				}
+			],
+			"rows": [
+				{
+					"role": "listitem",
+					"stat_n": "10",
+					"data_short": "Days",
+					"stat_l": "Days"
+				},
+				{
+					"role": "listitem",
+					"stat_n": "3",
+					"data_short": "Chapters",
+					"stat_l": "Immersive Chapters"
+				},
+				{
+					"role": "listitem",
+					"stat_n": "2",
+					"data_short": "Extensions",
+					"stat_l": "Optional Extensions"
+				},
+				{
+					"role": "listitem",
+					"stat_n": "7",
+					"data_short": "Moments",
+					"stat_l": "Signature Moments"
+				}
+			],
+			"selector": ".sj-ov-stat"
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ov_intro",
+			"label": "Content",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ov-intro",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ov_narrow",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ov-narrow",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ov_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "The Journey",
+			"selector": ".sj-ov-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ov_ttl",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "",
+			"sample": "See South Africa the Way it Deserves to be Seen",
+			"selector": ".sj-ov-ttl",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ov_lead",
+			"label": "Text",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "The Signature Journey moves as one arc across S…",
+			"selector": ".sj-ov-lead",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ov_bar",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ov-bar",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ov_bar_in",
+			"label": "Container 3",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ov-bar-in",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ov_stat",
+			"label": "Stat",
+			"short_label": "Stat",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-ov-stat",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": true,
+			"absolute": false,
+			"repeater": "div_sj_ov_stat"
+		},
+		{
+			"id": "p_sj_ov_stat_div_nth_of_type_1",
+			"label": "Stat Text 1",
+			"short_label": "Text",
+			"parent_label": "Stat",
+			"sample": "10",
+			"selector": ".sj-ov-stat > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_sj_ov_stat_div_nth_of_type_2",
+			"label": "Stat Text 2",
+			"short_label": "Text",
+			"parent_label": "Stat",
+			"sample": "Days",
+			"selector": ".sj-ov-stat > div:nth-of-type(2)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Journey overview",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "The Journey",
+			"esc": "post",
+			"group": "p_sj_ov_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "See South Africa the Way it Deserves to be Seen",
+			"esc": "post",
+			"group": "p_sj_ov_ttl",
+			"sort": 0
+		},
+		{
+			"id": "text_text",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "The Signature Journey moves as one arc across South Africa. It begins with the country's living history in Johannesburg and Soweto, opens into the Big Five wilderness of the Sabi Sand, and closes in the beauty of the Cape. An optional extension carries you on to Victoria Falls and Chobe.",
+			"esc": "post",
+			"group": "p_sj_ov_lead",
+			"sort": 0
+		}
+	]
+}

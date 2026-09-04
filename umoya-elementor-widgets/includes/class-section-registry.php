@@ -62,6 +62,22 @@ final class Section_Registry {
 		return self::$schemas[ $key ];
 	}
 
+	/**
+	 * Elementor categories, emitted by the compiler from the section registries.
+	 *
+	 * Kept in a file rather than hardcoded here so that adding a page family is a
+	 * registry file and nothing else.
+	 *
+	 * @return array List of { slug, title, icon }.
+	 */
+	public static function categories() {
+		$categories = self::read_json( UMOYA_EW_PATH . 'includes/sections/categories.json' );
+
+		return array_values( array_filter( $categories, function ( $category ) {
+			return ! empty( $category['slug'] ) && ! empty( $category['title'] );
+		} ) );
+	}
+
 	/** @return array Manifest entries that have a widget class to register. */
 	public static function widgets() {
 		return array_filter(
