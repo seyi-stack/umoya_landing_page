@@ -98,11 +98,41 @@ const CASES = [
       firstname: 'VerifyNL',
     },
   },
+  {
+    label: 'Contact Page Journey Inquiry',
+    formId: '1e38d41f-3e99-4605-94cc-9057857a4e82',
+    email: 'umoya-verify-cj@example.com',
+    fields: popupFields('VerifyCJ', 'umoya-verify-cj@example.com'),
+  },
+  {
+    /* enquiry_type is an enumeration — this value must match an option on the
+       property exactly, and it is copied from the page's own <option>. */
+    label: 'Contact Page General & Media Inquiry',
+    formId: 'ffececd7-b401-43cb-8ee2-858b5d62892c',
+    email: 'umoya-verify-cg@example.com',
+    fields: {
+      firstname: 'VerifyCG',
+      lastname: 'PleaseDelete',
+      email: 'umoya-verify-cg@example.com',
+      organization: 'The Continent — Test Desk',
+      enquiry_type: 'Press and media',
+      founders_circle_message: 'CG verification payload',
+    },
+  },
 ];
+
+/* Optional substring filter, so re-verifying one form does not re-submit the
+   others: node tools/hubspot-verify-forms.mjs contact */
+const FILTER = (process.argv[2] || '').toLowerCase();
+const SELECTED = FILTER ? CASES.filter((c) => c.label.toLowerCase().includes(FILTER)) : CASES;
+if (!SELECTED.length) {
+  console.error(`No form label matches "${process.argv[2]}".`);
+  process.exit(1);
+}
 
 let allGood = true;
 
-for (const c of CASES) {
+for (const c of SELECTED) {
   console.log(`\n══════ ${c.label} ══════`);
   const submitRes = await fetch(
     `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL}/${c.formId}`,

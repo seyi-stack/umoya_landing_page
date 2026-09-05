@@ -132,6 +132,27 @@ const CASES = [
     },
   },
   {
+    /* Contact page, panel 1 — Founder's Circle field set, MERGE6 = guests. */
+    source: 'contact_page_journey',
+    raw: { merge1: 'Dr', fname: 'A', lname: 'B', email: 'cj@example.com', phone: '1234567',
+           merge2: 'United States', merge3: 'Atlanta', merge4: 'March', merge5: '2027',
+           merge6: 'Couple or Singles (2 minimum)', merge7: 'brief' },
+    expect: { salutation: 'Dr', country: 'United States', city: 'Atlanta',
+              preferred_travel_season: 'March', preferred_travel_year: '2027',
+              party_size: 'Couple or Singles (2 minimum)', founders_circle_message: 'brief',
+              preferred_journey_length: '' },
+  },
+  {
+    /* Contact page, panel 2 — MERGE2/MERGE3 must NOT fall through to
+       country/city, the same failure mode that broke For Groups. */
+    source: 'contact_page_general',
+    raw: { fname: 'Ada', lname: 'Obi', email: 'cg@example.com',
+           merge2: 'Press and media', merge3: 'The Continent', merge7: 'question' },
+    expect: { firstname: 'Ada', lastname: 'Obi', enquiry_type: 'Press and media',
+              organization: 'The Continent', founders_circle_message: 'question',
+              country: '', city: '' },
+  },
+  {
     /* Regression guard: an unknown source must fall back to the defaults. */
     source: 'some_future_form',
     raw: { fname: 'A', email: 'd@example.com', merge2: 'Ghana', merge6: '10 days' },

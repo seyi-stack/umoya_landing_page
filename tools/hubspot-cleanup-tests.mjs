@@ -24,6 +24,8 @@ const ALLOWED = [
   'umoya-verify-hp@example.com',
   'umoya-verify-sj@example.com',
   'umoya-verify-nl@example.com',
+  'umoya-verify-cj@example.com',
+  'umoya-verify-cg@example.com',
   'umoya-diag-fg-old@example.com',
   'umoya-diag-fg-new@example.com',
   'umoya-diag-pt-old@example.com',

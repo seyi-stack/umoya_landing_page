@@ -223,27 +223,38 @@ use the **same integration as the Founder's Circle form**:
 3. POPIA: required consent checkbox (not pre-ticked) + optional
    marketing opt-in, both recorded in the backup payload.
 
-They reuse the existing `MERGE*` field aliases so **no backend change is
-needed**:
+> ### ⚠ SUPERSEDED 2026-08-11 — this section used to describe the old
+> borrowed-alias setup (occasion in the `country` slot, both pages sharing
+> `cb87d460`, "no backend change needed"). All of that is gone. The table
+> below is the current mapping. `CLAUDE.md` Section 21 is the authority.
 
-| Field | Alias | HubSpot property | Carries |
+Each page now has its **own** HubSpot form and writes **dedicated**
+properties, so nothing is squeezed into a borrowed slot any more:
+
+| Page | HubSpot form | GUID |
+|---|---|---|
+| Private & Tailormade | Private & Tailormade Inquiry | `28e4e3e3-9a47-47a5-b3de-851981535664` |
+| For Groups | Group Journey Inquiry | `c201e387-ca7b-4d73-9417-f060566bcf6a` |
+
+| Field | Alias | P&T property | For Groups property |
 |---|---|---|---|
-| Occasion (P&T) / Group type (FG) | `MERGE2` | `country` | occasion / group type |
-| Organization (FG) | `MERGE3` | `city` | organization |
-| Month | `MERGE4` | `preferred_travel_season` | travel month |
-| Year | `MERGE5` | `preferred_travel_year` | travel year |
-| Guests (P&T) / Size (FG) | `MERGE6` | `preferred_journey_length` | party size |
-| Message | `MERGE7` | `founders_circle_message` | the brief |
+| Occasion / Group type | `MERGE2` | `trip_occasion` | `group_type` |
+| Organization | `MERGE3` | — | `organization` |
+| Month | `MERGE4` | `preferred_travel_season` | `preferred_travel_season` |
+| Year | `MERGE5` | `preferred_travel_year` | `preferred_travel_year` |
+| Guests / Size | `MERGE6` | `party_size` | `party_size` |
+| Message | `MERGE7` | `founders_circle_message` | `founders_circle_message` |
 
-**Open item:** the aliases are semantically stretched (occasion in the
-`country` slot, etc.). For cleaner reporting, create dedicated HubSpot
-properties (`trip_occasion`, `group_type`, `party_size`, `organization`)
-and update both the map in each form's script and the aliases in
-`umoya-elementor-widgets/includes/class-submissions.php`.
+This **does** require the backend: `$source_aliases` in
+`umoya-elementor-widgets/includes/class-submissions.php` resolves the aliases
+per `source`, so the WordPress-backup path writes the same properties as the
+direct path. The browser map and the PHP table are the same table written
+twice — `node tools/verify-alias-mapping.mjs` asserts they agree.
 
-Both forms currently share the Founder's Circle Portal ID / Form GUID
-(`246097317` / `cb87d460-…`). Confirm whether they should have their own
-HubSpot forms instead.
+> **`group_type` and `trip_occasion` are the only REQUIRED custom fields on
+> any Umoya form**, which is why these two pages 400'd on 2026-08-12 when the
+> pages were re-pasted before the plugin was re-uploaded. Deploy order
+> matters: plugin first, or at least both together.
 
 ---
 
@@ -296,3 +307,11 @@ behaviour and the theme-header takeover.
   registered, and the generator's source paths are stale.
 - The About Us hero is video-ready but points at the existing brand film —
   swap the `<source>` or delete the `<video>` block to ship the still.
+- **Add `shared/section-99-footer.html` as the LAST widget on all three
+  pages** (rebuilt 2026-08-29 to the client's footer mockup), and delete the
+  old Elementor Form newsletter widget wherever it still sits. See
+  `CLAUDE.md` Phase 16.
+- Both forms benefit from the 2026-09-01 IP-address fix in
+  `class-submissions.php` — resends and cron retries no longer forward to
+  HubSpot without `context.ipAddress`. Needs the plugin re-upload like the
+  rest.

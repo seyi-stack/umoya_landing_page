@@ -157,6 +157,26 @@ const PROPERTIES = [
     fieldType: 'text',
     description: 'For Groups — the chapter, church, alumni network or company.',
   },
+
+  /* (C) Contact page — the General & Media panel routes an enquiry by kind so
+   * advisor / press / booking traffic can be segmented without reading every
+   * note. An enumeration is safe here (unlike party_size) because exactly one
+   * form writes it and its <option> list is the source of this list. */
+  {
+    name: 'enquiry_type',
+    label: 'Enquiry Type',
+    type: 'enumeration',
+    fieldType: 'select',
+    description: 'Contact page — the kind of general or media enquiry.',
+    options: [
+      'Travel advisor or agency partnership',
+      'Group leader: reunions, churches, alumni & organisations',
+      'Wedding or event planner',
+      'Press and media',
+      'Existing booking',
+      'General question',
+    ],
+  },
 ];
 
 const GROUP_NAME = 'contactinformation';
@@ -204,7 +224,7 @@ async function cmdListProps() {
     console.log(`  • ${p.name.padEnd(28)} ${String(p.type).padEnd(12)} ${custom}`);
   }
   const missing = PROPERTIES.map((p) => p.name).filter((n) => !all.some((p) => p.name === n));
-  console.log(missing.length ? `\nMissing (need creating): ${missing.join(', ')}` : '\nAll 4 custom properties already exist.');
+  console.log(missing.length ? `\nMissing (need creating): ${missing.join(', ')}` : '\nAll ' + PROPERTIES.length + ' managed contact properties already exist.');
   return { all, missing };
 }
 
@@ -301,6 +321,7 @@ function group(fields) { return { groupType: 'default_group', richTextType: 'tex
  * submitted value always matches an allowed enumeration option. */
 const OCCASIONS = PROPERTIES.find((p) => p.name === 'trip_occasion').options;
 const GROUP_TYPES = PROPERTIES.find((p) => p.name === 'group_type').options;
+const ENQUIRY_TYPES = PROPERTIES.find((p) => p.name === 'enquiry_type').options;
 
 /* party_size / preferred_travel_* are string properties, so they use text
  * fields here — the constrained choices are already enforced by the <select>
@@ -349,6 +370,43 @@ const FORMS = [
       group([field('preferred_travel_season', 'When are you hoping to travel?')]),
       group([field('preferred_travel_year', 'Preferred travel year')]),
       group([field('founders_circle_message', 'Tell us about your group', { fieldType: 'multi_line_text' })]),
+    ]),
+  },
+
+  /* ── Contact page ───────────────────────────────────────────────────────
+   * Two panels, two forms, so "someone asked us to plan a journey" and
+   * "a journalist got in touch" never land in the same conversion number.
+   *
+   * Panel 1 collects the same field set as the Founder's Circle form, so it
+   * needs no new properties.
+   *
+   * enquiry_type is deliberately NOT marked required here, even though our
+   * own HTML requires it. A required custom field is exactly what broke For
+   * Groups on 2026-08-12: the pages were re-pasted before the plugin was
+   * re-uploaded, so the server still mapped merge2 to `country` and HubSpot
+   * rejected every submission with "Required field 'group_type' is missing".
+   * Optional means a deploy in the wrong order degrades to a missing field
+   * rather than a rejected lead.
+   * ------------------------------------------------------------------- */
+  {
+    name: 'Contact Page Journey Inquiry',
+    def: () => formDefinition('Contact Page Journey Inquiry', [
+      group([field('salutation', 'Title'), field('firstname', 'First name', { required: true }), field('lastname', 'Last name', { required: true })]),
+      group([field('email', 'Email', { required: true, fieldType: 'email' }), field('phone', 'Phone', { fieldType: 'phone' })]),
+      group([field('country', 'Country'), field('city', 'City')]),
+      group([field('preferred_travel_season', 'When are you hoping to travel?'), field('preferred_travel_year', 'Preferred travel year')]),
+      group([field('party_size', 'How many guests will be traveling?')]),
+      group([field('founders_circle_message', 'What are you hoping to experience', { fieldType: 'multi_line_text' })]),
+    ]),
+  },
+  {
+    name: 'Contact Page General & Media Inquiry',
+    def: () => formDefinition('Contact Page General & Media Inquiry', [
+      group([field('firstname', 'First name', { required: true }), field('lastname', 'Last name')]),
+      group([field('email', 'Email', { required: true, fieldType: 'email' })]),
+      group([field('organization', 'Organisation')]),
+      group([field('enquiry_type', 'Enquiry type', { fieldType: 'dropdown', options: ENQUIRY_TYPES })]),
+      group([field('founders_circle_message', 'Message', { fieldType: 'multi_line_text' })]),
     ]),
   },
 ];
