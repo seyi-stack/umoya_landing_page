@@ -1049,7 +1049,7 @@ UI, Stripe, tevily-themer and the HubSpot WordPress plugin. 18 script tags
 against 47–48 on comparable pages, reproducible on forced cache misses.
 **Unresolved, needs wp-admin.** Section 21.
 
-#### Finding: CookieYes is not installed on the live site
+#### Finding: CookieYes is not installed on the live site  *(RESOLVED 2026-09-05 — see Phase 25)*
 
 The footer routing doc states it already is. It is not — `cdn-cookieyes.com`
 appears on no live page; the site still runs `cookieadmin` + `cookieadmin-pro`.
@@ -1440,6 +1440,95 @@ widgets looked broken when one page object was.
 > Run the checks with nothing else heavy on the machine. Two browser checks at
 > once fight over the single-threaded PHP server and produce failures that say
 > more about the harness than the widgets.
+
+### Phase 25 - The footer signup was never reaching WordPress, 2026-09-05
+
+Reported as "the footer form isn't getting to the WordPress submissions back
+end and isn't getting to the right form in HubSpot". Those are **two separate
+faults**, on different pages, with different causes.
+
+#### Fault 1 - the REST endpoint required fields the footer does not collect
+
+`handle_submission()` rejected any submission missing **firstname, lastname
+AND country**, on every source. The footer newsletter asks for a name and an
+email and nothing else, so `lastname` and `country` were always empty and
+**every footer signup was rejected with HTTP 400**.
+
+Proven against the live endpoint by replaying a footer-shaped payload:
+
+```
+POST /wp-json/umoya/v1/submissions   {"source":"footer_newsletter",
+   "rawFields":{"FNAME":"…","EMAIL":"…@example.com"}}
+→ 400 {"code":"umoya_missing_required_fields"}
+```
+
+The browser then did exactly what it is designed to do — fell back to posting
+straight to the HubSpot Forms API — which is why **Footer Newsletter Signup
+was collecting submissions while Umoya Submissions stayed empty**. Nothing
+looked broken from HubSpot's side, which is why it went unnoticed.
+
+**The same trap was about to catch three more sources.** Once the source-aware
+alias table ships, MERGE2 no longer resolves to `country` on Private &
+Tailormade (trip occasion), For Groups (group type) or the contact page's
+General & Media panel (enquiry type). A blanket country requirement would have
+started rejecting those three **the day the plugin was re-uploaded** — turning
+a fix into three new outages.
+
+Fixed with `required_fields_for_source()` / `missing_required_fields()`:
+
+| Source | Required beyond a valid email |
+|---|---|
+| `footer_newsletter` | nothing |
+| `contact_page_general` | firstname, lastname |
+| `private_tailormade_page` | firstname, lastname |
+| `for_groups_page` | firstname, lastname |
+| everything else (incl. unknown sources) | firstname, lastname, country |
+
+Anything unlisted keeps the original rule, so no form that saves today
+changes. The rejection message now names the missing fields instead of a fixed
+sentence — the generic wording is part of why this stayed invisible.
+
+> ⚠ **Inert until `umoya-elementor-widgets.zip` is re-uploaded.** Rebuilt
+> 2026-09-05.
+
+#### Fault 2 - the homepage still runs the OLD Elementor newsletter form
+
+Footer deployment checked page by page:
+
+| Page | Footer |
+|---|---|
+| `/`, homepage | ❌ **still the old Elementor form** (`#footer_subscribers`) |
+| `/signature-journey/` | ❌ **no footer at all** — neither old nor new |
+| `/contact/`, `/about-us/`, `/for-groups/`, `/private-and-tailormade/`, `/founders-circle/` | ✅ new footer |
+
+The HubSpot WordPress plugin auto-captured the homepage's Elementor form on
+**2026-09-04** as a junk `[captured]` form,
+`#footer_subscribers .elementor-form, .elementor-form-waiting`
+(`c98bc3ab-f0e6-4d32-8606-e58018384787`). So a homepage signup lands there and
+in Elementor's own submissions — not in Umoya Submissions, and not on
+**Footer Newsletter Signup**. That is the "wrong form in HubSpot".
+
+Paste `shared/section-99-footer.html` as the last widget on the homepage and
+on Signature Journey, then delete the old Elementor Form widget. Leave the
+`[captured]` form in HubSpot — it holds real historical submissions.
+
+#### Two further live findings, both unrelated to the report
+
+- ⚠ **The homepage popup posts to a HubSpot form that no longer exists.** The
+  live homepage still carries the retired GUID `cb87d460`, and the API now
+  answers `404 — No form with guid 'cb87d460-…' exists on this portal`. It has
+  been deleted, not just retired, so **every homepage popup enquiry currently
+  fails to reach HubSpot.** WordPress still saves them (that source does send
+  firstname/lastname/country), so they are recoverable from Umoya Submissions
+  and will forward on resend — but the fix is to paste
+  `homepage-revamp/homepage-form-popup.html`, which carries the correct GUID
+  `a9e947b4`. This supersedes the note in Section 21 saying the retired form
+  was left in place.
+- ✅ **CookieYes is now installed.** `cky/v1` is in the REST namespace list and
+  `cookieyes` appears on the live pages; `cookieadmin` is gone from `/contact/`.
+  This reverses the Phase 20 finding. The footer's Cookie Settings button and
+  the Cookie Policy's in-page trigger should now open the real preference
+  centre rather than their fallback.
 
 ---
 
@@ -1885,7 +1974,7 @@ Current footer routes:
 | Contact | `/contact/` | ✅ |
 | Terms & Conditions | `/terms-and-conditions/` | ✅ |
 | Privacy Policy | `/privacy/` | ⚠ live but still v1.0 |
-| Cookie Settings | CookieYes trigger — no URL | ⚠ CookieYes not installed yet |
+| Cookie Settings | CookieYes trigger — no URL | ✅ CookieYes installed (confirmed 2026-09-05) |
 | Email Opt-out | popup inside the footer — no URL | ✅ ships with the footer |
 | PAIA Manual | `/umoya_paia_manual.pdf` | ✅ |
 
@@ -2057,10 +2146,10 @@ Elementor HTML widget. This is the current backlog, most urgent first.
 | 3b | `Elementor text-editor pages/Terms and Conditions.html` | Text Editor on the EXISTING `/terms-and-conditions/` page | Optional — the live copy is already v1.1; this only tidies markup and the `/privacy/` link |
 | ~~4~~ | ~~`shared/page-email-preferences.html`~~ | — | **Dropped 2026-09-02.** Email Opt-out is now a popup carried inside `shared/section-99-footer.html`, so it needs no page. The page file is kept, unchanged, if the standalone route is ever wanted back. |
 | 5 | `shared/section-00-nav.html` | the nav widget on EVERY page | Contact link + the 1024px breakpoint |
-| 6 | `shared/section-99-footer.html` | LAST widget on EVERY page | Then delete the old Elementor Form newsletter widget |
+| 6 | `shared/section-99-footer.html` | LAST widget on EVERY page — **the homepage and Signature Journey still have none** | Homepage signups currently go to the old Elementor form and a junk `[captured]` HubSpot form. Delete that widget after pasting. Also carries the minifier fix for the Email Opt-out popup, so re-paste the five pages that already have it |
 | 7 | `signature-journey/section-02-intro.html` | Signature Journey | Stat bar reordered + 7 Signature Moments |
-| 8 | `homepage-revamp/homepage-form-popup.html` | homepage | Still on the retired lossy HubSpot GUID `cb87d460` |
-| 9 | `umoya-elementor-widgets.zip` (re-upload) | Network Admin → Plugins | `contact_page_general` field forwarding + the resend IP fix |
+| 8 | `homepage-revamp/homepage-form-popup.html` | homepage | **Urgent.** The live page still posts to `cb87d460`, which HubSpot has now DELETED (API returns 404), so every homepage enquiry fails to reach the CRM. Correct GUID is `a9e947b4` |
+| 9 | `umoya-elementor-widgets.zip` (re-upload) | Network Admin → Plugins | **Urgent.** Source-aware required-fields guard — without it EVERY footer newsletter signup is rejected by WordPress with 400 and never reaches Umoya Submissions. Also `contact_page_general` field forwarding + the resend IP fix |
 
 > ⚠ **Items 1 and 2 replace the CONTENT of pages that already exist.** Do not
 > create new pages for them — the footer, the Privacy Policy's own section 12,
@@ -3102,7 +3191,14 @@ and forgotten. **Check page 8402's asset settings in wp-admin first.**
   that page (as opposed to our inline-scripted HTML widgets) is not running.
 - Lead capture itself is NOT affected.
 
-### ⚠ CookieYes is not actually installed yet
+### ⚠ CookieYes is not actually installed yet — RESOLVED 2026-09-05
+
+> **It is installed now.** Re-checked 2026-09-05: `cky/v1` is in the REST
+> namespace list, `cookieyes` appears on the live pages, and `cookieadmin` is
+> gone from `/contact/`. The footer's Cookie Settings button and the Cookie
+> Policy's in-page trigger should now open the real preference centre rather
+> than their fallback. The rest of this section is kept as the record of what
+> was true in early September.
 
 Also found 2026-09-01: `cdn-cookieyes.com` appears on **no** live page. The
 cookie tool currently loading is `cookieadmin` + `cookieadmin-pro` (two

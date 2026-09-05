@@ -161,10 +161,14 @@ final class Submissions {
             );
         }
 
-        if ( empty( $submission['firstname'] ) || empty( $submission['lastname'] ) || empty( $submission['country'] ) ) {
+        $missing = $this->missing_required_fields( $submission );
+        if ( $missing ) {
             return new WP_Error(
                 'umoya_missing_required_fields',
-                'First name, last name, email, and country are required.',
+                sprintf(
+                    'This form is missing required field(s): %s.',
+                    implode( ', ', $missing )
+                ),
                 array( 'status' => 400 )
             );
         }
@@ -209,6 +213,73 @@ final class Submissions {
         );
     }
 
+    /**
+     * Which fields, beyond a valid email, a given source must carry.
+     *
+     * Not every Umoya form collects the same thing, and the original blanket
+     * "first name + last name + country" rule assumed they did.
+     *
+     * That rule rejected EVERY footer newsletter signup. The footer asks for a
+     * name and an email and nothing else, so `lastname` and `country` were
+     * always empty, WordPress answered 400, and the browser quietly fell back
+     * to posting straight to HubSpot — which is exactly why those signups
+     * reached the CRM but never appeared in Umoya Submissions. Confirmed
+     * against the live endpoint on 2026-09-05 by replaying a footer-shaped
+     * payload: `umoya_missing_required_fields`.
+     *
+     * The same trap is waiting for three more sources. Once the source-aware
+     * alias table ships, MERGE2 no longer resolves to `country` on Private &
+     * Tailormade (it carries the trip occasion), For Groups (the group type)
+     * or the contact page's General & Media panel (the enquiry type) — so a
+     * blanket country requirement would begin rejecting those three the day
+     * the plugin is re-uploaded.
+     *
+     * Anything not listed here keeps the original rule, so every form that
+     * saves correctly today is unaffected.
+     *
+     * @param string $source The submission's `source` value.
+     * @return string[]      Field keys that must be non-empty.
+     */
+    private function required_fields_for_source( $source ) {
+        $by_source = array(
+            // Name + email only. Nothing else is asked for.
+            'footer_newsletter'       => array(),
+            // One "Full name" box split into two; no country collected.
+            'contact_page_general'    => array( 'firstname', 'lastname' ),
+            // MERGE2 carries the trip occasion, not the country.
+            'private_tailormade_page' => array( 'firstname', 'lastname' ),
+            // MERGE2/MERGE3 carry the group type and organisation.
+            'for_groups_page'         => array( 'firstname', 'lastname' ),
+        );
+
+        $key = sanitize_key( $source );
+
+        return isset( $by_source[ $key ] )
+            ? $by_source[ $key ]
+            : array( 'firstname', 'lastname', 'country' );
+    }
+
+    /**
+     * Required fields this submission does not carry, named individually so a
+     * rejection says which one is missing rather than a fixed sentence. The
+     * generic message is part of why the footer fault stayed invisible.
+     *
+     * @param array $submission Normalized submission.
+     * @return string[]
+     */
+    private function missing_required_fields( array $submission ) {
+        $source  = isset( $submission['source'] ) ? $submission['source'] : '';
+        $missing = array();
+
+        foreach ( $this->required_fields_for_source( $source ) as $field ) {
+            if ( empty( $submission[ $field ] ) ) {
+                $missing[] = $field;
+            }
+        }
+
+        return $missing;
+    }
+
     public function register_meta_boxes() {
         add_meta_box(
             'umoya_submission_details',
@@ -233,6 +304,11 @@ final class Submissions {
             'Preferred Travel Season'  => '_umoya_preferred_travel_season',
             'Preferred Travel Year'    => '_umoya_preferred_travel_year',
             'How would you like to Travel?' => '_umoya_preferred_journey_length',
+            'Enquiry Type'             => '_umoya_enquiry_type',
+            'Trip Occasion'            => '_umoya_trip_occasion',
+            'Group Type'               => '_umoya_group_type',
+            'Organisation'             => '_umoya_organization',
+            'Party Size'               => '_umoya_party_size',
             'Message'                  => '_umoya_founders_circle_message',
             'Page URL'                 => '_umoya_page_uri',
             'HubSpot Status'           => '_umoya_hubspot_status',
@@ -841,6 +917,26 @@ final class Submissions {
                 'party_size'               => array( 'party_size', 'merge6' ),
                 'preferred_journey_length' => array( 'preferred_journey_length' ),
             ),
+            /*
+             * Contact page, panel 1 ("Plan a Journey"). Same field set as the
+             * Founder's Circle form, including the guest-count select in the
+             * MERGE6 slot.
+             */
+            'contact_page_journey'     => array(
+                'party_size'               => array( 'party_size', 'merge6' ),
+                'preferred_journey_length' => array( 'preferred_journey_length' ),
+            ),
+            /*
+             * Contact page, panel 2 ("General & Media"). A lean routing form:
+             * MERGE2 carries the enquiry type and MERGE3 the organisation, so
+             * both must be lifted off country/city the same way For Groups is.
+             */
+            'contact_page_general'     => array(
+                'enquiry_type'             => array( 'enquiry_type', 'merge2' ),
+                'organization'             => array( 'organization', 'merge3' ),
+                'country'                  => array( 'country' ),
+                'city'                     => array( 'city' ),
+            ),
         );
 
         $source_key = isset( $payload['source'] ) ? sanitize_key( $payload['source'] ) : '';
@@ -920,7 +1016,7 @@ final class Submissions {
                     'pageUri'  => isset( $context['pageUri'] ) ? esc_url_raw( $context['pageUri'] ) : $submission['page_uri'],
                     'pageName' => isset( $context['pageName'] ) ? $this->clean_value( $context['pageName'] ) : $submission['page_name'],
                     'hutk'     => isset( $context['hutk'] ) ? $this->clean_value( $context['hutk'] ) : $submission['hutk'],
-                    'ipAddress'=> $submission['ip_address'],
+                    'ipAddress'=> $this->valid_ip( isset( $submission['ip_address'] ) ? $submission['ip_address'] : '' ),
                 )
             ),
         );
@@ -989,12 +1085,13 @@ final class Submissions {
             'party_size',
             'group_type',
             'organization',
+            'enquiry_type',
         );
     }
 
     private function get_submission_from_meta( $post_id ) {
         $submission = array();
-        foreach ( array_merge( $this->hubspot_field_names(), array( 'hubspot_portal_id', 'hubspot_form_id', 'consent_text', 'page_uri', 'page_name', 'hutk' ) ) as $key ) {
+        foreach ( array_merge( $this->hubspot_field_names(), array( 'hubspot_portal_id', 'hubspot_form_id', 'consent_text', 'page_uri', 'page_name', 'hutk', 'ip_address' ) ) as $key ) {
             $submission[ $key ] = get_post_meta( $post_id, '_umoya_' . $key, true );
         }
 
@@ -1094,6 +1191,19 @@ final class Submissions {
             esc_attr( $color[1] ),
             esc_html( str_replace( '_', ' ', $status ) )
         );
+    }
+
+    /**
+     * Return $ip only if it really is one, otherwise ''.
+     *
+     * array_filter() in send_to_hubspot() then drops the key entirely, which
+     * is what HubSpot wants — it would rather have no ipAddress than a
+     * malformed one.
+     */
+    private function valid_ip( $ip ) {
+        $ip = is_string( $ip ) ? trim( $ip ) : '';
+
+        return ( $ip && filter_var( $ip, FILTER_VALIDATE_IP ) ) ? $ip : '';
     }
 
     private function get_client_ip() {
