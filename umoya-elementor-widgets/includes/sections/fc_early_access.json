@@ -21,81 +21,143 @@
 	"keywords": [
 		"umoya",
 		"founders circle",
+		"founder",
 		"fc",
 		"early",
 		"access"
 	],
+	"portals": [],
 	"tokens": [
 		{
 			"name": "cream",
 			"value": "#F5F0EB",
 			"kind": "color",
+			"selectors": [
+				"#fc-be-first"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
 			"label": "Cream"
 		},
 		{
 			"name": "cream-lt",
 			"value": "#F5F0EB",
 			"kind": "color",
+			"selectors": [
+				"#fc-be-first"
+			],
+			"scoped": false,
+			"id": "uew_token_cream_lt",
 			"label": "Cream Lt"
 		},
 		{
 			"name": "brown",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#fc-be-first"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
 			"label": "Brown"
 		},
 		{
 			"name": "terra",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#fc-be-first"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
 			"label": "Terra"
 		},
 		{
 			"name": "terra-dk",
 			"value": "#C06840",
 			"kind": "color",
+			"selectors": [
+				"#fc-be-first"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
 			"label": "Terra Dk"
 		},
 		{
 			"name": "terra-lt",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#fc-be-first"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_lt",
 			"label": "Terra Lt"
 		},
 		{
 			"name": "gold-lt",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#fc-be-first"
+			],
+			"scoped": false,
+			"id": "uew_token_gold_lt",
 			"label": "Gold Lt"
 		},
 		{
 			"name": "text",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#fc-be-first"
+			],
+			"scoped": false,
+			"id": "uew_token_text",
 			"label": "Text"
 		},
 		{
 			"name": "text-mid",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#fc-be-first"
+			],
+			"scoped": false,
+			"id": "uew_token_text_mid",
 			"label": "Text Mid"
 		},
 		{
 			"name": "text-muted",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#fc-be-first"
+			],
+			"scoped": false,
+			"id": "uew_token_text_muted",
 			"label": "Text Muted"
 		},
 		{
 			"name": "white",
 			"value": "#FFFFFF",
 			"kind": "color",
+			"selectors": [
+				"#fc-be-first"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
 			"label": "White"
 		},
 		{
 			"name": "ease",
 			"value": "cubic-bezier(.25,.46,.45,.94)",
 			"kind": "text",
+			"selectors": [
+				"#fc-be-first"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
 			"label": "Ease"
 		}
 	],
@@ -121,7 +183,7 @@
 		},
 		{
 			"id": "content_p_fc_bf_reveal",
-			"label": "List",
+			"label": "List 1",
 			"sample": "",
 			"region_label": "List",
 			"controls": [
@@ -216,70 +278,8 @@
 			]
 		},
 		{
-			"id": "content_p_fc_ss_slide",
-			"label": "Slide",
-			"sample": "",
-			"region_label": "List",
-			"controls": [
-				{
-					"id": "slide_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "1 of 5",
-					"esc": "attr",
-					"group": "p_fc_ss_slide",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Slide"
-				},
-				{
-					"id": "slide_aria_roledescription",
-					"control": "text",
-					"label": "Accessible Role",
-					"default": "slide",
-					"esc": "attr",
-					"group": "p_fc_ss_slide",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Slide"
-				}
-			]
-		},
-		{
-			"id": "content_p_fc_ss_slide_img_nth_of_type_1",
-			"label": "Image",
-			"sample": "",
-			"region_label": "Slide",
-			"controls": [
-				{
-					"id": "image_src",
-					"control": "media",
-					"label": "Source",
-					"default": {
-						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1850384162.jpeg"
-					},
-					"esc": "url",
-					"group": "p_fc_ss_slide_img_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Image"
-				},
-				{
-					"id": "image_alt",
-					"control": "text",
-					"label": "Alt Text",
-					"default": "Gauteng heritage and city experience",
-					"esc": "attr",
-					"group": "p_fc_ss_slide_img_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Image"
-				}
-			]
-		},
-		{
 			"id": "content_p_fc_ss_arrow",
-			"label": "List",
+			"label": "List 2",
 			"sample": "",
 			"region_label": "List",
 			"controls": [
@@ -315,17 +315,6 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "List Dot"
-				},
-				{
-					"id": "dot_aria_label_2",
-					"control": "text",
-					"label": "Dot",
-					"default": "Slide 1",
-					"esc": "attr",
-					"group": "p_fc_ss_dot",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Dot"
 				}
 			],
 			"merged": true
@@ -360,50 +349,9 @@
 			"tab": "form",
 			"sort": 1,
 			"part_label": "Arrow"
-		},
-		{
-			"id": "dot_disabled",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_fc_ss_dot",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Dot"
 		}
 	],
-	"behaviour_controls": [
-		{
-			"id": "image_loading",
-			"control": "select",
-			"label": "Loading",
-			"default": "lazy",
-			"options": [
-				"eager",
-				"lazy"
-			],
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "dot_data_fci",
-			"control": "text",
-			"label": "Fci",
-			"default": "0",
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1,
-			"part_label": ""
-		}
-	],
+	"behaviour_controls": [],
 	"inline_style_controls": [],
 	"media_controls": [],
 	"repeaters": [
@@ -415,7 +363,7 @@
 				{
 					"id": "p",
 					"control": "textarea",
-					"label": "P",
+					"label": "Text",
 					"esc": "post",
 					"default": "This is more than early registration. It is an invitation to join the founding chapter of Umoya Afrika Tours."
 				}
@@ -428,153 +376,117 @@
 					"p": "While our Signature Journey serves as our flagship experience, every Umoya journey can be tailored for couples, families, affinity groups, and private travelers seeking a more personalized experience."
 				}
 			],
-			"selector": null
+			"loops": 1,
+			"selector": null,
+			"notice": "",
+			"portal": null
 		},
 		{
 			"id": "rep_div_fc_ss_slide",
 			"label": "Slides",
-			"item_label": "{{{ role }}}",
+			"item_label": "{{{ l1_alt }}}",
 			"controls": [
 				{
-					"id": "role",
-					"control": "text",
+					"id": "l1_role",
+					"control": "hidden",
 					"label": "Role",
 					"esc": "attr",
 					"default": "group"
 				},
 				{
-					"id": "aria_label",
-					"control": "text",
-					"label": "Aria Label",
-					"esc": "attr",
-					"default": "2 of 5"
-				},
-				{
-					"id": "aria_roledescription",
-					"control": "text",
-					"label": "Aria Roledescription",
+					"id": "l1_aria_roledescription",
+					"control": "hidden",
+					"label": "Accessible Role",
 					"esc": "attr",
 					"default": "slide"
 				},
 				{
-					"id": "src",
+					"id": "l1_src",
 					"control": "media",
-					"label": "Src",
+					"label": "Choose Image",
 					"esc": "url",
-					"default": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_SAT000724.jpeg"
+					"default": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1850384162.jpeg"
 				},
 				{
-					"id": "alt",
+					"id": "l1_alt",
 					"control": "text",
-					"label": "Alt",
+					"label": "Alt Text",
 					"esc": "attr",
-					"default": "Umoya Afrika Tours journey moment"
+					"default": "Gauteng heritage and city experience"
 				},
 				{
-					"id": "loading",
-					"control": "text",
+					"id": "l1_loading",
+					"control": "hidden",
 					"label": "Loading",
 					"esc": "attr",
 					"default": "lazy"
 				},
 				{
-					"id": "_uew_sep",
+					"id": "l1__uew_sep",
 					"control": "hidden",
 					"label": "Separator markup",
 					"esc": "raw",
-					"default": "\n\n          <!-- Slide 3 -->\n          "
-				}
-			],
-			"rows": [
-				{
-					"role": "group",
-					"aria_label": "2 of 5",
-					"aria_roledescription": "slide",
-					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_SAT000724.jpeg",
-					"alt": "Umoya Afrika Tours journey moment",
-					"loading": "lazy",
-					"_uew_sep": ""
+					"default": "\n          "
 				},
 				{
-					"role": "group",
-					"aria_label": "3 of 5",
-					"aria_roledescription": "slide",
-					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1903111562.jpeg",
-					"alt": "Cultural experience on an Umoya journey",
-					"loading": "lazy",
-					"_uew_sep": "\n\n          <!-- Slide 3 -->\n          "
-				},
-				{
-					"role": "group",
-					"aria_label": "4 of 5",
-					"aria_roledescription": "slide",
-					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img751442577.jpeg",
-					"alt": "Premium South African travel experience",
-					"loading": "lazy",
-					"_uew_sep": "\n\n          <!-- Slide 4 -->\n          "
-				},
-				{
-					"role": "group",
-					"aria_label": "5 of 5",
-					"aria_roledescription": "slide",
-					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1530880413.jpeg",
-					"alt": "Founder's Circle journey guest experience",
-					"loading": "lazy",
-					"_uew_sep": "\n\n          <!-- Slide 5 -->\n          "
-				}
-			],
-			"selector": ".fc-ss-slide"
-		},
-		{
-			"id": "rep_button_fc_ss_dot",
-			"label": "Dots",
-			"item_label": "{{{ role }}}",
-			"controls": [
-				{
-					"id": "role",
-					"control": "text",
+					"id": "l2_role",
+					"control": "hidden",
 					"label": "Role",
 					"esc": "attr",
 					"default": "tab"
-				},
-				{
-					"id": "aria_selected",
-					"control": "text",
-					"label": "Aria Selected",
-					"esc": "attr",
-					"default": "false"
-				},
-				{
-					"id": "aria_label",
-					"control": "text",
-					"label": "Aria Label",
-					"esc": "attr",
-					"default": "Slide 2"
 				}
 			],
 			"rows": [
 				{
-					"role": "tab",
-					"aria_selected": "false",
-					"aria_label": "Slide 2"
+					"l1_role": "group",
+					"l1_aria_roledescription": "slide",
+					"l1_src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1850384162.jpeg",
+					"l1_alt": "Gauteng heritage and city experience",
+					"l1_loading": "lazy",
+					"l1__uew_sep": "",
+					"l2_role": "tab"
 				},
 				{
-					"role": "tab",
-					"aria_selected": "false",
-					"aria_label": "Slide 3"
+					"l1_role": "group",
+					"l1_aria_roledescription": "slide",
+					"l1_src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_SAT000724.jpeg",
+					"l1_alt": "Umoya Afrika Tours journey moment",
+					"l1_loading": "lazy",
+					"l1__uew_sep": "\n\n          <!-- Slide 2 -->\n          ",
+					"l2_role": "tab"
 				},
 				{
-					"role": "tab",
-					"aria_selected": "false",
-					"aria_label": "Slide 4"
+					"l1_role": "group",
+					"l1_aria_roledescription": "slide",
+					"l1_src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1903111562.jpeg",
+					"l1_alt": "Cultural experience on an Umoya journey",
+					"l1_loading": "lazy",
+					"l1__uew_sep": "\n\n          <!-- Slide 3 -->\n          ",
+					"l2_role": "tab"
 				},
 				{
-					"role": "tab",
-					"aria_selected": "false",
-					"aria_label": "Slide 5"
+					"l1_role": "group",
+					"l1_aria_roledescription": "slide",
+					"l1_src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img751442577.jpeg",
+					"l1_alt": "Premium South African travel experience",
+					"l1_loading": "lazy",
+					"l1__uew_sep": "\n\n          <!-- Slide 4 -->\n          ",
+					"l2_role": "tab"
+				},
+				{
+					"l1_role": "group",
+					"l1_aria_roledescription": "slide",
+					"l1_src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1530880413.jpeg",
+					"l1_alt": "Founder's Circle journey guest experience",
+					"l1_loading": "lazy",
+					"l1__uew_sep": "\n\n          <!-- Slide 5 -->\n          ",
+					"l2_role": "tab"
 				}
 			],
-			"selector": ".fc-ss-dot"
+			"loops": 2,
+			"selector": ".fc-ss-slide",
+			"notice": "",
+			"portal": null
 		}
 	],
 	"style_parts": [
@@ -600,6 +512,7 @@
 				"text_color",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -627,6 +540,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -652,8 +566,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"grid_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -681,6 +597,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": null
@@ -709,6 +626,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -737,6 +655,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -765,6 +684,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -793,6 +713,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -820,6 +741,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -848,6 +770,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": "p"
@@ -875,6 +798,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -904,6 +828,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -931,6 +856,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -958,9 +884,10 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": "div_fc_ss_slide"
 		},
 		{
 			"id": "p_fc_ss_slide_img_nth_of_type_1",
@@ -983,6 +910,7 @@
 				"filters",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1012,6 +940,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": null
@@ -1031,6 +960,7 @@
 				"effects",
 				"visibility"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1056,8 +986,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1087,9 +1019,10 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": "button_fc_ss_dot"
 		}
 	],
 	"inline_styles": [],
@@ -1177,62 +1110,6 @@
 			"sort": 1
 		},
 		{
-			"id": "slide_aria_label",
-			"control": "text",
-			"label": "Accessible Name",
-			"default": "1 of 5",
-			"esc": "attr",
-			"group": "p_fc_ss_slide",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "slide_aria_roledescription",
-			"control": "text",
-			"label": "Accessible Role",
-			"default": "slide",
-			"esc": "attr",
-			"group": "p_fc_ss_slide",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "image_src",
-			"control": "media",
-			"label": "Source",
-			"default": {
-				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1850384162.jpeg"
-			},
-			"esc": "url",
-			"group": "p_fc_ss_slide_img_nth_of_type_1",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "image_alt",
-			"control": "text",
-			"label": "Alt Text",
-			"default": "Gauteng heritage and city experience",
-			"esc": "attr",
-			"group": "p_fc_ss_slide_img_nth_of_type_1",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "image_loading",
-			"control": "select",
-			"label": "Loading",
-			"default": "lazy",
-			"options": [
-				"eager",
-				"lazy"
-			],
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1
-		},
-		{
 			"id": "arrow_disabled",
 			"control": "switcher",
 			"label": "Disabled",
@@ -1286,39 +1163,6 @@
 			"esc": "attr",
 			"group": "p_fc_ss_dots",
 			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "dot_disabled",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_fc_ss_dot",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "dot_aria_label_2",
-			"control": "text",
-			"label": "Accessible Name",
-			"default": "Slide 1",
-			"esc": "attr",
-			"group": "p_fc_ss_dot",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "dot_data_fci",
-			"control": "text",
-			"label": "Fci",
-			"default": "0",
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
 			"sort": 1
 		}
 	]

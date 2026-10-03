@@ -31,6 +31,13 @@ Paste in this order as Elementor HTML widgets:
 
 Anchors worth keeping: `#ct-plan` and `#ct-general` link straight to a panel.
 
+**Also available as native widgets** (2026-10-03): *Umoya - Contact* →
+Contact Hero, Contact Enquiry Forms, Contact Direct Strip, between *Umoya -
+Site-wide* → Site Navigation and Site Footer. Compiled from these files by
+`tools/uew/` (CLAUDE.md Phase 26). The form fields stay individually editable
+rather than becoming a list, and panel 2's enquiry-type options carry a warning
+that they must match the `enquiry_type` property in HubSpot.
+
 ---
 
 ## HubSpot

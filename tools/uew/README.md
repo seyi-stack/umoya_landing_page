@@ -1,19 +1,36 @@
 # `tools/uew` — the Umoya Elementor widget compiler
 
-Turns each section HTML file into a native Elementor widget, and proves the
-conversion lost nothing.
+Turns each section HTML file into a native Elementor widget, proves the
+conversion lost nothing, and proves every control it offers actually works.
 
-It compiles **33 sections** across three Elementor categories: twelve Founder's
-Circle from `founders-circle-revamp/`, thirteen homepage from
-`homepage-revamp/`, and eight Signature Journey from `signature-journey/`.
-Registries live in `sections/`, one file per page family, and each declares its
-own category — the build emits `categories.json`, so adding a page family needs
-no PHP change.
+It compiles **63 sections** across eight Elementor categories:
 
-A registry lists what should **ship**, not what is on disk. The Signature
-Journey folder has nine section files and eight entries: `section-07-cta.html`
-was removed at the client's request and is kept only for history. Read the
-page's `_NOTES.md` before adding entries.
+| Category | Registry | Source folder | Widgets |
+|---|---|---|---|
+| Umoya - Site-wide | `sections/site.mjs` | `shared/` | 6 — nav, footer, 404, Travel Essentials, Privacy, Cookie |
+| Umoya - Founder's Circle | `sections/founders-circle.mjs` | `founders-circle-revamp/` | 12 |
+| Umoya - Homepage | `sections/homepage.mjs` | `homepage-revamp/` | 13 |
+| Umoya - Signature Journey | `sections/signature-journey.mjs` | `signature-journey/` | 8 |
+| Umoya - Private & Tailormade | `sections/private-tailormade.mjs` | `private-tailormade/` | 5 |
+| Umoya - About Us | `sections/about.mjs` | `about/` | 8 |
+| Umoya - For Groups | `sections/for-groups.mjs` | `for-groups/` | 8 |
+| Umoya - Contact | `sections/contact.mjs` | `contact/` | 3 |
+
+`sections/index.mjs` lists the families in the order their categories appear in
+Elementor's panel. Each registry declares its own category; the build emits
+`categories.json`, so adding a page family is a registry file and a line in
+`index.mjs`, never a PHP change. The build refuses two sections sharing a key,
+widget name or class name.
+
+A registry lists what should **ship**, not what is on disk. Deliberately not
+compiled, each for a documented reason:
+
+- `signature-journey/section-07-cta.html` — removed from the page at the client's request.
+- `shared/page-email-preferences.html` — superseded by the footer's opt-out popup; kept unpublished.
+- `shared/color-scheme-lock.html` — not a section (a style block and a script, no element).
+- `shared/section-00-nav - backup.html` — a backup copy.
+
+Read the page's `_NOTES.md` before adding entries.
 
 It replaced `tools/build-elementor-widgets.mjs`, now deleted. That generator
 rewrote markup with regular expressions and had no way to check its own work,
@@ -36,24 +53,38 @@ node tools/uew/setup-local-env.mjs --serve
 node tools/uew/build.mjs
 node tools/uew/build.mjs --only=fc_hero,fc_form
 
+# Change every control and list, and check where each change lands (no server)
+node tools/uew/edit-check.mjs
+
 # Render every section through real Elementor and diff against the source
 node tools/uew/render-check.mjs
+
+# Set every style panel, token and row colour, read them back in a browser
+node tools/uew/control-check.mjs
+
+# Lengthen and shorten every list, click through every control, watch for errors
+node tools/uew/behaviour-check.mjs
 
 # Compare each widget against the same section pasted into an HTML widget
 node tools/uew/browser-check.mjs
 node tools/uew/browser-check.mjs --shots      # also writes screenshots
 
-# Open every section in the real Elementor editor and check it is usable
+# Open every section in the real Elementor editor, edit it live, check it is usable
 node tools/uew/editor-check.mjs
 
-# All four, in order
+# All seven, in order -- cheapest and most fundamental first
 npm --prefix tools/uew run check
 ```
 
-The harness lives in `local-env/` and is git-ignored: portable PHP 8.2,
-WordPress on SQLite, Elementor pinned to **4.2.4** — the version the live site
-runs. No MySQL, no Docker, no admin rights, nothing installed system-wide.
-`umoya-elementor-widgets/` is linked into it, so edits are live.
+Every check takes `--only=key,key`. All but the build and the edit check need
+the harness server running.
+
+The harness lives in `local-env/` and is git-ignored: portable PHP 8.2 with
+OPcache, WordPress on SQLite, Elementor pinned to **4.2.4** — the version the
+live site runs. No MySQL, no Docker, no admin rights, nothing installed
+system-wide. `umoya-elementor-widgets/` is linked into it, so edits are live.
+OPcache matters: without it every request recompiled WordPress and Elementor,
+and a page took 4.4 s instead of 1.3 s.
 
 Admin: <http://127.0.0.1:8765/wp-admin/> — `admin` / `admin`.
 
@@ -74,6 +105,8 @@ through byte for byte: comments, entities, SVG, whitespace, attribute order.
 | Decide what is editable | `lib/derive.mjs` | content fields, repeaters, style parts |
 | Write the plugin files | `lib/emit.mjs` | PHP template, section CSS/JS, widget class, schema |
 | Orchestrate & verify | `build.mjs` | plus the byte-fidelity assertion |
+| Test pages | `lib/pages.php`, `make-test-pages.php`, `make-pages.php` | Elementor pages per section, raw-HTML references, and pages with explicit control values |
+| Browser plumbing | `lib/browser.mjs` | Chrome, CDN stubs, connection retries, settling — shared by every browser check |
 
 ### Which element is the root
 
@@ -121,6 +154,126 @@ and assuming a space would fold them together.
 Attributes with a fixed set of legal values (`preload`, `loading`, `target`,
 `method`…) become dropdowns rather than free-text boxes.
 
+### Dialogs that move themselves to `<body>` (portals)
+
+Every style control is scoped under the widget wrapper (`{{WRAPPER}}`). The
+inquiry popups and the footer's opt-out dialog append themselves to `<body>` —
+a `position: fixed` element inside a transformed ancestor is positioned against
+that ancestor — and so leave the wrapper behind. Until 4.0.0 the popups' entire
+Style tab did nothing at all, without a single error.
+
+A section whose script moves something to `<body>` must declare it:
+
+```js
+spec: { portals: [ { selector: '#umoya-form-popup', trigger: '[data-umoya-form-popup]' } ] },
+```
+
+The build **refuses** to compile a section whose script calls
+`document.body.appendChild()` without one. For each portal the template prints
+`data-uew-for="<element id>"` on the element (nothing, in the fidelity check),
+and every selector that starts at it gains a second branch,
+`#id[data-uew-for="{{ID}}"]…`, which Elementor fills with the same id on the
+page and in the editor. The attribute is repeated three times so the branch
+carries exactly the wrapper branch's specificity. Tokens, per-row colours and
+Custom CSS (`{{ID}}` works there too) follow the same rule.
+
+In the editor every control change re-renders the widget, bringing a fresh copy
+of the dialog while the old one is still in `<body>` with the old listeners. The
+emitted script retires stale copies (hidden, id removed) before the section
+script runs again, so a trigger opens one dialog, not two.
+
+### Lists (repeaters)
+
+A run of sibling items becomes an Elementor repeater — add, remove, reorder —
+only when it can be proved to round-trip, as before. What counts as a list, and
+how its rows stay correct when edited:
+
+- **Position classes are not identity.** Items are grouped by their identifying
+  classes; `fc-ss-on` (the active slide), `d2` (a stagger delay), `is-ghost`
+  are rebuilt from the row's *position*: whichever row is first is the active
+  one, delays follow position, and "Add Item" never copies row 1's active
+  state. Rules: *first* (row 1 differs, the rest agree) or a *table* repeating
+  with the list. The same applies to `aria-selected`, `aria-current`,
+  `aria-expanded`, `tabindex` and to column-aligned whitespace between
+  attributes. Any class difference that is not a position class rejects the
+  list.
+- **Counters follow position.** `fc-det-btn-3`…`-6`, `data-fci="0"`, "Slide 2"
+  become expressions on `_uew_n`, from any starting number; a stated total
+  ("2 of 5") becomes `_uew_count`. Both come from the loop, never from stored
+  data, so ids stay unique and totals right however rows change.
+- **Parallel lists are one repeater.** A slideshow's slides and its dots — or
+  the homepage journey's images, captions and dots — are merged into a single
+  repeater that renders in each place (`loops` in the schema), so a row is
+  always a slide *and* its dot. Separate lists let an editor add a slide with no
+  dot, and the Founder's Circle slideshow, which indexes its dots by slide
+  number, threw on it.
+- **Form fields are not a list.** A run whose items are or contain a named
+  `input`/`select`/`textarea` stays individually editable: each field's `name`
+  is a contract with the submission script and the CRM alias table, and "Add
+  Item" would post a second `FNAME`. Option lists are lists, with a panel notice
+  that each option's value is what is submitted (and a sharper one, from
+  `spec.optionNotices`, where a HubSpot dropdown must match exactly).
+- **Different behaviour hooks, different controls.** Items carrying different
+  `data-*` attribute names (`data-wtt-prev` / `data-wtt-next`) are not a list.
+- **Late attributes and notes.** An attribute only a later item carries (one
+  photo's framing `style`, the brochure link's `target`/`rel`) gets a slot in
+  the row template; a source comment only one item carries (which photo is the
+  approved one) is the row's own, so it travels with its card. Comments are not
+  part of an item's shape — counting them once turned six host photos into one
+  raw HTML box.
+- **What a row shows.** Wiring (role, ids, aria state, viewBox, lazy-loading)
+  is kept per row but hidden. Content is labelled the way Elementor's widgets
+  label it: "Choose Image", "Alt Text", "Link", a link's or button's own
+  "Text", and the element's class where its role says little ("Role",
+  "Description"). A `url()` in a row's style attribute is an image picker. A
+  row is titled by its visible text, else its alt text.
+
+### Photos painted from the stylesheet
+
+A real photo set in the section's CSS (`background: url(…)`, not a data-URI
+texture) gets a **Background Image** control aimed at that exact rule,
+pseudo-element included, filed under the element it paints. The Our Approach
+video poster lives on `.fc-vid-ph::before`, so before this it could not be
+changed at all — a Style-tab background on the button sits behind it.
+
+The control writes back **every image layer** of the declaration with only the
+photo replaced (`css_value` in the schema). The 404 paints
+`radial-gradient(…), url(photo)` in one declaration; a first version wrote the
+photo alone, which silently dropped the brown overlay that keeps the 404's copy
+legible. The browser check caught it, and the control check now asserts that a
+swapped photo keeps its overlay.
+
+### Which CSS applies to which element
+
+Layout controls (Flex, Grid) and animation handling depend on the rules that
+apply to an element. Those are found by matching every stylesheet rule against
+the section with the compiler's own selector engine — not by comparing selector
+strings, which missed every rule not written from the root (`.fc-h1-brand`
+rather than `#fc-hero .fc-h1-brand`) and withheld layout controls from 65 flex
+and grid containers in the original 33 widgets.
+
+An element whose own keyframe animation drives its opacity (the heroes' fade-up,
+`fill-mode: both`) holds the last frame for good, and an animated value beats
+any normal declaration. Its Opacity control writes `!important` — the only thing
+that outranks an animation — and says so: "a value here replaces that fade".
+
+### Escaping by context
+
+`Value_Formatter` escapes each value for where it is printed. Unchanged values
+the compiler produced are trusted and printed as written; anything an editor
+changed is filtered unless they hold `unfiltered_html` (on this multisite, only
+super admins).
+
+| Context | Escape | Why |
+|---|---|---|
+| Element content | `post` — `wp_kses_post` | keeps `<em>`, `<strong>`, entities |
+| Attribute value | `attr` / `url` | `esc_attr` / `esc_url` |
+| Optional attribute in a start tag | `attrs` | rebuilt as clean `name="value"` pairs; `" onmouseover="…` has no tag in it and would sail through kses |
+| Inside a comment | `comment` | cannot close the comment early |
+| Markup (an icon's `<svg>`) | `raw` | `wp_kses` with the post list **plus SVG**, which kses would otherwise strip |
+| Whitespace and comments between elements | `trivia` | reduced to whitespace if edited |
+| URL inside a quoted CSS `url()` | `cssurl` | quotes percent-encoded so it cannot end the CSS string |
+
 ### Three rules the compiler keeps
 
 1. **Styling never touches markup.** Every style control is an Elementor
@@ -130,7 +283,11 @@ Attributes with a fixed set of legal values (`preload`, `loading`, `target`,
 2. **No style control carries a default read out of the CSS.** Seeding
    `font-size: 0.75rem` from a desktop rule would emit un-mediaqueried CSS at
    higher specificity and silently defeat the section's own 768px override.
-   Content controls do carry defaults — those are literal text.
+   Content controls do carry defaults — those are literal text. The one
+   deliberate exception is a stylesheet photo's Background Image: its default is
+   the stylesheet's own URL (so the editor sees the current picture) and writes
+   the same image the rule already does — unless a media query swaps the image,
+   in which case it starts empty.
 
 3. **A repeater must prove itself.** Every item is re-rendered from its own
    extracted values and compared byte for byte with the original. An item that
@@ -176,7 +333,38 @@ asserts the canvas rendered it, its script initialised there (`data-uew-ready`),
 selecting it opens its panel, and nothing threw. A section can look perfect on
 the published page and be a dead husk in the editor, because widgets are
 injected into the canvas long after DOMContentLoaded. It also times the panel:
-"fully editable" only counts if the panel still opens promptly.
+"fully editable" only counts if the panel still opens promptly. Then it **edits
+live**: it changes a text control through Elementor's own command, waits for the
+canvas to show the new text with the section script initialised again on the
+fresh markup, and — for a section with a portal — that exactly one live copy of
+the dialog remains.
+
+The four checks above all prove a widget's *defaults*. These three prove its
+*controls*:
+
+**`edit-check.mjs`** (no server) renders each widget through Elementor's real
+code path once per control: every text, URL, image, dropdown option, switcher
+and inline-style control is set to a probe, which must reach the markup, and
+putting the default back must restore the default render byte for byte — so the
+control changes its own spot and nothing else. Every list is saved as-is, a row
+removed, a row added exactly as "Add Item" fills it (no duplicated ids, no copied
+"active" state), reversed and emptied. Then hostile input goes into every field
+at once — script tags, event handlers, `javascript:` URLs, a comment breakout —
+and none may survive. Any PHP notice fails it.
+
+**`control-check.mjs`** sets a different value on every style panel's Opacity,
+every design token and every list's first-row colour, all at once, then reads
+the computed styles back in a browser **after** the section's script has run and
+any dialog has been opened (and so moved to `<body>`). A panel whose selector
+matches nothing, or whose value never arrives, is named. Values that lose to an
+inline `style` attribute are noted, not failed: those properties have their own
+Inline Styles panel. Stylesheet photos are checked on their pseudo-element.
+
+**`behaviour-check.mjs`** gives every list one more row (as "Add Item" would),
+then one fewer, and on each page clicks through every arrow, dot, tab and
+accordion trigger — buttons only, never links or submits — lets auto-advancing
+slideshows turn, and fails on any page error. It also checks that each merged
+list still renders the same number of items in every place.
 
 ---
 
@@ -214,9 +402,24 @@ a check that cries wolf gets ignored.
 **PHP's built-in server is single-threaded.** On Windows it refuses new
 connections once its backlog fills, and one Elementor page — ~48 scripts and
 stylesheets — can do that by itself. It shows up as a one-off
-`ERR_CONNECTION_REFUSED` partway through a run, not as a real failure, so both
+`ERR_CONNECTION_REFUSED` partway through a run, not as a real failure, so the
 browser checks retry a refused navigation. If a whole run dies, restart the
 server and run it again rather than hunting for a widget bug.
+
+**Chrome or the server can die under a run** — the machine sleeping did both
+once, and the browser check crashed with `Target closed`. The browser check now
+takes such a section again on a fresh browser, and the editor check relaunches
+and logs in again. A server that has died answers nothing at all: check
+`curl http://localhost:8765/` before believing a wall of failures.
+
+**A shell `tail` hides the exit code.** `node check.mjs > log; tail log` exits
+with `tail`'s status. Read the log's last line, not the exit code.
+
+**The harness makes no outbound HTTP** (`WP_HTTP_BLOCK_EXTERNAL`). After a
+server restart the first admin page rebuilt WordPress's and Elementor's caches
+from their remote APIs, and on a single-threaded server those calls blocked long
+enough for the editor check's login to time out. Nothing the checks render needs
+the internet; the browser checks stub the CDN on the browser side too.
 
 **`--only` merges into the manifest, it does not replace it.**
 `includes/sections/index.json` *is* the registry: a key missing from it is a
@@ -242,21 +445,27 @@ Elementor → Tools → Regenerate CSS & Data.
 
 ## Adding or changing a section
 
-1. Edit the section HTML in `founders-circle-revamp/`.
+1. Edit the section HTML in its folder (the table at the top says which).
 2. `node tools/uew/build.mjs`
-3. `npm --prefix tools/uew run check` (build + all three checks)
+3. `npm --prefix tools/uew run check` — build and all seven checks
 4. `python tools/build-plugin-zip.py` — never `Compress-Archive`, which writes
-   backslash paths WordPress cannot install.
+   backslash paths WordPress cannot install. The script also refuses a zip in
+   which a registered widget is missing any of its files.
 
 Run the checks with nothing else heavy on the machine. Two browser checks at
 once will fight for the single-threaded PHP server and produce failures that
 say more about the harness than the widgets.
 
-To register a new section, add an entry to `sections/founders-circle.mjs`. A
-section entry may carry a `spec`:
+To register a new section, add an entry to its family's registry in
+`sections/`; a new family is a new registry file plus a line in
+`sections/index.mjs`. A section entry may carry a `spec`:
 
 ```js
 spec: {
+    // Elements the section's script moves to <body>. Required whenever it does.
+    portals: [ { selector: '#umoya-form-popup', trigger: '[data-umoya-form-popup]' } ],
+    // Extra panel notice on a <select>'s option list, keyed by #id or name.
+    optionNotices: { '#ptOccasion': 'These values must match HubSpot…' },
     noRepeat: [ 'div.fc-f2-field' ],   // keep these as individual style parts
     hideParts: [ '.fc-decorative' ],   // no style panel for these
     overrides: {
@@ -265,10 +474,7 @@ spec: {
 }
 ```
 
-`noRepeat` is rarely needed, because the compiler already refuses a repeater
-whose rows would collapse into raw markup: if the divergent subtree exceeds 600
-characters on any row, the run is rejected and its items stay individual style
-panels. That is what keeps the inquiry form's six field rows separate — one of
-them holds a 200-option country list, which has no business inside a textarea.
-Reach for `noRepeat` when a run is small enough to pass that guard but should
-still not be repeatable.
+`noRepeat` is rarely needed. The compiler already refuses a repeater whose rows
+would collapse into raw markup (a divergent subtree over 600 characters on any
+row), whose items are form fields, or whose items carry different behaviour
+hooks; it prints the reason for every list it turns down.

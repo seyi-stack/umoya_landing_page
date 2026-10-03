@@ -39,21 +39,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     <!-- Image carousel — 3 slides, one per immersive chapter. Dot order follows image order. -->
     <div class="umoya-journey-carousel" aria-label="<?php echo $c['slide_aria_label']; ?>">
-      <img class="umoya-journey-image is-active" src="<?php echo $c['image_src']; ?>" alt="<?php echo $c['image_alt']; ?>" loading="<?php echo $c['image_loading']; ?>" decoding="<?php echo $c['image_decoding']; ?>" fetchpriority="<?php echo $c['image_fetchpriority']; ?>">
       <?php $__i = 0; foreach ( $r['rep_img_umoya_journey_image'] as $it ) : if ( $__i ++ ) { echo '
-      '; } ?><img class="umoya-journey-image <?php echo $it['_uew_item_class']; ?>" src="<?php echo $it['src']; ?>" alt="<?php echo $it['alt']; ?>" loading="<?php echo $it['loading']; ?>" decoding="<?php echo $it['decoding']; ?>"><?php endforeach; echo "\n\n      "; ?><!-- Captions paired 1:1 with the images above -->
-      <div class="umoya-journey-slide-cap is-active" data-journey-cap="<?php echo $c['container_data_journey_cap']; ?>">
-        <span class="umoya-journey-slide-kicker"><?php echo $c['eyebrow_text_2']; ?></span>
-        <p class="umoya-journey-slide-title"><?php echo $c['title_text_2']; ?></p>
-      </div>
-      <?php $__i = 0; foreach ( $r['rep_div_umoya_journey_slide_cap'] as $it ) : if ( $__i ++ ) { echo '
-      '; } ?><div class="umoya-journey-slide-cap <?php echo $it['_uew_item_class']; ?>" data-journey-cap="<?php echo '' . $it['_uew_n'] . ''; ?>">
-        <span class="umoya-journey-slide-kicker"><?php echo $it['slide_kicker']; ?></span>
-        <p class="umoya-journey-slide-title"><?php echo $it['slide_title']; ?></p>
+      '; } ?><img class="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'umoya-journey-image is-active' : 'umoya-journey-image' ); ?> <?php echo $it['_uew_item_class']; ?>" src="<?php echo $it['l1_src']; ?>" alt="<?php echo $it['l1_alt']; ?>" loading="<?php echo $it['l1_loading']; ?>" decoding="<?php echo $it['l1_decoding']; ?>"<?php echo $it['l1_fetchpriority']; ?>><?php endforeach; echo "\n\n      "; ?><!-- Captions paired 1:1 with the images above -->
+      <?php $__i = 0; foreach ( $r['rep_img_umoya_journey_image'] as $it ) : if ( $__i ++ ) { echo '
+      '; } ?><div class="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'umoya-journey-slide-cap is-active' : 'umoya-journey-slide-cap' ); ?> <?php echo $it['_uew_item_class']; ?>" data-journey-cap="<?php echo ( (int) $it['_uew_n'] + -1 ); ?>">
+        <span class="umoya-journey-slide-kicker"><?php echo $it['l2_slide_kicker']; ?></span>
+        <p class="umoya-journey-slide-title"><?php echo $it['l2_slide_title']; ?></p>
       </div><?php endforeach; echo "\n\n      "; ?><div class="umoya-journey-dots" aria-label="<?php echo $c['dot_aria_label']; ?>">
-        <button class="umoya-journey-dot is-active" type="<?php echo $c['dot_type']; ?>" data-journey-dot="<?php echo $c['dot_data_journey_dot']; ?>" aria-label="<?php echo $c['dot_aria_label_2']; ?>" aria-current="true"<?php echo $c['dot_disabled']; ?>></button>
-        <?php $__i = 0; foreach ( $r['rep_button_umoya_journey_dot'] as $it ) : if ( $__i ++ ) { echo '
-        '; } ?><button class="umoya-journey-dot <?php echo $it['_uew_item_class']; ?>" type="<?php echo $it['type']; ?>" data-journey-dot="<?php echo '' . $it['_uew_n'] . ''; ?>" aria-label="<?php echo $it['aria_label']; ?>" aria-current="<?php echo $it['aria_current']; ?>"></button><?php endforeach; echo "\n      "; ?></div>
+        <?php $__i = 0; foreach ( $r['rep_img_umoya_journey_image'] as $it ) : if ( $__i ++ ) { echo '
+        '; } ?><button class="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'umoya-journey-dot is-active' : 'umoya-journey-dot' ); ?> <?php echo $it['_uew_item_class']; ?>" type="<?php echo $it['l3_type']; ?>" data-journey-dot="<?php echo ( (int) $it['_uew_n'] + -1 ); ?>" aria-label="<?php echo 'Show image ' . $it['_uew_n']; ?>" aria-current="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'true' : 'false' ); ?>"></button><?php endforeach; echo "\n      "; ?></div>
     </div>
 
     <!-- Text content sits below the carousel, aligned to the same width. -->

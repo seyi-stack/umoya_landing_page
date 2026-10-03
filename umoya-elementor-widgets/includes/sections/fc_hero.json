@@ -21,50 +21,87 @@
 	"keywords": [
 		"umoya",
 		"founders circle",
+		"founder",
 		"fc",
 		"hero"
 	],
+	"portals": [],
 	"tokens": [
 		{
 			"name": "cream",
 			"value": "#F5F0EB",
 			"kind": "color",
+			"selectors": [
+				"#fc-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
 			"label": "Cream"
 		},
 		{
 			"name": "brown",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#fc-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
 			"label": "Brown"
 		},
 		{
 			"name": "terra",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#fc-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
 			"label": "Terra"
 		},
 		{
 			"name": "terra-dk",
 			"value": "#C06840",
 			"kind": "color",
+			"selectors": [
+				"#fc-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
 			"label": "Terra Dk"
 		},
 		{
 			"name": "gold-lt",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#fc-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_gold_lt",
 			"label": "Gold Lt"
 		},
 		{
 			"name": "white",
 			"value": "#FFFFFF",
 			"kind": "color",
+			"selectors": [
+				"#fc-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
 			"label": "White"
 		},
 		{
 			"name": "ease",
 			"value": "cubic-bezier(.25,.46,.45,.94)",
 			"kind": "text",
+			"selectors": [
+				"#fc-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
 			"label": "Ease"
 		}
 	],
@@ -97,7 +134,7 @@
 				{
 					"id": "image_src",
 					"control": "media",
-					"label": "Source",
+					"label": "Choose Image",
 					"default": {
 						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-1.jpg"
 					},
@@ -122,7 +159,7 @@
 		},
 		{
 			"id": "content_p_video",
-			"label": "Background",
+			"label": "Video",
 			"sample": "",
 			"region_label": "Background",
 			"controls": [
@@ -158,13 +195,12 @@
 						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya-fc-hero-1080p.mp4"
 					},
 					"esc": "url",
-					"group": "p_source",
+					"group": "p_video",
 					"tab": "content",
 					"sort": 1,
-					"part_label": "Video Source"
+					"part_label": "Video"
 				}
-			],
-			"merged": true
+			]
 		},
 		{
 			"id": "content_p_fc_h1_brand_img",
@@ -175,7 +211,7 @@
 				{
 					"id": "image_src_2",
 					"control": "media",
-					"label": "Source",
+					"label": "Choose Image",
 					"default": {
 						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Property-1Umoya-Afrika-Logo_v3.svg"
 					},
@@ -584,6 +620,7 @@
 				"transition",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -611,6 +648,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -636,6 +674,7 @@
 				"filters",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -661,33 +700,7 @@
 				"filters",
 				"transition"
 			],
-			"shared": false,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_source",
-			"label": "Video Source",
-			"short_label": "Video Source",
-			"parent_label": "Video",
-			"sample": "",
-			"selector": "source",
-			"tag": "source",
-			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
-			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -713,8 +726,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -740,7 +755,12 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
+			],
+			"animated": [
+				"opacity",
+				"transform"
 			],
 			"shared": false,
 			"absolute": false,
@@ -767,6 +787,7 @@
 				"filters",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -794,6 +815,10 @@
 				"text_stroke",
 				"align",
 				"transition"
+			],
+			"animated": [
+				"opacity",
+				"transform"
 			],
 			"shared": false,
 			"absolute": false,
@@ -823,6 +848,10 @@
 				"align",
 				"transition"
 			],
+			"animated": [
+				"opacity",
+				"transform"
+			],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -851,6 +880,10 @@
 				"align",
 				"transition"
 			],
+			"animated": [
+				"opacity",
+				"transform"
+			],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -876,7 +909,12 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
+			],
+			"animated": [
+				"opacity",
+				"transform"
 			],
 			"shared": false,
 			"absolute": false,
@@ -907,6 +945,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -926,6 +965,7 @@
 				"effects",
 				"visibility"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -951,7 +991,12 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
+			],
+			"animated": [
+				"opacity",
+				"transform"
 			],
 			"shared": false,
 			"absolute": false,
@@ -981,6 +1026,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1007,6 +1053,9 @@
 				"text_color",
 				"transition",
 				"flex_item"
+			],
+			"animated": [
+				"top"
 			],
 			"shared": false,
 			"absolute": false,
@@ -1093,7 +1142,7 @@
 		{
 			"id": "image_src",
 			"control": "media",
-			"label": "Source",
+			"label": "Choose Image",
 			"default": {
 				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/umoya_image-1.jpg"
 			},
@@ -1388,7 +1437,7 @@
 				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya-fc-hero-1080p.mp4"
 			},
 			"esc": "url",
-			"group": "p_source",
+			"group": "p_video",
 			"tab": "content",
 			"sort": 1
 		},
@@ -1405,7 +1454,7 @@
 		{
 			"id": "image_src_2",
 			"control": "media",
-			"label": "Source",
+			"label": "Choose Image",
 			"default": {
 				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Property-1Umoya-Afrika-Logo_v3.svg"
 			},

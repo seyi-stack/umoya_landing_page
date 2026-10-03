@@ -1,0 +1,776 @@
+{
+	"key": "ab_hosts",
+	"name": "umoya-ab-hosts",
+	"title": "About Meet Our Hosts",
+	"description": "Six host cards. Each names a real person or place; check identities in CLAUDE.md before swapping a photo.",
+	"icon": "eicon-person",
+	"category": "umoya-about",
+	"source": "about/section-06-hosts.html",
+	"class_name": "About_Hosts",
+	"widget_file": "widgets/class-ab-hosts.php",
+	"root_selector": "#ab-hosts",
+	"template": "templates/sections/ab_hosts.php",
+	"style": {
+		"handle": "uew-umoya-ab-hosts",
+		"file": "assets/css/sections/ab_hosts.css"
+	},
+	"script": {
+		"handle": "uew-umoya-ab-hosts",
+		"file": "assets/js/sections/ab_hosts.js"
+	},
+	"keywords": [
+		"umoya",
+		"about",
+		"about us",
+		"story",
+		"meet",
+		"our",
+		"hosts"
+	],
+	"portals": [],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#ab-hosts"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#ab-hosts"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#ab-hosts"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"selectors": [
+				"#ab-hosts"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
+			"label": "White"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.68)",
+			"kind": "color",
+			"selectors": [
+				"#ab-hosts"
+			],
+			"scoped": false,
+			"id": "uew_token_muted",
+			"label": "Muted"
+		},
+		{
+			"name": "line",
+			"value": "rgba(75,46,43,.14)",
+			"kind": "color",
+			"selectors": [
+				"#ab-hosts"
+			],
+			"scoped": false,
+			"id": "uew_token_line",
+			"label": "Line"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"selectors": [
+				"#ab-hosts"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Meet our hosts",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_ab_ho_eye",
+			"label": "Header",
+			"sample": "Meet Our Hosts",
+			"region_label": "Header",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Meet Our Hosts",
+					"esc": "post",
+					"group": "p_ab_ho_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "Every host has built something remarkable.",
+					"esc": "post",
+					"group": "p_ab_ho_ttl",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "text_text",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "Historians, winemakers, artists, and entrepreneurs who share what they have made with you in person. They are the reason people come back.",
+					"esc": "post",
+					"group": "p_ab_ho_lead",
+					"sort": 0,
+					"part_label": "Header Text"
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_article_ab_ho_card",
+			"label": "Cards",
+			"item_label": "{{{ role_2 }}}",
+			"controls": [
+				{
+					"id": "role",
+					"control": "hidden",
+					"label": "Card Role",
+					"esc": "attr",
+					"default": "listitem"
+				},
+				{
+					"id": "notes",
+					"control": "hidden",
+					"label": "Notes",
+					"esc": "trivia",
+					"default": "\n          "
+				},
+				{
+					"id": "src",
+					"control": "media",
+					"label": "Choose Image",
+					"esc": "url",
+					"default": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6354.png"
+				},
+				{
+					"id": "alt",
+					"control": "text",
+					"label": "Alt Text",
+					"esc": "attr",
+					"default": "Lucia Motloung, founder of the Luc Mo wine label"
+				},
+				{
+					"id": "loading",
+					"control": "hidden",
+					"label": "Loading",
+					"esc": "attr",
+					"default": "lazy"
+				},
+				{
+					"id": "decoding",
+					"control": "hidden",
+					"label": "Decoding",
+					"esc": "attr",
+					"default": "async"
+				},
+				{
+					"id": "role_2",
+					"control": "text",
+					"label": "Role",
+					"esc": "post",
+					"default": "The Welcome"
+				},
+				{
+					"id": "name",
+					"control": "text",
+					"label": "Name",
+					"esc": "post",
+					"default": "Lucia Motloung"
+				},
+				{
+					"id": "desc",
+					"control": "text",
+					"label": "Description",
+					"esc": "post",
+					"default": "Founder of Luc Mo Wine, a pioneering wine brand built with the Ndebele Kingdom."
+				},
+				{
+					"id": "_uew_sep",
+					"control": "hidden",
+					"label": "Separator markup",
+					"esc": "raw",
+					"default": "\n      "
+				}
+			],
+			"rows": [
+				{
+					"role": "listitem",
+					"notes": "\n          ",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6354.png",
+					"alt": "Lucia Motloung, founder of the Luc Mo wine label",
+					"loading": "lazy",
+					"decoding": "async",
+					"role_2": "The Welcome",
+					"name": "Lucia Motloung",
+					"desc": "Founder of Luc Mo Wine, a pioneering wine brand built with the Ndebele Kingdom.",
+					"_uew_sep": ""
+				},
+				{
+					"role": "listitem",
+					"notes": "\n          ",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_about_host_antoinette.jpg",
+					"alt": "Antoinette Sithole, sister of Hector Pieterson",
+					"loading": "lazy",
+					"decoding": "async",
+					"role_2": "Soweto",
+					"name": "Antoinette Sithole",
+					"desc": "The sister beside Hector Pieterson in the photograph that showed the world the 1976 Soweto Uprising. She hosts your lunch and tells the story as she lived it.",
+					"_uew_sep": "\n\n      <!-- Antoinette Sithole — client-supplied -->\n      "
+				},
+				{
+					"role": "listitem",
+					"notes": "\n          ",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_about_host_christo.jpg",
+					"alt": "Christo Brand, the warder who guarded Nelson Mandela",
+					"loading": "lazy",
+					"decoding": "async",
+					"role_2": "Robben Island",
+					"name": "Christo Brand",
+					"desc": "The warder who guarded Nelson Mandela for years, and became his friend. He walks you through the prison himself.",
+					"_uew_sep": "\n\n      <!-- Christo Brand — client-supplied -->\n      "
+				},
+				{
+					"role": "listitem",
+					"notes": "\n          ",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_about_host_vivian.jpg",
+					"alt": "Vivian Kleynhans, CEO of Seven Sisters Vineyards",
+					"loading": "lazy",
+					"decoding": "async",
+					"role_2": "The Black Route",
+					"name": "Vivian Kleynhans",
+					"desc": "CEO of Seven Sisters Vineyards, one of the most celebrated Black-owned wine estates in the Cape Winelands.",
+					"_uew_sep": "\n\n      <!-- Vivian Kleynhans — client-supplied. Replaced Ntsiki Biyela: the\n           name/copy had to change with the photo, otherwise the card would\n           show one real person under another's name. -->\n      "
+				},
+				{
+					"role": "listitem",
+					"notes": "\n          ",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_about_host_senzart911.jpg",
+					"alt": "Senzart911, the Soweto artist, in his studio",
+					"loading": "lazy",
+					"decoding": "async",
+					"role_2": "Soweto Art",
+					"name": "Senzart911",
+					"desc": "The Soweto artist whose studio you step into, watching work made in the place that shaped it.",
+					"_uew_sep": "\n\n      <!-- Senzart911 — client-supplied -->\n      "
+				},
+				{
+					"role": "listitem",
+					"notes": "\n          <!-- ZAV_6406 — the ONE approved Eyethu image, used everywhere on\n               the site. Brighter and more saturated than the previous shot,\n               so it also answers the \"too dark\" note; no brightening applied. -->\n          ",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6406.png",
+					"alt": "Eyethu Heritage Hall, the Tshabalala family's restored Soweto cinema",
+					"loading": "lazy",
+					"decoding": "async",
+					"role_2": "Soweto Cinema",
+					"name": "Tshabalala Family",
+					"desc": "The family behind Eyethu Heritage Hall, one of the first Black-owned cinemas in Soweto, restored and opened to you by the people who built it.",
+					"_uew_sep": "\n\n      <!-- Eyethu Heritage Hall — photo supplied in the client mockup -->\n      "
+				}
+			],
+			"loops": 1,
+			"selector": ".ab-ho-card",
+			"notice": "",
+			"portal": null
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ho_c",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-ho-c",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ho_head",
+			"label": "Header",
+			"short_label": "Header",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-ho-head",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ho_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "Header",
+			"sample": "Meet Our Hosts",
+			"selector": ".ab-ho-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ho_ttl",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "Header",
+			"sample": "Every host has built something remarkable.",
+			"selector": ".ab-ho-ttl",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ho_lead",
+			"label": "Header Text",
+			"short_label": "Text",
+			"parent_label": "Header",
+			"sample": "Historians, winemakers, artists, and entreprene…",
+			"selector": ".ab-ho-lead",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ho_grid",
+			"label": "List",
+			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-ho-grid",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ho_card",
+			"label": "Card",
+			"short_label": "Card",
+			"parent_label": "List",
+			"sample": "",
+			"selector": ".ab-ho-card",
+			"tag": "article",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": "article_ab_ho_card"
+		},
+		{
+			"id": "p_ab_ho_card_div_nth_of_type_1",
+			"label": "Card Image",
+			"short_label": "Image",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".ab-ho-card > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ho_card_div_nth_of_type_1_img_nth_of_type_1",
+			"label": "Image",
+			"short_label": "Image",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-ho-card > div:nth-of-type(1) > img:nth-of-type(1)",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ho_card_div_nth_of_type_2",
+			"label": "Content",
+			"short_label": "Content",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".ab-ho-card > div:nth-of-type(2)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ho_card_div_nth_of_type_2_div_nth_of_type_1",
+			"label": "Card Text 1",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "The Welcome",
+			"selector": ".ab-ho-card > div:nth-of-type(2) > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ho_card_div_nth_of_type_2_h3_nth_of_type_1",
+			"label": "Heading",
+			"short_label": "Heading",
+			"parent_label": "Card",
+			"sample": "Lucia Motloung",
+			"selector": ".ab-ho-card > div:nth-of-type(2) > h3:nth-of-type(1)",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ho_card_div_nth_of_type_2_p_nth_of_type_1",
+			"label": "Card Text 2",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "Founder of Luc Mo Wine, a pioneering wine brand…",
+			"selector": ".ab-ho-card > div:nth-of-type(2) > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Meet our hosts",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Meet Our Hosts",
+			"esc": "post",
+			"group": "p_ab_ho_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "Every host has built something remarkable.",
+			"esc": "post",
+			"group": "p_ab_ho_ttl",
+			"sort": 0
+		},
+		{
+			"id": "text_text",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "Historians, winemakers, artists, and entrepreneurs who share what they have made with you in person. They are the reason people come back.",
+			"esc": "post",
+			"group": "p_ab_ho_lead",
+			"sort": 0
+		}
+	]
+}

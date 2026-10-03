@@ -40,21 +40,37 @@ class Control_Factory {
 	const BOX_UNITS = array( 'px', '%', 'em', 'rem', 'vh', 'vw' );
 
 	/**
+	 * Second selector branch for an element that has moved itself to <body>.
+	 *
+	 * The section's script stamps nothing; the template prints
+	 * `data-uew-for="<element id>"` on the moving element, and `{{ID}}` is the
+	 * placeholder Elementor fills with that same id when it writes the CSS --
+	 * on the page and in the editor alike. The attribute is repeated three
+	 * times on purpose: `{{WRAPPER}}` expands to three classes, so this branch
+	 * carries exactly the specificity the wrapper branch does, and a control
+	 * wins or loses against the section's own stylesheet the same way whether
+	 * the dialog has moved yet or not.
+	 */
+	const PORTAL_HOOK = '[data-uew-for="{{ID}}"][data-uew-for="{{ID}}"][data-uew-for="{{ID}}"]';
+
+	/**
 	 * Add one element's style panel to a widget.
 	 *
 	 * @param \Elementor\Widget_Base $widget        Widget being built.
 	 * @param array                  $part          Style-part definition from the schema.
 	 * @param string                 $root_selector The section root, e.g. `#fc-hero`.
+	 * @param array                  $portals       Schema portals: elements the section moves to <body>.
 	 */
-	public static function register_part( $widget, array $part, $root_selector ) {
+	public static function register_part( $widget, array $part, $root_selector, array $portals = array() ) {
 		$id = $part['id'];
 
 		// An element outside the section root -- a sibling scroll anchor, say --
 		// is addressed from the widget wrapper. Scoping it under the root would
 		// produce a selector that matches nothing.
-		$target = empty( $part['absolute'] )
-			? self::selector( $root_selector, $part['selector'] )
-			: self::selector( '', $part['selector'] );
+		$full     = empty( $part['absolute'] )
+			? trim( $root_selector . ' ' . (string) $part['selector'] )
+			: (string) $part['selector'];
+		$target   = self::scoped( $full, $portals );
 		$features = isset( $part['features'] ) ? (array) $part['features'] : array();
 
 		$widget->start_controls_section(
@@ -95,7 +111,7 @@ class Control_Factory {
 		self::add_layout( $widget, $id, $target, $features );
 		self::add_media( $widget, $id, $target, $features );
 		self::add_svg( $widget, $id, $target, $features );
-		self::add_effects( $widget, $id, $target, $features );
+		self::add_effects( $widget, $id, $target, $features, isset( $part['animated'] ) ? (array) $part['animated'] : array() );
 		self::add_states( $widget, $id, $target, $features );
 
 		$widget->end_controls_section();
@@ -125,6 +141,89 @@ class Control_Factory {
 		$selector = trim( $root_selector . ' ' . (string) $part_selector );
 
 		return '{{WRAPPER}} ' . $selector;
+	}
+
+	/**
+	 * The Elementor selector for a selector written relative to the widget:
+	 * `{{WRAPPER}} <selector>`, plus a portal branch when the selector starts
+	 * at an element the section moves to <body> (see PORTAL_HOOK).
+	 *
+	 * Rules on the document itself (`:root`, `html`, `body`) cannot sit under
+	 * the wrapper, so they are left unscoped.
+	 *
+	 * @param string $full    Selector relative to the widget wrapper.
+	 * @param array  $portals Schema portals, each { selector, trigger }.
+	 * @return string
+	 */
+	public static function scoped( $full, array $portals = array() ) {
+		$full = trim( (string) $full );
+
+		if ( preg_match( '/^(:root|html|body)\b/', $full ) ) {
+			return $full;
+		}
+
+		$branches = array( '{{WRAPPER}} ' . $full );
+
+		foreach ( $portals as $portal ) {
+			$start = isset( $portal['selector'] ) ? (string) $portal['selector'] : '';
+			if ( '' === $start || 0 !== strpos( $full, $start ) ) {
+				continue;
+			}
+
+			// `#umoya-form-popup-x` must not count as starting at `#umoya-form-popup`.
+			$rest = (string) substr( $full, strlen( $start ) );
+			if ( '' !== $rest && preg_match( '/^[A-Za-z0-9_-]/', $rest ) ) {
+				continue;
+			}
+
+			$branches[] = $start . self::PORTAL_HOOK . $rest;
+		}
+
+		return implode( ', ', $branches );
+	}
+
+	/**
+	 * Append a pseudo-class, pseudo-element or descendant to EVERY branch of a
+	 * selector list. Appending to the string would only qualify the last branch,
+	 * so `a, b` + `:hover` would make the hover colour permanent on `a`.
+	 *
+	 * @param string $target Selector list.
+	 * @param string $suffix e.g. `:hover`, `::placeholder`, ` *`.
+	 * @return string
+	 */
+	public static function with_suffix( $target, $suffix ) {
+		$branches = array_map( 'trim', self::split_selector_list( $target ) );
+
+		return implode( ', ', array_map( function ( $branch ) use ( $suffix ) {
+			return $branch . $suffix;
+		}, $branches ) );
+	}
+
+	/** Split a selector list on top-level commas (not those inside () or []). */
+	private static function split_selector_list( $selector ) {
+		$out    = array();
+		$depth  = 0;
+		$buffer = '';
+		$length = strlen( $selector );
+
+		for ( $i = 0; $i < $length; $i++ ) {
+			$char = $selector[ $i ];
+			if ( '(' === $char || '[' === $char ) {
+				$depth++;
+			} elseif ( ')' === $char || ']' === $char ) {
+				$depth--;
+			} elseif ( ',' === $char && 0 === $depth ) {
+				$out[]  = $buffer;
+				$buffer = '';
+				continue;
+			}
+			$buffer .= $char;
+		}
+		$out[] = $buffer;
+
+		return array_values( array_filter( $out, function ( $branch ) {
+			return '' !== trim( $branch );
+		} ) );
 	}
 
 	/* ------------------------------------------------------------ typography */
@@ -197,7 +296,7 @@ class Control_Factory {
 				array(
 					'label'     => 'Placeholder Color',
 					'type'      => Controls_Manager::COLOR,
-					'selectors' => array( $target . '::placeholder' => 'color: {{VALUE}};' ),
+					'selectors' => array( self::with_suffix( $target, '::placeholder' ) => 'color: {{VALUE}};' ),
 				)
 			);
 		}
@@ -587,7 +686,7 @@ class Control_Factory {
 			array(
 				'label'     => 'Stroke Color',
 				'type'      => Controls_Manager::COLOR,
-				'selectors' => array( $target => 'stroke: {{VALUE}};', $target . ' *' => 'stroke: {{VALUE}};' ),
+				'selectors' => array( $target => 'stroke: {{VALUE}};', self::with_suffix( $target, ' *' ) => 'stroke: {{VALUE}};' ),
 			)
 		);
 
@@ -596,7 +695,7 @@ class Control_Factory {
 			array(
 				'label'     => 'Fill Color',
 				'type'      => Controls_Manager::COLOR,
-				'selectors' => array( $target => 'fill: {{VALUE}};', $target . ' *' => 'fill: {{VALUE}};' ),
+				'selectors' => array( $target => 'fill: {{VALUE}};', self::with_suffix( $target, ' *' ) => 'fill: {{VALUE}};' ),
 			)
 		);
 
@@ -606,7 +705,7 @@ class Control_Factory {
 				'label'     => 'Stroke Width',
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array( 'px' => array( 'min' => 0, 'max' => 12, 'step' => 0.1 ) ),
-				'selectors' => array( $target => 'stroke-width: {{SIZE}};', $target . ' *' => 'stroke-width: {{SIZE}};' ),
+				'selectors' => array( $target => 'stroke-width: {{SIZE}};', self::with_suffix( $target, ' *' ) => 'stroke-width: {{SIZE}};' ),
 			)
 		);
 
@@ -624,21 +723,28 @@ class Control_Factory {
 
 	/* --------------------------------------------------------------- effects */
 
-	private static function add_effects( $widget, $id, $target, array $features ) {
+	private static function add_effects( $widget, $id, $target, array $features, array $animated = array() ) {
 		if ( ! in_array( 'effects', $features, true ) ) {
 			return;
 		}
 
 		self::heading( $widget, $id . '_effects_heading', 'Effects' );
 
+		// An element whose own entrance animation drives its opacity holds the
+		// animation's last frame for good (`fill-mode: both`), and an animated
+		// value beats any normal declaration. Only `!important` outranks it, so
+		// that is what this control writes there -- and it says what it costs.
+		$fades = in_array( 'opacity', $animated, true );
+
 		$widget->add_responsive_control(
 			$id . '_opacity',
 			array(
-				'label'     => 'Opacity',
-				'type'      => Controls_Manager::SLIDER,
-				'range'     => array( 'px' => array( 'min' => 0, 'max' => 1, 'step' => 0.01 ) ),
-				'selectors' => array( $target => 'opacity: {{SIZE}};' ),
-				'separator' => 'before',
+				'label'       => 'Opacity',
+				'type'        => Controls_Manager::SLIDER,
+				'range'       => array( 'px' => array( 'min' => 0, 'max' => 1, 'step' => 0.01 ) ),
+				'selectors'   => array( $target => $fades ? 'opacity: {{SIZE}} !important;' : 'opacity: {{SIZE}};' ),
+				'description' => $fades ? 'This element fades in as the page loads; a value here replaces that fade.' : '',
+				'separator'   => 'before',
 			)
 		);
 
@@ -707,7 +813,7 @@ class Control_Factory {
 			array(
 				'label'     => 'Text Color',
 				'type'      => Controls_Manager::COLOR,
-				'selectors' => array( $target . ':hover' => 'color: {{VALUE}};' ),
+				'selectors' => array( self::with_suffix( $target, ':hover' ) => 'color: {{VALUE}};' ),
 			)
 		);
 		$widget->add_control(
@@ -715,7 +821,7 @@ class Control_Factory {
 			array(
 				'label'     => 'Background Color',
 				'type'      => Controls_Manager::COLOR,
-				'selectors' => array( $target . ':hover' => 'background-color: {{VALUE}};' ),
+				'selectors' => array( self::with_suffix( $target, ':hover' ) => 'background-color: {{VALUE}};' ),
 			)
 		);
 		$widget->add_control(
@@ -723,7 +829,7 @@ class Control_Factory {
 			array(
 				'label'     => 'Border Color',
 				'type'      => Controls_Manager::COLOR,
-				'selectors' => array( $target . ':hover' => 'border-color: {{VALUE}};' ),
+				'selectors' => array( self::with_suffix( $target, ':hover' ) => 'border-color: {{VALUE}};' ),
 			)
 		);
 		$widget->end_controls_tab();
@@ -735,7 +841,7 @@ class Control_Factory {
 				'label'       => 'Border Color',
 				'type'        => Controls_Manager::COLOR,
 				'description' => 'Keep a visible focus ring: it is how keyboard users see where they are.',
-				'selectors'   => array( $target . ':focus' => 'border-color: {{VALUE}};' ),
+				'selectors'   => array( self::with_suffix( $target, ':focus' ) => 'border-color: {{VALUE}};' ),
 			)
 		);
 		$widget->add_control(
@@ -743,7 +849,7 @@ class Control_Factory {
 			array(
 				'label'     => 'Outline Color',
 				'type'      => Controls_Manager::COLOR,
-				'selectors' => array( $target . ':focus-visible' => 'outline-color: {{VALUE}};' ),
+				'selectors' => array( self::with_suffix( $target, ':focus-visible' ) => 'outline-color: {{VALUE}};' ),
 			)
 		);
 		$widget->end_controls_tab();

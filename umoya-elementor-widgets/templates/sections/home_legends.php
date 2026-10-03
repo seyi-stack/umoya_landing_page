@@ -45,55 +45,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     <div class="umoya-leg-grid">
 
-      <article class="umoya-leg-card umoya-leg-rv" aria-label="<?php echo $c['card_aria_label']; ?>">
-        <div class="umoya-leg-media">
-          <!-- Client-chosen associative image (July 19 feedback): Luc Mo wines / "The Welcome", in place of a portrait -->
-          <img src="<?php echo $c['image_src']; ?>" alt="<?php echo $c['image_alt']; ?>" loading="<?php echo $c['image_loading']; ?>" decoding="<?php echo $c['image_decoding']; ?>">
+      <?php $__i = 0; foreach ( $r['rep_article_umoya_leg_card'] as $it ) : if ( $__i ++ ) { echo '
+
+      '; } ?><article class="<?php echo array( 'umoya-leg-card umoya-leg-rv', 'umoya-leg-card umoya-leg-rv d1', 'umoya-leg-card umoya-leg-rv d2', 'umoya-leg-card umoya-leg-rv d3' )[ ( ( (int) $it['_uew_n'] ) - 1 ) % 4 ]; ?> <?php echo $it['_uew_item_class']; ?>" aria-label="<?php echo $it['aria_label']; ?>">
+        <div class="umoya-leg-media"><?php echo $it['notes']; ?><img src="<?php echo $it['src']; ?>" alt="<?php echo $it['alt']; ?>" loading="<?php echo $it['loading']; ?>" decoding="<?php echo $it['decoding']; ?>">
         </div>
         <div class="umoya-leg-body">
-          <span class="umoya-leg-role"><?php echo $c['text_text_2']; ?></span>
-          <h3 class="umoya-leg-name"><?php echo $c['heading_text_2']; ?></h3>
-          <p class="umoya-leg-desc"><?php echo $c['text_text_3']; ?></p>
+          <span class="umoya-leg-role"><?php echo $it['role']; ?></span>
+          <h3 class="umoya-leg-name"><?php echo $it['name']; ?></h3>
+          <p class="umoya-leg-desc"><?php echo $it['desc']; ?></p>
         </div>
-      </article>
-
-      <article class="umoya-leg-card umoya-leg-rv d1" aria-label="<?php echo $c['card_aria_label_2']; ?>">
-        <div class="umoya-leg-media">
-          <!-- Client-chosen associative image (July 19 feedback): the Hector Pieterson Memorial, in place of a portrait -->
-          <img src="<?php echo $c['image_src_2']; ?>" alt="<?php echo $c['image_alt_2']; ?>" loading="<?php echo $c['image_loading_2']; ?>" decoding="<?php echo $c['image_decoding_2']; ?>">
-        </div>
-        <div class="umoya-leg-body">
-          <span class="umoya-leg-role"><?php echo $c['text_text_4']; ?></span>
-          <h3 class="umoya-leg-name"><?php echo $c['heading_text_3']; ?></h3>
-          <p class="umoya-leg-desc"><?php echo $c['text_text_5']; ?></p>
-        </div>
-      </article>
-
-      <article class="umoya-leg-card umoya-leg-rv d2" aria-label="<?php echo $c['card_aria_label_3']; ?>">
-        <div class="umoya-leg-media">
-          <!-- Client-chosen associative image (July 19 feedback): Robben Island, in place of a portrait -->
-          <img src="<?php echo $c['image_src_3']; ?>" alt="<?php echo $c['image_alt_3']; ?>" loading="<?php echo $c['image_loading_3']; ?>" decoding="<?php echo $c['image_decoding_3']; ?>">
-        </div>
-        <div class="umoya-leg-body">
-          <span class="umoya-leg-role"><?php echo $c['text_text_6']; ?></span>
-          <h3 class="umoya-leg-name"><?php echo $c['heading_text_4']; ?></h3>
-          <p class="umoya-leg-desc"><?php echo $c['text_text_7']; ?></p>
-        </div>
-      </article>
-
-      <article class="umoya-leg-card umoya-leg-rv d3" aria-label="<?php echo $c['card_aria_label_4']; ?>">
-        <div class="umoya-leg-media">
-          <!-- Client-chosen associative image (July 19 feedback): the Cape Winelands, in place of a portrait -->
-          <img src="<?php echo $c['image_src_4']; ?>" alt="<?php echo $c['image_alt_4']; ?>" loading="<?php echo $c['image_loading_4']; ?>" decoding="<?php echo $c['image_decoding_4']; ?>">
-        </div>
-        <div class="umoya-leg-body">
-          <span class="umoya-leg-role"><?php echo $c['text_text_8']; ?></span>
-          <h3 class="umoya-leg-name"><?php echo $c['heading_text_5']; ?></h3>
-          <p class="umoya-leg-desc"><?php echo $c['text_text_9']; ?></p>
-        </div>
-      </article>
-
-    </div>
+      </article><?php endforeach; echo "\n\n    "; ?></div>
   </div>
 
 </section>

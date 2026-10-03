@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Umoya Elementor Widgets
  * Plugin URI:  https://umoyaafrikatours.co.za
- * Description: Compiled Elementor section widgets for the Umoya Afrika Tours homepage and Founder's Circle page.
- * Version:     3.0.0
+ * Description: Compiled Elementor section widgets for every Umoya Afrika Tours page: the site-wide nav, footer and content pages, the homepage, Founder's Circle, Signature Journey, Private & Tailormade, About Us, For Groups and Contact.
+ * Version:     4.0.0
  * Author:      Umoya Afrika Tours
  * Author URI:  https://umoyaafrikatours.co.za
  * Text Domain: umoya-elementor-widgets
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'UMOYA_EW_VERSION', '3.0.0' );
+define( 'UMOYA_EW_VERSION', '4.0.0' );
 define( 'UMOYA_EW_PATH', plugin_dir_path( __FILE__ ) );
 define( 'UMOYA_EW_URL', plugin_dir_url( __FILE__ ) );
 

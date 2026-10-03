@@ -20,46 +20,77 @@
 	},
 	"keywords": [
 		"umoya",
-		"founders circle",
+		"homepage",
 		"home",
 		"hotel",
 		"stays"
 	],
+	"portals": [],
 	"tokens": [
 		{
 			"name": "cream",
 			"value": "#F5F0EB",
 			"kind": "color",
+			"selectors": [
+				"#umoya-accommodations"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
 			"label": "Cream"
 		},
 		{
 			"name": "brown",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#umoya-accommodations"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
 			"label": "Brown"
 		},
 		{
 			"name": "terra",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#umoya-accommodations"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
 			"label": "Terra"
 		},
 		{
 			"name": "terra-dk",
 			"value": "#C06840",
 			"kind": "color",
+			"selectors": [
+				"#umoya-accommodations"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
 			"label": "Terra Dk"
 		},
 		{
 			"name": "white",
 			"value": "#FFFFFF",
 			"kind": "color",
+			"selectors": [
+				"#umoya-accommodations"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
 			"label": "White"
 		},
 		{
 			"name": "ease",
 			"value": "cubic-bezier(.25,.46,.45,.94)",
 			"kind": "text",
+			"selectors": [
+				"#umoya-accommodations"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
 			"label": "Ease"
 		}
 	],
@@ -385,19 +416,19 @@
 		{
 			"id": "rep_div_umoya_hs_slide",
 			"label": "Slides",
-			"item_label": "{{{ role }}}",
+			"item_label": "{{{ alt }}}",
 			"controls": [
 				{
 					"id": "role",
-					"control": "text",
+					"control": "hidden",
 					"label": "Role",
 					"esc": "attr",
 					"default": "group"
 				},
 				{
 					"id": "aria_roledescription",
-					"control": "text",
-					"label": "Aria Roledescription",
+					"control": "hidden",
+					"label": "Accessible Role",
 					"esc": "attr",
 					"default": "slide"
 				},
@@ -411,20 +442,20 @@
 				{
 					"id": "src",
 					"control": "media",
-					"label": "Src",
+					"label": "Choose Image",
 					"esc": "url",
 					"default": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Hero_Shot_Table_Mountain_(1).jpg"
 				},
 				{
 					"id": "alt",
 					"control": "text",
-					"label": "Alt",
+					"label": "Alt Text",
 					"esc": "attr",
 					"default": "Cape Grace on the V&amp;A Waterfront marina, with Table Mountain beyond"
 				},
 				{
 					"id": "loading",
-					"control": "text",
+					"control": "hidden",
 					"label": "Loading",
 					"esc": "attr",
 					"default": "eager"
@@ -433,12 +464,12 @@
 					"id": "fetchpriority",
 					"control": "hidden",
 					"label": "Fetchpriority (optional attribute)",
-					"esc": "raw",
-					"default": " fetchpriority=\"high\""
+					"esc": "attrs",
+					"default": ""
 				},
 				{
 					"id": "decoding",
-					"control": "text",
+					"control": "hidden",
 					"label": "Decoding",
 					"esc": "attr",
 					"default": "async"
@@ -486,7 +517,10 @@
 					"decoding": "async"
 				}
 			],
-			"selector": ".umoya-hs-slide"
+			"loops": 1,
+			"selector": ".umoya-hs-slide",
+			"notice": "",
+			"portal": null
 		}
 	],
 	"style_parts": [
@@ -512,6 +546,7 @@
 				"text_color",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -539,6 +574,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -567,6 +603,7 @@
 				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -594,6 +631,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": "div_umoya_hs_slide"
@@ -619,6 +657,7 @@
 				"filters",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -646,6 +685,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -674,6 +714,7 @@
 				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -701,6 +742,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -729,6 +771,7 @@
 				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -757,6 +800,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -785,6 +829,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -804,6 +849,7 @@
 				"effects",
 				"visibility"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -832,6 +878,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -860,6 +907,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -889,6 +937,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -908,6 +957,7 @@
 				"effects",
 				"visibility"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -935,6 +985,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -963,6 +1014,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -992,6 +1044,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1021,6 +1074,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": null
@@ -1040,6 +1094,7 @@
 				"effects",
 				"visibility"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null

@@ -20,45 +20,77 @@
 	},
 	"keywords": [
 		"umoya",
-		"founders circle",
+		"signature journey",
+		"journey",
 		"sj",
 		"extensions"
 	],
+	"portals": [],
 	"tokens": [
 		{
 			"name": "cream",
 			"value": "#F5F0EB",
 			"kind": "color",
+			"selectors": [
+				"#sj-extensions"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
 			"label": "Cream"
 		},
 		{
 			"name": "brown",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#sj-extensions"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
 			"label": "Brown"
 		},
 		{
 			"name": "terra",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#sj-extensions"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
 			"label": "Terra"
 		},
 		{
 			"name": "terra-dk",
 			"value": "#C06840",
 			"kind": "color",
+			"selectors": [
+				"#sj-extensions"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
 			"label": "Terra Dk"
 		},
 		{
 			"name": "white",
 			"value": "#FFFFFF",
 			"kind": "color",
+			"selectors": [
+				"#sj-extensions"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
 			"label": "White"
 		},
 		{
 			"name": "ease",
 			"value": "cubic-bezier(.25,.46,.45,.94)",
 			"kind": "text",
+			"selectors": [
+				"#sj-extensions"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
 			"label": "Ease"
 		}
 	],
@@ -123,221 +155,104 @@
 				}
 			],
 			"merged": true
-		},
-		{
-			"id": "content_p_sj_ext_tile_div_nth_of_type_1_img_nth_of_type_1",
-			"label": "Image",
-			"sample": "",
-			"region_label": "",
-			"controls": [
-				{
-					"id": "image_src",
-					"control": "media",
-					"label": "Source 1",
-					"default": {
-						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img233195226.jpeg"
-					},
-					"esc": "url",
-					"group": "p_sj_ext_tile_div_nth_of_type_1_img_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Image"
-				},
-				{
-					"id": "image_alt",
-					"control": "text",
-					"label": "Alt Text 1",
-					"default": "Victoria Falls, on the border of Zimbabwe and Zambia",
-					"esc": "attr",
-					"group": "p_sj_ext_tile_div_nth_of_type_1_img_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Image"
-				},
-				{
-					"id": "image_src_2",
-					"control": "media",
-					"label": "Source 2",
-					"default": {
-						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Chobe-Princess_Exterior_at-Sunset-709-1600x1066.jpg"
-					},
-					"esc": "url",
-					"group": "p_sj_ext_tile_div_nth_of_type_1_img_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Image"
-				},
-				{
-					"id": "image_alt_2",
-					"control": "text",
-					"label": "Alt Text 2",
-					"default": "A houseboat on the Chobe River at sunset, Botswana",
-					"esc": "attr",
-					"group": "p_sj_ext_tile_div_nth_of_type_1_img_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Image"
-				}
-			]
-		},
-		{
-			"id": "content_p_sj_ext_tile_div_nth_of_type_2_div_nth_of_type_1",
-			"label": "Card Text 1",
-			"sample": "Extension One · A World Wonder",
-			"region_label": "Card",
-			"controls": [
-				{
-					"id": "text_text",
-					"control": "text",
-					"label": "Text 1",
-					"description": "",
-					"default": "Extension One · A World Wonder",
-					"esc": "post",
-					"group": "p_sj_ext_tile_div_nth_of_type_2_div_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Card Text 1"
-				},
-				{
-					"id": "text_text_4",
-					"control": "text",
-					"label": "Text 2",
-					"description": "",
-					"default": "Extension Two · Africa's Eden",
-					"esc": "post",
-					"group": "p_sj_ext_tile_div_nth_of_type_2_div_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Card Text 1"
-				}
-			]
-		},
-		{
-			"id": "content_p_sj_ext_tile_div_nth_of_type_2_h3_nth_of_type_1",
-			"label": "Heading",
-			"sample": "Victoria Falls",
-			"region_label": "Card",
-			"controls": [
-				{
-					"id": "heading_text",
-					"control": "text",
-					"label": "Heading 1",
-					"description": "",
-					"default": "Victoria Falls",
-					"esc": "post",
-					"group": "p_sj_ext_tile_div_nth_of_type_2_h3_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Heading"
-				},
-				{
-					"id": "heading_text_2",
-					"control": "text",
-					"label": "Heading 2",
-					"description": "",
-					"default": "Chobe National Park",
-					"esc": "post",
-					"group": "p_sj_ext_tile_div_nth_of_type_2_h3_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Heading"
-				}
-			]
-		},
-		{
-			"id": "content_p_sj_ext_tile_div_nth_of_type_2_div_nth_of_type_2",
-			"label": "Card Text 2",
-			"sample": "Victoria Falls, Zimbabwe",
-			"region_label": "Card",
-			"controls": [
-				{
-					"id": "text_text_2",
-					"control": "text",
-					"label": "Text 1",
-					"description": "",
-					"default": "Victoria Falls, Zimbabwe",
-					"esc": "post",
-					"group": "p_sj_ext_tile_div_nth_of_type_2_div_nth_of_type_2",
-					"sort": 0,
-					"part_label": "Card Text 2"
-				},
-				{
-					"id": "text_text_5",
-					"control": "text",
-					"label": "Text 2",
-					"description": "",
-					"default": "Chobe National Park, Botswana",
-					"esc": "post",
-					"group": "p_sj_ext_tile_div_nth_of_type_2_div_nth_of_type_2",
-					"sort": 0,
-					"part_label": "Card Text 2"
-				}
-			]
-		},
-		{
-			"id": "content_p_sj_ext_tile_div_nth_of_type_2_p_nth_of_type_1",
-			"label": "Card Text 3",
-			"sample": "The journey carries north to Victoria Falls, on…",
-			"region_label": "Card",
-			"controls": [
-				{
-					"id": "text_text_3",
-					"control": "textarea",
-					"label": "Text 1",
-					"description": "",
-					"default": "The journey carries north to Victoria Falls, one of the seven natural wonders of the world, on the border of Zimbabwe and Zambia. Feel the mist, hear the thunder, and stand close enough to the falls to understand why they are called the smoke that thunders. You stay three nights on the banks of the Zambezi at Victoria Falls River Lodge, with a sunset cruise on the river, a guided tour of the falls, and a Boma dinner under the stars.",
-					"esc": "post",
-					"group": "p_sj_ext_tile_div_nth_of_type_2_p_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Card Text 3"
-				},
-				{
-					"id": "text_text_6",
-					"control": "textarea",
-					"label": "Text 2",
-					"description": "",
-					"default": "Everything in Extension One, then you cross into Botswana and finish on the water, aboard a private houseboat on the Chobe River. Drift at golden hour as elephants gather on the banks in numbers found almost nowhere else on earth, and close the journey on the river itself.",
-					"esc": "post",
-					"group": "p_sj_ext_tile_div_nth_of_type_2_p_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Card Text 3"
-				}
-			]
 		}
 	],
 	"integration_controls": [],
 	"form_controls": [],
-	"behaviour_controls": [
-		{
-			"id": "image_loading",
-			"control": "select",
-			"label": "Loading",
-			"default": "lazy",
-			"options": [
-				"eager",
-				"lazy"
-			],
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "image_loading_2",
-			"control": "select",
-			"label": "Loading",
-			"default": "lazy",
-			"options": [
-				"eager",
-				"lazy"
-			],
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1,
-			"part_label": ""
-		}
-	],
+	"behaviour_controls": [],
 	"inline_style_controls": [],
 	"media_controls": [],
-	"repeaters": [],
+	"repeaters": [
+		{
+			"id": "rep_article_sj_ext_tile",
+			"label": "Cards",
+			"item_label": "{{{ num }}}",
+			"controls": [
+				{
+					"id": "notes",
+					"control": "hidden",
+					"label": "Notes",
+					"esc": "trivia",
+					"default": "\n        <!-- Extension One · Victoria Falls — umoya_compressed_img233195226.jpeg -->\n        "
+				},
+				{
+					"id": "src",
+					"control": "media",
+					"label": "Choose Image",
+					"esc": "url",
+					"default": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img233195226.jpeg"
+				},
+				{
+					"id": "alt",
+					"control": "text",
+					"label": "Alt Text",
+					"esc": "attr",
+					"default": "Victoria Falls, on the border of Zimbabwe and Zambia"
+				},
+				{
+					"id": "loading",
+					"control": "hidden",
+					"label": "Loading",
+					"esc": "attr",
+					"default": "lazy"
+				},
+				{
+					"id": "num",
+					"control": "text",
+					"label": "Number",
+					"esc": "post",
+					"default": "Extension One · A World Wonder"
+				},
+				{
+					"id": "name",
+					"control": "text",
+					"label": "Name",
+					"esc": "post",
+					"default": "Victoria Falls"
+				},
+				{
+					"id": "where",
+					"control": "text",
+					"label": "Where",
+					"esc": "post",
+					"default": "Victoria Falls, Zimbabwe"
+				},
+				{
+					"id": "desc",
+					"control": "textarea",
+					"label": "Description",
+					"esc": "post",
+					"default": "The journey carries north to Victoria Falls, one of the seven natural wonders of the world, on the border of Zimbabwe and Zambia. Feel the mist, hear the thunder, and stand close enough to the falls to understand why they are called the smoke that thunders. You stay three nights on the banks of the Zambezi at Victoria Falls River Lodge, with a sunset cruise on the river, a guided tour of the falls, and a Boma dinner under the stars."
+				}
+			],
+			"rows": [
+				{
+					"notes": "\n        <!-- Extension One · Victoria Falls — umoya_compressed_img233195226.jpeg -->\n        ",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img233195226.jpeg",
+					"alt": "Victoria Falls, on the border of Zimbabwe and Zambia",
+					"loading": "lazy",
+					"num": "Extension One · A World Wonder",
+					"name": "Victoria Falls",
+					"where": "Victoria Falls, Zimbabwe",
+					"desc": "The journey carries north to Victoria Falls, one of the seven natural wonders of the world, on the border of Zimbabwe and Zambia. Feel the mist, hear the thunder, and stand close enough to the falls to understand why they are called the smoke that thunders. You stay three nights on the banks of the Zambezi at Victoria Falls River Lodge, with a sunset cruise on the river, a guided tour of the falls, and a Boma dinner under the stars."
+				},
+				{
+					"notes": "\n        <!-- Extension Two · Chobe — umoya_compressed_Chobe-Princess_Exterior_at-Sunset-709-1600x1066.jpg -->\n        ",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Chobe-Princess_Exterior_at-Sunset-709-1600x1066.jpg",
+					"alt": "A houseboat on the Chobe River at sunset, Botswana",
+					"loading": "lazy",
+					"num": "Extension Two · Africa's Eden",
+					"name": "Chobe National Park",
+					"where": "Chobe National Park, Botswana",
+					"desc": "Everything in Extension One, then you cross into Botswana and finish on the water, aboard a private houseboat on the Chobe River. Drift at golden hour as elephants gather on the banks in numbers found almost nowhere else on earth, and close the journey on the river itself."
+				}
+			],
+			"loops": 1,
+			"selector": ".sj-ext-tile",
+			"notice": "",
+			"portal": null
+		}
+	],
 	"style_parts": [
 		{
 			"id": "p_section",
@@ -361,6 +276,7 @@
 				"text_color",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -388,6 +304,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -415,6 +332,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -443,6 +361,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -471,6 +390,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -499,6 +419,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -524,8 +445,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"grid_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -551,11 +474,13 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": "article_sj_ext_tile"
 		},
 		{
 			"id": "p_sj_ext_tile_div_nth_of_type_1",
@@ -580,6 +505,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -605,6 +531,7 @@
 				"filters",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -632,6 +559,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -659,6 +587,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -687,6 +616,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -714,6 +644,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -742,6 +673,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -787,158 +719,6 @@
 			"default": "For those who wish to travel on, both extensions are arranged seamlessly as part of your journey.",
 			"esc": "post",
 			"group": "p_sj_ext_sub",
-			"sort": 0
-		},
-		{
-			"id": "image_src",
-			"control": "media",
-			"label": "Source",
-			"default": {
-				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img233195226.jpeg"
-			},
-			"esc": "url",
-			"group": "p_sj_ext_tile_div_nth_of_type_1_img_nth_of_type_1",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "image_alt",
-			"control": "text",
-			"label": "Alt Text",
-			"default": "Victoria Falls, on the border of Zimbabwe and Zambia",
-			"esc": "attr",
-			"group": "p_sj_ext_tile_div_nth_of_type_1_img_nth_of_type_1",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "image_loading",
-			"control": "select",
-			"label": "Loading",
-			"default": "lazy",
-			"options": [
-				"eager",
-				"lazy"
-			],
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1
-		},
-		{
-			"id": "text_text",
-			"control": "text",
-			"label": "Text",
-			"description": "",
-			"default": "Extension One · A World Wonder",
-			"esc": "post",
-			"group": "p_sj_ext_tile_div_nth_of_type_2_div_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "heading_text",
-			"control": "text",
-			"label": "Heading",
-			"description": "",
-			"default": "Victoria Falls",
-			"esc": "post",
-			"group": "p_sj_ext_tile_div_nth_of_type_2_h3_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "text_text_2",
-			"control": "text",
-			"label": "Text",
-			"description": "",
-			"default": "Victoria Falls, Zimbabwe",
-			"esc": "post",
-			"group": "p_sj_ext_tile_div_nth_of_type_2_div_nth_of_type_2",
-			"sort": 0
-		},
-		{
-			"id": "text_text_3",
-			"control": "textarea",
-			"label": "Text",
-			"description": "",
-			"default": "The journey carries north to Victoria Falls, one of the seven natural wonders of the world, on the border of Zimbabwe and Zambia. Feel the mist, hear the thunder, and stand close enough to the falls to understand why they are called the smoke that thunders. You stay three nights on the banks of the Zambezi at Victoria Falls River Lodge, with a sunset cruise on the river, a guided tour of the falls, and a Boma dinner under the stars.",
-			"esc": "post",
-			"group": "p_sj_ext_tile_div_nth_of_type_2_p_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "image_src_2",
-			"control": "media",
-			"label": "Source",
-			"default": {
-				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Chobe-Princess_Exterior_at-Sunset-709-1600x1066.jpg"
-			},
-			"esc": "url",
-			"group": "p_sj_ext_tile_div_nth_of_type_1_img_nth_of_type_1",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "image_alt_2",
-			"control": "text",
-			"label": "Alt Text",
-			"default": "A houseboat on the Chobe River at sunset, Botswana",
-			"esc": "attr",
-			"group": "p_sj_ext_tile_div_nth_of_type_1_img_nth_of_type_1",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "image_loading_2",
-			"control": "select",
-			"label": "Loading",
-			"default": "lazy",
-			"options": [
-				"eager",
-				"lazy"
-			],
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1
-		},
-		{
-			"id": "text_text_4",
-			"control": "text",
-			"label": "Text",
-			"description": "",
-			"default": "Extension Two · Africa's Eden",
-			"esc": "post",
-			"group": "p_sj_ext_tile_div_nth_of_type_2_div_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "heading_text_2",
-			"control": "text",
-			"label": "Heading",
-			"description": "",
-			"default": "Chobe National Park",
-			"esc": "post",
-			"group": "p_sj_ext_tile_div_nth_of_type_2_h3_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "text_text_5",
-			"control": "text",
-			"label": "Text",
-			"description": "",
-			"default": "Chobe National Park, Botswana",
-			"esc": "post",
-			"group": "p_sj_ext_tile_div_nth_of_type_2_div_nth_of_type_2",
-			"sort": 0
-		},
-		{
-			"id": "text_text_6",
-			"control": "textarea",
-			"label": "Text",
-			"description": "",
-			"default": "Everything in Extension One, then you cross into Botswana and finish on the water, aboard a private houseboat on the Chobe River. Drift at golden hour as elephants gather on the banks in numbers found almost nowhere else on earth, and close the journey on the river itself.",
-			"esc": "post",
-			"group": "p_sj_ext_tile_div_nth_of_type_2_p_nth_of_type_1",
 			"sort": 0
 		}
 	]

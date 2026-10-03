@@ -1,5 +1,10 @@
 [
 	{
+		"slug": "umoya-site",
+		"title": "Umoya - Site-wide",
+		"icon": "eicon-theme-builder"
+	},
+	{
 		"slug": "umoya-fc",
 		"title": "Umoya - Founder's Circle",
 		"icon": "eicon-globe"
@@ -7,11 +12,31 @@
 	{
 		"slug": "umoya-homepage",
 		"title": "Umoya - Homepage",
-		"icon": "eicon-home"
+		"icon": "eicon-single-page"
 	},
 	{
 		"slug": "umoya-sj",
 		"title": "Umoya - Signature Journey",
 		"icon": "eicon-map-pin"
+	},
+	{
+		"slug": "umoya-pt",
+		"title": "Umoya - Private & Tailormade",
+		"icon": "eicon-user-preferences"
+	},
+	{
+		"slug": "umoya-about",
+		"title": "Umoya - About Us",
+		"icon": "eicon-info-box"
+	},
+	{
+		"slug": "umoya-fg",
+		"title": "Umoya - For Groups",
+		"icon": "eicon-person"
+	},
+	{
+		"slug": "umoya-contact",
+		"title": "Umoya - Contact",
+		"icon": "eicon-contact"
 	}
 ]

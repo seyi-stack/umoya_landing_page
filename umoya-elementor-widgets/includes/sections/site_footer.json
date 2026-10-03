@@ -1,0 +1,5500 @@
+{
+	"key": "site_footer",
+	"name": "umoya-site-footer",
+	"title": "Site Footer",
+	"description": "The one footer for every page, with the Founder's Circle signup and the Email Opt-out dialog. Place it last.",
+	"icon": "eicon-footer",
+	"category": "umoya-site",
+	"source": "shared/section-99-footer.html",
+	"class_name": "Site_Footer",
+	"widget_file": "widgets/class-site-footer.php",
+	"root_selector": "#umoya-footer",
+	"template": "templates/sections/site_footer.php",
+	"style": {
+		"handle": "uew-umoya-site-footer",
+		"file": "assets/css/sections/site_footer.css"
+	},
+	"script": {
+		"handle": "uew-umoya-site-footer",
+		"file": "assets/js/sections/site_footer.js"
+	},
+	"keywords": [
+		"umoya",
+		"site",
+		"global",
+		"shared",
+		"footer"
+	],
+	"portals": [
+		{
+			"selector": "#umoya-email-optout",
+			"trigger": "[data-umoya-email-optout]"
+		}
+	],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#umoya-footer",
+				"#umoya-email-optout"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#umoya-footer",
+				"#umoya-email-optout"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "brown-dk",
+			"value": "#3B2523",
+			"kind": "color",
+			"selectors": [
+				"#umoya-footer"
+			],
+			"scoped": false,
+			"id": "uew_token_brown_dk",
+			"label": "Brown Dk"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#umoya-footer",
+				"#umoya-email-optout"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"selectors": [
+				"#umoya-footer",
+				"#umoya-email-optout"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "olive",
+			"value": "#708238",
+			"kind": "color",
+			"selectors": [
+				"#umoya-footer"
+			],
+			"scoped": false,
+			"id": "uew_token_olive",
+			"label": "Olive"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"selectors": [
+				"#umoya-footer"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
+			"label": "White"
+		},
+		{
+			"name": "dim",
+			"value": "rgba(245,240,235,.72)",
+			"kind": "color",
+			"selectors": [
+				"#umoya-footer"
+			],
+			"scoped": false,
+			"id": "uew_token_dim",
+			"label": "Dim"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"selectors": [
+				"#umoya-footer",
+				"#umoya-email-optout"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
+			"label": "Ease"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.72)",
+			"kind": "color",
+			"selectors": [
+				"#umoya-email-optout"
+			],
+			"scoped": false,
+			"id": "uew_token_muted",
+			"label": "Muted"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Site footer",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_img",
+			"label": "Logo 1",
+			"sample": "",
+			"region_label": "Logo",
+			"controls": [
+				{
+					"id": "image_src",
+					"control": "media",
+					"label": "Choose Image",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Property-1Umoya-Afrika-Logo_v3.svg"
+					},
+					"esc": "url",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "image_alt",
+					"control": "text",
+					"label": "Alt Text",
+					"default": "Umoya Afrika Tours",
+					"esc": "attr",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "text_text",
+					"control": "text",
+					"label": "Text",
+					"description": "",
+					"default": "Premium culturally immersive journeys across South Africa.",
+					"esc": "post",
+					"group": "p_umoya_ft_descriptor",
+					"sort": 0,
+					"part_label": "Logo Text"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_ft_contact_a",
+			"label": "Logo 2",
+			"sample": "info@umoyaafrikatours.co.za",
+			"region_label": "Logo",
+			"controls": [
+				{
+					"id": "link_text",
+					"control": "text",
+					"label": "Link 1",
+					"description": "",
+					"default": "info@umoyaafrikatours.co.za",
+					"esc": "post",
+					"group": "p_umoya_ft_contact_a",
+					"sort": 0,
+					"part_label": "Logo Link"
+				},
+				{
+					"id": "link_href",
+					"control": "url",
+					"label": "Link 2",
+					"default": {
+						"url": "mailto:info@umoyaafrikatours.co.za"
+					},
+					"esc": "url",
+					"group": "p_umoya_ft_contact_a",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Logo Link"
+				},
+				{
+					"id": "addr_text",
+					"control": "textarea",
+					"label": "Addr",
+					"description": "Inline formatting tags are preserved.",
+					"default": "West Tower, 2nd Floor,<br>\n            Nelson Mandela Square,<br>\n            Maude Street, Sandown,<br>\n            Johannesburg, 2146",
+					"esc": "post",
+					"group": "p_umoya_ft_addr",
+					"sort": 0,
+					"part_label": "Addr"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_ft_col",
+			"label": "Column",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "column_aria_label",
+					"control": "text",
+					"label": "Accessible Name 1",
+					"default": "Journeys",
+					"esc": "attr",
+					"group": "p_umoya_ft_col",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Column"
+				},
+				{
+					"id": "column_aria_label_2",
+					"control": "text",
+					"label": "Accessible Name 2",
+					"default": "Support",
+					"esc": "attr",
+					"group": "p_umoya_ft_col",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Column"
+				},
+				{
+					"id": "column_aria_label_3",
+					"control": "text",
+					"label": "Accessible Name 3",
+					"default": "Legal",
+					"esc": "attr",
+					"group": "p_umoya_ft_col",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Column"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_ft_col_h3_nth_of_type_1",
+			"label": "Heading 1",
+			"sample": "Journeys",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "heading_text",
+					"control": "text",
+					"label": "Heading 1",
+					"description": "",
+					"default": "Journeys",
+					"esc": "post",
+					"group": "p_umoya_ft_col_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_2",
+					"control": "text",
+					"label": "Heading 2",
+					"description": "",
+					"default": "Support",
+					"esc": "post",
+					"group": "p_umoya_ft_col_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_3",
+					"control": "text",
+					"label": "Heading 3",
+					"description": "",
+					"default": "Legal",
+					"esc": "post",
+					"group": "p_umoya_ft_col_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_1_a_nth_of_type_1",
+			"label": "Item Link 1",
+			"sample": "The Signature Journey",
+			"region_label": "Item",
+			"controls": [
+				{
+					"id": "link_text_2",
+					"control": "text",
+					"label": "Link 1",
+					"description": "",
+					"default": "Terms &amp; Conditions",
+					"esc": "post",
+					"group": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_1_a_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Item Link 1"
+				},
+				{
+					"id": "link_href_2",
+					"control": "url",
+					"label": "Link 2",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/terms-and-conditions/"
+					},
+					"esc": "url",
+					"group": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_1_a_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Item Link 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_2_a_nth_of_type_1",
+			"label": "Item 1",
+			"sample": "Privacy Policy",
+			"region_label": "Item",
+			"controls": [
+				{
+					"id": "link_text_3",
+					"control": "text",
+					"label": "Link 1",
+					"description": "",
+					"default": "Privacy Policy",
+					"esc": "post",
+					"group": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_2_a_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Item Link 2"
+				},
+				{
+					"id": "link_href_3",
+					"control": "url",
+					"label": "Link 2",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/privacy/"
+					},
+					"esc": "url",
+					"group": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_2_a_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Item Link 2"
+				},
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Button",
+					"description": "",
+					"default": "Cookie Settings",
+					"esc": "post",
+					"group": "p_cky_banner_element",
+					"sort": 0,
+					"part_label": "Item Button"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_4_a_nth_of_type_1",
+			"label": "Item Link 3",
+			"sample": "Email Opt-out",
+			"region_label": "Item",
+			"controls": [
+				{
+					"id": "link_text_4",
+					"control": "text",
+					"label": "Link 1",
+					"description": "",
+					"default": "Email Opt-out",
+					"esc": "post",
+					"group": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_4_a_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Item Link 3"
+				},
+				{
+					"id": "link_href_4",
+					"control": "url",
+					"label": "Link 2",
+					"default": {
+						"url": "mailto:info@umoyaafrikatours.co.za?subject=Unsubscribe"
+					},
+					"esc": "url",
+					"group": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_4_a_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Item Link 3"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_5_a",
+			"label": "Item 2",
+			"sample": "PAIA Manual",
+			"region_label": "Item",
+			"controls": [
+				{
+					"id": "link_text_5",
+					"control": "text",
+					"label": "Link 1",
+					"description": "",
+					"default": "PAIA Manual",
+					"esc": "post",
+					"group": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_5_a",
+					"sort": 0,
+					"part_label": "Item Link 4"
+				},
+				{
+					"id": "link_href_5",
+					"control": "url",
+					"label": "Link 2",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/umoya_paia_manual.pdf"
+					},
+					"esc": "url",
+					"group": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_5_a",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Item Link 4"
+				},
+				{
+					"id": "heading_text_4",
+					"control": "text",
+					"label": "Heading",
+					"description": "",
+					"default": "Join the Founder&rsquo;s Circle",
+					"esc": "post",
+					"group": "p_umoya_ft_signup_umoya_ft_h",
+					"sort": 0,
+					"part_label": "Heading 2"
+				},
+				{
+					"id": "embed_title",
+					"control": "text",
+					"label": "Title Attribute",
+					"default": "Newsletter submission target",
+					"esc": "attr",
+					"group": "p_iframe",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Embed"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_form",
+			"label": "Form 1",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "form_action",
+					"control": "url",
+					"label": "Form Action",
+					"default": {
+						"url": "/wp-json/umoya/v1/submissions"
+					},
+					"esc": "url",
+					"group": "p_form",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Form"
+				},
+				{
+					"id": "form_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Join the Founder's Circle",
+					"esc": "attr",
+					"group": "p_form",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Form"
+				}
+			]
+		},
+		{
+			"id": "content_p_input",
+			"label": "Field",
+			"sample": "",
+			"region_label": "Form",
+			"controls": [
+				{
+					"id": "anchor_placeholder",
+					"control": "text",
+					"label": "Placeholder 1",
+					"default": "Name",
+					"esc": "attr",
+					"group": "p_input",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Field"
+				},
+				{
+					"id": "anchor_placeholder_2",
+					"control": "text",
+					"label": "Placeholder 2",
+					"default": "Email address",
+					"esc": "attr",
+					"group": "p_input",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Field"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_ft_sr",
+			"label": "Form 2",
+			"sample": "Name",
+			"region_label": "Form",
+			"controls": [
+				{
+					"id": "label_text",
+					"control": "text",
+					"label": "Label 1",
+					"description": "",
+					"default": "Name",
+					"esc": "post",
+					"group": "p_umoya_ft_sr",
+					"sort": 0,
+					"part_label": "Form Label"
+				},
+				{
+					"id": "label_text_2",
+					"control": "text",
+					"label": "Label 2",
+					"description": "",
+					"default": "Email address",
+					"esc": "post",
+					"group": "p_umoya_ft_sr",
+					"sort": 0,
+					"part_label": "Form Label"
+				},
+				{
+					"id": "button_text_2",
+					"control": "text",
+					"label": "Button",
+					"description": "",
+					"default": "Join",
+					"esc": "post",
+					"group": "p_umoya_ft_submit",
+					"sort": 0,
+					"part_label": "Form Button"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_ft_fine",
+			"label": "Text 1",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "text_text_2",
+					"control": "textarea",
+					"label": "Text",
+					"default": "By subscribing you consent to receive marketing communications from\n          Umoya Afrika Tours (Pty) Ltd. We never share your email, and you may unsubscribe at any time.\n          See our",
+					"esc": "post",
+					"group": "p_umoya_ft_fine",
+					"sort": 0,
+					"part_label": "Text 1"
+				},
+				{
+					"id": "text_text_2_2",
+					"control": "text",
+					"label": "Text 2",
+					"default": ".",
+					"esc": "post",
+					"group": "p_umoya_ft_fine",
+					"sort": 0,
+					"part_label": "Text 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_ft_fine_a",
+			"label": "Text Link",
+			"sample": "Privacy Policy",
+			"region_label": "Text",
+			"controls": [
+				{
+					"id": "link_text_6",
+					"control": "text",
+					"label": "Link 1",
+					"description": "",
+					"default": "Privacy Policy",
+					"esc": "post",
+					"group": "p_umoya_ft_fine_a",
+					"sort": 0,
+					"part_label": "Text Link"
+				},
+				{
+					"id": "link_href_6",
+					"control": "url",
+					"label": "Link 2",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/privacy/"
+					},
+					"esc": "url",
+					"group": "p_umoya_ft_fine_a",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Text Link"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_ft_legalline",
+			"label": "Footer",
+			"sample": "",
+			"region_label": "Footer",
+			"controls": [
+				{
+					"id": "text_text_3",
+					"control": "text",
+					"label": "Text",
+					"default": "&copy;",
+					"esc": "post",
+					"group": "p_umoya_ft_legalline",
+					"sort": 0,
+					"part_label": "Footer Text"
+				},
+				{
+					"id": "text_text_2_3",
+					"control": "text",
+					"label": "Text 2 1",
+					"default": "Umoya Afrika Tours (Pty) Ltd &middot; Reg. 2025/818751/07",
+					"esc": "post",
+					"group": "p_umoya_ft_legalline",
+					"sort": 0,
+					"part_label": "Footer Text"
+				},
+				{
+					"id": "text_text_4",
+					"control": "text",
+					"label": "Text 2 2",
+					"description": "",
+					"default": "2026",
+					"esc": "post",
+					"group": "p_span",
+					"sort": 0,
+					"part_label": "Text 2"
+				},
+				{
+					"id": "label_text_3",
+					"control": "text",
+					"label": "Label",
+					"description": "",
+					"default": "Breathe South Africa Differently",
+					"esc": "post",
+					"group": "p_umoya_ft_tag",
+					"sort": 0,
+					"part_label": "Footer Label"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_ft_social_a",
+			"label": "Footer Link",
+			"sample": "",
+			"region_label": "Footer",
+			"controls": [
+				{
+					"id": "link_href_7",
+					"control": "url",
+					"label": "Link 1",
+					"default": {
+						"url": "https://www.instagram.com/umoyaafrikatours/"
+					},
+					"esc": "url",
+					"group": "p_umoya_ft_social_a",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Footer Link"
+				},
+				{
+					"id": "link_aria_label",
+					"control": "text",
+					"label": "Accessible Name 1",
+					"default": "Umoya Afrika Tours on Instagram",
+					"esc": "attr",
+					"group": "p_umoya_ft_social_a",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Footer Link"
+				},
+				{
+					"id": "link_href_8",
+					"control": "url",
+					"label": "Link 2",
+					"default": {
+						"url": "https://www.facebook.com/umoyaafrikatours"
+					},
+					"esc": "url",
+					"group": "p_umoya_ft_social_a",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Footer Link"
+				},
+				{
+					"id": "link_aria_label_2",
+					"control": "text",
+					"label": "Accessible Name 2",
+					"default": "Umoya Afrika Tours on Facebook",
+					"esc": "attr",
+					"group": "p_umoya_ft_social_a",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Footer Link"
+				},
+				{
+					"id": "link_href_9",
+					"control": "url",
+					"label": "Link 3",
+					"default": {
+						"url": "https://www.tiktok.com/@umoyaafrikatours"
+					},
+					"esc": "url",
+					"group": "p_umoya_ft_social_a",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Footer Link"
+				},
+				{
+					"id": "link_aria_label_3",
+					"control": "text",
+					"label": "Accessible Name 3",
+					"default": "Umoya Afrika Tours on TikTok",
+					"esc": "attr",
+					"group": "p_umoya_ft_social_a",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Footer Link"
+				},
+				{
+					"id": "link_href_10",
+					"control": "url",
+					"label": "Link 4",
+					"default": {
+						"url": "https://www.linkedin.com/company/umoyaafrikatours/"
+					},
+					"esc": "url",
+					"group": "p_umoya_ft_social_a",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Footer Link"
+				},
+				{
+					"id": "link_aria_label_4",
+					"control": "text",
+					"label": "Accessible Name 4",
+					"default": "Umoya Afrika Tours on LinkedIn",
+					"esc": "attr",
+					"group": "p_umoya_ft_social_a",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Footer Link"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_email_optout_umoya_ep_close",
+			"label": "Content 1",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "button_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Close email opt-out",
+					"esc": "attr",
+					"group": "p_umoya_email_optout_umoya_ep_close",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Button"
+				},
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Email Preferences",
+					"esc": "post",
+					"group": "p_umoya_email_optout_umoya_ep_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "Email Opt-out",
+					"esc": "post",
+					"group": "p_umoya_email_optout_umoya_ep_ttl",
+					"sort": 0,
+					"part_label": "Title"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_email_optout_umoya_ep_body",
+			"label": "Content 2",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "content_text",
+					"control": "textarea",
+					"label": "Text",
+					"default": "To stop receiving marketing email from Umoya, use the unsubscribe link in any of our emails, or write to",
+					"esc": "post",
+					"group": "p_umoya_email_optout_umoya_ep_body",
+					"sort": 0,
+					"part_label": "Content 2"
+				},
+				{
+					"id": "content_text_2",
+					"control": "text",
+					"label": "Text 2",
+					"default": "with the subject",
+					"esc": "post",
+					"group": "p_umoya_email_optout_umoya_ep_body",
+					"sort": 0,
+					"part_label": "Content 2"
+				},
+				{
+					"id": "content_text_3",
+					"control": "text",
+					"label": "Text 3",
+					"default": "and we will remove you within 7 days.",
+					"esc": "post",
+					"group": "p_umoya_email_optout_umoya_ep_body",
+					"sort": 0,
+					"part_label": "Content 2"
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_email_optout_a",
+			"label": "Content 3",
+			"sample": "info@umoyaafrikatours.co.za",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "link_text_7",
+					"control": "text",
+					"label": "Link 1",
+					"description": "",
+					"default": "info@umoyaafrikatours.co.za",
+					"esc": "post",
+					"group": "p_umoya_email_optout_a",
+					"sort": 0,
+					"part_label": "Link"
+				},
+				{
+					"id": "link_href_11",
+					"control": "url",
+					"label": "Link 2",
+					"default": {
+						"url": "mailto:info@umoyaafrikatours.co.za?subject=Unsubscribe"
+					},
+					"esc": "url",
+					"group": "p_umoya_email_optout_a",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Link"
+				},
+				{
+					"id": "strong_text",
+					"control": "text",
+					"label": "Strong",
+					"description": "",
+					"default": "Unsubscribe",
+					"esc": "post",
+					"group": "p_umoya_email_optout_strong",
+					"sort": 0,
+					"part_label": "Strong"
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [
+		{
+			"id": "form_data_hs_do_not_collect",
+			"control": "text",
+			"label": "Hs Do Not Collect",
+			"default": "true",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "form_data_hubspot_portal_id",
+			"control": "text",
+			"label": "Hubspot Portal Id",
+			"default": "246097317",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "form_data_hubspot_form_id",
+			"control": "text",
+			"label": "Hubspot Form Id",
+			"default": "40d535ad-fc91-4831-8231-eddc05208624",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "form_data_umoya_form_source",
+			"control": "text",
+			"label": "Umoya Form Source",
+			"default": "footer_newsletter",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "form_data_wordpress_backup_endpoint",
+			"control": "text",
+			"label": "Wordpress Backup Endpoint",
+			"default": "/wp-json/umoya/v1/submissions",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "form_data_hubspot_consent_text",
+			"control": "text",
+			"label": "Hubspot Consent Text",
+			"default": "By subscribing you consent to receive marketing communications from Umoya Afrika Tours (Pty) Ltd. We never share your email, and you may unsubscribe at any time. See our Privacy Policy.",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_name",
+			"control": "text",
+			"label": "Field Name",
+			"default": "source",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_value",
+			"control": "text",
+			"label": "Value",
+			"default": "footer_newsletter",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_name_2",
+			"control": "text",
+			"label": "Field Name",
+			"default": "hubspotPortalId",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_value_2",
+			"control": "text",
+			"label": "Value",
+			"default": "246097317",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_name_3",
+			"control": "text",
+			"label": "Field Name",
+			"default": "hubspotFormId",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_value_3",
+			"control": "text",
+			"label": "Value",
+			"default": "40d535ad-fc91-4831-8231-eddc05208624",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_name_4",
+			"control": "text",
+			"label": "Field Name",
+			"default": "consentText",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_value_4",
+			"control": "text",
+			"label": "Value",
+			"default": "By subscribing you consent to receive marketing communications from Umoya Afrika Tours (Pty) Ltd. We never share your email, and you may unsubscribe at any time. See our Privacy Policy.",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_name_5",
+			"control": "text",
+			"label": "Field Name",
+			"default": "hutk",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_value_5",
+			"control": "text",
+			"label": "Value",
+			"default": "",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_name_6",
+			"control": "text",
+			"label": "Field Name",
+			"default": "pageUri",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_value_6",
+			"control": "text",
+			"label": "Value",
+			"default": "",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_name_7",
+			"control": "text",
+			"label": "Field Name",
+			"default": "pageName",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_value_7",
+			"control": "text",
+			"label": "Value",
+			"default": "",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_name",
+			"control": "text",
+			"label": "Field Name",
+			"default": "FNAME",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_name_2",
+			"control": "text",
+			"label": "Field Name",
+			"default": "EMAIL",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"form_controls": [
+		{
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_cky_banner_element",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Item Button"
+		},
+		{
+			"id": "button_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "form_novalidate",
+			"control": "switcher",
+			"label": "Skip Browser Validation",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "novalidate",
+			"flag_prefix": "\n          ",
+			"esc": "raw",
+			"group": "p_form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Form"
+		},
+		{
+			"id": "form_method",
+			"control": "select",
+			"label": "Method",
+			"default": "post",
+			"options": [
+				"get",
+				"post"
+			],
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_required",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_readonly",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_checked",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_type",
+			"control": "text",
+			"label": "Type",
+			"default": "hidden",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_required_2",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_readonly_2",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_checked_2",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_type_2",
+			"control": "text",
+			"label": "Type",
+			"default": "hidden",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_required_3",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_disabled_3",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_readonly_3",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_checked_3",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_type_3",
+			"control": "text",
+			"label": "Type",
+			"default": "hidden",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_required_4",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_disabled_4",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_readonly_4",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_checked_4",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_type_4",
+			"control": "text",
+			"label": "Type",
+			"default": "hidden",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_required_5",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_disabled_5",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_readonly_5",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_checked_5",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_type_5",
+			"control": "text",
+			"label": "Type",
+			"default": "hidden",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_required_6",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_disabled_6",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_readonly_6",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_checked_6",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_type_6",
+			"control": "text",
+			"label": "Type",
+			"default": "hidden",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "field_required_7",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_disabled_7",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_readonly_7",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_checked_7",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "field_type_7",
+			"control": "text",
+			"label": "Type",
+			"default": "hidden",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_required",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "anchor_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "anchor_readonly",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "anchor_checked",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "anchor_type",
+			"control": "text",
+			"label": "Type",
+			"default": "text",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_autocomplete",
+			"control": "text",
+			"label": "Autocomplete",
+			"default": "given-name",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_required_2",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "anchor_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "anchor_readonly_2",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "anchor_checked_2",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Field"
+		},
+		{
+			"id": "anchor_type_2",
+			"control": "text",
+			"label": "Type",
+			"default": "email",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "anchor_autocomplete_2",
+			"control": "text",
+			"label": "Autocomplete",
+			"default": "email",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "button_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_ft_submit",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Form Button"
+		},
+		{
+			"id": "button_type_2",
+			"control": "text",
+			"label": "Type",
+			"default": "submit",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "button_disabled_3",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_email_optout_umoya_ep_close",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Button"
+		},
+		{
+			"id": "button_type_3",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"behaviour_controls": [
+		{
+			"id": "image_loading",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "link_target",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "link_rel",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "form_target",
+			"control": "select",
+			"label": "Link Target",
+			"default": "umoyaFooterFrame",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "link_target_2",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "link_rel_2",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "link_target_3",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "link_rel_3",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "link_target_4",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "link_rel_4",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "link_target_5",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "link_rel_5",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "link_target_6",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "link_rel_6",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"inline_style_controls": [
+		{
+			"id": "addr_css_font_style",
+			"control": "text",
+			"label": "Font Style",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "normal",
+			"esc": "attr",
+			"group": "p_umoya_ft_addr",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Addr"
+		},
+		{
+			"id": "embed_css_display",
+			"control": "text",
+			"label": "Display",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "none",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Embed"
+		},
+		{
+			"id": "embed_css_width",
+			"control": "text",
+			"label": "Width",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Embed"
+		},
+		{
+			"id": "embed_css_height",
+			"control": "text",
+			"label": "Height",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Embed"
+		},
+		{
+			"id": "embed_css_border",
+			"control": "text",
+			"label": "Border",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Embed"
+		}
+	],
+	"media_controls": [
+		{
+			"id": "embed_allowfullscreen",
+			"control": "switcher",
+			"label": "Allow Fullscreen",
+			"description": "",
+			"default": "",
+			"flag_attr": "allowfullscreen",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_iframe",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Embed"
+		}
+	],
+	"repeaters": [
+		{
+			"id": "rep_li",
+			"label": "Journeys Items",
+			"item_label": "{{{ a }}}",
+			"controls": [
+				{
+					"id": "href",
+					"control": "url",
+					"label": "Link",
+					"esc": "url",
+					"default": "https://umoyaafrikatours.co.za/signature-journey/"
+				},
+				{
+					"id": "a",
+					"control": "text",
+					"label": "Text",
+					"esc": "post",
+					"default": "The Signature Journey"
+				}
+			],
+			"rows": [
+				{
+					"href": "https://umoyaafrikatours.co.za/signature-journey/",
+					"a": "The Signature Journey"
+				},
+				{
+					"href": "https://umoyaafrikatours.co.za/private-and-tailormade/",
+					"a": "Private &amp; Tailormade"
+				},
+				{
+					"href": "https://umoyaafrikatours.co.za/for-groups/",
+					"a": "For Groups"
+				},
+				{
+					"href": "https://umoyaafrikatours.co.za/about-us/",
+					"a": "About Us"
+				}
+			],
+			"loops": 1,
+			"selector": null,
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_li_2",
+			"label": "Support Items",
+			"item_label": "{{{ a }}}",
+			"controls": [
+				{
+					"id": "href",
+					"control": "url",
+					"label": "Link",
+					"esc": "url",
+					"default": "https://umoyaafrikatours.co.za/travel-essentials/"
+				},
+				{
+					"id": "extra_attributes",
+					"control": "hidden",
+					"label": "Extra attributes (optional)",
+					"esc": "attrs",
+					"default": ""
+				},
+				{
+					"id": "a",
+					"control": "text",
+					"label": "Text",
+					"esc": "post",
+					"default": "Travel Essentials"
+				},
+				{
+					"id": "_uew_sep",
+					"control": "hidden",
+					"label": "Separator markup",
+					"esc": "raw",
+					"default": "\n          "
+				}
+			],
+			"rows": [
+				{
+					"href": "https://umoyaafrikatours.co.za/travel-essentials/",
+					"extra_attributes": "",
+					"a": "Travel Essentials",
+					"_uew_sep": ""
+				},
+				{
+					"href": "https://umoyaafrikatours.co.za/umoya_travel_brochure.pdf",
+					"extra_attributes": " target=\"_blank\" rel=\"noopener\"",
+					"a": "Travel Brochure",
+					"_uew_sep": "\n          <!-- ⚠ PDF not uploaded yet. Opens in a new tab per the routing doc. -->\n          <!--\n            ⚠ NOT UPLOADED YET - this 404s until Ashley supplies the file.\n            Name it exactly umoya_travel_brochure.pdf at the web root, to\n            match the umoya_ prefix used by the PAIA manual.\n          -->\n          "
+				},
+				{
+					"href": "https://umoyaafrikatours.co.za/contact/",
+					"extra_attributes": "",
+					"a": "Contact",
+					"_uew_sep": "\n          "
+				}
+			],
+			"loops": 1,
+			"selector": null,
+			"notice": "",
+			"portal": null
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "footer",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_c",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-ft-c",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_main",
+			"label": "Content 1",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-ft-main",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_brand",
+			"label": "Logo",
+			"short_label": "Logo",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-ft-brand",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_img",
+			"label": "Image",
+			"short_label": "Image",
+			"parent_label": "Logo",
+			"sample": "",
+			"selector": "img",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_descriptor",
+			"label": "Logo Text",
+			"short_label": "Text",
+			"parent_label": "Logo",
+			"sample": "Premium culturally immersive journeys across So…",
+			"selector": ".umoya-ft-descriptor",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_contact",
+			"label": "Logo Container",
+			"short_label": "Container",
+			"parent_label": "Logo",
+			"sample": "",
+			"selector": ".umoya-ft-contact",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_contact_a",
+			"label": "Logo Link",
+			"short_label": "Link",
+			"parent_label": "Logo",
+			"sample": "info@umoyaafrikatours.co.za",
+			"selector": ".umoya-ft-contact > a",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_addr",
+			"label": "Addr",
+			"short_label": "Addr",
+			"parent_label": "Logo",
+			"sample": "West Tower, 2nd Floor, Nelson Mandela Square, M…",
+			"selector": ".umoya-ft-addr",
+			"tag": "address",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_col",
+			"label": "Column",
+			"short_label": "Column",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-ft-col",
+			"tag": "nav",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_col_h3_nth_of_type_1",
+			"label": "Heading 1",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "Journeys",
+			"selector": ".umoya-ft-col > h3:nth-of-type(1)",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_col_ul_nth_of_type_1",
+			"label": "List",
+			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-ft-col > ul:nth-of-type(1)",
+			"tag": "ul",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_1",
+			"label": "List Item",
+			"short_label": "Item",
+			"parent_label": "List",
+			"sample": "",
+			"selector": ".umoya-ft-col > ul:nth-of-type(1) > li:nth-of-type(1)",
+			"tag": "li",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": "li"
+		},
+		{
+			"id": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_1_a_nth_of_type_1",
+			"label": "Item Link 1",
+			"short_label": "Link",
+			"parent_label": "Item",
+			"sample": "The Signature Journey",
+			"selector": ".umoya-ft-col > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_2",
+			"label": "Item 1",
+			"short_label": "Item",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-ft-col > ul:nth-of-type(1) > li:nth-of-type(2)",
+			"tag": "li",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_2_a_nth_of_type_1",
+			"label": "Item Link 2",
+			"short_label": "Link",
+			"parent_label": "Item",
+			"sample": "Privacy Policy",
+			"selector": ".umoya-ft-col > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_3",
+			"label": "Item 2",
+			"short_label": "Item",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-ft-col > ul:nth-of-type(1) > li:nth-of-type(3)",
+			"tag": "li",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_cky_banner_element",
+			"label": "Item Button",
+			"short_label": "Button",
+			"parent_label": "Item",
+			"sample": "Cookie Settings",
+			"selector": ".cky-banner-element",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_4",
+			"label": "Item 3",
+			"short_label": "Item",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-ft-col > ul:nth-of-type(1) > li:nth-of-type(4)",
+			"tag": "li",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_4_a_nth_of_type_1",
+			"label": "Item Link 3",
+			"short_label": "Link",
+			"parent_label": "Item",
+			"sample": "Email Opt-out",
+			"selector": ".umoya-ft-col > ul:nth-of-type(1) > li:nth-of-type(4) > a:nth-of-type(1)",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_5",
+			"label": "Item 4",
+			"short_label": "Item",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-ft-col > ul:nth-of-type(1) > li:nth-of-type(5)",
+			"tag": "li",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_5_a",
+			"label": "Item Link 4",
+			"short_label": "Link",
+			"parent_label": "Item",
+			"sample": "PAIA Manual",
+			"selector": ".umoya-ft-col > ul:nth-of-type(1) > li:nth-of-type(5) > a",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_signup",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-ft-signup",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_signup_umoya_ft_h",
+			"label": "Heading 2",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "Join the Founder’s Circle",
+			"selector": ".umoya-ft-signup > .umoya-ft-h",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_iframe",
+			"label": "Embed",
+			"short_label": "Embed",
+			"parent_label": "",
+			"sample": "",
+			"selector": "iframe",
+			"tag": "iframe",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_form",
+			"label": "Form",
+			"short_label": "Form",
+			"parent_label": "",
+			"sample": "",
+			"selector": "form",
+			"tag": "form",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_input",
+			"label": "Field",
+			"short_label": "Field",
+			"parent_label": "Form",
+			"sample": "",
+			"selector": "input",
+			"tag": "input",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"placeholder_color",
+				"align",
+				"transition",
+				"states"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_sr",
+			"label": "Form Label",
+			"short_label": "Label",
+			"parent_label": "Form",
+			"sample": "Name",
+			"selector": ".umoya-ft-sr",
+			"tag": "label",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_submit",
+			"label": "Form Button",
+			"short_label": "Button",
+			"parent_label": "Form",
+			"sample": "Join",
+			"selector": ".umoya-ft-submit",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_status",
+			"label": "Form Text",
+			"short_label": "Text",
+			"parent_label": "Form",
+			"sample": "",
+			"selector": ".umoya-ft-status",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_fine",
+			"label": "Text 1",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-ft-fine",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_fine_a",
+			"label": "Text Link",
+			"short_label": "Link",
+			"parent_label": "Text",
+			"sample": "Privacy Policy",
+			"selector": ".umoya-ft-fine > a",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_bottom",
+			"label": "Footer",
+			"short_label": "Footer",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-ft-bottom",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_bottom_inner",
+			"label": "Footer Container 1",
+			"short_label": "Container",
+			"parent_label": "Footer",
+			"sample": "",
+			"selector": ".umoya-ft-bottom-inner",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_legalline",
+			"label": "Footer Text",
+			"short_label": "Text",
+			"parent_label": "Footer",
+			"sample": "",
+			"selector": ".umoya-ft-legalline",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_span",
+			"label": "Text 2",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "2026",
+			"selector": "span",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_tag",
+			"label": "Footer Label",
+			"short_label": "Label",
+			"parent_label": "Footer",
+			"sample": "Breathe South Africa Differently",
+			"selector": ".umoya-ft-tag",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_social",
+			"label": "Footer Container 2",
+			"short_label": "Container",
+			"parent_label": "Footer",
+			"sample": "",
+			"selector": ".umoya-ft-social",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_social_a",
+			"label": "Footer Link",
+			"short_label": "Link",
+			"parent_label": "Footer",
+			"sample": "",
+			"selector": ".umoya-ft-social > a",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_ft_social_a_svg_nth_of_type_1",
+			"label": "Link Icon",
+			"short_label": "Icon",
+			"parent_label": "Link",
+			"sample": "",
+			"selector": ".umoya-ft-social > a > svg:nth-of-type(1)",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_email_optout",
+			"label": "Container 3",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": "#umoya-email-optout",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": true,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_email_optout_umoya_ep_dialog",
+			"label": "Container 4",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": "#umoya-email-optout .umoya-ep-dialog",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": true,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_email_optout_umoya_ep_close",
+			"label": "Button",
+			"short_label": "Button",
+			"parent_label": "",
+			"sample": "",
+			"selector": "#umoya-email-optout .umoya-ep-close",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": true,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_email_optout_svg",
+			"label": "Button Icon",
+			"short_label": "Icon",
+			"parent_label": "Button",
+			"sample": "",
+			"selector": "#umoya-email-optout svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": true,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_email_optout_umoya_ep_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "Email Preferences",
+			"selector": "#umoya-email-optout .umoya-ep-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": true,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_email_optout_umoya_ep_ttl",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "",
+			"sample": "Email Opt-out",
+			"selector": "#umoya-email-optout .umoya-ep-ttl",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": true,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_email_optout_umoya_ep_rule",
+			"label": "Divider",
+			"short_label": "Divider",
+			"parent_label": "",
+			"sample": "",
+			"selector": "#umoya-email-optout .umoya-ep-rule",
+			"tag": "hr",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": true,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_email_optout_umoya_ep_body",
+			"label": "Content 2",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
+			"selector": "#umoya-email-optout .umoya-ep-body",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": true,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_email_optout_a",
+			"label": "Link",
+			"short_label": "Link",
+			"parent_label": "",
+			"sample": "info@umoyaafrikatours.co.za",
+			"selector": "#umoya-email-optout a",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": true,
+			"repeater": null
+		},
+		{
+			"id": "p_umoya_email_optout_strong",
+			"label": "Strong",
+			"short_label": "Strong",
+			"parent_label": "",
+			"sample": "Unsubscribe",
+			"selector": "#umoya-email-optout strong",
+			"tag": "strong",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": true,
+			"repeater": null
+		}
+	],
+	"inline_styles": [
+		{
+			"id": "addr_inline_style",
+			"control": "inline_style_group",
+			"declarations": [
+				{
+					"prefix": "font-style:",
+					"id": "addr_css_font_style"
+				}
+			],
+			"tail": ";",
+			"internal": true
+		},
+		{
+			"id": "embed_inline_style",
+			"control": "inline_style_group",
+			"declarations": [
+				{
+					"prefix": "display:",
+					"id": "embed_css_display"
+				},
+				{
+					"prefix": ";width:",
+					"id": "embed_css_width"
+				},
+				{
+					"prefix": ";height:",
+					"id": "embed_css_height"
+				},
+				{
+					"prefix": ";border:",
+					"id": "embed_css_border"
+				}
+			],
+			"tail": ";",
+			"internal": true
+		}
+	],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Site footer",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src",
+			"control": "media",
+			"label": "Choose Image",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Property-1Umoya-Afrika-Logo_v3.svg"
+			},
+			"esc": "url",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "Umoya Afrika Tours",
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "text_text",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Premium culturally immersive journeys across South Africa.",
+			"esc": "post",
+			"group": "p_umoya_ft_descriptor",
+			"sort": 0
+		},
+		{
+			"id": "link_text",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "info@umoyaafrikatours.co.za",
+			"esc": "post",
+			"group": "p_umoya_ft_contact_a",
+			"sort": 0
+		},
+		{
+			"id": "link_href",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "mailto:info@umoyaafrikatours.co.za"
+			},
+			"esc": "url",
+			"group": "p_umoya_ft_contact_a",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "addr_text",
+			"control": "textarea",
+			"label": "Addr",
+			"description": "Inline formatting tags are preserved.",
+			"default": "West Tower, 2nd Floor,<br>\n            Nelson Mandela Square,<br>\n            Maude Street, Sandown,<br>\n            Johannesburg, 2146",
+			"esc": "post",
+			"group": "p_umoya_ft_addr",
+			"sort": 0
+		},
+		{
+			"id": "addr_css_font_style",
+			"control": "text",
+			"label": "Font Style",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "normal",
+			"esc": "attr",
+			"group": "p_umoya_ft_addr",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "column_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Journeys",
+			"esc": "attr",
+			"group": "p_umoya_ft_col",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "heading_text",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Journeys",
+			"esc": "post",
+			"group": "p_umoya_ft_col_h3_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "column_aria_label_2",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Support",
+			"esc": "attr",
+			"group": "p_umoya_ft_col",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "heading_text_2",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Support",
+			"esc": "post",
+			"group": "p_umoya_ft_col_h3_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "column_aria_label_3",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Legal",
+			"esc": "attr",
+			"group": "p_umoya_ft_col",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "heading_text_3",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Legal",
+			"esc": "post",
+			"group": "p_umoya_ft_col_h3_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "link_text_2",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "Terms &amp; Conditions",
+			"esc": "post",
+			"group": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_1_a_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "link_href_2",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/terms-and-conditions/"
+			},
+			"esc": "url",
+			"group": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_1_a_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "link_text_3",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "Privacy Policy",
+			"esc": "post",
+			"group": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_2_a_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "link_href_3",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/privacy/"
+			},
+			"esc": "url",
+			"group": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_2_a_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "button_text",
+			"control": "text",
+			"label": "Button",
+			"description": "",
+			"default": "Cookie Settings",
+			"esc": "post",
+			"group": "p_cky_banner_element",
+			"sort": 0
+		},
+		{
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_cky_banner_element",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "button_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "link_text_4",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "Email Opt-out",
+			"esc": "post",
+			"group": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_4_a_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "link_href_4",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "mailto:info@umoyaafrikatours.co.za?subject=Unsubscribe"
+			},
+			"esc": "url",
+			"group": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_4_a_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "link_text_5",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "PAIA Manual",
+			"esc": "post",
+			"group": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_5_a",
+			"sort": 0
+		},
+		{
+			"id": "link_href_5",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/umoya_paia_manual.pdf"
+			},
+			"esc": "url",
+			"group": "p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_5_a",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "link_target",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "link_rel",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "heading_text_4",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Join the Founder&rsquo;s Circle",
+			"esc": "post",
+			"group": "p_umoya_ft_signup_umoya_ft_h",
+			"sort": 0
+		},
+		{
+			"id": "embed_allowfullscreen",
+			"control": "switcher",
+			"label": "Allow Fullscreen",
+			"description": "",
+			"default": "",
+			"flag_attr": "allowfullscreen",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_iframe",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "embed_title",
+			"control": "text",
+			"label": "Title Attribute",
+			"default": "Newsletter submission target",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "embed_css_display",
+			"control": "text",
+			"label": "Display",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "none",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "embed_css_width",
+			"control": "text",
+			"label": "Width",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "embed_css_height",
+			"control": "text",
+			"label": "Height",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "embed_css_border",
+			"control": "text",
+			"label": "Border",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_iframe",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "form_novalidate",
+			"control": "switcher",
+			"label": "Skip Browser Validation",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "novalidate",
+			"flag_prefix": "\n          ",
+			"esc": "raw",
+			"group": "p_form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "form_data_hs_do_not_collect",
+			"control": "text",
+			"label": "Hs Do Not Collect",
+			"default": "true",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "form_action",
+			"control": "url",
+			"label": "Form Action",
+			"default": {
+				"url": "/wp-json/umoya/v1/submissions"
+			},
+			"esc": "url",
+			"group": "p_form",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "form_method",
+			"control": "select",
+			"label": "Method",
+			"default": "post",
+			"options": [
+				"get",
+				"post"
+			],
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "form_target",
+			"control": "select",
+			"label": "Link Target",
+			"default": "umoyaFooterFrame",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "form_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Join the Founder's Circle",
+			"esc": "attr",
+			"group": "p_form",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "form_data_hubspot_portal_id",
+			"control": "text",
+			"label": "Hubspot Portal Id",
+			"default": "246097317",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "form_data_hubspot_form_id",
+			"control": "text",
+			"label": "Hubspot Form Id",
+			"default": "40d535ad-fc91-4831-8231-eddc05208624",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "form_data_umoya_form_source",
+			"control": "text",
+			"label": "Umoya Form Source",
+			"default": "footer_newsletter",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "form_data_wordpress_backup_endpoint",
+			"control": "text",
+			"label": "Wordpress Backup Endpoint",
+			"default": "/wp-json/umoya/v1/submissions",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "form_data_hubspot_consent_text",
+			"control": "text",
+			"label": "Hubspot Consent Text",
+			"default": "By subscribing you consent to receive marketing communications from Umoya Afrika Tours (Pty) Ltd. We never share your email, and you may unsubscribe at any time. See our Privacy Policy.",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "field_required",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_readonly",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_checked",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_type",
+			"control": "text",
+			"label": "Type",
+			"default": "hidden",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_name",
+			"control": "text",
+			"label": "Field Name",
+			"default": "source",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "field_value",
+			"control": "text",
+			"label": "Value",
+			"default": "footer_newsletter",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "field_required_2",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_readonly_2",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_checked_2",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_type_2",
+			"control": "text",
+			"label": "Type",
+			"default": "hidden",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_name_2",
+			"control": "text",
+			"label": "Field Name",
+			"default": "hubspotPortalId",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "field_value_2",
+			"control": "text",
+			"label": "Value",
+			"default": "246097317",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "field_required_3",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_disabled_3",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_readonly_3",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_checked_3",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_type_3",
+			"control": "text",
+			"label": "Type",
+			"default": "hidden",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_name_3",
+			"control": "text",
+			"label": "Field Name",
+			"default": "hubspotFormId",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "field_value_3",
+			"control": "text",
+			"label": "Value",
+			"default": "40d535ad-fc91-4831-8231-eddc05208624",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "field_required_4",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_disabled_4",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_readonly_4",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_checked_4",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_type_4",
+			"control": "text",
+			"label": "Type",
+			"default": "hidden",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_name_4",
+			"control": "text",
+			"label": "Field Name",
+			"default": "consentText",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "field_value_4",
+			"control": "text",
+			"label": "Value",
+			"default": "By subscribing you consent to receive marketing communications from Umoya Afrika Tours (Pty) Ltd. We never share your email, and you may unsubscribe at any time. See our Privacy Policy.",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "field_required_5",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_disabled_5",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_readonly_5",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_checked_5",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_type_5",
+			"control": "text",
+			"label": "Type",
+			"default": "hidden",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_name_5",
+			"control": "text",
+			"label": "Field Name",
+			"default": "hutk",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "field_value_5",
+			"control": "text",
+			"label": "Value",
+			"default": "",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "field_required_6",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_disabled_6",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_readonly_6",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_checked_6",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_type_6",
+			"control": "text",
+			"label": "Type",
+			"default": "hidden",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_name_6",
+			"control": "text",
+			"label": "Field Name",
+			"default": "pageUri",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "field_value_6",
+			"control": "text",
+			"label": "Value",
+			"default": "",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "field_required_7",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_disabled_7",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_readonly_7",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_checked_7",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_type_7",
+			"control": "text",
+			"label": "Type",
+			"default": "hidden",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "field_name_7",
+			"control": "text",
+			"label": "Field Name",
+			"default": "pageName",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "field_value_7",
+			"control": "text",
+			"label": "Value",
+			"default": "",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "label_text",
+			"control": "text",
+			"label": "Label",
+			"description": "",
+			"default": "Name",
+			"esc": "post",
+			"group": "p_umoya_ft_sr",
+			"sort": 0
+		},
+		{
+			"id": "anchor_required",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_readonly",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_checked",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_name",
+			"control": "text",
+			"label": "Field Name",
+			"default": "FNAME",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "anchor_type",
+			"control": "text",
+			"label": "Type",
+			"default": "text",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_placeholder",
+			"control": "text",
+			"label": "Placeholder",
+			"default": "Name",
+			"esc": "attr",
+			"group": "p_input",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "anchor_autocomplete",
+			"control": "text",
+			"label": "Autocomplete",
+			"default": "given-name",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "label_text_2",
+			"control": "text",
+			"label": "Label",
+			"description": "",
+			"default": "Email address",
+			"esc": "post",
+			"group": "p_umoya_ft_sr",
+			"sort": 0
+		},
+		{
+			"id": "anchor_required_2",
+			"control": "switcher",
+			"label": "Required",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "required",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_readonly_2",
+			"control": "switcher",
+			"label": "Read Only",
+			"description": "",
+			"default": "",
+			"flag_attr": "readonly",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_checked_2",
+			"control": "switcher",
+			"label": "Checked By Default",
+			"description": "",
+			"default": "",
+			"flag_attr": "checked",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_input",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_name_2",
+			"control": "text",
+			"label": "Field Name",
+			"default": "EMAIL",
+			"esc": "attr",
+			"group": "integration",
+			"tab": "integration",
+			"sort": 1
+		},
+		{
+			"id": "anchor_type_2",
+			"control": "text",
+			"label": "Type",
+			"default": "email",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "anchor_placeholder_2",
+			"control": "text",
+			"label": "Placeholder",
+			"default": "Email address",
+			"esc": "attr",
+			"group": "p_input",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "anchor_autocomplete_2",
+			"control": "text",
+			"label": "Autocomplete",
+			"default": "email",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "button_text_2",
+			"control": "text",
+			"label": "Button",
+			"description": "",
+			"default": "Join",
+			"esc": "post",
+			"group": "p_umoya_ft_submit",
+			"sort": 0
+		},
+		{
+			"id": "button_disabled_2",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_ft_submit",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "button_type_2",
+			"control": "text",
+			"label": "Type",
+			"default": "submit",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "text_text_2",
+			"control": "textarea",
+			"label": "Text",
+			"default": "By subscribing you consent to receive marketing communications from\n          Umoya Afrika Tours (Pty) Ltd. We never share your email, and you may unsubscribe at any time.\n          See our",
+			"esc": "post",
+			"group": "p_umoya_ft_fine",
+			"sort": 0
+		},
+		{
+			"id": "text_text_2_2",
+			"control": "text",
+			"label": "Text 2",
+			"default": ".",
+			"esc": "post",
+			"group": "p_umoya_ft_fine",
+			"sort": 0
+		},
+		{
+			"id": "link_text_6",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "Privacy Policy",
+			"esc": "post",
+			"group": "p_umoya_ft_fine_a",
+			"sort": 0
+		},
+		{
+			"id": "link_href_6",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/privacy/"
+			},
+			"esc": "url",
+			"group": "p_umoya_ft_fine_a",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "link_target_2",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "link_rel_2",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "text_text_3",
+			"control": "text",
+			"label": "Text",
+			"default": "&copy;",
+			"esc": "post",
+			"group": "p_umoya_ft_legalline",
+			"sort": 0
+		},
+		{
+			"id": "text_text_2_3",
+			"control": "text",
+			"label": "Text 2",
+			"default": "Umoya Afrika Tours (Pty) Ltd &middot; Reg. 2025/818751/07",
+			"esc": "post",
+			"group": "p_umoya_ft_legalline",
+			"sort": 0
+		},
+		{
+			"id": "text_text_4",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "2026",
+			"esc": "post",
+			"group": "p_span",
+			"sort": 0
+		},
+		{
+			"id": "label_text_3",
+			"control": "text",
+			"label": "Label",
+			"description": "",
+			"default": "Breathe South Africa Differently",
+			"esc": "post",
+			"group": "p_umoya_ft_tag",
+			"sort": 0
+		},
+		{
+			"id": "link_href_7",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://www.instagram.com/umoyaafrikatours/"
+			},
+			"esc": "url",
+			"group": "p_umoya_ft_social_a",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "link_target_3",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "link_rel_3",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "link_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Umoya Afrika Tours on Instagram",
+			"esc": "attr",
+			"group": "p_umoya_ft_social_a",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "link_href_8",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://www.facebook.com/umoyaafrikatours"
+			},
+			"esc": "url",
+			"group": "p_umoya_ft_social_a",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "link_target_4",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "link_rel_4",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "link_aria_label_2",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Umoya Afrika Tours on Facebook",
+			"esc": "attr",
+			"group": "p_umoya_ft_social_a",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "link_href_9",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://www.tiktok.com/@umoyaafrikatours"
+			},
+			"esc": "url",
+			"group": "p_umoya_ft_social_a",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "link_target_5",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "link_rel_5",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "link_aria_label_3",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Umoya Afrika Tours on TikTok",
+			"esc": "attr",
+			"group": "p_umoya_ft_social_a",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "link_href_10",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://www.linkedin.com/company/umoyaafrikatours/"
+			},
+			"esc": "url",
+			"group": "p_umoya_ft_social_a",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "link_target_6",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "link_rel_6",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "link_aria_label_4",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Umoya Afrika Tours on LinkedIn",
+			"esc": "attr",
+			"group": "p_umoya_ft_social_a",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "button_disabled_3",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_email_optout_umoya_ep_close",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "button_type_3",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "button_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Close email opt-out",
+			"esc": "attr",
+			"group": "p_umoya_email_optout_umoya_ep_close",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Email Preferences",
+			"esc": "post",
+			"group": "p_umoya_email_optout_umoya_ep_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "Email Opt-out",
+			"esc": "post",
+			"group": "p_umoya_email_optout_umoya_ep_ttl",
+			"sort": 0
+		},
+		{
+			"id": "content_text",
+			"control": "textarea",
+			"label": "Text",
+			"default": "To stop receiving marketing email from Umoya, use the unsubscribe link in any of our emails, or write to",
+			"esc": "post",
+			"group": "p_umoya_email_optout_umoya_ep_body",
+			"sort": 0
+		},
+		{
+			"id": "content_text_2",
+			"control": "text",
+			"label": "Text 2",
+			"default": "with the subject",
+			"esc": "post",
+			"group": "p_umoya_email_optout_umoya_ep_body",
+			"sort": 0
+		},
+		{
+			"id": "content_text_3",
+			"control": "text",
+			"label": "Text 3",
+			"default": "and we will remove you within 7 days.",
+			"esc": "post",
+			"group": "p_umoya_email_optout_umoya_ep_body",
+			"sort": 0
+		},
+		{
+			"id": "link_text_7",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "info@umoyaafrikatours.co.za",
+			"esc": "post",
+			"group": "p_umoya_email_optout_a",
+			"sort": 0
+		},
+		{
+			"id": "link_href_11",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "mailto:info@umoyaafrikatours.co.za?subject=Unsubscribe"
+			},
+			"esc": "url",
+			"group": "p_umoya_email_optout_a",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "strong_text",
+			"control": "text",
+			"label": "Strong",
+			"description": "",
+			"default": "Unsubscribe",
+			"esc": "post",
+			"group": "p_umoya_email_optout_strong",
+			"sort": 0
+		}
+	]
+}

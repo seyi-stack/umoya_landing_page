@@ -40,33 +40,18 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="sj-ext-grid">
 
       <!-- Extension One — Victoria Falls -->
-      <article class="sj-ext-tile sj-ext-rv d1">
-        <!-- Extension One · Victoria Falls — umoya_compressed_img233195226.jpeg -->
-        <div class="sj-ext-img">
-          <img src="<?php echo $c['image_src']; ?>" alt="<?php echo $c['image_alt']; ?>" loading="<?php echo $c['image_loading']; ?>" />
-        </div>
-        <div class="sj-ext-body">
-          <div class="sj-ext-num"><?php echo $c['text_text']; ?></div>
-          <h3 class="sj-ext-name"><?php echo $c['heading_text']; ?></h3>
-          <div class="sj-ext-where"><?php echo $c['text_text_2']; ?></div>
-          <p class="sj-ext-desc"><?php echo $c['text_text_3']; ?></p>
-        </div>
-      </article>
+      <?php $__i = 0; foreach ( $r['rep_article_sj_ext_tile'] as $it ) : if ( $__i ++ ) { echo '
 
       <!-- Extension Two — Chobe -->
-      <article class="sj-ext-tile sj-ext-rv d2">
-        <!-- Extension Two · Chobe — umoya_compressed_Chobe-Princess_Exterior_at-Sunset-709-1600x1066.jpg -->
-        <div class="sj-ext-img">
-          <img src="<?php echo $c['image_src_2']; ?>" alt="<?php echo $c['image_alt_2']; ?>" loading="<?php echo $c['image_loading_2']; ?>" />
+      '; } ?><article class="<?php echo 'sj-ext-tile sj-ext-rv d' . $it['_uew_n']; ?> <?php echo $it['_uew_item_class']; ?>"><?php echo $it['notes']; ?><div class="sj-ext-img">
+          <img src="<?php echo $it['src']; ?>" alt="<?php echo $it['alt']; ?>" loading="<?php echo $it['loading']; ?>" />
         </div>
         <div class="sj-ext-body">
-          <div class="sj-ext-num"><?php echo $c['text_text_4']; ?></div>
-          <h3 class="sj-ext-name"><?php echo $c['heading_text_2']; ?></h3>
-          <div class="sj-ext-where"><?php echo $c['text_text_5']; ?></div>
-          <p class="sj-ext-desc"><?php echo $c['text_text_6']; ?></p>
+          <div class="sj-ext-num"><?php echo $it['num']; ?></div>
+          <h3 class="sj-ext-name"><?php echo $it['name']; ?></h3>
+          <div class="sj-ext-where"><?php echo $it['where']; ?></div>
+          <p class="sj-ext-desc"><?php echo $it['desc']; ?></p>
         </div>
-      </article>
-
-    </div>
+      </article><?php endforeach; echo "\n\n    "; ?></div>
   </div>
 </section>

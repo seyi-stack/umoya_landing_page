@@ -18,11 +18,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 =================================================================
   UMOYA — THE SIGNATURE JOURNEY — SECTION 06: INCLUSIONS & OFFERS
 =================================================================
-  Two-column layout:
+  Two-column layout, both columns levelled top and bottom:
     LEFT  — "What Your Journey Includes" card grid (5 inclusions +
-            1 "Not included" dashed card)
-    RIGHT — sticky Offers panel (Founder's Circle rate, helicopter,
-            organizer) with a "Speak With a Travel Expert" CTA.
+            1 "Not included" dashed card), then the "Your Investment"
+            pricing card, which grows to absorb any height difference.
+    RIGHT — Offers panel (Founder's Circle rate, helicopter, organizer)
+            with a "Speak With a Travel Expert" CTA. The three offer rows
+            share the panel's spare height so the spacing stays even.
 
   ANCHOR: id="sj-inclusions" is the nav target — do not change.
   The offers CTA points at the closing section (#sj-cta).
@@ -40,22 +42,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     <div class="sj-inc-layout">
 
-      <!-- Inclusion cards -->
-      <div class="sj-inc-cards sj-inc-rv">
-        <?php $__i = 0; foreach ( $r['rep_div_sj_inc_card'] as $it ) : if ( $__i ++ ) { echo '
-        '; } ?><div class="sj-inc-card <?php echo $it['_uew_item_class']; ?>">
-          <span class="sj-inc-ic"><svg viewBox="<?php echo $it['viewbox']; ?>"><?php echo $it['svg_markup']; ?></svg></span>
-          <p><?php echo $it['p']; ?></p>
-        </div><?php endforeach; echo "\n        "; ?><div class="sj-inc-card sj-inc-plain">
-          <h4><?php echo $c['heading_text']; ?></h4>
-          <p><?php echo $c['text_text']; ?></p>
+      <!-- Inclusion cards + investment -->
+      <div class="sj-inc-left sj-inc-rv">
+        <div class="sj-inc-cards">
+          <?php $__i = 0; foreach ( $r['rep_div_sj_inc_card'] as $it ) : if ( $__i ++ ) { echo '
+          '; } ?><div class="sj-inc-card <?php echo $it['_uew_item_class']; ?>">
+            <span class="sj-inc-ic"><svg viewBox="<?php echo $it['viewbox']; ?>"><?php echo $it['svg_markup']; ?></svg></span>
+            <p><?php echo $it['p']; ?></p>
+          </div><?php endforeach; echo "\n          "; ?><div class="sj-inc-card sj-inc-plain">
+            <h4><?php echo $c['heading_text']; ?></h4>
+            <p><?php echo $c['text_text']; ?></p>
+          </div>
         </div>
+
+        <div class="sj-inc-price">
+          <h3 class="sj-inc-price-ttl"><?php echo $c['title_text_2']; ?></h3>
+          <p class="sj-inc-price-amt"><?php echo $c['text_text_2']; ?></p>
+          <?php $__i = 0; foreach ( $r['rep_p'] as $it ) : if ( $__i ++ ) { echo '
+          '; } ?><p class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['p']; ?></p><?php endforeach; echo "\n        "; ?></div>
       </div>
 
       <!-- Offers panel -->
       <aside class="sj-offers sj-inc-rv d1" aria-label="<?php echo $c['aside_aria_label']; ?>">
         <div class="sj-offers-sub"><?php echo $c['subtitle_text']; ?></div>
-        <h3 class="sj-offers-ttl"><?php echo $c['title_text_2']; ?></h3>
+        <h3 class="sj-offers-ttl"><?php echo $c['title_text_3']; ?></h3>
 
         <?php $__i = 0; foreach ( $r['rep_div_sj_ofr'] as $it ) : if ( $__i ++ ) { echo '
 
@@ -72,7 +82,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                request, so #sj-cta no longer exists.) -->
           <button type="<?php echo $c['button_type']; ?>" class="sj-offers-btn" data-umoya-form-popup<?php echo $c['button_disabled']; ?>><?php echo $c['button_text']; ?></button>
         </div>
-        <p class="sj-offers-fine"><?php echo $c['text_text_2']; ?></p>
+        <p class="sj-offers-fine"><?php echo $c['text_text_3']; ?></p>
       </aside>
 
     </div>

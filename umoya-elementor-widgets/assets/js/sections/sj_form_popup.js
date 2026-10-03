@@ -16,6 +16,37 @@
 	var ROOT_SELECTOR = "#umoya-form-popup";
 	var WIDGET_NAME = "umoya-sj-form-popup";
 
+	var PORTAL_IDS = ["umoya-form-popup"];
+
+	/*
+	 * In the editor every control change re-renders the widget, bringing a
+	 * fresh copy of each dialog that moves itself to <body> -- while the
+	 * previous copy is still there, with the previous run's listeners still
+	 * attached. A trigger would then open both: the fresh one on top and a
+	 * stale one underneath that reappears when the fresh one is closed.
+	 *
+	 * Each copy outside the widget being initialised is retired before the
+	 * section script runs again: hidden for good, and without its id so the
+	 * script's getElementById() finds the fresh one. On a published page there
+	 * is only ever one copy, so this does nothing there.
+	 */
+	function uewRetireStalePortals( scopeElement ) {
+		for ( var i = 0; i < PORTAL_IDS.length; i++ ) {
+			var copies = document.querySelectorAll( '[id="' + PORTAL_IDS[ i ] + '"]' );
+			if ( copies.length < 2 ) {
+				continue;
+			}
+			for ( var j = 0; j < copies.length; j++ ) {
+				if ( scopeElement.contains( copies[ j ] ) ) {
+					continue;
+				}
+				copies[ j ].removeAttribute( 'id' );
+				copies[ j ].setAttribute( 'data-uew-retired', '1' );
+				copies[ j ].style.setProperty( 'display', 'none', 'important' );
+			}
+		}
+	}
+
 	function uewRun() {
 		(function(){
 		  'use strict';
@@ -494,6 +525,10 @@
 		}
 		if ( root ) {
 			root.setAttribute( 'data-uew-ready', '1' );
+		}
+
+		if ( context !== document && context.contains ) {
+			uewRetireStalePortals( context );
 		}
 
 		uewRun();

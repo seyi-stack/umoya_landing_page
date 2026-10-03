@@ -1,0 +1,678 @@
+{
+	"key": "fg_hero",
+	"name": "umoya-fg-hero",
+	"title": "Groups Hero",
+	"description": "Full-bleed image hero, \"Bring Your Circle\", left-aligned.",
+	"icon": "eicon-banner",
+	"category": "umoya-fg",
+	"source": "for-groups/section-01-hero.html",
+	"class_name": "FG_Hero",
+	"widget_file": "widgets/class-fg-hero.php",
+	"root_selector": "#fg-hero",
+	"template": "templates/sections/fg_hero.php",
+	"style": {
+		"handle": "uew-umoya-fg-hero",
+		"file": "assets/css/sections/fg_hero.css"
+	},
+	"script": null,
+	"keywords": [
+		"umoya",
+		"groups",
+		"for groups",
+		"group travel",
+		"hero"
+	],
+	"portals": [],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#fg-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#fg-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#fg-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"selectors": [
+				"#fg-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"selectors": [
+				"#fg-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"selectors": [
+				"#fg-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "For Groups — Hero",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_img",
+			"label": "Background",
+			"sample": "",
+			"region_label": "Background",
+			"controls": [
+				{
+					"id": "image_src",
+					"control": "media",
+					"label": "Choose Image",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_groups_hero.jpg"
+					},
+					"esc": "url",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "image_alt",
+					"control": "text",
+					"label": "Alt Text",
+					"default": "A group travelling together across South Africa with Umoya",
+					"esc": "attr",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "For Groups",
+					"esc": "post",
+					"group": "p_fg_h_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "Bring Your Circle",
+					"esc": "post",
+					"group": "p_fg_h_title",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "subtitle_text",
+					"control": "textarea",
+					"label": "Subtitle",
+					"description": "",
+					"default": "The best journeys are the ones you share. Whether you are bringing a sorority, a church, an alumni network, or simply your closest friends, we make traveling together effortless, and we look after the person who brings everyone along.",
+					"esc": "post",
+					"group": "p_fg_h_sub",
+					"sort": 0,
+					"part_label": "Subtitle"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_fg_h_btn_primary",
+			"label": "Button 1",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Text",
+					"default": "Plan a Group Journey",
+					"esc": "post",
+					"group": "p_fg_h_btn_primary",
+					"sort": 0,
+					"part_label": "Button 1"
+				},
+				{
+					"id": "button_href",
+					"control": "url",
+					"label": "Link",
+					"default": {
+						"url": "#fg-plan"
+					},
+					"esc": "url",
+					"group": "p_fg_h_btn_primary",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Button 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_fg_h_btn_ghost",
+			"label": "Button 2",
+			"sample": "See the Journey",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "button_text_2",
+					"control": "text",
+					"label": "Button",
+					"description": "",
+					"default": "See the Journey",
+					"esc": "post",
+					"group": "p_fg_h_btn_ghost",
+					"sort": 0,
+					"part_label": "Button 2"
+				},
+				{
+					"id": "button_href_2",
+					"control": "url",
+					"label": "Link",
+					"default": {
+						"url": "#fg-journey"
+					},
+					"esc": "url",
+					"group": "p_fg_h_btn_ghost",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Button 2"
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_h_bg",
+			"label": "Background",
+			"short_label": "Background",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".fg-h-bg",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_img",
+			"label": "Image",
+			"short_label": "Image",
+			"parent_label": "Background",
+			"sample": "",
+			"selector": "img",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_h_content",
+			"label": "Content",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".fg-h-content",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_h_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "For Groups",
+			"selector": ".fg-h-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [
+				"opacity",
+				"transform"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_h_title",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "",
+			"sample": "Bring Your Circle",
+			"selector": ".fg-h-title",
+			"tag": "h1",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [
+				"opacity",
+				"transform"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_h_sub",
+			"label": "Subtitle",
+			"short_label": "Subtitle",
+			"parent_label": "",
+			"sample": "The best journeys are the ones you share. Wheth…",
+			"selector": ".fg-h-sub",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [
+				"opacity",
+				"transform"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_h_btns",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".fg-h-btns",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"animated": [
+				"opacity",
+				"transform"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_h_btn_primary",
+			"label": "Button 1",
+			"short_label": "Button",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".fg-h-btn-primary",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_svg",
+			"label": "Icon",
+			"short_label": "Icon",
+			"parent_label": "Button",
+			"sample": "",
+			"selector": "svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_h_btn_ghost",
+			"label": "Button 2",
+			"short_label": "Button",
+			"parent_label": "",
+			"sample": "See the Journey",
+			"selector": ".fg-h-btn-ghost",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "For Groups — Hero",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src",
+			"control": "media",
+			"label": "Choose Image",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_groups_hero.jpg"
+			},
+			"esc": "url",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "A group travelling together across South Africa with Umoya",
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "For Groups",
+			"esc": "post",
+			"group": "p_fg_h_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "Bring Your Circle",
+			"esc": "post",
+			"group": "p_fg_h_title",
+			"sort": 0
+		},
+		{
+			"id": "subtitle_text",
+			"control": "textarea",
+			"label": "Subtitle",
+			"description": "",
+			"default": "The best journeys are the ones you share. Whether you are bringing a sorority, a church, an alumni network, or simply your closest friends, we make traveling together effortless, and we look after the person who brings everyone along.",
+			"esc": "post",
+			"group": "p_fg_h_sub",
+			"sort": 0
+		},
+		{
+			"id": "button_text",
+			"control": "text",
+			"label": "Text",
+			"default": "Plan a Group Journey",
+			"esc": "post",
+			"group": "p_fg_h_btn_primary",
+			"sort": 0
+		},
+		{
+			"id": "button_href",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "#fg-plan"
+			},
+			"esc": "url",
+			"group": "p_fg_h_btn_primary",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "button_text_2",
+			"control": "text",
+			"label": "Button",
+			"description": "",
+			"default": "See the Journey",
+			"esc": "post",
+			"group": "p_fg_h_btn_ghost",
+			"sort": 0
+		},
+		{
+			"id": "button_href_2",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "#fg-journey"
+			},
+			"esc": "url",
+			"group": "p_fg_h_btn_ghost",
+			"tab": "content",
+			"sort": 1
+		}
+	]
+}

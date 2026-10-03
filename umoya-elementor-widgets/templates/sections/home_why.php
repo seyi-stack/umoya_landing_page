@@ -41,27 +41,12 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>
     <div class="fc-pil-grid" role="list">
 
-      <div class="fc-pil-col fc-pil-rv" role="listitem">
-        <h3 class="fc-pil-title"><?php echo $c['title_text_2']; ?></h3>
-        <p class="fc-pil-body"><?php echo $c['text_text']; ?></p>
-      </div>
+      <?php $__i = 0; foreach ( $r['rep_div_fc_pil_col'] as $it ) : if ( $__i ++ ) { echo '
 
-      <div class="fc-pil-col fc-pil-rv d1" role="listitem">
-        <h3 class="fc-pil-title"><?php echo $c['title_text_3']; ?></h3>
-        <p class="fc-pil-body"><?php echo $c['text_text_2']; ?></p>
-      </div>
-
-      <div class="fc-pil-col fc-pil-rv d2" role="listitem">
-        <h3 class="fc-pil-title"><?php echo $c['title_text_4']; ?></h3>
-        <p class="fc-pil-body"><?php echo $c['text_text_3']; ?></p>
-      </div>
-
-      <div class="fc-pil-col fc-pil-rv d3" role="listitem">
-        <h3 class="fc-pil-title"><?php echo $c['title_text_5']; ?></h3>
-        <p class="fc-pil-body"><?php echo $c['text_text_4']; ?></p>
-      </div>
-
-    </div>
+      '; } ?><div class="<?php echo array( 'fc-pil-col fc-pil-rv', 'fc-pil-col fc-pil-rv d1', 'fc-pil-col fc-pil-rv d2', 'fc-pil-col fc-pil-rv d3' )[ ( ( (int) $it['_uew_n'] ) - 1 ) % 4 ]; ?> <?php echo $it['_uew_item_class']; ?>" role="<?php echo $it['role']; ?>">
+        <h3 class="fc-pil-title"><?php echo $it['title']; ?></h3>
+        <p class="fc-pil-body"><?php echo $it['body']; ?></p>
+      </div><?php endforeach; echo "\n\n    "; ?></div>
   </div>
 
 </section>

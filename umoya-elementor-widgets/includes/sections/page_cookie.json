@@ -1,0 +1,2279 @@
+{
+	"key": "page_cookie",
+	"name": "umoya-page-cookie",
+	"title": "Cookie Policy Page",
+	"description": "Cookie Policy v1.2 for /cookie-policy/, with the in-page CookieYes settings button. Verbatim legal copy.",
+	"icon": "eicon-lock",
+	"category": "umoya-site",
+	"source": "shared/page-cookie-policy.html",
+	"class_name": "Page_Cookie",
+	"widget_file": "widgets/class-page-cookie.php",
+	"root_selector": "#umoya-cookie-policy",
+	"template": "templates/sections/page_cookie.php",
+	"style": {
+		"handle": "uew-umoya-page-cookie",
+		"file": "assets/css/sections/page_cookie.css"
+	},
+	"script": {
+		"handle": "uew-umoya-page-cookie",
+		"file": "assets/js/sections/page_cookie.js"
+	},
+	"keywords": [
+		"umoya",
+		"site",
+		"global",
+		"shared",
+		"cookie",
+		"policy",
+		"page"
+	],
+	"portals": [],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#umoya-cookie-policy"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"selectors": [
+				"#umoya-cookie-policy"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
+			"label": "White"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#umoya-cookie-policy"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#umoya-cookie-policy"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"selectors": [
+				"#umoya-cookie-policy"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.76)",
+			"kind": "color",
+			"selectors": [
+				"#umoya-cookie-policy"
+			],
+			"scoped": false,
+			"id": "uew_token_muted",
+			"label": "Muted"
+		},
+		{
+			"name": "line",
+			"value": "rgba(75,46,43,.14)",
+			"kind": "color",
+			"selectors": [
+				"#umoya-cookie-policy"
+			],
+			"scoped": false,
+			"id": "uew_token_line",
+			"label": "Line"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_ck_eye",
+			"label": "Header",
+			"sample": "Legal",
+			"region_label": "Header",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Legal",
+					"esc": "post",
+					"group": "p_ck_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "Cookie Policy",
+					"esc": "post",
+					"group": "p_ck_ttl",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "text_text",
+					"control": "textarea",
+					"label": "Text",
+					"description": "Inline formatting tags are preserved.",
+					"default": "<strong>Effective date:</strong> 1 June 2026<br>\n        <strong>Last updated:</strong> 26 August 2026<br>\n        Version 1.2",
+					"esc": "post",
+					"group": "p_ck_meta",
+					"sort": 0,
+					"part_label": "Header Text"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_ck_sec_h2_nth_of_type_1",
+			"label": "Heading 1",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "heading_text",
+					"control": "text",
+					"label": "Text 1",
+					"default": "About this policy",
+					"esc": "post",
+					"group": "p_ck_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_2",
+					"control": "text",
+					"label": "Text 2",
+					"default": "What are cookies?",
+					"esc": "post",
+					"group": "p_ck_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_3",
+					"control": "text",
+					"label": "Text 3",
+					"default": "The cookies we use",
+					"esc": "post",
+					"group": "p_ck_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_8",
+					"control": "text",
+					"label": "Text 4",
+					"default": "Your choices",
+					"esc": "post",
+					"group": "p_ck_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_9",
+					"control": "text",
+					"label": "Text 5",
+					"default": "Third-party cookies",
+					"esc": "post",
+					"group": "p_ck_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_10",
+					"control": "text",
+					"label": "Text 6",
+					"default": "Changes to this policy",
+					"esc": "post",
+					"group": "p_ck_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_11",
+					"control": "text",
+					"label": "Text 7",
+					"default": "Contact us",
+					"esc": "post",
+					"group": "p_ck_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_ck_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"label": "Heading Text",
+			"sample": "1.",
+			"region_label": "Heading",
+			"controls": [
+				{
+					"id": "text_text_2",
+					"control": "text",
+					"label": "Text 1",
+					"description": "",
+					"default": "1.",
+					"esc": "post",
+					"group": "p_ck_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_3",
+					"control": "text",
+					"label": "Text 2",
+					"description": "",
+					"default": "2.",
+					"esc": "post",
+					"group": "p_ck_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_4",
+					"control": "text",
+					"label": "Text 3",
+					"description": "",
+					"default": "3.",
+					"esc": "post",
+					"group": "p_ck_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_8",
+					"control": "text",
+					"label": "Text 4",
+					"description": "",
+					"default": "4.",
+					"esc": "post",
+					"group": "p_ck_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_12",
+					"control": "text",
+					"label": "Text 5",
+					"description": "",
+					"default": "5.",
+					"esc": "post",
+					"group": "p_ck_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_14",
+					"control": "text",
+					"label": "Text 6",
+					"description": "",
+					"default": "6.",
+					"esc": "post",
+					"group": "p_ck_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_16",
+					"control": "text",
+					"label": "Text 7",
+					"description": "",
+					"default": "7.",
+					"esc": "post",
+					"group": "p_ck_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				}
+			]
+		},
+		{
+			"id": "content_p_ck_sec_p_nth_of_type_1",
+			"label": "Content 1",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "content_text",
+					"control": "textarea",
+					"label": "Text 1",
+					"default": "This Cookie Policy explains how Umoya Afrika Tours (Pty) Ltd (\"Umoya\", \"we\", \"us\") uses cookies and similar technologies when you visit our website. It should be read together with our",
+					"esc": "post",
+					"group": "p_ck_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Content"
+				},
+				{
+					"id": "content_text_2",
+					"control": "text",
+					"label": "Text 2",
+					"default": ", which sets out how we process personal information more generally.",
+					"esc": "post",
+					"group": "p_ck_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Content"
+				},
+				{
+					"id": "text_text_5",
+					"control": "textarea",
+					"label": "Text 2",
+					"description": "",
+					"default": "We use the following categories of cookies on our website. The specific cookies currently set on your visit, together with their name, provider, purpose and duration, are listed in our cookie preferences panel and are updated automatically by our consent management platform, CookieYes.",
+					"esc": "post",
+					"group": "p_ck_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Content"
+				},
+				{
+					"id": "text_text_9",
+					"control": "textarea",
+					"label": "Text 3",
+					"description": "",
+					"default": "When you first visit our website, you are presented with a cookie banner that allows you to accept all cookies, reject non-essential cookies, or manage your preferences by category. You can change your preferences at any time by clicking the cookie-settings link in the footer of our website.",
+					"esc": "post",
+					"group": "p_ck_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Content"
+				},
+				{
+					"id": "text_text_13",
+					"control": "textarea",
+					"label": "Text 4",
+					"description": "",
+					"default": "Some cookies on our website are set by third parties, including our analytics, payment, marketing and infrastructure providers. These third parties may collect information about your interaction with our website over time and across other websites. Their use of cookies is governed by their own policies, which you can review on their websites. The third parties currently supporting our site include Cloudflare, Inc., Stripe, Inc., Google LLC (Google Analytics), HubSpot, Inc. and CookieYes Limited.",
+					"esc": "post",
+					"group": "p_ck_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Content"
+				},
+				{
+					"id": "text_text_15",
+					"control": "textarea",
+					"label": "Text 5",
+					"description": "",
+					"default": "We may update this Cookie Policy from time to time to reflect changes to the cookies we use or for other operational, legal or regulatory reasons. The dates at the top of this document indicate when it was first issued and when it was last revised.",
+					"esc": "post",
+					"group": "p_ck_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Content"
+				}
+			]
+		},
+		{
+			"id": "content_p_ck_sec_p_nth_of_type_1_a",
+			"label": "Link 1",
+			"sample": "Privacy Policy",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "link_text",
+					"control": "text",
+					"label": "Link 1",
+					"description": "",
+					"default": "Privacy Policy",
+					"esc": "post",
+					"group": "p_ck_sec_p_nth_of_type_1_a",
+					"sort": 0,
+					"part_label": "Link 1"
+				},
+				{
+					"id": "link_href",
+					"control": "url",
+					"label": "Link 2",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/privacy/"
+					},
+					"esc": "url",
+					"group": "p_ck_sec_p_nth_of_type_1_a",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Link 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_ck_h3",
+			"label": "Content 2",
+			"sample": "Necessary",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "heading_text_4",
+					"control": "text",
+					"label": "Heading 1",
+					"description": "",
+					"default": "Necessary",
+					"esc": "post",
+					"group": "p_ck_h3",
+					"sort": 0,
+					"part_label": "Heading 2"
+				},
+				{
+					"id": "heading_text_5",
+					"control": "text",
+					"label": "Heading 2",
+					"description": "",
+					"default": "Performance and analytics",
+					"esc": "post",
+					"group": "p_ck_h3",
+					"sort": 0,
+					"part_label": "Heading 2"
+				},
+				{
+					"id": "heading_text_6",
+					"control": "text",
+					"label": "Heading 3",
+					"description": "",
+					"default": "Functional",
+					"esc": "post",
+					"group": "p_ck_h3",
+					"sort": 0,
+					"part_label": "Heading 2"
+				},
+				{
+					"id": "heading_text_7",
+					"control": "text",
+					"label": "Heading 4",
+					"description": "",
+					"default": "Marketing",
+					"esc": "post",
+					"group": "p_ck_h3",
+					"sort": 0,
+					"part_label": "Heading 2"
+				},
+				{
+					"id": "text_text_11",
+					"control": "text",
+					"label": "Text",
+					"description": "",
+					"default": "If you use a different browser, please refer to its official support documentation.",
+					"esc": "post",
+					"group": "p_ck_sec_p_nth_of_type_4",
+					"sort": 0,
+					"part_label": "Text 2"
+				},
+				{
+					"id": "item_text",
+					"control": "textarea",
+					"label": "Item",
+					"description": "Inline formatting tags are preserved.",
+					"default": "<code>_ga_*</code> (Google Analytics, approximately 1 year) &mdash; used by Google Analytics to count and record page views, enabling us to understand overall site traffic and visitor behaviour in aggregate.",
+					"esc": "post",
+					"group": "p_ck_sec_ul_nth_of_type_2_ck_li",
+					"sort": 0,
+					"part_label": "List Item 2"
+				},
+				{
+					"id": "text_text_6",
+					"control": "textarea",
+					"label": "Text 3",
+					"description": "",
+					"default": "We may also use HubSpot analytics tools in support of our marketing and communications work, which set additional cookies in this category from time to time.",
+					"esc": "post",
+					"group": "p_ck_sec_p_nth_of_type_6",
+					"sort": 0,
+					"part_label": "Text 3"
+				},
+				{
+					"id": "text_text_7",
+					"control": "textarea",
+					"label": "Text 4",
+					"description": "",
+					"default": "These cookies remember preferences you have selected, such as language or region, so that we can offer you a more personalised experience on return visits. They require your consent.",
+					"esc": "post",
+					"group": "p_ck_sec_p_nth_of_type_7",
+					"sort": 0,
+					"part_label": "Text 4"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_ck_prefs_p",
+			"label": "Content 3",
+			"sample": "Or change them here:",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "text_text_10",
+					"control": "text",
+					"label": "Text",
+					"description": "",
+					"default": "Or change them here:",
+					"esc": "post",
+					"group": "p_ck_prefs_p",
+					"sort": 0,
+					"part_label": "Text 6"
+				},
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Button",
+					"description": "",
+					"default": "Cookie Settings",
+					"esc": "post",
+					"group": "p_cky_banner_element",
+					"sort": 0,
+					"part_label": "Button"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_ck_ct",
+			"label": "Container 4",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "container_text",
+					"control": "textarea",
+					"label": "Text",
+					"default": "For any questions about this Cookie Policy or about our use of cookies, please contact our Information Officer at",
+					"esc": "post",
+					"group": "p_ck_ct",
+					"sort": 0,
+					"part_label": "Container 4"
+				},
+				{
+					"id": "container_text_2",
+					"control": "text",
+					"label": "Text 2",
+					"default": ",\n        or by telephone on",
+					"esc": "post",
+					"group": "p_ck_ct",
+					"sort": 0,
+					"part_label": "Container 4"
+				},
+				{
+					"id": "container_text_3",
+					"control": "text",
+					"label": "Text 3",
+					"default": ".",
+					"esc": "post",
+					"group": "p_ck_ct",
+					"sort": 0,
+					"part_label": "Container 4"
+				}
+			]
+		},
+		{
+			"id": "content_p_ck_ct_a",
+			"label": "Link 4",
+			"sample": "info@umoyaafrikatours.co.za",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "link_text_2",
+					"control": "text",
+					"label": "Link 1",
+					"description": "",
+					"default": "info@umoyaafrikatours.co.za",
+					"esc": "post",
+					"group": "p_ck_ct_a",
+					"sort": 0,
+					"part_label": "Link 4"
+				},
+				{
+					"id": "link_text_3",
+					"control": "text",
+					"label": "Link 2",
+					"description": "",
+					"default": "+27 78 950 4410",
+					"esc": "post",
+					"group": "p_ck_ct_a",
+					"sort": 0,
+					"part_label": "Link 4"
+				},
+				{
+					"id": "link_href_2",
+					"control": "url",
+					"label": "Link 3",
+					"default": {
+						"url": "mailto:info@umoyaafrikatours.co.za"
+					},
+					"esc": "url",
+					"group": "p_ck_ct_a",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Link 4"
+				},
+				{
+					"id": "link_href_3",
+					"control": "url",
+					"label": "Link 4",
+					"default": {
+						"url": "tel:+27789504410"
+					},
+					"esc": "url",
+					"group": "p_ck_ct_a",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Link 4"
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [
+		{
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_cky_banner_element",
+			"tab": "form",
+			"sort": 1,
+			"part_label": "Button"
+		},
+		{
+			"id": "button_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_p_ck_p",
+			"label": "Umoya Cookie Policy Texts 1",
+			"item_label": "{{{ ck_p }}}",
+			"controls": [
+				{
+					"id": "ck_p",
+					"control": "textarea",
+					"label": "Paragraph",
+					"esc": "post",
+					"default": "A cookie is a small text file that is stored on your device when you visit a website. Cookies allow a website to recognise your device, remember your preferences and understand how you use the site. Similar technologies, such as web beacons and pixels, perform comparable functions and are treated as cookies for the purposes of this policy."
+				}
+			],
+			"rows": [
+				{
+					"ck_p": "A cookie is a small text file that is stored on your device when you visit a website. Cookies allow a website to recognise your device, remember your preferences and understand how you use the site. Similar technologies, such as web beacons and pixels, perform comparable functions and are treated as cookies for the purposes of this policy."
+				},
+				{
+					"ck_p": "Like most websites, ours uses both first-party cookies (set by us) and third-party cookies (set by services we use to run the site, understand how it performs, and keep it secure)."
+				}
+			],
+			"loops": 1,
+			"selector": ".ck-p",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_p_ck_p_2",
+			"label": "Umoya Cookie Policy Texts 2",
+			"item_label": "{{{ ck_p }}}",
+			"controls": [
+				{
+					"id": "ck_p",
+					"control": "textarea",
+					"label": "Paragraph",
+					"esc": "post",
+					"default": "Necessary cookies are required to enable the basic features of this site, including security, page navigation, form use, and the storage of your consent preferences. The website cannot function properly without these cookies, and they do not require your consent."
+				}
+			],
+			"rows": [
+				{
+					"ck_p": "Necessary cookies are required to enable the basic features of this site, including security, page navigation, form use, and the storage of your consent preferences. The website cannot function properly without these cookies, and they do not require your consent."
+				},
+				{
+					"ck_p": "The Necessary cookies currently set on our website include:"
+				}
+			],
+			"loops": 1,
+			"selector": ".ck-p",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_p_ck_p_3",
+			"label": "Umoya Cookie Policy Texts 3",
+			"item_label": "{{{ ck_p }}}",
+			"controls": [
+				{
+					"id": "ck_p",
+					"control": "textarea",
+					"label": "Paragraph",
+					"esc": "post",
+					"default": "These cookies help us understand how visitors use our website, including which pages are visited, how visitors arrive at the site, and how they move through it, so that we can improve the experience. They require your consent."
+				}
+			],
+			"rows": [
+				{
+					"ck_p": "These cookies help us understand how visitors use our website, including which pages are visited, how visitors arrive at the site, and how they move through it, so that we can improve the experience. They require your consent."
+				},
+				{
+					"ck_p": "The Performance and analytics cookies currently set on our website include:"
+				}
+			],
+			"loops": 1,
+			"selector": ".ck-p",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_p_ck_p_4",
+			"label": "Umoya Cookie Policy Texts 4",
+			"item_label": "{{{ ck_p }}}",
+			"controls": [
+				{
+					"id": "ck_p",
+					"control": "textarea",
+					"label": "Paragraph",
+					"esc": "post",
+					"default": "These cookies are used by us or our advertising partners to measure the effectiveness of our marketing and, where applicable, to show you content that may be of interest. They require your consent."
+				}
+			],
+			"rows": [
+				{
+					"ck_p": "These cookies are used by us or our advertising partners to measure the effectiveness of our marketing and, where applicable, to show you content that may be of interest. They require your consent."
+				},
+				{
+					"ck_p": "We do not currently run advertising campaigns that set marketing cookies. This category will be updated if that changes."
+				}
+			],
+			"loops": 1,
+			"selector": ".ck-p",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_li_ck_li",
+			"label": "Items",
+			"item_label": "",
+			"controls": [
+				{
+					"id": "ck_li_markup",
+					"control": "textarea",
+					"label": "Li (HTML)",
+					"esc": "raw",
+					"default": "<code>__cf_bm</code> (Cloudflare, 1 hour) &mdash; supports Cloudflare's bot management service, which protects the site from automated abuse."
+				}
+			],
+			"rows": [
+				{
+					"ck_li_markup": "<code>__cf_bm</code> (Cloudflare, 1 hour) &mdash; supports Cloudflare's bot management service, which protects the site from automated abuse."
+				},
+				{
+					"ck_li_markup": "<code>m</code> (Stripe, approximately 1 year) &mdash; set by Stripe to identify the device you are using, for fraud-prevention purposes, whether or not you complete a payment."
+				},
+				{
+					"ck_li_markup": "A cookie set by the website's page-building engine (session-based) &mdash; allows us to publish and update site content."
+				},
+				{
+					"ck_li_markup": "A cookie related to display formatting (session-based) &mdash; ensures the site renders correctly across browsers."
+				},
+				{
+					"ck_li_markup": "The CookieYes consent cookie &mdash; stores the cookie preferences you set on your first visit, so that we do not ask you again."
+				}
+			],
+			"loops": 1,
+			"selector": ".ck-li",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_p_ck_p_5",
+			"label": "Umoya Cookie Policy Texts 5",
+			"item_label": "{{{ ck_p }}}",
+			"controls": [
+				{
+					"id": "ck_p",
+					"control": "textarea",
+					"label": "Paragraph",
+					"esc": "post",
+					"default": "Our website does not currently respond to Do Not Track browser signals. You can manage your cookie preferences using the tools described above, or through your browser settings, which allow you to delete cookies that are already on your device and to prevent new cookies from being set. Please be aware that disabling certain cookies may affect the functionality of the website."
+				}
+			],
+			"rows": [
+				{
+					"ck_p": "Our website does not currently respond to Do Not Track browser signals. You can manage your cookie preferences using the tools described above, or through your browser settings, which allow you to delete cookies that are already on your device and to prevent new cookies from being set. Please be aware that disabling certain cookies may affect the functionality of the website."
+				},
+				{
+					"ck_p": "Your browser's own cookie controls are documented here:"
+				}
+			],
+			"loops": 1,
+			"selector": ".ck-p",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_li_ck_li_ck_li_link",
+			"label": "Links",
+			"item_label": "{{{ a }}}",
+			"controls": [
+				{
+					"id": "link",
+					"control": "text",
+					"label": "Link 1",
+					"esc": "post",
+					"default": "Chrome:"
+				},
+				{
+					"id": "href",
+					"control": "url",
+					"label": "Link 2",
+					"esc": "url",
+					"default": "https://support.google.com/accounts/answer/32050"
+				},
+				{
+					"id": "target",
+					"control": "text",
+					"label": "Link Target",
+					"esc": "attr",
+					"default": "_blank"
+				},
+				{
+					"id": "rel",
+					"control": "text",
+					"label": "Link Relationship",
+					"esc": "attr",
+					"default": "noopener"
+				},
+				{
+					"id": "a",
+					"control": "text",
+					"label": "Text",
+					"esc": "post",
+					"default": "https://support.google.com/accounts/answer/32050"
+				}
+			],
+			"rows": [
+				{
+					"link": "Chrome:",
+					"href": "https://support.google.com/accounts/answer/32050",
+					"target": "_blank",
+					"rel": "noopener",
+					"a": "https://support.google.com/accounts/answer/32050"
+				},
+				{
+					"link": "Safari:",
+					"href": "https://support.apple.com/en-in/guide/safari/sfri11471/mac",
+					"target": "_blank",
+					"rel": "noopener",
+					"a": "https://support.apple.com/en-in/guide/safari/sfri11471/mac"
+				},
+				{
+					"link": "Firefox:",
+					"href": "https://support.mozilla.org/en-US/kb/clear-cookies-and-site-data-firefox",
+					"target": "_blank",
+					"rel": "noopener",
+					"a": "https://support.mozilla.org/en-US/kb/clear-cookies-and-site-data-firefox"
+				},
+				{
+					"link": "Edge:",
+					"href": "https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09",
+					"target": "_blank",
+					"rel": "noopener",
+					"a": "https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09"
+				}
+			],
+			"loops": 1,
+			"selector": ".ck-li.ck-li--link",
+			"notice": "",
+			"portal": null
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_c",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ck-c",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_header",
+			"label": "Header",
+			"short_label": "Header",
+			"parent_label": "",
+			"sample": "",
+			"selector": "header",
+			"tag": "header",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "Header",
+			"sample": "Legal",
+			"selector": ".ck-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_ttl",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "Header",
+			"sample": "Cookie Policy",
+			"selector": ".ck-ttl",
+			"tag": "h1",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_rule",
+			"label": "Divider",
+			"short_label": "Divider",
+			"parent_label": "Header",
+			"sample": "",
+			"selector": ".ck-rule",
+			"tag": "hr",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_meta",
+			"label": "Header Text",
+			"short_label": "Text",
+			"parent_label": "Header",
+			"sample": "Effective date: 1 June 2026 Last updated: 26 Au…",
+			"selector": ".ck-meta",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_strong",
+			"label": "Strong",
+			"short_label": "Strong",
+			"parent_label": "Text",
+			"sample": "Effective date:",
+			"selector": "strong",
+			"tag": "strong",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_sec",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ck-sec",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_sec_h2_nth_of_type_1",
+			"label": "Heading 1",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ck-sec > h2:nth-of-type(1)",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"label": "Heading Text",
+			"short_label": "Text",
+			"parent_label": "Heading",
+			"sample": "1.",
+			"selector": ".ck-sec > h2:nth-of-type(1) > span:nth-of-type(1)",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_sec_p_nth_of_type_1",
+			"label": "Content",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ck-sec > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_sec_p_nth_of_type_1_a",
+			"label": "Link 1",
+			"short_label": "Link",
+			"parent_label": "",
+			"sample": "Privacy Policy",
+			"selector": ".ck-sec > p:nth-of-type(1) > a",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_h3",
+			"label": "Heading 2",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "Necessary",
+			"selector": ".ck-h3",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_sec_p_nth_of_type_2",
+			"label": "Text 1",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "Necessary cookies are required to enable the ba…",
+			"selector": ".ck-sec > p:nth-of-type(2)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": "p_ck_p_2"
+		},
+		{
+			"id": "p_ck_sec_ul_nth_of_type_1",
+			"label": "List 1",
+			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ck-sec > ul:nth-of-type(1)",
+			"tag": "ul",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_sec_ul_nth_of_type_1_li_nth_of_type_1",
+			"label": "List Item 1",
+			"short_label": "Item",
+			"parent_label": "List",
+			"sample": "__cf_bm (Cloudflare, 1 hour) — supports Cloudfl…",
+			"selector": ".ck-sec > ul:nth-of-type(1) > li:nth-of-type(1)",
+			"tag": "li",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": "li_ck_li"
+		},
+		{
+			"id": "p_ck_sec_ul_nth_of_type_1_li_nth_of_type_1_code",
+			"label": "Item Code 1",
+			"short_label": "Code",
+			"parent_label": "Item",
+			"sample": "__cf_bm",
+			"selector": ".ck-sec > ul:nth-of-type(1) > li:nth-of-type(1) > code",
+			"tag": "code",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_sec_p_nth_of_type_4",
+			"label": "Text 2",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "These cookies help us understand how visitors u…",
+			"selector": ".ck-sec > p:nth-of-type(4)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": "p_ck_p_3"
+		},
+		{
+			"id": "p_ck_sec_ul_nth_of_type_2",
+			"label": "List 2",
+			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ck-sec > ul:nth-of-type(2)",
+			"tag": "ul",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_sec_ul_nth_of_type_2_ck_li",
+			"label": "List Item 2",
+			"short_label": "Item",
+			"parent_label": "List",
+			"sample": "_ga_* (Google Analytics, approximately 1 year) …",
+			"selector": ".ck-sec > ul:nth-of-type(2) > .ck-li",
+			"tag": "li",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_sec_ul_nth_of_type_2_ck_li_code",
+			"label": "Item Code 2",
+			"short_label": "Code",
+			"parent_label": "Item",
+			"sample": "_ga_*",
+			"selector": ".ck-sec > ul:nth-of-type(2) > .ck-li > code",
+			"tag": "code",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_sec_p_nth_of_type_6",
+			"label": "Text 3",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "We may also use HubSpot analytics tools in supp…",
+			"selector": ".ck-sec > p:nth-of-type(6)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_sec_p_nth_of_type_7",
+			"label": "Text 4",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "These cookies remember preferences you have sel…",
+			"selector": ".ck-sec > p:nth-of-type(7)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_sec_p_nth_of_type_8",
+			"label": "Text 5",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "These cookies are used by us or our advertising…",
+			"selector": ".ck-sec > p:nth-of-type(8)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": "p_ck_p_4"
+		},
+		{
+			"id": "p_ck_prefs",
+			"label": "Container 3",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ck-prefs",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_prefs_p",
+			"label": "Text 6",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "Or change them here:",
+			"selector": ".ck-prefs-p",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_cky_banner_element",
+			"label": "Button",
+			"short_label": "Button",
+			"parent_label": "",
+			"sample": "Cookie Settings",
+			"selector": ".cky-banner-element",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_li_link",
+			"label": "Link 2",
+			"short_label": "Link",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ck-li--link",
+			"tag": "li",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": "li_ck_li_ck_li_link"
+		},
+		{
+			"id": "p_ck_li_link_a_nth_of_type_1",
+			"label": "Link 3",
+			"short_label": "Link",
+			"parent_label": "",
+			"sample": "https://support.google.com/accounts/answer/32050",
+			"selector": ".ck-li--link > a:nth-of-type(1)",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_ct",
+			"label": "Container 4",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ck-ct",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ck_ct_a",
+			"label": "Link 4",
+			"short_label": "Link",
+			"parent_label": "",
+			"sample": "info@umoyaafrikatours.co.za",
+			"selector": ".ck-ct > a",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Legal",
+			"esc": "post",
+			"group": "p_ck_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "Cookie Policy",
+			"esc": "post",
+			"group": "p_ck_ttl",
+			"sort": 0
+		},
+		{
+			"id": "text_text",
+			"control": "textarea",
+			"label": "Text",
+			"description": "Inline formatting tags are preserved.",
+			"default": "<strong>Effective date:</strong> 1 June 2026<br>\n        <strong>Last updated:</strong> 26 August 2026<br>\n        Version 1.2",
+			"esc": "post",
+			"group": "p_ck_meta",
+			"sort": 0
+		},
+		{
+			"id": "heading_text",
+			"control": "text",
+			"label": "Text",
+			"default": "About this policy",
+			"esc": "post",
+			"group": "p_ck_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_2",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "1.",
+			"esc": "post",
+			"group": "p_ck_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "content_text",
+			"control": "textarea",
+			"label": "Text",
+			"default": "This Cookie Policy explains how Umoya Afrika Tours (Pty) Ltd (\"Umoya\", \"we\", \"us\") uses cookies and similar technologies when you visit our website. It should be read together with our",
+			"esc": "post",
+			"group": "p_ck_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "content_text_2",
+			"control": "text",
+			"label": "Text 2",
+			"default": ", which sets out how we process personal information more generally.",
+			"esc": "post",
+			"group": "p_ck_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "link_text",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "Privacy Policy",
+			"esc": "post",
+			"group": "p_ck_sec_p_nth_of_type_1_a",
+			"sort": 0
+		},
+		{
+			"id": "link_href",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/privacy/"
+			},
+			"esc": "url",
+			"group": "p_ck_sec_p_nth_of_type_1_a",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "heading_text_2",
+			"control": "text",
+			"label": "Text",
+			"default": "What are cookies?",
+			"esc": "post",
+			"group": "p_ck_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_3",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "2.",
+			"esc": "post",
+			"group": "p_ck_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_3",
+			"control": "text",
+			"label": "Text",
+			"default": "The cookies we use",
+			"esc": "post",
+			"group": "p_ck_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_4",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "3.",
+			"esc": "post",
+			"group": "p_ck_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_5",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "We use the following categories of cookies on our website. The specific cookies currently set on your visit, together with their name, provider, purpose and duration, are listed in our cookie preferences panel and are updated automatically by our consent management platform, CookieYes.",
+			"esc": "post",
+			"group": "p_ck_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_4",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Necessary",
+			"esc": "post",
+			"group": "p_ck_h3",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_5",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Performance and analytics",
+			"esc": "post",
+			"group": "p_ck_h3",
+			"sort": 0
+		},
+		{
+			"id": "item_text",
+			"control": "textarea",
+			"label": "Item",
+			"description": "Inline formatting tags are preserved.",
+			"default": "<code>_ga_*</code> (Google Analytics, approximately 1 year) &mdash; used by Google Analytics to count and record page views, enabling us to understand overall site traffic and visitor behaviour in aggregate.",
+			"esc": "post",
+			"group": "p_ck_sec_ul_nth_of_type_2_ck_li",
+			"sort": 0
+		},
+		{
+			"id": "text_text_6",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "We may also use HubSpot analytics tools in support of our marketing and communications work, which set additional cookies in this category from time to time.",
+			"esc": "post",
+			"group": "p_ck_sec_p_nth_of_type_6",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_6",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Functional",
+			"esc": "post",
+			"group": "p_ck_h3",
+			"sort": 0
+		},
+		{
+			"id": "text_text_7",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "These cookies remember preferences you have selected, such as language or region, so that we can offer you a more personalised experience on return visits. They require your consent.",
+			"esc": "post",
+			"group": "p_ck_sec_p_nth_of_type_7",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_7",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Marketing",
+			"esc": "post",
+			"group": "p_ck_h3",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_8",
+			"control": "text",
+			"label": "Text",
+			"default": "Your choices",
+			"esc": "post",
+			"group": "p_ck_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_8",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "4.",
+			"esc": "post",
+			"group": "p_ck_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_9",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "When you first visit our website, you are presented with a cookie banner that allows you to accept all cookies, reject non-essential cookies, or manage your preferences by category. You can change your preferences at any time by clicking the cookie-settings link in the footer of our website.",
+			"esc": "post",
+			"group": "p_ck_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_10",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Or change them here:",
+			"esc": "post",
+			"group": "p_ck_prefs_p",
+			"sort": 0
+		},
+		{
+			"id": "button_text",
+			"control": "text",
+			"label": "Button",
+			"description": "",
+			"default": "Cookie Settings",
+			"esc": "post",
+			"group": "p_cky_banner_element",
+			"sort": 0
+		},
+		{
+			"id": "button_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_cky_banner_element",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "button_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "text_text_11",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "If you use a different browser, please refer to its official support documentation.",
+			"esc": "post",
+			"group": "p_ck_sec_p_nth_of_type_4",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_9",
+			"control": "text",
+			"label": "Text",
+			"default": "Third-party cookies",
+			"esc": "post",
+			"group": "p_ck_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_12",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "5.",
+			"esc": "post",
+			"group": "p_ck_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_13",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "Some cookies on our website are set by third parties, including our analytics, payment, marketing and infrastructure providers. These third parties may collect information about your interaction with our website over time and across other websites. Their use of cookies is governed by their own policies, which you can review on their websites. The third parties currently supporting our site include Cloudflare, Inc., Stripe, Inc., Google LLC (Google Analytics), HubSpot, Inc. and CookieYes Limited.",
+			"esc": "post",
+			"group": "p_ck_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_10",
+			"control": "text",
+			"label": "Text",
+			"default": "Changes to this policy",
+			"esc": "post",
+			"group": "p_ck_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_14",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "6.",
+			"esc": "post",
+			"group": "p_ck_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_15",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "We may update this Cookie Policy from time to time to reflect changes to the cookies we use or for other operational, legal or regulatory reasons. The dates at the top of this document indicate when it was first issued and when it was last revised.",
+			"esc": "post",
+			"group": "p_ck_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_11",
+			"control": "text",
+			"label": "Text",
+			"default": "Contact us",
+			"esc": "post",
+			"group": "p_ck_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_16",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "7.",
+			"esc": "post",
+			"group": "p_ck_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "container_text",
+			"control": "textarea",
+			"label": "Text",
+			"default": "For any questions about this Cookie Policy or about our use of cookies, please contact our Information Officer at",
+			"esc": "post",
+			"group": "p_ck_ct",
+			"sort": 0
+		},
+		{
+			"id": "container_text_2",
+			"control": "text",
+			"label": "Text 2",
+			"default": ",\n        or by telephone on",
+			"esc": "post",
+			"group": "p_ck_ct",
+			"sort": 0
+		},
+		{
+			"id": "container_text_3",
+			"control": "text",
+			"label": "Text 3",
+			"default": ".",
+			"esc": "post",
+			"group": "p_ck_ct",
+			"sort": 0
+		},
+		{
+			"id": "link_text_2",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "info@umoyaafrikatours.co.za",
+			"esc": "post",
+			"group": "p_ck_ct_a",
+			"sort": 0
+		},
+		{
+			"id": "link_href_2",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "mailto:info@umoyaafrikatours.co.za"
+			},
+			"esc": "url",
+			"group": "p_ck_ct_a",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "link_text_3",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "+27 78 950 4410",
+			"esc": "post",
+			"group": "p_ck_ct_a",
+			"sort": 0
+		},
+		{
+			"id": "link_href_3",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "tel:+27789504410"
+			},
+			"esc": "url",
+			"group": "p_ck_ct_a",
+			"tab": "content",
+			"sort": 1
+		}
+	]
+}

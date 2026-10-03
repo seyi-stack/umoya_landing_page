@@ -1,0 +1,905 @@
+{
+	"key": "ab_hero",
+	"name": "umoya-ab-hero",
+	"title": "About Hero",
+	"description": "Centred hero with a poster image and an optional background video that fades in once it can play.",
+	"icon": "eicon-banner",
+	"category": "umoya-about",
+	"source": "about/section-01-hero.html",
+	"class_name": "About_Hero",
+	"widget_file": "widgets/class-ab-hero.php",
+	"root_selector": "#ab-hero",
+	"template": "templates/sections/ab_hero.php",
+	"style": {
+		"handle": "uew-umoya-ab-hero",
+		"file": "assets/css/sections/ab_hero.css"
+	},
+	"script": {
+		"handle": "uew-umoya-ab-hero",
+		"file": "assets/js/sections/ab_hero.js"
+	},
+	"keywords": [
+		"umoya",
+		"about",
+		"about us",
+		"story",
+		"hero"
+	],
+	"portals": [],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#ab-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#ab-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#ab-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"selectors": [
+				"#ab-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"selectors": [
+				"#ab-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "About Umoya Afrika Tours — Hero",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_img",
+			"label": "Image",
+			"sample": "",
+			"region_label": "Background",
+			"controls": [
+				{
+					"id": "image_src",
+					"control": "media",
+					"label": "Choose Image",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_SAT000922.jpeg"
+					},
+					"esc": "url",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "image_alt",
+					"control": "text",
+					"label": "Alt Text",
+					"default": "Umoya Afrika Tours — journeys across South Africa",
+					"esc": "attr",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				}
+			]
+		},
+		{
+			"id": "content_p_video",
+			"label": "Background",
+			"sample": "",
+			"region_label": "Background",
+			"controls": [
+				{
+					"id": "video_poster",
+					"control": "media",
+					"label": "Poster",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_SAT000922.jpeg"
+					},
+					"esc": "url",
+					"group": "p_video",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Video"
+				},
+				{
+					"id": "video_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Umoya Afrika Tours brand film",
+					"esc": "attr",
+					"group": "p_video",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Video"
+				},
+				{
+					"id": "video_source_src",
+					"control": "url",
+					"label": "Source",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya_hd_optimized_720.mp4"
+					},
+					"esc": "url",
+					"group": "p_video",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Video"
+				},
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "About Us",
+					"esc": "post",
+					"group": "p_ab_h_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "The best journeys bring you inside a place.",
+					"esc": "post",
+					"group": "p_ab_h_title",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "subtitle_text",
+					"control": "textarea",
+					"label": "Subtitle",
+					"description": "",
+					"default": "Umoya Afrika Tours is an African-owned and African-led travel company designing premium journeys across South Africa, hosted by the people who make the country what it is.",
+					"esc": "post",
+					"group": "p_ab_h_sub",
+					"sort": 0,
+					"part_label": "Subtitle"
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [
+		{
+			"id": "video_css_position",
+			"control": "select",
+			"label": "Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "absolute",
+			"options": [
+				"static",
+				"relative",
+				"absolute",
+				"fixed",
+				"sticky"
+			],
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_css_inset",
+			"control": "text",
+			"label": "Inset",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_css_opacity",
+			"control": "text",
+			"label": "Opacity",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_css_transition",
+			"control": "text",
+			"label": "Transition",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "opacity .8s ease",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3,
+			"part_label": "Video"
+		}
+	],
+	"media_controls": [
+		{
+			"id": "video_autoplay",
+			"control": "switcher",
+			"label": "Autoplay",
+			"description": "Browsers only allow autoplay while the video is muted.",
+			"default": "yes",
+			"flag_attr": "autoplay",
+			"flag_prefix": "\n      ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_muted",
+			"control": "switcher",
+			"label": "Mute",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "muted",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_playsinline",
+			"control": "switcher",
+			"label": "Play On Mobile",
+			"description": "Without this, iOS opens the video fullscreen instead of playing it in place.",
+			"default": "yes",
+			"flag_attr": "playsinline",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_loop",
+			"control": "switcher",
+			"label": "Loop",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "loop",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_controls",
+			"control": "switcher",
+			"label": "Player Controls",
+			"description": "",
+			"default": "",
+			"flag_attr": "controls",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_disablepictureinpicture",
+			"control": "switcher",
+			"label": "Disable Picture-in-Picture",
+			"description": "",
+			"default": "",
+			"flag_attr": "disablepictureinpicture",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1,
+			"part_label": "Video"
+		},
+		{
+			"id": "video_preload",
+			"control": "select",
+			"label": "Preload",
+			"default": "auto",
+			"options": [
+				"auto",
+				"metadata",
+				"none"
+			],
+			"esc": "attr",
+			"group": "media",
+			"tab": "media",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "video_source_type",
+			"control": "text",
+			"label": "MIME Type",
+			"default": "video/mp4",
+			"esc": "attr",
+			"group": "media",
+			"tab": "media",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_h_bg",
+			"label": "Background",
+			"short_label": "Background",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-h-bg",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_img",
+			"label": "Image",
+			"short_label": "Image",
+			"parent_label": "Background",
+			"sample": "",
+			"selector": "img",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_video",
+			"label": "Video",
+			"short_label": "Video",
+			"parent_label": "Background",
+			"sample": "",
+			"selector": "video",
+			"tag": "video",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_h_content",
+			"label": "Content",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-h-content",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_h_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "About Us",
+			"selector": ".ab-h-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [
+				"opacity",
+				"transform"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_h_title",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "",
+			"sample": "The best journeys bring you inside a place.",
+			"selector": ".ab-h-title",
+			"tag": "h1",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [
+				"opacity",
+				"transform"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_h_sub",
+			"label": "Subtitle",
+			"short_label": "Subtitle",
+			"parent_label": "",
+			"sample": "Umoya Afrika Tours is an African-owned and Afri…",
+			"selector": ".ab-h-sub",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [
+				"opacity",
+				"transform"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [
+		{
+			"id": "video_inline_style",
+			"control": "inline_style_group",
+			"declarations": [
+				{
+					"prefix": "position:",
+					"id": "video_css_position"
+				},
+				{
+					"prefix": ";inset:",
+					"id": "video_css_inset"
+				},
+				{
+					"prefix": ";opacity:",
+					"id": "video_css_opacity"
+				},
+				{
+					"prefix": ";transition:",
+					"id": "video_css_transition"
+				}
+			],
+			"tail": ";",
+			"internal": true
+		}
+	],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "About Umoya Afrika Tours — Hero",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src",
+			"control": "media",
+			"label": "Choose Image",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_SAT000922.jpeg"
+			},
+			"esc": "url",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "Umoya Afrika Tours — journeys across South Africa",
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "video_autoplay",
+			"control": "switcher",
+			"label": "Autoplay",
+			"description": "Browsers only allow autoplay while the video is muted.",
+			"default": "yes",
+			"flag_attr": "autoplay",
+			"flag_prefix": "\n      ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_muted",
+			"control": "switcher",
+			"label": "Mute",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "muted",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_playsinline",
+			"control": "switcher",
+			"label": "Play On Mobile",
+			"description": "Without this, iOS opens the video fullscreen instead of playing it in place.",
+			"default": "yes",
+			"flag_attr": "playsinline",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_loop",
+			"control": "switcher",
+			"label": "Loop",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "loop",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_controls",
+			"control": "switcher",
+			"label": "Player Controls",
+			"description": "",
+			"default": "",
+			"flag_attr": "controls",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_disablepictureinpicture",
+			"control": "switcher",
+			"label": "Disable Picture-in-Picture",
+			"description": "",
+			"default": "",
+			"flag_attr": "disablepictureinpicture",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_video",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_preload",
+			"control": "select",
+			"label": "Preload",
+			"default": "auto",
+			"options": [
+				"auto",
+				"metadata",
+				"none"
+			],
+			"esc": "attr",
+			"group": "media",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "video_poster",
+			"control": "media",
+			"label": "Poster",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_SAT000922.jpeg"
+			},
+			"esc": "url",
+			"group": "p_video",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "video_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Umoya Afrika Tours brand film",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "video_css_position",
+			"control": "select",
+			"label": "Position",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "absolute",
+			"options": [
+				"static",
+				"relative",
+				"absolute",
+				"fixed",
+				"sticky"
+			],
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_css_inset",
+			"control": "text",
+			"label": "Inset",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_css_opacity",
+			"control": "text",
+			"label": "Opacity",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "0",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_css_transition",
+			"control": "text",
+			"label": "Transition",
+			"description": "Inline style on the element itself; overrides any CSS rule.",
+			"default": "opacity .8s ease",
+			"esc": "attr",
+			"group": "p_video",
+			"tab": "inline_style",
+			"sort": 3
+		},
+		{
+			"id": "video_source_src",
+			"control": "url",
+			"label": "Source",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya_hd_optimized_720.mp4"
+			},
+			"esc": "url",
+			"group": "p_video",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "video_source_type",
+			"control": "text",
+			"label": "MIME Type",
+			"default": "video/mp4",
+			"esc": "attr",
+			"group": "media",
+			"tab": "media",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "About Us",
+			"esc": "post",
+			"group": "p_ab_h_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "The best journeys bring you inside a place.",
+			"esc": "post",
+			"group": "p_ab_h_title",
+			"sort": 0
+		},
+		{
+			"id": "subtitle_text",
+			"control": "textarea",
+			"label": "Subtitle",
+			"description": "",
+			"default": "Umoya Afrika Tours is an African-owned and African-led travel company designing premium journeys across South Africa, hosted by the people who make the country what it is.",
+			"esc": "post",
+			"group": "p_ab_h_sub",
+			"sort": 0
+		}
+	]
+}

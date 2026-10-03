@@ -49,10 +49,168 @@ class Value_Formatter {
 			case 'raw':
 				return self::raw( $value, $trusted );
 
+			case 'attrs':
+				return self::attrs( $value, $trusted );
+
+			case 'comment':
+				return self::comment( $value, $trusted );
+
+			case 'trivia':
+				// Whitespace and source comments between two elements of a row.
+				// Unchanged, it is the section file's own; anything edited is
+				// reduced to its whitespace, since nothing else belongs there.
+				if ( self::is_trusted( $value, $trusted ) ) {
+					return $value;
+				}
+				return preg_replace( '/\S/', '', $value );
+
+			case 'cssurl':
+				// A URL inside a quoted CSS url() inside an attribute. esc_url
+				// makes it a safe URL; quotes and backslashes are then
+				// percent-encoded so it cannot end the CSS string it sits in.
+				return esc_attr( str_replace( array( "'", '"', '\\' ), array( '%27', '%22', '%5C' ), esc_url_raw( $value ) ) );
+
+			case 'ws':
+				// Spacing between two attributes: whitespace only, and never
+				// none, or the attributes either side would run together.
+				$value = preg_replace( '/\S/', '', $value );
+				return '' === $value ? ' ' : $value;
+
 			case 'post':
 			default:
 				return wp_kses_post( $value );
 		}
+	}
+
+	/**
+	 * True when a value can be printed exactly as stored: either it is one the
+	 * compiler produced from the section file, or the current user may post
+	 * unfiltered HTML anyway -- the same rule WordPress applies everywhere else.
+	 *
+	 * @param string            $value   Current value.
+	 * @param string|array|null $trusted Compiled value(s) for this field.
+	 * @return bool
+	 */
+	private static function is_trusted( $value, $trusted ) {
+		if ( null !== $trusted ) {
+			$allowed = is_array( $trusted ) ? $trusted : array( $trusted );
+			if ( in_array( $value, array_map( 'strval', $allowed ), true ) ) {
+				return true;
+			}
+		}
+
+		return function_exists( 'current_user_can' ) && current_user_can( 'unfiltered_html' );
+	}
+
+	/**
+	 * Optional attributes a repeater row carries or omits (` disabled selected`
+	 * on one `<option>`, ` aria-required="true"` on one consent row).
+	 *
+	 * These are printed INSIDE a start tag. Post-content filtering does not
+	 * help there: `" onmouseover="..."` contains no tag, so wp_kses_post passes
+	 * it untouched and it becomes a live event handler. An edited value is
+	 * therefore rebuilt from scratch as clean `name="value"` pairs -- event
+	 * handlers dropped, URL-bearing values run through esc_url().
+	 *
+	 * @param string            $value   Current value.
+	 * @param string|array|null $trusted Compiled value(s) for this field.
+	 * @return string
+	 */
+	public static function attrs( $value, $trusted = null ) {
+		if ( self::is_trusted( $value, $trusted ) ) {
+			return $value;
+		}
+
+		// Each attribute must start after whitespace and end at whitespace or
+		// the end, and its name is plain letters, digits and hyphens. Anything
+		// that does not parse that strictly -- a stray quote, a half-open
+		// value, `javascript:` posing as a name -- is dropped, not repaired.
+		preg_match_all(
+			'/(?:^|\s)([A-Za-z][A-Za-z0-9-]*)(?:\s*=\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s"\'=<>`]+)))?(?=\s|$)/',
+			(string) $value,
+			$matches,
+			PREG_SET_ORDER
+		);
+
+		$out = '';
+		foreach ( $matches as $match ) {
+			$name = strtolower( $match[1] );
+			if ( 0 === strpos( $name, 'on' ) ) {
+				continue;
+			}
+
+			// PCRE omits trailing groups that did not take part, so a bare
+			// boolean attribute comes back as just [ whole, name ].
+			if ( count( $match ) <= 2 ) {
+				$out .= ' ' . $name;
+				continue;
+			}
+
+			// Double-quoted, single-quoted or unquoted, whichever matched.
+			$attr_value = isset( $match[4] ) && '' !== $match[4]
+				? $match[4]
+				: ( isset( $match[3] ) && '' !== $match[3] ? $match[3] : $match[2] );
+
+			$attr_value = in_array( $name, array( 'href', 'src', 'action', 'formaction', 'poster', 'xlink:href' ), true )
+				? esc_url( $attr_value )
+				: esc_attr( $attr_value );
+
+			$out .= ' ' . $name . '="' . $attr_value . '"';
+		}
+
+		return $out;
+	}
+
+	/**
+	 * Text kept inside an HTML comment (a `★ SWAP` note on one journey tile).
+	 * An edited value must not be able to close the comment and start markup.
+	 *
+	 * @param string            $value   Current value.
+	 * @param string|array|null $trusted Compiled value(s) for this field.
+	 * @return string
+	 */
+	public static function comment( $value, $trusted = null ) {
+		if ( self::is_trusted( $value, $trusted ) ) {
+			return $value;
+		}
+
+		return str_replace( array( '--', '>' ), array( '- -', '&gt;' ), (string) $value );
+	}
+
+	/**
+	 * The post-content allow-list plus inline SVG.
+	 *
+	 * Markup fields carry icons -- every Travel Essentials row has its own
+	 * `<svg>` -- and wp_kses_post strips SVG entirely. On this multisite install
+	 * only super admins hold unfiltered_html, so without this a site admin who
+	 * edited one accordion row would silently lose its icon.
+	 *
+	 * @return array
+	 */
+	public static function allowed_markup() {
+		static $allowed = null;
+		if ( null !== $allowed ) {
+			return $allowed;
+		}
+
+		$shape = array_fill_keys(
+			array(
+				'class', 'id', 'style', 'role', 'aria-hidden', 'aria-label', 'focusable', 'xmlns', 'viewbox',
+				'preserveaspectratio', 'width', 'height', 'fill', 'fill-rule', 'fill-opacity', 'stroke',
+				'stroke-width', 'stroke-linecap', 'stroke-linejoin', 'stroke-miterlimit', 'stroke-dasharray',
+				'stroke-dashoffset', 'stroke-opacity', 'opacity', 'clip-rule', 'transform', 'vector-effect',
+				'd', 'cx', 'cy', 'r', 'rx', 'ry', 'x', 'y', 'x1', 'x2', 'y1', 'y2', 'points', 'offset',
+				'stop-color', 'stop-opacity', 'gradientunits', 'gradienttransform',
+			),
+			true
+		);
+
+		$allowed = wp_kses_allowed_html( 'post' );
+		foreach ( array( 'svg', 'g', 'path', 'circle', 'ellipse', 'line', 'polyline', 'polygon', 'rect', 'title', 'desc', 'defs', 'lineargradient', 'radialgradient', 'stop' ) as $tag ) {
+			$allowed[ $tag ] = $shape;
+		}
+
+		return $allowed;
 	}
 
 	/**
@@ -76,18 +234,11 @@ class Value_Formatter {
 	 * @return string
 	 */
 	private static function raw( $value, $trusted ) {
-		if ( null !== $trusted ) {
-			$allowed = is_array( $trusted ) ? $trusted : array( $trusted );
-			if ( in_array( $value, array_map( 'strval', $allowed ), true ) ) {
-				return $value;
-			}
-		}
-
-		if ( function_exists( 'current_user_can' ) && current_user_can( 'unfiltered_html' ) ) {
+		if ( self::is_trusted( $value, $trusted ) ) {
 			return $value;
 		}
 
-		return wp_kses_post( $value );
+		return wp_kses( $value, self::allowed_markup() );
 	}
 
 	/**

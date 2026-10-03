@@ -1,0 +1,699 @@
+{
+	"key": "ab_cta",
+	"name": "umoya-ab-cta",
+	"title": "About Closing CTA",
+	"description": "Full-bleed image band with the page's closing call to action.",
+	"icon": "eicon-call-to-action",
+	"category": "umoya-about",
+	"source": "about/section-08-cta.html",
+	"class_name": "About_CTA",
+	"widget_file": "widgets/class-ab-cta.php",
+	"root_selector": "#ab-cta",
+	"template": "templates/sections/ab_cta.php",
+	"style": {
+		"handle": "uew-umoya-ab-cta",
+		"file": "assets/css/sections/ab_cta.css"
+	},
+	"script": {
+		"handle": "uew-umoya-ab-cta",
+		"file": "assets/js/sections/ab_cta.js"
+	},
+	"keywords": [
+		"umoya",
+		"about",
+		"about us",
+		"story",
+		"closing",
+		"cta"
+	],
+	"portals": [],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#ab-cta"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#ab-cta"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#ab-cta"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"selectors": [
+				"#ab-cta"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"selectors": [
+				"#ab-cta"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"selectors": [
+				"#ab-cta"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Travel with us",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_img",
+			"label": "Background",
+			"sample": "",
+			"region_label": "Background",
+			"controls": [
+				{
+					"id": "image_src",
+					"control": "media",
+					"label": "Choose Image",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05243.jpg"
+					},
+					"esc": "url",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "image_alt",
+					"control": "text",
+					"label": "Alt Text",
+					"default": "South African landscape at golden hour",
+					"esc": "attr",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Travel With Us",
+					"esc": "post",
+					"group": "p_ab_ct_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "Every journey is shaped around you.",
+					"esc": "post",
+					"group": "p_ab_ct_ttl",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "subtitle_text",
+					"control": "textarea",
+					"label": "Subtitle",
+					"description": "",
+					"default": "Umoya Afrika Tours is designed for curious, discerning travelers who want more than an itinerary. Whether traveling as a couple, a family, an affinity group, or a private party, every journey is shaped around you.",
+					"esc": "post",
+					"group": "p_ab_ct_sub",
+					"sort": 0,
+					"part_label": "Subtitle"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_ab_ct_btn_primary",
+			"label": "Item Button 1",
+			"sample": "",
+			"region_label": "Item",
+			"controls": [
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Text",
+					"default": "Join the Founder's Circle",
+					"esc": "post",
+					"group": "p_ab_ct_btn_primary",
+					"sort": 0,
+					"part_label": "Item Button 1"
+				},
+				{
+					"id": "button_href",
+					"control": "url",
+					"label": "Link",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/founders-circle/"
+					},
+					"esc": "url",
+					"group": "p_ab_ct_btn_primary",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Item Button 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_ab_ct_btn_ghost",
+			"label": "Item Button 2",
+			"sample": "See the Signature Journey",
+			"region_label": "Item",
+			"controls": [
+				{
+					"id": "button_text_2",
+					"control": "text",
+					"label": "Button",
+					"description": "",
+					"default": "See the Signature Journey",
+					"esc": "post",
+					"group": "p_ab_ct_btn_ghost",
+					"sort": 0,
+					"part_label": "Item Button 2"
+				},
+				{
+					"id": "button_href_2",
+					"control": "url",
+					"label": "Link",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/signature-journey/"
+					},
+					"esc": "url",
+					"group": "p_ab_ct_btn_ghost",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Item Button 2"
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [
+		{
+			"id": "image_loading",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ct_bg",
+			"label": "Background",
+			"short_label": "Background",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-ct-bg",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_img",
+			"label": "Image",
+			"short_label": "Image",
+			"parent_label": "Background",
+			"sample": "",
+			"selector": "img",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ct_rv",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-ct-rv",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ct_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "Travel With Us",
+			"selector": ".ab-ct-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ct_ttl",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "",
+			"sample": "Every journey is shaped around you.",
+			"selector": ".ab-ct-ttl",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ct_sub",
+			"label": "Subtitle",
+			"short_label": "Subtitle",
+			"parent_label": "",
+			"sample": "Umoya Afrika Tours is designed for curious, dis…",
+			"selector": ".ab-ct-sub",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ct_row",
+			"label": "Item",
+			"short_label": "Item",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-ct-row",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ct_btn_primary",
+			"label": "Item Button 1",
+			"short_label": "Button",
+			"parent_label": "Item",
+			"sample": "",
+			"selector": ".ab-ct-btn-primary",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_svg",
+			"label": "Icon",
+			"short_label": "Icon",
+			"parent_label": "Button",
+			"sample": "",
+			"selector": "svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ct_btn_ghost",
+			"label": "Item Button 2",
+			"short_label": "Button",
+			"parent_label": "Item",
+			"sample": "See the Signature Journey",
+			"selector": ".ab-ct-btn-ghost",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Travel with us",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src",
+			"control": "media",
+			"label": "Choose Image",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05243.jpg"
+			},
+			"esc": "url",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "South African landscape at golden hour",
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Travel With Us",
+			"esc": "post",
+			"group": "p_ab_ct_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "Every journey is shaped around you.",
+			"esc": "post",
+			"group": "p_ab_ct_ttl",
+			"sort": 0
+		},
+		{
+			"id": "subtitle_text",
+			"control": "textarea",
+			"label": "Subtitle",
+			"description": "",
+			"default": "Umoya Afrika Tours is designed for curious, discerning travelers who want more than an itinerary. Whether traveling as a couple, a family, an affinity group, or a private party, every journey is shaped around you.",
+			"esc": "post",
+			"group": "p_ab_ct_sub",
+			"sort": 0
+		},
+		{
+			"id": "button_text",
+			"control": "text",
+			"label": "Text",
+			"default": "Join the Founder's Circle",
+			"esc": "post",
+			"group": "p_ab_ct_btn_primary",
+			"sort": 0
+		},
+		{
+			"id": "button_href",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/founders-circle/"
+			},
+			"esc": "url",
+			"group": "p_ab_ct_btn_primary",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "button_text_2",
+			"control": "text",
+			"label": "Button",
+			"description": "",
+			"default": "See the Signature Journey",
+			"esc": "post",
+			"group": "p_ab_ct_btn_ghost",
+			"sort": 0
+		},
+		{
+			"id": "button_href_2",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/signature-journey/"
+			},
+			"esc": "url",
+			"group": "p_ab_ct_btn_ghost",
+			"tab": "content",
+			"sort": 1
+		}
+	]
+}

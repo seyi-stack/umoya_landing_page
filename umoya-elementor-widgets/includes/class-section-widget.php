@@ -96,11 +96,16 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 
 	/* ------------------------------------------------------------- controls */
 
+	/** Portals of the section being registered, for controls that write CSS. */
+	private $uew_portals = array();
+
 	protected function register_controls() {
 		$config = $this->config();
 		if ( empty( $config ) ) {
 			return;
 		}
+
+		$this->uew_portals = isset( $config['portals'] ) ? (array) $config['portals'] : array();
 
 		$this->register_content_controls( $config );
 		$this->register_repeater_controls( $config );
@@ -182,7 +187,12 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 
 			// Per-row style overrides. `{{CURRENT_ITEM}}` resolves to the
 			// elementor-repeater-item-<id> class the template prints on each row.
+			// A list inside a dialog that moves to <body> needs the portal branch
+			// too, or its rows stop being styleable the moment the dialog opens.
 			$item = '{{WRAPPER}} {{CURRENT_ITEM}}';
+			if ( ! empty( $definition['portal'] ) ) {
+				$item .= ', ' . $definition['portal'] . Control_Factory::PORTAL_HOOK . ' {{CURRENT_ITEM}}';
+			}
 			$repeater->add_control(
 				'uew_row_style_heading',
 				array( 'label' => 'This row only', 'type' => Controls_Manager::HEADING, 'separator' => 'before' )
@@ -219,6 +229,20 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 					'tab'   => Controls_Manager::TAB_CONTENT,
 				)
 			);
+
+			// Option lists submit their values; the compiler explains that here,
+			// and the registry adds a sharper warning where a HubSpot dropdown
+			// property must match the list exactly.
+			if ( ! empty( $definition['notice'] ) ) {
+				$this->add_control(
+					$definition['id'] . '_notice',
+					array(
+						'type'            => Controls_Manager::RAW_HTML,
+						'raw'             => wp_kses_post( $definition['notice'] ),
+						'content_classes' => 'elementor-descriptor',
+					)
+				);
+			}
 
 			$this->add_control(
 				$definition['id'],
@@ -284,15 +308,25 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 			)
 		);
 
+		$portals = isset( $config['portals'] ) ? (array) $config['portals'] : array();
+
 		foreach ( $config['tokens'] as $token ) {
+			// A token is written where the stylesheet declares it, not on the
+			// root: a child that redeclares it would otherwise shadow the value.
+			$declared = ! empty( $token['selectors'] ) ? (array) $token['selectors'] : array( $root );
+			$branches = array();
+			foreach ( $declared as $selector ) {
+				$branches[] = Control_Factory::scoped( $selector, $portals );
+			}
+
 			$this->add_control(
-				'uew_token_' . sanitize_key( str_replace( '-', '_', $token['name'] ) ),
+				! empty( $token['id'] ) ? $token['id'] : 'uew_token_' . sanitize_key( str_replace( '-', '_', $token['name'] ) ),
 				array(
 					'label'       => $token['label'],
 					'type'        => 'color' === $token['kind'] ? Controls_Manager::COLOR : Controls_Manager::TEXT,
 					'placeholder' => $token['value'],
 					'selectors'   => array(
-						'{{WRAPPER}} ' . $root => '--' . $token['name'] . ': {{VALUE}};',
+						implode( ', ', $branches ) => '--' . $token['name'] . ': {{VALUE}};',
 					),
 				)
 			);
@@ -302,10 +336,11 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 	}
 
 	private function register_style_controls( array $config ) {
-		$root = ! empty( $config['root_selector'] ) ? $config['root_selector'] : '';
+		$root    = ! empty( $config['root_selector'] ) ? $config['root_selector'] : '';
+		$portals = isset( $config['portals'] ) ? (array) $config['portals'] : array();
 
 		foreach ( (array) $config['style_parts'] as $part ) {
-			Control_Factory::register_part( $this, $part, $root );
+			Control_Factory::register_part( $this, $part, $root, $portals );
 		}
 	}
 
@@ -330,6 +365,14 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 			)
 		);
 
+		$description = 'Use <code>{{WRAPPER}}</code> for this widget instance, e.g. <code>{{WRAPPER}} ' . esc_html( $root ) . ' { }</code>';
+		foreach ( isset( $config['portals'] ) ? (array) $config['portals'] : array() as $portal ) {
+			// The dialog leaves the wrapper when it moves to <body>, so a
+			// {{WRAPPER}} rule cannot follow it there; its own hook can.
+			$description .= '<br><code>' . esc_html( $portal['selector'] ) . '</code> moves to the end of the page when it opens: target it as <code>' .
+				esc_html( $portal['selector'] ) . '[data-uew-for="{{ID}}"]</code>.';
+		}
+
 		$this->add_control(
 			'uew_custom_css',
 			array(
@@ -337,7 +380,7 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 				'type'        => Controls_Manager::CODE,
 				'language'    => 'css',
 				'rows'        => 12,
-				'description' => 'Use <code>{{WRAPPER}}</code> for this widget instance, e.g. <code>{{WRAPPER}} ' . esc_html( $root ) . ' { }</code>',
+				'description' => $description,
 			)
 		);
 
@@ -375,6 +418,17 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 				$args['type']    = Controls_Manager::MEDIA;
 				$args['default'] = is_array( $field['default'] ) ? $field['default'] : array( 'url' => $field['default'] );
 				$args['dynamic'] = array( 'active' => true );
+
+				// A photo the stylesheet paints is replaced with CSS, the way
+				// Elementor's own background controls do it, not in the markup.
+				// The compiler supplies the declaration with every other layer --
+				// an overlay gradient -- kept, and only the photo templated.
+				if ( ! empty( $field['css_selector'] ) ) {
+					$args['selectors'] = array(
+						Control_Factory::scoped( $field['css_selector'], $this->uew_portals ) =>
+							! empty( $field['css_value'] ) ? $field['css_value'] : 'background-image: url("{{URL}}");',
+					);
+				}
 				break;
 
 			case 'url':
@@ -450,6 +504,11 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 		$r = $this->prepare_repeaters( $config, $settings );
 		$s = $this->prepare_inline_styles( $config, $settings );
 
+		// The hook a dialog carries when it moves itself to <body>, so the
+		// controls' portal selector branch can still find it there. Field ids
+		// never start with an underscore, so this cannot collide with one.
+		$c['_uew_for'] = empty( $config['portals'] ) ? '' : ' data-uew-for="' . esc_attr( $this->get_id() ) . '"';
+
 		$extra_class = $this->extra_class( $settings );
 		if ( '' !== $extra_class ) {
 			// Applied to the wrapper rather than spliced into the markup, so the
@@ -466,6 +525,11 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 		$values = array();
 
 		foreach ( (array) $config['fields'] as $field ) {
+			// Controls that write CSS rather than markup have nothing to print.
+			if ( ! empty( $field['css_only'] ) ) {
+				continue;
+			}
+
 			$id  = $field['id'];
 			$esc = isset( $field['esc'] ) ? $field['esc'] : 'post';
 
@@ -510,9 +574,13 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 				}
 			}
 
+			// Position and total come from the loop, never from stored data, so
+			// ids, "2 of 5" labels and the active first item stay right however
+			// rows are added, removed or reordered.
 			foreach ( array_values( $rows ) as $index => $row ) {
 				$prepared = array(
 					'_uew_n'          => (string) ( $index + 1 ),
+					'_uew_count'      => (string) count( $rows ),
 					'_uew_item_class' => isset( $row['_id'] ) ? 'elementor-repeater-item-' . sanitize_html_class( $row['_id'] ) : '',
 				);
 
@@ -561,7 +629,11 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 			return;
 		}
 
-		$css = str_replace( '{{WRAPPER}}', '.elementor-element-' . $this->get_id(), (string) $settings['uew_custom_css'] );
+		$css = str_replace(
+			array( '{{WRAPPER}}', '{{ID}}' ),
+			array( '.elementor-element-' . $this->get_id(), $this->get_id() ),
+			(string) $settings['uew_custom_css']
+		);
 		$css = wp_strip_all_tags( $css );
 		$css = str_replace( array( '</', '<' ), array( '<\/', '' ), $css );
 

@@ -22,6 +22,7 @@ Usage:  python tools/build-plugin-zip.py
 Output: umoya-elementor-widgets.zip  (single top-level folder, as WP expects)
 """
 
+import json
 import os
 import sys
 import zipfile
@@ -78,6 +79,30 @@ def main():
         if broken:
             sys.exit(f"ERROR: corrupt entry: {broken}")
 
+        # Every widget the manifest registers must ship whole. The plugin skips
+        # a widget whose class file is missing without a word, which looks
+        # exactly like a widget vanishing from the panel.
+        manifest = json.loads(zf.read(f"{TOP}/includes/sections/index.json"))
+        missing = []
+        expected = set()
+        for key, section in manifest.items():
+            files = [section.get("widget_file"), section.get("template"), f"includes/sections/{key}.json"]
+            files += [(section.get("style") or {}).get("file"), (section.get("script") or {}).get("file")]
+            for rel in filter(None, files):
+                expected.add(rel)
+                if f"{TOP}/{rel}" not in names:
+                    missing.append(f"{key}: {rel}")
+        if missing:
+            sys.exit("ERROR: widgets registered without their files:\n  " + "\n  ".join(missing))
+
+        # Generated files no widget uses any more are dead weight, and a sign the
+        # plugin folder holds output from an older build.
+        generated = ("widgets/", "templates/sections/", "assets/css/sections/", "assets/js/sections/")
+        orphans = sorted(
+            n[len(TOP) + 1:] for n in names
+            if n[len(TOP) + 1:].startswith(generated) and not n.endswith("/") and n[len(TOP) + 1:] not in expected
+        )
+
     size_kb = os.path.getsize(OUT) / 1024
     print(f"Built {os.path.basename(OUT)}")
     print(f"  entries      : {count}")
@@ -85,6 +110,11 @@ def main():
     print(f"  separators   : forward slash only  OK")
     print(f"  entry point  : {TOP}/{MAIN}  present")
     print(f"  top-level    : single folder {TOP!r}  OK")
+    print(f"  widgets      : {len(manifest)} registered, every file present  OK")
+    if orphans:
+        print(f"  WARNING      : {len(orphans)} generated file(s) no widget uses:")
+        for orphan in orphans:
+            print(f"                 {orphan}")
 
 
 if __name__ == "__main__":

@@ -193,19 +193,54 @@ function pushDeclaration( out, text ) {
  * Design tokens: custom properties declared anywhere outside a media query.
  * Colour-valued tokens become COLOR controls; the rest become TEXT so numeric
  * and easing tokens stay editable too.
+ *
+ * Each token remembers EVERY selector that declares it. A token control has to
+ * write its value where the token is declared, not on the section root: the
+ * homepage nav declares its palette on `#umoyaHomepageNav`, a child of the root
+ * mount, so a value written on the root was shadowed by the child's own
+ * declaration and the control did nothing. The footer declares the same names
+ * on two separate roots -- the footer and its opt-out dialog -- and both need
+ * the value.
+ *
+ * Declarations of one name with DIFFERENT values in different scopes are kept
+ * apart (`scopes`), so the build can give each its own control rather than
+ * flattening deliberate differences into one value.
  */
 export function collectTokens( parsed ) {
-	const seen = new Map();
+	const byName = new Map();
 	for ( const rule of parsed.rules ) {
 		if ( rule.media ) continue;
 		for ( const decl of rule.declarations ) {
 			if ( ! decl.prop.startsWith( '--' ) ) continue;
 			const name = decl.prop.slice( 2 );
-			if ( seen.has( name ) ) continue;
-			seen.set( name, { name, value: decl.value, kind: isColorValue( decl.value ) ? 'color' : 'text' } );
+			if ( ! byName.has( name ) ) byName.set( name, [] );
+			for ( const selector of rule.selectors ) {
+				byName.get( name ).push( { selector, value: decl.value } );
+			}
 		}
 	}
-	return [ ...seen.values() ];
+
+	const tokens = [];
+	for ( const [ name, declarations ] of byName ) {
+		const values = [ ...new Set( declarations.map( ( d ) => d.value ) ) ];
+		const groups = values.length === 1
+			? [ { value: values[ 0 ], selectors: declarations.map( ( d ) => d.selector ) } ]
+			: values.map( ( value ) => ( {
+				value,
+				selectors: declarations.filter( ( d ) => d.value === value ).map( ( d ) => d.selector ),
+			} ) );
+
+		for ( const group of groups ) {
+			tokens.push( {
+				name,
+				value: group.value,
+				kind: isColorValue( group.value ) ? 'color' : 'text',
+				selectors: [ ...new Set( group.selectors ) ],
+				scoped: groups.length > 1,
+			} );
+		}
+	}
+	return tokens;
 }
 
 const COLOR_RE = /^(#[0-9a-fA-F]{3,8}|rgba?\(|hsla?\(|color-mix\(|transparent$|currentColor$|white$|black$)/i;
@@ -259,6 +294,61 @@ export function lookupProperty( index, selectorKey, prop ) {
 	}
 	if ( base === null ) return null;
 	return { value: base, overriddenByMedia };
+}
+
+/**
+ * Properties a selector's own keyframe animation drives, outside media queries.
+ *
+ * An animated value beats every normal declaration, and `fill-mode: both`
+ * keeps the last frame for good -- so the heroes' fade-up holds their text at
+ * `opacity: 1` and an Opacity control written the ordinary way never arrives.
+ * The control factory needs to know, to write those with `!important`.
+ */
+export function keyframeProperties( parsed ) {
+	const keyframes = new Map();
+	for ( const at of parsed.atRules ) {
+		if ( ! /keyframes$/.test( at.name ) ) continue;
+		const name = at.prelude.replace( /^@[-a-z]*keyframes\s+/i, '' ).trim().replace( /^["']|["']$/g, '' );
+		const props = new Set();
+		for ( const block of at.body.matchAll( /\{([^{}]*)\}/g ) ) {
+			for ( const decl of parseDeclarations( block[ 1 ] ) ) props.add( decl.prop.toLowerCase() );
+		}
+		keyframes.set( name, props );
+	}
+	return keyframes;
+}
+
+/** Properties the given rules animate, through the named keyframes. */
+export function animatedProperties( rules, keyframes ) {
+	const animated = new Set();
+	for ( const rule of rules ) {
+		if ( rule.media ) continue;
+		for ( const decl of rule.declarations ) {
+			if ( ! /^animation(-name)?$/.test( decl.prop ) ) continue;
+			for ( const token of decl.value.split( /[\s,]+/ ) ) {
+				for ( const prop of keyframes.get( token ) || [] ) animated.add( prop );
+			}
+		}
+	}
+	return [ ...animated ];
+}
+
+/**
+ * Layout mode from the rules that actually apply to an element, outside media
+ * queries; the last `display` wins, as in the cascade's source order.
+ */
+export function layoutModeOfRules( rules ) {
+	let display = null;
+	for ( const rule of rules ) {
+		if ( rule.media ) continue;
+		for ( const decl of rule.declarations ) {
+			if ( 'display' === decl.prop ) display = decl.value.toLowerCase();
+		}
+	}
+	if ( ! display ) return null;
+	if ( display.includes( 'grid' ) ) return 'grid';
+	if ( display.includes( 'flex' ) ) return 'flex';
+	return null;
 }
 
 /** Selector keys whose base rule sets `display: flex` / `inline-flex`. */

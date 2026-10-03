@@ -50,71 +50,21 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="sj-stay-grid">
 
       <!-- The Da Vinci -->
-      <figure class="sj-stay-card sj-stay-rv" data-sj-slideshow>
+      <?php $__i = 0; foreach ( $r['rep_figure_sj_stay_card'] as $it ) : if ( $__i ++ ) { echo $it['_uew_sep']; } ?><figure class="<?php echo array( 'sj-stay-card sj-stay-rv', 'sj-stay-card sj-stay-rv d1', 'sj-stay-card sj-stay-rv d2' )[ ( ( (int) $it['_uew_n'] ) - 1 ) % 3 ]; ?> <?php echo $it['_uew_item_class']; ?>" data-sj-slideshow>
         <div class="sj-stay-frame">
-          <div class="sj-stay-show">
-            <!-- The Da Vinci — slide 1 · umoya_compressed_Davinci_Outdoor_Pool_(3).jpg -->
-            <div class="sj-stay-slide sj-on" role="group" aria-roledescription="<?php echo $c['slide_aria_roledescription']; ?>" aria-label="<?php echo $c['slide_aria_label']; ?>" style="<?php echo $s['slide_inline_style']; ?>"></div>
-            <!-- The Da Vinci — slide 2 · umoya_compressed_DAVINCI_Lounge_(2).jpg -->
-            <?php $__i = 0; foreach ( $r['rep_div_sj_stay_slide'] as $it ) : if ( $__i ++ ) { echo '
-            <!-- The Da Vinci — slide 3 · umoya_compressed_Da_Vinci_Room_801_002.jpg -->
-            '; } ?><div class="sj-stay-slide <?php echo $it['_uew_item_class']; ?>" role="<?php echo $it['role']; ?>" aria-roledescription="<?php echo $it['aria_roledescription']; ?>" aria-label="<?php echo $it['aria_label']; ?>" style="<?php echo $it['style']; ?>"></div><?php endforeach; echo "\n          "; ?></div>
-          <div class="sj-stay-dots" role="tablist" aria-label="<?php echo $c['dot_aria_label']; ?>">
-            <button class="sj-stay-dot sj-on" role="tab" aria-selected="true" aria-label="<?php echo $c['dot_aria_label_2']; ?>"<?php echo $c['dot_disabled']; ?>></button>
-            <?php $__i = 0; foreach ( $r['rep_button_sj_stay_dot'] as $it ) : if ( $__i ++ ) { echo '
-            '; } ?><button class="sj-stay-dot <?php echo $it['_uew_item_class']; ?>" role="<?php echo $it['role']; ?>" aria-selected="<?php echo $it['aria_selected']; ?>" aria-label="<?php echo $it['aria_label']; ?>"></button><?php endforeach; echo "\n          "; ?></div>
+          <div class="sj-stay-show"><?php echo $it['notes']; ?><div class="sj-stay-slide sj-on" role="<?php echo $it['role']; ?>" aria-roledescription="<?php echo $it['aria_roledescription']; ?>" aria-label="<?php echo $it['aria_label']; ?>" style="background-image:url('<?php echo $it['background_image']; ?>');"></div><?php echo $it['notes_2']; ?><div class="sj-stay-slide" role="<?php echo $it['role_2']; ?>" aria-roledescription="<?php echo $it['aria_roledescription_2']; ?>" aria-label="<?php echo $it['aria_label_2']; ?>" style="background-image:url('<?php echo $it['background_image_2']; ?>');"></div><?php echo $it['notes_3']; ?><div class="sj-stay-slide" role="<?php echo $it['role_3']; ?>" aria-roledescription="<?php echo $it['aria_roledescription_3']; ?>" aria-label="<?php echo $it['aria_label_3']; ?>" style="background-image:url('<?php echo $it['background_image_3']; ?>');"></div>
+          </div>
+          <div class="sj-stay-dots" role="<?php echo $it['role_4']; ?>" aria-label="<?php echo $it['aria_label_4']; ?>">
+            <button class="sj-stay-dot sj-on" role="<?php echo $it['role_5']; ?>" aria-selected="<?php echo $it['aria_selected']; ?>" aria-label="<?php echo $it['aria_label_5']; ?>"></button>
+            <button class="sj-stay-dot" role="<?php echo $it['role_6']; ?>" aria-selected="<?php echo $it['aria_selected_2']; ?>" aria-label="<?php echo $it['aria_label_6']; ?>"></button>
+            <button class="sj-stay-dot" role="<?php echo $it['role_7']; ?>" aria-selected="<?php echo $it['aria_selected_3']; ?>" aria-label="<?php echo $it['aria_label_7']; ?>"></button>
+          </div>
         </div>
         <figcaption class="sj-stay-cap">
-          <div class="sj-stay-nm"><?php echo $c['text_text_2']; ?></div>
-          <div class="sj-stay-pl"><?php echo $c['text_text_3']; ?></div>
-          <p class="sj-stay-desc"><?php echo $c['text_text_4']; ?></p>
+          <div class="sj-stay-nm"><?php echo $it['nm']; ?></div>
+          <div class="sj-stay-pl"><?php echo $it['pl']; ?></div>
+          <p class="sj-stay-desc"><?php echo $it['desc']; ?></p>
         </figcaption>
-      </figure>
-
-      <!-- MalaMala -->
-      <figure class="sj-stay-card sj-stay-rv d1" data-sj-slideshow>
-        <div class="sj-stay-frame">
-          <div class="sj-stay-show">
-            <!-- MalaMala — slide 1 · umoya_compressed_buffalo_suite14.png -->
-            <div class="sj-stay-slide sj-on" role="group" aria-roledescription="<?php echo $c['slide_aria_roledescription_2']; ?>" aria-label="<?php echo $c['slide_aria_label_2']; ?>" style="<?php echo $s['slide_inline_style_2']; ?>"></div>
-            <!-- MalaMala — slide 2 · umoya_compressed_buffalo_maindeck5.png -->
-            <?php $__i = 0; foreach ( $r['rep_div_sj_stay_slide_2'] as $it ) : if ( $__i ++ ) { echo '
-            <!-- MalaMala — slide 3 · umoya_compressed_buffalo_suite_3bathroom.png -->
-            '; } ?><div class="sj-stay-slide <?php echo $it['_uew_item_class']; ?>" role="<?php echo $it['role']; ?>" aria-roledescription="<?php echo $it['aria_roledescription']; ?>" aria-label="<?php echo $it['aria_label']; ?>" style="<?php echo $it['style']; ?>"></div><?php endforeach; echo "\n          "; ?></div>
-          <div class="sj-stay-dots" role="tablist" aria-label="<?php echo $c['dot_aria_label_3']; ?>">
-            <button class="sj-stay-dot sj-on" role="tab" aria-selected="true" aria-label="<?php echo $c['dot_aria_label_4']; ?>"<?php echo $c['dot_disabled_2']; ?>></button>
-            <?php $__i = 0; foreach ( $r['rep_button_sj_stay_dot_2'] as $it ) : if ( $__i ++ ) { echo '
-            '; } ?><button class="sj-stay-dot <?php echo $it['_uew_item_class']; ?>" role="<?php echo $it['role']; ?>" aria-selected="<?php echo $it['aria_selected']; ?>" aria-label="<?php echo $it['aria_label']; ?>"></button><?php endforeach; echo "\n          "; ?></div>
-        </div>
-        <figcaption class="sj-stay-cap">
-          <div class="sj-stay-nm"><?php echo $c['text_text_5']; ?></div>
-          <div class="sj-stay-pl"><?php echo $c['text_text_6']; ?></div>
-          <p class="sj-stay-desc"><?php echo $c['text_text_7']; ?></p>
-        </figcaption>
-      </figure>
-
-      <!-- Cape Grace -->
-      <figure class="sj-stay-card sj-stay-rv d2" data-sj-slideshow>
-        <div class="sj-stay-frame">
-          <div class="sj-stay-show">
-            <!-- Cape Grace — slide 1 · umoya_compressed_Cape_Grace_Marina_View.jpg -->
-            <div class="sj-stay-slide sj-on" role="group" aria-roledescription="<?php echo $c['slide_aria_roledescription_3']; ?>" aria-label="<?php echo $c['slide_aria_label_3']; ?>" style="<?php echo $s['slide_inline_style_3']; ?>"></div>
-            <!-- Cape Grace — slide 2 · umoya_compressed_Waterfront_Penthouse_5.jpg -->
-            <?php $__i = 0; foreach ( $r['rep_div_sj_stay_slide_3'] as $it ) : if ( $__i ++ ) { echo '
-            <!-- Cape Grace — slide 3 · umoya_compressed_Pool_at_Cape_Grace_4.jpg -->
-            '; } ?><div class="sj-stay-slide <?php echo $it['_uew_item_class']; ?>" role="<?php echo $it['role']; ?>" aria-roledescription="<?php echo $it['aria_roledescription']; ?>" aria-label="<?php echo $it['aria_label']; ?>" style="<?php echo $it['style']; ?>"></div><?php endforeach; echo "\n          "; ?></div>
-          <div class="sj-stay-dots" role="tablist" aria-label="<?php echo $c['dot_aria_label_5']; ?>">
-            <button class="sj-stay-dot sj-on" role="tab" aria-selected="true" aria-label="<?php echo $c['dot_aria_label_6']; ?>"<?php echo $c['dot_disabled_3']; ?>></button>
-            <?php $__i = 0; foreach ( $r['rep_button_sj_stay_dot_3'] as $it ) : if ( $__i ++ ) { echo '
-            '; } ?><button class="sj-stay-dot <?php echo $it['_uew_item_class']; ?>" role="<?php echo $it['role']; ?>" aria-selected="<?php echo $it['aria_selected']; ?>" aria-label="<?php echo $it['aria_label']; ?>"></button><?php endforeach; echo "\n          "; ?></div>
-        </div>
-        <figcaption class="sj-stay-cap">
-          <div class="sj-stay-nm"><?php echo $c['text_text_8']; ?></div>
-          <div class="sj-stay-pl"><?php echo $c['text_text_9']; ?></div>
-          <p class="sj-stay-desc"><?php echo $c['text_text_10']; ?></p>
-        </figcaption>
-      </figure>
-
-    </div>
+      </figure><?php endforeach; echo "\n\n    "; ?></div>
   </div>
 </section>

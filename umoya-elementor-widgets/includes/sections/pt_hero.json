@@ -1,0 +1,680 @@
+{
+	"key": "pt_hero",
+	"name": "umoya-pt-hero",
+	"title": "P&T Hero",
+	"description": "Full-bleed image hero, \"A Journey Entirely Your Own\".",
+	"icon": "eicon-banner",
+	"category": "umoya-pt",
+	"source": "private-tailormade/section-01-hero.html",
+	"class_name": "PT_Hero",
+	"widget_file": "widgets/class-pt-hero.php",
+	"root_selector": "#pt-hero",
+	"template": "templates/sections/pt_hero.php",
+	"style": {
+		"handle": "uew-umoya-pt-hero",
+		"file": "assets/css/sections/pt_hero.css"
+	},
+	"script": null,
+	"keywords": [
+		"umoya",
+		"private",
+		"tailormade",
+		"tailor made",
+		"bespoke",
+		"hero"
+	],
+	"portals": [],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#pt-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#pt-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#pt-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"selectors": [
+				"#pt-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"selectors": [
+				"#pt-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"selectors": [
+				"#pt-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Private & Tailormade — Hero",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_img",
+			"label": "Background",
+			"sample": "",
+			"region_label": "Background",
+			"controls": [
+				{
+					"id": "image_src",
+					"control": "media",
+					"label": "Choose Image",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1777576366.jpeg"
+					},
+					"esc": "url",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "image_alt",
+					"control": "text",
+					"label": "Alt Text",
+					"default": "A private journey through South Africa, designed around you",
+					"esc": "attr",
+					"group": "p_img",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Private &amp; Tailormade",
+					"esc": "post",
+					"group": "p_pt_h_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "A Journey Entirely Your Own",
+					"esc": "post",
+					"group": "p_pt_h_title",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "subtitle_text",
+					"control": "textarea",
+					"label": "Subtitle",
+					"description": "",
+					"default": "A private South Africa, designed around you and the people you bring, on the dates that suit you. Tell us what you are traveling for, and we build the journey around it.",
+					"esc": "post",
+					"group": "p_pt_h_sub",
+					"sort": 0,
+					"part_label": "Subtitle"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_pt_h_btn_primary",
+			"label": "Button 1",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Text",
+					"default": "Design Your Journey",
+					"esc": "post",
+					"group": "p_pt_h_btn_primary",
+					"sort": 0,
+					"part_label": "Button 1"
+				},
+				{
+					"id": "button_href",
+					"control": "url",
+					"label": "Link",
+					"default": {
+						"url": "#pt-design"
+					},
+					"esc": "url",
+					"group": "p_pt_h_btn_primary",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Button 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_pt_h_btn_ghost",
+			"label": "Button 2",
+			"sample": "See What Is Possible",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "button_text_2",
+					"control": "text",
+					"label": "Button",
+					"description": "",
+					"default": "See What Is Possible",
+					"esc": "post",
+					"group": "p_pt_h_btn_ghost",
+					"sort": 0,
+					"part_label": "Button 2"
+				},
+				{
+					"id": "button_href_2",
+					"control": "url",
+					"label": "Link",
+					"default": {
+						"url": "#pt-trip-types"
+					},
+					"esc": "url",
+					"group": "p_pt_h_btn_ghost",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Button 2"
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pt_h_bg",
+			"label": "Background",
+			"short_label": "Background",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".pt-h-bg",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_img",
+			"label": "Image",
+			"short_label": "Image",
+			"parent_label": "Background",
+			"sample": "",
+			"selector": "img",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pt_h_content",
+			"label": "Content",
+			"short_label": "Content",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".pt-h-content",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pt_h_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "Private & Tailormade",
+			"selector": ".pt-h-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [
+				"opacity",
+				"transform"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pt_h_title",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "",
+			"sample": "A Journey Entirely Your Own",
+			"selector": ".pt-h-title",
+			"tag": "h1",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [
+				"opacity",
+				"transform"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pt_h_sub",
+			"label": "Subtitle",
+			"short_label": "Subtitle",
+			"parent_label": "",
+			"sample": "A private South Africa, designed around you and…",
+			"selector": ".pt-h-sub",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [
+				"opacity",
+				"transform"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pt_h_btns",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".pt-h-btns",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"animated": [
+				"opacity",
+				"transform"
+			],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pt_h_btn_primary",
+			"label": "Button 1",
+			"short_label": "Button",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".pt-h-btn-primary",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_svg",
+			"label": "Icon",
+			"short_label": "Icon",
+			"parent_label": "Button",
+			"sample": "",
+			"selector": "svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pt_h_btn_ghost",
+			"label": "Button 2",
+			"short_label": "Button",
+			"parent_label": "",
+			"sample": "See What Is Possible",
+			"selector": ".pt-h-btn-ghost",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Private & Tailormade — Hero",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src",
+			"control": "media",
+			"label": "Choose Image",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1777576366.jpeg"
+			},
+			"esc": "url",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "A private journey through South Africa, designed around you",
+			"esc": "attr",
+			"group": "p_img",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Private &amp; Tailormade",
+			"esc": "post",
+			"group": "p_pt_h_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "A Journey Entirely Your Own",
+			"esc": "post",
+			"group": "p_pt_h_title",
+			"sort": 0
+		},
+		{
+			"id": "subtitle_text",
+			"control": "textarea",
+			"label": "Subtitle",
+			"description": "",
+			"default": "A private South Africa, designed around you and the people you bring, on the dates that suit you. Tell us what you are traveling for, and we build the journey around it.",
+			"esc": "post",
+			"group": "p_pt_h_sub",
+			"sort": 0
+		},
+		{
+			"id": "button_text",
+			"control": "text",
+			"label": "Text",
+			"default": "Design Your Journey",
+			"esc": "post",
+			"group": "p_pt_h_btn_primary",
+			"sort": 0
+		},
+		{
+			"id": "button_href",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "#pt-design"
+			},
+			"esc": "url",
+			"group": "p_pt_h_btn_primary",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "button_text_2",
+			"control": "text",
+			"label": "Button",
+			"description": "",
+			"default": "See What Is Possible",
+			"esc": "post",
+			"group": "p_pt_h_btn_ghost",
+			"sort": 0
+		},
+		{
+			"id": "button_href_2",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "#pt-trip-types"
+			},
+			"esc": "url",
+			"group": "p_pt_h_btn_ghost",
+			"tab": "content",
+			"sort": 1
+		}
+	]
+}

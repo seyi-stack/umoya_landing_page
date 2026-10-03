@@ -45,43 +45,12 @@ if ( ! defined( 'ABSPATH' ) ) {
       <div class="fc-acc fc-det-rev fc-d1" role="list">
 
         <!-- Item 1: Guaranteed Departures (open by default) -->
-        <div class="fc-acc-item fc-det-open" role="listitem">
+        <?php $__i = 0; foreach ( $r['rep_div_fc_acc_item'] as $it ) : if ( $__i ++ ) { echo $it['_uew_sep']; } ?><div class="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'fc-acc-item fc-det-open' : 'fc-acc-item' ); ?> <?php echo $it['_uew_item_class']; ?>" role="<?php echo $it['role']; ?>">
           <button
             class="fc-acc-btn"
-            aria-expanded="true"
-            aria-controls="fc-det-body-2"
-            id="fc-det-btn-2"<?php echo $c['button_disabled']; echo "\n          "; ?>>
-            <div class="fc-acc-left">
-              <div class="fc-acc-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <rect x="3" y="4" width="18" height="18" rx="2"/>
-                  <line x1="16" y1="2" x2="16" y2="6"/>
-                  <line x1="8" y1="2" x2="8" y2="6"/>
-                  <line x1="3" y1="10" x2="21" y2="10"/>
-                </svg>
-              </div>
-              <div>
-                <p class="fc-acc-title"><?php echo $c['title_text_2']; ?></p>
-                <p class="fc-acc-sub"><?php echo $c['subtitle_text']; ?></p>
-              </div>
-            </div>
-            <div class="fc-acc-chev" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-          </button>
-          <div class="fc-acc-body" id="fc-det-body-2" role="region" aria-labelledby="fc-det-btn-2">
-            <div class="fc-acc-content">
-              <?php echo $c['content_text']; echo "\n            "; ?></div>
-          </div>
-        </div>
-
-        <!-- Item 2: Personalization -->
-        <?php $__i = 0; foreach ( $r['rep_div_fc_acc_item'] as $it ) : if ( $__i ++ ) { echo $it['_uew_sep']; } ?><div class="fc-acc-item <?php echo $it['_uew_item_class']; ?>" role="<?php echo $it['role']; ?>">
-          <button
-            class="fc-acc-btn"
-            aria-expanded="<?php echo $it['aria_expanded']; ?>"
-            aria-controls="<?php echo $it['aria_controls']; ?>"
-            id="<?php echo $it['id']; ?>"
+            aria-expanded="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'true' : 'false' ); ?>"
+            aria-controls="<?php echo 'fc-det-body-' . ( (int) $it['_uew_n'] + 1 ); ?>"
+            id="<?php echo 'fc-det-btn-' . ( (int) $it['_uew_n'] + 1 ); ?>"
           >
             <div class="fc-acc-left">
               <div class="fc-acc-icon" aria-hidden="<?php echo $it['aria_hidden']; ?>">
@@ -96,7 +65,7 @@ if ( ! defined( 'ABSPATH' ) ) {
               <svg viewBox="<?php echo $it['viewbox_2']; ?>"><polyline points="<?php echo $it['icon_points']; ?>"/></svg>
             </div>
           </button>
-          <div class="fc-acc-body" id="<?php echo $it['id_2']; ?>" role="<?php echo $it['role_2']; ?>" aria-labelledby="<?php echo $it['aria_labelledby']; ?>">
+          <div class="fc-acc-body" id="<?php echo 'fc-det-body-' . ( (int) $it['_uew_n'] + 1 ); ?>" role="<?php echo $it['role_2']; ?>" aria-labelledby="<?php echo 'fc-det-btn-' . ( (int) $it['_uew_n'] + 1 ); ?>">
             <div class="fc-acc-content"><?php echo $it['content_markup']; ?></div>
           </div>
         </div><?php endforeach; echo "\n\n      "; ?></div><!-- /.fc-acc -->

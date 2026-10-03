@@ -20,52 +20,83 @@
 	},
 	"keywords": [
 		"umoya",
-		"founders circle",
+		"homepage",
 		"home",
 		"navigation"
 	],
+	"portals": [],
 	"tokens": [
 		{
 			"name": "cream",
 			"value": "#F5F0EB",
 			"kind": "color",
+			"selectors": [
+				"#umoyaHomepageNav"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
 			"label": "Cream"
 		},
 		{
 			"name": "brown",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#umoyaHomepageNav"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
 			"label": "Brown"
 		},
 		{
 			"name": "terra",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#umoyaHomepageNav"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
 			"label": "Terra"
 		},
 		{
 			"name": "terra-dk",
 			"value": "#C06840",
 			"kind": "color",
+			"selectors": [
+				"#umoyaHomepageNav"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
 			"label": "Terra Dk"
 		},
 		{
 			"name": "white",
 			"value": "#FFFFFF",
 			"kind": "color",
+			"selectors": [
+				"#umoyaHomepageNav"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
 			"label": "White"
 		},
 		{
 			"name": "ease",
 			"value": "cubic-bezier(.25,.46,.45,.94)",
 			"kind": "text",
+			"selectors": [
+				"#umoyaHomepageNav"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
 			"label": "Ease"
 		}
 	],
 	"content_panels": [
 		{
 			"id": "content_p_nav",
-			"label": "Navigation",
+			"label": "Navigation 1",
 			"sample": "",
 			"region_label": "",
 			"controls": [
@@ -84,7 +115,7 @@
 		},
 		{
 			"id": "content_p_umoya_nav_logo",
-			"label": "Logo",
+			"label": "Logo 1",
 			"sample": "",
 			"region_label": "Navigation",
 			"controls": [
@@ -116,14 +147,14 @@
 		},
 		{
 			"id": "content_p_img",
-			"label": "Logo",
+			"label": "Logo 2",
 			"sample": "",
 			"region_label": "Logo",
 			"controls": [
 				{
 					"id": "image_src",
 					"control": "media",
-					"label": "Source",
+					"label": "Choose Image",
 					"default": {
 						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Umoya-Afrika-Logomark.svg"
 					},
@@ -160,7 +191,7 @@
 		},
 		{
 			"id": "content_p_umoya_nav_cta",
-			"label": "Navigation",
+			"label": "Navigation 2",
 			"sample": "Join the Founder's Circle",
 			"region_label": "Navigation",
 			"controls": [
@@ -306,14 +337,14 @@
 				{
 					"id": "href",
 					"control": "url",
-					"label": "Href",
+					"label": "Link",
 					"esc": "url",
 					"default": "#umoya-hero"
 				},
 				{
 					"id": "link",
 					"control": "text",
-					"label": "Link",
+					"label": "Text",
 					"esc": "post",
 					"default": "Welcome"
 				}
@@ -350,7 +381,10 @@
 					"link": "Travel Essentials"
 				}
 			],
-			"selector": ".umoya-nav-item"
+			"loops": 1,
+			"selector": ".umoya-nav-item",
+			"notice": "",
+			"portal": null
 		},
 		{
 			"id": "rep_li_umoya_nav_dropdown_item",
@@ -367,14 +401,14 @@
 				{
 					"id": "href",
 					"control": "url",
-					"label": "Href",
+					"label": "Link",
 					"esc": "url",
 					"default": "#umoya-hero"
 				},
 				{
 					"id": "dropdown_link",
 					"control": "text",
-					"label": "Dropdown Link",
+					"label": "Text",
 					"esc": "post",
 					"default": "Welcome"
 				}
@@ -411,7 +445,10 @@
 					"dropdown_link": "Travel Essentials"
 				}
 			],
-			"selector": ".umoya-nav-dropdown-item"
+			"loops": 1,
+			"selector": ".umoya-nav-dropdown-item",
+			"notice": "",
+			"portal": null
 		}
 	],
 	"style_parts": [
@@ -437,6 +474,7 @@
 				"text_color",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -464,6 +502,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -489,8 +528,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -520,6 +561,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -545,6 +587,7 @@
 				"filters",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -573,6 +616,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -598,8 +642,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -628,6 +674,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": "li_umoya_nav_item"
@@ -657,6 +704,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -686,6 +734,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -715,6 +764,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -743,6 +793,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": null
@@ -770,6 +821,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -797,6 +849,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -825,6 +878,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": "li_umoya_nav_dropdown_item"
@@ -854,6 +908,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -881,6 +936,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -910,6 +966,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -965,7 +1022,7 @@
 		{
 			"id": "image_src",
 			"control": "media",
-			"label": "Source",
+			"label": "Choose Image",
 			"default": {
 				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Umoya-Afrika-Logomark.svg"
 			},

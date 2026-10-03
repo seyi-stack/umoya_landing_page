@@ -1,0 +1,575 @@
+{
+	"key": "ct_direct",
+	"name": "umoya-ct-direct",
+	"title": "Contact Direct Strip",
+	"description": "Email, media and office-address band for anyone who would rather not use a form.",
+	"icon": "eicon-envelope",
+	"category": "umoya-contact",
+	"source": "contact/section-03-direct.html",
+	"class_name": "Contact_Direct",
+	"widget_file": "widgets/class-ct-direct.php",
+	"root_selector": "#umoya-contact-direct",
+	"template": "templates/sections/ct_direct.php",
+	"style": {
+		"handle": "uew-umoya-ct-direct",
+		"file": "assets/css/sections/ct_direct.css"
+	},
+	"script": {
+		"handle": "uew-umoya-ct-direct",
+		"file": "assets/js/sections/ct_direct.js"
+	},
+	"keywords": [
+		"umoya",
+		"contact",
+		"enquiry",
+		"enquiries",
+		"direct",
+		"strip"
+	],
+	"portals": [],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#umoya-contact-direct"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#umoya-contact-direct"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#umoya-contact-direct"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"selectors": [
+				"#umoya-contact-direct"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"selectors": [
+				"#umoya-contact-direct"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Contact Umoya directly",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_ct_dir_item",
+			"label": "Item",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "item_text",
+					"control": "text",
+					"label": "Text",
+					"default": "West Tower, 2nd Floor, Nelson Mandela Square,",
+					"esc": "post",
+					"group": "p_ct_dir_item",
+					"sort": 0,
+					"part_label": "Item"
+				},
+				{
+					"id": "item_text_2",
+					"control": "text",
+					"label": "Text 2",
+					"default": "Maude Street, Sandown, Johannesburg, 2146",
+					"esc": "post",
+					"group": "p_ct_dir_item",
+					"sort": 0,
+					"part_label": "Item"
+				}
+			]
+		},
+		{
+			"id": "content_p_ct_dir_item_span_nth_of_type_1",
+			"label": "Label",
+			"sample": "Prefer Email?",
+			"region_label": "Item",
+			"controls": [
+				{
+					"id": "label_text",
+					"control": "text",
+					"label": "Label 1",
+					"description": "",
+					"default": "Prefer Email?",
+					"esc": "post",
+					"group": "p_ct_dir_item_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Label"
+				},
+				{
+					"id": "label_text_2",
+					"control": "text",
+					"label": "Label 2",
+					"description": "",
+					"default": "Media Enquiries",
+					"esc": "post",
+					"group": "p_ct_dir_item_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Label"
+				},
+				{
+					"id": "label_text_3",
+					"control": "text",
+					"label": "Label 3",
+					"description": "",
+					"default": "Our Office",
+					"esc": "post",
+					"group": "p_ct_dir_item_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Label"
+				}
+			]
+		},
+		{
+			"id": "content_p_ct_dir_item_a_nth_of_type_1",
+			"label": "Link",
+			"sample": "info@umoyaafrikatours.co.za",
+			"region_label": "Item",
+			"controls": [
+				{
+					"id": "link_text",
+					"control": "text",
+					"label": "Link 1",
+					"description": "",
+					"default": "info@umoyaafrikatours.co.za",
+					"esc": "post",
+					"group": "p_ct_dir_item_a_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Link"
+				},
+				{
+					"id": "link_text_2",
+					"control": "textarea",
+					"label": "Link 2",
+					"description": "Inline formatting tags are preserved.",
+					"default": "Same address, subject line <em>Media</em>",
+					"esc": "post",
+					"group": "p_ct_dir_item_a_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Link"
+				},
+				{
+					"id": "link_href",
+					"control": "url",
+					"label": "Link 3",
+					"default": {
+						"url": "mailto:info@umoyaafrikatours.co.za"
+					},
+					"esc": "url",
+					"group": "p_ct_dir_item_a_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Link"
+				},
+				{
+					"id": "link_href_2",
+					"control": "url",
+					"label": "Link 4",
+					"default": {
+						"url": "mailto:info@umoyaafrikatours.co.za?subject=Media"
+					},
+					"esc": "url",
+					"group": "p_ct_dir_item_a_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Link"
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ct_dir_c",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ct-dir-c",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ct_dir_band",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ct-dir-band",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ct_dir_item",
+			"label": "Item",
+			"short_label": "Item",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ct-dir-item",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ct_dir_item_span_nth_of_type_1",
+			"label": "Label",
+			"short_label": "Label",
+			"parent_label": "Item",
+			"sample": "Prefer Email?",
+			"selector": ".ct-dir-item > span:nth-of-type(1)",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ct_dir_item_a_nth_of_type_1",
+			"label": "Link",
+			"short_label": "Link",
+			"parent_label": "Item",
+			"sample": "info@umoyaafrikatours.co.za",
+			"selector": ".ct-dir-item > a:nth-of-type(1)",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ct_dir_sep",
+			"label": "Divider",
+			"short_label": "Divider",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ct-dir-sep",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_em",
+			"label": "Emphasis",
+			"short_label": "Emphasis",
+			"parent_label": "",
+			"sample": "Media",
+			"selector": "em",
+			"tag": "em",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Contact Umoya directly",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "label_text",
+			"control": "text",
+			"label": "Label",
+			"description": "",
+			"default": "Prefer Email?",
+			"esc": "post",
+			"group": "p_ct_dir_item_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "link_text",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "info@umoyaafrikatours.co.za",
+			"esc": "post",
+			"group": "p_ct_dir_item_a_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "link_href",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "mailto:info@umoyaafrikatours.co.za"
+			},
+			"esc": "url",
+			"group": "p_ct_dir_item_a_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "label_text_2",
+			"control": "text",
+			"label": "Label",
+			"description": "",
+			"default": "Media Enquiries",
+			"esc": "post",
+			"group": "p_ct_dir_item_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "link_text_2",
+			"control": "textarea",
+			"label": "Link",
+			"description": "Inline formatting tags are preserved.",
+			"default": "Same address, subject line <em>Media</em>",
+			"esc": "post",
+			"group": "p_ct_dir_item_a_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "link_href_2",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "mailto:info@umoyaafrikatours.co.za?subject=Media"
+			},
+			"esc": "url",
+			"group": "p_ct_dir_item_a_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "item_text",
+			"control": "text",
+			"label": "Text",
+			"default": "West Tower, 2nd Floor, Nelson Mandela Square,",
+			"esc": "post",
+			"group": "p_ct_dir_item",
+			"sort": 0
+		},
+		{
+			"id": "item_text_2",
+			"control": "text",
+			"label": "Text 2",
+			"default": "Maude Street, Sandown, Johannesburg, 2146",
+			"esc": "post",
+			"group": "p_ct_dir_item",
+			"sort": 0
+		},
+		{
+			"id": "label_text_3",
+			"control": "text",
+			"label": "Label",
+			"description": "",
+			"default": "Our Office",
+			"esc": "post",
+			"group": "p_ct_dir_item_span_nth_of_type_1",
+			"sort": 0
+		}
+	]
+}

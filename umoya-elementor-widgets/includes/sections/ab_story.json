@@ -1,0 +1,591 @@
+{
+	"key": "ab_story",
+	"name": "umoya-ab-story",
+	"title": "About Our Story",
+	"description": "Founder's story: portrait left, copy right.",
+	"icon": "eicon-image-box",
+	"category": "umoya-about",
+	"source": "about/section-04-our-story.html",
+	"class_name": "About_Story",
+	"widget_file": "widgets/class-ab-story.php",
+	"root_selector": "#ab-story",
+	"template": "templates/sections/ab_story.php",
+	"style": {
+		"handle": "uew-umoya-ab-story",
+		"file": "assets/css/sections/ab_story.css"
+	},
+	"script": {
+		"handle": "uew-umoya-ab-story",
+		"file": "assets/js/sections/ab_story.js"
+	},
+	"keywords": [
+		"umoya",
+		"about",
+		"about us",
+		"story",
+		"our"
+	],
+	"portals": [],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#ab-story"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#ab-story"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#ab-story"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"selectors": [
+				"#ab-story"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
+			"label": "White"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.68)",
+			"kind": "color",
+			"selectors": [
+				"#ab-story"
+			],
+			"scoped": false,
+			"id": "uew_token_muted",
+			"label": "Muted"
+		},
+		{
+			"name": "line",
+			"value": "rgba(75,46,43,.14)",
+			"kind": "color",
+			"selectors": [
+				"#ab-story"
+			],
+			"scoped": false,
+			"id": "uew_token_line",
+			"label": "Line"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"selectors": [
+				"#ab-story"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Our story",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_ab_st_pic",
+			"label": "Content",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "image_src",
+					"control": "media",
+					"label": "Choose Image",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_about_wilson_nyah.jpg"
+					},
+					"esc": "url",
+					"group": "p_ab_st_pic",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "image_alt",
+					"control": "text",
+					"label": "Alt Text",
+					"default": "Wilson Nyah, founder of Umoya Afrika Tours",
+					"esc": "attr",
+					"group": "p_ab_st_pic",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Image"
+				},
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Our Story",
+					"esc": "post",
+					"group": "p_ab_st_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "The journey we could not find. So we built it.",
+					"esc": "post",
+					"group": "p_ab_st_ttl",
+					"sort": 0,
+					"part_label": "Title"
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [
+		{
+			"id": "image_loading",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "image_decoding",
+			"control": "select",
+			"label": "Decoding",
+			"default": "async",
+			"options": [
+				"sync",
+				"async",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_p_ab_st_p",
+			"label": "Texts",
+			"item_label": "{{{ p }}}",
+			"controls": [
+				{
+					"id": "p",
+					"control": "textarea",
+					"label": "Paragraph",
+					"esc": "post",
+					"default": "Umoya began with a question our founder, Wilson Nyah, kept running into: why is premium travel to Africa so rarely designed from inside it? The lodges existed. The itineraries existed. The welcome did not."
+				}
+			],
+			"rows": [
+				{
+					"p": "Umoya began with a question our founder, Wilson Nyah, kept running into: why is premium travel to Africa so rarely designed from inside it? The lodges existed. The itineraries existed. The welcome did not."
+				},
+				{
+					"p": "So he built a company that is African-owned and African-led, on a simple belief: the best person to show you South Africa is someone who knows it as home. When Lucia Motloung pours her wine on your first evening, or Christo Brand walks you through Robben Island himself, it is because Wilson knows them by name and they are glad to welcome you."
+				},
+				{
+					"p": "He came to travel from a career in finance, and it shows in how an Umoya journey runs: exact, accountable, and seamless. And he built it the slow way, travelling every mile of the route himself and meeting every host in person before the first guest was ever invited."
+				}
+			],
+			"loops": 1,
+			"selector": ".ab-st-p",
+			"notice": "",
+			"portal": null
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_st_c",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-st-c",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_st_grid",
+			"label": "List",
+			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-st-grid",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_st_photo",
+			"label": "List Image",
+			"short_label": "Image",
+			"parent_label": "List",
+			"sample": "",
+			"selector": ".ab-st-photo",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_st_pic",
+			"label": "Image",
+			"short_label": "Image",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-st-pic",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_st_rv",
+			"label": "List Container",
+			"short_label": "Container",
+			"parent_label": "List",
+			"sample": "",
+			"selector": ".ab-st-rv",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_st_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "List",
+			"sample": "Our Story",
+			"selector": ".ab-st-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_st_ttl",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "List",
+			"sample": "The journey we could not find. So we built it.",
+			"selector": ".ab-st-ttl",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_st_p",
+			"label": "Text",
+			"short_label": "Text",
+			"parent_label": "List",
+			"sample": "Umoya began with a question our founder, Wilson…",
+			"selector": ".ab-st-p",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": "p_ab_st_p"
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Our story",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_src",
+			"control": "media",
+			"label": "Choose Image",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_about_wilson_nyah.jpg"
+			},
+			"esc": "url",
+			"group": "p_ab_st_pic",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_alt",
+			"control": "text",
+			"label": "Alt Text",
+			"default": "Wilson Nyah, founder of Umoya Afrika Tours",
+			"esc": "attr",
+			"group": "p_ab_st_pic",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "image_loading",
+			"control": "select",
+			"label": "Loading",
+			"default": "lazy",
+			"options": [
+				"eager",
+				"lazy"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "image_decoding",
+			"control": "select",
+			"label": "Decoding",
+			"default": "async",
+			"options": [
+				"sync",
+				"async",
+				"auto"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Our Story",
+			"esc": "post",
+			"group": "p_ab_st_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "The journey we could not find. So we built it.",
+			"esc": "post",
+			"group": "p_ab_st_ttl",
+			"sort": 0
+		}
+	]
+}

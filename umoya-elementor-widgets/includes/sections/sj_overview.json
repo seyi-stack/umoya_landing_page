@@ -20,45 +20,77 @@
 	},
 	"keywords": [
 		"umoya",
-		"founders circle",
+		"signature journey",
+		"journey",
 		"sj",
 		"overview"
 	],
+	"portals": [],
 	"tokens": [
 		{
 			"name": "cream",
 			"value": "#F5F0EB",
 			"kind": "color",
+			"selectors": [
+				"#sj-overview"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
 			"label": "Cream"
 		},
 		{
 			"name": "brown",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#sj-overview"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
 			"label": "Brown"
 		},
 		{
 			"name": "terra",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#sj-overview"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
 			"label": "Terra"
 		},
 		{
 			"name": "white",
 			"value": "#FFFFFF",
 			"kind": "color",
+			"selectors": [
+				"#sj-overview"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
 			"label": "White"
 		},
 		{
 			"name": "muted",
 			"value": "rgba(75,46,43,.66)",
 			"kind": "color",
+			"selectors": [
+				"#sj-overview"
+			],
+			"scoped": false,
+			"id": "uew_token_muted",
 			"label": "Muted"
 		},
 		{
 			"name": "ease",
 			"value": "cubic-bezier(.25,.46,.45,.94)",
 			"kind": "text",
+			"selectors": [
+				"#sj-overview"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
 			"label": "Ease"
 		}
 	],
@@ -138,7 +170,7 @@
 			"controls": [
 				{
 					"id": "role",
-					"control": "text",
+					"control": "hidden",
 					"label": "Role",
 					"esc": "attr",
 					"default": "listitem"
@@ -146,21 +178,21 @@
 				{
 					"id": "stat_n",
 					"control": "text",
-					"label": "Stat N",
+					"label": "Number",
 					"esc": "post",
 					"default": "10"
 				},
 				{
 					"id": "data_short",
 					"control": "text",
-					"label": "Short",
+					"label": "Short Label (phones)",
 					"esc": "attr",
 					"default": "Days"
 				},
 				{
 					"id": "stat_l",
 					"control": "text",
-					"label": "Stat L",
+					"label": "Label",
 					"esc": "post",
 					"default": "Days"
 				}
@@ -191,7 +223,10 @@
 					"stat_l": "Signature Moments"
 				}
 			],
-			"selector": ".sj-ov-stat"
+			"loops": 1,
+			"selector": ".sj-ov-stat",
+			"notice": "",
+			"portal": null
 		}
 	],
 	"style_parts": [
@@ -217,6 +252,7 @@
 				"text_color",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -244,6 +280,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -271,6 +308,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -299,6 +337,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -327,6 +366,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -355,6 +395,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -382,6 +423,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -407,8 +449,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -436,6 +480,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": "div_sj_ov_stat"
@@ -463,6 +508,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -490,6 +536,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null

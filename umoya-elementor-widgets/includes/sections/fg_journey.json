@@ -1,0 +1,793 @@
+{
+	"key": "fg_journey",
+	"name": "umoya-fg-journey",
+	"title": "Groups Journey Teaser",
+	"description": "Ten Days, Three Chapters: a preview of the Signature Journey. The hero links here.",
+	"icon": "eicon-post-list",
+	"category": "umoya-fg",
+	"source": "for-groups/section-06-journey-teaser.html",
+	"class_name": "FG_Journey",
+	"widget_file": "widgets/class-fg-journey.php",
+	"root_selector": "#fg-journey",
+	"template": "templates/sections/fg_journey.php",
+	"style": {
+		"handle": "uew-umoya-fg-journey",
+		"file": "assets/css/sections/fg_journey.css"
+	},
+	"script": {
+		"handle": "uew-umoya-fg-journey",
+		"file": "assets/js/sections/fg_journey.js"
+	},
+	"keywords": [
+		"umoya",
+		"groups",
+		"for groups",
+		"group travel",
+		"journey",
+		"teaser"
+	],
+	"portals": [],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#fg-journey"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#fg-journey"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#fg-journey"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"selectors": [
+				"#fg-journey"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"selectors": [
+				"#fg-journey"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
+			"label": "White"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.68)",
+			"kind": "color",
+			"selectors": [
+				"#fg-journey"
+			],
+			"scoped": false,
+			"id": "uew_token_muted",
+			"label": "Muted"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"selectors": [
+				"#fg-journey"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "The journey",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_fg_jr_eye",
+			"label": "Header",
+			"sample": "The Journey",
+			"region_label": "Header",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "The Journey",
+					"esc": "post",
+					"group": "p_fg_jr_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "Ten Days, Three Chapters",
+					"esc": "post",
+					"group": "p_fg_jr_ttl",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "text_text",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "Ten days, three provinces, welcomed at every turn by the people who call it home. Your group travels it together.",
+					"esc": "post",
+					"group": "p_fg_jr_lead",
+					"sort": 0,
+					"part_label": "Text"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_fg_jr_btn",
+			"label": "Button",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "button_text",
+					"control": "text",
+					"label": "Text",
+					"default": "See the Full Journey",
+					"esc": "post",
+					"group": "p_fg_jr_btn",
+					"sort": 0,
+					"part_label": "Button"
+				},
+				{
+					"id": "button_href",
+					"control": "url",
+					"label": "Link",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/signature-journey/"
+					},
+					"esc": "url",
+					"group": "p_fg_jr_btn",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Button"
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_article_fg_jr_chip",
+			"label": "Labels",
+			"item_label": "{{{ num }}}",
+			"controls": [
+				{
+					"id": "role",
+					"control": "hidden",
+					"label": "Role",
+					"esc": "attr",
+					"default": "listitem"
+				},
+				{
+					"id": "src",
+					"control": "media",
+					"label": "Choose Image",
+					"esc": "url",
+					"default": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_groups_chapter1_history.jpg"
+				},
+				{
+					"id": "alt",
+					"control": "text",
+					"label": "Alt Text",
+					"esc": "attr",
+					"default": "Johannesburg and Soweto — history and culture"
+				},
+				{
+					"id": "loading",
+					"control": "hidden",
+					"label": "Loading",
+					"esc": "attr",
+					"default": "lazy"
+				},
+				{
+					"id": "decoding",
+					"control": "hidden",
+					"label": "Decoding",
+					"esc": "attr",
+					"default": "async"
+				},
+				{
+					"id": "num",
+					"control": "text",
+					"label": "Number",
+					"esc": "post",
+					"default": "I"
+				},
+				{
+					"id": "h",
+					"control": "text",
+					"label": "H",
+					"esc": "post",
+					"default": "History &amp; Culture"
+				},
+				{
+					"id": "p",
+					"control": "textarea",
+					"label": "Paragraph",
+					"esc": "post",
+					"default": "Johannesburg and Soweto, told by the people who lived it. Antoinette Sithole walks you through the day her brother died, and dinner is poured by a winemaker with her own label."
+				}
+			],
+			"rows": [
+				{
+					"role": "listitem",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_groups_chapter1_history.jpg",
+					"alt": "Johannesburg and Soweto — history and culture",
+					"loading": "lazy",
+					"decoding": "async",
+					"num": "I",
+					"h": "History &amp; Culture",
+					"p": "Johannesburg and Soweto, told by the people who lived it. Antoinette Sithole walks you through the day her brother died, and dinner is poured by a winemaker with her own label."
+				},
+				{
+					"role": "listitem",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img001238.jpeg",
+					"alt": "Safari in the Sabi Sand at MalaMala",
+					"loading": "lazy",
+					"decoding": "async",
+					"num": "II",
+					"h": "Safari",
+					"p": "Three nights in the Sabi Sand at MalaMala, on land taken from its community under apartheid and won back through the courts. They own it today, and they welcome you onto it."
+				},
+				{
+					"role": "listitem",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1777576366.jpeg",
+					"alt": "Cape Town, Robben Island and the Winelands",
+					"loading": "lazy",
+					"decoding": "async",
+					"num": "III",
+					"h": "The Cape",
+					"p": "Robben Island with Christo Brand, the warder who became Mandela's friend. Then the Winelands, the Atlantic Seaboard, and the food this city is known for."
+				}
+			],
+			"loops": 1,
+			"selector": ".fg-jr-chip",
+			"notice": "",
+			"portal": null
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_jr_c",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".fg-jr-c",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_jr_head",
+			"label": "Header",
+			"short_label": "Header",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".fg-jr-head",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_jr_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "Header",
+			"sample": "The Journey",
+			"selector": ".fg-jr-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_jr_ttl",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "Header",
+			"sample": "Ten Days, Three Chapters",
+			"selector": ".fg-jr-ttl",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_jr_chips",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".fg-jr-chips",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_jr_chip",
+			"label": "Label",
+			"short_label": "Label",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".fg-jr-chip",
+			"tag": "article",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": "article_fg_jr_chip"
+		},
+		{
+			"id": "p_fg_jr_chip_img_nth_of_type_1",
+			"label": "Image",
+			"short_label": "Image",
+			"parent_label": "Label",
+			"sample": "",
+			"selector": ".fg-jr-chip > img:nth-of-type(1)",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_jr_chip_div_nth_of_type_1",
+			"label": "Content",
+			"short_label": "Content",
+			"parent_label": "Label",
+			"sample": "",
+			"selector": ".fg-jr-chip > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_jr_chip_div_nth_of_type_1_div_nth_of_type_1",
+			"label": "Label Text 1",
+			"short_label": "Text",
+			"parent_label": "Label",
+			"sample": "I",
+			"selector": ".fg-jr-chip > div:nth-of-type(1) > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_jr_chip_div_nth_of_type_1_h3_nth_of_type_1",
+			"label": "Heading",
+			"short_label": "Heading",
+			"parent_label": "Label",
+			"sample": "History & Culture",
+			"selector": ".fg-jr-chip > div:nth-of-type(1) > h3:nth-of-type(1)",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_jr_chip_div_nth_of_type_1_p_nth_of_type_1",
+			"label": "Label Text 2",
+			"short_label": "Text",
+			"parent_label": "Label",
+			"sample": "Johannesburg and Soweto, told by the people who…",
+			"selector": ".fg-jr-chip > div:nth-of-type(1) > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_jr_lead",
+			"label": "Text",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "Ten days, three provinces, welcomed at every tu…",
+			"selector": ".fg-jr-lead",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_jr_btn",
+			"label": "Button",
+			"short_label": "Button",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".fg-jr-btn",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_svg",
+			"label": "Icon",
+			"short_label": "Icon",
+			"parent_label": "Button",
+			"sample": "",
+			"selector": "svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "The journey",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "The Journey",
+			"esc": "post",
+			"group": "p_fg_jr_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "Ten Days, Three Chapters",
+			"esc": "post",
+			"group": "p_fg_jr_ttl",
+			"sort": 0
+		},
+		{
+			"id": "text_text",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "Ten days, three provinces, welcomed at every turn by the people who call it home. Your group travels it together.",
+			"esc": "post",
+			"group": "p_fg_jr_lead",
+			"sort": 0
+		},
+		{
+			"id": "button_text",
+			"control": "text",
+			"label": "Text",
+			"default": "See the Full Journey",
+			"esc": "post",
+			"group": "p_fg_jr_btn",
+			"sort": 0
+		},
+		{
+			"id": "button_href",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/signature-journey/"
+			},
+			"esc": "url",
+			"group": "p_fg_jr_btn",
+			"tab": "content",
+			"sort": 1
+		}
+	]
+}

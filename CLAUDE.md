@@ -1,9 +1,9 @@
 # CLAUDE.md - Umoya Afrika Tours Project Handoff
 
-Last updated: 2026-09-03
+Last updated: 2026-10-03
 Workspace: `C:\Users\MOVING_SURFACE\Downloads\UM_Claude`
 Remote: `https://github.com/seyi-stack/umoya_landing_page.git`
-Current local branch: `codex/elementor-widget-sync` (pushed through `1b62ef9`)
+Current local branch: `codex/elementor-widget-sync` (pushed; Phase 26 is the latest work — `git log -3` for hashes)
 
 This file is the living handoff for the Umoya Afrika Tours website work. It should help any future assistant, developer, or editor understand what has been built, why it was built, how the pieces connect, and what still needs attention.
 
@@ -25,7 +25,9 @@ Use this file before making further changes. The project has moved beyond standa
 > **Read Phases 9–14 (Section 5) first if you are picking this up cold.**
 > They cover everything built after the widget-generator work, including
 > the two competing header systems on the live site and an unresolved
-> live-site stability problem.
+> live-site stability problem. For the Elementor widgets, read **Phase 26**
+> and `tools/uew/README.md`: every page now compiles to native widgets, and
+> seven checks prove both the rendering and every control.
 
 ### Companion notes files
 
@@ -1530,6 +1532,177 @@ on Signature Journey, then delete the old Elementor Form widget. Leave the
   the Cookie Policy's in-page trigger should now open the real preference
   centre rather than their fallback.
 
+### Phase 21 - Brand 404 page, 2026-09-01
+
+`shared/page-404.html`. The live 404 already returned a correct HTTP 404 and
+already rendered the new footer, so this is a **content swap only** — it
+replaces the Tevily theme's default body ("The page requested could not be
+found. This could be a spelling error in the URL or a removed page."), which
+is accurate but reads like a server log and offers exactly one link.
+
+Full-bleed photograph under a brown overlay, centred copy, with a decorative
+"404" watermark behind it — the same device as the "UMOYA" watermark in the
+Founder's Circle form. Eyebrow · headline with one terracotta italic word ·
+rule · lead · two buttons (terracotta "Return Home", cream ghost "Speak With
+Us"). Both destinations verified live.
+
+**The image is `umoya_compressed_img001238.jpeg`** — the Sabi Sand safari
+landscape already used on the Signature Journey and homepage. Chosen on
+weight as much as on looks: **326 KB / 4724×3154**. The obvious alternatives
+in that folder are 2.1–2.7 MB full-resolution exports sitting in
+`2026/optimized/` despite the name, and a 404 is the last place to spend a
+visitor's bandwidth on this origin. `umoya_image-1.jpg` is lighter still
+(207 KB) but is a 3.51:1 letterbox strip that crops badly on a tall phone.
+**Check the file size before swapping the image.**
+
+Decisions worth not undoing:
+
+- **No JavaScript at all**, deliberately. Every other section uses an
+  IntersectionObserver reveal; a 404 is already a failure state, and nothing
+  on it should depend on a script running.
+- **Deploy as the Theme Builder 404 template, never as a published page.**
+  A page with its own slug returns 200, which tells search engines the dead
+  URL is fine and keeps it indexed.
+- **`background-color` is the brand brown as well as the image**, so the copy
+  is legible before the photograph arrives or if it never does.
+- **The eyebrow is cream, not the usual terracotta.** Terracotta on this
+  overlay measures ~4.0:1 — fine for the headline's italic word (large text
+  needs 3:1) and for the rule (decorative), but short of the 4.5:1 that 12px
+  text needs. Terracotta still appears twice, so the accent is not lost.
+- **A hairline sits between the section and the footer.** The overlay's outer
+  stop and the footer's solid `#4B2E2B` merge into one undifferentiated brown
+  where the photograph's foreground is dark — the same problem the Signature
+  Journey stat band and the homepage CTA both had.
+
+**No recovery link list.** An earlier draft carried a five-item "Or continue
+from here" row; it was removed on request. The shared nav above and the
+footer below already offer every one of those destinations, so a third copy
+on the same screen earned nothing.
+
+Checked at 1280 / 375: no horizontal overflow from the section, both buttons
+54px tall, every font size ≥12px, zero scripts. Cream copy measures ~10.5:1
+against the overlay even over a pure-white patch of photograph.
+
+> Noted while measuring, not introduced here: white on terracotta
+> (`#FFFFFF` on `#D97E53`) is **2.97:1**, below AA for a button label. That is
+> the site's established button on every page, so the 404 keeps it rather than
+> diverging on one screen — but it is worth fixing site-wide.
+
+> Aside, found while testing: resizing the browser pane's emulated viewport
+> does NOT fire a `resize` event, so the footer's `--umoya-ft-vw` looked
+> stale at narrow widths. On a real reload at 320px it is correct (footer
+> 320px wide, `left: 0`, no horizontal scroll), and a genuine resize event
+> updates it. A harness artifact, not a footer bug — worth knowing before
+> someone "fixes" it.
+
+### Phase 26 - Every page compiled; every control proven, 2026-10-03
+
+With the website signed off, the widgets were rebuilt for **every** HTML
+section: **63 widgets in eight categories** (Section 7). The five families that
+were still hand-pasted only — Site-wide (`shared/`), Private & Tailormade,
+About Us, For Groups and Contact — joined Founder's Circle, the homepage and the
+Signature Journey. Plugin **3.0.0 → 4.0.0**.
+
+Not compiled, on purpose: `signature-journey/section-07-cta.html` (removed from
+the page), `shared/page-email-preferences.html` (superseded by the footer
+popup), `shared/color-scheme-lock.html` (no element to render) and the nav
+backup copy.
+
+#### The checks used to prove defaults; now they prove controls
+
+The four existing checks all rendered each widget with its **defaults** and
+compared it with the source. None ever changed a control, so a control wired to
+nothing, to the wrong element, or one that broke the markup when edited passed
+all of them. Three checks were added, and two extended:
+
+| Check | What it now proves |
+|---|---|
+| `edit-check.mjs` (new, no server) | every content control, dropdown option, switcher and inline style changed through Elementor's real code path lands exactly where it should and nowhere else; every list saved, shortened, extended **as "Add Item" does it**, reversed and emptied; hostile input in every field stripped; no PHP notice anywhere |
+| `control-check.mjs` (new) | every Style panel, design token and per-row colour set at once and read back in a browser **after** the section's script ran and any dialog opened |
+| `behaviour-check.mjs` (new) | every list one longer and one shorter, every arrow, dot, tab and accordion trigger clicked, slideshows left to turn — no page error |
+| `editor-check.mjs` (extended) | now also edits live: a text control changed through Elementor's own command must re-render in the canvas with the script re-initialised, and a style control must reach its element there — opened dialog included |
+| `render-check.mjs` (extended) | compares every top-level element, not just the root — the footer's opt-out dialog had never been compared |
+
+#### What they found in the widgets already shipped
+
+All fixed in the compiler, so they stay fixed:
+
+1. **The inquiry popups' entire Style tab did nothing** (`home_form_popup`,
+   `sj_form_popup`). The dialog moves itself to `<body>` on init; every style
+   rule is scoped under the widget wrapper it has left. Proven in a browser
+   before fixing: Elementor wrote `.elementor-141 … #umoya-form-popup
+   .umoya-form-dialog { background-color: … }`, the dialog was in `<body>`, and
+   nothing applied. Fix: declared **portals** — see `tools/uew/README.md`. The
+   build now refuses a section whose script moves something to `<body>`
+   without declaring it.
+2. **Design tokens written where nothing read them.** `home_nav` declares its
+   palette on a child of the root, so every token control was shadowed; two
+   `home_hero` tokens likewise; the footer's dialog has its own token scope.
+   Tokens are now written where the stylesheet declares them.
+3. **65 flex and grid containers had no layout controls** across the original
+   33 widgets (flex 71 → 117, grid 23 → 42): rules not written from the root
+   id (`.fc-h1-brand { … }`) were never matched. Rules are now matched against
+   the DOM.
+4. **"Add Item" broke the Travel Essentials accordion** (FC and homepage). Its
+   first item is open and sits outside the run, so the rest are numbered 3–6;
+   only runs counting from 1 were recognised, and a new item got a second
+   `fc-det-btn-3`. Counters may now start anywhere, and "2 of 5" totals grow.
+5. **The FC early-access slideshow could throw.** Slides and dots were separate
+   lists; it indexes dots by slide number, so a slide added without a dot raised
+   a `TypeError` on its first turn. Parallel lists are now **one** repeater.
+6. **Form fields were lists** on the P&T, For Groups and contact forms, and the
+   consent rows everywhere: "Add Item" would post a second `FNAME`, "Delete"
+   could drop the email field or the POPIA box. Named form fields are never a
+   list now; option lists are, with a notice — and a stronger one on the three
+   HubSpot enumerations (`trip_occasion`, `group_type`, `enquiry_type`).
+7. **A new option copied row 1's `disabled selected`** — new rows took row 1's
+   values. They now take each control's most common value.
+8. **An editor without `unfiltered_html` could open an event handler** through
+   the optional-attribute fields (printed inside a start tag, filtered as post
+   content). Escaping is now by context — attributes, comments, CSS URLs,
+   whitespace — and markup fields allow SVG, so a site admin (on this
+   multisite, everyone but super admins) editing an icon no longer loses it.
+9. Smaller: two widget icons did not exist (`eicon-chat`, `eicon-home`); every
+   widget carried the search keyword "founders circle"; `<source>` elements had
+   Style panels that could do nothing; the heroes' text Opacity could never beat
+   their fade-in animation (now written `!important`, and the panel says so);
+   the Our Approach video poster, painted on `::before` in the stylesheet, could
+   not be changed at all (now a Background Image control).
+
+#### Lists became real lists
+
+Card grids, steps, pillars, hosts and slideshows were split by their stagger
+(`d1`, `d2`) or active-state (`fc-ss-on`, `is-active`) classes, so most were
+"item 1 plus a list of the rest", or no list at all. Those classes are now
+rebuilt from position, so cards can be added, removed and reordered and the
+first is always the active one. Comments no longer count towards an item's
+shape: one host card's note about which Eyethu photo is approved had turned all
+six host photos into a raw HTML box. Row panels are labelled like Elementor's
+own ("Choose Image", "Alt Text", "Role", "Description") with wiring hidden.
+
+#### Results, 2026-10-03
+
+| Check | Result |
+|---|---|
+| Build — byte fidelity | 63 / 63 reproduce their source exactly |
+| Edit | 63 / 63 — 1,973 controls and 99 lists exercised |
+| Render | 63 / 63 identical through real Elementor |
+| Control reach | 63 / 63 — every panel, token and row colour arrives |
+| Behaviour | 41 / 41 sections with lists — one row more, one row fewer, every control clicked, no page error |
+| Browser | 63 / 63 identical to the pasted original at 1440 / 768 / 390 px |
+| Editor | 63 / 63 — rendered in the canvas, script initialised, panel open in 85–314 ms, a live text edit re-renders and re-initialises, a live style edit reaches its element (dialogs included). Two needed the documented one retry |
+
+#### The harness
+
+OPcache is now on in the harness PHP: a page went from **4.4 s to 1.3 s**, which
+is what made running seven checks over 63 widgets practical. The browser checks
+survive Chrome dying under them (it did, once, when the machine slept).
+
+> **Deploying:** re-upload `umoya-elementor-widgets.zip` (Network Admin →
+> Plugins), then **Elementor → Tools → Regenerate CSS & Data**. Live pages still
+> use pasted HTML widgets; nothing changes on them until a page is moved onto
+> the widgets, which remains a per-page choice.
+
 ---
 
 ## 6. Repository Map
@@ -1543,6 +1716,7 @@ on Signature Journey, then delete the old Elementor Form widget. Leave the
 | `shared/section-00-nav.html` | **Site-wide navigation.** Place FIRST on every page. |
 | `shared/section-99-footer.html` | **Site-wide footer.** Rebuilt 2026-08-29 to the client mockup: brand block + Journeys/Support/Legal columns + Founder's Circle signup (HubSpot-wired) + legal bar. Also carries the **Email Opt-out popup** (`#umoya-email-optout`, added 2026-09-02). Place LAST on every page; replaces the Elementor Form newsletter widget. |
 | `shared/page-email-preferences.html` | Small standalone page for `/email-preferences/`. **No longer the footer's destination** — Email Opt-out became a popup inside the footer on 2026-09-02. Kept, unchanged and unpublished, in case the standalone route is wanted later. |
+| `shared/page-404.html` | **404 / Page Not Found.** Goes in the Elementor Theme Builder 404 template, NOT a published page. Replaces the Tevily default 404 body. |
 | `shared/page-travel-essentials.html` | **New page** for `/travel-essentials/`. Consolidates the former Visa & Entry Information and Travel Insurance Guide pages. |
 | `shared/page-privacy-policy.html` | Privacy Policy **v1.1** for `/privacy/`. Replaces the live v1.0, which still shows `[INSERT DATE]`. |
 | `shared/page-cookie-policy.html` | Cookie Policy **v1.2** for `/cookie-policy/`. Replaces the live v1.0. Adds the named cookie inventory and an in-page CookieYes trigger. |
@@ -1559,9 +1733,9 @@ on Signature Journey, then delete the old Elementor Form widget. Leave the
 | `about/` | About Us page — 8 sections. |
 | `for-groups/` | For Groups page — 8 sections. |
 | `theme-overrides/tevily_child/header.php` | Optional child-theme override removing the Tevily header. Not deployed. |
-| `tools/uew/` | **The widget compiler** (all 25 sections) + the local WordPress/Elementor test harness. Has its own `README.md`. |
-| `local-env/` | The harness itself — portable PHP, WordPress on SQLite, Elementor 4.2.4. **Git-ignored, generated;** rebuild with `node tools/uew/setup-local-env.mjs`. |
-| `umoya-elementor-widgets/` | Custom Elementor plugin source. |
+| `tools/uew/` | **The widget compiler** (all 63 sections, eight page families) + the local WordPress/Elementor test harness + seven checks. Has its own `README.md`. |
+| `local-env/` | The harness itself — portable PHP with OPcache, WordPress on SQLite, Elementor 4.2.4. **Git-ignored, generated;** rebuild with `node tools/uew/setup-local-env.mjs`. |
+| `umoya-elementor-widgets/` | Custom Elementor plugin source — 63 compiled section widgets (4.0.0) plus the HubSpot/WordPress submission backend. |
 | `Website docs/` | Legal documents, footer URL map, and Elementor-ready legal snippets. |
 | `hubspot-docx/` | Extracted Word document content for the HubSpot integration brief. |
 | `HubSpot Section 02 Integration Brief.docx` | Original HubSpot handoff brief. |
@@ -1579,78 +1753,68 @@ folders, and the generator that read the originals has been deleted.
 
 ```text
 umoya-elementor-widgets/
-  umoya-elementor-widgets.php
+  umoya-elementor-widgets.php          bootstrap, version 4.0.0
   includes/
-    class-plugin.php
-    class-base-widget.php
-    class-section-registry.php
-    class-submissions.php
-    class-console-cleanup.php
-    section-definitions.json
-  widgets/
-    class-*.php
-  templates/
-    section-*.php
-    homepage-section-*.php
-    html/
-      *.html
-  assets/
-    css/
-      fc-shared.css
-      sections/*.css
-    js/
-      sections/*.js
+    class-plugin.php                   categories, widget registration, asset handles
+    class-section-registry.php         reads includes/sections/*.json
+    class-section-widget.php           base class every section widget extends
+    class-control-factory.php          Style-tab controls (selectors only, never markup)
+    class-value-formatter.php          escaping by context; shared with the build's fidelity check
+    class-submissions.php              REST endpoint, HubSpot forwarding, retries, admin
+    class-console-cleanup.php          cookieadmin console shim
+    sections/
+      index.json                       the manifest: one entry per widget
+      categories.json                  the eight Elementor categories
+      <key>.json                       one schema per section
+  widgets/class-<name>.php             thin generated classes
+  templates/sections/<key>.php         generated render templates
+  assets/css/sections/<key>.css        each section's own stylesheet, verbatim
+  assets/js/sections/<key>.js          each section's own script, wrapped for Elementor
 ```
+
+Everything under `widgets/`, `templates/sections/`, `assets/*/sections/` and
+`includes/sections/` is **generated** by `node tools/uew/build.mjs` — never edit
+it by hand. `.verify/` holds the fidelity check's scratch files and is excluded
+from the zip.
 
 ### Plugin Bootstrap
 
 `umoya-elementor-widgets/umoya-elementor-widgets.php`:
 
 - Plugin name: `Umoya Elementor Widgets`
-- Version: `1.1.0`
-- Requires WordPress 5.8+, PHP 7.4+, Elementor.
+- Version: `4.0.0`
+- Requires WordPress 5.8+, PHP 7.4+, Elementor (tested up to 4.2.4).
 - Initializes:
   - `Submissions`
   - `Console_Cleanup`
   - `Plugin` if Elementor is loaded.
 
-`includes/class-plugin.php`:
+`includes/class-plugin.php` registers the categories from `categories.json`,
+every widget in `index.json`, and each section's stylesheet and script as asset
+handles (scripts depend on `elementor-frontend`, so they register on
+`frontend/element_ready` and initialise in the editor canvas too).
 
-- Registers Elementor categories.
-- Registers widgets from the section registry.
-- Registers per-section styles/scripts.
-- Enqueues editor styles.
-
-`includes/class-section-registry.php`:
-
-- Loads `section-definitions.json`.
-- Provides widgets, styles, scripts, and section config.
-
-`includes/class-base-widget.php`:
-
-- Uses registry config to render editable sections.
-- Replaces generated placeholders with Elementor controls.
-- Exposes grouped controls for:
-  - Text fields.
-  - Links and media.
-  - Labels and attributes.
-  - Form integrations.
-  - Layout/style controls.
-  - Design tokens.
-  - Custom replacements.
-  - Custom CSS.
-  - Full HTML override.
+`includes/class-section-widget.php` is the only widget implementation: it reads
+the section's schema and registers its content panels, list repeaters, field and
+media options, design tokens, one Style panel per element, and the Advanced
+tab's class and Custom CSS. It renders server-side, in the editor as on the page.
+See `tools/uew/README.md` for what the controls are and why.
 
 ---
 
 ## 7. Elementor Widget Registry
 
-The plugin exposes 33 section widgets, all compiled by `tools/uew/`:
-**12 Founder's Circle** from `founders-circle-revamp/`, **13 homepage** from
-`homepage-revamp/`, and **8 Signature Journey** from `signature-journey/`.
-Schemas live in `umoya-elementor-widgets/includes/sections/*.json`; the Elementor
+The plugin exposes **63 section widgets in eight categories**, all compiled by
+`tools/uew/`: **6 Site-wide** from `shared/`, **12 Founder's Circle** from
+`founders-circle-revamp/`, **13 homepage** from `homepage-revamp/`, **8
+Signature Journey** from `signature-journey/`, **5 Private & Tailormade**, **8
+About Us**, **8 For Groups** and **3 Contact** from their own folders. Schemas
+live in `umoya-elementor-widgets/includes/sections/*.json`; the Elementor
 categories are emitted to `includes/sections/categories.json`, so adding a page
 family needs no PHP change.
+
+The Site-wide category comes first in the panel because every page starts with
+its navigation and ends with its footer.
 
 ### Founder's Circle Category
 
@@ -1734,24 +1898,105 @@ Compiled from **`signature-journey/`**, in Elementor placement order.
 > because the source files do. That is fine while the two never appear on one
 > page, which they do not — but do not put them together.
 
+### Site-wide Category
+
+Category: `Umoya - Site-wide` (`umoya-site`). Compiled from **`shared/`**.
+
+| Key | Widget title | Source (`shared/`) | Root |
+|---|---|---|---|
+| `site_nav` | Site Navigation | `section-00-nav.html` | `#umoyaSiteNavMount` |
+| `site_footer` | Site Footer | `section-99-footer.html` | `#umoya-footer` (+ `#umoya-email-optout`) |
+| `page_404` | 404 Page | `page-404.html` | `#umoya-404` |
+| `page_travel_essentials` | Travel Essentials Page | `page-travel-essentials.html` | `#umoya-travel-essentials` |
+| `page_privacy` | Privacy Policy Page | `page-privacy-policy.html` | `#umoya-privacy` |
+| `page_cookie` | Cookie Policy Page | `page-cookie-policy.html` | `#umoya-cookie-policy` |
+
+> **Not compiled, deliberately:** `page-email-preferences.html` (superseded by
+> the footer's opt-out popup, kept unpublished), `color-scheme-lock.html` (a
+> style block and a script, no element to render — the nav and footer carry the
+> same lock) and `section-00-nav - backup.html` (a backup).
+>
+> The footer's opt-out dialog is a declared **portal**: it moves itself to
+> `<body>`, and its style controls follow it there (Phase 26). The 404 widget
+> belongs in the Theme Builder 404 template, never on a published page.
+
+### Private & Tailormade Category
+
+Category: `Umoya - Private & Tailormade` (`umoya-pt`). Compiled from **`private-tailormade/`**.
+
+| Key | Widget title | Source | Root |
+|---|---|---|---|
+| `pt_hero` | P&T Hero | `section-01-hero.html` | `#pt-hero` |
+| `pt_intro` | P&T Intro | `section-02-intro.html` | `#pt-intro` |
+| `pt_trip_types` | P&T Trip Types | `section-03-trip-types.html` | `#pt-trip-types` |
+| `pt_how` | P&T How Tailoring Works | `section-04-how-it-works.html` | `#pt-how` |
+| `pt_design_form` | P&T Design Your Journey Form | `section-05-design-form.html` | `#pt-design` |
+
+### About Us Category
+
+Category: `Umoya - About Us` (`umoya-about`). Compiled from **`about/`**.
+
+| Key | Widget title | Source | Root |
+|---|---|---|---|
+| `ab_hero` | About Hero | `section-01-hero.html` | `#ab-hero` |
+| `ab_who` | About Who We Are | `section-02-who-we-are.html` | `#ab-who` |
+| `ab_mission` | About Our Mission | `section-03-mission.html` | `#ab-mission` |
+| `ab_story` | About Our Story | `section-04-our-story.html` | `#ab-story` |
+| `ab_choose` | About How We Choose | `section-05-how-we-choose.html` | `#ab-choose` |
+| `ab_hosts` | About Meet Our Hosts | `section-06-hosts.html` | `#ab-hosts` |
+| `ab_difference` | About The Umoya Difference | `section-07-difference.html` | `#ab-difference` |
+| `ab_cta` | About Closing CTA | `section-08-cta.html` | `#ab-cta` |
+
+> The hosts are real, named people. Their cards are now a list an editor can
+> add to, remove from and reorder, but a photo or caption change is a factual
+> claim — the identity rules at the top of this file still apply.
+
+### For Groups Category
+
+Category: `Umoya - For Groups` (`umoya-fg`). Compiled from **`for-groups/`**.
+
+| Key | Widget title | Source | Root |
+|---|---|---|---|
+| `fg_hero` | Groups Hero | `section-01-hero.html` | `#fg-hero` |
+| `fg_intro` | Groups Intro | `section-02-intro.html` | `#fg-intro` |
+| `fg_who` | Groups Who Travels With Us | `section-03-who-travels.html` | `#fg-who` |
+| `fg_organizer` | Groups For the Organizer | `section-04-for-the-organizer.html` | `#fg-organizer` |
+| `fg_how` | Groups Planning Steps | `section-05-how-it-works.html` | `#fg-how` |
+| `fg_journey` | Groups Journey Teaser | `section-06-journey-teaser.html` | `#fg-journey` |
+| `fg_sizes` | Groups Travel Fit for Any Size | `section-07-sizes.html` | `#fg-sizes` |
+| `fg_plan_form` | Groups Plan a Journey Form | `section-08-plan-form.html` | `#fg-plan` |
+
+### Contact Category
+
+Category: `Umoya - Contact` (`umoya-contact`). Compiled from **`contact/`**.
+
+| Key | Widget title | Source | Root |
+|---|---|---|---|
+| `ct_hero` | Contact Hero | `section-01-hero.html` | `#umoya-contact-hero` |
+| `ct_forms` | Contact Enquiry Forms | `section-02-forms.html` | `#umoya-contact-forms` |
+| `ct_direct` | Contact Direct Strip | `section-03-direct.html` | `#umoya-contact-direct` |
+
+> The three dropdowns that feed HubSpot **enumerations** — P&T's occasion
+> (`trip_occasion`), For Groups' group type (`group_type`) and the contact
+> page's enquiry type (`enquiry_type`) — carry a warning in their option-list
+> panel: an option renamed in Elementor alone gets enquiries rejected. Change
+> the HubSpot property's options in the same move.
+
 ### Important Registry Rule
 
 The source HTML files are the visual source of truth. Never hand-edit generated
 plugin templates, schemas or widget classes — they are overwritten on the next
 build, and the fidelity check is what makes them trustworthy.
 
-**Founder's Circle** — edit `founders-circle-revamp/`, then:
+Edit the section file in its folder (the tables above say which), then:
 
 ```powershell
-npm --prefix tools/uew run check   # build + fidelity + render + browser + editor
+npm --prefix tools/uew run check   # build + the seven checks
 python tools/build-plugin-zip.py
 ```
 
 The build **fails** if a template stops reproducing its source. That is the
-point; do not pass `--no-verify` to get around it.
-
-**Homepage** — edit `homepage-revamp/`. **Signature Journey** — edit
-`signature-journey/`. Then exactly the same commands: all three page families go
+point; do not pass `--no-verify` to get around it. Every page family goes
 through one compiler, and `--only=<key>` narrows a run while merging into the
 manifest rather than replacing it.
 
@@ -1970,7 +2215,7 @@ Current footer routes:
 | For Groups | `/for-groups/` | ✅ |
 | About Us | `/about-us/` | ✅ |
 | Travel Essentials | `/travel-essentials/` | ⏳ page built, not published |
-| Travel Brochure | `/umoya_travel_brochure.pdf` | ❌ Ashley to supply |
+| Travel Brochure | `/umoya_travel_brochure.pdf` | ✅ live (2026-09-22) — 25.7 MB, see note below |
 | Contact | `/contact/` | ✅ |
 | Terms & Conditions | `/terms-and-conditions/` | ✅ |
 | Privacy Policy | `/privacy/` | ⚠ live but still v1.0 |
@@ -2058,19 +2303,23 @@ Use this when updating source sections and keeping the plugin synchronized.
 
 ### Edit Flow
 
-1. Edit the relevant source HTML:
-   - Founder's Circle: `founders-circle-revamp/section-*.html`
-   - Homepage: `homepage-revamp/homepage-*.html`
-2. Compile and prove nothing was lost:
+1. Edit the relevant source HTML in its page folder (Section 7 lists which
+   folder each widget compiles from — for Founder's Circle and the homepage,
+   the `-revamp/` copies).
+2. Compile and prove nothing was lost and every control works:
 
 ```powershell
 npm --prefix tools/uew run check
 ```
 
    That runs the build (which **fails** if a template stops reproducing its
-   source byte for byte), then the render, browser and editor checks. Narrow a
-   run with `node tools/uew/build.mjs --only=fc_hero,home_hero`; `--only` merges
-   into the manifest rather than replacing it.
+   source byte for byte), then seven checks: edit (every control and list
+   changed and verified), render, control-reach (every style panel read back in
+   a browser), behaviour (lists lengthened and shortened, every control
+   clicked), browser (pixel-level against the pasted original) and editor
+   (opened, edited live). Narrow any of them with `--only=fc_hero,home_hero`;
+   on the build, `--only` merges into the manifest rather than replacing it.
+   The harness server must be running for all but the build and edit check.
 
 3. Review generated changes:
 
@@ -2174,13 +2423,21 @@ If using raw HTML snippets manually:
 
 Preferred ongoing route:
 
-1. Install or update `umoya-elementor-widgets.zip`.
-2. In Elementor, use the section widgets from:
-   - `Umoya - Homepage`
-   - `Umoya - Founder's Circle`
-3. Edit text/media/link values through widget controls where possible.
-4. Use the widget's custom replacement/custom CSS controls for isolated changes.
-5. Use full HTML override only when a section needs a deliberate local divergence.
+1. Install or update `umoya-elementor-widgets.zip` (Network Admin → Plugins on
+   this multisite), then purge Elementor's cache — Elementor → Tools →
+   Regenerate CSS & Data — or pages keep serving the previous version's markup.
+2. Build a page from the categories in Elementor's panel: **Umoya - Site-wide**
+   (Site Navigation first, Site Footer last), then the page's own family —
+   Founder's Circle, Homepage, Signature Journey, Private & Tailormade, About
+   Us, For Groups or Contact.
+3. Edit text, images, links and lists on the Content tab; style any element on
+   the Style tab (one panel per element, plus the section's design tokens).
+4. For a one-off divergence use the Advanced tab's Custom CSS (`{{WRAPPER}}`,
+   and `{{ID}}` for a dialog that moves to `<body>`). Structural changes belong
+   in the section file and a rebuild.
+
+> Placing a popup widget (Home / SJ Inquiry Popup) is what makes its
+> `data-umoya-form-popup` buttons work; it renders nothing until opened.
 
 ### Do Not Change These Anchors Carelessly
 
@@ -2202,6 +2459,7 @@ Preferred ongoing route:
 | `#ab-hero` … `#ab-cta` | About Us sections. |
 | `#ct-plan` / `#ct-general` | Contact page panels — link straight to one form. |
 | `#umoya-contact-hero` / `#umoya-contact-forms` / `#umoya-contact-direct` | Contact page section roots. |
+| `#umoya-404` | 404 page root. |
 | `#umoya-travel-essentials` | Travel Essentials page root. |
 | `#umoya-privacy` | Privacy Policy page root. `#pv-1`…`#pv-15` are its contents-list anchors — renumbering a section means renumbering both. |
 | `#umoya-cookie-policy` | Cookie Policy page root. |
@@ -2464,8 +2722,14 @@ this out, from Network Admin → Plugins:
   in place; `/paia-manual.pdf` is a ghost listing and 404s. Nothing deleted.
 - Replace `[INSERT_UNSUBSCRIBE_URL]`.
 - Replace `[INSERT_HUBSPOT_SUBSCRIPTION_PREFERENCES_URL]`.
-- ❌ **`/umoya_travel_brochure.pdf` still 404s** — Ashley to supply. It must
-  be uploaded under exactly that name; the footer already links to it.
+- ✅ **`/umoya_travel_brochure.pdf` is live** — confirmed 200 on 2026-09-22
+  (it still 404'd on 2026-09-15). Linked from the footer and, since the same
+  date, from the Signature Journey hero's "Download the Brochure" button.
+  ⚠ **It is 25.7 MB**, which is very heavy for a link offered to every
+  visitor on an origin with the TTFB/522 history documented in Phase 14 —
+  a slow phone connection will stall on it. Worth asking whether a
+  web-optimised export (downsampled images, ~2–5 MB) can replace it at the
+  same filename; nothing in the markup would need to change.
 
 ### ⚠ Redeploy required for the HubSpot fixes to reach the live site
 
@@ -2602,10 +2866,13 @@ so re-check after a cache purge.
   compiled from `homepage-revamp/`, and the first-generation generator and its
   Base_Widget/Legacy_Registry/section-definitions.json were deleted. Plugin at
   **3.0.0**.
-- ⏳ **Three folders are registered nowhere** — `private-tailormade/`,
-  `about/`, `for-groups/` — plus `shared/`. They remain hand-pasted HTML
-  widgets. Decide per page whether that is worth changing; the compiler handles
-  any section file as-is. (`signature-journey/` was done in Phase 24.)
+- ✅ **Every page family is compiled** (Phase 26) — `shared/`,
+  `private-tailormade/`, `about/`, `for-groups/` and `contact/` joined the
+  original three: 63 widgets, eight categories, plugin **4.0.0**, every control
+  exercised by the edit, control-reach and behaviour checks.
+- ⏳ **No live page uses the widgets yet.** Every live page is still pasted HTML
+  widgets. Moving a page onto the widgets is a per-page decision; the content is
+  identical either way (the browser check compares exactly that).
 - **After re-uploading the plugin, purge Elementor's cache** (Elementor →
   Tools → Regenerate CSS & Data). Elementor caches rendered widget HTML in post
   meta, so without this a page keeps serving the previous version's markup —
@@ -2623,7 +2890,7 @@ so re-check after a cache purge.
 
 ### GitHub
 
-- Current branch is `codex/elementor-widget-sync`, pushed through `8bcf974`.
+- Current branch is `codex/elementor-widget-sync`; Phase 26 (widgets for every page, 2026-10-03) is the latest pushed work. Read `git log` for hashes rather than trusting one written here.
 - Recent history: `9b28240` (restore + three new pages + shared nav),
   `8bcf974` (revamp content fixes). Prior: `68e9cb7`, `042040d`.
 - A PR into `main` has never been opened. `main` still predates the widget
@@ -2650,11 +2917,15 @@ git status --short
 # Search fast
 rg -n "HubSpot|hubspot|fc-form-section|umoya-form-popup"
 
-# Compile all 25 section widgets + prove nothing was lost
-npm --prefix tools/uew run check
-
 # Start the local WordPress + Elementor harness (leave running)
 node tools/uew/setup-local-env.mjs --serve
+
+# Compile all 63 section widgets + prove nothing was lost and every control works
+npm --prefix tools/uew run check
+
+# Just one or two widgets, any check
+node tools/uew/build.mjs --only=ab_hosts
+node tools/uew/edit-check.mjs --only=ab_hosts
 
 # Check whitespace problems
 git diff --check
@@ -2923,12 +3194,12 @@ Think of this project as five connected layers:
    - `founders-circle/` and `homepage/` — earlier originals, reference only.
 
 3. Elementor plugin layer:
-   - Two Elementor categories: homepage and Founder's Circle.
-   - All 25 widgets are compiled by `tools/uew/` from the `-revamp/` folders
-     and verified against a local WordPress + Elementor 4.2.4 harness on four
-     axes (byte fidelity, render, browser, editor). One code path, no legacy.
-   - `private-tailormade/`, `about/`, `for-groups/` and `shared/` are not
-     registered yet; they remain hand-pasted HTML widgets.
+   - Eight Elementor categories, one per page family plus Site-wide.
+   - All 63 widgets are compiled by `tools/uew/` and verified against a local
+     WordPress + Elementor 4.2.4 harness: byte fidelity, render, browser and
+     editor (defaults), plus edit, control-reach and behaviour (every control
+     and list actually changed). One code path, no legacy.
+   - No live page uses the widgets yet; every live page is pasted HTML widgets.
 
 4. WordPress/theme layer (lives on the server, not in this repo):
    - Two header systems depending on the Elementor template

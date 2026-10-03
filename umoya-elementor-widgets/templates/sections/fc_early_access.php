@@ -59,20 +59,11 @@ if ( ! defined( 'ABSPATH' ) ) {
         <div class="fc-ss-track">
 
           <!-- Slide 1 -->
-          <div class="fc-ss-slide fc-ss-on" role="group" aria-label="<?php echo $c['slide_aria_label']; ?>" aria-roledescription="<?php echo $c['slide_aria_roledescription']; ?>">
+          <?php $__i = 0; foreach ( $r['rep_div_fc_ss_slide'] as $it ) : if ( $__i ++ ) { echo $it['l1__uew_sep']; } ?><div class="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'fc-ss-slide fc-ss-on' : 'fc-ss-slide' ); ?> <?php echo $it['_uew_item_class']; ?>" role="<?php echo $it['l1_role']; ?>" aria-label="<?php echo $it['_uew_n'] . ' of ' . $it['_uew_count']; ?>" aria-roledescription="<?php echo $it['l1_aria_roledescription']; ?>">
             <img
-              src="<?php echo $c['image_src']; ?>"
-              alt="<?php echo $c['image_alt']; ?>"
-              loading="<?php echo $c['image_loading']; ?>"
-            />
-          </div>
-
-          <!-- Slide 2 -->
-          <?php $__i = 0; foreach ( $r['rep_div_fc_ss_slide'] as $it ) : if ( $__i ++ ) { echo $it['_uew_sep']; } ?><div class="fc-ss-slide <?php echo $it['_uew_item_class']; ?>" role="<?php echo $it['role']; ?>" aria-label="<?php echo $it['aria_label']; ?>" aria-roledescription="<?php echo $it['aria_roledescription']; ?>">
-            <img
-              src="<?php echo $it['src']; ?>"
-              alt="<?php echo $it['alt']; ?>"
-              loading="<?php echo $it['loading']; ?>"
+              src="<?php echo $it['l1_src']; ?>"
+              alt="<?php echo $it['l1_alt']; ?>"
+              loading="<?php echo $it['l1_loading']; ?>"
             />
           </div><?php endforeach; echo "\n        "; ?></div><!-- /.fc-ss-track -->
 
@@ -86,9 +77,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         <!-- Dots -->
         <div class="fc-ss-dots" role="tablist" aria-label="<?php echo $c['dot_aria_label']; ?>">
-          <button class="fc-ss-dot fc-ss-on" role="tab" aria-selected="true"  aria-label="<?php echo $c['dot_aria_label_2']; ?>" data-fci="<?php echo $c['dot_data_fci']; ?>"<?php echo $c['dot_disabled']; ?>></button>
-          <?php $__i = 0; foreach ( $r['rep_button_fc_ss_dot'] as $it ) : if ( $__i ++ ) { echo '
-          '; } ?><button class="fc-ss-dot <?php echo $it['_uew_item_class']; ?>"          role="<?php echo $it['role']; ?>" aria-selected="<?php echo $it['aria_selected']; ?>" aria-label="<?php echo $it['aria_label']; ?>" data-fci="<?php echo '' . $it['_uew_n'] . ''; ?>"></button><?php endforeach; echo "\n        "; ?></div>
+          <?php $__i = 0; foreach ( $r['rep_div_fc_ss_slide'] as $it ) : if ( $__i ++ ) { echo '
+          '; } ?><button class="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'fc-ss-dot fc-ss-on' : 'fc-ss-dot' ); ?> <?php echo $it['_uew_item_class']; ?>"<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? ' ' : '          ' ); ?>role="<?php echo $it['l2_role']; ?>" aria-selected="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'true' : 'false' ); ?>"<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? '  ' : ' ' ); ?>aria-label="<?php echo 'Slide ' . $it['_uew_n']; ?>" data-fci="<?php echo ( (int) $it['_uew_n'] + -1 ); ?>"></button><?php endforeach; echo "\n        "; ?></div>
 
       </div><!-- /.fc-ss-outer -->
 

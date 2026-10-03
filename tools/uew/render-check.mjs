@@ -39,6 +39,35 @@ async function fetchPage( url ) {
 	return { status: response.status, body: await response.text() };
 }
 
+/**
+ * Every top-level element of a section file, as selectors to look them up by.
+ *
+ * Fingerprinting only the root left the footer's second top-level element --
+ * the Email Opt-out dialog -- out of the comparison entirely, so it could have
+ * been lost without this check noticing.
+ */
+function topLevelSelectors( markup ) {
+	const doc = createDocument( markup );
+	return doc.entries
+		.filter( ( entry ) => ! doc.parentsOf.get( entry.node )?.node )
+		.map( ( entry ) => {
+			const id = ( entry.node.attrs || [] ).find( ( a ) => a.name === 'id' );
+			return id ? '#' + id.value : null;
+		} )
+		.filter( Boolean );
+}
+
+/** Fingerprints of several roots, concatenated in order. */
+function fingerprintAll( html, selectors ) {
+	const out = [];
+	for ( const selector of selectors ) {
+		const nodes = fingerprint( html, selector );
+		if ( ! nodes ) return { missing: selector };
+		out.push( ...nodes );
+	}
+	return { nodes: out };
+}
+
 /** Structural fingerprint used to compare source and served markup. */
 function fingerprint( html, rootSelector ) {
 	const doc = createDocument( html );
@@ -159,6 +188,10 @@ function normalizeNode( node ) {
 			// A class attribute that existed only to carry the repeater-item hook
 			// is not a difference in the markup.
 			.filter( ( pair ) => pair !== 'class=' && pair !== '' )
+			// Nor is the portal hook: like the repeater-item class it is the
+			// widget instance's own, printed so style controls can follow a
+			// dialog that moves itself to <body>.
+			.filter( ( pair ) => ! pair.startsWith( 'data-uew-for=' ) )
 			.filter( ( pair ) => {
 				if ( 'img' !== node.tag && 'iframe' !== node.tag ) return true;
 				return ! CORE_IMAGE_ADDITIONS.has( pair.slice( 0, Math.max( 0, pair.indexOf( '=' ) ) ) );
@@ -220,15 +253,20 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 	const sourceFile = path.join( repoRoot, section.source );
 	const { markup: sourceHtml } = splitSection( readSectionFile( fs, sourceFile ) );
 
-	const expected = fingerprint( sourceHtml, section.root_selector );
-	const actual = fingerprint( body, section.root_selector );
+	// Every top-level element with an id, root included, in source order.
+	const roots = topLevelSelectors( sourceHtml );
+	if ( ! roots.includes( section.root_selector ) ) roots.unshift( section.root_selector );
+
+	const expected = fingerprintAll( sourceHtml, roots ).nodes;
+	const served = fingerprintAll( body, roots );
+	const actual = served.nodes;
 
 	const row = { key, status: 'OK', http: status };
 
 	if ( 200 !== status ) {
 		row.status = 'HTTP ' + status;
 	} else if ( ! actual ) {
-		row.status = 'section root ' + section.root_selector + ' not found in the rendered page';
+		row.status = 'top-level element ' + served.missing + ' not found in the rendered page';
 	} else {
 		const problems = [];
 		const max = Math.max( expected.length, actual.length );
@@ -254,7 +292,7 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 			row.status = ( 'OK' === row.status ? '' : row.status + ' + ' ) + 'MISSING ' + missingAssets.join( ' & ' );
 		}
 
-		row.nodes = expected.length;
+		row.nodes = expected.length + ( roots.length > 1 ? ' (' + roots.length + ' roots)' : '' );
 	}
 
 	if ( ! row.status.startsWith( 'OK' ) ) failures += 1;
@@ -262,10 +300,10 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 }
 
 const pad = ( value, width ) => String( value ).padEnd( width );
-console.log( pad( 'section', 26 ) + pad( 'nodes', 7 ) + 'result' );
-console.log( '-'.repeat( 62 ) );
+console.log( pad( 'section', 26 ) + pad( 'nodes', 16 ) + 'result' );
+console.log( '-'.repeat( 70 ) );
 for ( const row of rows ) {
-	console.log( pad( row.key, 26 ) + pad( row.nodes ?? '-', 7 ) + row.status );
+	console.log( pad( row.key, 26 ) + pad( row.nodes ?? '-', 16 ) + row.status );
 }
 for ( const row of rows ) {
 	if ( row.detail ) {

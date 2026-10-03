@@ -20,52 +20,87 @@
 	},
 	"keywords": [
 		"umoya",
-		"founders circle",
+		"homepage",
 		"home",
-		"why",
-		"umoya"
+		"why"
 	],
+	"portals": [],
 	"tokens": [
 		{
 			"name": "cream",
 			"value": "#F5F0EB",
 			"kind": "color",
+			"selectors": [
+				"#fc-pillars"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
 			"label": "Cream"
 		},
 		{
 			"name": "brown",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#fc-pillars"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
 			"label": "Brown"
 		},
 		{
 			"name": "brown-mid",
 			"value": "#3A2220",
 			"kind": "color",
+			"selectors": [
+				"#fc-pillars"
+			],
+			"scoped": false,
+			"id": "uew_token_brown_mid",
 			"label": "Brown Mid"
 		},
 		{
 			"name": "terra",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#fc-pillars"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
 			"label": "Terra"
 		},
 		{
 			"name": "terra-dk",
 			"value": "#C06840",
 			"kind": "color",
+			"selectors": [
+				"#fc-pillars"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
 			"label": "Terra Dk"
 		},
 		{
 			"name": "white",
 			"value": "#FFFFFF",
 			"kind": "color",
+			"selectors": [
+				"#fc-pillars"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
 			"label": "White"
 		},
 		{
 			"name": "ease",
 			"value": "cubic-bezier(.25,.46,.45,.94)",
 			"kind": "text",
+			"selectors": [
+				"#fc-pillars"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
 			"label": "Ease"
 		}
 	],
@@ -98,7 +133,7 @@
 				{
 					"id": "image_src",
 					"control": "media",
-					"label": "Source",
+					"label": "Choose Image",
 					"default": {
 						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05243.jpg"
 					},
@@ -132,110 +167,6 @@
 				}
 			],
 			"merged": true
-		},
-		{
-			"id": "content_p_fc_pil_col_h3_nth_of_type_1",
-			"label": "List Title",
-			"sample": "African-Led & African-Owned",
-			"region_label": "List",
-			"controls": [
-				{
-					"id": "title_text_2",
-					"control": "text",
-					"label": "Title 1",
-					"description": "",
-					"default": "African-Led &amp; African-Owned",
-					"esc": "post",
-					"group": "p_fc_pil_col_h3_nth_of_type_1",
-					"sort": 0,
-					"part_label": "List Title"
-				},
-				{
-					"id": "title_text_3",
-					"control": "text",
-					"label": "Title 2",
-					"description": "",
-					"default": "Special Guests Who Know South Africa Best",
-					"esc": "post",
-					"group": "p_fc_pil_col_h3_nth_of_type_1",
-					"sort": 0,
-					"part_label": "List Title"
-				},
-				{
-					"id": "title_text_4",
-					"control": "text",
-					"label": "Title 3",
-					"description": "",
-					"default": "Premium Accommodations",
-					"esc": "post",
-					"group": "p_fc_pil_col_h3_nth_of_type_1",
-					"sort": 0,
-					"part_label": "List Title"
-				},
-				{
-					"id": "title_text_5",
-					"control": "text",
-					"label": "Title 4",
-					"description": "",
-					"default": "Looked After, End to End",
-					"esc": "post",
-					"group": "p_fc_pil_col_h3_nth_of_type_1",
-					"sort": 0,
-					"part_label": "List Title"
-				}
-			]
-		},
-		{
-			"id": "content_p_fc_pil_col_p_nth_of_type_1",
-			"label": "Text",
-			"sample": "Of the diaspora, with relationships across Sout…",
-			"region_label": "List",
-			"controls": [
-				{
-					"id": "text_text",
-					"control": "textarea",
-					"label": "Text 1",
-					"description": "",
-					"default": "Of the diaspora, with relationships across Southern Africa we have built over years. Experience South Africa through those who not only welcome you but receive you with care.",
-					"esc": "post",
-					"group": "p_fc_pil_col_p_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Text"
-				},
-				{
-					"id": "text_text_2",
-					"control": "textarea",
-					"label": "Text 2",
-					"description": "",
-					"default": "Our cultural custodians welcome you in person and show you South Africa with local privilege. Experience the country through rare insider access by our artists, entrepreneurs, and trailblazers who share their perspectives on South Africa's landscapes, culture, and contemporary life through one of a kind experiences.",
-					"esc": "post",
-					"group": "p_fc_pil_col_p_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Text"
-				},
-				{
-					"id": "text_text_3",
-					"control": "textarea",
-					"label": "Text 3",
-					"description": "",
-					"default": "Each property is carefully selected for exceptional service, unique character, and prime location. From luxury lodges to boutique hotels, every stay reflects our commitment to quality.",
-					"esc": "post",
-					"group": "p_fc_pil_col_p_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Text"
-				},
-				{
-					"id": "text_text_4",
-					"control": "textarea",
-					"label": "Text 4",
-					"description": "",
-					"default": "From the moment you land, your dedicated Umoya host is with you every step of the way. On the ground, your journey runs through Thompsons Africa, one of southern Africa's oldest and most trusted operators, with over a century of experience since 1901.",
-					"esc": "post",
-					"group": "p_fc_pil_col_p_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Text"
-				}
-			]
 		}
 	],
 	"integration_controls": [],
@@ -259,7 +190,62 @@
 	],
 	"inline_style_controls": [],
 	"media_controls": [],
-	"repeaters": [],
+	"repeaters": [
+		{
+			"id": "rep_div_fc_pil_col",
+			"label": "Columns",
+			"item_label": "{{{ title }}}",
+			"controls": [
+				{
+					"id": "role",
+					"control": "hidden",
+					"label": "Role",
+					"esc": "attr",
+					"default": "listitem"
+				},
+				{
+					"id": "title",
+					"control": "text",
+					"label": "Title",
+					"esc": "post",
+					"default": "African-Led &amp; African-Owned"
+				},
+				{
+					"id": "body",
+					"control": "textarea",
+					"label": "Body",
+					"esc": "post",
+					"default": "Of the diaspora, with relationships across Southern Africa we have built over years. Experience South Africa through those who not only welcome you but receive you with care."
+				}
+			],
+			"rows": [
+				{
+					"role": "listitem",
+					"title": "African-Led &amp; African-Owned",
+					"body": "Of the diaspora, with relationships across Southern Africa we have built over years. Experience South Africa through those who not only welcome you but receive you with care."
+				},
+				{
+					"role": "listitem",
+					"title": "Special Guests Who Know South Africa Best",
+					"body": "Our cultural custodians welcome you in person and show you South Africa with local privilege. Experience the country through rare insider access by our artists, entrepreneurs, and trailblazers who share their perspectives on South Africa's landscapes, culture, and contemporary life through one of a kind experiences."
+				},
+				{
+					"role": "listitem",
+					"title": "Premium Accommodations",
+					"body": "Each property is carefully selected for exceptional service, unique character, and prime location. From luxury lodges to boutique hotels, every stay reflects our commitment to quality."
+				},
+				{
+					"role": "listitem",
+					"title": "Looked After, End to End",
+					"body": "From the moment you land, your dedicated Umoya host is with you every step of the way. On the ground, your journey runs through Thompsons Africa, one of southern Africa's oldest and most trusted operators, with over a century of experience since 1901."
+				}
+			],
+			"loops": 1,
+			"selector": ".fc-pil-col",
+			"notice": "",
+			"portal": null
+		}
+	],
 	"style_parts": [
 		{
 			"id": "p_section",
@@ -284,6 +270,7 @@
 				"transition",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -311,6 +298,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -336,6 +324,7 @@
 				"filters",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -363,6 +352,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -390,6 +380,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -418,6 +409,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -443,8 +435,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"grid_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -472,9 +466,10 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": "div_fc_pil_col"
 		},
 		{
 			"id": "p_fc_pil_col_h3_nth_of_type_1",
@@ -500,6 +495,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -528,6 +524,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -548,7 +545,7 @@
 		{
 			"id": "image_src",
 			"control": "media",
-			"label": "Source",
+			"label": "Choose Image",
 			"default": {
 				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05243.jpg"
 			},
@@ -589,86 +586,6 @@
 			"default": "Why Umoya Afrika Tours?",
 			"esc": "post",
 			"group": "p_fc_pil_heading",
-			"sort": 0
-		},
-		{
-			"id": "title_text_2",
-			"control": "text",
-			"label": "Title",
-			"description": "",
-			"default": "African-Led &amp; African-Owned",
-			"esc": "post",
-			"group": "p_fc_pil_col_h3_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "text_text",
-			"control": "textarea",
-			"label": "Text",
-			"description": "",
-			"default": "Of the diaspora, with relationships across Southern Africa we have built over years. Experience South Africa through those who not only welcome you but receive you with care.",
-			"esc": "post",
-			"group": "p_fc_pil_col_p_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "title_text_3",
-			"control": "text",
-			"label": "Title",
-			"description": "",
-			"default": "Special Guests Who Know South Africa Best",
-			"esc": "post",
-			"group": "p_fc_pil_col_h3_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "text_text_2",
-			"control": "textarea",
-			"label": "Text",
-			"description": "",
-			"default": "Our cultural custodians welcome you in person and show you South Africa with local privilege. Experience the country through rare insider access by our artists, entrepreneurs, and trailblazers who share their perspectives on South Africa's landscapes, culture, and contemporary life through one of a kind experiences.",
-			"esc": "post",
-			"group": "p_fc_pil_col_p_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "title_text_4",
-			"control": "text",
-			"label": "Title",
-			"description": "",
-			"default": "Premium Accommodations",
-			"esc": "post",
-			"group": "p_fc_pil_col_h3_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "text_text_3",
-			"control": "textarea",
-			"label": "Text",
-			"description": "",
-			"default": "Each property is carefully selected for exceptional service, unique character, and prime location. From luxury lodges to boutique hotels, every stay reflects our commitment to quality.",
-			"esc": "post",
-			"group": "p_fc_pil_col_p_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "title_text_5",
-			"control": "text",
-			"label": "Title",
-			"description": "",
-			"default": "Looked After, End to End",
-			"esc": "post",
-			"group": "p_fc_pil_col_h3_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "text_text_4",
-			"control": "textarea",
-			"label": "Text",
-			"description": "",
-			"default": "From the moment you land, your dedicated Umoya host is with you every step of the way. On the ground, your journey runs through Thompsons Africa, one of southern Africa's oldest and most trusted operators, with over a century of experience since 1901.",
-			"esc": "post",
-			"group": "p_fc_pil_col_p_nth_of_type_1",
 			"sort": 0
 		}
 	]

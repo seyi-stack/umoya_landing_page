@@ -21,99 +21,176 @@
 	"keywords": [
 		"umoya",
 		"founders circle",
+		"founder",
 		"fc",
 		"our",
 		"approach"
 	],
+	"portals": [],
 	"tokens": [
 		{
 			"name": "cream",
 			"value": "#F5F0EB",
 			"kind": "color",
+			"selectors": [
+				"#fc-why"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
 			"label": "Cream"
 		},
 		{
 			"name": "cream-lt",
 			"value": "#F5F0EB",
 			"kind": "color",
+			"selectors": [
+				"#fc-why"
+			],
+			"scoped": false,
+			"id": "uew_token_cream_lt",
 			"label": "Cream Lt"
 		},
 		{
 			"name": "cream-dk",
 			"value": "#F5F0EB",
 			"kind": "color",
+			"selectors": [
+				"#fc-why"
+			],
+			"scoped": false,
+			"id": "uew_token_cream_dk",
 			"label": "Cream Dk"
 		},
 		{
 			"name": "brown",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#fc-why"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
 			"label": "Brown"
 		},
 		{
 			"name": "brown-mid",
 			"value": "#3A2220",
 			"kind": "color",
+			"selectors": [
+				"#fc-why"
+			],
+			"scoped": false,
+			"id": "uew_token_brown_mid",
 			"label": "Brown Mid"
 		},
 		{
 			"name": "terra",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#fc-why"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
 			"label": "Terra"
 		},
 		{
 			"name": "terra-dk",
 			"value": "#C06840",
 			"kind": "color",
+			"selectors": [
+				"#fc-why"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
 			"label": "Terra Dk"
 		},
 		{
 			"name": "terra-lt",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#fc-why"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_lt",
 			"label": "Terra Lt"
 		},
 		{
 			"name": "gold",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#fc-why"
+			],
+			"scoped": false,
+			"id": "uew_token_gold",
 			"label": "Gold"
 		},
 		{
 			"name": "olive",
 			"value": "#708238",
 			"kind": "color",
+			"selectors": [
+				"#fc-why"
+			],
+			"scoped": false,
+			"id": "uew_token_olive",
 			"label": "Olive"
 		},
 		{
 			"name": "text",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#fc-why"
+			],
+			"scoped": false,
+			"id": "uew_token_text",
 			"label": "Text"
 		},
 		{
 			"name": "text-mid",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#fc-why"
+			],
+			"scoped": false,
+			"id": "uew_token_text_mid",
 			"label": "Text Mid"
 		},
 		{
 			"name": "text-muted",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#fc-why"
+			],
+			"scoped": false,
+			"id": "uew_token_text_muted",
 			"label": "Text Muted"
 		},
 		{
 			"name": "white",
 			"value": "#FFFFFF",
 			"kind": "color",
+			"selectors": [
+				"#fc-why"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
 			"label": "White"
 		},
 		{
 			"name": "ease",
 			"value": "cubic-bezier(.25,.46,.45,.94)",
 			"kind": "text",
+			"selectors": [
+				"#fc-why"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
 			"label": "Ease"
 		}
 	],
@@ -139,7 +216,7 @@
 		},
 		{
 			"id": "content_p_fc_why_eyebrow",
-			"label": "List",
+			"label": "List 1",
 			"sample": "Our Approach",
 			"region_label": "List",
 			"controls": [
@@ -181,14 +258,14 @@
 		},
 		{
 			"id": "content_p_fc_why_btn",
-			"label": "List",
+			"label": "List Button 1",
 			"sample": "Travel with us",
 			"region_label": "List",
 			"controls": [
 				{
 					"id": "button_text",
 					"control": "text",
-					"label": "Button 1",
+					"label": "Button",
 					"description": "",
 					"default": "Travel with us",
 					"esc": "post",
@@ -208,7 +285,15 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "List Button 1"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_vid_ph",
+			"label": "List 2",
+			"sample": "",
+			"region_label": "List",
+			"controls": [
 				{
 					"id": "button_aria_label",
 					"control": "text",
@@ -218,6 +303,22 @@
 					"group": "p_fc_vid_ph",
 					"tab": "content",
 					"sort": 1,
+					"part_label": "List Button 2"
+				},
+				{
+					"id": "button_background_image",
+					"control": "media",
+					"label": "Background Image",
+					"description": "Painted from the section stylesheet as a layer over the element. Choosing an image here replaces the photo.",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05243.jpg"
+					},
+					"css_selector": ".fc-vid-ph::before",
+					"css_value": "background-image: url(\"{{URL}}\");",
+					"css_only": true,
+					"esc": "url",
+					"group": "p_fc_vid_ph",
+					"sort": 2,
 					"part_label": "List Button 2"
 				},
 				{
@@ -234,7 +335,7 @@
 				{
 					"id": "button_aria_label_2",
 					"control": "text",
-					"label": "Button 2",
+					"label": "Button",
 					"default": "Close video",
 					"esc": "attr",
 					"group": "p_fc_video_close",
@@ -455,7 +556,7 @@
 				{
 					"id": "body_markup",
 					"control": "textarea",
-					"label": "Body markup (HTML)",
+					"label": "Body (HTML)",
 					"esc": "raw",
 					"default": "Umoya is African-led and African-owned, and of the diaspora ourselves. <strong>Wilson Nyah</strong> built it over a decade of work across the continent, and on the relationships that came with it. Those relationships are why <strong>Lucia Motloung</strong> pours her own wine on your first evening, and why <strong>Antoinette Sithole</strong> sits at your table in Soweto and tells you about the day in 1976 she lived herself."
 				}
@@ -468,7 +569,10 @@
 					"body_markup": "Around those moments, the work is ours. You are met at the airport, a host stays with you the whole way, and what would normally be yours to organise is carried for you. You arrive as a guest of people who are glad to share their home."
 				}
 			],
-			"selector": ".fc-why-body"
+			"loops": 1,
+			"selector": ".fc-why-body",
+			"notice": "",
+			"portal": null
 		}
 	],
 	"style_parts": [
@@ -494,6 +598,7 @@
 				"text_color",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -521,6 +626,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -546,8 +652,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"grid_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -575,6 +683,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": null
@@ -603,6 +712,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -631,6 +741,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -659,6 +770,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -687,6 +799,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -715,6 +828,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -743,6 +857,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": "p_fc_why_body"
@@ -771,6 +886,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": null
@@ -800,6 +916,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -825,8 +942,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -854,6 +973,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -883,6 +1003,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -911,6 +1032,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -930,6 +1052,7 @@
 				"effects",
 				"visibility"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -955,8 +1078,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"grid_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -984,6 +1109,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1011,6 +1137,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1040,6 +1167,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1068,6 +1196,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1093,6 +1222,7 @@
 				"filters",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1362,6 +1492,21 @@
 			"group": "p_fc_video_player",
 			"tab": "content",
 			"sort": 1
+		},
+		{
+			"id": "button_background_image",
+			"control": "media",
+			"label": "Background Image",
+			"description": "Painted from the section stylesheet as a layer over the element. Choosing an image here replaces the photo.",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05243.jpg"
+			},
+			"css_selector": ".fc-vid-ph::before",
+			"css_value": "background-image: url(\"{{URL}}\");",
+			"css_only": true,
+			"esc": "url",
+			"group": "p_fc_vid_ph",
+			"sort": 2
 		}
 	]
 }

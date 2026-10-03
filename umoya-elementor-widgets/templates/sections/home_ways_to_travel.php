@@ -58,9 +58,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       <?php $__i = 0; foreach ( $r['rep_article_umoya_wtt_card'] as $it ) : if ( $__i ++ ) { echo '
 
       '; } ?><article class="umoya-wtt-card <?php echo $it['_uew_item_class']; ?>" role="<?php echo $it['role']; ?>">
-        <div class="umoya-wtt-media">
-          <!--<?php echo $it['note']; ?>-->
-          <img src="<?php echo $it['src']; ?>" alt="<?php echo $it['alt']; ?>" loading="<?php echo $it['loading']; ?>" decoding="<?php echo $it['decoding']; ?>">
+        <div class="umoya-wtt-media"><?php echo $it['notes']; ?><img src="<?php echo $it['src']; ?>" alt="<?php echo $it['alt']; ?>" loading="<?php echo $it['loading']; ?>" decoding="<?php echo $it['decoding']; ?>">
         </div>
         <div class="umoya-wtt-body">
           <h3 class="umoya-wtt-title"><?php echo $it['title']; ?></h3>

@@ -20,25 +20,14 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { execFileSync } from 'child_process';
-import zlib from 'zlib';
 import puppeteer from 'puppeteer-core';
+
+import { findChrome, gotoWithRetry, stubExternalAssets, settle, wp, harness } from './lib/browser.mjs';
 
 const here = path.dirname( fileURLToPath( import.meta.url ) );
 const repoRoot = path.resolve( here, '..', '..' );
 const pluginRoot = path.join( repoRoot, 'umoya-elementor-widgets' );
-const wpDir = path.join( repoRoot, 'local-env', 'wordpress' );
-const php = path.join( repoRoot, 'local-env', 'php', 'php.exe' );
-const phpIni = path.join( repoRoot, 'local-env', 'php', 'php.ini' );
-const wpCli = path.join( repoRoot, 'local-env', 'bin', 'wp-cli.phar' );
-const shotDir = path.join( repoRoot, 'local-env', 'shots' );
-
-const CHROME_CANDIDATES = [
-	'C:/Program Files/Google/Chrome/Application/chrome.exe',
-	'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
-	'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
-	'C:/Program Files/Microsoft/Edge/Application/msedge.exe',
-];
+const shotDir = harness( repoRoot ).shotDir;
 
 const args = process.argv.slice( 2 );
 const only = ( args.find( ( a ) => a.startsWith( '--only=' ) ) || '' ).replace( '--only=', '' );
@@ -64,18 +53,6 @@ const STYLE_PROPS = [
 ];
 
 const manifest = JSON.parse( fs.readFileSync( path.join( pluginRoot, 'includes', 'sections', 'index.json' ), 'utf8' ) );
-
-function wp( cliArgs ) {
-	return execFileSync( php, [ '-c', phpIni, wpCli, ...cliArgs ], { cwd: wpDir, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 } );
-}
-
-function findChrome() {
-	const found = CHROME_CANDIDATES.find( ( candidate ) => fs.existsSync( candidate ) );
-	if ( ! found ) {
-		throw new Error( 'No Chrome or Edge found. Checked:\n  ' + CHROME_CANDIDATES.join( '\n  ' ) );
-	}
-	return found;
-}
 
 /**
  * Runs in the page. Walks the section and records, per element, its geometry
@@ -128,125 +105,6 @@ function collectSnapshot( rootSelector, props ) {
 		rootWidth: Math.round( rootRect.width ),
 		elements: out,
 	};
-}
-
-/**
- * Stand-ins for every asset the sections load from the live CDN.
- *
- * Two problems this solves. The live origin is documented as intermittently
- * unreachable (CLAUDE.md phase 14), so a photo that loads on one of the two
- * pages but not the other shifts every element after it. And several sections
- * REACT to media: the hero reveals its video once `play()` resolves, the
- * navigation swaps to a text logo if the mark fails. Serving each asset type a
- * fixed, valid response makes both pages take the same branch.
- *
- * Images get real intrinsic dimensions, because a layout with `width: auto`
- * depends on them.
- */
-function makePng( width, height ) {
-	const raw = Buffer.alloc( height * ( width * 3 + 1 ), 0xd8 );
-	for ( let y = 0; y < height; y += 1 ) raw[ y * ( width * 3 + 1 ) ] = 0; // filter byte
-
-	const chunk = ( type, data ) => {
-		const length = Buffer.alloc( 4 );
-		length.writeUInt32BE( data.length );
-		const body = Buffer.concat( [ Buffer.from( type, 'ascii' ), data ] );
-		const crc = Buffer.alloc( 4 );
-		crc.writeUInt32BE( crc32( body ) >>> 0 );
-		return Buffer.concat( [ length, body, crc ] );
-	};
-
-	const ihdr = Buffer.alloc( 13 );
-	ihdr.writeUInt32BE( width, 0 );
-	ihdr.writeUInt32BE( height, 4 );
-	ihdr[ 8 ] = 8;  // bit depth
-	ihdr[ 9 ] = 2;  // colour type: truecolour
-
-	return Buffer.concat( [
-		Buffer.from( [ 0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a ] ),
-		chunk( 'IHDR', ihdr ),
-		chunk( 'IDAT', zlib.deflateSync( raw, { level: 9 } ) ),
-		chunk( 'IEND', Buffer.alloc( 0 ) ),
-	] );
-}
-
-const CRC_TABLE = ( () => {
-	const table = new Int32Array( 256 );
-	for ( let n = 0; n < 256; n += 1 ) {
-		let c = n;
-		for ( let k = 0; k < 8; k += 1 ) c = c & 1 ? 0xedb88320 ^ ( c >>> 1 ) : c >>> 1;
-		table[ n ] = c;
-	}
-	return table;
-} )();
-
-function crc32( buffer ) {
-	let c = -1;
-	for ( let i = 0; i < buffer.length; i += 1 ) c = CRC_TABLE[ ( c ^ buffer[ i ] ) & 0xff ] ^ ( c >>> 8 );
-	return c ^ -1;
-}
-
-const STUB_PHOTO = makePng( 1200, 800 );
-const STUB_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="120" height="26" viewBox="0 0 120 26"><rect width="120" height="26" fill="#4B2E2B"/></svg>';
-
-async function stubExternalAssets( page ) {
-	await page.setRequestInterception( true );
-
-	page.on( 'request', ( request ) => {
-		const url = request.url();
-
-		if ( url.startsWith( 'http://localhost:' ) || url.startsWith( 'http://127.0.0.1:' ) || url.startsWith( 'data:' ) ) {
-			request.continue();
-			return;
-		}
-
-		const type = request.resourceType();
-
-		if ( 'image' === type ) {
-			if ( /\.svg(\?|#|$)/i.test( url ) ) {
-				request.respond( { status: 200, contentType: 'image/svg+xml', body: STUB_SVG } );
-			} else {
-				request.respond( { status: 200, contentType: 'image/png', body: STUB_PHOTO } );
-			}
-			return;
-		}
-
-		// A video is left to fail on both pages alike: an empty body would decode
-		// differently from a 404 and the hero's play() promise would settle at a
-		// different moment on each.
-		if ( 'media' === type ) {
-			request.respond( { status: 404, contentType: 'text/plain', body: '' } );
-			return;
-		}
-
-		if ( 'font' === type || 'stylesheet' === type || 'script' === type ) {
-			request.respond( { status: 200, contentType: 'text/plain', body: '' } );
-			return;
-		}
-
-		request.abort();
-	} );
-}
-
-/**
- * PHP's built-in server is single-threaded, and on Windows it refuses new
- * connections once its backlog fills -- which an Elementor page, with its ~48
- * scripts and stylesheets, can do on its own. That surfaces as a one-off
- * ERR_CONNECTION_REFUSED partway through a run, not as a real failure, so
- * navigation is retried after letting the server drain.
- */
-async function gotoWithRetry( page, url, options, attempts = 3 ) {
-	let lastError;
-	for ( let attempt = 1; attempt <= attempts; attempt += 1 ) {
-		try {
-			return await page.goto( url, options );
-		} catch ( error ) {
-			lastError = error;
-			if ( ! String( error.message || error ).includes( 'ERR_CONNECTION_REFUSED' ) ) throw error;
-			await new Promise( ( resolve ) => setTimeout( resolve, 1500 * attempt ) );
-		}
-	}
-	throw lastError;
 }
 
 function isNumeric( value ) {
@@ -361,7 +219,7 @@ console.log( 'Comparing each compiled widget against the same section pasted int
 
 let pages;
 try {
-	const raw = wp( [ 'eval-file', path.join( here, 'make-test-pages.php' ) ] );
+	const raw = wp( repoRoot, [ 'eval-file', path.join( here, 'make-test-pages.php' ) ] );
 	pages = JSON.parse( raw.slice( raw.indexOf( '{' ) ) );
 } catch ( error ) {
 	console.error( 'Could not create test pages:\n' + ( error.stdout || '' ) + ( error.stderr || error.message ) );
@@ -370,26 +228,29 @@ try {
 
 if ( wantShots ) fs.mkdirSync( shotDir, { recursive: true } );
 
-const browser = await puppeteer.launch( {
+const launch = () => puppeteer.launch( {
 	executablePath: findChrome(),
 	headless: 'shell',
 	args: [ '--no-sandbox', '--disable-dev-shm-usage', '--force-device-scale-factor=1' ],
 } );
+let browser = await launch();
+
+/**
+ * Chrome itself going away -- killed, or the machine sleeping mid-run -- is a
+ * harness fault, not a widget one. It surfaces as a closed target or a closed
+ * connection on whatever call happened to be in flight, and it once cost a
+ * whole run partway through. Such a section is taken again on a fresh browser.
+ */
+const browserGone = ( error ) =>
+	! browser.connected ||
+	/Target closed|Connection closed|Session closed|Protocol error|browser has disconnected/i.test( String( ( error && error.message ) || error ) );
 
 const rows = [];
 const row_unstable = new Set();
 let failures = 0;
 
-for ( const [ key, section ] of Object.entries( manifest ) ) {
-	if ( onlyKeys && ! onlyKeys.has( key ) ) continue;
-
-	const entry = pages[ key ];
-	if ( ! entry || ! entry.raw_url ) {
-		rows.push( { key, status: 'no reference page' } );
-		failures += 1;
-		continue;
-	}
-
+/** Measure one section at every viewport, confirming any difference. */
+async function measureSection( key, section, entry ) {
 	let problems = [];
 	const consoleErrors = [];
 	let behaviour = null;
@@ -429,40 +290,13 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 				continue;
 			}
 
-			// Wait for fonts before measuring anything. Text metrics change when a
-			// webfont swaps in, so if one page's font lands before the snapshot
-			// and the other's does not, every centred element shifts a few pixels
-			// and the whole section reads as different. The theme's fonts are
-			// served by the single-threaded PHP server, which makes that race easy
-			// to lose. This was reproducible: the same section differed on one run
-			// and was identical on the next.
-			await page.evaluate( async () => {
-				// Force lazy images to load. `loading="lazy"` leaves `complete`
-				// false until the image scrolls into view, so waiting on it
-				// otherwise returns immediately and the snapshot is taken while
-				// images are still arriving -- which moves everything below them.
-				for ( const image of Array.from( document.images ) ) {
-					image.loading = 'eager';
-					if ( ! image.getAttribute( 'src' ) ) continue;
-					image.src = image.src; // eslint-disable-line no-self-assign
-				}
-
-				await Promise.all( Array.from( document.images ).map( ( image ) =>
-					image.complete
-						? Promise.resolve()
-						: new Promise( ( resolve ) => {
-							image.addEventListener( 'load', resolve, { once: true } );
-							image.addEventListener( 'error', resolve, { once: true } );
-						} )
-				) );
-
-				await document.fonts.ready;
-			} );
-
-			// Then let entrance transitions and media-load handlers settle. The
-			// hero retries playback on window load and again 900ms later, so a
-			// shorter wait samples the two pages at different points.
-			await page.evaluate( () => new Promise( ( resolve ) => setTimeout( resolve, 1500 ) ) );
+			// Wait for fonts and images, then let entrance transitions and
+			// media-load handlers settle, before measuring anything. Text metrics
+			// change when a webfont swaps in, and a lazy image arriving moves
+			// everything below it; if one page settles before its snapshot and the
+			// other does not, the whole section reads as different. The hero
+			// retries playback on window load and again 900ms later, hence 1500ms.
+			await settle( page, 1500 );
 
 			snapshots[ label ] = await page.evaluate( collectSnapshot, section.root_selector, STYLE_PROPS );
 
@@ -477,7 +311,7 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 				} );
 			}
 
-			await page.close();
+			await page.close().catch( () => {} );
 		}
 
 		return snapshots;
@@ -516,16 +350,40 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 	problems = confirmed;
 
 	const status = problems.length ? 'DIFFERS' : 'identical';
-	if ( problems.length ) failures += 1;
 
-	rows.push( {
+	return {
 		key,
 		status,
 		hasScript: !! section.script,
 		problems,
 		consoleErrors: [ ...new Set( consoleErrors ) ],
 		behaviour,
-	} );
+	};
+}
+
+for ( const [ key, section ] of Object.entries( manifest ) ) {
+	if ( onlyKeys && ! onlyKeys.has( key ) ) continue;
+
+	const entry = pages[ key ];
+	if ( ! entry || ! entry.raw_url ) {
+		rows.push( { key, status: 'no reference page' } );
+		failures += 1;
+		continue;
+	}
+
+	let row = null;
+	for ( let attempt = 1; ! row; attempt += 1 ) {
+		try {
+			row = await measureSection( key, section, entry );
+		} catch ( error ) {
+			if ( attempt >= 2 || ! browserGone( error ) ) throw error;
+			await browser.close().catch( () => {} );
+			browser = await launch();
+		}
+	}
+
+	if ( 'DIFFERS' === row.status ) failures += 1;
+	rows.push( row );
 }
 
 await browser.close();

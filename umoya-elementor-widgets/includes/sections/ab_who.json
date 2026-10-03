@@ -1,0 +1,836 @@
+{
+	"key": "ab_who",
+	"name": "umoya-ab-who",
+	"title": "About Who We Are",
+	"description": "The meaning of \"Umoya\" beside an auto-advancing photo carousel with dot navigation.",
+	"icon": "eicon-slides",
+	"category": "umoya-about",
+	"source": "about/section-02-who-we-are.html",
+	"class_name": "About_Who",
+	"widget_file": "widgets/class-ab-who.php",
+	"root_selector": "#ab-who",
+	"template": "templates/sections/ab_who.php",
+	"style": {
+		"handle": "uew-umoya-ab-who",
+		"file": "assets/css/sections/ab_who.css"
+	},
+	"script": {
+		"handle": "uew-umoya-ab-who",
+		"file": "assets/js/sections/ab_who.js"
+	},
+	"keywords": [
+		"umoya",
+		"about",
+		"about us",
+		"story",
+		"who",
+		"we",
+		"are"
+	],
+	"portals": [],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#ab-who"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#ab-who"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#ab-who"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"selectors": [
+				"#ab-who"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
+			"label": "White"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.68)",
+			"kind": "color",
+			"selectors": [
+				"#ab-who"
+			],
+			"scoped": false,
+			"id": "uew_token_muted",
+			"label": "Muted"
+		},
+		{
+			"name": "line",
+			"value": "rgba(75,46,43,.14)",
+			"kind": "color",
+			"selectors": [
+				"#ab-who"
+			],
+			"scoped": false,
+			"id": "uew_token_line",
+			"label": "Line"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"selectors": [
+				"#ab-who"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Who we are",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_ab_wh_eye",
+			"label": "List 1",
+			"sample": "Who We Are",
+			"region_label": "List",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Who We Are",
+					"esc": "post",
+					"group": "p_ab_wh_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "Umoya means breath, or wind.",
+					"esc": "post",
+					"group": "p_ab_wh_ttl",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "text_text",
+					"control": "textarea",
+					"label": "Text",
+					"description": "Inline formatting tags are preserved.",
+					"default": "<b>Umoya</b> (oo-MOH-ya), isiZulu",
+					"esc": "post",
+					"group": "p_ab_wh_pron",
+					"sort": 0,
+					"part_label": "List Text 1"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_ab_wh_carousel",
+			"label": "List 2",
+			"sample": "",
+			"region_label": "List",
+			"controls": [
+				{
+					"id": "slide_aria_roledescription",
+					"control": "text",
+					"label": "Accessible Role",
+					"default": "carousel",
+					"esc": "attr",
+					"group": "p_ab_wh_carousel",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "List Slide"
+				},
+				{
+					"id": "slide_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Umoya trip photography",
+					"esc": "attr",
+					"group": "p_ab_wh_carousel",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "List Slide"
+				},
+				{
+					"id": "dot_aria_label",
+					"control": "text",
+					"label": "Slide Dot",
+					"default": "Choose image",
+					"esc": "attr",
+					"group": "p_ab_wh_dots",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Slide Dot"
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_p_ab_wh_p",
+			"label": "Texts",
+			"item_label": "{{{ p }}}",
+			"controls": [
+				{
+					"id": "p",
+					"control": "textarea",
+					"label": "Paragraph",
+					"esc": "post",
+					"default": "It is the feeling an Umoya journey is built to give you from the moment you arrive: a country that opens up and lets you breathe it in."
+				}
+			],
+			"rows": [
+				{
+					"p": "It is the feeling an Umoya journey is built to give you from the moment you arrive: a country that opens up and lets you breathe it in."
+				},
+				{
+					"p": "We design premium, tailor-made journeys across South Africa, with cultural depth, named hosts, and seamless execution. Every journey brings together the country's history, food, wine, music, and creative scene, delivered with the finest lodges and looked after in every detail."
+				}
+			],
+			"loops": 1,
+			"selector": ".ab-wh-p",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_div_ab_wh_slide",
+			"label": "Slides",
+			"item_label": "{{{ l1_alt }}}",
+			"controls": [
+				{
+					"id": "l1_role",
+					"control": "hidden",
+					"label": "Role",
+					"esc": "attr",
+					"default": "group"
+				},
+				{
+					"id": "l1_aria_roledescription",
+					"control": "hidden",
+					"label": "Accessible Role",
+					"esc": "attr",
+					"default": "slide"
+				},
+				{
+					"id": "l1_src",
+					"control": "media",
+					"label": "Choose Image",
+					"esc": "url",
+					"default": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_about_carousel_1.jpg"
+				},
+				{
+					"id": "l1_alt",
+					"control": "text",
+					"label": "Alt Text",
+					"esc": "attr",
+					"default": "An Umoya journey moment in South Africa"
+				},
+				{
+					"id": "l1_loading",
+					"control": "hidden",
+					"label": "Loading",
+					"esc": "attr",
+					"default": "lazy"
+				},
+				{
+					"id": "l1_decoding",
+					"control": "hidden",
+					"label": "Decoding",
+					"esc": "attr",
+					"default": "async"
+				},
+				{
+					"id": "l2_role",
+					"control": "hidden",
+					"label": "Role",
+					"esc": "attr",
+					"default": "tab"
+				}
+			],
+			"rows": [
+				{
+					"l1_role": "group",
+					"l1_aria_roledescription": "slide",
+					"l1_src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_about_carousel_1.jpg",
+					"l1_alt": "An Umoya journey moment in South Africa",
+					"l1_loading": "lazy",
+					"l1_decoding": "async",
+					"l2_role": "tab"
+				},
+				{
+					"l1_role": "group",
+					"l1_aria_roledescription": "slide",
+					"l1_src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_about_carousel_2.jpg",
+					"l1_alt": "Cultural experience on an Umoya journey",
+					"l1_loading": "lazy",
+					"l1_decoding": "async",
+					"l2_role": "tab"
+				},
+				{
+					"l1_role": "group",
+					"l1_aria_roledescription": "slide",
+					"l1_src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_about_carousel_3.jpg",
+					"l1_alt": "Travelers welcomed on an Umoya journey",
+					"l1_loading": "lazy",
+					"l1_decoding": "async",
+					"l2_role": "tab"
+				},
+				{
+					"l1_role": "group",
+					"l1_aria_roledescription": "slide",
+					"l1_src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_about_carousel_4.jpg",
+					"l1_alt": "A premium South African travel experience",
+					"l1_loading": "lazy",
+					"l1_decoding": "async",
+					"l2_role": "tab"
+				},
+				{
+					"l1_role": "group",
+					"l1_aria_roledescription": "slide",
+					"l1_src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_home_solo_travel.jpg",
+					"l1_alt": "A traveller on an Umoya journey in South Africa",
+					"l1_loading": "lazy",
+					"l1_decoding": "async",
+					"l2_role": "tab"
+				},
+				{
+					"l1_role": "group",
+					"l1_aria_roledescription": "slide",
+					"l1_src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_8926.png",
+					"l1_alt": "Sharing a moment on an Umoya journey",
+					"l1_loading": "lazy",
+					"l1_decoding": "async",
+					"l2_role": "tab"
+				}
+			],
+			"loops": 2,
+			"selector": ".ab-wh-slide",
+			"notice": "",
+			"portal": null
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_wh_c",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-wh-c",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_wh_grid",
+			"label": "List",
+			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-wh-grid",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_wh_rv",
+			"label": "List Container",
+			"short_label": "Container",
+			"parent_label": "List",
+			"sample": "",
+			"selector": ".ab-wh-rv",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_wh_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "List",
+			"sample": "Who We Are",
+			"selector": ".ab-wh-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_wh_ttl",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "List",
+			"sample": "Umoya means breath, or wind.",
+			"selector": ".ab-wh-ttl",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_wh_pron",
+			"label": "List Text 1",
+			"short_label": "Text",
+			"parent_label": "List",
+			"sample": "Umoya (oo-MOH-ya), isiZulu",
+			"selector": ".ab-wh-pron",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_b",
+			"label": "B",
+			"short_label": "B",
+			"parent_label": "Text",
+			"sample": "Umoya",
+			"selector": "b",
+			"tag": "b",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_wh_p",
+			"label": "List Text 2",
+			"short_label": "Text",
+			"parent_label": "List",
+			"sample": "It is the feeling an Umoya journey is built to …",
+			"selector": ".ab-wh-p",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": "p_ab_wh_p"
+		},
+		{
+			"id": "p_ab_wh_carousel",
+			"label": "List Slide",
+			"short_label": "Slide",
+			"parent_label": "List",
+			"sample": "",
+			"selector": ".ab-wh-carousel",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_wh_slide",
+			"label": "Slide",
+			"short_label": "Slide",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-wh-slide",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": "div_ab_wh_slide"
+		},
+		{
+			"id": "p_ab_wh_slide_img_nth_of_type_1",
+			"label": "Image",
+			"short_label": "Image",
+			"parent_label": "Slide",
+			"sample": "",
+			"selector": ".ab-wh-slide > img:nth-of-type(1)",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_wh_dots",
+			"label": "Slide Dot",
+			"short_label": "Dot",
+			"parent_label": "Slide",
+			"sample": "",
+			"selector": ".ab-wh-dots",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_wh_dot",
+			"label": "Dot",
+			"short_label": "Dot",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-wh-dot",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": "button_ab_wh_dot"
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Who we are",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Who We Are",
+			"esc": "post",
+			"group": "p_ab_wh_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "Umoya means breath, or wind.",
+			"esc": "post",
+			"group": "p_ab_wh_ttl",
+			"sort": 0
+		},
+		{
+			"id": "text_text",
+			"control": "textarea",
+			"label": "Text",
+			"description": "Inline formatting tags are preserved.",
+			"default": "<b>Umoya</b> (oo-MOH-ya), isiZulu",
+			"esc": "post",
+			"group": "p_ab_wh_pron",
+			"sort": 0
+		},
+		{
+			"id": "slide_aria_roledescription",
+			"control": "text",
+			"label": "Accessible Role",
+			"default": "carousel",
+			"esc": "attr",
+			"group": "p_ab_wh_carousel",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "slide_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Umoya trip photography",
+			"esc": "attr",
+			"group": "p_ab_wh_carousel",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "dot_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Choose image",
+			"esc": "attr",
+			"group": "p_ab_wh_dots",
+			"tab": "content",
+			"sort": 1
+		}
+	]
+}

@@ -47,8 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <h1 class="sj-h1-title"><?php echo $c['title_text']; ?></h1>
     <p class="sj-h1-sub"><?php echo $c['subtitle_text']; ?></p>
     <div class="sj-h1-btns">
-      <!-- ★ SWAP: link the primary button to the brochure PDF/download when ready -->
-      <a href="<?php echo $c['button_href']; ?>" class="sj-h1-btn sj-h1-btn-primary">
+      <a href="<?php echo $c['button_href']; ?>" class="sj-h1-btn sj-h1-btn-primary" target="<?php echo $c['button_target']; ?>" rel="<?php echo $c['button_rel']; ?>">
         <?php echo $c['button_text']; echo "\n        "; ?><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
           <line x1="12" y1="4" x2="12" y2="16"/>
           <polyline points="6 11 12 17 18 11"/>

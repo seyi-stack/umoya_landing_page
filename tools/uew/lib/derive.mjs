@@ -15,9 +15,9 @@
 import {
 	createDocument, attr, classList, elementChildren, children, isElement, isTextNode, isComment,
 	innerRange, innerText, innerHtml, outerHtml, outerRange, attrValueRange, attrWholeRange, isTextual, splice,
-	startTagInsertOffset,
+	startTagInsertOffset, loc,
 } from './html.mjs';
-import { parseStylesheet, buildSelectorIndex, layoutModeFor, collectTokens, splitInlineStyle, normalizeSelector } from './css.mjs';
+import { parseStylesheet, buildSelectorIndex, layoutModeFor, collectTokens, splitInlineStyle, normalizeSelector, animatedProperties, keyframeProperties, layoutModeOfRules } from './css.mjs';
 
 /* ------------------------------------------------------------------- tables */
 
@@ -29,6 +29,13 @@ const SVG_INTERNALS = new Set( [
 ] );
 
 const VOID_TAGS = new Set( [ 'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr' ] );
+
+/**
+ * Elements that never paint a box of their own. A style panel for a <source>
+ * can do nothing -- the browser never renders it -- so they get none, and their
+ * content controls (a video source URL) file under the element that holds them.
+ */
+const NON_RENDERED_TAGS = new Set( [ 'source', 'track', 'param', 'br', 'wbr', 'template', 'meta', 'link', 'base', 'noscript' ] );
 
 const TEXT_TAGS = new Set( [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'li', 'label', 'legend', 'figcaption', 'blockquote', 'cite', 'dt', 'dd', 'strong', 'em', 'small', 'summary', 'th', 'td', 'a', 'button' ] );
 
@@ -220,7 +227,7 @@ const NAME_EXPANSIONS = {
 	dec: 'Decorative', dot: 'Dot', ext: 'Extension', eye: 'Eyebrow', ftr: 'Footer',
 	hd: 'Header', hdr: 'Header', ico: 'Icon', img: 'Image', inr: 'Inner',
 	lbl: 'Label', loc: 'Location', msg: 'Message', nav: 'Navigation', nm: 'Name',
-	num: 'Number', ov: 'Overlay', ph: 'Placeholder', pic: 'Picture', pri: 'Privilege',
+	num: 'Number', ov: 'Overlay', ph: 'Placeholder', pic: 'Picture', pl: 'Place', pri: 'Privilege',
 	req: 'Required', sec: 'Section', ss: 'Slideshow', sub: 'Subtitle', tgl: 'Toggle',
 	ttl: 'Title', txt: 'Text', vid: 'Video', wrap: 'Wrapper', jrn: 'Journey',
 	f2: 'Form', h1: 'Hero', bf: 'Panel', det: 'Details', ben: 'Benefits',
@@ -359,11 +366,14 @@ const ATTRIBUTE_LABELS = {
 	srcset: 'Source Set',
 	sizes: 'Sizes',
 	allow: 'Permissions',
+	'data-short': 'Short Label (phones)',
 };
 
 function attributeLabel( name, node ) {
-	if ( ATTRIBUTE_LABELS[ name ] ) return ATTRIBUTE_LABELS[ name ];
+	// Checked before the table: `src` is "Source" generally, but on an image it
+	// is the picker Elementor's own Image widget calls "Choose Image".
 	if ( 'src' === name && 'img' === node.tagName.toLowerCase() ) return 'Choose Image';
+	if ( ATTRIBUTE_LABELS[ name ] ) return ATTRIBUTE_LABELS[ name ];
 
 	return titleCase( name.replace( /^data-/, '' ) );
 }
@@ -541,11 +551,41 @@ export function deriveSection( options ) {
 	const rootSelector = rootSelectorOf( rootNode );
 	const parsedCss = parseStylesheet( css );
 	const cssIndex = buildSelectorIndex( parsedCss );
-	const tokens = collectTokens( parsedCss ).map( ( t ) => ( {
-		...t,
-		label: titleCase( t.name ),
-	} ) );
 	const prefixes = detectClassPrefixes( doc );
+	const tokens = deriveTokens( collectTokens( parsedCss ), prefixes );
+
+	// The top-level element a node lives under. Selectors are built relative to
+	// it: a node in a second top-level element (the footer's opt-out dialog) is
+	// addressed from that element, never from the section root it is not in.
+	const topOf = ( node ) => {
+		let current = node;
+		while ( doc.parentsOf.get( current )?.node ) current = doc.parentsOf.get( current ).node;
+		return current;
+	};
+
+	const portals = resolvePortals( doc, spec.portals || [], key );
+
+	// Which stylesheet rules apply to which element, found by matching each
+	// rule against the section itself. Comparing selector strings instead
+	// missed every rule not written from the root -- `.fc-h1-brand { … }`
+	// rather than `#fc-hero .fc-h1-brand` -- so flex containers declared that
+	// way got no layout controls, and animated elements went unrecognised.
+	const keyframes = keyframeProperties( parsedCss );
+	const rulesByNode = new Map();
+	for ( const rule of parsedCss.rules ) {
+		for ( const selector of rule.selectors ) {
+			let matched;
+			try {
+				matched = doc.queryAll( normalizeSelector( selector ) );
+			} catch ( error ) {
+				continue; // outside the selector subset this compiler reads
+			}
+			for ( const node of matched ) {
+				if ( ! rulesByNode.has( node ) ) rulesByNode.set( node, [] );
+				rulesByNode.get( node ).push( rule );
+			}
+		}
+	}
 
 	const edits = [];
 	const fields = [];      // flat list of scalar content controls
@@ -579,6 +619,7 @@ export function deriveSection( options ) {
 	// never a loss of editability or of markup.
 	const bareEdits = [];
 	const accepted = [];
+	const plans = [];
 	const repeaterLabels = [];
 	for ( const group of detectRepeaters( doc, rootNode, spec ) ) {
 		// Elementor repeaters do not nest. A run inside an already-accepted
@@ -589,20 +630,69 @@ export function deriveSection( options ) {
 		);
 		if ( nested ) continue;
 
-		const built = buildRepeater( doc, group, { uniqueId, markup, notes, prefixes } );
-		if ( ! built ) continue;
+		// Form fields are a contract, not a list. Each field's `name` is what
+		// the submission script and the CRM alias table expect; "Add Item" would
+		// post a second FNAME, and "Delete" could drop the email field or the
+		// POPIA consent box. Such runs stay individually editable instead.
+		const field = group.nodes.map( ( item ) => namedFormControl( doc, item ) ).find( Boolean );
+		if ( field ) {
+			notes.push(
+				'repeater "' + group.id + '" (x' + group.nodes.length + ') not offered: its items are form fields (' +
+				field + '), which the form script and CRM mapping expect by name'
+			);
+			continue;
+		}
+
+		const plan = buildRepeater( doc, group, { markup, notes, prefixes } );
+		if ( ! plan ) continue;
+
+		// The value of an <option> is what the form submits. Say so on the
+		// panel, and say more where the registry knows the list must match a
+		// HubSpot dropdown property exactly.
+		const select = selectOwning( doc, group.nodes[ 0 ] );
+		if ( select ) {
+			// Keyed by `#id` (two selects on the contact page are both MERGE2)
+			// or by field name.
+			const notices = spec.optionNotices || {};
+			const extra = notices[ '#' + ( attr( select, 'id' ) || '' ) ] || notices[ attr( select, 'name' ) || '' ] || '';
+			plan.notice =
+				'Each option&rsquo;s <strong>Value</strong> is what the form submits. ' +
+				'Edit labels freely; change a value only if whatever receives it expects the new one.' +
+				( extra ? '<br><br>' + extra : '' );
+		}
+
+		// A list inside a dialog that moves itself to <body> needs its per-row
+		// style rules to follow it there; see resolvePortals().
+		const portal = portals.find( ( p ) => p.node === topOf( group.nodes[ 0 ] ) );
+		plan.portal = portal ? portal.selector : null;
+
 		accepted.push( group );
+		plans.push( plan );
+	}
+
+	// Lists that must stay the same length -- slides and their dots -- become
+	// one repeater rendering in each place. Everything else stays one-to-one.
+	for ( const coupled of coupleParallelPlans( doc, plans ) ) {
+		const built = emitRepeater( coupled, { uniqueId } );
+		built.definition.notice = coupled[ 0 ].notice || '';
+		built.definition.portal = coupled[ 0 ].portal;
+		if ( coupled.length > 1 ) {
+			notes.push(
+				'repeater "' + built.definition.id + '" drives ' + coupled.length + ' parallel lists (' +
+				coupled.map( ( plan ) => plan.groupId ).join( ' + ' ) + '), so a row adds or removes one of each'
+			);
+		}
 		// Several selects each yield a list of options, so "Options" alone names
 		// five different panels. Qualify by the owning element -- its id reads
 		// best: fc2Country becomes "Country Options".
 		repeaterLabels.push( {
 			definition: built.definition,
-			owner: doc.parentsOf.get( group.nodes[ 0 ] )?.node,
-			item: group.nodes[ 0 ],
+			owner: doc.parentsOf.get( coupled[ 0 ].nodes[ 0 ] )?.node,
+			item: coupled[ 0 ].nodes[ 0 ],
 		} );
 		repeaters.push( built.definition );
-		edits.push( built.edit );
-		bareEdits.push( built.editBare );
+		edits.push( ...built.edits );
+		bareEdits.push( ...built.bareEdits );
 	}
 
 	// Everything an accepted repeater owns: the item roots and all their
@@ -640,19 +730,34 @@ export function deriveSection( options ) {
 		const isRepeaterItem = accepted.some( ( g ) => g.nodes[ 0 ] === node );
 		const isRoot = node === rootNode;
 
-		const insideRoot = contains( doc, rootNode, node );
-		const selectorInfo = isRoot
-			? { selector: '', shared: false }
-			: insideRoot
-				? buildSelector( doc, node, rootNode )
-				// Outside the root -- a sibling scroll anchor, say. Its selector is
-				// absolute against the widget wrapper; scoping it under the root
-				// would match nothing.
-				: { selector: rootSelectorOf( node ), shared: false, absolute: true };
+		const scopeNode = topOf( node );
+		let selectorInfo;
+		if ( isRoot ) {
+			selectorInfo = { selector: '', shared: false };
+		} else if ( scopeNode === rootNode ) {
+			selectorInfo = buildSelector( doc, node, rootNode );
+		} else if ( node === scopeNode ) {
+			// Outside the root -- a sibling scroll anchor, a dialog. Its selector
+			// is absolute against the widget wrapper; scoping it under the root
+			// would match nothing.
+			selectorInfo = { selector: rootSelectorOf( node ), shared: false, absolute: true };
+		} else {
+			// Inside that sibling. Built relative to it, as the root's own
+			// descendants are relative to the root. Taking the element's bare
+			// tag or first class instead produced `{{WRAPPER}} p`, which matched
+			// every paragraph in the widget, not just the dialog's.
+			const inner = buildSelector( doc, node, scopeNode );
+			selectorInfo = {
+				selector: rootSelectorOf( scopeNode ) + ' ' + inner.selector,
+				shared: inner.shared,
+				absolute: true,
+			};
+		}
 		const fullSelector = isRoot
 			? rootSelector
 			: ( selectorInfo.absolute ? selectorInfo.selector : rootSelector + ' ' + selectorInfo.selector );
-		const layoutMode = layoutModeFor( cssIndex, normalizeSelector( fullSelector ) );
+		const appliedRules = rulesByNode.get( node ) || [];
+		const layoutMode = layoutModeOfRules( appliedRules ) || layoutModeFor( cssIndex, normalizeSelector( fullSelector ) );
 
 		// Panels are named the way Elementor names its own -- "Header", "Title",
 		// "Icon" -- not after the CSS class that happens to be on the element.
@@ -675,11 +780,15 @@ export function deriveSection( options ) {
 		// id for them left their controls pointing at a panel that was never
 		// created, and they fell into an unnamed "Other content" bucket.
 		const existingPart = partBySelector.get( selectorInfo.selector );
-		const partId = existingPart
-			? existingPart.id
-			: uniqueId( 'p_' + ( isRoot ? 'section' : ( slug( selectorInfo.selector ) || node.tagName ) ) );
+		const nonRendered = ! isRoot && NON_RENDERED_TAGS.has( node.tagName.toLowerCase() );
+		const holder = nonRendered ? nearestPart( doc, node, partByNode ) : null;
+		const partId = holder
+			? holder.id
+			: existingPart
+				? existingPart.id
+				: uniqueId( 'p_' + ( isRoot ? 'section' : ( slug( selectorInfo.selector ) || node.tagName ) ) );
 
-		if ( ! hidden.has( selectorInfo.selector ) && ! existingPart ) {
+		if ( ! hidden.has( selectorInfo.selector ) && ! existingPart && ! nonRendered ) {
 			// The Elementor panel has no control search, so a section with 70-odd
 			// style panels needs its list to be scannable. Panels are in document
 			// order and each carries its nearest named ancestor, which groups
@@ -695,6 +804,9 @@ export function deriveSection( options ) {
 				selector: isRoot ? '' : selectorInfo.selector,
 				tag: node.tagName.toLowerCase(),
 				features: overrides[ selectorInfo.selector ]?.features || featuresFor( node, layoutMode, isRoot ),
+				// Properties the element's own keyframe animation drives; their
+				// controls have to outrank the animation to arrive at all.
+				animated: animatedProperties( appliedRules, keyframes ),
 				shared: !! selectorInfo.shared,
 				absolute: !! selectorInfo.absolute,
 				repeater: isRepeaterItem ? accepted.find( ( g ) => g.nodes[ 0 ] === node ).id : null,
@@ -727,6 +839,84 @@ export function deriveSection( options ) {
 		}
 	}
 
+	/* -------------------------------------------------- stylesheet photos */
+
+	// A photo painted from the stylesheet has no element of its own to edit:
+	// the Our Approach video poster lives on `.fc-vid-ph::before`, so a Style-
+	// tab background on the button sits BEHIND it, and the picture could not be
+	// changed at all. Each such rule gets an image control aimed at that exact
+	// selector, pseudo-element included, filed under the element it paints.
+	//
+	// Its default is the stylesheet's own URL, so the editor sees the current
+	// picture -- unless a media query swaps the image, in which case a default
+	// would pin one picture at every width, and the control starts empty.
+	for ( const rule of parsedCss.rules ) {
+		if ( rule.media ) continue;
+		for ( const declaration of rule.declarations ) {
+			if ( ! /^background(-image)?$/.test( declaration.prop ) ) continue;
+			const photo = declaration.value.match( /url\(\s*(['"]?)(https?:\/\/[^'")\s]+)\1\s*\)/ );
+			if ( ! photo ) continue;
+
+			for ( const selector of rule.selectors ) {
+				let painted = null;
+				try {
+					painted = doc.queryAll( normalizeSelector( selector ) )[ 0 ] || null;
+				} catch ( error ) {
+					painted = null; // outside the selector subset this compiler reads
+				}
+				if ( ! painted ) {
+					notes.push( 'stylesheet photo on "' + selector + '" not offered: no element in the section matches it' );
+					continue;
+				}
+
+				let owner = painted;
+				while ( owner && ! partByNode.get( owner ) ) owner = doc.parentsOf.get( owner )?.node;
+				const part = owner ? partByNode.get( owner ) : null;
+				// Any background change at a breakpoint means one value cannot
+				// stand for every width, so the control starts empty.
+				const swapped = parsedCss.rules.some( ( other ) =>
+					other.media && other.selectors.includes( selector ) &&
+					other.declarations.some( ( d ) => /^background(-image)?$/.test( d.prop ) )
+				);
+
+				// Write back EVERY image layer, with only the photo replaced. The
+				// 404 paints `radial-gradient(…), url(photo)` in one declaration;
+				// writing `url(photo)` alone dropped the brown overlay that keeps
+				// its copy legible -- caught by the browser check.
+				const layers = backgroundImageLayers( declaration );
+				const template = layers.map( ( layer ) => ( layer.includes( photo[ 2 ] ) ? 'url("{{URL}}")' : layer ) ).join( ', ' );
+
+				fields.push( {
+					id: uniqueId( ( part ? part.short_label : 'section' ) + '_background_image' ),
+					control: 'media',
+					label: 'Background Image',
+					description: 'Painted from the section stylesheet' +
+						( /::?(before|after)/.test( selector ) ? ' as a layer over the element' : '' ) +
+						( layers.length > 1 ? ', under its overlay' : '' ) +
+						'. Choosing an image here replaces the photo' + ( layers.length > 1 ? ' and keeps the overlay.' : '.' ),
+					default: { url: swapped ? '' : photo[ 2 ] },
+					css_selector: selector,
+					css_value: 'background-image: ' + template + ';',
+					css_only: true,
+					esc: 'url',
+					group: part ? part.id : ( parts[ 0 ] ? parts[ 0 ].id : 'content' ),
+					sort: 2,
+				} );
+			}
+		}
+	}
+
+	/* ------------------------------------------------------------ portals */
+
+	// The instance hook on each element the section's script moves to <body>.
+	// It renders as ` data-uew-for="<element id>"` on the page and as nothing
+	// in the fidelity check, so the template still reproduces its source
+	// exactly. Zero-width, so it cannot overlap an attribute edit.
+	for ( const portal of portals ) {
+		const at = startTagInsertOffset( markup, portal.node );
+		edits.push( { start: at, end: at, replacement: "<?php echo $c['_uew_for']; ?>" } );
+	}
+
 	/* --------------------------------------------------------- assemble */
 
 	// Panel names are assigned last, once every part is known, so a repeated name
@@ -750,6 +940,7 @@ export function deriveSection( options ) {
 		templateBare,
 		notes,
 		prefixes,
+		portals: portals.map( ( p ) => ( { selector: p.selector, trigger: p.trigger } ) ),
 	};
 
 	/* ------------------------------------------------------ inner helpers */
@@ -1046,6 +1237,15 @@ function assignPartLabels( parts ) {
 	} );
 }
 
+/** The style part of the closest ancestor that has one. */
+function nearestPart( doc, node, partByNode ) {
+	for ( let current = doc.parentsOf.get( node )?.node; current; current = doc.parentsOf.get( current )?.node ) {
+		const part = partByNode.get( current );
+		if ( part ) return part;
+	}
+	return null;
+}
+
 /**
  * The label of the closest ancestor that already has its own style panel, so a
  * panel can say where in the section it sits. The section root is skipped --
@@ -1070,6 +1270,179 @@ function contains( doc, ancestor, node ) {
 		current = doc.parentsOf.get( current )?.node;
 	}
 	return false;
+}
+
+/**
+ * The first named form control an element is or contains, described for the
+ * build report -- or '' if there is none. Hidden inputs count: they carry the
+ * split first/last name and the HubSpot tracking cookie.
+ */
+function namedFormControl( doc, node ) {
+	for ( const { node: candidate } of doc.entries ) {
+		if ( candidate !== node && ! contains( doc, node, candidate ) ) continue;
+		const tag = candidate.tagName.toLowerCase();
+		if ( ! [ 'input', 'select', 'textarea', 'button' ].includes( tag ) ) continue;
+		const name = attr( candidate, 'name' );
+		if ( name ) return tag + '[name=' + name + ']';
+	}
+	return '';
+}
+
+/**
+ * The image layers of a `background` or `background-image` declaration, in
+ * order: `[ 'radial-gradient(…)', 'url("…")' ]`. From the shorthand, each
+ * comma-separated layer contributes its image (a gradient or a url()) or
+ * `none`; position, size and repeat stay with the stylesheet's own rule.
+ */
+function backgroundImageLayers( declaration ) {
+	const layers = [];
+	let depth = 0;
+	let quote = null;
+	let buffer = '';
+	for ( const ch of declaration.value ) {
+		if ( quote ) {
+			if ( ch === quote ) quote = null;
+		} else if ( '"' === ch || "'" === ch ) {
+			quote = ch;
+		} else if ( '(' === ch ) {
+			depth += 1;
+		} else if ( ')' === ch ) {
+			depth -= 1;
+		} else if ( ',' === ch && 0 === depth ) {
+			layers.push( buffer.trim() );
+			buffer = '';
+			continue;
+		}
+		buffer += ch;
+	}
+	layers.push( buffer.trim() );
+
+	// A gradient written over several lines reads the same on one.
+	const tidy = ( layer ) => layer.replace( /\s+/g, ' ' );
+	if ( 'background-image' === declaration.prop ) return layers.map( tidy );
+
+	return layers.map( tidy ).map( ( layer ) => {
+		const start = layer.search( /(?:repeating-)?(?:linear|radial|conic)-gradient\(|url\(/ );
+		if ( start < 0 ) return 'none';
+		let level = 0;
+		for ( let i = layer.indexOf( '(', start ); i < layer.length; i += 1 ) {
+			if ( '(' === layer[ i ] ) level += 1;
+			if ( ')' === layer[ i ] && 0 === ( level -= 1 ) ) return layer.slice( start, i + 1 );
+		}
+		return 'none';
+	} );
+}
+
+/**
+ * Quoted url() references in a piece of CSS, with the offsets of the URL
+ * itself. Unquoted ones are left alone: there a parenthesis or a space in the
+ * URL would end it, and escaping that safely is not worth the special case.
+ */
+function* cssUrls( css ) {
+	for ( const match of css.matchAll( /url\(\s*(['"])([^'"]+)\1\s*\)/g ) ) {
+		const start = match.index + match[ 0 ].indexOf( match[ 1 ] ) + 1;
+		yield { value: match[ 2 ], start, end: start + match[ 2 ].length };
+	}
+}
+
+/** Names of every data-* attribute on an element and inside it, as one string. */
+function dataAttributeNames( doc, node ) {
+	const names = new Set();
+	for ( const { node: candidate } of doc.entries ) {
+		if ( candidate !== node && ! contains( doc, node, candidate ) ) continue;
+		for ( const a of candidate.attrs || [] ) {
+			if ( a.name.startsWith( 'data-' ) ) names.add( a.name );
+		}
+	}
+	return [ ...names ].sort().join( ' ' );
+}
+
+/** The <select> an <option> belongs to, through an <optgroup> if need be. */
+function selectOwning( doc, node ) {
+	if ( 'option' !== node.tagName.toLowerCase() ) return null;
+	let current = doc.parentsOf.get( node )?.node;
+	while ( current && 'optgroup' === current.tagName.toLowerCase() ) current = doc.parentsOf.get( current )?.node;
+	return current && 'select' === current.tagName.toLowerCase() ? current : null;
+}
+
+/* ---------------------------------------------------------------- portals */
+
+/**
+ * Resolve the elements a section's own script moves to `<body>`.
+ *
+ * Every Elementor style control is scoped under the widget wrapper. A dialog
+ * that appends itself to `<body>` -- the inquiry popups do it on init, the
+ * footer's opt-out dialog too, because a `position: fixed` element inside a
+ * transformed ancestor is positioned against that ancestor -- leaves the
+ * wrapper behind, and every rule written for it stops matching. Before this,
+ * the inquiry popups' entire Style tab did nothing at all.
+ *
+ * A portal must be declared in the registry (`spec.portals`) and must be a
+ * top-level element with an id: the id is what the second selector branch is
+ * built on, and a nested element would need its ancestors carried along too.
+ * build.mjs refuses to compile a section whose script moves something to
+ * <body> without one, so this cannot regress silently.
+ */
+function resolvePortals( doc, declared, key ) {
+	return declared.map( ( entry ) => {
+		const selector = typeof entry === 'string' ? entry : entry.selector;
+		const found = doc.queryAll( selector );
+		if ( found.length !== 1 ) {
+			throw new Error( key + ': portal "' + selector + '" must match exactly one element, matched ' + found.length );
+		}
+
+		const node = found[ 0 ];
+		if ( doc.parentsOf.get( node )?.node ) {
+			throw new Error( key + ': portal "' + selector + '" must be a top-level element of the section file' );
+		}
+
+		const id = attr( node, 'id' );
+		if ( ! id ) throw new Error( key + ': portal "' + selector + '" needs an id' );
+
+		return {
+			selector: '#' + id,
+			node,
+			trigger: ( typeof entry === 'object' && entry.trigger ) || null,
+		};
+	} );
+}
+
+/* ----------------------------------------------------------------- tokens */
+
+/**
+ * Give each token a control id and label. An unscoped token keeps the id the
+ * runtime has always computed (`uew_token_` + name), so values already saved
+ * on a page survive a rebuild. A name declared with different values in
+ * different scopes gets one control per scope, labelled by where it lives.
+ */
+function deriveTokens( collected, prefixes ) {
+	const used = new Set();
+
+	return collected.map( ( token ) => {
+		const base = 'uew_token_' + token.name.toLowerCase().replace( /-/g, '_' ).replace( /[^a-z0-9_]/g, '' );
+		const scope = token.scoped ? scopeLabel( token.selectors[ 0 ], prefixes ) : '';
+
+		let id = scope ? base + '_' + slug( scope ) : base;
+		let n = 2;
+		while ( used.has( id ) ) {
+			id = base + '_' + n;
+			n += 1;
+		}
+		used.add( id );
+
+		return {
+			...token,
+			id,
+			label: titleCase( token.name ) + ( scope ? ' (' + scope + ')' : '' ),
+		};
+	} );
+}
+
+/** "#umoya-hero .btn" -> "Btn": the last compound, humanised. */
+function scopeLabel( selector, prefixes ) {
+	const last = selector.trim().split( /\s+|>/ ).filter( Boolean ).pop() || selector;
+	const name = ( last.match( /[.#]([A-Za-z0-9_-]+)(?![\s\S]*[.#])/ ) || [ '', last ] )[ 1 ];
+	return humanizeClass( name, prefixes );
 }
 
 /* ------------------------------------------------------------- repeaters */
@@ -1146,9 +1519,26 @@ function isListLike( node ) {
 	return true;
 }
 
+/**
+ * Items of one list share a tag and their identifying classes. Position
+ * classes are left out: the first slide carries `fc-ss-on`, the third card
+ * `d2`, and grouping on the full class list split every carousel and card grid
+ * into "item 1" plus a list of the rest -- which let an editor add a slide with
+ * no matching dot. Those classes are rebuilt from the row's position instead;
+ * see positionalRule().
+ */
 function repeaterSignature( node ) {
-	const classes = classList( node ).slice().sort().join( '.' );
+	const classes = classList( node ).filter( ( c ) => ! isPositionalClass( c ) ).sort().join( '.' );
 	return node.tagName.toLowerCase() + ( classes ? '.' + classes : '' );
+}
+
+/**
+ * Classes that say where an item is, or what state it starts in, rather than
+ * what it is: reveal and stagger hooks (`-rv`, `d1`), the active item
+ * (`-on`, `is-active`, `fc-det-open`), variants (`is-ghost`).
+ */
+function isPositionalClass( cls ) {
+	return isUtilityClass( cls ) || /^(is|has)-/.test( cls );
 }
 
 /**
@@ -1166,6 +1556,14 @@ function buildRepeater( doc, group, ctx ) {
 		return null;
 	};
 
+	// Items carrying different behaviour hooks are different controls, not
+	// entries in a list: a carousel's prev arrow has `data-wtt-prev`, its next
+	// arrow `data-wtt-next`, and a third arrow would be meaningless.
+	const hooks = group.nodes.map( ( node ) => dataAttributeNames( doc, node ) );
+	if ( new Set( hooks ).size > 1 ) {
+		return reject( 'items carry different behaviour hooks (' + [ ...new Set( hooks ) ].map( ( h ) => h || 'none' ).join( ' / ' ) + ')' );
+	}
+
 	// Which attributes appear on EVERY item at a given position. One that does
 	// not (a `disabled selected` only on the placeholder option, an
 	// `aria-required` only on the first consent row) is bound as a whole
@@ -1177,7 +1575,13 @@ function buildRepeater( doc, group, ctx ) {
 	// keeps the surrounding text controls intact instead of rejecting the whole
 	// repeater.
 	const opaquePaths = findOpaquePaths( group.nodes );
-	const bindings = collectRepeaterBindings( doc, template, markup, attrPresence, opaquePaths );
+	// Where items differ in their class list (the active slide, a stagger
+	// delay) or in the whitespace between attributes (the dots line their
+	// attributes up in columns), those spans are bound per row too. They are
+	// turned into expressions on the row's position once the round trip has
+	// proved the binding is exact -- see positionalRule().
+	const variance = mapPositionalVariance( group.nodes, markup );
+	const bindings = collectRepeaterBindings( doc, template, markup, attrPresence, opaquePaths, variance, ctx.prefixes || [] );
 	if ( ! bindings.length ) return reject( 'no editable values found in the first item' );
 
 
@@ -1256,85 +1660,509 @@ function buildRepeater( doc, group, ctx ) {
 	const first = outerRange( group.nodes[ 0 ] );
 	const last = outerRange( group.nodes[ group.nodes.length - 1 ] );
 
-	const id = ctx.uniqueId( 'rep_' + group.id );
-
-	// Values that are just "<prefix><row number><suffix>" -- the accordion's
-	// fc-det-btn-1..5 wiring, for instance -- become an expression on the row
-	// index instead of stored data. Adding a row in Elementor then produces
-	// correctly numbered, unique ids rather than a duplicate that would break
-	// the aria-controls pairing.
-	const indexed = detectIndexPatterns( bindings, rows );
 	let finalTemplate = rowTemplate;
 	let finalTemplateBare = rowTemplateBare;
-	for ( const entry of indexed ) {
-		const expression = '<?php echo ' + phpString( entry.prefix ) + " . \$it['_uew_n'] . " + phpString( entry.suffix ) + '; ?>';
-		finalTemplate = finalTemplate.split( phpEchoItem( entry.id ) ).join( expression );
-		finalTemplateBare = finalTemplateBare.split( phpEchoItem( entry.id ) ).join( expression );
-		rows.forEach( ( row ) => delete row[ entry.id ] );
+	const derivedIds = new Set();
+	const replaceEcho = ( bindingId, expression ) => {
+		finalTemplate = finalTemplate.split( phpEchoItem( bindingId ) ).join( expression );
+		finalTemplateBare = finalTemplateBare.split( phpEchoItem( bindingId ) ).join( expression );
+		rows.forEach( ( row ) => delete row[ bindingId ] );
+		derivedIds.add( bindingId );
+	};
+
+	// Values that are just "<prefix><row number><suffix>" -- the accordion's
+	// fc-det-btn-3..6 wiring, a slide's "2 of 5" -- become an expression on the
+	// row's position instead of stored data. Adding a row in Elementor then
+	// produces correctly numbered, unique ids and a correct total, rather than a
+	// copy of row 1's that would break the aria-controls pairing.
+	for ( const entry of detectIndexPatterns( bindings, rows ) ) {
+		replaceEcho( entry.id, '<?php echo ' + entry.segments.map( segmentExpression ).join( ' . ' ) + '; ?>' );
 	}
-	// `_uew_n` is supplied by the runtime from the loop position, not stored per
-	// row, so an added or reordered row always numbers itself correctly.
-	const indexedIds = new Set( indexed.map( ( entry ) => entry.id ) );
 
-	const labelBinding = pickLabelBinding( bindings.filter( ( b ) => ! indexedIds.has( b.id ) ) );
+	// Classes, start-tag spacing and state attributes that differ only by
+	// position: the first slide is the active one, the third card waits `d2`.
+	// They follow the row's position rather than the row, so whichever item is
+	// first after a reorder is the active one, and a new row never arrives
+	// carrying row 1's "active" state.
+	let firstState = false;
+	for ( const binding of bindings ) {
+		if ( derivedIds.has( binding.id ) ) continue;
+		const values = rows.map( ( row ) => row[ binding.id ] );
+		const mechanical = binding.positional || ( 'attr' === binding.kind && POSITIONAL_ATTRS.has( binding.attr ) );
+		if ( ! mechanical || new Set( values ).size < 2 ) continue;
 
-	const makeLoop = ( body ) =>
-		'<?php $__i = 0; foreach ( $r[' + phpString( id ) + '] as $it ) : ' +
-		( perRowSeparator
-			? "if ( $__i ++ ) { echo $it['_uew_sep']; } ?>"
-			: 'if ( $__i ++ ) { echo ' + phpString( separator ) + '; } ?>' ) +
-		body +
-		'<?php endforeach; ?>';
+		if ( 'class' === binding.positional ) {
+			const offending = classDifferences( values ).filter( ( cls ) => ! isPositionalClass( cls ) );
+			if ( offending.length ) {
+				return reject( 'items differ by class ' + offending.join( ', ' ) + ', which is content, not position' );
+			}
+		}
 
+		const rule = positionalRule( values );
+		if ( 'first' === rule.kind && ( 'class' === binding.positional || 'attr' === binding.kind ) ) firstState = true;
+		replaceEcho( binding.id, '<?php echo ' + rule.expression + '; ?>' );
+	}
+
+	const labelBinding = pickLabelBinding( bindings.filter( ( b ) => ! derivedIds.has( b.id ) ) );
+	const kept = bindings.filter( ( b ) => ! derivedIds.has( b.id ) );
+	const labels = rowControlLabels( kept, ctx.prefixes || [] );
+
+	return {
+		groupId: group.id,
+		label: pluralise( semanticName( template, ctx.prefixes || [] ) ),
+		item_label: labelBinding ? '{{{ ' + labelBinding.id + ' }}}' : '',
+		controls: kept.map( ( b ) => ( {
+			id: b.id,
+			// Wiring a row needs but an editor never should -- role, ids,
+			// viewBox, aria state, lazy-loading -- is kept per row but out of
+			// sight, so a row's panel shows its content and nothing else.
+			control: 'attr' === b.kind && isRowWiringAttr( b.attr ) ? 'hidden' : b.control,
+			label: labels.get( b.id ),
+			esc: b.esc,
+			options: b.options,
+			default: modeOf( rows.map( ( row ) => row[ b.id ] ) ),
+		} ) ),
+		rows,
+		perRowSeparator,
+		separator,
+		rowTemplate: finalTemplate,
+		rowTemplateBare: finalTemplateBare,
+		range: { start: first.start, end: last.end },
+		nodes: group.nodes,
+		signature: group.signature,
+		firstState,
+		// Only a class-bearing item can be styled as a group; an <option> or a
+		// bare hidden <input> has nothing to hang a rule on.
+		selector: ( group.signature.startsWith( 'option' ) || ! classList( template ).length )
+			? null
+			: '.' + classList( template ).filter( ( c ) => ! isPositionalClass( c ) ).sort().join( '.' ),
+	};
+}
+
+/* ------------------------------------------------------ repeater emission */
+
+/**
+ * Turn one or more repeater plans into a definition and its template edits.
+ *
+ * One plan is an ordinary repeater. Several are lists that must stay the same
+ * length -- a slideshow's slides and its dots, the homepage journey's images,
+ * captions and dots -- merged into one repeater that renders in each place, so
+ * an editor adds a slide and its dot in one move. Before this, slides and dots
+ * were separate lists, and the Founder's Circle slideshow, which indexes its
+ * dots by slide number, threw on the first slide that had no dot.
+ */
+function emitRepeater( plans, ctx ) {
+	const id = ctx.uniqueId( 'rep_' + plans[ 0 ].groupId );
+	const merged = plans.length > 1;
+
+	// In a merged repeater each list's values live side by side in one row, so
+	// each list's ids get their own namespace.
+	const prefixOf = ( index ) => ( merged ? 'l' + ( index + 1 ) + '_' : '' );
+	const rename = ( template, plan, prefix ) => {
+		if ( ! prefix ) return template;
+		let out = template;
+		for ( const control of plan.controls ) {
+			out = out.split( phpEchoItem( control.id ) ).join( phpEchoItem( prefix + control.id ) );
+		}
+		return out.split( "$it['_uew_sep']" ).join( "$it['" + prefix + "_uew_sep']" );
+	};
+
+	const controls = [];
+	const rows = plans[ 0 ].rows.map( () => ( {} ) );
+	const edits = [];
+	const bareEdits = [];
+
+	plans.forEach( ( plan, index ) => {
+		const prefix = prefixOf( index );
+		for ( const control of plan.controls ) controls.push( { ...control, id: prefix + control.id } );
+		plan.rows.forEach( ( row, rowIndex ) => {
+			for ( const [ key, value ] of Object.entries( row ) ) rows[ rowIndex ][ prefix + key ] = value;
+		} );
+		if ( plan.perRowSeparator ) {
+			// A new row gets the spacing but not row 2's numbered comment --
+			// "<!-- Slide 2 -->" in front of a sixth slide would only mislead.
+			const spacing = plan.separator.replace( /<!--[\s\S]*?-->/g, '' ).replace( /\n[ \t]*(?=\n)/g, '' );
+			controls.push( { id: prefix + '_uew_sep', control: 'hidden', label: 'Separator markup', esc: 'raw', default: spacing } );
+		}
+
+		const loop = ( body ) =>
+			'<?php $__i = 0; foreach ( $r[' + phpString( id ) + '] as $it ) : ' +
+			( plan.perRowSeparator
+				? "if ( $__i ++ ) { echo $it['" + prefix + "_uew_sep']; } ?>"
+				: 'if ( $__i ++ ) { echo ' + phpString( plan.separator ) + '; } ?>' ) +
+			body +
+			'<?php endforeach; ?>';
+
+		edits.push( { ...plan.range, replacement: loop( rename( plan.rowTemplate, plan, prefix ) ) } );
+		bareEdits.push( { ...plan.range, replacement: loop( rename( plan.rowTemplateBare, plan, prefix ) ) } );
+	} );
+
+	const lead = plans[ 0 ];
+	const leadPrefix = prefixOf( 0 );
 	return {
 		definition: {
 			id,
-			label: pluralise( semanticName( template, ctx.prefixes || [] ) ),
-			item_label: labelBinding ? '{{{ ' + labelBinding.id + ' }}}' : '',
-			controls: bindings
-				.filter( ( b ) => ! indexedIds.has( b.id ) )
-				.map( ( b ) => ( {
-					id: b.id,
-					control: b.control,
-					label: b.label,
-					esc: b.esc,
-					options: b.options,
-					default: rows.length ? rows[ 0 ][ b.id ] : '',
-				} ) )
-				.concat( perRowSeparator ? [ {
-					id: '_uew_sep',
-					control: 'hidden',
-					label: 'Separator markup',
-					esc: 'raw',
-					default: separator,
-				} ] : [] ),
+			label: lead.label,
+			item_label: lead.item_label ? lead.item_label.replace( /\{\{\{ (\w+) \}\}\}/, '{{{ ' + leadPrefix + '$1 }}}' ) : '',
+			controls,
 			rows,
-			// Only a class-bearing item can be styled as a group; an <option> or a
-			// bare hidden <input> has nothing to hang a rule on.
-			selector: ( group.signature.startsWith( 'option' ) || ! classList( template ).length )
-				? null
-				: '.' + classList( template ).sort().join( '.' ),
+			// How many places each row renders in -- a slide and its dot is 2.
+			loops: plans.length,
+			selector: lead.selector,
 		},
-		edit: { start: first.start, end: last.end, replacement: makeLoop( finalTemplate ) },
-		// Same loop without the repeater-item class, so the build can compute the
-		// exact markup the template is expected to reproduce from its defaults.
-		editBare: { start: first.start, end: last.end, replacement: makeLoop( finalTemplateBare ) },
+		edits,
+		bareEdits,
 	};
+}
+
+/**
+ * Group repeater plans that are parallel lists of one widget: same length,
+ * each starting with an "active" first item, close together in the tree. The
+ * deepest common ancestor wins, and a group never holds two lists of the same
+ * kind -- three hotel slideshows side by side are three slideshows, not one.
+ */
+function coupleParallelPlans( doc, plans ) {
+	const candidates = plans.filter( ( plan ) => plan.firstState );
+	const depth = ( node ) => {
+		let d = 0;
+		for ( let current = node; current; current = doc.parentsOf.get( current )?.node ) d += 1;
+		return d;
+	};
+	const ancestors = ( node ) => {
+		const out = [];
+		for ( let current = node; current; current = doc.parentsOf.get( current )?.node ) out.push( current );
+		return out;
+	};
+	const parentOf = ( plan ) => doc.parentsOf.get( plan.nodes[ 0 ] )?.node || null;
+
+	const pairs = [];
+	for ( let i = 0; i < candidates.length; i += 1 ) {
+		for ( let j = i + 1; j < candidates.length; j += 1 ) {
+			const a = candidates[ i ];
+			const b = candidates[ j ];
+			if ( a.rows.length !== b.rows.length || a.signature === b.signature ) continue;
+			const pa = parentOf( a );
+			const pb = parentOf( b );
+			if ( ! pa || ! pb ) continue;
+			const shared = ancestors( pa ).find( ( node ) => ancestors( pb ).includes( node ) );
+			if ( ! shared ) continue;
+			// Close: within two levels of each list's own container.
+			if ( depth( pa ) - depth( shared ) > 2 || depth( pb ) - depth( shared ) > 2 ) continue;
+			pairs.push( { a, b, depth: depth( shared ) } );
+		}
+	}
+
+	pairs.sort( ( x, y ) => y.depth - x.depth );
+	const groupOf = new Map( plans.map( ( plan ) => [ plan, [ plan ] ] ) );
+	for ( const { a, b } of pairs ) {
+		const ga = groupOf.get( a );
+		const gb = groupOf.get( b );
+		if ( ga === gb ) continue;
+		const signatures = new Set( ga.map( ( p ) => p.signature ) );
+		if ( gb.some( ( p ) => signatures.has( p.signature ) ) ) continue;
+		const joined = ga.concat( gb );
+		for ( const plan of joined ) groupOf.set( plan, joined );
+	}
+
+	// Keep document order, both between groups and within each.
+	const seen = new Set();
+	const groups = [];
+	for ( const plan of plans ) {
+		const group = groupOf.get( plan );
+		if ( seen.has( group ) ) continue;
+		seen.add( group );
+		groups.push( group.slice().sort( ( x, y ) => x.range.start - y.range.start ) );
+	}
+	return groups;
+}
+
+/** The most common value; ties go to the earliest. What "Add Item" fills in. */
+function modeOf( values ) {
+	const counts = new Map();
+	for ( const value of values ) counts.set( value, ( counts.get( value ) || 0 ) + 1 );
+	let best = values[ 0 ];
+	for ( const value of values ) if ( counts.get( value ) > counts.get( best ) ) best = value;
+	return best ?? '';
+}
+
+/**
+ * State attributes whose value can follow position: which item is selected,
+ * current or expanded, and whether it is focusable.
+ */
+const POSITIONAL_ATTRS = new Set( [
+	'aria-selected', 'aria-current', 'aria-expanded', 'aria-pressed', 'aria-checked', 'aria-hidden', 'tabindex',
+] );
+
+/**
+ * Labels for a row's controls, unique within the row. A card holds two images,
+ * so "Alt Text" alone names two controls: qualify by the element first
+ * ("Image Alt Text"), and number only what that still leaves ambiguous.
+ */
+function rowControlLabels( bindings, prefixes ) {
+	const labels = new Map( bindings.map( ( b ) => [ b.id, b.label ] ) );
+	const tally = ( map ) => {
+		const counts = new Map();
+		for ( const label of map.values() ) counts.set( label, ( counts.get( label ) || 0 ) + 1 );
+		return counts;
+	};
+
+	let counts = tally( labels );
+	for ( const b of bindings ) {
+		if ( counts.get( labels.get( b.id ) ) < 2 || ! [ 'attr', 'attr_part' ].includes( b.kind ) ) continue;
+		const owner = semanticName( b.node, prefixes );
+		if ( ! labels.get( b.id ).startsWith( owner ) ) labels.set( b.id, owner + ' ' + labels.get( b.id ) );
+	}
+
+	counts = tally( labels );
+	const seen = new Map();
+	for ( const b of bindings ) {
+		const label = labels.get( b.id );
+		if ( counts.get( label ) < 2 ) continue;
+		const n = ( seen.get( label ) || 0 ) + 1;
+		seen.set( label, n );
+		labels.set( b.id, label + ' ' + n );
+	}
+	return labels;
+}
+
+/**
+ * Attributes a row needs but whose control belongs out of sight. `data-*` is
+ * deliberately not here: the ones that are wiring (`data-fci="0"`) count with
+ * the row and have already become expressions, and what is left is content --
+ * the journey stats' `data-short` is the label phones show.
+ */
+function isRowWiringAttr( name ) {
+	return /^(role|id|for|tabindex|viewbox|xmlns|focusable|type|loading|decoding|fetchpriority|sizes|referrerpolicy|crossorigin)$/.test( name ) ||
+		/^aria-(hidden|expanded|selected|current|pressed|checked|controls|labelledby|describedby|roledescription|live|atomic|haspopup|modal|orientation)$/.test( name );
+}
+
+/**
+ * Express a list of per-row values as a function of the row's position.
+ *
+ *   first  row 1 differs, every other row agrees   (the active slide)
+ *   table  anything else, repeating with the list (stagger delays)
+ *
+ * The values are the source file's own, printed verbatim.
+ */
+function positionalRule( values ) {
+	const position = "( (int) $it['_uew_n'] )";
+	if ( values.length > 1 && values[ 0 ] !== values[ 1 ] && values.slice( 1 ).every( ( v ) => v === values[ 1 ] ) ) {
+		return { kind: 'first', expression: '( 1 === ' + position + ' ? ' + phpString( values[ 0 ] ) + ' : ' + phpString( values[ 1 ] ) + ' )' };
+	}
+	return {
+		kind: 'table',
+		expression: 'array( ' + values.map( phpString ).join( ', ' ) + ' )[ ( ' + position + ' - 1 ) % ' + values.length + ' ]',
+	};
+}
+
+/** Classes present on some rows' class attribute but not all. */
+function classDifferences( values ) {
+	const lists = values.map( ( value ) => new Set( String( value ).trim().split( /\s+/ ).filter( Boolean ) ) );
+	const all = new Set( lists.flatMap( ( list ) => [ ...list ] ) );
+	return [ ...all ].filter( ( cls ) => ! lists.every( ( list ) => list.has( cls ) ) );
+}
+
+/**
+ * One piece of an index-pattern expression. `_uew_n` (the row's position) and
+ * `_uew_count` (how many rows) are supplied by the runtime, never stored, so an
+ * added, removed or reordered row is always numbered right.
+ */
+function segmentExpression( segment ) {
+	if ( 'literal' === segment.kind ) return phpString( segment.value );
+	if ( 'count' === segment.kind ) return "$it['_uew_count']";
+	return segment.offset ? "( (int) $it['_uew_n'] + " + segment.offset + ' )' : "$it['_uew_n']";
+}
+
+/**
+ * Where the items of a run differ in their class attribute or in the
+ * whitespace between their attributes, by element position within the item.
+ */
+function mapPositionalVariance( nodes, markup ) {
+	const classPaths = new Set();
+	const gapPaths = new Map();
+	const lateAttrs = new Map();
+	const triviaPaths = new Map();
+
+	const visit = ( targets, path ) => {
+		const key = path.join( '.' );
+
+		// The whitespace and comments between child elements, where they differ
+		// between items and hold nothing else -- a note on one card's photo.
+		const childCounts = new Set( targets.map( ( node ) => elementChildren( node ).length ) );
+		if ( 1 === childCounts.size && ! targets.some( ( node ) => VOID_TAGS.has( node.tagName.toLowerCase() ) ) ) {
+			const count = elementChildren( targets[ 0 ] ).length;
+			for ( let i = 0; i <= count; i += 1 ) {
+				const texts = targets.map( ( node ) => {
+					const range = childGapRange( node, i );
+					return range ? markup.slice( range.start, range.end ) : null;
+				} );
+				if ( texts.some( ( text ) => null === text ) || new Set( texts ).size < 2 ) continue;
+				if ( ! texts.every( ( text ) => /^(?:\s|<!--[\s\S]*?-->)*$/.test( text ) ) ) continue;
+				if ( ! texts.some( ( text ) => text.includes( '<!--' ) ) ) continue;
+				if ( ! triviaPaths.has( key ) ) triviaPaths.set( key, new Set() );
+				triviaPaths.get( key ).add( i );
+			}
+		}
+		const classes = targets.map( ( node ) => attr( node, 'class' ) );
+		if ( classes.every( ( value ) => null !== value ) && new Set( classes ).size > 1 ) classPaths.add( key );
+
+		// Attributes some later item carries but the first does not -- one
+		// moment photo's `style="object-position: center 82%"`, the brochure
+		// link's `target="_blank" rel="noopener"`. The first item is the row
+		// template, so each run of them needs a slot in it, anchored on the
+		// attribute row 1 also has that comes just before the run (or on the
+		// tag name, when the run comes first).
+		const firstNames = ( targets[ 0 ].attrs || [] ).map( ( a ) => a.name );
+		const anchors = new Set();
+		for ( const node of targets.slice( 1 ) ) {
+			const names = ( node.attrs || [] ).map( ( a ) => a.name );
+			for ( let i = 0; i < names.length; ) {
+				if ( firstNames.includes( names[ i ] ) ) {
+					i += 1;
+					continue;
+				}
+				anchors.add( i ? names[ i - 1 ] : null );
+				while ( i < names.length && ! firstNames.includes( names[ i ] ) ) i += 1;
+			}
+		}
+		if ( anchors.size ) lateAttrs.set( key, [ ...anchors ].map( ( anchor ) => ( { anchor, firstNames } ) ) );
+
+		// Spacing between attributes, only where every item carries the same
+		// attributes in the same order -- otherwise the gaps do not correspond.
+		const names = targets.map( ( node ) => ( node.attrs || [] ).map( ( a ) => a.name ).join( ' ' ) );
+		if ( new Set( names ).size === 1 ) {
+			const count = ( targets[ 0 ].attrs || [] ).length;
+			for ( let k = 0; k + 1 < count; k += 1 ) {
+				const gaps = targets.map( ( node ) => attributeGap( markup, node, k ) );
+				if ( gaps.every( ( gap ) => null !== gap ) && new Set( gaps ).size > 1 ) {
+					if ( ! gapPaths.has( key ) ) gapPaths.set( key, new Set() );
+					gapPaths.get( key ).add( k );
+				}
+			}
+		}
+
+		const counts = targets.map( ( node ) => elementChildren( node ).length );
+		if ( new Set( counts ).size !== 1 ) return;
+		for ( let i = 0; i < counts[ 0 ]; i += 1 ) {
+			visit( targets.map( ( node ) => elementChildren( node )[ i ] ), path.concat( i ) );
+		}
+	};
+
+	visit( nodes, [] );
+	return { classPaths, gapPaths, lateAttrs, triviaPaths };
+}
+
+/**
+ * Byte range of the content between child element i - 1 and child element i
+ * of a node: i = 0 is before the first child, i = count is after the last.
+ */
+function childGapRange( node, i ) {
+	if ( ! node.sourceCodeLocation || ! node.sourceCodeLocation.startTag ) return null;
+	const inner = innerRange( node );
+	const kids = elementChildren( node );
+	const start = 0 === i ? inner.start : ( kids[ i - 1 ] ? outerRange( kids[ i - 1 ] ).end : null );
+	const end = i === kids.length ? inner.end : ( kids[ i ] ? outerRange( kids[ i ] ).start : null );
+	return null === start || null === end || end < start ? null : { start, end };
+}
+
+/**
+ * Where a run of late attributes goes in a start tag: the end of its anchor
+ * attribute, or the end of the tag name when the run comes first.
+ */
+function lateAttributeSlot( node, anchor ) {
+	const location = loc( node );
+	if ( null === anchor ) {
+		const tag = location.startTag || location;
+		return tag.startOffset + 1 + node.tagName.length;
+	}
+	const before = ( location.attrs || {} )[ anchor ];
+	return before ? before.endOffset : null;
+}
+
+/**
+ * The text an item's run of late attributes adds after an anchor: from the
+ * anchor's end to the end of the run's last attribute, leading whitespace
+ * included. Empty when the item has no such run there; null when the item
+ * lacks the anchor itself, so the slot cannot be placed.
+ */
+function lateAttributeText( markup, node, anchor, firstNames ) {
+	const names = ( node.attrs || [] ).map( ( a ) => a.name );
+	const start = null === anchor ? 0 : names.indexOf( anchor ) + 1;
+	if ( null !== anchor && 0 === start ) return null;
+
+	let end = start;
+	while ( end < names.length && ! firstNames.includes( names[ end ] ) ) end += 1;
+	if ( end === start ) return '';
+
+	const from = lateAttributeSlot( node, anchor );
+	const last = ( loc( node ).attrs || {} )[ names[ end - 1 ] ];
+	return null === from || ! last ? null : markup.slice( from, last.endOffset );
+}
+
+/** Byte range of the whitespace between attribute k and k + 1 of a start tag. */
+function attributeGapRange( node, k ) {
+	const location = loc( node );
+	const attrs = node.attrs || [];
+	if ( k + 1 >= attrs.length || ! location.attrs ) return null;
+	const left = location.attrs[ attrs[ k ].name ];
+	const right = location.attrs[ attrs[ k + 1 ].name ];
+	if ( ! left || ! right || right.startOffset < left.endOffset ) return null;
+	return { start: left.endOffset, end: right.startOffset };
+}
+
+function attributeGap( markup, node, k ) {
+	const range = attributeGapRange( node, k );
+	return range ? markup.slice( range.start, range.end ) : null;
 }
 
 /** The row control most worth showing as the repeater item's title. */
 function pickLabelBinding( bindings ) {
+	// What an editor can see and recognise the row by -- never wiring. A slide
+	// row used to be titled by its `role`, so every slide read "group".
+	const visible = ( b ) =>
+		! b.positional && 'hidden' !== b.control && ! ( 'attr' === b.kind && isRowWiringAttr( b.attr ) );
+
 	return (
-		bindings.find( ( b ) => b.kind === 'inner' && b.control === 'text' ) ||
-		bindings.find( ( b ) => b.kind === 'inner' || b.kind === 'text_run' ) ||
-		bindings.find( ( b ) => b.control === 'text' ) ||
+		bindings.find( ( b ) => visible( b ) && b.kind === 'inner' && b.control === 'text' ) ||
+		bindings.find( ( b ) => visible( b ) && ( b.kind === 'inner' || b.kind === 'text_run' ) ) ||
+		bindings.find( ( b ) => visible( b ) && 'attr' === b.kind && [ 'alt', 'aria-label', 'title' ].includes( b.attr ) ) ||
+		bindings.find( ( b ) => visible( b ) && b.control === 'text' ) ||
 		null
 	);
 }
 
 /**
+ * What to call a row element's content control. A link's or a button's own
+ * words are its "Text" -- its URL is the "Link" -- as in Elementor's Button
+ * widget. Where the role says little ("Text", "Heading"), the element's own
+ * class says more: a host card's `ab-ho-role` and `ab-ho-desc` are "Role" and
+ * "Description", not "Text 1" and "Text 2".
+ */
+function rowElementLabel( node, prefixes ) {
+	const tag = node.tagName.toLowerCase();
+	if ( 'a' === tag || 'button' === tag ) return 'Text';
+
+	const role = semanticName( node, prefixes );
+	if ( [ 'Text', 'Heading', 'Container', 'Content', 'Item' ].includes( role ) ) {
+		const cls = namingClass( node );
+		if ( cls !== tag ) {
+			const named = humanizeClass( cls, prefixes );
+			if ( named && named !== role ) return named;
+		}
+	}
+	return role;
+}
+
+/**
  * Find bindings whose value across the rows is exactly `<prefix><n><suffix>`
- * with n counting from 1. Those are mechanical (ids, aria wiring), not content.
+ * with n counting up by one. Those are mechanical (ids, aria wiring), not
+ * content, and become an expression on the row's position.
+ *
+ * The count need not start at 1. The Travel Essentials accordion's first item
+ * is open by default and so is not part of the repeater; the run it starts is
+ * numbered 3, 4, 5, 6. Recognising only a run from 1 left those ids as plain
+ * text, and Elementor's "Add Item" -- which fills a new row with row 1's values
+ * -- gave the new item a second `fc-det-btn-3`.
  */
 function detectIndexPatterns( bindings, rows ) {
 	if ( rows.length < 2 ) return [];
@@ -1346,16 +2174,49 @@ function detectIndexPatterns( bindings, rows ) {
 		if ( values.some( ( value ) => typeof value !== 'string' ) ) continue;
 
 		const first = values[ 0 ];
-		const position = first.indexOf( '1' );
-		if ( position < 0 ) continue;
+		for ( const match of first.matchAll( /\d+/g ) ) {
+			// A leading zero would not survive being rebuilt from a number.
+			if ( match[ 0 ].length > 1 && match[ 0 ].startsWith( '0' ) ) continue;
 
-		const prefix = first.slice( 0, position );
-		const suffix = first.slice( position + 1 );
-		const matches = values.every( ( value, index ) => value === prefix + ( index + 1 ) + suffix );
-		if ( matches ) found.push( { id: binding.id, prefix, suffix } );
+			const start = parseInt( match[ 0 ], 10 );
+			const prefix = first.slice( 0, match.index );
+			const suffix = first.slice( match.index + match[ 0 ].length );
+			const counts = values.every( ( value, index ) => value === prefix + ( start + index ) + suffix );
+			if ( counts ) {
+				found.push( {
+					id: binding.id,
+					segments: [
+						...totalSegments( prefix, rows.length ),
+						{ kind: 'index', offset: start - 1 },
+						...totalSegments( suffix, rows.length ),
+					],
+				} );
+				break;
+			}
+		}
 	}
 
 	return found;
+}
+
+/**
+ * Split a constant around the list's own length when it is stated as a total
+ * -- the " of 5" in a slide's "2 of 5" -- so the total grows with the list.
+ * Only "of N" and "/ N" count: a bare 2 inside `sj-ch2-` is a chapter number
+ * that happens to match a two-item list, not a total.
+ */
+function totalSegments( text, total ) {
+	if ( ! text ) return [];
+	const match = total > 1 ? text.match( new RegExp( '(\\bof\\s+|/\\s*)(' + total + ')(?!\\d)' ) ) : null;
+	if ( ! match ) return [ { kind: 'literal', value: text } ];
+
+	const at = match.index + match[ 1 ].length;
+	const after = at + match[ 2 ].length;
+	return [
+		{ kind: 'literal', value: text.slice( 0, at ) },
+		{ kind: 'count' },
+		...( after < text.length ? [ { kind: 'literal', value: text.slice( after ) } ] : [] ),
+	];
 }
 
 /**
@@ -1369,9 +2230,12 @@ function detectIndexPatterns( bindings, rows ) {
 function findOpaquePaths( nodes ) {
 	const opaque = new Set();
 
-	const shapeOf = ( node ) =>
-		elementChildren( node ).map( ( c ) => c.tagName.toLowerCase() ).join( ',' ) +
-		'|' + children( node ).filter( isComment ).length;
+	// Comments are not part of the shape. One host card carries a note about
+	// which photograph is the approved one; counting it made that card's whole
+	// image wrapper raw markup in EVERY row, and six image pickers became one
+	// HTML box. Comments that differ between items are bound per row instead --
+	// see the "trivia" bindings.
+	const shapeOf = ( node ) => elementChildren( node ).map( ( c ) => c.tagName.toLowerCase() ).join( ',' );
 
 	const walk = ( path ) => {
 		const targets = nodes.map( ( node ) => nodeAtPath( node, path ) );
@@ -1434,7 +2298,7 @@ function itemClassEdit( markup, template, templateRange ) {
 	return { start: at, end: at, replacement: ' class="' + marker + '"' };
 }
 
-function collectRepeaterBindings( doc, template, markup, presence, opaquePaths ) {
+function collectRepeaterBindings( doc, template, markup, presence, opaquePaths, variance, prefixes = [] ) {
 	const bindings = [];
 	const seen = new Set();
 
@@ -1450,7 +2314,7 @@ function collectRepeaterBindings( doc, template, markup, presence, opaquePaths )
 				bindings.push( {
 					id: uniqueBinding( labelFor( node, tag ) + '_markup', bindings, seen ),
 					control: 'textarea',
-					label: titleCase( labelFor( node, tag ) ) + ' markup (HTML)',
+					label: rowElementLabel( node, prefixes ) + ' (HTML)',
 					esc: 'raw',
 					range: { start: range.start, end: range.end },
 					kind: 'opaque',
@@ -1501,7 +2365,7 @@ function collectRepeaterBindings( doc, template, markup, presence, opaquePaths )
 				bindings.push( {
 					id,
 					control: /<[a-zA-Z]/.test( value ) || value.length > 90 ? 'textarea' : 'text',
-					label: titleCase( labelFor( node, tag ) ),
+					label: rowElementLabel( node, prefixes ),
 					esc: 'post',
 					range: { start: range.start + leading.length, end: range.end - trailing.length },
 					kind: 'inner',
@@ -1525,7 +2389,7 @@ function collectRepeaterBindings( doc, template, markup, presence, opaquePaths )
 				bindings.push( {
 					id,
 					control: value.length > 90 ? 'textarea' : 'text',
-					label: titleCase( labelFor( node, tag ) ),
+					label: rowElementLabel( node, prefixes ),
 					esc: 'post',
 					range: { start: location.startOffset + leading.length, end: location.endOffset - trailing.length },
 					kind: 'text_run',
@@ -1544,6 +2408,28 @@ function collectRepeaterBindings( doc, template, markup, presence, opaquePaths )
 			} );
 		}
 
+		// Where items differ in the comments between their children -- one host
+		// card's note on which photo is approved -- that whole span (comments
+		// and the whitespace around them) is the row's own, so the note travels
+		// with its card and a card without one renders without one.
+		const triviaRanges = [];
+		const trivia = ! consumedSubtree && variance ? variance.triviaPaths.get( path.join( '.' ) ) : null;
+		for ( const gapIndex of trivia ? [ ...trivia ] : [] ) {
+			const range = childGapRange( node, gapIndex );
+			if ( ! range ) continue;
+			triviaRanges.push( range );
+			bindings.push( {
+				id: uniqueBinding( 'notes', bindings, seen ),
+				control: 'hidden',
+				label: 'Notes',
+				esc: 'trivia',
+				range,
+				kind: 'trivia',
+				gapIndex,
+				node,
+			} );
+		}
+
 		// Comments inside an item are per-row content too. The journey tiles
 		// carry `<!-- ★ SWAP: Victoria Falls image -->` / `Chobe`, and dropping
 		// the difference would quietly rewrite one tile's note onto the other.
@@ -1553,12 +2439,15 @@ function collectRepeaterBindings( doc, template, markup, presence, opaquePaths )
 				if ( ! isComment( child ) || ! child.sourceCodeLocation ) continue;
 				commentIndex += 1;
 				const location = child.sourceCodeLocation;
+				// Already carried, with its surroundings, by a trivia span.
+				if ( triviaRanges.some( ( range ) => location.startOffset >= range.start && location.endOffset <= range.end ) ) continue;
 				const id = uniqueBinding( 'note', bindings, seen );
 				bindings.push( {
 					id,
 					control: 'hidden',
 					label: 'Note',
-					esc: 'raw',
+					// Printed between `<!--` and `-->`: an edit must not close it.
+					esc: 'comment',
 					range: { start: location.startOffset + 4, end: location.endOffset - 3 },
 					kind: 'comment',
 					commentIndex,
@@ -1575,12 +2464,62 @@ function collectRepeaterBindings( doc, template, markup, presence, opaquePaths )
 	};
 
 	function bindItemAttributes( node, path ) {
+		const key = path.join( '.' );
+
 		for ( const a of node.attrs || [] ) {
 			const name = a.name.toLowerCase();
+
+			// A class list that differs between items -- `fc-ss-on` on the first
+			// slide, `d2` on the third card -- is bound here and then rebuilt from
+			// the row's position. Only the value is bound; the repeater-item class
+			// is still appended after it.
+			if ( 'class' === name && variance && variance.classPaths.has( key ) ) {
+				const range = attrValueRange( markup, node, 'class' );
+				if ( range ) {
+					bindings.push( {
+						id: uniqueBinding( 'class', bindings, seen ),
+						control: 'hidden',
+						label: 'Class',
+						esc: 'attr',
+						range: { start: range.start, end: range.end },
+						kind: 'attr',
+						attr: 'class',
+						positional: 'class',
+						node,
+					} );
+				}
+				continue;
+			}
+
+			// A photo set in the row's own style attribute -- the hotel slides'
+			// `background-image:url('…')` -- is an image, not CSS to type. Each
+			// quoted url() becomes its own image control; the CSS around it stays
+			// as written and the round trip proves every row shares it.
+			if ( 'style' === name && isPresentOnAll( presence, node, name, path ) ) {
+				const range = attrValueRange( markup, node, 'style' );
+				const urls = range ? [ ...cssUrls( markup.slice( range.start, range.end ) ) ] : [];
+				if ( urls.length ) {
+					urls.forEach( ( url, partIndex ) => {
+						bindings.push( {
+							id: uniqueBinding( 'background_image', bindings, seen ),
+							control: 'media',
+							label: 'Background Image',
+							esc: 'cssurl',
+							range: { start: range.start + url.start, end: range.start + url.end },
+							kind: 'attr_part',
+							attr: 'style',
+							partIndex,
+							node,
+						} );
+					} );
+					continue;
+				}
+			}
+
 			// Inside a repeater, wiring attributes (`id`, `for`, `aria-controls`)
 			// legitimately differ per row, so they are bound rather than locked.
-			// `class` stays locked: it carries the styling hook and the injected
-			// repeater-item class.
+			// An unvarying `class` stays locked: it carries the styling hook and
+			// the injected repeater-item class.
 			if ( REPEATER_LOCKED_ATTRS.has( name ) ) continue;
 
 			const presentOnAll = isPresentOnAll( presence, node, name, path );
@@ -1592,16 +2531,58 @@ function collectRepeaterBindings( doc, template, markup, presence, opaquePaths )
 					: URL_ATTRS.has( name ) ? 'url'
 						: MEDIA_ATTRS.has( name ) ? 'media'
 							: 'text';
-			const esc = ( control === 'url' || control === 'media' ) ? 'url' : ( presentOnAll ? 'attr' : 'raw' );
+			// An optional attribute is printed inside the start tag, so it is
+			// escaped as attributes (`attrs`), never as post content: a value
+			// with no tags in it would sail through kses and could open an
+			// event handler. See Value_Formatter::attrs().
+			const esc = ( control === 'url' || control === 'media' ) ? 'url' : ( presentOnAll ? 'attr' : 'attrs' );
 			const id = uniqueBinding( name === 'value' ? 'value' : slug( name ), bindings, seen );
 			bindings.push( {
 				id,
 				control,
-				label: presentOnAll ? titleCase( name.replace( /^data-/, '' ) ) : titleCase( name ) + ' (optional attribute)',
+				label: presentOnAll ? attributeLabel( name, node ) : titleCase( name ) + ' (optional attribute)',
 				esc,
 				range: { start: range.start, end: range.end },
 				kind: presentOnAll ? 'attr' : 'attr_whole',
 				attr: name,
+				node,
+			} );
+		}
+
+		// Attributes only a later item carries get a zero-width slot here; the
+		// row stores the whole ` name="value"` or nothing.
+		for ( const late of ( variance && variance.lateAttrs.get( key ) ) || [] ) {
+			const at = lateAttributeSlot( node, late.anchor );
+			if ( null === at ) continue;
+			bindings.push( {
+				id: uniqueBinding( 'extra_attributes', bindings, seen ),
+				control: 'hidden',
+				label: 'Extra attributes (optional)',
+				esc: 'attrs',
+				range: { start: at, end: at },
+				kind: 'attr_slot',
+				anchor: late.anchor,
+				firstNames: late.firstNames,
+				node,
+			} );
+		}
+
+		// Spacing between attributes that differs between items. The dots line
+		// their attributes up in columns, so the first dot -- whose class is
+		// longer -- has fewer spaces after it than the rest.
+		const gaps = variance && variance.gapPaths.get( key );
+		for ( const k of gaps ? [ ...gaps ] : [] ) {
+			const range = attributeGapRange( node, k );
+			if ( ! range ) continue;
+			bindings.push( {
+				id: uniqueBinding( 'gap', bindings, seen ),
+				control: 'hidden',
+				label: 'Spacing',
+				esc: 'ws',
+				range,
+				kind: 'gap',
+				gapIndex: k,
+				positional: 'gap',
 				node,
 			} );
 		}
@@ -1657,10 +2638,17 @@ function assignRepeaterLabels( entries, prefixes, doc ) {
 		if ( hint ) entry.definition.label = hint + ' ' + entry.definition.label;
 	}
 
+	// Number what still collides -- counted BEFORE renaming, for the same
+	// reason as above: counting as we go left the last of three lists named
+	// plain "Cards" after the first two became "Cards 1" and "Cards 2".
+	const remaining = new Map();
+	for ( const entry of entries ) {
+		remaining.set( entry.definition.label, ( remaining.get( entry.definition.label ) || 0 ) + 1 );
+	}
 	const seen = new Map();
 	for ( const entry of entries ) {
 		const name = entry.definition.label;
-		if ( entries.filter( ( e ) => e.definition.label === name ).length < 2 ) continue;
+		if ( ( remaining.get( name ) || 0 ) < 2 ) continue;
 		const n = ( seen.get( name ) || 0 ) + 1;
 		seen.set( name, n );
 		entry.definition.label = name + ' ' + n;
@@ -1813,6 +2801,36 @@ function extractRowValues( doc, node, template, bindings, markup ) {
 				return null;
 			}
 			values[ b.id ] = markup.slice( comment.sourceCodeLocation.startOffset + 4, comment.sourceCodeLocation.endOffset - 3 );
+		} else if ( b.kind === 'trivia' ) {
+			const range = childGapRange( target, b.gapIndex );
+			const text = range ? markup.slice( range.start, range.end ) : null;
+			if ( null === text || ! /^(?:\s|<!--[\s\S]*?-->)*$/.test( text ) ) {
+				lastExtractFailure = 'binding "' + b.id + '" expected only whitespace and comments at child gap ' + b.gapIndex + ' of <' + target.tagName + '>';
+				return null;
+			}
+			values[ b.id ] = text;
+		} else if ( b.kind === 'attr_part' ) {
+			const range = attrValueRange( markup, target, b.attr );
+			const url = range ? [ ...cssUrls( markup.slice( range.start, range.end ) ) ][ b.partIndex ] : null;
+			if ( ! url ) {
+				lastExtractFailure = 'binding "' + b.id + '" expected url() number ' + ( b.partIndex + 1 ) + ' in [' + b.attr + ']';
+				return null;
+			}
+			values[ b.id ] = url.value;
+		} else if ( b.kind === 'attr_slot' ) {
+			const text = lateAttributeText( markup, target, b.anchor, b.firstNames );
+			if ( null === text ) {
+				lastExtractFailure = 'binding "' + b.id + '" needs [' + b.anchor + '], which this item does not have';
+				return null;
+			}
+			values[ b.id ] = text;
+		} else if ( b.kind === 'gap' ) {
+			const gap = attributeGap( markup, target, b.gapIndex );
+			if ( null === gap ) {
+				lastExtractFailure = 'binding "' + b.id + '" expected spacing after attribute ' + ( b.gapIndex + 1 ) + ' of <' + target.tagName + '>';
+				return null;
+			}
+			values[ b.id ] = gap;
 		} else if ( b.kind === 'attr_whole' ) {
 			// Optional attribute: the row stores the whole ` name="value"` or an
 			// empty string, so an item that omits it renders identically.

@@ -21,81 +21,143 @@
 	"keywords": [
 		"umoya",
 		"founders circle",
+		"founder",
 		"fc",
 		"membership",
 		"privileges"
 	],
+	"portals": [],
 	"tokens": [
 		{
 			"name": "cream",
 			"value": "#F5F0EB",
 			"kind": "color",
+			"selectors": [
+				"#fc-benefits"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
 			"label": "Cream"
 		},
 		{
 			"name": "cream-lt",
 			"value": "#F5F0EB",
 			"kind": "color",
+			"selectors": [
+				"#fc-benefits"
+			],
+			"scoped": false,
+			"id": "uew_token_cream_lt",
 			"label": "Cream Lt"
 		},
 		{
 			"name": "brown",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#fc-benefits"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
 			"label": "Brown"
 		},
 		{
 			"name": "brown-mid",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#fc-benefits"
+			],
+			"scoped": false,
+			"id": "uew_token_brown_mid",
 			"label": "Brown Mid"
 		},
 		{
 			"name": "terra",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#fc-benefits"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
 			"label": "Terra"
 		},
 		{
 			"name": "terra-dk",
 			"value": "#C06840",
 			"kind": "color",
+			"selectors": [
+				"#fc-benefits"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
 			"label": "Terra Dk"
 		},
 		{
 			"name": "gold",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#fc-benefits"
+			],
+			"scoped": false,
+			"id": "uew_token_gold",
 			"label": "Gold"
 		},
 		{
 			"name": "gold-lt",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#fc-benefits"
+			],
+			"scoped": false,
+			"id": "uew_token_gold_lt",
 			"label": "Gold Lt"
 		},
 		{
 			"name": "olive",
 			"value": "#708238",
 			"kind": "color",
+			"selectors": [
+				"#fc-benefits"
+			],
+			"scoped": false,
+			"id": "uew_token_olive",
 			"label": "Olive"
 		},
 		{
 			"name": "white",
 			"value": "#FFFFFF",
 			"kind": "color",
+			"selectors": [
+				"#fc-benefits"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
 			"label": "White"
 		},
 		{
 			"name": "text-mid",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#fc-benefits"
+			],
+			"scoped": false,
+			"id": "uew_token_text_mid",
 			"label": "Text Mid"
 		},
 		{
 			"name": "ease",
 			"value": "cubic-bezier(.25,.46,.45,.94)",
 			"kind": "text",
+			"selectors": [
+				"#fc-benefits"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
 			"label": "Ease"
 		}
 	],
@@ -202,7 +264,7 @@
 				{
 					"id": "image_src",
 					"control": "media",
-					"label": "Source",
+					"label": "Choose Image",
 					"default": {
 						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img259584315.jpeg"
 					},
@@ -255,14 +317,14 @@
 			"controls": [
 				{
 					"id": "aria_hidden",
-					"control": "text",
+					"control": "hidden",
 					"label": "Aria Hidden",
 					"esc": "attr",
 					"default": "true"
 				},
 				{
 					"id": "viewbox",
-					"control": "text",
+					"control": "hidden",
 					"label": "Viewbox",
 					"esc": "attr",
 					"default": "0 0 12 12"
@@ -277,7 +339,7 @@
 				{
 					"id": "li",
 					"control": "textarea",
-					"label": "Li",
+					"label": "Item",
 					"esc": "post",
 					"default": "A preferred founding rate, the most favourable we will ever offer, on this journey and those that follow."
 				}
@@ -314,7 +376,10 @@
 					"li": "Early access to every future journey and Umoya experience."
 				}
 			],
-			"selector": null
+			"loops": 1,
+			"selector": null,
+			"notice": "",
+			"portal": null
 		}
 	],
 	"style_parts": [
@@ -340,6 +405,7 @@
 				"text_color",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -367,6 +433,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -392,8 +459,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"grid_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -421,6 +490,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": null
@@ -449,6 +519,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -477,6 +548,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -505,6 +577,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -533,6 +606,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -560,6 +634,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -588,6 +663,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": "li"
@@ -616,6 +692,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -635,6 +712,7 @@
 				"effects",
 				"visibility"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -664,6 +742,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -689,6 +768,7 @@
 				"filters",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -761,7 +841,7 @@
 		{
 			"id": "image_src",
 			"control": "media",
-			"label": "Source",
+			"label": "Choose Image",
 			"default": {
 				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img259584315.jpeg"
 			},

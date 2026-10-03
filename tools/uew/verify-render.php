@@ -83,6 +83,7 @@ function uew_prepare_defaults( array $schema ) {
 			$prepared = array(
 				'_uew_item_class' => '',
 				'_uew_n'          => (string) ( $index + 1 ),
+				'_uew_count'      => (string) count( $repeater['rows'] ),
 			);
 			foreach ( $repeater['controls'] as $control ) {
 				$value                      = isset( $row[ $control['id'] ] ) ? $row[ $control['id'] ] : '';
@@ -101,6 +102,10 @@ function uew_prepare_defaults( array $schema ) {
 	foreach ( $schema['inline_styles'] as $group ) {
 		$s[ $group['id'] ] = Value_Formatter::inline_style( $group, $settings );
 	}
+
+	// The portal hook is per widget instance; with no instance it renders as
+	// nothing, which is exactly what the source file has in that position.
+	$c['_uew_for'] = '';
 
 	return array( $c, $r, $s );
 }

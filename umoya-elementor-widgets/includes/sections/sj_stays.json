@@ -20,47 +20,79 @@
 	},
 	"keywords": [
 		"umoya",
-		"founders circle",
+		"signature journey",
+		"journey",
 		"sj",
 		"where",
 		"you",
 		"stay"
 	],
+	"portals": [],
 	"tokens": [
 		{
 			"name": "cream",
 			"value": "#F5F0EB",
 			"kind": "color",
+			"selectors": [
+				"#sj-stays"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
 			"label": "Cream"
 		},
 		{
 			"name": "brown",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#sj-stays"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
 			"label": "Brown"
 		},
 		{
 			"name": "terra",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#sj-stays"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
 			"label": "Terra"
 		},
 		{
 			"name": "white",
 			"value": "#FFFFFF",
 			"kind": "color",
+			"selectors": [
+				"#sj-stays"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
 			"label": "White"
 		},
 		{
 			"name": "muted",
 			"value": "rgba(75,46,43,.66)",
 			"kind": "color",
+			"selectors": [
+				"#sj-stays"
+			],
+			"scoped": false,
+			"id": "uew_token_muted",
 			"label": "Muted"
 		},
 		{
 			"name": "ease",
 			"value": "cubic-bezier(.25,.46,.45,.94)",
 			"kind": "text",
+			"selectors": [
+				"#sj-stays"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
 			"label": "Ease"
 		}
 	],
@@ -125,645 +157,332 @@
 				}
 			],
 			"merged": true
-		},
-		{
-			"id": "content_p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-			"label": "Card Slide 1",
-			"sample": "",
-			"region_label": "Card",
-			"controls": [
-				{
-					"id": "slide_aria_roledescription",
-					"control": "text",
-					"label": "Accessible Role 1",
-					"default": "slide",
-					"esc": "attr",
-					"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Card Slide 1"
-				},
-				{
-					"id": "slide_aria_label",
-					"control": "text",
-					"label": "Accessible Name 1",
-					"default": "The Da Vinci — 1 of 3",
-					"esc": "attr",
-					"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Card Slide 1"
-				},
-				{
-					"id": "slide_aria_roledescription_2",
-					"control": "text",
-					"label": "Accessible Role 2",
-					"default": "slide",
-					"esc": "attr",
-					"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Card Slide 1"
-				},
-				{
-					"id": "slide_aria_label_2",
-					"control": "text",
-					"label": "Accessible Name 2",
-					"default": "MalaMala — 1 of 3",
-					"esc": "attr",
-					"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Card Slide 1"
-				},
-				{
-					"id": "slide_aria_roledescription_3",
-					"control": "text",
-					"label": "Accessible Role 3",
-					"default": "slide",
-					"esc": "attr",
-					"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Card Slide 1"
-				},
-				{
-					"id": "slide_aria_label_3",
-					"control": "text",
-					"label": "Accessible Name 3",
-					"default": "Cape Grace — 1 of 3",
-					"esc": "attr",
-					"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Card Slide 1"
-				}
-			]
-		},
-		{
-			"id": "content_p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2",
-			"label": "Card Dot",
-			"sample": "",
-			"region_label": "Card",
-			"controls": [
-				{
-					"id": "dot_aria_label",
-					"control": "text",
-					"label": "Accessible Name 1",
-					"default": "The Da Vinci slides",
-					"esc": "attr",
-					"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Card Dot"
-				},
-				{
-					"id": "dot_aria_label_3",
-					"control": "text",
-					"label": "Accessible Name 2",
-					"default": "MalaMala slides",
-					"esc": "attr",
-					"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Card Dot"
-				},
-				{
-					"id": "dot_aria_label_5",
-					"control": "text",
-					"label": "Accessible Name 3",
-					"default": "Cape Grace slides",
-					"esc": "attr",
-					"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Card Dot"
-				}
-			]
-		},
-		{
-			"id": "content_p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2_button_nth_of_type_1",
-			"label": "Dot 1",
-			"sample": "",
-			"region_label": "",
-			"controls": [
-				{
-					"id": "dot_aria_label_2",
-					"control": "text",
-					"label": "Accessible Name 1",
-					"default": "Show image 1",
-					"esc": "attr",
-					"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2_button_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Dot 1"
-				},
-				{
-					"id": "dot_aria_label_4",
-					"control": "text",
-					"label": "Accessible Name 2",
-					"default": "Show image 1",
-					"esc": "attr",
-					"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2_button_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Dot 1"
-				},
-				{
-					"id": "dot_aria_label_6",
-					"control": "text",
-					"label": "Accessible Name 3",
-					"default": "Show image 1",
-					"esc": "attr",
-					"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2_button_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Dot 1"
-				}
-			]
-		},
-		{
-			"id": "content_p_sj_stay_card_figcaption_nth_of_type_1_div_nth_of_type_1",
-			"label": "Caption Text 1",
-			"sample": "The Da Vinci",
-			"region_label": "Caption",
-			"controls": [
-				{
-					"id": "text_text_2",
-					"control": "text",
-					"label": "Text 1",
-					"description": "",
-					"default": "The Da Vinci",
-					"esc": "post",
-					"group": "p_sj_stay_card_figcaption_nth_of_type_1_div_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Caption Text 1"
-				},
-				{
-					"id": "text_text_5",
-					"control": "text",
-					"label": "Text 2",
-					"description": "",
-					"default": "MalaMala",
-					"esc": "post",
-					"group": "p_sj_stay_card_figcaption_nth_of_type_1_div_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Caption Text 1"
-				},
-				{
-					"id": "text_text_8",
-					"control": "text",
-					"label": "Text 3",
-					"description": "",
-					"default": "Cape Grace",
-					"esc": "post",
-					"group": "p_sj_stay_card_figcaption_nth_of_type_1_div_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Caption Text 1"
-				}
-			]
-		},
-		{
-			"id": "content_p_sj_stay_card_figcaption_nth_of_type_1_div_nth_of_type_2",
-			"label": "Caption Text 2",
-			"sample": "Nelson Mandela Square, Sandton",
-			"region_label": "Caption",
-			"controls": [
-				{
-					"id": "text_text_3",
-					"control": "text",
-					"label": "Text 1",
-					"description": "",
-					"default": "Nelson Mandela Square, Sandton",
-					"esc": "post",
-					"group": "p_sj_stay_card_figcaption_nth_of_type_1_div_nth_of_type_2",
-					"sort": 0,
-					"part_label": "Caption Text 2"
-				},
-				{
-					"id": "text_text_6",
-					"control": "text",
-					"label": "Text 2",
-					"description": "",
-					"default": "Community-owned · The Sabi Sand",
-					"esc": "post",
-					"group": "p_sj_stay_card_figcaption_nth_of_type_1_div_nth_of_type_2",
-					"sort": 0,
-					"part_label": "Caption Text 2"
-				},
-				{
-					"id": "text_text_9",
-					"control": "text",
-					"label": "Text 3",
-					"description": "",
-					"default": "A Fairmont Hotel · V&amp;A Waterfront",
-					"esc": "post",
-					"group": "p_sj_stay_card_figcaption_nth_of_type_1_div_nth_of_type_2",
-					"sort": 0,
-					"part_label": "Caption Text 2"
-				}
-			]
-		},
-		{
-			"id": "content_p_sj_stay_card_figcaption_nth_of_type_1_p_nth_of_type_1",
-			"label": "Caption Text 3",
-			"sample": "Set on Nelson Mandela Square in the heart of Sa…",
-			"region_label": "Caption",
-			"controls": [
-				{
-					"id": "text_text_4",
-					"control": "textarea",
-					"label": "Text 1",
-					"description": "",
-					"default": "Set on Nelson Mandela Square in the heart of Sandton, The Da Vinci is one of Johannesburg's finest hotels, with an infinity pool, spa, and private art collection in the lobby.",
-					"esc": "post",
-					"group": "p_sj_stay_card_figcaption_nth_of_type_1_p_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Caption Text 3"
-				},
-				{
-					"id": "text_text_7",
-					"control": "textarea",
-					"label": "Text 2",
-					"description": "",
-					"default": "One of the oldest and most celebrated safari reserves in Africa, MalaMala sits on land that was taken from its Black community during apartheid and won back through the courts, making it the most meaningful place on earth to go on safari.",
-					"esc": "post",
-					"group": "p_sj_stay_card_figcaption_nth_of_type_1_p_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Caption Text 3"
-				},
-				{
-					"id": "text_text_10",
-					"control": "textarea",
-					"label": "Text 3",
-					"description": "",
-					"default": "Situated right on the V&amp;A Waterfront with Table Mountain rising behind it, the Cape Grace reopened in 2024 as the first Fairmont hotel in South Africa, its design a celebration of South African heritage, color, and craft.",
-					"esc": "post",
-					"group": "p_sj_stay_card_figcaption_nth_of_type_1_p_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Caption Text 3"
-				}
-			]
 		}
 	],
 	"integration_controls": [],
-	"form_controls": [
-		{
-			"id": "dot_disabled",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2_button_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Dot 1"
-		},
-		{
-			"id": "dot_disabled_2",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2_button_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Dot 1"
-		},
-		{
-			"id": "dot_disabled_3",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2_button_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Dot 1"
-		}
-	],
+	"form_controls": [],
 	"behaviour_controls": [],
-	"inline_style_controls": [
-		{
-			"id": "slide_css_background_image",
-			"control": "text",
-			"label": "Background Image",
-			"description": "Inline style on the element itself; overrides any CSS rule.",
-			"default": "url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Davinci_Outdoor_Pool_(3).jpg')",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-			"tab": "inline_style",
-			"sort": 3,
-			"part_label": "Card Slide 1"
-		},
-		{
-			"id": "slide_css_background_image_2",
-			"control": "text",
-			"label": "Background Image",
-			"description": "Inline style on the element itself; overrides any CSS rule.",
-			"default": "url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_buffalo_suite14.png')",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-			"tab": "inline_style",
-			"sort": 3,
-			"part_label": "Card Slide 1"
-		},
-		{
-			"id": "slide_css_background_image_3",
-			"control": "text",
-			"label": "Background Image",
-			"description": "Inline style on the element itself; overrides any CSS rule.",
-			"default": "url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Cape_Grace_Marina_View.jpg')",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-			"tab": "inline_style",
-			"sort": 3,
-			"part_label": "Card Slide 1"
-		}
-	],
+	"inline_style_controls": [],
 	"media_controls": [],
 	"repeaters": [
 		{
-			"id": "rep_div_sj_stay_slide",
-			"label": "The Da Vinci Slides",
-			"item_label": "{{{ role }}}",
+			"id": "rep_figure_sj_stay_card",
+			"label": "Cards",
+			"item_label": "{{{ nm }}}",
 			"controls": [
 				{
+					"id": "notes",
+					"control": "hidden",
+					"label": "Notes 1",
+					"esc": "trivia",
+					"default": "\n            <!-- The Da Vinci — slide 1 · umoya_compressed_Davinci_Outdoor_Pool_(3).jpg -->\n            "
+				},
+				{
 					"id": "role",
-					"control": "text",
-					"label": "Role",
+					"control": "hidden",
+					"label": "Slide Role 1",
 					"esc": "attr",
 					"default": "group"
 				},
 				{
 					"id": "aria_roledescription",
-					"control": "text",
-					"label": "Aria Roledescription",
+					"control": "hidden",
+					"label": "Slide Accessible Role 1",
 					"esc": "attr",
 					"default": "slide"
 				},
 				{
 					"id": "aria_label",
 					"control": "text",
-					"label": "Aria Label",
+					"label": "Slide Accessible Name 1",
+					"esc": "attr",
+					"default": "The Da Vinci — 1 of 3"
+				},
+				{
+					"id": "background_image",
+					"control": "media",
+					"label": "Slide Background Image 1",
+					"esc": "cssurl",
+					"default": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Davinci_Outdoor_Pool_(3).jpg"
+				},
+				{
+					"id": "notes_2",
+					"control": "hidden",
+					"label": "Notes 2",
+					"esc": "trivia",
+					"default": "\n            <!-- The Da Vinci — slide 2 · umoya_compressed_DAVINCI_Lounge_(2).jpg -->\n            "
+				},
+				{
+					"id": "role_2",
+					"control": "hidden",
+					"label": "Slide Role 2",
+					"esc": "attr",
+					"default": "group"
+				},
+				{
+					"id": "aria_roledescription_2",
+					"control": "hidden",
+					"label": "Slide Accessible Role 2",
+					"esc": "attr",
+					"default": "slide"
+				},
+				{
+					"id": "aria_label_2",
+					"control": "text",
+					"label": "Slide Accessible Name 2",
 					"esc": "attr",
 					"default": "The Da Vinci — 2 of 3"
 				},
 				{
-					"id": "style",
-					"control": "text",
-					"label": "Style",
-					"esc": "attr",
-					"default": "background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_DAVINCI_Lounge_(2).jpg');"
-				}
-			],
-			"rows": [
-				{
-					"role": "group",
-					"aria_roledescription": "slide",
-					"aria_label": "The Da Vinci — 2 of 3",
-					"style": "background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_DAVINCI_Lounge_(2).jpg');"
+					"id": "background_image_2",
+					"control": "media",
+					"label": "Slide Background Image 2",
+					"esc": "cssurl",
+					"default": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_DAVINCI_Lounge_(2).jpg"
 				},
 				{
-					"role": "group",
-					"aria_roledescription": "slide",
-					"aria_label": "The Da Vinci — 3 of 3",
-					"style": "background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Da_Vinci_Room_801_002.jpg');"
-				}
-			],
-			"selector": ".sj-stay-slide"
-		},
-		{
-			"id": "rep_button_sj_stay_dot",
-			"label": "The Da Vinci Slides Dots",
-			"item_label": "{{{ role }}}",
-			"controls": [
-				{
-					"id": "role",
-					"control": "text",
-					"label": "Role",
-					"esc": "attr",
-					"default": "tab"
+					"id": "notes_3",
+					"control": "hidden",
+					"label": "Notes 3",
+					"esc": "trivia",
+					"default": "\n            <!-- The Da Vinci — slide 3 · umoya_compressed_Da_Vinci_Room_801_002.jpg -->\n            "
 				},
 				{
-					"id": "aria_selected",
-					"control": "text",
-					"label": "Aria Selected",
-					"esc": "attr",
-					"default": "false"
-				},
-				{
-					"id": "aria_label",
-					"control": "text",
-					"label": "Aria Label",
-					"esc": "attr",
-					"default": "Show image 2"
-				}
-			],
-			"rows": [
-				{
-					"role": "tab",
-					"aria_selected": "false",
-					"aria_label": "Show image 2"
-				},
-				{
-					"role": "tab",
-					"aria_selected": "false",
-					"aria_label": "Show image 3"
-				}
-			],
-			"selector": ".sj-stay-dot"
-		},
-		{
-			"id": "rep_div_sj_stay_slide_2",
-			"label": "MalaMala Slides",
-			"item_label": "{{{ role }}}",
-			"controls": [
-				{
-					"id": "role",
-					"control": "text",
-					"label": "Role",
+					"id": "role_3",
+					"control": "hidden",
+					"label": "Slide Role 3",
 					"esc": "attr",
 					"default": "group"
 				},
 				{
-					"id": "aria_roledescription",
-					"control": "text",
-					"label": "Aria Roledescription",
+					"id": "aria_roledescription_3",
+					"control": "hidden",
+					"label": "Slide Accessible Role 3",
 					"esc": "attr",
 					"default": "slide"
 				},
 				{
-					"id": "aria_label",
+					"id": "aria_label_3",
 					"control": "text",
-					"label": "Aria Label",
+					"label": "Slide Accessible Name 3",
 					"esc": "attr",
-					"default": "MalaMala — 2 of 3"
+					"default": "The Da Vinci — 3 of 3"
 				},
 				{
-					"id": "style",
-					"control": "text",
-					"label": "Style",
-					"esc": "attr",
-					"default": "background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_buffalo_maindeck5.png');"
-				}
-			],
-			"rows": [
-				{
-					"role": "group",
-					"aria_roledescription": "slide",
-					"aria_label": "MalaMala — 2 of 3",
-					"style": "background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_buffalo_maindeck5.png');"
+					"id": "background_image_3",
+					"control": "media",
+					"label": "Slide Background Image 3",
+					"esc": "cssurl",
+					"default": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Da_Vinci_Room_801_002.jpg"
 				},
 				{
-					"role": "group",
-					"aria_roledescription": "slide",
-					"aria_label": "MalaMala — 3 of 3",
-					"style": "background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_buffalo_suite_3bathroom.png');"
-				}
-			],
-			"selector": ".sj-stay-slide"
-		},
-		{
-			"id": "rep_button_sj_stay_dot_2",
-			"label": "MalaMala Slides Dots",
-			"item_label": "{{{ role }}}",
-			"controls": [
+					"id": "role_4",
+					"control": "hidden",
+					"label": "Dot Role 1",
+					"esc": "attr",
+					"default": "tablist"
+				},
 				{
-					"id": "role",
+					"id": "aria_label_4",
 					"control": "text",
-					"label": "Role",
+					"label": "Dot Accessible Name 1",
+					"esc": "attr",
+					"default": "The Da Vinci slides"
+				},
+				{
+					"id": "role_5",
+					"control": "hidden",
+					"label": "Dot Role 2",
 					"esc": "attr",
 					"default": "tab"
 				},
 				{
 					"id": "aria_selected",
-					"control": "text",
-					"label": "Aria Selected",
+					"control": "hidden",
+					"label": "Dot Aria Selected 1",
 					"esc": "attr",
-					"default": "false"
+					"default": "true"
 				},
 				{
-					"id": "aria_label",
+					"id": "aria_label_5",
 					"control": "text",
-					"label": "Aria Label",
+					"label": "Dot Accessible Name 2",
 					"esc": "attr",
-					"default": "Show image 2"
-				}
-			],
-			"rows": [
-				{
-					"role": "tab",
-					"aria_selected": "false",
-					"aria_label": "Show image 2"
+					"default": "Show image 1"
 				},
 				{
-					"role": "tab",
-					"aria_selected": "false",
-					"aria_label": "Show image 3"
-				}
-			],
-			"selector": ".sj-stay-dot"
-		},
-		{
-			"id": "rep_div_sj_stay_slide_3",
-			"label": "Cape Grace Slides",
-			"item_label": "{{{ role }}}",
-			"controls": [
-				{
-					"id": "role",
-					"control": "text",
-					"label": "Role",
-					"esc": "attr",
-					"default": "group"
-				},
-				{
-					"id": "aria_roledescription",
-					"control": "text",
-					"label": "Aria Roledescription",
-					"esc": "attr",
-					"default": "slide"
-				},
-				{
-					"id": "aria_label",
-					"control": "text",
-					"label": "Aria Label",
-					"esc": "attr",
-					"default": "Cape Grace — 2 of 3"
-				},
-				{
-					"id": "style",
-					"control": "text",
-					"label": "Style",
-					"esc": "attr",
-					"default": "background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Waterfront_Penthouse_5.jpg');"
-				}
-			],
-			"rows": [
-				{
-					"role": "group",
-					"aria_roledescription": "slide",
-					"aria_label": "Cape Grace — 2 of 3",
-					"style": "background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Waterfront_Penthouse_5.jpg');"
-				},
-				{
-					"role": "group",
-					"aria_roledescription": "slide",
-					"aria_label": "Cape Grace — 3 of 3",
-					"style": "background-image:url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Pool_at_Cape_Grace_4.jpg');"
-				}
-			],
-			"selector": ".sj-stay-slide"
-		},
-		{
-			"id": "rep_button_sj_stay_dot_3",
-			"label": "Cape Grace Slides Dots",
-			"item_label": "{{{ role }}}",
-			"controls": [
-				{
-					"id": "role",
-					"control": "text",
-					"label": "Role",
+					"id": "role_6",
+					"control": "hidden",
+					"label": "Dot Role 3",
 					"esc": "attr",
 					"default": "tab"
 				},
 				{
-					"id": "aria_selected",
-					"control": "text",
-					"label": "Aria Selected",
+					"id": "aria_selected_2",
+					"control": "hidden",
+					"label": "Dot Aria Selected 2",
 					"esc": "attr",
 					"default": "false"
 				},
 				{
-					"id": "aria_label",
+					"id": "aria_label_6",
 					"control": "text",
-					"label": "Aria Label",
+					"label": "Dot Accessible Name 3",
 					"esc": "attr",
 					"default": "Show image 2"
+				},
+				{
+					"id": "role_7",
+					"control": "hidden",
+					"label": "Dot Role 4",
+					"esc": "attr",
+					"default": "tab"
+				},
+				{
+					"id": "aria_selected_3",
+					"control": "hidden",
+					"label": "Dot Aria Selected 3",
+					"esc": "attr",
+					"default": "false"
+				},
+				{
+					"id": "aria_label_7",
+					"control": "text",
+					"label": "Dot Accessible Name 4",
+					"esc": "attr",
+					"default": "Show image 3"
+				},
+				{
+					"id": "nm",
+					"control": "text",
+					"label": "Name",
+					"esc": "post",
+					"default": "The Da Vinci"
+				},
+				{
+					"id": "pl",
+					"control": "text",
+					"label": "Place",
+					"esc": "post",
+					"default": "Nelson Mandela Square, Sandton"
+				},
+				{
+					"id": "desc",
+					"control": "textarea",
+					"label": "Description",
+					"esc": "post",
+					"default": "Set on Nelson Mandela Square in the heart of Sandton, The Da Vinci is one of Johannesburg's finest hotels, with an infinity pool, spa, and private art collection in the lobby."
+				},
+				{
+					"id": "_uew_sep",
+					"control": "hidden",
+					"label": "Separator markup",
+					"esc": "raw",
+					"default": "\n      "
 				}
 			],
 			"rows": [
 				{
-					"role": "tab",
-					"aria_selected": "false",
-					"aria_label": "Show image 2"
+					"notes": "\n            <!-- The Da Vinci — slide 1 · umoya_compressed_Davinci_Outdoor_Pool_(3).jpg -->\n            ",
+					"role": "group",
+					"aria_roledescription": "slide",
+					"aria_label": "The Da Vinci — 1 of 3",
+					"background_image": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Davinci_Outdoor_Pool_(3).jpg",
+					"notes_2": "\n            <!-- The Da Vinci — slide 2 · umoya_compressed_DAVINCI_Lounge_(2).jpg -->\n            ",
+					"role_2": "group",
+					"aria_roledescription_2": "slide",
+					"aria_label_2": "The Da Vinci — 2 of 3",
+					"background_image_2": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_DAVINCI_Lounge_(2).jpg",
+					"notes_3": "\n            <!-- The Da Vinci — slide 3 · umoya_compressed_Da_Vinci_Room_801_002.jpg -->\n            ",
+					"role_3": "group",
+					"aria_roledescription_3": "slide",
+					"aria_label_3": "The Da Vinci — 3 of 3",
+					"background_image_3": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Da_Vinci_Room_801_002.jpg",
+					"role_4": "tablist",
+					"aria_label_4": "The Da Vinci slides",
+					"role_5": "tab",
+					"aria_selected": "true",
+					"aria_label_5": "Show image 1",
+					"role_6": "tab",
+					"aria_selected_2": "false",
+					"aria_label_6": "Show image 2",
+					"role_7": "tab",
+					"aria_selected_3": "false",
+					"aria_label_7": "Show image 3",
+					"nm": "The Da Vinci",
+					"pl": "Nelson Mandela Square, Sandton",
+					"desc": "Set on Nelson Mandela Square in the heart of Sandton, The Da Vinci is one of Johannesburg's finest hotels, with an infinity pool, spa, and private art collection in the lobby.",
+					"_uew_sep": ""
 				},
 				{
-					"role": "tab",
-					"aria_selected": "false",
-					"aria_label": "Show image 3"
+					"notes": "\n            <!-- MalaMala — slide 1 · umoya_compressed_buffalo_suite14.png -->\n            ",
+					"role": "group",
+					"aria_roledescription": "slide",
+					"aria_label": "MalaMala — 1 of 3",
+					"background_image": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_buffalo_suite14.png",
+					"notes_2": "\n            <!-- MalaMala — slide 2 · umoya_compressed_buffalo_maindeck5.png -->\n            ",
+					"role_2": "group",
+					"aria_roledescription_2": "slide",
+					"aria_label_2": "MalaMala — 2 of 3",
+					"background_image_2": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_buffalo_maindeck5.png",
+					"notes_3": "\n            <!-- MalaMala — slide 3 · umoya_compressed_buffalo_suite_3bathroom.png -->\n            ",
+					"role_3": "group",
+					"aria_roledescription_3": "slide",
+					"aria_label_3": "MalaMala — 3 of 3",
+					"background_image_3": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_buffalo_suite_3bathroom.png",
+					"role_4": "tablist",
+					"aria_label_4": "MalaMala slides",
+					"role_5": "tab",
+					"aria_selected": "true",
+					"aria_label_5": "Show image 1",
+					"role_6": "tab",
+					"aria_selected_2": "false",
+					"aria_label_6": "Show image 2",
+					"role_7": "tab",
+					"aria_selected_3": "false",
+					"aria_label_7": "Show image 3",
+					"nm": "MalaMala",
+					"pl": "Community-owned · The Sabi Sand",
+					"desc": "One of the oldest and most celebrated safari reserves in Africa, MalaMala sits on land that was taken from its Black community during apartheid and won back through the courts, making it the most meaningful place on earth to go on safari.",
+					"_uew_sep": "\n\n      <!-- MalaMala -->\n      "
+				},
+				{
+					"notes": "\n            <!-- Cape Grace — slide 1 · umoya_compressed_Cape_Grace_Marina_View.jpg -->\n            ",
+					"role": "group",
+					"aria_roledescription": "slide",
+					"aria_label": "Cape Grace — 1 of 3",
+					"background_image": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Cape_Grace_Marina_View.jpg",
+					"notes_2": "\n            <!-- Cape Grace — slide 2 · umoya_compressed_Waterfront_Penthouse_5.jpg -->\n            ",
+					"role_2": "group",
+					"aria_roledescription_2": "slide",
+					"aria_label_2": "Cape Grace — 2 of 3",
+					"background_image_2": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Waterfront_Penthouse_5.jpg",
+					"notes_3": "\n            <!-- Cape Grace — slide 3 · umoya_compressed_Pool_at_Cape_Grace_4.jpg -->\n            ",
+					"role_3": "group",
+					"aria_roledescription_3": "slide",
+					"aria_label_3": "Cape Grace — 3 of 3",
+					"background_image_3": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Pool_at_Cape_Grace_4.jpg",
+					"role_4": "tablist",
+					"aria_label_4": "Cape Grace slides",
+					"role_5": "tab",
+					"aria_selected": "true",
+					"aria_label_5": "Show image 1",
+					"role_6": "tab",
+					"aria_selected_2": "false",
+					"aria_label_6": "Show image 2",
+					"role_7": "tab",
+					"aria_selected_3": "false",
+					"aria_label_7": "Show image 3",
+					"nm": "Cape Grace",
+					"pl": "A Fairmont Hotel · V&amp;A Waterfront",
+					"desc": "Situated right on the V&amp;A Waterfront with Table Mountain rising behind it, the Cape Grace reopened in 2024 as the first Fairmont hotel in South Africa, its design a celebration of South African heritage, color, and craft.",
+					"_uew_sep": "\n\n      <!-- Cape Grace -->\n      "
 				}
 			],
-			"selector": ".sj-stay-dot"
+			"loops": 1,
+			"selector": ".sj-stay-card",
+			"notice": "",
+			"portal": null
 		}
 	],
 	"style_parts": [
@@ -789,6 +508,7 @@
 				"text_color",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -816,6 +536,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -843,6 +564,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -871,6 +593,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -899,6 +622,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -927,6 +651,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -952,8 +677,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"grid_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -979,11 +706,13 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": "figure_sj_stay_card"
 		},
 		{
 			"id": "p_sj_stay_card_div_nth_of_type_1",
@@ -1008,6 +737,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1035,6 +765,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1062,6 +793,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1089,9 +821,38 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": "div_sj_stay_slide"
+			"repeater": null
+		},
+		{
+			"id": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_3",
+			"label": "Card Slide 3",
+			"short_label": "Slide",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".sj-stay-card > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
 		},
 		{
 			"id": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2",
@@ -1114,8 +875,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1145,6 +908,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1174,9 +938,40 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": "button_sj_stay_dot"
+			"repeater": null
+		},
+		{
+			"id": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2_button_nth_of_type_3",
+			"label": "Dot 3",
+			"short_label": "Dot",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".sj-stay-card > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3)",
+			"tag": "button",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
 		},
 		{
 			"id": "p_sj_stay_card_figcaption_nth_of_type_1",
@@ -1202,6 +997,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1229,6 +1025,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1256,6 +1053,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1284,49 +1082,13 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
 		}
 	],
-	"inline_styles": [
-		{
-			"id": "slide_inline_style",
-			"control": "inline_style_group",
-			"declarations": [
-				{
-					"prefix": "background-image:",
-					"id": "slide_css_background_image"
-				}
-			],
-			"tail": ";",
-			"internal": true
-		},
-		{
-			"id": "slide_inline_style_2",
-			"control": "inline_style_group",
-			"declarations": [
-				{
-					"prefix": "background-image:",
-					"id": "slide_css_background_image_2"
-				}
-			],
-			"tail": ";",
-			"internal": true
-		},
-		{
-			"id": "slide_inline_style_3",
-			"control": "inline_style_group",
-			"declarations": [
-				{
-					"prefix": "background-image:",
-					"id": "slide_css_background_image_3"
-				}
-			],
-			"tail": ";",
-			"internal": true
-		}
-	],
+	"inline_styles": [],
 	"fields": [
 		{
 			"id": "section_aria_label",
@@ -1366,288 +1128,6 @@
 			"default": "Every property on an Umoya journey is five-star, chosen as carefully as every moment between. We do not simply book the best-rated hotel in a city. We select each property for where it sits, what it adds to the experience, and in some cases, the story it carries.",
 			"esc": "post",
 			"group": "p_sj_stay_lead",
-			"sort": 0
-		},
-		{
-			"id": "slide_aria_roledescription",
-			"control": "text",
-			"label": "Accessible Role",
-			"default": "slide",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "slide_aria_label",
-			"control": "text",
-			"label": "Accessible Name",
-			"default": "The Da Vinci — 1 of 3",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "slide_css_background_image",
-			"control": "text",
-			"label": "Background Image",
-			"description": "Inline style on the element itself; overrides any CSS rule.",
-			"default": "url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Davinci_Outdoor_Pool_(3).jpg')",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-			"tab": "inline_style",
-			"sort": 3
-		},
-		{
-			"id": "dot_aria_label",
-			"control": "text",
-			"label": "Accessible Name",
-			"default": "The Da Vinci slides",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "dot_disabled",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2_button_nth_of_type_1",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "dot_aria_label_2",
-			"control": "text",
-			"label": "Accessible Name",
-			"default": "Show image 1",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2_button_nth_of_type_1",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "text_text_2",
-			"control": "text",
-			"label": "Text",
-			"description": "",
-			"default": "The Da Vinci",
-			"esc": "post",
-			"group": "p_sj_stay_card_figcaption_nth_of_type_1_div_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "text_text_3",
-			"control": "text",
-			"label": "Text",
-			"description": "",
-			"default": "Nelson Mandela Square, Sandton",
-			"esc": "post",
-			"group": "p_sj_stay_card_figcaption_nth_of_type_1_div_nth_of_type_2",
-			"sort": 0
-		},
-		{
-			"id": "text_text_4",
-			"control": "textarea",
-			"label": "Text",
-			"description": "",
-			"default": "Set on Nelson Mandela Square in the heart of Sandton, The Da Vinci is one of Johannesburg's finest hotels, with an infinity pool, spa, and private art collection in the lobby.",
-			"esc": "post",
-			"group": "p_sj_stay_card_figcaption_nth_of_type_1_p_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "slide_aria_roledescription_2",
-			"control": "text",
-			"label": "Accessible Role",
-			"default": "slide",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "slide_aria_label_2",
-			"control": "text",
-			"label": "Accessible Name",
-			"default": "MalaMala — 1 of 3",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "slide_css_background_image_2",
-			"control": "text",
-			"label": "Background Image",
-			"description": "Inline style on the element itself; overrides any CSS rule.",
-			"default": "url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_buffalo_suite14.png')",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-			"tab": "inline_style",
-			"sort": 3
-		},
-		{
-			"id": "dot_aria_label_3",
-			"control": "text",
-			"label": "Accessible Name",
-			"default": "MalaMala slides",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "dot_disabled_2",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2_button_nth_of_type_1",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "dot_aria_label_4",
-			"control": "text",
-			"label": "Accessible Name",
-			"default": "Show image 1",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2_button_nth_of_type_1",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "text_text_5",
-			"control": "text",
-			"label": "Text",
-			"description": "",
-			"default": "MalaMala",
-			"esc": "post",
-			"group": "p_sj_stay_card_figcaption_nth_of_type_1_div_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "text_text_6",
-			"control": "text",
-			"label": "Text",
-			"description": "",
-			"default": "Community-owned · The Sabi Sand",
-			"esc": "post",
-			"group": "p_sj_stay_card_figcaption_nth_of_type_1_div_nth_of_type_2",
-			"sort": 0
-		},
-		{
-			"id": "text_text_7",
-			"control": "textarea",
-			"label": "Text",
-			"description": "",
-			"default": "One of the oldest and most celebrated safari reserves in Africa, MalaMala sits on land that was taken from its Black community during apartheid and won back through the courts, making it the most meaningful place on earth to go on safari.",
-			"esc": "post",
-			"group": "p_sj_stay_card_figcaption_nth_of_type_1_p_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "slide_aria_roledescription_3",
-			"control": "text",
-			"label": "Accessible Role",
-			"default": "slide",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "slide_aria_label_3",
-			"control": "text",
-			"label": "Accessible Name",
-			"default": "Cape Grace — 1 of 3",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "slide_css_background_image_3",
-			"control": "text",
-			"label": "Background Image",
-			"description": "Inline style on the element itself; overrides any CSS rule.",
-			"default": "url('https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_Cape_Grace_Marina_View.jpg')",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
-			"tab": "inline_style",
-			"sort": 3
-		},
-		{
-			"id": "dot_aria_label_5",
-			"control": "text",
-			"label": "Accessible Name",
-			"default": "Cape Grace slides",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "dot_disabled_3",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2_button_nth_of_type_1",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "dot_aria_label_6",
-			"control": "text",
-			"label": "Accessible Name",
-			"default": "Show image 1",
-			"esc": "attr",
-			"group": "p_sj_stay_card_div_nth_of_type_1_div_nth_of_type_2_button_nth_of_type_1",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "text_text_8",
-			"control": "text",
-			"label": "Text",
-			"description": "",
-			"default": "Cape Grace",
-			"esc": "post",
-			"group": "p_sj_stay_card_figcaption_nth_of_type_1_div_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "text_text_9",
-			"control": "text",
-			"label": "Text",
-			"description": "",
-			"default": "A Fairmont Hotel · V&amp;A Waterfront",
-			"esc": "post",
-			"group": "p_sj_stay_card_figcaption_nth_of_type_1_div_nth_of_type_2",
-			"sort": 0
-		},
-		{
-			"id": "text_text_10",
-			"control": "textarea",
-			"label": "Text",
-			"description": "",
-			"default": "Situated right on the V&amp;A Waterfront with Table Mountain rising behind it, the Cape Grace reopened in 2024 as the first Fairmont hotel in South Africa, its design a celebration of South African heritage, color, and craft.",
-			"esc": "post",
-			"group": "p_sj_stay_card_figcaption_nth_of_type_1_p_nth_of_type_1",
 			"sort": 0
 		}
 	]

@@ -1,0 +1,3098 @@
+{
+	"key": "page_privacy",
+	"name": "umoya-page-privacy",
+	"title": "Privacy Policy Page",
+	"description": "Privacy Policy v1.1 for /privacy/, with its contents list. Verbatim legal copy.",
+	"icon": "eicon-lock-user",
+	"category": "umoya-site",
+	"source": "shared/page-privacy-policy.html",
+	"class_name": "Page_Privacy",
+	"widget_file": "widgets/class-page-privacy.php",
+	"root_selector": "#umoya-privacy",
+	"template": "templates/sections/page_privacy.php",
+	"style": {
+		"handle": "uew-umoya-page-privacy",
+		"file": "assets/css/sections/page_privacy.css"
+	},
+	"script": null,
+	"keywords": [
+		"umoya",
+		"site",
+		"global",
+		"shared",
+		"privacy",
+		"policy",
+		"page"
+	],
+	"portals": [],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#umoya-privacy"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"selectors": [
+				"#umoya-privacy"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
+			"label": "White"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#umoya-privacy"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#umoya-privacy"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"selectors": [
+				"#umoya-privacy"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.76)",
+			"kind": "color",
+			"selectors": [
+				"#umoya-privacy"
+			],
+			"scoped": false,
+			"id": "uew_token_muted",
+			"label": "Muted"
+		},
+		{
+			"name": "line",
+			"value": "rgba(75,46,43,.14)",
+			"kind": "color",
+			"selectors": [
+				"#umoya-privacy"
+			],
+			"scoped": false,
+			"id": "uew_token_line",
+			"label": "Line"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_pv_eye",
+			"label": "Header",
+			"sample": "Legal",
+			"region_label": "Header",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Legal",
+					"esc": "post",
+					"group": "p_pv_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "Privacy Policy",
+					"esc": "post",
+					"group": "p_pv_ttl",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "text_text",
+					"control": "textarea",
+					"label": "Text",
+					"description": "Inline formatting tags are preserved.",
+					"default": "<strong>Effective date:</strong> 1 June 2026<br>Version 1.1",
+					"esc": "post",
+					"group": "p_pv_meta",
+					"sort": 0,
+					"part_label": "Header Text"
+				},
+				{
+					"id": "navigation_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Contents",
+					"esc": "attr",
+					"group": "p_pv_toc",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Navigation"
+				},
+				{
+					"id": "text_text_2",
+					"control": "text",
+					"label": "Navigation Text",
+					"description": "",
+					"default": "Contents",
+					"esc": "post",
+					"group": "p_pv_toc_h",
+					"sort": 0,
+					"part_label": "Navigation Text"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_pv_sec_h2_nth_of_type_1",
+			"label": "Heading 1",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "heading_text",
+					"control": "text",
+					"label": "Text 1",
+					"default": "Introduction",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_2",
+					"control": "text",
+					"label": "Text 2",
+					"default": "Who we are and how to contact us",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_3",
+					"control": "text",
+					"label": "Text 3",
+					"default": "What personal information we collect",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_6",
+					"control": "text",
+					"label": "Text 4",
+					"default": "How we use your personal information",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_7",
+					"control": "text",
+					"label": "Text 5",
+					"default": "Lawful basis for processing",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_8",
+					"control": "text",
+					"label": "Text 6",
+					"default": "Who we share your information with",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_9",
+					"control": "text",
+					"label": "Text 7",
+					"default": "International transfers",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_10",
+					"control": "text",
+					"label": "Text 8",
+					"default": "How long we keep your information",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_11",
+					"control": "text",
+					"label": "Text 9",
+					"default": "How we protect your information",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_12",
+					"control": "text",
+					"label": "Text 10",
+					"default": "Your rights",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_13",
+					"control": "text",
+					"label": "Text 11",
+					"default": "Direct marketing",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_14",
+					"control": "text",
+					"label": "Text 12",
+					"default": "Cookies",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_15",
+					"control": "text",
+					"label": "Text 13",
+					"default": "Children and family journeys",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_16",
+					"control": "text",
+					"label": "Text 14",
+					"default": "Complaints",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_17",
+					"control": "text",
+					"label": "Text 15",
+					"default": "Changes to this policy",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"label": "Heading Text",
+			"sample": "1.",
+			"region_label": "Heading",
+			"controls": [
+				{
+					"id": "text_text_3",
+					"control": "text",
+					"label": "Text 1",
+					"description": "",
+					"default": "1.",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_4",
+					"control": "text",
+					"label": "Text 2",
+					"description": "",
+					"default": "2.",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_6",
+					"control": "text",
+					"label": "Text 3",
+					"description": "",
+					"default": "3.",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_8",
+					"control": "text",
+					"label": "Text 4",
+					"description": "",
+					"default": "4.",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_10",
+					"control": "text",
+					"label": "Text 5",
+					"description": "",
+					"default": "5.",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_12",
+					"control": "text",
+					"label": "Text 6",
+					"description": "",
+					"default": "6.",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_15",
+					"control": "text",
+					"label": "Text 7",
+					"description": "",
+					"default": "7.",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_16",
+					"control": "text",
+					"label": "Text 8",
+					"description": "",
+					"default": "8.",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_18",
+					"control": "text",
+					"label": "Text 9",
+					"description": "",
+					"default": "9.",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_19",
+					"control": "text",
+					"label": "Text 10",
+					"description": "",
+					"default": "10.",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_22",
+					"control": "text",
+					"label": "Text 11",
+					"description": "",
+					"default": "11.",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_24",
+					"control": "text",
+					"label": "Text 12",
+					"description": "",
+					"default": "12.",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_25",
+					"control": "text",
+					"label": "Text 13",
+					"description": "",
+					"default": "13.",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_27",
+					"control": "text",
+					"label": "Text 14",
+					"description": "",
+					"default": "14.",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				},
+				{
+					"id": "text_text_30",
+					"control": "text",
+					"label": "Text 15",
+					"description": "",
+					"default": "15.",
+					"esc": "post",
+					"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading Text"
+				}
+			]
+		},
+		{
+			"id": "content_p_pv_sec_p_nth_of_type_1",
+			"label": "Text 1",
+			"sample": "Umoya Afrika Tours (Pty) Ltd (\"Umoya\", \"we\", \"u…",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "text_text_7",
+					"control": "textarea",
+					"label": "Text 1",
+					"description": "",
+					"default": "Depending on how you interact with us, we may collect the following categories of personal information.",
+					"esc": "post",
+					"group": "p_pv_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text 1"
+				},
+				{
+					"id": "text_text_9",
+					"control": "text",
+					"label": "Text 2",
+					"description": "",
+					"default": "We process your personal information for the following purposes:",
+					"esc": "post",
+					"group": "p_pv_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text 1"
+				},
+				{
+					"id": "text_text_11",
+					"control": "textarea",
+					"label": "Text 3",
+					"description": "",
+					"default": "We process your personal information on one or more of the following lawful bases recognised under POPIA: your consent; the conclusion or performance of a contract with you; compliance with a legal obligation; the protection of your legitimate interests; and our own legitimate interests, balanced against your rights.",
+					"esc": "post",
+					"group": "p_pv_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text 1"
+				},
+				{
+					"id": "text_text_13",
+					"control": "textarea",
+					"label": "Text 4",
+					"description": "",
+					"default": "We share personal information only where it is necessary to deliver your journey or to operate our business, and always on the basis of appropriate confidentiality and data-protection obligations. We may share information with:",
+					"esc": "post",
+					"group": "p_pv_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text 1"
+				},
+				{
+					"id": "text_text_17",
+					"control": "textarea",
+					"label": "Text 5",
+					"description": "",
+					"default": "We keep personal information only for as long as is necessary for the purposes for which it was collected, or as required by law. Booking and financial records are typically retained for the periods required under South African tax and company law (generally five years). Marketing information is retained until you withdraw your consent or unsubscribe. We may retain certain information for longer where required for legal, regulatory or accountability reasons.",
+					"esc": "post",
+					"group": "p_pv_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text 1"
+				},
+				{
+					"id": "text_text_20",
+					"control": "text",
+					"label": "Text 6",
+					"description": "",
+					"default": "Subject to the conditions set out in POPIA, you have the right to:",
+					"esc": "post",
+					"group": "p_pv_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text 1"
+				},
+				{
+					"id": "text_text_23",
+					"control": "textarea",
+					"label": "Text 7",
+					"description": "",
+					"default": "We will send you marketing communications by electronic means (such as email) only where you have given us your consent to do so, or where you are an existing client and the marketing relates to similar journeys or services and the law permits. Every marketing communication we send will identify Umoya as the sender and will include a simple way to opt out of further marketing.",
+					"esc": "post",
+					"group": "p_pv_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text 1"
+				},
+				{
+					"id": "content_text",
+					"control": "textarea",
+					"label": "Text 8",
+					"default": "Our website uses cookies and similar technologies. Information about the cookies we use and how you can manage them is set out in our",
+					"esc": "post",
+					"group": "p_pv_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text 1"
+				},
+				{
+					"id": "content_text_2",
+					"control": "text",
+					"label": "Text 2",
+					"default": ".",
+					"esc": "post",
+					"group": "p_pv_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text 1"
+				},
+				{
+					"id": "text_text_26",
+					"control": "textarea",
+					"label": "Text 9",
+					"description": "",
+					"default": "We do not knowingly collect personal information directly from children under the age of 18. Where a child is travelling with a parent or guardian as part of a family journey, the parent or guardian is responsible for providing the information we need to arrange and deliver the journey. This is typically limited to what is necessary for the booking and for the child's safety and comfort while travelling, including name, date of birth, passport information, dietary requirements, and any medical information the parent or guardian believes we should hold. We process this information on the same basis as adult guest information, and we treat it with the same care.",
+					"esc": "post",
+					"group": "p_pv_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text 1"
+				},
+				{
+					"id": "text_text_28",
+					"control": "textarea",
+					"label": "Text 10",
+					"description": "",
+					"default": "If you have any concerns about how we process your personal information, please contact our Information Officer in the first instance. You also have the right to lodge a complaint with:",
+					"esc": "post",
+					"group": "p_pv_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text 1"
+				},
+				{
+					"id": "text_text_31",
+					"control": "textarea",
+					"label": "Text 11",
+					"description": "",
+					"default": "We may update this Privacy Policy from time to time. The effective date at the top of this document indicates when it was last revised. Material changes will be brought to your attention through our website or by direct communication, where appropriate.",
+					"esc": "post",
+					"group": "p_pv_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_pv_sec_div_nth_of_type_1",
+			"label": "Container 3",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "container_text",
+					"control": "text",
+					"label": "Text",
+					"default": "Registration No. 2025/818751/07",
+					"esc": "post",
+					"group": "p_pv_sec_div_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Container 3"
+				},
+				{
+					"id": "container_text_2",
+					"control": "textarea",
+					"label": "Text 2",
+					"default": "West Tower, 2nd Floor, Nelson Mandela Square, Maude Street, Sandown, Johannesburg, 2146, South Africa",
+					"esc": "post",
+					"group": "p_pv_sec_div_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Container 3"
+				},
+				{
+					"id": "container_text_3",
+					"control": "text",
+					"label": "Text 3",
+					"default": "Nyanu Heritage Tours LLC (United States)",
+					"esc": "post",
+					"group": "p_pv_sec_div_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Container 3"
+				},
+				{
+					"id": "container_text_4",
+					"control": "text",
+					"label": "Text 4",
+					"default": "Wilson Ningamai Nyah, Managing Director",
+					"esc": "post",
+					"group": "p_pv_sec_div_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Container 3"
+				}
+			]
+		},
+		{
+			"id": "content_p_pv_sec_div_nth_of_type_1_span_nth_of_type_1",
+			"label": "Text 2",
+			"sample": "Umoya Afrika Tours (Pty) Ltd",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "text_text_5",
+					"control": "text",
+					"label": "Text 1",
+					"description": "",
+					"default": "Umoya Afrika Tours (Pty) Ltd",
+					"esc": "post",
+					"group": "p_pv_sec_div_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text 2"
+				},
+				{
+					"id": "text_text_29",
+					"control": "text",
+					"label": "Text 2",
+					"description": "",
+					"default": "The Information Regulator (South Africa)",
+					"esc": "post",
+					"group": "p_pv_sec_div_nth_of_type_1_span_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text 2"
+				}
+			]
+		},
+		{
+			"id": "content_p_pv_sec_div_nth_of_type_1_strong_nth_of_type_1",
+			"label": "Strong 1",
+			"sample": "Registered address:",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "strong_text",
+					"control": "text",
+					"label": "Strong 1",
+					"description": "",
+					"default": "Registered address:",
+					"esc": "post",
+					"group": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Strong 1"
+				},
+				{
+					"id": "strong_text_6",
+					"control": "text",
+					"label": "Strong 2",
+					"description": "",
+					"default": "Email:",
+					"esc": "post",
+					"group": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Strong 1"
+				}
+			]
+		},
+		{
+			"id": "content_p_pv_sec_div_nth_of_type_1_strong_nth_of_type_2",
+			"label": "Content 1",
+			"sample": "Holding company:",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "strong_text_2",
+					"control": "text",
+					"label": "Strong 1",
+					"description": "",
+					"default": "Holding company:",
+					"esc": "post",
+					"group": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_2",
+					"sort": 0,
+					"part_label": "Strong 2"
+				},
+				{
+					"id": "strong_text_7",
+					"control": "text",
+					"label": "Strong 2",
+					"description": "",
+					"default": "Website:",
+					"esc": "post",
+					"group": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_2",
+					"sort": 0,
+					"part_label": "Strong 2"
+				},
+				{
+					"id": "strong_text_3",
+					"control": "text",
+					"label": "Strong 3",
+					"description": "",
+					"default": "Information Officer:",
+					"esc": "post",
+					"group": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_3",
+					"sort": 0,
+					"part_label": "Strong 3"
+				},
+				{
+					"id": "strong_text_4",
+					"control": "text",
+					"label": "Strong 4",
+					"description": "",
+					"default": "Telephone (South Africa):",
+					"esc": "post",
+					"group": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_4",
+					"sort": 0,
+					"part_label": "Strong 4"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_pv_sec_div_nth_of_type_1_a_nth_of_type_1",
+			"label": "Content 2",
+			"sample": "+27 78 950 4410",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "link_text",
+					"control": "text",
+					"label": "Link 1",
+					"description": "",
+					"default": "+27 78 950 4410",
+					"esc": "post",
+					"group": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Link 1"
+				},
+				{
+					"id": "link_text_4",
+					"control": "text",
+					"label": "Link 2",
+					"description": "",
+					"default": "complaints.IR@inforegulator.org.za",
+					"esc": "post",
+					"group": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Link 1"
+				},
+				{
+					"id": "link_href",
+					"control": "url",
+					"label": "Link 3",
+					"default": {
+						"url": "tel:+27789504410"
+					},
+					"esc": "url",
+					"group": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Link 1"
+				},
+				{
+					"id": "link_href_4",
+					"control": "url",
+					"label": "Link 4",
+					"default": {
+						"url": "mailto:complaints.IR@inforegulator.org.za"
+					},
+					"esc": "url",
+					"group": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_1",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Link 1"
+				},
+				{
+					"id": "strong_text_5",
+					"control": "text",
+					"label": "Strong",
+					"description": "",
+					"default": "Email for privacy enquiries:",
+					"esc": "post",
+					"group": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_5",
+					"sort": 0,
+					"part_label": "Strong 5"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_pv_sec_div_nth_of_type_1_a_nth_of_type_2",
+			"label": "Link 2",
+			"sample": "info@umoyaafrikatours.co.za",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "link_text_2",
+					"control": "text",
+					"label": "Link 1",
+					"description": "",
+					"default": "info@umoyaafrikatours.co.za",
+					"esc": "post",
+					"group": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_2",
+					"sort": 0,
+					"part_label": "Link 2"
+				},
+				{
+					"id": "link_text_5",
+					"control": "text",
+					"label": "Link 2",
+					"description": "",
+					"default": "https://inforegulator.org.za",
+					"esc": "post",
+					"group": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_2",
+					"sort": 0,
+					"part_label": "Link 2"
+				},
+				{
+					"id": "link_href_2",
+					"control": "url",
+					"label": "Link 3",
+					"default": {
+						"url": "mailto:info@umoyaafrikatours.co.za"
+					},
+					"esc": "url",
+					"group": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_2",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Link 2"
+				},
+				{
+					"id": "link_href_5",
+					"control": "url",
+					"label": "Link 4",
+					"default": {
+						"url": "https://inforegulator.org.za"
+					},
+					"esc": "url",
+					"group": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_2",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Link 2"
+				}
+			]
+		},
+		{
+			"id": "content_p_pv_h3",
+			"label": "Heading 2",
+			"sample": "3.1 Information you provide directly",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "heading_text_4",
+					"control": "text",
+					"label": "Heading 1",
+					"description": "",
+					"default": "3.1 Information you provide directly",
+					"esc": "post",
+					"group": "p_pv_h3",
+					"sort": 0,
+					"part_label": "Heading 2"
+				},
+				{
+					"id": "heading_text_5",
+					"control": "text",
+					"label": "Heading 2",
+					"description": "",
+					"default": "3.2 Information collected automatically",
+					"esc": "post",
+					"group": "p_pv_h3",
+					"sort": 0,
+					"part_label": "Heading 2"
+				}
+			]
+		},
+		{
+			"id": "content_p_pv_sec_p_nth_of_type_2",
+			"label": "Text 3",
+			"sample": "We do not sell your personal information.",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "text_text_14",
+					"control": "text",
+					"label": "Text 1",
+					"description": "",
+					"default": "We do not sell your personal information.",
+					"esc": "post",
+					"group": "p_pv_sec_p_nth_of_type_2",
+					"sort": 0,
+					"part_label": "Text 3"
+				},
+				{
+					"id": "text_text_21",
+					"control": "textarea",
+					"label": "Text 2",
+					"description": "",
+					"default": "To exercise any of these rights, please contact our Information Officer at the address set out in section 2.",
+					"esc": "post",
+					"group": "p_pv_sec_p_nth_of_type_2",
+					"sort": 0,
+					"part_label": "Text 3"
+				}
+			]
+		},
+		{
+			"id": "content_p_pv_sec_p_nth_of_type_1_a",
+			"label": "Link 3",
+			"sample": "Cookie Policy",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "link_text_3",
+					"control": "text",
+					"label": "Link 1",
+					"description": "",
+					"default": "Cookie Policy",
+					"esc": "post",
+					"group": "p_pv_sec_p_nth_of_type_1_a",
+					"sort": 0,
+					"part_label": "Link 3"
+				},
+				{
+					"id": "link_href_3",
+					"control": "url",
+					"label": "Link 2",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/cookie-policy/"
+					},
+					"esc": "url",
+					"group": "p_pv_sec_p_nth_of_type_1_a",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Link 3"
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [
+		{
+			"id": "link_target",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		},
+		{
+			"id": "link_rel",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1,
+			"part_label": ""
+		}
+	],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_li",
+			"label": "Contents Items",
+			"item_label": "{{{ a }}}",
+			"controls": [
+				{
+					"id": "a",
+					"control": "text",
+					"label": "Text",
+					"esc": "post",
+					"default": "1. Introduction"
+				}
+			],
+			"rows": [
+				{
+					"a": "1. Introduction"
+				},
+				{
+					"a": "2. Who we are and how to contact us"
+				},
+				{
+					"a": "3. What personal information we collect"
+				},
+				{
+					"a": "4. How we use your personal information"
+				},
+				{
+					"a": "5. Lawful basis for processing"
+				},
+				{
+					"a": "6. Who we share your information with"
+				},
+				{
+					"a": "7. International transfers"
+				},
+				{
+					"a": "8. How long we keep your information"
+				},
+				{
+					"a": "9. How we protect your information"
+				},
+				{
+					"a": "10. Your rights"
+				},
+				{
+					"a": "11. Direct marketing"
+				},
+				{
+					"a": "12. Cookies"
+				},
+				{
+					"a": "13. Children and family journeys"
+				},
+				{
+					"a": "14. Complaints"
+				},
+				{
+					"a": "15. Changes to this policy"
+				}
+			],
+			"loops": 1,
+			"selector": null,
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_p_pv_p",
+			"label": "Pv 1 Texts",
+			"item_label": "{{{ pv_p }}}",
+			"controls": [
+				{
+					"id": "pv_p",
+					"control": "textarea",
+					"label": "Paragraph",
+					"esc": "post",
+					"default": "Umoya Afrika Tours (Pty) Ltd (\"Umoya\", \"we\", \"us\", \"our\") is a South African private company. We are committed to protecting your privacy and to processing your personal information lawfully, fairly and transparently in accordance with the Protection of Personal Information Act 4 of 2013 (\"POPIA\")."
+				}
+			],
+			"rows": [
+				{
+					"pv_p": "Umoya Afrika Tours (Pty) Ltd (\"Umoya\", \"we\", \"us\", \"our\") is a South African private company. We are committed to protecting your privacy and to processing your personal information lawfully, fairly and transparently in accordance with the Protection of Personal Information Act 4 of 2013 (\"POPIA\")."
+				},
+				{
+					"pv_p": "This Privacy Policy explains what personal information we collect when you visit our website, enquire about a journey, make a booking or otherwise interact with us; the purposes for which we use it; the parties with whom we may share it; how long we keep it; and the rights you have in relation to it."
+				},
+				{
+					"pv_p": "Umoya Afrika Tours (Pty) Ltd is the responsible party in terms of POPIA for the personal information processed through this website."
+				}
+			],
+			"loops": 1,
+			"selector": ".pv-p",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_li_pv_li",
+			"label": "Pv 3 Items 1",
+			"item_label": "{{{ pv_li }}}",
+			"controls": [
+				{
+					"id": "pv_li",
+					"control": "textarea",
+					"label": "Li",
+					"esc": "post",
+					"default": "Identity and contact details, including your name, email address, telephone number and country of residence."
+				}
+			],
+			"rows": [
+				{
+					"pv_li": "Identity and contact details, including your name, email address, telephone number and country of residence."
+				},
+				{
+					"pv_li": "Booking and travel details, including passport information, nationality, dietary requirements, mobility considerations, emergency contact details and travel preferences."
+				},
+				{
+					"pv_li": "Payment information you submit to us or to our payment processors in connection with a deposit or booking."
+				},
+				{
+					"pv_li": "Any other information you choose to share with us in correspondence, on enquiry forms or during the planning of your journey."
+				}
+			],
+			"loops": 1,
+			"selector": ".pv-li",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_li_pv_li_2",
+			"label": "Pv 3 Items 2",
+			"item_label": "",
+			"controls": [
+				{
+					"id": "pv_li_markup",
+					"control": "textarea",
+					"label": "Li (HTML)",
+					"esc": "raw",
+					"default": "Technical information such as your IP address, device type, browser type and operating system."
+				}
+			],
+			"rows": [
+				{
+					"pv_li_markup": "Technical information such as your IP address, device type, browser type and operating system."
+				},
+				{
+					"pv_li_markup": "Usage information such as the pages you visit on our website, the time and duration of your visit and the pages you came from."
+				},
+				{
+					"pv_li_markup": "Information collected through cookies and similar technologies, as described in our <a href=\"https://umoyaafrikatours.co.za/cookie-policy/\">Cookie Policy</a>."
+				}
+			],
+			"loops": 1,
+			"selector": ".pv-li",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_li_pv_li_3",
+			"label": "Pv 4 Items",
+			"item_label": "{{{ pv_li }}}",
+			"controls": [
+				{
+					"id": "pv_li",
+					"control": "text",
+					"label": "Li",
+					"esc": "post",
+					"default": "To respond to your enquiry and provide you with information about our journeys."
+				}
+			],
+			"rows": [
+				{
+					"pv_li": "To respond to your enquiry and provide you with information about our journeys."
+				},
+				{
+					"pv_li": "To prepare quotations, manage bookings and deliver the journey you have selected."
+				},
+				{
+					"pv_li": "To make travel arrangements with accommodation providers, transport operators, guides and other suppliers necessary for the delivery of your journey."
+				},
+				{
+					"pv_li": "To communicate with you about your booking, your journey and any related logistics."
+				},
+				{
+					"pv_li": "To process payments and to manage refunds where applicable."
+				},
+				{
+					"pv_li": "To comply with our legal, regulatory, accounting and tax obligations."
+				},
+				{
+					"pv_li": "To improve our website, our journeys and the way we serve our guests."
+				},
+				{
+					"pv_li": "To send you marketing communications about Umoya, but only where you have given us your consent to do so or where you are an existing client and the law permits."
+				}
+			],
+			"loops": 1,
+			"selector": ".pv-li",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_li_pv_li_4",
+			"label": "Pv 6 Items",
+			"item_label": "{{{ pv_li }}}",
+			"controls": [
+				{
+					"id": "pv_li",
+					"control": "textarea",
+					"label": "Li",
+					"esc": "post",
+					"default": "Destination management companies, accommodation providers, transport operators, guides, restaurants and experience providers contracted to deliver your journey."
+				}
+			],
+			"rows": [
+				{
+					"pv_li": "Destination management companies, accommodation providers, transport operators, guides, restaurants and experience providers contracted to deliver your journey."
+				},
+				{
+					"pv_li": "Our holding company, Nyanu Heritage Tours LLC (United States), where it is the entity that has collected your payment or otherwise supports the delivery of your booking."
+				},
+				{
+					"pv_li": "Service providers that support our business, including our customer-relationship management platform (HubSpot, Inc.), our website, network and security infrastructure (Cloudflare, Inc.), our cookie consent management platform (CookieYes Limited) and our payment processors (Stripe, Inc. and, where offered, PayPal, Inc.)."
+				},
+				{
+					"pv_li": "Banks, payment processors and card networks involved in receiving your payment."
+				},
+				{
+					"pv_li": "Our professional advisors, including legal, accounting and tax advisors, where the engagement so requires."
+				},
+				{
+					"pv_li": "Regulators, government authorities or law-enforcement agencies where we are required by law to do so."
+				}
+			],
+			"loops": 1,
+			"selector": ".pv-li",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_p_pv_p_2",
+			"label": "Pv 7 Texts",
+			"item_label": "{{{ pv_p }}}",
+			"controls": [
+				{
+					"id": "pv_p",
+					"control": "textarea",
+					"label": "Paragraph",
+					"esc": "post",
+					"default": "Some of the recipients with whom we share personal information are located outside the Republic of South Africa, or use infrastructure that may store or process information outside the Republic. In particular, HubSpot, Inc., Cloudflare, Inc., Stripe, Inc. and PayPal, Inc. are United States-based service providers; CookieYes Limited is based in the United Kingdom and the European Union; and Nyanu Heritage Tours LLC is located in the United States. Other suppliers and partners may be located in the country where your journey is delivered."
+				}
+			],
+			"rows": [
+				{
+					"pv_p": "Some of the recipients with whom we share personal information are located outside the Republic of South Africa, or use infrastructure that may store or process information outside the Republic. In particular, HubSpot, Inc., Cloudflare, Inc., Stripe, Inc. and PayPal, Inc. are United States-based service providers; CookieYes Limited is based in the United Kingdom and the European Union; and Nyanu Heritage Tours LLC is located in the United States. Other suppliers and partners may be located in the country where your journey is delivered."
+				},
+				{
+					"pv_p": "Where we transfer personal information outside the Republic, we do so in accordance with section 72 of POPIA, on the basis that the recipient is subject to laws, binding rules or contractual obligations that provide an adequate level of protection, that you have consented to the transfer, or that the transfer is necessary for the performance or conclusion of a contract with you."
+				}
+			],
+			"loops": 1,
+			"selector": ".pv-p",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_p_pv_p_3",
+			"label": "Pv 9 Texts",
+			"item_label": "{{{ pv_p }}}",
+			"controls": [
+				{
+					"id": "pv_p",
+					"control": "textarea",
+					"label": "Paragraph",
+					"esc": "post",
+					"default": "We take reasonable technical and organisational measures to protect personal information against loss, damage, unauthorised access and unlawful processing. These measures include access controls and authentication, encryption of data in transit and (where appropriate) at rest, the use of reputable cloud-based service providers bound by their own data-protection terms, antivirus, anti-malware and regular software updates on devices used to access personal information, and confidentiality obligations imposed on our employees, contractors and service providers."
+				}
+			],
+			"rows": [
+				{
+					"pv_p": "We take reasonable technical and organisational measures to protect personal information against loss, damage, unauthorised access and unlawful processing. These measures include access controls and authentication, encryption of data in transit and (where appropriate) at rest, the use of reputable cloud-based service providers bound by their own data-protection terms, antivirus, anti-malware and regular software updates on devices used to access personal information, and confidentiality obligations imposed on our employees, contractors and service providers."
+				},
+				{
+					"pv_p": "In the event of a security compromise that affects your personal information, we will notify you and the Information Regulator as soon as reasonably possible, in accordance with section 22 of POPIA. Notification to affected data subjects will be made in a manner that provides sufficient information to allow you to take protective measures against the potential consequences of the compromise."
+				}
+			],
+			"loops": 1,
+			"selector": ".pv-p",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_li_pv_li_5",
+			"label": "Pv 10 Items",
+			"item_label": "{{{ pv_li }}}",
+			"controls": [
+				{
+					"id": "pv_li",
+					"control": "textarea",
+					"label": "Li",
+					"esc": "post",
+					"default": "Be notified that we are collecting personal information about you, and that your personal information has been accessed or acquired by an unauthorised person."
+				}
+			],
+			"rows": [
+				{
+					"pv_li": "Be notified that we are collecting personal information about you, and that your personal information has been accessed or acquired by an unauthorised person."
+				},
+				{
+					"pv_li": "Request, free of charge, confirmation of whether we hold personal information about you."
+				},
+				{
+					"pv_li": "Request access to your personal information."
+				},
+				{
+					"pv_li": "Request that we correct or delete personal information that is inaccurate, irrelevant, excessive, out of date, incomplete, misleading or unlawfully obtained."
+				},
+				{
+					"pv_li": "Object, on reasonable grounds, to the processing of your personal information."
+				},
+				{
+					"pv_li": "Withdraw any consent you have given us at any time, without affecting the lawfulness of processing carried out before withdrawal."
+				},
+				{
+					"pv_li": "Object to the processing of your personal information for purposes of direct marketing."
+				},
+				{
+					"pv_li": "Lodge a complaint with the Information Regulator (South Africa)."
+				}
+			],
+			"loops": 1,
+			"selector": ".pv-li",
+			"notice": "",
+			"portal": null
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_c",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".pv-c",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_header",
+			"label": "Header",
+			"short_label": "Header",
+			"parent_label": "",
+			"sample": "",
+			"selector": "header",
+			"tag": "header",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "Header",
+			"sample": "Legal",
+			"selector": ".pv-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_ttl",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "Header",
+			"sample": "Privacy Policy",
+			"selector": ".pv-ttl",
+			"tag": "h1",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_rule",
+			"label": "Divider",
+			"short_label": "Divider",
+			"parent_label": "Header",
+			"sample": "",
+			"selector": ".pv-rule",
+			"tag": "hr",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_meta",
+			"label": "Header Text",
+			"short_label": "Text",
+			"parent_label": "Header",
+			"sample": "Effective date: 1 June 2026Version 1.1",
+			"selector": ".pv-meta",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_meta_strong",
+			"label": "Text Strong",
+			"short_label": "Strong",
+			"parent_label": "Text",
+			"sample": "Effective date:",
+			"selector": ".pv-meta > strong",
+			"tag": "strong",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_toc",
+			"label": "Navigation",
+			"short_label": "Navigation",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".pv-toc",
+			"tag": "nav",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_toc_h",
+			"label": "Navigation Text",
+			"short_label": "Text",
+			"parent_label": "Navigation",
+			"sample": "Contents",
+			"selector": ".pv-toc-h",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_toc_list",
+			"label": "Navigation List",
+			"short_label": "List",
+			"parent_label": "Navigation",
+			"sample": "",
+			"selector": ".pv-toc-list",
+			"tag": "ol",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_toc_list_li",
+			"label": "List Item 1",
+			"short_label": "Item",
+			"parent_label": "List",
+			"sample": "",
+			"selector": ".pv-toc-list > li",
+			"tag": "li",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": "li"
+		},
+		{
+			"id": "p_pv_toc_list_li_a_nth_of_type_1",
+			"label": "Item Link",
+			"short_label": "Link",
+			"parent_label": "Item",
+			"sample": "1. Introduction",
+			"selector": ".pv-toc-list > li > a:nth-of-type(1)",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_sec",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".pv-sec",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_sec_h2_nth_of_type_1",
+			"label": "Heading 1",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".pv-sec > h2:nth-of-type(1)",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"label": "Heading Text",
+			"short_label": "Text",
+			"parent_label": "Heading",
+			"sample": "1.",
+			"selector": ".pv-sec > h2:nth-of-type(1) > span:nth-of-type(1)",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_sec_p_nth_of_type_1",
+			"label": "Text 1",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "Umoya Afrika Tours (Pty) Ltd (\"Umoya\", \"we\", \"u…",
+			"selector": ".pv-sec > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": "p_pv_p"
+		},
+		{
+			"id": "p_pv_sec_div_nth_of_type_1",
+			"label": "Container 3",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".pv-sec > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_sec_div_nth_of_type_1_span_nth_of_type_1",
+			"label": "Text 2",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "Umoya Afrika Tours (Pty) Ltd",
+			"selector": ".pv-sec > div:nth-of-type(1) > span:nth-of-type(1)",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_1",
+			"label": "Strong 1",
+			"short_label": "Strong",
+			"parent_label": "",
+			"sample": "Registered address:",
+			"selector": ".pv-sec > div:nth-of-type(1) > strong:nth-of-type(1)",
+			"tag": "strong",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_2",
+			"label": "Strong 2",
+			"short_label": "Strong",
+			"parent_label": "",
+			"sample": "Holding company:",
+			"selector": ".pv-sec > div:nth-of-type(1) > strong:nth-of-type(2)",
+			"tag": "strong",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_3",
+			"label": "Strong 3",
+			"short_label": "Strong",
+			"parent_label": "",
+			"sample": "Information Officer:",
+			"selector": ".pv-sec > div:nth-of-type(1) > strong:nth-of-type(3)",
+			"tag": "strong",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_4",
+			"label": "Strong 4",
+			"short_label": "Strong",
+			"parent_label": "",
+			"sample": "Telephone (South Africa):",
+			"selector": ".pv-sec > div:nth-of-type(1) > strong:nth-of-type(4)",
+			"tag": "strong",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_1",
+			"label": "Link 1",
+			"short_label": "Link",
+			"parent_label": "",
+			"sample": "+27 78 950 4410",
+			"selector": ".pv-sec > div:nth-of-type(1) > a:nth-of-type(1)",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_5",
+			"label": "Strong 5",
+			"short_label": "Strong",
+			"parent_label": "",
+			"sample": "Email for privacy enquiries:",
+			"selector": ".pv-sec > div:nth-of-type(1) > strong:nth-of-type(5)",
+			"tag": "strong",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_2",
+			"label": "Link 2",
+			"short_label": "Link",
+			"parent_label": "",
+			"sample": "info@umoyaafrikatours.co.za",
+			"selector": ".pv-sec > div:nth-of-type(1) > a:nth-of-type(2)",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_h3",
+			"label": "Heading 2",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "3.1 Information you provide directly",
+			"selector": ".pv-h3",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_sec_ul_nth_of_type_1",
+			"label": "List 1",
+			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".pv-sec > ul:nth-of-type(1)",
+			"tag": "ul",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_sec_ul_nth_of_type_1_li_nth_of_type_1",
+			"label": "List Item 2",
+			"short_label": "Item",
+			"parent_label": "List",
+			"sample": "Identity and contact details, including your na…",
+			"selector": ".pv-sec > ul:nth-of-type(1) > li:nth-of-type(1)",
+			"tag": "li",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": "li_pv_li"
+		},
+		{
+			"id": "p_pv_sec_ul_nth_of_type_2",
+			"label": "List 2",
+			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".pv-sec > ul:nth-of-type(2)",
+			"tag": "ul",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_sec_ul_nth_of_type_2_pv_li",
+			"label": "List Item 3",
+			"short_label": "Item",
+			"parent_label": "List",
+			"sample": "Technical information such as your IP address, …",
+			"selector": ".pv-sec > ul:nth-of-type(2) > .pv-li",
+			"tag": "li",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": "li_pv_li_2"
+		},
+		{
+			"id": "p_pv_sec_p_nth_of_type_2",
+			"label": "Text 3",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "We do not sell your personal information.",
+			"selector": ".pv-sec > p:nth-of-type(2)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_pv_sec_p_nth_of_type_1_a",
+			"label": "Link 3",
+			"short_label": "Link",
+			"parent_label": "",
+			"sample": "Cookie Policy",
+			"selector": ".pv-sec > p:nth-of-type(1) > a",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Legal",
+			"esc": "post",
+			"group": "p_pv_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "Privacy Policy",
+			"esc": "post",
+			"group": "p_pv_ttl",
+			"sort": 0
+		},
+		{
+			"id": "text_text",
+			"control": "textarea",
+			"label": "Text",
+			"description": "Inline formatting tags are preserved.",
+			"default": "<strong>Effective date:</strong> 1 June 2026<br>Version 1.1",
+			"esc": "post",
+			"group": "p_pv_meta",
+			"sort": 0
+		},
+		{
+			"id": "navigation_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Contents",
+			"esc": "attr",
+			"group": "p_pv_toc",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "text_text_2",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Contents",
+			"esc": "post",
+			"group": "p_pv_toc_h",
+			"sort": 0
+		},
+		{
+			"id": "heading_text",
+			"control": "text",
+			"label": "Text",
+			"default": "Introduction",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_3",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "1.",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_2",
+			"control": "text",
+			"label": "Text",
+			"default": "Who we are and how to contact us",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_4",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "2.",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "container_text",
+			"control": "text",
+			"label": "Text",
+			"default": "Registration No. 2025/818751/07",
+			"esc": "post",
+			"group": "p_pv_sec_div_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "container_text_2",
+			"control": "textarea",
+			"label": "Text 2",
+			"default": "West Tower, 2nd Floor, Nelson Mandela Square, Maude Street, Sandown, Johannesburg, 2146, South Africa",
+			"esc": "post",
+			"group": "p_pv_sec_div_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "container_text_3",
+			"control": "text",
+			"label": "Text 3",
+			"default": "Nyanu Heritage Tours LLC (United States)",
+			"esc": "post",
+			"group": "p_pv_sec_div_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "container_text_4",
+			"control": "text",
+			"label": "Text 4",
+			"default": "Wilson Ningamai Nyah, Managing Director",
+			"esc": "post",
+			"group": "p_pv_sec_div_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_5",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Umoya Afrika Tours (Pty) Ltd",
+			"esc": "post",
+			"group": "p_pv_sec_div_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "strong_text",
+			"control": "text",
+			"label": "Strong",
+			"description": "",
+			"default": "Registered address:",
+			"esc": "post",
+			"group": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "strong_text_2",
+			"control": "text",
+			"label": "Strong",
+			"description": "",
+			"default": "Holding company:",
+			"esc": "post",
+			"group": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_2",
+			"sort": 0
+		},
+		{
+			"id": "strong_text_3",
+			"control": "text",
+			"label": "Strong",
+			"description": "",
+			"default": "Information Officer:",
+			"esc": "post",
+			"group": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_3",
+			"sort": 0
+		},
+		{
+			"id": "strong_text_4",
+			"control": "text",
+			"label": "Strong",
+			"description": "",
+			"default": "Telephone (South Africa):",
+			"esc": "post",
+			"group": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_4",
+			"sort": 0
+		},
+		{
+			"id": "link_text",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "+27 78 950 4410",
+			"esc": "post",
+			"group": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "link_href",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "tel:+27789504410"
+			},
+			"esc": "url",
+			"group": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "strong_text_5",
+			"control": "text",
+			"label": "Strong",
+			"description": "",
+			"default": "Email for privacy enquiries:",
+			"esc": "post",
+			"group": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_5",
+			"sort": 0
+		},
+		{
+			"id": "link_text_2",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "info@umoyaafrikatours.co.za",
+			"esc": "post",
+			"group": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_2",
+			"sort": 0
+		},
+		{
+			"id": "link_href_2",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "mailto:info@umoyaafrikatours.co.za"
+			},
+			"esc": "url",
+			"group": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_2",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "heading_text_3",
+			"control": "text",
+			"label": "Text",
+			"default": "What personal information we collect",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_6",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "3.",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_7",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "Depending on how you interact with us, we may collect the following categories of personal information.",
+			"esc": "post",
+			"group": "p_pv_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_4",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "3.1 Information you provide directly",
+			"esc": "post",
+			"group": "p_pv_h3",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_5",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "3.2 Information collected automatically",
+			"esc": "post",
+			"group": "p_pv_h3",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_6",
+			"control": "text",
+			"label": "Text",
+			"default": "How we use your personal information",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_8",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "4.",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_9",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "We process your personal information for the following purposes:",
+			"esc": "post",
+			"group": "p_pv_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_7",
+			"control": "text",
+			"label": "Text",
+			"default": "Lawful basis for processing",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_10",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "5.",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_11",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "We process your personal information on one or more of the following lawful bases recognised under POPIA: your consent; the conclusion or performance of a contract with you; compliance with a legal obligation; the protection of your legitimate interests; and our own legitimate interests, balanced against your rights.",
+			"esc": "post",
+			"group": "p_pv_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_8",
+			"control": "text",
+			"label": "Text",
+			"default": "Who we share your information with",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_12",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "6.",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_13",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "We share personal information only where it is necessary to deliver your journey or to operate our business, and always on the basis of appropriate confidentiality and data-protection obligations. We may share information with:",
+			"esc": "post",
+			"group": "p_pv_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_14",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "We do not sell your personal information.",
+			"esc": "post",
+			"group": "p_pv_sec_p_nth_of_type_2",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_9",
+			"control": "text",
+			"label": "Text",
+			"default": "International transfers",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_15",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "7.",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_10",
+			"control": "text",
+			"label": "Text",
+			"default": "How long we keep your information",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_16",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "8.",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_17",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "We keep personal information only for as long as is necessary for the purposes for which it was collected, or as required by law. Booking and financial records are typically retained for the periods required under South African tax and company law (generally five years). Marketing information is retained until you withdraw your consent or unsubscribe. We may retain certain information for longer where required for legal, regulatory or accountability reasons.",
+			"esc": "post",
+			"group": "p_pv_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_11",
+			"control": "text",
+			"label": "Text",
+			"default": "How we protect your information",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_18",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "9.",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_12",
+			"control": "text",
+			"label": "Text",
+			"default": "Your rights",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_19",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "10.",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_20",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Subject to the conditions set out in POPIA, you have the right to:",
+			"esc": "post",
+			"group": "p_pv_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_21",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "To exercise any of these rights, please contact our Information Officer at the address set out in section 2.",
+			"esc": "post",
+			"group": "p_pv_sec_p_nth_of_type_2",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_13",
+			"control": "text",
+			"label": "Text",
+			"default": "Direct marketing",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_22",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "11.",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_23",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "We will send you marketing communications by electronic means (such as email) only where you have given us your consent to do so, or where you are an existing client and the marketing relates to similar journeys or services and the law permits. Every marketing communication we send will identify Umoya as the sender and will include a simple way to opt out of further marketing.",
+			"esc": "post",
+			"group": "p_pv_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_14",
+			"control": "text",
+			"label": "Text",
+			"default": "Cookies",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_24",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "12.",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "content_text",
+			"control": "textarea",
+			"label": "Text",
+			"default": "Our website uses cookies and similar technologies. Information about the cookies we use and how you can manage them is set out in our",
+			"esc": "post",
+			"group": "p_pv_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "content_text_2",
+			"control": "text",
+			"label": "Text 2",
+			"default": ".",
+			"esc": "post",
+			"group": "p_pv_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "link_text_3",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "Cookie Policy",
+			"esc": "post",
+			"group": "p_pv_sec_p_nth_of_type_1_a",
+			"sort": 0
+		},
+		{
+			"id": "link_href_3",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/cookie-policy/"
+			},
+			"esc": "url",
+			"group": "p_pv_sec_p_nth_of_type_1_a",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "heading_text_15",
+			"control": "text",
+			"label": "Text",
+			"default": "Children and family journeys",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_25",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "13.",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_26",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "We do not knowingly collect personal information directly from children under the age of 18. Where a child is travelling with a parent or guardian as part of a family journey, the parent or guardian is responsible for providing the information we need to arrange and deliver the journey. This is typically limited to what is necessary for the booking and for the child's safety and comfort while travelling, including name, date of birth, passport information, dietary requirements, and any medical information the parent or guardian believes we should hold. We process this information on the same basis as adult guest information, and we treat it with the same care.",
+			"esc": "post",
+			"group": "p_pv_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_16",
+			"control": "text",
+			"label": "Text",
+			"default": "Complaints",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_27",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "14.",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_28",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "If you have any concerns about how we process your personal information, please contact our Information Officer in the first instance. You also have the right to lodge a complaint with:",
+			"esc": "post",
+			"group": "p_pv_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_29",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "The Information Regulator (South Africa)",
+			"esc": "post",
+			"group": "p_pv_sec_div_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "strong_text_6",
+			"control": "text",
+			"label": "Strong",
+			"description": "",
+			"default": "Email:",
+			"esc": "post",
+			"group": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "link_text_4",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "complaints.IR@inforegulator.org.za",
+			"esc": "post",
+			"group": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "link_href_4",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "mailto:complaints.IR@inforegulator.org.za"
+			},
+			"esc": "url",
+			"group": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_1",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "strong_text_7",
+			"control": "text",
+			"label": "Strong",
+			"description": "",
+			"default": "Website:",
+			"esc": "post",
+			"group": "p_pv_sec_div_nth_of_type_1_strong_nth_of_type_2",
+			"sort": 0
+		},
+		{
+			"id": "link_text_5",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "https://inforegulator.org.za",
+			"esc": "post",
+			"group": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_2",
+			"sort": 0
+		},
+		{
+			"id": "link_href_5",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://inforegulator.org.za"
+			},
+			"esc": "url",
+			"group": "p_pv_sec_div_nth_of_type_1_a_nth_of_type_2",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "link_target",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "link_rel",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "heading_text_17",
+			"control": "text",
+			"label": "Text",
+			"default": "Changes to this policy",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_30",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "15.",
+			"esc": "post",
+			"group": "p_pv_sec_h2_nth_of_type_1_span_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_31",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "We may update this Privacy Policy from time to time. The effective date at the top of this document indicates when it was last revised. Material changes will be brought to your attention through our website or by direct communication, where appropriate.",
+			"esc": "post",
+			"group": "p_pv_sec_p_nth_of_type_1",
+			"sort": 0
+		}
+	]
+}

@@ -14,6 +14,7 @@ export const category = {
 	slug: 'umoya-fc',
 	title: "Umoya - Founder's Circle",
 	icon: 'eicon-globe',
+	keywords: [ 'founders circle', 'founder' ],
 };
 
 export const sections = [

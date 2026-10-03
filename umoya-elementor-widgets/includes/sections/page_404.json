@@ -1,0 +1,575 @@
+{
+	"key": "page_404",
+	"name": "umoya-page-404",
+	"title": "404 Page",
+	"description": "Page-not-found body. Use it in the Theme Builder 404 template, never on a published page, or the dead URL answers 200.",
+	"icon": "eicon-error-404",
+	"category": "umoya-site",
+	"source": "shared/page-404.html",
+	"class_name": "Page_404",
+	"widget_file": "widgets/class-page-404.php",
+	"root_selector": "#umoya-404",
+	"template": "templates/sections/page_404.php",
+	"style": {
+		"handle": "uew-umoya-page-404",
+		"file": "assets/css/sections/page_404.css"
+	},
+	"script": null,
+	"keywords": [
+		"umoya",
+		"site",
+		"global",
+		"shared",
+		"404",
+		"page"
+	],
+	"portals": [],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#umoya-404"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#umoya-404"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "brown-dk",
+			"value": "#3B2523",
+			"kind": "color",
+			"selectors": [
+				"#umoya-404"
+			],
+			"scoped": false,
+			"id": "uew_token_brown_dk",
+			"label": "Brown Dk"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#umoya-404"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"selectors": [
+				"#umoya-404"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"selectors": [
+				"#umoya-404"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
+			"label": "White"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"selectors": [
+				"#umoya-404"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_background_image",
+					"control": "media",
+					"label": "Background Image",
+					"description": "Painted from the section stylesheet, under its overlay. Choosing an image here replaces the photo and keeps the overlay.",
+					"default": {
+						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img001238.jpeg"
+					},
+					"css_selector": "#umoya-404",
+					"css_value": "background-image: radial-gradient(ellipse at center, rgba(59,37,35,.94) 0%, rgba(59,37,35,.90) 45%, rgba(75,46,43,.84) 100%), url(\"{{URL}}\");",
+					"css_only": true,
+					"esc": "url",
+					"group": "p_section",
+					"sort": 2,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_um404_mark",
+			"label": "Content",
+			"sample": "404",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "icon_text",
+					"control": "text",
+					"label": "Icon",
+					"description": "",
+					"default": "404",
+					"esc": "post",
+					"group": "p_um404_mark",
+					"sort": 0,
+					"part_label": "Icon"
+				},
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Error 404",
+					"esc": "post",
+					"group": "p_um404_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "textarea",
+					"label": "Title",
+					"description": "Inline formatting tags are preserved.",
+					"default": "We've lost the <em>trail</em>",
+					"esc": "post",
+					"group": "p_um404_ttl",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "text_text",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "The page you're looking for has moved, or never existed. Every journey has a wrong turn — here is the way back.",
+					"esc": "post",
+					"group": "p_um404_lead",
+					"sort": 0,
+					"part_label": "Text"
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_a_um404_btn",
+			"label": "Buttons",
+			"item_label": "{{{ um404_btn }}}",
+			"controls": [
+				{
+					"id": "href",
+					"control": "url",
+					"label": "Link",
+					"esc": "url",
+					"default": "https://umoyaafrikatours.co.za/"
+				},
+				{
+					"id": "um404_btn",
+					"control": "text",
+					"label": "Text",
+					"esc": "post",
+					"default": "Return Home"
+				}
+			],
+			"rows": [
+				{
+					"href": "https://umoyaafrikatours.co.za/",
+					"um404_btn": "Return Home"
+				},
+				{
+					"href": "https://umoyaafrikatours.co.za/contact/",
+					"um404_btn": "Speak With Us"
+				}
+			],
+			"loops": 1,
+			"selector": ".um404-btn",
+			"notice": "",
+			"portal": null
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_um404_mark",
+			"label": "Icon",
+			"short_label": "Icon",
+			"parent_label": "",
+			"sample": "404",
+			"selector": ".um404-mark",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_um404_c",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".um404-c",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_um404_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "Error 404",
+			"selector": ".um404-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_um404_ttl",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "",
+			"sample": "We've lost the trail",
+			"selector": ".um404-ttl",
+			"tag": "h1",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_em",
+			"label": "Emphasis",
+			"short_label": "Emphasis",
+			"parent_label": "Title",
+			"sample": "trail",
+			"selector": "em",
+			"tag": "em",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_um404_rule",
+			"label": "Divider",
+			"short_label": "Divider",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".um404-rule",
+			"tag": "hr",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_um404_lead",
+			"label": "Text",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "The page you're looking for has moved, or never…",
+			"selector": ".um404-lead",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_um404_actions",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".um404-actions",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_um404_btn",
+			"label": "Button",
+			"short_label": "Button",
+			"parent_label": "",
+			"sample": "Return Home",
+			"selector": ".um404-btn",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": "a_um404_btn"
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "icon_text",
+			"control": "text",
+			"label": "Icon",
+			"description": "",
+			"default": "404",
+			"esc": "post",
+			"group": "p_um404_mark",
+			"sort": 0
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Error 404",
+			"esc": "post",
+			"group": "p_um404_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "textarea",
+			"label": "Title",
+			"description": "Inline formatting tags are preserved.",
+			"default": "We've lost the <em>trail</em>",
+			"esc": "post",
+			"group": "p_um404_ttl",
+			"sort": 0
+		},
+		{
+			"id": "text_text",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "The page you're looking for has moved, or never existed. Every journey has a wrong turn — here is the way back.",
+			"esc": "post",
+			"group": "p_um404_lead",
+			"sort": 0
+		},
+		{
+			"id": "section_background_image",
+			"control": "media",
+			"label": "Background Image",
+			"description": "Painted from the section stylesheet, under its overlay. Choosing an image here replaces the photo and keeps the overlay.",
+			"default": {
+				"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img001238.jpeg"
+			},
+			"css_selector": "#umoya-404",
+			"css_value": "background-image: radial-gradient(ellipse at center, rgba(59,37,35,.94) 0%, rgba(59,37,35,.90) 45%, rgba(75,46,43,.84) 100%), url(\"{{URL}}\");",
+			"css_only": true,
+			"esc": "url",
+			"group": "p_section",
+			"sort": 2
+		}
+	]
+}

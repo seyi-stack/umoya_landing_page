@@ -63,6 +63,41 @@ export function emitScript( section, scripts ) {
 	const body = scripts.join( '\n\n' ).replace( /\n/g, '\n\t\t' );
 	const rootSelector = section.root_selector;
 	const requiresRoot = section.script_requires_root !== false;
+	const portalIds = ( section.portals || [] ).map( ( portal ) => portal.selector.replace( /^#/, '' ) );
+
+	// Only sections that move a dialog to <body> need the editor clean-up below.
+	const retire = ! portalIds.length ? '' : `
+	var PORTAL_IDS = ${ JSON.stringify( portalIds ) };
+
+	/*
+	 * In the editor every control change re-renders the widget, bringing a
+	 * fresh copy of each dialog that moves itself to <body> -- while the
+	 * previous copy is still there, with the previous run's listeners still
+	 * attached. A trigger would then open both: the fresh one on top and a
+	 * stale one underneath that reappears when the fresh one is closed.
+	 *
+	 * Each copy outside the widget being initialised is retired before the
+	 * section script runs again: hidden for good, and without its id so the
+	 * script's getElementById() finds the fresh one. On a published page there
+	 * is only ever one copy, so this does nothing there.
+	 */
+	function uewRetireStalePortals( scopeElement ) {
+		for ( var i = 0; i < PORTAL_IDS.length; i++ ) {
+			var copies = document.querySelectorAll( '[id="' + PORTAL_IDS[ i ] + '"]' );
+			if ( copies.length < 2 ) {
+				continue;
+			}
+			for ( var j = 0; j < copies.length; j++ ) {
+				if ( scopeElement.contains( copies[ j ] ) ) {
+					continue;
+				}
+				copies[ j ].removeAttribute( 'id' );
+				copies[ j ].setAttribute( 'data-uew-retired', '1' );
+				copies[ j ].style.setProperty( 'display', 'none', 'important' );
+			}
+		}
+	}
+`;
 
 	return `/**
  * ${ section.title } -- section behaviour.
@@ -81,7 +116,7 @@ export function emitScript( section, scripts ) {
 
 	var ROOT_SELECTOR = ${ JSON.stringify( rootSelector ) };
 	var WIDGET_NAME = ${ JSON.stringify( section.name ) };
-
+${ retire }
 	function uewRun() {
 ${ '\t\t' + body }
 	}
@@ -105,7 +140,11 @@ ${ '\t\t' + body }
 		if ( root ) {
 			root.setAttribute( 'data-uew-ready', '1' );
 		}
-
+${ portalIds.length ? `
+		if ( context !== document && context.contains ) {
+			uewRetireStalePortals( context );
+		}
+` : '' }
 		uewRun();
 	}
 

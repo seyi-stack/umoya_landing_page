@@ -62,7 +62,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         <!-- Chapter I -->
         <?php $__i = 0; foreach ( $r['rep_article_fc_jrn_tile'] as $it ) : if ( $__i ++ ) { echo $it['_uew_sep']; } ?><article class="fc-jrn-tile <?php echo $it['_uew_item_class']; ?>">
-          <div class="fc-jrn-tile-img"><?php echo $it['tile_img_markup']; ?></div>
+          <div class="fc-jrn-tile-img"><?php echo $it['notes']; ?><img class="fc-jrn-pic" src="<?php echo $it['src']; ?>" alt="<?php echo $it['alt']; ?>" loading="<?php echo $it['loading']; ?>" />
+            <div class="fc-jrn-tag">
+              <h3 class="fc-jrn-tile-ttl"><?php echo $it['tile_ttl']; ?></h3>
+            </div>
+          </div>
           <div class="fc-jrn-tile-body">
             <span class="fc-jrn-loc"><?php echo $it['loc']; ?></span>
             <p class="fc-jrn-desc"><?php echo $it['desc_markup']; ?></p>
@@ -92,9 +96,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
           <!-- Extension 2 — Chobe -->
           '; } ?><article class="fc-jrn-tile <?php echo $it['_uew_item_class']; ?>">
-            <div class="fc-jrn-tile-img">
-              <!--<?php echo $it['note']; ?>-->
-              <img class="fc-jrn-pic" src="<?php echo $it['src']; ?>" alt="<?php echo $it['alt']; ?>" loading="<?php echo $it['loading']; ?>" />
+            <div class="fc-jrn-tile-img"><?php echo $it['notes']; ?><img class="fc-jrn-pic" src="<?php echo $it['src']; ?>" alt="<?php echo $it['alt']; ?>" loading="<?php echo $it['loading']; ?>" />
               <div class="fc-jrn-tag">
                 <h3 class="fc-jrn-tile-ttl"><?php echo $it['tile_ttl']; ?></h3>
               </div>

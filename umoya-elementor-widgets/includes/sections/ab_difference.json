@@ -1,0 +1,596 @@
+{
+	"key": "ab_difference",
+	"name": "umoya-ab-difference",
+	"title": "About The Umoya Difference",
+	"description": "Four icon cards on what sets an Umoya journey apart.",
+	"icon": "eicon-icon-box",
+	"category": "umoya-about",
+	"source": "about/section-07-difference.html",
+	"class_name": "About_Difference",
+	"widget_file": "widgets/class-ab-difference.php",
+	"root_selector": "#ab-difference",
+	"template": "templates/sections/ab_difference.php",
+	"style": {
+		"handle": "uew-umoya-ab-difference",
+		"file": "assets/css/sections/ab_difference.css"
+	},
+	"script": {
+		"handle": "uew-umoya-ab-difference",
+		"file": "assets/js/sections/ab_difference.js"
+	},
+	"keywords": [
+		"umoya",
+		"about",
+		"about us",
+		"story",
+		"the",
+		"difference"
+	],
+	"portals": [],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#ab-difference"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#ab-difference"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#ab-difference"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"selectors": [
+				"#ab-difference"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
+			"label": "White"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.68)",
+			"kind": "color",
+			"selectors": [
+				"#ab-difference"
+			],
+			"scoped": false,
+			"id": "uew_token_muted",
+			"label": "Muted"
+		},
+		{
+			"name": "line",
+			"value": "rgba(75,46,43,.14)",
+			"kind": "color",
+			"selectors": [
+				"#ab-difference"
+			],
+			"scoped": false,
+			"id": "uew_token_line",
+			"label": "Line"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"selectors": [
+				"#ab-difference"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "The Umoya difference",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_ab_df_eye",
+			"label": "Header",
+			"sample": "The Umoya Difference",
+			"region_label": "Header",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "The Umoya Difference",
+					"esc": "post",
+					"group": "p_ab_df_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "What makes an Umoya journey distinct?",
+					"esc": "post",
+					"group": "p_ab_df_ttl",
+					"sort": 0,
+					"part_label": "Title"
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_div_ab_df_card",
+			"label": "Cards",
+			"item_label": "{{{ h }}}",
+			"controls": [
+				{
+					"id": "role",
+					"control": "hidden",
+					"label": "Role",
+					"esc": "attr",
+					"default": "listitem"
+				},
+				{
+					"id": "aria_hidden",
+					"control": "hidden",
+					"label": "Aria Hidden",
+					"esc": "attr",
+					"default": "true"
+				},
+				{
+					"id": "viewbox",
+					"control": "hidden",
+					"label": "Viewbox",
+					"esc": "attr",
+					"default": "0 0 24 24"
+				},
+				{
+					"id": "svg_markup",
+					"control": "textarea",
+					"label": "Icon (HTML)",
+					"esc": "raw",
+					"default": "<circle cx=\"9\" cy=\"8\" r=\"2.8\"/><path d=\"M3 19a6 6 0 0 1 12 0\"/><path d=\"M16.5 6.2a2.8 2.8 0 0 1 0 5.4\"/><path d=\"M17.5 14.4A6 6 0 0 1 21 19\"/>"
+				},
+				{
+					"id": "h",
+					"control": "text",
+					"label": "H",
+					"esc": "post",
+					"default": "Welcomed by name"
+				},
+				{
+					"id": "p",
+					"control": "textarea",
+					"label": "Paragraph",
+					"esc": "post",
+					"default": "Our journeys are built on relationships earned in person, on the ground. The people who host you are artists, entrepreneurs, activists, and winemakers who open their world to you directly."
+				}
+			],
+			"rows": [
+				{
+					"role": "listitem",
+					"aria_hidden": "true",
+					"viewbox": "0 0 24 24",
+					"svg_markup": "<circle cx=\"9\" cy=\"8\" r=\"2.8\"/><path d=\"M3 19a6 6 0 0 1 12 0\"/><path d=\"M16.5 6.2a2.8 2.8 0 0 1 0 5.4\"/><path d=\"M17.5 14.4A6 6 0 0 1 21 19\"/>",
+					"h": "Welcomed by name",
+					"p": "Our journeys are built on relationships earned in person, on the ground. The people who host you are artists, entrepreneurs, activists, and winemakers who open their world to you directly."
+				},
+				{
+					"role": "listitem",
+					"aria_hidden": "true",
+					"viewbox": "0 0 24 24",
+					"svg_markup": "<path d=\"M12 3v18\"/><path d=\"M5 7c2.5-2 4.8-2 7-1 2.2-1 4.5-1 7 1v11c-2.5-2-4.8-2-7-1-2.2-1-4.5-1-7 1z\"/>",
+					"h": "Bespoke from the start",
+					"p": "Every Umoya journey is designed around you. Your group, your interests, your pace. We shape the experience around what matters to you and handle every detail along the way."
+				},
+				{
+					"role": "listitem",
+					"aria_hidden": "true",
+					"viewbox": "0 0 24 24",
+					"svg_markup": "<path d=\"M12 3l2.2 4.6 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5L4.8 8.3l5-.7z\"/>",
+					"h": "Recognized for storytelling",
+					"p": "Our destination film, Let Your Story Begin, earned a Silver Award at the International Tourism Film Festival Africa 2026. Narrative-led travel shapes every journey we design."
+				},
+				{
+					"role": "listitem",
+					"aria_hidden": "true",
+					"viewbox": "0 0 24 24",
+					"svg_markup": "<circle cx=\"12\" cy=\"12\" r=\"8\"/><path d=\"M12 7v5l3.5 2\"/>",
+					"h": "Leave the logistics to us",
+					"p": "Planning a journey should be the easy part. We handle every detail from start to finish, so that by the time you arrive, all you have to do is breathe."
+				}
+			],
+			"loops": 1,
+			"selector": ".ab-df-card",
+			"notice": "",
+			"portal": null
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_df_c",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-df-c",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_df_head",
+			"label": "Header",
+			"short_label": "Header",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-df-head",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_df_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "Header",
+			"sample": "The Umoya Difference",
+			"selector": ".ab-df-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_df_ttl",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "Header",
+			"sample": "What makes an Umoya journey distinct?",
+			"selector": ".ab-df-ttl",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_df_grid",
+			"label": "List",
+			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-df-grid",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_df_card",
+			"label": "Card",
+			"short_label": "Card",
+			"parent_label": "List",
+			"sample": "",
+			"selector": ".ab-df-card",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": "div_ab_df_card"
+		},
+		{
+			"id": "p_ab_df_card_span_nth_of_type_1",
+			"label": "Card Text 1",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".ab-df-card > span:nth-of-type(1)",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_df_card_span_nth_of_type_1_svg_nth_of_type_1",
+			"label": "Icon",
+			"short_label": "Icon",
+			"parent_label": "Text",
+			"sample": "",
+			"selector": ".ab-df-card > span:nth-of-type(1) > svg:nth-of-type(1)",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"sizing",
+				"spacing",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_df_card_h3_nth_of_type_1",
+			"label": "Heading",
+			"short_label": "Heading",
+			"parent_label": "Card",
+			"sample": "Welcomed by name",
+			"selector": ".ab-df-card > h3:nth-of-type(1)",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_df_card_p_nth_of_type_1",
+			"label": "Card Text 2",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "Our journeys are built on relationships earned …",
+			"selector": ".ab-df-card > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "The Umoya difference",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "The Umoya Difference",
+			"esc": "post",
+			"group": "p_ab_df_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "What makes an Umoya journey distinct?",
+			"esc": "post",
+			"group": "p_ab_df_ttl",
+			"sort": 0
+		}
+	]
+}

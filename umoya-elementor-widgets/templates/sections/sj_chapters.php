@@ -60,41 +60,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
       <div class="sj-ch-moments">
         <!-- Chapter One · The Welcome — umoya_compressed_ZAV_6216.png -->
-        <article class="sj-ch-mom sj-ch-rv">
+        <?php $__i = 0; foreach ( $r['rep_article_sj_ch_mom'] as $it ) : if ( $__i ++ ) { echo $it['_uew_sep']; } ?><article class="<?php echo array( 'sj-ch-mom sj-ch-rv', 'sj-ch-mom sj-ch-rv d1', 'sj-ch-mom sj-ch-rv d2' )[ ( ( (int) $it['_uew_n'] ) - 1 ) % 3 ]; ?> <?php echo $it['_uew_item_class']; ?>">
           <div class="sj-ch-mom-img">
-            <img class="sj-ch-mom-pic" src="<?php echo $c['image_src_2']; ?>" alt="<?php echo $c['image_alt_2']; ?>" loading="<?php echo $c['image_loading_2']; ?>" />
+            <img class="sj-ch-mom-pic" src="<?php echo $it['src']; ?>" alt="<?php echo $it['alt']; ?>" loading="<?php echo $it['loading']; ?>" />
           </div>
           <div class="sj-ch-mom-body">
-            <div class="sj-ch-mom-role"><?php echo $c['text_text_4']; ?></div>
-            <h3 class="sj-ch-mom-name"><?php echo $c['heading_text']; ?></h3>
-            <p class="sj-ch-mom-desc"><?php echo $c['text_text_5']; ?></p>
+            <div class="sj-ch-mom-role"><?php echo $it['mom_role']; ?></div>
+            <h3 class="sj-ch-mom-name"><?php echo $it['mom_name']; ?></h3>
+            <p class="sj-ch-mom-desc"><?php echo $it['mom_desc']; ?></p>
           </div>
-        </article>
-
-        <!-- Chapter One · The Soweto Day — umoya_compressed_ZAV_6880.png -->
-        <article class="sj-ch-mom sj-ch-rv d1">
-          <div class="sj-ch-mom-img">
-            <img class="sj-ch-mom-pic" src="<?php echo $c['image_src_3']; ?>" alt="<?php echo $c['image_alt_3']; ?>" loading="<?php echo $c['image_loading_3']; ?>" />
-          </div>
-          <div class="sj-ch-mom-body">
-            <div class="sj-ch-mom-role"><?php echo $c['text_text_6']; ?></div>
-            <h3 class="sj-ch-mom-name"><?php echo $c['heading_text_2']; ?></h3>
-            <p class="sj-ch-mom-desc"><?php echo $c['text_text_7']; ?></p>
-          </div>
-        </article>
-
-        <!-- Chapter One · The Story — umoya_compressed_ZAV_7105.png -->
-        <article class="sj-ch-mom sj-ch-rv d2">
-          <div class="sj-ch-mom-img">
-            <img class="sj-ch-mom-pic" src="<?php echo $c['image_src_4']; ?>" alt="<?php echo $c['image_alt_4']; ?>" loading="<?php echo $c['image_loading_4']; ?>" />
-          </div>
-          <div class="sj-ch-mom-body">
-            <div class="sj-ch-mom-role"><?php echo $c['text_text_8']; ?></div>
-            <h3 class="sj-ch-mom-name"><?php echo $c['heading_text_3']; ?></h3>
-            <p class="sj-ch-mom-desc"><?php echo $c['text_text_9']; ?></p>
-          </div>
-        </article>
-      </div>
+        </article><?php endforeach; echo "\n      "; ?></div>
     </div>
   </div>
 
@@ -103,54 +78,29 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="sj-ch-c">
       <div class="sj-ch-head">
         <div class="sj-ch-rv">
-          <div class="sj-ch-num"><?php echo $c['text_text_10']; ?></div>
+          <div class="sj-ch-num"><?php echo $c['text_text_4']; ?></div>
           <h2 class="sj-ch-ttl"><?php echo $c['title_text_2']; ?></h2>
-          <div class="sj-ch-where"><?php echo $c['text_text_11']; ?></div>
-          <p class="sj-ch-lead"><?php echo $c['text_text_12']; ?></p>
+          <div class="sj-ch-where"><?php echo $c['text_text_5']; ?></div>
+          <p class="sj-ch-lead"><?php echo $c['text_text_6']; ?></p>
         </div>
         <!-- Chapter Two lead image (the Sabi Sand) -->
         <div class="sj-ch-img sj-ch-rv d1">
-          <img src="<?php echo $c['image_src_5']; ?>" alt="<?php echo $c['image_alt_5']; ?>" loading="<?php echo $c['image_loading_5']; ?>" />
+          <img src="<?php echo $c['image_src_2']; ?>" alt="<?php echo $c['image_alt_2']; ?>" loading="<?php echo $c['image_loading_2']; ?>" />
         </div>
       </div>
 
       <div class="sj-ch-moments">
         <!-- Chapter Two · The Wild — umoya_compressed_SAT001232.jpeg -->
-        <article class="sj-ch-mom sj-ch-rv">
+        <?php $__i = 0; foreach ( $r['rep_article_sj_ch_mom_2'] as $it ) : if ( $__i ++ ) { echo $it['_uew_sep']; } ?><article class="<?php echo array( 'sj-ch-mom sj-ch-rv', 'sj-ch-mom sj-ch-rv d1', 'sj-ch-mom sj-ch-rv d2' )[ ( ( (int) $it['_uew_n'] ) - 1 ) % 3 ]; ?> <?php echo $it['_uew_item_class']; ?>">
           <div class="sj-ch-mom-img">
-            <img class="sj-ch-mom-pic" src="<?php echo $c['image_src_6']; ?>" alt="<?php echo $c['image_alt_6']; ?>" loading="<?php echo $c['image_loading_6']; ?>" />
+            <img class="sj-ch-mom-pic" src="<?php echo $it['src']; ?>" alt="<?php echo $it['alt']; ?>" loading="<?php echo $it['loading']; ?>" />
           </div>
           <div class="sj-ch-mom-body">
-            <div class="sj-ch-mom-role"><?php echo $c['text_text_13']; ?></div>
-            <h3 class="sj-ch-mom-name"><?php echo $c['heading_text_4']; ?></h3>
-            <p class="sj-ch-mom-desc"><?php echo $c['text_text_14']; ?></p>
+            <div class="sj-ch-mom-role"><?php echo $it['mom_role']; ?></div>
+            <h3 class="sj-ch-mom-name"><?php echo $it['mom_name']; ?></h3>
+            <p class="sj-ch-mom-desc"><?php echo $it['mom_desc']; ?></p>
           </div>
-        </article>
-
-        <!-- Chapter Two · The Land — umoya_compressed_buffalo_maindeck2.png -->
-        <article class="sj-ch-mom sj-ch-rv d1">
-          <div class="sj-ch-mom-img">
-            <img class="sj-ch-mom-pic" src="<?php echo $c['image_src_7']; ?>" alt="<?php echo $c['image_alt_7']; ?>" loading="<?php echo $c['image_loading_7']; ?>" />
-          </div>
-          <div class="sj-ch-mom-body">
-            <div class="sj-ch-mom-role"><?php echo $c['text_text_15']; ?></div>
-            <h3 class="sj-ch-mom-name"><?php echo $c['heading_text_5']; ?></h3>
-            <p class="sj-ch-mom-desc"><?php echo $c['text_text_16']; ?></p>
-          </div>
-        </article>
-
-        <!-- Chapter Two · The People — umoya_compressed_shangaan-village-cdp590b-590x390.jpg -->
-        <article class="sj-ch-mom sj-ch-rv d2">
-          <div class="sj-ch-mom-img">
-            <img class="sj-ch-mom-pic" src="<?php echo $c['image_src_8']; ?>" alt="<?php echo $c['image_alt_8']; ?>" loading="<?php echo $c['image_loading_8']; ?>" />
-          </div>
-          <div class="sj-ch-mom-body">
-            <div class="sj-ch-mom-role"><?php echo $c['text_text_17']; ?></div>
-            <h3 class="sj-ch-mom-name"><?php echo $c['heading_text_6']; ?></h3>
-            <p class="sj-ch-mom-desc"><?php echo $c['text_text_18']; ?></p>
-          </div>
-        </article>
-      </div>
+        </article><?php endforeach; echo "\n      "; ?></div>
     </div>
   </div>
 
@@ -159,56 +109,29 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="sj-ch-c">
       <div class="sj-ch-head">
         <div class="sj-ch-rv">
-          <div class="sj-ch-num"><?php echo $c['text_text_19']; ?></div>
+          <div class="sj-ch-num"><?php echo $c['text_text_7']; ?></div>
           <h2 class="sj-ch-ttl"><?php echo $c['title_text_3']; ?></h2>
-          <div class="sj-ch-where"><?php echo $c['text_text_20']; ?></div>
-          <p class="sj-ch-lead"><?php echo $c['text_text_21']; ?></p>
+          <div class="sj-ch-where"><?php echo $c['text_text_8']; ?></div>
+          <p class="sj-ch-lead"><?php echo $c['text_text_9']; ?></p>
         </div>
         <!-- Chapter Three lead image (Cape Town) -->
         <div class="sj-ch-img sj-ch-rv d1">
-          <img src="<?php echo $c['image_src_9']; ?>" alt="<?php echo $c['image_alt_9']; ?>" loading="<?php echo $c['image_loading_9']; ?>" />
+          <img src="<?php echo $c['image_src_3']; ?>" alt="<?php echo $c['image_alt_3']; ?>" loading="<?php echo $c['image_loading_3']; ?>" />
         </div>
       </div>
 
       <div class="sj-ch-moments">
         <!-- Chapter Three · Robben Island — umoya_compressed_ZAV_1363.png -->
-        <article class="sj-ch-mom sj-ch-rv">
+        <?php $__i = 0; foreach ( $r['rep_article_sj_ch_mom_3'] as $it ) : if ( $__i ++ ) { echo $it['_uew_sep']; } ?><article class="<?php echo array( 'sj-ch-mom sj-ch-rv', 'sj-ch-mom sj-ch-rv d1', 'sj-ch-mom sj-ch-rv d2' )[ ( ( (int) $it['_uew_n'] ) - 1 ) % 3 ]; ?> <?php echo $it['_uew_item_class']; ?>">
           <div class="sj-ch-mom-img">
-            <img class="sj-ch-mom-pic" src="<?php echo $c['image_src_10']; ?>" alt="<?php echo $c['image_alt_10']; ?>" loading="<?php echo $c['image_loading_10']; ?>" />
+            <img class="sj-ch-mom-pic"<?php echo $it['extra_attributes']; ?> src="<?php echo $it['src']; ?>" alt="<?php echo $it['alt']; ?>" loading="<?php echo $it['loading']; ?>" />
           </div>
           <div class="sj-ch-mom-body">
-            <div class="sj-ch-mom-role"><?php echo $c['text_text_22']; ?></div>
-            <h3 class="sj-ch-mom-name"><?php echo $c['heading_text_7']; ?></h3>
-            <p class="sj-ch-mom-desc"><?php echo $c['text_text_23']; ?></p>
+            <div class="sj-ch-mom-role"><?php echo $it['mom_role']; ?></div>
+            <h3 class="sj-ch-mom-name"><?php echo $it['mom_name']; ?></h3>
+            <p class="sj-ch-mom-desc"><?php echo $it['mom_desc']; ?></p>
           </div>
-        </article>
-
-        <!-- Chapter Three · The Black Route — umoya_compressed_img371169908.jpeg
-             object-position pushed down: the glasses sit low in the source
-             frame, so the default centre crop clipped their stems. -->
-        <article class="sj-ch-mom sj-ch-rv d1">
-          <div class="sj-ch-mom-img">
-            <img class="sj-ch-mom-pic" style="<?php echo $s['image_inline_style']; ?>" src="<?php echo $c['image_src_11']; ?>" alt="<?php echo $c['image_alt_11']; ?>" loading="<?php echo $c['image_loading_11']; ?>" />
-          </div>
-          <div class="sj-ch-mom-body">
-            <div class="sj-ch-mom-role"><?php echo $c['text_text_24']; ?></div>
-            <h3 class="sj-ch-mom-name"><?php echo $c['heading_text_8']; ?></h3>
-            <p class="sj-ch-mom-desc"><?php echo $c['text_text_25']; ?></p>
-          </div>
-        </article>
-
-        <!-- Chapter Three · The Farewell — umoya_compressed_GOLD_Venue_5.jpg -->
-        <article class="sj-ch-mom sj-ch-rv d2">
-          <div class="sj-ch-mom-img">
-            <img class="sj-ch-mom-pic" src="<?php echo $c['image_src_12']; ?>" alt="<?php echo $c['image_alt_12']; ?>" loading="<?php echo $c['image_loading_12']; ?>" />
-          </div>
-          <div class="sj-ch-mom-body">
-            <div class="sj-ch-mom-role"><?php echo $c['text_text_26']; ?></div>
-            <h3 class="sj-ch-mom-name"><?php echo $c['heading_text_9']; ?></h3>
-            <p class="sj-ch-mom-desc"><?php echo $c['text_text_27']; ?></p>
-          </div>
-        </article>
-      </div>
+        </article><?php endforeach; echo "\n      "; ?></div>
     </div>
   </div>
 

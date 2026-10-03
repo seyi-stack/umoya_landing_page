@@ -49,7 +49,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   <div class="umoya-hs-viewport" data-hs-viewport>
     <div class="umoya-hs-track" data-hs-track>
       <?php $__i = 0; foreach ( $r['rep_div_umoya_hs_slide'] as $it ) : if ( $__i ++ ) { echo '
-      '; } ?><div class="umoya-hs-slide <?php echo $it['_uew_item_class']; ?>" role="<?php echo $it['role']; ?>" aria-roledescription="<?php echo $it['aria_roledescription']; ?>" aria-label="<?php echo 'Cape Grace — ' . $it['_uew_n'] . ' of 4'; ?>" style="<?php echo $it['style']; ?>">
+      '; } ?><div class="umoya-hs-slide <?php echo $it['_uew_item_class']; ?>" role="<?php echo $it['role']; ?>" aria-roledescription="<?php echo $it['aria_roledescription']; ?>" aria-label="<?php echo 'Cape Grace — ' . $it['_uew_n'] . ' of ' . $it['_uew_count']; ?>" style="<?php echo $it['style']; ?>">
         <img src="<?php echo $it['src']; ?>" alt="<?php echo $it['alt']; ?>" loading="<?php echo $it['loading']; ?>"<?php echo $it['fetchpriority']; ?> decoding="<?php echo $it['decoding']; ?>">
       </div><?php endforeach; echo "\n    "; ?></div>
   </div>

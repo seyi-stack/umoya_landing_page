@@ -302,9 +302,14 @@ behaviour and the theme-header takeover.
   (`/privacy/`).
 - The P&T hero reuses an existing Cape image — swap if a dedicated hero
   shot is preferred.
-- Decide whether these pages should be registered in the Elementor widget
-  generator, or stay as hand-pasted HTML widgets. Currently they are **not**
-  registered, and the generator's source paths are stale.
+- ✅ **Registered as Elementor widgets (2026-10-03).** All three pages, plus the
+  shared nav and footer, compile to native widgets in their own categories —
+  *Umoya - Private & Tailormade*, *About Us*, *For Groups* and *Site-wide* — via
+  `tools/uew/` (CLAUDE.md Phase 26). Card grids and steps are lists an editor
+  can add to, remove from and reorder; the form fields deliberately are not,
+  because each field's name is a contract with HubSpot. Pasting the HTML files
+  still works exactly as before — the browser check proves the two render
+  identically — so moving a page onto the widgets is optional.
 - The About Us hero is video-ready but points at the existing brand film —
   swap the `<source>` or delete the `<video>` block to ship the still.
 - **Add `shared/section-99-footer.html` as the LAST widget on all three

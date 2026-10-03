@@ -1,0 +1,664 @@
+{
+	"key": "fg_who",
+	"name": "umoya-fg-who",
+	"title": "Groups Who Travels With Us",
+	"description": "Four photo cards for the group types Umoya hosts.",
+	"icon": "eicon-gallery-grid",
+	"category": "umoya-fg",
+	"source": "for-groups/section-03-who-travels.html",
+	"class_name": "FG_Who",
+	"widget_file": "widgets/class-fg-who.php",
+	"root_selector": "#fg-who",
+	"template": "templates/sections/fg_who.php",
+	"style": {
+		"handle": "uew-umoya-fg-who",
+		"file": "assets/css/sections/fg_who.css"
+	},
+	"script": {
+		"handle": "uew-umoya-fg-who",
+		"file": "assets/js/sections/fg_who.js"
+	},
+	"keywords": [
+		"umoya",
+		"groups",
+		"for groups",
+		"group travel",
+		"who",
+		"travels",
+		"with",
+		"us"
+	],
+	"portals": [],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#fg-who"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#fg-who"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#fg-who"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"selectors": [
+				"#fg-who"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
+			"label": "White"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.68)",
+			"kind": "color",
+			"selectors": [
+				"#fg-who"
+			],
+			"scoped": false,
+			"id": "uew_token_muted",
+			"label": "Muted"
+		},
+		{
+			"name": "line",
+			"value": "rgba(75,46,43,.14)",
+			"kind": "color",
+			"selectors": [
+				"#fg-who"
+			],
+			"scoped": false,
+			"id": "uew_token_line",
+			"label": "Line"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"selectors": [
+				"#fg-who"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "Who travels with us",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_fg_wh_eye",
+			"label": "Header",
+			"sample": "Travel With Us",
+			"region_label": "Header",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Travel With Us",
+					"esc": "post",
+					"group": "p_fg_wh_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "Travel as Meaningful as the Bond You Share",
+					"esc": "post",
+					"group": "p_fg_wh_ttl",
+					"sort": 0,
+					"part_label": "Title"
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_article_fg_wh_card",
+			"label": "Cards",
+			"item_label": "{{{ name }}}",
+			"controls": [
+				{
+					"id": "role",
+					"control": "hidden",
+					"label": "Role",
+					"esc": "attr",
+					"default": "listitem"
+				},
+				{
+					"id": "notes",
+					"control": "hidden",
+					"label": "Notes",
+					"esc": "trivia",
+					"default": "\n          "
+				},
+				{
+					"id": "extra_attributes",
+					"control": "hidden",
+					"label": "Extra attributes (optional)",
+					"esc": "attrs",
+					"default": ""
+				},
+				{
+					"id": "src",
+					"control": "media",
+					"label": "Choose Image",
+					"esc": "url",
+					"default": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_groups_sororities.jpg"
+				},
+				{
+					"id": "alt",
+					"control": "text",
+					"label": "Alt Text",
+					"esc": "attr",
+					"default": "A sorority chapter travelling together in South Africa"
+				},
+				{
+					"id": "loading",
+					"control": "hidden",
+					"label": "Loading",
+					"esc": "attr",
+					"default": "lazy"
+				},
+				{
+					"id": "decoding",
+					"control": "hidden",
+					"label": "Decoding",
+					"esc": "attr",
+					"default": "async"
+				},
+				{
+					"id": "name",
+					"control": "text",
+					"label": "Name",
+					"esc": "post",
+					"default": "Sororities &amp; Fraternities"
+				},
+				{
+					"id": "desc",
+					"control": "text",
+					"label": "Description",
+					"esc": "post",
+					"default": "Chapters and Divine Nine networks traveling as one."
+				}
+			],
+			"rows": [
+				{
+					"role": "listitem",
+					"notes": "\n          ",
+					"extra_attributes": "",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_groups_sororities.jpg",
+					"alt": "A sorority chapter travelling together in South Africa",
+					"loading": "lazy",
+					"decoding": "async",
+					"name": "Sororities &amp; Fraternities",
+					"desc": "Chapters and Divine Nine networks traveling as one."
+				},
+				{
+					"role": "listitem",
+					"notes": "\n          ",
+					"extra_attributes": "",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_groups_churches.jpg",
+					"alt": "A church or faith community on a fellowship journey",
+					"loading": "lazy",
+					"decoding": "async",
+					"name": "Churches &amp; Faith Communities",
+					"desc": "Fellowship journeys with depth, warmth, and meaning."
+				},
+				{
+					"role": "listitem",
+					"notes": "\n          ",
+					"extra_attributes": "",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_groups_alumni.jpg",
+					"alt": "An alumni or professional network travelling together",
+					"loading": "lazy",
+					"decoding": "async",
+					"name": "Alumni &amp; Professional Networks",
+					"desc": "HBCU alumni, associations, and member organizations."
+				},
+				{
+					"role": "listitem",
+					"notes": "\n          <!-- object-position pushed right: the family group sits right of\n               centre in the source, so the default centre crop cut off the\n               woman on the right edge. -->\n          ",
+					"extra_attributes": " style=\"object-position: 70% center;\"",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_groups_families.jpg",
+					"alt": "Families and friends travelling together",
+					"loading": "lazy",
+					"decoding": "async",
+					"name": "Families &amp; Friends",
+					"desc": "Milestone trips, reunions, and the circle you choose."
+				}
+			],
+			"loops": 1,
+			"selector": ".fg-wh-card",
+			"notice": "",
+			"portal": null
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_wh_c",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".fg-wh-c",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_wh_head",
+			"label": "Header",
+			"short_label": "Header",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".fg-wh-head",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_wh_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "Header",
+			"sample": "Travel With Us",
+			"selector": ".fg-wh-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_wh_ttl",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "Header",
+			"sample": "Travel as Meaningful as the Bond You Share",
+			"selector": ".fg-wh-ttl",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_wh_grid",
+			"label": "List",
+			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".fg-wh-grid",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"grid_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_wh_card",
+			"label": "Card",
+			"short_label": "Card",
+			"parent_label": "List",
+			"sample": "",
+			"selector": ".fg-wh-card",
+			"tag": "article",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_container",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": "article_fg_wh_card"
+		},
+		{
+			"id": "p_fg_wh_card_div_nth_of_type_1",
+			"label": "Card Container",
+			"short_label": "Container",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".fg-wh-card > div:nth-of-type(1)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_wh_card_div_nth_of_type_1_img_nth_of_type_1",
+			"label": "Image",
+			"short_label": "Image",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".fg-wh-card > div:nth-of-type(1) > img:nth-of-type(1)",
+			"tag": "img",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"media_fit",
+				"filters",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_wh_card_div_nth_of_type_2",
+			"label": "Content",
+			"short_label": "Content",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".fg-wh-card > div:nth-of-type(2)",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_wh_card_div_nth_of_type_2_h3_nth_of_type_1",
+			"label": "Heading",
+			"short_label": "Heading",
+			"parent_label": "Card",
+			"sample": "Sororities & Fraternities",
+			"selector": ".fg-wh-card > div:nth-of-type(2) > h3:nth-of-type(1)",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_fg_wh_card_div_nth_of_type_2_p_nth_of_type_1",
+			"label": "Text",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "Chapters and Divine Nine networks traveling as …",
+			"selector": ".fg-wh-card > div:nth-of-type(2) > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Who travels with us",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Travel With Us",
+			"esc": "post",
+			"group": "p_fg_wh_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "Travel as Meaningful as the Bond You Share",
+			"esc": "post",
+			"group": "p_fg_wh_ttl",
+			"sort": 0
+		}
+	]
+}

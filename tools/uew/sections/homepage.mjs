@@ -17,7 +17,8 @@
 export const category = {
 	slug: 'umoya-homepage',
 	title: 'Umoya - Homepage',
-	icon: 'eicon-home',
+	icon: 'eicon-single-page',
+	keywords: [ 'homepage', 'home' ],
 };
 
 export const sections = [
@@ -126,7 +127,7 @@ export const sections = [
 		name: 'umoya-home-speak-expert',
 		title: 'Home Speak With an Expert',
 		class_name: 'Home_Speak_Expert',
-		icon: 'eicon-chat',
+		icon: 'eicon-commenting-o',
 		description: 'Closing “We’d love to speak with you” band.',
 	},
 	{
@@ -140,5 +141,12 @@ export const sections = [
 		// The dialog moves itself to document.body on init, so re-running the
 		// script would leave a second copy behind rather than a fresh one.
 		script_requires_root: true,
+		spec: {
+			// ...and once it is in <body> it is outside the widget wrapper every
+			// style control is scoped to. Declaring it here gives each control a
+			// second selector branch that follows it; without this the popup's
+			// entire Style tab did nothing.
+			portals: [ { selector: '#umoya-form-popup', trigger: '[data-umoya-form-popup]' } ],
+		},
 	},
 ];

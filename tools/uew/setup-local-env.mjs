@@ -49,6 +49,19 @@ extension=fileinfo
 extension=intl
 extension=sodium
 
+; OPcache. Without it every request recompiles WordPress and Elementor from
+; source, and the checks -- hundreds of page loads through a single-threaded
+; server -- spend most of their time doing exactly that. The built-in server is
+; the CLI SAPI, hence enable_cli. revalidate_freq=0 re-checks file timestamps on
+; every request, so an edited plugin file is picked up immediately.
+zend_extension=opcache
+opcache.enable=1
+opcache.enable_cli=1
+opcache.memory_consumption=256
+opcache.max_accelerated_files=20000
+opcache.validate_timestamps=1
+opcache.revalidate_freq=0
+
 memory_limit = 512M
 max_execution_time = 300
 upload_max_filesize = 64M
@@ -115,6 +128,12 @@ define( 'SCRIPT_DEBUG', true );
 define( 'DISABLE_WP_CRON', true );
 define( 'WP_ENVIRONMENT_TYPE', 'local' );
 define( 'AUTOMATIC_UPDATER_DISABLED', true );
+
+// No outbound HTTP from PHP. The harness renders local pages; it has no use
+// for WordPress.org or Elementor's remote APIs, and on a single-threaded
+// server one of those calls blocks every other request until it times out --
+// the first admin page after a restart once took long enough to fail login.
+define( 'WP_HTTP_BLOCK_EXTERNAL', true );
 define( 'WP_AUTO_UPDATE_CORE', false );
 define( 'FS_METHOD', 'direct' );
 

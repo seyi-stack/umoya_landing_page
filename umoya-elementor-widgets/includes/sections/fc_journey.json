@@ -18,56 +18,98 @@
 	"keywords": [
 		"umoya",
 		"founders circle",
+		"founder",
 		"fc",
 		"journey"
 	],
+	"portals": [],
 	"tokens": [
 		{
 			"name": "cream",
 			"value": "#F5F0EB",
 			"kind": "color",
+			"selectors": [
+				"#fc-journey"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
 			"label": "Cream"
 		},
 		{
 			"name": "brown",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#fc-journey"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
 			"label": "Brown"
 		},
 		{
 			"name": "terra",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#fc-journey"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
 			"label": "Terra"
 		},
 		{
 			"name": "terra-dk",
 			"value": "#C06840",
 			"kind": "color",
+			"selectors": [
+				"#fc-journey"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
 			"label": "Terra Dk"
 		},
 		{
 			"name": "white",
 			"value": "#FFFFFF",
 			"kind": "color",
+			"selectors": [
+				"#fc-journey"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
 			"label": "White"
 		},
 		{
 			"name": "muted",
 			"value": "rgba(75,46,43,.66)",
 			"kind": "color",
+			"selectors": [
+				"#fc-journey"
+			],
+			"scoped": false,
+			"id": "uew_token_muted",
 			"label": "Muted"
 		},
 		{
 			"name": "line",
 			"value": "rgba(75,46,43,.16)",
 			"kind": "color",
+			"selectors": [
+				"#fc-journey"
+			],
+			"scoped": false,
+			"id": "uew_token_line",
 			"label": "Line"
 		},
 		{
 			"name": "ease",
 			"value": "cubic-bezier(.25,.46,.45,.94)",
 			"kind": "text",
+			"selectors": [
+				"#fc-journey"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
 			"label": "Ease"
 		}
 	],
@@ -169,7 +211,7 @@
 			"controls": [
 				{
 					"id": "role",
-					"control": "text",
+					"control": "hidden",
 					"label": "Role",
 					"esc": "attr",
 					"default": "listitem"
@@ -177,21 +219,21 @@
 				{
 					"id": "stat_n",
 					"control": "text",
-					"label": "Stat N",
+					"label": "Number",
 					"esc": "post",
 					"default": "10"
 				},
 				{
 					"id": "data_short",
 					"control": "text",
-					"label": "Short",
+					"label": "Short Label (phones)",
 					"esc": "attr",
 					"default": "Days"
 				},
 				{
 					"id": "stat_l",
 					"control": "text",
-					"label": "Stat L",
+					"label": "Label",
 					"esc": "post",
 					"default": "Days"
 				}
@@ -216,31 +258,62 @@
 					"stat_l": "Optional Extensions"
 				}
 			],
-			"selector": ".fc-jrn-stat"
+			"loops": 1,
+			"selector": ".fc-jrn-stat",
+			"notice": "",
+			"portal": null
 		},
 		{
 			"id": "rep_article_fc_jrn_tile",
 			"label": "Cards 1",
-			"item_label": "{{{ loc }}}",
+			"item_label": "{{{ tile_ttl }}}",
 			"controls": [
 				{
-					"id": "tile_img_markup",
-					"control": "textarea",
-					"label": "Tile Img markup (HTML)",
-					"esc": "raw",
-					"default": "\n            <!-- Soweto image — ZAV_6406, the one approved Eyethu shot -->\n            <img class=\"fc-jrn-pic\" src=\"https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6406.png\" alt=\"Eyethu Heritage Hall — Johannesburg &amp; Soweto history and culture\" loading=\"lazy\" />\n            <div class=\"fc-jrn-tag\">\n              <h3 class=\"fc-jrn-tile-ttl\">History &amp; Culture</h3>\n            </div>\n          "
+					"id": "notes",
+					"control": "hidden",
+					"label": "Notes",
+					"esc": "trivia",
+					"default": "\n            "
+				},
+				{
+					"id": "src",
+					"control": "media",
+					"label": "Choose Image",
+					"esc": "url",
+					"default": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6406.png"
+				},
+				{
+					"id": "alt",
+					"control": "text",
+					"label": "Alt Text",
+					"esc": "attr",
+					"default": "Eyethu Heritage Hall — Johannesburg &amp; Soweto history and culture"
+				},
+				{
+					"id": "loading",
+					"control": "hidden",
+					"label": "Loading",
+					"esc": "attr",
+					"default": "lazy"
+				},
+				{
+					"id": "tile_ttl",
+					"control": "text",
+					"label": "Title",
+					"esc": "post",
+					"default": "History &amp; Culture"
 				},
 				{
 					"id": "loc",
 					"control": "text",
-					"label": "Loc",
+					"label": "Location",
 					"esc": "post",
 					"default": "Johannesburg &amp; Soweto"
 				},
 				{
 					"id": "desc_markup",
 					"control": "textarea",
-					"label": "Desc markup (HTML)",
+					"label": "Description (HTML)",
 					"esc": "raw",
 					"default": "A warm welcome from <span class=\"fc-jrn-nm\">Lucia Motloung</span>, a CEO of black-owned wine company Luc Mo Wines, ride through the colorful streets of Soweto, where history and culture come to light before your eyes. Have lunch with <span class=\"fc-jrn-nm\">Antoinette Sithole</span>, sister of the late Hector Pieterson whose legacy in the anti-apartheid movement lives on."
 				},
@@ -249,60 +322,75 @@
 					"control": "hidden",
 					"label": "Separator markup",
 					"esc": "raw",
-					"default": "\n\n        <!-- Chapter II -->\n        "
+					"default": "\n        "
 				}
 			],
 			"rows": [
 				{
-					"tile_img_markup": "\n            <!-- Soweto image — ZAV_6406, the one approved Eyethu shot -->\n            <img class=\"fc-jrn-pic\" src=\"https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6406.png\" alt=\"Eyethu Heritage Hall — Johannesburg &amp; Soweto history and culture\" loading=\"lazy\" />\n            <div class=\"fc-jrn-tag\">\n              <h3 class=\"fc-jrn-tile-ttl\">History &amp; Culture</h3>\n            </div>\n          ",
+					"notes": "\n            <!-- Soweto image — ZAV_6406, the one approved Eyethu shot -->\n            ",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_ZAV_6406.png",
+					"alt": "Eyethu Heritage Hall — Johannesburg &amp; Soweto history and culture",
+					"loading": "lazy",
+					"tile_ttl": "History &amp; Culture",
 					"loc": "Johannesburg &amp; Soweto",
 					"desc_markup": "A warm welcome from <span class=\"fc-jrn-nm\">Lucia Motloung</span>, a CEO of black-owned wine company Luc Mo Wines, ride through the colorful streets of Soweto, where history and culture come to light before your eyes. Have lunch with <span class=\"fc-jrn-nm\">Antoinette Sithole</span>, sister of the late Hector Pieterson whose legacy in the anti-apartheid movement lives on.",
 					"_uew_sep": ""
 				},
 				{
-					"tile_img_markup": "\n            <img class=\"fc-jrn-pic\" src=\"https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img001238.jpeg\" alt=\"Safari game drives in the Sabi Sand\" loading=\"lazy\" />\n            <div class=\"fc-jrn-tag\">\n              <h3 class=\"fc-jrn-tile-ttl\">Safari Game Drives</h3>\n            </div>\n          ",
+					"notes": "\n            ",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img001238.jpeg",
+					"alt": "Safari game drives in the Sabi Sand",
+					"loading": "lazy",
+					"tile_ttl": "Safari Game Drives",
 					"loc": "The Sabi Sand",
 					"desc_markup": "There are few places on earth where you can watch lions, leopards, elephants, buffalo, and rhinos move freely through the wild. Days in the Sabi Sand follow the rhythm of the bush: early morning game drives as the light breaks, and golden-hour sundowners as the day slows down.",
 					"_uew_sep": "\n\n        <!-- Chapter II -->\n        "
 				},
 				{
-					"tile_img_markup": "\n            <img class=\"fc-jrn-pic\" src=\"https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1777576366.jpeg\" alt=\"Cape Town — where mountain meets ocean\" loading=\"lazy\" />\n            <div class=\"fc-jrn-tag\">\n              <h3 class=\"fc-jrn-tile-ttl\">The Cape</h3>\n            </div>\n          ",
+					"notes": "\n            ",
+					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1777576366.jpeg",
+					"alt": "Cape Town — where mountain meets ocean",
+					"loading": "lazy",
+					"tile_ttl": "The Cape",
 					"loc": "Cape Town",
 					"desc_markup": "Experience the city where mountain meets ocean: Robben Island with <span class=\"fc-jrn-nm\">Christo Brand</span>, the warder who once guarded Mandela, and a day on the Black-owned Winelands route with <span class=\"fc-jrn-nm\">Ntsiki Biyela</span>, the first Black woman winemaker in South Africa.",
 					"_uew_sep": "\n\n        <!-- Chapter III -->\n        "
 				}
 			],
-			"selector": ".fc-jrn-tile"
+			"loops": 1,
+			"selector": ".fc-jrn-tile",
+			"notice": "",
+			"portal": null
 		},
 		{
 			"id": "rep_article_fc_jrn_tile_2",
-			"label": "Cards",
+			"label": "Cards 2",
 			"item_label": "{{{ tile_ttl }}}",
 			"controls": [
 				{
-					"id": "note",
+					"id": "notes",
 					"control": "hidden",
-					"label": "Note",
-					"esc": "raw",
-					"default": " ★ SWAP: Victoria Falls image (TBD) — placeholder from Umoya CDN "
+					"label": "Notes",
+					"esc": "trivia",
+					"default": "\n              <!-- ★ SWAP: Victoria Falls image (TBD) — placeholder from Umoya CDN -->\n              "
 				},
 				{
 					"id": "src",
 					"control": "media",
-					"label": "Src",
+					"label": "Choose Image",
 					"esc": "url",
 					"default": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img233195226.jpeg"
 				},
 				{
 					"id": "alt",
 					"control": "text",
-					"label": "Alt",
+					"label": "Alt Text",
 					"esc": "attr",
 					"default": "Victoria Falls"
 				},
 				{
 					"id": "loading",
-					"control": "text",
+					"control": "hidden",
 					"label": "Loading",
 					"esc": "attr",
 					"default": "lazy"
@@ -310,28 +398,28 @@
 				{
 					"id": "tile_ttl",
 					"control": "text",
-					"label": "Tile Ttl",
+					"label": "Title",
 					"esc": "post",
 					"default": "A World Wonder"
 				},
 				{
 					"id": "loc",
 					"control": "text",
-					"label": "Loc",
+					"label": "Location",
 					"esc": "post",
 					"default": "Victoria Falls"
 				},
 				{
 					"id": "desc",
 					"control": "textarea",
-					"label": "Desc",
+					"label": "Description",
 					"esc": "post",
 					"default": "The journey extends north to Victoria Falls, one of the world's seven natural wonders straddling the border of Zambia and Zimbabwe. Feel the mist, hear the thunder, and experience the majesty of these incredible falls up-close. Enjoy dinner over the Zambezi river and be in awe as you dine over the fourth-largest river in Africa."
 				}
 			],
 			"rows": [
 				{
-					"note": " ★ SWAP: Victoria Falls image (TBD) — placeholder from Umoya CDN ",
+					"notes": "\n              <!-- ★ SWAP: Victoria Falls image (TBD) — placeholder from Umoya CDN -->\n              ",
 					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img233195226.jpeg",
 					"alt": "Victoria Falls",
 					"loading": "lazy",
@@ -340,7 +428,7 @@
 					"desc": "The journey extends north to Victoria Falls, one of the world's seven natural wonders straddling the border of Zambia and Zimbabwe. Feel the mist, hear the thunder, and experience the majesty of these incredible falls up-close. Enjoy dinner over the Zambezi river and be in awe as you dine over the fourth-largest river in Africa."
 				},
 				{
-					"note": " ★ SWAP: Chobe National Park image (TBD) — placeholder from Umoya CDN ",
+					"notes": "\n              <!-- ★ SWAP: Chobe National Park image (TBD) — placeholder from Umoya CDN -->\n              ",
 					"src": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img1949173199.jpeg",
 					"alt": "Chobe National Park, Botswana",
 					"loading": "lazy",
@@ -349,7 +437,10 @@
 					"desc": "Cross into Botswana and experience wilderness like never before. Drift down the Chobe River at golden hour on a boat cruise as elephants gather on the banks in numbers found almost nowhere else on earth. A rare ending that outdoes everything before it."
 				}
 			],
-			"selector": ".fc-jrn-tile"
+			"loops": 1,
+			"selector": ".fc-jrn-tile",
+			"notice": "",
+			"portal": null
 		}
 	],
 	"style_parts": [
@@ -375,6 +466,7 @@
 				"text_color",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -402,6 +494,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -429,6 +522,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -454,8 +548,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -483,6 +579,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": null
@@ -511,6 +608,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -539,6 +637,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -567,6 +666,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -592,8 +692,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -621,6 +723,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": "div_fc_jrn_stat"
@@ -648,6 +751,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -675,6 +779,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -703,6 +808,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -728,8 +834,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"grid_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -755,8 +863,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": "article_fc_jrn_tile"
@@ -784,6 +894,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -809,6 +920,7 @@
 				"filters",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -836,6 +948,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -864,6 +977,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -889,8 +1003,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -919,6 +1035,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -947,6 +1064,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -975,6 +1093,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1003,6 +1122,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1030,6 +1150,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1057,6 +1178,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1084,6 +1206,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1109,8 +1232,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1138,6 +1263,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1166,6 +1292,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1194,6 +1321,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1219,8 +1347,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"grid_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1246,8 +1376,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": true,
 			"absolute": false,
 			"repeater": "article_fc_jrn_tile_2"
@@ -1275,6 +1407,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1300,6 +1433,7 @@
 				"filters",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1327,6 +1461,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1355,6 +1490,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1380,8 +1516,10 @@
 				"typography",
 				"text_color",
 				"transition",
+				"flex_container",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1410,6 +1548,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -1438,6 +1577,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null

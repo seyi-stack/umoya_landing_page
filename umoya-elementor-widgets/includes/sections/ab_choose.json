@@ -1,0 +1,361 @@
+{
+	"key": "ab_choose",
+	"name": "umoya-ab-choose",
+	"title": "About How We Choose",
+	"description": "Centred statement on white: the honesty and ownership position.",
+	"icon": "eicon-text",
+	"category": "umoya-about",
+	"source": "about/section-05-how-we-choose.html",
+	"class_name": "About_Choose",
+	"widget_file": "widgets/class-ab-choose.php",
+	"root_selector": "#ab-choose",
+	"template": "templates/sections/ab_choose.php",
+	"style": {
+		"handle": "uew-umoya-ab-choose",
+		"file": "assets/css/sections/ab_choose.css"
+	},
+	"script": {
+		"handle": "uew-umoya-ab-choose",
+		"file": "assets/js/sections/ab_choose.js"
+	},
+	"keywords": [
+		"umoya",
+		"about",
+		"about us",
+		"story",
+		"how",
+		"we",
+		"choose"
+	],
+	"portals": [],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#ab-choose"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#ab-choose"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#ab-choose"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"selectors": [
+				"#ab-choose"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
+			"label": "White"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.68)",
+			"kind": "color",
+			"selectors": [
+				"#ab-choose"
+			],
+			"scoped": false,
+			"id": "uew_token_muted",
+			"label": "Muted"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"selectors": [
+				"#ab-choose"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_section",
+			"label": "Section",
+			"sample": "",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "section_aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"default": "How we choose",
+					"esc": "attr",
+					"group": "p_section",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Section"
+				}
+			]
+		},
+		{
+			"id": "content_p_ab_ch_eye",
+			"label": "Content",
+			"sample": "How We Choose",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "How We Choose",
+					"esc": "post",
+					"group": "p_ab_ch_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "The country's own people, at every turn.",
+					"esc": "post",
+					"group": "p_ab_ch_ttl",
+					"sort": 0,
+					"part_label": "Title"
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_p_ab_ch_p",
+			"label": "Texts",
+			"item_label": "{{{ p }}}",
+			"controls": [
+				{
+					"id": "p",
+					"control": "textarea",
+					"label": "Paragraph",
+					"esc": "post",
+					"default": "Wherever a choice exists, we place your journey in the hands of the people the country belongs to. You sleep at MalaMala because its land was won back through the courts by the community that owns it today. Your first dinner is poured by a winemaker whose label was built with the Ndebele Kingdom. Weddings happen at Seven Sisters, a Black-owned estate in the Winelands. And one afternoon on safari, you leave the reserve to spend time with the Shangani, the people of that corner of Mpumalanga, in their homes and at their market."
+				}
+			],
+			"rows": [
+				{
+					"p": "Wherever a choice exists, we place your journey in the hands of the people the country belongs to. You sleep at MalaMala because its land was won back through the courts by the community that owns it today. Your first dinner is poured by a winemaker whose label was built with the Ndebele Kingdom. Weddings happen at Seven Sisters, a Black-owned estate in the Winelands. And one afternoon on safari, you leave the reserve to spend time with the Shangani, the people of that corner of Mpumalanga, in their homes and at their market."
+				},
+				{
+					"p": "Not every fine hotel in South Africa is African-owned, and we do not pretend otherwise. But at every point where the choice is ours, we choose the place, the host, or the maker with a community behind it, so the country you meet is the one its people live in."
+				}
+			],
+			"loops": 1,
+			"selector": ".ab-ch-p",
+			"notice": "",
+			"portal": null
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ch_rv",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ab-ch-rv",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ch_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "How We Choose",
+			"selector": ".ab-ch-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ch_ttl",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "",
+			"sample": "The country's own people, at every turn.",
+			"selector": ".ab-ch-ttl",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ab_ch_p",
+			"label": "Text",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "Wherever a choice exists, we place your journey…",
+			"selector": ".ab-ch-p",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": "p_ab_ch_p"
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "How we choose",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "How We Choose",
+			"esc": "post",
+			"group": "p_ab_ch_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "The country's own people, at every turn.",
+			"esc": "post",
+			"group": "p_ab_ch_ttl",
+			"sort": 0
+		}
+	]
+}

@@ -44,6 +44,11 @@ ARIA on carousels), and four breakpoints (desktop · 1024 · 768 · 420).
 > **section-08-form-popup.html must be on the page** or that button does
 > nothing. Its lead attribution is `signature_journey_popup`, distinct from
 > the homepage's `homepage_popup`.
+>
+> As the *SJ Inquiry Popup* widget, its Style tab did nothing until plugin
+> 4.0.0: the dialog moves itself to `<body>`, out from under the widget
+> wrapper every style rule was scoped to. Fixed for both popups and the
+> footer's opt-out dialog — see CLAUDE.md Phase 26.
 
 > **Stat bar reordered (client request).** Section 02 holds TWO bands. The
 > 10 Days / 3 Chapters / 2 Extensions row used to come FIRST, directly under
@@ -144,8 +149,13 @@ Image shorthand (`NAME.ext`) expands per the CLAUDE.md convention to
 
 ## Open items / to confirm
 
-- **Brochure link:** hero + closing-CTA "Download the Brochure" buttons are
-  `href="#"` — point at the brochure PDF when ready.
+- ✅ **Brochure link done (2026-09-22).** The hero's "Download the Brochure"
+  button points at `/umoya_travel_brochure.pdf`, opening in a new tab
+  (`target="_blank" rel="noopener"`, matching the footer's PDF convention).
+  The PDF went live between 2026-09-15 (404) and 2026-09-22 (200).
+  ⚠ It is **25.7 MB** — heavy for this origin; see CLAUDE.md.
+  The closing-CTA copy of this button is moot: `section-07-cta.html` was
+  removed from the page and is kept for history only.
 - **Enquiry link:** "Speak With a Travel Expert" buttons are `href="#sj-cta"`
   (closing section) / `href="#"` on the final CTA — wire to the real
   contact/enquiry destination.

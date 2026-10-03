@@ -1,0 +1,341 @@
+{
+	"key": "ct_hero",
+	"name": "umoya-ct-hero",
+	"title": "Contact Hero",
+	"description": "Short centred header: eyebrow, \"Talk to Us\", rule and lead.",
+	"icon": "eicon-heading",
+	"category": "umoya-contact",
+	"source": "contact/section-01-hero.html",
+	"class_name": "Contact_Hero",
+	"widget_file": "widgets/class-ct-hero.php",
+	"root_selector": "#umoya-contact-hero",
+	"template": "templates/sections/ct_hero.php",
+	"style": {
+		"handle": "uew-umoya-ct-hero",
+		"file": "assets/css/sections/ct_hero.css"
+	},
+	"script": {
+		"handle": "uew-umoya-ct-hero",
+		"file": "assets/js/sections/ct_hero.js"
+	},
+	"keywords": [
+		"umoya",
+		"contact",
+		"enquiry",
+		"enquiries",
+		"hero"
+	],
+	"portals": [],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#umoya-contact-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#umoya-contact-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#umoya-contact-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.72)",
+			"kind": "color",
+			"selectors": [
+				"#umoya-contact-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_muted",
+			"label": "Muted"
+		},
+		{
+			"name": "ease",
+			"value": "cubic-bezier(.25,.46,.45,.94)",
+			"kind": "text",
+			"selectors": [
+				"#umoya-contact-hero"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
+			"label": "Ease"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_ct_hero_eye",
+			"label": "Content",
+			"sample": "Get in Touch",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Get in Touch",
+					"esc": "post",
+					"group": "p_ct_hero_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "Talk to Us",
+					"esc": "post",
+					"group": "p_ct_hero_ttl",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "text_text",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "Whether you are planning a journey, working with clients as a travel advisor, or writing about what we do, this is where the conversation starts. We reply within one business day.",
+					"esc": "post",
+					"group": "p_ct_hero_lead",
+					"sort": 0,
+					"part_label": "Text"
+				}
+			],
+			"merged": true
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ct_hero_c",
+			"label": "Container",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ct-hero-c",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ct_hero_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "",
+			"sample": "Get in Touch",
+			"selector": ".ct-hero-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ct_hero_ttl",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "",
+			"sample": "Talk to Us",
+			"selector": ".ct-hero-ttl",
+			"tag": "h1",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ct_hero_rule",
+			"label": "Divider",
+			"short_label": "Divider",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".ct-hero-rule",
+			"tag": "hr",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_ct_hero_lead",
+			"label": "Text",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "Whether you are planning a journey, working wit…",
+			"selector": ".ct-hero-lead",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Get in Touch",
+			"esc": "post",
+			"group": "p_ct_hero_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "Talk to Us",
+			"esc": "post",
+			"group": "p_ct_hero_ttl",
+			"sort": 0
+		},
+		{
+			"id": "text_text",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "Whether you are planning a journey, working with clients as a travel advisor, or writing about what we do, this is where the conversation starts. We reply within one business day.",
+			"esc": "post",
+			"group": "p_ct_hero_lead",
+			"sort": 0
+		}
+	]
+}

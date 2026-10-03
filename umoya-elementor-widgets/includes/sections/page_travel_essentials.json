@@ -1,0 +1,1777 @@
+{
+	"key": "page_travel_essentials",
+	"name": "umoya-page-travel-essentials",
+	"title": "Travel Essentials Page",
+	"description": "The /travel-essentials/ page: visas, entry and insurance, consolidated.",
+	"icon": "eicon-document-file",
+	"category": "umoya-site",
+	"source": "shared/page-travel-essentials.html",
+	"class_name": "Page_Travel_Essentials",
+	"widget_file": "widgets/class-page-travel-essentials.php",
+	"root_selector": "#umoya-travel-essentials",
+	"template": "templates/sections/page_travel_essentials.php",
+	"style": {
+		"handle": "uew-umoya-page-travel-essentials",
+		"file": "assets/css/sections/page_travel_essentials.css"
+	},
+	"script": null,
+	"keywords": [
+		"umoya",
+		"site",
+		"global",
+		"shared",
+		"travel",
+		"essentials",
+		"page"
+	],
+	"portals": [],
+	"tokens": [
+		{
+			"name": "cream",
+			"value": "#F5F0EB",
+			"kind": "color",
+			"selectors": [
+				"#umoya-travel-essentials"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
+			"label": "Cream"
+		},
+		{
+			"name": "white",
+			"value": "#FFFFFF",
+			"kind": "color",
+			"selectors": [
+				"#umoya-travel-essentials"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
+			"label": "White"
+		},
+		{
+			"name": "brown",
+			"value": "#4B2E2B",
+			"kind": "color",
+			"selectors": [
+				"#umoya-travel-essentials"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
+			"label": "Brown"
+		},
+		{
+			"name": "terra",
+			"value": "#D97E53",
+			"kind": "color",
+			"selectors": [
+				"#umoya-travel-essentials"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
+			"label": "Terra"
+		},
+		{
+			"name": "terra-dk",
+			"value": "#C06840",
+			"kind": "color",
+			"selectors": [
+				"#umoya-travel-essentials"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
+			"label": "Terra Dk"
+		},
+		{
+			"name": "muted",
+			"value": "rgba(75,46,43,.76)",
+			"kind": "color",
+			"selectors": [
+				"#umoya-travel-essentials"
+			],
+			"scoped": false,
+			"id": "uew_token_muted",
+			"label": "Muted"
+		},
+		{
+			"name": "line",
+			"value": "rgba(75,46,43,.14)",
+			"kind": "color",
+			"selectors": [
+				"#umoya-travel-essentials"
+			],
+			"scoped": false,
+			"id": "uew_token_line",
+			"label": "Line"
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_p_te_eye",
+			"label": "Header",
+			"sample": "Before You Travel",
+			"region_label": "Header",
+			"controls": [
+				{
+					"id": "eyebrow_text",
+					"control": "text",
+					"label": "Eyebrow",
+					"description": "",
+					"default": "Before You Travel",
+					"esc": "post",
+					"group": "p_te_eye",
+					"sort": 0,
+					"part_label": "Eyebrow"
+				},
+				{
+					"id": "title_text",
+					"control": "text",
+					"label": "Title",
+					"description": "",
+					"default": "Travel Essentials",
+					"esc": "post",
+					"group": "p_te_ttl",
+					"sort": 0,
+					"part_label": "Title"
+				},
+				{
+					"id": "subtitle_text",
+					"control": "text",
+					"label": "Subtitle",
+					"description": "",
+					"default": "Passports, visas, health, and insurance for your Umoya journey",
+					"esc": "post",
+					"group": "p_te_sub",
+					"sort": 0,
+					"part_label": "Subtitle"
+				},
+				{
+					"id": "text_text",
+					"control": "text",
+					"label": "Text",
+					"description": "",
+					"default": "Verified August 2026",
+					"esc": "post",
+					"group": "p_te_stamp",
+					"sort": 0,
+					"part_label": "Header Text"
+				},
+				{
+					"id": "text_text_2",
+					"control": "textarea",
+					"label": "Text 1",
+					"description": "",
+					"default": "Everything on this page exists so that the practical side of your journey is settled long before you fly. When you confirm a booking, we review every requirement below against your passport, your routing, and your travel dates, and we tell you exactly what applies to you. Requirements do change, so treat this page as reliable guidance and our pre-departure confirmation as final.",
+					"esc": "post",
+					"group": "p_te_lead",
+					"sort": 0,
+					"part_label": "Text 1"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_te_sec_h2_nth_of_type_1",
+			"label": "Content 1",
+			"sample": "Passports",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "heading_text",
+					"control": "text",
+					"label": "Heading 1",
+					"description": "",
+					"default": "Passports",
+					"esc": "post",
+					"group": "p_te_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_2",
+					"control": "text",
+					"label": "Heading 2",
+					"description": "",
+					"default": "Visas and entry",
+					"esc": "post",
+					"group": "p_te_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_7",
+					"control": "text",
+					"label": "Heading 3",
+					"description": "",
+					"default": "Travelling with children",
+					"esc": "post",
+					"group": "p_te_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_8",
+					"control": "text",
+					"label": "Heading 4",
+					"description": "",
+					"default": "Health",
+					"esc": "post",
+					"group": "p_te_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "heading_text_9",
+					"control": "text",
+					"label": "Heading 5",
+					"description": "",
+					"default": "Travel insurance",
+					"esc": "post",
+					"group": "p_te_sec_h2_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 1"
+				},
+				{
+					"id": "text_text_3",
+					"control": "textarea",
+					"label": "Text",
+					"description": "",
+					"default": "Your passport should be valid for at least six months beyond your return date and should have at least four completely blank visa pages if your journey includes the Victoria Falls and Chobe extension, or two blank pages for the South Africa journey alone. Southern African border posts take these rules seriously, and airlines check them before you board. Botswana does not accept temporary or emergency passports. If your passport is close to renewal, renew it before you book flights.",
+					"esc": "post",
+					"group": "p_te_sec_p_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Text 2"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_te_sec_h3_nth_of_type_1",
+			"label": "Heading 2",
+			"sample": "South Africa",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "heading_text_3",
+					"control": "text",
+					"label": "Heading 1",
+					"description": "",
+					"default": "South Africa",
+					"esc": "post",
+					"group": "p_te_sec_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 2"
+				},
+				{
+					"id": "heading_text_10",
+					"control": "text",
+					"label": "Heading 2",
+					"description": "",
+					"default": "What your policy should cover",
+					"esc": "post",
+					"group": "p_te_sec_h3_nth_of_type_1",
+					"sort": 0,
+					"part_label": "Heading 2"
+				}
+			]
+		},
+		{
+			"id": "content_p_te_sec_h3_nth_of_type_2",
+			"label": "Heading 3",
+			"sample": "Zimbabwe, for the Victoria Falls extension",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "heading_text_4",
+					"control": "text",
+					"label": "Heading 1",
+					"description": "",
+					"default": "Zimbabwe, for the Victoria Falls extension",
+					"esc": "post",
+					"group": "p_te_sec_h3_nth_of_type_2",
+					"sort": 0,
+					"part_label": "Heading 3"
+				},
+				{
+					"id": "heading_text_11",
+					"control": "text",
+					"label": "Heading 2",
+					"description": "",
+					"default": "Buy your policy at the time of booking",
+					"esc": "post",
+					"group": "p_te_sec_h3_nth_of_type_2",
+					"sort": 0,
+					"part_label": "Heading 3"
+				}
+			]
+		},
+		{
+			"id": "content_p_te_sec_p_nth_of_type_3",
+			"label": "Text 3",
+			"sample": "Most guests, including United States, United Ki…",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "text_text_4",
+					"control": "textarea",
+					"label": "Text 1",
+					"description": "",
+					"default": "Most guests, including United States, United Kingdom, Canadian, and European Union passport holders, obtain a Zimbabwe visa on arrival or online in advance through Zimbabwe's official eVisa portal. For US passports the single-entry visa is around USD 30 and the double-entry around USD 55. If your routing takes you into Botswana and back through Zimbabwe, you need double entry, and we confirm the right visa for your exact itinerary when you book. We recommend the eVisa in advance so that you step off the plane at Victoria Falls with everything settled.",
+					"esc": "post",
+					"group": "p_te_sec_p_nth_of_type_3",
+					"sort": 0,
+					"part_label": "Text 3"
+				},
+				{
+					"id": "text_text_7",
+					"control": "text",
+					"label": "Text 2",
+					"description": "",
+					"default": "We ask that every guest hold a policy covering, at a minimum, the following:",
+					"esc": "post",
+					"group": "p_te_sec_p_nth_of_type_3",
+					"sort": 0,
+					"part_label": "Text 3"
+				}
+			]
+		},
+		{
+			"id": "content_p_te_sec_h3_nth_of_type_3",
+			"label": "Heading 4",
+			"sample": "Botswana, for the Chobe extension",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "heading_text_5",
+					"control": "text",
+					"label": "Heading 1",
+					"description": "",
+					"default": "Botswana, for the Chobe extension",
+					"esc": "post",
+					"group": "p_te_sec_h3_nth_of_type_3",
+					"sort": 0,
+					"part_label": "Heading 4"
+				},
+				{
+					"id": "heading_text_12",
+					"control": "text",
+					"label": "Heading 2",
+					"description": "",
+					"default": "Choosing a provider",
+					"esc": "post",
+					"group": "p_te_sec_h3_nth_of_type_3",
+					"sort": 0,
+					"part_label": "Heading 4"
+				}
+			]
+		},
+		{
+			"id": "content_p_te_sec_p_nth_of_type_4",
+			"label": "Text 4",
+			"sample": "United States, United Kingdom, Canadian, and mo…",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "text_text_5",
+					"control": "textarea",
+					"label": "Text 1",
+					"description": "",
+					"default": "United States, United Kingdom, Canadian, and most European Union passport holders enter Botswana without a visa for up to 90 days. Botswana asks families travelling with children under 18 to carry a certified copy of each child's birth certificate, which we cover in the section on travelling with children below.",
+					"esc": "post",
+					"group": "p_te_sec_p_nth_of_type_4",
+					"sort": 0,
+					"part_label": "Text 4"
+				},
+				{
+					"id": "text_text_8",
+					"control": "textarea",
+					"label": "Text 2",
+					"description": "",
+					"default": "If your journey includes the extension, confirm that the geographic scope of your policy includes Zimbabwe, Botswana, and Namibia, not South Africa alone.",
+					"esc": "post",
+					"group": "p_te_sec_p_nth_of_type_4",
+					"sort": 0,
+					"part_label": "Text 4"
+				}
+			]
+		},
+		{
+			"id": "content_p_te_sec_h3_nth_of_type_4",
+			"label": "Heading 5",
+			"sample": "A note for river boat guests: you will also ent…",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "heading_text_6",
+					"control": "text",
+					"label": "Heading 1",
+					"description": "",
+					"default": "A note for river boat guests: you will also enter Namibia",
+					"esc": "post",
+					"group": "p_te_sec_h3_nth_of_type_4",
+					"sort": 0,
+					"part_label": "Heading 5"
+				},
+				{
+					"id": "heading_text_13",
+					"control": "text",
+					"label": "Heading 2",
+					"description": "",
+					"default": "What we will ask you for before departure",
+					"esc": "post",
+					"group": "p_te_sec_h3_nth_of_type_4",
+					"sort": 0,
+					"part_label": "Heading 5"
+				}
+			]
+		},
+		{
+			"id": "content_p_te_sec_p_nth_of_type_5",
+			"label": "Content 2",
+			"sample": "The Zambezi Queen and Chobe Princess moor on th…",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "text_text_6",
+					"control": "textarea",
+					"label": "Text 1",
+					"description": "",
+					"default": "The Zambezi Queen and Chobe Princess moor on the Namibian side of the Chobe River. Boarding involves stamping out of Botswana at the Kasane Immigration Office and into Namibia at Impalila Island, with the boat's team guiding you through both, a process of roughly 45 minutes to an hour. The immigration offices close at 16h30, which is why our itineraries deliver you to Kasane in good time. Namibia has recently introduced an arrival visa fee for a number of nationalities, including United States and United Kingdom passports, currently around USD 90 paid on entry. We confirm the current requirement and fee for your passport before you travel, and the crossing itself, by small boat across the river with elephants often in view, tends to become one of the stories guests tell when they get home.",
+					"esc": "post",
+					"group": "p_te_sec_p_nth_of_type_5",
+					"sort": 0,
+					"part_label": "Text 5"
+				},
+				{
+					"id": "text_text_9",
+					"control": "textarea",
+					"label": "Text 2",
+					"description": "",
+					"default": "The single most common mistake travellers make is buying insurance close to the departure date. Cancellation cover only takes effect once the policy is purchased. If you book a journey in March for travel in November, and a circumstance arises in June that requires you to cancel, a policy purchased in October will not help you. We strongly recommend that you take out your policy within a few days of confirming your booking. Some policies also offer cancel-for-any-reason cover at additional cost, which is worth considering for premium journeys where the financial exposure is meaningful and your reasons for needing to cancel may not fit a tidy category.",
+					"esc": "post",
+					"group": "p_te_sec_p_nth_of_type_5",
+					"sort": 0,
+					"part_label": "Text 5"
+				},
+				{
+					"id": "text_text_10",
+					"control": "textarea",
+					"label": "Text 6",
+					"description": "",
+					"default": "Insurance is regulated in each country, and the best provider for you will depend on where you live. Choose a policy written for international travel from your country of residence, not one offered in-flight or at the airport. Read the exclusions carefully: pre-existing medical conditions, certain activities including some safari activities, and travel against your government's advisories may be excluded by default. Confirm that South Africa, and for extension guests Zimbabwe, Botswana, and Namibia, fall inside the geographic scope of the policy. Keep a copy of your policy and the 24-hour emergency assistance number with you during your journey, and share them with your travelling companion or a family member at home.",
+					"esc": "post",
+					"group": "p_te_sec_p_nth_of_type_6",
+					"sort": 0,
+					"part_label": "Text 6"
+				},
+				{
+					"id": "text_text_11",
+					"control": "textarea",
+					"label": "Text 7",
+					"description": "",
+					"default": "Before your departure date, we will ask you to confirm the name of your insurance provider, your policy number, and the 24-hour emergency assistance number issued by your insurer. We do not ask for the full policy document. We hold these details solely so that we, or our in-country team, can support you if you need to make a claim while you are travelling with us.",
+					"esc": "post",
+					"group": "p_te_sec_p_nth_of_type_7",
+					"sort": 0,
+					"part_label": "Text 7"
+				},
+				{
+					"id": "heading_text_14",
+					"control": "text",
+					"label": "Heading",
+					"description": "",
+					"default": "Questions",
+					"esc": "post",
+					"group": "p_te_contact_te_h2",
+					"sort": 0,
+					"part_label": "Heading 6"
+				},
+				{
+					"id": "text_text_12",
+					"control": "textarea",
+					"label": "Text 8",
+					"description": "",
+					"default": "If you are unsure whether a policy meets our minimum requirements, whether a visa rule applies to your passport, or what your children need to carry, write to us. We are not immigration consultants or insurance brokers and cannot act as either, but we review every guest's requirements against their confirmed itinerary as part of the journey, and we would rather answer a question twice than have you wonder at a border.",
+					"esc": "post",
+					"group": "p_te_contact_te_p",
+					"sort": 0,
+					"part_label": "Text 8"
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_te_mail",
+			"label": "Link",
+			"sample": "info@umoyaafrikatours.co.za",
+			"region_label": "",
+			"controls": [
+				{
+					"id": "link_text",
+					"control": "text",
+					"label": "Link 1",
+					"description": "",
+					"default": "info@umoyaafrikatours.co.za",
+					"esc": "post",
+					"group": "p_te_mail",
+					"sort": 0,
+					"part_label": "Link"
+				},
+				{
+					"id": "link_href",
+					"control": "url",
+					"label": "Link 2",
+					"default": {
+						"url": "mailto:info@umoyaafrikatours.co.za"
+					},
+					"esc": "url",
+					"group": "p_te_mail",
+					"tab": "content",
+					"sort": 1,
+					"part_label": "Link"
+				}
+			]
+		}
+	],
+	"integration_controls": [],
+	"form_controls": [],
+	"behaviour_controls": [],
+	"inline_style_controls": [],
+	"media_controls": [],
+	"repeaters": [
+		{
+			"id": "rep_p_te_p",
+			"label": "Umoya Travel Essentials Texts 1",
+			"item_label": "{{{ te_p }}}",
+			"controls": [
+				{
+					"id": "te_p",
+					"control": "textarea",
+					"label": "Paragraph",
+					"esc": "post",
+					"default": "Travellers on United States, United Kingdom, Canadian, and most European Union passports do not need a visa for South Africa. You receive a visitor's permit on arrival, valid for up to 90 days, at no cost. You may be asked to show a return ticket and proof of accommodation, both of which are covered by the travel documents we send you."
+				}
+			],
+			"rows": [
+				{
+					"te_p": "Travellers on United States, United Kingdom, Canadian, and most European Union passports do not need a visa for South Africa. You receive a visitor's permit on arrival, valid for up to 90 days, at no cost. You may be asked to show a return ticket and proof of accommodation, both of which are covered by the travel documents we send you."
+				},
+				{
+					"te_p": "South Africa is phasing in an Electronic Travel Authorisation, an online pre-clearance similar to the US ESTA. At the time of writing it applies to a limited set of nationalities arriving at Johannesburg and Cape Town airports, and carries a R500 fee. The system is expanding, and if it comes to apply to your passport, we will tell you at booking and walk you through the application before you travel."
+				}
+			],
+			"loops": 1,
+			"selector": ".te-p",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_p_te_p_2",
+			"label": "Umoya Travel Essentials Texts 2",
+			"item_label": "{{{ te_p }}}",
+			"controls": [
+				{
+					"id": "te_p",
+					"control": "textarea",
+					"label": "Paragraph",
+					"esc": "post",
+					"default": "South Africa simplified its rules in November 2019: foreign children under 18 travelling with their parents need only their own valid passports to enter and leave South Africa. Unaccompanied minors, and children travelling with one parent or with adults who are not their parents, need additional documents including parental consent affidavits."
+				}
+			],
+			"rows": [
+				{
+					"te_p": "South Africa simplified its rules in November 2019: foreign children under 18 travelling with their parents need only their own valid passports to enter and leave South Africa. Unaccompanied minors, and children travelling with one parent or with adults who are not their parents, need additional documents including parental consent affidavits."
+				},
+				{
+					"te_p": "The extension countries are stricter than South Africa. Botswana and Namibia expect a certified copy of each child's full birth certificate showing both parents' details, and consent documentation whenever a child travels without both parents. Our advice to every family, on every routing, is simple: carry a certified copy of each child's birth certificate, and if a child is travelling without both parents, carry a notarised consent letter from the absent parent along with a copy of that parent's passport. It is paperwork you will most likely never be asked for, and precisely the paperwork you do not want to be missing at a river border post."
+				}
+			],
+			"loops": 1,
+			"selector": ".te-p",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_p_te_p_3",
+			"label": "Umoya Travel Essentials Texts 3",
+			"item_label": "{{{ te_p }}}",
+			"controls": [
+				{
+					"id": "te_p",
+					"control": "textarea",
+					"label": "Paragraph",
+					"esc": "post",
+					"default": "No vaccinations are required for South Africa, Zimbabwe, Botswana, or Namibia when you are arriving from the United States, the United Kingdom, or Europe. A yellow fever certificate is required only if you arrive from or transit through a country with yellow fever risk, which does not apply to normal routings from North America or Europe."
+				}
+			],
+			"rows": [
+				{
+					"te_p": "No vaccinations are required for South Africa, Zimbabwe, Botswana, or Namibia when you are arriving from the United States, the United Kingdom, or Europe. A yellow fever certificate is required only if you arrive from or transit through a country with yellow fever risk, which does not apply to normal routings from North America or Europe."
+				},
+				{
+					"te_p": "Johannesburg and Cape Town are malaria free. The Sabi Sand is a low-risk malaria area, with the risk seasonal and highest in the wetter months, and Victoria Falls and Chobe are malaria areas. We recommend a conversation with your doctor or a travel clinic four to six weeks before departure about whether prophylaxis makes sense for your itinerary, your dates, and your health profile. Practical measures matter as much as medicine: repellent at dusk, long sleeves in the evening, and the air-conditioned suites and screened decks of the properties we use."
+				},
+				{
+					"te_p": "Tap water is safe to drink in South African cities, bottled water is provided throughout your journey, and every property on our itineraries has access to excellent private medical care. Your dedicated concierge carries the details."
+				}
+			],
+			"loops": 1,
+			"selector": ".te-p",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_p_te_p_4",
+			"label": "Umoya Travel Essentials Texts 4",
+			"item_label": "",
+			"controls": [
+				{
+					"id": "te_p_markup",
+					"control": "textarea",
+					"label": "Paragraph (HTML)",
+					"esc": "raw",
+					"default": "Comprehensive travel insurance is a requirement for every guest on every Umoya journey. The requirement exists for your protection, not ours. South Africa is far from most of our guests' home countries, the journey spans three provinces, the extensions cross international borders, and the value of a confirmed booking is meaningful. A good policy turns the small risks of international travel, a delayed flight, a forgotten medication, a missed connection, a family emergency at home, into administrative inconveniences rather than financial losses."
+				}
+			],
+			"rows": [
+				{
+					"te_p_markup": "Comprehensive travel insurance is a requirement for every guest on every Umoya journey. The requirement exists for your protection, not ours. South Africa is far from most of our guests' home countries, the journey spans three provinces, the extensions cross international borders, and the value of a confirmed booking is meaningful. A good policy turns the small risks of international travel, a delayed flight, a forgotten medication, a missed connection, a family emergency at home, into administrative inconveniences rather than financial losses."
+				},
+				{
+					"te_p_markup": "Our cancellation policy, set out in our <a href=\"https://umoyaafrikatours.co.za/terms-and-conditions/\">Booking Terms and Conditions</a>, is structured around the cancellation liabilities our suppliers hold us to. Insurance is what protects your investment in the gap between our policy and the circumstances that may arise outside it."
+				}
+			],
+			"loops": 1,
+			"selector": ".te-p",
+			"notice": "",
+			"portal": null
+		},
+		{
+			"id": "rep_li_te_li",
+			"label": "Items",
+			"item_label": "{{{ te_li }}}",
+			"controls": [
+				{
+					"id": "te_li",
+					"control": "textarea",
+					"label": "Li",
+					"esc": "post",
+					"default": "medical expenses overseas, including hospitalisation, evacuation, and repatriation, with a minimum cover level of USD 100,000;"
+				}
+			],
+			"rows": [
+				{
+					"te_li": "medical expenses overseas, including hospitalisation, evacuation, and repatriation, with a minimum cover level of USD 100,000;"
+				},
+				{
+					"te_li": "trip cancellation and curtailment, covering the reasons most likely to affect you, including illness, injury, bereavement, and where relevant work or family obligations;"
+				},
+				{
+					"te_li": "personal belongings and baggage, including delay, loss, and theft, with per-item limits adequate for cameras, laptops, and jewellery;"
+				},
+				{
+					"te_li": "travel delay and missed connection cover, which matters on long-haul itineraries with internal flights;"
+				},
+				{
+					"te_li": "and personal liability cover."
+				}
+			],
+			"loops": 1,
+			"selector": ".te-li",
+			"notice": "",
+			"portal": null
+		}
+	],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "section",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_c",
+			"label": "Container 1",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".te-c",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_header",
+			"label": "Header",
+			"short_label": "Header",
+			"parent_label": "",
+			"sample": "",
+			"selector": "header",
+			"tag": "header",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_eye",
+			"label": "Eyebrow",
+			"short_label": "Eyebrow",
+			"parent_label": "Header",
+			"sample": "Before You Travel",
+			"selector": ".te-eye",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_ttl",
+			"label": "Title",
+			"short_label": "Title",
+			"parent_label": "Header",
+			"sample": "Travel Essentials",
+			"selector": ".te-ttl",
+			"tag": "h1",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_sub",
+			"label": "Subtitle",
+			"short_label": "Subtitle",
+			"parent_label": "Header",
+			"sample": "Passports, visas, health, and insurance for you…",
+			"selector": ".te-sub",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_rule",
+			"label": "Divider",
+			"short_label": "Divider",
+			"parent_label": "Header",
+			"sample": "",
+			"selector": ".te-rule",
+			"tag": "hr",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_stamp",
+			"label": "Header Text",
+			"short_label": "Text",
+			"parent_label": "Header",
+			"sample": "Verified August 2026",
+			"selector": ".te-stamp",
+			"tag": "span",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_lead",
+			"label": "Text 1",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "Everything on this page exists so that the prac…",
+			"selector": ".te-lead",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_sec",
+			"label": "Container 2",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".te-sec",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_sec_h2_nth_of_type_1",
+			"label": "Heading 1",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "Passports",
+			"selector": ".te-sec > h2:nth-of-type(1)",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_sec_p_nth_of_type_1",
+			"label": "Text 2",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "Your passport should be valid for at least six …",
+			"selector": ".te-sec > p:nth-of-type(1)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_sec_h3_nth_of_type_1",
+			"label": "Heading 2",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "South Africa",
+			"selector": ".te-sec > h3:nth-of-type(1)",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_sec_h3_nth_of_type_2",
+			"label": "Heading 3",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "Zimbabwe, for the Victoria Falls extension",
+			"selector": ".te-sec > h3:nth-of-type(2)",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_sec_p_nth_of_type_3",
+			"label": "Text 3",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "Most guests, including United States, United Ki…",
+			"selector": ".te-sec > p:nth-of-type(3)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_sec_h3_nth_of_type_3",
+			"label": "Heading 4",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "Botswana, for the Chobe extension",
+			"selector": ".te-sec > h3:nth-of-type(3)",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_sec_p_nth_of_type_4",
+			"label": "Text 4",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "United States, United Kingdom, Canadian, and mo…",
+			"selector": ".te-sec > p:nth-of-type(4)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_sec_h3_nth_of_type_4",
+			"label": "Heading 5",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "A note for river boat guests: you will also ent…",
+			"selector": ".te-sec > h3:nth-of-type(4)",
+			"tag": "h3",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_sec_p_nth_of_type_5",
+			"label": "Text 5",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "The Zambezi Queen and Chobe Princess moor on th…",
+			"selector": ".te-sec > p:nth-of-type(5)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_list",
+			"label": "List",
+			"short_label": "List",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".te-list",
+			"tag": "ul",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_li",
+			"label": "Item",
+			"short_label": "Item",
+			"parent_label": "List",
+			"sample": "medical expenses overseas, including hospitalis…",
+			"selector": ".te-li",
+			"tag": "li",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": "li_te_li"
+		},
+		{
+			"id": "p_te_sec_p_nth_of_type_6",
+			"label": "Text 6",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "Insurance is regulated in each country, and the…",
+			"selector": ".te-sec > p:nth-of-type(6)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_sec_p_nth_of_type_7",
+			"label": "Text 7",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "Before your departure date, we will ask you to …",
+			"selector": ".te-sec > p:nth-of-type(7)",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_contact",
+			"label": "Container 3",
+			"short_label": "Container",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".te-contact",
+			"tag": "div",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"align",
+				"typography",
+				"text_color",
+				"transition",
+				"flex_item"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_contact_te_h2",
+			"label": "Heading 6",
+			"short_label": "Heading",
+			"parent_label": "",
+			"sample": "Questions",
+			"selector": ".te-contact > .te-h2",
+			"tag": "h2",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_contact_te_p",
+			"label": "Text 8",
+			"short_label": "Text",
+			"parent_label": "",
+			"sample": "If you are unsure whether a policy meets our mi…",
+			"selector": ".te-contact > .te-p",
+			"tag": "p",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"text_stroke",
+				"align",
+				"transition"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		},
+		{
+			"id": "p_te_mail",
+			"label": "Link",
+			"short_label": "Link",
+			"parent_label": "",
+			"sample": "info@umoyaafrikatours.co.za",
+			"selector": ".te-mail",
+			"tag": "a",
+			"features": [
+				"spacing",
+				"sizing",
+				"background",
+				"border",
+				"shadow",
+				"effects",
+				"position",
+				"visibility",
+				"typography",
+				"text_color",
+				"text_shadow",
+				"align",
+				"transition",
+				"states",
+				"flex_container"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "eyebrow_text",
+			"control": "text",
+			"label": "Eyebrow",
+			"description": "",
+			"default": "Before You Travel",
+			"esc": "post",
+			"group": "p_te_eye",
+			"sort": 0
+		},
+		{
+			"id": "title_text",
+			"control": "text",
+			"label": "Title",
+			"description": "",
+			"default": "Travel Essentials",
+			"esc": "post",
+			"group": "p_te_ttl",
+			"sort": 0
+		},
+		{
+			"id": "subtitle_text",
+			"control": "text",
+			"label": "Subtitle",
+			"description": "",
+			"default": "Passports, visas, health, and insurance for your Umoya journey",
+			"esc": "post",
+			"group": "p_te_sub",
+			"sort": 0
+		},
+		{
+			"id": "text_text",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "Verified August 2026",
+			"esc": "post",
+			"group": "p_te_stamp",
+			"sort": 0
+		},
+		{
+			"id": "text_text_2",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "Everything on this page exists so that the practical side of your journey is settled long before you fly. When you confirm a booking, we review every requirement below against your passport, your routing, and your travel dates, and we tell you exactly what applies to you. Requirements do change, so treat this page as reliable guidance and our pre-departure confirmation as final.",
+			"esc": "post",
+			"group": "p_te_lead",
+			"sort": 0
+		},
+		{
+			"id": "heading_text",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Passports",
+			"esc": "post",
+			"group": "p_te_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_3",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "Your passport should be valid for at least six months beyond your return date and should have at least four completely blank visa pages if your journey includes the Victoria Falls and Chobe extension, or two blank pages for the South Africa journey alone. Southern African border posts take these rules seriously, and airlines check them before you board. Botswana does not accept temporary or emergency passports. If your passport is close to renewal, renew it before you book flights.",
+			"esc": "post",
+			"group": "p_te_sec_p_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_2",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Visas and entry",
+			"esc": "post",
+			"group": "p_te_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_3",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "South Africa",
+			"esc": "post",
+			"group": "p_te_sec_h3_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_4",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Zimbabwe, for the Victoria Falls extension",
+			"esc": "post",
+			"group": "p_te_sec_h3_nth_of_type_2",
+			"sort": 0
+		},
+		{
+			"id": "text_text_4",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "Most guests, including United States, United Kingdom, Canadian, and European Union passport holders, obtain a Zimbabwe visa on arrival or online in advance through Zimbabwe's official eVisa portal. For US passports the single-entry visa is around USD 30 and the double-entry around USD 55. If your routing takes you into Botswana and back through Zimbabwe, you need double entry, and we confirm the right visa for your exact itinerary when you book. We recommend the eVisa in advance so that you step off the plane at Victoria Falls with everything settled.",
+			"esc": "post",
+			"group": "p_te_sec_p_nth_of_type_3",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_5",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Botswana, for the Chobe extension",
+			"esc": "post",
+			"group": "p_te_sec_h3_nth_of_type_3",
+			"sort": 0
+		},
+		{
+			"id": "text_text_5",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "United States, United Kingdom, Canadian, and most European Union passport holders enter Botswana without a visa for up to 90 days. Botswana asks families travelling with children under 18 to carry a certified copy of each child's birth certificate, which we cover in the section on travelling with children below.",
+			"esc": "post",
+			"group": "p_te_sec_p_nth_of_type_4",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_6",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "A note for river boat guests: you will also enter Namibia",
+			"esc": "post",
+			"group": "p_te_sec_h3_nth_of_type_4",
+			"sort": 0
+		},
+		{
+			"id": "text_text_6",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "The Zambezi Queen and Chobe Princess moor on the Namibian side of the Chobe River. Boarding involves stamping out of Botswana at the Kasane Immigration Office and into Namibia at Impalila Island, with the boat's team guiding you through both, a process of roughly 45 minutes to an hour. The immigration offices close at 16h30, which is why our itineraries deliver you to Kasane in good time. Namibia has recently introduced an arrival visa fee for a number of nationalities, including United States and United Kingdom passports, currently around USD 90 paid on entry. We confirm the current requirement and fee for your passport before you travel, and the crossing itself, by small boat across the river with elephants often in view, tends to become one of the stories guests tell when they get home.",
+			"esc": "post",
+			"group": "p_te_sec_p_nth_of_type_5",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_7",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Travelling with children",
+			"esc": "post",
+			"group": "p_te_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_8",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Health",
+			"esc": "post",
+			"group": "p_te_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_9",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Travel insurance",
+			"esc": "post",
+			"group": "p_te_sec_h2_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_10",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "What your policy should cover",
+			"esc": "post",
+			"group": "p_te_sec_h3_nth_of_type_1",
+			"sort": 0
+		},
+		{
+			"id": "text_text_7",
+			"control": "text",
+			"label": "Text",
+			"description": "",
+			"default": "We ask that every guest hold a policy covering, at a minimum, the following:",
+			"esc": "post",
+			"group": "p_te_sec_p_nth_of_type_3",
+			"sort": 0
+		},
+		{
+			"id": "text_text_8",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "If your journey includes the extension, confirm that the geographic scope of your policy includes Zimbabwe, Botswana, and Namibia, not South Africa alone.",
+			"esc": "post",
+			"group": "p_te_sec_p_nth_of_type_4",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_11",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Buy your policy at the time of booking",
+			"esc": "post",
+			"group": "p_te_sec_h3_nth_of_type_2",
+			"sort": 0
+		},
+		{
+			"id": "text_text_9",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "The single most common mistake travellers make is buying insurance close to the departure date. Cancellation cover only takes effect once the policy is purchased. If you book a journey in March for travel in November, and a circumstance arises in June that requires you to cancel, a policy purchased in October will not help you. We strongly recommend that you take out your policy within a few days of confirming your booking. Some policies also offer cancel-for-any-reason cover at additional cost, which is worth considering for premium journeys where the financial exposure is meaningful and your reasons for needing to cancel may not fit a tidy category.",
+			"esc": "post",
+			"group": "p_te_sec_p_nth_of_type_5",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_12",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Choosing a provider",
+			"esc": "post",
+			"group": "p_te_sec_h3_nth_of_type_3",
+			"sort": 0
+		},
+		{
+			"id": "text_text_10",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "Insurance is regulated in each country, and the best provider for you will depend on where you live. Choose a policy written for international travel from your country of residence, not one offered in-flight or at the airport. Read the exclusions carefully: pre-existing medical conditions, certain activities including some safari activities, and travel against your government's advisories may be excluded by default. Confirm that South Africa, and for extension guests Zimbabwe, Botswana, and Namibia, fall inside the geographic scope of the policy. Keep a copy of your policy and the 24-hour emergency assistance number with you during your journey, and share them with your travelling companion or a family member at home.",
+			"esc": "post",
+			"group": "p_te_sec_p_nth_of_type_6",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_13",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "What we will ask you for before departure",
+			"esc": "post",
+			"group": "p_te_sec_h3_nth_of_type_4",
+			"sort": 0
+		},
+		{
+			"id": "text_text_11",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "Before your departure date, we will ask you to confirm the name of your insurance provider, your policy number, and the 24-hour emergency assistance number issued by your insurer. We do not ask for the full policy document. We hold these details solely so that we, or our in-country team, can support you if you need to make a claim while you are travelling with us.",
+			"esc": "post",
+			"group": "p_te_sec_p_nth_of_type_7",
+			"sort": 0
+		},
+		{
+			"id": "heading_text_14",
+			"control": "text",
+			"label": "Heading",
+			"description": "",
+			"default": "Questions",
+			"esc": "post",
+			"group": "p_te_contact_te_h2",
+			"sort": 0
+		},
+		{
+			"id": "text_text_12",
+			"control": "textarea",
+			"label": "Text",
+			"description": "",
+			"default": "If you are unsure whether a policy meets our minimum requirements, whether a visa rule applies to your passport, or what your children need to carry, write to us. We are not immigration consultants or insurance brokers and cannot act as either, but we review every guest's requirements against their confirmed itinerary as part of the journey, and we would rather answer a question twice than have you wonder at a border.",
+			"esc": "post",
+			"group": "p_te_contact_te_p",
+			"sort": 0
+		},
+		{
+			"id": "link_text",
+			"control": "text",
+			"label": "Link",
+			"description": "",
+			"default": "info@umoyaafrikatours.co.za",
+			"esc": "post",
+			"group": "p_te_mail",
+			"sort": 0
+		},
+		{
+			"id": "link_href",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "mailto:info@umoyaafrikatours.co.za"
+			},
+			"esc": "url",
+			"group": "p_te_mail",
+			"tab": "content",
+			"sort": 1
+		}
+	]
+}

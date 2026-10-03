@@ -1,4 +1,170 @@
 {
+	"site_nav": {
+		"key": "site_nav",
+		"name": "umoya-site-nav",
+		"title": "Site Navigation",
+		"description": "The one navigation for every page: docks above the hero, sticks and hides on scroll down, returns on scroll up. Place it first.",
+		"icon": "eicon-nav-menu",
+		"category": "umoya-site",
+		"source": "shared/section-00-nav.html",
+		"class_name": "Site_Nav",
+		"widget_file": "widgets/class-site-nav.php",
+		"root_selector": "#umoyaSiteNavMount",
+		"template": "templates/sections/site_nav.php",
+		"style": {
+			"handle": "uew-umoya-site-nav",
+			"file": "assets/css/sections/site_nav.css"
+		},
+		"script": {
+			"handle": "uew-umoya-site-nav",
+			"file": "assets/js/sections/site_nav.js"
+		},
+		"keywords": [
+			"umoya",
+			"site",
+			"global",
+			"shared",
+			"navigation"
+		]
+	},
+	"site_footer": {
+		"key": "site_footer",
+		"name": "umoya-site-footer",
+		"title": "Site Footer",
+		"description": "The one footer for every page, with the Founder's Circle signup and the Email Opt-out dialog. Place it last.",
+		"icon": "eicon-footer",
+		"category": "umoya-site",
+		"source": "shared/section-99-footer.html",
+		"class_name": "Site_Footer",
+		"widget_file": "widgets/class-site-footer.php",
+		"root_selector": "#umoya-footer",
+		"template": "templates/sections/site_footer.php",
+		"style": {
+			"handle": "uew-umoya-site-footer",
+			"file": "assets/css/sections/site_footer.css"
+		},
+		"script": {
+			"handle": "uew-umoya-site-footer",
+			"file": "assets/js/sections/site_footer.js"
+		},
+		"keywords": [
+			"umoya",
+			"site",
+			"global",
+			"shared",
+			"footer"
+		]
+	},
+	"page_404": {
+		"key": "page_404",
+		"name": "umoya-page-404",
+		"title": "404 Page",
+		"description": "Page-not-found body. Use it in the Theme Builder 404 template, never on a published page, or the dead URL answers 200.",
+		"icon": "eicon-error-404",
+		"category": "umoya-site",
+		"source": "shared/page-404.html",
+		"class_name": "Page_404",
+		"widget_file": "widgets/class-page-404.php",
+		"root_selector": "#umoya-404",
+		"template": "templates/sections/page_404.php",
+		"style": {
+			"handle": "uew-umoya-page-404",
+			"file": "assets/css/sections/page_404.css"
+		},
+		"script": null,
+		"keywords": [
+			"umoya",
+			"site",
+			"global",
+			"shared",
+			"404",
+			"page"
+		]
+	},
+	"page_travel_essentials": {
+		"key": "page_travel_essentials",
+		"name": "umoya-page-travel-essentials",
+		"title": "Travel Essentials Page",
+		"description": "The /travel-essentials/ page: visas, entry and insurance, consolidated.",
+		"icon": "eicon-document-file",
+		"category": "umoya-site",
+		"source": "shared/page-travel-essentials.html",
+		"class_name": "Page_Travel_Essentials",
+		"widget_file": "widgets/class-page-travel-essentials.php",
+		"root_selector": "#umoya-travel-essentials",
+		"template": "templates/sections/page_travel_essentials.php",
+		"style": {
+			"handle": "uew-umoya-page-travel-essentials",
+			"file": "assets/css/sections/page_travel_essentials.css"
+		},
+		"script": null,
+		"keywords": [
+			"umoya",
+			"site",
+			"global",
+			"shared",
+			"travel",
+			"essentials",
+			"page"
+		]
+	},
+	"page_privacy": {
+		"key": "page_privacy",
+		"name": "umoya-page-privacy",
+		"title": "Privacy Policy Page",
+		"description": "Privacy Policy v1.1 for /privacy/, with its contents list. Verbatim legal copy.",
+		"icon": "eicon-lock-user",
+		"category": "umoya-site",
+		"source": "shared/page-privacy-policy.html",
+		"class_name": "Page_Privacy",
+		"widget_file": "widgets/class-page-privacy.php",
+		"root_selector": "#umoya-privacy",
+		"template": "templates/sections/page_privacy.php",
+		"style": {
+			"handle": "uew-umoya-page-privacy",
+			"file": "assets/css/sections/page_privacy.css"
+		},
+		"script": null,
+		"keywords": [
+			"umoya",
+			"site",
+			"global",
+			"shared",
+			"privacy",
+			"policy",
+			"page"
+		]
+	},
+	"page_cookie": {
+		"key": "page_cookie",
+		"name": "umoya-page-cookie",
+		"title": "Cookie Policy Page",
+		"description": "Cookie Policy v1.2 for /cookie-policy/, with the in-page CookieYes settings button. Verbatim legal copy.",
+		"icon": "eicon-lock",
+		"category": "umoya-site",
+		"source": "shared/page-cookie-policy.html",
+		"class_name": "Page_Cookie",
+		"widget_file": "widgets/class-page-cookie.php",
+		"root_selector": "#umoya-cookie-policy",
+		"template": "templates/sections/page_cookie.php",
+		"style": {
+			"handle": "uew-umoya-page-cookie",
+			"file": "assets/css/sections/page_cookie.css"
+		},
+		"script": {
+			"handle": "uew-umoya-page-cookie",
+			"file": "assets/js/sections/page_cookie.js"
+		},
+		"keywords": [
+			"umoya",
+			"site",
+			"global",
+			"shared",
+			"cookie",
+			"policy",
+			"page"
+		]
+	},
 	"fc_nav": {
 		"key": "fc_nav",
 		"name": "umoya-fc-nav",
@@ -22,6 +188,7 @@
 		"keywords": [
 			"umoya",
 			"founders circle",
+			"founder",
 			"fc",
 			"navigation"
 		]
@@ -49,6 +216,7 @@
 		"keywords": [
 			"umoya",
 			"founders circle",
+			"founder",
 			"fc",
 			"hero"
 		]
@@ -76,6 +244,7 @@
 		"keywords": [
 			"umoya",
 			"founders circle",
+			"founder",
 			"fc",
 			"invitation"
 		]
@@ -103,6 +272,7 @@
 		"keywords": [
 			"umoya",
 			"founders circle",
+			"founder",
 			"fc",
 			"membership",
 			"privileges"
@@ -131,6 +301,7 @@
 		"keywords": [
 			"umoya",
 			"founders circle",
+			"founder",
 			"fc",
 			"inquiry",
 			"form"
@@ -156,6 +327,7 @@
 		"keywords": [
 			"umoya",
 			"founders circle",
+			"founder",
 			"fc",
 			"journey"
 		]
@@ -183,6 +355,7 @@
 		"keywords": [
 			"umoya",
 			"founders circle",
+			"founder",
 			"fc",
 			"early",
 			"access"
@@ -211,6 +384,7 @@
 		"keywords": [
 			"umoya",
 			"founders circle",
+			"founder",
 			"fc",
 			"founding",
 			"offer"
@@ -239,6 +413,7 @@
 		"keywords": [
 			"umoya",
 			"founders circle",
+			"founder",
 			"fc",
 			"our",
 			"approach"
@@ -267,9 +442,9 @@
 		"keywords": [
 			"umoya",
 			"founders circle",
+			"founder",
 			"fc",
-			"why",
-			"umoya"
+			"why"
 		]
 	},
 	"fc_essentials": {
@@ -295,6 +470,7 @@
 		"keywords": [
 			"umoya",
 			"founders circle",
+			"founder",
 			"fc",
 			"travel",
 			"essentials"
@@ -323,6 +499,7 @@
 		"keywords": [
 			"umoya",
 			"founders circle",
+			"founder",
 			"fc",
 			"closing",
 			"cta"
@@ -350,7 +527,7 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"homepage",
 			"home",
 			"navigation"
 		]
@@ -377,7 +554,7 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"homepage",
 			"home",
 			"hero"
 		]
@@ -404,7 +581,7 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"homepage",
 			"home",
 			"about"
 		]
@@ -431,7 +608,7 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"homepage",
 			"home",
 			"signature",
 			"journey"
@@ -459,7 +636,7 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"homepage",
 			"home",
 			"ways",
 			"to",
@@ -488,7 +665,7 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"homepage",
 			"home",
 			"legends"
 		]
@@ -515,7 +692,7 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"homepage",
 			"home",
 			"hotel",
 			"stays"
@@ -540,10 +717,9 @@
 		"script": null,
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"homepage",
 			"home",
 			"founder",
-			"s",
 			"circle"
 		]
 	},
@@ -569,7 +745,7 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"homepage",
 			"home",
 			"film",
 			"award"
@@ -597,10 +773,9 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"homepage",
 			"home",
-			"why",
-			"umoya"
+			"why"
 		]
 	},
 	"home_essentials": {
@@ -625,7 +800,7 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"homepage",
 			"home",
 			"travel",
 			"essentials"
@@ -636,7 +811,7 @@
 		"name": "umoya-home-speak-expert",
 		"title": "Home Speak With an Expert",
 		"description": "Closing “We’d love to speak with you” band.",
-		"icon": "eicon-chat",
+		"icon": "eicon-commenting-o",
 		"category": "umoya-homepage",
 		"source": "homepage-revamp/homepage-section-11-speak-with-expert.html",
 		"class_name": "Home_Speak_Expert",
@@ -653,7 +828,7 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"homepage",
 			"home",
 			"speak",
 			"with",
@@ -683,7 +858,7 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"homepage",
 			"home",
 			"inquiry",
 			"popup"
@@ -711,7 +886,8 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"signature journey",
+			"journey",
 			"sj",
 			"navigation"
 		]
@@ -735,7 +911,8 @@
 		"script": null,
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"signature journey",
+			"journey",
 			"sj",
 			"hero"
 		]
@@ -762,7 +939,8 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"signature journey",
+			"journey",
 			"sj",
 			"overview"
 		]
@@ -789,9 +967,9 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
-			"sj",
+			"signature journey",
 			"journey",
+			"sj",
 			"chapters"
 		]
 	},
@@ -817,7 +995,8 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"signature journey",
+			"journey",
 			"sj",
 			"extensions"
 		]
@@ -844,7 +1023,8 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"signature journey",
+			"journey",
 			"sj",
 			"where",
 			"you",
@@ -873,7 +1053,8 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"signature journey",
+			"journey",
 			"sj",
 			"inclusions",
 			"offers"
@@ -901,10 +1082,711 @@
 		},
 		"keywords": [
 			"umoya",
-			"founders circle",
+			"signature journey",
+			"journey",
 			"sj",
 			"inquiry",
 			"popup"
+		]
+	},
+	"pt_hero": {
+		"key": "pt_hero",
+		"name": "umoya-pt-hero",
+		"title": "P&T Hero",
+		"description": "Full-bleed image hero, \"A Journey Entirely Your Own\".",
+		"icon": "eicon-banner",
+		"category": "umoya-pt",
+		"source": "private-tailormade/section-01-hero.html",
+		"class_name": "PT_Hero",
+		"widget_file": "widgets/class-pt-hero.php",
+		"root_selector": "#pt-hero",
+		"template": "templates/sections/pt_hero.php",
+		"style": {
+			"handle": "uew-umoya-pt-hero",
+			"file": "assets/css/sections/pt_hero.css"
+		},
+		"script": null,
+		"keywords": [
+			"umoya",
+			"private",
+			"tailormade",
+			"tailor made",
+			"bespoke",
+			"hero"
+		]
+	},
+	"pt_intro": {
+		"key": "pt_intro",
+		"name": "umoya-pt-intro",
+		"title": "P&T Intro",
+		"description": "Make It Your Own: centred editorial intro on cream.",
+		"icon": "eicon-info-circle-o",
+		"category": "umoya-pt",
+		"source": "private-tailormade/section-02-intro.html",
+		"class_name": "PT_Intro",
+		"widget_file": "widgets/class-pt-intro.php",
+		"root_selector": "#pt-intro",
+		"template": "templates/sections/pt_intro.php",
+		"style": {
+			"handle": "uew-umoya-pt-intro",
+			"file": "assets/css/sections/pt_intro.css"
+		},
+		"script": {
+			"handle": "uew-umoya-pt-intro",
+			"file": "assets/js/sections/pt_intro.js"
+		},
+		"keywords": [
+			"umoya",
+			"private",
+			"tailormade",
+			"tailor made",
+			"bespoke",
+			"intro"
+		]
+	},
+	"pt_trip_types": {
+		"key": "pt_trip_types",
+		"name": "umoya-pt-trip-types",
+		"title": "P&T Trip Types",
+		"description": "Scroll-snap rail of the six trip-type cards plus the blank-page card, with arrows. The hero links here.",
+		"icon": "eicon-posts-carousel",
+		"category": "umoya-pt",
+		"source": "private-tailormade/section-03-trip-types.html",
+		"class_name": "PT_Trip_Types",
+		"widget_file": "widgets/class-pt-trip-types.php",
+		"root_selector": "#pt-trip-types",
+		"template": "templates/sections/pt_trip_types.php",
+		"style": {
+			"handle": "uew-umoya-pt-trip-types",
+			"file": "assets/css/sections/pt_trip_types.css"
+		},
+		"script": {
+			"handle": "uew-umoya-pt-trip-types",
+			"file": "assets/js/sections/pt_trip_types.js"
+		},
+		"keywords": [
+			"umoya",
+			"private",
+			"tailormade",
+			"tailor made",
+			"bespoke",
+			"trip",
+			"types"
+		]
+	},
+	"pt_how": {
+		"key": "pt_how",
+		"name": "umoya-pt-how",
+		"title": "P&T How Tailoring Works",
+		"description": "Three numbered steps on the cream band.",
+		"icon": "eicon-number-field",
+		"category": "umoya-pt",
+		"source": "private-tailormade/section-04-how-it-works.html",
+		"class_name": "PT_How",
+		"widget_file": "widgets/class-pt-how.php",
+		"root_selector": "#pt-how",
+		"template": "templates/sections/pt_how.php",
+		"style": {
+			"handle": "uew-umoya-pt-how",
+			"file": "assets/css/sections/pt_how.css"
+		},
+		"script": {
+			"handle": "uew-umoya-pt-how",
+			"file": "assets/js/sections/pt_how.js"
+		},
+		"keywords": [
+			"umoya",
+			"private",
+			"tailormade",
+			"tailor made",
+			"bespoke",
+			"how",
+			"tailoring",
+			"works"
+		]
+	},
+	"pt_design_form": {
+		"key": "pt_design_form",
+		"name": "umoya-pt-design-form",
+		"title": "P&T Design Your Journey Form",
+		"description": "Inquiry form. Posts to WordPress first, then the Private & Tailormade HubSpot form. Every \"Design Your Journey\" button targets it.",
+		"icon": "eicon-form-horizontal",
+		"category": "umoya-pt",
+		"source": "private-tailormade/section-05-design-form.html",
+		"class_name": "PT_Design_Form",
+		"widget_file": "widgets/class-pt-design-form.php",
+		"root_selector": "#pt-design",
+		"template": "templates/sections/pt_design_form.php",
+		"style": {
+			"handle": "uew-umoya-pt-design-form",
+			"file": "assets/css/sections/pt_design_form.css"
+		},
+		"script": {
+			"handle": "uew-umoya-pt-design-form",
+			"file": "assets/js/sections/pt_design_form.js"
+		},
+		"keywords": [
+			"umoya",
+			"private",
+			"tailormade",
+			"tailor made",
+			"bespoke",
+			"design",
+			"your",
+			"journey",
+			"form"
+		]
+	},
+	"ab_hero": {
+		"key": "ab_hero",
+		"name": "umoya-ab-hero",
+		"title": "About Hero",
+		"description": "Centred hero with a poster image and an optional background video that fades in once it can play.",
+		"icon": "eicon-banner",
+		"category": "umoya-about",
+		"source": "about/section-01-hero.html",
+		"class_name": "About_Hero",
+		"widget_file": "widgets/class-ab-hero.php",
+		"root_selector": "#ab-hero",
+		"template": "templates/sections/ab_hero.php",
+		"style": {
+			"handle": "uew-umoya-ab-hero",
+			"file": "assets/css/sections/ab_hero.css"
+		},
+		"script": {
+			"handle": "uew-umoya-ab-hero",
+			"file": "assets/js/sections/ab_hero.js"
+		},
+		"keywords": [
+			"umoya",
+			"about",
+			"about us",
+			"story",
+			"hero"
+		]
+	},
+	"ab_who": {
+		"key": "ab_who",
+		"name": "umoya-ab-who",
+		"title": "About Who We Are",
+		"description": "The meaning of \"Umoya\" beside an auto-advancing photo carousel with dot navigation.",
+		"icon": "eicon-slides",
+		"category": "umoya-about",
+		"source": "about/section-02-who-we-are.html",
+		"class_name": "About_Who",
+		"widget_file": "widgets/class-ab-who.php",
+		"root_selector": "#ab-who",
+		"template": "templates/sections/ab_who.php",
+		"style": {
+			"handle": "uew-umoya-ab-who",
+			"file": "assets/css/sections/ab_who.css"
+		},
+		"script": {
+			"handle": "uew-umoya-ab-who",
+			"file": "assets/js/sections/ab_who.js"
+		},
+		"keywords": [
+			"umoya",
+			"about",
+			"about us",
+			"story",
+			"who",
+			"we",
+			"are"
+		]
+	},
+	"ab_mission": {
+		"key": "ab_mission",
+		"name": "umoya-ab-mission",
+		"title": "About Our Mission",
+		"description": "The page's dark-brown accent band: the mission statement.",
+		"icon": "eicon-blockquote",
+		"category": "umoya-about",
+		"source": "about/section-03-mission.html",
+		"class_name": "About_Mission",
+		"widget_file": "widgets/class-ab-mission.php",
+		"root_selector": "#ab-mission",
+		"template": "templates/sections/ab_mission.php",
+		"style": {
+			"handle": "uew-umoya-ab-mission",
+			"file": "assets/css/sections/ab_mission.css"
+		},
+		"script": {
+			"handle": "uew-umoya-ab-mission",
+			"file": "assets/js/sections/ab_mission.js"
+		},
+		"keywords": [
+			"umoya",
+			"about",
+			"about us",
+			"story",
+			"our",
+			"mission"
+		]
+	},
+	"ab_story": {
+		"key": "ab_story",
+		"name": "umoya-ab-story",
+		"title": "About Our Story",
+		"description": "Founder's story: portrait left, copy right.",
+		"icon": "eicon-image-box",
+		"category": "umoya-about",
+		"source": "about/section-04-our-story.html",
+		"class_name": "About_Story",
+		"widget_file": "widgets/class-ab-story.php",
+		"root_selector": "#ab-story",
+		"template": "templates/sections/ab_story.php",
+		"style": {
+			"handle": "uew-umoya-ab-story",
+			"file": "assets/css/sections/ab_story.css"
+		},
+		"script": {
+			"handle": "uew-umoya-ab-story",
+			"file": "assets/js/sections/ab_story.js"
+		},
+		"keywords": [
+			"umoya",
+			"about",
+			"about us",
+			"story",
+			"our"
+		]
+	},
+	"ab_choose": {
+		"key": "ab_choose",
+		"name": "umoya-ab-choose",
+		"title": "About How We Choose",
+		"description": "Centred statement on white: the honesty and ownership position.",
+		"icon": "eicon-text",
+		"category": "umoya-about",
+		"source": "about/section-05-how-we-choose.html",
+		"class_name": "About_Choose",
+		"widget_file": "widgets/class-ab-choose.php",
+		"root_selector": "#ab-choose",
+		"template": "templates/sections/ab_choose.php",
+		"style": {
+			"handle": "uew-umoya-ab-choose",
+			"file": "assets/css/sections/ab_choose.css"
+		},
+		"script": {
+			"handle": "uew-umoya-ab-choose",
+			"file": "assets/js/sections/ab_choose.js"
+		},
+		"keywords": [
+			"umoya",
+			"about",
+			"about us",
+			"story",
+			"how",
+			"we",
+			"choose"
+		]
+	},
+	"ab_hosts": {
+		"key": "ab_hosts",
+		"name": "umoya-ab-hosts",
+		"title": "About Meet Our Hosts",
+		"description": "Six host cards. Each names a real person or place; check identities in CLAUDE.md before swapping a photo.",
+		"icon": "eicon-person",
+		"category": "umoya-about",
+		"source": "about/section-06-hosts.html",
+		"class_name": "About_Hosts",
+		"widget_file": "widgets/class-ab-hosts.php",
+		"root_selector": "#ab-hosts",
+		"template": "templates/sections/ab_hosts.php",
+		"style": {
+			"handle": "uew-umoya-ab-hosts",
+			"file": "assets/css/sections/ab_hosts.css"
+		},
+		"script": {
+			"handle": "uew-umoya-ab-hosts",
+			"file": "assets/js/sections/ab_hosts.js"
+		},
+		"keywords": [
+			"umoya",
+			"about",
+			"about us",
+			"story",
+			"meet",
+			"our",
+			"hosts"
+		]
+	},
+	"ab_difference": {
+		"key": "ab_difference",
+		"name": "umoya-ab-difference",
+		"title": "About The Umoya Difference",
+		"description": "Four icon cards on what sets an Umoya journey apart.",
+		"icon": "eicon-icon-box",
+		"category": "umoya-about",
+		"source": "about/section-07-difference.html",
+		"class_name": "About_Difference",
+		"widget_file": "widgets/class-ab-difference.php",
+		"root_selector": "#ab-difference",
+		"template": "templates/sections/ab_difference.php",
+		"style": {
+			"handle": "uew-umoya-ab-difference",
+			"file": "assets/css/sections/ab_difference.css"
+		},
+		"script": {
+			"handle": "uew-umoya-ab-difference",
+			"file": "assets/js/sections/ab_difference.js"
+		},
+		"keywords": [
+			"umoya",
+			"about",
+			"about us",
+			"story",
+			"the",
+			"difference"
+		]
+	},
+	"ab_cta": {
+		"key": "ab_cta",
+		"name": "umoya-ab-cta",
+		"title": "About Closing CTA",
+		"description": "Full-bleed image band with the page's closing call to action.",
+		"icon": "eicon-call-to-action",
+		"category": "umoya-about",
+		"source": "about/section-08-cta.html",
+		"class_name": "About_CTA",
+		"widget_file": "widgets/class-ab-cta.php",
+		"root_selector": "#ab-cta",
+		"template": "templates/sections/ab_cta.php",
+		"style": {
+			"handle": "uew-umoya-ab-cta",
+			"file": "assets/css/sections/ab_cta.css"
+		},
+		"script": {
+			"handle": "uew-umoya-ab-cta",
+			"file": "assets/js/sections/ab_cta.js"
+		},
+		"keywords": [
+			"umoya",
+			"about",
+			"about us",
+			"story",
+			"closing",
+			"cta"
+		]
+	},
+	"fg_hero": {
+		"key": "fg_hero",
+		"name": "umoya-fg-hero",
+		"title": "Groups Hero",
+		"description": "Full-bleed image hero, \"Bring Your Circle\", left-aligned.",
+		"icon": "eicon-banner",
+		"category": "umoya-fg",
+		"source": "for-groups/section-01-hero.html",
+		"class_name": "FG_Hero",
+		"widget_file": "widgets/class-fg-hero.php",
+		"root_selector": "#fg-hero",
+		"template": "templates/sections/fg_hero.php",
+		"style": {
+			"handle": "uew-umoya-fg-hero",
+			"file": "assets/css/sections/fg_hero.css"
+		},
+		"script": null,
+		"keywords": [
+			"umoya",
+			"groups",
+			"for groups",
+			"group travel",
+			"hero"
+		]
+	},
+	"fg_intro": {
+		"key": "fg_intro",
+		"name": "umoya-fg-intro",
+		"title": "Groups Intro",
+		"description": "Traveling Together: centred editorial intro on cream.",
+		"icon": "eicon-info-circle-o",
+		"category": "umoya-fg",
+		"source": "for-groups/section-02-intro.html",
+		"class_name": "FG_Intro",
+		"widget_file": "widgets/class-fg-intro.php",
+		"root_selector": "#fg-intro",
+		"template": "templates/sections/fg_intro.php",
+		"style": {
+			"handle": "uew-umoya-fg-intro",
+			"file": "assets/css/sections/fg_intro.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fg-intro",
+			"file": "assets/js/sections/fg_intro.js"
+		},
+		"keywords": [
+			"umoya",
+			"groups",
+			"for groups",
+			"group travel",
+			"intro"
+		]
+	},
+	"fg_who": {
+		"key": "fg_who",
+		"name": "umoya-fg-who",
+		"title": "Groups Who Travels With Us",
+		"description": "Four photo cards for the group types Umoya hosts.",
+		"icon": "eicon-gallery-grid",
+		"category": "umoya-fg",
+		"source": "for-groups/section-03-who-travels.html",
+		"class_name": "FG_Who",
+		"widget_file": "widgets/class-fg-who.php",
+		"root_selector": "#fg-who",
+		"template": "templates/sections/fg_who.php",
+		"style": {
+			"handle": "uew-umoya-fg-who",
+			"file": "assets/css/sections/fg_who.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fg-who",
+			"file": "assets/js/sections/fg_who.js"
+		},
+		"keywords": [
+			"umoya",
+			"groups",
+			"for groups",
+			"group travel",
+			"who",
+			"travels",
+			"with",
+			"us"
+		]
+	},
+	"fg_organizer": {
+		"key": "fg_organizer",
+		"name": "umoya-fg-organizer",
+		"title": "Groups For the Organizer",
+		"description": "The dark-brown accent band: four promises to the person who brings everyone along.",
+		"icon": "eicon-icon-box",
+		"category": "umoya-fg",
+		"source": "for-groups/section-04-for-the-organizer.html",
+		"class_name": "FG_Organizer",
+		"widget_file": "widgets/class-fg-organizer.php",
+		"root_selector": "#fg-organizer",
+		"template": "templates/sections/fg_organizer.php",
+		"style": {
+			"handle": "uew-umoya-fg-organizer",
+			"file": "assets/css/sections/fg_organizer.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fg-organizer",
+			"file": "assets/js/sections/fg_organizer.js"
+		},
+		"keywords": [
+			"umoya",
+			"groups",
+			"for groups",
+			"group travel",
+			"for",
+			"the",
+			"organizer"
+		]
+	},
+	"fg_how": {
+		"key": "fg_how",
+		"name": "umoya-fg-how",
+		"title": "Groups Planning Steps",
+		"description": "Planning for Your Group: four numbered steps from first enquiry to arrival.",
+		"icon": "eicon-number-field",
+		"category": "umoya-fg",
+		"source": "for-groups/section-05-how-it-works.html",
+		"class_name": "FG_How",
+		"widget_file": "widgets/class-fg-how.php",
+		"root_selector": "#fg-how",
+		"template": "templates/sections/fg_how.php",
+		"style": {
+			"handle": "uew-umoya-fg-how",
+			"file": "assets/css/sections/fg_how.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fg-how",
+			"file": "assets/js/sections/fg_how.js"
+		},
+		"keywords": [
+			"umoya",
+			"groups",
+			"for groups",
+			"group travel",
+			"planning",
+			"steps"
+		]
+	},
+	"fg_journey": {
+		"key": "fg_journey",
+		"name": "umoya-fg-journey",
+		"title": "Groups Journey Teaser",
+		"description": "Ten Days, Three Chapters: a preview of the Signature Journey. The hero links here.",
+		"icon": "eicon-post-list",
+		"category": "umoya-fg",
+		"source": "for-groups/section-06-journey-teaser.html",
+		"class_name": "FG_Journey",
+		"widget_file": "widgets/class-fg-journey.php",
+		"root_selector": "#fg-journey",
+		"template": "templates/sections/fg_journey.php",
+		"style": {
+			"handle": "uew-umoya-fg-journey",
+			"file": "assets/css/sections/fg_journey.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fg-journey",
+			"file": "assets/js/sections/fg_journey.js"
+		},
+		"keywords": [
+			"umoya",
+			"groups",
+			"for groups",
+			"group travel",
+			"journey",
+			"teaser"
+		]
+	},
+	"fg_sizes": {
+		"key": "fg_sizes",
+		"name": "umoya-fg-sizes",
+		"title": "Groups Travel Fit for Any Size",
+		"description": "Short centred statement on scaling from a close circle to a full chapter.",
+		"icon": "eicon-text",
+		"category": "umoya-fg",
+		"source": "for-groups/section-07-sizes.html",
+		"class_name": "FG_Sizes",
+		"widget_file": "widgets/class-fg-sizes.php",
+		"root_selector": "#fg-sizes",
+		"template": "templates/sections/fg_sizes.php",
+		"style": {
+			"handle": "uew-umoya-fg-sizes",
+			"file": "assets/css/sections/fg_sizes.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fg-sizes",
+			"file": "assets/js/sections/fg_sizes.js"
+		},
+		"keywords": [
+			"umoya",
+			"groups",
+			"for groups",
+			"group travel",
+			"travel",
+			"fit",
+			"for",
+			"any",
+			"size"
+		]
+	},
+	"fg_plan_form": {
+		"key": "fg_plan_form",
+		"name": "umoya-fg-plan-form",
+		"title": "Groups Plan a Journey Form",
+		"description": "Group enquiry form. Posts to WordPress first, then the Group Journey HubSpot form. Every \"Plan a Group Journey\" button targets it.",
+		"icon": "eicon-form-horizontal",
+		"category": "umoya-fg",
+		"source": "for-groups/section-08-plan-form.html",
+		"class_name": "FG_Plan_Form",
+		"widget_file": "widgets/class-fg-plan-form.php",
+		"root_selector": "#fg-plan",
+		"template": "templates/sections/fg_plan_form.php",
+		"style": {
+			"handle": "uew-umoya-fg-plan-form",
+			"file": "assets/css/sections/fg_plan_form.css"
+		},
+		"script": {
+			"handle": "uew-umoya-fg-plan-form",
+			"file": "assets/js/sections/fg_plan_form.js"
+		},
+		"keywords": [
+			"umoya",
+			"groups",
+			"for groups",
+			"group travel",
+			"plan",
+			"journey",
+			"form"
+		]
+	},
+	"ct_hero": {
+		"key": "ct_hero",
+		"name": "umoya-ct-hero",
+		"title": "Contact Hero",
+		"description": "Short centred header: eyebrow, \"Talk to Us\", rule and lead.",
+		"icon": "eicon-heading",
+		"category": "umoya-contact",
+		"source": "contact/section-01-hero.html",
+		"class_name": "Contact_Hero",
+		"widget_file": "widgets/class-ct-hero.php",
+		"root_selector": "#umoya-contact-hero",
+		"template": "templates/sections/ct_hero.php",
+		"style": {
+			"handle": "uew-umoya-ct-hero",
+			"file": "assets/css/sections/ct_hero.css"
+		},
+		"script": {
+			"handle": "uew-umoya-ct-hero",
+			"file": "assets/js/sections/ct_hero.js"
+		},
+		"keywords": [
+			"umoya",
+			"contact",
+			"enquiry",
+			"enquiries",
+			"hero"
+		]
+	},
+	"ct_forms": {
+		"key": "ct_forms",
+		"name": "umoya-ct-forms",
+		"title": "Contact Enquiry Forms",
+		"description": "The two enquiry panels, Plan a Journey and General & Media, each on its own HubSpot form.",
+		"icon": "eicon-form-horizontal",
+		"category": "umoya-contact",
+		"source": "contact/section-02-forms.html",
+		"class_name": "Contact_Forms",
+		"widget_file": "widgets/class-ct-forms.php",
+		"root_selector": "#umoya-contact-forms",
+		"template": "templates/sections/ct_forms.php",
+		"style": {
+			"handle": "uew-umoya-ct-forms",
+			"file": "assets/css/sections/ct_forms.css"
+		},
+		"script": {
+			"handle": "uew-umoya-ct-forms",
+			"file": "assets/js/sections/ct_forms.js"
+		},
+		"keywords": [
+			"umoya",
+			"contact",
+			"enquiry",
+			"enquiries",
+			"forms"
+		]
+	},
+	"ct_direct": {
+		"key": "ct_direct",
+		"name": "umoya-ct-direct",
+		"title": "Contact Direct Strip",
+		"description": "Email, media and office-address band for anyone who would rather not use a form.",
+		"icon": "eicon-envelope",
+		"category": "umoya-contact",
+		"source": "contact/section-03-direct.html",
+		"class_name": "Contact_Direct",
+		"widget_file": "widgets/class-ct-direct.php",
+		"root_selector": "#umoya-contact-direct",
+		"template": "templates/sections/ct_direct.php",
+		"style": {
+			"handle": "uew-umoya-ct-direct",
+			"file": "assets/css/sections/ct_direct.css"
+		},
+		"script": {
+			"handle": "uew-umoya-ct-direct",
+			"file": "assets/js/sections/ct_direct.js"
+		},
+		"keywords": [
+			"umoya",
+			"contact",
+			"enquiry",
+			"enquiries",
+			"direct",
+			"strip"
 		]
 	}
 }

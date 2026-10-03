@@ -17,47 +17,77 @@
 	"script": null,
 	"keywords": [
 		"umoya",
-		"founders circle",
+		"homepage",
 		"home",
 		"founder",
-		"s",
 		"circle"
 	],
+	"portals": [],
 	"tokens": [
 		{
 			"name": "cream",
 			"value": "#F5F0EB",
 			"kind": "color",
+			"selectors": [
+				"#umoya-founder-cta"
+			],
+			"scoped": false,
+			"id": "uew_token_cream",
 			"label": "Cream"
 		},
 		{
 			"name": "brown",
 			"value": "#4B2E2B",
 			"kind": "color",
+			"selectors": [
+				"#umoya-founder-cta"
+			],
+			"scoped": false,
+			"id": "uew_token_brown",
 			"label": "Brown"
 		},
 		{
 			"name": "terra",
 			"value": "#D97E53",
 			"kind": "color",
+			"selectors": [
+				"#umoya-founder-cta"
+			],
+			"scoped": false,
+			"id": "uew_token_terra",
 			"label": "Terra"
 		},
 		{
 			"name": "terra-dk",
 			"value": "#C06840",
 			"kind": "color",
+			"selectors": [
+				"#umoya-founder-cta"
+			],
+			"scoped": false,
+			"id": "uew_token_terra_dk",
 			"label": "Terra Dk"
 		},
 		{
 			"name": "white",
 			"value": "#FFFFFF",
 			"kind": "color",
+			"selectors": [
+				"#umoya-founder-cta"
+			],
+			"scoped": false,
+			"id": "uew_token_white",
 			"label": "White"
 		},
 		{
 			"name": "ease",
 			"value": "cubic-bezier(.25,.46,.45,.94)",
 			"kind": "text",
+			"selectors": [
+				"#umoya-founder-cta"
+			],
+			"scoped": false,
+			"id": "uew_token_ease",
 			"label": "Ease"
 		}
 	],
@@ -77,6 +107,22 @@
 					"group": "p_section",
 					"tab": "content",
 					"sort": 1,
+					"part_label": "Section"
+				},
+				{
+					"id": "section_background_image",
+					"control": "media",
+					"label": "Background Image",
+					"description": "Painted from the section stylesheet as a layer over the element, under its overlay. Choosing an image here replaces the photo and keeps the overlay.",
+					"default": {
+						"url": ""
+					},
+					"css_selector": "#umoya-founder-cta::before",
+					"css_value": "background-image: linear-gradient(180deg, rgba(75,46,43,.72) 0%, rgba(75,46,43,.78) 50%, rgba(75,46,43,.86) 100%), url(\"{{URL}}\");",
+					"css_only": true,
+					"esc": "url",
+					"group": "p_section",
+					"sort": 2,
 					"part_label": "Section"
 				}
 			]
@@ -186,6 +232,7 @@
 				"transition",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -213,6 +260,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -240,6 +288,7 @@
 				"transition",
 				"flex_item"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -268,6 +317,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -296,6 +346,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -324,6 +375,7 @@
 				"align",
 				"transition"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -353,6 +405,7 @@
 				"states",
 				"flex_container"
 			],
+			"animated": [],
 			"shared": false,
 			"absolute": false,
 			"repeater": null
@@ -421,6 +474,21 @@
 			"group": "p_umoya_founder_btn",
 			"tab": "content",
 			"sort": 1
+		},
+		{
+			"id": "section_background_image",
+			"control": "media",
+			"label": "Background Image",
+			"description": "Painted from the section stylesheet as a layer over the element, under its overlay. Choosing an image here replaces the photo and keeps the overlay.",
+			"default": {
+				"url": ""
+			},
+			"css_selector": "#umoya-founder-cta::before",
+			"css_value": "background-image: linear-gradient(180deg, rgba(75,46,43,.72) 0%, rgba(75,46,43,.78) 50%, rgba(75,46,43,.86) 100%), url(\"{{URL}}\");",
+			"css_only": true,
+			"esc": "url",
+			"group": "p_section",
+			"sort": 2
 		}
 	]
 }

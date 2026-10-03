@@ -22,9 +22,7 @@ import { execFileSync } from 'child_process';
 import { splitSection, readSectionFile } from './lib/split.mjs';
 import { deriveSection } from './lib/derive.mjs';
 import { emitTemplate, emitScript, emitCss, emitWidgetClass, emitSchema, guardPhpNewlines } from './lib/emit.mjs';
-import * as fcRegistry from './sections/founders-circle.mjs';
-import * as homepageRegistry from './sections/homepage.mjs';
-import * as signatureJourneyRegistry from './sections/signature-journey.mjs';
+import { registries } from './sections/index.mjs';
 
 const here = path.dirname( fileURLToPath( import.meta.url ) );
 const repoRoot = path.resolve( here, '..', '..' );
@@ -37,8 +35,6 @@ const args = process.argv.slice( 2 );
 const only = ( args.find( ( a ) => a.startsWith( '--only=' ) ) || '' ).replace( '--only=', '' );
 const onlyKeys = only ? new Set( only.split( ',' ).map( ( s ) => s.trim() ) ) : null;
 const verify = ! args.includes( '--no-verify' );
-
-const registries = [ fcRegistry, homepageRegistry, signatureJourneyRegistry ];
 
 /* ------------------------------------------------------------------- utils */
 
@@ -121,6 +117,37 @@ function buildContentPanels( fields, parts ) {
 }
 
 /**
+ * Number Content-tab panels that share a name, in page order.
+ *
+ * Element panels are named uniquely, but a panel that absorbs its small
+ * neighbours takes its region's name afterwards, and two regions can share one:
+ * the nav's Content tab read "Navigation, Logo, Logo, Navigation". Elementor's
+ * panel has no search, so a name that does not single out its panel is a name
+ * the editor has to open to find out. List panels share the tab, so their names
+ * count as taken.
+ */
+function dedupePanelLabels( panels, repeaters ) {
+	const counts = new Map();
+	for ( const label of panels.map( ( p ) => p.label ).concat( repeaters.map( ( r ) => r.label ) ) ) {
+		counts.set( label, ( counts.get( label ) || 0 ) + 1 );
+	}
+
+	// A number can already be taken -- the footer has a panel named "Content 2"
+	// from the element naming -- so each new name skips the ones in use.
+	const used = new Set( counts.keys() );
+	const next = new Map();
+	for ( const panel of panels ) {
+		const base = panel.label;
+		if ( ( counts.get( base ) || 0 ) < 2 ) continue;
+		let n = next.get( base ) || 1;
+		while ( used.has( base + ' ' + n ) ) n += 1;
+		panel.label = base + ' ' + n;
+		used.add( panel.label );
+		next.set( base, n + 1 );
+	}
+}
+
+/**
  * Number repeated control labels within a panel.
  *
  * Two elements that share a CSS selector share a style panel -- correctly, they
@@ -194,6 +221,28 @@ function mergeSmallPanels( panels ) {
 
 /* ------------------------------------------------------------------ build */
 
+// Eight registries now feed one manifest. A repeated key would overwrite a
+// widget's files, and a repeated name or class would make WordPress register
+// one widget twice and the other not at all -- refuse before writing anything.
+{
+	const seen = { key: new Map(), name: new Map(), class_name: new Map(), slug: new Map() };
+	const clash = [];
+	for ( const registry of registries ) {
+		const slugOwner = seen.slug.get( registry.category.slug );
+		if ( slugOwner ) clash.push( 'category ' + registry.category.slug + ' is declared twice' );
+		seen.slug.set( registry.category.slug, true );
+
+		for ( const section of registry.sections ) {
+			for ( const field of [ 'key', 'name', 'class_name' ] ) {
+				const owner = seen[ field ].get( section[ field ] );
+				if ( owner ) clash.push( field + ' "' + section[ field ] + '" is used by both ' + owner + ' and ' + section.source );
+				seen[ field ].set( section[ field ], section.source );
+			}
+		}
+	}
+	if ( clash.length ) throw new Error( 'Registry conflicts:\n  ' + clash.join( '\n  ' ) );
+}
+
 const manifest = {};
 const report = [];
 
@@ -204,6 +253,18 @@ for ( const registry of registries ) {
 		const raw = readSource( section.source );
 		const { markup, css, scripts } = splitSection( raw );
 
+		// A script that moves part of the section to <body> takes it out from
+		// under the widget wrapper every style control is scoped to. That killed
+		// the inquiry popups' whole Style tab without a single error, so it is
+		// refused here until the registry says which element moves.
+		const portals = ( section.spec && section.spec.portals ) || [];
+		if ( scripts.some( ( s ) => /document\.body\.(appendChild|insertBefore|prepend|append)\s*\(/.test( s ) ) && ! portals.length ) {
+			throw new Error(
+				section.key + ' (' + section.source + '): its script moves an element to <body>. ' +
+				'Declare it in the registry as spec.portals, or its style controls will not reach it.'
+			);
+		}
+
 		let derived;
 		try {
 			derived = deriveSection( { key: section.key, markup, css, spec: section.spec || {} } );
@@ -212,6 +273,7 @@ for ( const registry of registries ) {
 			throw error;
 		}
 		const { panels, tabbed } = buildContentPanels( derived.fields, derived.parts );
+		dedupePanelLabels( panels, derived.repeaters );
 
 		const paths = {
 			template: 'templates/sections/' + section.key + '.php',
@@ -235,11 +297,18 @@ for ( const registry of registries ) {
 			template: paths.template,
 			style: css.trim() ? { handle: 'uew-' + section.name, file: paths.css } : null,
 			script: scripts.length ? { handle: 'uew-' + section.name, file: paths.js } : null,
-			keywords: [ 'umoya', 'founders circle', ...section.title.toLowerCase().split( /[^a-z0-9]+/ ).filter( Boolean ) ],
+			// The panel search matches these. Every widget used to carry "founders
+			// circle", so searching for it listed the whole plugin.
+			keywords: [ ...new Set( [
+				'umoya',
+				...( registry.category.keywords || [] ),
+				...section.title.toLowerCase().split( /[^a-z0-9]+/ ).filter( ( word ) => word.length > 1 ),
+			] ) ],
 		};
 
 		const schema = {
 			...meta,
+			portals: derived.portals,
 			tokens: derived.tokens,
 			content_panels: panels,
 			integration_controls: tabbed.integration,
@@ -255,7 +324,7 @@ for ( const registry of registries ) {
 
 		writeFile( paths.template, emitTemplate( { ...meta }, guardPhpNewlines( derived.template ) ) );
 		if ( meta.style ) writeFile( paths.css, emitCss( meta, css ) );
-		if ( meta.script ) writeFile( paths.js, emitScript( { ...meta, script_requires_root: section.script_requires_root }, scripts ) );
+		if ( meta.script ) writeFile( paths.js, emitScript( { ...meta, script_requires_root: section.script_requires_root, portals: derived.portals }, scripts ) );
 		writeFile( paths.widget, emitWidgetClass( meta ) );
 		writeFile( paths.schema, emitSchema( schema ) );
 

@@ -15,6 +15,7 @@ export const category = {
 	slug: 'umoya-sj',
 	title: 'Umoya - Signature Journey',
 	icon: 'eicon-map-pin',
+	keywords: [ 'signature journey', 'journey' ],
 };
 
 export const sections = [
@@ -89,5 +90,9 @@ export const sections = [
 		class_name: 'SJ_Form_Popup',
 		icon: 'eicon-form-horizontal',
 		description: 'Inquiry popup, lead source signature_journey_popup. Required on the page or the Offers button does nothing.',
+		spec: {
+			// Moves itself to <body> on init; see the homepage popup's entry.
+			portals: [ { selector: '#umoya-form-popup', trigger: '[data-umoya-form-popup]' } ],
+		},
 	},
 ];
