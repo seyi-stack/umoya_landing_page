@@ -2,11 +2,13 @@
 =================================================================
   UMOYA — THE SIGNATURE JOURNEY — SECTION 06: INCLUSIONS & OFFERS
 =================================================================
-  Two-column layout:
+  Two-column layout, both columns levelled top and bottom:
     LEFT  — "What Your Journey Includes" card grid (5 inclusions +
-            1 "Not included" dashed card)
-    RIGHT — sticky Offers panel (Founder's Circle rate, helicopter,
-            organizer) with a "Speak With a Travel Expert" CTA.
+            1 "Not included" dashed card), then the "Your Investment"
+            pricing card, which grows to absorb any height difference.
+    RIGHT — Offers panel (Founder's Circle rate, helicopter, organizer)
+            with a "Speak With a Travel Expert" CTA. The three offer rows
+            share the panel's spare height so the spacing stays even.
 
   ANCHOR: id="sj-inclusions" is the nav target — do not change.
   The offers CTA points at the closing section (#sj-cta).
@@ -64,8 +66,16 @@
     display: grid;
     grid-template-columns: 1.25fr 0.9fr;
     gap: clamp(28px, 4vw, 52px);
-    align-items: start;
+    /* stretch (not start) is what makes both columns end level. */
+    align-items: stretch;
     margin-top: clamp(38px, 4.6vw, 48px);
+  }
+
+  /* ── Left column (cards + investment) ──────────── */
+  .sj-inc-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
   /* ── Inclusion cards ────────────────────────────── */
@@ -130,6 +140,50 @@
     line-height: 1.6;
   }
 
+  /* ── Your Investment (pricing) card ─────────────── */
+  .sj-inc-price {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--terra);
+    border-radius: 10px;
+    padding: 30px 32px;
+    /* Absorbs any height the offers panel adds, so both columns end level. */
+    flex-grow: 1;
+  }
+  .sj-inc-price-ttl {
+    font-family: inherit;
+    font-size: clamp(1.25rem, 1.9vw, 1.45rem);
+    font-weight: 700;
+    color: var(--brown);
+    margin: 0;
+  }
+  /* Compound selector is deliberate: the `.sj-inc-price p` body-copy rule
+     below is more specific than a lone class and would otherwise shrink the
+     price back to 0.94rem. */
+  .sj-inc-price p.sj-inc-price-amt {
+    font-family: inherit;
+    font-size: clamp(1.9rem, 3.2vw, 2.5rem);
+    font-weight: 700;
+    color: var(--brown);
+    margin: 16px 0;
+    line-height: 1.15;
+  }
+  /* No literal space before the span in the markup — this margin IS the gap. */
+  .sj-inc-price-amt span {
+    font-size: 0.98rem;
+    font-weight: 400;
+    color: var(--muted);
+    margin-left: 10px;
+  }
+  .sj-inc-price p {
+    font-family: inherit;
+    font-size: 0.94rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin: 0 0 12px;
+  }
+  .sj-inc-price p:last-child { margin-bottom: 0; }
+
   /* ── Offers panel ───────────────────────────────── */
   .sj-offers {
     background: var(--white);
@@ -138,8 +192,12 @@
     border-radius: 10px;
     padding: 32px 30px;
     box-shadow: 0 18px 44px -32px rgba(74,53,38,.4);
-    position: sticky;
-    top: 88px;
+    /* Flex column so the offer rows can share the panel's spare height.
+       This panel used to be position:sticky — that is incompatible with
+       aligning both columns' bottoms, since a full-height element has no room
+       to travel. Restoring sticky means giving up the alignment. */
+    display: flex;
+    flex-direction: column;
   }
   .sj-offers-sub {
     font-family: inherit;
@@ -164,6 +222,9 @@
     gap: 13px;
     padding: 18px 0;
     border-top: 1px solid var(--line);
+    /* The three rows share whatever height the taller left column adds, so the
+       slack is spread evenly down the panel instead of pooling above the CTA. */
+    flex-grow: 1;
   }
   .sj-ofr:first-of-type { margin-top: 0.6rem; }
   .sj-ofr svg {
@@ -233,14 +294,15 @@
   /* ── Responsive ─────────────────────────────────── */
   @media (max-width: 1080px) {
     .sj-inc-layout { grid-template-columns: 1fr; }
-    .sj-offers { position: static; }
   }
   @media (max-width: 768px) {
     #sj-inclusions { padding: 44px 0; }
     .sj-inc-eye { margin-bottom: 0.9rem; }
     .sj-inc-ttl { font-size: clamp(1.7rem, 7vw, 2.3rem); }
     .sj-inc-layout { margin-top: 30px; gap: 22px; }
+    .sj-inc-left { gap: 16px; }
     .sj-inc-card { padding: 22px 20px; }
+    .sj-inc-price { padding: 24px 22px; }
     .sj-offers-ttl { font-size: clamp(1.4rem, 6vw, 1.6rem); }
   }
   @media (max-width: 620px) {
@@ -249,6 +311,8 @@
   @media (max-width: 420px) {
     #sj-inclusions { padding: 38px 0; }
     .sj-inc-ttl { font-size: clamp(1.55rem, 7.6vw, 2rem); }
+    .sj-inc-price { padding: 20px 18px; }
+    .sj-inc-price p.sj-inc-price-amt { font-size: clamp(1.55rem, 7vw, 1.9rem); }
     .sj-offers { padding: 26px 20px; }
   }
 </style>
@@ -263,31 +327,40 @@
 
     <div class="sj-inc-layout">
 
-      <!-- Inclusion cards -->
-      <div class="sj-inc-cards sj-inc-rv">
-        <div class="sj-inc-card">
-          <span class="sj-inc-ic"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 4l9 6.5"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span>
-          <p>All accommodations during your stay</p>
+      <!-- Inclusion cards + investment -->
+      <div class="sj-inc-left sj-inc-rv">
+        <div class="sj-inc-cards">
+          <div class="sj-inc-card">
+            <span class="sj-inc-ic"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 4l9 6.5"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span>
+            <p>All accommodations during your stay</p>
+          </div>
+          <div class="sj-inc-card">
+            <span class="sj-inc-ic"><svg viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M4.5 15.5 3 11l2.2-.4 2.3 2.6 4.3-.9-3.4-5.6 2.4-.5 5 5.3 4.2-.9a1.6 1.6 0 0 1 .6 3.1L4.5 17z"/></svg></span>
+            <p>Internal flights and ground transfers</p>
+          </div>
+          <div class="sj-inc-card">
+            <span class="sj-inc-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.2"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg></span>
+            <p>Private guides and exclusive Signature Moments</p>
+          </div>
+          <div class="sj-inc-card">
+            <span class="sj-inc-ic"><svg viewBox="0 0 24 24"><path d="M6 3v7a2.5 2.5 0 0 0 5 0V3"/><path d="M8.5 10v11"/><path d="M17.8 3c-1.5 1.4-2.2 3.3-2.2 5.4 0 1.7.8 2.9 2.2 3.4V21"/></svg></span>
+            <p>Most meals, with dietary needs taken care of</p>
+          </div>
+          <div class="sj-inc-card">
+            <span class="sj-inc-ic"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.2 7-10.4A7 7 0 0 0 5 10.6C5 15.8 12 21 12 21z"/><circle cx="12" cy="10.4" r="2.4"/></svg></span>
+            <p>A dedicated Umoya host, arrival to departure</p>
+          </div>
+          <div class="sj-inc-card sj-inc-plain">
+            <h4>Not included</h4>
+            <p>International flights, visas, travel insurance, and anything you choose along the way. Your Travel Expert will walk you through all of it.</p>
+          </div>
         </div>
-        <div class="sj-inc-card">
-          <span class="sj-inc-ic"><svg viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M4.5 15.5 3 11l2.2-.4 2.3 2.6 4.3-.9-3.4-5.6 2.4-.5 5 5.3 4.2-.9a1.6 1.6 0 0 1 .6 3.1L4.5 17z"/></svg></span>
-          <p>Internal flights and ground transfers</p>
-        </div>
-        <div class="sj-inc-card">
-          <span class="sj-inc-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.2"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg></span>
-          <p>Private guides and exclusive Signature Moments</p>
-        </div>
-        <div class="sj-inc-card">
-          <span class="sj-inc-ic"><svg viewBox="0 0 24 24"><path d="M6 3v7a2.5 2.5 0 0 0 5 0V3"/><path d="M8.5 10v11"/><path d="M17.8 3c-1.5 1.4-2.2 3.3-2.2 5.4 0 1.7.8 2.9 2.2 3.4V21"/></svg></span>
-          <p>Most meals, with dietary needs taken care of</p>
-        </div>
-        <div class="sj-inc-card">
-          <span class="sj-inc-ic"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.2 7-10.4A7 7 0 0 0 5 10.6C5 15.8 12 21 12 21z"/><circle cx="12" cy="10.4" r="2.4"/></svg></span>
-          <p>A dedicated Umoya host, arrival to departure</p>
-        </div>
-        <div class="sj-inc-card sj-inc-plain">
-          <h4>Not included</h4>
-          <p>International flights, visas, travel insurance, and anything you choose along the way. Your Travel Expert will walk you through all of it.</p>
+
+        <div class="sj-inc-price">
+          <h3 class="sj-inc-price-ttl">Your Investment</h3>
+          <p class="sj-inc-price-amt">From $16,500<span>per person, sharing</span></p>
+          <p>With all internal flights, every experience, and your hosts throughout included. Solo travellers and the Victoria Falls and Chobe extension are priced with your proposal.</p>
+          <p>Every journey is confirmed personally with a Travel Expert, who prepares the exact price for your dates and your party before you commit anything.</p>
         </div>
       </div>
 

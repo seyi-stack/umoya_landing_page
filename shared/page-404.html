@@ -1,0 +1,329 @@
+<!--
+=================================================================
+  UMOYA — 404 / PAGE NOT FOUND  (Elementor HTML widget)
+=================================================================
+  Replaces the Tevily theme's default 404 body, which currently reads
+  "The page requested could not be found. This could be a spelling
+  error in the URL or a removed page." — accurate, but it reads like a
+  server log.
+
+  The live 404 already returns a correct HTTP 404 status and already
+  renders the new site footer, so this is a content swap only. Do NOT
+  turn it into a normal published page: a 200-status "404 page" is
+  invisible to search engines and they will keep the dead URL indexed.
+
+  WHERE IT GOES
+    Elementor Pro → Templates → Theme Builder → Single → 404 Page.
+    Compose that template as:
+      shared/section-00-nav.html   (first)
+      this widget
+      shared/section-99-footer.html (last)
+    If the theme's own 404 heading still prints above this, remove it —
+    two <h1>s on one page is the one thing to check after pasting.
+
+  BACKGROUND IMAGE
+    umoya_compressed_img001238.jpeg — the Sabi Sand safari landscape
+    already used on the Signature Journey and homepage. Chosen on
+    weight as much as on looks: 326 KB, 4724×3154. The obvious
+    alternatives were 2.1–2.7 MB, which is the wrong thing to spend a
+    visitor's bandwidth on when they have already hit a dead end, on an
+    origin with this site's documented TTFB. umoya_image-1.jpg is
+    lighter still (207 KB) but is a 3.51:1 letterbox strip that crops
+    badly on a tall phone.
+
+    background-color is set to the brand brown as well, so the copy is
+    readable before the image arrives — or if it never does.
+
+  OVERLAY AND CONTRAST
+    A radial overlay, darkest where the text sits and lighter at the
+    edges so the photograph still reads. Worst case — a pure-white
+    patch of image directly behind the words — the cream copy still
+    measures about 10.5:1.
+
+    The eyebrow is CREAM, not the usual terracotta. Terracotta on this
+    overlay measures about 4.0:1, which is fine for the headline's
+    italic word (large text needs 3:1) and for the rule (decorative),
+    but short of the 4.5:1 that 12px text needs. Terracotta still
+    appears twice — the rule and the emphasis — so the accent is not
+    lost.
+
+  WHY THERE IS NO JAVASCRIPT
+    Every other section uses an IntersectionObserver reveal. This one
+    deliberately does not. A 404 is already a failure state; its
+    content must be on screen unconditionally.
+
+  BRAND: font-family: inherit; palette tokens only. Scoped to
+  #umoya-404. WCAG AA (44px targets, 12px type floor).
+=================================================================
+-->
+<style>
+  #umoya-404 {
+    --cream:    #F5F0EB;
+    --brown:    #4B2E2B;
+    --brown-dk: #3B2523;
+    --terra:    #D97E53;
+    --terra-dk: #C06840;
+    --white:    #FFFFFF;
+    --ease:     cubic-bezier(.25,.46,.45,.94);
+
+    position: relative;
+    font-family: inherit;
+    color: var(--cream);
+
+    /* Solid brand brown underneath, so the copy is legible before the
+       photograph loads and if it fails entirely. */
+    background-color: var(--brown);
+    background-image:
+      radial-gradient(ellipse at center,
+        rgba(59,37,35,.94) 0%,
+        rgba(59,37,35,.90) 45%,
+        rgba(75,46,43,.84) 100%),
+      url("https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img001238.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /*
+     * Hairline against the footer. The overlay's outer stop and the footer's
+     * solid #4B2E2B are close enough to merge into one undifferentiated brown
+     * where the photograph's foreground is dark. Same fix the Signature
+     * Journey stat band and the homepage CTA both needed. On the top edge it
+     * costs nothing — the nav above is cream.
+     */
+    border-bottom: 1px solid rgba(245,240,235,.10);
+
+    padding: clamp(72px, 11vw, 140px) 0 clamp(64px, 9vw, 120px);
+    /* Keeps the page from collapsing to a thin strip between the nav
+       and the footer on tall desktop viewports. */
+    min-height: min(72vh, 660px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  #umoya-404 *,
+  #umoya-404 *::before,
+  #umoya-404 *::after { box-sizing: border-box; }
+
+  .um404-c {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 3.4vw, 48px);
+    text-align: center;
+  }
+
+  /*
+   * Decorative numeral behind the copy — the same device as the "UMOYA"
+   * watermark in the Founder's Circle form. Kept low enough that it never
+   * touches the contrast of the text sitting on it, and hidden from
+   * assistive tech since "404" is already announced in the eyebrow.
+   */
+  .um404-mark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    font-family: inherit;
+    font-size: clamp(9rem, 27vw, 20rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    /* .06 on the dark treatment. Three huge solid glyphs read far
+       stronger than the same alpha would on thin strokes, so judge this
+       rendered, not from the value. */
+    color: rgba(245,240,235,.06);
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .um404-eye {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    /* Cream, not terracotta — see the contrast note in the header. */
+    color: rgba(245,240,235,.88);
+    margin-bottom: 1.1rem;
+  }
+
+  .um404-ttl {
+    font-family: inherit;
+    font-size: clamp(2.1rem, 5.4vw, 3.8rem);
+    font-weight: 400;
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin: 0;
+  }
+  .um404-ttl em { font-style: italic; color: var(--terra); }
+
+  .um404-rule {
+    width: 64px;
+    height: 3px;
+    background: var(--terra);
+    border: 0;
+    margin: clamp(20px, 2.6vw, 28px) auto clamp(18px, 2.4vw, 24px);
+  }
+
+  .um404-lead {
+    font-family: inherit;
+    font-size: clamp(1rem, 1.35vw, 1.08rem);
+    line-height: 1.75;
+    color: rgba(245,240,235,.86);
+    max-width: 52ch;
+    margin: 0 auto;
+  }
+
+  /* ── Actions ─────────────────────────────────────── */
+  .um404-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: clamp(28px, 3.6vw, 40px);
+  }
+
+  .um404-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    padding: 16px 32px;
+    border: 2px solid var(--terra);
+    border-radius: 0;
+    background: var(--terra);
+    color: var(--white);
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease), color .25s var(--ease);
+  }
+  .um404-btn:hover {
+    background: var(--terra-dk);
+    border-color: var(--terra-dk);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  .um404-btn:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
+
+  /*
+   * Ghost on a photographic background. The border is rgba(.70), not the
+   * .45 a ghost button usually gets — at .45 it was near-invisible over
+   * the bright parts of a hero image. Same fix as the Founder's Circle
+   * hero audit.
+   */
+  .um404-btn.is-ghost {
+    background: transparent;
+    border-color: rgba(245,240,235,.7);
+    color: var(--cream);
+  }
+  .um404-btn.is-ghost:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+    color: var(--brown);
+  }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 768px) {
+    #umoya-404 { padding: 58px 0 54px; min-height: 0; }
+    .um404-ttl { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+    .um404-lead { font-size: 1rem; line-height: 1.68; }
+    .um404-mark { font-size: clamp(7.5rem, 36vw, 13rem); }
+  }
+
+  @media (max-width: 560px) {
+    /* Full-width stacked buttons read better than two cramped pills */
+    .um404-actions { flex-direction: column; align-items: stretch; }
+    .um404-btn { width: 100%; }
+  }
+
+  @media (max-width: 420px) {
+    #umoya-404 { padding: 48px 0 46px; }
+    .um404-eye { letter-spacing: 0.2em; }
+    .um404-ttl { font-size: clamp(1.6rem, 8.6vw, 2rem); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .um404-btn { transition: none; }
+    .um404-btn:hover { transform: none; }
+  }
+</style>
+
+<section id="umoya-404" aria-labelledby="um404-title">
+  <span class="um404-mark" aria-hidden="true">404</span>
+
+  <div class="um404-c">
+    <span class="um404-eye">Error 404</span>
+
+    <!--
+      Copy alternates, if the client prefers something plainer — swap the
+      <h1> and the lead together so the metaphor does not half-survive:
+        "This page has <em>moved on</em>"
+        "We can't find that <em>page</em>"
+    -->
+    <h1 class="um404-ttl" id="um404-title">We've lost the <em>trail</em></h1>
+    <hr class="um404-rule">
+    <p class="um404-lead">The page you're looking for has moved, or never existed. Every journey has a wrong turn — here is the way back.</p>
+
+    <div class="um404-actions">
+      <a class="um404-btn" href="https://umoyaafrikatours.co.za/">Return Home</a>
+      <a class="um404-btn is-ghost" href="https://umoyaafrikatours.co.za/contact/">Speak With Us</a>
+    </div>
+  </div>
+</section>
+
+<!--
+=================================================================
+  _NOTES
+=================================================================
+  1. STATUS CODE. The live 404 already returns a real HTTP 404 —
+     confirmed by requesting a random URL. Keep it that way. Build
+     this as the Theme Builder 404 template, never as a published
+     page with its own slug.
+
+  2. TWO <h1>s. The Tevily 404 prints its own "404 / Page Not Found"
+     heading. If it still shows above this widget, delete it — this
+     widget carries the page's <h1>.
+
+  3. NO SCRIPT, DELIBERATELY. Do not add a scroll-reveal here for
+     consistency's sake; nothing on an error page should depend on JS
+     running.
+
+  4. NO LINK LIST. An earlier draft carried a five-item "Or continue
+     from here" row. Removed on request — the shared nav above and the
+     footer below already offer every one of those destinations, and
+     repeating them a third time on one screen added nothing. The two
+     buttons are the whole recovery path now.
+
+  5. BACKGROUND WEIGHT. If the image is ever swapped, check the file
+     size first. Several of the obvious candidates in the uploads
+     folder are 2–2.7 MB full-resolution exports sitting in the
+     "optimized" folder despite the name. CLAUDE.md's image procedure
+     (2400px long edge, quality 82, 300–800 KB) is the standard to
+     hold a replacement to.
+
+  6. CONTRAST. Cream copy measures about 10.5:1 against the overlay
+     even over a pure-white patch of photograph. Terracotta measures
+     about 4.0:1 there, which is why it is used only on the rule and
+     the headline's italic word, never on 12px text. If the overlay is
+     ever lightened, re-check both.
+
+  7. PRE-EXISTING, NOT INTRODUCED HERE: white on terracotta
+     (#FFFFFF on #D97E53) is 2.97:1, below AA for the button label.
+     That is the site's established button on every page, so it is kept
+     here for consistency rather than diverging on one screen — but it
+     is worth fixing site-wide.
+=================================================================
+-->
