@@ -144,7 +144,7 @@
 	"repeaters": [
 		{
 			"id": "rep_p_ab_ms_p",
-			"label": "Texts",
+			"label": "Paragraphs",
 			"item_label": "{{{ p }}}",
 			"controls": [
 				{

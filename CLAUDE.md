@@ -1,6 +1,6 @@
 # CLAUDE.md - Umoya Afrika Tours Project Handoff
 
-Last updated: 2026-10-03
+Last updated: 2026-10-05
 Workspace: `C:\Users\MOVING_SURFACE\Downloads\UM_Claude`
 Remote: `https://github.com/seyi-stack/umoya_landing_page.git`
 Current local branch: `codex/elementor-widget-sync` (pushed; Phase 26 is the latest work — `git log -3` for hashes)
@@ -1703,6 +1703,50 @@ survive Chrome dying under them (it did, once, when the machine slept).
 > use pasted HTML widgets; nothing changes on them until a page is moved onto
 > the widgets, which remains a per-page choice.
 
+### Phase 27 - Client editing guide, and what writing it exposed, 2026-10-05
+
+A client-facing guide to finding their way around the site and updating words,
+photos, videos and lists, written as a Claude Doc:
+<https://claude.ai/artifact/EsKGj31MSXCAyG8kpamne9>. It describes editing **with
+the compiled widgets**, so it is accurate once a page has moved onto them — not
+for today's pasted HTML widgets. Its contact line is a placeholder to fill in
+before it is shared.
+
+Walking the editor screen by screen for it found three things the seven checks
+cannot see, because they are about what an editor *reads*, not what a control
+*does*. All fixed in the compiler; control ids are unchanged in all 63 schemas.
+
+1. **28 widgets filed content under the wrong panel name.** Single-control
+   panels folded into the previous panel regardless of where they sat, and the
+   merged panel took the first one's region name. Eight heroes kept their
+   headline and button under "Background" or "Logo". Panels now fold only within
+   one region; see `tools/uew/README.md`, "How things get named".
+2. **The homepage film had no way to change it.** Its YouTube `<iframe src>`
+   was bound to an image picker, which cannot take a pasted link. Embeds, video
+   files and `<source>` now get a link field.
+3. **List names a client would not use:** "Containers" for the P&T and For
+   Groups steps and the Signature Journey offers, "Texts" for paragraph runs.
+   Now Steps, Offers, Paragraphs. Row fields named from bare class stems
+   became words too: "H" → Heading, "Li" → Item, and the in-page navs'
+   `data-s` ("S") → **Section to Highlight**.
+
+**All seven checks re-run on the final build, 2026-10-05:** fidelity 63/63,
+edit (1,973 controls, 99 lists), render 63/63, control reach 63/63,
+behaviour 41/41, browser 63/63, editor 63/63.
+
+> **Two harness traps found the same day.**
+> - The build can die with `Error: UNKNOWN … open '…\sections\<key>.json'`
+>   (errno -4094): Windows refusing a write because another process briefly
+>   held the file. It is not a widget failure — re-run the build on its own,
+>   with nothing else using the harness.
+> - **Forms on the local site can still reach the real HubSpot portal.** The
+>   harness blocks WordPress's own forwarding (`WP_HTTP_BLOCK_EXTERNAL`), but
+>   the browser is not blocked: a submit pushes the typed email to HubSpot's
+>   tracking script (`identify` + `trackPageView`), and if the local save fails
+>   the form falls back to posting straight to the HubSpot form. Test with
+>   `@example.com` addresses and clear them with
+>   `node tools/hubspot-cleanup-tests.mjs`.
+
 ---
 
 ## 6. Repository Map
@@ -2612,6 +2656,22 @@ Guidelines:
 ## 16. Known Open Items
 
 ### ⚠ Live site stability (highest priority)
+
+> **⛔ OPEN 2026-10-04 — full outage again.** Every front-end page, `/wp-json/`
+> and the virtual `robots.txt` return **HTTP 500, "There has been a critical
+> error on this website"**, uncached (`x-litespeed-cache-control: no-cache`,
+> `cf-cache-status: DYNAMIC`); still the case 2026-10-05. Static files (PDFs)
+> serve. `/wp-login.php` and `/wp-admin/` answer 200, but only with a "Checking
+> your browser…" bot-check page, so that proves nothing about WordPress loading.
+> The Mountain Duck listing shows **no** plugin, theme or mu-plugin change after
+> 2026-09-02 (newest: `simply-schedule-appointments`, `litespeed-cache`), no
+> leftovers in `wp-content/upgrade*`, and `error_log` is still unreadable over the
+> mount — but that listing may be cached, so treat it as a hint. The plugin from
+> this repo was not deployed (its folder is untouched since May). **Next:** the
+> admin inbox for WordPress's "Your Site is Experiencing a Technical Issue" email
+> (it names the culprit and carries a recovery-mode link), or cPanel → error log;
+> failing those, the Phase 15 diagnostic-script method — with permission, as it
+> writes to production.
 
 > **RESOLVED 2026-08-22 — full outage. Cause: a broken The Events Calendar
 > install.** See Phase 15 below. This is a DIFFERENT fault from the 520/522

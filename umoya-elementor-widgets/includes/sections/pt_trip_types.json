@@ -246,14 +246,14 @@
 		},
 		{
 			"id": "content_p_pt_tt_blank_pt_tt_body_pt_tt_go",
-			"label": "Card",
+			"label": "Card Link 2",
 			"sample": "",
 			"region_label": "Card",
 			"controls": [
 				{
 					"id": "link_text",
 					"control": "text",
-					"label": "Text 1",
+					"label": "Text",
 					"default": "Tell us what you have in mind",
 					"esc": "post",
 					"group": "p_pt_tt_blank_pt_tt_body_pt_tt_go",
@@ -272,11 +272,19 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Card Link 2"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_pt_tt_hint",
+			"label": "Text",
+			"sample": "Scroll for more",
+			"region_label": "",
+			"controls": [
 				{
 					"id": "text_text_3",
 					"control": "text",
-					"label": "Text 2",
+					"label": "Text",
 					"description": "",
 					"default": "Scroll for more",
 					"esc": "post",
@@ -284,8 +292,7 @@
 					"sort": 0,
 					"part_label": "Text"
 				}
-			],
-			"merged": true
+			]
 		}
 	],
 	"integration_controls": [],

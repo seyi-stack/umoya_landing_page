@@ -156,7 +156,7 @@
 	"repeaters": [
 		{
 			"id": "rep_p_ab_ch_p",
-			"label": "Texts",
+			"label": "Paragraphs",
 			"item_label": "{{{ p }}}",
 			"controls": [
 				{

@@ -331,7 +331,7 @@
 				{
 					"id": "data_s",
 					"control": "text",
-					"label": "S",
+					"label": "Section to Highlight",
 					"esc": "attr",
 					"default": "sj-overview"
 				},
@@ -390,7 +390,7 @@
 				{
 					"id": "data_s",
 					"control": "text",
-					"label": "S",
+					"label": "Section to Highlight",
 					"esc": "attr",
 					"default": "sj-overview"
 				},

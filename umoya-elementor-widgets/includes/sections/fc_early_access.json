@@ -357,7 +357,7 @@
 	"repeaters": [
 		{
 			"id": "rep_p",
-			"label": "Texts",
+			"label": "Paragraphs",
 			"item_label": "{{{ p }}}",
 			"controls": [
 				{

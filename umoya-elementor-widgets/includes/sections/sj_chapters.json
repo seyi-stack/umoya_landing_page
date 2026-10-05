@@ -258,7 +258,7 @@
 		},
 		{
 			"id": "content_p_sj_ch_mv_div_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_img_nth_of_type_1",
-			"label": "Content",
+			"label": "Image 1",
 			"sample": "",
 			"region_label": "",
 			"controls": [
@@ -309,7 +309,15 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Image 1"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv_sj_ch_num",
+			"label": "Header",
+			"sample": "Chapter Two",
+			"region_label": "Header",
+			"controls": [
 				{
 					"id": "text_text_4",
 					"control": "text",

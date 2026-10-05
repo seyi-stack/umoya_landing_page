@@ -153,7 +153,16 @@
 					"group": "p_fg_jr_ttl",
 					"sort": 0,
 					"part_label": "Title"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_fg_jr_lead",
+			"label": "Text",
+			"sample": "Ten days, three provinces, welcomed at every tu…",
+			"region_label": "",
+			"controls": [
 				{
 					"id": "text_text",
 					"control": "textarea",
@@ -165,8 +174,7 @@
 					"sort": 0,
 					"part_label": "Text"
 				}
-			],
-			"merged": true
+			]
 		},
 		{
 			"id": "content_p_fg_jr_btn",
@@ -256,7 +264,7 @@
 				{
 					"id": "h",
 					"control": "text",
-					"label": "H",
+					"label": "Heading",
 					"esc": "post",
 					"default": "History &amp; Culture"
 				},

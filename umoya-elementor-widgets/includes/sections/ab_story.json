@@ -127,7 +127,7 @@
 		},
 		{
 			"id": "content_p_ab_st_pic",
-			"label": "Content",
+			"label": "Image",
 			"sample": "",
 			"region_label": "",
 			"controls": [
@@ -154,7 +154,15 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Image"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_ab_st_eye",
+			"label": "List",
+			"sample": "Our Story",
+			"region_label": "List",
+			"controls": [
 				{
 					"id": "eyebrow_text",
 					"control": "text",
@@ -221,7 +229,7 @@
 	"repeaters": [
 		{
 			"id": "rep_p_ab_st_p",
-			"label": "Texts",
+			"label": "Paragraphs",
 			"item_label": "{{{ p }}}",
 			"controls": [
 				{

@@ -113,7 +113,7 @@
 		},
 		{
 			"id": "content_p_img",
-			"label": "Background",
+			"label": "Image",
 			"sample": "",
 			"region_label": "Background",
 			"controls": [
@@ -140,7 +140,15 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Image"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_fg_h_eye",
+			"label": "Content",
+			"sample": "For Groups",
+			"region_label": "",
+			"controls": [
 				{
 					"id": "eyebrow_text",
 					"control": "text",

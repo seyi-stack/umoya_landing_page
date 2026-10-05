@@ -135,7 +135,7 @@
 		},
 		{
 			"id": "content_p_fc_jrn_hd_div_fc_jrn_eye",
-			"label": "Header",
+			"label": "Header 1",
 			"sample": "Our Signature Journey",
 			"region_label": "Header",
 			"controls": [
@@ -160,7 +160,16 @@
 					"group": "p_fc_jrn_ttl",
 					"sort": 0,
 					"part_label": "Header Title"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_fc_jrn_lead",
+			"label": "Header Text",
+			"sample": "Three immersive chapters, from the culture and …",
+			"region_label": "Header",
+			"controls": [
 				{
 					"id": "text_text",
 					"control": "textarea",
@@ -171,11 +180,19 @@
 					"group": "p_fc_jrn_lead",
 					"sort": 0,
 					"part_label": "Header Text"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_jrn_ext_head_fc_jrn_eye",
+			"label": "Header 2",
+			"sample": "Optional Extensions",
+			"region_label": "Header",
+			"controls": [
 				{
 					"id": "eyebrow_text_2",
 					"control": "text",
-					"label": "Header Eyebrow 2",
+					"label": "Eyebrow",
 					"description": "",
 					"default": "Optional Extensions",
 					"esc": "post",

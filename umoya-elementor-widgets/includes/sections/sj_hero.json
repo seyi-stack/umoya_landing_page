@@ -156,7 +156,7 @@
 		},
 		{
 			"id": "content_p_sj_h1_brand_img",
-			"label": "Logo",
+			"label": "Logo Image",
 			"sample": "",
 			"region_label": "Logo",
 			"controls": [
@@ -183,7 +183,15 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Logo Image"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_sj_h1_eye",
+			"label": "Content",
+			"sample": "The Signature Journey",
+			"region_label": "",
+			"controls": [
 				{
 					"id": "eyebrow_text",
 					"control": "text",

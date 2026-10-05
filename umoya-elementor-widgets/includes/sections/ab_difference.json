@@ -200,7 +200,7 @@
 				{
 					"id": "h",
 					"control": "text",
-					"label": "H",
+					"label": "Heading",
 					"esc": "post",
 					"default": "Welcomed by name"
 				},

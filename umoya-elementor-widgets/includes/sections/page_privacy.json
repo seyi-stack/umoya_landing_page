@@ -143,7 +143,16 @@
 					"group": "p_pv_meta",
 					"sort": 0,
 					"part_label": "Header Text"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_pv_toc",
+			"label": "Navigation",
+			"sample": "",
+			"region_label": "",
+			"controls": [
 				{
 					"id": "navigation_aria_label",
 					"control": "text",
@@ -158,7 +167,7 @@
 				{
 					"id": "text_text_2",
 					"control": "text",
-					"label": "Navigation Text",
+					"label": "Text",
 					"description": "",
 					"default": "Contents",
 					"esc": "post",
@@ -1118,7 +1127,7 @@
 		},
 		{
 			"id": "rep_p_pv_p",
-			"label": "Pv 1 Texts",
+			"label": "Pv 1 Paragraphs",
 			"item_label": "{{{ pv_p }}}",
 			"controls": [
 				{
@@ -1153,7 +1162,7 @@
 				{
 					"id": "pv_li",
 					"control": "textarea",
-					"label": "Li",
+					"label": "Item",
 					"esc": "post",
 					"default": "Identity and contact details, including your name, email address, telephone number and country of residence."
 				}
@@ -1185,7 +1194,7 @@
 				{
 					"id": "pv_li_markup",
 					"control": "textarea",
-					"label": "Li (HTML)",
+					"label": "Item (HTML)",
 					"esc": "raw",
 					"default": "Technical information such as your IP address, device type, browser type and operating system."
 				}
@@ -1214,7 +1223,7 @@
 				{
 					"id": "pv_li",
 					"control": "text",
-					"label": "Li",
+					"label": "Item",
 					"esc": "post",
 					"default": "To respond to your enquiry and provide you with information about our journeys."
 				}
@@ -1258,7 +1267,7 @@
 				{
 					"id": "pv_li",
 					"control": "textarea",
-					"label": "Li",
+					"label": "Item",
 					"esc": "post",
 					"default": "Destination management companies, accommodation providers, transport operators, guides, restaurants and experience providers contracted to deliver your journey."
 				}
@@ -1290,7 +1299,7 @@
 		},
 		{
 			"id": "rep_p_pv_p_2",
-			"label": "Pv 7 Texts",
+			"label": "Pv 7 Paragraphs",
 			"item_label": "{{{ pv_p }}}",
 			"controls": [
 				{
@@ -1316,7 +1325,7 @@
 		},
 		{
 			"id": "rep_p_pv_p_3",
-			"label": "Pv 9 Texts",
+			"label": "Pv 9 Paragraphs",
 			"item_label": "{{{ pv_p }}}",
 			"controls": [
 				{
@@ -1348,7 +1357,7 @@
 				{
 					"id": "pv_li",
 					"control": "textarea",
-					"label": "Li",
+					"label": "Item",
 					"esc": "post",
 					"default": "Be notified that we are collecting personal information about you, and that your personal information has been accessed or acquired by an unauthorised person."
 				}

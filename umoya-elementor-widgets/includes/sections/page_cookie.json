@@ -477,7 +477,16 @@
 					"group": "p_ck_sec_p_nth_of_type_4",
 					"sort": 0,
 					"part_label": "Text 2"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_ck_sec_ul_nth_of_type_2_ck_li",
+			"label": "List Item 2",
+			"sample": "_ga_* (Google Analytics, approximately 1 year) …",
+			"region_label": "List",
+			"controls": [
 				{
 					"id": "item_text",
 					"control": "textarea",
@@ -488,11 +497,19 @@
 					"group": "p_ck_sec_ul_nth_of_type_2_ck_li",
 					"sort": 0,
 					"part_label": "List Item 2"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_ck_sec_p_nth_of_type_6",
+			"label": "Content 3",
+			"sample": "We may also use HubSpot analytics tools in supp…",
+			"region_label": "",
+			"controls": [
 				{
 					"id": "text_text_6",
 					"control": "textarea",
-					"label": "Text 3",
+					"label": "Text",
 					"description": "",
 					"default": "We may also use HubSpot analytics tools in support of our marketing and communications work, which set additional cookies in this category from time to time.",
 					"esc": "post",
@@ -510,20 +527,11 @@
 					"group": "p_ck_sec_p_nth_of_type_7",
 					"sort": 0,
 					"part_label": "Text 4"
-				}
-			],
-			"merged": true
-		},
-		{
-			"id": "content_p_ck_prefs_p",
-			"label": "Content 3",
-			"sample": "Or change them here:",
-			"region_label": "",
-			"controls": [
+				},
 				{
 					"id": "text_text_10",
 					"control": "text",
-					"label": "Text",
+					"label": "Text 6",
 					"description": "",
 					"default": "Or change them here:",
 					"esc": "post",
@@ -674,7 +682,7 @@
 	"repeaters": [
 		{
 			"id": "rep_p_ck_p",
-			"label": "Umoya Cookie Policy Texts 1",
+			"label": "Umoya Cookie Policy Paragraphs 1",
 			"item_label": "{{{ ck_p }}}",
 			"controls": [
 				{
@@ -700,7 +708,7 @@
 		},
 		{
 			"id": "rep_p_ck_p_2",
-			"label": "Umoya Cookie Policy Texts 2",
+			"label": "Umoya Cookie Policy Paragraphs 2",
 			"item_label": "{{{ ck_p }}}",
 			"controls": [
 				{
@@ -726,7 +734,7 @@
 		},
 		{
 			"id": "rep_p_ck_p_3",
-			"label": "Umoya Cookie Policy Texts 3",
+			"label": "Umoya Cookie Policy Paragraphs 3",
 			"item_label": "{{{ ck_p }}}",
 			"controls": [
 				{
@@ -752,7 +760,7 @@
 		},
 		{
 			"id": "rep_p_ck_p_4",
-			"label": "Umoya Cookie Policy Texts 4",
+			"label": "Umoya Cookie Policy Paragraphs 4",
 			"item_label": "{{{ ck_p }}}",
 			"controls": [
 				{
@@ -784,7 +792,7 @@
 				{
 					"id": "ck_li_markup",
 					"control": "textarea",
-					"label": "Li (HTML)",
+					"label": "Item (HTML)",
 					"esc": "raw",
 					"default": "<code>__cf_bm</code> (Cloudflare, 1 hour) &mdash; supports Cloudflare's bot management service, which protects the site from automated abuse."
 				}
@@ -813,7 +821,7 @@
 		},
 		{
 			"id": "rep_p_ck_p_5",
-			"label": "Umoya Cookie Policy Texts 5",
+			"label": "Umoya Cookie Policy Paragraphs 5",
 			"item_label": "{{{ ck_p }}}",
 			"controls": [
 				{

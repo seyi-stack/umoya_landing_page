@@ -133,7 +133,7 @@
 		},
 		{
 			"id": "content_p_img",
-			"label": "Content",
+			"label": "Image",
 			"sample": "",
 			"region_label": "",
 			"controls": [
@@ -182,11 +182,20 @@
 					"group": "p_umoya_form_image_copy_h2",
 					"sort": 0,
 					"part_label": "Image Heading"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_form_head_span",
+			"label": "Header",
+			"sample": "Reserve Your Place",
+			"region_label": "Header",
+			"controls": [
 				{
 					"id": "text_text_2",
 					"control": "text",
-					"label": "Header Text 1",
+					"label": "Text",
 					"description": "",
 					"default": "Reserve Your Place",
 					"esc": "post",
@@ -197,7 +206,7 @@
 				{
 					"id": "heading_text_2",
 					"control": "text",
-					"label": "Header Heading",
+					"label": "Heading",
 					"description": "",
 					"default": "Begin Your Journey",
 					"esc": "post",
@@ -215,7 +224,16 @@
 					"group": "p_umoya_form_head_p",
 					"sort": 0,
 					"part_label": "Header Text 2"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_popup_form",
+			"label": "Form 1",
+			"sample": "",
+			"region_label": "Card",
+			"controls": [
 				{
 					"id": "form_action",
 					"control": "url",
@@ -229,8 +247,7 @@
 					"sort": 1,
 					"part_label": "Form"
 				}
-			],
-			"merged": true
+			]
 		},
 		{
 			"id": "content_p_umoya_field_label_nth_of_type_1",
@@ -527,7 +544,7 @@
 		},
 		{
 			"id": "content_p_umoya_consent_item_span_nth_of_type_1_span_nth_of_type_1",
-			"label": "Text",
+			"label": "Text Label",
 			"sample": "(Required)",
 			"region_label": "Text",
 			"controls": [
@@ -552,7 +569,15 @@
 					"group": "p_umoya_consent_item_span_nth_of_type_1_span_nth_of_type_1",
 					"sort": 0,
 					"part_label": "Text Label"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_form_submit",
+			"label": "Form 2",
+			"sample": "Speak to an Expert",
+			"region_label": "Form",
+			"controls": [
 				{
 					"id": "button_text",
 					"control": "text",
@@ -574,7 +599,16 @@
 					"group": "p_umoya_form_legal",
 					"sort": 0,
 					"part_label": "Form Consent 2"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_iframe",
+			"label": "Embed",
+			"sample": "",
+			"region_label": "Card",
+			"controls": [
 				{
 					"id": "embed_title",
 					"control": "text",
@@ -586,8 +620,7 @@
 					"sort": 1,
 					"part_label": "Embed"
 				}
-			],
-			"merged": true
+			]
 		}
 	],
 	"integration_controls": [

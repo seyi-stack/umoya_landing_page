@@ -204,7 +204,7 @@
 		},
 		{
 			"id": "content_p_fc_h1_brand_img",
-			"label": "Logo",
+			"label": "Logo Image",
 			"sample": "",
 			"region_label": "Logo",
 			"controls": [
@@ -231,7 +231,15 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Logo Image"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_h1_eye",
+			"label": "Content",
+			"sample": "An Invitation to Our Guests",
+			"region_label": "",
+			"controls": [
 				{
 					"id": "eyebrow_text",
 					"control": "text",
@@ -270,7 +278,7 @@
 		},
 		{
 			"id": "content_p_fc_h1_btn_primary",
-			"label": "Content",
+			"label": "Button",
 			"sample": "",
 			"region_label": "",
 			"controls": [
@@ -296,7 +304,15 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Button"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_h1_scroll_lbl",
+			"label": "Label",
+			"sample": "Scroll",
+			"region_label": "Scroll Cue",
+			"controls": [
 				{
 					"id": "label_text",
 					"control": "text",
@@ -308,8 +324,7 @@
 					"sort": 0,
 					"part_label": "Label"
 				}
-			],
-			"merged": true
+			]
 		}
 	],
 	"integration_controls": [],

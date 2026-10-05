@@ -127,7 +127,7 @@
 		},
 		{
 			"id": "content_p_umoya_hs_eye",
-			"label": "Content",
+			"label": "Eyebrow",
 			"sample": "Where You'll Stay",
 			"region_label": "",
 			"controls": [
@@ -145,13 +145,22 @@
 				{
 					"id": "label_text",
 					"control": "text",
-					"label": "Text 1",
+					"label": "Text",
 					"default": "Featured Hotel",
 					"esc": "post",
 					"group": "p_umoya_hs_badge",
 					"sort": 0,
 					"part_label": "Label"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_umoya_hs_name",
+			"label": "Content",
+			"sample": "Cape Grace",
+			"region_label": "",
+			"controls": [
 				{
 					"id": "heading_text",
 					"control": "text",
@@ -166,7 +175,7 @@
 				{
 					"id": "text_text",
 					"control": "text",
-					"label": "Text 2",
+					"label": "Text",
 					"description": "",
 					"default": "A Fairmont Hotel &middot; V&amp;A Waterfront, Cape Town",
 					"esc": "post",

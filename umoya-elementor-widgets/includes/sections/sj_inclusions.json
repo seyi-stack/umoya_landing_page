@@ -168,14 +168,23 @@
 				{
 					"id": "title_text",
 					"control": "text",
-					"label": "Title 1",
+					"label": "Title",
 					"description": "",
 					"default": "What Your Journey Includes",
 					"esc": "post",
 					"group": "p_sj_inc_ttl",
 					"sort": 0,
 					"part_label": "Header Title"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_sj_inc_plain_h4",
+			"label": "Card",
+			"sample": "Not included",
+			"region_label": "Card",
+			"controls": [
 				{
 					"id": "heading_text",
 					"control": "text",
@@ -197,11 +206,20 @@
 					"group": "p_sj_inc_plain_p",
 					"sort": 0,
 					"part_label": "Card Text 3"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_sj_inc_price_ttl",
+			"label": "Content",
+			"sample": "Your Investment",
+			"region_label": "",
+			"controls": [
 				{
 					"id": "title_text_2",
 					"control": "text",
-					"label": "Title 2",
+					"label": "Title",
 					"description": "",
 					"default": "Your Investment",
 					"esc": "post",
@@ -212,7 +230,7 @@
 				{
 					"id": "text_text_2",
 					"control": "textarea",
-					"label": "Text 1",
+					"label": "Text",
 					"description": "Inline formatting tags are preserved.",
 					"default": "From $16,500<span>per person, sharing</span>",
 					"esc": "post",
@@ -241,20 +259,11 @@
 					"group": "p_sj_offers_sub",
 					"sort": 0,
 					"part_label": "Subtitle"
-				}
-			],
-			"merged": true
-		},
-		{
-			"id": "content_p_sj_offers_ttl",
-			"label": "Aside",
-			"sample": "Preferred rates, held for our first guests.",
-			"region_label": "Aside",
-			"controls": [
+				},
 				{
 					"id": "title_text_3",
 					"control": "text",
-					"label": "Title",
+					"label": "Aside Title",
 					"description": "",
 					"default": "Preferred rates, held for our first guests.",
 					"esc": "post",
@@ -276,13 +285,13 @@
 				{
 					"id": "text_text_3",
 					"control": "textarea",
-					"label": "Text",
+					"label": "Aside Text",
 					"description": "",
 					"default": "Offers apply to new bookings and cannot be combined. Places in the Founder's Circle are limited, and the rate closes once the founding group is full.",
 					"esc": "post",
 					"group": "p_sj_offers_fine",
 					"sort": 0,
-					"part_label": "Aside Text 2"
+					"part_label": "Aside Text"
 				}
 			],
 			"merged": true
@@ -381,7 +390,7 @@
 		},
 		{
 			"id": "rep_p",
-			"label": "Texts",
+			"label": "Paragraphs",
 			"item_label": "{{{ p }}}",
 			"controls": [
 				{
@@ -407,7 +416,7 @@
 		},
 		{
 			"id": "rep_div_sj_ofr",
-			"label": "Containers",
+			"label": "Offers",
 			"item_label": "{{{ h4 }}}",
 			"controls": [
 				{
@@ -1120,8 +1129,8 @@
 		},
 		{
 			"id": "p_sj_ofr",
-			"label": "Aside Container 1",
-			"short_label": "Container",
+			"label": "Offer",
+			"short_label": "Offer",
 			"parent_label": "Aside",
 			"sample": "",
 			"selector": ".sj-ofr",
@@ -1149,9 +1158,9 @@
 		},
 		{
 			"id": "p_sj_ofr_svg_nth_of_type_1",
-			"label": "Aside Icon",
+			"label": "Offer Icon",
 			"short_label": "Icon",
-			"parent_label": "Aside",
+			"parent_label": "Offer",
 			"sample": "",
 			"selector": ".sj-ofr > svg:nth-of-type(1)",
 			"tag": "svg",
@@ -1169,9 +1178,9 @@
 		},
 		{
 			"id": "p_sj_ofr_div_nth_of_type_1",
-			"label": "Aside Container 2",
+			"label": "Offer Container",
 			"short_label": "Container",
-			"parent_label": "Aside",
+			"parent_label": "Offer",
 			"sample": "",
 			"selector": ".sj-ofr > div:nth-of-type(1)",
 			"tag": "div",
@@ -1197,9 +1206,9 @@
 		},
 		{
 			"id": "p_sj_ofr_div_nth_of_type_1_h4_nth_of_type_1",
-			"label": "Aside Heading",
+			"label": "Offer Heading",
 			"short_label": "Heading",
-			"parent_label": "Aside",
+			"parent_label": "Offer",
 			"sample": "The Founder's Circle rate",
 			"selector": ".sj-ofr > div:nth-of-type(1) > h4:nth-of-type(1)",
 			"tag": "h4",
@@ -1226,9 +1235,9 @@
 		},
 		{
 			"id": "p_sj_ofr_div_nth_of_type_1_p_nth_of_type_1",
-			"label": "Aside Text 1",
+			"label": "Offer Text",
 			"short_label": "Text",
-			"parent_label": "Aside",
+			"parent_label": "Offer",
 			"sample": "Founding members travel at our best rate, held …",
 			"selector": ".sj-ofr > div:nth-of-type(1) > p:nth-of-type(1)",
 			"tag": "p",
@@ -1255,7 +1264,7 @@
 		},
 		{
 			"id": "p_sj_offers_end",
-			"label": "Aside Container 3",
+			"label": "Aside Container",
 			"short_label": "Container",
 			"parent_label": "Aside",
 			"sample": "",
@@ -1313,7 +1322,7 @@
 		},
 		{
 			"id": "p_sj_offers_fine",
-			"label": "Aside Text 2",
+			"label": "Aside Text",
 			"short_label": "Text",
 			"parent_label": "Aside",
 			"sample": "Offers apply to new bookings and cannot be comb…",

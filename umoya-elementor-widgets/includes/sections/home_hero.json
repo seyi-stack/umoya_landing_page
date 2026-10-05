@@ -136,7 +136,7 @@
 		},
 		{
 			"id": "content_p_video",
-			"label": "Background",
+			"label": "Video",
 			"sample": "",
 			"region_label": "Background",
 			"controls": [
@@ -176,7 +176,15 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Video"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_h1",
+			"label": "Content",
+			"sample": "Breathe South Africa Differently.",
+			"region_label": "",
+			"controls": [
 				{
 					"id": "heading_text",
 					"control": "text",
@@ -202,7 +210,7 @@
 				{
 					"id": "item_aria_label",
 					"control": "text",
-					"label": "Item",
+					"label": "Accessible Name",
 					"default": "Primary action",
 					"esc": "attr",
 					"group": "p_cta_row",

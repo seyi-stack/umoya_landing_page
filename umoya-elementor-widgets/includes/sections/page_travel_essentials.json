@@ -154,11 +154,20 @@
 					"group": "p_te_stamp",
 					"sort": 0,
 					"part_label": "Header Text"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_te_lead",
+			"label": "Text 1",
+			"sample": "Everything on this page exists so that the prac…",
+			"region_label": "",
+			"controls": [
 				{
 					"id": "text_text_2",
 					"control": "textarea",
-					"label": "Text 1",
+					"label": "Text",
 					"description": "",
 					"default": "Everything on this page exists so that the practical side of your journey is settled long before you fly. When you confirm a booking, we review every requirement below against your passport, your routing, and your travel dates, and we tell you exactly what applies to you. Requirements do change, so treat this page as reliable guidance and our pre-departure confirmation as final.",
 					"esc": "post",
@@ -166,8 +175,7 @@
 					"sort": 0,
 					"part_label": "Text 1"
 				}
-			],
-			"merged": true
+			]
 		},
 		{
 			"id": "content_p_te_sec_h2_nth_of_type_1",
@@ -540,7 +548,7 @@
 	"repeaters": [
 		{
 			"id": "rep_p_te_p",
-			"label": "Umoya Travel Essentials Texts 1",
+			"label": "Umoya Travel Essentials Paragraphs 1",
 			"item_label": "{{{ te_p }}}",
 			"controls": [
 				{
@@ -566,7 +574,7 @@
 		},
 		{
 			"id": "rep_p_te_p_2",
-			"label": "Umoya Travel Essentials Texts 2",
+			"label": "Umoya Travel Essentials Paragraphs 2",
 			"item_label": "{{{ te_p }}}",
 			"controls": [
 				{
@@ -592,7 +600,7 @@
 		},
 		{
 			"id": "rep_p_te_p_3",
-			"label": "Umoya Travel Essentials Texts 3",
+			"label": "Umoya Travel Essentials Paragraphs 3",
 			"item_label": "{{{ te_p }}}",
 			"controls": [
 				{
@@ -621,7 +629,7 @@
 		},
 		{
 			"id": "rep_p_te_p_4",
-			"label": "Umoya Travel Essentials Texts 4",
+			"label": "Umoya Travel Essentials Paragraphs 4",
 			"item_label": "",
 			"controls": [
 				{
@@ -653,7 +661,7 @@
 				{
 					"id": "te_li",
 					"control": "textarea",
-					"label": "Li",
+					"label": "Item",
 					"esc": "post",
 					"default": "medical expenses overseas, including hospitalisation, evacuation, and repatriation, with a minimum cover level of USD 100,000;"
 				}

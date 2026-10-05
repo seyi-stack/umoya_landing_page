@@ -168,7 +168,7 @@
 	"repeaters": [
 		{
 			"id": "rep_div_pt_hw_step",
-			"label": "Containers",
+			"label": "Steps",
 			"item_label": "{{{ n }}}",
 			"controls": [
 				{
@@ -188,7 +188,7 @@
 				{
 					"id": "h",
 					"control": "text",
-					"label": "H",
+					"label": "Heading",
 					"esc": "post",
 					"default": "Tell us what you are hoping for"
 				},
@@ -399,8 +399,8 @@
 		},
 		{
 			"id": "p_pt_hw_step",
-			"label": "Container 3",
-			"short_label": "Container",
+			"label": "Step",
+			"short_label": "Step",
 			"parent_label": "",
 			"sample": "",
 			"selector": ".pt-hw-step",
@@ -428,9 +428,9 @@
 		},
 		{
 			"id": "p_pt_hw_step_div_nth_of_type_1",
-			"label": "Text 1",
+			"label": "Step Text 1",
 			"short_label": "Text",
-			"parent_label": "",
+			"parent_label": "Step",
 			"sample": "1",
 			"selector": ".pt-hw-step > div:nth-of-type(1)",
 			"tag": "div",
@@ -458,7 +458,7 @@
 			"id": "p_pt_hw_step_h3_nth_of_type_1",
 			"label": "Heading",
 			"short_label": "Heading",
-			"parent_label": "",
+			"parent_label": "Step",
 			"sample": "Tell us what you are hoping for",
 			"selector": ".pt-hw-step > h3:nth-of-type(1)",
 			"tag": "h3",
@@ -485,9 +485,9 @@
 		},
 		{
 			"id": "p_pt_hw_step_p_nth_of_type_1",
-			"label": "Text 2",
+			"label": "Step Text 2",
 			"short_label": "Text",
-			"parent_label": "",
+			"parent_label": "Step",
 			"sample": "Share a journey that speaks to you, or simply y…",
 			"selector": ".pt-hw-step > p:nth-of-type(1)",
 			"tag": "p",

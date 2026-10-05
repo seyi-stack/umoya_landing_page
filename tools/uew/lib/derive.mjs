@@ -51,6 +51,17 @@ const URL_ATTRS = new Set( [ 'href', 'action', 'formaction', 'cite' ] );
 /** Attributes that carry media. */
 const MEDIA_ATTRS = new Set( [ 'src', 'poster' ] );
 
+/**
+ * The control a media attribute gets. Only an image is chosen from the Media
+ * Library; a video file, a <source>, or whatever an <iframe> loads is a link to
+ * type in. The homepage film is a YouTube embed -- a library picker would have
+ * left no way to paste a new video's link at all.
+ */
+function mediaControlFor( node, value ) {
+	if ( [ 'iframe', 'embed', 'object', 'source' ].includes( node.tagName.toLowerCase() ) ) return 'url';
+	return /\.(mp4|webm|mov|m4v|ogv)(\?|#|$)/i.test( value || '' ) ? 'url' : 'media';
+}
+
 /** Attributes that belong to the CRM / form plumbing rather than to design. */
 function isIntegrationAttr( name, node ) {
 	if ( name.startsWith( 'data-hubspot' ) ) return true;
@@ -231,7 +242,7 @@ const NAME_EXPANSIONS = {
 	req: 'Required', sec: 'Section', ss: 'Slideshow', sub: 'Subtitle', tgl: 'Toggle',
 	ttl: 'Title', txt: 'Text', vid: 'Video', wrap: 'Wrapper', jrn: 'Journey',
 	f2: 'Form', h1: 'Hero', bf: 'Panel', det: 'Details', ben: 'Benefits',
-	c: 'Container', n: 'Number', l: 'Label', t: 'Text', p: 'Paragraph',
+	c: 'Container', n: 'Number', l: 'Label', t: 'Text', p: 'Paragraph', h: 'Heading', li: 'Item',
 	inner: 'Inner', outer: 'Outer', body: 'Body', head: 'Header', top: 'Top',
 };
 
@@ -256,6 +267,8 @@ const ROLE_BY_KEYWORD = [
 	[ /(^|-)(overlay|ov|scrim|veil)$/, 'Overlay' ],
 	[ /(^|-)(badge|tag|pill|chip|label|lbl)$/, 'Label' ],
 	[ /(^|-)(card|tile|panel)$/, 'Card' ],
+	[ /(^|-)(step)$/, 'Step' ],
+	[ /(^|-)(offer|ofr)$/, 'Offer' ],
 	[ /(^|-)(item|entry|row)$/, 'Item' ],
 	[ /(^|-)(list|items|grid|stack)$/, 'List' ],
 	[ /(^|-)(nav|menu)$/, 'Navigation' ],
@@ -339,7 +352,7 @@ export function semanticName( node, prefixes ) {
  * panel names when there is nothing better, but never as a prefix on a child --
  * "Container Title" is no more informative than "Title".
  */
-const GENERIC_ROLES = new Set( [ 'Container', 'Column', 'Wrapper', 'Section', 'Content' ] );
+export const GENERIC_ROLES = new Set( [ 'Container', 'Column', 'Wrapper', 'Section', 'Content' ] );
 
 /** Attribute control labels, in Elementor's wording. */
 const ATTRIBUTE_LABELS = {
@@ -367,6 +380,9 @@ const ATTRIBUTE_LABELS = {
 	sizes: 'Sizes',
 	allow: 'Permissions',
 	'data-short': 'Short Label (phones)',
+	// The in-page navs (FC, SJ) light up the item whose section is on screen;
+	// this holds that section's id, and must match the item's #link.
+	'data-s': 'Section to Highlight',
 };
 
 function attributeLabel( name, node ) {
@@ -793,13 +809,21 @@ export function deriveSection( options ) {
 			// style panels needs its list to be scannable. Panels are in document
 			// order and each carries its nearest named ancestor, which groups
 			// related elements together visually: "Form card > Submit".
-			const parentLabel = nearestPartLabel( doc, node, partByNode );
+			const ancestors = ancestorParts( doc, node, partByNode );
+			const region = ancestors.find( ( candidate ) => ! GENERIC_ROLES.has( candidate.short_label ) ) || null;
+			const parentLabel = region ? region.short_label : '';
 
 			const part = {
 				id: partId,
 				label,
 				short_label: baseLabel,
 				parent_label: parentLabel && parentLabel !== baseLabel ? parentLabel : '',
+				// Where the element sits, by id: labels repeat ("Field", "Card"),
+				// so grouping content panels by label would merge strangers.
+				// Build-time only; stripped before the schema is written.
+				region_id: region ? region.id : '',
+				region_name: region ? region.short_label : '',
+				ancestor_ids: ancestors.map( ( ancestor ) => ancestor.id ),
 				sample,
 				selector: isRoot ? '' : selectorInfo.selector,
 				tag: node.tagName.toLowerCase(),
@@ -1181,8 +1205,7 @@ export function deriveSection( options ) {
 		}
 		if ( URL_ATTRS.has( name ) ) return { control: 'url', esc: 'url', tab: 'content' };
 		if ( MEDIA_ATTRS.has( name ) ) {
-			const isVideo = /\.(mp4|webm|mov|m4v|ogv)(\?|#|$)/i.test( value ) || node.tagName === 'source';
-			return { control: isVideo ? 'url' : 'media', esc: 'url', tab: 'content' };
+			return { control: mediaControlFor( node, value ), esc: 'url', tab: 'content' };
 		}
 		if ( TEXT_ATTRS.has( name ) ) return { control: 'text', esc: 'attr', tab: 'content' };
 
@@ -1247,20 +1270,20 @@ function nearestPart( doc, node, partByNode ) {
 }
 
 /**
- * The label of the closest ancestor that already has its own style panel, so a
- * panel can say where in the section it sits. The section root is skipped --
- * prefixing everything with "Section" would say nothing.
+ * Every ancestor that already has its own style panel, closest first. The
+ * closest one that is not a generic wrapper names the region a panel sits in,
+ * so a panel can say where in the section it is. The section root counts as
+ * generic -- prefixing everything with "Section" would say nothing.
  */
-function nearestPartLabel( doc, node, partByNode ) {
-	let current = doc.parentsOf.get( node )?.node;
+function ancestorParts( doc, node, partByNode ) {
+	const found = [];
 
-	while ( current ) {
+	for ( let current = doc.parentsOf.get( node )?.node; current; current = doc.parentsOf.get( current )?.node ) {
 		const part = partByNode.get( current );
-		if ( part && ! GENERIC_ROLES.has( part.short_label ) ) return part.short_label;
-		current = doc.parentsOf.get( current )?.node;
+		if ( part ) found.push( part );
 	}
 
-	return '';
+	return found;
 }
 
 function contains( doc, ancestor, node ) {
@@ -2529,7 +2552,7 @@ function collectRepeaterBindings( doc, template, markup, presence, opaquePaths, 
 			const control =
 				! presentOnAll ? 'hidden'
 					: URL_ATTRS.has( name ) ? 'url'
-						: MEDIA_ATTRS.has( name ) ? 'media'
+						: MEDIA_ATTRS.has( name ) ? mediaControlFor( node, attr( node, name ) )
 							: 'text';
 			// An optional attribute is printed inside the start tag, so it is
 			// escaped as attributes (`attrs`), never as post content: a value
@@ -2719,6 +2742,8 @@ function ownerHintFrom( node, prefixes ) {
  * English being English, a couple of endings need care.
  */
 function pluralise( name ) {
+	// A run of <p> is named Text, and "Texts" is not a word anyone uses for it.
+	if ( /(^|\s)Text$/.test( name ) ) return name.replace( /Text$/, 'Paragraphs' );
 	if ( /s$/i.test( name ) ) return name;
 	if ( /(ch|sh|x|z)$/i.test( name ) ) return name + 'es';
 	if ( /[^aeiou]y$/i.test( name ) ) return name.slice( 0, -1 ) + 'ies';

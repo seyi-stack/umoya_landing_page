@@ -372,7 +372,7 @@
 		},
 		{
 			"id": "content_p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_2_a_nth_of_type_1",
-			"label": "Item 1",
+			"label": "Item Link 2",
 			"sample": "Privacy Policy",
 			"region_label": "Item",
 			"controls": [
@@ -399,7 +399,15 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Item Link 2"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_cky_banner_element",
+			"label": "Item Button",
+			"sample": "Cookie Settings",
+			"region_label": "Item",
+			"controls": [
 				{
 					"id": "button_text",
 					"control": "text",
@@ -411,8 +419,7 @@
 					"sort": 0,
 					"part_label": "Item Button"
 				}
-			],
-			"merged": true
+			]
 		},
 		{
 			"id": "content_p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_4_a_nth_of_type_1",
@@ -448,7 +455,7 @@
 		},
 		{
 			"id": "content_p_umoya_ft_col_ul_nth_of_type_1_li_nth_of_type_5_a",
-			"label": "Item 2",
+			"label": "Item Link 4",
 			"sample": "PAIA Manual",
 			"region_label": "Item",
 			"controls": [
@@ -475,7 +482,15 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Item Link 4"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_umoya_ft_signup_umoya_ft_h",
+			"label": "Content 1",
+			"sample": "Join the Founder’s Circle",
+			"region_label": "",
+			"controls": [
 				{
 					"id": "heading_text_4",
 					"control": "text",
@@ -822,7 +837,7 @@
 		},
 		{
 			"id": "content_p_umoya_email_optout_umoya_ep_close",
-			"label": "Content 1",
+			"label": "Content 3",
 			"sample": "",
 			"region_label": "",
 			"controls": [
@@ -902,7 +917,7 @@
 		},
 		{
 			"id": "content_p_umoya_email_optout_a",
-			"label": "Content 3",
+			"label": "Content 4",
 			"sample": "info@umoyaafrikatours.co.za",
 			"region_label": "",
 			"controls": [

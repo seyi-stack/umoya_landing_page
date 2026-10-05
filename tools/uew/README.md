@@ -137,6 +137,26 @@ The copy preview that used to be appended to a panel header now sits **inside**
 the panel as a quiet descriptor line, so the panel list stays scannable and two
 `Title` panels are still tellable apart.
 
+Lists are named for what they hold, pluralised: Slides, Cards, **Steps**,
+**Offers** — and a run of paragraphs is **Paragraphs**, not "Texts".
+
+**Content-tab panels fold together only within one region.** One panel per
+element would make a Content tab of forty one-field panels, so a single-control
+panel folds into the panel before it — but only when it sits in the same region
+(its nearest named ancestor is the same) or inside an element that panel already
+holds. The merged panel takes that region's name, or **Content** when the
+region is unnamed. Folding across regions is what used to name the panel after
+the wrong one: eight heroes kept their headline and button in a panel called
+"Background" or "Logo", because the title happened to follow the video or the
+logo in the markup. A panel that only took in what sits inside its own first
+element — a Button and its Label — keeps that element's name. Control ids do
+not depend on any of this, so regrouping panels never loses a saved value.
+
+**A link is typed; an image is chosen.** `src` becomes an image picker only on
+an image. A video file, a `<source>`, and whatever an `<iframe>` loads get a
+plain link field: the homepage film is a YouTube embed, and a Media Library
+picker left no way to paste a new film's address at all.
+
 ### Native options, not raw attributes
 
 Boolean attributes carry no value, so an attribute-by-value binding cannot see
@@ -369,6 +389,19 @@ list still renders the same number of items in every place.
 ---
 
 ## Traps worth knowing
+
+**The harness's forms still talk to the real HubSpot portal.** Its
+`wp-config.php` sets `WP_HTTP_BLOCK_EXTERNAL`, so WordPress cannot forward a
+submission — but the browser is not blocked. Submitting a form pushes the typed
+email to HubSpot's tracking script (`identify` + `trackPageView`), and if the
+local save fails the form falls back to posting straight to the HubSpot form.
+Test with `@example.com` addresses and clear them afterwards with
+`node tools/hubspot-cleanup-tests.mjs`.
+
+**A Windows file lock can stop the build.** `Error: UNKNOWN … open
+'…\includes\sections\<key>.json'` (errno -4094) means another process held the
+file for a moment. Nothing is half-written — the write never opened — but the
+sections after it were not re-verified. Re-run the build on its own.
 
 **PHP eats the newline after `?>`.** An echo at the end of a line would swallow
 its own line break, closing tags would ride up, and the rendered markup would

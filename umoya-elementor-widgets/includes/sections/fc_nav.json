@@ -331,7 +331,7 @@
 				{
 					"id": "data_s",
 					"control": "text",
-					"label": "S",
+					"label": "Section to Highlight",
 					"esc": "attr",
 					"default": "fc-intro"
 				},
@@ -395,7 +395,7 @@
 				{
 					"id": "data_s",
 					"control": "text",
-					"label": "S",
+					"label": "Section to Highlight",
 					"esc": "attr",
 					"default": "fc-intro"
 				},

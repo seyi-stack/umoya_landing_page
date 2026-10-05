@@ -422,7 +422,7 @@
 		},
 		{
 			"id": "content_p_ct_f_row_div_nth_of_type_2_label_nth_of_type_1",
-			"label": "Field 1",
+			"label": "Field Label 3",
 			"sample": "",
 			"region_label": "Field",
 			"controls": [
@@ -474,7 +474,7 @@
 		},
 		{
 			"id": "content_p_ct_f_row_div_nth_of_type_2_input_nth_of_type_1",
-			"label": "Field 2",
+			"label": "Field Anchor 2",
 			"sample": "",
 			"region_label": "Field",
 			"controls": [
@@ -510,7 +510,15 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Field Anchor 2"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_ct_f_grouplabel",
+			"label": "Form Text",
+			"sample": "When are you hoping to travel?",
+			"region_label": "Form",
+			"controls": [
 				{
 					"id": "text_text_5",
 					"control": "text",
@@ -522,12 +530,11 @@
 					"sort": 0,
 					"part_label": "Form Text"
 				}
-			],
-			"merged": true
+			]
 		},
 		{
 			"id": "content_p_ct_f_keep2_ct_f_field_label_nth_of_type_1",
-			"label": "Field 3",
+			"label": "Field Label 4",
 			"sample": "Preferred travel month",
 			"region_label": "Field",
 			"controls": [
@@ -552,22 +559,38 @@
 					"group": "p_ct_f_keep2_ct_f_field_label_nth_of_type_1",
 					"sort": 0,
 					"part_label": "Field Label 4"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_ct_f_card_form_nth_of_type_1_div_nth_of_type_6_label",
+			"label": "Field Label 5",
+			"sample": "How many guests will be traveling?",
+			"region_label": "Field",
+			"controls": [
 				{
 					"id": "label_text_10",
 					"control": "text",
-					"label": "Field Label 5",
+					"label": "Label",
 					"description": "",
 					"default": "How many guests will be traveling?",
 					"esc": "post",
 					"group": "p_ct_f_card_form_nth_of_type_1_div_nth_of_type_6_label",
 					"sort": 0,
 					"part_label": "Field Label 5"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_ct_f_card_form_nth_of_type_1_div_nth_of_type_7_label",
+			"label": "Field 1",
+			"sample": "What are you hoping to experience?",
+			"region_label": "Field",
+			"controls": [
 				{
 					"id": "label_text_11",
 					"control": "text",
-					"label": "Field Label 6",
+					"label": "Label",
 					"description": "",
 					"default": "What are you hoping to experience?",
 					"esc": "post",
@@ -695,7 +718,7 @@
 		},
 		{
 			"id": "content_p_ct_f_card_form_nth_of_type_1_label_nth_of_type_1_span_nth_of_type_1_span_nth_of_type_1",
-			"label": "Content",
+			"label": "Text 1",
 			"sample": "(Required)",
 			"region_label": "",
 			"controls": [
@@ -720,11 +743,19 @@
 					"group": "p_ct_f_card_form_nth_of_type_1_label_nth_of_type_1_span_nth_of_type_1_span_nth_of_type_1",
 					"sort": 0,
 					"part_label": "Text 1"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_ct_f_card_form_nth_of_type_1_label_nth_of_type_2_span",
+			"label": "Consent Text 2",
+			"sample": "",
+			"region_label": "Consent",
+			"controls": [
 				{
 					"id": "text_text_8",
 					"control": "text",
-					"label": "Consent Text 2",
+					"label": "Text",
 					"default": "I'd also like to receive Umoya journeys and stories by email.",
 					"esc": "post",
 					"group": "p_ct_f_card_form_nth_of_type_1_label_nth_of_type_2_span",
@@ -783,7 +814,16 @@
 					"group": "p_ct_f_legal",
 					"sort": 0,
 					"part_label": "Form Consent 3"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_ct_f_card_form_nth_of_type_1_div_nth_of_type_1_label_nth_of_type_1_ct_f_req",
+			"label": "List",
+			"sample": "*",
+			"region_label": "List",
+			"controls": [
 				{
 					"id": "text_text_10",
 					"control": "text",
@@ -805,11 +845,20 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "List Anchor"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_ct_f_card_form_nth_of_type_1_div_nth_of_type_2_label",
+			"label": "Field 2",
+			"sample": "",
+			"region_label": "Field",
+			"controls": [
 				{
 					"id": "label_text_13",
 					"control": "text",
-					"label": "Field Label 7",
+					"label": "Text",
 					"default": "Email address",
 					"esc": "post",
 					"group": "p_ct_f_card_form_nth_of_type_1_div_nth_of_type_2_label",
@@ -830,7 +879,7 @@
 				{
 					"id": "anchor_placeholder_8",
 					"control": "text",
-					"label": "Field Anchor 4",
+					"label": "Placeholder",
 					"default": "your@email.com",
 					"esc": "attr",
 					"group": "p_ct_f_card_form_nth_of_type_1_div_nth_of_type_2_input",
@@ -843,7 +892,7 @@
 		},
 		{
 			"id": "content_p_ct_f_card_form_nth_of_type_1_div_nth_of_type_3_label",
-			"label": "Field 4",
+			"label": "Field 3",
 			"sample": "Organisation",
 			"region_label": "Field",
 			"controls": [
@@ -868,7 +917,16 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Field Anchor 5"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_ct_f_card_form_nth_of_type_1_div_nth_of_type_4_label",
+			"label": "Field Label 9",
+			"sample": "",
+			"region_label": "Field",
+			"controls": [
 				{
 					"id": "label_text_15",
 					"control": "text",
@@ -889,11 +947,20 @@
 					"group": "p_ct_f_card_form_nth_of_type_1_div_nth_of_type_4_label_ct_f_req",
 					"sort": 0,
 					"part_label": "Label Text 4"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_ct_f_field_ct_f_grow_label",
+			"label": "Field 4",
+			"sample": "Message",
+			"region_label": "Field",
+			"controls": [
 				{
 					"id": "label_text_16",
 					"control": "text",
-					"label": "Field Label 10",
+					"label": "Label",
 					"description": "",
 					"default": "Message",
 					"esc": "post",
@@ -904,7 +971,7 @@
 				{
 					"id": "anchor_placeholder_10",
 					"control": "text",
-					"label": "Field Anchor 6",
+					"label": "Placeholder",
 					"default": "How can we help?",
 					"esc": "attr",
 					"group": "p_ct_f_field_ct_f_grow_textarea",

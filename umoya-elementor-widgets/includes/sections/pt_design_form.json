@@ -189,7 +189,16 @@
 					"group": "p_pt_df_lead",
 					"sort": 0,
 					"part_label": "List Text"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_iframe",
+			"label": "Embed",
+			"sample": "",
+			"region_label": "Card",
+			"controls": [
 				{
 					"id": "embed_title",
 					"control": "text",
@@ -201,12 +210,11 @@
 					"sort": 1,
 					"part_label": "Embed"
 				}
-			],
-			"merged": true
+			]
 		},
 		{
 			"id": "content_p_pt_df_form",
-			"label": "Form",
+			"label": "Form 1",
 			"sample": "",
 			"region_label": "Card",
 			"controls": [
@@ -309,7 +317,7 @@
 		},
 		{
 			"id": "content_p_pt_df_form_pt_df_field_label_nth_of_type_1",
-			"label": "Field",
+			"label": "Field Label 3",
 			"sample": "The occasion",
 			"region_label": "Field",
 			"controls": [
@@ -344,7 +352,15 @@
 					"group": "p_pt_df_form_pt_df_field_label_nth_of_type_1",
 					"sort": 0,
 					"part_label": "Field Label 3"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_pt_df_row_div_nth_of_type_1_select",
+			"label": "Form 2",
+			"sample": "",
+			"region_label": "Form",
+			"controls": [
 				{
 					"id": "select_aria_label",
 					"control": "text",
@@ -381,7 +397,7 @@
 				{
 					"id": "text_text_2",
 					"control": "text",
-					"label": "Form Text",
+					"label": "Text",
 					"description": "",
 					"default": "(optional)",
 					"esc": "post",
@@ -464,7 +480,7 @@
 		},
 		{
 			"id": "content_p_pt_df_consent_span_nth_of_type_1_span_nth_of_type_1",
-			"label": "Content",
+			"label": "Text",
 			"sample": "(Required, POPIA)",
 			"region_label": "",
 			"controls": [
@@ -489,7 +505,15 @@
 					"group": "p_pt_df_consent_span_nth_of_type_1_span_nth_of_type_1",
 					"sort": 0,
 					"part_label": "Text"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_pt_df_btn",
+			"label": "Form 3",
+			"sample": "Design My Journey",
+			"region_label": "Form",
+			"controls": [
 				{
 					"id": "button_text",
 					"control": "text",

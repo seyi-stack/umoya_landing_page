@@ -137,7 +137,7 @@
 		},
 		{
 			"id": "content_p_video",
-			"label": "Background",
+			"label": "Video",
 			"sample": "",
 			"region_label": "Background",
 			"controls": [
@@ -177,7 +177,15 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Video"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_ab_h_eye",
+			"label": "Content",
+			"sample": "About Us",
+			"region_label": "",
+			"controls": [
 				{
 					"id": "eyebrow_text",
 					"control": "text",

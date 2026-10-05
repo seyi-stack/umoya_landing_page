@@ -254,11 +254,20 @@
 					"group": "p_fc_f2_img_ttl",
 					"sort": 0,
 					"part_label": "Title"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_fc_f2_eye",
+			"label": "Header",
+			"sample": "Reserve Your Place",
+			"region_label": "Header",
+			"controls": [
 				{
 					"id": "eyebrow_text_2",
 					"control": "text",
-					"label": "Header Eyebrow",
+					"label": "Eyebrow",
 					"description": "",
 					"default": "Reserve Your Place",
 					"esc": "post",
@@ -269,7 +278,7 @@
 				{
 					"id": "title_text_2",
 					"control": "text",
-					"label": "Header Title",
+					"label": "Title",
 					"description": "",
 					"default": "Begin Your Journey",
 					"esc": "post",
@@ -543,7 +552,7 @@
 		},
 		{
 			"id": "content_p_fc_f2_when_select",
-			"label": "Form 2",
+			"label": "Form Select",
 			"sample": "",
 			"region_label": "Form",
 			"controls": [
@@ -568,7 +577,15 @@
 					"tab": "content",
 					"sort": 1,
 					"part_label": "Form Select"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_f2_span_grow_label",
+			"label": "Field",
+			"sample": "What Are You Hoping to Experience?",
+			"region_label": "Field",
+			"controls": [
 				{
 					"id": "label_text_10",
 					"control": "text",
@@ -666,7 +683,7 @@
 		},
 		{
 			"id": "content_p_fc_f2_consent_item_span_nth_of_type_1_span_nth_of_type_1",
-			"label": "Text",
+			"label": "Text Label",
 			"sample": "(Required)",
 			"region_label": "Text",
 			"controls": [
@@ -691,7 +708,15 @@
 					"group": "p_fc_f2_consent_item_span_nth_of_type_1_span_nth_of_type_1",
 					"sort": 0,
 					"part_label": "Text Label"
-				},
+				}
+			]
+		},
+		{
+			"id": "content_p_fc_f2_sub_btn",
+			"label": "Form 2",
+			"sample": "Request Your Founder’s Circle Membership",
+			"region_label": "Form",
+			"controls": [
 				{
 					"id": "button_text",
 					"control": "text",
@@ -713,7 +738,16 @@
 					"group": "p_fc_f2_legal",
 					"sort": 0,
 					"part_label": "Form Consent 2"
-				},
+				}
+			],
+			"merged": true
+		},
+		{
+			"id": "content_p_iframe",
+			"label": "Embed",
+			"sample": "",
+			"region_label": "Card",
+			"controls": [
 				{
 					"id": "embed_title",
 					"control": "text",
@@ -725,8 +759,7 @@
 					"sort": 1,
 					"part_label": "Embed"
 				}
-			],
-			"merged": true
+			]
 		}
 	],
 	"integration_controls": [

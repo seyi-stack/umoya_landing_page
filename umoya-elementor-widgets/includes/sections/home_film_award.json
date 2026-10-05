@@ -164,7 +164,7 @@
 			"controls": [
 				{
 					"id": "embed_src",
-					"control": "media",
+					"control": "url",
 					"label": "Source",
 					"default": {
 						"url": "https://www.youtube.com/embed/4ZtbEvETrBU?rel=0"
@@ -294,7 +294,7 @@
 	"repeaters": [
 		{
 			"id": "rep_p",
-			"label": "Texts",
+			"label": "Paragraphs",
 			"item_label": "",
 			"controls": [
 				{
@@ -818,7 +818,7 @@
 		},
 		{
 			"id": "embed_src",
-			"control": "media",
+			"control": "url",
 			"label": "Source",
 			"default": {
 				"url": "https://www.youtube.com/embed/4ZtbEvETrBU?rel=0"

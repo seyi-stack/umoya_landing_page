@@ -20,7 +20,7 @@ import { fileURLToPath } from 'url';
 import { execFileSync } from 'child_process';
 
 import { splitSection, readSectionFile } from './lib/split.mjs';
-import { deriveSection } from './lib/derive.mjs';
+import { deriveSection, GENERIC_ROLES } from './lib/derive.mjs';
 import { emitTemplate, emitScript, emitCss, emitWidgetClass, emitSchema, guardPhpNewlines } from './lib/emit.mjs';
 import { registries } from './sections/index.mjs';
 
@@ -100,6 +100,12 @@ function buildContentPanels( fields, parts ) {
 			label: part.label,
 			sample: part.sample || '',
 			region_label: part.parent_label || '',
+			region_id: part.region_id || '',
+			region_name: part.region_name || '',
+			ancestor_ids: part.ancestor_ids || [],
+			part_ids: [ part.id ],
+			first_label: part.label,
+			first_generic: GENERIC_ROLES.has( part.short_label ),
 			controls: sortControls( controls ).map( ( c ) => ( { ...c, part_label: part.label } ) ),
 		} );
 	}
@@ -107,10 +113,20 @@ function buildContentPanels( fields, parts ) {
 	// Anything unattached (shouldn't happen, but never drop a control silently).
 	for ( const [ group, controls ] of byGroup ) {
 		if ( ! controls.length ) continue;
-		panels.push( { id: 'content_' + group, label: 'Other content', controls: sortControls( controls ) } );
+		panels.push( {
+			id: 'content_' + group,
+			label: 'Other content',
+			region_id: null, // matches no region, so nothing folds into or out of it
+			region_name: '',
+			ancestor_ids: [],
+			part_ids: [],
+			first_label: 'Other content',
+			first_generic: true,
+			controls: sortControls( controls ),
+		} );
 	}
 
-	const merged = mergeSmallPanels( panels );
+	const merged = mergeSmallPanels( panels ).map( ( { region_id, region_name, ancestor_ids, part_ids, first_label, first_generic, spans, ...panel } ) => panel );
 	merged.forEach( dedupeControlLabels );
 
 	return { panels: merged, tabbed };
@@ -182,6 +198,12 @@ function sortControls( controls ) {
  * both called "Title" and no way to tell them apart. When that happens the
  * control takes its part's (already unique) name instead.
  *
+ * A panel only folds into one from the same region: a sibling of its first
+ * element, or something nested inside an element already in it. The merged
+ * panel is named after that region, so folding across regions named it after
+ * the wrong one -- eight heroes kept their headline under "Background" or
+ * "Logo" because the title happened to follow the video or the logo.
+ *
  * The root Section panel is never merged into: it holds attributes of the
  * section itself, which is a different kind of thing from its contents.
  */
@@ -190,7 +212,12 @@ function mergeSmallPanels( panels ) {
 
 	for ( const panel of panels ) {
 		const previous = out[ out.length - 1 ];
+		const sameRegion = previous && (
+			panel.region_id === previous.region_id ||
+			panel.ancestor_ids.some( ( id ) => previous.part_ids.includes( id ) )
+		);
 		const mergeable = previous &&
+			sameRegion &&
 			'Section' !== previous.label &&
 			panel.controls.length === 1 &&
 			previous.controls.length + 1 <= MAX_CONTROLS_PER_PANEL;
@@ -208,12 +235,17 @@ function mergeSmallPanels( panels ) {
 			taken.add( control.label );
 			previous.controls.push( control );
 		}
-
 		// Once a panel holds more than one element it is a region, not that
 		// element, and keeping the first one's name ("Eyebrow" for a panel of
-		// six controls) misdescribes it.
+		// six controls) misdescribes it. The exception is a panel that only took
+		// in what sits inside its first element -- a Button and its Label -- which
+		// is still that element, unless that element is an anonymous wrapper.
+		previous.spans = previous.spans || ! panel.ancestor_ids.includes( previous.part_ids[ 0 ] );
+		previous.part_ids.push( ...panel.part_ids );
 		previous.merged = true;
-		previous.label = previous.region_label || 'Content';
+		previous.label = previous.spans || previous.first_generic
+			? ( previous.region_name || 'Content' )
+			: previous.first_label;
 	}
 
 	return out;
@@ -317,7 +349,7 @@ for ( const registry of registries ) {
 			inline_style_controls: tabbed.inline_style,
 			media_controls: tabbed.media,
 			repeaters: derived.repeaters,
-			style_parts: derived.parts,
+			style_parts: derived.parts.map( ( { region_id, region_name, ancestor_ids, ...part } ) => part ),
 			inline_styles: derived.fields.filter( ( f ) => f.control === 'inline_style_group' ),
 			fields: derived.fields.filter( ( f ) => ! f.internal ),
 		};
