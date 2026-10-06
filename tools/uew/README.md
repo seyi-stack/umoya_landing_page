@@ -49,6 +49,10 @@ node tools/uew/setup-local-env.mjs
 # Start it (leave running in its own terminal)
 node tools/uew/setup-local-env.mjs --serve
 
+# Build the whole site on it for testing by hand: 11 pages at their live
+# slugs, every widget once, homepage as the front page. Re-run to reset them.
+node tools/uew/make-site.mjs
+
 # Compile the sections into the plugin (fails if fidelity is lost)
 node tools/uew/build.mjs
 node tools/uew/build.mjs --only=fc_hero,fc_form

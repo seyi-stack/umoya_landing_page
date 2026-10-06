@@ -2672,6 +2672,17 @@ Guidelines:
 > (it names the culprit and carries a recovery-mode link), or cPanel → error log;
 > failing those, the Phase 15 diagnostic-script method — with permission, as it
 > writes to production.
+>
+> **Update 2026-10-05:** the diagnostic script could not be run because
+> **the Umoya Mountain Duck mount is broken**, not the server. FTP login to
+> `premium237.web-hosting.com` succeeds, but mounting fails with
+> `InvalidCastException: … NSString to … NSDictionary` (in
+> `%APPDATA%\Cyberduck\mountainduck.log`), so nothing written to the mount
+> uploads. That is also why the local listing stops at 2026-09-02. The FTP
+> transcript in that log still shows the real server state: **`wp-content` was
+> modified 2026-10-05 16:18:59 and `error_log` is being written live (now
+> 1.9 MB, so it was rotated)**. The fatal error is in that file. Fix the mount
+> (reconnect, or remove and re-add the bookmark) before retrying.
 
 > **RESOLVED 2026-08-22 — full outage. Cause: a broken The Events Calendar
 > install.** See Phase 15 below. This is a DIFFERENT fault from the 520/522
@@ -2692,6 +2703,18 @@ Guidelines:
   (removing a page builder can break existing layouts).
 - Do not deploy new theme PHP while the origin is unstable — a PHP error on
   top of this would take the site fully down.
+
+### ⚠ Homepage scrolls sideways on desktops with a visible scrollbar
+
+*Found 2026-10-06 on the local test site; in the source, so live too.*
+`homepage-revamp/homepage-section-06-hotel-stays.html` goes full-bleed with
+`width: 100vw` at every width, and `homepage-section-02-about.html` does the
+same at ≤768px. `100vw` includes the scrollbar, so on Windows the section runs
+~8px past the page and the whole homepage gets a horizontal scroll (measured
+at 1440px: section −8..1432 on a 1425px page). Phones are unaffected —
+their scrollbars overlay. The footer had this exact bug and was fixed with the
+`--umoya-ft-vw` property set from `clientWidth`; these two need the same.
+Not fixed yet: a change to client sections, so it waits for a go-ahead.
 
 ### ⚠ /founders-circle/ is served without most plugin assets (UNRESOLVED)
 
@@ -2979,6 +3002,9 @@ rg -n "HubSpot|hubspot|fc-form-section|umoya-form-popup"
 
 # Start the local WordPress + Elementor harness (leave running)
 node tools/uew/setup-local-env.mjs --serve
+
+# Build every page on it to test by hand (http://localhost:8765/); re-run to reset
+node tools/uew/make-site.mjs
 
 # Compile all 63 section widgets + prove nothing was lost and every control works
 npm --prefix tools/uew run check
