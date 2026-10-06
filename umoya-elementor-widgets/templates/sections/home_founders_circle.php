@@ -14,13 +14,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<section id="umoya-founder-cta" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="umoya-founder-cta" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="umoya-founder-inner">
     <div class="umoya-founder-copy">
-      <span class="umoya-founder-eye"><?php echo $c['eyebrow_text']; ?></span>
-      <h2><?php echo $c['heading_text']; ?></h2>
-      <p><?php echo $c['text_text']; ?></p>
-      <a class="umoya-founder-btn" href="<?php echo $c['button_href']; ?>"><?php echo $c['button_text']; ?></a>
+      <span class="umoya-founder-eye"><?php echo $c['c_umoya_founder_eye_text']; ?></span>
+      <h2><?php echo $c['c_h2_text']; ?></h2>
+      <p><?php echo $c['c_p_text']; ?></p>
+      <a class="umoya-founder-btn" href="<?php echo $c['c_umoya_founder_btn_href']; ?>"><?php echo $c['c_umoya_founder_btn_text']; ?></a>
     </div>
   </div>
 </section>

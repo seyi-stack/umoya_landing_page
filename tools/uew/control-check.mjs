@@ -22,8 +22,9 @@
  * nothing, or whose value never arrives, is reported by name.
  *
  * A value that loses to an inline `style` attribute is reported separately:
- * that is how inline styles work, and those properties have their own panel
- * (Inline Styles) that writes the attribute itself.
+ * that is how inline styles work, and those properties have their own controls
+ * (under "Set on the element itself" in the element's pop-out) that write the
+ * attribute itself.
  */
 import fs from 'fs';
 import os from 'os';
@@ -71,6 +72,9 @@ function buildProbes( key, schema ) {
 		const full = part.absolute ? part.selector : ( part.selector ? root + ' ' + part.selector : root );
 		if ( ( part.features || [] ).includes( 'effects' ) ) {
 			const value = opacityProbe( index );
+			// An element's settings apply only while its Style row is set to
+			// Custom, as Typography's do; the probe switches it on.
+			settings[ part.id + '_style' ] = 'yes';
 			settings[ part.id + '_opacity' ] = { unit: 'px', size: value, sizes: [] };
 			probes.parts.push( { id: part.id, label: part.label, full, value } );
 		} else {
@@ -329,7 +333,7 @@ for ( const key of keys ) {
 			if ( 'dead' === part.status ) row.problems.push( 'panel "' + part.label + '": selector ' + part.full + ' matches nothing' );
 			if ( 'bad-selector' === part.status ) row.problems.push( 'panel "' + part.label + '": invalid selector ' + part.full );
 			if ( 'unreached' === part.status ) row.problems.push( 'panel "' + part.label + '" (' + part.full + '): value never arrives -- ' + part.detail );
-			if ( 'inline' === part.status ) row.notes.push( 'panel "' + part.label + '": an inline style attribute decides opacity here (use the Inline Styles panel)' );
+			if ( 'inline' === part.status ) row.notes.push( 'panel "' + part.label + '": an inline style attribute decides opacity here (set it under "Set on the element itself" in its pop-out)' );
 		}
 		for ( const token of result.tokens ) {
 			if ( 'ok' !== token.status ) row.problems.push( 'token "' + token.label + '": ' + token.detail );

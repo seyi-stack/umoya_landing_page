@@ -194,365 +194,608 @@
 			"label": "Ease"
 		}
 	],
+	"regions": [
+		{
+			"id": "r_text",
+			"label": "Text",
+			"portal": false
+		},
+		{
+			"id": "r_video_button",
+			"label": "Video button",
+			"portal": false
+		},
+		{
+			"id": "r_video_pop_up",
+			"label": "Video pop-up",
+			"portal": false
+		}
+	],
 	"content_panels": [
 		{
-			"id": "content_p_section",
-			"label": "Section",
-			"sample": "",
-			"region_label": "",
-			"controls": [
+			"id": "content_r_text",
+			"label": "Text",
+			"items": [
 				{
-					"id": "section_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Why Umoya Afrika Tours",
-					"esc": "attr",
-					"group": "p_section",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Section"
-				}
-			]
-		},
-		{
-			"id": "content_p_fc_why_eyebrow",
-			"label": "List",
-			"sample": "Our Approach",
-			"region_label": "List",
-			"controls": [
-				{
-					"id": "eyebrow_text",
-					"control": "text",
+					"kind": "group",
 					"label": "Eyebrow",
-					"description": "",
-					"default": "Our Approach",
-					"esc": "post",
-					"group": "p_fc_why_eyebrow",
-					"sort": 0,
-					"part_label": "Eyebrow"
+					"order": 4,
+					"controls": [
+						{
+							"id": "c_fc_why_eyebrow_text",
+							"control": "text",
+							"label": "Eyebrow",
+							"description": "",
+							"default": "Our Approach",
+							"esc": "post",
+							"group": "p_fc_why_eyebrow",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "title_text",
-					"control": "textarea",
+					"kind": "group",
 					"label": "Title",
-					"description": "Inline formatting tags are preserved.",
-					"default": "A new company, built on <em>long relationships</em>.",
-					"esc": "post",
-					"group": "p_fc_why_title",
-					"sort": 0,
-					"part_label": "Title"
+					"order": 5,
+					"controls": [
+						{
+							"id": "c_fc_why_title_text",
+							"control": "textarea",
+							"label": "Title",
+							"description": "Inline formatting tags are preserved.",
+							"default": "A new company, built on <em>long relationships</em>.",
+							"esc": "post",
+							"group": "p_fc_why_title",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "text_text",
-					"control": "text",
+					"kind": "group",
 					"label": "Text",
-					"description": "",
-					"default": "It is built on people we know by name.",
-					"esc": "post",
-					"group": "p_fc_why_lead",
-					"sort": 0,
-					"part_label": "List Text 1"
-				}
-			],
-			"merged": true
-		},
-		{
-			"id": "content_p_fc_why_btn",
-			"label": "List Button 1",
-			"sample": "Travel with us",
-			"region_label": "List",
-			"controls": [
-				{
-					"id": "button_text",
-					"control": "text",
-					"label": "Button",
-					"description": "",
-					"default": "Travel with us",
-					"esc": "post",
-					"group": "p_fc_why_btn",
-					"sort": 0,
-					"part_label": "List Button 1"
+					"order": 8,
+					"controls": [
+						{
+							"id": "c_fc_why_lead_text",
+							"control": "text",
+							"label": "Text",
+							"description": "",
+							"default": "It is built on people we know by name.",
+							"esc": "post",
+							"group": "p_fc_why_lead",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "button_href",
-					"control": "url",
-					"label": "Link",
-					"default": {
-						"url": "#fc-form-section"
-					},
-					"esc": "url",
-					"group": "p_fc_why_btn",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "List Button 1"
+					"kind": "list",
+					"id": "rep_p_fc_why_body",
+					"label": "Paragraphs",
+					"order": 9
+				},
+				{
+					"kind": "group",
+					"label": "Button",
+					"order": 14,
+					"controls": [
+						{
+							"id": "c_fc_why_btn_text",
+							"control": "text",
+							"label": "Text",
+							"description": "",
+							"default": "Travel with us",
+							"esc": "post",
+							"group": "p_fc_why_btn",
+							"sort": 0
+						},
+						{
+							"id": "c_fc_why_btn_href",
+							"control": "url",
+							"label": "Link",
+							"default": {
+								"url": "#fc-form-section"
+							},
+							"esc": "url",
+							"group": "p_fc_why_btn",
+							"tab": "content",
+							"sort": 1
+						}
+					]
 				}
 			]
 		},
 		{
-			"id": "content_p_fc_vid_ph",
-			"label": "List Button 2",
-			"sample": "",
-			"region_label": "List",
-			"controls": [
+			"id": "content_r_video_button",
+			"label": "Video button",
+			"items": [
 				{
-					"id": "button_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Play Umoya brand video",
-					"esc": "attr",
-					"group": "p_fc_vid_ph",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "List Button 2"
-				},
-				{
-					"id": "button_background_image",
-					"control": "media",
-					"label": "Background Image",
-					"description": "Painted from the section stylesheet as a layer over the element. Choosing an image here replaces the photo.",
-					"default": {
-						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05243.jpg"
-					},
-					"css_selector": ".fc-vid-ph::before",
-					"css_value": "background-image: url(\"{{URL}}\");",
-					"css_only": true,
-					"esc": "url",
-					"group": "p_fc_vid_ph",
-					"sort": 2,
-					"part_label": "List Button 2"
+					"kind": "group",
+					"label": "Button",
+					"order": 17,
+					"controls": [
+						{
+							"id": "c_fc_vid_ph_background_image",
+							"control": "media",
+							"label": "Background Image",
+							"description": "Painted from the section stylesheet as a layer over the element. Choosing an image here replaces the photo.",
+							"default": {
+								"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc05243.jpg"
+							},
+							"css_selector": ".fc-vid-ph::before",
+							"css_value": "background-image: url(\"{{URL}}\");",
+							"css_only": true,
+							"esc": "url",
+							"group": "p_fc_vid_ph",
+							"sort": 2
+						}
+					]
 				}
 			]
 		},
 		{
-			"id": "content_p_fc_video_modal",
-			"label": "Content",
-			"sample": "",
-			"region_label": "",
-			"controls": [
+			"id": "content_r_video_pop_up",
+			"label": "Video pop-up",
+			"items": [
 				{
-					"id": "container_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Umoya Afrika Tours video",
-					"esc": "attr",
-					"group": "p_fc_video_modal",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Container 2"
+					"kind": "group",
+					"label": "Close Button",
+					"order": 25,
+					"controls": [
+						{
+							"id": "c_fc_video_close_span_text",
+							"control": "text",
+							"label": "Close Button",
+							"description": "",
+							"default": "&times;",
+							"esc": "post",
+							"group": "p_fc_video_close_span",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "button_aria_label_2",
-					"control": "text",
-					"label": "Button",
-					"default": "Close video",
-					"esc": "attr",
-					"group": "p_fc_video_close",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Button"
-				},
-				{
-					"id": "text_text_2",
-					"control": "text",
-					"label": "Text",
-					"description": "",
-					"default": "&times;",
-					"esc": "post",
-					"group": "p_fc_video_close_span",
-					"sort": 0,
-					"part_label": "Button Text 2"
-				}
-			],
-			"merged": true
-		},
-		{
-			"id": "content_p_fc_video_player",
-			"label": "Video",
-			"sample": "",
-			"region_label": "",
-			"controls": [
-				{
-					"id": "video_src",
-					"control": "url",
-					"label": "Source",
-					"default": {
-						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya_hd_optimized_720.mp4"
-					},
-					"esc": "url",
-					"group": "p_fc_video_player",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Video"
-				},
-				{
-					"id": "video_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Umoya Afrika Tours video",
-					"esc": "attr",
-					"group": "p_fc_video_player",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Video"
+					"kind": "group",
+					"label": "Video",
+					"order": 26,
+					"controls": [
+						{
+							"id": "c_fc_video_player_autoplay",
+							"control": "switcher",
+							"label": "Autoplay",
+							"description": "Browsers only allow autoplay while the video is muted.",
+							"default": "",
+							"flag_attr": "autoplay",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_fc_video_player",
+							"tab": "media",
+							"sort": 1
+						},
+						{
+							"id": "c_fc_video_player_muted",
+							"control": "switcher",
+							"label": "Mute",
+							"description": "",
+							"default": "",
+							"flag_attr": "muted",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_fc_video_player",
+							"tab": "media",
+							"sort": 1
+						},
+						{
+							"id": "c_fc_video_player_playsinline",
+							"control": "switcher",
+							"label": "Play On Mobile",
+							"description": "Without this, iOS opens the video fullscreen instead of playing it in place.",
+							"default": "yes",
+							"flag_attr": "playsinline",
+							"flag_prefix": "\n          ",
+							"esc": "raw",
+							"group": "p_fc_video_player",
+							"tab": "media",
+							"sort": 1
+						},
+						{
+							"id": "c_fc_video_player_loop",
+							"control": "switcher",
+							"label": "Loop",
+							"description": "",
+							"default": "",
+							"flag_attr": "loop",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_fc_video_player",
+							"tab": "media",
+							"sort": 1
+						},
+						{
+							"id": "c_fc_video_player_controls",
+							"control": "switcher",
+							"label": "Player Controls",
+							"description": "",
+							"default": "yes",
+							"flag_attr": "controls",
+							"flag_prefix": "\n          ",
+							"esc": "raw",
+							"group": "p_fc_video_player",
+							"tab": "media",
+							"sort": 1
+						},
+						{
+							"id": "c_fc_video_player_disablepictureinpicture",
+							"control": "switcher",
+							"label": "Disable Picture-in-Picture",
+							"description": "",
+							"default": "",
+							"flag_attr": "disablepictureinpicture",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_fc_video_player",
+							"tab": "media",
+							"sort": 1
+						},
+						{
+							"id": "c_fc_video_player_src",
+							"control": "url",
+							"label": "Source",
+							"default": {
+								"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/videos/umoya_hd_optimized_720.mp4"
+							},
+							"esc": "url",
+							"group": "p_fc_video_player",
+							"tab": "content",
+							"sort": 1
+						},
+						{
+							"id": "c_fc_video_player_preload",
+							"control": "select",
+							"label": "Preload",
+							"default": "metadata",
+							"options": [
+								"auto",
+								"metadata",
+								"none"
+							],
+							"esc": "attr",
+							"group": "media",
+							"tab": "media",
+							"sort": 1
+						}
+					]
 				}
 			]
 		}
 	],
-	"integration_controls": [],
-	"form_controls": [
+	"style_panels": [
 		{
-			"id": "button_disabled",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_fc_vid_ph",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Button 2"
+			"id": "style_section",
+			"label": "Section",
+			"tokens": true,
+			"rows": [
+				{
+					"part": "p_section",
+					"label": "Section",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_why_wrap",
+					"label": "Container 1",
+					"inline": [],
+					"inline_props": [],
+					"heading": "Layout"
+				},
+				{
+					"part": "p_fc_why_grid",
+					"label": "List",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_video_modal",
+					"label": "Grid",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_video_backdrop",
+					"label": "Container 2",
+					"inline": [],
+					"inline_props": []
+				}
+			]
 		},
 		{
-			"id": "button_type",
-			"control": "text",
-			"label": "Type",
-			"default": "button",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
+			"id": "style_r_text",
+			"label": "Text",
+			"tokens": false,
+			"rows": [
+				{
+					"part": "p_fc_why_rev",
+					"label": "Block",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_why_eyebrow",
+					"label": "Eyebrow",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_why_title",
+					"label": "Title",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_em",
+					"label": "Italic Text",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_why_rule",
+					"label": "Divider",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_why_lead",
+					"label": "Text",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_why_body",
+					"label": "Paragraphs",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_strong",
+					"label": "Bold Paragraphs",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_why_btn",
+					"label": "Button",
+					"inline": [],
+					"inline_props": []
+				}
+			]
 		},
 		{
-			"id": "button_disabled_2",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_fc_video_close",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Button"
+			"id": "style_r_video_button",
+			"label": "Video button",
+			"tokens": false,
+			"rows": [
+				{
+					"part": "p_fc_why_aside",
+					"label": "Block",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_vid_wrap",
+					"label": "Inner Block",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_vid_ph",
+					"label": "Button",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_play",
+					"label": "Text",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_svg",
+					"label": "Icon",
+					"inline": [],
+					"inline_props": []
+				}
+			]
 		},
 		{
-			"id": "button_type_2",
-			"control": "text",
-			"label": "Type",
-			"default": "button",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
+			"id": "style_r_video_pop_up",
+			"label": "Video pop-up",
+			"tokens": false,
+			"rows": [
+				{
+					"part": "p_fc_video_dialog",
+					"label": "Block",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_video_close",
+					"label": "Close Button",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_video_close_span",
+					"label": "Text",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_video_player",
+					"label": "Video",
+					"inline": [],
+					"inline_props": []
+				}
+			]
 		}
 	],
-	"behaviour_controls": [],
-	"inline_style_controls": [],
-	"media_controls": [
+	"advanced_panels": [
 		{
-			"id": "video_autoplay",
-			"control": "switcher",
-			"label": "Autoplay",
-			"description": "Browsers only allow autoplay while the video is muted.",
-			"default": "",
-			"flag_attr": "autoplay",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_fc_video_player",
-			"tab": "media",
-			"sort": 1,
-			"part_label": "Video"
+			"id": "uew_accessibility",
+			"label": "Accessibility",
+			"notice": "What screen readers announce for each element. Visitors do not see these; keep them short and descriptive.",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Section",
+					"order": 0,
+					"controls": [
+						{
+							"id": "c_section_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Why Umoya Afrika Tours",
+							"esc": "attr",
+							"group": "p_section",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Video button › Button",
+					"order": 17,
+					"controls": [
+						{
+							"id": "c_fc_vid_ph_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Play Umoya brand video",
+							"esc": "attr",
+							"group": "p_fc_vid_ph",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Grid",
+					"order": 21,
+					"controls": [
+						{
+							"id": "c_fc_video_modal_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Umoya Afrika Tours video",
+							"esc": "attr",
+							"group": "p_fc_video_modal",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Video pop-up › Close Button",
+					"order": 24,
+					"controls": [
+						{
+							"id": "c_fc_video_close_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Close video",
+							"esc": "attr",
+							"group": "p_fc_video_close",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Video pop-up › Video",
+					"order": 26,
+					"controls": [
+						{
+							"id": "c_fc_video_player_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Umoya Afrika Tours video",
+							"esc": "attr",
+							"group": "p_fc_video_player",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				}
+			]
 		},
 		{
-			"id": "video_muted",
-			"control": "switcher",
-			"label": "Mute",
-			"description": "",
-			"default": "",
-			"flag_attr": "muted",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_fc_video_player",
-			"tab": "media",
-			"sort": 1,
-			"part_label": "Video"
-		},
-		{
-			"id": "video_playsinline",
-			"control": "switcher",
-			"label": "Play On Mobile",
-			"description": "Without this, iOS opens the video fullscreen instead of playing it in place.",
-			"default": "yes",
-			"flag_attr": "playsinline",
-			"flag_prefix": "\n          ",
-			"esc": "raw",
-			"group": "p_fc_video_player",
-			"tab": "media",
-			"sort": 1,
-			"part_label": "Video"
-		},
-		{
-			"id": "video_loop",
-			"control": "switcher",
-			"label": "Loop",
-			"description": "",
-			"default": "",
-			"flag_attr": "loop",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_fc_video_player",
-			"tab": "media",
-			"sort": 1,
-			"part_label": "Video"
-		},
-		{
-			"id": "video_controls",
-			"control": "switcher",
-			"label": "Player Controls",
-			"description": "",
-			"default": "yes",
-			"flag_attr": "controls",
-			"flag_prefix": "\n          ",
-			"esc": "raw",
-			"group": "p_fc_video_player",
-			"tab": "media",
-			"sort": 1,
-			"part_label": "Video"
-		},
-		{
-			"id": "video_disablepictureinpicture",
-			"control": "switcher",
-			"label": "Disable Picture-in-Picture",
-			"description": "",
-			"default": "",
-			"flag_attr": "disablepictureinpicture",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_fc_video_player",
-			"tab": "media",
-			"sort": 1,
-			"part_label": "Video"
-		},
-		{
-			"id": "video_preload",
-			"control": "select",
-			"label": "Preload",
-			"default": "metadata",
-			"options": [
-				"auto",
-				"metadata",
-				"none"
-			],
-			"esc": "attr",
-			"group": "media",
-			"tab": "media",
-			"sort": 1,
-			"part_label": ""
+			"id": "uew_form",
+			"label": "Form Field Rules",
+			"notice": "",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Video button › Button",
+					"order": 17,
+					"controls": [
+						{
+							"id": "c_fc_vid_ph_disabled",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_fc_vid_ph",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_fc_vid_ph_type",
+							"control": "text",
+							"label": "Type",
+							"default": "button",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Video pop-up › Close Button",
+					"order": 24,
+					"controls": [
+						{
+							"id": "c_fc_video_close_disabled",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_fc_video_close",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_fc_video_close_type",
+							"control": "text",
+							"label": "Type",
+							"default": "button",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				}
+			]
 		}
 	],
 	"repeaters": [
@@ -580,7 +823,11 @@
 			"loops": 1,
 			"selector": ".fc-why-body",
 			"notice": "",
-			"portal": null
+			"portal": null,
+			"base_label": "Paragraphs",
+			"region": "r_text",
+			"order": 9,
+			"block_label": "Paragraphs"
 		}
 	],
 	"style_parts": [
@@ -593,23 +840,21 @@
 			"selector": "",
 			"tag": "section",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition"
+				"padding",
+				"min_height",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 0,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "Section"
 		},
 		{
 			"id": "p_fc_why_wrap",
@@ -620,24 +865,20 @@
 			"selector": ".fc-why-wrap",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"padding",
+				"margin",
+				"measure",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 1,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "Container 1"
 		},
 		{
 			"id": "p_fc_why_grid",
@@ -648,25 +889,25 @@
 			"selector": ".fc-why-grid",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"grid_container",
-				"flex_item"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 2,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "List"
 		},
 		{
 			"id": "p_fc_why_rev",
@@ -677,24 +918,24 @@
 			"selector": ".fc-why-rev",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 3,
+			"box": true,
+			"everywhere": false,
+			"region": "r_text",
+			"display": "Block"
 		},
 		{
 			"id": "p_fc_why_eyebrow",
@@ -705,25 +946,18 @@
 			"selector": ".fc-why-eyebrow",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 4,
+			"box": false,
+			"everywhere": false,
+			"region": "r_text",
+			"display": "Eyebrow"
 		},
 		{
 			"id": "p_fc_why_title",
@@ -734,54 +968,43 @@
 			"selector": ".fc-why-title",
 			"tag": "h2",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 5,
+			"box": false,
+			"everywhere": false,
+			"region": "r_text",
+			"display": "Title"
 		},
 		{
 			"id": "p_em",
-			"label": "Emphasis",
-			"short_label": "Emphasis",
+			"label": "Italic Text",
+			"short_label": "Italic Text",
 			"parent_label": "Title",
 			"sample": "long relationships",
 			"selector": "em",
 			"tag": "em",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 6,
+			"box": false,
+			"everywhere": false,
+			"region": "r_text",
+			"display": "Italic Text"
 		},
 		{
 			"id": "p_fc_why_rule",
@@ -792,25 +1015,18 @@
 			"selector": ".fc-why-rule",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 7,
+			"box": false,
+			"everywhere": false,
+			"region": "r_text",
+			"display": "Divider"
 		},
 		{
 			"id": "p_fc_why_lead",
@@ -821,25 +1037,21 @@
 			"selector": ".fc-why-lead",
 			"tag": "p",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 8,
+			"box": false,
+			"everywhere": false,
+			"region": "r_text",
+			"display": "Text"
 		},
 		{
 			"id": "p_fc_why_body",
@@ -850,54 +1062,43 @@
 			"selector": ".fc-why-body",
 			"tag": "p",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": "p_fc_why_body"
+			"repeater": "p_fc_why_body",
+			"order": 9,
+			"box": false,
+			"everywhere": false,
+			"region": "r_text",
+			"display": "Paragraphs"
 		},
 		{
 			"id": "p_strong",
-			"label": "Strong",
-			"short_label": "Strong",
+			"label": "Bold Text",
+			"short_label": "Bold Text",
 			"parent_label": "Text",
 			"sample": "Wilson Nyah",
 			"selector": "strong",
 			"tag": "strong",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 10,
+			"box": false,
+			"everywhere": false,
+			"region": "r_text",
+			"display": "Bold Paragraphs"
 		},
 		{
 			"id": "p_fc_why_btn",
@@ -908,26 +1109,25 @@
 			"selector": ".fc-why-btn",
 			"tag": "a",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
 				"states",
-				"flex_container"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 14,
+			"box": false,
+			"everywhere": false,
+			"region": "r_text",
+			"display": "Button"
 		},
 		{
 			"id": "p_fc_why_aside",
@@ -938,25 +1138,26 @@
 			"selector": ".fc-why-aside",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"flex_container",
-				"flex_item"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 15,
+			"box": false,
+			"everywhere": false,
+			"region": "r_video_button",
+			"frame": "outer",
+			"display": "Block"
 		},
 		{
 			"id": "p_fc_vid_wrap",
@@ -967,24 +1168,24 @@
 			"selector": ".fc-vid-wrap",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 16,
+			"box": true,
+			"everywhere": false,
+			"region": "r_video_button",
+			"display": "Inner Block"
 		},
 		{
 			"id": "p_fc_vid_ph",
@@ -995,55 +1196,48 @@
 			"selector": ".fc-vid-ph",
 			"tag": "button",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
+				"flex_container",
 				"states",
-				"flex_container"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 17,
+			"box": false,
+			"everywhere": false,
+			"region": "r_video_button",
+			"display": "Button"
 		},
 		{
 			"id": "p_fc_play",
-			"label": "Button Text 1",
+			"label": "Button Text",
 			"short_label": "Text",
 			"parent_label": "Button",
 			"sample": "",
 			"selector": ".fc-play",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 18,
+			"box": false,
+			"everywhere": false,
+			"region": "r_video_button",
+			"display": "Text"
 		},
 		{
 			"id": "p_svg",
@@ -1055,15 +1249,18 @@
 			"tag": "svg",
 			"features": [
 				"svg",
-				"sizing",
-				"spacing",
 				"effects",
 				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 19,
+			"box": false,
+			"everywhere": false,
+			"region": "r_video_button",
+			"display": "Icon"
 		},
 		{
 			"id": "p_fc_video_modal",
@@ -1074,25 +1271,21 @@
 			"selector": ".fc-video-modal",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"grid_container",
-				"flex_item"
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 21,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "Grid"
 		},
 		{
 			"id": "p_fc_video_backdrop",
@@ -1103,24 +1296,20 @@
 			"selector": ".fc-video-backdrop",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"padding",
+				"margin",
+				"measure",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 22,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "Container 2"
 		},
 		{
 			"id": "p_fc_video_dialog",
@@ -1131,83 +1320,76 @@
 			"selector": ".fc-video-dialog",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 23,
+			"box": true,
+			"everywhere": false,
+			"region": "r_video_pop_up",
+			"display": "Block"
 		},
 		{
 			"id": "p_fc_video_close",
-			"label": "Button",
-			"short_label": "Button",
+			"label": "Close Button",
+			"short_label": "Close Button",
 			"parent_label": "",
 			"sample": "",
 			"selector": ".fc-video-close",
 			"tag": "button",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
+				"grid_container",
 				"states",
-				"flex_container"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 24,
+			"box": false,
+			"everywhere": false,
+			"region": "r_video_pop_up",
+			"display": "Close Button"
 		},
 		{
 			"id": "p_fc_video_close_span",
-			"label": "Button Text 2",
+			"label": "Close Button Text",
 			"short_label": "Text",
-			"parent_label": "Button",
+			"parent_label": "Close Button",
 			"sample": "×",
 			"selector": ".fc-video-close > span",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 25,
+			"box": false,
+			"everywhere": false,
+			"region": "r_video_pop_up",
+			"display": "Text"
 		},
 		{
 			"id": "p_fc_video_player",
@@ -1218,28 +1400,29 @@
 			"selector": ".fc-video-player",
 			"tag": "video",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
 				"media_fit",
 				"filters",
-				"transition"
+				"radius",
+				"shadow",
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 26,
+			"box": false,
+			"everywhere": false,
+			"region": "r_video_pop_up",
+			"display": "Video"
 		}
 	],
 	"inline_styles": [],
 	"fields": [
 		{
-			"id": "section_aria_label",
+			"id": "c_section_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Why Umoya Afrika Tours",
@@ -1249,7 +1432,7 @@
 			"sort": 1
 		},
 		{
-			"id": "eyebrow_text",
+			"id": "c_fc_why_eyebrow_text",
 			"control": "text",
 			"label": "Eyebrow",
 			"description": "",
@@ -1259,7 +1442,7 @@
 			"sort": 0
 		},
 		{
-			"id": "title_text",
+			"id": "c_fc_why_title_text",
 			"control": "textarea",
 			"label": "Title",
 			"description": "Inline formatting tags are preserved.",
@@ -1269,7 +1452,7 @@
 			"sort": 0
 		},
 		{
-			"id": "text_text",
+			"id": "c_fc_why_lead_text",
 			"control": "text",
 			"label": "Text",
 			"description": "",
@@ -1279,7 +1462,7 @@
 			"sort": 0
 		},
 		{
-			"id": "button_text",
+			"id": "c_fc_why_btn_text",
 			"control": "text",
 			"label": "Button",
 			"description": "",
@@ -1289,7 +1472,7 @@
 			"sort": 0
 		},
 		{
-			"id": "button_href",
+			"id": "c_fc_why_btn_href",
 			"control": "url",
 			"label": "Link",
 			"default": {
@@ -1301,7 +1484,7 @@
 			"sort": 1
 		},
 		{
-			"id": "button_disabled",
+			"id": "c_fc_vid_ph_disabled",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -1314,7 +1497,7 @@
 			"sort": 1
 		},
 		{
-			"id": "button_type",
+			"id": "c_fc_vid_ph_type",
 			"control": "text",
 			"label": "Type",
 			"default": "button",
@@ -1324,7 +1507,7 @@
 			"sort": 1
 		},
 		{
-			"id": "button_aria_label",
+			"id": "c_fc_vid_ph_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Play Umoya brand video",
@@ -1334,7 +1517,7 @@
 			"sort": 1
 		},
 		{
-			"id": "container_aria_label",
+			"id": "c_fc_video_modal_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Umoya Afrika Tours video",
@@ -1344,7 +1527,7 @@
 			"sort": 1
 		},
 		{
-			"id": "button_disabled_2",
+			"id": "c_fc_video_close_disabled",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -1357,7 +1540,7 @@
 			"sort": 1
 		},
 		{
-			"id": "button_type_2",
+			"id": "c_fc_video_close_type",
 			"control": "text",
 			"label": "Type",
 			"default": "button",
@@ -1367,7 +1550,7 @@
 			"sort": 1
 		},
 		{
-			"id": "button_aria_label_2",
+			"id": "c_fc_video_close_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Close video",
@@ -1377,7 +1560,7 @@
 			"sort": 1
 		},
 		{
-			"id": "text_text_2",
+			"id": "c_fc_video_close_span_text",
 			"control": "text",
 			"label": "Text",
 			"description": "",
@@ -1387,7 +1570,7 @@
 			"sort": 0
 		},
 		{
-			"id": "video_autoplay",
+			"id": "c_fc_video_player_autoplay",
 			"control": "switcher",
 			"label": "Autoplay",
 			"description": "Browsers only allow autoplay while the video is muted.",
@@ -1400,7 +1583,7 @@
 			"sort": 1
 		},
 		{
-			"id": "video_muted",
+			"id": "c_fc_video_player_muted",
 			"control": "switcher",
 			"label": "Mute",
 			"description": "",
@@ -1413,7 +1596,7 @@
 			"sort": 1
 		},
 		{
-			"id": "video_playsinline",
+			"id": "c_fc_video_player_playsinline",
 			"control": "switcher",
 			"label": "Play On Mobile",
 			"description": "Without this, iOS opens the video fullscreen instead of playing it in place.",
@@ -1426,7 +1609,7 @@
 			"sort": 1
 		},
 		{
-			"id": "video_loop",
+			"id": "c_fc_video_player_loop",
 			"control": "switcher",
 			"label": "Loop",
 			"description": "",
@@ -1439,7 +1622,7 @@
 			"sort": 1
 		},
 		{
-			"id": "video_controls",
+			"id": "c_fc_video_player_controls",
 			"control": "switcher",
 			"label": "Player Controls",
 			"description": "",
@@ -1452,7 +1635,7 @@
 			"sort": 1
 		},
 		{
-			"id": "video_disablepictureinpicture",
+			"id": "c_fc_video_player_disablepictureinpicture",
 			"control": "switcher",
 			"label": "Disable Picture-in-Picture",
 			"description": "",
@@ -1465,7 +1648,7 @@
 			"sort": 1
 		},
 		{
-			"id": "video_src",
+			"id": "c_fc_video_player_src",
 			"control": "url",
 			"label": "Source",
 			"default": {
@@ -1477,7 +1660,7 @@
 			"sort": 1
 		},
 		{
-			"id": "video_preload",
+			"id": "c_fc_video_player_preload",
 			"control": "select",
 			"label": "Preload",
 			"default": "metadata",
@@ -1492,7 +1675,7 @@
 			"sort": 1
 		},
 		{
-			"id": "video_aria_label",
+			"id": "c_fc_video_player_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Umoya Afrika Tours video",
@@ -1502,7 +1685,7 @@
 			"sort": 1
 		},
 		{
-			"id": "button_background_image",
+			"id": "c_fc_vid_ph_background_image",
 			"control": "media",
 			"label": "Background Image",
 			"description": "Painted from the section stylesheet as a layer over the element. Choosing an image here replaces the photo.",

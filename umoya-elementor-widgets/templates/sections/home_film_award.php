@@ -30,13 +30,13 @@ if ( ! defined( 'ABSPATH' ) ) {
   ELEMENTOR: place after the Founder's Circle invitation.
 =================================================================
 -->
-<section id="umoya-film" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="umoya-film" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="umoya-film-wrap">
 
     <!-- LEFT — copy, left-aligned, with the award badge beneath it -->
     <div class="umoya-film-copy umoya-film-rv">
-      <span class="umoya-film-eye"><?php echo $c['eyebrow_text']; ?></span>
-      <h2><?php echo $c['heading_text']; ?></h2>
+      <span class="umoya-film-eye"><?php echo $c['c_umoya_film_eye_text']; ?></span>
+      <h2><?php echo $c['c_h2_text']; ?></h2>
       <div class="umoya-film-lead">
         <?php $__i = 0; foreach ( $r['rep_p'] as $it ) : if ( $__i ++ ) { echo '
         '; } ?><p class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['p_markup']; ?></p><?php endforeach; echo "\n      "; ?></div>
@@ -49,15 +49,15 @@ if ( ! defined( 'ABSPATH' ) ) {
            controls in place, so visitors press play right on the embed. -->
       <div class="umoya-film-frame">
         <iframe
-          src="<?php echo $c['embed_src']; ?>"
-          title="<?php echo $c['embed_title']; ?>"
-          loading="<?php echo $c['embed_loading']; ?>"
-          allow="<?php echo $c['embed_allow']; ?>"<?php echo $c['embed_allowfullscreen']; echo "\n          "; ?>referrerpolicy="<?php echo $c['embed_referrerpolicy']; ?>"
+          src="<?php echo $c['c_iframe_src']; ?>"
+          title="<?php echo $c['c_iframe_title']; ?>"
+          loading="<?php echo $c['c_iframe_loading']; ?>"
+          allow="<?php echo $c['c_iframe_allow']; ?>"<?php echo $c['c_iframe_allowfullscreen']; echo "\n          "; ?>referrerpolicy="<?php echo $c['c_iframe_referrerpolicy']; ?>"
         ></iframe>
       </div>
 
       <!-- Award callout -->
-      <div class="umoya-film-award" role="note" aria-label="<?php echo $c['container_aria_label']; ?>">
+      <div class="umoya-film-award" role="note" aria-label="<?php echo $c['c_umoya_film_award_aria_label']; ?>">
         <!-- ★ SWAP: replace this placeholder laurel with the official ITFFA award badge -->
         <span class="umoya-film-award-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24">
@@ -66,8 +66,8 @@ if ( ! defined( 'ABSPATH' ) ) {
           </svg>
         </span>
         <span>
-          <span class="umoya-film-award-title"><?php echo $c['title_text']; ?></span>
-          <span class="umoya-film-award-sub"><?php echo $c['subtitle_text']; ?></span>
+          <span class="umoya-film-award-title"><?php echo $c['c_umoya_film_award_title_text']; ?></span>
+          <span class="umoya-film-award-sub"><?php echo $c['c_umoya_film_award_sub_text']; ?></span>
         </span>
       </div>
     </div>

@@ -111,2320 +111,2454 @@
 			"label": "Ease"
 		}
 	],
+	"regions": [
+		{
+			"id": "r_pop_up",
+			"label": "Pop-up",
+			"portal": true
+		},
+		{
+			"id": "r_image",
+			"label": "Image",
+			"portal": true
+		},
+		{
+			"id": "r_header",
+			"label": "Header",
+			"portal": true
+		},
+		{
+			"id": "r_form",
+			"label": "Form",
+			"portal": true
+		}
+	],
 	"content_panels": [
 		{
-			"id": "content_p_umoya_form_close",
-			"label": "Button",
-			"sample": "",
-			"region_label": "",
-			"controls": [
-				{
-					"id": "button_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Close form",
-					"esc": "attr",
-					"group": "p_umoya_form_close",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Button"
-				}
-			]
-		},
-		{
-			"id": "content_p_img",
+			"id": "content_r_image",
 			"label": "Image",
-			"sample": "",
-			"region_label": "",
-			"controls": [
+			"items": [
 				{
-					"id": "image_src",
-					"control": "media",
-					"label": "Choose Image",
-					"default": {
-						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc04418(1).jpg"
-					},
-					"esc": "url",
-					"group": "p_img",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Image 2"
+					"kind": "group",
+					"label": "Image",
+					"order": 6,
+					"controls": [
+						{
+							"id": "c_img_src",
+							"control": "media",
+							"label": "Choose Image",
+							"default": {
+								"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/compressed_dsc04418(1).jpg"
+							},
+							"esc": "url",
+							"group": "p_img",
+							"tab": "content",
+							"sort": 1
+						},
+						{
+							"id": "c_img_alt",
+							"control": "text",
+							"label": "Alt Text",
+							"default": "",
+							"esc": "attr",
+							"group": "p_img",
+							"tab": "content",
+							"sort": 1
+						}
+					]
 				},
 				{
-					"id": "image_alt",
-					"control": "text",
-					"label": "Alt Text",
-					"default": "",
-					"esc": "attr",
-					"group": "p_img",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Image 2"
-				},
-				{
-					"id": "text_text",
-					"control": "text",
+					"kind": "group",
 					"label": "Text",
-					"description": "",
-					"default": "Inquiry Form",
-					"esc": "post",
-					"group": "p_umoya_form_image_copy_span",
-					"sort": 0,
-					"part_label": "Image Text"
+					"order": 8,
+					"controls": [
+						{
+							"id": "c_umoya_form_image_copy_span_text",
+							"control": "text",
+							"label": "Text",
+							"description": "",
+							"default": "Inquiry Form",
+							"esc": "post",
+							"group": "p_umoya_form_image_copy_span",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "heading_text",
-					"control": "text",
+					"kind": "group",
 					"label": "Heading",
-					"description": "",
-					"default": "Your Umoya Experience Awaits",
-					"esc": "post",
-					"group": "p_umoya_form_image_copy_h2",
-					"sort": 0,
-					"part_label": "Image Heading"
+					"order": 9,
+					"controls": [
+						{
+							"id": "c_umoya_form_image_copy_h2_text",
+							"control": "text",
+							"label": "Heading",
+							"description": "",
+							"default": "Your Umoya Experience Awaits",
+							"esc": "post",
+							"group": "p_umoya_form_image_copy_h2",
+							"sort": 0
+						}
+					]
 				}
-			],
-			"merged": true
+			]
 		},
 		{
-			"id": "content_p_umoya_form_head_span",
+			"id": "content_r_header",
 			"label": "Header",
-			"sample": "Reserve Your Place",
-			"region_label": "Header",
-			"controls": [
+			"items": [
 				{
-					"id": "text_text_2",
-					"control": "text",
-					"label": "Text",
-					"description": "",
-					"default": "Reserve Your Place",
-					"esc": "post",
-					"group": "p_umoya_form_head_span",
-					"sort": 0,
-					"part_label": "Header Text 1"
+					"kind": "group",
+					"label": "Eyebrow",
+					"order": 12,
+					"controls": [
+						{
+							"id": "c_umoya_form_head_span_text",
+							"control": "text",
+							"label": "Eyebrow",
+							"description": "",
+							"default": "Reserve Your Place",
+							"esc": "post",
+							"group": "p_umoya_form_head_span",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "heading_text_2",
-					"control": "text",
+					"kind": "group",
 					"label": "Heading",
-					"description": "",
-					"default": "Begin Your Journey",
-					"esc": "post",
-					"group": "p_umoya_form_head_h2",
-					"sort": 0,
-					"part_label": "Header Heading"
+					"order": 13,
+					"controls": [
+						{
+							"id": "c_umoya_form_head_h2_text",
+							"control": "text",
+							"label": "Heading",
+							"description": "",
+							"default": "Begin Your Journey",
+							"esc": "post",
+							"group": "p_umoya_form_head_h2",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "text_text_3",
-					"control": "textarea",
-					"label": "Header Text 2",
-					"description": "",
-					"default": "Tell us about yourself and the travel experience you're seeking. A dedicated Umoya Travel Expert will personally connect with you to begin planning your experience.",
-					"esc": "post",
-					"group": "p_umoya_form_head_p",
-					"sort": 0,
-					"part_label": "Header Text 2"
-				}
-			],
-			"merged": true
-		},
-		{
-			"id": "content_p_umoya_popup_form",
-			"label": "Form 1",
-			"sample": "",
-			"region_label": "Card",
-			"controls": [
-				{
-					"id": "form_action",
-					"control": "url",
-					"label": "Form Action",
-					"default": {
-						"url": "/wp-json/umoya/v1/submissions"
-					},
-					"esc": "url",
-					"group": "p_umoya_popup_form",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Form"
+					"kind": "group",
+					"label": "Description",
+					"order": 14,
+					"controls": [
+						{
+							"id": "c_umoya_form_head_p_text",
+							"control": "textarea",
+							"label": "Description",
+							"description": "",
+							"default": "Tell us about yourself and the travel experience you're seeking. A dedicated Umoya Travel Expert will personally connect with you to begin planning your experience.",
+							"esc": "post",
+							"group": "p_umoya_form_head_p",
+							"sort": 0
+						}
+					]
 				}
 			]
 		},
 		{
-			"id": "content_p_umoya_field_label_nth_of_type_1",
-			"label": "Field Label",
-			"sample": "Title",
-			"region_label": "Field",
-			"controls": [
+			"id": "content_r_form",
+			"label": "Form",
+			"items": [
 				{
-					"id": "label_text",
-					"control": "text",
-					"label": "Label 1",
-					"description": "",
-					"default": "Title",
-					"esc": "post",
-					"group": "p_umoya_field_label_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Field Label"
+					"kind": "group",
+					"label": "Title",
+					"order": 26,
+					"controls": [
+						{
+							"id": "c_umoya_field_label_text",
+							"control": "text",
+							"label": "Title",
+							"description": "",
+							"default": "Title",
+							"esc": "post",
+							"group": "p_umoya_field_label",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "label_text_2",
-					"control": "text",
-					"label": "Label 2",
-					"description": "",
-					"default": "First Name *",
-					"esc": "post",
-					"group": "p_umoya_field_label_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Field Label"
+					"kind": "list",
+					"id": "rep_option",
+					"label": "Title Options",
+					"order": 28
 				},
 				{
-					"id": "label_text_3",
-					"control": "text",
-					"label": "Label 3",
-					"description": "",
-					"default": "Last Name *",
-					"esc": "post",
-					"group": "p_umoya_field_label_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Field Label"
+					"kind": "group",
+					"label": "First Name",
+					"order": 37,
+					"controls": [
+						{
+							"id": "c_umoya_field_label_text_2",
+							"control": "text",
+							"label": "Label",
+							"description": "",
+							"default": "First Name *",
+							"esc": "post",
+							"group": "p_umoya_field_label",
+							"sort": 0
+						},
+						{
+							"id": "c_umoya_field_input_placeholder",
+							"control": "text",
+							"label": "Placeholder",
+							"default": "First name",
+							"esc": "attr",
+							"group": "p_umoya_field_input",
+							"tab": "content",
+							"sort": 1
+						}
+					]
 				},
 				{
-					"id": "label_text_4",
-					"control": "text",
-					"label": "Label 4",
-					"description": "",
-					"default": "Email Address *",
-					"esc": "post",
-					"group": "p_umoya_field_label_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Field Label"
+					"kind": "group",
+					"label": "Last Name",
+					"order": 40,
+					"controls": [
+						{
+							"id": "c_umoya_field_label_text_3",
+							"control": "text",
+							"label": "Label",
+							"description": "",
+							"default": "Last Name *",
+							"esc": "post",
+							"group": "p_umoya_field_label",
+							"sort": 0
+						},
+						{
+							"id": "c_umoya_field_input_placeholder_2",
+							"control": "text",
+							"label": "Placeholder",
+							"default": "Last name",
+							"esc": "attr",
+							"group": "p_umoya_field_input",
+							"tab": "content",
+							"sort": 1
+						}
+					]
 				},
 				{
-					"id": "label_text_5",
-					"control": "text",
-					"label": "Label 5",
-					"description": "",
-					"default": "Phone Number",
-					"esc": "post",
-					"group": "p_umoya_field_label_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Field Label"
+					"kind": "group",
+					"label": "Email Address",
+					"order": 43,
+					"controls": [
+						{
+							"id": "c_umoya_field_label_text_4",
+							"control": "text",
+							"label": "Label",
+							"description": "",
+							"default": "Email Address *",
+							"esc": "post",
+							"group": "p_umoya_field_label",
+							"sort": 0
+						},
+						{
+							"id": "c_umoya_field_input_placeholder_3",
+							"control": "text",
+							"label": "Placeholder",
+							"default": "your@email.com",
+							"esc": "attr",
+							"group": "p_umoya_field_input",
+							"tab": "content",
+							"sort": 1
+						}
+					]
 				},
 				{
-					"id": "label_text_6",
-					"control": "text",
-					"label": "Label 6",
-					"description": "",
-					"default": "Country *",
-					"esc": "post",
-					"group": "p_umoya_field_label_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Field Label"
+					"kind": "group",
+					"label": "Phone Number",
+					"order": 46,
+					"controls": [
+						{
+							"id": "c_umoya_field_label_text_5",
+							"control": "text",
+							"label": "Label",
+							"description": "",
+							"default": "Phone Number",
+							"esc": "post",
+							"group": "p_umoya_field_label",
+							"sort": 0
+						},
+						{
+							"id": "c_umoya_field_input_placeholder_4",
+							"control": "text",
+							"label": "Placeholder",
+							"default": "+1 (000) 000-0000",
+							"esc": "attr",
+							"group": "p_umoya_field_input",
+							"tab": "content",
+							"sort": 1
+						}
+					]
 				},
 				{
-					"id": "label_text_7",
-					"control": "text",
-					"label": "Label 7",
-					"description": "",
-					"default": "City",
-					"esc": "post",
-					"group": "p_umoya_field_label_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Field Label"
+					"kind": "group",
+					"label": "Country",
+					"order": 49,
+					"controls": [
+						{
+							"id": "c_umoya_field_label_text_6",
+							"control": "text",
+							"label": "Country",
+							"description": "",
+							"default": "Country *",
+							"esc": "post",
+							"group": "p_umoya_field_label",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "label_text_8",
-					"control": "text",
-					"label": "Label 8",
-					"description": "",
-					"default": "When Are You Hoping to Travel?",
-					"esc": "post",
-					"group": "p_umoya_field_label_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Field Label"
+					"kind": "group",
+					"label": "City",
+					"order": 255,
+					"controls": [
+						{
+							"id": "c_umoya_field_label_text_7",
+							"control": "text",
+							"label": "Label",
+							"description": "",
+							"default": "City",
+							"esc": "post",
+							"group": "p_umoya_field_label",
+							"sort": 0
+						},
+						{
+							"id": "c_umoya_field_input_placeholder_5",
+							"control": "text",
+							"label": "Placeholder",
+							"default": "Your city",
+							"esc": "attr",
+							"group": "p_umoya_field_input",
+							"tab": "content",
+							"sort": 1
+						}
+					]
 				},
 				{
-					"id": "label_text_9",
-					"control": "text",
-					"label": "Label 9",
-					"description": "",
-					"default": "How Many Guests Will Be Traveling?",
-					"esc": "post",
-					"group": "p_umoya_field_label_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Field Label"
+					"kind": "group",
+					"label": "When Are You Hoping to Travel",
+					"order": 258,
+					"controls": [
+						{
+							"id": "c_umoya_field_label_text_8",
+							"control": "text",
+							"label": "When Are You Hoping to Travel",
+							"description": "",
+							"default": "When Are You Hoping to Travel?",
+							"esc": "post",
+							"group": "p_umoya_field_label",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "label_text_10",
-					"control": "text",
-					"label": "Label 10",
-					"description": "",
-					"default": "What Are You Hoping to Experience?",
-					"esc": "post",
-					"group": "p_umoya_field_label_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Field Label"
-				}
-			]
-		},
-		{
-			"id": "content_p_umoya_field_input_nth_of_type_1",
-			"label": "List Anchor 1",
-			"sample": "",
-			"region_label": "List",
-			"controls": [
-				{
-					"id": "anchor_placeholder",
-					"control": "text",
-					"label": "Placeholder 1",
-					"default": "First name",
-					"esc": "attr",
-					"group": "p_umoya_field_input_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "List Anchor 1"
+					"kind": "list",
+					"id": "rep_option_3",
+					"label": "Month Options",
+					"order": 261
 				},
 				{
-					"id": "anchor_placeholder_2",
-					"control": "text",
-					"label": "Placeholder 2",
-					"default": "Last name",
-					"esc": "attr",
-					"group": "p_umoya_field_input_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "List Anchor 1"
+					"kind": "list",
+					"id": "rep_option_4",
+					"label": "Year Options",
+					"order": 276
 				},
 				{
-					"id": "anchor_placeholder_3",
-					"control": "text",
-					"label": "Placeholder 3",
-					"default": "your@email.com",
-					"esc": "attr",
-					"group": "p_umoya_field_input_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "List Anchor 1"
+					"kind": "group",
+					"label": "How Many Guests Will Be…",
+					"order": 282,
+					"controls": [
+						{
+							"id": "c_umoya_field_label_text_9",
+							"control": "text",
+							"label": "How Many Guests Will Be…",
+							"description": "",
+							"default": "How Many Guests Will Be Traveling?",
+							"esc": "post",
+							"group": "p_umoya_field_label",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "anchor_placeholder_4",
-					"control": "text",
-					"label": "Placeholder 4",
-					"default": "+1 (000) 000-0000",
-					"esc": "attr",
-					"group": "p_umoya_field_input_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "List Anchor 1"
+					"kind": "list",
+					"id": "rep_option_5",
+					"label": "Guests Options",
+					"order": 284
 				},
 				{
-					"id": "anchor_placeholder_5",
-					"control": "text",
-					"label": "Placeholder 5",
-					"default": "Your city",
-					"esc": "attr",
-					"group": "p_umoya_field_input_nth_of_type_1",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "List Anchor 1"
-				}
-			]
-		},
-		{
-			"id": "content_p_umoya_when_select",
-			"label": "List",
-			"sample": "",
-			"region_label": "List",
-			"controls": [
-				{
-					"id": "select_aria_label",
-					"control": "text",
-					"label": "Accessible Name 1",
-					"default": "Preferred travel month",
-					"esc": "attr",
-					"group": "p_umoya_when_select",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "List Select"
+					"kind": "group",
+					"label": "What Are You Hoping to…",
+					"order": 291,
+					"controls": [
+						{
+							"id": "c_umoya_field_label_text_10",
+							"control": "text",
+							"label": "Label",
+							"description": "",
+							"default": "What Are You Hoping to Experience?",
+							"esc": "post",
+							"group": "p_umoya_field_label",
+							"sort": 0
+						},
+						{
+							"id": "c_textarea_placeholder",
+							"control": "text",
+							"label": "Placeholder",
+							"default": "Tell us about your travel interests, what you hope to experience, and what draws you to South Africa.",
+							"esc": "attr",
+							"group": "p_textarea",
+							"tab": "content",
+							"sort": 1
+						}
+					]
 				},
 				{
-					"id": "select_aria_label_2",
-					"control": "text",
-					"label": "Accessible Name 2",
-					"default": "Preferred travel year",
-					"esc": "attr",
-					"group": "p_umoya_when_select",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "List Select"
+					"kind": "group",
+					"label": "I consent to Umoya…",
+					"order": 296,
+					"controls": [
+						{
+							"id": "c_umoya_consent_item_span_text",
+							"control": "textarea",
+							"label": "Label 1",
+							"default": "I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the",
+							"esc": "post",
+							"group": "p_umoya_consent_item_span",
+							"sort": 0
+						},
+						{
+							"id": "c_umoya_consent_item_span_span_text",
+							"control": "text",
+							"label": "Label 2",
+							"description": "",
+							"default": "(Required)",
+							"esc": "post",
+							"group": "p_umoya_consent_item_span_span",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "anchor_placeholder_6",
-					"control": "text",
-					"label": "Placeholder",
-					"default": "Tell us about your travel interests, what you hope to experience, and what draws you to South Africa.",
-					"esc": "attr",
-					"group": "p_textarea",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "List Anchor 2"
-				}
-			],
-			"merged": true
-		},
-		{
-			"id": "content_p_umoya_consent_item_span_nth_of_type_1",
-			"label": "Item Text",
-			"sample": "",
-			"region_label": "Item",
-			"controls": [
-				{
-					"id": "text_text_4",
-					"control": "textarea",
-					"label": "Text 1",
-					"default": "I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the",
-					"esc": "post",
-					"group": "p_umoya_consent_item_span_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Item Text"
+					"kind": "group",
+					"label": "Privacy Policy",
+					"order": 297,
+					"controls": [
+						{
+							"id": "c_a_text",
+							"control": "text",
+							"label": "Text",
+							"description": "",
+							"default": "Privacy Policy",
+							"esc": "post",
+							"group": "p_a",
+							"sort": 0
+						},
+						{
+							"id": "c_a_href",
+							"control": "url",
+							"label": "Link",
+							"default": {
+								"url": "#"
+							},
+							"esc": "url",
+							"group": "p_a",
+							"tab": "content",
+							"sort": 1
+						}
+					]
 				},
 				{
-					"id": "text_text_2_2",
-					"control": "text",
-					"label": "Text 2",
-					"default": ".",
-					"esc": "post",
-					"group": "p_umoya_consent_item_span_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Item Text"
+					"kind": "group",
+					"label": "I'd also like to receive…",
+					"order": 301,
+					"controls": [
+						{
+							"id": "c_umoya_consent_item_span_text_2",
+							"control": "text",
+							"label": "Label 1",
+							"default": "I'd also like to receive Umoya journeys and stories by email.",
+							"esc": "post",
+							"group": "p_umoya_consent_item_span",
+							"sort": 0
+						},
+						{
+							"id": "c_umoya_consent_item_span_span_text_2",
+							"control": "text",
+							"label": "Label 2",
+							"description": "",
+							"default": "(Optional)",
+							"esc": "post",
+							"group": "p_umoya_consent_item_span_span",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "text_text_5",
-					"control": "text",
-					"label": "Text 2",
-					"default": "I'd also like to receive Umoya journeys and stories by email.",
-					"esc": "post",
-					"group": "p_umoya_consent_item_span_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Item Text"
-				}
-			]
-		},
-		{
-			"id": "content_p_a",
-			"label": "Link",
-			"sample": "Privacy Policy",
-			"region_label": "Text",
-			"controls": [
-				{
-					"id": "link_text",
-					"control": "text",
-					"label": "Link 1",
-					"description": "",
-					"default": "Privacy Policy",
-					"esc": "post",
-					"group": "p_a",
-					"sort": 0,
-					"part_label": "Link"
-				},
-				{
-					"id": "link_href",
-					"control": "url",
-					"label": "Link 2",
-					"default": {
-						"url": "#"
-					},
-					"esc": "url",
-					"group": "p_a",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Link"
-				}
-			]
-		},
-		{
-			"id": "content_p_umoya_consent_item_span_nth_of_type_1_span_nth_of_type_1",
-			"label": "Text Label",
-			"sample": "(Required)",
-			"region_label": "Text",
-			"controls": [
-				{
-					"id": "label_text_11",
-					"control": "text",
-					"label": "Label 1",
-					"description": "",
-					"default": "(Required)",
-					"esc": "post",
-					"group": "p_umoya_consent_item_span_nth_of_type_1_span_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Text Label"
-				},
-				{
-					"id": "label_text_12",
-					"control": "text",
-					"label": "Label 2",
-					"description": "",
-					"default": "(Optional)",
-					"esc": "post",
-					"group": "p_umoya_consent_item_span_nth_of_type_1_span_nth_of_type_1",
-					"sort": 0,
-					"part_label": "Text Label"
-				}
-			]
-		},
-		{
-			"id": "content_p_umoya_form_submit",
-			"label": "Form 2",
-			"sample": "Speak to an Expert",
-			"region_label": "Form",
-			"controls": [
-				{
-					"id": "button_text",
-					"control": "text",
+					"kind": "group",
 					"label": "Button",
-					"description": "",
-					"default": "Speak to an Expert",
-					"esc": "post",
-					"group": "p_umoya_form_submit",
-					"sort": 0,
-					"part_label": "Form Button"
+					"order": 303,
+					"controls": [
+						{
+							"id": "c_umoya_form_submit_text",
+							"control": "text",
+							"label": "Button",
+							"description": "",
+							"default": "Speak to an Expert",
+							"esc": "post",
+							"group": "p_umoya_form_submit",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "consent_text",
-					"control": "text",
-					"label": "Consent",
-					"description": "",
-					"default": "Your information is held in strict confidence and never shared.",
-					"esc": "post",
-					"group": "p_umoya_form_legal",
-					"sort": 0,
-					"part_label": "Form Consent 2"
+					"kind": "group",
+					"label": "Fine Print",
+					"order": 305,
+					"controls": [
+						{
+							"id": "c_umoya_form_legal_text",
+							"control": "text",
+							"label": "Fine Print",
+							"description": "",
+							"default": "Your information is held in strict confidence and never shared.",
+							"esc": "post",
+							"group": "p_umoya_form_legal",
+							"sort": 0
+						}
+					]
 				}
-			],
-			"merged": true
+			]
 		},
 		{
-			"id": "content_p_iframe",
-			"label": "Embed",
-			"sample": "",
-			"region_label": "Card",
-			"controls": [
+			"id": "content_list_rep_option_2",
+			"label": "Country Options",
+			"items": [
 				{
-					"id": "embed_title",
-					"control": "text",
-					"label": "Title Attribute",
-					"default": "Umoya popup submission fallback",
-					"esc": "attr",
-					"group": "p_iframe",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Embed"
+					"kind": "list",
+					"id": "rep_option_2",
+					"label": "Country Options",
+					"order": 0
 				}
 			]
 		}
 	],
-	"integration_controls": [
+	"style_panels": [
 		{
-			"id": "form_data_hs_do_not_collect",
-			"control": "text",
-			"label": "Hs Do Not Collect",
-			"default": "true",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
+			"id": "style_section",
+			"label": "Section",
+			"tokens": true,
+			"rows": [
+				{
+					"part": "p_section",
+					"label": "Section",
+					"inline": [],
+					"inline_props": []
+				}
+			]
 		},
 		{
-			"id": "form_data_hubspot_portal_id",
-			"control": "text",
-			"label": "Hubspot Portal Id",
-			"default": "246097317",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
+			"id": "style_r_pop_up",
+			"label": "Pop-up",
+			"tokens": false,
+			"rows": [
+				{
+					"part": "p_umoya_form_dialog",
+					"label": "Dialog",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_form_close",
+					"label": "Close Button",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_svg",
+					"label": "Icon",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_form_panel",
+					"label": "Card",
+					"inline": [],
+					"inline_props": []
+				}
+			]
 		},
 		{
-			"id": "form_data_hubspot_form_id",
-			"control": "text",
-			"label": "Hubspot Form Id",
-			"default": "71181d17-e836-43d6-aa6d-a46e73945504",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
+			"id": "style_r_image",
+			"label": "Image",
+			"tokens": false,
+			"rows": [
+				{
+					"part": "p_umoya_form_image",
+					"label": "Dialog",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_img",
+					"label": "Image",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_form_image_copy_span",
+					"label": "Text",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_form_image_copy_h2",
+					"label": "Heading",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_form_image_copy",
+					"label": "Content",
+					"inline": [],
+					"inline_props": [],
+					"heading": "Layout"
+				}
+			]
 		},
 		{
-			"id": "form_data_umoya_form_source",
-			"control": "text",
-			"label": "Umoya Form Source",
-			"default": "signature_journey_popup",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
+			"id": "style_r_header",
+			"label": "Header",
+			"tokens": false,
+			"rows": [
+				{
+					"part": "p_umoya_form_head",
+					"label": "Dialog",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_form_head_span",
+					"label": "Eyebrow",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_form_head_h2",
+					"label": "Heading",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_form_head_p",
+					"label": "Description",
+					"inline": [],
+					"inline_props": []
+				}
+			]
 		},
 		{
-			"id": "form_data_wordpress_backup_endpoint",
-			"control": "text",
-			"label": "Wordpress Backup Endpoint",
-			"default": "/wp-json/umoya/v1/submissions",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "form_data_hubspot_consent_text",
-			"control": "text",
-			"label": "Hubspot Consent Text",
-			"default": "I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the Privacy Policy.",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_name",
-			"control": "text",
-			"label": "Field Name",
-			"default": "source",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_value",
-			"control": "text",
-			"label": "Value",
-			"default": "signature_journey_popup",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_name_2",
-			"control": "text",
-			"label": "Field Name",
-			"default": "hubspotPortalId",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_value_2",
-			"control": "text",
-			"label": "Value",
-			"default": "246097317",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_name_3",
-			"control": "text",
-			"label": "Field Name",
-			"default": "hubspotFormId",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_value_3",
-			"control": "text",
-			"label": "Value",
-			"default": "71181d17-e836-43d6-aa6d-a46e73945504",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_name_4",
-			"control": "text",
-			"label": "Field Name",
-			"default": "consentText",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_value_4",
-			"control": "text",
-			"label": "Value",
-			"default": "I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the Privacy Policy.",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_name_5",
-			"control": "text",
-			"label": "Field Name",
-			"default": "hutk",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_value_5",
-			"control": "text",
-			"label": "Value",
-			"default": "",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_name_6",
-			"control": "text",
-			"label": "Field Name",
-			"default": "pageUri",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_value_6",
-			"control": "text",
-			"label": "Value",
-			"default": "",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_name_7",
-			"control": "text",
-			"label": "Field Name",
-			"default": "pageName",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_value_7",
-			"control": "text",
-			"label": "Value",
-			"default": "",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "select_name",
-			"control": "text",
-			"label": "Field Name",
-			"default": "MERGE1",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "anchor_name",
-			"control": "text",
-			"label": "Field Name",
-			"default": "FNAME",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "anchor_name_2",
-			"control": "text",
-			"label": "Field Name",
-			"default": "LNAME",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "anchor_name_3",
-			"control": "text",
-			"label": "Field Name",
-			"default": "EMAIL",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "anchor_name_4",
-			"control": "text",
-			"label": "Field Name",
-			"default": "PHONE",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "select_name_2",
-			"control": "text",
-			"label": "Field Name",
-			"default": "MERGE2",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "anchor_name_5",
-			"control": "text",
-			"label": "Field Name",
-			"default": "MERGE3",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "select_name_3",
-			"control": "text",
-			"label": "Field Name",
-			"default": "MERGE4",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "select_name_4",
-			"control": "text",
-			"label": "Field Name",
-			"default": "MERGE5",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "select_name_5",
-			"control": "text",
-			"label": "Field Name",
-			"default": "MERGE6",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "anchor_name_6",
-			"control": "text",
-			"label": "Field Name",
-			"default": "MERGE7",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "anchor_name_7",
-			"control": "text",
-			"label": "Field Name",
-			"default": "CONSENT",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "anchor_name_8",
-			"control": "text",
-			"label": "Field Name",
-			"default": "MARKETING_CONSENT",
-			"esc": "attr",
-			"group": "integration",
-			"tab": "integration",
-			"sort": 1,
-			"part_label": ""
+			"id": "style_r_form",
+			"label": "Form",
+			"tokens": false,
+			"rows": [
+				{
+					"part": "p_umoya_form_card",
+					"label": "Dialog",
+					"inline": [
+						{
+							"id": "c_umoya_form_card_css_display",
+							"control": "text",
+							"label": "Display",
+							"description": "Inline style on the element itself; overrides any CSS rule.",
+							"default": "none",
+							"esc": "attr",
+							"group": "p_umoya_form_card",
+							"tab": "inline_style",
+							"sort": 3
+						},
+						{
+							"id": "c_umoya_form_card_css_width",
+							"control": "text",
+							"label": "Width",
+							"description": "Inline style on the element itself; overrides any CSS rule.",
+							"default": "0",
+							"esc": "attr",
+							"group": "p_umoya_form_card",
+							"tab": "inline_style",
+							"sort": 3
+						},
+						{
+							"id": "c_umoya_form_card_css_height",
+							"control": "text",
+							"label": "Height",
+							"description": "Inline style on the element itself; overrides any CSS rule.",
+							"default": "0",
+							"esc": "attr",
+							"group": "p_umoya_form_card",
+							"tab": "inline_style",
+							"sort": 3
+						},
+						{
+							"id": "c_umoya_form_card_css_border",
+							"control": "text",
+							"label": "Border",
+							"description": "Inline style on the element itself; overrides any CSS rule.",
+							"default": "0",
+							"esc": "attr",
+							"group": "p_umoya_form_card",
+							"tab": "inline_style",
+							"sort": 3
+						}
+					],
+					"inline_props": [
+						"display",
+						"width",
+						"height",
+						"border"
+					]
+				},
+				{
+					"part": "p_umoya_popup_form",
+					"label": "Form",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_form_grid",
+					"label": "List",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_field_label",
+					"label": "Field Wrapper Labels",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_field_select",
+					"label": "Field Wrapper Dropdowns",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_field_input",
+					"label": "Fields",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_when_select",
+					"label": "List Dropdowns",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_textarea",
+					"label": "Message",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_consent",
+					"label": "Consent",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_consent_item",
+					"label": "Items",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_consent_item_input",
+					"label": "Checkboxes",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_consent_item_span",
+					"label": "Paragraphs",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_a",
+					"label": "Link",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_consent_item_span_span",
+					"label": "Text Labels",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_form_submit",
+					"label": "Button",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_form_status",
+					"label": "Status Message",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_form_legal",
+					"label": "Fine Print",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_field",
+					"label": "Field Wrappers",
+					"inline": [],
+					"inline_props": [],
+					"heading": "Layout"
+				},
+				{
+					"part": "p_umoya_field_spacer",
+					"label": "Container",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_when",
+					"label": "Grid",
+					"inline": [],
+					"inline_props": []
+				}
+			]
 		}
 	],
-	"form_controls": [
-		{
-			"id": "button_disabled",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_form_close",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Button"
-		},
-		{
-			"id": "button_type",
-			"control": "text",
-			"label": "Type",
-			"default": "button",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "form_novalidate",
-			"control": "switcher",
-			"label": "Skip Browser Validation",
-			"description": "",
-			"default": "yes",
-			"flag_attr": "novalidate",
-			"flag_prefix": "\n          ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form"
-		},
-		{
-			"id": "form_method",
-			"control": "select",
-			"label": "Method",
-			"default": "post",
-			"options": [
-				"get",
-				"post"
-			],
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_required",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_disabled",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_readonly",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_checked",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_type",
-			"control": "text",
-			"label": "Type",
-			"default": "hidden",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_required_2",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_disabled_2",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_readonly_2",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_checked_2",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_type_2",
-			"control": "text",
-			"label": "Type",
-			"default": "hidden",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_required_3",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_disabled_3",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_readonly_3",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_checked_3",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_type_3",
-			"control": "text",
-			"label": "Type",
-			"default": "hidden",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_required_4",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_disabled_4",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_readonly_4",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_checked_4",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_type_4",
-			"control": "text",
-			"label": "Type",
-			"default": "hidden",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_required_5",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_disabled_5",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_readonly_5",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_checked_5",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_type_5",
-			"control": "text",
-			"label": "Type",
-			"default": "hidden",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_required_6",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_disabled_6",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_readonly_6",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_checked_6",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_type_6",
-			"control": "text",
-			"label": "Type",
-			"default": "hidden",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "field_required_7",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_disabled_7",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_readonly_7",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_checked_7",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Field"
-		},
-		{
-			"id": "field_type_7",
-			"control": "text",
-			"label": "Type",
-			"default": "hidden",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "select_required",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Field Select"
-		},
-		{
-			"id": "select_disabled",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Field Select"
-		},
-		{
-			"id": "select_multiple",
-			"control": "switcher",
-			"label": "Allow Multiple",
-			"description": "",
-			"default": "",
-			"flag_attr": "multiple",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Field Select"
-		},
-		{
-			"id": "anchor_required",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "yes",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_disabled",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_readonly",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_checked",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_type",
-			"control": "text",
-			"label": "Type",
-			"default": "text",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "anchor_autocomplete",
-			"control": "text",
-			"label": "Autocomplete",
-			"default": "given-name",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "anchor_required_2",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "yes",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_disabled_2",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_readonly_2",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_checked_2",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_type_2",
-			"control": "text",
-			"label": "Type",
-			"default": "text",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "anchor_autocomplete_2",
-			"control": "text",
-			"label": "Autocomplete",
-			"default": "family-name",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "anchor_required_3",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "yes",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_disabled_3",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_readonly_3",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_checked_3",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_type_3",
-			"control": "text",
-			"label": "Type",
-			"default": "email",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "anchor_autocomplete_3",
-			"control": "text",
-			"label": "Autocomplete",
-			"default": "email",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "anchor_required_4",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_disabled_4",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_readonly_4",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_checked_4",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_type_4",
-			"control": "text",
-			"label": "Type",
-			"default": "tel",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "anchor_autocomplete_4",
-			"control": "text",
-			"label": "Autocomplete",
-			"default": "tel",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "select_required_2",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "yes",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Field Select"
-		},
-		{
-			"id": "select_disabled_2",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Field Select"
-		},
-		{
-			"id": "select_multiple_2",
-			"control": "switcher",
-			"label": "Allow Multiple",
-			"description": "",
-			"default": "",
-			"flag_attr": "multiple",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Field Select"
-		},
-		{
-			"id": "anchor_required_5",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_disabled_5",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_readonly_5",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_checked_5",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 1"
-		},
-		{
-			"id": "anchor_type_5",
-			"control": "text",
-			"label": "Type",
-			"default": "text",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "anchor_autocomplete_5",
-			"control": "text",
-			"label": "Autocomplete",
-			"default": "address-level2",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "select_required_3",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_when_select",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Select"
-		},
-		{
-			"id": "select_disabled_3",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_when_select",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Select"
-		},
-		{
-			"id": "select_multiple_3",
-			"control": "switcher",
-			"label": "Allow Multiple",
-			"description": "",
-			"default": "",
-			"flag_attr": "multiple",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_when_select",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Select"
-		},
-		{
-			"id": "select_required_4",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_when_select",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Select"
-		},
-		{
-			"id": "select_disabled_4",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_when_select",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Select"
-		},
-		{
-			"id": "select_multiple_4",
-			"control": "switcher",
-			"label": "Allow Multiple",
-			"description": "",
-			"default": "",
-			"flag_attr": "multiple",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_when_select",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Select"
-		},
-		{
-			"id": "select_required_5",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Field Select"
-		},
-		{
-			"id": "select_disabled_5",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Field Select"
-		},
-		{
-			"id": "select_multiple_5",
-			"control": "switcher",
-			"label": "Allow Multiple",
-			"description": "",
-			"default": "",
-			"flag_attr": "multiple",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Field Select"
-		},
-		{
-			"id": "anchor_required_6",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_textarea",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 2"
-		},
-		{
-			"id": "anchor_disabled_6",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_textarea",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 2"
-		},
-		{
-			"id": "anchor_readonly_6",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_textarea",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "List Anchor 2"
-		},
-		{
-			"id": "anchor_required_7",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_consent_item_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Item Anchor"
-		},
-		{
-			"id": "anchor_disabled_7",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_consent_item_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Item Anchor"
-		},
-		{
-			"id": "anchor_readonly_7",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_consent_item_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Item Anchor"
-		},
-		{
-			"id": "anchor_checked_6",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_consent_item_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Item Anchor"
-		},
-		{
-			"id": "anchor_type_6",
-			"control": "text",
-			"label": "Type",
-			"default": "checkbox",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "anchor_required_8",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_consent_item_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Item Anchor"
-		},
-		{
-			"id": "anchor_disabled_8",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_consent_item_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Item Anchor"
-		},
-		{
-			"id": "anchor_readonly_8",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_consent_item_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Item Anchor"
-		},
-		{
-			"id": "anchor_checked_7",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_consent_item_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Item Anchor"
-		},
-		{
-			"id": "anchor_type_7",
-			"control": "text",
-			"label": "Type",
-			"default": "checkbox",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "button_disabled_2",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_form_submit",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Form Button"
-		},
-		{
-			"id": "button_type_2",
-			"control": "text",
-			"label": "Type",
-			"default": "submit",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		}
-	],
-	"behaviour_controls": [
-		{
-			"id": "form_target",
-			"control": "select",
-			"label": "Link Target",
-			"default": "umoyaPopupSubmissionFrame",
-			"options": [
-				"_self",
-				"_blank",
-				"_parent",
-				"_top"
-			],
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "link_target",
-			"control": "select",
-			"label": "Link Target",
-			"default": "_blank",
-			"options": [
-				"_self",
-				"_blank",
-				"_parent",
-				"_top"
-			],
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "link_rel",
-			"control": "text",
-			"label": "Link Relationship",
-			"default": "noopener",
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1,
-			"part_label": ""
-		}
-	],
-	"inline_style_controls": [
-		{
-			"id": "embed_css_display",
-			"control": "text",
-			"label": "Display",
-			"description": "Inline style on the element itself; overrides any CSS rule.",
-			"default": "none",
-			"esc": "attr",
-			"group": "p_iframe",
-			"tab": "inline_style",
-			"sort": 3,
-			"part_label": "Embed"
-		},
-		{
-			"id": "embed_css_width",
-			"control": "text",
-			"label": "Width",
-			"description": "Inline style on the element itself; overrides any CSS rule.",
-			"default": "0",
-			"esc": "attr",
-			"group": "p_iframe",
-			"tab": "inline_style",
-			"sort": 3,
-			"part_label": "Embed"
-		},
-		{
-			"id": "embed_css_height",
-			"control": "text",
-			"label": "Height",
-			"description": "Inline style on the element itself; overrides any CSS rule.",
-			"default": "0",
-			"esc": "attr",
-			"group": "p_iframe",
-			"tab": "inline_style",
-			"sort": 3,
-			"part_label": "Embed"
-		},
-		{
-			"id": "embed_css_border",
-			"control": "text",
-			"label": "Border",
-			"description": "Inline style on the element itself; overrides any CSS rule.",
-			"default": "0",
-			"esc": "attr",
-			"group": "p_iframe",
-			"tab": "inline_style",
-			"sort": 3,
-			"part_label": "Embed"
-		}
-	],
-	"media_controls": [
-		{
-			"id": "embed_allowfullscreen",
-			"control": "switcher",
-			"label": "Allow Fullscreen",
-			"description": "",
-			"default": "",
-			"flag_attr": "allowfullscreen",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_iframe",
-			"tab": "media",
-			"sort": 1,
-			"part_label": "Embed"
+	"advanced_panels": [
+		{
+			"id": "uew_accessibility",
+			"label": "Accessibility",
+			"notice": "What screen readers announce for each element. Visitors do not see these; keep them short and descriptive.",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Pop-up › Close Button",
+					"order": 2,
+					"controls": [
+						{
+							"id": "c_umoya_form_close_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Close form",
+							"esc": "attr",
+							"group": "p_umoya_form_close",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › When Are You Hoping to Travel",
+					"order": 260,
+					"controls": [
+						{
+							"id": "c_umoya_when_select_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Preferred travel month",
+							"esc": "attr",
+							"group": "p_umoya_when_select",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Preferred travel year",
+					"order": 275,
+					"controls": [
+						{
+							"id": "c_umoya_when_select_aria_label_2",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Preferred travel year",
+							"esc": "attr",
+							"group": "p_umoya_when_select",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Embed",
+					"order": 306,
+					"controls": [
+						{
+							"id": "c_umoya_form_card_title",
+							"control": "text",
+							"label": "Title Attribute",
+							"default": "Umoya popup submission fallback",
+							"esc": "attr",
+							"group": "p_umoya_form_card",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "uew_behaviour",
+			"label": "Links &amp; Behaviour",
+			"notice": "",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Form › Form",
+					"order": 16,
+					"controls": [
+						{
+							"id": "c_umoya_popup_form_target",
+							"control": "select",
+							"label": "Link Target",
+							"default": "umoyaPopupSubmissionFrame",
+							"options": [
+								"_self",
+								"_blank",
+								"_parent",
+								"_top"
+							],
+							"esc": "attr",
+							"group": "behaviour",
+							"tab": "behaviour",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Privacy Policy",
+					"order": 297,
+					"controls": [
+						{
+							"id": "c_a_target",
+							"control": "select",
+							"label": "Link Target",
+							"default": "_blank",
+							"options": [
+								"_self",
+								"_blank",
+								"_parent",
+								"_top"
+							],
+							"esc": "attr",
+							"group": "behaviour",
+							"tab": "behaviour",
+							"sort": 1
+						},
+						{
+							"id": "c_a_rel",
+							"control": "text",
+							"label": "Link Relationship",
+							"default": "noopener",
+							"esc": "attr",
+							"group": "behaviour",
+							"tab": "behaviour",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Embed",
+					"order": 306,
+					"controls": [
+						{
+							"id": "c_umoya_form_card_allowfullscreen",
+							"control": "switcher",
+							"label": "Allow Fullscreen",
+							"description": "",
+							"default": "",
+							"flag_attr": "allowfullscreen",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_form_card",
+							"tab": "media",
+							"sort": 1
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "uew_form",
+			"label": "Form Field Rules",
+			"notice": "",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Pop-up › Close Button",
+					"order": 2,
+					"controls": [
+						{
+							"id": "c_umoya_form_close_disabled",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_form_close",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_form_close_type",
+							"control": "text",
+							"label": "Type",
+							"default": "button",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Form",
+					"order": 16,
+					"controls": [
+						{
+							"id": "c_umoya_popup_form_novalidate",
+							"control": "switcher",
+							"label": "Skip Browser Validation",
+							"description": "",
+							"default": "yes",
+							"flag_attr": "novalidate",
+							"flag_prefix": "\n          ",
+							"esc": "raw",
+							"group": "p_umoya_popup_form",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_popup_form_method",
+							"control": "select",
+							"label": "Method",
+							"default": "post",
+							"options": [
+								"get",
+								"post"
+							],
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Source",
+					"order": 17,
+					"controls": [
+						{
+							"id": "c_umoya_popup_form_type",
+							"control": "text",
+							"label": "Type",
+							"default": "hidden",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Hubspot Portal Id",
+					"order": 18,
+					"controls": [
+						{
+							"id": "c_umoya_popup_form_type_2",
+							"control": "text",
+							"label": "Type",
+							"default": "hidden",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Hubspot Form Id",
+					"order": 19,
+					"controls": [
+						{
+							"id": "c_umoya_popup_form_type_3",
+							"control": "text",
+							"label": "Type",
+							"default": "hidden",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Consent Text",
+					"order": 20,
+					"controls": [
+						{
+							"id": "c_umoya_popup_form_type_4",
+							"control": "text",
+							"label": "Type",
+							"default": "hidden",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Hutk",
+					"order": 21,
+					"controls": [
+						{
+							"id": "c_umoya_popup_form_type_5",
+							"control": "text",
+							"label": "Type",
+							"default": "hidden",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Page Uri",
+					"order": 22,
+					"controls": [
+						{
+							"id": "c_umoya_popup_form_type_6",
+							"control": "text",
+							"label": "Type",
+							"default": "hidden",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Page Name",
+					"order": 23,
+					"controls": [
+						{
+							"id": "c_umoya_popup_form_type_7",
+							"control": "text",
+							"label": "Type",
+							"default": "hidden",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Title",
+					"order": 27,
+					"controls": [
+						{
+							"id": "c_umoya_field_select_required",
+							"control": "switcher",
+							"label": "Required",
+							"description": "",
+							"default": "",
+							"flag_attr": "required",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_select",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_select_disabled",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_select",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_select_multiple",
+							"control": "switcher",
+							"label": "Allow Multiple",
+							"description": "",
+							"default": "",
+							"flag_attr": "multiple",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_select",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › First Name",
+					"order": 38,
+					"controls": [
+						{
+							"id": "c_umoya_field_input_required",
+							"control": "switcher",
+							"label": "Required",
+							"description": "",
+							"default": "yes",
+							"flag_attr": "required",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_disabled",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_readonly",
+							"control": "switcher",
+							"label": "Read Only",
+							"description": "",
+							"default": "",
+							"flag_attr": "readonly",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_type",
+							"control": "text",
+							"label": "Type",
+							"default": "text",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_autocomplete",
+							"control": "text",
+							"label": "Autocomplete",
+							"default": "given-name",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Last Name",
+					"order": 41,
+					"controls": [
+						{
+							"id": "c_umoya_field_input_required_2",
+							"control": "switcher",
+							"label": "Required",
+							"description": "",
+							"default": "yes",
+							"flag_attr": "required",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_disabled_2",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_readonly_2",
+							"control": "switcher",
+							"label": "Read Only",
+							"description": "",
+							"default": "",
+							"flag_attr": "readonly",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_type_2",
+							"control": "text",
+							"label": "Type",
+							"default": "text",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_autocomplete_2",
+							"control": "text",
+							"label": "Autocomplete",
+							"default": "family-name",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Email Address",
+					"order": 44,
+					"controls": [
+						{
+							"id": "c_umoya_field_input_required_3",
+							"control": "switcher",
+							"label": "Required",
+							"description": "",
+							"default": "yes",
+							"flag_attr": "required",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_disabled_3",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_readonly_3",
+							"control": "switcher",
+							"label": "Read Only",
+							"description": "",
+							"default": "",
+							"flag_attr": "readonly",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_type_3",
+							"control": "text",
+							"label": "Type",
+							"default": "email",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_autocomplete_3",
+							"control": "text",
+							"label": "Autocomplete",
+							"default": "email",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Phone Number",
+					"order": 47,
+					"controls": [
+						{
+							"id": "c_umoya_field_input_required_4",
+							"control": "switcher",
+							"label": "Required",
+							"description": "",
+							"default": "",
+							"flag_attr": "required",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_disabled_4",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_readonly_4",
+							"control": "switcher",
+							"label": "Read Only",
+							"description": "",
+							"default": "",
+							"flag_attr": "readonly",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_type_4",
+							"control": "text",
+							"label": "Type",
+							"default": "tel",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_autocomplete_4",
+							"control": "text",
+							"label": "Autocomplete",
+							"default": "tel",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Country",
+					"order": 50,
+					"controls": [
+						{
+							"id": "c_umoya_field_select_required_2",
+							"control": "switcher",
+							"label": "Required",
+							"description": "",
+							"default": "yes",
+							"flag_attr": "required",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_select",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_select_disabled_2",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_select",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_select_multiple_2",
+							"control": "switcher",
+							"label": "Allow Multiple",
+							"description": "",
+							"default": "",
+							"flag_attr": "multiple",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_select",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › City",
+					"order": 256,
+					"controls": [
+						{
+							"id": "c_umoya_field_input_required_5",
+							"control": "switcher",
+							"label": "Required",
+							"description": "",
+							"default": "",
+							"flag_attr": "required",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_disabled_5",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_readonly_5",
+							"control": "switcher",
+							"label": "Read Only",
+							"description": "",
+							"default": "",
+							"flag_attr": "readonly",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_type_5",
+							"control": "text",
+							"label": "Type",
+							"default": "text",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_input_autocomplete_5",
+							"control": "text",
+							"label": "Autocomplete",
+							"default": "address-level2",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › When Are You Hoping to Travel",
+					"order": 260,
+					"controls": [
+						{
+							"id": "c_umoya_when_select_required",
+							"control": "switcher",
+							"label": "Required",
+							"description": "",
+							"default": "",
+							"flag_attr": "required",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_when_select",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_when_select_disabled",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_when_select",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_when_select_multiple",
+							"control": "switcher",
+							"label": "Allow Multiple",
+							"description": "",
+							"default": "",
+							"flag_attr": "multiple",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_when_select",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Preferred travel year",
+					"order": 275,
+					"controls": [
+						{
+							"id": "c_umoya_when_select_required_2",
+							"control": "switcher",
+							"label": "Required",
+							"description": "",
+							"default": "",
+							"flag_attr": "required",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_when_select",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_when_select_disabled_2",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_when_select",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_when_select_multiple_2",
+							"control": "switcher",
+							"label": "Allow Multiple",
+							"description": "",
+							"default": "",
+							"flag_attr": "multiple",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_when_select",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › How Many Guests Will Be…",
+					"order": 283,
+					"controls": [
+						{
+							"id": "c_umoya_field_select_required_3",
+							"control": "switcher",
+							"label": "Required",
+							"description": "",
+							"default": "",
+							"flag_attr": "required",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_select",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_select_disabled_3",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_select",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_field_select_multiple_3",
+							"control": "switcher",
+							"label": "Allow Multiple",
+							"description": "",
+							"default": "",
+							"flag_attr": "multiple",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_field_select",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › What Are You Hoping to…",
+					"order": 292,
+					"controls": [
+						{
+							"id": "c_textarea_required",
+							"control": "switcher",
+							"label": "Required",
+							"description": "",
+							"default": "",
+							"flag_attr": "required",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_textarea",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_textarea_disabled",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_textarea",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_textarea_readonly",
+							"control": "switcher",
+							"label": "Read Only",
+							"description": "",
+							"default": "",
+							"flag_attr": "readonly",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_textarea",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › I consent to Umoya…",
+					"order": 295,
+					"controls": [
+						{
+							"id": "c_umoya_consent_item_input_required",
+							"control": "switcher",
+							"label": "Required",
+							"description": "",
+							"default": "",
+							"flag_attr": "required",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_consent_item_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_consent_item_input_disabled",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_consent_item_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_consent_item_input_readonly",
+							"control": "switcher",
+							"label": "Read Only",
+							"description": "",
+							"default": "",
+							"flag_attr": "readonly",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_consent_item_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_consent_item_input_checked",
+							"control": "switcher",
+							"label": "Checked By Default",
+							"description": "",
+							"default": "",
+							"flag_attr": "checked",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_consent_item_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_consent_item_input_type",
+							"control": "text",
+							"label": "Type",
+							"default": "checkbox",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › I'd also like to receive…",
+					"order": 300,
+					"controls": [
+						{
+							"id": "c_umoya_consent_item_input_required_2",
+							"control": "switcher",
+							"label": "Required",
+							"description": "",
+							"default": "",
+							"flag_attr": "required",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_consent_item_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_consent_item_input_disabled_2",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_consent_item_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_consent_item_input_readonly_2",
+							"control": "switcher",
+							"label": "Read Only",
+							"description": "",
+							"default": "",
+							"flag_attr": "readonly",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_consent_item_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_consent_item_input_checked_2",
+							"control": "switcher",
+							"label": "Checked By Default",
+							"description": "",
+							"default": "",
+							"flag_attr": "checked",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_consent_item_input",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_consent_item_input_type_2",
+							"control": "text",
+							"label": "Type",
+							"default": "checkbox",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Button",
+					"order": 303,
+					"controls": [
+						{
+							"id": "c_umoya_form_submit_disabled",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_form_submit",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_form_submit_type",
+							"control": "text",
+							"label": "Type",
+							"default": "submit",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "uew_integration",
+			"label": "Form Connection (HubSpot)",
+			"notice": "These values wire the form to HubSpot and to the WordPress submission log. Changing a field <code>name</code> stops that field being saved unless the alias table in <code>class-submissions.php</code> is updated to match.",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Form › Form",
+					"order": 16,
+					"controls": [
+						{
+							"id": "c_umoya_popup_form_data_hs_do_not_collect",
+							"control": "text",
+							"label": "Hs Do Not Collect",
+							"default": "true",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_popup_form_action",
+							"control": "url",
+							"label": "Form Action",
+							"default": {
+								"url": "/wp-json/umoya/v1/submissions"
+							},
+							"esc": "url",
+							"group": "p_umoya_popup_form",
+							"tab": "content",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_popup_form_data_hubspot_portal_id",
+							"control": "text",
+							"label": "Hubspot Portal Id",
+							"default": "246097317",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_popup_form_data_hubspot_form_id",
+							"control": "text",
+							"label": "Hubspot Form Id",
+							"default": "71181d17-e836-43d6-aa6d-a46e73945504",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_popup_form_data_umoya_form_source",
+							"control": "text",
+							"label": "Umoya Form Source",
+							"default": "signature_journey_popup",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_popup_form_data_wordpress_backup_endpoint",
+							"control": "text",
+							"label": "Wordpress Backup Endpoint",
+							"default": "/wp-json/umoya/v1/submissions",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_popup_form_data_hubspot_consent_text",
+							"control": "text",
+							"label": "Hubspot Consent Text",
+							"default": "I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the Privacy Policy.",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Source",
+					"order": 17,
+					"controls": [
+						{
+							"id": "c_umoya_popup_form_name",
+							"control": "text",
+							"label": "Field Name",
+							"default": "source",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_popup_form_value",
+							"control": "text",
+							"label": "Value",
+							"default": "signature_journey_popup",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Hubspot Portal Id",
+					"order": 18,
+					"controls": [
+						{
+							"id": "c_umoya_popup_form_name_2",
+							"control": "text",
+							"label": "Field Name",
+							"default": "hubspotPortalId",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_popup_form_value_2",
+							"control": "text",
+							"label": "Value",
+							"default": "246097317",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Hubspot Form Id",
+					"order": 19,
+					"controls": [
+						{
+							"id": "c_umoya_popup_form_name_3",
+							"control": "text",
+							"label": "Field Name",
+							"default": "hubspotFormId",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_popup_form_value_3",
+							"control": "text",
+							"label": "Value",
+							"default": "71181d17-e836-43d6-aa6d-a46e73945504",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Consent Text",
+					"order": 20,
+					"controls": [
+						{
+							"id": "c_umoya_popup_form_name_4",
+							"control": "text",
+							"label": "Field Name",
+							"default": "consentText",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_popup_form_value_4",
+							"control": "text",
+							"label": "Value",
+							"default": "I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the Privacy Policy.",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Hutk",
+					"order": 21,
+					"controls": [
+						{
+							"id": "c_umoya_popup_form_name_5",
+							"control": "text",
+							"label": "Field Name",
+							"default": "hutk",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_popup_form_value_5",
+							"control": "text",
+							"label": "Value",
+							"default": "",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Page Uri",
+					"order": 22,
+					"controls": [
+						{
+							"id": "c_umoya_popup_form_name_6",
+							"control": "text",
+							"label": "Field Name",
+							"default": "pageUri",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_popup_form_value_6",
+							"control": "text",
+							"label": "Value",
+							"default": "",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Page Name",
+					"order": 23,
+					"controls": [
+						{
+							"id": "c_umoya_popup_form_name_7",
+							"control": "text",
+							"label": "Field Name",
+							"default": "pageName",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_popup_form_value_7",
+							"control": "text",
+							"label": "Value",
+							"default": "",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Title",
+					"order": 27,
+					"controls": [
+						{
+							"id": "c_umoya_field_select_name",
+							"control": "text",
+							"label": "Field Name",
+							"default": "MERGE1",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › First Name",
+					"order": 38,
+					"controls": [
+						{
+							"id": "c_umoya_field_input_name",
+							"control": "text",
+							"label": "Field Name",
+							"default": "FNAME",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Last Name",
+					"order": 41,
+					"controls": [
+						{
+							"id": "c_umoya_field_input_name_2",
+							"control": "text",
+							"label": "Field Name",
+							"default": "LNAME",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Email Address",
+					"order": 44,
+					"controls": [
+						{
+							"id": "c_umoya_field_input_name_3",
+							"control": "text",
+							"label": "Field Name",
+							"default": "EMAIL",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Phone Number",
+					"order": 47,
+					"controls": [
+						{
+							"id": "c_umoya_field_input_name_4",
+							"control": "text",
+							"label": "Field Name",
+							"default": "PHONE",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Country",
+					"order": 50,
+					"controls": [
+						{
+							"id": "c_umoya_field_select_name_2",
+							"control": "text",
+							"label": "Field Name",
+							"default": "MERGE2",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › City",
+					"order": 256,
+					"controls": [
+						{
+							"id": "c_umoya_field_input_name_5",
+							"control": "text",
+							"label": "Field Name",
+							"default": "MERGE3",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › When Are You Hoping to Travel",
+					"order": 260,
+					"controls": [
+						{
+							"id": "c_umoya_when_select_name",
+							"control": "text",
+							"label": "Field Name",
+							"default": "MERGE4",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › Preferred travel year",
+					"order": 275,
+					"controls": [
+						{
+							"id": "c_umoya_when_select_name_2",
+							"control": "text",
+							"label": "Field Name",
+							"default": "MERGE5",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › How Many Guests Will Be…",
+					"order": 283,
+					"controls": [
+						{
+							"id": "c_umoya_field_select_name_3",
+							"control": "text",
+							"label": "Field Name",
+							"default": "MERGE6",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › What Are You Hoping to…",
+					"order": 292,
+					"controls": [
+						{
+							"id": "c_textarea_name",
+							"control": "text",
+							"label": "Field Name",
+							"default": "MERGE7",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › I consent to Umoya…",
+					"order": 295,
+					"controls": [
+						{
+							"id": "c_umoya_consent_item_input_name",
+							"control": "text",
+							"label": "Field Name",
+							"default": "CONSENT",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Form › I'd also like to receive…",
+					"order": 300,
+					"controls": [
+						{
+							"id": "c_umoya_consent_item_input_name_2",
+							"control": "text",
+							"label": "Field Name",
+							"default": "MARKETING_CONSENT",
+							"esc": "attr",
+							"group": "integration",
+							"tab": "integration",
+							"sort": 1
+						}
+					]
+				}
+			]
 		}
 	],
 	"repeaters": [
@@ -2509,7 +2643,11 @@
 			"loops": 1,
 			"selector": null,
 			"notice": "Each option&rsquo;s <strong>Value</strong> is what the form submits. Edit labels freely; change a value only if whatever receives it expects the new one.",
-			"portal": "#umoya-form-popup"
+			"portal": "#umoya-form-popup",
+			"base_label": "Options",
+			"region": "r_form",
+			"order": 28,
+			"block_label": "Title Options"
 		},
 		{
 			"id": "rep_option_2",
@@ -3978,7 +4116,11 @@
 			"loops": 1,
 			"selector": null,
 			"notice": "Each option&rsquo;s <strong>Value</strong> is what the form submits. Edit labels freely; change a value only if whatever receives it expects the new one.",
-			"portal": "#umoya-form-popup"
+			"portal": "#umoya-form-popup",
+			"base_label": "Options",
+			"region": "r_form",
+			"order": 51,
+			"block_label": "Country Options"
 		},
 		{
 			"id": "rep_option_3",
@@ -4103,7 +4245,11 @@
 			"loops": 1,
 			"selector": null,
 			"notice": "Each option&rsquo;s <strong>Value</strong> is what the form submits. Edit labels freely; change a value only if whatever receives it expects the new one.",
-			"portal": "#umoya-form-popup"
+			"portal": "#umoya-form-popup",
+			"base_label": "Options",
+			"region": "r_form",
+			"order": 261,
+			"block_label": "Month Options"
 		},
 		{
 			"id": "rep_option_4",
@@ -4174,7 +4320,11 @@
 			"loops": 1,
 			"selector": null,
 			"notice": "Each option&rsquo;s <strong>Value</strong> is what the form submits. Edit labels freely; change a value only if whatever receives it expects the new one.",
-			"portal": "#umoya-form-popup"
+			"portal": "#umoya-form-popup",
+			"base_label": "Options",
+			"region": "r_form",
+			"order": 276,
+			"block_label": "Year Options"
 		},
 		{
 			"id": "rep_option_5",
@@ -4251,7 +4401,11 @@
 			"loops": 1,
 			"selector": null,
 			"notice": "Each option&rsquo;s <strong>Value</strong> is what the form submits. Edit labels freely; change a value only if whatever receives it expects the new one.",
-			"portal": "#umoya-form-popup"
+			"portal": "#umoya-form-popup",
+			"base_label": "Options",
+			"region": "r_form",
+			"order": 284,
+			"block_label": "Guests Options"
 		}
 	],
 	"style_parts": [
@@ -4264,24 +4418,22 @@
 			"selector": "",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"grid_container"
+				"padding",
+				"min_height",
+				"grid_container",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 0,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "Section"
 		},
 		{
 			"id": "p_umoya_form_dialog",
@@ -4292,75 +4444,78 @@
 			"selector": ".umoya-form-dialog",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"grid_container",
-				"flex_item"
-			],
-			"animated": [],
-			"shared": false,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_umoya_form_close",
-			"label": "Button",
-			"short_label": "Button",
-			"parent_label": "",
-			"sample": "",
-			"selector": ".umoya-form-close",
-			"tag": "button",
-			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
-				"states",
-				"flex_container"
-			],
-			"animated": [],
-			"shared": false,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_svg",
-			"label": "Icon",
-			"short_label": "Icon",
-			"parent_label": "Button",
-			"sample": "",
-			"selector": "svg",
-			"tag": "svg",
-			"features": [
-				"svg",
-				"sizing",
-				"spacing",
 				"effects",
 				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 1,
+			"box": true,
+			"everywhere": false,
+			"region": "r_pop_up",
+			"display": "Dialog"
+		},
+		{
+			"id": "p_umoya_form_close",
+			"label": "Close Button",
+			"short_label": "Close Button",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-form-close",
+			"tag": "button",
+			"features": [
+				"text",
+				"fill",
+				"border",
+				"shadow",
+				"padding",
+				"margin",
+				"grid_container",
+				"states",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null,
+			"order": 2,
+			"box": false,
+			"everywhere": false,
+			"region": "r_pop_up",
+			"display": "Close Button"
+		},
+		{
+			"id": "p_svg",
+			"label": "Icon",
+			"short_label": "Icon",
+			"parent_label": "Close Button",
+			"sample": "",
+			"selector": "svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null,
+			"order": 3,
+			"box": false,
+			"everywhere": false,
+			"region": "r_pop_up",
+			"display": "Icon"
 		},
 		{
 			"id": "p_umoya_form_image",
@@ -4371,24 +4526,24 @@
 			"selector": ".umoya-form-image",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 5,
+			"box": true,
+			"everywhere": false,
+			"region": "r_image",
+			"display": "Dialog"
 		},
 		{
 			"id": "p_img",
@@ -4399,22 +4554,23 @@
 			"selector": "img",
 			"tag": "img",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
 				"media_fit",
 				"filters",
-				"transition"
+				"radius",
+				"shadow",
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 6,
+			"box": false,
+			"everywhere": false,
+			"region": "r_image",
+			"display": "Image"
 		},
 		{
 			"id": "p_umoya_form_image_copy",
@@ -4425,24 +4581,20 @@
 			"selector": ".umoya-form-image-copy",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"padding",
+				"margin",
+				"measure",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 7,
+			"box": false,
+			"everywhere": false,
+			"region": "r_image",
+			"display": "Content"
 		},
 		{
 			"id": "p_umoya_form_image_copy_span",
@@ -4453,25 +4605,18 @@
 			"selector": ".umoya-form-image-copy > span",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 8,
+			"box": false,
+			"everywhere": false,
+			"region": "r_image",
+			"display": "Text"
 		},
 		{
 			"id": "p_umoya_form_image_copy_h2",
@@ -4482,25 +4627,21 @@
 			"selector": ".umoya-form-image-copy > h2",
 			"tag": "h2",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 9,
+			"box": false,
+			"everywhere": false,
+			"region": "r_image",
+			"display": "Heading"
 		},
 		{
 			"id": "p_umoya_form_panel",
@@ -4511,24 +4652,24 @@
 			"selector": ".umoya-form-panel",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 10,
+			"box": false,
+			"everywhere": false,
+			"region": "r_pop_up",
+			"display": "Card"
 		},
 		{
 			"id": "p_umoya_form_head",
@@ -4539,24 +4680,24 @@
 			"selector": ".umoya-form-head",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 11,
+			"box": true,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Dialog"
 		},
 		{
 			"id": "p_umoya_form_head_span",
@@ -4567,25 +4708,18 @@
 			"selector": ".umoya-form-head > span",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 12,
+			"box": false,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Eyebrow"
 		},
 		{
 			"id": "p_umoya_form_head_h2",
@@ -4596,25 +4730,21 @@
 			"selector": ".umoya-form-head > h2",
 			"tag": "h2",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 13,
+			"box": false,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Heading"
 		},
 		{
 			"id": "p_umoya_form_head_p",
@@ -4625,25 +4755,21 @@
 			"selector": ".umoya-form-head > p",
 			"tag": "p",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 14,
+			"box": false,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Description"
 		},
 		{
 			"id": "p_umoya_form_card",
@@ -4654,24 +4780,24 @@
 			"selector": ".umoya-form-card",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 15,
+			"box": true,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Dialog"
 		},
 		{
 			"id": "p_umoya_popup_form",
@@ -4682,54 +4808,25 @@
 			"selector": ".umoya-popup-form",
 			"tag": "form",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"grid_container",
-				"flex_item"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_umoya_popup_form_input",
-			"label": "Form Field",
-			"short_label": "Field",
-			"parent_label": "Form",
-			"sample": "",
-			"selector": ".umoya-popup-form > input",
-			"tag": "input",
-			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"placeholder_color",
-				"align",
-				"transition",
-				"states"
-			],
-			"animated": [],
-			"shared": true,
-			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 16,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Form"
 		},
 		{
 			"id": "p_umoya_form_grid",
@@ -4740,140 +4837,103 @@
 			"selector": ".umoya-form-grid",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"grid_container",
-				"flex_item"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 24,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "List"
 		},
 		{
 			"id": "p_umoya_field",
-			"label": "List Field",
-			"short_label": "Field",
+			"label": "Field Wrapper",
+			"short_label": "Field Wrapper",
 			"parent_label": "List",
 			"sample": "",
 			"selector": ".umoya-field",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"grid_container",
-				"flex_item"
+				"effects"
 			],
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 25,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Field Wrappers"
 		},
 		{
-			"id": "p_umoya_field_label_nth_of_type_1",
-			"label": "Field Label",
+			"id": "p_umoya_field_label",
+			"label": "Field Wrapper Label",
 			"short_label": "Label",
-			"parent_label": "Field",
+			"parent_label": "Field Wrapper",
 			"sample": "Title",
-			"selector": ".umoya-field > label:nth-of-type(1)",
+			"selector": ".umoya-field > label",
 			"tag": "label",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 26,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Field Wrapper Labels"
 		},
 		{
-			"id": "p_umoya_field_select_nth_of_type_1",
-			"label": "Field Select",
-			"short_label": "Select",
-			"parent_label": "Field",
+			"id": "p_umoya_field_select",
+			"label": "Field Wrapper Dropdown",
+			"short_label": "Dropdown",
+			"parent_label": "Field Wrapper",
 			"sample": "",
-			"selector": ".umoya-field > select:nth-of-type(1)",
+			"selector": ".umoya-field > select",
 			"tag": "select",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
+				"text",
 				"placeholder_color",
-				"align",
-				"transition",
-				"states"
-			],
-			"animated": [],
-			"shared": false,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_umoya_field_select_nth_of_type_1_option_nth_of_type_1",
-			"label": "Select Option 1",
-			"short_label": "Option",
-			"parent_label": "Select",
-			"sample": "Select...",
-			"selector": ".umoya-field > select:nth-of-type(1) > option:nth-of-type(1)",
-			"tag": "option",
-			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"padding",
+				"margin",
+				"focus",
+				"effects"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": "option"
+			"repeater": null,
+			"order": 27,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Field Wrapper Dropdowns"
 		},
 		{
 			"id": "p_umoya_field_spacer",
@@ -4884,53 +4944,48 @@
 			"selector": ".umoya-field-spacer",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"padding",
+				"margin",
+				"measure",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 35,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Container"
 		},
 		{
-			"id": "p_umoya_field_input_nth_of_type_1",
-			"label": "List Anchor 1",
-			"short_label": "Anchor",
+			"id": "p_umoya_field_input",
+			"label": "Field",
+			"short_label": "Field",
 			"parent_label": "List",
 			"sample": "",
-			"selector": ".umoya-field > input:nth-of-type(1)",
+			"selector": ".umoya-field > input",
 			"tag": "input",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
+				"text",
 				"placeholder_color",
-				"align",
-				"transition",
-				"states"
+				"fill",
+				"border",
+				"padding",
+				"margin",
+				"focus",
+				"effects"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 38,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Fields"
 		},
 		{
 			"id": "p_umoya_when",
@@ -4941,140 +4996,106 @@
 			"selector": ".umoya-when",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"grid_container",
-				"flex_item"
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 259,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Grid"
 		},
 		{
 			"id": "p_umoya_when_select",
-			"label": "List Select",
-			"short_label": "Select",
+			"label": "List Dropdown",
+			"short_label": "Dropdown",
 			"parent_label": "List",
 			"sample": "",
 			"selector": ".umoya-when > select",
 			"tag": "select",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
+				"text",
 				"placeholder_color",
-				"align",
-				"transition",
-				"states"
+				"fill",
+				"border",
+				"padding",
+				"margin",
+				"focus",
+				"effects"
 			],
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_umoya_when_select_option_nth_of_type_1",
-			"label": "Select Option 2",
-			"short_label": "Option",
-			"parent_label": "Select",
-			"sample": "Month",
-			"selector": ".umoya-when > select > option:nth-of-type(1)",
-			"tag": "option",
-			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
-			],
-			"animated": [],
-			"shared": false,
-			"absolute": false,
-			"repeater": "option_3"
+			"repeater": null,
+			"order": 260,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "List Dropdowns"
 		},
 		{
 			"id": "p_textarea",
-			"label": "List Anchor 2",
-			"short_label": "Anchor",
+			"label": "Message",
+			"short_label": "Message",
 			"parent_label": "List",
 			"sample": "",
 			"selector": "textarea",
 			"tag": "textarea",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
+				"text",
 				"placeholder_color",
-				"align",
-				"transition",
-				"states"
+				"fill",
+				"border",
+				"padding",
+				"margin",
+				"focus",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 292,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Message"
 		},
 		{
 			"id": "p_umoya_consent",
-			"label": "Form Consent 1",
+			"label": "Consent",
 			"short_label": "Consent",
 			"parent_label": "Form",
 			"sample": "",
 			"selector": ".umoya-consent",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"grid_container",
-				"flex_item"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 293,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Consent"
 		},
 		{
 			"id": "p_umoya_consent_item",
@@ -5085,83 +5106,70 @@
 			"selector": ".umoya-consent-item",
 			"tag": "label",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
+				"flex_container",
 				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"visibility"
 			],
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 294,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Items"
 		},
 		{
-			"id": "p_umoya_consent_item_input_nth_of_type_1",
-			"label": "Item Anchor",
-			"short_label": "Anchor",
+			"id": "p_umoya_consent_item_input",
+			"label": "Checkbox",
+			"short_label": "Checkbox",
 			"parent_label": "Item",
 			"sample": "",
-			"selector": ".umoya-consent-item > input:nth-of-type(1)",
+			"selector": ".umoya-consent-item > input",
 			"tag": "input",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"placeholder_color",
-				"align",
-				"transition",
-				"states"
+				"tick",
+				"margin",
+				"effects"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 295,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Checkboxes"
 		},
 		{
-			"id": "p_umoya_consent_item_span_nth_of_type_1",
+			"id": "p_umoya_consent_item_span",
 			"label": "Item Text",
 			"short_label": "Text",
 			"parent_label": "Item",
 			"sample": "",
-			"selector": ".umoya-consent-item > span:nth-of-type(1)",
+			"selector": ".umoya-consent-item > span",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 296,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Paragraphs"
 		},
 		{
 			"id": "p_a",
@@ -5172,191 +5180,148 @@
 			"selector": "a",
 			"tag": "a",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
 				"states",
-				"flex_container"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 297,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Link"
 		},
 		{
-			"id": "p_umoya_consent_item_span_nth_of_type_1_span_nth_of_type_1",
+			"id": "p_umoya_consent_item_span_span",
 			"label": "Text Label",
 			"short_label": "Label",
 			"parent_label": "Text",
 			"sample": "(Required)",
-			"selector": ".umoya-consent-item > span:nth-of-type(1) > span:nth-of-type(1)",
+			"selector": ".umoya-consent-item > span > span",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 298,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Text Labels"
 		},
 		{
 			"id": "p_umoya_form_submit",
-			"label": "Form Button",
+			"label": "Button",
 			"short_label": "Button",
 			"parent_label": "Form",
 			"sample": "Speak to an Expert",
 			"selector": ".umoya-form-submit",
 			"tag": "button",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
 				"states",
-				"flex_container"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 303,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Button"
 		},
 		{
 			"id": "p_umoya_form_status",
-			"label": "Form Text",
-			"short_label": "Text",
+			"label": "Status Message",
+			"short_label": "Status Message",
 			"parent_label": "Form",
 			"sample": "",
 			"selector": ".umoya-form-status",
 			"tag": "p",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 304,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Status Message"
 		},
 		{
 			"id": "p_umoya_form_legal",
-			"label": "Form Consent 2",
-			"short_label": "Consent",
+			"label": "Fine Print",
+			"short_label": "Fine Print",
 			"parent_label": "Form",
 			"sample": "Your information is held in strict confidence a…",
 			"selector": ".umoya-form-legal",
 			"tag": "p",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
-			],
-			"animated": [],
-			"shared": false,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_iframe",
-			"label": "Embed",
-			"short_label": "Embed",
-			"parent_label": "Card",
-			"sample": "",
-			"selector": "iframe",
-			"tag": "iframe",
-			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
+				"margin",
 				"effects",
-				"position",
-				"visibility",
-				"media_fit",
-				"filters",
-				"transition"
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 305,
+			"box": false,
+			"everywhere": false,
+			"region": "r_form",
+			"display": "Fine Print"
 		}
 	],
 	"inline_styles": [
 		{
-			"id": "embed_inline_style",
+			"id": "c_umoya_form_card_inline_style",
 			"control": "inline_style_group",
 			"declarations": [
 				{
 					"prefix": "display:",
-					"id": "embed_css_display"
+					"id": "c_umoya_form_card_css_display"
 				},
 				{
 					"prefix": ";width:",
-					"id": "embed_css_width"
+					"id": "c_umoya_form_card_css_width"
 				},
 				{
 					"prefix": ";height:",
-					"id": "embed_css_height"
+					"id": "c_umoya_form_card_css_height"
 				},
 				{
 					"prefix": ";border:",
-					"id": "embed_css_border"
+					"id": "c_umoya_form_card_css_border"
 				}
 			],
 			"tail": ";",
@@ -5365,7 +5330,7 @@
 	],
 	"fields": [
 		{
-			"id": "button_disabled",
+			"id": "c_umoya_form_close_disabled",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -5378,7 +5343,7 @@
 			"sort": 1
 		},
 		{
-			"id": "button_type",
+			"id": "c_umoya_form_close_type",
 			"control": "text",
 			"label": "Type",
 			"default": "button",
@@ -5388,7 +5353,7 @@
 			"sort": 1
 		},
 		{
-			"id": "button_aria_label",
+			"id": "c_umoya_form_close_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Close form",
@@ -5398,7 +5363,7 @@
 			"sort": 1
 		},
 		{
-			"id": "image_src",
+			"id": "c_img_src",
 			"control": "media",
 			"label": "Choose Image",
 			"default": {
@@ -5410,7 +5375,7 @@
 			"sort": 1
 		},
 		{
-			"id": "image_alt",
+			"id": "c_img_alt",
 			"control": "text",
 			"label": "Alt Text",
 			"default": "",
@@ -5420,7 +5385,7 @@
 			"sort": 1
 		},
 		{
-			"id": "text_text",
+			"id": "c_umoya_form_image_copy_span_text",
 			"control": "text",
 			"label": "Text",
 			"description": "",
@@ -5430,7 +5395,7 @@
 			"sort": 0
 		},
 		{
-			"id": "heading_text",
+			"id": "c_umoya_form_image_copy_h2_text",
 			"control": "text",
 			"label": "Heading",
 			"description": "",
@@ -5440,7 +5405,7 @@
 			"sort": 0
 		},
 		{
-			"id": "text_text_2",
+			"id": "c_umoya_form_head_span_text",
 			"control": "text",
 			"label": "Text",
 			"description": "",
@@ -5450,7 +5415,7 @@
 			"sort": 0
 		},
 		{
-			"id": "heading_text_2",
+			"id": "c_umoya_form_head_h2_text",
 			"control": "text",
 			"label": "Heading",
 			"description": "",
@@ -5460,7 +5425,7 @@
 			"sort": 0
 		},
 		{
-			"id": "text_text_3",
+			"id": "c_umoya_form_head_p_text",
 			"control": "textarea",
 			"label": "Text",
 			"description": "",
@@ -5470,7 +5435,7 @@
 			"sort": 0
 		},
 		{
-			"id": "form_novalidate",
+			"id": "c_umoya_popup_form_novalidate",
 			"control": "switcher",
 			"label": "Skip Browser Validation",
 			"description": "",
@@ -5483,7 +5448,7 @@
 			"sort": 1
 		},
 		{
-			"id": "form_data_hs_do_not_collect",
+			"id": "c_umoya_popup_form_data_hs_do_not_collect",
 			"control": "text",
 			"label": "Hs Do Not Collect",
 			"default": "true",
@@ -5493,7 +5458,7 @@
 			"sort": 1
 		},
 		{
-			"id": "form_action",
+			"id": "c_umoya_popup_form_action",
 			"control": "url",
 			"label": "Form Action",
 			"default": {
@@ -5505,7 +5470,7 @@
 			"sort": 1
 		},
 		{
-			"id": "form_method",
+			"id": "c_umoya_popup_form_method",
 			"control": "select",
 			"label": "Method",
 			"default": "post",
@@ -5519,7 +5484,7 @@
 			"sort": 1
 		},
 		{
-			"id": "form_target",
+			"id": "c_umoya_popup_form_target",
 			"control": "select",
 			"label": "Link Target",
 			"default": "umoyaPopupSubmissionFrame",
@@ -5535,7 +5500,7 @@
 			"sort": 1
 		},
 		{
-			"id": "form_data_hubspot_portal_id",
+			"id": "c_umoya_popup_form_data_hubspot_portal_id",
 			"control": "text",
 			"label": "Hubspot Portal Id",
 			"default": "246097317",
@@ -5545,7 +5510,7 @@
 			"sort": 1
 		},
 		{
-			"id": "form_data_hubspot_form_id",
+			"id": "c_umoya_popup_form_data_hubspot_form_id",
 			"control": "text",
 			"label": "Hubspot Form Id",
 			"default": "71181d17-e836-43d6-aa6d-a46e73945504",
@@ -5555,7 +5520,7 @@
 			"sort": 1
 		},
 		{
-			"id": "form_data_umoya_form_source",
+			"id": "c_umoya_popup_form_data_umoya_form_source",
 			"control": "text",
 			"label": "Umoya Form Source",
 			"default": "signature_journey_popup",
@@ -5565,7 +5530,7 @@
 			"sort": 1
 		},
 		{
-			"id": "form_data_wordpress_backup_endpoint",
+			"id": "c_umoya_popup_form_data_wordpress_backup_endpoint",
 			"control": "text",
 			"label": "Wordpress Backup Endpoint",
 			"default": "/wp-json/umoya/v1/submissions",
@@ -5575,7 +5540,7 @@
 			"sort": 1
 		},
 		{
-			"id": "form_data_hubspot_consent_text",
+			"id": "c_umoya_popup_form_data_hubspot_consent_text",
 			"control": "text",
 			"label": "Hubspot Consent Text",
 			"default": "I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the Privacy Policy.",
@@ -5585,59 +5550,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_required",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_disabled",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_readonly",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_checked",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_type",
+			"id": "c_umoya_popup_form_type",
 			"control": "text",
 			"label": "Type",
 			"default": "hidden",
@@ -5647,7 +5560,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_name",
+			"id": "c_umoya_popup_form_name",
 			"control": "text",
 			"label": "Field Name",
 			"default": "source",
@@ -5657,7 +5570,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_value",
+			"id": "c_umoya_popup_form_value",
 			"control": "text",
 			"label": "Value",
 			"default": "signature_journey_popup",
@@ -5667,59 +5580,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_required_2",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_disabled_2",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_readonly_2",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_checked_2",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_type_2",
+			"id": "c_umoya_popup_form_type_2",
 			"control": "text",
 			"label": "Type",
 			"default": "hidden",
@@ -5729,7 +5590,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_name_2",
+			"id": "c_umoya_popup_form_name_2",
 			"control": "text",
 			"label": "Field Name",
 			"default": "hubspotPortalId",
@@ -5739,7 +5600,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_value_2",
+			"id": "c_umoya_popup_form_value_2",
 			"control": "text",
 			"label": "Value",
 			"default": "246097317",
@@ -5749,59 +5610,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_required_3",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_disabled_3",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_readonly_3",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_checked_3",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_type_3",
+			"id": "c_umoya_popup_form_type_3",
 			"control": "text",
 			"label": "Type",
 			"default": "hidden",
@@ -5811,7 +5620,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_name_3",
+			"id": "c_umoya_popup_form_name_3",
 			"control": "text",
 			"label": "Field Name",
 			"default": "hubspotFormId",
@@ -5821,7 +5630,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_value_3",
+			"id": "c_umoya_popup_form_value_3",
 			"control": "text",
 			"label": "Value",
 			"default": "71181d17-e836-43d6-aa6d-a46e73945504",
@@ -5831,59 +5640,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_required_4",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_disabled_4",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_readonly_4",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_checked_4",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_type_4",
+			"id": "c_umoya_popup_form_type_4",
 			"control": "text",
 			"label": "Type",
 			"default": "hidden",
@@ -5893,7 +5650,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_name_4",
+			"id": "c_umoya_popup_form_name_4",
 			"control": "text",
 			"label": "Field Name",
 			"default": "consentText",
@@ -5903,7 +5660,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_value_4",
+			"id": "c_umoya_popup_form_value_4",
 			"control": "text",
 			"label": "Value",
 			"default": "I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the Privacy Policy.",
@@ -5913,59 +5670,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_required_5",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_disabled_5",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_readonly_5",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_checked_5",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_type_5",
+			"id": "c_umoya_popup_form_type_5",
 			"control": "text",
 			"label": "Type",
 			"default": "hidden",
@@ -5975,7 +5680,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_name_5",
+			"id": "c_umoya_popup_form_name_5",
 			"control": "text",
 			"label": "Field Name",
 			"default": "hutk",
@@ -5985,7 +5690,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_value_5",
+			"id": "c_umoya_popup_form_value_5",
 			"control": "text",
 			"label": "Value",
 			"default": "",
@@ -5995,59 +5700,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_required_6",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_disabled_6",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_readonly_6",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_checked_6",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_type_6",
+			"id": "c_umoya_popup_form_type_6",
 			"control": "text",
 			"label": "Type",
 			"default": "hidden",
@@ -6057,7 +5710,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_name_6",
+			"id": "c_umoya_popup_form_name_6",
 			"control": "text",
 			"label": "Field Name",
 			"default": "pageUri",
@@ -6067,7 +5720,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_value_6",
+			"id": "c_umoya_popup_form_value_6",
 			"control": "text",
 			"label": "Value",
 			"default": "",
@@ -6077,59 +5730,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_required_7",
-			"control": "switcher",
-			"label": "Required",
-			"description": "",
-			"default": "",
-			"flag_attr": "required",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_disabled_7",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_readonly_7",
-			"control": "switcher",
-			"label": "Read Only",
-			"description": "",
-			"default": "",
-			"flag_attr": "readonly",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_checked_7",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_popup_form_input",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "field_type_7",
+			"id": "c_umoya_popup_form_type_7",
 			"control": "text",
 			"label": "Type",
 			"default": "hidden",
@@ -6139,7 +5740,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_name_7",
+			"id": "c_umoya_popup_form_name_7",
 			"control": "text",
 			"label": "Field Name",
 			"default": "pageName",
@@ -6149,7 +5750,7 @@
 			"sort": 1
 		},
 		{
-			"id": "field_value_7",
+			"id": "c_umoya_popup_form_value_7",
 			"control": "text",
 			"label": "Value",
 			"default": "",
@@ -6159,17 +5760,17 @@
 			"sort": 1
 		},
 		{
-			"id": "label_text",
+			"id": "c_umoya_field_label_text",
 			"control": "text",
 			"label": "Label",
 			"description": "",
 			"default": "Title",
 			"esc": "post",
-			"group": "p_umoya_field_label_nth_of_type_1",
+			"group": "p_umoya_field_label",
 			"sort": 0
 		},
 		{
-			"id": "select_required",
+			"id": "c_umoya_field_select_required",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -6177,12 +5778,12 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
+			"group": "p_umoya_field_select",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "select_disabled",
+			"id": "c_umoya_field_select_disabled",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -6190,12 +5791,12 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
+			"group": "p_umoya_field_select",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "select_multiple",
+			"id": "c_umoya_field_select_multiple",
 			"control": "switcher",
 			"label": "Allow Multiple",
 			"description": "",
@@ -6203,12 +5804,12 @@
 			"flag_attr": "multiple",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
+			"group": "p_umoya_field_select",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "select_name",
+			"id": "c_umoya_field_select_name",
 			"control": "text",
 			"label": "Field Name",
 			"default": "MERGE1",
@@ -6218,17 +5819,17 @@
 			"sort": 1
 		},
 		{
-			"id": "label_text_2",
+			"id": "c_umoya_field_label_text_2",
 			"control": "text",
 			"label": "Label",
 			"description": "",
 			"default": "First Name *",
 			"esc": "post",
-			"group": "p_umoya_field_label_nth_of_type_1",
+			"group": "p_umoya_field_label",
 			"sort": 0
 		},
 		{
-			"id": "anchor_required",
+			"id": "c_umoya_field_input_required",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -6236,12 +5837,12 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_disabled",
+			"id": "c_umoya_field_input_disabled",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -6249,12 +5850,12 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_readonly",
+			"id": "c_umoya_field_input_readonly",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -6262,25 +5863,12 @@
 			"flag_attr": "readonly",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_checked",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "anchor_name",
+			"id": "c_umoya_field_input_name",
 			"control": "text",
 			"label": "Field Name",
 			"default": "FNAME",
@@ -6290,7 +5878,7 @@
 			"sort": 1
 		},
 		{
-			"id": "anchor_type",
+			"id": "c_umoya_field_input_type",
 			"control": "text",
 			"label": "Type",
 			"default": "text",
@@ -6300,17 +5888,17 @@
 			"sort": 1
 		},
 		{
-			"id": "anchor_placeholder",
+			"id": "c_umoya_field_input_placeholder",
 			"control": "text",
 			"label": "Placeholder",
 			"default": "First name",
 			"esc": "attr",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "content",
 			"sort": 1
 		},
 		{
-			"id": "anchor_autocomplete",
+			"id": "c_umoya_field_input_autocomplete",
 			"control": "text",
 			"label": "Autocomplete",
 			"default": "given-name",
@@ -6320,17 +5908,17 @@
 			"sort": 1
 		},
 		{
-			"id": "label_text_3",
+			"id": "c_umoya_field_label_text_3",
 			"control": "text",
 			"label": "Label",
 			"description": "",
 			"default": "Last Name *",
 			"esc": "post",
-			"group": "p_umoya_field_label_nth_of_type_1",
+			"group": "p_umoya_field_label",
 			"sort": 0
 		},
 		{
-			"id": "anchor_required_2",
+			"id": "c_umoya_field_input_required_2",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -6338,12 +5926,12 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_disabled_2",
+			"id": "c_umoya_field_input_disabled_2",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -6351,12 +5939,12 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_readonly_2",
+			"id": "c_umoya_field_input_readonly_2",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -6364,25 +5952,12 @@
 			"flag_attr": "readonly",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_checked_2",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "anchor_name_2",
+			"id": "c_umoya_field_input_name_2",
 			"control": "text",
 			"label": "Field Name",
 			"default": "LNAME",
@@ -6392,7 +5967,7 @@
 			"sort": 1
 		},
 		{
-			"id": "anchor_type_2",
+			"id": "c_umoya_field_input_type_2",
 			"control": "text",
 			"label": "Type",
 			"default": "text",
@@ -6402,17 +5977,17 @@
 			"sort": 1
 		},
 		{
-			"id": "anchor_placeholder_2",
+			"id": "c_umoya_field_input_placeholder_2",
 			"control": "text",
 			"label": "Placeholder",
 			"default": "Last name",
 			"esc": "attr",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "content",
 			"sort": 1
 		},
 		{
-			"id": "anchor_autocomplete_2",
+			"id": "c_umoya_field_input_autocomplete_2",
 			"control": "text",
 			"label": "Autocomplete",
 			"default": "family-name",
@@ -6422,17 +5997,17 @@
 			"sort": 1
 		},
 		{
-			"id": "label_text_4",
+			"id": "c_umoya_field_label_text_4",
 			"control": "text",
 			"label": "Label",
 			"description": "",
 			"default": "Email Address *",
 			"esc": "post",
-			"group": "p_umoya_field_label_nth_of_type_1",
+			"group": "p_umoya_field_label",
 			"sort": 0
 		},
 		{
-			"id": "anchor_required_3",
+			"id": "c_umoya_field_input_required_3",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -6440,12 +6015,12 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_disabled_3",
+			"id": "c_umoya_field_input_disabled_3",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -6453,12 +6028,12 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_readonly_3",
+			"id": "c_umoya_field_input_readonly_3",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -6466,25 +6041,12 @@
 			"flag_attr": "readonly",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_checked_3",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "anchor_name_3",
+			"id": "c_umoya_field_input_name_3",
 			"control": "text",
 			"label": "Field Name",
 			"default": "EMAIL",
@@ -6494,7 +6056,7 @@
 			"sort": 1
 		},
 		{
-			"id": "anchor_type_3",
+			"id": "c_umoya_field_input_type_3",
 			"control": "text",
 			"label": "Type",
 			"default": "email",
@@ -6504,17 +6066,17 @@
 			"sort": 1
 		},
 		{
-			"id": "anchor_placeholder_3",
+			"id": "c_umoya_field_input_placeholder_3",
 			"control": "text",
 			"label": "Placeholder",
 			"default": "your@email.com",
 			"esc": "attr",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "content",
 			"sort": 1
 		},
 		{
-			"id": "anchor_autocomplete_3",
+			"id": "c_umoya_field_input_autocomplete_3",
 			"control": "text",
 			"label": "Autocomplete",
 			"default": "email",
@@ -6524,17 +6086,17 @@
 			"sort": 1
 		},
 		{
-			"id": "label_text_5",
+			"id": "c_umoya_field_label_text_5",
 			"control": "text",
 			"label": "Label",
 			"description": "",
 			"default": "Phone Number",
 			"esc": "post",
-			"group": "p_umoya_field_label_nth_of_type_1",
+			"group": "p_umoya_field_label",
 			"sort": 0
 		},
 		{
-			"id": "anchor_required_4",
+			"id": "c_umoya_field_input_required_4",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -6542,12 +6104,12 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_disabled_4",
+			"id": "c_umoya_field_input_disabled_4",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -6555,12 +6117,12 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_readonly_4",
+			"id": "c_umoya_field_input_readonly_4",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -6568,25 +6130,12 @@
 			"flag_attr": "readonly",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_checked_4",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "anchor_name_4",
+			"id": "c_umoya_field_input_name_4",
 			"control": "text",
 			"label": "Field Name",
 			"default": "PHONE",
@@ -6596,7 +6145,7 @@
 			"sort": 1
 		},
 		{
-			"id": "anchor_type_4",
+			"id": "c_umoya_field_input_type_4",
 			"control": "text",
 			"label": "Type",
 			"default": "tel",
@@ -6606,17 +6155,17 @@
 			"sort": 1
 		},
 		{
-			"id": "anchor_placeholder_4",
+			"id": "c_umoya_field_input_placeholder_4",
 			"control": "text",
 			"label": "Placeholder",
 			"default": "+1 (000) 000-0000",
 			"esc": "attr",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "content",
 			"sort": 1
 		},
 		{
-			"id": "anchor_autocomplete_4",
+			"id": "c_umoya_field_input_autocomplete_4",
 			"control": "text",
 			"label": "Autocomplete",
 			"default": "tel",
@@ -6626,17 +6175,17 @@
 			"sort": 1
 		},
 		{
-			"id": "label_text_6",
+			"id": "c_umoya_field_label_text_6",
 			"control": "text",
 			"label": "Label",
 			"description": "",
 			"default": "Country *",
 			"esc": "post",
-			"group": "p_umoya_field_label_nth_of_type_1",
+			"group": "p_umoya_field_label",
 			"sort": 0
 		},
 		{
-			"id": "select_required_2",
+			"id": "c_umoya_field_select_required_2",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -6644,12 +6193,12 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
+			"group": "p_umoya_field_select",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "select_disabled_2",
+			"id": "c_umoya_field_select_disabled_2",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -6657,12 +6206,12 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
+			"group": "p_umoya_field_select",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "select_multiple_2",
+			"id": "c_umoya_field_select_multiple_2",
 			"control": "switcher",
 			"label": "Allow Multiple",
 			"description": "",
@@ -6670,12 +6219,12 @@
 			"flag_attr": "multiple",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
+			"group": "p_umoya_field_select",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "select_name_2",
+			"id": "c_umoya_field_select_name_2",
 			"control": "text",
 			"label": "Field Name",
 			"default": "MERGE2",
@@ -6685,17 +6234,17 @@
 			"sort": 1
 		},
 		{
-			"id": "label_text_7",
+			"id": "c_umoya_field_label_text_7",
 			"control": "text",
 			"label": "Label",
 			"description": "",
 			"default": "City",
 			"esc": "post",
-			"group": "p_umoya_field_label_nth_of_type_1",
+			"group": "p_umoya_field_label",
 			"sort": 0
 		},
 		{
-			"id": "anchor_required_5",
+			"id": "c_umoya_field_input_required_5",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -6703,12 +6252,12 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_disabled_5",
+			"id": "c_umoya_field_input_disabled_5",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -6716,12 +6265,12 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_readonly_5",
+			"id": "c_umoya_field_input_readonly_5",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -6729,25 +6278,12 @@
 			"flag_attr": "readonly",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_checked_5",
-			"control": "switcher",
-			"label": "Checked By Default",
-			"description": "",
-			"default": "",
-			"flag_attr": "checked",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_umoya_field_input_nth_of_type_1",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "anchor_name_5",
+			"id": "c_umoya_field_input_name_5",
 			"control": "text",
 			"label": "Field Name",
 			"default": "MERGE3",
@@ -6757,7 +6293,7 @@
 			"sort": 1
 		},
 		{
-			"id": "anchor_type_5",
+			"id": "c_umoya_field_input_type_5",
 			"control": "text",
 			"label": "Type",
 			"default": "text",
@@ -6767,17 +6303,17 @@
 			"sort": 1
 		},
 		{
-			"id": "anchor_placeholder_5",
+			"id": "c_umoya_field_input_placeholder_5",
 			"control": "text",
 			"label": "Placeholder",
 			"default": "Your city",
 			"esc": "attr",
-			"group": "p_umoya_field_input_nth_of_type_1",
+			"group": "p_umoya_field_input",
 			"tab": "content",
 			"sort": 1
 		},
 		{
-			"id": "anchor_autocomplete_5",
+			"id": "c_umoya_field_input_autocomplete_5",
 			"control": "text",
 			"label": "Autocomplete",
 			"default": "address-level2",
@@ -6787,17 +6323,17 @@
 			"sort": 1
 		},
 		{
-			"id": "label_text_8",
+			"id": "c_umoya_field_label_text_8",
 			"control": "text",
 			"label": "Label",
 			"description": "",
 			"default": "When Are You Hoping to Travel?",
 			"esc": "post",
-			"group": "p_umoya_field_label_nth_of_type_1",
+			"group": "p_umoya_field_label",
 			"sort": 0
 		},
 		{
-			"id": "select_required_3",
+			"id": "c_umoya_when_select_required",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -6810,7 +6346,7 @@
 			"sort": 1
 		},
 		{
-			"id": "select_disabled_3",
+			"id": "c_umoya_when_select_disabled",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -6823,7 +6359,7 @@
 			"sort": 1
 		},
 		{
-			"id": "select_multiple_3",
+			"id": "c_umoya_when_select_multiple",
 			"control": "switcher",
 			"label": "Allow Multiple",
 			"description": "",
@@ -6836,7 +6372,7 @@
 			"sort": 1
 		},
 		{
-			"id": "select_name_3",
+			"id": "c_umoya_when_select_name",
 			"control": "text",
 			"label": "Field Name",
 			"default": "MERGE4",
@@ -6846,7 +6382,7 @@
 			"sort": 1
 		},
 		{
-			"id": "select_aria_label",
+			"id": "c_umoya_when_select_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Preferred travel month",
@@ -6856,7 +6392,7 @@
 			"sort": 1
 		},
 		{
-			"id": "select_required_4",
+			"id": "c_umoya_when_select_required_2",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -6869,7 +6405,7 @@
 			"sort": 1
 		},
 		{
-			"id": "select_disabled_4",
+			"id": "c_umoya_when_select_disabled_2",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -6882,7 +6418,7 @@
 			"sort": 1
 		},
 		{
-			"id": "select_multiple_4",
+			"id": "c_umoya_when_select_multiple_2",
 			"control": "switcher",
 			"label": "Allow Multiple",
 			"description": "",
@@ -6895,7 +6431,7 @@
 			"sort": 1
 		},
 		{
-			"id": "select_name_4",
+			"id": "c_umoya_when_select_name_2",
 			"control": "text",
 			"label": "Field Name",
 			"default": "MERGE5",
@@ -6905,7 +6441,7 @@
 			"sort": 1
 		},
 		{
-			"id": "select_aria_label_2",
+			"id": "c_umoya_when_select_aria_label_2",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Preferred travel year",
@@ -6915,17 +6451,17 @@
 			"sort": 1
 		},
 		{
-			"id": "label_text_9",
+			"id": "c_umoya_field_label_text_9",
 			"control": "text",
 			"label": "Label",
 			"description": "",
 			"default": "How Many Guests Will Be Traveling?",
 			"esc": "post",
-			"group": "p_umoya_field_label_nth_of_type_1",
+			"group": "p_umoya_field_label",
 			"sort": 0
 		},
 		{
-			"id": "select_required_5",
+			"id": "c_umoya_field_select_required_3",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -6933,12 +6469,12 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
+			"group": "p_umoya_field_select",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "select_disabled_5",
+			"id": "c_umoya_field_select_disabled_3",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -6946,12 +6482,12 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
+			"group": "p_umoya_field_select",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "select_multiple_5",
+			"id": "c_umoya_field_select_multiple_3",
 			"control": "switcher",
 			"label": "Allow Multiple",
 			"description": "",
@@ -6959,12 +6495,12 @@
 			"flag_attr": "multiple",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_field_select_nth_of_type_1",
+			"group": "p_umoya_field_select",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "select_name_5",
+			"id": "c_umoya_field_select_name_3",
 			"control": "text",
 			"label": "Field Name",
 			"default": "MERGE6",
@@ -6974,17 +6510,17 @@
 			"sort": 1
 		},
 		{
-			"id": "label_text_10",
+			"id": "c_umoya_field_label_text_10",
 			"control": "text",
 			"label": "Label",
 			"description": "",
 			"default": "What Are You Hoping to Experience?",
 			"esc": "post",
-			"group": "p_umoya_field_label_nth_of_type_1",
+			"group": "p_umoya_field_label",
 			"sort": 0
 		},
 		{
-			"id": "anchor_required_6",
+			"id": "c_textarea_required",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -6997,7 +6533,7 @@
 			"sort": 1
 		},
 		{
-			"id": "anchor_disabled_6",
+			"id": "c_textarea_disabled",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -7010,7 +6546,7 @@
 			"sort": 1
 		},
 		{
-			"id": "anchor_readonly_6",
+			"id": "c_textarea_readonly",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -7023,7 +6559,7 @@
 			"sort": 1
 		},
 		{
-			"id": "anchor_name_6",
+			"id": "c_textarea_name",
 			"control": "text",
 			"label": "Field Name",
 			"default": "MERGE7",
@@ -7033,7 +6569,7 @@
 			"sort": 1
 		},
 		{
-			"id": "anchor_placeholder_6",
+			"id": "c_textarea_placeholder",
 			"control": "text",
 			"label": "Placeholder",
 			"default": "Tell us about your travel interests, what you hope to experience, and what draws you to South Africa.",
@@ -7043,7 +6579,7 @@
 			"sort": 1
 		},
 		{
-			"id": "anchor_required_7",
+			"id": "c_umoya_consent_item_input_required",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -7051,12 +6587,12 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_consent_item_input_nth_of_type_1",
+			"group": "p_umoya_consent_item_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_disabled_7",
+			"id": "c_umoya_consent_item_input_disabled",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -7064,12 +6600,12 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_consent_item_input_nth_of_type_1",
+			"group": "p_umoya_consent_item_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_readonly_7",
+			"id": "c_umoya_consent_item_input_readonly",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -7077,12 +6613,12 @@
 			"flag_attr": "readonly",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_consent_item_input_nth_of_type_1",
+			"group": "p_umoya_consent_item_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_checked_6",
+			"id": "c_umoya_consent_item_input_checked",
 			"control": "switcher",
 			"label": "Checked By Default",
 			"description": "",
@@ -7090,12 +6626,12 @@
 			"flag_attr": "checked",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_consent_item_input_nth_of_type_1",
+			"group": "p_umoya_consent_item_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_type_6",
+			"id": "c_umoya_consent_item_input_type",
 			"control": "text",
 			"label": "Type",
 			"default": "checkbox",
@@ -7105,7 +6641,7 @@
 			"sort": 1
 		},
 		{
-			"id": "anchor_name_7",
+			"id": "c_umoya_consent_item_input_name",
 			"control": "text",
 			"label": "Field Name",
 			"default": "CONSENT",
@@ -7115,25 +6651,16 @@
 			"sort": 1
 		},
 		{
-			"id": "text_text_4",
+			"id": "c_umoya_consent_item_span_text",
 			"control": "textarea",
 			"label": "Text",
 			"default": "I consent to Umoya contacting me about the Founder's Circle and processing my details as set out in the",
 			"esc": "post",
-			"group": "p_umoya_consent_item_span_nth_of_type_1",
+			"group": "p_umoya_consent_item_span",
 			"sort": 0
 		},
 		{
-			"id": "text_text_2_2",
-			"control": "text",
-			"label": "Text 2",
-			"default": ".",
-			"esc": "post",
-			"group": "p_umoya_consent_item_span_nth_of_type_1",
-			"sort": 0
-		},
-		{
-			"id": "link_text",
+			"id": "c_a_text",
 			"control": "text",
 			"label": "Link",
 			"description": "",
@@ -7143,7 +6670,7 @@
 			"sort": 0
 		},
 		{
-			"id": "link_href",
+			"id": "c_a_href",
 			"control": "url",
 			"label": "Link",
 			"default": {
@@ -7155,7 +6682,7 @@
 			"sort": 1
 		},
 		{
-			"id": "link_target",
+			"id": "c_a_target",
 			"control": "select",
 			"label": "Link Target",
 			"default": "_blank",
@@ -7171,7 +6698,7 @@
 			"sort": 1
 		},
 		{
-			"id": "link_rel",
+			"id": "c_a_rel",
 			"control": "text",
 			"label": "Link Relationship",
 			"default": "noopener",
@@ -7181,17 +6708,17 @@
 			"sort": 1
 		},
 		{
-			"id": "label_text_11",
+			"id": "c_umoya_consent_item_span_span_text",
 			"control": "text",
 			"label": "Label",
 			"description": "",
 			"default": "(Required)",
 			"esc": "post",
-			"group": "p_umoya_consent_item_span_nth_of_type_1_span_nth_of_type_1",
+			"group": "p_umoya_consent_item_span_span",
 			"sort": 0
 		},
 		{
-			"id": "anchor_required_8",
+			"id": "c_umoya_consent_item_input_required_2",
 			"control": "switcher",
 			"label": "Required",
 			"description": "",
@@ -7199,12 +6726,12 @@
 			"flag_attr": "required",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_consent_item_input_nth_of_type_1",
+			"group": "p_umoya_consent_item_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_disabled_8",
+			"id": "c_umoya_consent_item_input_disabled_2",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -7212,12 +6739,12 @@
 			"flag_attr": "disabled",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_consent_item_input_nth_of_type_1",
+			"group": "p_umoya_consent_item_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_readonly_8",
+			"id": "c_umoya_consent_item_input_readonly_2",
 			"control": "switcher",
 			"label": "Read Only",
 			"description": "",
@@ -7225,12 +6752,12 @@
 			"flag_attr": "readonly",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_consent_item_input_nth_of_type_1",
+			"group": "p_umoya_consent_item_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_checked_7",
+			"id": "c_umoya_consent_item_input_checked_2",
 			"control": "switcher",
 			"label": "Checked By Default",
 			"description": "",
@@ -7238,12 +6765,12 @@
 			"flag_attr": "checked",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_umoya_consent_item_input_nth_of_type_1",
+			"group": "p_umoya_consent_item_input",
 			"tab": "form",
 			"sort": 1
 		},
 		{
-			"id": "anchor_type_7",
+			"id": "c_umoya_consent_item_input_type_2",
 			"control": "text",
 			"label": "Type",
 			"default": "checkbox",
@@ -7253,7 +6780,7 @@
 			"sort": 1
 		},
 		{
-			"id": "anchor_name_8",
+			"id": "c_umoya_consent_item_input_name_2",
 			"control": "text",
 			"label": "Field Name",
 			"default": "MARKETING_CONSENT",
@@ -7263,26 +6790,26 @@
 			"sort": 1
 		},
 		{
-			"id": "text_text_5",
+			"id": "c_umoya_consent_item_span_text_2",
 			"control": "text",
 			"label": "Text",
 			"default": "I'd also like to receive Umoya journeys and stories by email.",
 			"esc": "post",
-			"group": "p_umoya_consent_item_span_nth_of_type_1",
+			"group": "p_umoya_consent_item_span",
 			"sort": 0
 		},
 		{
-			"id": "label_text_12",
+			"id": "c_umoya_consent_item_span_span_text_2",
 			"control": "text",
 			"label": "Label",
 			"description": "",
 			"default": "(Optional)",
 			"esc": "post",
-			"group": "p_umoya_consent_item_span_nth_of_type_1_span_nth_of_type_1",
+			"group": "p_umoya_consent_item_span_span",
 			"sort": 0
 		},
 		{
-			"id": "button_text",
+			"id": "c_umoya_form_submit_text",
 			"control": "text",
 			"label": "Button",
 			"description": "",
@@ -7292,7 +6819,7 @@
 			"sort": 0
 		},
 		{
-			"id": "button_disabled_2",
+			"id": "c_umoya_form_submit_disabled",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -7305,7 +6832,7 @@
 			"sort": 1
 		},
 		{
-			"id": "button_type_2",
+			"id": "c_umoya_form_submit_type",
 			"control": "text",
 			"label": "Type",
 			"default": "submit",
@@ -7315,9 +6842,9 @@
 			"sort": 1
 		},
 		{
-			"id": "consent_text",
+			"id": "c_umoya_form_legal_text",
 			"control": "text",
-			"label": "Consent",
+			"label": "Fine Print",
 			"description": "",
 			"default": "Your information is held in strict confidence and never shared.",
 			"esc": "post",
@@ -7325,7 +6852,7 @@
 			"sort": 0
 		},
 		{
-			"id": "embed_allowfullscreen",
+			"id": "c_umoya_form_card_allowfullscreen",
 			"control": "switcher",
 			"label": "Allow Fullscreen",
 			"description": "",
@@ -7333,61 +6860,61 @@
 			"flag_attr": "allowfullscreen",
 			"flag_prefix": " ",
 			"esc": "raw",
-			"group": "p_iframe",
+			"group": "p_umoya_form_card",
 			"tab": "media",
 			"sort": 1
 		},
 		{
-			"id": "embed_title",
+			"id": "c_umoya_form_card_title",
 			"control": "text",
 			"label": "Title Attribute",
 			"default": "Umoya popup submission fallback",
 			"esc": "attr",
-			"group": "p_iframe",
+			"group": "p_umoya_form_card",
 			"tab": "content",
 			"sort": 1
 		},
 		{
-			"id": "embed_css_display",
+			"id": "c_umoya_form_card_css_display",
 			"control": "text",
 			"label": "Display",
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "none",
 			"esc": "attr",
-			"group": "p_iframe",
+			"group": "p_umoya_form_card",
 			"tab": "inline_style",
 			"sort": 3
 		},
 		{
-			"id": "embed_css_width",
+			"id": "c_umoya_form_card_css_width",
 			"control": "text",
 			"label": "Width",
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "0",
 			"esc": "attr",
-			"group": "p_iframe",
+			"group": "p_umoya_form_card",
 			"tab": "inline_style",
 			"sort": 3
 		},
 		{
-			"id": "embed_css_height",
+			"id": "c_umoya_form_card_css_height",
 			"control": "text",
 			"label": "Height",
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "0",
 			"esc": "attr",
-			"group": "p_iframe",
+			"group": "p_umoya_form_card",
 			"tab": "inline_style",
 			"sort": 3
 		},
 		{
-			"id": "embed_css_border",
+			"id": "c_umoya_form_card_css_border",
 			"control": "text",
 			"label": "Border",
 			"description": "Inline style on the element itself; overrides any CSS rule.",
 			"default": "0",
 			"esc": "attr",
-			"group": "p_iframe",
+			"group": "p_umoya_form_card",
 			"tab": "inline_style",
 			"sort": 3
 		}

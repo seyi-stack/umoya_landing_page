@@ -23,6 +23,26 @@
 		    var root = document.getElementById('umoya-accommodations');
 		    if (!root) return;
 
+		    /* Full-bleed width, minus the scrollbar (see --umoya-hs-vw in the CSS).
+		       Runs before the slideshow's early returns so a single-slide section is
+		       still sized right. Throttled through rAF with a setTimeout fallback,
+		       because rAF never fires in non-compositing contexts. */
+		    var vwTick = 0;
+		    function syncFullBleedWidth() {
+		      root.style.setProperty('--umoya-hs-vw', document.documentElement.clientWidth + 'px');
+		    }
+		    function scheduleWidthSync() {
+		      if (vwTick) return;
+		      if (window.requestAnimationFrame) {
+		        vwTick = window.requestAnimationFrame(function() { vwTick = 0; syncFullBleedWidth(); });
+		      } else {
+		        vwTick = window.setTimeout(function() { vwTick = 0; syncFullBleedWidth(); }, 16);
+		      }
+		    }
+		    syncFullBleedWidth();
+		    window.addEventListener('resize', scheduleWidthSync);
+		    window.addEventListener('orientationchange', scheduleWidthSync);
+
 		    var track = root.querySelector('[data-hs-track]');
 		    if (!track) return;
 

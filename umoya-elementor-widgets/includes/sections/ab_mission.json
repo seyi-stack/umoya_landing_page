@@ -84,63 +84,133 @@
 			"label": "Ease"
 		}
 	],
+	"regions": [
+		{
+			"id": "r_content",
+			"label": "Content",
+			"portal": false
+		}
+	],
 	"content_panels": [
 		{
-			"id": "content_p_section",
-			"label": "Section",
-			"sample": "",
-			"region_label": "",
-			"controls": [
+			"id": "content_r_content",
+			"label": "Content",
+			"items": [
 				{
-					"id": "section_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Our mission",
-					"esc": "attr",
-					"group": "p_section",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Section"
+					"kind": "group",
+					"label": "Eyebrow",
+					"order": 2,
+					"controls": [
+						{
+							"id": "c_ab_ms_eye_text",
+							"control": "text",
+							"label": "Eyebrow",
+							"description": "",
+							"default": "Our Mission",
+							"esc": "post",
+							"group": "p_ab_ms_eye",
+							"sort": 0
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Title",
+					"order": 3,
+					"controls": [
+						{
+							"id": "c_ab_ms_ttl_text",
+							"control": "text",
+							"label": "Title",
+							"description": "",
+							"default": "Journeys led by the people who know South Africa best.",
+							"esc": "post",
+							"group": "p_ab_ms_ttl",
+							"sort": 0
+						}
+					]
+				},
+				{
+					"kind": "list",
+					"id": "rep_p_ab_ms_p",
+					"label": "Paragraphs",
+					"order": 4
+				}
+			]
+		}
+	],
+	"style_panels": [
+		{
+			"id": "style_section",
+			"label": "Section",
+			"tokens": true,
+			"rows": [
+				{
+					"part": "p_section",
+					"label": "Section",
+					"inline": [],
+					"inline_props": []
 				}
 			]
 		},
 		{
-			"id": "content_p_ab_ms_eye",
+			"id": "style_r_content",
 			"label": "Content",
-			"sample": "Our Mission",
-			"region_label": "",
-			"controls": [
+			"tokens": false,
+			"rows": [
 				{
-					"id": "eyebrow_text",
-					"control": "text",
-					"label": "Eyebrow",
-					"description": "",
-					"default": "Our Mission",
-					"esc": "post",
-					"group": "p_ab_ms_eye",
-					"sort": 0,
-					"part_label": "Eyebrow"
+					"part": "p_ab_ms_rv",
+					"label": "Block",
+					"inline": [],
+					"inline_props": []
 				},
 				{
-					"id": "title_text",
-					"control": "text",
+					"part": "p_ab_ms_eye",
+					"label": "Eyebrow",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_ab_ms_ttl",
 					"label": "Title",
-					"description": "",
-					"default": "Journeys led by the people who know South Africa best.",
-					"esc": "post",
-					"group": "p_ab_ms_ttl",
-					"sort": 0,
-					"part_label": "Title"
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_ab_ms_p",
+					"label": "Paragraphs",
+					"inline": [],
+					"inline_props": []
 				}
-			],
-			"merged": true
+			]
 		}
 	],
-	"integration_controls": [],
-	"form_controls": [],
-	"behaviour_controls": [],
-	"inline_style_controls": [],
-	"media_controls": [],
+	"advanced_panels": [
+		{
+			"id": "uew_accessibility",
+			"label": "Accessibility",
+			"notice": "What screen readers announce for each element. Visitors do not see these; keep them short and descriptive.",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Section",
+					"order": 0,
+					"controls": [
+						{
+							"id": "c_section_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Our mission",
+							"esc": "attr",
+							"group": "p_section",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				}
+			]
+		}
+	],
 	"repeaters": [
 		{
 			"id": "rep_p_ab_ms_p",
@@ -166,7 +236,11 @@
 			"loops": 1,
 			"selector": ".ab-ms-p",
 			"notice": "",
-			"portal": null
+			"portal": null,
+			"base_label": "Paragraphs",
+			"region": "r_content",
+			"order": 4,
+			"block_label": "Paragraphs"
 		}
 	],
 	"style_parts": [
@@ -179,23 +253,21 @@
 			"selector": "",
 			"tag": "section",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition"
+				"padding",
+				"min_height",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 0,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "Section"
 		},
 		{
 			"id": "p_ab_ms_rv",
@@ -206,24 +278,24 @@
 			"selector": ".ab-ms-rv",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 1,
+			"box": true,
+			"everywhere": false,
+			"region": "r_content",
+			"display": "Block"
 		},
 		{
 			"id": "p_ab_ms_eye",
@@ -234,25 +306,18 @@
 			"selector": ".ab-ms-eye",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 2,
+			"box": false,
+			"everywhere": false,
+			"region": "r_content",
+			"display": "Eyebrow"
 		},
 		{
 			"id": "p_ab_ms_ttl",
@@ -263,25 +328,21 @@
 			"selector": ".ab-ms-ttl",
 			"tag": "h2",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 3,
+			"box": false,
+			"everywhere": false,
+			"region": "r_content",
+			"display": "Title"
 		},
 		{
 			"id": "p_ab_ms_p",
@@ -292,31 +353,27 @@
 			"selector": ".ab-ms-p",
 			"tag": "p",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": "p_ab_ms_p"
+			"repeater": "p_ab_ms_p",
+			"order": 4,
+			"box": false,
+			"everywhere": false,
+			"region": "r_content",
+			"display": "Paragraphs"
 		}
 	],
 	"inline_styles": [],
 	"fields": [
 		{
-			"id": "section_aria_label",
+			"id": "c_section_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Our mission",
@@ -326,7 +383,7 @@
 			"sort": 1
 		},
 		{
-			"id": "eyebrow_text",
+			"id": "c_ab_ms_eye_text",
 			"control": "text",
 			"label": "Eyebrow",
 			"description": "",
@@ -336,7 +393,7 @@
 			"sort": 0
 		},
 		{
-			"id": "title_text",
+			"id": "c_ab_ms_ttl_text",
 			"control": "text",
 			"label": "Title",
 			"description": "",

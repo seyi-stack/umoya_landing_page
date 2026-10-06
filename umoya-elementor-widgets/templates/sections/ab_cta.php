@@ -28,29 +28,29 @@ if ( ! defined( 'ABSPATH' ) ) {
   BRAND: font-family: inherit; palette tokens only.
 =================================================================
 -->
-<section id="ab-cta" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="ab-cta" aria-label="<?php echo $c['c_section_aria_label']; ?>">
 
   <div class="ab-ct-bg">
     <!-- ★ SWAP: closing CTA background image -->
     <img
-      src="<?php echo $c['image_src']; ?>"
-      alt="<?php echo $c['image_alt']; ?>"
-      loading="<?php echo $c['image_loading']; ?>"
+      src="<?php echo $c['c_img_src']; ?>"
+      alt="<?php echo $c['c_img_alt']; ?>"
+      loading="<?php echo $c['c_img_loading']; ?>"
     />
   </div>
 
   <div class="ab-ct-c ab-ct-rv">
-    <span class="ab-ct-eye"><?php echo $c['eyebrow_text']; ?></span>
-    <h2 class="ab-ct-ttl"><?php echo $c['title_text']; ?></h2>
-    <p class="ab-ct-sub"><?php echo $c['subtitle_text']; ?></p>
+    <span class="ab-ct-eye"><?php echo $c['c_ab_ct_eye_text']; ?></span>
+    <h2 class="ab-ct-ttl"><?php echo $c['c_ab_ct_ttl_text']; ?></h2>
+    <p class="ab-ct-sub"><?php echo $c['c_ab_ct_sub_text']; ?></p>
     <div class="ab-ct-row">
-      <a href="<?php echo $c['button_href']; ?>" class="ab-ct-btn ab-ct-btn-primary">
-        <?php echo $c['button_text']; echo "\n        "; ?><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+      <a href="<?php echo $c['c_ab_ct_btn_primary_href']; ?>" class="ab-ct-btn ab-ct-btn-primary">
+        <?php echo $c['c_ab_ct_btn_primary_text']; echo "\n        "; ?><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
           <line x1="5" y1="12" x2="19" y2="12"/>
           <polyline points="13 6 19 12 13 18"/>
         </svg>
       </a>
-      <a href="<?php echo $c['button_href_2']; ?>" class="ab-ct-btn ab-ct-btn-ghost"><?php echo $c['button_text_2']; ?></a>
+      <a href="<?php echo $c['c_ab_ct_btn_ghost_href']; ?>" class="ab-ct-btn ab-ct-btn-ghost"><?php echo $c['c_ab_ct_btn_ghost_text']; ?></a>
     </div>
   </div>
 

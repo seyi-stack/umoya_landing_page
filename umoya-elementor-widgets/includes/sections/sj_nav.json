@@ -105,223 +105,433 @@
 			"label": "Ease"
 		}
 	],
+	"regions": [
+		{
+			"id": "r_bar",
+			"label": "Bar",
+			"portal": false
+		},
+		{
+			"id": "r_links",
+			"label": "Links",
+			"portal": false
+		},
+		{
+			"id": "r_phone_menu",
+			"label": "Phone menu",
+			"portal": false
+		},
+		{
+			"id": "r_phone_menu_button",
+			"label": "Phone menu button",
+			"portal": false
+		}
+	],
 	"content_panels": [
 		{
-			"id": "content_p_section",
+			"id": "content_r_bar",
+			"label": "Bar",
+			"items": [
+				{
+					"kind": "group",
+					"label": "Logo",
+					"order": 2,
+					"controls": [
+						{
+							"id": "c_sj_nav_logo_text_text",
+							"control": "text",
+							"label": "Text",
+							"description": "",
+							"default": "Umoya",
+							"esc": "post",
+							"group": "p_sj_nav_logo_text",
+							"sort": 0
+						},
+						{
+							"id": "c_sj_nav_logo_href",
+							"control": "url",
+							"label": "Link",
+							"default": {
+								"url": "#sj-hero"
+							},
+							"esc": "url",
+							"group": "p_sj_nav_logo",
+							"tab": "content",
+							"sort": 1
+						},
+						{
+							"id": "c_img_src",
+							"control": "media",
+							"label": "Choose Image",
+							"default": {
+								"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Umoya-Afrika-Logomark.svg"
+							},
+							"esc": "url",
+							"group": "p_img",
+							"tab": "content",
+							"sort": 1
+						},
+						{
+							"id": "c_img_alt",
+							"control": "text",
+							"label": "Alt Text",
+							"default": "Umoya Afrika Tours logo",
+							"esc": "attr",
+							"group": "p_img",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Join the Founder's Circle",
+					"order": 16,
+					"controls": [
+						{
+							"id": "c_sj_nav_cta_text",
+							"control": "text",
+							"label": "Text",
+							"description": "",
+							"default": "Join the Founder's Circle",
+							"esc": "post",
+							"group": "p_sj_nav_cta",
+							"sort": 0
+						},
+						{
+							"id": "c_sj_nav_cta_href",
+							"control": "url",
+							"label": "Link",
+							"default": {
+								"url": "https://umoyaafrikatours.co.za/founders-circle/"
+							},
+							"esc": "url",
+							"group": "p_sj_nav_cta",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "content_r_links",
+			"label": "Links",
+			"items": [
+				{
+					"kind": "list",
+					"id": "rep_li_sj_nav_item",
+					"label": "Links",
+					"order": 6
+				}
+			]
+		},
+		{
+			"id": "content_r_phone_menu",
+			"label": "Phone menu",
+			"items": [
+				{
+					"kind": "list",
+					"id": "rep_li_sj_nav_dropdown_item",
+					"label": "Links",
+					"order": 23
+				}
+			]
+		},
+		{
+			"id": "content_r_phone_menu_button",
+			"label": "Phone menu button",
+			"items": [
+				{
+					"kind": "group",
+					"label": "Button",
+					"order": 34,
+					"controls": [
+						{
+							"id": "c_sj_nav_dropdown_cta_text",
+							"control": "text",
+							"label": "Text",
+							"description": "",
+							"default": "Join the Founder's Circle",
+							"esc": "post",
+							"group": "p_sj_nav_dropdown_cta",
+							"sort": 0
+						},
+						{
+							"id": "c_sj_nav_dropdown_cta_href",
+							"control": "url",
+							"label": "Link",
+							"default": {
+								"url": "https://umoyaafrikatours.co.za/founders-circle/"
+							},
+							"esc": "url",
+							"group": "p_sj_nav_dropdown_cta",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				}
+			]
+		}
+	],
+	"style_panels": [
+		{
+			"id": "style_section",
 			"label": "Section",
-			"sample": "",
-			"region_label": "",
-			"controls": [
+			"tokens": true,
+			"rows": [
 				{
-					"id": "section_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Signature Journey page navigation",
-					"esc": "attr",
-					"group": "p_section",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Section"
+					"part": "p_section",
+					"label": "Section",
+					"inline": [],
+					"inline_props": []
 				}
 			]
 		},
 		{
-			"id": "content_p_sj_nav_logo",
-			"label": "Logo 1",
-			"sample": "",
-			"region_label": "",
-			"controls": [
+			"id": "style_r_bar",
+			"label": "Bar",
+			"tokens": false,
+			"rows": [
 				{
-					"id": "logo_href",
-					"control": "url",
-					"label": "Link",
-					"default": {
-						"url": "#sj-hero"
-					},
-					"esc": "url",
-					"group": "p_sj_nav_logo",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Logo"
+					"part": "p_sj_nav_inner",
+					"label": "Block",
+					"inline": [],
+					"inline_props": []
 				},
 				{
-					"id": "logo_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Umoya Afrika Tours — back to top",
-					"esc": "attr",
-					"group": "p_sj_nav_logo",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Logo"
-				}
-			]
-		},
-		{
-			"id": "content_p_img",
-			"label": "Logo 2",
-			"sample": "",
-			"region_label": "Logo",
-			"controls": [
-				{
-					"id": "image_src",
-					"control": "media",
-					"label": "Choose Image",
-					"default": {
-						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2025/10/Umoya-Afrika-Logomark.svg"
-					},
-					"esc": "url",
-					"group": "p_img",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Image"
+					"part": "p_sj_nav_logo",
+					"label": "Logo",
+					"inline": [],
+					"inline_props": []
 				},
 				{
-					"id": "image_alt",
-					"control": "text",
-					"label": "Alt Text",
-					"default": "Umoya Afrika Tours logo",
-					"esc": "attr",
-					"group": "p_img",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Image"
+					"part": "p_img",
+					"label": "Image",
+					"inline": [],
+					"inline_props": []
 				},
 				{
-					"id": "text_text",
-					"control": "text",
+					"part": "p_sj_nav_logo_text",
 					"label": "Text",
-					"description": "",
-					"default": "Umoya",
-					"esc": "post",
-					"group": "p_sj_nav_logo_text",
-					"sort": 0,
-					"part_label": "Logo Text"
+					"inline": [
+						{
+							"id": "c_sj_nav_logo_text_css_display",
+							"control": "text",
+							"label": "Display",
+							"description": "Inline style on the element itself; overrides any CSS rule.",
+							"default": "none",
+							"esc": "attr",
+							"group": "p_sj_nav_logo_text",
+							"tab": "inline_style",
+							"sort": 3
+						}
+					],
+					"inline_props": [
+						"display"
+					]
+				},
+				{
+					"part": "p_sj_nav_cta",
+					"label": "Join the Founder's Circle",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_sj_nav_burger",
+					"label": "Button",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_sj_nav_burger_span",
+					"label": "Paragraphs",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_sj_nav_dropdown",
+					"label": "Container",
+					"inline": [],
+					"inline_props": [],
+					"heading": "Layout"
 				}
-			],
-			"merged": true
+			]
 		},
 		{
-			"id": "content_p_sj_nav_cta",
-			"label": "Content",
-			"sample": "Join the Founder's Circle",
-			"region_label": "",
-			"controls": [
+			"id": "style_r_links",
+			"label": "Links",
+			"tokens": false,
+			"rows": [
 				{
-					"id": "button_text",
-					"control": "text",
-					"label": "Button",
-					"description": "",
-					"default": "Join the Founder's Circle",
-					"esc": "post",
-					"group": "p_sj_nav_cta",
-					"sort": 0,
-					"part_label": "Button 1"
+					"part": "p_sj_nav_links",
+					"label": "Block",
+					"inline": [],
+					"inline_props": []
 				},
 				{
-					"id": "button_href",
-					"control": "url",
-					"label": "Link",
-					"default": {
-						"url": "https://umoyaafrikatours.co.za/founders-circle/"
-					},
-					"esc": "url",
-					"group": "p_sj_nav_cta",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Button 1"
+					"part": "p_sj_nav_item",
+					"label": "Items",
+					"inline": [],
+					"inline_props": []
 				},
 				{
-					"id": "button_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Open navigation menu",
-					"esc": "attr",
-					"group": "p_sj_nav_burger",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Button 2"
-				},
-				{
-					"id": "container_aria_label",
-					"control": "text",
-					"label": "Container 2",
-					"default": "Page sections",
-					"esc": "attr",
-					"group": "p_sj_nav_dropdown",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Container 2"
+					"part": "p_sj_nav_item_a",
+					"label": "Links",
+					"inline": [],
+					"inline_props": []
 				}
-			],
-			"merged": true
+			]
 		},
 		{
-			"id": "content_p_sj_nav_dropdown_cta",
-			"label": "Item Button",
-			"sample": "Join the Founder's Circle",
-			"region_label": "Item",
-			"controls": [
+			"id": "style_r_phone_menu",
+			"label": "Phone menu",
+			"tokens": false,
+			"rows": [
 				{
-					"id": "button_text_2",
-					"control": "text",
-					"label": "Button",
-					"description": "",
-					"default": "Join the Founder's Circle",
-					"esc": "post",
-					"group": "p_sj_nav_dropdown_cta",
-					"sort": 0,
-					"part_label": "Item Button"
+					"part": "p_sj_nav_dropdown_list",
+					"label": "Block",
+					"inline": [],
+					"inline_props": []
 				},
 				{
-					"id": "button_href_2",
-					"control": "url",
-					"label": "Link",
-					"default": {
-						"url": "https://umoyaafrikatours.co.za/founders-circle/"
-					},
-					"esc": "url",
-					"group": "p_sj_nav_dropdown_cta",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Item Button"
+					"part": "p_sj_nav_dropdown_item",
+					"label": "Items",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_sj_nav_dropdown_item_a",
+					"label": "Links",
+					"inline": [],
+					"inline_props": []
+				}
+			]
+		},
+		{
+			"id": "style_r_phone_menu_button",
+			"label": "Phone menu button",
+			"tokens": false,
+			"rows": [
+				{
+					"part": "p_sj_nav_dropdown_cta_row",
+					"label": "Block",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_sj_nav_dropdown_cta",
+					"label": "Button",
+					"inline": [],
+					"inline_props": []
 				}
 			]
 		}
 	],
-	"integration_controls": [],
-	"form_controls": [
+	"advanced_panels": [
 		{
-			"id": "button_disabled",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_sj_nav_burger",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Button 2"
+			"id": "uew_accessibility",
+			"label": "Accessibility",
+			"notice": "What screen readers announce for each element. Visitors do not see these; keep them short and descriptive.",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Section",
+					"order": 0,
+					"controls": [
+						{
+							"id": "c_section_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Signature Journey page navigation",
+							"esc": "attr",
+							"group": "p_section",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Bar › Logo",
+					"order": 2,
+					"controls": [
+						{
+							"id": "c_sj_nav_logo_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Umoya Afrika Tours — back to top",
+							"esc": "attr",
+							"group": "p_sj_nav_logo",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Bar › Button",
+					"order": 17,
+					"controls": [
+						{
+							"id": "c_sj_nav_burger_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Open navigation menu",
+							"esc": "attr",
+							"group": "p_sj_nav_burger",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Bar › Container",
+					"order": 21,
+					"controls": [
+						{
+							"id": "c_sj_nav_dropdown_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Page sections",
+							"esc": "attr",
+							"group": "p_sj_nav_dropdown",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "uew_form",
+			"label": "Form Field Rules",
+			"notice": "",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Bar › Button",
+					"order": 17,
+					"controls": [
+						{
+							"id": "c_sj_nav_burger_disabled",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_sj_nav_burger",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				}
+			]
 		}
 	],
-	"behaviour_controls": [],
-	"inline_style_controls": [
-		{
-			"id": "text_css_display",
-			"control": "text",
-			"label": "Display",
-			"description": "Inline style on the element itself; overrides any CSS rule.",
-			"default": "none",
-			"esc": "attr",
-			"group": "p_sj_nav_logo_text",
-			"tab": "inline_style",
-			"sort": 3,
-			"part_label": "Logo Text"
-		}
-	],
-	"media_controls": [],
 	"repeaters": [
 		{
 			"id": "rep_li_sj_nav_item",
@@ -380,7 +590,11 @@
 			"loops": 1,
 			"selector": ".sj-nav-item",
 			"notice": "",
-			"portal": null
+			"portal": null,
+			"base_label": "Items",
+			"region": "r_links",
+			"order": 6,
+			"block_label": "Links"
 		},
 		{
 			"id": "rep_li_sj_nav_dropdown_item",
@@ -451,7 +665,11 @@
 			"loops": 1,
 			"selector": ".sj-nav-dropdown-item",
 			"notice": "",
-			"portal": null
+			"portal": null,
+			"base_label": "Items",
+			"region": "r_phone_menu",
+			"order": 23,
+			"block_label": "Links"
 		}
 	],
 	"style_parts": [
@@ -464,23 +682,21 @@
 			"selector": "",
 			"tag": "nav",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition"
+				"padding",
+				"min_height",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 0,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "Section"
 		},
 		{
 			"id": "p_sj_nav_inner",
@@ -491,25 +707,25 @@
 			"selector": ".sj-nav-inner",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"flex_container",
-				"flex_item"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 1,
+			"box": true,
+			"everywhere": false,
+			"region": "r_bar",
+			"display": "Block"
 		},
 		{
 			"id": "p_sj_nav_logo",
@@ -520,26 +736,26 @@
 			"selector": ".sj-nav-logo",
 			"tag": "a",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
+				"flex_container",
 				"states",
-				"flex_container"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 2,
+			"box": false,
+			"everywhere": false,
+			"region": "r_bar",
+			"display": "Logo"
 		},
 		{
 			"id": "p_img",
@@ -550,22 +766,23 @@
 			"selector": "img",
 			"tag": "img",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
 				"media_fit",
 				"filters",
-				"transition"
+				"radius",
+				"shadow",
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 3,
+			"box": false,
+			"everywhere": false,
+			"region": "r_bar",
+			"display": "Image"
 		},
 		{
 			"id": "p_sj_nav_logo_text",
@@ -576,25 +793,18 @@
 			"selector": ".sj-nav-logo-text",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 4,
+			"box": false,
+			"everywhere": false,
+			"region": "r_bar",
+			"display": "Text"
 		},
 		{
 			"id": "p_sj_nav_links",
@@ -605,25 +815,25 @@
 			"selector": ".sj-nav-links",
 			"tag": "ul",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"flex_container",
-				"flex_item"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 5,
+			"box": true,
+			"everywhere": false,
+			"region": "r_links",
+			"display": "Block"
 		},
 		{
 			"id": "p_sj_nav_item",
@@ -634,55 +844,54 @@
 			"selector": ".sj-nav-item",
 			"tag": "li",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"visibility"
 			],
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": "li_sj_nav_item"
+			"repeater": "li_sj_nav_item",
+			"order": 6,
+			"box": false,
+			"everywhere": false,
+			"region": "r_links",
+			"display": "Items"
 		},
 		{
-			"id": "p_sj_nav_item_a_nth_of_type_1",
+			"id": "p_sj_nav_item_a",
 			"label": "Item Link 1",
 			"short_label": "Link",
 			"parent_label": "Item",
 			"sample": "Overview",
-			"selector": ".sj-nav-item > a:nth-of-type(1)",
+			"selector": ".sj-nav-item > a",
 			"tag": "a",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
+				"flex_container",
 				"states",
-				"flex_container"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 7,
+			"box": false,
+			"everywhere": false,
+			"region": "r_links",
+			"display": "Links"
 		},
 		{
 			"id": "p_sj_nav_cta",
@@ -693,26 +902,26 @@
 			"selector": ".sj-nav-cta",
 			"tag": "a",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
+				"flex_container",
 				"states",
-				"flex_container"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 16,
+			"box": false,
+			"everywhere": false,
+			"region": "r_bar",
+			"display": "Join the Founder's Circle"
 		},
 		{
 			"id": "p_sj_nav_burger",
@@ -723,26 +932,25 @@
 			"selector": ".sj-nav-burger",
 			"tag": "button",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
 				"states",
-				"flex_container"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 17,
+			"box": false,
+			"everywhere": false,
+			"region": "r_bar",
+			"display": "Button"
 		},
 		{
 			"id": "p_sj_nav_burger_span",
@@ -753,25 +961,18 @@
 			"selector": ".sj-nav-burger > span",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 18,
+			"box": false,
+			"everywhere": false,
+			"region": "r_bar",
+			"display": "Paragraphs"
 		},
 		{
 			"id": "p_sj_nav_dropdown",
@@ -782,24 +983,20 @@
 			"selector": ".sj-nav-dropdown",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"padding",
+				"margin",
+				"measure",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 21,
+			"box": false,
+			"everywhere": false,
+			"region": "r_bar",
+			"display": "Container"
 		},
 		{
 			"id": "p_sj_nav_dropdown_list",
@@ -810,24 +1007,24 @@
 			"selector": ".sj-nav-dropdown-list",
 			"tag": "ul",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 22,
+			"box": true,
+			"everywhere": false,
+			"region": "r_phone_menu",
+			"display": "Block"
 		},
 		{
 			"id": "p_sj_nav_dropdown_item",
@@ -838,123 +1035,122 @@
 			"selector": ".sj-nav-dropdown-item",
 			"tag": "li",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"visibility"
 			],
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": "li_sj_nav_dropdown_item"
+			"repeater": "li_sj_nav_dropdown_item",
+			"order": 23,
+			"box": false,
+			"everywhere": false,
+			"region": "r_phone_menu",
+			"display": "Items"
 		},
 		{
-			"id": "p_sj_nav_dropdown_item_a_nth_of_type_1",
+			"id": "p_sj_nav_dropdown_item_a",
 			"label": "Item Link 2",
 			"short_label": "Link",
 			"parent_label": "Item",
 			"sample": "Overview",
-			"selector": ".sj-nav-dropdown-item > a:nth-of-type(1)",
+			"selector": ".sj-nav-dropdown-item > a",
 			"tag": "a",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
+				"flex_container",
 				"states",
-				"flex_container"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 24,
+			"box": false,
+			"everywhere": false,
+			"region": "r_phone_menu",
+			"display": "Links"
 		},
 		{
 			"id": "p_sj_nav_dropdown_cta_row",
-			"label": "Item",
-			"short_label": "Item",
+			"label": "Row",
+			"short_label": "Row",
 			"parent_label": "",
 			"sample": "",
 			"selector": ".sj-nav-dropdown-cta-row",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 33,
+			"box": true,
+			"everywhere": false,
+			"region": "r_phone_menu_button",
+			"display": "Block"
 		},
 		{
 			"id": "p_sj_nav_dropdown_cta",
-			"label": "Item Button",
+			"label": "Row Button",
 			"short_label": "Button",
-			"parent_label": "Item",
+			"parent_label": "Row",
 			"sample": "Join the Founder's Circle",
 			"selector": ".sj-nav-dropdown-cta",
 			"tag": "a",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
+				"flex_container",
 				"states",
-				"flex_container"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 34,
+			"box": false,
+			"everywhere": false,
+			"region": "r_phone_menu_button",
+			"display": "Button"
 		}
 	],
 	"inline_styles": [
 		{
-			"id": "text_inline_style",
+			"id": "c_sj_nav_logo_text_inline_style",
 			"control": "inline_style_group",
 			"declarations": [
 				{
 					"prefix": "display:",
-					"id": "text_css_display"
+					"id": "c_sj_nav_logo_text_css_display"
 				}
 			],
 			"tail": ";",
@@ -963,7 +1159,7 @@
 	],
 	"fields": [
 		{
-			"id": "section_aria_label",
+			"id": "c_section_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Signature Journey page navigation",
@@ -973,7 +1169,7 @@
 			"sort": 1
 		},
 		{
-			"id": "logo_href",
+			"id": "c_sj_nav_logo_href",
 			"control": "url",
 			"label": "Link",
 			"default": {
@@ -985,7 +1181,7 @@
 			"sort": 1
 		},
 		{
-			"id": "logo_aria_label",
+			"id": "c_sj_nav_logo_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Umoya Afrika Tours — back to top",
@@ -995,7 +1191,7 @@
 			"sort": 1
 		},
 		{
-			"id": "image_src",
+			"id": "c_img_src",
 			"control": "media",
 			"label": "Choose Image",
 			"default": {
@@ -1007,7 +1203,7 @@
 			"sort": 1
 		},
 		{
-			"id": "image_alt",
+			"id": "c_img_alt",
 			"control": "text",
 			"label": "Alt Text",
 			"default": "Umoya Afrika Tours logo",
@@ -1017,7 +1213,7 @@
 			"sort": 1
 		},
 		{
-			"id": "text_text",
+			"id": "c_sj_nav_logo_text_text",
 			"control": "text",
 			"label": "Text",
 			"description": "",
@@ -1027,7 +1223,7 @@
 			"sort": 0
 		},
 		{
-			"id": "text_css_display",
+			"id": "c_sj_nav_logo_text_css_display",
 			"control": "text",
 			"label": "Display",
 			"description": "Inline style on the element itself; overrides any CSS rule.",
@@ -1038,7 +1234,7 @@
 			"sort": 3
 		},
 		{
-			"id": "button_text",
+			"id": "c_sj_nav_cta_text",
 			"control": "text",
 			"label": "Button",
 			"description": "",
@@ -1048,7 +1244,7 @@
 			"sort": 0
 		},
 		{
-			"id": "button_href",
+			"id": "c_sj_nav_cta_href",
 			"control": "url",
 			"label": "Link",
 			"default": {
@@ -1060,7 +1256,7 @@
 			"sort": 1
 		},
 		{
-			"id": "button_disabled",
+			"id": "c_sj_nav_burger_disabled",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -1073,7 +1269,7 @@
 			"sort": 1
 		},
 		{
-			"id": "button_aria_label",
+			"id": "c_sj_nav_burger_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Open navigation menu",
@@ -1083,7 +1279,7 @@
 			"sort": 1
 		},
 		{
-			"id": "container_aria_label",
+			"id": "c_sj_nav_dropdown_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Page sections",
@@ -1093,7 +1289,7 @@
 			"sort": 1
 		},
 		{
-			"id": "button_text_2",
+			"id": "c_sj_nav_dropdown_cta_text",
 			"control": "text",
 			"label": "Button",
 			"description": "",
@@ -1103,7 +1299,7 @@
 			"sort": 0
 		},
 		{
-			"id": "button_href_2",
+			"id": "c_sj_nav_dropdown_cta_href",
 			"control": "url",
 			"label": "Link",
 			"default": {

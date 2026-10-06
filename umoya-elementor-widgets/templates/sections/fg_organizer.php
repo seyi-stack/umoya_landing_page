@@ -25,13 +25,13 @@ if ( ! defined( 'ABSPATH' ) ) {
   BRAND: font-family: inherit; palette tokens only.
 =================================================================
 -->
-<section id="fg-organizer" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="fg-organizer" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="fg-og-c">
 
     <div class="fg-og-head fg-og-rv">
-      <span class="fg-og-eye"><?php echo $c['eyebrow_text']; ?></span>
-      <h2 class="fg-og-ttl"><?php echo $c['title_text']; ?></h2>
-      <p class="fg-og-lead"><?php echo $c['text_text']; ?></p>
+      <span class="fg-og-eye"><?php echo $c['c_fg_og_eye_text']; ?></span>
+      <h2 class="fg-og-ttl"><?php echo $c['c_fg_og_ttl_text']; ?></h2>
+      <p class="fg-og-lead"><?php echo $c['c_fg_og_lead_text']; ?></p>
     </div>
 
     <div class="fg-og-grid" role="list">

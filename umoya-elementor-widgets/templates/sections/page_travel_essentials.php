@@ -49,81 +49,81 @@ if ( ! defined( 'ABSPATH' ) ) {
   <div class="te-c">
 
     <header>
-      <span class="te-eye"><?php echo $c['eyebrow_text']; ?></span>
-      <h1 class="te-ttl" id="te-title"><?php echo $c['title_text']; ?></h1>
-      <p class="te-sub"><?php echo $c['subtitle_text']; ?></p>
+      <span class="te-eye"><?php echo $c['c_te_eye_text']; ?></span>
+      <h1 class="te-ttl" id="te-title"><?php echo $c['c_te_ttl_text']; ?></h1>
+      <p class="te-sub"><?php echo $c['c_te_sub_text']; ?></p>
       <hr class="te-rule">
-      <span class="te-stamp"><?php echo $c['text_text']; ?></span>
+      <span class="te-stamp"><?php echo $c['c_te_stamp_text']; ?></span>
     </header>
 
-    <p class="te-lead"><?php echo $c['text_text_2']; ?></p>
+    <p class="te-lead"><?php echo $c['c_te_lead_text']; ?></p>
 
     <!-- ═══════════ PASSPORTS ═══════════ -->
     <div class="te-sec">
-      <h2 class="te-h2"><?php echo $c['heading_text']; ?></h2>
-      <p class="te-p"><?php echo $c['text_text_3']; ?></p>
+      <h2 class="te-h2"><?php echo $c['c_te_sec_h2_text']; ?></h2>
+      <p class="te-p"><?php echo $c['c_te_sec_p_text']; ?></p>
     </div>
 
     <!-- ═══════════ VISAS AND ENTRY ═══════════ -->
     <div class="te-sec">
-      <h2 class="te-h2"><?php echo $c['heading_text_2']; ?></h2>
+      <h2 class="te-h2"><?php echo $c['c_te_sec_h2_text_2']; ?></h2>
 
-      <h3 class="te-h3"><?php echo $c['heading_text_3']; ?></h3>
+      <h3 class="te-h3"><?php echo $c['c_te_sec_h3_text']; ?></h3>
       <?php $__i = 0; foreach ( $r['rep_p_te_p'] as $it ) : if ( $__i ++ ) { echo '
-      '; } ?><p class="te-p <?php echo $it['_uew_item_class']; ?>"><?php echo $it['te_p']; ?></p><?php endforeach; echo "\n\n      "; ?><h3 class="te-h3"><?php echo $c['heading_text_4']; ?></h3>
-      <p class="te-p"><?php echo $c['text_text_4']; ?></p>
+      '; } ?><p class="te-p <?php echo $it['_uew_item_class']; ?>"><?php echo $it['te_p']; ?></p><?php endforeach; echo "\n\n      "; ?><h3 class="te-h3"><?php echo $c['c_te_sec_h3_text_2']; ?></h3>
+      <p class="te-p"><?php echo $c['c_te_sec_p_text_2']; ?></p>
 
-      <h3 class="te-h3"><?php echo $c['heading_text_5']; ?></h3>
-      <p class="te-p"><?php echo $c['text_text_5']; ?></p>
+      <h3 class="te-h3"><?php echo $c['c_te_sec_h3_text_3']; ?></h3>
+      <p class="te-p"><?php echo $c['c_te_sec_p_text_3']; ?></p>
 
-      <h3 class="te-h3"><?php echo $c['heading_text_6']; ?></h3>
-      <p class="te-p"><?php echo $c['text_text_6']; ?></p>
+      <h3 class="te-h3"><?php echo $c['c_te_sec_h3_text_4']; ?></h3>
+      <p class="te-p"><?php echo $c['c_te_sec_p_text_4']; ?></p>
     </div>
 
     <!-- ═══════════ TRAVELLING WITH CHILDREN ═══════════ -->
     <div class="te-sec">
-      <h2 class="te-h2"><?php echo $c['heading_text_7']; ?></h2>
+      <h2 class="te-h2"><?php echo $c['c_te_sec_h2_text_3']; ?></h2>
       <?php $__i = 0; foreach ( $r['rep_p_te_p_2'] as $it ) : if ( $__i ++ ) { echo '
       '; } ?><p class="te-p <?php echo $it['_uew_item_class']; ?>"><?php echo $it['te_p']; ?></p><?php endforeach; echo "\n    "; ?></div>
 
     <!-- ═══════════ HEALTH ═══════════ -->
     <div class="te-sec">
-      <h2 class="te-h2"><?php echo $c['heading_text_8']; ?></h2>
+      <h2 class="te-h2"><?php echo $c['c_te_sec_h2_text_4']; ?></h2>
       <?php $__i = 0; foreach ( $r['rep_p_te_p_3'] as $it ) : if ( $__i ++ ) { echo '
       '; } ?><p class="te-p <?php echo $it['_uew_item_class']; ?>"><?php echo $it['te_p']; ?></p><?php endforeach; echo "\n    "; ?></div>
 
     <!-- ═══════════ TRAVEL INSURANCE ═══════════ -->
     <div class="te-sec">
-      <h2 class="te-h2"><?php echo $c['heading_text_9']; ?></h2>
+      <h2 class="te-h2"><?php echo $c['c_te_sec_h2_text_5']; ?></h2>
       <?php $__i = 0; foreach ( $r['rep_p_te_p_4'] as $it ) : if ( $__i ++ ) { echo '
-      '; } ?><p class="te-p <?php echo $it['_uew_item_class']; ?>"><?php echo $it['te_p_markup']; ?></p><?php endforeach; echo "\n\n      "; ?><h3 class="te-h3"><?php echo $c['heading_text_10']; ?></h3>
+      '; } ?><p class="te-p <?php echo $it['_uew_item_class']; ?>"><?php echo $it['te_p_markup']; ?></p><?php endforeach; echo "\n\n      "; ?><h3 class="te-h3"><?php echo $c['c_te_sec_h3_text_5']; ?></h3>
       <!--
         Rendered as a list, not the source's single semicolon-separated
         sentence. Every word is the source's; only the punctuation between
         items becomes markup. The lead-in already announces a list, and
         guests use this section as a checklist against a quote.
       -->
-      <p class="te-p"><?php echo $c['text_text_7']; ?></p>
+      <p class="te-p"><?php echo $c['c_te_sec_p_text_5']; ?></p>
       <ul class="te-list">
         <?php $__i = 0; foreach ( $r['rep_li_te_li'] as $it ) : if ( $__i ++ ) { echo '
         '; } ?><li class="te-li <?php echo $it['_uew_item_class']; ?>"><?php echo $it['te_li']; ?></li><?php endforeach; echo "\n      "; ?></ul>
-      <p class="te-p"><?php echo $c['text_text_8']; ?></p>
+      <p class="te-p"><?php echo $c['c_te_sec_p_text_6']; ?></p>
 
-      <h3 class="te-h3"><?php echo $c['heading_text_11']; ?></h3>
-      <p class="te-p"><?php echo $c['text_text_9']; ?></p>
+      <h3 class="te-h3"><?php echo $c['c_te_sec_h3_text_6']; ?></h3>
+      <p class="te-p"><?php echo $c['c_te_sec_p_text_7']; ?></p>
 
-      <h3 class="te-h3"><?php echo $c['heading_text_12']; ?></h3>
-      <p class="te-p"><?php echo $c['text_text_10']; ?></p>
+      <h3 class="te-h3"><?php echo $c['c_te_sec_h3_text_7']; ?></h3>
+      <p class="te-p"><?php echo $c['c_te_sec_p_text_8']; ?></p>
 
-      <h3 class="te-h3"><?php echo $c['heading_text_13']; ?></h3>
-      <p class="te-p"><?php echo $c['text_text_11']; ?></p>
+      <h3 class="te-h3"><?php echo $c['c_te_sec_h3_text_8']; ?></h3>
+      <p class="te-p"><?php echo $c['c_te_sec_p_text_9']; ?></p>
     </div>
 
     <!-- ═══════════ QUESTIONS ═══════════ -->
     <div class="te-contact">
-      <h2 class="te-h2"><?php echo $c['heading_text_14']; ?></h2>
-      <p class="te-p"><?php echo $c['text_text_12']; ?></p>
-      <a class="te-mail" href="<?php echo $c['link_href']; ?>"><?php echo $c['link_text']; ?></a>
+      <h2 class="te-h2"><?php echo $c['c_te_contact_te_h2_text']; ?></h2>
+      <p class="te-p"><?php echo $c['c_te_contact_te_p_text']; ?></p>
+      <a class="te-mail" href="<?php echo $c['c_te_mail_href']; ?>"><?php echo $c['c_te_mail_text']; ?></a>
     </div>
 
   </div>

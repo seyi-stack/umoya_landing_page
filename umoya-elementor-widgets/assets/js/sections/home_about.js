@@ -19,7 +19,29 @@
 	function uewRun() {
 		(function(){
 		    'use strict';
-		    var items = document.querySelectorAll('#umoya-about .umoya-about-rv');
+		    var root = document.getElementById('umoya-about');
+		    if (!root) return;
+
+		    /* Full-bleed width, minus the scrollbar (see --umoya-about-vw in the CSS).
+		       Throttled through rAF with a setTimeout fallback, because rAF never
+		       fires in non-compositing contexts. */
+		    var vwTick = 0;
+		    function syncFullBleedWidth() {
+		      root.style.setProperty('--umoya-about-vw', document.documentElement.clientWidth + 'px');
+		    }
+		    function scheduleWidthSync() {
+		      if (vwTick) return;
+		      if (window.requestAnimationFrame) {
+		        vwTick = window.requestAnimationFrame(function() { vwTick = 0; syncFullBleedWidth(); });
+		      } else {
+		        vwTick = window.setTimeout(function() { vwTick = 0; syncFullBleedWidth(); }, 16);
+		      }
+		    }
+		    syncFullBleedWidth();
+		    window.addEventListener('resize', scheduleWidthSync);
+		    window.addEventListener('orientationchange', scheduleWidthSync);
+
+		    var items = root.querySelectorAll('.umoya-about-rv');
 		    if ('IntersectionObserver' in window) {
 		      var obs = new IntersectionObserver(function(entries) {
 		        entries.forEach(function(entry) {

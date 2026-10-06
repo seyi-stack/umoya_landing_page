@@ -26,27 +26,27 @@ if ( ! defined( 'ABSPATH' ) ) {
   BRAND: font-family: inherit; palette tokens only.
 =================================================================
 -->
-<section id="fg-hero" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="fg-hero" aria-label="<?php echo $c['c_section_aria_label']; ?>">
 
   <div class="fg-h-bg">
     <img
-      src="<?php echo $c['image_src']; ?>"
-      alt="<?php echo $c['image_alt']; ?>"
+      src="<?php echo $c['c_img_src']; ?>"
+      alt="<?php echo $c['c_img_alt']; ?>"
     />
   </div>
 
   <div class="fg-h-content">
-    <span class="fg-h-eye"><?php echo $c['eyebrow_text']; ?></span>
-    <h1 class="fg-h-title"><?php echo $c['title_text']; ?></h1>
-    <p class="fg-h-sub"><?php echo $c['subtitle_text']; ?></p>
+    <span class="fg-h-eye"><?php echo $c['c_fg_h_eye_text']; ?></span>
+    <h1 class="fg-h-title"><?php echo $c['c_fg_h_title_text']; ?></h1>
+    <p class="fg-h-sub"><?php echo $c['c_fg_h_sub_text']; ?></p>
     <div class="fg-h-btns">
-      <a href="<?php echo $c['button_href']; ?>" class="fg-h-btn fg-h-btn-primary">
-        <?php echo $c['button_text']; echo "\n        "; ?><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+      <a href="<?php echo $c['c_fg_h_btn_primary_href']; ?>" class="fg-h-btn fg-h-btn-primary">
+        <?php echo $c['c_fg_h_btn_primary_text']; echo "\n        "; ?><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
           <line x1="5" y1="12" x2="19" y2="12"/>
           <polyline points="13 6 19 12 13 18"/>
         </svg>
       </a>
-      <a href="<?php echo $c['button_href_2']; ?>" class="fg-h-btn fg-h-btn-ghost"><?php echo $c['button_text_2']; ?></a>
+      <a href="<?php echo $c['c_fg_h_btn_ghost_href']; ?>" class="fg-h-btn fg-h-btn-ghost"><?php echo $c['c_fg_h_btn_ghost_text']; ?></a>
     </div>
   </div>
 

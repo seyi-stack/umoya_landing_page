@@ -76,188 +76,188 @@ if ( ! defined( 'ABSPATH' ) ) {
   A11y: 44px targets, 16px input floor, one <h2> per panel.
 =================================================================
 -->
-<section id="umoya-contact-forms" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="umoya-contact-forms" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="ct-f-c">
     <!-- One hidden target for both forms: keeps a no-JS native POST from
          navigating the visitor away from the page. -->
-    <iframe name="umoyaContactFrame" title="<?php echo $c['embed_title']; ?>" aria-hidden="true" style="<?php echo $s['embed_inline_style']; ?>"<?php echo $c['embed_allowfullscreen']; ?>></iframe>
+    <iframe name="umoyaContactFrame" title="<?php echo $c['c_ct_f_c_title']; ?>" aria-hidden="true" style="<?php echo $s['c_ct_f_c_inline_style']; ?>"<?php echo $c['c_ct_f_c_allowfullscreen']; ?>></iframe>
 
     <div class="ct-f-grid">
 
       <!-- ══════════ PANEL 1 — PLAN A JOURNEY ══════════ -->
       <div class="ct-f-card ct-f-rv" id="ct-plan">
-        <h2 class="ct-f-ttl"><?php echo $c['title_text']; ?></h2>
-        <p class="ct-f-sub"><?php echo $c['subtitle_text']; ?></p>
+        <h2 class="ct-f-ttl"><?php echo $c['c_ct_f_card_h2_text']; ?></h2>
+        <p class="ct-f-sub"><?php echo $c['c_ct_f_card_p_text']; ?></p>
 
         <form
-          data-hs-do-not-collect="<?php echo $c['form_data_hs_do_not_collect']; ?>"
+          data-hs-do-not-collect="<?php echo $c['c_ct_f_card_form_data_hs_do_not_collect']; ?>"
           class="ct-f-form"
           id="ctPlanForm"
-          action="<?php echo $c['form_action']; ?>"
-          method="<?php echo $c['form_method']; ?>"
-          target="<?php echo $c['form_target']; ?>"<?php echo $c['form_novalidate']; echo "\n          "; ?>aria-label="<?php echo $c['form_aria_label']; ?>"
-          data-hubspot-portal-id="<?php echo $c['form_data_hubspot_portal_id']; ?>"
-          data-hubspot-form-id="<?php echo $c['form_data_hubspot_form_id']; ?>"
-          data-umoya-form-source="<?php echo $c['form_data_umoya_form_source']; ?>"
-          data-wordpress-backup-endpoint="<?php echo $c['form_data_wordpress_backup_endpoint']; ?>"
-          data-hubspot-consent-text="<?php echo $c['form_data_hubspot_consent_text']; ?>"
+          action="<?php echo $c['c_ct_f_card_form_action']; ?>"
+          method="<?php echo $c['c_ct_f_card_form_method']; ?>"
+          target="<?php echo $c['c_ct_f_card_form_target']; ?>"<?php echo $c['c_ct_f_card_form_novalidate']; echo "\n          "; ?>aria-label="<?php echo $c['c_ct_f_card_form_aria_label']; ?>"
+          data-hubspot-portal-id="<?php echo $c['c_ct_f_card_form_data_hubspot_portal_id']; ?>"
+          data-hubspot-form-id="<?php echo $c['c_ct_f_card_form_data_hubspot_form_id']; ?>"
+          data-umoya-form-source="<?php echo $c['c_ct_f_card_form_data_umoya_form_source']; ?>"
+          data-wordpress-backup-endpoint="<?php echo $c['c_ct_f_card_form_data_wordpress_backup_endpoint']; ?>"
+          data-hubspot-consent-text="<?php echo $c['c_ct_f_card_form_data_hubspot_consent_text']; ?>"
         >
-          <input type="<?php echo $c['field_type']; ?>" name="<?php echo $c['field_name']; ?>" value="<?php echo $c['field_value']; ?>"<?php echo $c['field_required']; ?><?php echo $c['field_disabled']; ?><?php echo $c['field_readonly']; ?><?php echo $c['field_checked']; ?>>
-          <input type="<?php echo $c['field_type_2']; ?>" name="<?php echo $c['field_name_2']; ?>" value="<?php echo $c['field_value_2']; ?>"<?php echo $c['field_required_2']; ?><?php echo $c['field_disabled_2']; ?><?php echo $c['field_readonly_2']; ?><?php echo $c['field_checked_2']; ?>>
-          <input type="<?php echo $c['field_type_3']; ?>" name="<?php echo $c['field_name_3']; ?>" value="<?php echo $c['field_value_3']; ?>"<?php echo $c['field_required_3']; ?><?php echo $c['field_disabled_3']; ?><?php echo $c['field_readonly_3']; ?><?php echo $c['field_checked_3']; ?>>
-          <input type="<?php echo $c['field_type_4']; ?>" name="<?php echo $c['field_name_4']; ?>" value="<?php echo $c['field_value_4']; ?>"<?php echo $c['field_required_4']; ?><?php echo $c['field_disabled_4']; ?><?php echo $c['field_readonly_4']; ?><?php echo $c['field_checked_4']; ?>>
-          <input type="<?php echo $c['field_type_5']; ?>" name="<?php echo $c['field_name_5']; ?>" value="<?php echo $c['field_value_5']; ?>"<?php echo $c['field_required_5']; ?><?php echo $c['field_disabled_5']; ?><?php echo $c['field_readonly_5']; ?><?php echo $c['field_checked_5']; ?>>
-          <input type="<?php echo $c['field_type_6']; ?>" name="<?php echo $c['field_name_6']; ?>" value="<?php echo $c['field_value_6']; ?>"<?php echo $c['field_required_6']; ?><?php echo $c['field_disabled_6']; ?><?php echo $c['field_readonly_6']; ?><?php echo $c['field_checked_6']; ?>>
-          <input type="<?php echo $c['field_type_7']; ?>" name="<?php echo $c['field_name_7']; ?>" value="<?php echo $c['field_value_7']; ?>"<?php echo $c['field_required_7']; ?><?php echo $c['field_disabled_7']; ?><?php echo $c['field_readonly_7']; ?><?php echo $c['field_checked_7']; ?>>
+          <input type="<?php echo $c['c_ct_f_card_form_type']; ?>" name="<?php echo $c['c_ct_f_card_form_name']; ?>" value="<?php echo $c['c_ct_f_card_form_value']; ?>">
+          <input type="<?php echo $c['c_ct_f_card_form_type_2']; ?>" name="<?php echo $c['c_ct_f_card_form_name_2']; ?>" value="<?php echo $c['c_ct_f_card_form_value_2']; ?>">
+          <input type="<?php echo $c['c_ct_f_card_form_type_3']; ?>" name="<?php echo $c['c_ct_f_card_form_name_3']; ?>" value="<?php echo $c['c_ct_f_card_form_value_3']; ?>">
+          <input type="<?php echo $c['c_ct_f_card_form_type_4']; ?>" name="<?php echo $c['c_ct_f_card_form_name_4']; ?>" value="<?php echo $c['c_ct_f_card_form_value_4']; ?>">
+          <input type="<?php echo $c['c_ct_f_card_form_type_5']; ?>" name="<?php echo $c['c_ct_f_card_form_name_5']; ?>" value="<?php echo $c['c_ct_f_card_form_value_5']; ?>">
+          <input type="<?php echo $c['c_ct_f_card_form_type_6']; ?>" name="<?php echo $c['c_ct_f_card_form_name_6']; ?>" value="<?php echo $c['c_ct_f_card_form_value_6']; ?>">
+          <input type="<?php echo $c['c_ct_f_card_form_type_7']; ?>" name="<?php echo $c['c_ct_f_card_form_name_7']; ?>" value="<?php echo $c['c_ct_f_card_form_value_7']; ?>">
 
           <div class="ct-f-field">
-            <label for="ctTitle"><?php echo $c['label_text']; ?></label>
-            <select id="ctTitle" name="<?php echo $c['select_name']; ?>"<?php echo $c['select_required']; ?><?php echo $c['select_disabled']; ?><?php echo $c['select_multiple']; ?>>
+            <label for="ctTitle"><?php echo $c['c_ct_f_card_form_div_label_text']; ?></label>
+            <select id="ctTitle" name="<?php echo $c['c_ct_f_card_form_div_select_name']; ?>"<?php echo $c['c_ct_f_card_form_div_select_required']; ?><?php echo $c['c_ct_f_card_form_div_select_disabled']; ?><?php echo $c['c_ct_f_card_form_div_select_multiple']; ?>>
               <?php $__i = 0; foreach ( $r['rep_option'] as $it ) : if ( $__i ++ ) { echo '
               '; } ?><option value="<?php echo $it['value']; ?>"<?php echo $it['disabled']; ?><?php echo $it['selected']; ?> class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['label']; ?></option><?php endforeach; echo "\n            "; ?></select>
           </div>
 
           <div class="ct-f-row">
             <div class="ct-f-field">
-              <label for="ctFirst"><?php echo $c['label_text_2']; ?> <span class="ct-f-req" aria-hidden="true"><?php echo $c['text_text']; ?></span></label>
-              <input type="<?php echo $c['anchor_type']; ?>" id="ctFirst" name="<?php echo $c['anchor_name']; ?>" placeholder="<?php echo $c['anchor_placeholder']; ?>"<?php echo $c['anchor_required']; ?> autocomplete="<?php echo $c['anchor_autocomplete']; ?>"<?php echo $c['anchor_disabled']; ?><?php echo $c['anchor_readonly']; ?><?php echo $c['anchor_checked']; ?>>
+              <label for="ctFirst"><?php echo $c['c_ct_f_row_div_label_text']; ?> <span class="ct-f-req" aria-hidden="true">*</span></label>
+              <input type="<?php echo $c['c_ct_f_row_div_input_type']; ?>" id="ctFirst" name="<?php echo $c['c_ct_f_row_div_input_name']; ?>" placeholder="<?php echo $c['c_ct_f_row_div_input_placeholder']; ?>"<?php echo $c['c_ct_f_row_div_input_required']; ?> autocomplete="<?php echo $c['c_ct_f_row_div_input_autocomplete']; ?>"<?php echo $c['c_ct_f_row_div_input_disabled']; ?><?php echo $c['c_ct_f_row_div_input_readonly']; ?>>
             </div>
             <div class="ct-f-field">
-              <label for="ctLast"><?php echo $c['label_text_3']; ?> <span class="ct-f-req" aria-hidden="true"><?php echo $c['text_text_2']; ?></span></label>
-              <input type="<?php echo $c['anchor_type_2']; ?>" id="ctLast" name="<?php echo $c['anchor_name_2']; ?>" placeholder="<?php echo $c['anchor_placeholder_2']; ?>"<?php echo $c['anchor_required_2']; ?> autocomplete="<?php echo $c['anchor_autocomplete_2']; ?>"<?php echo $c['anchor_disabled_2']; ?><?php echo $c['anchor_readonly_2']; ?><?php echo $c['anchor_checked_2']; ?>>
-            </div>
-          </div>
-
-          <div class="ct-f-row">
-            <div class="ct-f-field">
-              <label for="ctEmail"><?php echo $c['label_text_4']; ?> <span class="ct-f-req" aria-hidden="true"><?php echo $c['text_text_3']; ?></span></label>
-              <input type="<?php echo $c['anchor_type_3']; ?>" id="ctEmail" name="<?php echo $c['anchor_name_3']; ?>" placeholder="<?php echo $c['anchor_placeholder_3']; ?>"<?php echo $c['anchor_required_3']; ?> autocomplete="<?php echo $c['anchor_autocomplete_3']; ?>"<?php echo $c['anchor_disabled_3']; ?><?php echo $c['anchor_readonly_3']; ?><?php echo $c['anchor_checked_3']; ?>>
-            </div>
-            <div class="ct-f-field">
-              <label for="ctPhone"><?php echo $c['label_text_5']; ?></label>
-              <input type="<?php echo $c['anchor_type_4']; ?>" id="ctPhone" name="<?php echo $c['anchor_name_4']; ?>" placeholder="<?php echo $c['anchor_placeholder_4']; ?>" autocomplete="<?php echo $c['anchor_autocomplete_4']; ?>"<?php echo $c['anchor_required_4']; ?><?php echo $c['anchor_disabled_4']; ?><?php echo $c['anchor_readonly_4']; ?><?php echo $c['anchor_checked_4']; ?>>
+              <label for="ctLast"><?php echo $c['c_ct_f_row_div_label_text_2']; ?> <span class="ct-f-req" aria-hidden="true">*</span></label>
+              <input type="<?php echo $c['c_ct_f_row_div_input_type_2']; ?>" id="ctLast" name="<?php echo $c['c_ct_f_row_div_input_name_2']; ?>" placeholder="<?php echo $c['c_ct_f_row_div_input_placeholder_2']; ?>"<?php echo $c['c_ct_f_row_div_input_required_2']; ?> autocomplete="<?php echo $c['c_ct_f_row_div_input_autocomplete_2']; ?>"<?php echo $c['c_ct_f_row_div_input_disabled_2']; ?><?php echo $c['c_ct_f_row_div_input_readonly_2']; ?>>
             </div>
           </div>
 
           <div class="ct-f-row">
             <div class="ct-f-field">
-              <label for="ctCountry"><?php echo $c['label_text_6']; ?> <span class="ct-f-req" aria-hidden="true"><?php echo $c['text_text_4']; ?></span></label>
+              <label for="ctEmail"><?php echo $c['c_ct_f_row_div_label_text_3']; ?> <span class="ct-f-req" aria-hidden="true">*</span></label>
+              <input type="<?php echo $c['c_ct_f_row_div_input_type_3']; ?>" id="ctEmail" name="<?php echo $c['c_ct_f_row_div_input_name_3']; ?>" placeholder="<?php echo $c['c_ct_f_row_div_input_placeholder_3']; ?>"<?php echo $c['c_ct_f_row_div_input_required_3']; ?> autocomplete="<?php echo $c['c_ct_f_row_div_input_autocomplete_3']; ?>"<?php echo $c['c_ct_f_row_div_input_disabled_3']; ?><?php echo $c['c_ct_f_row_div_input_readonly_3']; ?>>
+            </div>
+            <div class="ct-f-field">
+              <label for="ctPhone"><?php echo $c['c_ct_f_row_div_label_text_4']; ?></label>
+              <input type="<?php echo $c['c_ct_f_row_div_input_type_4']; ?>" id="ctPhone" name="<?php echo $c['c_ct_f_row_div_input_name_4']; ?>" placeholder="<?php echo $c['c_ct_f_row_div_input_placeholder_4']; ?>" autocomplete="<?php echo $c['c_ct_f_row_div_input_autocomplete_4']; ?>"<?php echo $c['c_ct_f_row_div_input_required_4']; ?><?php echo $c['c_ct_f_row_div_input_disabled_4']; ?><?php echo $c['c_ct_f_row_div_input_readonly_4']; ?>>
+            </div>
+          </div>
+
+          <div class="ct-f-row">
+            <div class="ct-f-field">
+              <label for="ctCountry"><?php echo $c['c_ct_f_row_div_label_text_5']; ?> <span class="ct-f-req" aria-hidden="true">*</span></label>
               <!-- Same list and same ISO values as the Founder's Circle form,
                    so the `country` property stays consistent across pages. -->
-              <select id="ctCountry" name="<?php echo $c['select_name_2']; ?>"<?php echo $c['select_required_2']; ?><?php echo $c['select_disabled_2']; ?><?php echo $c['select_multiple_2']; ?>>
+              <select id="ctCountry" name="<?php echo $c['c_ct_f_row_div_select_name']; ?>"<?php echo $c['c_ct_f_row_div_select_required']; ?><?php echo $c['c_ct_f_row_div_select_disabled']; ?><?php echo $c['c_ct_f_row_div_select_multiple']; ?>>
                 <?php $__i = 0; foreach ( $r['rep_option_2'] as $it ) : if ( $__i ++ ) { echo $it['_uew_sep']; } ?><option<?php echo $it['value']; ?><?php echo $it['disabled']; ?><?php echo $it['selected']; ?> class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['label']; ?></option><?php endforeach; echo "\n              "; ?></select>
             </div>
             <div class="ct-f-field">
-              <label for="ctCity"><?php echo $c['label_text_7']; ?></label>
-              <input type="<?php echo $c['anchor_type_5']; ?>" id="ctCity" name="<?php echo $c['anchor_name_5']; ?>" placeholder="<?php echo $c['anchor_placeholder_5']; ?>" autocomplete="<?php echo $c['anchor_autocomplete_5']; ?>"<?php echo $c['anchor_required_5']; ?><?php echo $c['anchor_disabled_5']; ?><?php echo $c['anchor_readonly_5']; ?><?php echo $c['anchor_checked_5']; ?>>
+              <label for="ctCity"><?php echo $c['c_ct_f_row_div_label_text_6']; ?></label>
+              <input type="<?php echo $c['c_ct_f_row_div_input_type_5']; ?>" id="ctCity" name="<?php echo $c['c_ct_f_row_div_input_name_5']; ?>" placeholder="<?php echo $c['c_ct_f_row_div_input_placeholder_5']; ?>" autocomplete="<?php echo $c['c_ct_f_row_div_input_autocomplete_5']; ?>"<?php echo $c['c_ct_f_row_div_input_required_5']; ?><?php echo $c['c_ct_f_row_div_input_disabled_5']; ?><?php echo $c['c_ct_f_row_div_input_readonly_5']; ?>>
             </div>
           </div>
 
-          <span class="ct-f-grouplabel" id="ctWhenLbl"><?php echo $c['text_text_5']; ?></span>
+          <span class="ct-f-grouplabel" id="ctWhenLbl"><?php echo $c['c_ct_f_grouplabel_text']; ?></span>
           <div class="ct-f-row ct-f-keep2">
             <div class="ct-f-field">
-              <label for="ctMonth" class="ct-f-sr"><?php echo $c['label_text_8']; ?></label>
-              <select id="ctMonth" name="<?php echo $c['select_name_3']; ?>"<?php echo $c['select_required_3']; ?><?php echo $c['select_disabled_3']; ?><?php echo $c['select_multiple_3']; ?>>
+              <label for="ctMonth" class="ct-f-sr"><?php echo $c['c_ct_f_keep2_ct_f_field_text']; ?></label>
+              <select id="ctMonth" name="<?php echo $c['c_ct_f_keep2_ct_f_field_select_name']; ?>"<?php echo $c['c_ct_f_keep2_ct_f_field_select_required']; ?><?php echo $c['c_ct_f_keep2_ct_f_field_select_disabled']; ?><?php echo $c['c_ct_f_keep2_ct_f_field_select_multiple']; ?>>
                 <?php $__i = 0; foreach ( $r['rep_option_3'] as $it ) : if ( $__i ++ ) { echo $it['_uew_sep']; } ?><option<?php echo $it['value']; ?><?php echo $it['disabled']; ?><?php echo $it['selected']; ?> class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['label']; ?></option><?php endforeach; echo "\n              "; ?></select>
             </div>
             <div class="ct-f-field">
-              <label for="ctYear" class="ct-f-sr"><?php echo $c['label_text_9']; ?></label>
-              <select id="ctYear" name="<?php echo $c['select_name_4']; ?>"<?php echo $c['select_required_4']; ?><?php echo $c['select_disabled_4']; ?><?php echo $c['select_multiple_4']; ?>>
+              <label for="ctYear" class="ct-f-sr"><?php echo $c['c_ct_f_keep2_text']; ?></label>
+              <select id="ctYear" name="<?php echo $c['c_ct_f_keep2_ct_f_field_select_name_2']; ?>"<?php echo $c['c_ct_f_keep2_ct_f_field_select_required_2']; ?><?php echo $c['c_ct_f_keep2_ct_f_field_select_disabled_2']; ?><?php echo $c['c_ct_f_keep2_ct_f_field_select_multiple_2']; ?>>
                 <?php $__i = 0; foreach ( $r['rep_option_4'] as $it ) : if ( $__i ++ ) { echo $it['_uew_sep']; } ?><option<?php echo $it['value']; ?><?php echo $it['disabled']; ?><?php echo $it['selected']; ?> class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['label']; ?></option><?php endforeach; echo "\n              "; ?></select>
             </div>
           </div>
 
           <div class="ct-f-field">
-            <label for="ctGuests"><?php echo $c['label_text_10']; ?></label>
-            <select id="ctGuests" name="<?php echo $c['select_name_5']; ?>"<?php echo $c['select_required_5']; ?><?php echo $c['select_disabled_5']; ?><?php echo $c['select_multiple_5']; ?>>
+            <label for="ctGuests"><?php echo $c['c_ct_f_card_form_div_label_text_2']; ?></label>
+            <select id="ctGuests" name="<?php echo $c['c_ct_f_card_form_div_select_name_2']; ?>"<?php echo $c['c_ct_f_card_form_div_select_required_2']; ?><?php echo $c['c_ct_f_card_form_div_select_disabled_2']; ?><?php echo $c['c_ct_f_card_form_div_select_multiple_2']; ?>>
               <?php $__i = 0; foreach ( $r['rep_option_5'] as $it ) : if ( $__i ++ ) { echo '
               '; } ?><option<?php echo $it['value']; ?><?php echo $it['disabled']; ?><?php echo $it['selected']; ?> class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['label']; ?></option><?php endforeach; echo "\n            "; ?></select>
           </div>
 
           <div class="ct-f-field">
-            <label for="ctMessage"><?php echo $c['label_text_11']; ?></label>
-            <textarea id="ctMessage" name="<?php echo $c['anchor_name_6']; ?>" rows="<?php echo $c['anchor_rows']; ?>" placeholder="<?php echo $c['anchor_placeholder_6']; ?>"<?php echo $c['anchor_required_6']; ?><?php echo $c['anchor_disabled_6']; ?><?php echo $c['anchor_readonly_6']; ?>></textarea>
+            <label for="ctMessage"><?php echo $c['c_ct_f_card_form_div_label_text_3']; ?></label>
+            <textarea id="ctMessage" name="<?php echo $c['c_ct_f_card_form_div_textarea_name']; ?>" rows="<?php echo $c['c_ct_f_card_form_div_textarea_rows']; ?>" placeholder="<?php echo $c['c_ct_f_card_form_div_textarea_placeholder']; ?>"<?php echo $c['c_ct_f_card_form_div_textarea_required']; ?><?php echo $c['c_ct_f_card_form_div_textarea_disabled']; ?><?php echo $c['c_ct_f_card_form_div_textarea_readonly']; ?>></textarea>
           </div>
 
           <label class="ct-f-consent" for="ctConsent">
-            <input type="<?php echo $c['anchor_type_6']; ?>" id="ctConsent" name="<?php echo $c['anchor_name_7']; ?>"<?php echo $c['anchor_required_7']; ?><?php echo $c['anchor_disabled_7']; ?><?php echo $c['anchor_readonly_7']; ?><?php echo $c['anchor_checked_6']; ?>>
-            <span><?php echo $c['text_text_6']; ?> <a href="<?php echo $c['link_href']; ?>" target="<?php echo $c['link_target']; ?>" rel="<?php echo $c['link_rel']; ?>"><?php echo $c['link_text']; ?></a><?php echo $c['text_text_2_2']; ?> <span class="ct-f-flag"><?php echo $c['text_text_7']; ?></span></span>
+            <input type="<?php echo $c['c_ct_f_card_form_label_input_type']; ?>" id="ctConsent" name="<?php echo $c['c_ct_f_card_form_label_input_name']; ?>"<?php echo $c['c_ct_f_card_form_label_input_required']; ?><?php echo $c['c_ct_f_card_form_label_input_disabled']; ?><?php echo $c['c_ct_f_card_form_label_input_readonly']; ?><?php echo $c['c_ct_f_card_form_label_input_checked']; ?>>
+            <span><?php echo $c['c_ct_f_card_form_label_span_text']; ?> <a href="<?php echo $c['c_ct_f_card_form_label_span_a_href']; ?>" target="<?php echo $c['c_ct_f_card_form_label_span_a_target']; ?>" rel="<?php echo $c['c_ct_f_card_form_label_span_a_rel']; ?>"><?php echo $c['c_ct_f_card_form_label_span_a_text']; ?></a>. <span class="ct-f-flag"><?php echo $c['c_ct_f_card_form_label_span_span_text']; ?></span></span>
           </label>
 
           <label class="ct-f-consent" for="ctMarketing">
-            <input type="<?php echo $c['anchor_type_7']; ?>" id="ctMarketing" name="<?php echo $c['anchor_name_8']; ?>"<?php echo $c['anchor_required_8']; ?><?php echo $c['anchor_disabled_8']; ?><?php echo $c['anchor_readonly_8']; ?><?php echo $c['anchor_checked_7']; ?>>
-            <span><?php echo $c['text_text_8']; ?> <span class="ct-f-flag"><?php echo $c['text_text_9']; ?></span></span>
+            <input type="<?php echo $c['c_ct_f_card_form_label_input_type_2']; ?>" id="ctMarketing" name="<?php echo $c['c_ct_f_card_form_label_input_name_2']; ?>"<?php echo $c['c_ct_f_card_form_label_input_required_2']; ?><?php echo $c['c_ct_f_card_form_label_input_disabled_2']; ?><?php echo $c['c_ct_f_card_form_label_input_readonly_2']; ?><?php echo $c['c_ct_f_card_form_label_input_checked_2']; ?>>
+            <span><?php echo $c['c_ct_f_card_form_label_span_text_2']; ?> <span class="ct-f-flag"><?php echo $c['c_ct_f_card_form_label_span_span_text_2']; ?></span></span>
           </label>
 
-          <button type="<?php echo $c['button_type']; ?>" class="ct-f-btn" id="ctPlanBtn"<?php echo $c['button_disabled']; ?>><?php echo $c['button_text']; ?></button>
-          <p class="ct-f-legal"><?php echo $c['consent_text']; ?></p>
+          <button type="<?php echo $c['c_ct_f_card_form_button_type']; ?>" class="ct-f-btn" id="ctPlanBtn"<?php echo $c['c_ct_f_card_form_button_disabled']; ?>><?php echo $c['c_ct_f_card_form_button_text']; ?></button>
+          <p class="ct-f-legal"><?php echo $c['c_ct_f_legal_text']; ?></p>
         </form>
       </div>
 
       <!-- ══════════ PANEL 2 — GENERAL &amp; MEDIA ══════════ -->
       <div class="ct-f-card ct-f-rv d1" id="ct-general">
-        <h2 class="ct-f-ttl"><?php echo $c['title_text_2']; ?></h2>
-        <p class="ct-f-sub"><?php echo $c['subtitle_text_2']; ?></p>
+        <h2 class="ct-f-ttl"><?php echo $c['c_ct_f_card_h2_text_2']; ?></h2>
+        <p class="ct-f-sub"><?php echo $c['c_ct_f_card_p_text_2']; ?></p>
 
         <form
-          data-hs-do-not-collect="<?php echo $c['form_data_hs_do_not_collect_2']; ?>"
+          data-hs-do-not-collect="<?php echo $c['c_ct_f_card_form_data_hs_do_not_collect_2']; ?>"
           class="ct-f-form"
           id="ctGeneralForm"
-          action="<?php echo $c['form_action_2']; ?>"
-          method="<?php echo $c['form_method_2']; ?>"
-          target="<?php echo $c['form_target_2']; ?>"<?php echo $c['form_novalidate_2']; echo "\n          "; ?>aria-label="<?php echo $c['form_aria_label_2']; ?>"
-          data-hubspot-portal-id="<?php echo $c['form_data_hubspot_portal_id_2']; ?>"
-          data-hubspot-form-id="<?php echo $c['form_data_hubspot_form_id_2']; ?>"
-          data-umoya-form-source="<?php echo $c['form_data_umoya_form_source_2']; ?>"
-          data-wordpress-backup-endpoint="<?php echo $c['form_data_wordpress_backup_endpoint_2']; ?>"
-          data-hubspot-consent-text="<?php echo $c['form_data_hubspot_consent_text_2']; ?>"
+          action="<?php echo $c['c_ct_f_card_form_action_2']; ?>"
+          method="<?php echo $c['c_ct_f_card_form_method_2']; ?>"
+          target="<?php echo $c['c_ct_f_card_form_target_2']; ?>"<?php echo $c['c_ct_f_card_form_novalidate_2']; echo "\n          "; ?>aria-label="<?php echo $c['c_ct_f_card_form_aria_label_2']; ?>"
+          data-hubspot-portal-id="<?php echo $c['c_ct_f_card_form_data_hubspot_portal_id_2']; ?>"
+          data-hubspot-form-id="<?php echo $c['c_ct_f_card_form_data_hubspot_form_id_2']; ?>"
+          data-umoya-form-source="<?php echo $c['c_ct_f_card_form_data_umoya_form_source_2']; ?>"
+          data-wordpress-backup-endpoint="<?php echo $c['c_ct_f_card_form_data_wordpress_backup_endpoint_2']; ?>"
+          data-hubspot-consent-text="<?php echo $c['c_ct_f_card_form_data_hubspot_consent_text_2']; ?>"
         >
-          <input type="<?php echo $c['field_type_8']; ?>" name="<?php echo $c['field_name_8']; ?>" value="<?php echo $c['field_value_8']; ?>"<?php echo $c['field_required_8']; ?><?php echo $c['field_disabled_8']; ?><?php echo $c['field_readonly_8']; ?><?php echo $c['field_checked_8']; ?>>
-          <input type="<?php echo $c['field_type_9']; ?>" name="<?php echo $c['field_name_9']; ?>" value="<?php echo $c['field_value_9']; ?>"<?php echo $c['field_required_9']; ?><?php echo $c['field_disabled_9']; ?><?php echo $c['field_readonly_9']; ?><?php echo $c['field_checked_9']; ?>>
-          <input type="<?php echo $c['field_type_10']; ?>" name="<?php echo $c['field_name_10']; ?>" value="<?php echo $c['field_value_10']; ?>"<?php echo $c['field_required_10']; ?><?php echo $c['field_disabled_10']; ?><?php echo $c['field_readonly_10']; ?><?php echo $c['field_checked_10']; ?>>
-          <input type="<?php echo $c['field_type_11']; ?>" name="<?php echo $c['field_name_11']; ?>" value="<?php echo $c['field_value_11']; ?>"<?php echo $c['field_required_11']; ?><?php echo $c['field_disabled_11']; ?><?php echo $c['field_readonly_11']; ?><?php echo $c['field_checked_11']; ?>>
-          <input type="<?php echo $c['field_type_12']; ?>" name="<?php echo $c['field_name_12']; ?>" value="<?php echo $c['field_value_12']; ?>"<?php echo $c['field_required_12']; ?><?php echo $c['field_disabled_12']; ?><?php echo $c['field_readonly_12']; ?><?php echo $c['field_checked_12']; ?>>
-          <input type="<?php echo $c['field_type_13']; ?>" name="<?php echo $c['field_name_13']; ?>" value="<?php echo $c['field_value_13']; ?>"<?php echo $c['field_required_13']; ?><?php echo $c['field_disabled_13']; ?><?php echo $c['field_readonly_13']; ?><?php echo $c['field_checked_13']; ?>>
-          <input type="<?php echo $c['field_type_14']; ?>" name="<?php echo $c['field_name_14']; ?>" value="<?php echo $c['field_value_14']; ?>"<?php echo $c['field_required_14']; ?><?php echo $c['field_disabled_14']; ?><?php echo $c['field_readonly_14']; ?><?php echo $c['field_checked_14']; ?>>
+          <input type="<?php echo $c['c_ct_f_grid_type']; ?>" name="<?php echo $c['c_ct_f_grid_name']; ?>" value="<?php echo $c['c_ct_f_grid_value']; ?>">
+          <input type="<?php echo $c['c_ct_f_grid_type_2']; ?>" name="<?php echo $c['c_ct_f_grid_name_2']; ?>" value="<?php echo $c['c_ct_f_grid_value_2']; ?>">
+          <input type="<?php echo $c['c_ct_f_grid_type_3']; ?>" name="<?php echo $c['c_ct_f_grid_name_3']; ?>" value="<?php echo $c['c_ct_f_grid_value_3']; ?>">
+          <input type="<?php echo $c['c_ct_f_grid_type_4']; ?>" name="<?php echo $c['c_ct_f_grid_name_4']; ?>" value="<?php echo $c['c_ct_f_grid_value_4']; ?>">
+          <input type="<?php echo $c['c_ct_f_grid_type_5']; ?>" name="<?php echo $c['c_ct_f_grid_name_5']; ?>" value="<?php echo $c['c_ct_f_grid_value_5']; ?>">
+          <input type="<?php echo $c['c_ct_f_grid_type_6']; ?>" name="<?php echo $c['c_ct_f_grid_name_6']; ?>" value="<?php echo $c['c_ct_f_grid_value_6']; ?>">
+          <input type="<?php echo $c['c_ct_f_grid_type_7']; ?>" name="<?php echo $c['c_ct_f_grid_name_7']; ?>" value="<?php echo $c['c_ct_f_grid_value_7']; ?>">
           <!-- Split from the visible "Full name" field on every keystroke -->
-          <input type="<?php echo $c['field_type_15']; ?>" name="<?php echo $c['field_name_15']; ?>" value="<?php echo $c['field_value_15']; ?>"<?php echo $c['field_required_15']; ?><?php echo $c['field_disabled_15']; ?><?php echo $c['field_readonly_15']; ?><?php echo $c['field_checked_15']; ?>>
-          <input type="<?php echo $c['field_type_16']; ?>" name="<?php echo $c['field_name_16']; ?>" value="<?php echo $c['field_value_16']; ?>"<?php echo $c['field_required_16']; ?><?php echo $c['field_disabled_16']; ?><?php echo $c['field_readonly_16']; ?><?php echo $c['field_checked_16']; ?>>
+          <input type="<?php echo $c['c_ct_f_grid_type_8']; ?>" name="<?php echo $c['c_ct_f_grid_name_8']; ?>" value="<?php echo $c['c_ct_f_grid_value_8']; ?>">
+          <input type="<?php echo $c['c_ct_f_grid_type_9']; ?>" name="<?php echo $c['c_ct_f_grid_name_9']; ?>" value="<?php echo $c['c_ct_f_grid_value_9']; ?>">
 
           <div class="ct-f-field">
-            <label for="ctGenName"><?php echo $c['label_text_12']; ?> <span class="ct-f-req" aria-hidden="true"><?php echo $c['text_text_10']; ?></span></label>
-            <input type="<?php echo $c['anchor_type_8']; ?>" id="ctGenName" name="<?php echo $c['anchor_name_9']; ?>" placeholder="<?php echo $c['anchor_placeholder_7']; ?>"<?php echo $c['anchor_required_9']; ?> autocomplete="<?php echo $c['anchor_autocomplete_6']; ?>"<?php echo $c['anchor_disabled_9']; ?><?php echo $c['anchor_readonly_9']; ?><?php echo $c['anchor_checked_8']; ?>>
+            <label for="ctGenName"><?php echo $c['c_ct_f_card_form_div_label_text_4']; ?> <span class="ct-f-req" aria-hidden="true">*</span></label>
+            <input type="<?php echo $c['c_ct_f_card_form_div_input_type']; ?>" id="ctGenName" name="<?php echo $c['c_ct_f_card_form_div_input_name']; ?>" placeholder="<?php echo $c['c_ct_f_card_form_div_input_placeholder']; ?>"<?php echo $c['c_ct_f_card_form_div_input_required']; ?> autocomplete="<?php echo $c['c_ct_f_card_form_div_input_autocomplete']; ?>"<?php echo $c['c_ct_f_card_form_div_input_disabled']; ?><?php echo $c['c_ct_f_card_form_div_input_readonly']; ?>>
           </div>
 
           <div class="ct-f-field">
-            <label for="ctGenEmail"><?php echo $c['label_text_13']; ?> <span class="ct-f-req" aria-hidden="true"><?php echo $c['text_text_11']; ?></span></label>
-            <input type="<?php echo $c['anchor_type_9']; ?>" id="ctGenEmail" name="<?php echo $c['anchor_name_10']; ?>" placeholder="<?php echo $c['anchor_placeholder_8']; ?>"<?php echo $c['anchor_required_10']; ?> autocomplete="<?php echo $c['anchor_autocomplete_7']; ?>"<?php echo $c['anchor_disabled_10']; ?><?php echo $c['anchor_readonly_10']; ?><?php echo $c['anchor_checked_9']; ?>>
+            <label for="ctGenEmail"><?php echo $c['c_ct_f_card_form_div_label_text_5']; ?> <span class="ct-f-req" aria-hidden="true">*</span></label>
+            <input type="<?php echo $c['c_ct_f_card_form_div_input_type_2']; ?>" id="ctGenEmail" name="<?php echo $c['c_ct_f_card_form_div_input_name_2']; ?>" placeholder="<?php echo $c['c_ct_f_card_form_div_input_placeholder_2']; ?>"<?php echo $c['c_ct_f_card_form_div_input_required_2']; ?> autocomplete="<?php echo $c['c_ct_f_card_form_div_input_autocomplete_2']; ?>"<?php echo $c['c_ct_f_card_form_div_input_disabled_2']; ?><?php echo $c['c_ct_f_card_form_div_input_readonly_2']; ?>>
           </div>
 
           <div class="ct-f-field">
-            <label for="ctGenOrg"><?php echo $c['label_text_14']; ?></label>
-            <input type="<?php echo $c['anchor_type_10']; ?>" id="ctGenOrg" name="<?php echo $c['anchor_name_11']; ?>" placeholder="<?php echo $c['anchor_placeholder_9']; ?>" autocomplete="<?php echo $c['anchor_autocomplete_8']; ?>"<?php echo $c['anchor_required_11']; ?><?php echo $c['anchor_disabled_11']; ?><?php echo $c['anchor_readonly_11']; ?><?php echo $c['anchor_checked_10']; ?>>
+            <label for="ctGenOrg"><?php echo $c['c_ct_f_card_form_div_label_text_6']; ?></label>
+            <input type="<?php echo $c['c_ct_f_card_form_div_input_type_3']; ?>" id="ctGenOrg" name="<?php echo $c['c_ct_f_card_form_div_input_name_3']; ?>" placeholder="<?php echo $c['c_ct_f_card_form_div_input_placeholder_3']; ?>" autocomplete="<?php echo $c['c_ct_f_card_form_div_input_autocomplete_3']; ?>"<?php echo $c['c_ct_f_card_form_div_input_required_3']; ?><?php echo $c['c_ct_f_card_form_div_input_disabled_3']; ?><?php echo $c['c_ct_f_card_form_div_input_readonly_3']; ?>>
           </div>
 
           <div class="ct-f-field">
-            <label for="ctGenType"><?php echo $c['label_text_15']; ?> <span class="ct-f-req" aria-hidden="true"><?php echo $c['text_text_12']; ?></span></label>
+            <label for="ctGenType"><?php echo $c['c_ct_f_card_form_div_label_text_7']; ?> <span class="ct-f-req" aria-hidden="true">*</span></label>
             <!-- These values must match the enquiry_type property options in
                  HubSpot exactly, or the enumeration rejects them. -->
-            <select id="ctGenType" name="<?php echo $c['select_name_6']; ?>"<?php echo $c['select_required_6']; ?><?php echo $c['select_disabled_6']; ?><?php echo $c['select_multiple_6']; ?>>
+            <select id="ctGenType" name="<?php echo $c['c_ct_f_card_form_div_select_name_3']; ?>"<?php echo $c['c_ct_f_card_form_div_select_required_3']; ?><?php echo $c['c_ct_f_card_form_div_select_disabled_3']; ?><?php echo $c['c_ct_f_card_form_div_select_multiple_3']; ?>>
               <?php $__i = 0; foreach ( $r['rep_option_6'] as $it ) : if ( $__i ++ ) { echo '
               '; } ?><option<?php echo $it['value']; ?><?php echo $it['disabled']; ?><?php echo $it['selected']; ?> class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['label']; ?></option><?php endforeach; echo "\n            "; ?></select>
           </div>
 
           <div class="ct-f-field ct-f-grow">
-            <label for="ctGenMessage"><?php echo $c['label_text_16']; ?></label>
-            <textarea id="ctGenMessage" name="<?php echo $c['anchor_name_12']; ?>" rows="<?php echo $c['anchor_rows_2']; ?>" placeholder="<?php echo $c['anchor_placeholder_10']; ?>"<?php echo $c['anchor_required_12']; ?><?php echo $c['anchor_disabled_12']; ?><?php echo $c['anchor_readonly_12']; ?>></textarea>
+            <label for="ctGenMessage"><?php echo $c['c_ct_f_field_ct_f_grow_label_text']; ?></label>
+            <textarea id="ctGenMessage" name="<?php echo $c['c_ct_f_field_ct_f_grow_textarea_name']; ?>" rows="<?php echo $c['c_ct_f_field_ct_f_grow_textarea_rows']; ?>" placeholder="<?php echo $c['c_ct_f_field_ct_f_grow_textarea_placeholder']; ?>"<?php echo $c['c_ct_f_field_ct_f_grow_textarea_required']; ?><?php echo $c['c_ct_f_field_ct_f_grow_textarea_disabled']; ?><?php echo $c['c_ct_f_field_ct_f_grow_textarea_readonly']; ?>></textarea>
           </div>
 
           <label class="ct-f-consent" for="ctGenConsent">
-            <input type="<?php echo $c['anchor_type_11']; ?>" id="ctGenConsent" name="<?php echo $c['anchor_name_13']; ?>"<?php echo $c['anchor_required_13']; ?><?php echo $c['anchor_disabled_13']; ?><?php echo $c['anchor_readonly_13']; ?><?php echo $c['anchor_checked_11']; ?>>
-            <span><?php echo $c['text_text_13']; ?> <a href="<?php echo $c['link_href_2']; ?>" target="<?php echo $c['link_target_2']; ?>" rel="<?php echo $c['link_rel_2']; ?>"><?php echo $c['link_text_2']; ?></a><?php echo $c['text_text_2_3']; ?> <span class="ct-f-flag"><?php echo $c['text_text_14']; ?></span></span>
+            <input type="<?php echo $c['c_ct_f_card_form_label_input_type_3']; ?>" id="ctGenConsent" name="<?php echo $c['c_ct_f_card_form_label_input_name_3']; ?>"<?php echo $c['c_ct_f_card_form_label_input_required_3']; ?><?php echo $c['c_ct_f_card_form_label_input_disabled_3']; ?><?php echo $c['c_ct_f_card_form_label_input_readonly_3']; ?><?php echo $c['c_ct_f_card_form_label_input_checked_3']; ?>>
+            <span><?php echo $c['c_ct_f_card_form_label_span_text_3']; ?> <a href="<?php echo $c['c_ct_f_card_form_label_span_a_href_2']; ?>" target="<?php echo $c['c_ct_f_card_form_label_span_a_target_2']; ?>" rel="<?php echo $c['c_ct_f_card_form_label_span_a_rel_2']; ?>"><?php echo $c['c_ct_f_card_form_label_span_a_text_2']; ?></a>. <span class="ct-f-flag"><?php echo $c['c_ct_f_card_form_label_span_span_text_3']; ?></span></span>
           </label>
 
-          <button type="<?php echo $c['button_type_2']; ?>" class="ct-f-btn is-secondary" id="ctGeneralBtn"<?php echo $c['button_disabled_2']; ?>><?php echo $c['button_text_2']; ?></button>
+          <button type="<?php echo $c['c_ct_f_card_form_button_type_2']; ?>" class="ct-f-btn is-secondary" id="ctGeneralBtn"<?php echo $c['c_ct_f_card_form_button_disabled_2']; ?>><?php echo $c['c_ct_f_card_form_button_text_2']; ?></button>
         </form>
       </div>
 

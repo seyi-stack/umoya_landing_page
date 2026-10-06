@@ -31,15 +31,15 @@ if ( ! defined( 'ABSPATH' ) ) {
     Travel Protection · Journey Lengths · Cuisine & Dietary Care
 =================================================================
 -->
-  <section id="fc-details" aria-label="<?php echo $c['section_aria_label']; ?>">
+  <section id="fc-details" aria-label="<?php echo $c['c_section_aria_label']; ?>">
     <div class="fc-det-wrap">
 
       <!-- Section header -->
       <div class="fc-det-hd fc-det-rev">
-        <span class="fc-det-eyebrow"><?php echo $c['eyebrow_text']; ?></span>
-        <h2 class="fc-det-title"><?php echo $c['title_text']; ?></h2>
+        <span class="fc-det-eyebrow"><?php echo $c['c_fc_det_eyebrow_text']; ?></span>
+        <h2 class="fc-det-title"><?php echo $c['c_fc_det_title_text']; ?></h2>
         <span class="fc-det-rule" aria-hidden="true"></span>
-        <p class="fc-det-lead"><?php echo $c['text_text']; ?></p>
+        <p class="fc-det-lead"><?php echo $c['c_fc_det_lead_text']; ?></p>
       </div>
 
       <!-- Accordion list -->

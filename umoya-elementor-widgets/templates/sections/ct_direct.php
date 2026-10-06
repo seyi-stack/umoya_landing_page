@@ -32,28 +32,28 @@ if ( ! defined( 'ABSPATH' ) ) {
   BRAND: font-family: inherit; palette tokens only. ES5 IIFE.
 =================================================================
 -->
-<section id="umoya-contact-direct" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="umoya-contact-direct" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="ct-dir-c">
     <div class="ct-dir-band ct-dir-rv">
 
       <p class="ct-dir-item">
-        <span class="ct-dir-lbl"><?php echo $c['label_text']; ?></span>
-        <a href="<?php echo $c['link_href']; ?>"><?php echo $c['link_text']; ?></a>
+        <span class="ct-dir-lbl"><?php echo $c['c_ct_dir_item_span_text']; ?></span>
+        <a href="<?php echo $c['c_ct_dir_item_a_href']; ?>"><?php echo $c['c_ct_dir_item_a_text']; ?></a>
       </p>
 
       <div class="ct-dir-sep" aria-hidden="true"></div>
 
       <p class="ct-dir-item">
-        <span class="ct-dir-lbl"><?php echo $c['label_text_2']; ?></span>
-        <a href="<?php echo $c['link_href_2']; ?>"><?php echo $c['link_text_2']; ?></a>
+        <span class="ct-dir-lbl"><?php echo $c['c_ct_dir_item_span_text_2']; ?></span>
+        <a href="<?php echo $c['c_ct_dir_item_a_href_2']; ?>"><?php echo $c['c_ct_dir_item_a_text_2']; ?></a>
       </p>
 
       <div class="ct-dir-sep" aria-hidden="true"></div>
 
       <p class="ct-dir-item">
-        <span class="ct-dir-lbl"><?php echo $c['label_text_3']; ?></span>
-        <?php echo $c['item_text']; ?><br>
-        <?php echo $c['item_text_2']; echo "\n      "; ?></p>
+        <span class="ct-dir-lbl"><?php echo $c['c_ct_dir_item_span_text_3']; ?></span>
+        <?php echo $c['c_ct_dir_item_text']; ?><br>
+        <?php echo $c['c_ct_dir_item_text_2']; echo "\n      "; ?></p>
 
     </div>
   </div>

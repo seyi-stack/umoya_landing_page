@@ -36,18 +36,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 =================================================================
 -->
 <!-- ── NAV BAR (fixed) ──────────────────────────────────────────── -->
-<nav id="sjNavBar" aria-label="<?php echo $c['section_aria_label']; ?>">
+<nav id="sjNavBar" aria-label="<?php echo $c['c_section_aria_label']; ?>">
 
   <div class="sj-nav-inner">
 
     <!-- Logo -->
-    <a class="sj-nav-logo" href="<?php echo $c['logo_href']; ?>" aria-label="<?php echo $c['logo_aria_label']; ?>">
+    <a class="sj-nav-logo" href="<?php echo $c['c_sj_nav_logo_href']; ?>" aria-label="<?php echo $c['c_sj_nav_logo_aria_label']; ?>">
       <img
-        src="<?php echo $c['image_src']; ?>"
-        alt="<?php echo $c['image_alt']; ?>"
+        src="<?php echo $c['c_img_src']; ?>"
+        alt="<?php echo $c['c_img_alt']; ?>"
         onerror="this.style.display='none';document.getElementById('sjNLT').style.display='inline';"
       />
-      <span class="sj-nav-logo-text" id="sjNLT" style="<?php echo $s['text_inline_style']; ?>"><?php echo $c['text_text']; ?></span>
+      <span class="sj-nav-logo-text" id="sjNLT" style="<?php echo $s['c_sj_nav_logo_text_inline_style']; ?>"><?php echo $c['c_sj_nav_logo_text_text']; ?></span>
     </a>
 
     <!-- Desktop section links -->
@@ -56,25 +56,25 @@ if ( ! defined( 'ABSPATH' ) ) {
       '; } ?><li class="sj-nav-item <?php echo $it['_uew_item_class']; ?>" data-s="<?php echo $it['data_s']; ?>"><a class="sj-nav-link" href="<?php echo $it['href']; ?>"><?php echo $it['link']; ?></a></li><?php endforeach; echo "\n    "; ?></ul>
 
     <!-- Desktop CTA -->
-    <a class="sj-nav-cta" href="<?php echo $c['button_href']; ?>"><?php echo $c['button_text']; ?></a>
+    <a class="sj-nav-cta" href="<?php echo $c['c_sj_nav_cta_href']; ?>"><?php echo $c['c_sj_nav_cta_text']; ?></a>
 
     <!-- Hamburger -->
     <button
       class="sj-nav-burger"
       id="sjNavBurger"
-      aria-label="<?php echo $c['button_aria_label']; ?>"
+      aria-label="<?php echo $c['c_sj_nav_burger_aria_label']; ?>"
       aria-expanded="false"
-      aria-controls="sjNavDropdown"<?php echo $c['button_disabled']; echo "\n    "; ?>>
+      aria-controls="sjNavDropdown"<?php echo $c['c_sj_nav_burger_disabled']; echo "\n    "; ?>>
       <span></span><span></span><span></span>
     </button>
 
     <!-- Mobile dropdown — inside the nav so it follows fixed position -->
-    <div class="sj-nav-dropdown" id="sjNavDropdown" role="menu" aria-label="<?php echo $c['container_aria_label']; ?>">
+    <div class="sj-nav-dropdown" id="sjNavDropdown" role="menu" aria-label="<?php echo $c['c_sj_nav_dropdown_aria_label']; ?>">
       <ul class="sj-nav-dropdown-list" role="list">
         <?php $__i = 0; foreach ( $r['rep_li_sj_nav_dropdown_item'] as $it ) : if ( $__i ++ ) { echo '
         '; } ?><li class="sj-nav-dropdown-item <?php echo $it['_uew_item_class']; ?>" data-s="<?php echo $it['data_s']; ?>"><a class="sj-nav-dropdown-link" href="<?php echo $it['href']; ?>" role="<?php echo $it['role']; ?>"><?php echo $it['dropdown_link']; ?></a></li><?php endforeach; echo "\n      "; ?></ul>
       <div class="sj-nav-dropdown-cta-row">
-        <a class="sj-nav-dropdown-cta" href="<?php echo $c['button_href_2']; ?>"><?php echo $c['button_text_2']; ?></a>
+        <a class="sj-nav-dropdown-cta" href="<?php echo $c['c_sj_nav_dropdown_cta_href']; ?>"><?php echo $c['c_sj_nav_dropdown_cta_text']; ?></a>
       </div>
     </div><!-- /.sj-nav-dropdown -->
 

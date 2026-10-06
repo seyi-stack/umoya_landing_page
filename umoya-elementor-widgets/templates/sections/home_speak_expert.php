@@ -26,12 +26,12 @@ if ( ! defined( 'ABSPATH' ) ) {
   the shared inquiry popup via data-umoya-form-popup.
 =================================================================
 -->
-<section id="umoya-speak-expert" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="umoya-speak-expert" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="umoya-spk-wrap umoya-spk-rv">
-    <span class="umoya-spk-eye"><?php echo $c['eyebrow_text']; ?></span>
-    <h2><?php echo $c['heading_text']; ?></h2>
-    <p class="umoya-spk-lead"><?php echo $c['text_text']; ?></p>
-    <button type="<?php echo $c['button_type']; ?>" class="umoya-spk-btn" data-umoya-form-popup<?php echo $c['button_disabled']; ?>><?php echo $c['button_text']; ?></button>
+    <span class="umoya-spk-eye"><?php echo $c['c_umoya_spk_eye_text']; ?></span>
+    <h2><?php echo $c['c_h2_text']; ?></h2>
+    <p class="umoya-spk-lead"><?php echo $c['c_umoya_spk_lead_text']; ?></p>
+    <button type="<?php echo $c['c_umoya_spk_btn_type']; ?>" class="umoya-spk-btn" data-umoya-form-popup<?php echo $c['c_umoya_spk_btn_disabled']; ?>><?php echo $c['c_umoya_spk_btn_text']; ?></button>
   </div>
 
 </section>

@@ -41,13 +41,13 @@ if ( ! defined( 'ABSPATH' ) ) {
   BRAND: font-family: inherit; palette tokens only.
 =================================================================
 -->
-<section id="ab-hosts" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="ab-hosts" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="ab-ho-c">
 
     <div class="ab-ho-head ab-ho-rv">
-      <span class="ab-ho-eye"><?php echo $c['eyebrow_text']; ?></span>
-      <h2 class="ab-ho-ttl"><?php echo $c['title_text']; ?></h2>
-      <p class="ab-ho-lead"><?php echo $c['text_text']; ?></p>
+      <span class="ab-ho-eye"><?php echo $c['c_ab_ho_eye_text']; ?></span>
+      <h2 class="ab-ho-ttl"><?php echo $c['c_ab_ho_ttl_text']; ?></h2>
+      <p class="ab-ho-lead"><?php echo $c['c_ab_ho_lead_text']; ?></p>
     </div>
 
     <div class="ab-ho-grid" role="list">

@@ -28,15 +28,15 @@ if ( ! defined( 'ABSPATH' ) ) {
     Drive images. Order: Image 1 → 2 → 3 → 4 from the brief.
 =================================================================
 -->
-<section id="fc-be-first" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="fc-be-first" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="fc-bf-wrap">
     <div class="fc-bf-grid">
 
       <!-- ── COPY ──────────────────────────────── -->
       <div class="fc-bf-reveal">
-        <span class="fc-bf-eyebrow"><?php echo $c['eyebrow_text']; ?></span>
+        <span class="fc-bf-eyebrow"><?php echo $c['c_fc_bf_eyebrow_text']; ?></span>
         <h2 class="fc-bf-title">
-          <?php echo $c['title_text']; echo "\n        "; ?></h2>
+          <?php echo $c['c_fc_bf_title_text']; echo "\n        "; ?></h2>
         <span class="fc-bf-rule" aria-hidden="true"></span>
 
         <div class="fc-bf-body">
@@ -44,17 +44,17 @@ if ( ! defined( 'ABSPATH' ) ) {
           '; } ?><p class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['p']; ?></p><?php endforeach; echo "\n        "; ?></div>
 
         <div class="fc-bf-pull">
-          <?php echo $c['text_text']; echo "\n        "; ?></div>
+          <?php echo $c['c_fc_bf_pull_text']; echo "\n        "; ?></div>
 
-        <a href="<?php echo $c['button_href']; ?>" class="fc-bf-btn"><?php echo $c['button_text']; ?></a>
+        <a href="<?php echo $c['c_fc_bf_btn_href']; ?>" class="fc-bf-btn"><?php echo $c['c_fc_bf_btn_text']; ?></a>
       </div>
 
       <!-- ── SLIDESHOW ──────────────────────────── -->
       <div
         class="fc-ss-outer fc-bf-reveal fc-d2"
         role="region"
-        aria-label="<?php echo $c['container_aria_label']; ?>"
-        aria-roledescription="<?php echo $c['container_aria_roledescription']; ?>"
+        aria-label="<?php echo $c['c_fc_bf_reveal_aria_label']; ?>"
+        aria-roledescription="<?php echo $c['c_fc_bf_reveal_aria_roledescription']; ?>"
       >
         <div class="fc-ss-track">
 
@@ -68,15 +68,15 @@ if ( ! defined( 'ABSPATH' ) ) {
           </div><?php endforeach; echo "\n        "; ?></div><!-- /.fc-ss-track -->
 
         <!-- Arrows -->
-        <button class="fc-ss-arrow fc-ss-prev" id="fc3Prev" aria-label="<?php echo $c['arrow_aria_label']; ?>"<?php echo $c['arrow_disabled']; ?>>
+        <button class="fc-ss-arrow fc-ss-prev" id="fc3Prev" aria-label="<?php echo $c['c_fc_ss_arrow_aria_label']; ?>"<?php echo $c['c_fc_ss_arrow_disabled']; ?>>
           <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
-        <button class="fc-ss-arrow fc-ss-next" id="fc3Next" aria-label="<?php echo $c['arrow_aria_label_2']; ?>"<?php echo $c['arrow_disabled_2']; ?>>
+        <button class="fc-ss-arrow fc-ss-next" id="fc3Next" aria-label="<?php echo $c['c_fc_ss_arrow_aria_label_2']; ?>"<?php echo $c['c_fc_ss_arrow_disabled_2']; ?>>
           <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
 
         <!-- Dots -->
-        <div class="fc-ss-dots" role="tablist" aria-label="<?php echo $c['dot_aria_label']; ?>">
+        <div class="fc-ss-dots" role="tablist" aria-label="<?php echo $c['c_fc_ss_dots_aria_label']; ?>">
           <?php $__i = 0; foreach ( $r['rep_div_fc_ss_slide'] as $it ) : if ( $__i ++ ) { echo '
           '; } ?><button class="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'fc-ss-dot fc-ss-on' : 'fc-ss-dot' ); ?> <?php echo $it['_uew_item_class']; ?>"<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? ' ' : '          ' ); ?>role="<?php echo $it['l2_role']; ?>" aria-selected="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'true' : 'false' ); ?>"<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? '  ' : ' ' ); ?>aria-label="<?php echo 'Slide ' . $it['_uew_n']; ?>" data-fci="<?php echo ( (int) $it['_uew_n'] + -1 ); ?>"></button><?php endforeach; echo "\n        "; ?></div>
 

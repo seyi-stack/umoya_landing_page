@@ -43,12 +43,10 @@ final class Section_Registry {
 			// Defaults so a widget never has to guard every lookup.
 			self::$schemas[ $key ] = array_merge(
 				array(
+					'regions'             => array(),
 					'content_panels'      => array(),
-					'integration_controls' => array(),
-					'form_controls'       => array(),
-					'behaviour_controls'  => array(),
-					'media_controls'      => array(),
-					'inline_style_controls' => array(),
+					'style_panels'        => array(),
+					'advanced_panels'     => array(),
 					'repeaters'           => array(),
 					'style_parts'         => array(),
 					'inline_styles'       => array(),

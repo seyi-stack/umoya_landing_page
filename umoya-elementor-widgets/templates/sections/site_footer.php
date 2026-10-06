@@ -76,38 +76,38 @@ if ( ! defined( 'ABSPATH' ) ) {
   #umoya-footer. ES5 IIFE. WCAG AA (44px targets, 16px input floor).
 =================================================================
 -->
-<footer id="umoya-footer" role="contentinfo" aria-label="<?php echo $c['section_aria_label']; ?>">
+<footer id="umoya-footer" role="contentinfo" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="umoya-ft-c">
     <div class="umoya-ft-main">
 
       <!-- ══════════ BRAND ══════════ -->
       <div class="umoya-ft-brand">
         <img
-          src="<?php echo $c['image_src']; ?>"
-          alt="<?php echo $c['image_alt']; ?>"
+          src="<?php echo $c['c_img_src']; ?>"
+          alt="<?php echo $c['c_img_alt']; ?>"
           width="1050"
           height="412"
-          loading="<?php echo $c['image_loading']; ?>"
+          loading="<?php echo $c['c_img_loading']; ?>"
         >
-        <p class="umoya-ft-descriptor"><?php echo $c['text_text']; ?></p>
+        <p class="umoya-ft-descriptor"><?php echo $c['c_umoya_ft_descriptor_text']; ?></p>
         <div class="umoya-ft-contact">
-          <a href="<?php echo $c['link_href']; ?>"><?php echo $c['link_text']; ?></a>
-          <address class="umoya-ft-addr" style="<?php echo $s['addr_inline_style']; ?>">
-            <?php echo $c['addr_text']; echo "\n          "; ?></address>
+          <a href="<?php echo $c['c_umoya_ft_contact_a_href']; ?>"><?php echo $c['c_umoya_ft_contact_a_text']; ?></a>
+          <address class="umoya-ft-addr" style="<?php echo $s['c_umoya_ft_addr_inline_style']; ?>">
+            <?php echo $c['c_umoya_ft_addr_text']; echo "\n          "; ?></address>
         </div>
       </div>
 
       <!-- ══════════ JOURNEYS ══════════ -->
-      <nav class="umoya-ft-col" aria-label="<?php echo $c['column_aria_label']; ?>">
-        <h3 class="umoya-ft-h"><?php echo $c['heading_text']; ?></h3>
+      <nav class="umoya-ft-col" aria-label="<?php echo $c['c_umoya_ft_col_aria_label']; ?>">
+        <h3 class="umoya-ft-h"><?php echo $c['c_umoya_ft_col_h3_text']; ?></h3>
         <ul>
           <?php $__i = 0; foreach ( $r['rep_li'] as $it ) : if ( $__i ++ ) { echo '
           '; } ?><li class="<?php echo $it['_uew_item_class']; ?>"><a href="<?php echo $it['href']; ?>"><?php echo $it['a']; ?></a></li><?php endforeach; echo "\n        "; ?></ul>
       </nav>
 
       <!-- ══════════ SUPPORT ══════════ -->
-      <nav class="umoya-ft-col" aria-label="<?php echo $c['column_aria_label_2']; ?>">
-        <h3 class="umoya-ft-h"><?php echo $c['heading_text_2']; ?></h3>
+      <nav class="umoya-ft-col" aria-label="<?php echo $c['c_umoya_ft_col_aria_label_2']; ?>">
+        <h3 class="umoya-ft-h"><?php echo $c['c_umoya_ft_col_h3_text_2']; ?></h3>
         <ul>
           <!-- ⚠ /travel-essentials/ does not exist yet — copy is in
                "Revised footer docs/Umoya_Travel_Essentials_Page_Copy.txt" -->
@@ -117,18 +117,18 @@ if ( ! defined( 'ABSPATH' ) ) {
       </nav>
 
       <!-- ══════════ LEGAL ══════════ -->
-      <nav class="umoya-ft-col" aria-label="<?php echo $c['column_aria_label_3']; ?>">
-        <h3 class="umoya-ft-h"><?php echo $c['heading_text_3']; ?></h3>
+      <nav class="umoya-ft-col" aria-label="<?php echo $c['c_umoya_ft_col_aria_label_3']; ?>">
+        <h3 class="umoya-ft-h"><?php echo $c['c_umoya_ft_col_h3_text_3']; ?></h3>
         <ul>
-          <li><a href="<?php echo $c['link_href_2']; ?>"><?php echo $c['link_text_2']; ?></a></li>
-          <li><a href="<?php echo $c['link_href_3']; ?>"><?php echo $c['link_text_3']; ?></a></li>
+          <li><a href="<?php echo $c['c_umoya_ft_col_ul_li_a_href']; ?>"><?php echo $c['c_umoya_ft_col_ul_li_a_text']; ?></a></li>
+          <li><a href="<?php echo $c['c_umoya_ft_col_ul_li_a_href_2']; ?>"><?php echo $c['c_umoya_ft_col_ul_li_a_text_2']; ?></a></li>
           <!--
             CookieYes binds its own click handler to .cky-banner-element and
             re-opens the preference centre, so this needs no href. A <button>
             rather than <a href="#"> so it never jumps the page to the top if
             CookieYes has not loaded.
           -->
-          <li><button type="<?php echo $c['button_type']; ?>" class="cky-banner-element" data-umoya-cookie-prefs<?php echo $c['button_disabled']; ?>><?php echo $c['button_text']; ?></button></li>
+          <li><button type="<?php echo $c['c_cky_banner_element_type']; ?>" class="cky-banner-element" data-umoya-cookie-prefs<?php echo $c['c_cky_banner_element_disabled']; ?>><?php echo $c['c_cky_banner_element_text']; ?></button></li>
           <!--
             EMAIL OPT-OUT opens the popup at the bottom of this widget
             rather than navigating to /email-preferences/. The standalone
@@ -145,7 +145,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             what the popup copy tells the reader to do. The script calls
             preventDefault() and opens the dialog instead.
           -->
-          <li><a href="<?php echo $c['link_href_4']; ?>" data-umoya-email-optout><?php echo $c['link_text_4']; ?></a></li>
+          <li><a href="<?php echo $c['c_umoya_ft_col_ul_li_a_href_3']; ?>" data-umoya-email-optout><?php echo $c['c_umoya_ft_col_ul_li_a_text_3']; ?></a></li>
           <!--
             umoya_paia_manual.pdf - underscores, umoya_ prefix. Uploaded and
             verified byte-identical to
@@ -162,44 +162,44 @@ if ( ! defined( 'ABSPATH' ) ) {
               /paia-manual.pdf         404  ghost listing only
             Nothing was deleted.
           -->
-          <li><a href="<?php echo $c['link_href_5']; ?>" target="<?php echo $c['link_target']; ?>" rel="<?php echo $c['link_rel']; ?>"><?php echo $c['link_text_5']; ?></a></li>
+          <li><a href="<?php echo $c['c_umoya_ft_col_ul_li_a_href_4']; ?>" target="<?php echo $c['c_umoya_ft_col_ul_li_a_target']; ?>" rel="<?php echo $c['c_umoya_ft_col_ul_li_a_rel']; ?>"><?php echo $c['c_umoya_ft_col_ul_li_a_text_4']; ?></a></li>
         </ul>
       </nav>
 
       <!-- ══════════ FOUNDER'S CIRCLE SIGNUP ══════════ -->
       <div class="umoya-ft-signup">
-        <h3 class="umoya-ft-h"><?php echo $c['heading_text_4']; ?></h3>
+        <h3 class="umoya-ft-h"><?php echo $c['c_umoya_ft_signup_umoya_ft_h_text']; ?></h3>
 
         <!-- Hidden target keeps a no-JS POST from navigating away -->
-        <iframe name="umoyaFooterFrame" title="<?php echo $c['embed_title']; ?>" aria-hidden="true" style="<?php echo $s['embed_inline_style']; ?>"<?php echo $c['embed_allowfullscreen']; ?>></iframe>
+        <iframe name="umoyaFooterFrame" title="<?php echo $c['c_umoya_ft_signup_title']; ?>" aria-hidden="true" style="<?php echo $s['c_umoya_ft_signup_inline_style']; ?>"<?php echo $c['c_umoya_ft_signup_allowfullscreen']; ?>></iframe>
 
         <form
-          data-hs-do-not-collect="<?php echo $c['form_data_hs_do_not_collect']; ?>"
+          data-hs-do-not-collect="<?php echo $c['c_form_data_hs_do_not_collect']; ?>"
           id="umoyaFooterForm"
-          action="<?php echo $c['form_action']; ?>"
-          method="<?php echo $c['form_method']; ?>"
-          target="<?php echo $c['form_target']; ?>"<?php echo $c['form_novalidate']; echo "\n          "; ?>aria-label="<?php echo $c['form_aria_label']; ?>"
-          data-hubspot-portal-id="<?php echo $c['form_data_hubspot_portal_id']; ?>"
-          data-hubspot-form-id="<?php echo $c['form_data_hubspot_form_id']; ?>"
-          data-umoya-form-source="<?php echo $c['form_data_umoya_form_source']; ?>"
-          data-wordpress-backup-endpoint="<?php echo $c['form_data_wordpress_backup_endpoint']; ?>"
-          data-hubspot-consent-text="<?php echo $c['form_data_hubspot_consent_text']; ?>"
+          action="<?php echo $c['c_form_action']; ?>"
+          method="<?php echo $c['c_form_method']; ?>"
+          target="<?php echo $c['c_form_target']; ?>"<?php echo $c['c_form_novalidate']; echo "\n          "; ?>aria-label="<?php echo $c['c_form_aria_label']; ?>"
+          data-hubspot-portal-id="<?php echo $c['c_form_data_hubspot_portal_id']; ?>"
+          data-hubspot-form-id="<?php echo $c['c_form_data_hubspot_form_id']; ?>"
+          data-umoya-form-source="<?php echo $c['c_form_data_umoya_form_source']; ?>"
+          data-wordpress-backup-endpoint="<?php echo $c['c_form_data_wordpress_backup_endpoint']; ?>"
+          data-hubspot-consent-text="<?php echo $c['c_form_data_hubspot_consent_text']; ?>"
         >
-          <input type="<?php echo $c['field_type']; ?>" name="<?php echo $c['field_name']; ?>" value="<?php echo $c['field_value']; ?>"<?php echo $c['field_required']; ?><?php echo $c['field_disabled']; ?><?php echo $c['field_readonly']; ?><?php echo $c['field_checked']; ?>>
-          <input type="<?php echo $c['field_type_2']; ?>" name="<?php echo $c['field_name_2']; ?>" value="<?php echo $c['field_value_2']; ?>"<?php echo $c['field_required_2']; ?><?php echo $c['field_disabled_2']; ?><?php echo $c['field_readonly_2']; ?><?php echo $c['field_checked_2']; ?>>
-          <input type="<?php echo $c['field_type_3']; ?>" name="<?php echo $c['field_name_3']; ?>" value="<?php echo $c['field_value_3']; ?>"<?php echo $c['field_required_3']; ?><?php echo $c['field_disabled_3']; ?><?php echo $c['field_readonly_3']; ?><?php echo $c['field_checked_3']; ?>>
-          <input type="<?php echo $c['field_type_4']; ?>" name="<?php echo $c['field_name_4']; ?>" value="<?php echo $c['field_value_4']; ?>"<?php echo $c['field_required_4']; ?><?php echo $c['field_disabled_4']; ?><?php echo $c['field_readonly_4']; ?><?php echo $c['field_checked_4']; ?>>
-          <input type="<?php echo $c['field_type_5']; ?>" name="<?php echo $c['field_name_5']; ?>" value="<?php echo $c['field_value_5']; ?>"<?php echo $c['field_required_5']; ?><?php echo $c['field_disabled_5']; ?><?php echo $c['field_readonly_5']; ?><?php echo $c['field_checked_5']; ?>>
-          <input type="<?php echo $c['field_type_6']; ?>" name="<?php echo $c['field_name_6']; ?>" value="<?php echo $c['field_value_6']; ?>"<?php echo $c['field_required_6']; ?><?php echo $c['field_disabled_6']; ?><?php echo $c['field_readonly_6']; ?><?php echo $c['field_checked_6']; ?>>
-          <input type="<?php echo $c['field_type_7']; ?>" name="<?php echo $c['field_name_7']; ?>" value="<?php echo $c['field_value_7']; ?>"<?php echo $c['field_required_7']; ?><?php echo $c['field_disabled_7']; ?><?php echo $c['field_readonly_7']; ?><?php echo $c['field_checked_7']; ?>>
+          <input type="<?php echo $c['c_form_type']; ?>" name="<?php echo $c['c_form_name']; ?>" value="<?php echo $c['c_form_value']; ?>">
+          <input type="<?php echo $c['c_form_type_2']; ?>" name="<?php echo $c['c_form_name_2']; ?>" value="<?php echo $c['c_form_value_2']; ?>">
+          <input type="<?php echo $c['c_form_type_3']; ?>" name="<?php echo $c['c_form_name_3']; ?>" value="<?php echo $c['c_form_value_3']; ?>">
+          <input type="<?php echo $c['c_form_type_4']; ?>" name="<?php echo $c['c_form_name_4']; ?>" value="<?php echo $c['c_form_value_4']; ?>">
+          <input type="<?php echo $c['c_form_type_5']; ?>" name="<?php echo $c['c_form_name_5']; ?>" value="<?php echo $c['c_form_value_5']; ?>">
+          <input type="<?php echo $c['c_form_type_6']; ?>" name="<?php echo $c['c_form_name_6']; ?>" value="<?php echo $c['c_form_value_6']; ?>">
+          <input type="<?php echo $c['c_form_type_7']; ?>" name="<?php echo $c['c_form_name_7']; ?>" value="<?php echo $c['c_form_value_7']; ?>">
 
-          <label class="umoya-ft-sr" for="umoyaFtName"><?php echo $c['label_text']; ?></label>
-          <input id="umoyaFtName" name="<?php echo $c['anchor_name']; ?>" type="<?php echo $c['anchor_type']; ?>" placeholder="<?php echo $c['anchor_placeholder']; ?>" autocomplete="<?php echo $c['anchor_autocomplete']; ?>"<?php echo $c['anchor_required']; ?><?php echo $c['anchor_disabled']; ?><?php echo $c['anchor_readonly']; ?><?php echo $c['anchor_checked']; ?>>
+          <label class="umoya-ft-sr" for="umoyaFtName"><?php echo $c['c_form_text']; ?></label>
+          <input id="umoyaFtName" name="<?php echo $c['c_input_name']; ?>" type="<?php echo $c['c_input_type']; ?>" placeholder="<?php echo $c['c_input_placeholder']; ?>" autocomplete="<?php echo $c['c_input_autocomplete']; ?>"<?php echo $c['c_input_required']; ?><?php echo $c['c_input_disabled']; ?><?php echo $c['c_input_readonly']; ?>>
 
-          <label class="umoya-ft-sr" for="umoyaFtEmail"><?php echo $c['label_text_2']; ?></label>
-          <input id="umoyaFtEmail" name="<?php echo $c['anchor_name_2']; ?>" type="<?php echo $c['anchor_type_2']; ?>" placeholder="<?php echo $c['anchor_placeholder_2']; ?>"<?php echo $c['anchor_required_2']; ?> autocomplete="<?php echo $c['anchor_autocomplete_2']; ?>"<?php echo $c['anchor_disabled_2']; ?><?php echo $c['anchor_readonly_2']; ?><?php echo $c['anchor_checked_2']; ?>>
+          <label class="umoya-ft-sr" for="umoyaFtEmail"><?php echo $c['c_form_text_2']; ?></label>
+          <input id="umoyaFtEmail" name="<?php echo $c['c_input_name_2']; ?>" type="<?php echo $c['c_input_type_2']; ?>" placeholder="<?php echo $c['c_input_placeholder_2']; ?>"<?php echo $c['c_input_required_2']; ?> autocomplete="<?php echo $c['c_input_autocomplete_2']; ?>"<?php echo $c['c_input_disabled_2']; ?><?php echo $c['c_input_readonly_2']; ?>>
 
-          <button type="<?php echo $c['button_type_2']; ?>" class="umoya-ft-submit" id="umoyaFtSubmit"<?php echo $c['button_disabled_2']; ?>><?php echo $c['button_text_2']; ?></button>
+          <button type="<?php echo $c['c_umoya_ft_submit_type']; ?>" class="umoya-ft-submit" id="umoyaFtSubmit"<?php echo $c['c_umoya_ft_submit_disabled']; ?>><?php echo $c['c_umoya_ft_submit_text']; ?></button>
           <p class="umoya-ft-status" role="status" aria-live="polite"></p>
         </form>
 
@@ -209,7 +209,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           wording is sent as consentText with every submission, so the POPIA
           consent register records exactly what was agreed to.
         -->
-        <p class="umoya-ft-fine"><?php echo $c['text_text_2']; ?> <a href="<?php echo $c['link_href_6']; ?>" target="<?php echo $c['link_target_2']; ?>" rel="<?php echo $c['link_rel_2']; ?>"><?php echo $c['link_text_6']; ?></a><?php echo $c['text_text_2_2']; ?></p>
+        <p class="umoya-ft-fine"><?php echo $c['c_umoya_ft_fine_text']; ?> <a href="<?php echo $c['c_umoya_ft_fine_a_href']; ?>" target="<?php echo $c['c_umoya_ft_fine_a_target']; ?>" rel="<?php echo $c['c_umoya_ft_fine_a_rel']; ?>"><?php echo $c['c_umoya_ft_fine_a_text']; ?></a>.</p>
       </div>
 
     </div>
@@ -218,8 +218,8 @@ if ( ! defined( 'ABSPATH' ) ) {
   <!-- ══════════ BOTTOM BAR ══════════ -->
   <div class="umoya-ft-bottom">
     <div class="umoya-ft-bottom-inner">
-      <p class="umoya-ft-legalline"><?php echo $c['text_text_3']; ?> <span data-umoya-year><?php echo $c['text_text_4']; ?></span> <?php echo $c['text_text_2_3']; ?></p>
-      <p class="umoya-ft-tag"><?php echo $c['label_text_3']; ?></p>
+      <p class="umoya-ft-legalline"><?php echo $c['c_umoya_ft_legalline_text']; ?> <span data-umoya-year><?php echo $c['c_span_text']; ?></span> <?php echo $c['c_umoya_ft_legalline_text_2']; ?></p>
+      <p class="umoya-ft-tag"><?php echo $c['c_umoya_ft_tag_text']; ?></p>
       <div class="umoya-ft-social">
         <!-- Only accounts confirmed to exist on the live site are linked.
              The mockup also shows YouTube; no channel URL has been supplied,
@@ -232,16 +232,16 @@ if ( ! defined( 'ABSPATH' ) ) {
              official mark (Simple Icons), whose counters are wound to cut out
              correctly. Still a single filled path using currentColor, so it
              needs no CSS change and matches the weight of the other three. -->
-        <a href="<?php echo $c['link_href_7']; ?>" target="<?php echo $c['link_target_3']; ?>" rel="<?php echo $c['link_rel_3']; ?>" aria-label="<?php echo $c['link_aria_label']; ?>">
+        <a href="<?php echo $c['c_umoya_ft_social_a_href']; ?>" target="<?php echo $c['c_umoya_ft_social_a_target']; ?>" rel="<?php echo $c['c_umoya_ft_social_a_rel']; ?>" aria-label="<?php echo $c['c_umoya_ft_social_a_aria_label']; ?>">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
         </a>
-        <a href="<?php echo $c['link_href_8']; ?>" target="<?php echo $c['link_target_4']; ?>" rel="<?php echo $c['link_rel_4']; ?>" aria-label="<?php echo $c['link_aria_label_2']; ?>">
+        <a href="<?php echo $c['c_umoya_ft_social_a_href_2']; ?>" target="<?php echo $c['c_umoya_ft_social_a_target_2']; ?>" rel="<?php echo $c['c_umoya_ft_social_a_rel_2']; ?>" aria-label="<?php echo $c['c_umoya_ft_social_a_aria_label_2']; ?>">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.7-1.6h1.6V3.2c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.6H7.6V13h2.8v8h3.1z"/></svg>
         </a>
-        <a href="<?php echo $c['link_href_9']; ?>" target="<?php echo $c['link_target_5']; ?>" rel="<?php echo $c['link_rel_5']; ?>" aria-label="<?php echo $c['link_aria_label_3']; ?>">
+        <a href="<?php echo $c['c_umoya_ft_social_a_href_3']; ?>" target="<?php echo $c['c_umoya_ft_social_a_target_3']; ?>" rel="<?php echo $c['c_umoya_ft_social_a_rel_3']; ?>" aria-label="<?php echo $c['c_umoya_ft_social_a_aria_label_3']; ?>">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.8 5.6c-.9-.6-1.5-1.6-1.7-2.6h-3v12.3a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.6V9.4c1 .7 2.3 1.2 3.6 1.2V7.5c-.7 0-1.4-.2-2-.6-.4-.2-.7-.5-1-.8z"/></svg>
         </a>
-        <a href="<?php echo $c['link_href_10']; ?>" target="<?php echo $c['link_target_6']; ?>" rel="<?php echo $c['link_rel_6']; ?>" aria-label="<?php echo $c['link_aria_label_4']; ?>">
+        <a href="<?php echo $c['c_umoya_ft_social_a_href_4']; ?>" target="<?php echo $c['c_umoya_ft_social_a_target_4']; ?>" rel="<?php echo $c['c_umoya_ft_social_a_rel_4']; ?>" aria-label="<?php echo $c['c_umoya_ft_social_a_aria_label_4']; ?>">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm6 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9V9z"/></svg>
         </a>
         <!-- YouTube — enable once the channel URL is confirmed:
@@ -314,17 +314,17 @@ if ( ! defined( 'ABSPATH' ) ) {
   <div class="umoya-ep-dialog" role="dialog" aria-modal="true"
        aria-labelledby="umoya-ep-title" aria-describedby="umoya-ep-body">
 
-    <button type="<?php echo $c['button_type_3']; ?>" class="umoya-ep-close" data-umoya-ep-close aria-label="<?php echo $c['button_aria_label']; ?>"<?php echo $c['button_disabled_3']; ?>>
+    <button type="<?php echo $c['c_umoya_email_optout_umoya_ep_close_type']; ?>" class="umoya-ep-close" data-umoya-ep-close aria-label="<?php echo $c['c_umoya_email_optout_umoya_ep_close_aria_label']; ?>"<?php echo $c['c_umoya_email_optout_umoya_ep_close_disabled']; ?>>
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
 
-    <span class="umoya-ep-eye"><?php echo $c['eyebrow_text']; ?></span>
-    <h2 class="umoya-ep-ttl" id="umoya-ep-title"><?php echo $c['title_text']; ?></h2>
+    <span class="umoya-ep-eye"><?php echo $c['c_umoya_email_optout_umoya_ep_eye_text']; ?></span>
+    <h2 class="umoya-ep-ttl" id="umoya-ep-title"><?php echo $c['c_umoya_email_optout_umoya_ep_ttl_text']; ?></h2>
     <hr class="umoya-ep-rule">
 
     <!-- Copy verbatim from the routing doc — identical to
          shared/page-email-preferences.html. -->
-    <p class="umoya-ep-body" id="umoya-ep-body"><?php echo $c['content_text']; ?> <a href="<?php echo $c['link_href_11']; ?>"><?php echo $c['link_text_7']; ?></a> <?php echo $c['content_text_2']; ?> <strong><?php echo $c['strong_text']; ?></strong> <?php echo $c['content_text_3']; ?></p>
+    <p class="umoya-ep-body" id="umoya-ep-body"><?php echo $c['c_umoya_email_optout_umoya_ep_body_text']; ?> <a href="<?php echo $c['c_umoya_email_optout_a_href']; ?>"><?php echo $c['c_umoya_email_optout_a_text']; ?></a> <?php echo $c['c_umoya_email_optout_umoya_ep_body_text_2']; ?> <strong><?php echo $c['c_umoya_email_optout_strong_text']; ?></strong> <?php echo $c['c_umoya_email_optout_umoya_ep_body_text_3']; ?></p>
 
     <!--
       ENABLE ONCE THE HUBSPOT SUBSCRIPTION-PREFERENCES URL IS KNOWN.

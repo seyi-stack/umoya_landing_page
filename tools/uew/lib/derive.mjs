@@ -35,9 +35,38 @@ const VOID_TAGS = new Set( [ 'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 
  * can do nothing -- the browser never renders it -- so they get none, and their
  * content controls (a video source URL) file under the element that holds them.
  */
-const NON_RENDERED_TAGS = new Set( [ 'source', 'track', 'param', 'br', 'wbr', 'template', 'meta', 'link', 'base', 'noscript' ] );
+/**
+ * Elements no visitor ever sees: hidden inputs (the HubSpot cookie, the split
+ * first and last name), dropdown options (the browser draws those), and the
+ * hidden frame a form posts into. Style panels for them were noise -- the
+ * contact form alone had eight for hidden inputs.
+ */
+function isInvisible( node ) {
+	const tag = node.tagName.toLowerCase();
+	if ( 'input' === tag && 'hidden' === ( attr( node, 'type' ) || '' ).toLowerCase() ) return true;
+	if ( 'option' === tag || 'optgroup' === tag ) return true;
+	if ( 'iframe' === tag && /display\s*:\s*none/i.test( attr( node, 'style' ) || '' ) ) return true;
+	return isScreenReaderOnly( node );
+}
 
-const TEXT_TAGS = new Set( [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'li', 'label', 'legend', 'figcaption', 'blockquote', 'cite', 'dt', 'dd', 'strong', 'em', 'small', 'summary', 'th', 'td', 'a', 'button' ] );
+/**
+ * Text only screen readers get: the visually-hidden pattern (`.umoya-ft-sr`,
+ * `.ct-f-sr`, `.sr-only`) that labels a field whose placeholder does the job
+ * on screen. Styling it would change nothing anyone sees, and its wording is
+ * an accessibility setting, not page copy.
+ */
+function isScreenReaderOnly( node ) {
+	return classList( node ).some( ( cls ) => /(^|-)(sr|sr-only|visually-hidden|screen-reader-text)$/.test( cls ) );
+}
+
+/**
+ * Text that is only punctuation -- a required-field asterisk, the full stop
+ * left over after a link -- is not copy anyone would rewrite. It stays in the
+ * markup as written; it just gets no control of its own.
+ */
+const SYMBOL_ONLY = /^[\s*•·|/—–:;+.,!?-]+$/;
+
+const NON_RENDERED_TAGS = new Set( [ 'source', 'track', 'param', 'br', 'wbr', 'template', 'meta', 'link', 'base', 'noscript' ] );
 
 /** Attributes that are structural: editing them breaks the section's own CSS/JS. */
 const LOCKED_ATTRS = new Set( [ 'id', 'class', 'style', 'for', 'aria-controls', 'aria-labelledby', 'aria-describedby', 'role', 'aria-hidden', 'tabindex', 'data-slide', 'data-index', 'viewbox', 'xmlns', 'fill', 'stroke', 'stroke-width', 'stroke-linecap', 'stroke-linejoin', 'd', 'points', 'x1', 'x2', 'y1', 'y2', 'cx', 'cy', 'r', 'x', 'y', 'width', 'height', 'preserveaspectratio', 'fill-rule', 'clip-rule' ] );
@@ -136,7 +165,7 @@ const FLAGS_BY_TAG = {
 		{ attr: 'required', label: 'Required', tab: 'form' },
 		{ attr: 'disabled', label: 'Disabled', tab: 'form' },
 		{ attr: 'readonly', label: 'Read Only', tab: 'form' },
-		{ attr: 'checked', label: 'Checked By Default', tab: 'form' },
+		{ attr: 'checked', label: 'Checked By Default', tab: 'form', types: [ 'checkbox', 'radio' ] },
 	],
 	select: [
 		{ attr: 'required', label: 'Required', tab: 'form' },
@@ -258,6 +287,15 @@ const ROLE_BY_KEYWORD = [
 	[ /(^|-)(title|ttl|heading|headline)$/, 'Title' ],
 	[ /(^|-)(subtitle|sub|standfirst|deck)$/, 'Subtitle' ],
 	[ /(^|-)(lead|intro|body|copy|text|txt|desc|description|p)$/, 'Text' ],
+	[ /(^|-)(req|required)$/, 'Required Marker' ],
+	[ /(^|-)(grouplabel|group-label)$/, 'Group Label' ],
+	[ /(^|-)(flag|note)$/, 'Note' ],
+	[ /(^|-)(close|dismiss)$/, 'Close Button' ],
+	[ /(^|-)(status|feedback)$/, 'Status Message' ],
+	[ /(^|-)(addr|address)$/, 'Address' ],
+	[ /(^|-)(fine|fineprint|smallprint|legal)$/, 'Fine Print' ],
+	[ /(^|-)(social|socials)$/, 'Social Links' ],
+	[ /(^|-)(tagline|slogan|strapline)$/, 'Tagline' ],
 	[ /(^|-)(btn|button|cta)$/, 'Button' ],
 	[ /(^|-)(link|anchor)$/, 'Link' ],
 	[ /(^|-)(img|image|pic|picture|photo)$/, 'Image' ],
@@ -269,7 +307,8 @@ const ROLE_BY_KEYWORD = [
 	[ /(^|-)(card|tile|panel)$/, 'Card' ],
 	[ /(^|-)(step)$/, 'Step' ],
 	[ /(^|-)(offer|ofr)$/, 'Offer' ],
-	[ /(^|-)(item|entry|row)$/, 'Item' ],
+	[ /(^|-)(item|entry)$/, 'Item' ],
+	[ /(^|-)(row)$/, 'Row' ],
 	[ /(^|-)(list|items|grid|stack)$/, 'List' ],
 	[ /(^|-)(nav|menu)$/, 'Navigation' ],
 	[ /(^|-)(header|head|hd|hdr|top|masthead)$/, 'Header' ],
@@ -283,7 +322,7 @@ const ROLE_BY_KEYWORD = [
 	[ /(^|-)(arw|arrow|prev|next)$/, 'Arrow' ],
 	[ /(^|-)(field|input)$/, 'Field' ],
 	[ /(^|-)(form)$/, 'Form' ],
-	[ /(^|-)(consent|legal|fineprint)$/, 'Consent' ],
+	[ /(^|-)(consent)$/, 'Consent' ],
 	[ /(^|-)(scroll|cue)$/, 'Scroll Cue' ],
 	[ /(^|-)(accordion|acc|toggle|tgl)$/, 'Accordion' ],
 	[ /(^|-)(brand|logo)$/, 'Logo' ],
@@ -293,20 +332,70 @@ const ROLE_BY_KEYWORD = [
 
 const ROLE_BY_TAG = {
 	h1: 'Heading', h2: 'Heading', h3: 'Heading', h4: 'Heading', h5: 'Heading', h6: 'Heading',
-	p: 'Text', span: 'Text', em: 'Emphasis', strong: 'Strong', small: 'Small Print',
+	p: 'Text', span: 'Text', em: 'Italic Text', strong: 'Bold Text', small: 'Small Print', address: 'Address',
 	a: 'Link', button: 'Button',
 	img: 'Image', video: 'Video', source: 'Video Source', iframe: 'Embed', svg: 'Icon',
 	ul: 'List', ol: 'List', li: 'Item', dl: 'List', dt: 'Term', dd: 'Definition',
-	form: 'Form', label: 'Label', input: 'Field', select: 'Select', textarea: 'Message',
+	form: 'Form', label: 'Label', input: 'Field', select: 'Dropdown', textarea: 'Message',
 	fieldset: 'Field Group', legend: 'Legend',
 	nav: 'Navigation', header: 'Header', footer: 'Footer', main: 'Content',
 	article: 'Card', aside: 'Aside', figure: 'Figure', figcaption: 'Caption',
 	blockquote: 'Quote', section: 'Section', div: 'Container',
 };
 
+/**
+ * What a text box shows for words written with an entity. "Terms &amp;
+ * Conditions" reads as code to the person editing it, so `&amp;` is shown as
+ * the `&` it means. Only that one: every path that prints these fields --
+ * kses, esc_attr, esc_html -- writes a bare `&` back out as `&amp;`, so the
+ * page stays byte for byte what it was. Never where it starts something that
+ * looks like an entity, which would then be read as one, and never in raw
+ * markup, which is printed as it stands.
+ */
+const READABLE_ESCAPES = new Set( [ 'post', 'attr', 'html' ] );
+export function readableText( value, control, esc ) {
+	if ( 'string' !== typeof value || ! [ 'text', 'textarea' ].includes( control ) || ! READABLE_ESCAPES.has( esc ) ) return value;
+	return value.replace( /&amp;(?![a-zA-Z][a-zA-Z0-9]*;|#[0-9]+;|#x[0-9a-fA-F]+;)/g, '&' );
+}
+
+/** Where an icon link goes, by the name a person would say. */
+const LINK_DESTINATIONS = [
+	[ /instagram\.com/i, 'Instagram' ],
+	[ /facebook\.com|fb\.com/i, 'Facebook' ],
+	[ /tiktok\.com/i, 'TikTok' ],
+	[ /linkedin\.com/i, 'LinkedIn' ],
+	[ /youtube\.com|youtu\.be/i, 'YouTube' ],
+	[ /(twitter|x)\.com/i, 'X' ],
+	[ /pinterest\./i, 'Pinterest' ],
+	[ /wa\.me|whatsapp\./i, 'WhatsApp' ],
+];
+
+/**
+ * What a link or button would be called by someone looking at it: its words,
+ * or for an icon-only link, where it goes. Empty when neither says anything.
+ */
+function actionName( node ) {
+	const href = attr( node, 'href' ) || '';
+	const destination = LINK_DESTINATIONS.find( ( [ pattern ] ) => pattern.test( href ) );
+	if ( destination ) return destination[ 1 ];
+	const words = innerText( node ).replace( /\s+/g, ' ' ).trim();
+	if ( ! words ) return '';
+	return words.length <= 28 ? words : words.slice( 0, 26 ).replace( /\s+\S*$/, '' ) + '…';
+}
+
+/** Tags an empty, id-carrying scroll target is made of. */
+const ANCHOR_TAGS = new Set( [ 'span', 'div', 'a', 'section', 'b', 'i' ] );
+
 /** The Elementor-style name for an element. */
 export function semanticName( node, prefixes ) {
 	const tag = node.tagName.toLowerCase();
+
+	// A tick box is a tick box, whatever its class says.
+	if ( 'input' === tag ) {
+		const type = ( attr( node, 'type' ) || '' ).toLowerCase();
+		if ( 'checkbox' === type ) return 'Checkbox';
+		if ( 'radio' === type ) return 'Radio Button';
+	}
 
 	const textual = isTextual( node, { allowLinks: true } );
 
@@ -323,14 +412,17 @@ export function semanticName( node, prefixes ) {
 			// A `-txt` wrapper that holds an eyebrow and a title is the content
 			// region, not a piece of text. Calling it Text makes every child read
 			// as "Text Eyebrow", "Text Title".
-			if ( 'Text' === role && ! textual ) return 'Content';
+			if ( 'Text' === role && ! textual ) return 'p' === tag ? 'Text' : 'Content';
+			// The box around a label and its input is not the input.
+			if ( 'Field' === role && ! [ 'input', 'select', 'textarea' ].includes( tag ) ) return 'Field Wrapper';
 			return role;
 		}
 	}
 
 	// An element with an id, no content and no children exists to be scrolled
 	// to. Calling it "Text" describes neither what it is nor what it does.
-	if ( attr( node, 'id' ) && ! elementChildren( node ).length && ! innerText( node ).trim() ) {
+	// A form field or a photo is empty in the same way and is neither.
+	if ( ANCHOR_TAGS.has( tag ) && attr( node, 'id' ) && ! elementChildren( node ).length && ! innerText( node ).trim() ) {
 		return 'Anchor';
 	}
 
@@ -379,6 +471,7 @@ const ATTRIBUTE_LABELS = {
 	srcset: 'Source Set',
 	sizes: 'Sizes',
 	allow: 'Permissions',
+	referrerpolicy: 'Referrer Policy',
 	'data-short': 'Short Label (phones)',
 	// The in-page navs (FC, SJ) light up the item whose section is on screen;
 	// this holds that section's id, and must match the item's #link.
@@ -475,11 +568,23 @@ function buildSelector( doc, node, rootNode ) {
 		}
 	}
 
-	// Last resort: positional.
 	const parentNode = parentEntry ? parentEntry.node : rootNode;
+	const base = parentNode === rootNode ? '' : buildSelector( doc, parentNode, rootNode ).selector + ' > ';
+
+	// The element's KIND: the same path with every position dropped -- every
+	// label in every field of the form, every paragraph of every policy
+	// section. Styled together, as Elementor's own Form widget styles "Labels"
+	// rather than the third label. Picking each one out by position gave the
+	// contact form 60 style panels nobody would open one by one.
+	const kind = base.replace( /:nth-of-type\(\d+\)/g, '' ) + tag;
+	const kin = doc.queryAll( scope( kind ) );
+	if ( kin.length > 1 && kin.includes( node ) && kin.every( ( other ) => other.tagName === node.tagName ) ) {
+		return { selector: kind, shared: true, matched: kin };
+	}
+
+	// Last resort: positional.
 	const sameTag = elementChildren( parentNode ).filter( ( c ) => c.tagName === node.tagName );
 	const nth = sameTag.indexOf( node ) + 1;
-	const base = parentNode === rootNode ? '' : buildSelector( doc, parentNode, rootNode ).selector + ' > ';
 	const selector = base + tag + ':nth-of-type(' + nth + ')';
 	return { selector, shared: false, matched: doc.queryAll( scope( selector ) ) };
 }
@@ -503,35 +608,76 @@ function isHomogeneousRun( doc, nodes ) {
 
 /* ------------------------------------------------------------ style features */
 
+/** Text that forms its own block, so it can be aligned and spaced. */
+const TEXT_BLOCK_TAGS = new Set( [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'blockquote', 'figcaption', 'legend', 'summary', 'dt', 'dd', 'th', 'td' ] );
+
+/** Text that runs inside a line. */
+const INLINE_TEXT_TAGS = new Set( [ 'span', 'strong', 'em', 'b', 'i', 'small', 'cite', 'sup', 'sub', 'mark', 'time', 'abbr', 'q' ] );
+
 /**
- * Which style panels an element gets. Deliberately generous -- the brief is
- * "all properties of every element fully exposed" -- but tuned per element type
- * so a `<path>` does not get padding controls and a heading does not get
- * object-fit.
+ * Which style settings an element gets: the ones that matter for its KIND, the
+ * way Elementor's own widgets choose -- a Heading has colour and type, an Image
+ * has fit and filters, a Button has colours with a hover state.
+ *
+ * Every element used to get everything: background with gradient and image,
+ * border, shadow, sizing, position, z-index, flex-item rules, text shadow and
+ * stroke -- about 130 controls each, most of which no one would reach for on a
+ * paragraph. Elementor draws every control in a panel when it opens, hidden or
+ * not, so a block of ten elements took two seconds to open, and each pop-out
+ * was a scroll. Anything not offered here is one line in the Advanced tab's
+ * Custom CSS.
+ *
+ *   text         colour, font, size, weight, line height, spacing, case, italic
+ *   align        text alignment              (a block of text)
+ *   fill         background colour           (a box)
+ *   border       border and corner radius    (a box)
+ *   radius       corner radius alone         (a photo)
+ *   shadow       box shadow
+ *   padding      inner spacing
+ *   margin       outer spacing
+ *   measure      max width
+ *   min_height   minimum height              (the section itself)
+ *   flex_container / grid_container   layout of the children
+ *   media_fit    fit, position, height, aspect ratio
+ *   filters      brightness, contrast, saturation
+ *   svg          stroke, fill, line weight, size
+ *   states       hover colours               (links, buttons)
+ *   focus        focus border colour         (form fields)
+ *   tick         tick colour and box size    (checkboxes, radio buttons)
+ *   placeholder_color
+ *   effects      opacity
+ *   visibility   hide per device
  */
 function featuresFor( node, layoutMode, isRoot ) {
 	const tag = node.tagName.toLowerCase();
-	const base = [ 'spacing', 'sizing', 'background', 'border', 'shadow', 'effects', 'position', 'visibility' ];
+	const layout = 'flex' === layoutMode ? [ 'flex_container' ] : 'grid' === layoutMode ? [ 'grid_container' ] : [];
+	const ownText = children( node ).some( ( child ) => isTextNode( child ) && child.value.trim() );
 
-	if ( tag === 'svg' ) return [ 'svg', 'sizing', 'spacing', 'effects', 'visibility' ];
-	if ( tag === 'img' || tag === 'video' || tag === 'iframe' ) {
-		return [ ...base, 'media_fit', 'filters', 'transition' ];
+	if ( isRoot ) return [ 'fill', 'border', 'padding', 'min_height', ...layout, 'effects' ];
+	if ( 'svg' === tag ) return [ 'svg', 'effects', 'visibility' ];
+	if ( 'img' === tag || 'video' === tag ) return [ 'media_fit', 'filters', 'radius', 'shadow', 'margin', 'effects', 'visibility' ];
+	if ( 'iframe' === tag ) return [ 'media_fit', 'radius', 'margin', 'effects', 'visibility' ];
+	const type = ( attr( node, 'type' ) || '' ).toLowerCase();
+	if ( 'input' === tag && ( 'checkbox' === type || 'radio' === type ) ) return [ 'tick', 'margin', 'effects' ];
+	if ( 'input' === tag || 'select' === tag || 'textarea' === tag ) {
+		return [ 'text', 'placeholder_color', 'fill', 'border', 'padding', 'margin', 'focus', 'effects' ];
 	}
-	if ( tag === 'input' || tag === 'select' || tag === 'textarea' ) {
-		return [ ...base, 'typography', 'text_color', 'placeholder_color', 'align', 'transition', 'states' ];
+	// Links, buttons and blocks of text can be hidden per device -- a second
+	// button on phones, say -- the way Elementor hides a whole widget.
+	if ( 'a' === tag || 'button' === tag ) {
+		return [ 'text', 'fill', 'border', 'shadow', 'padding', 'margin', ...layout, 'states', 'effects', 'visibility' ];
 	}
-	if ( tag === 'a' || tag === 'button' ) {
-		return [ ...base, 'typography', 'text_color', 'text_shadow', 'align', 'transition', 'states', 'flex_container' ];
+	if ( TEXT_BLOCK_TAGS.has( tag ) || ( ownText && ( 'li' === tag || 'label' === tag ) ) ) {
+		return [ 'text', 'align', 'margin', 'effects', 'visibility' ];
 	}
-	if ( TEXT_TAGS.has( tag ) ) {
-		return [ ...base, 'typography', 'text_color', 'text_shadow', 'text_stroke', 'align', 'transition' ];
-	}
+	if ( INLINE_TEXT_TAGS.has( tag ) ) return [ 'text', 'effects' ];
 
-	const features = [ ...base, 'align', 'typography', 'text_color', 'transition' ];
-	if ( layoutMode === 'flex' ) features.push( 'flex_container' );
-	if ( layoutMode === 'grid' ) features.push( 'grid_container' );
-	if ( ! isRoot ) features.push( 'flex_item' );
-	return features;
+	// A box: a wrapper, a card, a column, a list. One that also carries words of
+	// its own gets their type settings too.
+	return [
+		...( ownText ? [ 'text', 'align' ] : [] ),
+		'fill', 'border', 'shadow', 'padding', 'margin', 'measure', ...layout, 'effects', 'visibility',
+	];
 }
 
 /* ------------------------------------------------------------------ deriving */
@@ -737,6 +883,7 @@ export function deriveSection( options ) {
 
 	const partBySelector = new Map();
 	const partByNode = new Map();
+	const nodesOfPart = new Map(); // part id -> every element it styles
 
 	for ( const entry of orderedEntries ) {
 		const node = entry.node;
@@ -796,13 +943,18 @@ export function deriveSection( options ) {
 		// id for them left their controls pointing at a panel that was never
 		// created, and they fell into an unnamed "Other content" bucket.
 		const existingPart = partBySelector.get( selectorInfo.selector );
-		const nonRendered = ! isRoot && NON_RENDERED_TAGS.has( node.tagName.toLowerCase() );
+		const nonRendered = ! isRoot && ( NON_RENDERED_TAGS.has( node.tagName.toLowerCase() ) || isInvisible( node ) );
 		const holder = nonRendered ? nearestPart( doc, node, partByNode ) : null;
 		const partId = holder
 			? holder.id
 			: existingPart
 				? existingPart.id
 				: uniqueId( 'p_' + ( isRoot ? 'section' : ( slug( selectorInfo.selector ) || node.tagName ) ) );
+
+		if ( ! nonRendered ) {
+			if ( ! nodesOfPart.has( partId ) ) nodesOfPart.set( partId, [] );
+			nodesOfPart.get( partId ).push( node );
+		}
 
 		if ( ! hidden.has( selectorInfo.selector ) && ! existingPart && ! nonRendered ) {
 			// The Elementor panel has no control search, so a section with 70-odd
@@ -844,8 +996,17 @@ export function deriveSection( options ) {
 		if ( ! insideRepeater && ! textOwned.has( node ) ) {
 			const consumedSubtree = collectContent( node, {
 				prefixLabel: label,
+				// Ids come from where the element sits in the markup, never from
+				// its display name: a saved value must survive a better name.
+				// Names once fed the ids, and renaming "Addr" to "Address" would
+				// have quietly reset every saved address. `c_` keeps them clear
+				// of the style controls' `p_` ids.
+				idStem: 'c_' + partId.replace( /^p_/, '' ),
 				group: partId,
 				push: ( field, edit ) => {
+					// The element the field edits, for grouping the Content tab by
+					// what is on the page. Build-time only, never written out.
+					Object.defineProperty( field, '_node', { value: node, enumerable: false } );
 					fields.push( field );
 					if ( edit ) edits.push( edit );
 				},
@@ -911,7 +1072,7 @@ export function deriveSection( options ) {
 				const template = layers.map( ( layer ) => ( layer.includes( photo[ 2 ] ) ? 'url("{{URL}}")' : layer ) ).join( ', ' );
 
 				fields.push( {
-					id: uniqueId( ( part ? part.short_label : 'section' ) + '_background_image' ),
+					id: uniqueId( 'c_' + ( part ? part.id.replace( /^p_/, '' ) : 'section' ) + '_background_image' ),
 					control: 'media',
 					label: 'Background Image',
 					description: 'Painted from the section stylesheet' +
@@ -926,6 +1087,7 @@ export function deriveSection( options ) {
 					group: part ? part.id : ( parts[ 0 ] ? parts[ 0 ].id : 'content' ),
 					sort: 2,
 				} );
+				Object.defineProperty( fields[ fields.length - 1 ], '_node', { value: painted, enumerable: false } );
 			}
 		}
 	}
@@ -949,6 +1111,23 @@ export function deriveSection( options ) {
 	assignPartLabels( parts );
 	assignRepeaterLabels( repeaterLabels, prefixes, doc );
 
+	// The visible blocks of the section, which the Content and Style tabs are
+	// organised by -- see deriveRegions().
+	const regions = deriveRegions( {
+		doc,
+		tops: topLevel.map( ( entry ) => entry.node ),
+		rootNode,
+		parts,
+		partByNode,
+		nodesOfPart,
+		fields,
+		repeaterLabels,
+		listItems: new Set( accepted.flatMap( ( group ) => group.nodes ) ),
+		portals,
+		prefixes,
+		spec,
+	} );
+
 	const template = splice( markup, edits );
 	// Identical template minus the Elementor repeater-item classes. build.mjs
 	// renders THIS one to prove the compiler reproduces the source byte for byte.
@@ -960,6 +1139,7 @@ export function deriveSection( options ) {
 		fields,
 		repeaters,
 		parts,
+		regions,
 		template,
 		templateBare,
 		notes,
@@ -985,16 +1165,16 @@ export function deriveSection( options ) {
 				const leading = raw.match( /^\s*/ )[ 0 ];
 				const trailing = raw.length > leading.length ? raw.match( /\s*$/ )[ 0 ] : '';
 				const value = raw.slice( leading.length, raw.length - trailing.length );
-				if ( value ) {
+				if ( value && ! SYMBOL_ONLY.test( value ) ) {
 					const hasMarkup = /<[a-zA-Z]/.test( value );
-					const id = ctx.uniqueId( ctx.prefixLabel + '_text' );
+					const id = ctx.uniqueId( ctx.idStem + '_text' );
 					ctx.push(
 						{
 							id,
 							control: hasMarkup || value.length > 90 ? 'textarea' : 'text',
 							label: ctx.prefixLabel,
 							description: hasMarkup ? 'Inline formatting tags are preserved.' : '',
-							default: value,
+							default: readableText( value, 'text', 'post' ),
 							esc: 'post',
 							group: ctx.group,
 							sort: 0,
@@ -1012,15 +1192,15 @@ export function deriveSection( options ) {
 					const leading = raw.match( /^\s*/ )[ 0 ];
 					const trailing = raw.match( /\s*$/ )[ 0 ];
 					const value = raw.slice( leading.length, raw.length - trailing.length );
-					if ( ! value ) continue;
+					if ( ! value || SYMBOL_ONLY.test( value ) ) continue;
 					runIndex += 1;
-					const id = ctx.uniqueId( ctx.prefixLabel + '_text' + ( runIndex > 1 ? '_' + runIndex : '' ) );
+					const id = ctx.uniqueId( ctx.idStem + '_text' + ( runIndex > 1 ? '_' + runIndex : '' ) );
 					ctx.push(
 						{
 							id,
 							control: value.length > 90 ? 'textarea' : 'text',
 							label: runIndex > 1 ? 'Text ' + runIndex : 'Text',
-							default: value,
+							default: readableText( value, 'text', 'post' ),
 							esc: 'post',
 							group: ctx.group,
 							sort: 0,
@@ -1053,18 +1233,21 @@ export function deriveSection( options ) {
 			const info = classifyAttr( name, node, a.value );
 			if ( ! info ) continue;
 
-			const id = ctx.uniqueId( ctx.prefixLabel + '_' + name );
+			const id = ctx.uniqueId( ctx.idStem + '_' + name );
 			ctx.push(
 				{
 					id,
 					control: info.control,
 					label: info.label || attributeLabel( name, node ),
-					default: info.control === 'url' || info.control === 'media' ? { url: a.value } : a.value,
+					default: info.control === 'url' || info.control === 'media' ? { url: a.value } : readableText( a.value, info.control, info.esc ),
 					options: info.options,
 					esc: info.esc,
 					group: info.tab === 'content' ? ctx.group : info.tab,
 					tab: info.tab,
 					sort: 1,
+					// Which attribute it writes. build.mjs files the accessibility
+					// ones (aria-label, title, role) away from the content.
+					attr: name,
 				},
 				{ start: range.start, end: range.end, replacement: phpEcho( id ) }
 			);
@@ -1080,13 +1263,13 @@ export function deriveSection( options ) {
 			const range = attrValueRange( markup, node, 'style' );
 			const raw = markup.slice( range.start, range.end );
 			const declarations = splitInlineStyle( raw );
-			const groupId = ctx.uniqueId( ctx.prefixLabel + '_inline_style' );
+			const groupId = ctx.uniqueId( ctx.idStem + '_inline_style' );
 			const pieces = [];
 			let cursor = 0;
 
 			for ( const decl of declarations ) {
 				const map = INLINE_STYLE_CONTROLS[ decl.prop.toLowerCase() ] || { type: 'text' };
-				const id = ctx.uniqueId( ctx.prefixLabel + '_css_' + decl.prop );
+				const id = ctx.uniqueId( ctx.idStem + '_css_' + decl.prop );
 				ctx.push( {
 					id,
 					control: map.type,
@@ -1098,6 +1281,10 @@ export function deriveSection( options ) {
 					group: ctx.group,
 					tab: 'inline_style',
 					sort: 3,
+					// The property it sets. A stylesheet control for the same
+					// property on the same element could never win, so the
+					// element's style pop-out offers this one in its place.
+					css_prop: decl.prop.toLowerCase(),
 				}, null );
 				pieces.push( { prefix: raw.slice( cursor, decl.valueStart ), id } );
 				cursor = decl.valueEnd;
@@ -1137,9 +1324,13 @@ export function deriveSection( options ) {
 
 		const present = new Set( ( node.attrs || [] ).map( ( a ) => a.name.toLowerCase() ) );
 		const additions = [];
+		const type = ( attr( node, 'type' ) || 'text' ).toLowerCase();
 
 		for ( const flag of offered ) {
-			const id = ctx.uniqueId( ctx.prefixLabel + '_' + flag.attr );
+			// A hidden input has no state a visitor could meet, and only a box
+			// or a radio button can be checked: offer those what they carry.
+			if ( ! present.has( flag.attr ) && ( 'hidden' === type || ( flag.types && ! flag.types.includes( type ) ) ) ) continue;
+			const id = ctx.uniqueId( ctx.idStem + '_' + flag.attr );
 
 			if ( present.has( flag.attr ) ) {
 				const range = attrWholeRange( markup, node, flag.attr );
@@ -1258,6 +1449,588 @@ function assignPartLabels( parts ) {
 		}
 		part.label = name;
 	} );
+}
+
+/**
+ * Elements that ARE content: their own text, media or field is what a person
+ * sees. A wrapper is anything else; a wrapper holding one of these holds
+ * content itself.
+ */
+const CONTENT_TAGS = new Set( [
+	'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'a', 'button', 'img', 'picture', 'video', 'iframe',
+	'svg', 'input', 'select', 'textarea', 'label', 'span', 'strong', 'em', 'small', 'b', 'i',
+	'br', 'hr', 'blockquote', 'figcaption', 'time', 'code', 'address', 'cite', 'q', 'sup', 'sub',
+] );
+
+/** Elements that read as one thing however much is inside them. */
+const UNIT_TAGS = new Set( [ 'ul', 'ol', 'dl', 'table', 'form', 'fieldset', 'figure' ] );
+
+/**
+ * The visible blocks of a section: what a person points at when they say
+ * "change that" -- the brand block, each link column, the sign-up, the bottom
+ * bar. The Content and Style tabs get one panel per block, named the way the
+ * block reads on the page, instead of one panel per HTML element: the footer
+ * had 27 Content panels and 52 Style panels, most of them for wrappers no one
+ * can see.
+ *
+ * Blocks are found by walking down from each top-level element through
+ * wrappers that hold nothing but other wrappers. The first element that holds
+ * content itself -- a heading, text, an image, a field -- is a block, with
+ * everything inside it; so is a list's parent, and a form or list element.
+ * Near the top of the section (or of a dialog) an element can hold content
+ * AND further wrappers -- a heading above a card grid; that one is split: its
+ * own content is a block, and each wrapper is walked in turn.
+ *
+ * Labels prefer a name the block already shows: a role a person would use
+ * ("Header", "Form") when only one block has it, else the block's own
+ * aria-label or heading ("Journeys", "Join the Founder's Circle"). The
+ * registry's `regionLabels` overrides any of them by selector.
+ *
+ * Annotates every part with `region`, `order` and `display` (its name within
+ * its block), and every repeater with `region` and `order`; returns the blocks
+ * in page order.
+ */
+function deriveRegions( ctx ) {
+	const { doc, tops, rootNode, parts, partByNode, nodesOfPart, fields, repeaterLabels, listItems, portals, prefixes, spec } = ctx;
+
+	const order = new Map( doc.entries.map( ( entry, index ) => [ entry.node, index ] ) );
+	const listParents = new Set( repeaterLabels.map( ( entry ) => entry.owner ).filter( Boolean ) );
+
+	const kidsOf = ( node ) => elementChildren( node ).filter( ( kid ) =>
+		! [ 'style', 'script', 'template', 'noscript' ].includes( kid.tagName.toLowerCase() )
+	);
+	const isContent = ( node ) => CONTENT_TAGS.has( node.tagName.toLowerCase() ) || isTextual( node, { allowLinks: true } );
+	const ownText = ( node ) => children( node ).some( ( child ) => isTextNode( child ) && child.value.trim() );
+	const holdsContent = ( node ) => ownText( node ) || kidsOf( node ).some( isContent );
+	// An empty element is decoration (an overlay, a rule); it is never a block.
+	const isWrapper = ( node ) => ! isContent( node ) && ( kidsOf( node ).length > 0 || ownText( node ) );
+
+	// One of a run of similar siblings -- each footer column, each chapter,
+	// each policy section -- is a block of its own, however it is built inside.
+	//
+	// Similar means: same tag, same first class, and each one carries its own
+	// heading. Two different columns that merely share a layout class (a text
+	// column and an image column, both `-col`) are not a run.
+	const firstClass = ( node ) => classList( node ).filter( ( c ) => ! isUtilityClass( c ) )[ 0 ] || '';
+	const ownHeading = ( node ) => {
+		const queue = [ ...kidsOf( node ) ];
+		while ( queue.length ) {
+			const current = queue.shift();
+			if ( listItems.has( current ) ) continue;
+			if ( /^h[1-4]$/.test( current.tagName.toLowerCase() ) ) return true;
+			queue.push( ...kidsOf( current ) );
+		}
+		return false;
+	};
+	const isRunMember = ( node ) => {
+		const cls = firstClass( node );
+		if ( ! cls || ! kidsOf( node ).length || ! ownHeading( node ) ) return false;
+		const parent = doc.parentsOf.get( node )?.node;
+		return !! parent && kidsOf( parent ).some( ( sibling ) =>
+			sibling !== node && sibling.tagName === node.tagName && firstClass( sibling ) === cls && ownHeading( sibling )
+		);
+	};
+
+	const found = [];
+	const visit = ( node, topish ) => {
+		if ( listParents.has( node ) || UNIT_TAGS.has( node.tagName.toLowerCase() ) ) {
+			found.push( { node, own: false, run: ! topish && isRunMember( node ) } );
+			return;
+		}
+		if ( ! topish && isRunMember( node ) ) {
+			found.push( { node, own: false, run: true } );
+			return;
+		}
+		if ( holdsContent( node ) ) {
+			const wrappers = kidsOf( node ).filter( isWrapper );
+			if ( topish && wrappers.length ) {
+				found.push( { node, own: true, run: false } );
+				wrappers.forEach( ( kid ) => visit( kid, false ) );
+				return;
+			}
+			found.push( { node, own: false, run: false } );
+			return;
+		}
+		const wrappers = kidsOf( node ).filter( isWrapper );
+		wrappers.forEach( ( kid ) => visit( kid, topish && wrappers.length === 1 ) );
+	};
+	tops.forEach( ( top ) => visit( top, true ) );
+	found.sort( ( a, b ) => order.get( a.node ) - order.get( b.node ) );
+
+	const portalTops = new Set( portals.map( ( portal ) => portal.node ) );
+	const topOf = ( node ) => {
+		let current = node;
+		while ( doc.parentsOf.get( current )?.node ) current = doc.parentsOf.get( current ).node;
+		return current;
+	};
+	const inPortal = ( node ) => portalTops.has( topOf( node ) );
+	const mixedTops = found.some( ( entry ) => inPortal( entry.node ) ) && found.some( ( entry ) => ! inPortal( entry.node ) );
+
+	// The first heading a block shows, for naming it. A split block names
+	// itself from its own content only, not from the blocks inside it.
+	// A list item's heading names the item, not the block -- the trip-types
+	// carousel is not "The Wedding" -- so items are not searched.
+	const headingIn = ( entry ) => {
+		const nested = new Set( found.filter( ( other ) => other !== entry ).map( ( other ) => other.node ) );
+		const queue = [ ...kidsOf( entry.node ) ];
+		while ( queue.length ) {
+			const node = queue.shift();
+			if ( entry.own && nested.has( node ) ) continue;
+			if ( listItems.has( node ) ) continue;
+			if ( /^h[1-4]$/.test( node.tagName.toLowerCase() ) || 'legend' === node.tagName.toLowerCase() ) {
+				return innerText( node ).replace( /\s+/g, ' ' ).trim()
+					// Text runs split by markup lose their space: "1.Introduction".
+					.replace( /([.,;:!?])(?=[A-Za-z])/g, '$1 ' );
+			}
+			queue.push( ...kidsOf( node ) );
+		}
+		return '';
+	};
+	const fits = ( text ) => ( text && text.length <= 30 ? text.replace( /[.:]+$/, '' ) : '' );
+	const shortened = ( text ) => {
+		if ( ! text ) return '';
+		if ( text.length <= 30 ) return text.replace( /[.:]+$/, '' );
+		const words = text.split( ' ' );
+		let out = '';
+		for ( const word of words ) {
+			if ( ( out + ' ' + word ).trim().length > 27 ) break;
+			out = ( out + ' ' + word ).trim();
+		}
+		return ( out || text.slice( 0, 27 ) ).replace( /[.,;:]+$/, '' ) + '…';
+	};
+	const listLabel = new Map( repeaterLabels.map( ( entry ) => [ entry.owner, entry.definition.label ] ) );
+
+	const curated = spec.regionLabels || {};
+	const curatedFor = ( node ) => {
+		for ( const [ selector, label ] of Object.entries( curated ) ) {
+			let match = null;
+			try {
+				match = doc.query( selector );
+			} catch ( error ) {
+				match = null;
+			}
+			if ( match === node ) return label;
+		}
+		return '';
+	};
+
+	// A block that is nothing but a list takes the list's name ("Cards",
+	// "Steps"); a text column whose paragraphs happen to be a list is not
+	// "Paragraphs" -- it holds a title and a button too.
+	const pureList = ( node ) => {
+		const entry = repeaterLabels.find( ( candidate ) => candidate.owner === node );
+		if ( ! entry ) return '';
+		// Items differ by stagger and state classes (`d1`, `is-active`), so they
+		// are compared by their naming class.
+		const shape = namingClass( entry.item ) + '|' + entry.item.tagName;
+		return kidsOf( node ).every( ( kid ) => namingClass( kid ) + '|' + kid.tagName === shape )
+			? entry.definition.label
+			: '';
+	};
+	const has = ( node, test ) => doc.entries.some( ( entry ) => entry.node !== node && contains( doc, node, entry.node ) && test( entry.node ) );
+	const tagIs = ( ...tags ) => ( node ) => tags.includes( node.tagName.toLowerCase() );
+	const plainName = ( entry, heading ) => {
+		// A split block names itself from its own content only; what it holds
+		// further down belongs to the blocks found inside it.
+		if ( entry.own ) return heading ? 'Header' : 'Content';
+		if ( listParents.has( entry.node ) || has( entry.node, ( node ) => listParents.has( node ) ) ) return 'Content';
+		if ( has( entry.node, tagIs( 'form' ) ) ) return 'Form';
+		const media = has( entry.node, tagIs( 'img', 'video', 'picture', 'iframe' ) );
+		const words = has( entry.node, ( node ) => /^h[1-6]$|^p$|^a$|^button$/.test( node.tagName.toLowerCase() ) );
+		if ( media && ! words ) return has( entry.node, tagIs( 'video', 'iframe' ) ) ? 'Video' : 'Image';
+		// A heading with at most a line or two of text and nothing to click is
+		// the section's header: eyebrow, title, intro.
+		const actions = has( entry.node, tagIs( 'a', 'button', 'ul', 'ol', 'form', 'img', 'video' ) );
+		const texts = doc.entries.filter( ( e ) => e.node !== entry.node && contains( doc, entry.node, e.node ) && isTextual( e.node, { allowLinks: false } ) ).length;
+		if ( heading && ! actions && texts <= 4 ) return 'Header';
+		return 'Content';
+	};
+
+	const regions = found.map( ( entry ) => {
+		let role = pureList( entry.node ) || semanticName( entry.node, prefixes );
+		if ( 'Figure' === role ) role = 'Image';
+		if ( entry.own || GENERIC_ROLES.has( role ) ) role = '';
+		const aria = attr( entry.node, 'aria-label' ) || '';
+		const heading = headingIn( entry );
+		// A heading names a block only where it is how people tell the blocks
+		// apart -- footer columns, chapters, policy sections -- and is unlikely
+		// to be rewritten. A marketing headline would go stale the day the client
+		// edits it, so elsewhere a functional name and a number do the job.
+		const numbered = /^\d+\.\s/.test( heading );
+		const named = entry.run || numbered
+			? ( aria.split( ' ' ).length <= 4 ? fits( aria ) : '' ) || shortened( heading )
+			: '';
+		return {
+			entry,
+			curated: curatedFor( entry.node ),
+			// A run member's heading beats its role: three columns are
+			// "Journeys", "Support", "Legal", not "Navigation 1-3".
+			role: named ? '' : role,
+			named,
+			plain: plainName( entry, heading ),
+		};
+	} );
+
+	// A functional name ("Header", "Cards", "Content") wherever it is unique;
+	// where several blocks would share one, each uses its own heading instead.
+	const plainCount = new Map();
+	for ( const region of regions ) {
+		const plain = region.role || region.plain;
+		plainCount.set( plain, ( plainCount.get( plain ) || 0 ) + 1 );
+	}
+
+	const labelCount = new Map();
+	for ( const region of regions ) {
+		const plain = region.role || region.plain;
+		let label = region.curated || region.named || plain;
+		if ( mixedTops && inPortal( region.entry.node ) && ! /pop-?up$/i.test( label ) ) label += ' pop-up';
+		region.label = label;
+		labelCount.set( label, ( labelCount.get( label ) || 0 ) + 1 );
+	}
+
+	const usedIds = new Set();
+	const seenLabels = new Map();
+	for ( const region of regions ) {
+		if ( labelCount.get( region.label ) > 1 ) {
+			const n = ( seenLabels.get( region.label ) || 0 ) + 1;
+			seenLabels.set( region.label, n );
+			region.label = region.label + ' ' + n;
+		}
+		let id = 'r_' + ( slug( region.label ) || 'block' );
+		while ( usedIds.has( id ) ) id += '_x';
+		usedIds.add( id );
+		region.id = id;
+	}
+
+	/* ---------------------------------------------- parts and lists -> blocks */
+
+	const regionByNode = new Map( regions.map( ( region ) => [ region.entry.node, region ] ) );
+	const regionOf = ( node ) => {
+		for ( let current = node; current; current = doc.parentsOf.get( current )?.node ) {
+			if ( regionByNode.has( current ) ) return regionByNode.get( current );
+		}
+		return null;
+	};
+
+	const nodeOfPart = new Map();
+	for ( const [ node, part ] of partByNode ) {
+		if ( ! nodeOfPart.has( part.id ) ) nodeOfPart.set( part.id, node );
+	}
+	// Every node a part styles, not just the first: siblings sharing a class
+	// share the part, and its name.
+	const partOfNode = new Map( partByNode );
+	const partsById = new Map( parts.map( ( part ) => [ part.id, part ] ) );
+	for ( const [ id, nodes ] of nodesOfPart ) {
+		for ( const node of nodes ) if ( ! partOfNode.has( node ) && partsById.has( id ) ) partOfNode.set( node, partsById.get( id ) );
+	}
+
+	for ( const part of parts ) {
+		const nodes = nodesOfPart.get( part.id ) || [ nodeOfPart.get( part.id ) ].filter( Boolean );
+		const first = nodes[ 0 ];
+		part.order = first ? order.get( first ) : 0;
+		part.box = false;
+		part.everywhere = false;
+		// The section root is styled from the Section panel, whatever block it
+		// would otherwise head.
+		if ( ! first || first === rootNode ) {
+			part.region = '';
+			continue;
+		}
+		// One set of controls styling elements in several blocks -- every
+		// paragraph of every policy section -- belongs to the section as a
+		// whole. Filing it under the first block would make a change there
+		// silently restyle all the others.
+		const ids = new Set( nodes.map( ( node ) => ( regionOf( node ) || { id: '' } ).id ) );
+		if ( ids.size > 1 ) {
+			part.region = '';
+			part.everywhere = true;
+			continue;
+		}
+		part.region = [ ...ids ][ 0 ];
+		const region = regionOf( first );
+		part.box = !! ( region && region.entry.node === first && 1 === nodes.length );
+
+		// A wrapper whose only child is a block is that block's outer frame: the
+		// full-width strip behind the bottom bar, the backdrop behind a dialog.
+		// It carries the background a person means when they style "the bottom
+		// bar", so it belongs in the block's panel, not loose in the Section's.
+		if ( ! part.region && 1 === nodes.length ) {
+			let current = first;
+			while ( current && ! regionByNode.has( current ) ) {
+				const kids = kidsOf( current );
+				current = 1 === kids.length ? kids[ 0 ] : null;
+			}
+			if ( current ) {
+				const framed = regionByNode.get( current );
+				part.region = framed.id;
+				part.frame = portalTops.has( first ) ? 'backdrop' : 'outer';
+				framed.framed = true;
+			}
+		}
+	}
+
+	// Elements styled section-wide inside a run -- the heading of every footer
+	// column -- are named by the run they repeat in: "Column Headings", not a
+	// bare "Headings" that could be any heading on the section.
+	const partById = new Map( parts.map( ( part ) => [ part.id, part ] ) );
+	for ( const part of parts ) {
+		if ( ! part.everywhere ) continue;
+		const run = ( part.ancestor_ids || [] ).map( ( id ) => partById.get( id ) ).filter( ( ancestor ) => ancestor && ancestor.everywhere ).pop();
+		if ( run && run.short_label && run.short_label !== part.short_label ) part.run_label = run.short_label;
+	}
+
+	// A part's name within its block: "Heading", "Links", "Block" -- the block
+	// already says where it is, so the section-wide prefix ("Item Link 3") goes.
+	// The block's own element is "Block" everywhere, so every panel opens the
+	// same way; a dialog's is "Dialog", over its "Backdrop".
+	const regionById = new Map( regions.map( ( region ) => [ region.id, region ] ) );
+	const FIXED_NAMES = new Set( [ 'Section', 'Block', 'Inner Block', 'Dialog', 'Backdrop' ] );
+	const byRegion = new Map();
+	for ( const part of parts ) {
+		if ( ! byRegion.has( part.region ) ) byRegion.set( part.region, [] );
+		byRegion.get( part.region ).push( part );
+	}
+	for ( const group of byRegion.values() ) {
+		group.sort( ( a, b ) => a.order - b.order );
+		const base = ( part ) => {
+			if ( nodeOfPart.get( part.id ) === rootNode ) return 'Section';
+			if ( 'backdrop' === part.frame ) return 'Backdrop';
+			if ( 'outer' === part.frame ) return 'Block';
+			if ( part.box ) {
+				const region = regionById.get( part.region );
+				if ( region && inPortal( region.entry.node ) ) return 'Dialog';
+				return region && region.framed ? 'Inner Block' : 'Block';
+			}
+			// An unnamed grid is what lays the columns out; "Content" or
+			// "Container" says nothing about that.
+			const own = GENERIC_ROLES.has( part.short_label ) && ( part.features || [] ).includes( 'grid_container' ) ? 'Grid' : part.short_label;
+			const name = part.shared || part.everywhere ? pluralise( own ) : own;
+			return part.run_label ? part.run_label + ' ' + name : name;
+		};
+		let names = group.map( base );
+		// Two texts in one card are told apart the way a designer would: a short
+		// line above the heading is its eyebrow, the text under it the
+		// description. Two buttons are told apart by what they say.
+		names = names.map( ( name, index ) => {
+			if ( names.filter( ( other ) => other === name ).length < 2 ) return name;
+			const part = group[ index ];
+			const node = nodeOfPart.get( part.id );
+			if ( ! node || FIXED_NAMES.has( name ) ) return name;
+			const tag = node.tagName.toLowerCase();
+			if ( ( 'a' === tag || 'button' === tag ) && ! part.shared && actionName( node ) ) return actionName( node );
+			if ( 'Text' !== part.short_label ) return name;
+			const parent = doc.parentsOf.get( node )?.node;
+			const siblings = parent ? kidsOf( parent ) : [];
+			const heading = siblings.findIndex( ( sibling ) => /^h[1-6]$/.test( sibling.tagName.toLowerCase() ) );
+			const at = siblings.indexOf( node );
+			if ( heading < 0 ) return name;
+			const role = at < heading && innerText( node ).trim().split( /\s+/ ).length <= 6 ? 'Eyebrow' : at > heading ? 'Description' : '';
+			if ( ! role ) return name;
+			const own = part.shared || part.everywhere ? pluralise( role ) : role;
+			return part.run_label ? part.run_label + ' ' + own : own;
+		} );
+		const count = ( name ) => names.filter( ( other ) => other === name ).length;
+		const prefixed = group.map( ( part, index ) => {
+			const name = names[ index ];
+			if ( count( name ) < 2 || ! part.parent_label || FIXED_NAMES.has( name ) ) return name;
+			return part.parent_label + ' ' + name;
+		} );
+		const seen = new Map();
+		group.forEach( ( part, index ) => {
+			let name = prefixed[ index ];
+			if ( prefixed.filter( ( other ) => other === name ).length > 1 ) {
+				const n = ( seen.get( name ) || 0 ) + 1;
+				seen.set( name, n );
+				name = name + ' ' + n;
+			}
+			part.display = name;
+		} );
+	}
+
+	/* ----------------------------------------------------- content owners */
+
+	// The Content tab groups fields by the thing a person sees: a field's
+	// label and its box are one "Email address" entry, a button's link and its
+	// wording are one "Button".
+	const FIELD_TAGS = new Set( [ 'input', 'select', 'textarea' ] );
+	const parentOf = ( node ) => doc.parentsOf.get( node )?.node || null;
+	const visibleControls = ( node ) => doc.entries
+		.map( ( entry ) => entry.node )
+		.filter( ( other ) => contains( doc, node, other ) && FIELD_TAGS.has( other.tagName.toLowerCase() ) && ! isInvisible( other ) );
+	const ownerOf = ( node, region ) => {
+		const stop = region ? region.entry.node : null;
+		for ( let current = node; current && current !== stop; current = parentOf( current ) ) {
+			const tag = current.tagName.toLowerCase();
+			if ( 'a' === tag || 'button' === tag ) return { node: current, kind: 'action' };
+		}
+		const tag = node.tagName.toLowerCase();
+		const inLabel = ( () => {
+			for ( let current = node; current && current !== stop; current = parentOf( current ) ) {
+				if ( 'label' === current.tagName.toLowerCase() ) return true;
+			}
+			return false;
+		} )();
+		// A label tied to its field by `for` belongs with that field, wherever
+		// the two sit: the footer's name box and its screen-reader label.
+		const target = 'label' === tag && attr( node, 'for' ) ? byId( attr( node, 'for' ) ) : null;
+		if ( target && FIELD_TAGS.has( target.tagName.toLowerCase() ) ) return ownerOf( target, region );
+		if ( FIELD_TAGS.has( tag ) || inLabel ) {
+			for ( let current = parentOf( node ); current && current !== stop; current = parentOf( current ) ) {
+				const kind = current.tagName.toLowerCase();
+				if ( 'form' === kind ) break;
+				if ( 1 === visibleControls( current ).length ) return { node: current, kind: 'field' };
+			}
+			// Not wrapped: the field is its own entry.
+			if ( FIELD_TAGS.has( tag ) ) return { node, kind: 'field' };
+		}
+		return { node, kind: 'element' };
+	};
+	const byId = ( id ) => doc.entries.map( ( entry ) => entry.node ).find( ( other ) => attr( other, 'id' ) === id ) || null;
+	const clean = ( text ) => text.replace( /\*/g, '' ).replace( /\((required|optional)\)/gi, '' ).replace( /\s+/g, ' ' ).trim();
+	const fieldName = ( node ) => {
+		const nodes = doc.entries.map( ( entry ) => entry.node );
+		const field = FIELD_TAGS.has( node.tagName.toLowerCase() ) ? node : nodes.find( ( other ) => contains( doc, node, other ) && FIELD_TAGS.has( other.tagName.toLowerCase() ) );
+		const label = nodes.find( ( other ) => 'label' === other.tagName.toLowerCase() && contains( doc, node, other ) )
+			|| ( field && attr( field, 'id' ) ? nodes.find( ( other ) => 'label' === other.tagName.toLowerCase() && attr( other, 'for' ) === attr( field, 'id' ) ) : null );
+		const text = clean( label ? innerText( label ) : '' )
+			|| clean( field ? attr( field, 'aria-label' ) || attr( field, 'placeholder' ) || '' : '' );
+		// The field's own question, shortened if long: "How many guests will…".
+		if ( text ) return shortened( text.replace( /[:?]+$/, '' ) );
+		// A hidden input is known by its name: "Hubspot Form Id", not "Field 3".
+		const name = field ? attr( field, 'name' ) || '' : '';
+		return name ? name.replace( /([a-z])([A-Z])/g, '$1 $2' ).replace( /[_-]+/g, ' ' ).replace( /\b\w/g, ( c ) => c.toUpperCase() ) : 'Field';
+	};
+
+	// An element's own name in its block's Style row ("Eyebrow", "Description")
+	// names it on the Content tab as well -- unless that row styles several
+	// elements at once, or is the block's own frame.
+	const contentName = ( node ) => {
+		const part = partOfNode.get( node );
+		if ( ! part ) return semanticName( node, prefixes );
+		const own = part.display && ! part.shared && ! part.everywhere && ! FIXED_NAMES.has( part.display ) && ! /\s\d+$/.test( part.display );
+		return own ? part.display : part.short_label;
+	};
+
+	const owners = new Map(); // owner node -> { key, region, label, order }
+	for ( const field of fields ) {
+		const node = field._node;
+		if ( ! node || field.internal ) continue;
+		const region = node === rootNode ? null : regionOf( node );
+		const owner = ownerOf( node, region );
+		if ( ! owners.has( owner.node ) ) {
+			owners.set( owner.node, {
+				key: 'o' + order.get( owner.node ),
+				region: region ? region.id : '',
+				order: order.get( owner.node ),
+				// The same name its Style row has, so "Tagline" on the Content tab
+				// is "Tagline" on the Style tab.
+				base: owner.node === rootNode ? 'Section'
+					: 'field' === owner.kind ? fieldName( owner.node )
+						: contentName( owner.node ),
+				kind: owner.kind,
+				alt: 'action' === owner.kind ? actionName( owner.node ) : '',
+			} );
+		}
+		const entry = owners.get( owner.node );
+		field.region = entry.region;
+		field.owner = entry.key;
+		field.owner_kind = entry.kind;
+		field.order = order.get( node );
+		// Settings on something no visitor sees (a hidden input, the frame a
+		// form posts into) are wiring, not content -- except words written for
+		// screen readers, which are accessibility settings.
+		if ( isScreenReaderOnly( node ) ) field.screen_reader = true;
+		else if ( isInvisible( node ) ) field.unseen = true;
+	}
+
+	// Owner names, unique within their block: "Image", "Title", "Button 2".
+	//
+	// Where a block holds several links or buttons, each is named by what it
+	// says -- "Terms & Conditions", "Privacy Policy" -- or, for an icon link,
+	// by where it goes: "Instagram". "Link 1" to "Link 4" made the Legal column
+	// a guessing game. The name is taken from the source, so it stays right
+	// unless a link is re-pointed or reworded beyond recognition.
+	const ownersByRegion = new Map();
+	for ( const entry of owners.values() ) {
+		if ( ! ownersByRegion.has( entry.region ) ) ownersByRegion.set( entry.region, [] );
+		ownersByRegion.get( entry.region ).push( entry );
+	}
+	const ownerLabels = new Map();
+	for ( const group of ownersByRegion.values() ) {
+		group.sort( ( a, b ) => a.order - b.order );
+		const actions = group.filter( ( entry ) => 'action' === entry.kind );
+		const repeated = actions.some( ( entry ) => actions.filter( ( other ) => other.base === entry.base ).length > 1 );
+		for ( const entry of actions ) {
+			// A lone link is named by its words too: "Privacy Policy" says more
+			// than "Link". A lone button keeps "Button", which is how the Style
+			// tab knows it.
+			if ( ! repeated && 'Link' !== entry.base ) continue;
+			const unique = entry.alt && 1 === group.filter( ( other ) => other.alt === entry.alt || other.base === entry.alt ).length;
+			if ( unique ) entry.base = entry.alt;
+		}
+		// A form field named like something else in the block -- the "Title"
+		// dropdown under the card's title -- is the field: "Title Field".
+		for ( const entry of group ) {
+			if ( 'field' !== entry.kind ) continue;
+			if ( group.some( ( other ) => other !== entry && 'field' !== other.kind && other.base === entry.base ) ) entry.base += ' Field';
+		}
+		const seen = new Map();
+		for ( const entry of group ) {
+			let name = entry.base;
+			if ( group.filter( ( other ) => other.base === name ).length > 1 ) {
+				const n = ( seen.get( name ) || 0 ) + 1;
+				seen.set( name, n );
+				name = name + ' ' + n;
+			}
+			ownerLabels.set( entry.key, name );
+		}
+	}
+	for ( const field of fields ) {
+		if ( field.owner ) field.owner_label = ownerLabels.get( field.owner );
+	}
+
+	// A list's name within its block. The block already says which list it is,
+	// so the Journeys column's list is "Links", not "Journeys Items" -- and a
+	// list whose rows are each one link is a list of links, whatever tag holds
+	// them.
+	const actionsOnly = ( item ) => {
+		const tag = item.tagName.toLowerCase();
+		if ( 'a' === tag ) return 'Links';
+		if ( 'button' === tag ) return 'Buttons';
+		const actions = doc.entries.map( ( entry ) => entry.node )
+			.filter( ( node ) => node !== item && contains( doc, item, node ) && [ 'a', 'button' ].includes( node.tagName.toLowerCase() ) );
+		if ( 1 !== actions.length ) return '';
+		const words = ( node ) => innerText( node ).replace( /\s+/g, ' ' ).trim();
+		if ( words( item ) !== words( actions[ 0 ] ) ) return '';
+		return 'a' === actions[ 0 ].tagName.toLowerCase() ? 'Links' : 'Buttons';
+	};
+	for ( const { definition, owner, item } of repeaterLabels ) {
+		const region = regionOf( owner || item );
+		definition.region = region ? region.id : '';
+		definition.order = order.get( item ) || 0;
+		// A dropdown's options keep their field's name ("Enquiry Type Options"):
+		// the field is what a person looks for.
+		const options = 'option' === item.tagName.toLowerCase() || 'optgroup' === item.tagName.toLowerCase();
+		definition.block_label = actionsOnly( item ) || ( options ? definition.label : definition.base_label || definition.label );
+	}
+	// Two lists in one block keep their full names.
+	for ( const definition of repeaterLabels.map( ( entry ) => entry.definition ) ) {
+		const twins = repeaterLabels.filter( ( entry ) => entry.definition.region === definition.region && entry.definition.block_label === definition.block_label );
+		if ( twins.length > 1 ) twins.forEach( ( entry ) => { entry.definition.block_label_clash = true; } );
+	}
+	for ( const { definition } of repeaterLabels ) {
+		if ( definition.block_label_clash ) definition.block_label = definition.label;
+		delete definition.block_label_clash;
+	}
+
+	return regions.map( ( region ) => ( {
+		id: region.id,
+		label: region.label,
+		portal: inPortal( region.entry.node ),
+		// What the registry's `regionLabels` would key this block by.
+		hint: attr( region.entry.node, 'id' ) ? '#' + attr( region.entry.node, 'id' )
+			: region.entry.node.tagName.toLowerCase() + classList( region.entry.node ).filter( ( c ) => ! isUtilityClass( c ) ).map( ( c ) => '.' + c ).join( '' ),
+	} ) );
 }
 
 /** The style part of the closest ancestor that has one. */
@@ -1798,8 +2571,14 @@ function emitRepeater( plans, ctx ) {
 	plans.forEach( ( plan, index ) => {
 		const prefix = prefixOf( index );
 		for ( const control of plan.controls ) controls.push( { ...control, id: prefix + control.id } );
+		// Rows were proved against the source with their values as written;
+		// what the editor shows is the readable form (see readableText()).
+		const byId = new Map( plan.controls.map( ( control ) => [ control.id, control ] ) );
 		plan.rows.forEach( ( row, rowIndex ) => {
-			for ( const [ key, value ] of Object.entries( row ) ) rows[ rowIndex ][ prefix + key ] = value;
+			for ( const [ key, value ] of Object.entries( row ) ) {
+				const control = byId.get( key );
+				rows[ rowIndex ][ prefix + key ] = control ? readableText( value, control.control, control.esc ) : value;
+			}
 		} );
 		if ( plan.perRowSeparator ) {
 			// A new row gets the spacing but not row 2's numbered comment --
@@ -2648,6 +3427,9 @@ function assignRepeaterLabels( entries, prefixes, doc ) {
 	// then it is the only panel still called "Options".
 	const tally = new Map();
 	for ( const entry of entries ) {
+		// The plain name, before qualifying: within its own block a list
+		// needs no "Journeys" in front to tell it apart (deriveRegions).
+		entry.definition.base_label = entry.definition.label;
 		tally.set( entry.definition.label, ( tally.get( entry.definition.label ) || 0 ) + 1 );
 	}
 

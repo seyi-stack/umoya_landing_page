@@ -25,10 +25,10 @@ if ( ! defined( 'ABSPATH' ) ) {
   BRAND: font-family: inherit; palette tokens only.
 =================================================================
 -->
-<section id="fg-sizes" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="fg-sizes" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="fg-sz-c fg-sz-rv">
-    <span class="fg-sz-eye"><?php echo $c['eyebrow_text']; ?></span>
-    <h2 class="fg-sz-ttl"><?php echo $c['title_text']; ?></h2>
-    <p class="fg-sz-body"><?php echo $c['text_text']; ?></p>
+    <span class="fg-sz-eye"><?php echo $c['c_fg_sz_eye_text']; ?></span>
+    <h2 class="fg-sz-ttl"><?php echo $c['c_fg_sz_ttl_text']; ?></h2>
+    <p class="fg-sz-body"><?php echo $c['c_fg_sz_body_text']; ?></p>
   </div>
 </section>

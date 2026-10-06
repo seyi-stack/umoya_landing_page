@@ -28,12 +28,12 @@ if ( ! defined( 'ABSPATH' ) ) {
   BRAND: font-family: inherit; palette tokens only.
 =================================================================
 -->
-<section id="fg-journey" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="fg-journey" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="fg-jr-c">
 
     <div class="fg-jr-head fg-jr-rv">
-      <span class="fg-jr-eye"><?php echo $c['eyebrow_text']; ?></span>
-      <h2 class="fg-jr-ttl"><?php echo $c['title_text']; ?></h2>
+      <span class="fg-jr-eye"><?php echo $c['c_fg_jr_eye_text']; ?></span>
+      <h2 class="fg-jr-ttl"><?php echo $c['c_fg_jr_ttl_text']; ?></h2>
     </div>
 
     <div class="fg-jr-chips" role="list">
@@ -49,10 +49,10 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
       </article><?php endforeach; echo "\n\n    "; ?></div>
 
-    <p class="fg-jr-lead fg-jr-rv"><?php echo $c['text_text']; ?></p>
+    <p class="fg-jr-lead fg-jr-rv"><?php echo $c['c_fg_jr_lead_text']; ?></p>
 
-    <a href="<?php echo $c['button_href']; ?>" class="fg-jr-btn fg-jr-rv">
-      <?php echo $c['button_text']; echo "\n      "; ?><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    <a href="<?php echo $c['c_fg_jr_btn_href']; ?>" class="fg-jr-btn fg-jr-rv">
+      <?php echo $c['c_fg_jr_btn_text']; echo "\n      "; ?><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
 
   </div>

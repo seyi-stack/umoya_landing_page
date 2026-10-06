@@ -28,13 +28,13 @@ if ( ! defined( 'ABSPATH' ) ) {
   BRAND: font-family: inherit; palette tokens only.
 =================================================================
 -->
-<section id="sj-extensions" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="sj-extensions" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="sj-ext-c">
 
     <div class="sj-ext-head sj-ext-rv">
-      <span class="sj-ext-eye"><?php echo $c['eyebrow_text']; ?></span>
-      <h2 class="sj-ext-ttl"><?php echo $c['title_text']; ?></h2>
-      <p class="sj-ext-sub"><?php echo $c['subtitle_text']; ?></p>
+      <span class="sj-ext-eye"><?php echo $c['c_sj_ext_eye_text']; ?></span>
+      <h2 class="sj-ext-ttl"><?php echo $c['c_sj_ext_ttl_text']; ?></h2>
+      <p class="sj-ext-sub"><?php echo $c['c_sj_ext_sub_text']; ?></p>
     </div>
 
     <div class="sj-ext-grid">

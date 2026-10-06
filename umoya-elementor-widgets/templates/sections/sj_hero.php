@@ -25,30 +25,30 @@ if ( ! defined( 'ABSPATH' ) ) {
   IMAGE ONLY — no video. ★ SWAP: hero background image.
 =================================================================
 -->
-<section id="sj-hero" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="sj-hero" aria-label="<?php echo $c['c_section_aria_label']; ?>">
 
   <div class="sj-h1-bg">
     <!-- Hero image -->
     <img
-      src="<?php echo $c['image_src']; ?>"
-      alt="<?php echo $c['image_alt']; ?>"
-      style="<?php echo $s['image_inline_style']; ?>"
+      src="<?php echo $c['c_sj_h1_bg_img_src']; ?>"
+      alt="<?php echo $c['c_sj_h1_bg_img_alt']; ?>"
+      style="<?php echo $s['c_sj_h1_bg_img_inline_style']; ?>"
     />
   </div>
 
   <div class="sj-h1-content">
     <div class="sj-h1-brand">
       <img
-        src="<?php echo $c['image_src_2']; ?>"
-        alt="<?php echo $c['image_alt_2']; ?>"
+        src="<?php echo $c['c_sj_h1_brand_img_src']; ?>"
+        alt="<?php echo $c['c_sj_h1_brand_img_alt']; ?>"
       />
     </div>
-    <span class="sj-h1-eye"><?php echo $c['eyebrow_text']; ?></span>
-    <h1 class="sj-h1-title"><?php echo $c['title_text']; ?></h1>
-    <p class="sj-h1-sub"><?php echo $c['subtitle_text']; ?></p>
+    <span class="sj-h1-eye"><?php echo $c['c_sj_h1_eye_text']; ?></span>
+    <h1 class="sj-h1-title"><?php echo $c['c_sj_h1_title_text']; ?></h1>
+    <p class="sj-h1-sub"><?php echo $c['c_sj_h1_sub_text']; ?></p>
     <div class="sj-h1-btns">
-      <a href="<?php echo $c['button_href']; ?>" class="sj-h1-btn sj-h1-btn-primary" target="<?php echo $c['button_target']; ?>" rel="<?php echo $c['button_rel']; ?>">
-        <?php echo $c['button_text']; echo "\n        "; ?><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+      <a href="<?php echo $c['c_sj_h1_btn_primary_href']; ?>" class="sj-h1-btn sj-h1-btn-primary" target="<?php echo $c['c_sj_h1_btn_primary_target']; ?>" rel="<?php echo $c['c_sj_h1_btn_primary_rel']; ?>">
+        <?php echo $c['c_sj_h1_btn_primary_text']; echo "\n        "; ?><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
           <line x1="12" y1="4" x2="12" y2="16"/>
           <polyline points="6 11 12 17 18 11"/>
         </svg>

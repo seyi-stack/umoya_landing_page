@@ -40,21 +40,21 @@ if ( ! defined( 'ABSPATH' ) ) {
   BRAND: font-family: inherit; palette tokens only.
 =================================================================
 -->
-<section id="sj-journey" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="sj-journey" aria-label="<?php echo $c['c_section_aria_label']; ?>">
 
   <!-- ═══════════ MOVEMENT I — HISTORY & CULTURE ═══════════ -->
   <div class="sj-ch-mv">
     <div class="sj-ch-c">
       <div class="sj-ch-head">
         <div class="sj-ch-rv">
-          <div class="sj-ch-num"><?php echo $c['text_text']; ?></div>
-          <h2 class="sj-ch-ttl"><?php echo $c['title_text']; ?></h2>
-          <div class="sj-ch-where"><?php echo $c['text_text_2']; ?></div>
-          <p class="sj-ch-lead"><?php echo $c['text_text_3']; ?></p>
+          <div class="sj-ch-num"><?php echo $c['c_sj_ch_mv_div_div_div_div_text']; ?></div>
+          <h2 class="sj-ch-ttl"><?php echo $c['c_sj_ch_mv_div_div_div_h2_text']; ?></h2>
+          <div class="sj-ch-where"><?php echo $c['c_sj_ch_mv_div_div_div_div_text_2']; ?></div>
+          <p class="sj-ch-lead"><?php echo $c['c_sj_ch_mv_div_div_div_p_text']; ?></p>
         </div>
         <!-- Chapter One lead image (Johannesburg / Soweto) -->
         <div class="sj-ch-img sj-ch-rv d1">
-          <img src="<?php echo $c['image_src']; ?>" alt="<?php echo $c['image_alt']; ?>" loading="<?php echo $c['image_loading']; ?>" />
+          <img src="<?php echo $c['c_sj_ch_mv_div_div_div_img_src']; ?>" alt="<?php echo $c['c_sj_ch_mv_div_div_div_img_alt']; ?>" loading="<?php echo $c['c_sj_ch_mv_div_div_div_img_loading']; ?>" />
         </div>
       </div>
 
@@ -78,14 +78,14 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="sj-ch-c">
       <div class="sj-ch-head">
         <div class="sj-ch-rv">
-          <div class="sj-ch-num"><?php echo $c['text_text_4']; ?></div>
-          <h2 class="sj-ch-ttl"><?php echo $c['title_text_2']; ?></h2>
-          <div class="sj-ch-where"><?php echo $c['text_text_5']; ?></div>
-          <p class="sj-ch-lead"><?php echo $c['text_text_6']; ?></p>
+          <div class="sj-ch-num"><?php echo $c['c_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv_sj_ch_num_text']; ?></div>
+          <h2 class="sj-ch-ttl"><?php echo $c['c_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv_sj_ch_ttl_text']; ?></h2>
+          <div class="sj-ch-where"><?php echo $c['c_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv_sj_ch_where_text']; ?></div>
+          <p class="sj-ch-lead"><?php echo $c['c_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_rv_sj_ch_lead_text']; ?></p>
         </div>
         <!-- Chapter Two lead image (the Sabi Sand) -->
         <div class="sj-ch-img sj-ch-rv d1">
-          <img src="<?php echo $c['image_src_2']; ?>" alt="<?php echo $c['image_alt_2']; ?>" loading="<?php echo $c['image_loading_2']; ?>" />
+          <img src="<?php echo $c['c_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_img_img_src']; ?>" alt="<?php echo $c['c_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_img_img_alt']; ?>" loading="<?php echo $c['c_sj_ch_alt_sj_ch_c_sj_ch_head_sj_ch_img_img_loading']; ?>" />
         </div>
       </div>
 
@@ -109,14 +109,14 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="sj-ch-c">
       <div class="sj-ch-head">
         <div class="sj-ch-rv">
-          <div class="sj-ch-num"><?php echo $c['text_text_7']; ?></div>
-          <h2 class="sj-ch-ttl"><?php echo $c['title_text_3']; ?></h2>
-          <div class="sj-ch-where"><?php echo $c['text_text_8']; ?></div>
-          <p class="sj-ch-lead"><?php echo $c['text_text_9']; ?></p>
+          <div class="sj-ch-num"><?php echo $c['c_sj_ch_mv_div_div_div_div_text_3']; ?></div>
+          <h2 class="sj-ch-ttl"><?php echo $c['c_sj_ch_mv_div_div_div_h2_text_2']; ?></h2>
+          <div class="sj-ch-where"><?php echo $c['c_sj_ch_mv_div_div_div_div_text_4']; ?></div>
+          <p class="sj-ch-lead"><?php echo $c['c_sj_ch_mv_div_div_div_p_text_2']; ?></p>
         </div>
         <!-- Chapter Three lead image (Cape Town) -->
         <div class="sj-ch-img sj-ch-rv d1">
-          <img src="<?php echo $c['image_src_3']; ?>" alt="<?php echo $c['image_alt_3']; ?>" loading="<?php echo $c['image_loading_3']; ?>" />
+          <img src="<?php echo $c['c_sj_ch_mv_div_div_div_img_src_2']; ?>" alt="<?php echo $c['c_sj_ch_mv_div_div_div_img_alt_2']; ?>" loading="<?php echo $c['c_sj_ch_mv_div_div_div_img_loading_2']; ?>" />
         </div>
       </div>
 

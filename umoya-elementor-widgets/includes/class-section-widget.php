@@ -107,24 +107,27 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 
 		$this->uew_portals = isset( $config['portals'] ) ? (array) $config['portals'] : array();
 
-		$this->register_content_controls( $config );
-		$this->register_repeater_controls( $config );
-		$this->register_grouped_controls( $config, 'integration_controls', 'uew_integration', 'CRM & Form Wiring', Controls_Manager::TAB_CONTENT );
-		$this->register_grouped_controls( $config, 'form_controls', 'uew_form', 'Field Behaviour', Controls_Manager::TAB_CONTENT );
-		$this->register_grouped_controls( $config, 'behaviour_controls', 'uew_behaviour', 'Media & Link Behaviour', Controls_Manager::TAB_CONTENT );
-		$this->register_grouped_controls( $config, 'media_controls', 'uew_media', 'Video &amp; Media Options', Controls_Manager::TAB_CONTENT );
-		$this->register_grouped_controls( $config, 'inline_style_controls', 'uew_inline_style', 'Inline Styles', Controls_Manager::TAB_STYLE );
-		$this->register_token_controls( $config );
-		$this->register_style_controls( $config );
+		$this->register_content_panels( $config );
+		$this->register_style_panels( $config );
+		$this->register_advanced_panels( $config );
 		$this->register_advanced_controls( $config );
 	}
 
-	private function register_content_controls( array $config ) {
-		foreach ( (array) $config['content_panels'] as $panel ) {
-			if ( empty( $panel['controls'] ) ) {
-				continue;
-			}
+	/**
+	 * Content tab: one panel per visible block of the section, in page order.
+	 *
+	 * Each entry is one thing a person sees. An entry with several settings --
+	 * a field's label and placeholder, a button's link and wording -- gets a
+	 * heading; a single setting is already named after its element. Lists sit
+	 * in the block they belong to, where they appear on the page.
+	 */
+	private function register_content_panels( array $config ) {
+		$lists = array();
+		foreach ( (array) $config['repeaters'] as $definition ) {
+			$lists[ $definition['id'] ] = $definition;
+		}
 
+		foreach ( (array) $config['content_panels'] as $panel ) {
 			$this->start_controls_section(
 				$panel['id'],
 				array(
@@ -133,130 +136,127 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 				)
 			);
 
-			foreach ( $panel['controls'] as $field ) {
-				$this->add_field_control( $this, $field );
+			$items = isset( $panel['items'] ) ? (array) $panel['items'] : array();
+			$alone = 1 === count( $items );
+
+			foreach ( $items as $index => $item ) {
+				if ( 'list' === $item['kind'] ) {
+					if ( isset( $lists[ $item['id'] ] ) ) {
+						$this->add_list_control( $lists[ $item['id'] ], ! $alone, $index > 0, isset( $item['label'] ) ? (string) $item['label'] : '' );
+					}
+					continue;
+				}
+
+				if ( count( $item['controls'] ) > 1 ) {
+					$this->add_control(
+						$panel['id'] . '_h' . $index,
+						array(
+							'label'     => $item['label'],
+							'type'      => Controls_Manager::HEADING,
+							'separator' => $index > 0 ? 'before' : 'none',
+						)
+					);
+				}
+
+				foreach ( $item['controls'] as $field ) {
+					$this->add_field_control( $this, $field );
+				}
 			}
 
 			$this->end_controls_section();
 		}
 	}
 
-	private function register_grouped_controls( array $config, $source_key, $section_id, $label, $tab ) {
-		if ( empty( $config[ $source_key ] ) ) {
-			return;
+	/**
+	 * One list (an Elementor repeater) inside the current panel.
+	 *
+	 * @param array $definition Repeater definition from the schema.
+	 * @param bool  $heading    Whether other entries share the panel, so the list needs a heading.
+	 * @param bool  $separate   Whether a rule should separate it from what comes before.
+	 * @param string $label     Its name within the panel ("Links"), which can be
+	 *                          shorter than its name across the widget.
+	 */
+	private function add_list_control( array $definition, $heading, $separate, $label = '' ) {
+		$label    = '' !== $label ? $label : $definition['label'];
+		$repeater = new Repeater();
+
+		foreach ( $definition['controls'] as $field ) {
+			$this->add_field_control( $repeater, $field );
 		}
 
-		$this->start_controls_section( $section_id, array( 'label' => $label, 'tab' => $tab ) );
+		// Per-row style overrides. `{{CURRENT_ITEM}}` resolves to the
+		// elementor-repeater-item-<id> class the template prints on each row.
+		// A list inside a dialog that moves to <body> needs the portal branch
+		// too, or its rows stop being styleable the moment the dialog opens.
+		$item = '{{WRAPPER}} {{CURRENT_ITEM}}';
+		if ( ! empty( $definition['portal'] ) ) {
+			$item .= ', ' . $definition['portal'] . Control_Factory::PORTAL_HOOK . ' {{CURRENT_ITEM}}';
+		}
+		$repeater->add_control(
+			'uew_row_style_heading',
+			array( 'label' => 'This row only', 'type' => Controls_Manager::HEADING, 'separator' => 'before' )
+		);
+		$repeater->add_control(
+			'uew_row_color',
+			array(
+				'label'     => 'Text Color',
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array( $item => 'color: {{VALUE}};' ),
+			)
+		);
+		$repeater->add_control(
+			'uew_row_background',
+			array(
+				'label'     => 'Background Color',
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array( $item => 'background-color: {{VALUE}};' ),
+			)
+		);
+		$repeater->add_control(
+			'uew_row_border_color',
+			array(
+				'label'     => 'Border Color',
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array( $item => 'border-color: {{VALUE}};' ),
+			)
+		);
 
-		if ( 'uew_inline_style' === $section_id ) {
+		if ( $heading ) {
 			$this->add_control(
-				'uew_inline_style_notice',
+				$definition['id'] . '_heading',
+				array(
+					'label'     => $label,
+					'type'      => Controls_Manager::HEADING,
+					'separator' => $separate ? 'before' : 'none',
+				)
+			);
+		}
+
+		// Option lists submit their values; the compiler explains that here,
+		// and the registry adds a sharper warning where a HubSpot dropdown
+		// property must match the list exactly.
+		if ( ! empty( $definition['notice'] ) ) {
+			$this->add_control(
+				$definition['id'] . '_notice',
 				array(
 					'type'            => Controls_Manager::RAW_HTML,
-					'raw'             => 'These properties are written straight onto the element&rsquo;s <code>style</code> attribute, so they beat every rule in the panels below. Clearing one removes that declaration entirely.',
+					'raw'             => wp_kses_post( $definition['notice'] ),
 					'content_classes' => 'elementor-descriptor',
 				)
 			);
 		}
 
-		if ( 'uew_integration' === $section_id ) {
-			$this->add_control(
-				'uew_integration_notice',
-				array(
-					'type'            => Controls_Manager::RAW_HTML,
-					'raw'             => 'These values wire the form to HubSpot and to the WordPress submission log. Changing a field <code>name</code> stops that field being saved unless the alias table in <code>class-submissions.php</code> is updated to match.',
-					'content_classes' => 'elementor-descriptor',
-				)
-			);
-		}
-
-		foreach ( $config[ $source_key ] as $field ) {
-			$this->add_field_control( $this, $field );
-		}
-
-		$this->end_controls_section();
-	}
-
-	private function register_repeater_controls( array $config ) {
-		foreach ( (array) $config['repeaters'] as $definition ) {
-			$repeater = new Repeater();
-
-			foreach ( $definition['controls'] as $field ) {
-				$this->add_field_control( $repeater, $field );
-			}
-
-			// Per-row style overrides. `{{CURRENT_ITEM}}` resolves to the
-			// elementor-repeater-item-<id> class the template prints on each row.
-			// A list inside a dialog that moves to <body> needs the portal branch
-			// too, or its rows stop being styleable the moment the dialog opens.
-			$item = '{{WRAPPER}} {{CURRENT_ITEM}}';
-			if ( ! empty( $definition['portal'] ) ) {
-				$item .= ', ' . $definition['portal'] . Control_Factory::PORTAL_HOOK . ' {{CURRENT_ITEM}}';
-			}
-			$repeater->add_control(
-				'uew_row_style_heading',
-				array( 'label' => 'This row only', 'type' => Controls_Manager::HEADING, 'separator' => 'before' )
-			);
-			$repeater->add_control(
-				'uew_row_color',
-				array(
-					'label'     => 'Text Color',
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => array( $item => 'color: {{VALUE}};' ),
-				)
-			);
-			$repeater->add_control(
-				'uew_row_background',
-				array(
-					'label'     => 'Background Color',
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => array( $item => 'background-color: {{VALUE}};' ),
-				)
-			);
-			$repeater->add_control(
-				'uew_row_border_color',
-				array(
-					'label'     => 'Border Color',
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => array( $item => 'border-color: {{VALUE}};' ),
-				)
-			);
-
-			$this->start_controls_section(
-				'repeater_' . $definition['id'],
-				array(
-					'label' => $definition['label'],
-					'tab'   => Controls_Manager::TAB_CONTENT,
-				)
-			);
-
-			// Option lists submit their values; the compiler explains that here,
-			// and the registry adds a sharper warning where a HubSpot dropdown
-			// property must match the list exactly.
-			if ( ! empty( $definition['notice'] ) ) {
-				$this->add_control(
-					$definition['id'] . '_notice',
-					array(
-						'type'            => Controls_Manager::RAW_HTML,
-						'raw'             => wp_kses_post( $definition['notice'] ),
-						'content_classes' => 'elementor-descriptor',
-					)
-				);
-			}
-
-			$this->add_control(
-				$definition['id'],
-				array(
-					'label'       => $definition['label'],
-					'type'        => Controls_Manager::REPEATER,
-					'fields'      => $repeater->get_controls(),
-					'default'     => $this->repeater_defaults( $definition ),
-					'title_field' => ! empty( $definition['item_label'] ) ? $definition['item_label'] : '',
-				)
-			);
-
-			$this->end_controls_section();
-		}
+		$this->add_control(
+			$definition['id'],
+			array(
+				'label'       => $label,
+				'show_label'  => ! $heading,
+				'type'        => Controls_Manager::REPEATER,
+				'fields'      => $repeater->get_controls(),
+				'default'     => $this->repeater_defaults( $definition ),
+				'title_field' => ! empty( $definition['item_label'] ) ? $definition['item_label'] : '',
+			)
+		);
 	}
 
 	private function repeater_defaults( array $definition ) {
@@ -284,63 +284,176 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 		return $defaults;
 	}
 
-	private function register_token_controls( array $config ) {
+	/**
+	 * Style tab: "Section" first -- the section's colours, its own box, and
+	 * anything styled section-wide -- then one panel per block. Each element is
+	 * one row whose settings open in a pop-out (see Control_Factory).
+	 */
+	private function register_style_panels( array $config ) {
+		$root    = ! empty( $config['root_selector'] ) ? $config['root_selector'] : '';
+		$portals = isset( $config['portals'] ) ? (array) $config['portals'] : array();
+
+		$parts = array();
+		foreach ( (array) $config['style_parts'] as $part ) {
+			$parts[ $part['id'] ] = $part;
+		}
+
+		$add_field = function ( array $field ) {
+			$this->add_field_control( $this, $field );
+		};
+
+		foreach ( (array) $config['style_panels'] as $panel ) {
+			$this->start_controls_section(
+				$panel['id'],
+				array(
+					'label' => $panel['label'],
+					'tab'   => Controls_Manager::TAB_STYLE,
+				)
+			);
+
+			if ( ! empty( $panel['tokens'] ) ) {
+				$this->add_token_controls( $config );
+			}
+
+			foreach ( (array) $panel['rows'] as $index => $row ) {
+				if ( ! empty( $row['heading'] ) ) {
+					$this->add_control(
+						$panel['id'] . '_h' . $index,
+						array(
+							'label'     => $row['heading'],
+							'type'      => Controls_Manager::HEADING,
+							'separator' => 'before',
+						)
+					);
+				}
+				if ( empty( $parts[ $row['part'] ] ) ) {
+					continue;
+				}
+				Control_Factory::add_part_popover(
+					$this,
+					$parts[ $row['part'] ],
+					$root,
+					$portals,
+					$row['label'],
+					isset( $row['inline'] ) ? (array) $row['inline'] : array(),
+					isset( $row['inline_props'] ) ? (array) $row['inline_props'] : array(),
+					$add_field
+				);
+			}
+
+			$this->end_controls_section();
+		}
+	}
+
+	/**
+	 * The section's own CSS variables, at the top of its Section style panel:
+	 * its colours first, since a colour changed here changes every element
+	 * that uses it, in one move.
+	 */
+	private function add_token_controls( array $config ) {
 		if ( empty( $config['tokens'] ) ) {
 			return;
 		}
 
-		$root = ! empty( $config['root_selector'] ) ? $config['root_selector'] : '';
-
-		$this->start_controls_section(
-			'uew_tokens',
-			array(
-				'label' => 'Design Tokens',
-				'tab'   => Controls_Manager::TAB_STYLE,
-			)
-		);
-
-		$this->add_control(
-			'uew_tokens_notice',
-			array(
-				'type'            => Controls_Manager::RAW_HTML,
-				'raw'             => 'These are the section&rsquo;s own CSS variables. Changing one here re-colours every element that uses it, in one move.',
-				'content_classes' => 'elementor-descriptor',
-			)
-		);
-
-		$portals = isset( $config['portals'] ) ? (array) $config['portals'] : array();
-
-		foreach ( $config['tokens'] as $token ) {
-			// A token is written where the stylesheet declares it, not on the
-			// root: a child that redeclares it would otherwise shadow the value.
-			$declared = ! empty( $token['selectors'] ) ? (array) $token['selectors'] : array( $root );
-			$branches = array();
-			foreach ( $declared as $selector ) {
-				$branches[] = Control_Factory::scoped( $selector, $portals );
-			}
-
-			$this->add_control(
-				! empty( $token['id'] ) ? $token['id'] : 'uew_token_' . sanitize_key( str_replace( '-', '_', $token['name'] ) ),
-				array(
-					'label'       => $token['label'],
-					'type'        => 'color' === $token['kind'] ? Controls_Manager::COLOR : Controls_Manager::TEXT,
-					'placeholder' => $token['value'],
-					'selectors'   => array(
-						implode( ', ', $branches ) => '--' . $token['name'] . ': {{VALUE}};',
-					),
-				)
-			);
-		}
-
-		$this->end_controls_section();
-	}
-
-	private function register_style_controls( array $config ) {
 		$root    = ! empty( $config['root_selector'] ) ? $config['root_selector'] : '';
 		$portals = isset( $config['portals'] ) ? (array) $config['portals'] : array();
 
-		foreach ( (array) $config['style_parts'] as $part ) {
-			Control_Factory::register_part( $this, $part, $root, $portals );
+		$colors = array_filter( $config['tokens'], function ( $token ) {
+			return 'color' === $token['kind'];
+		} );
+		$others = array_filter( $config['tokens'], function ( $token ) {
+			return 'color' !== $token['kind'];
+		} );
+
+		foreach ( array( 'Colours' => $colors, 'Other Values' => $others ) as $heading => $tokens ) {
+			if ( ! $tokens ) {
+				continue;
+			}
+
+			$this->add_control(
+				'uew_tokens_' . sanitize_key( $heading ),
+				array(
+					'label'     => $heading,
+					'type'      => Controls_Manager::HEADING,
+					'separator' => 'Colours' === $heading ? 'none' : 'before',
+				)
+			);
+			if ( 'Colours' === $heading ) {
+				$this->add_control(
+					'uew_tokens_notice',
+					array(
+						'type'            => Controls_Manager::RAW_HTML,
+						'raw'             => 'The section&rsquo;s own palette. Changing a colour here re-colours every element that uses it.',
+						'content_classes' => 'elementor-descriptor',
+					)
+				);
+			}
+
+			foreach ( $tokens as $token ) {
+				// A token is written where the stylesheet declares it, not on the
+				// root: a child that redeclares it would otherwise shadow the value.
+				$declared = ! empty( $token['selectors'] ) ? (array) $token['selectors'] : array( $root );
+				$branches = array();
+				foreach ( $declared as $selector ) {
+					$branches[] = Control_Factory::scoped( $selector, $portals );
+				}
+
+				$this->add_control(
+					! empty( $token['id'] ) ? $token['id'] : 'uew_token_' . sanitize_key( str_replace( '-', '_', $token['name'] ) ),
+					array(
+						'label'       => $token['label'],
+						'type'        => 'color' === $token['kind'] ? Controls_Manager::COLOR : Controls_Manager::TEXT,
+						'placeholder' => $token['value'],
+						'selectors'   => array(
+							implode( ', ', $branches ) => '--' . $token['name'] . ': {{VALUE}};',
+						),
+					)
+				);
+			}
+		}
+	}
+
+	/**
+	 * Advanced tab: accessibility, link and media behaviour, form rules and the
+	 * HubSpot wiring -- for whoever maintains the site. Each element is a
+	 * heading naming its block and itself ("Sign-up › Email address").
+	 */
+	private function register_advanced_panels( array $config ) {
+		foreach ( (array) ( isset( $config['advanced_panels'] ) ? $config['advanced_panels'] : array() ) as $panel ) {
+			$this->start_controls_section(
+				$panel['id'],
+				array(
+					'label' => $panel['label'],
+					'tab'   => Controls_Manager::TAB_ADVANCED,
+				)
+			);
+
+			if ( ! empty( $panel['notice'] ) ) {
+				$this->add_control(
+					$panel['id'] . '_notice',
+					array(
+						'type'            => Controls_Manager::RAW_HTML,
+						'raw'             => $panel['notice'],
+						'content_classes' => 'elementor-descriptor',
+					)
+				);
+			}
+
+			foreach ( (array) $panel['groups'] as $index => $group ) {
+				$this->add_control(
+					$panel['id'] . '_h' . $index,
+					array(
+						'label'     => $group['label'],
+						'type'      => Controls_Manager::HEADING,
+						'separator' => ( $index > 0 || ! empty( $panel['notice'] ) ) ? 'before' : 'none',
+					)
+				);
+				foreach ( $group['controls'] as $field ) {
+					$this->add_field_control( $this, $field );
+				}
+			}
+
+			$this->end_controls_section();
 		}
 	}
 

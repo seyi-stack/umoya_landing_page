@@ -31,24 +31,24 @@ if ( ! defined( 'ABSPATH' ) ) {
   BRAND: font-family: inherit; palette tokens only.
 =================================================================
 -->
-<section id="pt-trip-types" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="pt-trip-types" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="pt-tt-c">
 
     <div class="pt-tt-head pt-tt-rv">
-      <span class="pt-tt-eye"><?php echo $c['eyebrow_text']; ?></span>
-      <h2 class="pt-tt-ttl"><?php echo $c['title_text']; ?></h2>
-      <p class="pt-tt-lead"><?php echo $c['text_text']; ?></p>
+      <span class="pt-tt-eye"><?php echo $c['c_pt_tt_eye_text']; ?></span>
+      <h2 class="pt-tt-ttl"><?php echo $c['c_pt_tt_ttl_text']; ?></h2>
+      <p class="pt-tt-lead"><?php echo $c['c_pt_tt_lead_text']; ?></p>
     </div>
 
     <div class="pt-tt-stage pt-tt-rv">
-      <button class="pt-tt-arrow" type="<?php echo $c['arrow_type']; ?>" data-pt-prev aria-label="<?php echo $c['arrow_aria_label']; ?>"<?php echo $c['arrow_disabled']; ?>>
+      <button class="pt-tt-arrow" type="<?php echo $c['c_pt_tt_arrow_type']; ?>" data-pt-prev aria-label="<?php echo $c['c_pt_tt_arrow_aria_label']; ?>"<?php echo $c['c_pt_tt_arrow_disabled']; ?>>
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <button class="pt-tt-arrow" type="<?php echo $c['arrow_type_2']; ?>" data-pt-next aria-label="<?php echo $c['arrow_aria_label_2']; ?>"<?php echo $c['arrow_disabled_2']; ?>>
+      <button class="pt-tt-arrow" type="<?php echo $c['c_pt_tt_arrow_type_2']; ?>" data-pt-next aria-label="<?php echo $c['c_pt_tt_arrow_aria_label_2']; ?>"<?php echo $c['c_pt_tt_arrow_disabled_2']; ?>>
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
 
-      <div class="pt-tt-track" role="list" aria-label="<?php echo $c['container_aria_label']; ?>">
+      <div class="pt-tt-track" role="list" aria-label="<?php echo $c['c_pt_tt_track_aria_label']; ?>">
 
         <?php $__i = 0; foreach ( $r['rep_article_pt_tt_card'] as $it ) : if ( $__i ++ ) { echo '
 
@@ -64,9 +64,9 @@ if ( ! defined( 'ABSPATH' ) ) {
           </div>
         </article><?php endforeach; echo "\n\n        "; ?><article class="pt-tt-card pt-tt-blank" role="listitem">
           <div class="pt-tt-body">
-            <h3 class="pt-tt-name"><?php echo $c['heading_text']; ?></h3>
-            <p class="pt-tt-desc"><?php echo $c['text_text_2']; ?></p>
-            <a href="<?php echo $c['link_href']; ?>" class="pt-tt-go"><?php echo $c['link_text']; echo "\n              "; ?><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <h3 class="pt-tt-name"><?php echo $c['c_pt_tt_blank_pt_tt_body_pt_tt_name_text']; ?></h3>
+            <p class="pt-tt-desc"><?php echo $c['c_pt_tt_blank_pt_tt_body_pt_tt_desc_text']; ?></p>
+            <a href="<?php echo $c['c_pt_tt_blank_pt_tt_body_pt_tt_go_href']; ?>" class="pt-tt-go"><?php echo $c['c_pt_tt_blank_pt_tt_body_pt_tt_go_text']; echo "\n              "; ?><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
         </article>
@@ -74,7 +74,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       </div>
     </div>
 
-    <p class="pt-tt-hint pt-tt-rv"><?php echo $c['text_text_3']; ?></p>
+    <p class="pt-tt-hint pt-tt-rv"><?php echo $c['c_pt_tt_hint_text']; ?></p>
 
   </div>
 </section>

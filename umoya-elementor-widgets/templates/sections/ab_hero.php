@@ -30,28 +30,28 @@ if ( ! defined( 'ABSPATH' ) ) {
   BRAND: font-family: inherit; palette tokens only.
 =================================================================
 -->
-<section id="ab-hero" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="ab-hero" aria-label="<?php echo $c['c_section_aria_label']; ?>">
 
   <div class="ab-h-bg">
     <!-- Poster paints instantly; the video fades in once it can autoplay -->
     <img
-      src="<?php echo $c['image_src']; ?>"
-      alt="<?php echo $c['image_alt']; ?>"
+      src="<?php echo $c['c_img_src']; ?>"
+      alt="<?php echo $c['c_img_alt']; ?>"
     />
     <!-- ★ SWAP: final brand film / trip B-roll. Delete this block to keep the still. -->
     <video
-      id="ab-hero-vid"<?php echo $c['video_autoplay']; ?><?php echo $c['video_muted']; ?><?php echo $c['video_loop']; ?><?php echo $c['video_playsinline']; ?> webkit-playsinline preload="<?php echo $c['video_preload']; ?>"
-      poster="<?php echo $c['video_poster']; ?>"
-      aria-label="<?php echo $c['video_aria_label']; ?>"
-      style="<?php echo $s['video_inline_style']; ?>"<?php echo $c['video_controls']; ?><?php echo $c['video_disablepictureinpicture']; echo "\n    "; ?>>
-      <source src="<?php echo $c['video_source_src']; ?>" type="<?php echo $c['video_source_type']; ?>" />
+      id="ab-hero-vid"<?php echo $c['c_video_autoplay']; ?><?php echo $c['c_video_muted']; ?><?php echo $c['c_video_loop']; ?><?php echo $c['c_video_playsinline']; ?> webkit-playsinline preload="<?php echo $c['c_video_preload']; ?>"
+      poster="<?php echo $c['c_video_poster']; ?>"
+      aria-label="<?php echo $c['c_video_aria_label']; ?>"
+      style="<?php echo $s['c_video_inline_style']; ?>"<?php echo $c['c_video_controls']; ?><?php echo $c['c_video_disablepictureinpicture']; echo "\n    "; ?>>
+      <source src="<?php echo $c['c_video_src']; ?>" type="<?php echo $c['c_video_type']; ?>" />
     </video>
   </div>
 
   <div class="ab-h-content">
-    <span class="ab-h-eye"><?php echo $c['eyebrow_text']; ?></span>
-    <h1 class="ab-h-title"><?php echo $c['title_text']; ?></h1>
-    <p class="ab-h-sub"><?php echo $c['subtitle_text']; ?></p>
+    <span class="ab-h-eye"><?php echo $c['c_ab_h_eye_text']; ?></span>
+    <h1 class="ab-h-title"><?php echo $c['c_ab_h_title_text']; ?></h1>
+    <p class="ab-h-sub"><?php echo $c['c_ab_h_sub_text']; ?></p>
   </div>
 
 </section>

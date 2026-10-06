@@ -13,19 +13,30 @@
  * higher specificity and silently defeat the section's own 768px override. An
  * empty control cannot do that.
  *
+ * Each element is ONE row in its block's panel: a pop-out toggle, the way
+ * Elementor's own Typography row works. One panel per element made the
+ * footer's Style tab a list of 52 panels. Like Typography, the settings only
+ * apply while the row is set to Custom -- "Back to default" undoes them in one
+ * click.
+ *
+ * What a pop-out holds depends on the kind of element (derive.mjs,
+ * featuresFor()): type for text, colours and a hover state for buttons, fit and
+ * filters for photos, layout for containers. Elementor draws every control in a
+ * panel when it opens, hidden or not, so a generous set per element is paid
+ * for in seconds: at about 130 controls each, a block of ten took two seconds
+ * to open.
+ *
+ * Elementor cannot nest a pop-out inside a pop-out, and its Typography, Box
+ * Shadow, Text Shadow, Text Stroke and CSS Filter groups are pop-outs. Inside
+ * an element's pop-out those are therefore plain controls writing the same CSS.
+ *
  * @package Umoya_EW
  */
 
 namespace Umoya_EW;
 
 use Elementor\Controls_Manager;
-use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Box_Shadow;
-use Elementor\Group_Control_Css_Filter;
-use Elementor\Group_Control_Text_Shadow;
-use Elementor\Group_Control_Text_Stroke;
-use Elementor\Group_Control_Typography;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -53,15 +64,29 @@ class Control_Factory {
 	 */
 	const PORTAL_HOOK = '[data-uew-for="{{ID}}"][data-uew-for="{{ID}}"][data-uew-for="{{ID}}"]';
 
+	/** The condition every control in the open pop-out carries. */
+	private static $condition = array();
+
+	/** CSS properties the element sets in its own style attribute. */
+	private static $inline_props = array();
+
+	/** Controls added to the open pop-out so far. */
+	private static $added = 0;
+
 	/**
-	 * Add one element's style panel to a widget.
+	 * Add one element's style row -- a pop-out toggle and its settings -- to the
+	 * panel currently open on the widget.
 	 *
 	 * @param \Elementor\Widget_Base $widget        Widget being built.
 	 * @param array                  $part          Style-part definition from the schema.
 	 * @param string                 $root_selector The section root, e.g. `#fc-hero`.
 	 * @param array                  $portals       Schema portals: elements the section moves to <body>.
+	 * @param string                 $label         The row's name within its block.
+	 * @param array                  $inline_fields Controls for the element's own style attribute.
+	 * @param array                  $inline_props  CSS properties that attribute sets.
+	 * @param callable               $add_field     Registers one schema field as a control.
 	 */
-	public static function register_part( $widget, array $part, $root_selector, array $portals = array() ) {
+	public static function add_part_popover( $widget, array $part, $root_selector, array $portals, $label, array $inline_fields, array $inline_props, callable $add_field ) {
 		$id = $part['id'];
 
 		// An element outside the section root -- a sibling scroll anchor, say --
@@ -72,49 +97,109 @@ class Control_Factory {
 			: (string) $part['selector'];
 		$target   = self::scoped( $full, $portals );
 		$features = isset( $part['features'] ) ? (array) $part['features'] : array();
+		$toggle   = $id . '_style';
 
-		$widget->start_controls_section(
-			'style_' . $id,
+		$widget->add_control(
+			$toggle,
 			array(
-				'label' => $part['label'],
-				'tab'   => Controls_Manager::TAB_STYLE,
+				'label'        => $label,
+				'type'         => Controls_Manager::POPOVER_TOGGLE,
+				'label_off'    => 'Default',
+				'label_on'     => 'Custom',
+				'return_value' => 'yes',
 			)
 		);
 
-		// The panel header names the element; this line says which one it is.
-		// It replaces the copy preview that used to be appended to the header and
-		// made the panel list hard to scan.
+		$widget->start_popover();
+		self::$condition    = array( $toggle => 'yes' );
+		self::$inline_props = array_map( 'strtolower', $inline_props );
+		self::$added        = 0;
+
+		// Which element this is, and whether it is one of several.
 		if ( ! empty( $part['sample'] ) ) {
-			$widget->add_control(
-				$id . '_sample',
-				array(
-					'type'            => Controls_Manager::RAW_HTML,
-					'raw'             => '&ldquo;' . esc_html( $part['sample'] ) . '&rdquo;',
-					'content_classes' => 'elementor-descriptor',
-				)
-			);
+			self::note( $widget, $id . '_sample', '&ldquo;' . esc_html( $part['sample'] ) . '&rdquo;' );
+		}
+		if ( ! empty( $part['shared'] ) || ! empty( $part['everywhere'] ) ) {
+			self::note( $widget, $id . '_shared_notice', 'Styles every one of these in the section at once.' );
 		}
 
-		if ( ! empty( $part['shared'] ) ) {
-			$widget->add_control(
-				$id . '_shared_notice',
-				array(
-					'type'            => Controls_Manager::RAW_HTML,
-					'raw'             => 'Applies to every <code>' . esc_html( $part['selector'] ) . '</code> in this section.',
-					'content_classes' => 'elementor-descriptor',
-				)
-			);
-		}
+		$tag = isset( $part['tag'] ) ? (string) $part['tag'] : '';
 
-		self::add_typography( $widget, $id, $target, $features );
+		self::add_text( $widget, $id, $target, $features );
+		self::add_tick( $widget, $id, $target, $features );
 		self::add_box( $widget, $id, $target, $features );
-		self::add_layout( $widget, $id, $target, $features );
-		self::add_media( $widget, $id, $target, $features );
+		self::add_media( $widget, $id, $target, $features, $tag );
 		self::add_svg( $widget, $id, $target, $features );
-		self::add_effects( $widget, $id, $target, $features, isset( $part['animated'] ) ? (array) $part['animated'] : array() );
+		self::add_layout( $widget, $id, $target, $features );
+		self::add_spacing( $widget, $id, $target, $features );
 		self::add_states( $widget, $id, $target, $features );
+		self::add_visibility( $widget, $id, $target, $features, isset( $part['animated'] ) ? (array) $part['animated'] : array() );
 
-		$widget->end_controls_section();
+		// Values written into the element's own style attribute. They are markup,
+		// not CSS, so they carry no Custom condition: hiding them would blank the
+		// attribute. They win over everything above, which is why any stylesheet
+		// control for the same property was left out.
+		if ( $inline_fields ) {
+			self::heading( $widget, $id . '_inline_heading', 'Set on the element itself' );
+			foreach ( $inline_fields as $field ) {
+				call_user_func( $add_field, $field );
+				self::$added++;
+			}
+		}
+
+		// A pop-out must hold at least one control, or Elementor never closes it.
+		if ( 0 === self::$added ) {
+			self::note( $widget, $id . '_empty', 'Nothing to style on this element.' );
+		}
+
+		$widget->end_popover();
+		self::$condition    = array();
+		self::$inline_props = array();
+	}
+
+	/* ------------------------------------------------------------- plumbing */
+
+	/**
+	 * Add a control to the open pop-out: with its Custom condition, and not at
+	 * all if the element's own style attribute already sets the property.
+	 */
+	private static function control( $widget, $id, array $args, $responsive = false ) {
+		if ( self::overridden( $args ) ) {
+			return;
+		}
+		$args['condition'] = isset( $args['condition'] ) ? array_merge( $args['condition'], self::$condition ) : self::$condition;
+		if ( $responsive ) {
+			$widget->add_responsive_control( $id, $args );
+		} else {
+			$widget->add_control( $id, $args );
+		}
+		self::$added++;
+	}
+
+	/** A group control (Background, Border) in the open pop-out. */
+	private static function group( $widget, $type, array $args, array $properties ) {
+		if ( array_intersect( $properties, self::$inline_props ) ) {
+			return;
+		}
+		$args['condition'] = self::$condition;
+		$widget->add_group_control( $type, $args );
+		self::$added++;
+	}
+
+	/** True when every property a control writes is set inline on the element. */
+	private static function overridden( array $args ) {
+		if ( empty( self::$inline_props ) || empty( $args['selectors'] ) ) {
+			return false;
+		}
+		$properties = array();
+		foreach ( (array) $args['selectors'] as $declaration ) {
+			if ( preg_match_all( '/(?:^|;)\s*([a-z-]+)\s*:/i', (string) $declaration, $matches ) ) {
+				foreach ( $matches[1] as $property ) {
+					$properties[] = strtolower( $property );
+				}
+			}
+		}
+		return $properties && ! array_diff( $properties, self::$inline_props );
 	}
 
 	/**
@@ -129,8 +214,22 @@ class Control_Factory {
 				'label'     => $label,
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
+				'condition' => self::$condition,
 			)
 		);
+	}
+
+	private static function note( $widget, $id, $html ) {
+		$widget->add_control(
+			$id,
+			array(
+				'type'            => Controls_Manager::RAW_HTML,
+				'raw'             => $html,
+				'content_classes' => 'elementor-descriptor',
+				'condition'       => self::$condition,
+			)
+		);
+		self::$added++;
 	}
 
 	/**
@@ -226,449 +325,258 @@ class Control_Factory {
 		} ) );
 	}
 
-	/* ------------------------------------------------------------ typography */
+	/* ------------------------------------------------------------------ text */
 
-	private static function add_typography( $widget, $id, $target, array $features ) {
-		if ( ! in_array( 'typography', $features, true ) ) {
+	/**
+	 * Colour first -- it is what people come to change -- then the settings
+	 * Elementor's Typography pop-out offers, as plain controls.
+	 */
+	private static function add_text( $widget, $id, $target, array $features ) {
+		if ( ! in_array( 'text', $features, true ) ) {
 			return;
 		}
 
-		self::heading( $widget, $id . '_typography_heading', 'Typography' );
+		self::heading( $widget, $id . '_text_heading', 'Text' );
 
-		$widget->add_group_control(
-			Group_Control_Typography::get_type(),
-			array(
-				'name'     => $id . '_typography',
-				'label'    => 'Typography',
-				'selector' => $target,
-			)
-		);
+		self::control( $widget, $id . '_color', array(
+			'label'     => 'Text Color',
+			'type'      => Controls_Manager::COLOR,
+			'selectors' => array( $target => 'color: {{VALUE}};' ),
+		) );
 
-		$widget->add_control(
-			$id . '_color',
-			array(
-				'label'     => 'Text Color',
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array( $target => 'color: {{VALUE}};' ),
-			)
-		);
+		self::control( $widget, $id . '_font_family', array(
+			'label'     => 'Font Family',
+			'type'      => Controls_Manager::FONT,
+			'default'   => '',
+			'selectors' => array( $target => 'font-family: "{{VALUE}}";' ),
+		) );
 
-		if ( in_array( 'text_shadow', $features, true ) ) {
-			$widget->add_group_control(
-				Group_Control_Text_Shadow::get_type(),
-				array(
-					'name'     => $id . '_text_shadow',
-					'selector' => $target,
-				)
-			);
-		}
+		self::control( $widget, $id . '_font_size', array(
+			'label'      => 'Size',
+			'type'       => Controls_Manager::SLIDER,
+			'size_units' => array( 'px', 'em', 'rem', 'vw' ),
+			'range'      => array( 'px' => array( 'min' => 1, 'max' => 200 ), 'em' => array( 'min' => 0.1, 'max' => 10, 'step' => 0.1 ), 'rem' => array( 'min' => 0.1, 'max' => 10, 'step' => 0.1 ) ),
+			'selectors'  => array( $target => 'font-size: {{SIZE}}{{UNIT}};' ),
+		), true );
 
-		if ( in_array( 'text_stroke', $features, true ) ) {
-			$widget->add_group_control(
-				Group_Control_Text_Stroke::get_type(),
-				array(
-					'name'     => $id . '_text_stroke',
-					'selector' => $target,
-				)
-			);
-		}
+		self::control( $widget, $id . '_font_weight', array(
+			'label'     => 'Weight',
+			'type'      => Controls_Manager::SELECT,
+			'options'   => array(
+				''    => 'Default',
+				'300' => '300 (Light)',
+				'400' => '400 (Normal)',
+				'500' => '500 (Medium)',
+				'600' => '600 (Semi Bold)',
+				'700' => '700 (Bold)',
+				'800' => '800 (Extra Bold)',
+			),
+			'selectors' => array( $target => 'font-weight: {{VALUE}};' ),
+		) );
+
+		self::control( $widget, $id . '_line_height', array(
+			'label'      => 'Line Height',
+			'type'       => Controls_Manager::SLIDER,
+			'size_units' => array( 'em', 'px' ),
+			'range'      => array( 'em' => array( 'min' => 0.5, 'max' => 4, 'step' => 0.05 ), 'px' => array( 'min' => 1, 'max' => 200 ) ),
+			'selectors'  => array( $target => 'line-height: {{SIZE}}{{UNIT}};' ),
+		), true );
+
+		self::control( $widget, $id . '_letter_spacing', array(
+			'label'      => 'Letter Spacing',
+			'type'       => Controls_Manager::SLIDER,
+			'size_units' => array( 'px', 'em' ),
+			'range'      => array( 'px' => array( 'min' => -5, 'max' => 10, 'step' => 0.1 ), 'em' => array( 'min' => -0.5, 'max' => 1, 'step' => 0.01 ) ),
+			'selectors'  => array( $target => 'letter-spacing: {{SIZE}}{{UNIT}};' ),
+		) );
+
+		self::control( $widget, $id . '_text_transform', array(
+			'label'     => 'Case',
+			'type'      => Controls_Manager::SELECT,
+			'options'   => array( '' => 'Default', 'uppercase' => 'UPPERCASE', 'capitalize' => 'Title Case', 'lowercase' => 'lowercase', 'none' => 'As typed' ),
+			'selectors' => array( $target => 'text-transform: {{VALUE}};' ),
+		) );
+
+		self::control( $widget, $id . '_font_style', array(
+			'label'     => 'Style',
+			'type'      => Controls_Manager::SELECT,
+			'options'   => array( '' => 'Default', 'normal' => 'Normal', 'italic' => 'Italic' ),
+			'selectors' => array( $target => 'font-style: {{VALUE}};' ),
+		) );
 
 		if ( in_array( 'align', $features, true ) ) {
-			$widget->add_responsive_control(
-				$id . '_align',
-				array(
-					'label'     => 'Text Alignment',
-					'type'      => Controls_Manager::CHOOSE,
-					'options'   => array(
-						'left'    => array( 'title' => 'Left', 'icon' => 'eicon-text-align-left' ),
-						'center'  => array( 'title' => 'Center', 'icon' => 'eicon-text-align-center' ),
-						'right'   => array( 'title' => 'Right', 'icon' => 'eicon-text-align-right' ),
-						'justify' => array( 'title' => 'Justified', 'icon' => 'eicon-text-align-justify' ),
-					),
-					'selectors' => array( $target => 'text-align: {{VALUE}};' ),
-				)
-			);
+			self::control( $widget, $id . '_align', array(
+				'label'     => 'Alignment',
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => array(
+					'left'    => array( 'title' => 'Left', 'icon' => 'eicon-text-align-left' ),
+					'center'  => array( 'title' => 'Center', 'icon' => 'eicon-text-align-center' ),
+					'right'   => array( 'title' => 'Right', 'icon' => 'eicon-text-align-right' ),
+					'justify' => array( 'title' => 'Justified', 'icon' => 'eicon-text-align-justify' ),
+				),
+				'selectors' => array( $target => 'text-align: {{VALUE}};' ),
+			), true );
 		}
 
 		if ( in_array( 'placeholder_color', $features, true ) ) {
-			$widget->add_control(
-				$id . '_placeholder_color',
-				array(
-					'label'     => 'Placeholder Color',
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => array( self::with_suffix( $target, '::placeholder' ) => 'color: {{VALUE}};' ),
-				)
-			);
+			self::control( $widget, $id . '_placeholder_color', array(
+				'label'     => 'Placeholder Color',
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array( self::with_suffix( $target, '::placeholder' ) => 'color: {{VALUE}};' ),
+			) );
 		}
+	}
+
+	/* ------------------------------------------------------------------ tick */
+
+	/** A checkbox or radio button: the browser draws it, so colour and size. */
+	private static function add_tick( $widget, $id, $target, array $features ) {
+		if ( ! in_array( 'tick', $features, true ) ) {
+			return;
+		}
+
+		self::heading( $widget, $id . '_tick_heading', 'Box' );
+
+		self::control( $widget, $id . '_accent', array(
+			'label'     => 'Tick Color',
+			'type'      => Controls_Manager::COLOR,
+			'selectors' => array( $target => 'accent-color: {{VALUE}};' ),
+		) );
+
+		self::control( $widget, $id . '_tick_size', array(
+			'label'      => 'Size',
+			'type'       => Controls_Manager::SLIDER,
+			'size_units' => array( 'px', 'em', 'rem' ),
+			'range'      => array( 'px' => array( 'min' => 8, 'max' => 40 ) ),
+			'selectors'  => array( $target => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};' ),
+		) );
 	}
 
 	/* ------------------------------------------------------------------- box */
 
+	/**
+	 * A plain Background Color, not Elementor's Background group: the group
+	 * keeps its video and slideshow fields even when only colour and gradient
+	 * are allowed -- some sixty controls per element, all drawn when the panel
+	 * opens. A photo the stylesheet paints has its own control on the Content
+	 * tab.
+	 */
 	private static function add_box( $widget, $id, $target, array $features ) {
-		if ( in_array( 'background', $features, true ) || in_array( 'border', $features, true ) || in_array( 'shadow', $features, true ) ) {
-			self::heading( $widget, $id . '_box_heading', 'Background & Border' );
+		$fill   = in_array( 'fill', $features, true );
+		$border = in_array( 'border', $features, true );
+		$radius = $border || in_array( 'radius', $features, true );
+		$shadow = in_array( 'shadow', $features, true );
+		if ( ! $fill && ! $radius && ! $shadow ) {
+			return;
 		}
 
-		if ( in_array( 'background', $features, true ) ) {
-			$widget->add_group_control(
-				Group_Control_Background::get_type(),
-				array(
-					'name'     => $id . '_background',
-					'label'    => 'Background',
-					'types'    => array( 'classic', 'gradient' ),
-					'selector' => $target,
-				)
-			);
+		$photo = in_array( 'media_fit', $features, true );
+		self::heading( $widget, $id . '_box_heading', $photo ? 'Frame' : ( $fill ? 'Background &amp; Border' : 'Border' ) );
+
+		if ( $fill ) {
+			self::control( $widget, $id . '_bg_color', array(
+				'label'     => 'Background Color',
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array( $target => 'background-color: {{VALUE}};' ),
+			) );
 		}
 
-		if ( in_array( 'border', $features, true ) ) {
-			$widget->add_group_control(
+		if ( $border ) {
+			self::group(
+				$widget,
 				Group_Control_Border::get_type(),
 				array(
 					'name'     => $id . '_border',
 					'selector' => $target,
-				)
-			);
-
-			$widget->add_responsive_control(
-				$id . '_radius',
-				array(
-					'label'      => 'Border Radius',
-					'type'       => Controls_Manager::DIMENSIONS,
-					'size_units' => array( 'px', '%', 'em', 'rem' ),
-					'selectors'  => array(
-						$target => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					),
-				)
+				),
+				array( 'border', 'border-style', 'border-width', 'border-color' )
 			);
 		}
 
-		if ( in_array( 'shadow', $features, true ) ) {
-			$widget->add_group_control(
-				Group_Control_Box_Shadow::get_type(),
-				array(
-					'name'     => $id . '_box_shadow',
-					'selector' => $target,
-				)
-			);
+		if ( $radius ) {
+			self::control( $widget, $id . '_radius', array(
+				'label'      => 'Border Radius',
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em', 'rem' ),
+				'selectors'  => array(
+					$target => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			) );
 		}
 
-		if ( in_array( 'spacing', $features, true ) ) {
-			self::heading( $widget, $id . '_spacing_heading', 'Spacing' );
-
-			$widget->add_responsive_control(
-				$id . '_padding',
-				array(
-					'label'      => 'Padding',
-					'type'       => Controls_Manager::DIMENSIONS,
-					'size_units' => self::BOX_UNITS,
-					'selectors'  => array(
-						$target => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					),
-				)
-			);
-
-			$widget->add_responsive_control(
-				$id . '_margin',
-				array(
-					'label'       => 'Margin',
-					'type'        => Controls_Manager::DIMENSIONS,
-					'size_units'  => self::BOX_UNITS,
-					'allowed_dimensions' => 'all',
-					'selectors'   => array(
-						$target => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					),
-				)
-			);
-		}
-	}
-
-	/* ---------------------------------------------------------------- layout */
-
-	private static function add_layout( $widget, $id, $target, array $features ) {
-		if ( in_array( 'sizing', $features, true ) ) {
-			self::heading( $widget, $id . '_sizing_heading', 'Size' );
-
-			foreach ( array(
-				'width'      => 'Width',
-				'max_width'  => 'Max Width',
-				'height'     => 'Height',
-				'min_height' => 'Min Height',
-			) as $property => $label ) {
-				$widget->add_responsive_control(
-					$id . '_' . $property,
-					array(
-						'label'      => $label,
-						'type'       => Controls_Manager::SLIDER,
-						'size_units' => self::LENGTH_UNITS,
-						'range'      => array(
-							'px'  => array( 'min' => 0, 'max' => 1600 ),
-							'%'   => array( 'min' => 0, 'max' => 100 ),
-							'vw'  => array( 'min' => 0, 'max' => 100 ),
-							'vh'  => array( 'min' => 0, 'max' => 200 ),
-							'em'  => array( 'min' => 0, 'max' => 80 ),
-							'rem' => array( 'min' => 0, 'max' => 80 ),
-						),
-						'selectors'  => array(
-							$target => str_replace( '_', '-', $property ) . ': {{SIZE}}{{UNIT}};',
-						),
-					)
-				);
-			}
-
-			$widget->add_responsive_control(
-				$id . '_display',
-				array(
-					'label'     => 'Display',
-					'type'      => Controls_Manager::SELECT,
-					'options'   => array(
-						''             => 'Default',
-						'block'        => 'Block',
-						'inline-block' => 'Inline block',
-						'flex'         => 'Flex',
-						'inline-flex'  => 'Inline flex',
-						'grid'         => 'Grid',
-						'none'         => 'Hidden',
-					),
-					'default'   => '',
-					'selectors' => array( $target => 'display: {{VALUE}};' ),
-				)
-			);
-
-			$widget->add_control(
-				$id . '_overflow',
-				array(
-					'label'     => 'Overflow',
-					'type'      => Controls_Manager::SELECT,
-					'options'   => array(
-						''        => 'Default',
-						'visible' => 'Visible',
-						'hidden'  => 'Hidden',
-						'auto'    => 'Auto',
-						'scroll'  => 'Scroll',
-					),
-					'selectors' => array( $target => 'overflow: {{VALUE}};' ),
-				)
-			);
-		}
-
-		if ( in_array( 'flex_container', $features, true ) ) {
-			$widget->add_control(
-				$id . '_flex_heading',
-				array( 'label' => 'Flex Layout', 'type' => Controls_Manager::HEADING, 'separator' => 'before' )
-			);
-
-			$widget->add_responsive_control(
-				$id . '_flex_direction',
-				array(
-					'label'     => 'Direction',
-					'type'      => Controls_Manager::SELECT,
-					'options'   => array(
-						''               => 'Default',
-						'row'            => 'Row',
-						'row-reverse'    => 'Row reversed',
-						'column'         => 'Column',
-						'column-reverse' => 'Column reversed',
-					),
-					'selectors' => array( $target => 'flex-direction: {{VALUE}};' ),
-				)
-			);
-
-			$widget->add_responsive_control(
-				$id . '_justify_content',
-				array(
-					'label'     => 'Justify Content',
-					'type'      => Controls_Manager::SELECT,
-					'options'   => self::alignment_options(),
-					'selectors' => array( $target => 'justify-content: {{VALUE}};' ),
-				)
-			);
-
-			$widget->add_responsive_control(
-				$id . '_align_items',
-				array(
-					'label'     => 'Align Items',
-					'type'      => Controls_Manager::SELECT,
-					'options'   => array(
-						''         => 'Default',
-						'flex-start' => 'Start',
-						'center'   => 'Center',
-						'flex-end' => 'End',
-						'stretch'  => 'Stretch',
-						'baseline' => 'Baseline',
-					),
-					'selectors' => array( $target => 'align-items: {{VALUE}};' ),
-				)
-			);
-
-			$widget->add_responsive_control(
-				$id . '_flex_wrap',
-				array(
-					'label'     => 'Wrap',
-					'type'      => Controls_Manager::SELECT,
-					'options'   => array( '' => 'Default', 'nowrap' => 'No wrap', 'wrap' => 'Wrap', 'wrap-reverse' => 'Wrap reversed' ),
-					'selectors' => array( $target => 'flex-wrap: {{VALUE}};' ),
-				)
-			);
-		}
-
-		if ( in_array( 'grid_container', $features, true ) ) {
-			$widget->add_control(
-				$id . '_grid_heading',
-				array( 'label' => 'Grid Layout', 'type' => Controls_Manager::HEADING, 'separator' => 'before' )
-			);
-
-			$widget->add_responsive_control(
-				$id . '_grid_columns',
-				array(
-					'label'       => 'Template Columns',
-					'type'        => Controls_Manager::TEXT,
-					'placeholder' => 'e.g. repeat(3, 1fr)',
-					'selectors'   => array( $target => 'grid-template-columns: {{VALUE}};' ),
-				)
-			);
-
-			$widget->add_responsive_control(
-				$id . '_grid_rows',
-				array(
-					'label'       => 'Template Rows',
-					'type'        => Controls_Manager::TEXT,
-					'placeholder' => 'e.g. auto 1fr',
-					'selectors'   => array( $target => 'grid-template-rows: {{VALUE}};' ),
-				)
-			);
-
-			$widget->add_responsive_control(
-				$id . '_grid_align_items',
-				array(
-					'label'     => 'Align Items',
-					'type'      => Controls_Manager::SELECT,
-					'options'   => array( '' => 'Default', 'start' => 'Start', 'center' => 'Center', 'end' => 'End', 'stretch' => 'Stretch' ),
-					'selectors' => array( $target => 'align-items: {{VALUE}};' ),
-				)
-			);
-		}
-
-		if ( in_array( 'flex_container', $features, true ) || in_array( 'grid_container', $features, true ) ) {
-			$widget->add_responsive_control(
-				$id . '_gap',
-				array(
-					'label'      => 'Gap',
-					'type'       => Controls_Manager::SLIDER,
-					'size_units' => array( 'px', 'em', 'rem', '%' ),
-					'range'      => array( 'px' => array( 'min' => 0, 'max' => 200 ) ),
-					'selectors'  => array( $target => 'gap: {{SIZE}}{{UNIT}};' ),
-				)
-			);
-		}
-
-		if ( in_array( 'flex_item', $features, true ) ) {
-			$widget->add_responsive_control(
-				$id . '_align_self',
-				array(
-					'label'     => 'Align Self',
-					'type'      => Controls_Manager::SELECT,
-					'options'   => array( '' => 'Default', 'flex-start' => 'Start', 'center' => 'Center', 'flex-end' => 'End', 'stretch' => 'Stretch' ),
-					'selectors' => array( $target => 'align-self: {{VALUE}};' ),
-					'separator' => 'before',
-				)
-			);
-
-			$widget->add_responsive_control(
-				$id . '_order',
-				array(
-					'label'     => 'Order',
-					'type'      => Controls_Manager::NUMBER,
-					'selectors' => array( $target => 'order: {{VALUE}};' ),
-				)
-			);
-		}
-
-		if ( in_array( 'position', $features, true ) ) {
-			$widget->add_control(
-				$id . '_position',
-				array(
-					'label'     => 'Position',
-					'type'      => Controls_Manager::SELECT,
-					'options'   => array(
-						''         => 'Default',
-						'static'   => 'Static',
-						'relative' => 'Relative',
-						'absolute' => 'Absolute',
-						'fixed'    => 'Fixed',
-						'sticky'   => 'Sticky',
-					),
-					'selectors' => array( $target => 'position: {{VALUE}};' ),
-					'separator' => 'before',
-				)
-			);
-
-			$widget->add_control(
-				$id . '_z_index',
-				array(
-					'label'     => 'Z-index',
-					'type'      => Controls_Manager::NUMBER,
-					'selectors' => array( $target => 'z-index: {{VALUE}};' ),
-				)
-			);
+		if ( $shadow ) {
+			self::control( $widget, $id . '_box_shadow', array(
+				'label'     => 'Box Shadow',
+				'type'      => Controls_Manager::BOX_SHADOW,
+				'selectors' => array( $target => 'box-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{SPREAD}}px {{COLOR}};' ),
+			) );
 		}
 	}
 
 	/* ----------------------------------------------------------------- media */
 
-	private static function add_media( $widget, $id, $target, array $features ) {
+	private static function add_media( $widget, $id, $target, array $features, $tag ) {
 		if ( ! in_array( 'media_fit', $features, true ) ) {
 			return;
 		}
 
-		self::heading( $widget, $id . '_media_heading', 'Image Fit' );
+		self::heading( $widget, $id . '_media_heading', 'img' === $tag ? 'Image' : 'Video' );
 
-		$widget->add_control(
-			$id . '_object_fit',
-			array(
-				'label'     => 'Object Fit',
-				'type'      => Controls_Manager::SELECT,
-				'options'   => array(
-					''           => 'Default',
-					'cover'      => 'Cover',
-					'contain'    => 'Contain',
-					'fill'       => 'Fill',
-					'none'       => 'None',
-					'scale-down' => 'Scale down',
-				),
-				'selectors' => array( $target => 'object-fit: {{VALUE}};' ),
-			)
-		);
+		self::control( $widget, $id . '_object_fit', array(
+			'label'     => 'Fit',
+			'type'      => Controls_Manager::SELECT,
+			'options'   => array(
+				''        => 'Default',
+				'cover'   => 'Fill the frame (crop)',
+				'contain' => 'Show it all',
+				'fill'    => 'Stretch',
+			),
+			'selectors' => array( $target => 'object-fit: {{VALUE}};' ),
+		) );
 
-		$widget->add_responsive_control(
-			$id . '_object_position',
-			array(
-				'label'       => 'Object Position',
-				'type'        => Controls_Manager::TEXT,
-				'placeholder' => 'e.g. center 25%',
-				'description' => 'Where the image sits inside its frame. Use this before replacing a photo that looks cropped.',
-				'selectors'   => array( $target => 'object-position: {{VALUE}};' ),
-			)
-		);
+		self::control( $widget, $id . '_object_position', array(
+			'label'       => 'Position',
+			'type'        => Controls_Manager::TEXT,
+			'placeholder' => 'e.g. center 25%',
+			'description' => 'Which part stays in view when the frame crops it. Try this before replacing a photo that looks cut off.',
+			'selectors'   => array( $target => 'object-position: {{VALUE}};' ),
+		), true );
 
-		$widget->add_responsive_control(
-			$id . '_aspect_ratio',
-			array(
-				'label'       => 'Aspect Ratio',
-				'type'        => Controls_Manager::TEXT,
-				'placeholder' => 'e.g. 16 / 9',
-				'selectors'   => array( $target => 'aspect-ratio: {{VALUE}};' ),
-			)
-		);
+		self::control( $widget, $id . '_media_height', array(
+			'label'      => 'Height',
+			'type'       => Controls_Manager::SLIDER,
+			'size_units' => array( 'px', 'vh', '%', 'rem' ),
+			'range'      => array( 'px' => array( 'min' => 0, 'max' => 1200 ), 'vh' => array( 'min' => 0, 'max' => 100 ), '%' => array( 'min' => 0, 'max' => 100 ) ),
+			'selectors'  => array( $target => 'height: {{SIZE}}{{UNIT}};' ),
+		), true );
+
+		self::control( $widget, $id . '_aspect_ratio', array(
+			'label'       => 'Aspect Ratio',
+			'type'        => Controls_Manager::TEXT,
+			'placeholder' => 'e.g. 4 / 3',
+			'selectors'   => array( $target => 'aspect-ratio: {{VALUE}};' ),
+		) );
 
 		if ( in_array( 'filters', $features, true ) ) {
-			$widget->add_group_control(
-				Group_Control_Css_Filter::get_type(),
-				array(
-					'name'     => $id . '_filters',
-					'selector' => $target,
-				)
-			);
+			// One `filter` declaration carries every function, so each slider
+			// writes all three, reading its siblings' values and falling back to
+			// "no change" for any left empty. Separate `filter` rules would
+			// overwrite each other.
+			$filter = 'filter: brightness( {{' . $id . '_filter_brightness.SIZE || 100}}% ) contrast( {{' . $id . '_filter_contrast.SIZE || 100}}% ) saturate( {{' . $id . '_filter_saturate.SIZE || 100}}% );';
+
+			foreach ( array(
+				'brightness' => 'Brightness',
+				'contrast'   => 'Contrast',
+				'saturate'   => 'Saturation',
+			) as $name => $label ) {
+				self::control( $widget, $id . '_filter_' . $name, array(
+					'label'      => $label,
+					'type'       => Controls_Manager::SLIDER,
+					'size_units' => array( '%' ),
+					'range'      => array( '%' => array( 'min' => 0, 'max' => 200, 'step' => 1 ) ),
+					'selectors'  => array( $target => $filter ),
+				) );
+			}
 		}
 	}
 
@@ -681,191 +589,245 @@ class Control_Factory {
 
 		self::heading( $widget, $id . '_icon_heading', 'Icon' );
 
-		$widget->add_control(
-			$id . '_svg_stroke',
-			array(
-				'label'     => 'Stroke Color',
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array( $target => 'stroke: {{VALUE}};', self::with_suffix( $target, ' *' ) => 'stroke: {{VALUE}};' ),
-			)
-		);
+		self::control( $widget, $id . '_svg_stroke', array(
+			'label'     => 'Line Color',
+			'type'      => Controls_Manager::COLOR,
+			'selectors' => array( $target => 'stroke: {{VALUE}};', self::with_suffix( $target, ' *' ) => 'stroke: {{VALUE}};' ),
+		) );
 
-		$widget->add_control(
-			$id . '_svg_fill',
-			array(
-				'label'     => 'Fill Color',
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array( $target => 'fill: {{VALUE}};', self::with_suffix( $target, ' *' ) => 'fill: {{VALUE}};' ),
-			)
-		);
+		self::control( $widget, $id . '_svg_fill', array(
+			'label'     => 'Fill Color',
+			'type'      => Controls_Manager::COLOR,
+			'selectors' => array( $target => 'fill: {{VALUE}};', self::with_suffix( $target, ' *' ) => 'fill: {{VALUE}};' ),
+		) );
 
-		$widget->add_control(
-			$id . '_svg_stroke_width',
-			array(
-				'label'     => 'Stroke Width',
-				'type'      => Controls_Manager::SLIDER,
-				'range'     => array( 'px' => array( 'min' => 0, 'max' => 12, 'step' => 0.1 ) ),
-				'selectors' => array( $target => 'stroke-width: {{SIZE}};', self::with_suffix( $target, ' *' ) => 'stroke-width: {{SIZE}};' ),
-			)
-		);
+		self::control( $widget, $id . '_svg_stroke_width', array(
+			'label'     => 'Line Weight',
+			'type'      => Controls_Manager::SLIDER,
+			'range'     => array( 'px' => array( 'min' => 0, 'max' => 12, 'step' => 0.1 ) ),
+			'selectors' => array( $target => 'stroke-width: {{SIZE}};', self::with_suffix( $target, ' *' ) => 'stroke-width: {{SIZE}};' ),
+		) );
 
-		$widget->add_responsive_control(
-			$id . '_svg_size',
-			array(
-				'label'      => 'Icon Size',
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em', 'rem' ),
-				'range'      => array( 'px' => array( 'min' => 4, 'max' => 200 ) ),
-				'selectors'  => array( $target => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};' ),
-			)
-		);
+		self::control( $widget, $id . '_svg_size', array(
+			'label'      => 'Size',
+			'type'       => Controls_Manager::SLIDER,
+			'size_units' => array( 'px', 'em', 'rem' ),
+			'range'      => array( 'px' => array( 'min' => 4, 'max' => 200 ) ),
+			'selectors'  => array( $target => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};' ),
+		), true );
 	}
 
-	/* --------------------------------------------------------------- effects */
+	/* ---------------------------------------------------------------- layout */
 
-	private static function add_effects( $widget, $id, $target, array $features, array $animated = array() ) {
-		if ( ! in_array( 'effects', $features, true ) ) {
+	private static function add_layout( $widget, $id, $target, array $features ) {
+		$flex = in_array( 'flex_container', $features, true );
+		$grid = in_array( 'grid_container', $features, true );
+		if ( ! $flex && ! $grid ) {
 			return;
 		}
 
-		self::heading( $widget, $id . '_effects_heading', 'Effects' );
+		self::heading( $widget, $id . '_layout_heading', 'Layout' );
 
-		// An element whose own entrance animation drives its opacity holds the
-		// animation's last frame for good (`fill-mode: both`), and an animated
-		// value beats any normal declaration. Only `!important` outranks it, so
-		// that is what this control writes there -- and it says what it costs.
-		$fades = in_array( 'opacity', $animated, true );
-
-		$widget->add_responsive_control(
-			$id . '_opacity',
-			array(
-				'label'       => 'Opacity',
-				'type'        => Controls_Manager::SLIDER,
-				'range'       => array( 'px' => array( 'min' => 0, 'max' => 1, 'step' => 0.01 ) ),
-				'selectors'   => array( $target => $fades ? 'opacity: {{SIZE}} !important;' : 'opacity: {{SIZE}};' ),
-				'description' => $fades ? 'This element fades in as the page loads; a value here replaces that fade.' : '',
-				'separator'   => 'before',
-			)
-		);
-
-		$widget->add_control(
-			$id . '_blend_mode',
-			array(
-				'label'     => 'Blend Mode',
+		if ( $flex ) {
+			self::control( $widget, $id . '_flex_direction', array(
+				'label'     => 'Direction',
 				'type'      => Controls_Manager::SELECT,
 				'options'   => array(
-					''           => 'Normal',
-					'multiply'   => 'Multiply',
-					'screen'     => 'Screen',
-					'overlay'    => 'Overlay',
-					'darken'     => 'Darken',
-					'lighten'    => 'Lighten',
-					'color-dodge' => 'Color dodge',
-					'saturation' => 'Saturation',
-					'color'      => 'Color',
-					'difference' => 'Difference',
-					'exclusion'  => 'Exclusion',
-					'luminosity' => 'Luminosity',
+					''               => 'Default',
+					'row'            => 'Side by side',
+					'column'         => 'Stacked',
+					'row-reverse'    => 'Side by side, reversed',
+					'column-reverse' => 'Stacked, reversed',
 				),
-				'selectors' => array( $target => 'mix-blend-mode: {{VALUE}};' ),
-			)
-		);
+				'selectors' => array( $target => 'flex-direction: {{VALUE}};' ),
+			), true );
 
-		if ( in_array( 'transition', $features, true ) ) {
-			$widget->add_control(
-				$id . '_transition',
-				array(
-					'label'     => 'Transition Duration',
-					'type'      => Controls_Manager::SLIDER,
-					'size_units' => array( 's' ),
-					'range'     => array( 's' => array( 'min' => 0, 'max' => 3, 'step' => 0.05 ) ),
-					'selectors' => array( $target => 'transition-duration: {{SIZE}}s;' ),
-				)
-			);
+			self::control( $widget, $id . '_justify_content', array(
+				'label'     => 'Justify Content',
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array(
+					''              => 'Default',
+					'flex-start'    => 'Start',
+					'center'        => 'Center',
+					'flex-end'      => 'End',
+					'space-between' => 'Space between',
+					'space-around'  => 'Space around',
+					'space-evenly'  => 'Space evenly',
+				),
+				'selectors' => array( $target => 'justify-content: {{VALUE}};' ),
+			) );
+
+			self::control( $widget, $id . '_align_items', array(
+				'label'     => 'Align Items',
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array( '' => 'Default', 'flex-start' => 'Start', 'center' => 'Center', 'flex-end' => 'End', 'stretch' => 'Stretch' ),
+				'selectors' => array( $target => 'align-items: {{VALUE}};' ),
+			) );
+		}
+
+		if ( $grid ) {
+			self::control( $widget, $id . '_grid_columns', array(
+				'label'       => 'Columns',
+				'type'        => Controls_Manager::NUMBER,
+				'min'         => 1,
+				'max'         => 12,
+				'description' => 'Equal columns. Leave empty to keep the designed layout.',
+				'selectors'   => array( $target => 'grid-template-columns: repeat({{VALUE}}, minmax(0, 1fr));' ),
+			), true );
+
+			self::control( $widget, $id . '_grid_align_items', array(
+				'label'     => 'Align Items',
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array( '' => 'Default', 'start' => 'Start', 'center' => 'Center', 'end' => 'End', 'stretch' => 'Stretch' ),
+				'selectors' => array( $target => 'align-items: {{VALUE}};' ),
+			) );
+		}
+
+		self::control( $widget, $id . '_gap', array(
+			'label'      => 'Gap',
+			'type'       => Controls_Manager::SLIDER,
+			'size_units' => array( 'px', 'em', 'rem', '%' ),
+			'range'      => array( 'px' => array( 'min' => 0, 'max' => 200 ) ),
+			'selectors'  => array( $target => 'gap: {{SIZE}}{{UNIT}};' ),
+		), true );
+	}
+
+	/* --------------------------------------------------------- size, spacing */
+
+	private static function add_spacing( $widget, $id, $target, array $features ) {
+		$measure = in_array( 'measure', $features, true );
+		$min     = in_array( 'min_height', $features, true );
+		$padding = in_array( 'padding', $features, true );
+		$margin  = in_array( 'margin', $features, true );
+		if ( ! $measure && ! $min && ! $padding && ! $margin ) {
+			return;
+		}
+
+		self::heading( $widget, $id . '_spacing_heading', $measure || $min ? 'Size &amp; Spacing' : 'Spacing' );
+
+		if ( $measure ) {
+			self::control( $widget, $id . '_max_width', array(
+				'label'      => 'Max Width',
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => self::LENGTH_UNITS,
+				'range'      => array( 'px' => array( 'min' => 0, 'max' => 1600 ), '%' => array( 'min' => 0, 'max' => 100 ), 'vw' => array( 'min' => 0, 'max' => 100 ) ),
+				'selectors'  => array( $target => 'max-width: {{SIZE}}{{UNIT}};' ),
+			), true );
+		}
+
+		if ( $min ) {
+			self::control( $widget, $id . '_min_height', array(
+				'label'      => 'Min Height',
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'vh', 'dvh', 'rem' ),
+				'range'      => array( 'px' => array( 'min' => 0, 'max' => 1200 ), 'vh' => array( 'min' => 0, 'max' => 100 ), 'dvh' => array( 'min' => 0, 'max' => 100 ) ),
+				'selectors'  => array( $target => 'min-height: {{SIZE}}{{UNIT}};' ),
+			), true );
+		}
+
+		if ( $padding ) {
+			self::control( $widget, $id . '_padding', array(
+				'label'      => 'Padding',
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => self::BOX_UNITS,
+				'selectors'  => array(
+					$target => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			), true );
+		}
+
+		if ( $margin ) {
+			self::control( $widget, $id . '_margin', array(
+				'label'              => 'Margin',
+				'type'               => Controls_Manager::DIMENSIONS,
+				'size_units'         => self::BOX_UNITS,
+				'allowed_dimensions' => 'all',
+				'selectors'          => array(
+					$target => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			), true );
 		}
 	}
 
 	/* ---------------------------------------------------------------- states */
 
+	/**
+	 * Hover and focus colours. Elementor shows these as Normal / Hover tabs on
+	 * its own buttons, but tabs cannot sit inside a pop-out, so each state is
+	 * named in its label instead.
+	 */
 	private static function add_states( $widget, $id, $target, array $features ) {
-		if ( ! in_array( 'states', $features, true ) ) {
+		$hover = in_array( 'states', $features, true );
+		$focus = in_array( 'focus', $features, true );
+		if ( ! $hover && ! $focus ) {
 			return;
 		}
 
-		self::heading( $widget, $id . '_states_heading', 'States' );
+		self::heading( $widget, $id . '_states_heading', $hover ? 'Hover' : 'Focus' );
 
-		$widget->start_controls_tabs( $id . '_state_tabs' );
-
-		$widget->start_controls_tab( $id . '_state_normal', array( 'label' => 'Normal' ) );
-		$widget->add_control(
-			$id . '_state_bg',
-			array(
-				'label'     => 'Background Color',
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array( $target => 'background-color: {{VALUE}};' ),
-			)
-		);
-		$widget->end_controls_tab();
-
-		$widget->start_controls_tab( $id . '_state_hover', array( 'label' => 'Hover' ) );
-		$widget->add_control(
-			$id . '_hover_color',
-			array(
-				'label'     => 'Text Color',
+		if ( $hover ) {
+			self::control( $widget, $id . '_hover_color', array(
+				'label'     => 'Hover: Text Color',
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( self::with_suffix( $target, ':hover' ) => 'color: {{VALUE}};' ),
-			)
-		);
-		$widget->add_control(
-			$id . '_hover_bg',
-			array(
-				'label'     => 'Background Color',
+			) );
+			self::control( $widget, $id . '_hover_bg', array(
+				'label'     => 'Hover: Background Color',
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( self::with_suffix( $target, ':hover' ) => 'background-color: {{VALUE}};' ),
-			)
-		);
-		$widget->add_control(
-			$id . '_hover_border',
-			array(
-				'label'     => 'Border Color',
+			) );
+			self::control( $widget, $id . '_hover_border', array(
+				'label'     => 'Hover: Border Color',
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( self::with_suffix( $target, ':hover' ) => 'border-color: {{VALUE}};' ),
-			)
-		);
-		$widget->end_controls_tab();
+			) );
+		}
 
-		$widget->start_controls_tab( $id . '_state_focus', array( 'label' => 'Focus' ) );
-		$widget->add_control(
-			$id . '_focus_border',
-			array(
-				'label'       => 'Border Color',
+		if ( $focus ) {
+			self::control( $widget, $id . '_focus_border', array(
+				'label'       => 'Focus: Border Color',
 				'type'        => Controls_Manager::COLOR,
-				'description' => 'Keep a visible focus ring: it is how keyboard users see where they are.',
+				'description' => 'Keep the focused field easy to see: it is how keyboard users know where they are.',
 				'selectors'   => array( self::with_suffix( $target, ':focus' ) => 'border-color: {{VALUE}};' ),
-			)
-		);
-		$widget->add_control(
-			$id . '_focus_outline',
-			array(
-				'label'     => 'Outline Color',
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array( self::with_suffix( $target, ':focus-visible' ) => 'outline-color: {{VALUE}};' ),
-			)
-		);
-		$widget->end_controls_tab();
-
-		$widget->end_controls_tabs();
+			) );
+		}
 	}
 
-	private static function alignment_options() {
-		return array(
-			''              => 'Default',
-			'flex-start'    => 'Start',
-			'center'        => 'Center',
-			'flex-end'      => 'End',
-			'space-between' => 'Space between',
-			'space-around'  => 'Space around',
-			'space-evenly'  => 'Space evenly',
-		);
+	/* ------------------------------------------------------------ visibility */
+
+	private static function add_visibility( $widget, $id, $target, array $features, array $animated = array() ) {
+		$opacity = in_array( 'effects', $features, true );
+		$hide    = in_array( 'visibility', $features, true );
+		if ( ! $opacity && ! $hide ) {
+			return;
+		}
+
+		self::heading( $widget, $id . '_visibility_heading', 'Visibility' );
+
+		if ( $opacity ) {
+			// An element whose own entrance animation drives its opacity holds the
+			// animation's last frame for good (`fill-mode: both`), and an animated
+			// value beats any normal declaration. Only `!important` outranks it, so
+			// that is what this control writes there -- and it says what it costs.
+			$fades = in_array( 'opacity', $animated, true );
+
+			self::control( $widget, $id . '_opacity', array(
+				'label'       => 'Opacity',
+				'type'        => Controls_Manager::SLIDER,
+				'range'       => array( 'px' => array( 'min' => 0, 'max' => 1, 'step' => 0.01 ) ),
+				'selectors'   => array( $target => $fades ? 'opacity: {{SIZE}} !important;' : 'opacity: {{SIZE}};' ),
+				'description' => $fades ? 'This element fades in as the page loads; a value here replaces that fade.' : '',
+			) );
+		}
+
+		if ( $hide ) {
+			self::control( $widget, $id . '_hide', array(
+				'label'       => 'Display',
+				'type'        => Controls_Manager::SELECT,
+				'options'     => array( '' => 'Shown', 'none' => 'Hidden' ),
+				'description' => 'Hidden on desktop hides it everywhere. To hide it on phones only, switch the editor to phone view first.',
+				'selectors'   => array( $target => 'display: {{VALUE}};' ),
+			), true );
+		}
 	}
 }

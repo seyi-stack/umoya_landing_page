@@ -32,28 +32,28 @@ if ( ! defined( 'ABSPATH' ) ) {
   IMAGES: Umoya CDN placeholders — see ★ SWAP comments.
 =================================================================
 -->
-<section id="umoya-ways-to-travel" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="umoya-ways-to-travel" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="umoya-wtt-wrap">
 
     <div class="umoya-wtt-head umoya-wtt-rv">
       <div>
-        <span class="umoya-wtt-eye"><?php echo $c['eyebrow_text']; ?></span>
-        <h2><?php echo $c['heading_text']; ?><br class="umoya-wtt-title-break"> <?php echo $c['heading_text_2']; ?></h2>
+        <span class="umoya-wtt-eye"><?php echo $c['c_umoya_wtt_eye_text']; ?></span>
+        <h2><?php echo $c['c_h2_text']; ?><br class="umoya-wtt-title-break"> <?php echo $c['c_h2_text_2']; ?></h2>
       </div>
       <div class="umoya-wtt-actions">
-        <button class="umoya-wtt-cta" type="<?php echo $c['button_type']; ?>" data-umoya-form-popup<?php echo $c['button_disabled']; ?>><?php echo $c['button_text']; ?></button>
+        <button class="umoya-wtt-cta" type="<?php echo $c['c_umoya_wtt_cta_type']; ?>" data-umoya-form-popup<?php echo $c['c_umoya_wtt_cta_disabled']; ?>><?php echo $c['c_umoya_wtt_cta_text']; ?></button>
       </div>
     </div>
 
     <div class="umoya-wtt-stage umoya-wtt-rv">
-      <button class="umoya-wtt-arrow" type="<?php echo $c['arrow_type']; ?>" data-wtt-prev aria-label="<?php echo $c['arrow_aria_label']; ?>"<?php echo $c['arrow_disabled']; ?>>
+      <button class="umoya-wtt-arrow" type="<?php echo $c['c_umoya_wtt_arrow_type']; ?>" data-wtt-prev aria-label="<?php echo $c['c_umoya_wtt_arrow_aria_label']; ?>"<?php echo $c['c_umoya_wtt_arrow_disabled']; ?>>
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <button class="umoya-wtt-arrow" type="<?php echo $c['arrow_type_2']; ?>" data-wtt-next aria-label="<?php echo $c['arrow_aria_label_2']; ?>"<?php echo $c['arrow_disabled_2']; ?>>
+      <button class="umoya-wtt-arrow" type="<?php echo $c['c_umoya_wtt_arrow_type_2']; ?>" data-wtt-next aria-label="<?php echo $c['c_umoya_wtt_arrow_aria_label_2']; ?>"<?php echo $c['c_umoya_wtt_arrow_disabled_2']; ?>>
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
 
-    <div class="umoya-wtt-track" role="list" aria-label="<?php echo $c['container_aria_label']; ?>">
+    <div class="umoya-wtt-track" role="list" aria-label="<?php echo $c['c_umoya_wtt_track_aria_label']; ?>">
 
       <?php $__i = 0; foreach ( $r['rep_article_umoya_wtt_card'] as $it ) : if ( $__i ++ ) { echo '
 

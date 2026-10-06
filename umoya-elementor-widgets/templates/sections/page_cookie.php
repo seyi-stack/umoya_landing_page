@@ -46,54 +46,54 @@ if ( ! defined( 'ABSPATH' ) ) {
   <div class="ck-c">
 
     <header>
-      <span class="ck-eye"><?php echo $c['eyebrow_text']; ?></span>
-      <h1 class="ck-ttl" id="ck-title"><?php echo $c['title_text']; ?></h1>
+      <span class="ck-eye"><?php echo $c['c_ck_eye_text']; ?></span>
+      <h1 class="ck-ttl" id="ck-title"><?php echo $c['c_ck_ttl_text']; ?></h1>
       <hr class="ck-rule">
       <p class="ck-meta">
-        <?php echo $c['text_text']; echo "\n      "; ?></p>
+        <?php echo $c['c_ck_meta_text']; echo "\n      "; ?></p>
     </header>
 
     <!-- ═══════════ 1 ═══════════ -->
     <div class="ck-sec">
-      <h2 class="ck-h2"><span class="ck-num"><?php echo $c['text_text_2']; ?></span><?php echo $c['heading_text']; ?></h2>
-      <p class="ck-p"><?php echo $c['content_text']; ?> <a href="<?php echo $c['link_href']; ?>"><?php echo $c['link_text']; ?></a><?php echo $c['content_text_2']; ?></p>
+      <h2 class="ck-h2"><span class="ck-num"><?php echo $c['c_ck_sec_h2_span_text']; ?></span><?php echo $c['c_ck_sec_h2_text']; ?></h2>
+      <p class="ck-p"><?php echo $c['c_ck_sec_p_text']; ?> <a href="<?php echo $c['c_ck_sec_p_a_href']; ?>"><?php echo $c['c_ck_sec_p_a_text']; ?></a><?php echo $c['c_ck_sec_p_text_2']; ?></p>
     </div>
 
     <!-- ═══════════ 2 ═══════════ -->
     <div class="ck-sec">
-      <h2 class="ck-h2"><span class="ck-num"><?php echo $c['text_text_3']; ?></span><?php echo $c['heading_text_2']; ?></h2>
+      <h2 class="ck-h2"><span class="ck-num"><?php echo $c['c_ck_sec_h2_span_text_2']; ?></span><?php echo $c['c_ck_sec_h2_text_2']; ?></h2>
       <?php $__i = 0; foreach ( $r['rep_p_ck_p'] as $it ) : if ( $__i ++ ) { echo '
       '; } ?><p class="ck-p <?php echo $it['_uew_item_class']; ?>"><?php echo $it['ck_p']; ?></p><?php endforeach; echo "\n    "; ?></div>
 
     <!-- ═══════════ 3 ═══════════ -->
     <div class="ck-sec">
-      <h2 class="ck-h2"><span class="ck-num"><?php echo $c['text_text_4']; ?></span><?php echo $c['heading_text_3']; ?></h2>
-      <p class="ck-p"><?php echo $c['text_text_5']; ?></p>
+      <h2 class="ck-h2"><span class="ck-num"><?php echo $c['c_ck_sec_h2_span_text_3']; ?></span><?php echo $c['c_ck_sec_h2_text_3']; ?></h2>
+      <p class="ck-p"><?php echo $c['c_ck_sec_p_text_3']; ?></p>
 
-      <h3 class="ck-h3"><?php echo $c['heading_text_4']; ?></h3>
+      <h3 class="ck-h3"><?php echo $c['c_ck_h3_text']; ?></h3>
       <?php $__i = 0; foreach ( $r['rep_p_ck_p_2'] as $it ) : if ( $__i ++ ) { echo '
       '; } ?><p class="ck-p <?php echo $it['_uew_item_class']; ?>"><?php echo $it['ck_p']; ?></p><?php endforeach; echo "\n      "; ?><ul class="ck-list">
         <?php $__i = 0; foreach ( $r['rep_li_ck_li'] as $it ) : if ( $__i ++ ) { echo '
         '; } ?><li class="ck-li <?php echo $it['_uew_item_class']; ?>"><?php echo $it['ck_li_markup']; ?></li><?php endforeach; echo "\n      "; ?></ul>
 
-      <h3 class="ck-h3"><?php echo $c['heading_text_5']; ?></h3>
+      <h3 class="ck-h3"><?php echo $c['c_ck_h3_text_2']; ?></h3>
       <?php $__i = 0; foreach ( $r['rep_p_ck_p_3'] as $it ) : if ( $__i ++ ) { echo '
       '; } ?><p class="ck-p <?php echo $it['_uew_item_class']; ?>"><?php echo $it['ck_p']; ?></p><?php endforeach; echo "\n      "; ?><ul class="ck-list">
-        <li class="ck-li"><?php echo $c['item_text']; ?></li>
+        <li class="ck-li"><?php echo $c['c_ck_sec_ul_li_text']; ?></li>
       </ul>
-      <p class="ck-p"><?php echo $c['text_text_6']; ?></p>
+      <p class="ck-p"><?php echo $c['c_ck_sec_p_text_4']; ?></p>
 
-      <h3 class="ck-h3"><?php echo $c['heading_text_6']; ?></h3>
-      <p class="ck-p"><?php echo $c['text_text_7']; ?></p>
+      <h3 class="ck-h3"><?php echo $c['c_ck_h3_text_3']; ?></h3>
+      <p class="ck-p"><?php echo $c['c_ck_sec_p_text_5']; ?></p>
 
-      <h3 class="ck-h3"><?php echo $c['heading_text_7']; ?></h3>
+      <h3 class="ck-h3"><?php echo $c['c_ck_h3_text_4']; ?></h3>
       <?php $__i = 0; foreach ( $r['rep_p_ck_p_4'] as $it ) : if ( $__i ++ ) { echo '
       '; } ?><p class="ck-p <?php echo $it['_uew_item_class']; ?>"><?php echo $it['ck_p']; ?></p><?php endforeach; echo "\n    "; ?></div>
 
     <!-- ═══════════ 4 ═══════════ -->
     <div class="ck-sec">
-      <h2 class="ck-h2"><span class="ck-num"><?php echo $c['text_text_8']; ?></span><?php echo $c['heading_text_8']; ?></h2>
-      <p class="ck-p"><?php echo $c['text_text_9']; ?></p>
+      <h2 class="ck-h2"><span class="ck-num"><?php echo $c['c_ck_sec_h2_span_text_4']; ?></span><?php echo $c['c_ck_sec_h2_text_4']; ?></h2>
+      <p class="ck-p"><?php echo $c['c_ck_sec_p_text_6']; ?></p>
 
       <!--
         Same CookieYes hook and same not-loaded guard as the footer's
@@ -101,34 +101,35 @@ if ( ! defined( 'ABSPATH' ) ) {
         to the top if CookieYes has not loaded.
       -->
       <div class="ck-prefs">
-        <p class="ck-prefs-p"><?php echo $c['text_text_10']; ?></p>
-        <button type="<?php echo $c['button_type']; ?>" class="ck-prefs-btn cky-banner-element" data-umoya-cookie-prefs<?php echo $c['button_disabled']; ?>><?php echo $c['button_text']; ?></button>
+        <p class="ck-prefs-p"><?php echo $c['c_ck_prefs_p_text']; ?></p>
+        <button type="<?php echo $c['c_cky_banner_element_type']; ?>" class="ck-prefs-btn cky-banner-element" data-umoya-cookie-prefs<?php echo $c['c_cky_banner_element_disabled']; ?>><?php echo $c['c_cky_banner_element_text']; ?></button>
       </div>
 
       <?php $__i = 0; foreach ( $r['rep_p_ck_p_5'] as $it ) : if ( $__i ++ ) { echo '
       '; } ?><p class="ck-p <?php echo $it['_uew_item_class']; ?>"><?php echo $it['ck_p']; ?></p><?php endforeach; echo "\n      "; ?><ul class="ck-list">
         <?php $__i = 0; foreach ( $r['rep_li_ck_li_ck_li_link'] as $it ) : if ( $__i ++ ) { echo '
         '; } ?><li class="ck-li ck-li--link <?php echo $it['_uew_item_class']; ?>"><?php echo $it['link']; ?> <a href="<?php echo $it['href']; ?>" target="<?php echo $it['target']; ?>" rel="<?php echo $it['rel']; ?>"><?php echo $it['a']; ?></a></li><?php endforeach; echo "\n      "; ?></ul>
-      <p class="ck-p"><?php echo $c['text_text_11']; ?></p>
+      <p class="ck-p"><?php echo $c['c_ck_sec_p_text_7']; ?></p>
     </div>
 
     <!-- ═══════════ 5 ═══════════ -->
     <div class="ck-sec">
-      <h2 class="ck-h2"><span class="ck-num"><?php echo $c['text_text_12']; ?></span><?php echo $c['heading_text_9']; ?></h2>
-      <p class="ck-p"><?php echo $c['text_text_13']; ?></p>
+      <h2 class="ck-h2"><span class="ck-num"><?php echo $c['c_ck_sec_h2_span_text_5']; ?></span><?php echo $c['c_ck_sec_h2_text_5']; ?></h2>
+      <p class="ck-p"><?php echo $c['c_ck_sec_p_text_8']; ?></p>
     </div>
 
     <!-- ═══════════ 6 ═══════════ -->
     <div class="ck-sec">
-      <h2 class="ck-h2"><span class="ck-num"><?php echo $c['text_text_14']; ?></span><?php echo $c['heading_text_10']; ?></h2>
-      <p class="ck-p"><?php echo $c['text_text_15']; ?></p>
+      <h2 class="ck-h2"><span class="ck-num"><?php echo $c['c_ck_sec_h2_span_text_6']; ?></span><?php echo $c['c_ck_sec_h2_text_6']; ?></h2>
+      <p class="ck-p"><?php echo $c['c_ck_sec_p_text_9']; ?></p>
     </div>
 
     <!-- ═══════════ 7 ═══════════ -->
     <div class="ck-sec">
-      <h2 class="ck-h2"><span class="ck-num"><?php echo $c['text_text_16']; ?></span><?php echo $c['heading_text_11']; ?></h2>
+      <h2 class="ck-h2"><span class="ck-num"><?php echo $c['c_ck_sec_h2_span_text_7']; ?></span><?php echo $c['c_ck_sec_h2_text_7']; ?></h2>
       <div class="ck-ct">
-        <?php echo $c['container_text']; echo "\n        "; ?><a href="<?php echo $c['link_href_2']; ?>"><?php echo $c['link_text_2']; ?></a><?php echo $c['container_text_2']; ?> <a href="<?php echo $c['link_href_3']; ?>"><?php echo $c['link_text_3']; ?></a><?php echo $c['container_text_3']; echo "\n      "; ?></div>
+        <?php echo $c['c_ck_ct_text']; echo "\n        "; ?><a href="<?php echo $c['c_ck_ct_a_href']; ?>"><?php echo $c['c_ck_ct_a_text']; ?></a><?php echo $c['c_ck_ct_text_2']; ?> <a href="<?php echo $c['c_ck_ct_a_href_2']; ?>"><?php echo $c['c_ck_ct_a_text_2']; ?></a>.
+      </div>
     </div>
 
   </div>

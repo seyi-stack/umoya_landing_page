@@ -71,6 +71,14 @@ export const sections = [
 		class_name: 'FG_Journey',
 		icon: 'eicon-post-list',
 		description: 'Ten Days, Three Chapters: a preview of the Signature Journey. The hero links here.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.fg-jr-c': 'Text & button',
+				'.fg-jr-chips': 'Chapters',
+			},
+		},
 	},
 	{
 		key: 'fg_sizes',
@@ -90,6 +98,11 @@ export const sections = [
 		icon: 'eicon-form-horizontal',
 		description: 'Group enquiry form. Posts to WordPress first, then the Group Journey HubSpot form. Every "Plan a Group Journey" button targets it.',
 		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.fg-pl-card': 'Form',
+			},
 			optionNotices: {
 				'#fgType': '<strong>These values must match the HubSpot property <code>group_type</code> exactly.</strong> ' +
 					'It is a required dropdown on the Group Journey Inquiry form, so a value HubSpot does not list gets the whole enquiry rejected. Change both together.',

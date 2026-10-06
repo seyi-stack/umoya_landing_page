@@ -19,17 +19,17 @@ if ( ! defined( 'ABSPATH' ) ) {
   Purpose: centered journey section with a wide image carousel and copy below.
   Elementor: paste this as one HTML widget. The CTA uses the shared Umoya popup trigger.
 -->
-<span id="umoya-journey-anchor" style="<?php echo $s['anchor_inline_style']; ?>" aria-hidden="true"></span>
-<section id="umoya-journey" aria-label="<?php echo $c['section_aria_label']; ?>">
+<span id="umoya-journey-anchor" style="<?php echo $s['c_umoya_journey_anchor_inline_style']; ?>" aria-hidden="true"></span>
+<section id="umoya-journey" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="umoya-journey-wrap umoya-journey-rv">
     <!-- Intro band follows the reference layout: title block left, key numbers right. -->
     <header class="umoya-journey-intro">
       <div class="umoya-journey-intro-copy">
-        <span class="umoya-journey-kicker"><?php echo $c['eyebrow_text']; ?></span>
-        <h2 class="umoya-journey-heading"><?php echo $c['title_text']; ?></h2>
+        <span class="umoya-journey-kicker"><?php echo $c['c_umoya_journey_kicker_text']; ?></span>
+        <h2 class="umoya-journey-heading"><?php echo $c['c_umoya_journey_heading_text']; ?></h2>
       </div>
 
-      <dl class="umoya-journey-stats" aria-label="<?php echo $c['stats_aria_label']; ?>">
+      <dl class="umoya-journey-stats" aria-label="<?php echo $c['c_umoya_journey_stats_aria_label']; ?>">
         <?php $__i = 0; foreach ( $r['rep_div_umoya_journey_stat'] as $it ) : if ( $__i ++ ) { echo '
         '; } ?><div class="umoya-journey-stat <?php echo $it['_uew_item_class']; ?>">
           <dt><?php echo $it['dt']; ?></dt>
@@ -38,33 +38,33 @@ if ( ! defined( 'ABSPATH' ) ) {
     </header>
 
     <!-- Image carousel — 3 slides, one per immersive chapter. Dot order follows image order. -->
-    <div class="umoya-journey-carousel" aria-label="<?php echo $c['slide_aria_label']; ?>">
+    <div class="umoya-journey-carousel" aria-label="<?php echo $c['c_umoya_journey_carousel_aria_label']; ?>">
       <?php $__i = 0; foreach ( $r['rep_img_umoya_journey_image'] as $it ) : if ( $__i ++ ) { echo '
       '; } ?><img class="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'umoya-journey-image is-active' : 'umoya-journey-image' ); ?> <?php echo $it['_uew_item_class']; ?>" src="<?php echo $it['l1_src']; ?>" alt="<?php echo $it['l1_alt']; ?>" loading="<?php echo $it['l1_loading']; ?>" decoding="<?php echo $it['l1_decoding']; ?>"<?php echo $it['l1_fetchpriority']; ?>><?php endforeach; echo "\n\n      "; ?><!-- Captions paired 1:1 with the images above -->
       <?php $__i = 0; foreach ( $r['rep_img_umoya_journey_image'] as $it ) : if ( $__i ++ ) { echo '
       '; } ?><div class="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'umoya-journey-slide-cap is-active' : 'umoya-journey-slide-cap' ); ?> <?php echo $it['_uew_item_class']; ?>" data-journey-cap="<?php echo ( (int) $it['_uew_n'] + -1 ); ?>">
         <span class="umoya-journey-slide-kicker"><?php echo $it['l2_slide_kicker']; ?></span>
         <p class="umoya-journey-slide-title"><?php echo $it['l2_slide_title']; ?></p>
-      </div><?php endforeach; echo "\n\n      "; ?><div class="umoya-journey-dots" aria-label="<?php echo $c['dot_aria_label']; ?>">
+      </div><?php endforeach; echo "\n\n      "; ?><div class="umoya-journey-dots" aria-label="<?php echo $c['c_umoya_journey_dots_aria_label']; ?>">
         <?php $__i = 0; foreach ( $r['rep_img_umoya_journey_image'] as $it ) : if ( $__i ++ ) { echo '
         '; } ?><button class="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'umoya-journey-dot is-active' : 'umoya-journey-dot' ); ?> <?php echo $it['_uew_item_class']; ?>" type="<?php echo $it['l3_type']; ?>" data-journey-dot="<?php echo ( (int) $it['_uew_n'] + -1 ); ?>" aria-label="<?php echo 'Show image ' . $it['_uew_n']; ?>" aria-current="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'true' : 'false' ); ?>"></button><?php endforeach; echo "\n      "; ?></div>
     </div>
 
     <!-- Text content sits below the carousel, aligned to the same width. -->
     <div class="umoya-journey-copy">
-      <p class="umoya-journey-body"><?php echo $c['text_text']; ?></p>
+      <p class="umoya-journey-body"><?php echo $c['c_umoya_journey_body_text']; ?></p>
 
-      <ul class="umoya-journey-highlights" aria-label="<?php echo $c['list_aria_label']; ?>">
+      <ul class="umoya-journey-highlights" aria-label="<?php echo $c['c_umoya_journey_highlights_aria_label']; ?>">
         <li class="umoya-journey-highlight">
           <span class="umoya-journey-check" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
-          <span><?php echo $c['text_text_2']; ?></span>
+          <span><?php echo $c['c_umoya_journey_highlight_span_text']; ?></span>
         </li>
       </ul>
 
-      <a class="umoya-journey-cta" href="<?php echo $c['button_href']; ?>">
-        <?php echo $c['button_text']; echo "\n        "; ?><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <a class="umoya-journey-cta" href="<?php echo $c['c_umoya_journey_cta_href']; ?>">
+        <?php echo $c['c_umoya_journey_cta_text']; echo "\n        "; ?><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
   </div>

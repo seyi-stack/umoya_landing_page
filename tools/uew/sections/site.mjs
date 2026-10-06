@@ -33,6 +33,16 @@ export const sections = [
 		class_name: 'Site_Nav',
 		icon: 'eicon-nav-menu',
 		description: 'The one navigation for every page: docks above the hero, sticks and hides on scroll down, returns on scroll up. Place it first.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.umoya-nav-inner': 'Bar',
+				'.umoya-nav-links': 'Links',
+				'.umoya-nav-dropdown-list': 'Phone menu',
+				'.umoya-nav-dropdown-cta-row': 'Phone menu button',
+			},
+		},
 	},
 	{
 		key: 'site_footer',
@@ -43,6 +53,24 @@ export const sections = [
 		icon: 'eicon-footer',
 		description: 'The one footer for every page, with the Founder\'s Circle signup and the Email Opt-out dialog. Place it last.',
 		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.umoya-ft-brand': 'Brand',
+				'.umoya-ft-signup': 'Sign-up',
+				'.umoya-ft-bottom-inner': 'Bottom bar',
+				'.umoya-ep-dialog': 'Email opt-out pop-up',
+			},
+			// Element names the class names cannot supply.
+			overrides: {
+				'.umoya-ft-descriptor': { label: 'Description' },
+				'.umoya-ft-contact > a': { label: 'Email Link' },
+				'.umoya-ft-fine > a': { label: 'Privacy Link' },
+				'.umoya-ft-legalline': { label: 'Copyright Line' },
+				'span': { label: 'Year' },
+				'.umoya-ft-tag': { label: 'Tagline' },
+				'#umoya-email-optout a': { label: 'Email Link' },
+			},
 			// The opt-out dialog appends itself to <body> on init so a transformed
 			// ancestor cannot break its position: fixed. Its style controls need
 			// the portal branch to follow it there.
@@ -57,6 +85,14 @@ export const sections = [
 		class_name: 'Page_404',
 		icon: 'eicon-error-404',
 		description: 'Page-not-found body. Use it in the Theme Builder 404 template, never on a published page, or the dead URL answers 200.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'#umoya-404': 'Watermark',
+				'.um404-c': 'Message',
+			},
+		},
 	},
 	{
 		key: 'page_travel_essentials',
@@ -66,6 +102,14 @@ export const sections = [
 		class_name: 'Page_Travel_Essentials',
 		icon: 'eicon-document-file',
 		description: 'The /travel-essentials/ page: visas, entry and insurance, consolidated.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.te-c': 'Note',
+				'.te-contact': 'Questions',
+			},
+		},
 	},
 	{
 		key: 'page_privacy',

@@ -15,27 +15,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <!-- UMOYA - HOMEPAGE SECTION 02: ABOUT -->
-<section id="umoya-about" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="umoya-about" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="umoya-about-layout">
     <div class="umoya-about-copy">
       <div class="umoya-about-inner umoya-about-rv">
-        <span class="umoya-about-eye"><?php echo $c['eyebrow_text']; ?></span>
-        <h2><?php echo $c['heading_text']; ?></h2>
+        <span class="umoya-about-eye"><?php echo $c['c_umoya_about_eye_text']; ?></span>
+        <h2><?php echo $c['c_h2_text']; ?></h2>
         <span class="umoya-about-rule" aria-hidden="true"></span>
         <div class="umoya-about-body">
-          <p><?php echo $c['text_text']; ?></p>
+          <p><?php echo $c['c_p_text']; ?></p>
 
         </div>
       </div>
     </div>
 
-    <figure class="umoya-about-media" aria-label="<?php echo $c['figure_aria_label']; ?>">
+    <figure class="umoya-about-media" aria-label="<?php echo $c['c_umoya_about_media_aria_label']; ?>">
       <img
-        src="<?php echo $c['image_src']; ?>"
-        alt="<?php echo $c['image_alt']; ?>"
-        loading="<?php echo $c['image_loading']; ?>"
-        decoding="<?php echo $c['image_decoding']; ?>"
-        fetchpriority="<?php echo $c['image_fetchpriority']; ?>"
+        src="<?php echo $c['c_img_src']; ?>"
+        alt="<?php echo $c['c_img_alt']; ?>"
+        loading="<?php echo $c['c_img_loading']; ?>"
+        decoding="<?php echo $c['c_img_decoding']; ?>"
+        fetchpriority="<?php echo $c['c_img_fetchpriority']; ?>"
       />
     </figure>
   </div>

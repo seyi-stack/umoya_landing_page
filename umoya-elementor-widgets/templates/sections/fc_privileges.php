@@ -26,17 +26,17 @@ if ( ! defined( 'ABSPATH' ) ) {
   • The checklist uses a terracotta circle check icon per item.
 =================================================================
 -->
-  <section id="fc-benefits" aria-label="<?php echo $c['section_aria_label']; ?>">
+  <section id="fc-benefits" aria-label="<?php echo $c['c_section_aria_label']; ?>">
     <div class="fc-ben-wrap">
       <div class="fc-ben-grid">
 
         <!-- ── COPY + CHECKLIST (left) ────────────── -->
         <div class="fc-ben-reveal">
-          <span class="fc-ben-eyebrow"><?php echo $c['eyebrow_text']; ?></span>
-          <h2 class="fc-ben-title"><?php echo $c['title_text']; ?></h2>
+          <span class="fc-ben-eyebrow"><?php echo $c['c_fc_ben_eyebrow_text']; ?></span>
+          <h2 class="fc-ben-title"><?php echo $c['c_fc_ben_title_text']; ?></h2>
           <span class="fc-ben-rule" aria-hidden="true"></span>
 
-          <ul class="fc-ben-list" aria-label="<?php echo $c['list_aria_label']; ?>">
+          <ul class="fc-ben-list" aria-label="<?php echo $c['c_fc_ben_list_aria_label']; ?>">
 
             <?php $__i = 0; foreach ( $r['rep_li'] as $it ) : if ( $__i ++ ) { echo '
 
@@ -46,15 +46,15 @@ if ( ! defined( 'ABSPATH' ) ) {
               </span>
               <?php echo $it['li']; echo "\n            "; ?></li><?php endforeach; echo "\n\n          "; ?></ul>
 
-          <a href="<?php echo $c['button_href']; ?>" class="fc-ben-btn"><?php echo $c['button_text']; ?></a>
+          <a href="<?php echo $c['c_fc_ben_btn_href']; ?>" class="fc-ben-btn"><?php echo $c['c_fc_ben_btn_text']; ?></a>
         </div>
 
         <!-- ── IMAGE (right) ──────────────────────── -->
         <div class="fc-ben-photo fc-ben-reveal fc-d1">
           <img
-            src="<?php echo $c['image_src']; ?>"
-            alt="<?php echo $c['image_alt']; ?>"
-            loading="<?php echo $c['image_loading']; ?>"
+            src="<?php echo $c['c_img_src']; ?>"
+            alt="<?php echo $c['c_img_alt']; ?>"
+            loading="<?php echo $c['c_img_loading']; ?>"
           />
         </div>
 

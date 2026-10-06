@@ -41,18 +41,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 =================================================================
 -->
   <!-- ── NAV BAR (sticky) ──────────────────────────────────────── -->
-  <nav id="fcNavBar" aria-label="<?php echo $c['section_aria_label']; ?>">
+  <nav id="fcNavBar" aria-label="<?php echo $c['c_section_aria_label']; ?>">
 
     <div class="fc-nav-inner">
 
       <!-- Logo -->
-      <a class="fc-nav-logo" href="<?php echo $c['logo_href']; ?>" aria-label="<?php echo $c['logo_aria_label']; ?>">
+      <a class="fc-nav-logo" href="<?php echo $c['c_fc_nav_logo_href']; ?>" aria-label="<?php echo $c['c_fc_nav_logo_aria_label']; ?>">
         <img
-          src="<?php echo $c['image_src']; ?>"
-          alt="<?php echo $c['image_alt']; ?>"
+          src="<?php echo $c['c_img_src']; ?>"
+          alt="<?php echo $c['c_img_alt']; ?>"
           onerror="this.style.display='none';document.getElementById('fcNLT').style.display='inline';"
         />
-        <span class="fc-nav-logo-text" id="fcNLT" style="<?php echo $s['text_inline_style']; ?>"><?php echo $c['text_text']; ?></span>
+        <span class="fc-nav-logo-text" id="fcNLT" style="<?php echo $s['c_fc_nav_logo_text_inline_style']; ?>"><?php echo $c['c_fc_nav_logo_text_text']; ?></span>
       </a>
 
       <!-- Desktop section links -->
@@ -63,22 +63,22 @@ if ( ! defined( 'ABSPATH' ) ) {
         </li><?php endforeach; echo "\n      "; ?></ul>
 
       <!-- Desktop CTA -->
-      <a class="fc-nav-cta" href="<?php echo $c['button_href']; ?>"><?php echo $c['button_text']; ?></a>
+      <a class="fc-nav-cta" href="<?php echo $c['c_fc_nav_cta_href']; ?>"><?php echo $c['c_fc_nav_cta_text']; ?></a>
 
       <!-- Hamburger -->
       <button
         class="fc-nav-burger"
         id="fcNavBurger"
-        aria-label="<?php echo $c['button_aria_label']; ?>"
+        aria-label="<?php echo $c['c_fc_nav_burger_aria_label']; ?>"
         aria-expanded="false"
-        aria-controls="fcNavDropdown"<?php echo $c['button_disabled']; echo "\n      "; ?>>
+        aria-controls="fcNavDropdown"<?php echo $c['c_fc_nav_burger_disabled']; echo "\n      "; ?>>
         <span></span>
         <span></span>
         <span></span>
       </button>
 
       <!-- Mobile dropdown — inside the nav so it follows sticky position -->
-      <div class="fc-nav-dropdown" id="fcNavDropdown" role="menu" aria-label="<?php echo $c['container_aria_label']; ?>">
+      <div class="fc-nav-dropdown" id="fcNavDropdown" role="menu" aria-label="<?php echo $c['c_fc_nav_dropdown_aria_label']; ?>">
 
         <ul class="fc-nav-dropdown-list" role="list">
           <?php $__i = 0; foreach ( $r['rep_li_fc_nav_dropdown_item'] as $it ) : if ( $__i ++ ) { echo '
@@ -87,7 +87,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           </li><?php endforeach; echo "\n        "; ?></ul>
 
         <div class="fc-nav-dropdown-cta-row">
-          <a class="fc-nav-dropdown-cta" href="<?php echo $c['button_href_2']; ?>"><?php echo $c['button_text_2']; ?></a>
+          <a class="fc-nav-dropdown-cta" href="<?php echo $c['c_fc_nav_dropdown_cta_href']; ?>"><?php echo $c['c_fc_nav_dropdown_cta_text']; ?></a>
         </div>
 
       </div><!-- /.fc-nav-dropdown -->

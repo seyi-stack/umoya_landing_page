@@ -23,10 +23,10 @@ if ( ! defined( 'ABSPATH' ) ) {
   BRAND: font-family: inherit; palette tokens only.
 =================================================================
 -->
-<section id="pt-intro" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="pt-intro" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="pt-in-c pt-in-rv">
-    <span class="pt-in-eye"><?php echo $c['eyebrow_text']; ?></span>
-    <h2 class="pt-in-ttl"><?php echo $c['title_text']; ?></h2>
-    <p class="pt-in-body"><?php echo $c['text_text']; ?></p>
+    <span class="pt-in-eye"><?php echo $c['c_pt_in_eye_text']; ?></span>
+    <h2 class="pt-in-ttl"><?php echo $c['c_pt_in_ttl_text']; ?></h2>
+    <p class="pt-in-body"><?php echo $c['c_pt_in_body_text']; ?></p>
   </div>
 </section>

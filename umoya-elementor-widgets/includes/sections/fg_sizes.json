@@ -87,74 +87,144 @@
 			"label": "Ease"
 		}
 	],
+	"regions": [
+		{
+			"id": "r_header",
+			"label": "Header",
+			"portal": false
+		}
+	],
 	"content_panels": [
 		{
-			"id": "content_p_section",
-			"label": "Section",
-			"sample": "",
-			"region_label": "",
-			"controls": [
+			"id": "content_r_header",
+			"label": "Header",
+			"items": [
 				{
-					"id": "section_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Travel fit for any size",
-					"esc": "attr",
-					"group": "p_section",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Section"
+					"kind": "group",
+					"label": "Eyebrow",
+					"order": 2,
+					"controls": [
+						{
+							"id": "c_fg_sz_eye_text",
+							"control": "text",
+							"label": "Eyebrow",
+							"description": "",
+							"default": "Travel Fit for Any Size",
+							"esc": "post",
+							"group": "p_fg_sz_eye",
+							"sort": 0
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Title",
+					"order": 3,
+					"controls": [
+						{
+							"id": "c_fg_sz_ttl_text",
+							"control": "text",
+							"label": "Title",
+							"description": "",
+							"default": "From a close circle to a full chapter.",
+							"esc": "post",
+							"group": "p_fg_sz_ttl",
+							"sort": 0
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Text",
+					"order": 4,
+					"controls": [
+						{
+							"id": "c_fg_sz_body_text",
+							"control": "textarea",
+							"label": "Text",
+							"description": "",
+							"default": "Smaller groups travel as one intimate journey. For larger groups, we run back-to-back departures, so everyone travels in a small, personal cohort and still shares the experience together. However many you are, no one is lost in a crowd.",
+							"esc": "post",
+							"group": "p_fg_sz_body",
+							"sort": 0
+						}
+					]
+				}
+			]
+		}
+	],
+	"style_panels": [
+		{
+			"id": "style_section",
+			"label": "Section",
+			"tokens": true,
+			"rows": [
+				{
+					"part": "p_section",
+					"label": "Section",
+					"inline": [],
+					"inline_props": []
 				}
 			]
 		},
 		{
-			"id": "content_p_fg_sz_eye",
-			"label": "Content",
-			"sample": "Travel Fit for Any Size",
-			"region_label": "",
-			"controls": [
+			"id": "style_r_header",
+			"label": "Header",
+			"tokens": false,
+			"rows": [
 				{
-					"id": "eyebrow_text",
-					"control": "text",
+					"part": "p_fg_sz_rv",
+					"label": "Block",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fg_sz_eye",
 					"label": "Eyebrow",
-					"description": "",
-					"default": "Travel Fit for Any Size",
-					"esc": "post",
-					"group": "p_fg_sz_eye",
-					"sort": 0,
-					"part_label": "Eyebrow"
+					"inline": [],
+					"inline_props": []
 				},
 				{
-					"id": "title_text",
-					"control": "text",
+					"part": "p_fg_sz_ttl",
 					"label": "Title",
-					"description": "",
-					"default": "From a close circle to a full chapter.",
-					"esc": "post",
-					"group": "p_fg_sz_ttl",
-					"sort": 0,
-					"part_label": "Title"
+					"inline": [],
+					"inline_props": []
 				},
 				{
-					"id": "text_text",
-					"control": "textarea",
+					"part": "p_fg_sz_body",
 					"label": "Text",
-					"description": "",
-					"default": "Smaller groups travel as one intimate journey. For larger groups, we run back-to-back departures, so everyone travels in a small, personal cohort and still shares the experience together. However many you are, no one is lost in a crowd.",
-					"esc": "post",
-					"group": "p_fg_sz_body",
-					"sort": 0,
-					"part_label": "Text"
+					"inline": [],
+					"inline_props": []
 				}
-			],
-			"merged": true
+			]
 		}
 	],
-	"integration_controls": [],
-	"form_controls": [],
-	"behaviour_controls": [],
-	"inline_style_controls": [],
-	"media_controls": [],
+	"advanced_panels": [
+		{
+			"id": "uew_accessibility",
+			"label": "Accessibility",
+			"notice": "What screen readers announce for each element. Visitors do not see these; keep them short and descriptive.",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Section",
+					"order": 0,
+					"controls": [
+						{
+							"id": "c_section_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Travel fit for any size",
+							"esc": "attr",
+							"group": "p_section",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				}
+			]
+		}
+	],
 	"repeaters": [],
 	"style_parts": [
 		{
@@ -166,23 +236,21 @@
 			"selector": "",
 			"tag": "section",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition"
+				"padding",
+				"min_height",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 0,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "Section"
 		},
 		{
 			"id": "p_fg_sz_rv",
@@ -193,24 +261,24 @@
 			"selector": ".fg-sz-rv",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 1,
+			"box": true,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Block"
 		},
 		{
 			"id": "p_fg_sz_eye",
@@ -221,25 +289,18 @@
 			"selector": ".fg-sz-eye",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 2,
+			"box": false,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Eyebrow"
 		},
 		{
 			"id": "p_fg_sz_ttl",
@@ -250,25 +311,21 @@
 			"selector": ".fg-sz-ttl",
 			"tag": "h2",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 3,
+			"box": false,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Title"
 		},
 		{
 			"id": "p_fg_sz_body",
@@ -279,31 +336,27 @@
 			"selector": ".fg-sz-body",
 			"tag": "p",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 4,
+			"box": false,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Text"
 		}
 	],
 	"inline_styles": [],
 	"fields": [
 		{
-			"id": "section_aria_label",
+			"id": "c_section_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Travel fit for any size",
@@ -313,7 +366,7 @@
 			"sort": 1
 		},
 		{
-			"id": "eyebrow_text",
+			"id": "c_fg_sz_eye_text",
 			"control": "text",
 			"label": "Eyebrow",
 			"description": "",
@@ -323,7 +376,7 @@
 			"sort": 0
 		},
 		{
-			"id": "title_text",
+			"id": "c_fg_sz_ttl_text",
 			"control": "text",
 			"label": "Title",
 			"description": "",
@@ -333,7 +386,7 @@
 			"sort": 0
 		},
 		{
-			"id": "text_text",
+			"id": "c_fg_sz_body_text",
 			"control": "textarea",
 			"label": "Text",
 			"description": "",

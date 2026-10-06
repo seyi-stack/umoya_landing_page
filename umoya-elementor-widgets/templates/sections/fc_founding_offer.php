@@ -25,12 +25,12 @@ if ( ! defined( 'ABSPATH' ) ) {
   ANCHOR: id="fc-pricing" preserved.
 =================================================================
 -->
-<section id="fc-pricing" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="fc-pricing" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="fc-pri-wrap fc-pri-rv">
-    <span class="fc-pri-eye"><?php echo $c['eyebrow_text']; ?></span>
-    <h2 class="fc-pri-ttl"><?php echo $c['title_text']; ?></h2>
-    <p class="fc-pri-body"><?php echo $c['text_text']; ?></p>
-    <a href="<?php echo $c['button_href']; ?>" class="fc-pri-btn"><?php echo $c['button_text']; ?></a>
-    <p class="fc-pri-mini"><?php echo $c['text_text_2']; ?></p>
+    <span class="fc-pri-eye"><?php echo $c['c_fc_pri_eye_text']; ?></span>
+    <h2 class="fc-pri-ttl"><?php echo $c['c_fc_pri_ttl_text']; ?></h2>
+    <p class="fc-pri-body"><?php echo $c['c_fc_pri_body_text']; ?></p>
+    <a href="<?php echo $c['c_fc_pri_btn_href']; ?>" class="fc-pri-btn"><?php echo $c['c_fc_pri_btn_text']; ?></a>
+    <p class="fc-pri-mini"><?php echo $c['c_fc_pri_mini_text']; ?></p>
   </div>
 </section>

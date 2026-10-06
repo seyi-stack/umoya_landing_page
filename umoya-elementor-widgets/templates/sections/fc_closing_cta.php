@@ -29,11 +29,11 @@ if ( ! defined( 'ABSPATH' ) ) {
   per Feedback v5 ("keep the background brown").
 =================================================================
 -->
-<section id="fc-cta" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="fc-cta" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="fc-cta-c fc-cta-rv">
-    <span class="fc-cta-eye"><?php echo $c['eyebrow_text']; ?></span>
-    <h2 class="fc-cta-h2"><?php echo $c['heading_text']; ?></h2>
-    <p class="fc-cta-lead"><?php echo $c['text_text']; ?></p>
-    <a href="<?php echo $c['button_href']; ?>" class="fc-cta-btn"><?php echo $c['button_text']; ?></a>
+    <span class="fc-cta-eye"><?php echo $c['c_fc_cta_eye_text']; ?></span>
+    <h2 class="fc-cta-h2"><?php echo $c['c_fc_cta_h2_text']; ?></h2>
+    <p class="fc-cta-lead"><?php echo $c['c_fc_cta_lead_text']; ?></p>
+    <a href="<?php echo $c['c_fc_cta_btn_href']; ?>" class="fc-cta-btn"><?php echo $c['c_fc_cta_btn_text']; ?></a>
   </div>
 </section>

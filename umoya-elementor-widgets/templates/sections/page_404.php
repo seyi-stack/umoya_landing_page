@@ -73,10 +73,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 =================================================================
 -->
 <section id="umoya-404" aria-labelledby="um404-title">
-  <span class="um404-mark" aria-hidden="true"><?php echo $c['icon_text']; ?></span>
+  <span class="um404-mark" aria-hidden="true"><?php echo $c['c_um404_mark_text']; ?></span>
 
   <div class="um404-c">
-    <span class="um404-eye"><?php echo $c['eyebrow_text']; ?></span>
+    <span class="um404-eye"><?php echo $c['c_um404_eye_text']; ?></span>
 
     <!--
       Copy alternates, if the client prefers something plainer — swap the
@@ -84,9 +84,9 @@ if ( ! defined( 'ABSPATH' ) ) {
         "This page has <em>moved on</em>"
         "We can't find that <em>page</em>"
     -->
-    <h1 class="um404-ttl" id="um404-title"><?php echo $c['title_text']; ?></h1>
+    <h1 class="um404-ttl" id="um404-title"><?php echo $c['c_um404_ttl_text']; ?></h1>
     <hr class="um404-rule">
-    <p class="um404-lead"><?php echo $c['text_text']; ?></p>
+    <p class="um404-lead"><?php echo $c['c_um404_lead_text']; ?></p>
 
     <div class="um404-actions">
       <?php $__i = 0; foreach ( $r['rep_a_um404_btn'] as $it ) : if ( $__i ++ ) { echo '

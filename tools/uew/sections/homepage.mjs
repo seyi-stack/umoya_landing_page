@@ -30,6 +30,16 @@ export const sections = [
 		class_name: 'Home_Nav',
 		icon: 'eicon-nav-menu',
 		description: 'Sticky homepage navigation, including the Ways to Travel link.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.umoya-nav-inner': 'Bar',
+				'.umoya-nav-links': 'Links',
+				'.umoya-nav-dropdown-list': 'Phone menu',
+				'.umoya-nav-dropdown-cta-row': 'Phone menu button',
+			},
+		},
 	},
 	{
 		key: 'home_hero',
@@ -57,6 +67,14 @@ export const sections = [
 		class_name: 'Home_Signature_Journey',
 		icon: 'eicon-slider-push',
 		description: 'Our Flagship Experience: stats plus the three-chapter carousel.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.umoya-journey-carousel': 'Slideshow',
+				'.umoya-journey-copy': 'Text',
+			},
+		},
 	},
 	{
 		key: 'home_ways_to_travel',
@@ -66,6 +84,14 @@ export const sections = [
 		class_name: 'Home_Ways_To_Travel',
 		icon: 'eicon-posts-carousel',
 		description: 'Scroll-snap card carousel of the six ways to travel.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.umoya-wtt-actions': 'Button',
+				'.umoya-wtt-stage': 'Cards',
+			},
+		},
 	},
 	{
 		key: 'home_legends',
@@ -84,6 +110,15 @@ export const sections = [
 		class_name: 'Home_Hotel_Stays',
 		icon: 'eicon-image-rollover',
 		description: 'Hotel Stays Worthy of the Journey — the three named properties.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'#umoya-accommodations': 'Arrows',
+				'.umoya-hs-inner': 'Hotel details',
+				'.umoya-hs-foot': 'Note',
+			},
+		},
 	},
 	{
 		key: 'home_founders_circle',
@@ -102,6 +137,15 @@ export const sections = [
 		class_name: 'Home_Film_Award',
 		icon: 'eicon-play-o',
 		description: 'Brand film (click to load) plus the ITFFA award callout.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.umoya-film-copy': 'Text',
+				'.umoya-film-frame': 'Film',
+				'.umoya-film-award': 'Award',
+			},
+		},
 	},
 	{
 		key: 'home_why',
@@ -142,6 +186,12 @@ export const sections = [
 		// script would leave a second copy behind rather than a fresh one.
 		script_requires_root: true,
 		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.umoya-form-dialog': 'Pop-up',
+				'.umoya-form-card': 'Form',
+			},
 			// ...and once it is in <body> it is outside the widget wrapper every
 			// style control is scoped to. Declaring it here gives each control a
 			// second selector branch that follows it; without this the popup's

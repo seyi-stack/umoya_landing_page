@@ -161,154 +161,310 @@
 			"label": "Ease"
 		}
 	],
+	"regions": [
+		{
+			"id": "r_privileges",
+			"label": "Privileges",
+			"portal": false
+		},
+		{
+			"id": "r_image",
+			"label": "Image",
+			"portal": false
+		}
+	],
 	"content_panels": [
 		{
-			"id": "content_p_section",
-			"label": "Section",
-			"sample": "",
-			"region_label": "",
-			"controls": [
+			"id": "content_r_privileges",
+			"label": "Privileges",
+			"items": [
 				{
-					"id": "section_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Founder's Circle Member Benefits",
-					"esc": "attr",
-					"group": "p_section",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Section"
-				}
-			]
-		},
-		{
-			"id": "content_p_fc_ben_eyebrow",
-			"label": "List",
-			"sample": "Membership Privileges",
-			"region_label": "List",
-			"controls": [
-				{
-					"id": "eyebrow_text",
-					"control": "text",
+					"kind": "group",
 					"label": "Eyebrow",
-					"description": "",
-					"default": "Membership Privileges",
-					"esc": "post",
-					"group": "p_fc_ben_eyebrow",
-					"sort": 0,
-					"part_label": "Eyebrow"
+					"order": 4,
+					"controls": [
+						{
+							"id": "c_fc_ben_eyebrow_text",
+							"control": "text",
+							"label": "Eyebrow",
+							"description": "",
+							"default": "Membership Privileges",
+							"esc": "post",
+							"group": "p_fc_ben_eyebrow",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "title_text",
-					"control": "textarea",
+					"kind": "group",
 					"label": "Title",
-					"description": "Inline formatting tags are preserved.",
-					"default": "What Your <em>Membership</em> Includes",
-					"esc": "post",
-					"group": "p_fc_ben_title",
-					"sort": 0,
-					"part_label": "Title"
+					"order": 5,
+					"controls": [
+						{
+							"id": "c_fc_ben_title_text",
+							"control": "textarea",
+							"label": "Title",
+							"description": "Inline formatting tags are preserved.",
+							"default": "What Your <em>Membership</em> Includes",
+							"esc": "post",
+							"group": "p_fc_ben_title",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "list_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Founder's Circle member benefits",
-					"esc": "attr",
-					"group": "p_fc_ben_list",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "List 2"
-				}
-			],
-			"merged": true
-		},
-		{
-			"id": "content_p_fc_ben_btn",
-			"label": "Button",
-			"sample": "Request Your Membership",
-			"region_label": "List",
-			"controls": [
+					"kind": "list",
+					"id": "rep_li",
+					"label": "Items",
+					"order": 9
+				},
 				{
-					"id": "button_text",
-					"control": "text",
+					"kind": "group",
 					"label": "Button",
-					"description": "",
-					"default": "Request Your Membership",
-					"esc": "post",
-					"group": "p_fc_ben_btn",
-					"sort": 0,
-					"part_label": "Button"
-				},
-				{
-					"id": "button_href",
-					"control": "url",
-					"label": "Link",
-					"default": {
-						"url": "#fc-form-section"
-					},
-					"esc": "url",
-					"group": "p_fc_ben_btn",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Button"
+					"order": 29,
+					"controls": [
+						{
+							"id": "c_fc_ben_btn_text",
+							"control": "text",
+							"label": "Text",
+							"description": "",
+							"default": "Request Your Membership",
+							"esc": "post",
+							"group": "p_fc_ben_btn",
+							"sort": 0
+						},
+						{
+							"id": "c_fc_ben_btn_href",
+							"control": "url",
+							"label": "Link",
+							"default": {
+								"url": "#fc-form-section"
+							},
+							"esc": "url",
+							"group": "p_fc_ben_btn",
+							"tab": "content",
+							"sort": 1
+						}
+					]
 				}
 			]
 		},
 		{
-			"id": "content_p_img",
+			"id": "content_r_image",
 			"label": "Image",
-			"sample": "",
-			"region_label": "List",
-			"controls": [
+			"items": [
 				{
-					"id": "image_src",
-					"control": "media",
-					"label": "Choose Image",
-					"default": {
-						"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img259584315.jpeg"
-					},
-					"esc": "url",
-					"group": "p_img",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Image"
-				},
-				{
-					"id": "image_alt",
-					"control": "text",
-					"label": "Alt Text",
-					"default": "Umoya Founder's Circle — heritage traveler",
-					"esc": "attr",
-					"group": "p_img",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Image"
+					"kind": "group",
+					"label": "Image",
+					"order": 31,
+					"controls": [
+						{
+							"id": "c_img_src",
+							"control": "media",
+							"label": "Choose Image",
+							"default": {
+								"url": "https://umoyaafrikatours.co.za/wp-content/uploads/2026/optimized/umoya_compressed_img259584315.jpeg"
+							},
+							"esc": "url",
+							"group": "p_img",
+							"tab": "content",
+							"sort": 1
+						},
+						{
+							"id": "c_img_alt",
+							"control": "text",
+							"label": "Alt Text",
+							"default": "Umoya Founder's Circle — heritage traveler",
+							"esc": "attr",
+							"group": "p_img",
+							"tab": "content",
+							"sort": 1
+						}
+					]
 				}
 			]
 		}
 	],
-	"integration_controls": [],
-	"form_controls": [],
-	"behaviour_controls": [
+	"style_panels": [
 		{
-			"id": "image_loading",
-			"control": "select",
-			"label": "Loading",
-			"default": "lazy",
-			"options": [
-				"eager",
-				"lazy"
-			],
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1,
-			"part_label": ""
+			"id": "style_section",
+			"label": "Section",
+			"tokens": true,
+			"rows": [
+				{
+					"part": "p_section",
+					"label": "Section",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_ben_reveal",
+					"label": "Containers",
+					"inline": [],
+					"inline_props": [],
+					"heading": "Across the section"
+				},
+				{
+					"part": "p_fc_ben_wrap",
+					"label": "Container",
+					"inline": [],
+					"inline_props": [],
+					"heading": "Layout"
+				},
+				{
+					"part": "p_fc_ben_grid",
+					"label": "List",
+					"inline": [],
+					"inline_props": []
+				}
+			]
+		},
+		{
+			"id": "style_r_privileges",
+			"label": "Privileges",
+			"tokens": false,
+			"rows": [
+				{
+					"part": "p_fc_ben_eyebrow",
+					"label": "Eyebrow",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_ben_title",
+					"label": "Title",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_em",
+					"label": "Italic Text",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_ben_rule",
+					"label": "Divider",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_ben_list",
+					"label": "List",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_li",
+					"label": "Items",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_li_span",
+					"label": "Paragraphs",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_li_span_svg",
+					"label": "Icons",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_ben_btn",
+					"label": "Button",
+					"inline": [],
+					"inline_props": []
+				}
+			]
+		},
+		{
+			"id": "style_r_image",
+			"label": "Image",
+			"tokens": false,
+			"rows": [
+				{
+					"part": "p_img",
+					"label": "Image",
+					"inline": [],
+					"inline_props": []
+				}
+			]
 		}
 	],
-	"inline_style_controls": [],
-	"media_controls": [],
+	"advanced_panels": [
+		{
+			"id": "uew_accessibility",
+			"label": "Accessibility",
+			"notice": "What screen readers announce for each element. Visitors do not see these; keep them short and descriptive.",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Section",
+					"order": 0,
+					"controls": [
+						{
+							"id": "c_section_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Founder's Circle Member Benefits",
+							"esc": "attr",
+							"group": "p_section",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Privileges › List",
+					"order": 8,
+					"controls": [
+						{
+							"id": "c_fc_ben_list_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Founder's Circle member benefits",
+							"esc": "attr",
+							"group": "p_fc_ben_list",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "uew_behaviour",
+			"label": "Links &amp; Behaviour",
+			"notice": "",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Image › Image",
+					"order": 31,
+					"controls": [
+						{
+							"id": "c_img_loading",
+							"control": "select",
+							"label": "Loading",
+							"default": "lazy",
+							"options": [
+								"eager",
+								"lazy"
+							],
+							"esc": "attr",
+							"group": "behaviour",
+							"tab": "behaviour",
+							"sort": 1
+						}
+					]
+				}
+			]
+		}
+	],
 	"repeaters": [
 		{
 			"id": "rep_li",
@@ -379,7 +535,11 @@
 			"loops": 1,
 			"selector": null,
 			"notice": "",
-			"portal": null
+			"portal": null,
+			"base_label": "Items",
+			"region": "r_privileges",
+			"order": 9,
+			"block_label": "Items"
 		}
 	],
 	"style_parts": [
@@ -392,23 +552,21 @@
 			"selector": "",
 			"tag": "section",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition"
+				"padding",
+				"min_height",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 0,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "Section"
 		},
 		{
 			"id": "p_fc_ben_wrap",
@@ -419,24 +577,20 @@
 			"selector": ".fc-ben-wrap",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"padding",
+				"margin",
+				"measure",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 1,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "Container"
 		},
 		{
 			"id": "p_fc_ben_grid",
@@ -447,25 +601,25 @@
 			"selector": ".fc-ben-grid",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"grid_container",
-				"flex_item"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 2,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "List"
 		},
 		{
 			"id": "p_fc_ben_reveal",
@@ -476,24 +630,24 @@
 			"selector": ".fc-ben-reveal",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 3,
+			"box": false,
+			"everywhere": true,
+			"region": "",
+			"display": "Containers"
 		},
 		{
 			"id": "p_fc_ben_eyebrow",
@@ -504,25 +658,18 @@
 			"selector": ".fc-ben-eyebrow",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 4,
+			"box": false,
+			"everywhere": false,
+			"region": "r_privileges",
+			"display": "Eyebrow"
 		},
 		{
 			"id": "p_fc_ben_title",
@@ -533,54 +680,43 @@
 			"selector": ".fc-ben-title",
 			"tag": "h2",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 5,
+			"box": false,
+			"everywhere": false,
+			"region": "r_privileges",
+			"display": "Title"
 		},
 		{
 			"id": "p_em",
-			"label": "Emphasis",
-			"short_label": "Emphasis",
+			"label": "Italic Text",
+			"short_label": "Italic Text",
 			"parent_label": "Title",
 			"sample": "Membership",
 			"selector": "em",
 			"tag": "em",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 6,
+			"box": false,
+			"everywhere": false,
+			"region": "r_privileges",
+			"display": "Italic Text"
 		},
 		{
 			"id": "p_fc_ben_rule",
@@ -591,25 +727,18 @@
 			"selector": ".fc-ben-rule",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 7,
+			"box": false,
+			"everywhere": false,
+			"region": "r_privileges",
+			"display": "Divider"
 		},
 		{
 			"id": "p_fc_ben_list",
@@ -620,24 +749,24 @@
 			"selector": ".fc-ben-list",
 			"tag": "ul",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 8,
+			"box": false,
+			"everywhere": false,
+			"region": "r_privileges",
+			"display": "List"
 		},
 		{
 			"id": "p_li",
@@ -648,74 +777,66 @@
 			"selector": "li",
 			"tag": "li",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
-			],
-			"animated": [],
-			"shared": true,
-			"absolute": false,
-			"repeater": "li"
-		},
-		{
-			"id": "p_li_span_nth_of_type_1",
-			"label": "Text",
-			"short_label": "Text",
-			"parent_label": "Item",
-			"sample": "",
-			"selector": "li > span:nth-of-type(1)",
-			"tag": "span",
-			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
-			],
-			"animated": [],
-			"shared": false,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_li_span_nth_of_type_1_svg_nth_of_type_1",
-			"label": "Icon",
-			"short_label": "Icon",
-			"parent_label": "Text",
-			"sample": "",
-			"selector": "li > span:nth-of-type(1) > svg:nth-of-type(1)",
-			"tag": "svg",
-			"features": [
-				"svg",
-				"sizing",
-				"spacing",
+				"margin",
 				"effects",
 				"visibility"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": "li",
+			"order": 9,
+			"box": false,
+			"everywhere": false,
+			"region": "r_privileges",
+			"display": "Items"
+		},
+		{
+			"id": "p_li_span",
+			"label": "Text",
+			"short_label": "Text",
+			"parent_label": "Item",
+			"sample": "",
+			"selector": "li > span",
+			"tag": "span",
+			"features": [
+				"text",
+				"effects"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null,
+			"order": 10,
+			"box": false,
+			"everywhere": false,
+			"region": "r_privileges",
+			"display": "Paragraphs"
+		},
+		{
+			"id": "p_li_span_svg",
+			"label": "Icon",
+			"short_label": "Icon",
+			"parent_label": "Text",
+			"sample": "",
+			"selector": "li > span > svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null,
+			"order": 11,
+			"box": false,
+			"everywhere": false,
+			"region": "r_privileges",
+			"display": "Icons"
 		},
 		{
 			"id": "p_fc_ben_btn",
@@ -726,26 +847,25 @@
 			"selector": ".fc-ben-btn",
 			"tag": "a",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
 				"states",
-				"flex_container"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 29,
+			"box": false,
+			"everywhere": false,
+			"region": "r_privileges",
+			"display": "Button"
 		},
 		{
 			"id": "p_img",
@@ -756,28 +876,29 @@
 			"selector": "img",
 			"tag": "img",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
 				"media_fit",
 				"filters",
-				"transition"
+				"radius",
+				"shadow",
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 31,
+			"box": false,
+			"everywhere": false,
+			"region": "r_image",
+			"display": "Image"
 		}
 	],
 	"inline_styles": [],
 	"fields": [
 		{
-			"id": "section_aria_label",
+			"id": "c_section_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Founder's Circle Member Benefits",
@@ -787,7 +908,7 @@
 			"sort": 1
 		},
 		{
-			"id": "eyebrow_text",
+			"id": "c_fc_ben_eyebrow_text",
 			"control": "text",
 			"label": "Eyebrow",
 			"description": "",
@@ -797,7 +918,7 @@
 			"sort": 0
 		},
 		{
-			"id": "title_text",
+			"id": "c_fc_ben_title_text",
 			"control": "textarea",
 			"label": "Title",
 			"description": "Inline formatting tags are preserved.",
@@ -807,7 +928,7 @@
 			"sort": 0
 		},
 		{
-			"id": "list_aria_label",
+			"id": "c_fc_ben_list_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Founder's Circle member benefits",
@@ -817,7 +938,7 @@
 			"sort": 1
 		},
 		{
-			"id": "button_text",
+			"id": "c_fc_ben_btn_text",
 			"control": "text",
 			"label": "Button",
 			"description": "",
@@ -827,7 +948,7 @@
 			"sort": 0
 		},
 		{
-			"id": "button_href",
+			"id": "c_fc_ben_btn_href",
 			"control": "url",
 			"label": "Link",
 			"default": {
@@ -839,7 +960,7 @@
 			"sort": 1
 		},
 		{
-			"id": "image_src",
+			"id": "c_img_src",
 			"control": "media",
 			"label": "Choose Image",
 			"default": {
@@ -851,7 +972,7 @@
 			"sort": 1
 		},
 		{
-			"id": "image_alt",
+			"id": "c_img_alt",
 			"control": "text",
 			"label": "Alt Text",
 			"default": "Umoya Founder's Circle — heritage traveler",
@@ -861,7 +982,7 @@
 			"sort": 1
 		},
 		{
-			"id": "image_loading",
+			"id": "c_img_loading",
 			"control": "select",
 			"label": "Loading",
 			"default": "lazy",

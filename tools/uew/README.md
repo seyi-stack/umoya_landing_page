@@ -121,40 +121,114 @@ one: taking the first made that anchor the styling root and pointed every style
 selector at an empty span. Anything outside the root is styled from the widget
 wrapper instead, and the build reports when a section has more than one.
 
-### How things get named
+### How the panels are organised
 
-Panels are named the way Elementor names its own — **Header**, **Title**,
-**Icon**, **Content** — not after whatever class happens to be on the element.
-`lib/derive.mjs` maps class stems and tags onto that vocabulary, then makes each
-name unique using the shortest form that still distinguishes it: the bare role,
-then the parent's role in front of it (`Header Title`), then a number. Generic
-ancestors — Container, Column, Wrapper, Section, Content — are never used as a
-prefix, because `Container Title` says no more than `Title`.
+The panels follow what is **on the page**, not the HTML. One panel per element
+made the footer a Content tab of 27 drop-downs and a Style tab of 52, with no
+way to tell where to look or what controlled what. Now every tab is a short list
+named after the visible parts of the section.
 
-Control labels are the property alone (`Poster`, `Alt Text`, `Link`, `Preload`);
-the panel already says which element they belong to. Inside each panel the
-controls are grouped under headings — Typography, Background & Border, Spacing,
-Size, Effects, States — as Elementor's Accordion widget separates *Title* from
-*Icon*.
+**Blocks.** `deriveRegions()` in `lib/derive.mjs` splits a section into the
+blocks a person sees: walking down from the root through wrappers that hold
+only other wrappers, the first element that holds content itself — a heading,
+text, a photo, a field — is a block, with everything inside it. A list's parent
+is a block; so is each of a run of similar siblings (the footer's three link
+columns, each policy section). A block is named, in order of preference, by the
+registry's `regionLabels` (selector → name), by its own heading where that is
+how people tell the blocks apart (the footer columns "Journeys", "Support",
+"Legal"; numbered policy sections), or by its role: **Header**, **Form**,
+**Image**, **Content**. A marketing headline never names a block: it would go
+stale the day the client rewrites it.
 
-The copy preview that used to be appended to a panel header now sits **inside**
-the panel as a quiet descriptor line, so the panel list stays scannable and two
-`Title` panels are still tellable apart.
+**Content tab** — one panel per block, in page order. Inside, one entry per
+thing a person sees:
 
-Lists are named for what they hold, pluralised: Slides, Cards, **Steps**,
-**Offers** — and a run of paragraphs is **Paragraphs**, not "Texts".
+- a form field is its **Label** and its **Placeholder**, named by the label's
+  words ("Email address") — including a label tied to its field by `for`;
+- a link or button is its **Text** and its **Link**, named by its words where a
+  block holds several ("Terms & Conditions", "Privacy Policy"), and an icon link
+  by where it goes ("Instagram");
+- an entry with one setting is that setting, named after the element
+  ("Tagline", "Heading");
+- a list sits in its block, named for what it holds — a list whose rows are each
+  one link is **Links** — and a dropdown's options keep their field's name
+  ("Country Options").
 
-**Content-tab panels fold together only within one region.** One panel per
-element would make a Content tab of forty one-field panels, so a single-control
-panel folds into the panel before it — but only when it sits in the same region
-(its nearest named ancestor is the same) or inside an element that panel already
-holds. The merged panel takes that region's name, or **Content** when the
-region is unnamed. Folding across regions is what used to name the panel after
-the wrong one: eight heroes kept their headline and button in a panel called
-"Background" or "Logo", because the title happened to follow the video or the
-logo in the markup. A panel that only took in what sits inside its own first
-element — a Button and its Label — keeps that element's name. Control ids do
-not depend on any of this, so regrouping panels never loses a saved value.
+A field's visually hidden label (`.umoya-ft-sr`, `.sr-only`) is filed under
+Advanced → Accessibility as its **Screen Reader Label**, not as page copy.
+A text box shows `&` where the source writes `&amp;` (`readableText()`): every
+path that prints it — kses, `esc_attr`, `esc_html` — writes it back as `&amp;`,
+so the page does not change by a byte. List rows are proved against the source
+as written; only what the editor is given is the readable form.
+Text that is only punctuation — a required-field asterisk, the full stop left
+after a link — gets no control at all; it stays in the markup as written.
+
+**Style tab** — **Section** first: the section's colours (its design tokens, so
+one change re-colours every element that uses it), the section's own box,
+anything styled section-wide (**Across the section**: "Column Headings" styles
+the heading of every footer column at once), and plain wrappers under
+**Layout**. Then one panel per block. Every element is **one row**, opened with
+the pencil like Elementor's own Typography row: **Default** leaves the
+stylesheet alone; **Custom** applies what is set; *Back to default* undoes all
+of it in one click. The block's own element is always the first row, **Block**
+(a dialog's is **Dialog**, over its **Backdrop**; a full-width strip around a
+centred block is **Block** over **Inner Block**).
+
+**What a row holds depends on what the element is** (`featuresFor()`), the way
+Elementor's own widgets choose — a Heading has type, an Image has fit and
+filters, a Button has colours with a hover state:
+
+| Element | Its settings |
+|---|---|
+| Heading, paragraph | Text Color, Font Family, Size, Weight, Line Height, Letter Spacing, Case, Style, Alignment · Margin · Opacity, Display |
+| Inline text (`span`, `em`, `strong`) | the same type settings · Opacity |
+| Link, button | type · Background Color, Border, Border Radius, Box Shadow · Padding, Margin · **Hover:** Text, Background and Border Color · flex layout if it has one · Opacity, Display |
+| Form field | type and Placeholder Color · Background Color, Border, Border Radius · Padding, Margin · **Focus:** Border Color · Opacity |
+| Checkbox, radio | Tick Color, Size · Margin · Opacity |
+| Photo, video | Fit, Position, Height, Aspect Ratio · Brightness, Contrast, Saturation · Border Radius, Box Shadow · Margin · Opacity, Display |
+| Icon (`svg`) | Line Color, Fill Color, Line Weight, Size · Opacity, Display |
+| Box, card, column, list | Background Color, Border, Border Radius, Box Shadow · Padding, Margin, Max Width · flex or grid layout (Direction, Justify, Align, **Columns**, Gap) · Opacity, Display |
+| The section itself | Background Color, Border · Padding, Min Height · layout · Opacity |
+| A plain wrapper (listed under **Layout**) | Padding, Margin, Max Width · flex or grid layout · Opacity |
+
+**Why the sets are lean.** Elementor draws every control in a panel the moment
+it opens, hidden ones included. Every element used to get everything —
+Elementor's Background group (which keeps its video and slideshow fields even
+when only colour is allowed, some sixty controls), sizing, position, z-index,
+text shadow and stroke — about 130 controls each, so a block of ten took **two
+seconds** to open (`footer`: 1,190 controls in Sign-up). With a set per kind the
+same panels open in about **0.4 s** (180–310 controls). Anything not offered is
+one line of the Advanced tab's Custom CSS.
+
+The same goes for lists: Elementor draws every field of every row when a panel
+opens, so a list longer than 24 rows gets a panel of its own, after its
+block's. Inside the form's own panel the 200-country dropdown made the contact
+widget take 26 seconds to open.
+
+`editor-check` holds every one of our panels to a **control count** — 650 on
+the Style tab, 700 elsewhere, lists counted as rows × fields; a panel that is
+one long list is exempt. It also reports the slowest Style panel's time, but
+only for information: the same panel took 0.45 s on mains power and 2 s with
+the laptop on battery, so a timing budget passed or failed with the power plan.
+
+**Advanced tab** — what a client changing words and photos never needs, out of
+their way: **Accessibility** (accessible names, screen-reader labels, title
+attributes), **Links & Behaviour** (link targets, lazy loading, embed
+permissions), **Form Field Rules** (required, read-only, type) and **Form
+Connection (HubSpot)** (field names, hidden values, portal and form ids, where
+the form posts). Each entry names its block and element: "Sign-up › Name".
+
+**Element names** use Elementor's vocabulary — **Eyebrow**, **Title**,
+**Heading**, **Button**, **Icon**, **Divider**, **Field**, **Dropdown**,
+**Checkbox**, **Fine Print**, **Status Message**, **Close Button** — from class
+stems first, then the tag. Within a block a name is made unique by its parent
+("Header Title"), then — for two texts in one card — by position (a short line
+above the heading is its **Eyebrow**, the text below it the **Description**),
+two buttons by their words, and a number only as a last resort. Where class
+names say nothing, a registry names the element directly:
+`overrides: { '.umoya-ft-tag': { label: 'Tagline' } }`. Control ids never
+depend on names, panels or grouping, so renaming or regrouping never loses a
+saved value.
 
 **A link is typed; an image is chosen.** `src` becomes an image picker only on
 an image. A video file, a `<source>`, and whatever an `<iframe>` loads get a
@@ -298,7 +372,7 @@ super admins).
 | Whitespace and comments between elements | `trivia` | reduced to whitespace if edited |
 | URL inside a quoted CSS `url()` | `cssurl` | quotes percent-encoded so it cannot end the CSS string |
 
-### Three rules the compiler keeps
+### Four rules the compiler keeps
 
 1. **Styling never touches markup.** Every style control is an Elementor
    `selectors` entry. The section's own stylesheet stays the baseline; controls
@@ -317,6 +391,14 @@ super admins).
    extracted values and compared byte for byte with the original. An item that
    does not reproduce is rejected and the run stays flat markup. The build
    prints the reason.
+
+4. **A control's id comes from the markup, never from its name.** Content ids
+   are the element's selector (`c_umoya_ft_addr_text`), style ids the same with
+   `p_`, list ids `rep_` and the run's selector. Elementor stores a page's
+   values by id, so an id that followed the display name would quietly reset
+   every saved value the day a name improved — renaming "Addr" to "Address"
+   would have blanked the footer's address on every page using the widget. Ids
+   change only when the section's markup does.
 
 ---
 
@@ -357,7 +439,9 @@ asserts the canvas rendered it, its script initialised there (`data-uew-ready`),
 selecting it opens its panel, and nothing threw. A section can look perfect on
 the published page and be a dead husk in the editor, because widgets are
 injected into the canvas long after DOMContentLoaded. It also times the panel:
-"fully editable" only counts if the panel still opens promptly. Then it **edits
+"fully editable" only counts if the panel still opens promptly — and it counts
+the controls each of our panels makes Elementor draw, failing any over budget
+(see "How the panels are organised"). Then it **edits
 live**: it changes a text control through Elementor's own command, waits for the
 canvas to show the new text with the section script initialised again on the
 fresh markup, and — for a section with a portal — that exactly one live copy of
@@ -376,13 +460,15 @@ removed, a row added exactly as "Add Item" fills it (no duplicated ids, no copie
 at once — script tags, event handlers, `javascript:` URLs, a comment breakout —
 and none may survive. Any PHP notice fails it.
 
-**`control-check.mjs`** sets a different value on every style panel's Opacity,
-every design token and every list's first-row colour, all at once, then reads
+**`control-check.mjs`** switches every element's Style row to Custom and sets a
+different value on each one's Opacity, every design token and every list's
+first-row colour, all at once, then reads
 the computed styles back in a browser **after** the section's script has run and
 any dialog has been opened (and so moved to `<body>`). A panel whose selector
 matches nothing, or whose value never arrives, is named. Values that lose to an
 inline `style` attribute are noted, not failed: those properties have their own
-Inline Styles panel. Stylesheet photos are checked on their pseudo-element.
+controls, under "Set on the element itself" in the element's pop-out.
+Stylesheet photos are checked on their pseudo-element.
 
 **`behaviour-check.mjs`** gives every list one more row (as "Add Item" would),
 then one fewer, and on each page clicks through every arrow, dot, tab and

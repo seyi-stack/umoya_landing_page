@@ -26,18 +26,18 @@ if ( ! defined( 'ABSPATH' ) ) {
     column visibility to invite scrolling.
 =================================================================
 -->
-<section id="fc-pillars" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="fc-pillars" aria-label="<?php echo $c['c_section_aria_label']; ?>">
 
   <!-- Background image -->
   <div class="fc-pil-bg" aria-hidden="true">
-    <img src="<?php echo $c['image_src']; ?>"
-         alt="<?php echo $c['image_alt']; ?>" loading="<?php echo $c['image_loading']; ?>" />
+    <img src="<?php echo $c['c_img_src']; ?>"
+         alt="<?php echo $c['c_img_alt']; ?>" loading="<?php echo $c['c_img_loading']; ?>" />
   </div>
 
   <!-- Content -->
   <div class="fc-pil-content">
     <div class="fc-pil-header">
-      <h2 class="fc-pil-heading"><?php echo $c['title_text']; ?></h2>
+      <h2 class="fc-pil-heading"><?php echo $c['c_fc_pil_heading_text']; ?></h2>
     </div>
     <div class="fc-pil-grid" role="list">
 

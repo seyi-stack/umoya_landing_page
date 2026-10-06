@@ -44,7 +44,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   background so the slide is visible even before/without images.
 =================================================================
 -->
-<section id="umoya-accommodations" role="region" aria-roledescription="<?php echo $c['section_aria_roledescription']; ?>" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="umoya-accommodations" role="region" aria-roledescription="<?php echo $c['c_section_aria_roledescription']; ?>" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <!-- IMAGE LAYER -->
   <div class="umoya-hs-viewport" data-hs-viewport>
     <div class="umoya-hs-track" data-hs-track>
@@ -61,31 +61,31 @@ if ( ! defined( 'ABSPATH' ) ) {
   <div class="umoya-hs-content">
     <div class="umoya-hs-inner">
       <div class="umoya-hs-kicker">
-        <span class="umoya-hs-eye"><?php echo $c['eyebrow_text']; ?></span>
+        <span class="umoya-hs-eye"><?php echo $c['c_umoya_hs_eye_text']; ?></span>
         <span class="umoya-hs-badge">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.26L21.6 9l-5 4.6 1.3 7.4L12 17.6 6.1 21l1.3-7.4-5-4.6 6.7-.74L12 2z"/></svg>
-          <?php echo $c['label_text']; echo "\n        "; ?></span>
+          <?php echo $c['c_umoya_hs_badge_text']; echo "\n        "; ?></span>
       </div>
-      <h2 class="umoya-hs-name"><?php echo $c['heading_text']; ?></h2>
-      <span class="umoya-hs-place"><?php echo $c['text_text']; ?></span>
-      <a class="umoya-hs-btn" href="<?php echo $c['button_href']; ?>" target="<?php echo $c['button_target']; ?>" rel="<?php echo $c['button_rel']; ?>">
-        <?php echo $c['button_text']; echo "\n        "; ?><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9 7h8v8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h2 class="umoya-hs-name"><?php echo $c['c_umoya_hs_name_text']; ?></h2>
+      <span class="umoya-hs-place"><?php echo $c['c_umoya_hs_place_text']; ?></span>
+      <a class="umoya-hs-btn" href="<?php echo $c['c_umoya_hs_btn_href']; ?>" target="<?php echo $c['c_umoya_hs_btn_target']; ?>" rel="<?php echo $c['c_umoya_hs_btn_rel']; ?>">
+        <?php echo $c['c_umoya_hs_btn_text']; echo "\n        "; ?><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9 7h8v8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
   </div>
 
   <!-- NOTE pinned to the bottom -->
   <div class="umoya-hs-foot">
-    <p class="umoya-hs-note"><?php echo $c['text_text_2']; ?> <a href="<?php echo $c['link_href']; ?>" target="<?php echo $c['link_target']; ?>" rel="<?php echo $c['link_rel']; ?>"><?php echo $c['link_text']; ?></a><?php echo $c['text_text_2_2']; ?></p>
+    <p class="umoya-hs-note"><?php echo $c['c_umoya_hs_note_text']; ?> <a href="<?php echo $c['c_umoya_hs_note_a_href']; ?>" target="<?php echo $c['c_umoya_hs_note_a_target']; ?>" rel="<?php echo $c['c_umoya_hs_note_a_rel']; ?>"><?php echo $c['c_umoya_hs_note_a_text']; ?></a>.</p>
   </div>
 
   <!-- ARROWS (thin line-arrows) -->
-  <button class="umoya-hs-arrow umoya-hs-prev" type="<?php echo $c['arrow_type']; ?>" data-hs-prev aria-label="<?php echo $c['arrow_aria_label']; ?>"<?php echo $c['arrow_disabled']; ?>>
+  <button class="umoya-hs-arrow umoya-hs-prev" type="<?php echo $c['c_umoya_hs_arrow_type']; ?>" data-hs-prev aria-label="<?php echo $c['c_umoya_hs_arrow_aria_label']; ?>"<?php echo $c['c_umoya_hs_arrow_disabled']; ?>>
     <svg viewBox="0 0 56 16" fill="none" aria-hidden="true">
       <path d="M55 8 H3 M11 2 L3 8 L11 14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </button>
-  <button class="umoya-hs-arrow umoya-hs-next" type="<?php echo $c['arrow_type_2']; ?>" data-hs-next aria-label="<?php echo $c['arrow_aria_label_2']; ?>"<?php echo $c['arrow_disabled_2']; ?>>
+  <button class="umoya-hs-arrow umoya-hs-next" type="<?php echo $c['c_umoya_hs_arrow_type_2']; ?>" data-hs-next aria-label="<?php echo $c['c_umoya_hs_arrow_aria_label_2']; ?>"<?php echo $c['c_umoya_hs_arrow_disabled_2']; ?>>
     <svg viewBox="0 0 56 16" fill="none" aria-hidden="true">
       <path d="M1 8 H53 M45 2 L53 8 L45 14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>

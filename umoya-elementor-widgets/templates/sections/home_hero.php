@@ -15,32 +15,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <!-- UMOYA - HOMEPAGE SECTION 01: HERO -->
-<section id="umoya-hero" class="umoya-hero" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="umoya-hero" class="umoya-hero" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="umoya-hero-bg">
     <!-- Poster image loads instantly; video starts early with mobile-safe autoplay fallback -->
     <img
-      src="<?php echo $c['image_src']; ?>"
-      alt="<?php echo $c['image_alt']; ?>"
-      style="<?php echo $s['image_inline_style']; ?>"
+      src="<?php echo $c['c_img_src']; ?>"
+      alt="<?php echo $c['c_img_alt']; ?>"
+      style="<?php echo $s['c_img_inline_style']; ?>"
     />
     <video
-      id="umoya-hero-vid"<?php echo $c['video_autoplay']; ?><?php echo $c['video_muted']; ?><?php echo $c['video_loop']; ?><?php echo $c['video_playsinline']; echo "\n      "; ?>webkit-playsinline
-      preload="<?php echo $c['video_preload']; ?>"
-      poster="<?php echo $c['video_poster']; ?>"
-      aria-label="<?php echo $c['video_aria_label']; ?>"
-      style="<?php echo $s['video_inline_style']; ?>"<?php echo $c['video_controls']; ?><?php echo $c['video_disablepictureinpicture']; echo "\n    "; ?>>
-      <source src="<?php echo $c['video_source_src']; ?>" type="<?php echo $c['video_source_type']; ?>" />
+      id="umoya-hero-vid"<?php echo $c['c_video_autoplay']; ?><?php echo $c['c_video_muted']; ?><?php echo $c['c_video_loop']; ?><?php echo $c['c_video_playsinline']; echo "\n      "; ?>webkit-playsinline
+      preload="<?php echo $c['c_video_preload']; ?>"
+      poster="<?php echo $c['c_video_poster']; ?>"
+      aria-label="<?php echo $c['c_video_aria_label']; ?>"
+      style="<?php echo $s['c_video_inline_style']; ?>"<?php echo $c['c_video_controls']; ?><?php echo $c['c_video_disablepictureinpicture']; echo "\n    "; ?>>
+      <source src="<?php echo $c['c_video_src']; ?>" type="<?php echo $c['c_video_type']; ?>" />
     </video>
   </div>
 
   <div class="inner">
-    <h1><?php echo $c['heading_text']; ?></h1>
-    <h2 class="sub"><?php echo $c['subtitle_text']; ?></h2>
+    <h1><?php echo $c['c_h1_text']; ?></h1>
+    <h2 class="sub"><?php echo $c['c_sub_text']; ?></h2>
 
-    <div class="cta-row" role="group" aria-label="<?php echo $c['item_aria_label']; ?>">
-      <a class="btn" href="<?php echo $c['button_href']; ?>">
+    <div class="cta-row" role="group" aria-label="<?php echo $c['c_cta_row_aria_label']; ?>">
+      <a class="btn" href="<?php echo $c['c_btn_href']; ?>">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="btn-label"><?php echo $c['label_text']; ?></span>
+        <span class="btn-label"><?php echo $c['c_btn_label_text']; ?></span>
       </a>
     </div>
   </div>

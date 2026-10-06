@@ -25,10 +25,10 @@ if ( ! defined( 'ABSPATH' ) ) {
   BRAND: font-family: inherit; palette tokens only.
 =================================================================
 -->
-<section id="ab-mission" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="ab-mission" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="ab-ms-c ab-ms-rv">
-    <span class="ab-ms-eye"><?php echo $c['eyebrow_text']; ?></span>
-    <h2 class="ab-ms-ttl"><?php echo $c['title_text']; ?></h2>
+    <span class="ab-ms-eye"><?php echo $c['c_ab_ms_eye_text']; ?></span>
+    <h2 class="ab-ms-ttl"><?php echo $c['c_ab_ms_ttl_text']; ?></h2>
     <?php $__i = 0; foreach ( $r['rep_p_ab_ms_p'] as $it ) : if ( $__i ++ ) { echo '
     '; } ?><p class="ab-ms-p <?php echo $it['_uew_item_class']; ?>"><?php echo $it['p']; ?></p><?php endforeach; echo "\n  "; ?></div>
 </section>

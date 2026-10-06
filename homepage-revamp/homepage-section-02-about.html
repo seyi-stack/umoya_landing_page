@@ -147,11 +147,14 @@
     }
 
     @media (max-width: 768px) {
+      /* Full-bleed on phones. --umoya-about-vw is the width without the
+         scrollbar, set by the script below; plain 100vw included it, so a
+         narrow desktop window scrolled sideways. 100vw is the no-JS fallback. */
       #umoya-about {
-        width: 100vw;
-        max-width: 100vw;
-        margin-left: calc(50% - 50vw);
-        margin-right: calc(50% - 50vw);
+        width: var(--umoya-about-vw, 100vw);
+        max-width: var(--umoya-about-vw, 100vw);
+        margin-left: calc(50% - var(--umoya-about-vw, 100vw) / 2);
+        margin-right: calc(50% - var(--umoya-about-vw, 100vw) / 2);
         padding: 28px 0 52px;
       }
 
@@ -195,7 +198,29 @@
   <script>
   (function(){
     'use strict';
-    var items = document.querySelectorAll('#umoya-about .umoya-about-rv');
+    var root = document.getElementById('umoya-about');
+    if (!root) return;
+
+    /* Full-bleed width, minus the scrollbar (see --umoya-about-vw in the CSS).
+       Throttled through rAF with a setTimeout fallback, because rAF never
+       fires in non-compositing contexts. */
+    var vwTick = 0;
+    function syncFullBleedWidth() {
+      root.style.setProperty('--umoya-about-vw', document.documentElement.clientWidth + 'px');
+    }
+    function scheduleWidthSync() {
+      if (vwTick) return;
+      if (window.requestAnimationFrame) {
+        vwTick = window.requestAnimationFrame(function() { vwTick = 0; syncFullBleedWidth(); });
+      } else {
+        vwTick = window.setTimeout(function() { vwTick = 0; syncFullBleedWidth(); }, 16);
+      }
+    }
+    syncFullBleedWidth();
+    window.addEventListener('resize', scheduleWidthSync);
+    window.addEventListener('orientationchange', scheduleWidthSync);
+
+    var items = root.querySelectorAll('.umoya-about-rv');
     if ('IntersectionObserver' in window) {
       var obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {

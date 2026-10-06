@@ -28,25 +28,25 @@ if ( ! defined( 'ABSPATH' ) ) {
   BRAND: font-family: inherit; palette tokens only.
 =================================================================
 -->
-<section id="ab-who" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="ab-who" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="ab-wh-c">
     <div class="ab-wh-grid">
 
       <div class="ab-wh-rv">
-        <span class="ab-wh-eye"><?php echo $c['eyebrow_text']; ?></span>
-        <h2 class="ab-wh-ttl"><?php echo $c['title_text']; ?></h2>
-        <p class="ab-wh-pron"><?php echo $c['text_text']; ?></p>
+        <span class="ab-wh-eye"><?php echo $c['c_ab_wh_eye_text']; ?></span>
+        <h2 class="ab-wh-ttl"><?php echo $c['c_ab_wh_ttl_text']; ?></h2>
+        <p class="ab-wh-pron"><?php echo $c['c_ab_wh_pron_text']; ?></p>
         <?php $__i = 0; foreach ( $r['rep_p_ab_wh_p'] as $it ) : if ( $__i ++ ) { echo '
         '; } ?><p class="ab-wh-p <?php echo $it['_uew_item_class']; ?>"><?php echo $it['p']; ?></p><?php endforeach; echo "\n      "; ?></div>
 
       <!-- Six client-approved frames. Slides 5 and 6 reuse images already on
            the server (ZAV_8817 = the solo-travel shot; ZAV_8926) rather than
            re-uploading duplicates. -->
-      <div class="ab-wh-carousel ab-wh-rv d1" data-ab-carousel role="region" aria-roledescription="<?php echo $c['slide_aria_roledescription']; ?>" aria-label="<?php echo $c['slide_aria_label']; ?>">
+      <div class="ab-wh-carousel ab-wh-rv d1" data-ab-carousel role="region" aria-roledescription="<?php echo $c['c_ab_wh_carousel_aria_roledescription']; ?>" aria-label="<?php echo $c['c_ab_wh_carousel_aria_label']; ?>">
         <?php $__i = 0; foreach ( $r['rep_div_ab_wh_slide'] as $it ) : if ( $__i ++ ) { echo '
         '; } ?><div class="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'ab-wh-slide ab-on' : 'ab-wh-slide' ); ?> <?php echo $it['_uew_item_class']; ?>" role="<?php echo $it['l1_role']; ?>" aria-roledescription="<?php echo $it['l1_aria_roledescription']; ?>" aria-label="<?php echo $it['_uew_n'] . ' of ' . $it['_uew_count']; ?>">
           <img src="<?php echo $it['l1_src']; ?>" alt="<?php echo $it['l1_alt']; ?>" loading="<?php echo $it['l1_loading']; ?>" decoding="<?php echo $it['l1_decoding']; ?>">
-        </div><?php endforeach; echo "\n\n        "; ?><div class="ab-wh-dots" role="tablist" aria-label="<?php echo $c['dot_aria_label']; ?>">
+        </div><?php endforeach; echo "\n\n        "; ?><div class="ab-wh-dots" role="tablist" aria-label="<?php echo $c['c_ab_wh_dots_aria_label']; ?>">
           <?php $__i = 0; foreach ( $r['rep_div_ab_wh_slide'] as $it ) : if ( $__i ++ ) { echo '
           '; } ?><button class="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'ab-wh-dot ab-on' : 'ab-wh-dot' ); ?> <?php echo $it['_uew_item_class']; ?>" role="<?php echo $it['l2_role']; ?>" aria-selected="<?php echo ( 1 === ( (int) $it['_uew_n'] ) ? 'true' : 'false' ); ?>" aria-label="<?php echo 'Show image ' . $it['_uew_n']; ?>"></button><?php endforeach; echo "\n        "; ?></div>
       </div>

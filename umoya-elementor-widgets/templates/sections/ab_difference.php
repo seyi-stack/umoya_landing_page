@@ -25,12 +25,12 @@ if ( ! defined( 'ABSPATH' ) ) {
   BRAND: font-family: inherit; palette tokens only.
 =================================================================
 -->
-<section id="ab-difference" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="ab-difference" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="ab-df-c">
 
     <div class="ab-df-head ab-df-rv">
-      <span class="ab-df-eye"><?php echo $c['eyebrow_text']; ?></span>
-      <h2 class="ab-df-ttl"><?php echo $c['title_text']; ?></h2>
+      <span class="ab-df-eye"><?php echo $c['c_ab_df_eye_text']; ?></span>
+      <h2 class="ab-df-ttl"><?php echo $c['c_ab_df_ttl_text']; ?></h2>
     </div>
 
     <div class="ab-df-grid" role="list">

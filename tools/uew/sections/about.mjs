@@ -35,6 +35,13 @@ export const sections = [
 		class_name: 'About_Who',
 		icon: 'eicon-slides',
 		description: 'The meaning of "Umoya" beside an auto-advancing photo carousel with dot navigation.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.ab-wh-carousel': 'Slideshow',
+			},
+		},
 	},
 	{
 		key: 'ab_mission',

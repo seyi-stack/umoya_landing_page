@@ -34,13 +34,13 @@ if ( ! defined( 'ABSPATH' ) ) {
   ELEMENTOR: place after the Ways to Travel section.
 =================================================================
 -->
-<section id="umoya-legends" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="umoya-legends" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="umoya-leg-wrap">
 
     <div class="umoya-leg-head umoya-leg-rv">
-      <span class="umoya-leg-eye"><?php echo $c['eyebrow_text']; ?></span>
-      <h2><?php echo $c['heading_text']; ?></h2>
-      <p class="umoya-leg-lead"><?php echo $c['text_text']; ?></p>
+      <span class="umoya-leg-eye"><?php echo $c['c_umoya_leg_eye_text']; ?></span>
+      <h2><?php echo $c['c_h2_text']; ?></h2>
+      <p class="umoya-leg-lead"><?php echo $c['c_umoya_leg_lead_text']; ?></p>
     </div>
 
     <div class="umoya-leg-grid">

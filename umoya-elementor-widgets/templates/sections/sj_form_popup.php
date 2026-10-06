@@ -34,124 +34,124 @@ if ( ! defined( 'ABSPATH' ) ) {
 -->
 <div id="umoya-form-popup" class="umoya-form-popup" aria-hidden="true"<?php echo $c['_uew_for']; ?>>
   <div class="umoya-form-dialog" role="dialog" aria-modal="true" aria-labelledby="umoya-form-title">
-    <button type="<?php echo $c['button_type']; ?>" class="umoya-form-close" data-umoya-form-close aria-label="<?php echo $c['button_aria_label']; ?>"<?php echo $c['button_disabled']; ?>>
+    <button type="<?php echo $c['c_umoya_form_close_type']; ?>" class="umoya-form-close" data-umoya-form-close aria-label="<?php echo $c['c_umoya_form_close_aria_label']; ?>"<?php echo $c['c_umoya_form_close_disabled']; ?>>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
 
     <div class="umoya-form-image" aria-hidden="true">
-      <img src="<?php echo $c['image_src']; ?>" alt="<?php echo $c['image_alt']; ?>">
+      <img src="<?php echo $c['c_img_src']; ?>" alt="<?php echo $c['c_img_alt']; ?>">
       <div class="umoya-form-image-copy">
-        <span><?php echo $c['text_text']; ?></span>
-        <h2><?php echo $c['heading_text']; ?></h2>
+        <span><?php echo $c['c_umoya_form_image_copy_span_text']; ?></span>
+        <h2><?php echo $c['c_umoya_form_image_copy_h2_text']; ?></h2>
       </div>
     </div>
 
     <div class="umoya-form-panel">
       <div class="umoya-form-head">
-        <span><?php echo $c['text_text_2']; ?></span>
-        <h2 id="umoya-form-title"><?php echo $c['heading_text_2']; ?></h2>
-        <p><?php echo $c['text_text_3']; ?></p>
+        <span><?php echo $c['c_umoya_form_head_span_text']; ?></span>
+        <h2 id="umoya-form-title"><?php echo $c['c_umoya_form_head_h2_text']; ?></h2>
+        <p><?php echo $c['c_umoya_form_head_p_text']; ?></p>
       </div>
 
       <div class="umoya-form-card">
         <form
-          data-hs-do-not-collect="<?php echo $c['form_data_hs_do_not_collect']; ?>"
+          data-hs-do-not-collect="<?php echo $c['c_umoya_popup_form_data_hs_do_not_collect']; ?>"
           id="umoyaPopupForm"
           class="umoya-popup-form"
-          action="<?php echo $c['form_action']; ?>"
-          method="<?php echo $c['form_method']; ?>"
-          target="<?php echo $c['form_target']; ?>"<?php echo $c['form_novalidate']; echo "\n          "; ?>data-hubspot-portal-id="<?php echo $c['form_data_hubspot_portal_id']; ?>"
-          data-hubspot-form-id="<?php echo $c['form_data_hubspot_form_id']; ?>"
-          data-umoya-form-source="<?php echo $c['form_data_umoya_form_source']; ?>"
-          data-wordpress-backup-endpoint="<?php echo $c['form_data_wordpress_backup_endpoint']; ?>"
-          data-hubspot-consent-text="<?php echo $c['form_data_hubspot_consent_text']; ?>"
+          action="<?php echo $c['c_umoya_popup_form_action']; ?>"
+          method="<?php echo $c['c_umoya_popup_form_method']; ?>"
+          target="<?php echo $c['c_umoya_popup_form_target']; ?>"<?php echo $c['c_umoya_popup_form_novalidate']; echo "\n          "; ?>data-hubspot-portal-id="<?php echo $c['c_umoya_popup_form_data_hubspot_portal_id']; ?>"
+          data-hubspot-form-id="<?php echo $c['c_umoya_popup_form_data_hubspot_form_id']; ?>"
+          data-umoya-form-source="<?php echo $c['c_umoya_popup_form_data_umoya_form_source']; ?>"
+          data-wordpress-backup-endpoint="<?php echo $c['c_umoya_popup_form_data_wordpress_backup_endpoint']; ?>"
+          data-hubspot-consent-text="<?php echo $c['c_umoya_popup_form_data_hubspot_consent_text']; ?>"
         >
-          <input type="<?php echo $c['field_type']; ?>" name="<?php echo $c['field_name']; ?>" value="<?php echo $c['field_value']; ?>"<?php echo $c['field_required']; ?><?php echo $c['field_disabled']; ?><?php echo $c['field_readonly']; ?><?php echo $c['field_checked']; ?>>
-          <input type="<?php echo $c['field_type_2']; ?>" name="<?php echo $c['field_name_2']; ?>" value="<?php echo $c['field_value_2']; ?>"<?php echo $c['field_required_2']; ?><?php echo $c['field_disabled_2']; ?><?php echo $c['field_readonly_2']; ?><?php echo $c['field_checked_2']; ?>>
-          <input type="<?php echo $c['field_type_3']; ?>" name="<?php echo $c['field_name_3']; ?>" value="<?php echo $c['field_value_3']; ?>"<?php echo $c['field_required_3']; ?><?php echo $c['field_disabled_3']; ?><?php echo $c['field_readonly_3']; ?><?php echo $c['field_checked_3']; ?>>
-          <input type="<?php echo $c['field_type_4']; ?>" name="<?php echo $c['field_name_4']; ?>" value="<?php echo $c['field_value_4']; ?>"<?php echo $c['field_required_4']; ?><?php echo $c['field_disabled_4']; ?><?php echo $c['field_readonly_4']; ?><?php echo $c['field_checked_4']; ?>>
-          <input type="<?php echo $c['field_type_5']; ?>" name="<?php echo $c['field_name_5']; ?>" value="<?php echo $c['field_value_5']; ?>"<?php echo $c['field_required_5']; ?><?php echo $c['field_disabled_5']; ?><?php echo $c['field_readonly_5']; ?><?php echo $c['field_checked_5']; ?>>
-          <input type="<?php echo $c['field_type_6']; ?>" name="<?php echo $c['field_name_6']; ?>" value="<?php echo $c['field_value_6']; ?>"<?php echo $c['field_required_6']; ?><?php echo $c['field_disabled_6']; ?><?php echo $c['field_readonly_6']; ?><?php echo $c['field_checked_6']; ?>>
-          <input type="<?php echo $c['field_type_7']; ?>" name="<?php echo $c['field_name_7']; ?>" value="<?php echo $c['field_value_7']; ?>"<?php echo $c['field_required_7']; ?><?php echo $c['field_disabled_7']; ?><?php echo $c['field_readonly_7']; ?><?php echo $c['field_checked_7']; ?>>
+          <input type="<?php echo $c['c_umoya_popup_form_type']; ?>" name="<?php echo $c['c_umoya_popup_form_name']; ?>" value="<?php echo $c['c_umoya_popup_form_value']; ?>">
+          <input type="<?php echo $c['c_umoya_popup_form_type_2']; ?>" name="<?php echo $c['c_umoya_popup_form_name_2']; ?>" value="<?php echo $c['c_umoya_popup_form_value_2']; ?>">
+          <input type="<?php echo $c['c_umoya_popup_form_type_3']; ?>" name="<?php echo $c['c_umoya_popup_form_name_3']; ?>" value="<?php echo $c['c_umoya_popup_form_value_3']; ?>">
+          <input type="<?php echo $c['c_umoya_popup_form_type_4']; ?>" name="<?php echo $c['c_umoya_popup_form_name_4']; ?>" value="<?php echo $c['c_umoya_popup_form_value_4']; ?>">
+          <input type="<?php echo $c['c_umoya_popup_form_type_5']; ?>" name="<?php echo $c['c_umoya_popup_form_name_5']; ?>" value="<?php echo $c['c_umoya_popup_form_value_5']; ?>">
+          <input type="<?php echo $c['c_umoya_popup_form_type_6']; ?>" name="<?php echo $c['c_umoya_popup_form_name_6']; ?>" value="<?php echo $c['c_umoya_popup_form_value_6']; ?>">
+          <input type="<?php echo $c['c_umoya_popup_form_type_7']; ?>" name="<?php echo $c['c_umoya_popup_form_name_7']; ?>" value="<?php echo $c['c_umoya_popup_form_value_7']; ?>">
           <div class="umoya-form-grid">
             <div class="umoya-field">
-              <label for="umoyaTitle"><?php echo $c['label_text']; ?></label>
-              <select id="umoyaTitle" name="<?php echo $c['select_name']; ?>"<?php echo $c['select_required']; ?><?php echo $c['select_disabled']; ?><?php echo $c['select_multiple']; ?>>
+              <label for="umoyaTitle"><?php echo $c['c_umoya_field_label_text']; ?></label>
+              <select id="umoyaTitle" name="<?php echo $c['c_umoya_field_select_name']; ?>"<?php echo $c['c_umoya_field_select_required']; ?><?php echo $c['c_umoya_field_select_disabled']; ?><?php echo $c['c_umoya_field_select_multiple']; ?>>
                 <?php $__i = 0; foreach ( $r['rep_option'] as $it ) : if ( $__i ++ ) { echo '
                 '; } ?><option value="<?php echo $it['value']; ?>"<?php echo $it['disabled']; ?><?php echo $it['selected']; ?> class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['label']; ?></option><?php endforeach; echo "\n              "; ?></select>
             </div>
             <div class="umoya-field-spacer" aria-hidden="true"></div>
 
             <div class="umoya-field">
-              <label for="umoyaFirst"><?php echo $c['label_text_2']; ?></label>
-              <input id="umoyaFirst" name="<?php echo $c['anchor_name']; ?>" type="<?php echo $c['anchor_type']; ?>" placeholder="<?php echo $c['anchor_placeholder']; ?>"<?php echo $c['anchor_required']; ?> autocomplete="<?php echo $c['anchor_autocomplete']; ?>"<?php echo $c['anchor_disabled']; ?><?php echo $c['anchor_readonly']; ?><?php echo $c['anchor_checked']; ?>>
+              <label for="umoyaFirst"><?php echo $c['c_umoya_field_label_text_2']; ?></label>
+              <input id="umoyaFirst" name="<?php echo $c['c_umoya_field_input_name']; ?>" type="<?php echo $c['c_umoya_field_input_type']; ?>" placeholder="<?php echo $c['c_umoya_field_input_placeholder']; ?>"<?php echo $c['c_umoya_field_input_required']; ?> autocomplete="<?php echo $c['c_umoya_field_input_autocomplete']; ?>"<?php echo $c['c_umoya_field_input_disabled']; ?><?php echo $c['c_umoya_field_input_readonly']; ?>>
             </div>
             <div class="umoya-field">
-              <label for="umoyaLast"><?php echo $c['label_text_3']; ?></label>
-              <input id="umoyaLast" name="<?php echo $c['anchor_name_2']; ?>" type="<?php echo $c['anchor_type_2']; ?>" placeholder="<?php echo $c['anchor_placeholder_2']; ?>"<?php echo $c['anchor_required_2']; ?> autocomplete="<?php echo $c['anchor_autocomplete_2']; ?>"<?php echo $c['anchor_disabled_2']; ?><?php echo $c['anchor_readonly_2']; ?><?php echo $c['anchor_checked_2']; ?>>
-            </div>
-
-            <div class="umoya-field">
-              <label for="umoyaEmail"><?php echo $c['label_text_4']; ?></label>
-              <input id="umoyaEmail" name="<?php echo $c['anchor_name_3']; ?>" type="<?php echo $c['anchor_type_3']; ?>" placeholder="<?php echo $c['anchor_placeholder_3']; ?>"<?php echo $c['anchor_required_3']; ?> autocomplete="<?php echo $c['anchor_autocomplete_3']; ?>"<?php echo $c['anchor_disabled_3']; ?><?php echo $c['anchor_readonly_3']; ?><?php echo $c['anchor_checked_3']; ?>>
-            </div>
-            <div class="umoya-field">
-              <label for="umoyaPhone"><?php echo $c['label_text_5']; ?></label>
-              <input id="umoyaPhone" name="<?php echo $c['anchor_name_4']; ?>" type="<?php echo $c['anchor_type_4']; ?>" placeholder="<?php echo $c['anchor_placeholder_4']; ?>" autocomplete="<?php echo $c['anchor_autocomplete_4']; ?>"<?php echo $c['anchor_required_4']; ?><?php echo $c['anchor_disabled_4']; ?><?php echo $c['anchor_readonly_4']; ?><?php echo $c['anchor_checked_4']; ?>>
+              <label for="umoyaLast"><?php echo $c['c_umoya_field_label_text_3']; ?></label>
+              <input id="umoyaLast" name="<?php echo $c['c_umoya_field_input_name_2']; ?>" type="<?php echo $c['c_umoya_field_input_type_2']; ?>" placeholder="<?php echo $c['c_umoya_field_input_placeholder_2']; ?>"<?php echo $c['c_umoya_field_input_required_2']; ?> autocomplete="<?php echo $c['c_umoya_field_input_autocomplete_2']; ?>"<?php echo $c['c_umoya_field_input_disabled_2']; ?><?php echo $c['c_umoya_field_input_readonly_2']; ?>>
             </div>
 
             <div class="umoya-field">
-              <label for="umoyaCountry"><?php echo $c['label_text_6']; ?></label>
-              <select id="umoyaCountry" name="<?php echo $c['select_name_2']; ?>"<?php echo $c['select_required_2']; ?><?php echo $c['select_disabled_2']; ?><?php echo $c['select_multiple_2']; ?>>
+              <label for="umoyaEmail"><?php echo $c['c_umoya_field_label_text_4']; ?></label>
+              <input id="umoyaEmail" name="<?php echo $c['c_umoya_field_input_name_3']; ?>" type="<?php echo $c['c_umoya_field_input_type_3']; ?>" placeholder="<?php echo $c['c_umoya_field_input_placeholder_3']; ?>"<?php echo $c['c_umoya_field_input_required_3']; ?> autocomplete="<?php echo $c['c_umoya_field_input_autocomplete_3']; ?>"<?php echo $c['c_umoya_field_input_disabled_3']; ?><?php echo $c['c_umoya_field_input_readonly_3']; ?>>
+            </div>
+            <div class="umoya-field">
+              <label for="umoyaPhone"><?php echo $c['c_umoya_field_label_text_5']; ?></label>
+              <input id="umoyaPhone" name="<?php echo $c['c_umoya_field_input_name_4']; ?>" type="<?php echo $c['c_umoya_field_input_type_4']; ?>" placeholder="<?php echo $c['c_umoya_field_input_placeholder_4']; ?>" autocomplete="<?php echo $c['c_umoya_field_input_autocomplete_4']; ?>"<?php echo $c['c_umoya_field_input_required_4']; ?><?php echo $c['c_umoya_field_input_disabled_4']; ?><?php echo $c['c_umoya_field_input_readonly_4']; ?>>
+            </div>
+
+            <div class="umoya-field">
+              <label for="umoyaCountry"><?php echo $c['c_umoya_field_label_text_6']; ?></label>
+              <select id="umoyaCountry" name="<?php echo $c['c_umoya_field_select_name_2']; ?>"<?php echo $c['c_umoya_field_select_required_2']; ?><?php echo $c['c_umoya_field_select_disabled_2']; ?><?php echo $c['c_umoya_field_select_multiple_2']; ?>>
                   <?php $__i = 0; foreach ( $r['rep_option_2'] as $it ) : if ( $__i ++ ) { echo $it['_uew_sep']; } ?><option<?php echo $it['value']; ?><?php echo $it['disabled']; ?><?php echo $it['selected']; ?> class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['label']; ?></option><?php endforeach; echo "\n                "; ?></select>
             </div>
             <div class="umoya-field">
-              <label for="umoyaCity"><?php echo $c['label_text_7']; ?></label>
-              <input id="umoyaCity" name="<?php echo $c['anchor_name_5']; ?>" type="<?php echo $c['anchor_type_5']; ?>" placeholder="<?php echo $c['anchor_placeholder_5']; ?>" autocomplete="<?php echo $c['anchor_autocomplete_5']; ?>"<?php echo $c['anchor_required_5']; ?><?php echo $c['anchor_disabled_5']; ?><?php echo $c['anchor_readonly_5']; ?><?php echo $c['anchor_checked_5']; ?>>
+              <label for="umoyaCity"><?php echo $c['c_umoya_field_label_text_7']; ?></label>
+              <input id="umoyaCity" name="<?php echo $c['c_umoya_field_input_name_5']; ?>" type="<?php echo $c['c_umoya_field_input_type_5']; ?>" placeholder="<?php echo $c['c_umoya_field_input_placeholder_5']; ?>" autocomplete="<?php echo $c['c_umoya_field_input_autocomplete_5']; ?>"<?php echo $c['c_umoya_field_input_required_5']; ?><?php echo $c['c_umoya_field_input_disabled_5']; ?><?php echo $c['c_umoya_field_input_readonly_5']; ?>>
             </div>
 
             <div class="umoya-field full">
-              <label for="umoyaMonth"><?php echo $c['label_text_8']; ?></label>
+              <label for="umoyaMonth"><?php echo $c['c_umoya_field_label_text_8']; ?></label>
               <div class="umoya-when">
-                <select id="umoyaMonth" name="<?php echo $c['select_name_3']; ?>" aria-label="<?php echo $c['select_aria_label']; ?>"<?php echo $c['select_required_3']; ?><?php echo $c['select_disabled_3']; ?><?php echo $c['select_multiple_3']; ?>>
+                <select id="umoyaMonth" name="<?php echo $c['c_umoya_when_select_name']; ?>" aria-label="<?php echo $c['c_umoya_when_select_aria_label']; ?>"<?php echo $c['c_umoya_when_select_required']; ?><?php echo $c['c_umoya_when_select_disabled']; ?><?php echo $c['c_umoya_when_select_multiple']; ?>>
                   <?php $__i = 0; foreach ( $r['rep_option_3'] as $it ) : if ( $__i ++ ) { echo '
                   '; } ?><option value="<?php echo $it['value']; ?>"<?php echo $it['disabled']; ?><?php echo $it['selected']; ?> class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['label']; ?></option><?php endforeach; echo "\n                "; ?></select>
-                <select id="umoyaYear" name="<?php echo $c['select_name_4']; ?>" aria-label="<?php echo $c['select_aria_label_2']; ?>"<?php echo $c['select_required_4']; ?><?php echo $c['select_disabled_4']; ?><?php echo $c['select_multiple_4']; ?>>
+                <select id="umoyaYear" name="<?php echo $c['c_umoya_when_select_name_2']; ?>" aria-label="<?php echo $c['c_umoya_when_select_aria_label_2']; ?>"<?php echo $c['c_umoya_when_select_required_2']; ?><?php echo $c['c_umoya_when_select_disabled_2']; ?><?php echo $c['c_umoya_when_select_multiple_2']; ?>>
                   <?php $__i = 0; foreach ( $r['rep_option_4'] as $it ) : if ( $__i ++ ) { echo '
                   '; } ?><option value="<?php echo $it['value']; ?>"<?php echo $it['disabled']; ?><?php echo $it['selected']; ?> class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['label']; ?></option><?php endforeach; echo "\n                "; ?></select>
               </div>
             </div>
 
             <div class="umoya-field full">
-              <label for="umoyaGuests"><?php echo $c['label_text_9']; ?></label>
-              <select id="umoyaGuests" name="<?php echo $c['select_name_5']; ?>"<?php echo $c['select_required_5']; ?><?php echo $c['select_disabled_5']; ?><?php echo $c['select_multiple_5']; ?>>
+              <label for="umoyaGuests"><?php echo $c['c_umoya_field_label_text_9']; ?></label>
+              <select id="umoyaGuests" name="<?php echo $c['c_umoya_field_select_name_3']; ?>"<?php echo $c['c_umoya_field_select_required_3']; ?><?php echo $c['c_umoya_field_select_disabled_3']; ?><?php echo $c['c_umoya_field_select_multiple_3']; ?>>
                 <?php $__i = 0; foreach ( $r['rep_option_5'] as $it ) : if ( $__i ++ ) { echo '
                 '; } ?><option value="<?php echo $it['value']; ?>"<?php echo $it['disabled']; ?><?php echo $it['selected']; ?> class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['label']; ?></option><?php endforeach; echo "\n              "; ?></select>
             </div>
 
             <div class="umoya-field full">
-              <label for="umoyaMessage"><?php echo $c['label_text_10']; ?></label>
-              <textarea id="umoyaMessage" name="<?php echo $c['anchor_name_6']; ?>" placeholder="<?php echo $c['anchor_placeholder_6']; ?>"<?php echo $c['anchor_required_6']; ?><?php echo $c['anchor_disabled_6']; ?><?php echo $c['anchor_readonly_6']; ?>></textarea>
+              <label for="umoyaMessage"><?php echo $c['c_umoya_field_label_text_10']; ?></label>
+              <textarea id="umoyaMessage" name="<?php echo $c['c_textarea_name']; ?>" placeholder="<?php echo $c['c_textarea_placeholder']; ?>"<?php echo $c['c_textarea_required']; ?><?php echo $c['c_textarea_disabled']; ?><?php echo $c['c_textarea_readonly']; ?>></textarea>
             </div>
           </div>
 
           <!-- Consent (POPIA) — required box must be ticked; not pre-checked -->
           <div class="umoya-consent">
             <label class="umoya-consent-item" for="umoyaConsent">
-              <input type="<?php echo $c['anchor_type_6']; ?>" id="umoyaConsent" name="<?php echo $c['anchor_name_7']; ?>" value="yes" aria-required="true"<?php echo $c['anchor_required_7']; ?><?php echo $c['anchor_disabled_7']; ?><?php echo $c['anchor_readonly_7']; ?><?php echo $c['anchor_checked_6']; ?>>
-              <span><?php echo $c['text_text_4']; ?> <a href="<?php echo $c['link_href']; ?>" target="<?php echo $c['link_target']; ?>" rel="<?php echo $c['link_rel']; ?>"><?php echo $c['link_text']; ?></a><?php echo $c['text_text_2_2']; ?> <span class="umoya-consent-tag"><?php echo $c['label_text_11']; ?></span></span>
+              <input type="<?php echo $c['c_umoya_consent_item_input_type']; ?>" id="umoyaConsent" name="<?php echo $c['c_umoya_consent_item_input_name']; ?>" value="yes" aria-required="true"<?php echo $c['c_umoya_consent_item_input_required']; ?><?php echo $c['c_umoya_consent_item_input_disabled']; ?><?php echo $c['c_umoya_consent_item_input_readonly']; ?><?php echo $c['c_umoya_consent_item_input_checked']; ?>>
+              <span><?php echo $c['c_umoya_consent_item_span_text']; ?> <a href="<?php echo $c['c_a_href']; ?>" target="<?php echo $c['c_a_target']; ?>" rel="<?php echo $c['c_a_rel']; ?>"><?php echo $c['c_a_text']; ?></a>. <span class="umoya-consent-tag"><?php echo $c['c_umoya_consent_item_span_span_text']; ?></span></span>
             </label>
             <label class="umoya-consent-item" for="umoyaMarketing">
-              <input type="<?php echo $c['anchor_type_7']; ?>" id="umoyaMarketing" name="<?php echo $c['anchor_name_8']; ?>" value="yes"<?php echo $c['anchor_required_8']; ?><?php echo $c['anchor_disabled_8']; ?><?php echo $c['anchor_readonly_8']; ?><?php echo $c['anchor_checked_7']; ?>>
-              <span><?php echo $c['text_text_5']; ?> <span class="umoya-consent-tag"><?php echo $c['label_text_12']; ?></span></span>
+              <input type="<?php echo $c['c_umoya_consent_item_input_type_2']; ?>" id="umoyaMarketing" name="<?php echo $c['c_umoya_consent_item_input_name_2']; ?>" value="yes"<?php echo $c['c_umoya_consent_item_input_required_2']; ?><?php echo $c['c_umoya_consent_item_input_disabled_2']; ?><?php echo $c['c_umoya_consent_item_input_readonly_2']; ?><?php echo $c['c_umoya_consent_item_input_checked_2']; ?>>
+              <span><?php echo $c['c_umoya_consent_item_span_text_2']; ?> <span class="umoya-consent-tag"><?php echo $c['c_umoya_consent_item_span_span_text_2']; ?></span></span>
             </label>
           </div>
 
-          <button type="<?php echo $c['button_type_2']; ?>" class="umoya-form-submit"<?php echo $c['button_disabled_2']; ?>><?php echo $c['button_text']; ?></button>
+          <button type="<?php echo $c['c_umoya_form_submit_type']; ?>" class="umoya-form-submit"<?php echo $c['c_umoya_form_submit_disabled']; ?>><?php echo $c['c_umoya_form_submit_text']; ?></button>
           <p class="umoya-form-status" role="status" aria-live="polite"></p>
-          <p class="umoya-form-legal"><?php echo $c['consent_text']; ?></p>
+          <p class="umoya-form-legal"><?php echo $c['c_umoya_form_legal_text']; ?></p>
         </form>
-        <iframe name="umoyaPopupSubmissionFrame" title="<?php echo $c['embed_title']; ?>" style="<?php echo $s['embed_inline_style']; ?>"<?php echo $c['embed_allowfullscreen']; ?>></iframe>
+        <iframe name="umoyaPopupSubmissionFrame" title="<?php echo $c['c_umoya_form_card_title']; ?>" style="<?php echo $s['c_umoya_form_card_inline_style']; ?>"<?php echo $c['c_umoya_form_card_allowfullscreen']; ?>></iframe>
       </div>
     </div>
   </div>

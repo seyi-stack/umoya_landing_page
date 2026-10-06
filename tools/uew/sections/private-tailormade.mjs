@@ -45,6 +45,14 @@ export const sections = [
 		class_name: 'PT_Trip_Types',
 		icon: 'eicon-posts-carousel',
 		description: 'Scroll-snap rail of the six trip-type cards plus the blank-page card, with arrows. The hero links here.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.pt-tt-c': 'Scroll hint',
+				'.pt-tt-stage': 'Cards',
+			},
+		},
 	},
 	{
 		key: 'pt_how',
@@ -64,6 +72,11 @@ export const sections = [
 		icon: 'eicon-form-horizontal',
 		description: 'Inquiry form. Posts to WordPress first, then the Private & Tailormade HubSpot form. Every "Design Your Journey" button targets it.',
 		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.pt-df-card': 'Form',
+			},
 			optionNotices: {
 				'#ptOccasion': '<strong>These values must match the HubSpot property <code>trip_occasion</code> exactly.</strong> ' +
 					'It is a required dropdown on the Private &amp; Tailormade Inquiry form, so a value HubSpot does not list gets the whole enquiry rejected. Change both together.',

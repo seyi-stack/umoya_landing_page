@@ -32,12 +32,12 @@ if ( ! defined( 'ABSPATH' ) ) {
   SVG (stroke: terracotta) — no external icon fonts.
 =================================================================
 -->
-<section id="sj-inclusions" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="sj-inclusions" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="sj-inc-c">
 
     <div class="sj-inc-head sj-inc-rv">
-      <span class="sj-inc-eye"><?php echo $c['eyebrow_text']; ?></span>
-      <h2 class="sj-inc-ttl"><?php echo $c['title_text']; ?></h2>
+      <span class="sj-inc-eye"><?php echo $c['c_sj_inc_eye_text']; ?></span>
+      <h2 class="sj-inc-ttl"><?php echo $c['c_sj_inc_ttl_text']; ?></h2>
     </div>
 
     <div class="sj-inc-layout">
@@ -50,22 +50,22 @@ if ( ! defined( 'ABSPATH' ) ) {
             <span class="sj-inc-ic"><svg viewBox="<?php echo $it['viewbox']; ?>"><?php echo $it['svg_markup']; ?></svg></span>
             <p><?php echo $it['p']; ?></p>
           </div><?php endforeach; echo "\n          "; ?><div class="sj-inc-card sj-inc-plain">
-            <h4><?php echo $c['heading_text']; ?></h4>
-            <p><?php echo $c['text_text']; ?></p>
+            <h4><?php echo $c['c_sj_inc_plain_h4_text']; ?></h4>
+            <p><?php echo $c['c_sj_inc_plain_p_text']; ?></p>
           </div>
         </div>
 
         <div class="sj-inc-price">
-          <h3 class="sj-inc-price-ttl"><?php echo $c['title_text_2']; ?></h3>
-          <p class="sj-inc-price-amt"><?php echo $c['text_text_2']; ?></p>
+          <h3 class="sj-inc-price-ttl"><?php echo $c['c_sj_inc_price_ttl_text']; ?></h3>
+          <p class="sj-inc-price-amt"><?php echo $c['c_sj_inc_price_amt_text']; ?></p>
           <?php $__i = 0; foreach ( $r['rep_p'] as $it ) : if ( $__i ++ ) { echo '
           '; } ?><p class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['p']; ?></p><?php endforeach; echo "\n        "; ?></div>
       </div>
 
       <!-- Offers panel -->
-      <aside class="sj-offers sj-inc-rv d1" aria-label="<?php echo $c['aside_aria_label']; ?>">
-        <div class="sj-offers-sub"><?php echo $c['subtitle_text']; ?></div>
-        <h3 class="sj-offers-ttl"><?php echo $c['title_text_3']; ?></h3>
+      <aside class="sj-offers sj-inc-rv d1" aria-label="<?php echo $c['c_sj_offers_aria_label']; ?>">
+        <div class="sj-offers-sub"><?php echo $c['c_sj_offers_sub_text']; ?></div>
+        <h3 class="sj-offers-ttl"><?php echo $c['c_sj_offers_ttl_text']; ?></h3>
 
         <?php $__i = 0; foreach ( $r['rep_div_sj_ofr'] as $it ) : if ( $__i ++ ) { echo '
 
@@ -80,9 +80,9 @@ if ( ! defined( 'ABSPATH' ) ) {
                be on the page — without that widget this button does nothing.
                (Section 07, the duplicate closing CTA, was removed at client
                request, so #sj-cta no longer exists.) -->
-          <button type="<?php echo $c['button_type']; ?>" class="sj-offers-btn" data-umoya-form-popup<?php echo $c['button_disabled']; ?>><?php echo $c['button_text']; ?></button>
+          <button type="<?php echo $c['c_sj_offers_btn_type']; ?>" class="sj-offers-btn" data-umoya-form-popup<?php echo $c['c_sj_offers_btn_disabled']; ?>><?php echo $c['c_sj_offers_btn_text']; ?></button>
         </div>
-        <p class="sj-offers-fine"><?php echo $c['text_text_3']; ?></p>
+        <p class="sj-offers-fine"><?php echo $c['c_sj_offers_fine_text']; ?></p>
       </aside>
 
     </div>

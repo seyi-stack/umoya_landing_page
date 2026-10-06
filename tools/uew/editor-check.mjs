@@ -34,6 +34,22 @@ const only = ( args.find( ( a ) => a.startsWith( '--only=' ) ) || '' ).replace( 
 const onlyKeys = only ? new Set( only.split( ',' ).map( ( s ) => s.trim() ) ) : null;
 const wantShots = args.includes( '--shots' );
 
+/**
+ * The most controls one of our panels may hold. Elementor draws every control
+ * in a panel when it opens, hidden ones included, and every row of a list --
+ * so this is what decides whether a panel opens at once or after seconds.
+ * With ~130 controls on every element, the footer's Style panels held 1,350
+ * and took two seconds; the contact form's first Content panel held its
+ * 200-country list and took 26.
+ *
+ * A count, not a time: the same panel took 0.45 s on mains power and 2 s on
+ * battery, so a timing budget passed or failed with the laptop's power plan.
+ * The time is still reported, for information. A panel that is nothing but
+ * one list is exempt -- that is a long list given a panel of its own, drawn
+ * only when someone opens it.
+ */
+const PANEL_CONTROL_BUDGET = { style: 650, content: 700, advanced: 700 };
+
 const manifest = JSON.parse( fs.readFileSync( path.join( pluginRoot, 'includes', 'sections', 'index.json' ), 'utf8' ) );
 
 async function login( page ) {
@@ -122,7 +138,8 @@ for ( const [ key, section ] of Object.entries( manifest ) ) {
 	// the same section passed twice in isolation immediately afterwards.
 	const failed = ( candidate ) => ! candidate.rendered || ! candidate.panels ||
 		candidate.errors.length || ( section.script && '1' !== candidate.scriptRan ) ||
-		'FAILED' === candidate.liveEdit || 'FAILED' === candidate.liveStyle;
+		'FAILED' === candidate.liveEdit || 'FAILED' === candidate.liveStyle ||
+		( candidate.overloaded || [] ).length > 0;
 
 	if ( failed( row ) ) {
 		// Let the server drain before looking again. The failures here are the
@@ -252,6 +269,62 @@ async function inspect( key, section, entry ) {
 		row.controls = panel.controls;
 		row.byTab = panel.byTab;
 
+		// How long the slowest Style panel takes to open. Elementor draws every
+		// control in a panel at once, hidden ones included, so this is what
+		// decides whether the Style tab feels instant or sticky: when every
+		// element carried ~130 controls, the footer's panels took two seconds.
+		row.styleMs = await page.evaluate( ( widgetName ) => {
+			const doc = document.querySelector( '#elementor-preview-iframe' ).contentDocument;
+			const element = doc.querySelector( '.elementor-widget-' + widgetName ) || doc.querySelector( '[data-widget_type^="' + widgetName + '."]' );
+			const container = window.elementor.getContainer( element.dataset.id );
+			const args = { model: container.model, view: container.view };
+			window.$e.route( 'panel/editor/style', args );
+			const view = window.elementor.getPanelView().getCurrentPageView();
+			let slowest = 0;
+			for ( const model of view.collection.filter( ( m ) => 'section' === m.get( 'type' ) && 'style' === m.get( 'tab' ) ) ) {
+				const started = performance.now();
+				view.activateSection( model.get( 'name' ) );
+				view.render();
+				slowest = Math.max( slowest, performance.now() - started );
+			}
+			window.$e.route( 'panel/editor/content', args );
+			return Math.round( slowest );
+		}, section.name );
+
+		// How many controls each of our panels makes Elementor draw: a list
+		// counts every field of every row.
+		const load = await page.evaluate( ( widgetName ) => {
+			const doc = document.querySelector( '#elementor-preview-iframe' ).contentDocument;
+			const element = doc.querySelector( '.elementor-widget-' + widgetName ) || doc.querySelector( '[data-widget_type^="' + widgetName + '."]' );
+			const container = window.elementor.getContainer( element.dataset.id );
+			const models = window.elementor.getPanelView().getCurrentPageView().collection.models;
+			return models
+				.filter( ( m ) => 'section' === m.get( 'type' ) && /^(content_|style_|uew_)/.test( m.get( 'name' ) ) )
+				.map( ( section ) => {
+					const name = section.get( 'name' );
+					let views = 0;
+					let lists = 0;
+					let others = 0;
+					for ( const m of models.filter( ( candidate ) => candidate.get( 'section' ) === name ) ) {
+						if ( 'repeater' === m.get( 'type' ) ) {
+							const rows = container.settings.get( m.get( 'name' ) );
+							const fields = Object.keys( m.get( 'fields' ) || {} ).length;
+							views += 1 + ( rows && rows.length ? rows.length : 0 ) * fields;
+							lists += 1;
+						} else {
+							views += 1;
+							others += 1;
+						}
+					}
+					return { name, tab: section.get( 'tab' ) || 'content', views, onlyList: 1 === lists && others <= 2 };
+				} );
+		}, section.name );
+		row.heaviest = load.reduce( ( max, panel ) => ( panel.onlyList ? max : Math.max( max, panel.views ) ), 0 );
+		row.overloaded = load.filter( ( panel ) => ! panel.onlyList && panel.views > ( PANEL_CONTROL_BUDGET[ panel.tab ] || PANEL_CONTROL_BUDGET.content ) );
+		for ( const panel of row.overloaded ) {
+			row.notes.push( 'panel ' + panel.name + ' holds ' + panel.views + ' controls (budget ' + ( PANEL_CONTROL_BUDGET[ panel.tab ] || PANEL_CONTROL_BUDGET.content ) + ')' );
+		}
+
 		// Edit something, the way an editor does: change a text control through
 		// Elementor's own command, which re-renders the widget on the server and
 		// swaps the fresh markup into the canvas. That is the path where a
@@ -324,14 +397,16 @@ async function inspect( key, section, entry ) {
 			? candidates.find( ( part ) => fullOf( part ).startsWith( portal.selector + ' ' ) ) || candidates[ 0 ]
 			: candidates[ 0 ];
 		if ( stylePart ) {
-			await page.evaluate( ( widgetName, controlId ) => {
+			// The row is switched to Custom first, as a person would, or its
+			// settings write nothing.
+			await page.evaluate( ( widgetName, partId ) => {
 				const doc = document.querySelector( '#elementor-preview-iframe' ).contentDocument;
 				const element = doc.querySelector( '.elementor-widget-' + widgetName ) || doc.querySelector( '[data-widget_type^="' + widgetName + '."]' );
 				window.$e.run( 'document/elements/settings', {
 					container: window.elementor.getContainer( element.dataset.id ),
-					settings: { [ controlId ]: { unit: 'px', size: 0.37, sizes: [] } },
+					settings: { [ partId + '_style' ]: 'yes', [ partId + '_opacity' ]: { unit: 'px', size: 0.37, sizes: [] } },
 				} );
-			}, section.name, stylePart.id + '_opacity' );
+			}, section.name, stylePart.id );
 
 			const styleFrame = await ( await page.$( '#elementor-preview-iframe' ) ).contentFrame();
 			if ( portal && portal.trigger ) {
@@ -385,14 +460,19 @@ async function inspect( key, section, entry ) {
 			// gets its own shot. Switching tabs goes through Elementor's router
 			// rather than a DOM click: the tab markup has moved between versions,
 			// the route has not.
-			const switched = await page.evaluate( () => {
+			// The route needs the element it is editing; without it Elementor
+			// throws and the Style tab was never photographed.
+			const switched = await page.evaluate( ( widgetName ) => {
 				try {
-					window.$e.route( 'panel/editor/style' );
+					const doc = document.querySelector( '#elementor-preview-iframe' ).contentDocument;
+					const element = doc.querySelector( '.elementor-widget-' + widgetName ) || doc.querySelector( '[data-widget_type^="' + widgetName + '."]' );
+					const container = window.elementor.getContainer( element.dataset.id );
+					window.$e.route( 'panel/editor/style', { model: container.model, view: container.view } );
 					return true;
 				} catch ( error ) {
 					return false;
 				}
-			} );
+			}, section.name );
 
 			if ( switched ) {
 				await new Promise( ( resolve ) => setTimeout( resolve, 1200 ) );
@@ -421,6 +501,8 @@ function describeRow( row, section ) {
 		( row.rendered ? 'rendered' : 'NOT RENDERED' ).padEnd( 14 ) +
 		( ! section.script ? 'no script' : ( '1' === row.scriptRan ? 'script ok' : 'SCRIPT DID NOT RUN' ) ).padEnd( 20 ) +
 		String( row.ms ).padStart( 6 ) + 'ms  ' +
+		'style ≤' + String( row.styleMs ?? '-' ).padStart( 5 ) + 'ms  ' +
+		'heaviest' + String( row.heaviest ?? '-' ).padStart( 5 ) + '  ' +
 		String( row.panels ).padStart( 3 ) + ' panels (' + tabs + ')' +
 		'  live edit ' + ( row.liveEdit || '-' ) + ', style ' + ( row.liveStyle || '-' ) +
 		( row.errors.length ? '   ' + row.errors.length + ' console error(s)' : '' ) +

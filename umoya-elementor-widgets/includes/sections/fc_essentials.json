@@ -172,74 +172,243 @@
 			"label": "Ease"
 		}
 	],
+	"regions": [
+		{
+			"id": "r_header",
+			"label": "Header",
+			"portal": false
+		},
+		{
+			"id": "r_items",
+			"label": "Items",
+			"portal": false
+		}
+	],
 	"content_panels": [
 		{
-			"id": "content_p_section",
-			"label": "Section",
-			"sample": "",
-			"region_label": "",
-			"controls": [
+			"id": "content_r_header",
+			"label": "Header",
+			"items": [
 				{
-					"id": "section_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Journey Details — Frequently Asked Questions",
-					"esc": "attr",
-					"group": "p_section",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Section"
+					"kind": "group",
+					"label": "Eyebrow",
+					"order": 3,
+					"controls": [
+						{
+							"id": "c_fc_det_eyebrow_text",
+							"control": "text",
+							"label": "Eyebrow",
+							"description": "",
+							"default": "Everything You Need to Know",
+							"esc": "post",
+							"group": "p_fc_det_eyebrow",
+							"sort": 0
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Title",
+					"order": 4,
+					"controls": [
+						{
+							"id": "c_fc_det_title_text",
+							"control": "textarea",
+							"label": "Title",
+							"description": "Inline formatting tags are preserved.",
+							"default": "Travel <em>Essentials</em>",
+							"esc": "post",
+							"group": "p_fc_det_title",
+							"sort": 0
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Text",
+					"order": 7,
+					"controls": [
+						{
+							"id": "c_fc_det_lead_text",
+							"control": "textarea",
+							"label": "Text",
+							"description": "",
+							"default": "Travel with clarity and confidence, knowing every detail has been carefully considered. From customization to comfort, each element combines cultural depth, local access, and seamless execution.",
+							"esc": "post",
+							"group": "p_fc_det_lead",
+							"sort": 0
+						}
+					]
 				}
 			]
 		},
 		{
-			"id": "content_p_fc_det_eyebrow",
-			"label": "Header",
-			"sample": "Everything You Need to Know",
-			"region_label": "Header",
-			"controls": [
+			"id": "content_r_items",
+			"label": "Items",
+			"items": [
 				{
-					"id": "eyebrow_text",
-					"control": "text",
-					"label": "Eyebrow",
-					"description": "",
-					"default": "Everything You Need to Know",
-					"esc": "post",
-					"group": "p_fc_det_eyebrow",
-					"sort": 0,
-					"part_label": "Eyebrow"
-				},
-				{
-					"id": "title_text",
-					"control": "textarea",
-					"label": "Title",
-					"description": "Inline formatting tags are preserved.",
-					"default": "Travel <em>Essentials</em>",
-					"esc": "post",
-					"group": "p_fc_det_title",
-					"sort": 0,
-					"part_label": "Header Title"
-				},
-				{
-					"id": "text_text",
-					"control": "textarea",
-					"label": "Text",
-					"description": "",
-					"default": "Travel with clarity and confidence, knowing every detail has been carefully considered. From customization to comfort, each element combines cultural depth, local access, and seamless execution.",
-					"esc": "post",
-					"group": "p_fc_det_lead",
-					"sort": 0,
-					"part_label": "Text"
+					"kind": "list",
+					"id": "rep_div_fc_acc_item",
+					"label": "Items",
+					"order": 9
 				}
-			],
-			"merged": true
+			]
 		}
 	],
-	"integration_controls": [],
-	"form_controls": [],
-	"behaviour_controls": [],
-	"inline_style_controls": [],
-	"media_controls": [],
+	"style_panels": [
+		{
+			"id": "style_section",
+			"label": "Section",
+			"tokens": true,
+			"rows": [
+				{
+					"part": "p_section",
+					"label": "Section",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_det_rev",
+					"label": "Headers",
+					"inline": [],
+					"inline_props": [],
+					"heading": "Across the section"
+				},
+				{
+					"part": "p_fc_det_wrap",
+					"label": "Container",
+					"inline": [],
+					"inline_props": [],
+					"heading": "Layout"
+				}
+			]
+		},
+		{
+			"id": "style_r_header",
+			"label": "Header",
+			"tokens": false,
+			"rows": [
+				{
+					"part": "p_fc_det_eyebrow",
+					"label": "Eyebrow",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_det_title",
+					"label": "Title",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_em",
+					"label": "Italic Text",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_det_rule",
+					"label": "Divider",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_det_lead",
+					"label": "Text",
+					"inline": [],
+					"inline_props": []
+				}
+			]
+		},
+		{
+			"id": "style_r_items",
+			"label": "Items",
+			"tokens": false,
+			"rows": [
+				{
+					"part": "p_fc_acc_item",
+					"label": "Items",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_acc_item_button",
+					"label": "Buttons",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_acc_item_button_div_div",
+					"label": "Button Icons 1",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_acc_item_button_div_div_svg",
+					"label": "Icons",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_acc_item_button_div_div_p",
+					"label": "Titles",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_acc_item_button_div_svg",
+					"label": "Button Icons 2",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_acc_item_div_div",
+					"label": "Item Contents 2",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_acc_item_button_div",
+					"label": "Containers",
+					"inline": [],
+					"inline_props": [],
+					"heading": "Layout"
+				},
+				{
+					"part": "p_fc_acc_item_div",
+					"label": "Item Contents 1",
+					"inline": [],
+					"inline_props": []
+				}
+			]
+		}
+	],
+	"advanced_panels": [
+		{
+			"id": "uew_accessibility",
+			"label": "Accessibility",
+			"notice": "What screen readers announce for each element. Visitors do not see these; keep them short and descriptive.",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Section",
+					"order": 0,
+					"controls": [
+						{
+							"id": "c_section_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Journey Details — Frequently Asked Questions",
+							"esc": "attr",
+							"group": "p_section",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				}
+			]
+		}
+	],
 	"repeaters": [
 		{
 			"id": "rep_div_fc_acc_item",
@@ -394,7 +563,7 @@
 					"viewbox": "0 0 24 24",
 					"svg_markup": "\n                  <path d=\"M18 8h1a4 4 0 0 1 0 8h-1\"/>\n                  <path d=\"M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z\"/>\n                  <line x1=\"6\"  y1=\"1\" x2=\"6\"  y2=\"4\"/>\n                  <line x1=\"10\" y1=\"1\" x2=\"10\" y2=\"4\"/>\n                  <line x1=\"14\" y1=\"1\" x2=\"14\" y2=\"4\"/>\n                ",
 					"title": "Flavours that meet your needs",
-					"sub": "Regional cuisine &amp; dietary care",
+					"sub": "Regional cuisine & dietary care",
 					"aria_hidden_2": "true",
 					"viewbox_2": "0 0 24 24",
 					"icon_points": "6 9 12 15 18 9",
@@ -406,7 +575,11 @@
 			"loops": 1,
 			"selector": ".fc-acc-item",
 			"notice": "",
-			"portal": null
+			"portal": null,
+			"base_label": "Items",
+			"region": "r_items",
+			"order": 9,
+			"block_label": "Items"
 		}
 	],
 	"style_parts": [
@@ -419,23 +592,21 @@
 			"selector": "",
 			"tag": "section",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition"
+				"padding",
+				"min_height",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 0,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "Section"
 		},
 		{
 			"id": "p_fc_det_wrap",
@@ -446,24 +617,20 @@
 			"selector": ".fc-det-wrap",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"padding",
+				"margin",
+				"measure",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 1,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "Container"
 		},
 		{
 			"id": "p_fc_det_rev",
@@ -474,24 +641,24 @@
 			"selector": ".fc-det-rev",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 2,
+			"box": false,
+			"everywhere": true,
+			"region": "",
+			"display": "Headers"
 		},
 		{
 			"id": "p_fc_det_eyebrow",
@@ -502,25 +669,18 @@
 			"selector": ".fc-det-eyebrow",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 3,
+			"box": false,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Eyebrow"
 		},
 		{
 			"id": "p_fc_det_title",
@@ -531,54 +691,43 @@
 			"selector": ".fc-det-title",
 			"tag": "h2",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 4,
+			"box": false,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Title"
 		},
 		{
 			"id": "p_em",
-			"label": "Emphasis",
-			"short_label": "Emphasis",
+			"label": "Italic Text",
+			"short_label": "Italic Text",
 			"parent_label": "Title",
 			"sample": "Essentials",
 			"selector": "em",
 			"tag": "em",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 5,
+			"box": false,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Italic Text"
 		},
 		{
 			"id": "p_fc_det_rule",
@@ -589,25 +738,18 @@
 			"selector": ".fc-det-rule",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 6,
+			"box": false,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Divider"
 		},
 		{
 			"id": "p_fc_det_lead",
@@ -618,25 +760,21 @@
 			"selector": ".fc-det-lead",
 			"tag": "p",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 7,
+			"box": false,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Text"
 		},
 		{
 			"id": "p_fc_acc_item",
@@ -647,328 +785,239 @@
 			"selector": ".fc-acc-item",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": "div_fc_acc_item"
+			"repeater": "div_fc_acc_item",
+			"order": 9,
+			"box": false,
+			"everywhere": false,
+			"region": "r_items",
+			"display": "Items"
 		},
 		{
-			"id": "p_fc_acc_item_button_nth_of_type_1",
+			"id": "p_fc_acc_item_button",
 			"label": "Button",
 			"short_label": "Button",
 			"parent_label": "Item",
 			"sample": "",
-			"selector": ".fc-acc-item > button:nth-of-type(1)",
+			"selector": ".fc-acc-item > button",
 			"tag": "button",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
+				"flex_container",
 				"states",
-				"flex_container"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 10,
+			"box": false,
+			"everywhere": false,
+			"region": "r_items",
+			"display": "Buttons"
 		},
 		{
-			"id": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_1",
-			"label": "Button Container 1",
+			"id": "p_fc_acc_item_button_div",
+			"label": "Button Container",
 			"short_label": "Container",
 			"parent_label": "Button",
 			"sample": "",
-			"selector": ".fc-acc-item > button:nth-of-type(1) > div:nth-of-type(1)",
+			"selector": ".fc-acc-item > button > div",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"flex_container",
-				"flex_item"
+				"effects"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 11,
+			"box": false,
+			"everywhere": false,
+			"region": "r_items",
+			"display": "Containers"
 		},
 		{
-			"id": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1",
+			"id": "p_fc_acc_item_button_div_div",
 			"label": "Button Icon 1",
 			"short_label": "Icon",
 			"parent_label": "Button",
 			"sample": "",
-			"selector": ".fc-acc-item > button:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+			"selector": ".fc-acc-item > button > div > div",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"flex_container",
-				"flex_item"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 12,
+			"box": false,
+			"everywhere": false,
+			"region": "r_items",
+			"display": "Button Icons 1"
 		},
 		{
-			"id": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_1_svg_nth_of_type_1",
+			"id": "p_fc_acc_item_button_div_div_svg",
 			"label": "Icon",
 			"short_label": "Icon",
 			"parent_label": "",
 			"sample": "",
-			"selector": ".fc-acc-item > button:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > svg:nth-of-type(1)",
+			"selector": ".fc-acc-item > button > div > div > svg",
 			"tag": "svg",
 			"features": [
 				"svg",
-				"sizing",
-				"spacing",
 				"effects",
 				"visibility"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 13,
+			"box": false,
+			"everywhere": false,
+			"region": "r_items",
+			"display": "Icons"
 		},
 		{
-			"id": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2",
-			"label": "Button Container 2",
-			"short_label": "Container",
-			"parent_label": "Button",
-			"sample": "",
-			"selector": ".fc-acc-item > button:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
-			"tag": "div",
-			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
-			],
-			"animated": [],
-			"shared": false,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_p_nth_of_type_1",
+			"id": "p_fc_acc_item_button_div_div_p",
 			"label": "Button Title",
 			"short_label": "Title",
 			"parent_label": "Button",
 			"sample": "Plan with absolute confidence",
-			"selector": ".fc-acc-item > button:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > p:nth-of-type(1)",
+			"selector": ".fc-acc-item > button > div > div > p",
 			"tag": "p",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
-			],
-			"animated": [],
-			"shared": false,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_1_div_nth_of_type_2_p_nth_of_type_2",
-			"label": "Subtitle",
-			"short_label": "Subtitle",
-			"parent_label": "Button",
-			"sample": "Guaranteed departures",
-			"selector": ".fc-acc-item > button:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > p:nth-of-type(2)",
-			"tag": "p",
-			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
-			],
-			"animated": [],
-			"shared": false,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_2",
-			"label": "Button Container 3",
-			"short_label": "Container",
-			"parent_label": "Button",
-			"sample": "",
-			"selector": ".fc-acc-item > button:nth-of-type(1) > div:nth-of-type(2)",
-			"tag": "div",
-			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
-			],
-			"animated": [],
-			"shared": false,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_fc_acc_item_button_nth_of_type_1_div_nth_of_type_2_svg_nth_of_type_1",
-			"label": "Button Icon 2",
-			"short_label": "Icon",
-			"parent_label": "Button",
-			"sample": "",
-			"selector": ".fc-acc-item > button:nth-of-type(1) > div:nth-of-type(2) > svg:nth-of-type(1)",
-			"tag": "svg",
-			"features": [
-				"svg",
-				"sizing",
-				"spacing",
+				"margin",
 				"effects",
 				"visibility"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 19,
+			"box": false,
+			"everywhere": false,
+			"region": "r_items",
+			"display": "Titles"
 		},
 		{
-			"id": "p_fc_acc_item_div_nth_of_type_1",
+			"id": "p_fc_acc_item_button_div_svg",
+			"label": "Button Icon 2",
+			"short_label": "Icon",
+			"parent_label": "Button",
+			"sample": "",
+			"selector": ".fc-acc-item > button > div > svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null,
+			"order": 22,
+			"box": false,
+			"everywhere": false,
+			"region": "r_items",
+			"display": "Button Icons 2"
+		},
+		{
+			"id": "p_fc_acc_item_div",
 			"label": "Item Content 1",
 			"short_label": "Content",
 			"parent_label": "Item",
 			"sample": "",
-			"selector": ".fc-acc-item > div:nth-of-type(1)",
+			"selector": ".fc-acc-item > div",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"padding",
+				"margin",
+				"measure",
+				"effects"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 24,
+			"box": false,
+			"everywhere": false,
+			"region": "r_items",
+			"display": "Item Contents 1"
 		},
 		{
-			"id": "p_fc_acc_item_div_nth_of_type_1_div_nth_of_type_1",
+			"id": "p_fc_acc_item_div_div",
 			"label": "Item Content 2",
 			"short_label": "Content",
 			"parent_label": "Item",
 			"sample": "Once your departure is confirmed, it is guarant…",
-			"selector": ".fc-acc-item > div:nth-of-type(1) > div:nth-of-type(1)",
+			"selector": ".fc-acc-item > div > div",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"align",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 25,
+			"box": false,
+			"everywhere": false,
+			"region": "r_items",
+			"display": "Item Contents 2"
 		}
 	],
 	"inline_styles": [],
 	"fields": [
 		{
-			"id": "section_aria_label",
+			"id": "c_section_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Journey Details — Frequently Asked Questions",
@@ -978,7 +1027,7 @@
 			"sort": 1
 		},
 		{
-			"id": "eyebrow_text",
+			"id": "c_fc_det_eyebrow_text",
 			"control": "text",
 			"label": "Eyebrow",
 			"description": "",
@@ -988,7 +1037,7 @@
 			"sort": 0
 		},
 		{
-			"id": "title_text",
+			"id": "c_fc_det_title_text",
 			"control": "textarea",
 			"label": "Title",
 			"description": "Inline formatting tags are preserved.",
@@ -998,7 +1047,7 @@
 			"sort": 0
 		},
 		{
-			"id": "text_text",
+			"id": "c_fc_det_lead_text",
 			"control": "textarea",
 			"label": "Text",
 			"description": "",

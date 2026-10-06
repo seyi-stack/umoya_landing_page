@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <video> src for the final brand film when it is ready.
 =================================================================
 -->
-  <section id="fc-why" aria-label="<?php echo $c['section_aria_label']; ?>">
+  <section id="fc-why" aria-label="<?php echo $c['c_section_aria_label']; ?>">
     <div class="fc-why-wrap">
 
       <!-- Two-column grid -->
@@ -33,15 +33,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         <!-- ── LEFT: Philosophy copy ───────────────── -->
         <div class="fc-why-rev">
-          <span class="fc-why-eyebrow"><?php echo $c['eyebrow_text']; ?></span>
-          <h2 class="fc-why-title"><?php echo $c['title_text']; ?></h2>
+          <span class="fc-why-eyebrow"><?php echo $c['c_fc_why_eyebrow_text']; ?></span>
+          <h2 class="fc-why-title"><?php echo $c['c_fc_why_title_text']; ?></h2>
           <span class="fc-why-rule" aria-hidden="true"></span>
 
-          <p class="fc-why-lead"><?php echo $c['text_text']; ?></p>
+          <p class="fc-why-lead"><?php echo $c['c_fc_why_lead_text']; ?></p>
 
           <?php $__i = 0; foreach ( $r['rep_p_fc_why_body'] as $it ) : if ( $__i ++ ) { echo '
 
-          '; } ?><p class="fc-why-body <?php echo $it['_uew_item_class']; ?>"><?php echo $it['body_markup']; ?></p><?php endforeach; echo "\n          "; ?><a href="<?php echo $c['button_href']; ?>" class="fc-why-btn"><?php echo $c['button_text']; ?></a>
+          '; } ?><p class="fc-why-body <?php echo $it['_uew_item_class']; ?>"><?php echo $it['body_markup']; ?></p><?php endforeach; echo "\n          "; ?><a href="<?php echo $c['c_fc_why_btn_href']; ?>" class="fc-why-btn"><?php echo $c['c_fc_why_btn_text']; ?></a>
         </div>
 
         <!-- ── RIGHT: Video + CTA ─────────────────── -->
@@ -49,7 +49,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
           <!-- Video block -->
           <div class="fc-vid-wrap">
-            <button class="fc-vid-ph" type="<?php echo $c['button_type']; ?>" aria-label="<?php echo $c['button_aria_label']; ?>" aria-haspopup="dialog" aria-controls="fc-why-video-modal"<?php echo $c['button_disabled']; ?>>
+            <button class="fc-vid-ph" type="<?php echo $c['c_fc_vid_ph_type']; ?>" aria-label="<?php echo $c['c_fc_vid_ph_aria_label']; ?>" aria-haspopup="dialog" aria-controls="fc-why-video-modal"<?php echo $c['c_fc_vid_ph_disabled']; ?>>
               <span class="fc-play" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
               </span>
@@ -62,16 +62,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
     </div>
-    <div class="fc-video-modal" id="fc-why-video-modal" role="dialog" aria-modal="true" aria-label="<?php echo $c['container_aria_label']; ?>" hidden>
+    <div class="fc-video-modal" id="fc-why-video-modal" role="dialog" aria-modal="true" aria-label="<?php echo $c['c_fc_video_modal_aria_label']; ?>" hidden>
       <div class="fc-video-backdrop" data-fc-video-close></div>
       <div class="fc-video-dialog">
-        <button class="fc-video-close" type="<?php echo $c['button_type_2']; ?>" aria-label="<?php echo $c['button_aria_label_2']; ?>" data-fc-video-close<?php echo $c['button_disabled_2']; ?>>
-          <span aria-hidden="true"><?php echo $c['text_text_2']; ?></span>
+        <button class="fc-video-close" type="<?php echo $c['c_fc_video_close_type']; ?>" aria-label="<?php echo $c['c_fc_video_close_aria_label']; ?>" data-fc-video-close<?php echo $c['c_fc_video_close_disabled']; ?>>
+          <span aria-hidden="true"><?php echo $c['c_fc_video_close_span_text']; ?></span>
         </button>
         <video
           class="fc-video-player"
-          src="<?php echo $c['video_src']; ?>"
-          preload="<?php echo $c['video_preload']; ?>"<?php echo $c['video_controls']; echo "\n          "; ?>controlsList="nodownload"<?php echo $c['video_playsinline']; echo "\n          "; ?>aria-label="<?php echo $c['video_aria_label']; ?>"<?php echo $c['video_autoplay']; ?><?php echo $c['video_muted']; ?><?php echo $c['video_loop']; ?><?php echo $c['video_disablepictureinpicture']; ?>>
+          src="<?php echo $c['c_fc_video_player_src']; ?>"
+          preload="<?php echo $c['c_fc_video_player_preload']; ?>"<?php echo $c['c_fc_video_player_controls']; echo "\n          "; ?>controlsList="nodownload"<?php echo $c['c_fc_video_player_playsinline']; echo "\n          "; ?>aria-label="<?php echo $c['c_fc_video_player_aria_label']; ?>"<?php echo $c['c_fc_video_player_autoplay']; ?><?php echo $c['c_fc_video_player_muted']; ?><?php echo $c['c_fc_video_player_loop']; ?><?php echo $c['c_fc_video_player_disablepictureinpicture']; ?>>
         </video>
       </div>
     </div>

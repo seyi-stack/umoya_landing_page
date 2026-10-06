@@ -35,9 +35,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 -->
 <section id="umoya-contact-hero" aria-labelledby="ct-hero-title">
   <div class="ct-hero-c">
-    <span class="ct-hero-eye ct-hero-rv"><?php echo $c['eyebrow_text']; ?></span>
-    <h1 class="ct-hero-ttl ct-hero-rv" id="ct-hero-title"><?php echo $c['title_text']; ?></h1>
+    <span class="ct-hero-eye ct-hero-rv"><?php echo $c['c_ct_hero_eye_text']; ?></span>
+    <h1 class="ct-hero-ttl ct-hero-rv" id="ct-hero-title"><?php echo $c['c_ct_hero_ttl_text']; ?></h1>
     <hr class="ct-hero-rule ct-hero-rv d1">
-    <p class="ct-hero-lead ct-hero-rv d1"><?php echo $c['text_text']; ?></p>
+    <p class="ct-hero-lead ct-hero-rv d1"><?php echo $c['c_ct_hero_lead_text']; ?></p>
   </div>
 </section>

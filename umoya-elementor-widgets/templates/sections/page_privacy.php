@@ -43,15 +43,15 @@ if ( ! defined( 'ABSPATH' ) ) {
   <div class="pv-c">
 
     <header>
-      <span class="pv-eye"><?php echo $c['eyebrow_text']; ?></span>
-      <h1 class="pv-ttl" id="pv-title"><?php echo $c['title_text']; ?></h1>
+      <span class="pv-eye"><?php echo $c['c_pv_eye_text']; ?></span>
+      <h1 class="pv-ttl" id="pv-title"><?php echo $c['c_pv_ttl_text']; ?></h1>
       <hr class="pv-rule">
-      <p class="pv-meta"><?php echo $c['text_text']; ?></p>
+      <p class="pv-meta"><?php echo $c['c_pv_meta_text']; ?></p>
     </header>
 
     <!-- ═══════════ CONTENTS ═══════════ -->
-    <nav class="pv-toc" aria-label="<?php echo $c['navigation_aria_label']; ?>">
-      <p class="pv-toc-h"><?php echo $c['text_text_2']; ?></p>
+    <nav class="pv-toc" aria-label="<?php echo $c['c_pv_toc_aria_label']; ?>">
+      <p class="pv-toc-h"><?php echo $c['c_pv_toc_h_text']; ?></p>
       <ol class="pv-toc-list">
         <?php $__i = 0; foreach ( $r['rep_li'] as $it ) : if ( $__i ++ ) { echo '
         '; } ?><li class="<?php echo $it['_uew_item_class']; ?>"><a href="<?php echo '#pv-' . $it['_uew_n']; ?>"><?php echo $it['a']; ?></a></li><?php endforeach; echo "\n      "; ?></ol>
@@ -59,35 +59,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     <!-- ═══════════ 1 ═══════════ -->
     <div class="pv-sec" id="pv-1">
-      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['text_text_3']; ?></span><?php echo $c['heading_text']; ?></h2>
+      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['c_pv_sec_h2_span_text']; ?></span><?php echo $c['c_pv_sec_h2_text']; ?></h2>
       <?php $__i = 0; foreach ( $r['rep_p_pv_p'] as $it ) : if ( $__i ++ ) { echo '
       '; } ?><p class="pv-p <?php echo $it['_uew_item_class']; ?>"><?php echo $it['pv_p']; ?></p><?php endforeach; echo "\n    "; ?></div>
 
     <!-- ═══════════ 2 ═══════════ -->
     <div class="pv-sec" id="pv-2">
-      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['text_text_4']; ?></span><?php echo $c['heading_text_2']; ?></h2>
+      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['c_pv_sec_h2_span_text_2']; ?></span><?php echo $c['c_pv_sec_h2_text_2']; ?></h2>
       <div class="pv-ct">
-        <span class="pv-org"><?php echo $c['text_text_5']; ?></span>
-        <?php echo $c['container_text']; ?><br>
-        <strong><?php echo $c['strong_text']; ?></strong> <?php echo $c['container_text_2']; ?><br>
-        <strong><?php echo $c['strong_text_2']; ?></strong> <?php echo $c['container_text_3']; ?><br>
-        <strong><?php echo $c['strong_text_3']; ?></strong> <?php echo $c['container_text_4']; ?><br>
-        <strong><?php echo $c['strong_text_4']; ?></strong> <a href="<?php echo $c['link_href']; ?>"><?php echo $c['link_text']; ?></a><br>
-        <strong><?php echo $c['strong_text_5']; ?></strong> <a href="<?php echo $c['link_href_2']; ?>"><?php echo $c['link_text_2']; ?></a>
+        <span class="pv-org"><?php echo $c['c_pv_sec_div_span_text']; ?></span>
+        <?php echo $c['c_pv_sec_div_text']; ?><br>
+        <strong><?php echo $c['c_pv_sec_div_strong_text']; ?></strong> <?php echo $c['c_pv_sec_div_text_2']; ?><br>
+        <strong><?php echo $c['c_pv_sec_div_strong_text_2']; ?></strong> <?php echo $c['c_pv_sec_div_text_3']; ?><br>
+        <strong><?php echo $c['c_pv_sec_div_strong_text_3']; ?></strong> <?php echo $c['c_pv_sec_div_text_4']; ?><br>
+        <strong><?php echo $c['c_pv_sec_div_strong_text_4']; ?></strong> <a href="<?php echo $c['c_pv_sec_div_a_href']; ?>"><?php echo $c['c_pv_sec_div_a_text']; ?></a><br>
+        <strong><?php echo $c['c_pv_sec_div_strong_text_5']; ?></strong> <a href="<?php echo $c['c_pv_sec_div_a_href_2']; ?>"><?php echo $c['c_pv_sec_div_a_text_2']; ?></a>
       </div>
     </div>
 
     <!-- ═══════════ 3 ═══════════ -->
     <div class="pv-sec" id="pv-3">
-      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['text_text_6']; ?></span><?php echo $c['heading_text_3']; ?></h2>
-      <p class="pv-p"><?php echo $c['text_text_7']; ?></p>
+      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['c_pv_sec_h2_span_text_3']; ?></span><?php echo $c['c_pv_sec_h2_text_3']; ?></h2>
+      <p class="pv-p"><?php echo $c['c_pv_sec_p_text']; ?></p>
 
-      <h3 class="pv-h3"><?php echo $c['heading_text_4']; ?></h3>
+      <h3 class="pv-h3"><?php echo $c['c_pv_h3_text']; ?></h3>
       <ul class="pv-list">
         <?php $__i = 0; foreach ( $r['rep_li_pv_li'] as $it ) : if ( $__i ++ ) { echo '
         '; } ?><li class="pv-li <?php echo $it['_uew_item_class']; ?>"><?php echo $it['pv_li']; ?></li><?php endforeach; echo "\n      "; ?></ul>
 
-      <h3 class="pv-h3"><?php echo $c['heading_text_5']; ?></h3>
+      <h3 class="pv-h3"><?php echo $c['c_pv_h3_text_2']; ?></h3>
       <ul class="pv-list">
         <?php $__i = 0; foreach ( $r['rep_li_pv_li_2'] as $it ) : if ( $__i ++ ) { echo '
         '; } ?><li class="pv-li <?php echo $it['_uew_item_class']; ?>"><?php echo $it['pv_li_markup']; ?></li><?php endforeach; echo "\n      "; ?></ul>
@@ -95,8 +95,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     <!-- ═══════════ 4 ═══════════ -->
     <div class="pv-sec" id="pv-4">
-      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['text_text_8']; ?></span><?php echo $c['heading_text_6']; ?></h2>
-      <p class="pv-p"><?php echo $c['text_text_9']; ?></p>
+      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['c_pv_sec_h2_span_text_4']; ?></span><?php echo $c['c_pv_sec_h2_text_4']; ?></h2>
+      <p class="pv-p"><?php echo $c['c_pv_sec_p_text_2']; ?></p>
       <ul class="pv-list">
         <?php $__i = 0; foreach ( $r['rep_li_pv_li_3'] as $it ) : if ( $__i ++ ) { echo '
         '; } ?><li class="pv-li <?php echo $it['_uew_item_class']; ?>"><?php echo $it['pv_li']; ?></li><?php endforeach; echo "\n      "; ?></ul>
@@ -104,81 +104,81 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     <!-- ═══════════ 5 ═══════════ -->
     <div class="pv-sec" id="pv-5">
-      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['text_text_10']; ?></span><?php echo $c['heading_text_7']; ?></h2>
-      <p class="pv-p"><?php echo $c['text_text_11']; ?></p>
+      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['c_pv_sec_h2_span_text_5']; ?></span><?php echo $c['c_pv_sec_h2_text_5']; ?></h2>
+      <p class="pv-p"><?php echo $c['c_pv_sec_p_text_3']; ?></p>
     </div>
 
     <!-- ═══════════ 6 ═══════════ -->
     <div class="pv-sec" id="pv-6">
-      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['text_text_12']; ?></span><?php echo $c['heading_text_8']; ?></h2>
-      <p class="pv-p"><?php echo $c['text_text_13']; ?></p>
+      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['c_pv_sec_h2_span_text_6']; ?></span><?php echo $c['c_pv_sec_h2_text_6']; ?></h2>
+      <p class="pv-p"><?php echo $c['c_pv_sec_p_text_4']; ?></p>
       <ul class="pv-list">
         <?php $__i = 0; foreach ( $r['rep_li_pv_li_4'] as $it ) : if ( $__i ++ ) { echo '
         '; } ?><li class="pv-li <?php echo $it['_uew_item_class']; ?>"><?php echo $it['pv_li']; ?></li><?php endforeach; echo "\n      "; ?></ul>
-      <p class="pv-p"><?php echo $c['text_text_14']; ?></p>
+      <p class="pv-p"><?php echo $c['c_pv_sec_p_text_5']; ?></p>
     </div>
 
     <!-- ═══════════ 7 ═══════════ -->
     <div class="pv-sec" id="pv-7">
-      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['text_text_15']; ?></span><?php echo $c['heading_text_9']; ?></h2>
+      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['c_pv_sec_h2_span_text_7']; ?></span><?php echo $c['c_pv_sec_h2_text_7']; ?></h2>
       <?php $__i = 0; foreach ( $r['rep_p_pv_p_2'] as $it ) : if ( $__i ++ ) { echo '
       '; } ?><p class="pv-p <?php echo $it['_uew_item_class']; ?>"><?php echo $it['pv_p']; ?></p><?php endforeach; echo "\n    "; ?></div>
 
     <!-- ═══════════ 8 ═══════════ -->
     <div class="pv-sec" id="pv-8">
-      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['text_text_16']; ?></span><?php echo $c['heading_text_10']; ?></h2>
-      <p class="pv-p"><?php echo $c['text_text_17']; ?></p>
+      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['c_pv_sec_h2_span_text_8']; ?></span><?php echo $c['c_pv_sec_h2_text_8']; ?></h2>
+      <p class="pv-p"><?php echo $c['c_pv_sec_p_text_6']; ?></p>
     </div>
 
     <!-- ═══════════ 9 ═══════════ -->
     <div class="pv-sec" id="pv-9">
-      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['text_text_18']; ?></span><?php echo $c['heading_text_11']; ?></h2>
+      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['c_pv_sec_h2_span_text_9']; ?></span><?php echo $c['c_pv_sec_h2_text_9']; ?></h2>
       <?php $__i = 0; foreach ( $r['rep_p_pv_p_3'] as $it ) : if ( $__i ++ ) { echo '
       '; } ?><p class="pv-p <?php echo $it['_uew_item_class']; ?>"><?php echo $it['pv_p']; ?></p><?php endforeach; echo "\n    "; ?></div>
 
     <!-- ═══════════ 10 ═══════════ -->
     <div class="pv-sec" id="pv-10">
-      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['text_text_19']; ?></span><?php echo $c['heading_text_12']; ?></h2>
-      <p class="pv-p"><?php echo $c['text_text_20']; ?></p>
+      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['c_pv_sec_h2_span_text_10']; ?></span><?php echo $c['c_pv_sec_h2_text_10']; ?></h2>
+      <p class="pv-p"><?php echo $c['c_pv_sec_p_text_7']; ?></p>
       <ul class="pv-list">
         <?php $__i = 0; foreach ( $r['rep_li_pv_li_5'] as $it ) : if ( $__i ++ ) { echo '
         '; } ?><li class="pv-li <?php echo $it['_uew_item_class']; ?>"><?php echo $it['pv_li']; ?></li><?php endforeach; echo "\n      "; ?></ul>
-      <p class="pv-p"><?php echo $c['text_text_21']; ?></p>
+      <p class="pv-p"><?php echo $c['c_pv_sec_p_text_8']; ?></p>
     </div>
 
     <!-- ═══════════ 11 ═══════════ -->
     <div class="pv-sec" id="pv-11">
-      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['text_text_22']; ?></span><?php echo $c['heading_text_13']; ?></h2>
-      <p class="pv-p"><?php echo $c['text_text_23']; ?></p>
+      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['c_pv_sec_h2_span_text_11']; ?></span><?php echo $c['c_pv_sec_h2_text_11']; ?></h2>
+      <p class="pv-p"><?php echo $c['c_pv_sec_p_text_9']; ?></p>
     </div>
 
     <!-- ═══════════ 12 ═══════════ -->
     <div class="pv-sec" id="pv-12">
-      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['text_text_24']; ?></span><?php echo $c['heading_text_14']; ?></h2>
-      <p class="pv-p"><?php echo $c['content_text']; ?> <a href="<?php echo $c['link_href_3']; ?>"><?php echo $c['link_text_3']; ?></a><?php echo $c['content_text_2']; ?></p>
+      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['c_pv_sec_h2_span_text_12']; ?></span><?php echo $c['c_pv_sec_h2_text_12']; ?></h2>
+      <p class="pv-p"><?php echo $c['c_pv_sec_p_text_10']; ?> <a href="<?php echo $c['c_pv_sec_p_a_href']; ?>"><?php echo $c['c_pv_sec_p_a_text']; ?></a>.</p>
     </div>
 
     <!-- ═══════════ 13 ═══════════ -->
     <div class="pv-sec" id="pv-13">
-      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['text_text_25']; ?></span><?php echo $c['heading_text_15']; ?></h2>
-      <p class="pv-p"><?php echo $c['text_text_26']; ?></p>
+      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['c_pv_sec_h2_span_text_13']; ?></span><?php echo $c['c_pv_sec_h2_text_13']; ?></h2>
+      <p class="pv-p"><?php echo $c['c_pv_sec_p_text_11']; ?></p>
     </div>
 
     <!-- ═══════════ 14 ═══════════ -->
     <div class="pv-sec" id="pv-14">
-      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['text_text_27']; ?></span><?php echo $c['heading_text_16']; ?></h2>
-      <p class="pv-p"><?php echo $c['text_text_28']; ?></p>
+      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['c_pv_sec_h2_span_text_14']; ?></span><?php echo $c['c_pv_sec_h2_text_14']; ?></h2>
+      <p class="pv-p"><?php echo $c['c_pv_sec_p_text_12']; ?></p>
       <div class="pv-ct">
-        <span class="pv-org"><?php echo $c['text_text_29']; ?></span>
-        <strong><?php echo $c['strong_text_6']; ?></strong> <a href="<?php echo $c['link_href_4']; ?>"><?php echo $c['link_text_4']; ?></a><br>
-        <strong><?php echo $c['strong_text_7']; ?></strong> <a href="<?php echo $c['link_href_5']; ?>" target="<?php echo $c['link_target']; ?>" rel="<?php echo $c['link_rel']; ?>"><?php echo $c['link_text_5']; ?></a>
+        <span class="pv-org"><?php echo $c['c_pv_sec_div_span_text_2']; ?></span>
+        <strong><?php echo $c['c_pv_sec_div_strong_text_6']; ?></strong> <a href="<?php echo $c['c_pv_sec_div_a_href_3']; ?>"><?php echo $c['c_pv_sec_div_a_text_3']; ?></a><br>
+        <strong><?php echo $c['c_pv_sec_div_strong_text_7']; ?></strong> <a href="<?php echo $c['c_pv_sec_div_a_href_4']; ?>" target="<?php echo $c['c_pv_sec_div_a_target']; ?>" rel="<?php echo $c['c_pv_sec_div_a_rel']; ?>"><?php echo $c['c_pv_sec_div_a_text_4']; ?></a>
       </div>
     </div>
 
     <!-- ═══════════ 15 ═══════════ -->
     <div class="pv-sec" id="pv-15">
-      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['text_text_30']; ?></span><?php echo $c['heading_text_17']; ?></h2>
-      <p class="pv-p"><?php echo $c['text_text_31']; ?></p>
+      <h2 class="pv-h2"><span class="pv-num"><?php echo $c['c_pv_sec_h2_span_text_15']; ?></span><?php echo $c['c_pv_sec_h2_text_15']; ?></h2>
+      <p class="pv-p"><?php echo $c['c_pv_sec_p_text_13']; ?></p>
     </div>
 
   </div>

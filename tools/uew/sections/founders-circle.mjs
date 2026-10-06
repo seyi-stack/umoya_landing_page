@@ -26,6 +26,16 @@ export const sections = [
 		class_name: 'FC_Nav',
 		icon: 'eicon-nav-menu',
 		description: 'Sticky Founder’s Circle navigation with the section table-of-contents bar.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.fc-nav-inner': 'Bar',
+				'.fc-nav-links': 'Links',
+				'.fc-nav-dropdown-list': 'Phone menu',
+				'.fc-nav-dropdown-cta-row': 'Phone menu button',
+			},
+		},
 	},
 	{
 		key: 'fc_hero',
@@ -53,6 +63,13 @@ export const sections = [
 		class_name: 'FC_Privileges',
 		icon: 'eicon-check-circle',
 		description: 'Membership privileges checklist beside a portrait image.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.fc-ben-reveal': 'Privileges',
+			},
+		},
 	},
 	{
 		key: 'fc_form',
@@ -62,6 +79,14 @@ export const sections = [
 		class_name: 'FC_Form',
 		icon: 'eicon-form-horizontal',
 		description: "Founder's Circle inquiry form. Posts to WordPress first, then HubSpot.",
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.fc-f2-img-col': 'Image',
+				'.fc-f2-card': 'Form',
+			},
+		},
 	},
 	{
 		key: 'fc_journey',
@@ -71,6 +96,15 @@ export const sections = [
 		class_name: 'FC_Journey',
 		icon: 'eicon-map-pin',
 		description: 'Journey stats, the three immersive-chapter tiles and the two extension tiles.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.fc-jrn-c': 'Journey',
+				'.fc-jrn-ext-head': 'Extensions header',
+				'.fc-jrn-grid-2': 'Extensions',
+			},
+		},
 	},
 	{
 		key: 'fc_early_access',
@@ -80,6 +114,14 @@ export const sections = [
 		class_name: 'FC_Early_Access',
 		icon: 'eicon-star',
 		description: 'Exclusive early-access copy with the supporting image collage.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.fc-bf-reveal': 'Text',
+				'.fc-ss-outer': 'Slideshow',
+			},
+		},
 	},
 	{
 		key: 'fc_founding_offer',
@@ -98,6 +140,15 @@ export const sections = [
 		class_name: 'FC_Approach',
 		icon: 'eicon-play-o',
 		description: 'Our Approach copy balanced against the brand video panel.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.fc-why-rev': 'Text',
+				'.fc-vid-wrap': 'Video button',
+				'.fc-video-dialog': 'Video pop-up',
+			},
+		},
 	},
 	{
 		key: 'fc_why',

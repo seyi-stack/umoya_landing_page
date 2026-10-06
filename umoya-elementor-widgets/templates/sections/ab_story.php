@@ -27,18 +27,18 @@ if ( ! defined( 'ABSPATH' ) ) {
   BRAND: font-family: inherit; palette tokens only.
 =================================================================
 -->
-<section id="ab-story" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="ab-story" aria-label="<?php echo $c['c_section_aria_label']; ?>">
   <div class="ab-st-c">
     <div class="ab-st-grid">
 
       <!-- Wilson Nyah portrait — client-supplied -->
       <div class="ab-st-photo ab-st-rv">
-        <img class="ab-st-pic" src="<?php echo $c['image_src']; ?>" alt="<?php echo $c['image_alt']; ?>" loading="<?php echo $c['image_loading']; ?>" decoding="<?php echo $c['image_decoding']; ?>">
+        <img class="ab-st-pic" src="<?php echo $c['c_ab_st_pic_src']; ?>" alt="<?php echo $c['c_ab_st_pic_alt']; ?>" loading="<?php echo $c['c_ab_st_pic_loading']; ?>" decoding="<?php echo $c['c_ab_st_pic_decoding']; ?>">
       </div>
 
       <div class="ab-st-rv d1">
-        <span class="ab-st-eye"><?php echo $c['eyebrow_text']; ?></span>
-        <h2 class="ab-st-ttl"><?php echo $c['title_text']; ?></h2>
+        <span class="ab-st-eye"><?php echo $c['c_ab_st_eye_text']; ?></span>
+        <h2 class="ab-st-ttl"><?php echo $c['c_ab_st_ttl_text']; ?></h2>
         <?php $__i = 0; foreach ( $r['rep_p_ab_st_p'] as $it ) : if ( $__i ++ ) { echo '
         '; } ?><p class="ab-st-p <?php echo $it['_uew_item_class']; ?>"><?php echo $it['p']; ?></p><?php endforeach; echo "\n      "; ?></div>
 

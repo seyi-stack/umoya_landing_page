@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   ANCHOR: id="fc-journey" is the nav target — do not change.
 =================================================================
 -->
-<section id="fc-journey" aria-label="<?php echo $c['section_aria_label']; ?>">
+<section id="fc-journey" aria-label="<?php echo $c['c_section_aria_label']; ?>">
 
   <!-- ════ White band: header + immersive chapters ════ -->
   <div class="fc-jrn-top">
@@ -44,8 +44,8 @@ if ( ! defined( 'ABSPATH' ) ) {
       <!-- Header row: title left · stats right -->
       <div class="fc-jrn-hd">
         <div>
-          <span class="fc-jrn-eye"><?php echo $c['eyebrow_text']; ?></span>
-          <h2 class="fc-jrn-ttl"><?php echo $c['title_text']; ?></h2>
+          <span class="fc-jrn-eye"><?php echo $c['c_fc_jrn_hd_div_fc_jrn_eye_text']; ?></span>
+          <h2 class="fc-jrn-ttl"><?php echo $c['c_fc_jrn_ttl_text']; ?></h2>
         </div>
         <div class="fc-jrn-stats" role="list">
           <?php $__i = 0; foreach ( $r['rep_div_fc_jrn_stat'] as $it ) : if ( $__i ++ ) { echo '
@@ -55,7 +55,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           </div><?php endforeach; echo "\n        "; ?></div>
       </div>
 
-      <p class="fc-jrn-lead"><?php echo $c['text_text']; ?></p>
+      <p class="fc-jrn-lead"><?php echo $c['c_fc_jrn_lead_text']; ?></p>
 
       <!-- Immersive-chapter cards (cream) -->
       <div class="fc-jrn-grid">
@@ -85,8 +85,8 @@ if ( ! defined( 'ABSPATH' ) ) {
       <div class="fc-jrn-ext-row">
 
         <div class="fc-jrn-ext-head">
-          <span class="fc-jrn-eye"><?php echo $c['eyebrow_text_2']; ?></span>
-          <h2 class="fc-jrn-subhead"><?php echo $c['heading_text']; ?></h2>
+          <span class="fc-jrn-eye"><?php echo $c['c_fc_jrn_ext_head_fc_jrn_eye_text']; ?></span>
+          <h2 class="fc-jrn-subhead"><?php echo $c['c_fc_jrn_subhead_text']; ?></h2>
         </div>
 
         <div class="fc-jrn-grid-2">

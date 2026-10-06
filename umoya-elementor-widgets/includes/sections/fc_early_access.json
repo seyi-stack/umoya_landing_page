@@ -161,199 +161,416 @@
 			"label": "Ease"
 		}
 	],
+	"regions": [
+		{
+			"id": "r_text",
+			"label": "Text",
+			"portal": false
+		},
+		{
+			"id": "r_slideshow",
+			"label": "Slideshow",
+			"portal": false
+		}
+	],
 	"content_panels": [
 		{
-			"id": "content_p_section",
-			"label": "Section",
-			"sample": "",
-			"region_label": "",
-			"controls": [
+			"id": "content_r_text",
+			"label": "Text",
+			"items": [
 				{
-					"id": "section_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Experience South Africa Differently",
-					"esc": "attr",
-					"group": "p_section",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Section"
-				}
-			]
-		},
-		{
-			"id": "content_p_fc_bf_reveal",
-			"label": "List 1",
-			"sample": "",
-			"region_label": "List",
-			"controls": [
-				{
-					"id": "container_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Journey imagery — slideshow",
-					"esc": "attr",
-					"group": "p_fc_bf_reveal",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "List Container 1"
-				},
-				{
-					"id": "container_aria_roledescription",
-					"control": "text",
-					"label": "Accessible Role",
-					"default": "carousel",
-					"esc": "attr",
-					"group": "p_fc_bf_reveal",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "List Container 1"
-				},
-				{
-					"id": "eyebrow_text",
-					"control": "text",
+					"kind": "group",
 					"label": "Eyebrow",
-					"description": "",
-					"default": "Exclusive Early Access",
-					"esc": "post",
-					"group": "p_fc_bf_eyebrow",
-					"sort": 0,
-					"part_label": "Eyebrow"
+					"order": 4,
+					"controls": [
+						{
+							"id": "c_fc_bf_eyebrow_text",
+							"control": "text",
+							"label": "Eyebrow",
+							"description": "",
+							"default": "Exclusive Early Access",
+							"esc": "post",
+							"group": "p_fc_bf_eyebrow",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "title_text",
-					"control": "textarea",
+					"kind": "group",
 					"label": "Title",
-					"description": "Inline formatting tags are preserved.",
-					"default": "Experience South Africa <em>Differently</em>",
-					"esc": "post",
-					"group": "p_fc_bf_title",
-					"sort": 0,
-					"part_label": "Title"
+					"order": 5,
+					"controls": [
+						{
+							"id": "c_fc_bf_title_text",
+							"control": "textarea",
+							"label": "Title",
+							"description": "Inline formatting tags are preserved.",
+							"default": "Experience South Africa <em>Differently</em>",
+							"esc": "post",
+							"group": "p_fc_bf_title",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "text_text",
-					"control": "textarea",
+					"kind": "list",
+					"id": "rep_p",
+					"label": "Paragraphs",
+					"order": 9
+				},
+				{
+					"kind": "group",
 					"label": "Text",
-					"description": "",
-					"default": "Join now to secure your place on our inaugural journey before we open to the public. Once this founding cohort is complete, these exclusive benefits close permanently.",
-					"esc": "post",
-					"group": "p_fc_bf_pull",
-					"sort": 0,
-					"part_label": "List Text 2"
-				}
-			],
-			"merged": true
-		},
-		{
-			"id": "content_p_fc_bf_btn",
-			"label": "Button",
-			"sample": "Join Now",
-			"region_label": "List",
-			"controls": [
-				{
-					"id": "button_text",
-					"control": "text",
-					"label": "Button",
-					"description": "",
-					"default": "Join Now",
-					"esc": "post",
-					"group": "p_fc_bf_btn",
-					"sort": 0,
-					"part_label": "Button"
+					"order": 11,
+					"controls": [
+						{
+							"id": "c_fc_bf_pull_text",
+							"control": "textarea",
+							"label": "Text",
+							"description": "",
+							"default": "Join now to secure your place on our inaugural journey before we open to the public. Once this founding cohort is complete, these exclusive benefits close permanently.",
+							"esc": "post",
+							"group": "p_fc_bf_pull",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "button_href",
-					"control": "url",
-					"label": "Link",
-					"default": {
-						"url": "#fc-form-section"
-					},
-					"esc": "url",
-					"group": "p_fc_bf_btn",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Button"
+					"kind": "group",
+					"label": "Button",
+					"order": 12,
+					"controls": [
+						{
+							"id": "c_fc_bf_btn_text",
+							"control": "text",
+							"label": "Text",
+							"description": "",
+							"default": "Join Now",
+							"esc": "post",
+							"group": "p_fc_bf_btn",
+							"sort": 0
+						},
+						{
+							"id": "c_fc_bf_btn_href",
+							"control": "url",
+							"label": "Link",
+							"default": {
+								"url": "#fc-form-section"
+							},
+							"esc": "url",
+							"group": "p_fc_bf_btn",
+							"tab": "content",
+							"sort": 1
+						}
+					]
 				}
 			]
 		},
 		{
-			"id": "content_p_fc_ss_arrow",
-			"label": "List 2",
-			"sample": "",
-			"region_label": "List",
-			"controls": [
+			"id": "content_r_slideshow",
+			"label": "Slideshow",
+			"items": [
 				{
-					"id": "arrow_aria_label",
-					"control": "text",
-					"label": "Accessible Name 1",
-					"default": "Previous slide",
-					"esc": "attr",
-					"group": "p_fc_ss_arrow",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Arrow"
-				},
-				{
-					"id": "arrow_aria_label_2",
-					"control": "text",
-					"label": "Accessible Name 2",
-					"default": "Next slide",
-					"esc": "attr",
-					"group": "p_fc_ss_arrow",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Arrow"
-				},
-				{
-					"id": "dot_aria_label",
-					"control": "text",
-					"label": "List Dot",
-					"default": "Slide navigation",
-					"esc": "attr",
-					"group": "p_fc_ss_dots",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "List Dot"
+					"kind": "list",
+					"id": "rep_div_fc_ss_slide",
+					"label": "Slides",
+					"order": 15
 				}
-			],
-			"merged": true
+			]
 		}
 	],
-	"integration_controls": [],
-	"form_controls": [
+	"style_panels": [
 		{
-			"id": "arrow_disabled",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_fc_ss_arrow",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Arrow"
+			"id": "style_section",
+			"label": "Section",
+			"tokens": true,
+			"rows": [
+				{
+					"part": "p_section",
+					"label": "Section",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_bf_reveal",
+					"label": "Containers",
+					"inline": [],
+					"inline_props": [],
+					"heading": "Across the section"
+				},
+				{
+					"part": "p_fc_bf_wrap",
+					"label": "Container",
+					"inline": [],
+					"inline_props": [],
+					"heading": "Layout"
+				},
+				{
+					"part": "p_fc_bf_grid",
+					"label": "List",
+					"inline": [],
+					"inline_props": []
+				}
+			]
 		},
 		{
-			"id": "arrow_disabled_2",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_fc_ss_arrow",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Arrow"
+			"id": "style_r_text",
+			"label": "Text",
+			"tokens": false,
+			"rows": [
+				{
+					"part": "p_fc_bf_eyebrow",
+					"label": "Eyebrow",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_bf_title",
+					"label": "Title",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_em",
+					"label": "Italic Text",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_bf_rule",
+					"label": "Divider",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_p",
+					"label": "Paragraphs",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_bf_pull",
+					"label": "Text",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_bf_btn",
+					"label": "Button",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_bf_body",
+					"label": "Content",
+					"inline": [],
+					"inline_props": [],
+					"heading": "Layout"
+				}
+			]
+		},
+		{
+			"id": "style_r_slideshow",
+			"label": "Slideshow",
+			"tokens": false,
+			"rows": [
+				{
+					"part": "p_fc_ss_slide",
+					"label": "Slides",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_ss_slide_img",
+					"label": "Images",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_ss_arrow",
+					"label": "Arrows",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_ss_arrow_svg",
+					"label": "Icons",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_ss_dots",
+					"label": "Dot",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_ss_dot",
+					"label": "Dots",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_fc_ss_track",
+					"label": "Container",
+					"inline": [],
+					"inline_props": [],
+					"heading": "Layout"
+				}
+			]
 		}
 	],
-	"behaviour_controls": [],
-	"inline_style_controls": [],
-	"media_controls": [],
+	"advanced_panels": [
+		{
+			"id": "uew_accessibility",
+			"label": "Accessibility",
+			"notice": "What screen readers announce for each element. Visitors do not see these; keep them short and descriptive.",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Section",
+					"order": 0,
+					"controls": [
+						{
+							"id": "c_section_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Experience South Africa Differently",
+							"esc": "attr",
+							"group": "p_section",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Slideshow › Container",
+					"order": 13,
+					"controls": [
+						{
+							"id": "c_fc_bf_reveal_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Journey imagery — slideshow",
+							"esc": "attr",
+							"group": "p_fc_bf_reveal",
+							"tab": "content",
+							"sort": 1
+						},
+						{
+							"id": "c_fc_bf_reveal_aria_roledescription",
+							"control": "text",
+							"label": "Accessible Role",
+							"default": "carousel",
+							"esc": "attr",
+							"group": "p_fc_bf_reveal",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Slideshow › Arrow 1",
+					"order": 25,
+					"controls": [
+						{
+							"id": "c_fc_ss_arrow_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Previous slide",
+							"esc": "attr",
+							"group": "p_fc_ss_arrow",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Slideshow › Arrow 2",
+					"order": 28,
+					"controls": [
+						{
+							"id": "c_fc_ss_arrow_aria_label_2",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Next slide",
+							"esc": "attr",
+							"group": "p_fc_ss_arrow",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Slideshow › Dot",
+					"order": 31,
+					"controls": [
+						{
+							"id": "c_fc_ss_dots_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Slide navigation",
+							"esc": "attr",
+							"group": "p_fc_ss_dots",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "uew_form",
+			"label": "Form Field Rules",
+			"notice": "",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Slideshow › Arrow 1",
+					"order": 25,
+					"controls": [
+						{
+							"id": "c_fc_ss_arrow_disabled",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_fc_ss_arrow",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Slideshow › Arrow 2",
+					"order": 28,
+					"controls": [
+						{
+							"id": "c_fc_ss_arrow_disabled_2",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_fc_ss_arrow",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				}
+			]
+		}
+	],
 	"repeaters": [
 		{
 			"id": "rep_p",
@@ -379,7 +596,11 @@
 			"loops": 1,
 			"selector": null,
 			"notice": "",
-			"portal": null
+			"portal": null,
+			"base_label": "Paragraphs",
+			"region": "r_text",
+			"order": 9,
+			"block_label": "Paragraphs"
 		},
 		{
 			"id": "rep_div_fc_ss_slide",
@@ -486,7 +707,11 @@
 			"loops": 2,
 			"selector": ".fc-ss-slide",
 			"notice": "",
-			"portal": null
+			"portal": null,
+			"base_label": "Slides",
+			"region": "r_slideshow",
+			"order": 15,
+			"block_label": "Slides"
 		}
 	],
 	"style_parts": [
@@ -499,23 +724,21 @@
 			"selector": "",
 			"tag": "section",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition"
+				"padding",
+				"min_height",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 0,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "Section"
 		},
 		{
 			"id": "p_fc_bf_wrap",
@@ -526,24 +749,20 @@
 			"selector": ".fc-bf-wrap",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"padding",
+				"margin",
+				"measure",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 1,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "Container"
 		},
 		{
 			"id": "p_fc_bf_grid",
@@ -554,25 +773,25 @@
 			"selector": ".fc-bf-grid",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"grid_container",
-				"flex_item"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 2,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "List"
 		},
 		{
 			"id": "p_fc_bf_reveal",
@@ -583,24 +802,24 @@
 			"selector": ".fc-bf-reveal",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 3,
+			"box": false,
+			"everywhere": true,
+			"region": "",
+			"display": "Containers"
 		},
 		{
 			"id": "p_fc_bf_eyebrow",
@@ -611,25 +830,18 @@
 			"selector": ".fc-bf-eyebrow",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 4,
+			"box": false,
+			"everywhere": false,
+			"region": "r_text",
+			"display": "Eyebrow"
 		},
 		{
 			"id": "p_fc_bf_title",
@@ -640,54 +852,43 @@
 			"selector": ".fc-bf-title",
 			"tag": "h2",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 5,
+			"box": false,
+			"everywhere": false,
+			"region": "r_text",
+			"display": "Title"
 		},
 		{
 			"id": "p_em",
-			"label": "Emphasis",
-			"short_label": "Emphasis",
+			"label": "Italic Text",
+			"short_label": "Italic Text",
 			"parent_label": "Title",
 			"sample": "Differently",
 			"selector": "em",
 			"tag": "em",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 6,
+			"box": false,
+			"everywhere": false,
+			"region": "r_text",
+			"display": "Italic Text"
 		},
 		{
 			"id": "p_fc_bf_rule",
@@ -698,25 +899,18 @@
 			"selector": ".fc-bf-rule",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 7,
+			"box": false,
+			"everywhere": false,
+			"region": "r_text",
+			"display": "Divider"
 		},
 		{
 			"id": "p_fc_bf_body",
@@ -727,24 +921,20 @@
 			"selector": ".fc-bf-body",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"padding",
+				"margin",
+				"measure",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 8,
+			"box": false,
+			"everywhere": false,
+			"region": "r_text",
+			"display": "Content"
 		},
 		{
 			"id": "p_p",
@@ -755,25 +945,21 @@
 			"selector": "p",
 			"tag": "p",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": "p"
+			"repeater": "p",
+			"order": 9,
+			"box": false,
+			"everywhere": false,
+			"region": "r_text",
+			"display": "Paragraphs"
 		},
 		{
 			"id": "p_fc_bf_pull",
@@ -784,24 +970,26 @@
 			"selector": ".fc-bf-pull",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"align",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 11,
+			"box": false,
+			"everywhere": false,
+			"region": "r_text",
+			"display": "Text"
 		},
 		{
 			"id": "p_fc_bf_btn",
@@ -812,26 +1000,25 @@
 			"selector": ".fc-bf-btn",
 			"tag": "a",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
 				"states",
-				"flex_container"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 12,
+			"box": false,
+			"everywhere": false,
+			"region": "r_text",
+			"display": "Button"
 		},
 		{
 			"id": "p_fc_ss_track",
@@ -842,24 +1029,20 @@
 			"selector": ".fc-ss-track",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"padding",
+				"margin",
+				"measure",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 14,
+			"box": false,
+			"everywhere": false,
+			"region": "r_slideshow",
+			"display": "Container"
 		},
 		{
 			"id": "p_fc_ss_slide",
@@ -870,50 +1053,51 @@
 			"selector": ".fc-ss-slide",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": "div_fc_ss_slide"
+			"repeater": "div_fc_ss_slide",
+			"order": 15,
+			"box": false,
+			"everywhere": false,
+			"region": "r_slideshow",
+			"display": "Slides"
 		},
 		{
-			"id": "p_fc_ss_slide_img_nth_of_type_1",
+			"id": "p_fc_ss_slide_img",
 			"label": "Image",
 			"short_label": "Image",
 			"parent_label": "Slide",
 			"sample": "",
-			"selector": ".fc-ss-slide > img:nth-of-type(1)",
+			"selector": ".fc-ss-slide > img",
 			"tag": "img",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
 				"media_fit",
 				"filters",
-				"transition"
+				"radius",
+				"shadow",
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 16,
+			"box": false,
+			"everywhere": false,
+			"region": "r_slideshow",
+			"display": "Images"
 		},
 		{
 			"id": "p_fc_ss_arrow",
@@ -924,46 +1108,49 @@
 			"selector": ".fc-ss-arrow",
 			"tag": "button",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
+				"flex_container",
 				"states",
-				"flex_container"
-			],
-			"animated": [],
-			"shared": true,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_fc_ss_arrow_svg_nth_of_type_1",
-			"label": "Icon",
-			"short_label": "Icon",
-			"parent_label": "Arrow",
-			"sample": "",
-			"selector": ".fc-ss-arrow > svg:nth-of-type(1)",
-			"tag": "svg",
-			"features": [
-				"svg",
-				"sizing",
-				"spacing",
 				"effects",
 				"visibility"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 25,
+			"box": false,
+			"everywhere": false,
+			"region": "r_slideshow",
+			"display": "Arrows"
+		},
+		{
+			"id": "p_fc_ss_arrow_svg",
+			"label": "Icon",
+			"short_label": "Icon",
+			"parent_label": "Arrow",
+			"sample": "",
+			"selector": ".fc-ss-arrow > svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null,
+			"order": 26,
+			"box": false,
+			"everywhere": false,
+			"region": "r_slideshow",
+			"display": "Icons"
 		},
 		{
 			"id": "p_fc_ss_dots",
@@ -974,25 +1161,25 @@
 			"selector": ".fc-ss-dots",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"flex_container",
-				"flex_item"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 31,
+			"box": false,
+			"everywhere": false,
+			"region": "r_slideshow",
+			"display": "Dot"
 		},
 		{
 			"id": "p_fc_ss_dot",
@@ -1003,32 +1190,31 @@
 			"selector": ".fc-ss-dot",
 			"tag": "button",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
 				"states",
-				"flex_container"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": "button_fc_ss_dot"
+			"repeater": "button_fc_ss_dot",
+			"order": 32,
+			"box": false,
+			"everywhere": false,
+			"region": "r_slideshow",
+			"display": "Dots"
 		}
 	],
 	"inline_styles": [],
 	"fields": [
 		{
-			"id": "section_aria_label",
+			"id": "c_section_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Experience South Africa Differently",
@@ -1038,7 +1224,7 @@
 			"sort": 1
 		},
 		{
-			"id": "eyebrow_text",
+			"id": "c_fc_bf_eyebrow_text",
 			"control": "text",
 			"label": "Eyebrow",
 			"description": "",
@@ -1048,7 +1234,7 @@
 			"sort": 0
 		},
 		{
-			"id": "title_text",
+			"id": "c_fc_bf_title_text",
 			"control": "textarea",
 			"label": "Title",
 			"description": "Inline formatting tags are preserved.",
@@ -1058,7 +1244,7 @@
 			"sort": 0
 		},
 		{
-			"id": "text_text",
+			"id": "c_fc_bf_pull_text",
 			"control": "textarea",
 			"label": "Text",
 			"description": "",
@@ -1068,7 +1254,7 @@
 			"sort": 0
 		},
 		{
-			"id": "button_text",
+			"id": "c_fc_bf_btn_text",
 			"control": "text",
 			"label": "Button",
 			"description": "",
@@ -1078,7 +1264,7 @@
 			"sort": 0
 		},
 		{
-			"id": "button_href",
+			"id": "c_fc_bf_btn_href",
 			"control": "url",
 			"label": "Link",
 			"default": {
@@ -1090,7 +1276,7 @@
 			"sort": 1
 		},
 		{
-			"id": "container_aria_label",
+			"id": "c_fc_bf_reveal_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Journey imagery — slideshow",
@@ -1100,7 +1286,7 @@
 			"sort": 1
 		},
 		{
-			"id": "container_aria_roledescription",
+			"id": "c_fc_bf_reveal_aria_roledescription",
 			"control": "text",
 			"label": "Accessible Role",
 			"default": "carousel",
@@ -1110,7 +1296,7 @@
 			"sort": 1
 		},
 		{
-			"id": "arrow_disabled",
+			"id": "c_fc_ss_arrow_disabled",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -1123,7 +1309,7 @@
 			"sort": 1
 		},
 		{
-			"id": "arrow_aria_label",
+			"id": "c_fc_ss_arrow_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Previous slide",
@@ -1133,7 +1319,7 @@
 			"sort": 1
 		},
 		{
-			"id": "arrow_disabled_2",
+			"id": "c_fc_ss_arrow_disabled_2",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -1146,7 +1332,7 @@
 			"sort": 1
 		},
 		{
-			"id": "arrow_aria_label_2",
+			"id": "c_fc_ss_arrow_aria_label_2",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Next slide",
@@ -1156,7 +1342,7 @@
 			"sort": 1
 		},
 		{
-			"id": "dot_aria_label",
+			"id": "c_fc_ss_dots_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Slide navigation",

@@ -27,6 +27,16 @@ export const sections = [
 		class_name: 'SJ_Nav',
 		icon: 'eicon-nav-menu',
 		description: 'Fixed top navigation for the Signature Journey page.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.sj-nav-inner': 'Bar',
+				'.sj-nav-links': 'Links',
+				'.sj-nav-dropdown-list': 'Phone menu',
+				'.sj-nav-dropdown-cta-row': 'Phone menu button',
+			},
+		},
 	},
 	{
 		key: 'sj_hero',
@@ -81,6 +91,15 @@ export const sections = [
 		class_name: 'SJ_Inclusions',
 		icon: 'eicon-price-list',
 		description: 'Inclusions grid plus the sticky Offers panel. Its button opens the inquiry popup.',
+		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.sj-inc-cards': 'Included',
+				'.sj-inc-price': 'Investment',
+				'.sj-offers': 'Offers',
+			},
+		},
 	},
 	{
 		key: 'sj_form_popup',
@@ -91,6 +110,12 @@ export const sections = [
 		icon: 'eicon-form-horizontal',
 		description: 'Inquiry popup, lead source signature_journey_popup. Required on the page or the Offers button does nothing.',
 		spec: {
+			// Names for this section's blocks where the automatic ones ("Content 1",
+			// "Card") would not tell an editor which part of the page they are.
+			regionLabels: {
+				'.umoya-form-dialog': 'Pop-up',
+				'.umoya-form-card': 'Form',
+			},
 			// Moves itself to <body> on init; see the homepage popup's entry.
 			portals: [ { selector: '#umoya-form-popup', trigger: '[data-umoya-form-popup]' } ],
 		},

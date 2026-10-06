@@ -26,22 +26,22 @@ if ( ! defined( 'ABSPATH' ) ) {
   when your video asset is ready.
 =================================================================
 -->
-  <section id="fc-hero" aria-label="<?php echo $c['section_aria_label']; ?>">
+  <section id="fc-hero" aria-label="<?php echo $c['c_section_aria_label']; ?>">
 
     <div class="fc-h1-bg">
       <!-- Poster image loads instantly; video starts early with mobile-safe autoplay fallback -->
       <img
-        src="<?php echo $c['image_src']; ?>"
-        alt="<?php echo $c['image_alt']; ?>"
-        style="<?php echo $s['image_inline_style']; ?>"
+        src="<?php echo $c['c_fc_h1_bg_img_src']; ?>"
+        alt="<?php echo $c['c_fc_h1_bg_img_alt']; ?>"
+        style="<?php echo $s['c_fc_h1_bg_img_inline_style']; ?>"
       />
       <video
-        id="fc-hero-vid"<?php echo $c['video_autoplay']; ?><?php echo $c['video_muted']; ?><?php echo $c['video_loop']; ?><?php echo $c['video_playsinline']; echo "\n        "; ?>webkit-playsinline
-        preload="<?php echo $c['video_preload']; ?>"
-        poster="<?php echo $c['video_poster']; ?>"
-        aria-label="<?php echo $c['video_aria_label']; ?>"
-        style="<?php echo $s['video_inline_style']; ?>"<?php echo $c['video_controls']; ?><?php echo $c['video_disablepictureinpicture']; echo "\n      "; ?>>
-        <source src="<?php echo $c['video_source_src']; ?>" type="<?php echo $c['video_source_type']; ?>" />
+        id="fc-hero-vid"<?php echo $c['c_video_autoplay']; ?><?php echo $c['c_video_muted']; ?><?php echo $c['c_video_loop']; ?><?php echo $c['c_video_playsinline']; echo "\n        "; ?>webkit-playsinline
+        preload="<?php echo $c['c_video_preload']; ?>"
+        poster="<?php echo $c['c_video_poster']; ?>"
+        aria-label="<?php echo $c['c_video_aria_label']; ?>"
+        style="<?php echo $s['c_video_inline_style']; ?>"<?php echo $c['c_video_controls']; ?><?php echo $c['c_video_disablepictureinpicture']; echo "\n      "; ?>>
+        <source src="<?php echo $c['c_video_src']; ?>" type="<?php echo $c['c_video_type']; ?>" />
       </video>
     </div>
 
@@ -49,17 +49,17 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="fc-h1-content">
       <div class="fc-h1-brand">
         <img
-          src="<?php echo $c['image_src_2']; ?>"
-          alt="<?php echo $c['image_alt_2']; ?>"
+          src="<?php echo $c['c_fc_h1_brand_img_src']; ?>"
+          alt="<?php echo $c['c_fc_h1_brand_img_alt']; ?>"
         />
       </div>
-      <span class="fc-h1-eye"><?php echo $c['eyebrow_text']; ?></span>
+      <span class="fc-h1-eye"><?php echo $c['c_fc_h1_eye_text']; ?></span>
       <h1 class="fc-h1-title">
-        <?php echo $c['title_text']; echo "\n      "; ?></h1>
-      <p class="fc-h1-sub"><?php echo $c['subtitle_text']; ?></p>
+        <?php echo $c['c_fc_h1_title_text']; echo "\n      "; ?></h1>
+      <p class="fc-h1-sub"><?php echo $c['c_fc_h1_sub_text']; ?></p>
       <div class="fc-h1-btns">
-        <a href="<?php echo $c['button_href']; ?>" class="fc-h1-btn fc-h1-btn-primary">
-          <?php echo $c['button_text']; echo "\n          "; ?><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+        <a href="<?php echo $c['c_fc_h1_btn_primary_href']; ?>" class="fc-h1-btn fc-h1-btn-primary">
+          <?php echo $c['c_fc_h1_btn_primary_text']; echo "\n          "; ?><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"/>
             <polyline points="13 6 19 12 13 18"/>
           </svg>
@@ -68,7 +68,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>
 
     <div class="fc-h1-scroll" aria-hidden="true">
-      <span class="fc-h1-scroll-lbl"><?php echo $c['label_text']; ?></span>
+      <span class="fc-h1-scroll-lbl"><?php echo $c['c_fc_h1_scroll_lbl_text']; ?></span>
       <div class="fc-h1-track"></div>
     </div>
 

@@ -118,239 +118,504 @@
 			"label": "Ease"
 		}
 	],
+	"regions": [
+		{
+			"id": "r_scroll_hint",
+			"label": "Scroll hint",
+			"portal": false
+		},
+		{
+			"id": "r_header",
+			"label": "Header",
+			"portal": false
+		},
+		{
+			"id": "r_cards",
+			"label": "Cards",
+			"portal": false
+		}
+	],
 	"content_panels": [
 		{
-			"id": "content_p_section",
-			"label": "Section",
-			"sample": "",
-			"region_label": "",
-			"controls": [
+			"id": "content_r_scroll_hint",
+			"label": "Scroll hint",
+			"items": [
 				{
-					"id": "section_aria_label",
-					"control": "text",
-					"label": "Accessible Name",
-					"default": "Trip types",
-					"esc": "attr",
-					"group": "p_section",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Section"
+					"kind": "group",
+					"label": "Text",
+					"order": 76,
+					"controls": [
+						{
+							"id": "c_pt_tt_hint_text",
+							"control": "text",
+							"label": "Text",
+							"description": "",
+							"default": "Scroll for more",
+							"esc": "post",
+							"group": "p_pt_tt_hint",
+							"sort": 0
+						}
+					]
 				}
 			]
 		},
 		{
-			"id": "content_p_pt_tt_eye",
+			"id": "content_r_header",
 			"label": "Header",
-			"sample": "Trip Types",
-			"region_label": "Header",
-			"controls": [
+			"items": [
 				{
-					"id": "eyebrow_text",
-					"control": "text",
+					"kind": "group",
 					"label": "Eyebrow",
-					"description": "",
-					"default": "Trip Types",
-					"esc": "post",
-					"group": "p_pt_tt_eye",
-					"sort": 0,
-					"part_label": "Eyebrow"
+					"order": 3,
+					"controls": [
+						{
+							"id": "c_pt_tt_eye_text",
+							"control": "text",
+							"label": "Eyebrow",
+							"description": "",
+							"default": "Trip Types",
+							"esc": "post",
+							"group": "p_pt_tt_eye",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "title_text",
-					"control": "textarea",
+					"kind": "group",
 					"label": "Title",
-					"description": "Inline formatting tags are preserved.",
-					"default": "Tell us why you're <em>traveling</em>.",
-					"esc": "post",
-					"group": "p_pt_tt_ttl",
-					"sort": 0,
-					"part_label": "Title"
+					"order": 4,
+					"controls": [
+						{
+							"id": "c_pt_tt_ttl_text",
+							"control": "textarea",
+							"label": "Title",
+							"description": "Inline formatting tags are preserved.",
+							"default": "Tell us why you're <em>traveling</em>.",
+							"esc": "post",
+							"group": "p_pt_tt_ttl",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "text_text",
-					"control": "textarea",
+					"kind": "group",
 					"label": "Text",
-					"description": "",
-					"default": "People rarely book a private journey because of a country. They book it for a reason. Here are the reasons we hear most, and every one of them is a starting point, not a package.",
-					"esc": "post",
-					"group": "p_pt_tt_lead",
-					"sort": 0,
-					"part_label": "Header Text"
+					"order": 6,
+					"controls": [
+						{
+							"id": "c_pt_tt_lead_text",
+							"control": "textarea",
+							"label": "Text",
+							"description": "",
+							"default": "People rarely book a private journey because of a country. They book it for a reason. Here are the reasons we hear most, and every one of them is a starting point, not a package.",
+							"esc": "post",
+							"group": "p_pt_tt_lead",
+							"sort": 0
+						}
+					]
 				}
-			],
-			"merged": true
+			]
 		},
 		{
-			"id": "content_p_pt_tt_arrow",
-			"label": "Content",
-			"sample": "",
-			"region_label": "",
-			"controls": [
+			"id": "content_r_cards",
+			"label": "Cards",
+			"items": [
 				{
-					"id": "arrow_aria_label",
-					"control": "text",
-					"label": "Accessible Name 1",
-					"default": "Previous trip types",
-					"esc": "attr",
-					"group": "p_pt_tt_arrow",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Arrow"
+					"kind": "list",
+					"id": "rep_article_pt_tt_card",
+					"label": "Cards",
+					"order": 15
 				},
 				{
-					"id": "arrow_aria_label_2",
-					"control": "text",
-					"label": "Accessible Name 2",
-					"default": "More trip types",
-					"esc": "attr",
-					"group": "p_pt_tt_arrow",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Arrow"
-				},
-				{
-					"id": "container_aria_label",
-					"control": "text",
-					"label": "Container 3",
-					"default": "Trip types",
-					"esc": "attr",
-					"group": "p_pt_tt_track",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Container 3"
-				},
-				{
-					"id": "heading_text",
-					"control": "text",
+					"kind": "group",
 					"label": "Heading",
-					"description": "",
-					"default": "Something else entirely",
-					"esc": "post",
-					"group": "p_pt_tt_blank_pt_tt_body_pt_tt_name",
-					"sort": 0,
-					"part_label": "Card Heading 2"
+					"order": 71,
+					"controls": [
+						{
+							"id": "c_pt_tt_blank_pt_tt_body_pt_tt_name_text",
+							"control": "text",
+							"label": "Heading",
+							"description": "",
+							"default": "Something else entirely",
+							"esc": "post",
+							"group": "p_pt_tt_blank_pt_tt_body_pt_tt_name",
+							"sort": 0
+						}
+					]
 				},
 				{
-					"id": "text_text_2",
-					"control": "textarea",
+					"kind": "group",
 					"label": "Text",
-					"description": "",
-					"default": "Prefer to start from a blank page? Tell us your dates, your group, and what matters most, and we will design it around you.",
-					"esc": "post",
-					"group": "p_pt_tt_blank_pt_tt_body_pt_tt_desc",
-					"sort": 0,
-					"part_label": "Card Text 2"
+					"order": 72,
+					"controls": [
+						{
+							"id": "c_pt_tt_blank_pt_tt_body_pt_tt_desc_text",
+							"control": "textarea",
+							"label": "Text",
+							"description": "",
+							"default": "Prefer to start from a blank page? Tell us your dates, your group, and what matters most, and we will design it around you.",
+							"esc": "post",
+							"group": "p_pt_tt_blank_pt_tt_body_pt_tt_desc",
+							"sort": 0
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Tell us what you have in…",
+					"order": 73,
+					"controls": [
+						{
+							"id": "c_pt_tt_blank_pt_tt_body_pt_tt_go_text",
+							"control": "text",
+							"label": "Text",
+							"default": "Tell us what you have in mind",
+							"esc": "post",
+							"group": "p_pt_tt_blank_pt_tt_body_pt_tt_go",
+							"sort": 0
+						},
+						{
+							"id": "c_pt_tt_blank_pt_tt_body_pt_tt_go_href",
+							"control": "url",
+							"label": "Link",
+							"default": {
+								"url": "#pt-design"
+							},
+							"esc": "url",
+							"group": "p_pt_tt_blank_pt_tt_body_pt_tt_go",
+							"tab": "content",
+							"sort": 1
+						}
+					]
 				}
-			],
-			"merged": true
+			]
+		}
+	],
+	"style_panels": [
+		{
+			"id": "style_section",
+			"label": "Section",
+			"tokens": true,
+			"rows": [
+				{
+					"part": "p_section",
+					"label": "Section",
+					"inline": [],
+					"inline_props": []
+				}
+			]
 		},
 		{
-			"id": "content_p_pt_tt_blank_pt_tt_body_pt_tt_go",
-			"label": "Card Link 2",
-			"sample": "",
-			"region_label": "Card",
-			"controls": [
+			"id": "style_r_scroll_hint",
+			"label": "Scroll hint",
+			"tokens": false,
+			"rows": [
 				{
-					"id": "link_text",
-					"control": "text",
-					"label": "Text",
-					"default": "Tell us what you have in mind",
-					"esc": "post",
-					"group": "p_pt_tt_blank_pt_tt_body_pt_tt_go",
-					"sort": 0,
-					"part_label": "Card Link 2"
+					"part": "p_pt_tt_c",
+					"label": "Block",
+					"inline": [],
+					"inline_props": []
 				},
 				{
-					"id": "link_href",
-					"control": "url",
+					"part": "p_pt_tt_hint",
+					"label": "Text",
+					"inline": [],
+					"inline_props": []
+				}
+			]
+		},
+		{
+			"id": "style_r_header",
+			"label": "Header",
+			"tokens": false,
+			"rows": [
+				{
+					"part": "p_pt_tt_head",
+					"label": "Block",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_pt_tt_eye",
+					"label": "Eyebrow",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_pt_tt_ttl",
+					"label": "Title",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_em",
+					"label": "Italic Text",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_pt_tt_lead",
+					"label": "Text",
+					"inline": [],
+					"inline_props": []
+				}
+			]
+		},
+		{
+			"id": "style_r_cards",
+			"label": "Cards",
+			"tokens": false,
+			"rows": [
+				{
+					"part": "p_pt_tt_stage",
+					"label": "Block",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_pt_tt_arrow",
+					"label": "Arrows",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_pt_tt_arrow_svg",
+					"label": "Arrow Icons",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_pt_tt_card",
+					"label": "Cards",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_pt_tt_card_div_img",
+					"label": "Images",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_pt_tt_card_div_h3",
+					"label": "Headings",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_pt_tt_card_div_p",
+					"label": "Paragraphs",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_pt_tt_card_div_a",
+					"label": "Links",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_pt_tt_card_div_a_svg",
+					"label": "Link Icons",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_pt_tt_blank",
+					"label": "Card",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_pt_tt_blank_pt_tt_body_pt_tt_name",
+					"label": "Heading",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_pt_tt_blank_pt_tt_body_pt_tt_desc",
+					"label": "Text",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_pt_tt_blank_pt_tt_body_pt_tt_go",
 					"label": "Link",
-					"default": {
-						"url": "#pt-design"
-					},
-					"esc": "url",
-					"group": "p_pt_tt_blank_pt_tt_body_pt_tt_go",
-					"tab": "content",
-					"sort": 1,
-					"part_label": "Card Link 2"
-				}
-			]
-		},
-		{
-			"id": "content_p_pt_tt_hint",
-			"label": "Text",
-			"sample": "Scroll for more",
-			"region_label": "",
-			"controls": [
+					"inline": [],
+					"inline_props": []
+				},
 				{
-					"id": "text_text_3",
-					"control": "text",
-					"label": "Text",
-					"description": "",
-					"default": "Scroll for more",
-					"esc": "post",
-					"group": "p_pt_tt_hint",
-					"sort": 0,
-					"part_label": "Text"
+					"part": "p_pt_tt_blank_pt_tt_body_pt_tt_go_svg",
+					"label": "Icon",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_pt_tt_track",
+					"label": "Container",
+					"inline": [],
+					"inline_props": [],
+					"heading": "Layout"
+				},
+				{
+					"part": "p_pt_tt_card_div",
+					"label": "Containers",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_pt_tt_blank_pt_tt_body",
+					"label": "Content",
+					"inline": [],
+					"inline_props": []
 				}
 			]
 		}
 	],
-	"integration_controls": [],
-	"form_controls": [
+	"advanced_panels": [
 		{
-			"id": "arrow_disabled",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_pt_tt_arrow",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Arrow"
+			"id": "uew_accessibility",
+			"label": "Accessibility",
+			"notice": "What screen readers announce for each element. Visitors do not see these; keep them short and descriptive.",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Section",
+					"order": 0,
+					"controls": [
+						{
+							"id": "c_section_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Trip types",
+							"esc": "attr",
+							"group": "p_section",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Cards › Arrow 1",
+					"order": 8,
+					"controls": [
+						{
+							"id": "c_pt_tt_arrow_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Previous trip types",
+							"esc": "attr",
+							"group": "p_pt_tt_arrow",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Cards › Arrow 2",
+					"order": 11,
+					"controls": [
+						{
+							"id": "c_pt_tt_arrow_aria_label_2",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "More trip types",
+							"esc": "attr",
+							"group": "p_pt_tt_arrow",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Cards › Container",
+					"order": 14,
+					"controls": [
+						{
+							"id": "c_pt_tt_track_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Trip types",
+							"esc": "attr",
+							"group": "p_pt_tt_track",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				}
+			]
 		},
 		{
-			"id": "arrow_type",
-			"control": "text",
-			"label": "Type",
-			"default": "button",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
-		},
-		{
-			"id": "arrow_disabled_2",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_pt_tt_arrow",
-			"tab": "form",
-			"sort": 1,
-			"part_label": "Arrow"
-		},
-		{
-			"id": "arrow_type_2",
-			"control": "text",
-			"label": "Type",
-			"default": "button",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1,
-			"part_label": ""
+			"id": "uew_form",
+			"label": "Form Field Rules",
+			"notice": "",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Cards › Arrow 1",
+					"order": 8,
+					"controls": [
+						{
+							"id": "c_pt_tt_arrow_disabled",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_pt_tt_arrow",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_pt_tt_arrow_type",
+							"control": "text",
+							"label": "Type",
+							"default": "button",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Cards › Arrow 2",
+					"order": 11,
+					"controls": [
+						{
+							"id": "c_pt_tt_arrow_disabled_2",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_pt_tt_arrow",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_pt_tt_arrow_type_2",
+							"control": "text",
+							"label": "Type",
+							"default": "button",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				}
+			]
 		}
 	],
-	"behaviour_controls": [],
-	"inline_style_controls": [],
-	"media_controls": [],
 	"repeaters": [
 		{
 			"id": "rep_article_pt_tt_card",
@@ -521,7 +786,7 @@
 					"alt": "A group travelling together on reunion",
 					"loading": "lazy",
 					"decoding": "async",
-					"name": "Groups &amp; Reunions",
+					"name": "Groups & Reunions",
 					"desc": "A sorority chapter, a church, an alumni network, a family coming back together. Everyone travels as one group, and the organizer is looked after.",
 					"href": "#pt-design",
 					"go": "Make it yours",
@@ -570,7 +835,11 @@
 			"loops": 1,
 			"selector": ".pt-tt-card",
 			"notice": "",
-			"portal": null
+			"portal": null,
+			"base_label": "Cards",
+			"region": "r_cards",
+			"order": 15,
+			"block_label": "Cards"
 		}
 	],
 	"style_parts": [
@@ -583,23 +852,21 @@
 			"selector": "",
 			"tag": "section",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition"
+				"padding",
+				"min_height",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 0,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "Section"
 		},
 		{
 			"id": "p_pt_tt_c",
@@ -610,24 +877,24 @@
 			"selector": ".pt-tt-c",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 1,
+			"box": true,
+			"everywhere": false,
+			"region": "r_scroll_hint",
+			"display": "Block"
 		},
 		{
 			"id": "p_pt_tt_head",
@@ -638,24 +905,24 @@
 			"selector": ".pt-tt-head",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 2,
+			"box": true,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Block"
 		},
 		{
 			"id": "p_pt_tt_eye",
@@ -666,25 +933,18 @@
 			"selector": ".pt-tt-eye",
 			"tag": "span",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 3,
+			"box": false,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Eyebrow"
 		},
 		{
 			"id": "p_pt_tt_ttl",
@@ -695,54 +955,43 @@
 			"selector": ".pt-tt-ttl",
 			"tag": "h2",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 4,
+			"box": false,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Title"
 		},
 		{
 			"id": "p_em",
-			"label": "Emphasis",
-			"short_label": "Emphasis",
+			"label": "Italic Text",
+			"short_label": "Italic Text",
 			"parent_label": "Title",
 			"sample": "traveling",
 			"selector": "em",
 			"tag": "em",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
+				"text",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 5,
+			"box": false,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Italic Text"
 		},
 		{
 			"id": "p_pt_tt_lead",
@@ -753,25 +1002,21 @@
 			"selector": ".pt-tt-lead",
 			"tag": "p",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 6,
+			"box": false,
+			"everywhere": false,
+			"region": "r_header",
+			"display": "Text"
 		},
 		{
 			"id": "p_pt_tt_stage",
@@ -782,24 +1027,24 @@
 			"selector": ".pt-tt-stage",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
+				"padding",
+				"margin",
+				"measure",
 				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 7,
+			"box": true,
+			"everywhere": false,
+			"region": "r_cards",
+			"display": "Block"
 		},
 		{
 			"id": "p_pt_tt_arrow",
@@ -810,46 +1055,49 @@
 			"selector": ".pt-tt-arrow",
 			"tag": "button",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
+				"grid_container",
 				"states",
-				"flex_container"
-			],
-			"animated": [],
-			"shared": true,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_pt_tt_arrow_svg_nth_of_type_1",
-			"label": "Arrow Icon",
-			"short_label": "Icon",
-			"parent_label": "Arrow",
-			"sample": "",
-			"selector": ".pt-tt-arrow > svg:nth-of-type(1)",
-			"tag": "svg",
-			"features": [
-				"svg",
-				"sizing",
-				"spacing",
 				"effects",
 				"visibility"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 8,
+			"box": false,
+			"everywhere": false,
+			"region": "r_cards",
+			"display": "Arrows"
+		},
+		{
+			"id": "p_pt_tt_arrow_svg",
+			"label": "Arrow Icon",
+			"short_label": "Icon",
+			"parent_label": "Arrow",
+			"sample": "",
+			"selector": ".pt-tt-arrow > svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null,
+			"order": 9,
+			"box": false,
+			"everywhere": false,
+			"region": "r_cards",
+			"display": "Arrow Icons"
 		},
 		{
 			"id": "p_pt_tt_track",
@@ -860,24 +1108,20 @@
 			"selector": ".pt-tt-track",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
+				"padding",
+				"margin",
+				"measure",
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 14,
+			"box": false,
+			"everywhere": false,
+			"region": "r_cards",
+			"display": "Container"
 		},
 		{
 			"id": "p_pt_tt_card",
@@ -888,216 +1132,179 @@
 			"selector": ".pt-tt-card",
 			"tag": "article",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"flex_container",
-				"flex_item"
-			],
-			"animated": [],
-			"shared": true,
-			"absolute": false,
-			"repeater": "article_pt_tt_card"
-		},
-		{
-			"id": "p_pt_tt_card_div_nth_of_type_1",
-			"label": "Card Container",
-			"short_label": "Container",
-			"parent_label": "Card",
-			"sample": "",
-			"selector": ".pt-tt-card > div:nth-of-type(1)",
-			"tag": "div",
-			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_item"
-			],
-			"animated": [],
-			"shared": false,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_pt_tt_card_div_nth_of_type_1_img_nth_of_type_1",
-			"label": "Image",
-			"short_label": "Image",
-			"parent_label": "Card",
-			"sample": "",
-			"selector": ".pt-tt-card > div:nth-of-type(1) > img:nth-of-type(1)",
-			"tag": "img",
-			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"media_fit",
-				"filters",
-				"transition"
-			],
-			"animated": [],
-			"shared": false,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_pt_tt_card_div_nth_of_type_2",
-			"label": "Card Content 1",
-			"short_label": "Content",
-			"parent_label": "Card",
-			"sample": "",
-			"selector": ".pt-tt-card > div:nth-of-type(2)",
-			"tag": "div",
-			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
-				"flex_container",
-				"flex_item"
-			],
-			"animated": [],
-			"shared": false,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_pt_tt_card_div_nth_of_type_2_h3_nth_of_type_1",
-			"label": "Card Heading 1",
-			"short_label": "Heading",
-			"parent_label": "Card",
-			"sample": "The Wedding",
-			"selector": ".pt-tt-card > div:nth-of-type(2) > h3:nth-of-type(1)",
-			"tag": "h3",
-			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
-			],
-			"animated": [],
-			"shared": false,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_pt_tt_card_div_nth_of_type_2_p_nth_of_type_1",
-			"label": "Card Text 1",
-			"short_label": "Text",
-			"parent_label": "Card",
-			"sample": "Marry in the Cape Winelands at Seven Sisters, t…",
-			"selector": ".pt-tt-card > div:nth-of-type(2) > p:nth-of-type(1)",
-			"tag": "p",
-			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
-				"align",
-				"transition"
-			],
-			"animated": [],
-			"shared": false,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_pt_tt_card_div_nth_of_type_2_a_nth_of_type_1",
-			"label": "Card Link 1",
-			"short_label": "Link",
-			"parent_label": "Card",
-			"sample": "",
-			"selector": ".pt-tt-card > div:nth-of-type(2) > a:nth-of-type(1)",
-			"tag": "a",
-			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
-				"states",
-				"flex_container"
-			],
-			"animated": [],
-			"shared": false,
-			"absolute": false,
-			"repeater": null
-		},
-		{
-			"id": "p_pt_tt_card_div_nth_of_type_2_a_nth_of_type_1_svg_nth_of_type_1",
-			"label": "Link Icon 1",
-			"short_label": "Icon",
-			"parent_label": "Link",
-			"sample": "",
-			"selector": ".pt-tt-card > div:nth-of-type(2) > a:nth-of-type(1) > svg:nth-of-type(1)",
-			"tag": "svg",
-			"features": [
-				"svg",
-				"sizing",
-				"spacing",
 				"effects",
 				"visibility"
 			],
 			"animated": [],
-			"shared": false,
+			"shared": true,
 			"absolute": false,
-			"repeater": null
+			"repeater": "article_pt_tt_card",
+			"order": 15,
+			"box": false,
+			"everywhere": false,
+			"region": "r_cards",
+			"display": "Cards"
+		},
+		{
+			"id": "p_pt_tt_card_div",
+			"label": "Card Container",
+			"short_label": "Container",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".pt-tt-card > div",
+			"tag": "div",
+			"features": [
+				"padding",
+				"margin",
+				"measure",
+				"effects"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null,
+			"order": 16,
+			"box": false,
+			"everywhere": false,
+			"region": "r_cards",
+			"display": "Containers"
+		},
+		{
+			"id": "p_pt_tt_card_div_img",
+			"label": "Image",
+			"short_label": "Image",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".pt-tt-card > div > img",
+			"tag": "img",
+			"features": [
+				"media_fit",
+				"filters",
+				"radius",
+				"shadow",
+				"margin",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null,
+			"order": 17,
+			"box": false,
+			"everywhere": false,
+			"region": "r_cards",
+			"display": "Images"
+		},
+		{
+			"id": "p_pt_tt_card_div_h3",
+			"label": "Card Heading 1",
+			"short_label": "Heading",
+			"parent_label": "Card",
+			"sample": "The Wedding",
+			"selector": ".pt-tt-card > div > h3",
+			"tag": "h3",
+			"features": [
+				"text",
+				"align",
+				"margin",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null,
+			"order": 19,
+			"box": false,
+			"everywhere": false,
+			"region": "r_cards",
+			"display": "Headings"
+		},
+		{
+			"id": "p_pt_tt_card_div_p",
+			"label": "Card Text 1",
+			"short_label": "Text",
+			"parent_label": "Card",
+			"sample": "Marry in the Cape Winelands at Seven Sisters, t…",
+			"selector": ".pt-tt-card > div > p",
+			"tag": "p",
+			"features": [
+				"text",
+				"align",
+				"margin",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null,
+			"order": 20,
+			"box": false,
+			"everywhere": false,
+			"region": "r_cards",
+			"display": "Paragraphs"
+		},
+		{
+			"id": "p_pt_tt_card_div_a",
+			"label": "Card Link 1",
+			"short_label": "Link",
+			"parent_label": "Card",
+			"sample": "",
+			"selector": ".pt-tt-card > div > a",
+			"tag": "a",
+			"features": [
+				"text",
+				"fill",
+				"border",
+				"shadow",
+				"padding",
+				"margin",
+				"flex_container",
+				"states",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null,
+			"order": 21,
+			"box": false,
+			"everywhere": false,
+			"region": "r_cards",
+			"display": "Links"
+		},
+		{
+			"id": "p_pt_tt_card_div_a_svg",
+			"label": "Link Icon 1",
+			"short_label": "Icon",
+			"parent_label": "Link",
+			"sample": "",
+			"selector": ".pt-tt-card > div > a > svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": true,
+			"absolute": false,
+			"repeater": null,
+			"order": 22,
+			"box": false,
+			"everywhere": false,
+			"region": "r_cards",
+			"display": "Link Icons"
 		},
 		{
 			"id": "p_pt_tt_blank",
@@ -1108,54 +1315,50 @@
 			"selector": ".pt-tt-blank",
 			"tag": "article",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"flex_container",
-				"flex_item"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 69,
+			"box": false,
+			"everywhere": false,
+			"region": "r_cards",
+			"display": "Card"
 		},
 		{
 			"id": "p_pt_tt_blank_pt_tt_body",
-			"label": "Card Content 2",
+			"label": "Content",
 			"short_label": "Content",
 			"parent_label": "Card",
 			"sample": "",
 			"selector": ".pt-tt-blank > .pt-tt-body",
 			"tag": "div",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"align",
-				"typography",
-				"text_color",
-				"transition",
+				"padding",
+				"margin",
+				"measure",
 				"flex_container",
-				"flex_item"
+				"effects"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 70,
+			"box": false,
+			"everywhere": false,
+			"region": "r_cards",
+			"display": "Content"
 		},
 		{
 			"id": "p_pt_tt_blank_pt_tt_body_pt_tt_name",
@@ -1166,25 +1369,21 @@
 			"selector": ".pt-tt-blank > .pt-tt-body > .pt-tt-name",
 			"tag": "h3",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 71,
+			"box": false,
+			"everywhere": false,
+			"region": "r_cards",
+			"display": "Heading"
 		},
 		{
 			"id": "p_pt_tt_blank_pt_tt_body_pt_tt_desc",
@@ -1195,25 +1394,21 @@
 			"selector": ".pt-tt-blank > .pt-tt-body > .pt-tt-desc",
 			"tag": "p",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 72,
+			"box": false,
+			"everywhere": false,
+			"region": "r_cards",
+			"display": "Text"
 		},
 		{
 			"id": "p_pt_tt_blank_pt_tt_body_pt_tt_go",
@@ -1224,26 +1419,26 @@
 			"selector": ".pt-tt-blank > .pt-tt-body > .pt-tt-go",
 			"tag": "a",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
+				"text",
+				"fill",
 				"border",
 				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"align",
-				"transition",
+				"padding",
+				"margin",
+				"flex_container",
 				"states",
-				"flex_container"
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 73,
+			"box": false,
+			"everywhere": false,
+			"region": "r_cards",
+			"display": "Link"
 		},
 		{
 			"id": "p_pt_tt_blank_pt_tt_body_pt_tt_go_svg",
@@ -1255,15 +1450,18 @@
 			"tag": "svg",
 			"features": [
 				"svg",
-				"sizing",
-				"spacing",
 				"effects",
 				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 74,
+			"box": false,
+			"everywhere": false,
+			"region": "r_cards",
+			"display": "Icon"
 		},
 		{
 			"id": "p_pt_tt_hint",
@@ -1274,31 +1472,27 @@
 			"selector": ".pt-tt-hint",
 			"tag": "p",
 			"features": [
-				"spacing",
-				"sizing",
-				"background",
-				"border",
-				"shadow",
-				"effects",
-				"position",
-				"visibility",
-				"typography",
-				"text_color",
-				"text_shadow",
-				"text_stroke",
+				"text",
 				"align",
-				"transition"
+				"margin",
+				"effects",
+				"visibility"
 			],
 			"animated": [],
 			"shared": false,
 			"absolute": false,
-			"repeater": null
+			"repeater": null,
+			"order": 76,
+			"box": false,
+			"everywhere": false,
+			"region": "r_scroll_hint",
+			"display": "Text"
 		}
 	],
 	"inline_styles": [],
 	"fields": [
 		{
-			"id": "section_aria_label",
+			"id": "c_section_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Trip types",
@@ -1308,7 +1502,7 @@
 			"sort": 1
 		},
 		{
-			"id": "eyebrow_text",
+			"id": "c_pt_tt_eye_text",
 			"control": "text",
 			"label": "Eyebrow",
 			"description": "",
@@ -1318,7 +1512,7 @@
 			"sort": 0
 		},
 		{
-			"id": "title_text",
+			"id": "c_pt_tt_ttl_text",
 			"control": "textarea",
 			"label": "Title",
 			"description": "Inline formatting tags are preserved.",
@@ -1328,7 +1522,7 @@
 			"sort": 0
 		},
 		{
-			"id": "text_text",
+			"id": "c_pt_tt_lead_text",
 			"control": "textarea",
 			"label": "Text",
 			"description": "",
@@ -1338,7 +1532,7 @@
 			"sort": 0
 		},
 		{
-			"id": "arrow_disabled",
+			"id": "c_pt_tt_arrow_disabled",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -1351,7 +1545,7 @@
 			"sort": 1
 		},
 		{
-			"id": "arrow_type",
+			"id": "c_pt_tt_arrow_type",
 			"control": "text",
 			"label": "Type",
 			"default": "button",
@@ -1361,7 +1555,7 @@
 			"sort": 1
 		},
 		{
-			"id": "arrow_aria_label",
+			"id": "c_pt_tt_arrow_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Previous trip types",
@@ -1371,7 +1565,7 @@
 			"sort": 1
 		},
 		{
-			"id": "arrow_disabled_2",
+			"id": "c_pt_tt_arrow_disabled_2",
 			"control": "switcher",
 			"label": "Disabled",
 			"description": "",
@@ -1384,7 +1578,7 @@
 			"sort": 1
 		},
 		{
-			"id": "arrow_type_2",
+			"id": "c_pt_tt_arrow_type_2",
 			"control": "text",
 			"label": "Type",
 			"default": "button",
@@ -1394,7 +1588,7 @@
 			"sort": 1
 		},
 		{
-			"id": "arrow_aria_label_2",
+			"id": "c_pt_tt_arrow_aria_label_2",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "More trip types",
@@ -1404,7 +1598,7 @@
 			"sort": 1
 		},
 		{
-			"id": "container_aria_label",
+			"id": "c_pt_tt_track_aria_label",
 			"control": "text",
 			"label": "Accessible Name",
 			"default": "Trip types",
@@ -1414,7 +1608,7 @@
 			"sort": 1
 		},
 		{
-			"id": "heading_text",
+			"id": "c_pt_tt_blank_pt_tt_body_pt_tt_name_text",
 			"control": "text",
 			"label": "Heading",
 			"description": "",
@@ -1424,7 +1618,7 @@
 			"sort": 0
 		},
 		{
-			"id": "text_text_2",
+			"id": "c_pt_tt_blank_pt_tt_body_pt_tt_desc_text",
 			"control": "textarea",
 			"label": "Text",
 			"description": "",
@@ -1434,7 +1628,7 @@
 			"sort": 0
 		},
 		{
-			"id": "link_text",
+			"id": "c_pt_tt_blank_pt_tt_body_pt_tt_go_text",
 			"control": "text",
 			"label": "Text",
 			"default": "Tell us what you have in mind",
@@ -1443,7 +1637,7 @@
 			"sort": 0
 		},
 		{
-			"id": "link_href",
+			"id": "c_pt_tt_blank_pt_tt_body_pt_tt_go_href",
 			"control": "url",
 			"label": "Link",
 			"default": {
@@ -1455,7 +1649,7 @@
 			"sort": 1
 		},
 		{
-			"id": "text_text_3",
+			"id": "c_pt_tt_hint_text",
 			"control": "text",
 			"label": "Text",
 			"description": "",

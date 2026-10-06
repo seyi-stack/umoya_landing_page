@@ -1,9 +1,9 @@
 # CLAUDE.md - Umoya Afrika Tours Project Handoff
 
-Last updated: 2026-10-05
+Last updated: 2026-10-06
 Workspace: `C:\Users\MOVING_SURFACE\Downloads\UM_Claude`
 Remote: `https://github.com/seyi-stack/umoya_landing_page.git`
-Current local branch: `codex/elementor-widget-sync` (pushed; Phase 26 is the latest work — `git log -3` for hashes)
+Current local branch: `codex/elementor-widget-sync` (pushed; Phase 28 is the latest work — `git log -3` for hashes)
 
 This file is the living handoff for the Umoya Afrika Tours website work. It should help any future assistant, developer, or editor understand what has been built, why it was built, how the pieces connect, and what still needs attention.
 
@@ -25,9 +25,10 @@ Use this file before making further changes. The project has moved beyond standa
 > **Read Phases 9–14 (Section 5) first if you are picking this up cold.**
 > They cover everything built after the widget-generator work, including
 > the two competing header systems on the live site and an unresolved
-> live-site stability problem. For the Elementor widgets, read **Phase 26**
-> and `tools/uew/README.md`: every page now compiles to native widgets, and
-> seven checks prove both the rendering and every control.
+> live-site stability problem. For the Elementor widgets, read **Phase 26**,
+> **Phase 28** and `tools/uew/README.md`: every page compiles to native
+> widgets whose panels follow the page's visible blocks, and seven checks prove
+> the rendering, every control, and that every panel opens promptly.
 
 ### Companion notes files
 
@@ -1747,6 +1748,116 @@ behaviour 41/41, browser 63/63, editor 63/63.
 >   `@example.com` addresses and clear them with
 >   `node tools/hubspot-cleanup-tests.mjs`.
 
+### Phase 28 - The editor panels rebuilt around the page, 2026-10-06
+
+The client found the footer widget hard to use: a Content tab that was "a long
+list of drop downs", a Style tab longer still, and no way to tell where to focus
+or what controlled what — and the same on most widgets. Rebuilt in the compiler,
+so all 63 widgets changed together. Plugin **4.0.0 → 5.0.0**.
+
+| | Before | After |
+|---|---|---|
+| Footer, Content tab | 27 panels | 7 — Brand, Journeys, Support, Legal, Sign-up, Bottom bar, Email opt-out pop-up |
+| Footer, Style tab | 52 panels | 6, one row per element |
+| Style panels, all 63 widgets | one per element (~1,000) | 216, at most 23 rows each |
+| Slowest footer Style panel | ~2.1 s to open (1,350 controls) | ~0.45 s (310 controls) |
+
+Detail in `tools/uew/README.md`, "How the panels are organised". In short:
+
+1. **Every tab follows the page's visible blocks**, found by `deriveRegions()`
+   and named the way the page shows them (the footer columns are "Journeys",
+   "Support", "Legal"). Registries can name a block (`regionLabels`) or an
+   element (`overrides`).
+2. **Content: one entry per thing a person sees.** A field is its Label and
+   Placeholder, named by its label (also through `for`, which is how the
+   footer's unwrapped Name and Email boxes stopped being "Field 8"/"Field 9"); a
+   link is its Text and Link, named by its words ("Terms & Conditions") or, for
+   an icon, its destination ("Instagram"); a list is named for what it holds
+   ("Links").
+3. **Style: "Section" first** (the colours, the section box, styles shared across
+   the section, plain wrappers under Layout), **then one panel per block, one
+   row per element**, opened with the pencil like Elementor's Typography row:
+   Default / Custom, and *Back to default* undoes it all.
+4. **Settings per kind of element.** This was also why panels were slow:
+   Elementor draws every control in a panel at once, hidden ones included, and
+   every element carried ~130 — Elementor's Background group alone keeps its
+   video and slideshow fields when only colour is allowed (its `filter_fields()`
+   unsets a reference, not the array entry). Text now gets type, buttons colours
+   with hover, photos fit / position / brightness, boxes background / spacing /
+   layout. **Deliberately dropped** (one line of Custom CSS each if ever
+   needed): per-element gradient and image backgrounds, position and z-index,
+   flex-item order, text shadow and stroke, blend mode, transition speed, blur
+   and hue filters, width / height / overflow except where listed.
+5. **Advanced holds the maintainer's settings:** Accessibility (accessible
+   names, the forms' screen-reader-only labels), Links & Behaviour, Form Field
+   Rules, Form Connection (HubSpot) — including where a form posts.
+6. **Names a client would use:** Block, Dialog, Backdrop; Fields (the footer's
+   inputs were "Anchors"); Eyebrow / Description for two texts in one card;
+   Close Button, Fine Print, Status Message, Dropdown, Checkbox. Visually hidden
+   labels are no longer offered for styling, and an asterisk or stray full stop
+   no longer gets a text box.
+7. **Control ids now come from the markup, never from names** (`c_` + the
+   element's selector, e.g. `c_umoya_ft_addr_text`). They used to be built from
+   display names, so better names would have reset saved values. This release
+   changes every content id once — safe because no live page uses the widgets —
+   and from now on names can improve freely.
+
+8. **A list longer than 24 rows gets a panel of its own**, after its block's.
+   Elementor draws every row of a list when its panel opens; inside the form's
+   panel, the 200-country dropdown made the contact widget take **26 seconds**
+   to open. Now 0.9 s.
+9. **Plain wrappers under "Layout" keep only spacing, max width, layout and
+   opacity.** Background, border and shadow on an unnamed wrapper were clutter,
+   and they pushed the Founder's Circle form's Style panel over budget.
+
+Checks changed with it: `control-check` and `editor-check` switch a row to
+Custom before setting its values. `editor-check` now **fails any of our panels
+holding more than 650 controls on the Style tab or 700 elsewhere** (a list
+counts rows × fields; a panel that is one long list is exempt), and reports the
+slowest Style panel's time for information only. Its Style-tab screenshot had
+never actually been taken — `$e.route('panel/editor/style')` needs the element
+as an argument and threw silently.
+
+> **Why a count and not a time.** A first version failed on time (1.5 s) and
+> flagged four widgets — then the same panels measured 4× faster an hour later.
+> The laptop had gone onto battery: Windows held the CPU at ~33% performance
+> (`\Processor Information(_Total)\% Processor Performance`), and one panel
+> took 2 s on battery against 0.45 s on mains. Measure on mains power, and
+> trust counts over timings. Chasing it also showed where Elementor's time
+> goes: each colour picker's start-up click runs every one of Elementor's
+> background-click listeners, so cost grows with colours × panel size.
+
+**Also fixed: the homepage scrolled sideways** on desktops with a visible
+scrollbar. `homepage-section-06-hotel-stays.html` (always) and
+`homepage-section-02-about.html` (≤768px) used `width: 100vw`, which includes
+the scrollbar; both now use a `--umoya-hs-vw` / `--umoya-about-vw` property set
+from `clientWidth`, as the footer does. **Re-paste both on the live homepage.**
+
+**Also: text boxes show `&`, not `&amp;`.** A field holding
+`Terms &amp; Conditions` read as code to a client. Text boxes now show the
+plain `&`; kses, `esc_attr` and `esc_html` write it back out as `&amp;`, so
+the page is byte-for-byte unchanged. Only `&amp;` is decoded, never where it
+starts something that looks like an entity, and never in raw markup. List
+rows are still proved against the source with their values as written; the
+readable form is only what the editor is given.
+
+**The client guide was updated to match** (revision 24 of
+<https://claude.ai/artifact/EsKGj31MSXCAyG8kpamne9>): its three editor
+screenshots were retaken on the 5.0.0 panels and a fourth added showing a Style
+row's pop-out; the passages on tabs and panels, buttons and links, photos,
+videos, the YouTube film, lists, forms, colours and hiding were rewritten; and
+the "Where do I change…?" table points at the new panel names. Its screenshots
+come from the single-widget test pages (`uew-home-hero`, `uew-ab-hosts`): the
+make-site Home page carried an autosave from hand testing, which lit the
+Publish button and raised Elementor's draft notice.
+
+**All seven checks on the final build, 2026-10-06 (mains power):** fidelity
+63/63; edit 63/63 (1,684 controls, 99 lists — fewer than 1,973 because hidden
+inputs no longer offer switches they cannot use and an asterisk no longer gets
+a text box); render 63/63; control reach 63/63; behaviour 41/41; browser 63/63;
+editor 63/63, no retries — panels open in 58–920 ms, the slowest Style panel of
+each widget in 0.15–1.2 s, and the heaviest panel holds 623 controls.
+
 ---
 
 ## 6. Repository Map
@@ -1779,7 +1890,7 @@ behaviour 41/41, browser 63/63, editor 63/63.
 | `theme-overrides/tevily_child/header.php` | Optional child-theme override removing the Tevily header. Not deployed. |
 | `tools/uew/` | **The widget compiler** (all 63 sections, eight page families) + the local WordPress/Elementor test harness + seven checks. Has its own `README.md`. |
 | `local-env/` | The harness itself — portable PHP with OPcache, WordPress on SQLite, Elementor 4.2.4. **Git-ignored, generated;** rebuild with `node tools/uew/setup-local-env.mjs`. |
-| `umoya-elementor-widgets/` | Custom Elementor plugin source — 63 compiled section widgets (4.0.0) plus the HubSpot/WordPress submission backend. |
+| `umoya-elementor-widgets/` | Custom Elementor plugin source — 63 compiled section widgets (5.0.0) plus the HubSpot/WordPress submission backend. |
 | `Website docs/` | Legal documents, footer URL map, and Elementor-ready legal snippets. |
 | `hubspot-docx/` | Extracted Word document content for the HubSpot integration brief. |
 | `HubSpot Section 02 Integration Brief.docx` | Original HubSpot handoff brief. |
@@ -1797,7 +1908,7 @@ folders, and the generator that read the originals has been deleted.
 
 ```text
 umoya-elementor-widgets/
-  umoya-elementor-widgets.php          bootstrap, version 4.0.0
+  umoya-elementor-widgets.php          bootstrap, version 5.0.0
   includes/
     class-plugin.php                   categories, widget registration, asset handles
     class-section-registry.php         reads includes/sections/*.json
@@ -1826,7 +1937,7 @@ from the zip.
 `umoya-elementor-widgets/umoya-elementor-widgets.php`:
 
 - Plugin name: `Umoya Elementor Widgets`
-- Version: `4.0.0`
+- Version: `5.0.0`
 - Requires WordPress 5.8+, PHP 7.4+, Elementor (tested up to 4.2.4).
 - Initializes:
   - `Submissions`
@@ -1839,9 +1950,11 @@ handles (scripts depend on `elementor-frontend`, so they register on
 `frontend/element_ready` and initialise in the editor canvas too).
 
 `includes/class-section-widget.php` is the only widget implementation: it reads
-the section's schema and registers its content panels, list repeaters, field and
-media options, design tokens, one Style panel per element, and the Advanced
-tab's class and Custom CSS. It renders server-side, in the editor as on the page.
+the section's schema and registers one Content and one Style panel per visible
+block (lists, fields and media options inside them), the design tokens, one
+pop-out row per element (built by `class-control-factory.php`), the Advanced
+tab's accessibility, behaviour, form and HubSpot panels, and its class and
+Custom CSS. It renders server-side, in the editor as on the page.
 See `tools/uew/README.md` for what the controls are and why.
 
 ---
@@ -2474,8 +2587,9 @@ Preferred ongoing route:
    (Site Navigation first, Site Footer last), then the page's own family —
    Founder's Circle, Homepage, Signature Journey, Private & Tailormade, About
    Us, For Groups or Contact.
-3. Edit text, images, links and lists on the Content tab; style any element on
-   the Style tab (one panel per element, plus the section's design tokens).
+3. Edit text, images, links and lists on the Content tab; style on the Style
+   tab — the section's colours in its Section panel, then each block's panel,
+   where every element is one row: click its pencil, and set it to Custom.
 4. For a one-off divergence use the Advanced tab's Custom CSS (`{{WRAPPER}}`,
    and `{{ID}}` for a dialog that moves to `<body>`). Structural changes belong
    in the section file and a rebuild.
@@ -2704,17 +2818,13 @@ Guidelines:
 - Do not deploy new theme PHP while the origin is unstable — a PHP error on
   top of this would take the site fully down.
 
-### ⚠ Homepage scrolls sideways on desktops with a visible scrollbar
+### Homepage scrolls sideways on desktops with a visible scrollbar — FIXED IN SOURCE, re-paste on live
 
-*Found 2026-10-06 on the local test site; in the source, so live too.*
-`homepage-revamp/homepage-section-06-hotel-stays.html` goes full-bleed with
-`width: 100vw` at every width, and `homepage-section-02-about.html` does the
-same at ≤768px. `100vw` includes the scrollbar, so on Windows the section runs
-~8px past the page and the whole homepage gets a horizontal scroll (measured
-at 1440px: section −8..1432 on a 1425px page). Phones are unaffected —
-their scrollbars overlay. The footer had this exact bug and was fixed with the
-`--umoya-ft-vw` property set from `clientWidth`; these two need the same.
-Not fixed yet: a change to client sections, so it waits for a go-ahead.
+*Found 2026-10-06 on the local test site; fixed the same day (Phase 28).*
+`homepage-section-06-hotel-stays.html` and `homepage-section-02-about.html` used
+`width: 100vw`, which includes the scrollbar, so on Windows the homepage ran
+~8px wide and scrolled sideways. Both now size from `clientWidth`, as the footer
+does. **Not live until both sections are re-pasted on the homepage.**
 
 ### ⚠ /founders-circle/ is served without most plugin assets (UNRESOLVED)
 
@@ -2953,6 +3063,9 @@ so re-check after a cache purge.
   `private-tailormade/`, `about/`, `for-groups/` and `contact/` joined the
   original three: 63 widgets, eight categories, plugin **4.0.0**, every control
   exercised by the edit, control-reach and behaviour checks.
+- ✅ **The panels follow the page** (Phase 28, plugin **5.0.0**): a short list of
+  blocks on every tab, one pop-out row per element on the Style tab, settings
+  chosen per kind of element, ids taken from the markup.
 - ⏳ **No live page uses the widgets yet.** Every live page is still pasted HTML
   widgets. Moving a page onto the widgets is a per-page decision; the content is
   identical either way (the browser check compares exactly that).
