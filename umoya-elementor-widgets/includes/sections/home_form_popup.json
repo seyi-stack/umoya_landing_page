@@ -699,7 +699,7 @@
 			"rows": [
 				{
 					"part": "p_umoya_form_image",
-					"label": "Dialog",
+					"label": "Block",
 					"inline": [],
 					"inline_props": []
 				},
@@ -737,7 +737,7 @@
 			"rows": [
 				{
 					"part": "p_umoya_form_head",
-					"label": "Dialog",
+					"label": "Block",
 					"inline": [],
 					"inline_props": []
 				},
@@ -768,7 +768,7 @@
 			"rows": [
 				{
 					"part": "p_umoya_form_card",
-					"label": "Dialog",
+					"label": "Block",
 					"inline": [
 						{
 							"id": "c_umoya_form_card_css_display",
@@ -4542,7 +4542,7 @@
 			"box": true,
 			"everywhere": false,
 			"region": "r_image",
-			"display": "Dialog"
+			"display": "Block"
 		},
 		{
 			"id": "p_img",
@@ -4696,7 +4696,7 @@
 			"box": true,
 			"everywhere": false,
 			"region": "r_header",
-			"display": "Dialog"
+			"display": "Block"
 		},
 		{
 			"id": "p_umoya_form_head_span",
@@ -4796,7 +4796,7 @@
 			"box": true,
 			"everywhere": false,
 			"region": "r_form",
-			"display": "Dialog"
+			"display": "Block"
 		},
 		{
 			"id": "p_umoya_popup_form",

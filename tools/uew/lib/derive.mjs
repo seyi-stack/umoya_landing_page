@@ -1784,6 +1784,15 @@ function deriveRegions( ctx ) {
 	// The block's own element is "Block" everywhere, so every panel opens the
 	// same way; a dialog's is "Dialog", over its "Backdrop".
 	const regionById = new Map( regions.map( ( region ) => [ region.id, region ] ) );
+	// A pop-up's own box is its outermost block; the image, header and form
+	// inside it are blocks like any other.
+	const isDialog = ( region ) => {
+		if ( ! inPortal( region.entry.node ) ) return false;
+		for ( let current = doc.parentsOf.get( region.entry.node )?.node; current; current = doc.parentsOf.get( current )?.node ) {
+			if ( regionByNode.has( current ) ) return false;
+		}
+		return true;
+	};
 	const FIXED_NAMES = new Set( [ 'Section', 'Block', 'Inner Block', 'Dialog', 'Backdrop' ] );
 	const byRegion = new Map();
 	for ( const part of parts ) {
@@ -1798,7 +1807,7 @@ function deriveRegions( ctx ) {
 			if ( 'outer' === part.frame ) return 'Block';
 			if ( part.box ) {
 				const region = regionById.get( part.region );
-				if ( region && inPortal( region.entry.node ) ) return 'Dialog';
+				if ( region && isDialog( region ) ) return 'Dialog';
 				return region && region.framed ? 'Inner Block' : 'Block';
 			}
 			// An unnamed grid is what lays the columns out; "Content" or
