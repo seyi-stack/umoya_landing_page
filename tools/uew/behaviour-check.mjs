@@ -134,7 +134,8 @@ for ( const key of keys ) {
 	}
 }
 
-const jobFile = path.join( os.tmpdir(), 'uew-behaviour-check-' + process.pid + '.json' );
+fs.mkdirSync( path.join( pluginRoot, '.verify' ), { recursive: true } );
+const jobFile = path.join( pluginRoot, '.verify', 'behaviour-check-' + process.pid + '.json' );
 fs.writeFileSync( jobFile, JSON.stringify( job ), 'utf8' );
 let pages;
 try {

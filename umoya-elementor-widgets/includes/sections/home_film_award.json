@@ -502,8 +502,8 @@
 			"controls": [
 				{
 					"id": "p_markup",
-					"control": "textarea",
-					"label": "Text (HTML)",
+					"control": "wysiwyg",
+					"label": "Text",
 					"esc": "raw",
 					"default": "Every journey we design is built around the people who know this country best. Their stories, their roads, their South Africa."
 				}

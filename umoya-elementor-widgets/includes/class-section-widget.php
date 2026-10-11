@@ -189,6 +189,13 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 		// A list inside a dialog that moves to <body> needs the portal branch
 		// too, or its rows stop being styleable the moment the dialog opens.
 		$item = '{{WRAPPER}} {{CURRENT_ITEM}}';
+		// Through the section's root id as well: the footer colours its social
+		// links with `#umoya-footer .umoya-ft-social a`, and an id outranks the
+		// row's class, so "This row only" lost to the section's own rule.
+		$config = $this->config();
+		if ( ! empty( $config['root_selector'] ) ) {
+			$item .= ', {{WRAPPER}} ' . $config['root_selector'] . ' {{CURRENT_ITEM}}';
+		}
 		if ( ! empty( $definition['portal'] ) ) {
 			$item .= ', ' . $definition['portal'] . Control_Factory::PORTAL_HOOK . ' {{CURRENT_ITEM}}';
 		}
@@ -526,7 +533,21 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 			$args['description'] = $field['description'];
 		}
 
+		// A field that only some kinds of row use (a mixed list's link, which
+		// the Cookie Settings button does not have).
+		if ( ! empty( $field['condition'] ) ) {
+			$args['condition'] = $field['condition'];
+		}
+
 		switch ( $field['control'] ) {
+			case 'icon':
+				// A grid of icons to pick from, instead of SVG code. The value
+				// is still the drawing's own markup -- see Control_Icon_Picker.
+				$args['type']    = 'umoya_icon';
+				$args['family']  = isset( $field['family'] ) ? $field['family'] : 'line';
+				$args['default'] = isset( $field['default'] ) ? $field['default'] : '';
+				break;
+
 			case 'media':
 				$args['type']    = Controls_Manager::MEDIA;
 				$args['default'] = is_array( $field['default'] ) ? $field['default'] : array( 'url' => $field['default'] );
@@ -556,7 +577,7 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 				$args['default'] = isset( $field['default'] ) ? $field['default'] : '';
 				$args['options'] = array();
 				foreach ( (array) $field['options'] as $option ) {
-					$args['options'][ $option ] = ucfirst( $option );
+					$args['options'][ $option ] = isset( $field['option_labels'][ $option ] ) ? $field['option_labels'][ $option ] : ucfirst( $option );
 				}
 				break;
 
@@ -577,6 +598,26 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 			case 'hidden':
 				$args['type']    = Controls_Manager::HIDDEN;
 				$args['default'] = isset( $field['default'] ) ? $field['default'] : '';
+				break;
+
+			case 'country_list':
+				// One picker instead of a row per country: see
+				// Value_Formatter::country_list().
+				$args['type']     = Controls_Manager::SELECT2;
+				$args['multiple'] = true;
+				$args['options']  = array();
+				foreach ( (array) $field['country']['all'] as $pair ) {
+					$args['options'][ $pair[0] ] = $pair[1];
+				}
+				$args['default'] = (array) $field['country']['pinned'];
+				break;
+
+			case 'wysiwyg':
+				// Words with inline formatting: bold and italic show as such,
+				// not as tags. See Value_Formatter::inline_rich() for output.
+				$args['type']    = Controls_Manager::WYSIWYG;
+				$args['default'] = isset( $field['default'] ) ? $field['default'] : '';
+				$args['dynamic'] = array( 'active' => true );
 				break;
 
 			case 'textarea':
@@ -632,6 +673,50 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 		include $template;
 
 		$this->print_custom_css( $settings );
+		$this->print_duplicate_warning( $config );
+	}
+
+	/**
+	 * In the editor only: say so when another element on the page has this
+	 * section's id.
+	 *
+	 * Sections style and script themselves by their root id. A second element
+	 * with the same id -- in practice an older copy pasted into an HTML widget,
+	 * which is how every page was built before the widgets existed -- brings its
+	 * own stylesheet for that id, and the two fight. On the Founder's Circle
+	 * page a leftover pricing block made the Founding Offer lose its background
+	 * and stretch its button. Nothing is printed for visitors.
+	 *
+	 * @param array $config Section schema.
+	 */
+	private function print_duplicate_warning( array $config ) {
+		$root = isset( $config['root_selector'] ) ? (string) $config['root_selector'] : '';
+		if ( ! preg_match( '/^#[A-Za-z][A-Za-z0-9_-]*$/', $root ) ) {
+			return;
+		}
+		if ( ! class_exists( '\Elementor\Plugin' ) ) {
+			return;
+		}
+		$elementor = \Elementor\Plugin::$instance;
+		$editing   = ( ! empty( $elementor->editor ) && $elementor->editor->is_edit_mode() ) ||
+			( ! empty( $elementor->preview ) && $elementor->preview->is_preview_mode() );
+		if ( ! $editing ) {
+			return;
+		}
+
+		$id      = 'uew-dup-' . $this->get_id();
+		$message = sprintf(
+			'Another element on this page also uses the id %s. Its styles and script clash with this section&rsquo;s. It is usually an older copy pasted into an HTML widget &mdash; delete that copy. (Shown in the editor only.)',
+			esc_html( $root )
+		);
+		printf(
+			'<div id="%1$s" role="alert" hidden style="margin:0;padding:12px 16px;background:#fff4e5;color:#4b2e2b;border:2px solid #d97e53;font:600 14px/1.45 system-ui,sans-serif;">%2$s</div>',
+			esc_attr( $id ),
+			$message // Built above from a fixed string and an escaped id.
+		);
+		wp_print_inline_script_tag(
+			'(function(){function check(){var box=document.getElementById(' . wp_json_encode( $id ) . ');if(box){box.hidden=document.querySelectorAll(' . wp_json_encode( $root ) . ').length<2;}}setTimeout(check,800);window.addEventListener("load",check);}());'
+		);
 	}
 
 	private function prepare_scalars( array $config, array $settings ) {
@@ -648,6 +733,11 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 
 			$value = array_key_exists( $id, $settings ) ? $settings[ $id ] : ( isset( $field['default'] ) ? $field['default'] : '' );
 
+			if ( 'country_list' === $field['control'] ) {
+				$values[ $id ] = Value_Formatter::country_list( $value, isset( $field['country'] ) ? (array) $field['country'] : array() );
+				continue;
+			}
+
 			if ( ! empty( $field['flag_attr'] ) ) {
 				$values[ $id ] = Value_Formatter::flag(
 					$value,
@@ -655,6 +745,10 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 					isset( $field['flag_prefix'] ) ? $field['flag_prefix'] : ' '
 				);
 				continue;
+			}
+
+			if ( 'wysiwyg' === $field['control'] ) {
+				$value = Value_Formatter::inline_rich( $value );
 			}
 
 			$values[ $id ] = Value_Formatter::scalar( $value, $esc, isset( $field['default'] ) ? $field['default'] : null );
@@ -685,6 +779,11 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 				if ( isset( $field['default'] ) ) {
 					$trusted[ $field['id'] ][] = $field['default'];
 				}
+				// Every icon the picker offers ships with the plugin, so a picked
+				// icon prints exactly as drawn rather than through the filter.
+				if ( 'icon' === $field['control'] ) {
+					$trusted[ $field['id'] ] = array_merge( $trusted[ $field['id'] ], Icon_Library::markups( isset( $field['family'] ) ? $field['family'] : 'line' ) );
+				}
 			}
 
 			// Position and total come from the loop, never from stored data, so
@@ -700,6 +799,9 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 				foreach ( $definition['controls'] as $field ) {
 					$field_id = $field['id'];
 					$value    = isset( $row[ $field_id ] ) ? $row[ $field_id ] : '';
+					if ( 'wysiwyg' === $field['control'] ) {
+						$value = Value_Formatter::inline_rich( $value );
+					}
 
 					$prepared[ $field_id ] = Value_Formatter::scalar(
 						$value,

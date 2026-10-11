@@ -326,9 +326,10 @@
 				},
 				{
 					"id": "svg_markup",
-					"control": "textarea",
-					"label": "Icon (HTML)",
+					"control": "icon",
+					"label": "Icon",
 					"esc": "raw",
+					"family": "line",
 					"default": "<circle cx=\"12\" cy=\"8\" r=\"3.4\"/><path d=\"M5 20a7 7 0 0 1 14 0\"/>"
 				},
 				{

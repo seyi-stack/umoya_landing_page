@@ -31,6 +31,7 @@ final class Plugin {
 
 	private function __construct() {
 		add_action( 'elementor/elements/categories_registered', array( $this, 'register_categories' ) );
+		add_action( 'elementor/controls/register', array( $this, 'register_controls' ) );
 		add_action( 'elementor/widgets/register', array( $this, 'register_widgets' ) );
 		add_action( 'elementor/frontend/after_register_styles', array( $this, 'register_styles' ) );
 		add_action( 'elementor/frontend/after_register_scripts', array( $this, 'register_scripts' ) );
@@ -51,8 +52,17 @@ final class Plugin {
 		}
 	}
 
+	/** The icon picker that replaces typing SVG code into a row. */
+	public function register_controls( $controls_manager ) {
+		require_once UMOYA_EW_PATH . 'includes/class-icon-library.php';
+		require_once UMOYA_EW_PATH . 'includes/class-control-icon-picker.php';
+
+		$controls_manager->register( new Control_Icon_Picker() );
+	}
+
 	public function register_widgets( $widgets_manager ) {
 		require_once UMOYA_EW_PATH . 'includes/class-value-formatter.php';
+		require_once UMOYA_EW_PATH . 'includes/class-icon-library.php';
 		require_once UMOYA_EW_PATH . 'includes/class-section-registry.php';
 		require_once UMOYA_EW_PATH . 'includes/class-control-factory.php';
 		require_once UMOYA_EW_PATH . 'includes/class-section-widget.php';

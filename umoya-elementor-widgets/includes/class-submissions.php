@@ -46,6 +46,36 @@ final class Submissions {
     const REST_NAMESPACE = 'umoya/v1';
     const REST_ROUTE = '/submissions';
 
+    /**
+     * The only HubSpot destinations this server forwards to.
+     *
+     * The portal and form ids arrive in the request body, because each page's
+     * form names its own. Taken on trust, they made this endpoint an open
+     * relay: anyone could have the site's server post anything to any form in
+     * any HubSpot portal. Anything not listed is saved as usual but marked
+     * `skipped`, and appears that way in Umoya Submissions. A new HubSpot form
+     * is added here (or through the `umoya_hubspot_allowed_forms` filter).
+     */
+    const HUBSPOT_PORTAL_ID = '246097317';
+    const HUBSPOT_FORM_IDS  = array(
+        'b3c06e8a-9bbc-44e1-bc67-00e35528b9b9', // Founder's Circle Inquiry
+        'a9e947b4-cb2e-45da-b2c7-b83b4228dfb5', // Homepage Popup Inquiry
+        '71181d17-e836-43d6-aa6d-a46e73945504', // Signature Journey Inquiry
+        '28e4e3e3-9a47-47a5-b3de-851981535664', // Private & Tailormade Inquiry
+        'c201e387-ca7b-4d73-9417-f060566bcf6a', // Group Journey Inquiry
+        '40d535ad-fc91-4831-8231-eddc05208624', // Footer Newsletter Signup
+        '1e38d41f-3e99-4605-94cc-9057857a4e82', // Contact Page Journey Inquiry
+        'ffececd7-b401-43cb-8ee2-858b5d62892c', // Contact Page General & Media Inquiry
+    );
+
+    /**
+     * Largest request body accepted, and longest single value kept. A real
+     * enquiry is a few hundred bytes; without a cap one request could store
+     * megabytes in the database (the raw body is kept for resends).
+     */
+    const MAX_BODY_BYTES  = 32768;
+    const MAX_VALUE_CHARS = 5000;
+
     private static $instance = null;
 
     public static function instance() {
@@ -125,6 +155,14 @@ final class Submissions {
     }
 
     public function handle_submission( WP_REST_Request $request ) {
+        if ( strlen( (string) $request->get_body() ) > self::MAX_BODY_BYTES ) {
+            return new WP_Error(
+                'umoya_too_large',
+                'This submission is too large.',
+                array( 'status' => 413 )
+            );
+        }
+
         $payload = $request->get_json_params();
         if ( ! is_array( $payload ) ) {
             $payload = $request->get_params();
@@ -998,6 +1036,18 @@ final class Submissions {
             );
         }
 
+        if ( ! $this->hubspot_target_allowed( $portal_id, $form_id ) ) {
+            return array(
+                'status'   => 'skipped',
+                'code'     => '',
+                'response' => sprintf(
+                    'Not forwarded: HubSpot form %s (portal %s) is not one of the Umoya forms this plugin sends to. If it is a new Umoya form, add it to Submissions::HUBSPOT_FORM_IDS, then resend.',
+                    $form_id,
+                    $portal_id
+                ),
+            );
+        }
+
         $hubspot_fields = array();
         foreach ( $this->hubspot_field_names() as $key ) {
             if ( ! empty( $submission[ $key ] ) ) {
@@ -1139,10 +1189,27 @@ final class Submissions {
 
     private function clean_value( $value ) {
         if ( is_array( $value ) ) {
-            $value = implode( ', ', array_map( 'sanitize_text_field', wp_unslash( $value ) ) );
+            $value = implode( ', ', array_map( 'sanitize_text_field', array_filter( wp_unslash( $value ), 'is_scalar' ) ) );
         }
 
-        return sanitize_textarea_field( wp_unslash( (string) $value ) );
+        $value = sanitize_textarea_field( wp_unslash( is_scalar( $value ) ? (string) $value : '' ) );
+
+        return function_exists( 'mb_substr' ) ? mb_substr( $value, 0, self::MAX_VALUE_CHARS ) : substr( $value, 0, self::MAX_VALUE_CHARS );
+    }
+
+    /**
+     * Whether a portal/form pair is one of Umoya's own HubSpot forms.
+     *
+     * @param string $portal_id Portal id from the submission.
+     * @param string $form_id   Form GUID from the submission.
+     * @return bool
+     */
+    private function hubspot_target_allowed( $portal_id, $form_id ) {
+        $portals = (array) apply_filters( 'umoya_hubspot_allowed_portals', array( self::HUBSPOT_PORTAL_ID ) );
+        $forms   = (array) apply_filters( 'umoya_hubspot_allowed_forms', self::HUBSPOT_FORM_IDS );
+
+        return in_array( strtolower( trim( (string) $portal_id ) ), array_map( 'strtolower', $portals ), true )
+            && in_array( strtolower( trim( (string) $form_id ) ), array_map( 'strtolower', $forms ), true );
     }
 
     private function normalize_uuid( $value ) {
@@ -1206,24 +1273,78 @@ final class Submissions {
         return ( $ip && filter_var( $ip, FILTER_VALIDATE_IP ) ) ? $ip : '';
     }
 
+    /**
+     * The visitor's IP address, for rate limiting and HubSpot analytics.
+     *
+     * Behind Cloudflare the connection comes from a Cloudflare edge, and the
+     * visitor's address is in CF-Connecting-IP -- but any client can send that
+     * header, or X-Forwarded-For, itself. Believed unconditionally, a script
+     * could rotate a fake address on every request and walk straight past the
+     * rate limit. So the header is used only when the connection really is
+     * from Cloudflare; otherwise the connection's own address stands.
+     * (If the web server already swaps in the visitor's address from the
+     * header, REMOTE_ADDR is that address and is used as is.)
+     *
+     * @return string
+     */
     private function get_client_ip() {
-        $headers = array( 'HTTP_CF_CONNECTING_IP', 'HTTP_X_FORWARDED_FOR', 'REMOTE_ADDR' );
+        $remote = isset( $_SERVER['REMOTE_ADDR'] ) ? trim( sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) ) : '';
+        if ( ! filter_var( $remote, FILTER_VALIDATE_IP ) ) {
+            return '';
+        }
 
-        foreach ( $headers as $header ) {
-            if ( empty( $_SERVER[ $header ] ) ) {
-                continue;
-            }
-
-            $value = sanitize_text_field( wp_unslash( $_SERVER[ $header ] ) );
-            $parts = explode( ',', $value );
-            $ip    = trim( $parts[0] );
-
-            if ( filter_var( $ip, FILTER_VALIDATE_IP ) ) {
-                return $ip;
+        if ( ! empty( $_SERVER['HTTP_CF_CONNECTING_IP'] ) && $this->is_cloudflare( $remote ) ) {
+            $visitor = trim( sanitize_text_field( wp_unslash( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) );
+            if ( filter_var( $visitor, FILTER_VALIDATE_IP ) ) {
+                return $visitor;
             }
         }
 
-        return '';
+        return $remote;
+    }
+
+    /**
+     * Whether an address belongs to Cloudflare (https://www.cloudflare.com/ips/).
+     * Filterable, should the list change before the plugin does.
+     *
+     * @param string $ip Address.
+     * @return bool
+     */
+    private function is_cloudflare( $ip ) {
+        $ranges = (array) apply_filters(
+            'umoya_trusted_proxy_ranges',
+            array(
+                '173.245.48.0/20', '103.21.244.0/22', '103.22.200.0/22', '103.31.4.0/22', '141.101.64.0/18',
+                '108.162.192.0/18', '190.93.240.0/20', '188.114.96.0/20', '197.234.240.0/22', '198.41.128.0/17',
+                '162.158.0.0/15', '104.16.0.0/13', '104.24.0.0/14', '172.64.0.0/13', '131.0.72.0/22',
+                '2400:cb00::/32', '2606:4700::/32', '2803:f800::/32', '2405:b500::/32', '2405:8100::/32',
+                '2a06:98c0::/29', '2c0f:f248::/32',
+            )
+        );
+
+        $address = @inet_pton( $ip ); // phpcs:ignore WordPress.PHP.NoSilencedErrors -- invalid input is simply "no".
+        if ( false === $address ) {
+            return false;
+        }
+
+        foreach ( $ranges as $range ) {
+            list( $subnet, $bits ) = array_pad( explode( '/', (string) $range, 2 ), 2, null );
+            $network = @inet_pton( $subnet ); // phpcs:ignore WordPress.PHP.NoSilencedErrors
+            if ( false === $network || strlen( $network ) !== strlen( $address ) ) {
+                continue;
+            }
+            $bits  = null === $bits ? strlen( $network ) * 8 : (int) $bits;
+            $bytes = intdiv( $bits, 8 );
+            if ( substr( $address, 0, $bytes ) !== substr( $network, 0, $bytes ) ) {
+                continue;
+            }
+            $rest = $bits % 8;
+            if ( 0 === $rest || ( ( ord( $address[ $bytes ] ) ^ ord( $network[ $bytes ] ) ) & ( 0xFF << ( 8 - $rest ) ) & 0xFF ) === 0 ) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private function is_rate_limited() {

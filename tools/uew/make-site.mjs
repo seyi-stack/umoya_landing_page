@@ -14,7 +14,6 @@
  */
 
 import fs from 'fs';
-import os from 'os';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { wp } from './lib/browser.mjs';
@@ -48,7 +47,8 @@ const placed = new Set( pages.flatMap( ( p ) => p.widgets ) );
 const missing = widgets.map( ( w ) => w.name ).filter( ( name ) => ! placed.has( name ) );
 if ( missing.length ) throw new Error( 'Widgets on no page: ' + missing.join( ', ' ) );
 
-const job = path.join( os.tmpdir(), 'uew-site-job.json' );
+fs.mkdirSync( path.join( repoRoot, 'umoya-elementor-widgets', '.verify' ), { recursive: true } );
+const job = path.join( repoRoot, 'umoya-elementor-widgets', '.verify', 'site-job.json' );
 fs.writeFileSync( job, JSON.stringify( { pages } ) );
 const result = JSON.parse( wp( repoRoot, [ 'eval-file', path.join( repoRoot, 'tools', 'uew', 'make-pages.php' ), job ] ).trim().split( '\n' ).pop() );
 fs.unlinkSync( job );

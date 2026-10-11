@@ -120,50 +120,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       <nav class="umoya-ft-col" aria-label="<?php echo $c['c_umoya_ft_col_aria_label_3']; ?>">
         <h3 class="umoya-ft-h"><?php echo $c['c_umoya_ft_col_h3_text_3']; ?></h3>
         <ul>
-          <li><a href="<?php echo $c['c_umoya_ft_col_ul_li_a_href']; ?>"><?php echo $c['c_umoya_ft_col_ul_li_a_text']; ?></a></li>
-          <li><a href="<?php echo $c['c_umoya_ft_col_ul_li_a_href_2']; ?>"><?php echo $c['c_umoya_ft_col_ul_li_a_text_2']; ?></a></li>
-          <!--
-            CookieYes binds its own click handler to .cky-banner-element and
-            re-opens the preference centre, so this needs no href. A <button>
-            rather than <a href="#"> so it never jumps the page to the top if
-            CookieYes has not loaded.
-          -->
-          <li><button type="<?php echo $c['c_cky_banner_element_type']; ?>" class="cky-banner-element" data-umoya-cookie-prefs<?php echo $c['c_cky_banner_element_disabled']; ?>><?php echo $c['c_cky_banner_element_text']; ?></button></li>
-          <!--
-            EMAIL OPT-OUT opens the popup at the bottom of this widget
-            rather than navigating to /email-preferences/. The standalone
-            page still exists, unchanged, at
-            shared/page-email-preferences.html — to switch back to it,
-            replace this <li> with:
-
-              <li><a href="https://umoyaafrikatours.co.za/email-preferences/">Email Opt-out</a></li>
-
-            and delete the popup block below.
-
-            The href here is a REAL mailto, not "#" — it is what the item
-            falls back to if the script has not run, and it does exactly
-            what the popup copy tells the reader to do. The script calls
-            preventDefault() and opens the dialog instead.
-          -->
-          <li><a href="<?php echo $c['c_umoya_ft_col_ul_li_a_href_3']; ?>" data-umoya-email-optout><?php echo $c['c_umoya_ft_col_ul_li_a_text_3']; ?></a></li>
-          <!--
-            umoya_paia_manual.pdf - underscores, umoya_ prefix. Uploaded and
-            verified byte-identical to
-            "Revised footer docs/Umoya_PAIA_Manual (final).pdf" on
-            2026-09-01 (HTTP 200, 110300 bytes).
-
-            Several other spellings of this file exist at the web root and
-            are NOT interchangeable. Confirm with an HTTP request, never the
-            Mountain Duck listing, which shows entries the server does not
-            serve:
-              /umoya_paia_manual.pdf   200  <- use this one
-              /paia_manual.pdf         200  superseded, left in place
-              /Umoya_PAIA_Manual.pdf   200  superseded, left in place
-              /paia-manual.pdf         404  ghost listing only
-            Nothing was deleted.
-          -->
-          <li><a href="<?php echo $c['c_umoya_ft_col_ul_li_a_href_4']; ?>" target="<?php echo $c['c_umoya_ft_col_ul_li_a_target']; ?>" rel="<?php echo $c['c_umoya_ft_col_ul_li_a_rel']; ?>"><?php echo $c['c_umoya_ft_col_ul_li_a_text_4']; ?></a></li>
-        </ul>
+          <?php $__i = 0; foreach ( $r['rep_li_3'] as $it ) : if ( $__i ++ ) { echo $it['_uew_sep']; } ?><?php $__k = isset( $it['uew_kind'] ) ? (string) $it['uew_kind'] : ''; if ( 'umoya_cookie_prefs' === $__k ) : ?><li class="<?php echo $it['_uew_item_class']; ?>"><button type="<?php echo $it['type']; ?>" class="cky-banner-element" data-umoya-cookie-prefs><?php echo $it['a']; ?></button></li><?php elseif ( 'umoya_email_optout' === $__k ) : ?><li class="<?php echo $it['_uew_item_class']; ?>"><a href="<?php echo $it['href']; ?>" data-umoya-email-optout><?php echo $it['a']; ?></a></li><?php else : ?><li class="<?php echo $it['_uew_item_class']; ?>"><a href="<?php echo $it['href']; ?>"<?php echo $it['extra_attributes']; ?>><?php echo $it['a']; ?></a></li><?php endif; ?><?php endforeach; echo "\n        "; ?></ul>
       </nav>
 
       <!-- ══════════ FOUNDER'S CIRCLE SIGNUP ══════════ -->
@@ -232,19 +189,10 @@ if ( ! defined( 'ABSPATH' ) ) {
              official mark (Simple Icons), whose counters are wound to cut out
              correctly. Still a single filled path using currentColor, so it
              needs no CSS change and matches the weight of the other three. -->
-        <a href="<?php echo $c['c_umoya_ft_social_a_href']; ?>" target="<?php echo $c['c_umoya_ft_social_a_target']; ?>" rel="<?php echo $c['c_umoya_ft_social_a_rel']; ?>" aria-label="<?php echo $c['c_umoya_ft_social_a_aria_label']; ?>">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-        </a>
-        <a href="<?php echo $c['c_umoya_ft_social_a_href_2']; ?>" target="<?php echo $c['c_umoya_ft_social_a_target_2']; ?>" rel="<?php echo $c['c_umoya_ft_social_a_rel_2']; ?>" aria-label="<?php echo $c['c_umoya_ft_social_a_aria_label_2']; ?>">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.7-1.6h1.6V3.2c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.6H7.6V13h2.8v8h3.1z"/></svg>
-        </a>
-        <a href="<?php echo $c['c_umoya_ft_social_a_href_3']; ?>" target="<?php echo $c['c_umoya_ft_social_a_target_3']; ?>" rel="<?php echo $c['c_umoya_ft_social_a_rel_3']; ?>" aria-label="<?php echo $c['c_umoya_ft_social_a_aria_label_3']; ?>">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.8 5.6c-.9-.6-1.5-1.6-1.7-2.6h-3v12.3a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.6V9.4c1 .7 2.3 1.2 3.6 1.2V7.5c-.7 0-1.4-.2-2-.6-.4-.2-.7-.5-1-.8z"/></svg>
-        </a>
-        <a href="<?php echo $c['c_umoya_ft_social_a_href_4']; ?>" target="<?php echo $c['c_umoya_ft_social_a_target_4']; ?>" rel="<?php echo $c['c_umoya_ft_social_a_rel_4']; ?>" aria-label="<?php echo $c['c_umoya_ft_social_a_aria_label_4']; ?>">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm6 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9V9z"/></svg>
-        </a>
-        <!-- YouTube — enable once the channel URL is confirmed:
+        <?php $__i = 0; foreach ( $r['rep_a'] as $it ) : if ( $__i ++ ) { echo '
+        '; } ?><a href="<?php echo $it['href']; ?>" target="<?php echo $it['target']; ?>" rel="<?php echo $it['rel']; ?>" aria-label="<?php echo $it['aria_label']; ?>" class="<?php echo $it['_uew_item_class']; ?>">
+          <svg viewBox="<?php echo $it['viewbox']; ?>" aria-hidden="<?php echo $it['aria_hidden']; ?>" focusable="<?php echo $it['focusable']; ?>"><?php echo $it['svg_markup']; ?></svg>
+        </a><?php endforeach; echo "\n        "; ?><!-- YouTube — enable once the channel URL is confirmed:
         <a href="REPLACE_WITH_YOUTUBE_CHANNEL_URL" target="_blank" rel="noopener" aria-label="Umoya Afrika Tours on YouTube">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg>
         </a>

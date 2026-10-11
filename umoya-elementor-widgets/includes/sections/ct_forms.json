@@ -319,11 +319,844 @@
 						{
 							"id": "c_ct_f_row_div_label_text_5",
 							"control": "text",
-							"label": "Country",
+							"label": "Label",
 							"default": "Country",
 							"esc": "post",
 							"group": "p_ct_f_row_div_label",
 							"sort": 0
+						},
+						{
+							"id": "c_ct_f_row_div_select_countries",
+							"control": "country_list",
+							"label": "Countries Listed First",
+							"description": "The countries shown at the top of the list. Every other country follows in alphabetical order.",
+							"default": [
+								"US",
+								"GB",
+								"CA",
+								"ZA",
+								"AU"
+							],
+							"esc": "country_list",
+							"group": "p_ct_f_row_div_select",
+							"sort": 2,
+							"country": {
+								"prompt": "Select country…",
+								"pinned": [
+									"US",
+									"GB",
+									"CA",
+									"ZA",
+									"AU"
+								],
+								"all": [
+									[
+										"AF",
+										"Afghanistan"
+									],
+									[
+										"AL",
+										"Albania"
+									],
+									[
+										"DZ",
+										"Algeria"
+									],
+									[
+										"AS",
+										"American Samoa"
+									],
+									[
+										"AD",
+										"Andorra"
+									],
+									[
+										"AO",
+										"Angola"
+									],
+									[
+										"AI",
+										"Anguilla"
+									],
+									[
+										"AG",
+										"Antigua and Barbuda"
+									],
+									[
+										"AR",
+										"Argentina"
+									],
+									[
+										"AM",
+										"Armenia"
+									],
+									[
+										"AW",
+										"Aruba"
+									],
+									[
+										"AU",
+										"Australia"
+									],
+									[
+										"AT",
+										"Austria"
+									],
+									[
+										"AZ",
+										"Azerbaijan"
+									],
+									[
+										"BS",
+										"Bahamas"
+									],
+									[
+										"BH",
+										"Bahrain"
+									],
+									[
+										"BD",
+										"Bangladesh"
+									],
+									[
+										"BB",
+										"Barbados"
+									],
+									[
+										"BY",
+										"Belarus"
+									],
+									[
+										"BE",
+										"Belgium"
+									],
+									[
+										"BZ",
+										"Belize"
+									],
+									[
+										"BJ",
+										"Benin"
+									],
+									[
+										"BM",
+										"Bermuda"
+									],
+									[
+										"BT",
+										"Bhutan"
+									],
+									[
+										"BO",
+										"Bolivia"
+									],
+									[
+										"BA",
+										"Bosnia and Herzegovina"
+									],
+									[
+										"BW",
+										"Botswana"
+									],
+									[
+										"BR",
+										"Brazil"
+									],
+									[
+										"BN",
+										"Brunei Darussalam"
+									],
+									[
+										"BG",
+										"Bulgaria"
+									],
+									[
+										"BF",
+										"Burkina Faso"
+									],
+									[
+										"BI",
+										"Burundi"
+									],
+									[
+										"CV",
+										"Cabo Verde"
+									],
+									[
+										"KH",
+										"Cambodia"
+									],
+									[
+										"CM",
+										"Cameroon"
+									],
+									[
+										"CA",
+										"Canada"
+									],
+									[
+										"KY",
+										"Cayman Islands"
+									],
+									[
+										"CF",
+										"Central African Republic"
+									],
+									[
+										"TD",
+										"Chad"
+									],
+									[
+										"CL",
+										"Chile"
+									],
+									[
+										"CN",
+										"China"
+									],
+									[
+										"CO",
+										"Colombia"
+									],
+									[
+										"KM",
+										"Comoros"
+									],
+									[
+										"CG",
+										"Congo"
+									],
+									[
+										"CD",
+										"Congo, Democratic Republic of the"
+									],
+									[
+										"CR",
+										"Costa Rica"
+									],
+									[
+										"HR",
+										"Croatia"
+									],
+									[
+										"CU",
+										"Cuba"
+									],
+									[
+										"CY",
+										"Cyprus"
+									],
+									[
+										"CZ",
+										"Czechia"
+									],
+									[
+										"DK",
+										"Denmark"
+									],
+									[
+										"DJ",
+										"Djibouti"
+									],
+									[
+										"DM",
+										"Dominica"
+									],
+									[
+										"DO",
+										"Dominican Republic"
+									],
+									[
+										"EC",
+										"Ecuador"
+									],
+									[
+										"EG",
+										"Egypt"
+									],
+									[
+										"SV",
+										"El Salvador"
+									],
+									[
+										"GQ",
+										"Equatorial Guinea"
+									],
+									[
+										"ER",
+										"Eritrea"
+									],
+									[
+										"EE",
+										"Estonia"
+									],
+									[
+										"SZ",
+										"Eswatini"
+									],
+									[
+										"ET",
+										"Ethiopia"
+									],
+									[
+										"FJ",
+										"Fiji"
+									],
+									[
+										"FI",
+										"Finland"
+									],
+									[
+										"FR",
+										"France"
+									],
+									[
+										"GF",
+										"French Guiana"
+									],
+									[
+										"PF",
+										"French Polynesia"
+									],
+									[
+										"GA",
+										"Gabon"
+									],
+									[
+										"GM",
+										"Gambia"
+									],
+									[
+										"GE",
+										"Georgia"
+									],
+									[
+										"DE",
+										"Germany"
+									],
+									[
+										"GH",
+										"Ghana"
+									],
+									[
+										"GR",
+										"Greece"
+									],
+									[
+										"GL",
+										"Greenland"
+									],
+									[
+										"GD",
+										"Grenada"
+									],
+									[
+										"GU",
+										"Guam"
+									],
+									[
+										"GT",
+										"Guatemala"
+									],
+									[
+										"GN",
+										"Guinea"
+									],
+									[
+										"GW",
+										"Guinea-Bissau"
+									],
+									[
+										"GY",
+										"Guyana"
+									],
+									[
+										"HT",
+										"Haiti"
+									],
+									[
+										"HN",
+										"Honduras"
+									],
+									[
+										"HK",
+										"Hong Kong"
+									],
+									[
+										"HU",
+										"Hungary"
+									],
+									[
+										"IS",
+										"Iceland"
+									],
+									[
+										"IN",
+										"India"
+									],
+									[
+										"ID",
+										"Indonesia"
+									],
+									[
+										"IR",
+										"Iran"
+									],
+									[
+										"IQ",
+										"Iraq"
+									],
+									[
+										"IE",
+										"Ireland"
+									],
+									[
+										"IL",
+										"Israel"
+									],
+									[
+										"IT",
+										"Italy"
+									],
+									[
+										"JM",
+										"Jamaica"
+									],
+									[
+										"JP",
+										"Japan"
+									],
+									[
+										"JO",
+										"Jordan"
+									],
+									[
+										"KZ",
+										"Kazakhstan"
+									],
+									[
+										"KE",
+										"Kenya"
+									],
+									[
+										"KI",
+										"Kiribati"
+									],
+									[
+										"KP",
+										"Korea (North)"
+									],
+									[
+										"KR",
+										"Korea (South)"
+									],
+									[
+										"KW",
+										"Kuwait"
+									],
+									[
+										"KG",
+										"Kyrgyzstan"
+									],
+									[
+										"LA",
+										"Lao People's Democratic Republic"
+									],
+									[
+										"LV",
+										"Latvia"
+									],
+									[
+										"LB",
+										"Lebanon"
+									],
+									[
+										"LS",
+										"Lesotho"
+									],
+									[
+										"LR",
+										"Liberia"
+									],
+									[
+										"LY",
+										"Libya"
+									],
+									[
+										"LI",
+										"Liechtenstein"
+									],
+									[
+										"LT",
+										"Lithuania"
+									],
+									[
+										"LU",
+										"Luxembourg"
+									],
+									[
+										"MO",
+										"Macao"
+									],
+									[
+										"MG",
+										"Madagascar"
+									],
+									[
+										"MW",
+										"Malawi"
+									],
+									[
+										"MY",
+										"Malaysia"
+									],
+									[
+										"MV",
+										"Maldives"
+									],
+									[
+										"ML",
+										"Mali"
+									],
+									[
+										"MT",
+										"Malta"
+									],
+									[
+										"MR",
+										"Mauritania"
+									],
+									[
+										"MU",
+										"Mauritius"
+									],
+									[
+										"MX",
+										"Mexico"
+									],
+									[
+										"FM",
+										"Micronesia"
+									],
+									[
+										"MD",
+										"Moldova"
+									],
+									[
+										"MC",
+										"Monaco"
+									],
+									[
+										"MN",
+										"Mongolia"
+									],
+									[
+										"ME",
+										"Montenegro"
+									],
+									[
+										"MA",
+										"Morocco"
+									],
+									[
+										"MZ",
+										"Mozambique"
+									],
+									[
+										"MM",
+										"Myanmar"
+									],
+									[
+										"NA",
+										"Namibia"
+									],
+									[
+										"NR",
+										"Nauru"
+									],
+									[
+										"NP",
+										"Nepal"
+									],
+									[
+										"NL",
+										"Netherlands"
+									],
+									[
+										"NC",
+										"New Caledonia"
+									],
+									[
+										"NZ",
+										"New Zealand"
+									],
+									[
+										"NI",
+										"Nicaragua"
+									],
+									[
+										"NE",
+										"Niger"
+									],
+									[
+										"NG",
+										"Nigeria"
+									],
+									[
+										"NO",
+										"Norway"
+									],
+									[
+										"OM",
+										"Oman"
+									],
+									[
+										"PK",
+										"Pakistan"
+									],
+									[
+										"PW",
+										"Palau"
+									],
+									[
+										"PA",
+										"Panama"
+									],
+									[
+										"PG",
+										"Papua New Guinea"
+									],
+									[
+										"PY",
+										"Paraguay"
+									],
+									[
+										"PE",
+										"Peru"
+									],
+									[
+										"PH",
+										"Philippines"
+									],
+									[
+										"PL",
+										"Poland"
+									],
+									[
+										"PT",
+										"Portugal"
+									],
+									[
+										"PR",
+										"Puerto Rico"
+									],
+									[
+										"QA",
+										"Qatar"
+									],
+									[
+										"RO",
+										"Romania"
+									],
+									[
+										"RU",
+										"Russian Federation"
+									],
+									[
+										"RW",
+										"Rwanda"
+									],
+									[
+										"WS",
+										"Samoa"
+									],
+									[
+										"SM",
+										"San Marino"
+									],
+									[
+										"ST",
+										"Sao Tome and Principe"
+									],
+									[
+										"SA",
+										"Saudi Arabia"
+									],
+									[
+										"SN",
+										"Senegal"
+									],
+									[
+										"RS",
+										"Serbia"
+									],
+									[
+										"SC",
+										"Seychelles"
+									],
+									[
+										"SL",
+										"Sierra Leone"
+									],
+									[
+										"SG",
+										"Singapore"
+									],
+									[
+										"SK",
+										"Slovakia"
+									],
+									[
+										"SI",
+										"Slovenia"
+									],
+									[
+										"SB",
+										"Solomon Islands"
+									],
+									[
+										"SO",
+										"Somalia"
+									],
+									[
+										"ZA",
+										"South Africa"
+									],
+									[
+										"SS",
+										"South Sudan"
+									],
+									[
+										"ES",
+										"Spain"
+									],
+									[
+										"LK",
+										"Sri Lanka"
+									],
+									[
+										"SD",
+										"Sudan"
+									],
+									[
+										"SR",
+										"Suriname"
+									],
+									[
+										"SE",
+										"Sweden"
+									],
+									[
+										"CH",
+										"Switzerland"
+									],
+									[
+										"SY",
+										"Syrian Arab Republic"
+									],
+									[
+										"TW",
+										"Taiwan"
+									],
+									[
+										"TJ",
+										"Tajikistan"
+									],
+									[
+										"TZ",
+										"Tanzania"
+									],
+									[
+										"TH",
+										"Thailand"
+									],
+									[
+										"TL",
+										"Timor-Leste"
+									],
+									[
+										"TG",
+										"Togo"
+									],
+									[
+										"TO",
+										"Tonga"
+									],
+									[
+										"TT",
+										"Trinidad and Tobago"
+									],
+									[
+										"TN",
+										"Tunisia"
+									],
+									[
+										"TR",
+										"Turkey"
+									],
+									[
+										"TM",
+										"Turkmenistan"
+									],
+									[
+										"TV",
+										"Tuvalu"
+									],
+									[
+										"UG",
+										"Uganda"
+									],
+									[
+										"UA",
+										"Ukraine"
+									],
+									[
+										"AE",
+										"United Arab Emirates"
+									],
+									[
+										"GB",
+										"United Kingdom"
+									],
+									[
+										"US",
+										"United States"
+									],
+									[
+										"UY",
+										"Uruguay"
+									],
+									[
+										"UZ",
+										"Uzbekistan"
+									],
+									[
+										"VU",
+										"Vanuatu"
+									],
+									[
+										"VE",
+										"Venezuela"
+									],
+									[
+										"VN",
+										"Viet Nam"
+									],
+									[
+										"YE",
+										"Yemen"
+									],
+									[
+										"ZM",
+										"Zambia"
+									],
+									[
+										"ZW",
+										"Zimbabwe"
+									]
+								],
+								"verbatim": "\n                <option value=\"\" disabled selected>Select country…</option>\n                <!-- Frequently Used Countries Pinned to Top -->\n                <option value=\"US\">United States</option>\n                <option value=\"GB\">United Kingdom</option>\n                <option value=\"CA\">Canada</option>\n                <option value=\"ZA\">South Africa</option>\n                <option value=\"AU\">Australia</option>\n                <option disabled>──────────</option>\n                <!-- Complete ISO Alphabetical List -->\n                <option value=\"AF\">Afghanistan</option>\n                <option value=\"AL\">Albania</option>\n                <option value=\"DZ\">Algeria</option>\n                <option value=\"AS\">American Samoa</option>\n                <option value=\"AD\">Andorra</option>\n                <option value=\"AO\">Angola</option>\n                <option value=\"AI\">Anguilla</option>\n                <option value=\"AG\">Antigua and Barbuda</option>\n                <option value=\"AR\">Argentina</option>\n                <option value=\"AM\">Armenia</option>\n                <option value=\"AW\">Aruba</option>\n                <option value=\"AT\">Austria</option>\n                <option value=\"AZ\">Azerbaijan</option>\n                <option value=\"BS\">Bahamas</option>\n                <option value=\"BH\">Bahrain</option>\n                <option value=\"BD\">Bangladesh</option>\n                <option value=\"BB\">Barbados</option>\n                <option value=\"BY\">Belarus</option>\n                <option value=\"BE\">Belgium</option>\n                <option value=\"BZ\">Belize</option>\n                <option value=\"BJ\">Benin</option>\n                <option value=\"BM\">Bermuda</option>\n                <option value=\"BT\">Bhutan</option>\n                <option value=\"BO\">Bolivia</option>\n                <option value=\"BA\">Bosnia and Herzegovina</option>\n                <option value=\"BW\">Botswana</option>\n                <option value=\"BR\">Brazil</option>\n                <option value=\"BN\">Brunei Darussalam</option>\n                <option value=\"BG\">Bulgaria</option>\n                <option value=\"BF\">Burkina Faso</option>\n                <option value=\"BI\">Burundi</option>\n                <option value=\"CV\">Cabo Verde</option>\n                <option value=\"KH\">Cambodia</option>\n                <option value=\"CM\">Cameroon</option>\n                <option value=\"KY\">Cayman Islands</option>\n                <option value=\"CF\">Central African Republic</option>\n                <option value=\"TD\">Chad</option>\n                <option value=\"CL\">Chile</option>\n                <option value=\"CN\">China</option>\n                <option value=\"CO\">Colombia</option>\n                <option value=\"KM\">Comoros</option>\n                <option value=\"CG\">Congo</option>\n                <option value=\"CD\">Congo, Democratic Republic of the</option>\n                <option value=\"CR\">Costa Rica</option>\n                <option value=\"HR\">Croatia</option>\n                <option value=\"CU\">Cuba</option>\n                <option value=\"CY\">Cyprus</option>\n                <option value=\"CZ\">Czechia</option>\n                <option value=\"DK\">Denmark</option>\n                <option value=\"DJ\">Djibouti</option>\n                <option value=\"DM\">Dominica</option>\n                <option value=\"DO\">Dominican Republic</option>\n                <option value=\"EC\">Ecuador</option>\n                <option value=\"EG\">Egypt</option>\n                <option value=\"SV\">El Salvador</option>\n                <option value=\"GQ\">Equatorial Guinea</option>\n                <option value=\"ER\">Eritrea</option>\n                <option value=\"EE\">Estonia</option>\n                <option value=\"SZ\">Eswatini</option>\n                <option value=\"ET\">Ethiopia</option>\n                <option value=\"FJ\">Fiji</option>\n                <option value=\"FI\">Finland</option>\n                <option value=\"FR\">France</option>\n                <option value=\"GF\">French Guiana</option>\n                <option value=\"PF\">French Polynesia</option>\n                <option value=\"GA\">Gabon</option>\n                <option value=\"GM\">Gambia</option>\n                <option value=\"GE\">Georgia</option>\n                <option value=\"DE\">Germany</option>\n                <option value=\"GH\">Ghana</option>\n                <option value=\"GR\">Greece</option>\n                <option value=\"GL\">Greenland</option>\n                <option value=\"GD\">Grenada</option>\n                <option value=\"GU\">Guam</option>\n                <option value=\"GT\">Guatemala</option>\n                <option value=\"GN\">Guinea</option>\n                <option value=\"GW\">Guinea-Bissau</option>\n                <option value=\"GY\">Guyana</option>\n                <option value=\"HT\">Haiti</option>\n                <option value=\"HN\">Honduras</option>\n                <option value=\"HK\">Hong Kong</option>\n                <option value=\"HU\">Hungary</option>\n                <option value=\"IS\">Iceland</option>\n                <option value=\"IN\">India</option>\n                <option value=\"ID\">Indonesia</option>\n                <option value=\"IR\">Iran</option>\n                <option value=\"IQ\">Iraq</option>\n                <option value=\"IE\">Ireland</option>\n                <option value=\"IL\">Israel</option>\n                <option value=\"IT\">Italy</option>\n                <option value=\"JM\">Jamaica</option>\n                <option value=\"JP\">Japan</option>\n                <option value=\"JO\">Jordan</option>\n                <option value=\"KZ\">Kazakhstan</option>\n                <option value=\"KE\">Kenya</option>\n                <option value=\"KI\">Kiribati</option>\n                <option value=\"KP\">Korea (North)</option>\n                <option value=\"KR\">Korea (South)</option>\n                <option value=\"KW\">Kuwait</option>\n                <option value=\"KG\">Kyrgyzstan</option>\n                <option value=\"LA\">Lao People's Democratic Republic</option>\n                <option value=\"LV\">Latvia</option>\n                <option value=\"LB\">Lebanon</option>\n                <option value=\"LS\">Lesotho</option>\n                <option value=\"LR\">Liberia</option>\n                <option value=\"LY\">Libya</option>\n                <option value=\"LI\">Liechtenstein</option>\n                <option value=\"LT\">Lithuania</option>\n                <option value=\"LU\">Luxembourg</option>\n                <option value=\"MO\">Macao</option>\n                <option value=\"MG\">Madagascar</option>\n                <option value=\"MW\">Malawi</option>\n                <option value=\"MY\">Malaysia</option>\n                <option value=\"MV\">Maldives</option>\n                <option value=\"ML\">Mali</option>\n                <option value=\"MT\">Malta</option>\n                <option value=\"MR\">Mauritania</option>\n                <option value=\"MU\">Mauritius</option>\n                <option value=\"MX\">Mexico</option>\n                <option value=\"FM\">Micronesia</option>\n                <option value=\"MD\">Moldova</option>\n                <option value=\"MC\">Monaco</option>\n                <option value=\"MN\">Mongolia</option>\n                <option value=\"ME\">Montenegro</option>\n                <option value=\"MA\">Morocco</option>\n                <option value=\"MZ\">Mozambique</option>\n                <option value=\"MM\">Myanmar</option>\n                <option value=\"NA\">Namibia</option>\n                <option value=\"NR\">Nauru</option>\n                <option value=\"NP\">Nepal</option>\n                <option value=\"NL\">Netherlands</option>\n                <option value=\"NC\">New Caledonia</option>\n                <option value=\"NZ\">New Zealand</option>\n                <option value=\"NI\">Nicaragua</option>\n                <option value=\"NE\">Niger</option>\n                <option value=\"NG\">Nigeria</option>\n                <option value=\"NO\">Norway</option>\n                <option value=\"OM\">Oman</option>\n                <option value=\"PK\">Pakistan</option>\n                <option value=\"PW\">Palau</option>\n                <option value=\"PA\">Panama</option>\n                <option value=\"PG\">Papua New Guinea</option>\n                <option value=\"PY\">Paraguay</option>\n                <option value=\"PE\">Peru</option>\n                <option value=\"PH\">Philippines</option>\n                <option value=\"PL\">Poland</option>\n                <option value=\"PT\">Portugal</option>\n                <option value=\"PR\">Puerto Rico</option>\n                <option value=\"QA\">Qatar</option>\n                <option value=\"RO\">Romania</option>\n                <option value=\"RU\">Russian Federation</option>\n                <option value=\"RW\">Rwanda</option>\n                <option value=\"WS\">Samoa</option>\n                <option value=\"SM\">San Marino</option>\n                <option value=\"ST\">Sao Tome and Principe</option>\n                <option value=\"SA\">Saudi Arabia</option>\n                <option value=\"SN\">Senegal</option>\n                <option value=\"RS\">Serbia</option>\n                <option value=\"SC\">Seychelles</option>\n                <option value=\"SL\">Sierra Leone</option>\n                <option value=\"SG\">Singapore</option>\n                <option value=\"SK\">Slovakia</option>\n                <option value=\"SI\">Slovenia</option>\n                <option value=\"SB\">Solomon Islands</option>\n                <option value=\"SO\">Somalia</option>\n                <option value=\"SS\">South Sudan</option>\n                <option value=\"ES\">Spain</option>\n                <option value=\"LK\">Sri Lanka</option>\n                <option value=\"SD\">Sudan</option>\n                <option value=\"SR\">Suriname</option>\n                <option value=\"SE\">Sweden</option>\n                <option value=\"CH\">Switzerland</option>\n                <option value=\"SY\">Syrian Arab Republic</option>\n                <option value=\"TW\">Taiwan</option>\n                <option value=\"TJ\">Tajikistan</option>\n                <option value=\"TZ\">Tanzania</option>\n                <option value=\"TH\">Thailand</option>\n                <option value=\"TL\">Timor-Leste</option>\n                <option value=\"TG\">Togo</option>\n                <option value=\"TO\">Tonga</option>\n                <option value=\"TT\">Trinidad and Tobago</option>\n                <option value=\"TN\">Tunisia</option>\n                <option value=\"TR\">Turkey</option>\n                <option value=\"TM\">Turkmenistan</option>\n                <option value=\"TV\">Tuvalu</option>\n                <option value=\"UG\">Uganda</option>\n                <option value=\"UA\">Ukraine</option>\n                <option value=\"AE\">United Arab Emirates</option>\n                <option value=\"UY\">Uruguay</option>\n                <option value=\"UZ\">Uzbekistan</option>\n                <option value=\"VU\">Vanuatu</option>\n                <option value=\"VE\">Venezuela</option>\n                <option value=\"VN\">Viet Nam</option>\n                <option value=\"YE\">Yemen</option>\n                <option value=\"ZM\">Zambia</option>\n                <option value=\"ZW\">Zimbabwe</option>\n              "
+							}
 						}
 					]
 				},
@@ -547,18 +1380,6 @@
 							"sort": 0
 						}
 					]
-				}
-			]
-		},
-		{
-			"id": "content_list_rep_option_2",
-			"label": "Country Options",
-			"items": [
-				{
-					"kind": "list",
-					"id": "rep_option_2",
-					"label": "Country Options",
-					"order": 0
 				}
 			]
 		},
@@ -3867,1479 +4688,6 @@
 			"block_label": "Title Options"
 		},
 		{
-			"id": "rep_option_2",
-			"label": "Country Options",
-			"item_label": "{{{ label }}}",
-			"controls": [
-				{
-					"id": "value",
-					"control": "hidden",
-					"label": "Value (optional attribute)",
-					"esc": "attrs",
-					"default": " value=\"\""
-				},
-				{
-					"id": "disabled",
-					"control": "hidden",
-					"label": "Disabled (optional attribute)",
-					"esc": "attrs",
-					"default": ""
-				},
-				{
-					"id": "selected",
-					"control": "hidden",
-					"label": "Selected (optional attribute)",
-					"esc": "attrs",
-					"default": ""
-				},
-				{
-					"id": "label",
-					"control": "text",
-					"label": "Label",
-					"esc": "html",
-					"default": "Select country…"
-				},
-				{
-					"id": "_uew_sep",
-					"control": "hidden",
-					"label": "Separator markup",
-					"esc": "raw",
-					"default": "\n                "
-				}
-			],
-			"rows": [
-				{
-					"value": " value=\"\"",
-					"disabled": " disabled",
-					"selected": " selected",
-					"label": "Select country…",
-					"_uew_sep": ""
-				},
-				{
-					"value": " value=\"US\"",
-					"disabled": "",
-					"selected": "",
-					"label": "United States",
-					"_uew_sep": "\n                <!-- Frequently Used Countries Pinned to Top -->\n                "
-				},
-				{
-					"value": " value=\"GB\"",
-					"disabled": "",
-					"selected": "",
-					"label": "United Kingdom",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"CA\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Canada",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"ZA\"",
-					"disabled": "",
-					"selected": "",
-					"label": "South Africa",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"AU\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Australia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": "",
-					"disabled": " disabled",
-					"selected": "",
-					"label": "──────────",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"AF\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Afghanistan",
-					"_uew_sep": "\n                <!-- Complete ISO Alphabetical List -->\n                "
-				},
-				{
-					"value": " value=\"AL\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Albania",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"DZ\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Algeria",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"AS\"",
-					"disabled": "",
-					"selected": "",
-					"label": "American Samoa",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"AD\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Andorra",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"AO\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Angola",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"AI\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Anguilla",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"AG\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Antigua and Barbuda",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"AR\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Argentina",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"AM\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Armenia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"AW\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Aruba",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"AT\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Austria",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"AZ\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Azerbaijan",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BS\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Bahamas",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BH\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Bahrain",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BD\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Bangladesh",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BB\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Barbados",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BY\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Belarus",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BE\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Belgium",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BZ\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Belize",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BJ\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Benin",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BM\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Bermuda",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BT\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Bhutan",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BO\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Bolivia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BA\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Bosnia and Herzegovina",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BW\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Botswana",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BR\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Brazil",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BN\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Brunei Darussalam",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BG\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Bulgaria",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BF\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Burkina Faso",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"BI\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Burundi",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"CV\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Cabo Verde",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"KH\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Cambodia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"CM\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Cameroon",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"KY\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Cayman Islands",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"CF\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Central African Republic",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"TD\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Chad",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"CL\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Chile",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"CN\"",
-					"disabled": "",
-					"selected": "",
-					"label": "China",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"CO\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Colombia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"KM\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Comoros",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"CG\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Congo",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"CD\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Congo, Democratic Republic of the",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"CR\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Costa Rica",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"HR\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Croatia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"CU\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Cuba",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"CY\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Cyprus",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"CZ\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Czechia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"DK\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Denmark",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"DJ\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Djibouti",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"DM\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Dominica",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"DO\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Dominican Republic",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"EC\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Ecuador",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"EG\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Egypt",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"SV\"",
-					"disabled": "",
-					"selected": "",
-					"label": "El Salvador",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"GQ\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Equatorial Guinea",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"ER\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Eritrea",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"EE\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Estonia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"SZ\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Eswatini",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"ET\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Ethiopia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"FJ\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Fiji",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"FI\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Finland",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"FR\"",
-					"disabled": "",
-					"selected": "",
-					"label": "France",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"GF\"",
-					"disabled": "",
-					"selected": "",
-					"label": "French Guiana",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"PF\"",
-					"disabled": "",
-					"selected": "",
-					"label": "French Polynesia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"GA\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Gabon",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"GM\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Gambia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"GE\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Georgia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"DE\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Germany",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"GH\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Ghana",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"GR\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Greece",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"GL\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Greenland",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"GD\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Grenada",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"GU\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Guam",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"GT\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Guatemala",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"GN\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Guinea",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"GW\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Guinea-Bissau",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"GY\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Guyana",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"HT\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Haiti",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"HN\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Honduras",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"HK\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Hong Kong",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"HU\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Hungary",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"IS\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Iceland",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"IN\"",
-					"disabled": "",
-					"selected": "",
-					"label": "India",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"ID\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Indonesia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"IR\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Iran",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"IQ\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Iraq",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"IE\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Ireland",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"IL\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Israel",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"IT\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Italy",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"JM\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Jamaica",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"JP\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Japan",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"JO\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Jordan",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"KZ\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Kazakhstan",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"KE\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Kenya",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"KI\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Kiribati",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"KP\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Korea (North)",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"KR\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Korea (South)",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"KW\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Kuwait",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"KG\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Kyrgyzstan",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"LA\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Lao People's Democratic Republic",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"LV\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Latvia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"LB\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Lebanon",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"LS\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Lesotho",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"LR\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Liberia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"LY\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Libya",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"LI\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Liechtenstein",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"LT\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Lithuania",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"LU\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Luxembourg",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"MO\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Macao",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"MG\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Madagascar",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"MW\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Malawi",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"MY\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Malaysia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"MV\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Maldives",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"ML\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Mali",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"MT\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Malta",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"MR\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Mauritania",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"MU\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Mauritius",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"MX\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Mexico",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"FM\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Micronesia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"MD\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Moldova",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"MC\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Monaco",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"MN\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Mongolia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"ME\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Montenegro",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"MA\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Morocco",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"MZ\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Mozambique",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"MM\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Myanmar",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"NA\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Namibia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"NR\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Nauru",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"NP\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Nepal",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"NL\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Netherlands",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"NC\"",
-					"disabled": "",
-					"selected": "",
-					"label": "New Caledonia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"NZ\"",
-					"disabled": "",
-					"selected": "",
-					"label": "New Zealand",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"NI\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Nicaragua",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"NE\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Niger",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"NG\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Nigeria",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"NO\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Norway",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"OM\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Oman",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"PK\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Pakistan",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"PW\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Palau",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"PA\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Panama",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"PG\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Papua New Guinea",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"PY\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Paraguay",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"PE\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Peru",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"PH\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Philippines",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"PL\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Poland",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"PT\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Portugal",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"PR\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Puerto Rico",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"QA\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Qatar",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"RO\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Romania",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"RU\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Russian Federation",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"RW\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Rwanda",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"WS\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Samoa",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"SM\"",
-					"disabled": "",
-					"selected": "",
-					"label": "San Marino",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"ST\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Sao Tome and Principe",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"SA\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Saudi Arabia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"SN\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Senegal",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"RS\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Serbia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"SC\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Seychelles",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"SL\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Sierra Leone",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"SG\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Singapore",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"SK\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Slovakia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"SI\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Slovenia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"SB\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Solomon Islands",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"SO\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Somalia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"SS\"",
-					"disabled": "",
-					"selected": "",
-					"label": "South Sudan",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"ES\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Spain",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"LK\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Sri Lanka",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"SD\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Sudan",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"SR\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Suriname",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"SE\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Sweden",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"CH\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Switzerland",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"SY\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Syrian Arab Republic",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"TW\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Taiwan",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"TJ\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Tajikistan",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"TZ\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Tanzania",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"TH\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Thailand",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"TL\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Timor-Leste",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"TG\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Togo",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"TO\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Tonga",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"TT\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Trinidad and Tobago",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"TN\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Tunisia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"TR\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Turkey",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"TM\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Turkmenistan",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"TV\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Tuvalu",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"UG\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Uganda",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"UA\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Ukraine",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"AE\"",
-					"disabled": "",
-					"selected": "",
-					"label": "United Arab Emirates",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"UY\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Uruguay",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"UZ\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Uzbekistan",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"VU\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Vanuatu",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"VE\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Venezuela",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"VN\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Viet Nam",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"YE\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Yemen",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"ZM\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Zambia",
-					"_uew_sep": "\n                "
-				},
-				{
-					"value": " value=\"ZW\"",
-					"disabled": "",
-					"selected": "",
-					"label": "Zimbabwe",
-					"_uew_sep": "\n                "
-				}
-			],
-			"loops": 1,
-			"selector": null,
-			"notice": "Each option&rsquo;s <strong>Value</strong> is what the form submits. Edit labels freely; change a value only if whatever receives it expects the new one.",
-			"portal": null,
-			"base_label": "Options",
-			"region": "r_plan_a_journey",
-			"order": 46,
-			"block_label": "Country Options"
-		},
-		{
 			"id": "rep_option_3",
 			"label": "Month Options",
 			"item_label": "{{{ label }}}",
@@ -7497,6 +6845,839 @@
 			"esc": "post",
 			"group": "p_ct_f_row_div_label",
 			"sort": 0
+		},
+		{
+			"id": "c_ct_f_row_div_select_countries",
+			"control": "country_list",
+			"label": "Countries Listed First",
+			"description": "The countries shown at the top of the list. Every other country follows in alphabetical order.",
+			"default": [
+				"US",
+				"GB",
+				"CA",
+				"ZA",
+				"AU"
+			],
+			"esc": "country_list",
+			"group": "p_ct_f_row_div_select",
+			"sort": 2,
+			"country": {
+				"prompt": "Select country…",
+				"pinned": [
+					"US",
+					"GB",
+					"CA",
+					"ZA",
+					"AU"
+				],
+				"all": [
+					[
+						"AF",
+						"Afghanistan"
+					],
+					[
+						"AL",
+						"Albania"
+					],
+					[
+						"DZ",
+						"Algeria"
+					],
+					[
+						"AS",
+						"American Samoa"
+					],
+					[
+						"AD",
+						"Andorra"
+					],
+					[
+						"AO",
+						"Angola"
+					],
+					[
+						"AI",
+						"Anguilla"
+					],
+					[
+						"AG",
+						"Antigua and Barbuda"
+					],
+					[
+						"AR",
+						"Argentina"
+					],
+					[
+						"AM",
+						"Armenia"
+					],
+					[
+						"AW",
+						"Aruba"
+					],
+					[
+						"AU",
+						"Australia"
+					],
+					[
+						"AT",
+						"Austria"
+					],
+					[
+						"AZ",
+						"Azerbaijan"
+					],
+					[
+						"BS",
+						"Bahamas"
+					],
+					[
+						"BH",
+						"Bahrain"
+					],
+					[
+						"BD",
+						"Bangladesh"
+					],
+					[
+						"BB",
+						"Barbados"
+					],
+					[
+						"BY",
+						"Belarus"
+					],
+					[
+						"BE",
+						"Belgium"
+					],
+					[
+						"BZ",
+						"Belize"
+					],
+					[
+						"BJ",
+						"Benin"
+					],
+					[
+						"BM",
+						"Bermuda"
+					],
+					[
+						"BT",
+						"Bhutan"
+					],
+					[
+						"BO",
+						"Bolivia"
+					],
+					[
+						"BA",
+						"Bosnia and Herzegovina"
+					],
+					[
+						"BW",
+						"Botswana"
+					],
+					[
+						"BR",
+						"Brazil"
+					],
+					[
+						"BN",
+						"Brunei Darussalam"
+					],
+					[
+						"BG",
+						"Bulgaria"
+					],
+					[
+						"BF",
+						"Burkina Faso"
+					],
+					[
+						"BI",
+						"Burundi"
+					],
+					[
+						"CV",
+						"Cabo Verde"
+					],
+					[
+						"KH",
+						"Cambodia"
+					],
+					[
+						"CM",
+						"Cameroon"
+					],
+					[
+						"CA",
+						"Canada"
+					],
+					[
+						"KY",
+						"Cayman Islands"
+					],
+					[
+						"CF",
+						"Central African Republic"
+					],
+					[
+						"TD",
+						"Chad"
+					],
+					[
+						"CL",
+						"Chile"
+					],
+					[
+						"CN",
+						"China"
+					],
+					[
+						"CO",
+						"Colombia"
+					],
+					[
+						"KM",
+						"Comoros"
+					],
+					[
+						"CG",
+						"Congo"
+					],
+					[
+						"CD",
+						"Congo, Democratic Republic of the"
+					],
+					[
+						"CR",
+						"Costa Rica"
+					],
+					[
+						"HR",
+						"Croatia"
+					],
+					[
+						"CU",
+						"Cuba"
+					],
+					[
+						"CY",
+						"Cyprus"
+					],
+					[
+						"CZ",
+						"Czechia"
+					],
+					[
+						"DK",
+						"Denmark"
+					],
+					[
+						"DJ",
+						"Djibouti"
+					],
+					[
+						"DM",
+						"Dominica"
+					],
+					[
+						"DO",
+						"Dominican Republic"
+					],
+					[
+						"EC",
+						"Ecuador"
+					],
+					[
+						"EG",
+						"Egypt"
+					],
+					[
+						"SV",
+						"El Salvador"
+					],
+					[
+						"GQ",
+						"Equatorial Guinea"
+					],
+					[
+						"ER",
+						"Eritrea"
+					],
+					[
+						"EE",
+						"Estonia"
+					],
+					[
+						"SZ",
+						"Eswatini"
+					],
+					[
+						"ET",
+						"Ethiopia"
+					],
+					[
+						"FJ",
+						"Fiji"
+					],
+					[
+						"FI",
+						"Finland"
+					],
+					[
+						"FR",
+						"France"
+					],
+					[
+						"GF",
+						"French Guiana"
+					],
+					[
+						"PF",
+						"French Polynesia"
+					],
+					[
+						"GA",
+						"Gabon"
+					],
+					[
+						"GM",
+						"Gambia"
+					],
+					[
+						"GE",
+						"Georgia"
+					],
+					[
+						"DE",
+						"Germany"
+					],
+					[
+						"GH",
+						"Ghana"
+					],
+					[
+						"GR",
+						"Greece"
+					],
+					[
+						"GL",
+						"Greenland"
+					],
+					[
+						"GD",
+						"Grenada"
+					],
+					[
+						"GU",
+						"Guam"
+					],
+					[
+						"GT",
+						"Guatemala"
+					],
+					[
+						"GN",
+						"Guinea"
+					],
+					[
+						"GW",
+						"Guinea-Bissau"
+					],
+					[
+						"GY",
+						"Guyana"
+					],
+					[
+						"HT",
+						"Haiti"
+					],
+					[
+						"HN",
+						"Honduras"
+					],
+					[
+						"HK",
+						"Hong Kong"
+					],
+					[
+						"HU",
+						"Hungary"
+					],
+					[
+						"IS",
+						"Iceland"
+					],
+					[
+						"IN",
+						"India"
+					],
+					[
+						"ID",
+						"Indonesia"
+					],
+					[
+						"IR",
+						"Iran"
+					],
+					[
+						"IQ",
+						"Iraq"
+					],
+					[
+						"IE",
+						"Ireland"
+					],
+					[
+						"IL",
+						"Israel"
+					],
+					[
+						"IT",
+						"Italy"
+					],
+					[
+						"JM",
+						"Jamaica"
+					],
+					[
+						"JP",
+						"Japan"
+					],
+					[
+						"JO",
+						"Jordan"
+					],
+					[
+						"KZ",
+						"Kazakhstan"
+					],
+					[
+						"KE",
+						"Kenya"
+					],
+					[
+						"KI",
+						"Kiribati"
+					],
+					[
+						"KP",
+						"Korea (North)"
+					],
+					[
+						"KR",
+						"Korea (South)"
+					],
+					[
+						"KW",
+						"Kuwait"
+					],
+					[
+						"KG",
+						"Kyrgyzstan"
+					],
+					[
+						"LA",
+						"Lao People's Democratic Republic"
+					],
+					[
+						"LV",
+						"Latvia"
+					],
+					[
+						"LB",
+						"Lebanon"
+					],
+					[
+						"LS",
+						"Lesotho"
+					],
+					[
+						"LR",
+						"Liberia"
+					],
+					[
+						"LY",
+						"Libya"
+					],
+					[
+						"LI",
+						"Liechtenstein"
+					],
+					[
+						"LT",
+						"Lithuania"
+					],
+					[
+						"LU",
+						"Luxembourg"
+					],
+					[
+						"MO",
+						"Macao"
+					],
+					[
+						"MG",
+						"Madagascar"
+					],
+					[
+						"MW",
+						"Malawi"
+					],
+					[
+						"MY",
+						"Malaysia"
+					],
+					[
+						"MV",
+						"Maldives"
+					],
+					[
+						"ML",
+						"Mali"
+					],
+					[
+						"MT",
+						"Malta"
+					],
+					[
+						"MR",
+						"Mauritania"
+					],
+					[
+						"MU",
+						"Mauritius"
+					],
+					[
+						"MX",
+						"Mexico"
+					],
+					[
+						"FM",
+						"Micronesia"
+					],
+					[
+						"MD",
+						"Moldova"
+					],
+					[
+						"MC",
+						"Monaco"
+					],
+					[
+						"MN",
+						"Mongolia"
+					],
+					[
+						"ME",
+						"Montenegro"
+					],
+					[
+						"MA",
+						"Morocco"
+					],
+					[
+						"MZ",
+						"Mozambique"
+					],
+					[
+						"MM",
+						"Myanmar"
+					],
+					[
+						"NA",
+						"Namibia"
+					],
+					[
+						"NR",
+						"Nauru"
+					],
+					[
+						"NP",
+						"Nepal"
+					],
+					[
+						"NL",
+						"Netherlands"
+					],
+					[
+						"NC",
+						"New Caledonia"
+					],
+					[
+						"NZ",
+						"New Zealand"
+					],
+					[
+						"NI",
+						"Nicaragua"
+					],
+					[
+						"NE",
+						"Niger"
+					],
+					[
+						"NG",
+						"Nigeria"
+					],
+					[
+						"NO",
+						"Norway"
+					],
+					[
+						"OM",
+						"Oman"
+					],
+					[
+						"PK",
+						"Pakistan"
+					],
+					[
+						"PW",
+						"Palau"
+					],
+					[
+						"PA",
+						"Panama"
+					],
+					[
+						"PG",
+						"Papua New Guinea"
+					],
+					[
+						"PY",
+						"Paraguay"
+					],
+					[
+						"PE",
+						"Peru"
+					],
+					[
+						"PH",
+						"Philippines"
+					],
+					[
+						"PL",
+						"Poland"
+					],
+					[
+						"PT",
+						"Portugal"
+					],
+					[
+						"PR",
+						"Puerto Rico"
+					],
+					[
+						"QA",
+						"Qatar"
+					],
+					[
+						"RO",
+						"Romania"
+					],
+					[
+						"RU",
+						"Russian Federation"
+					],
+					[
+						"RW",
+						"Rwanda"
+					],
+					[
+						"WS",
+						"Samoa"
+					],
+					[
+						"SM",
+						"San Marino"
+					],
+					[
+						"ST",
+						"Sao Tome and Principe"
+					],
+					[
+						"SA",
+						"Saudi Arabia"
+					],
+					[
+						"SN",
+						"Senegal"
+					],
+					[
+						"RS",
+						"Serbia"
+					],
+					[
+						"SC",
+						"Seychelles"
+					],
+					[
+						"SL",
+						"Sierra Leone"
+					],
+					[
+						"SG",
+						"Singapore"
+					],
+					[
+						"SK",
+						"Slovakia"
+					],
+					[
+						"SI",
+						"Slovenia"
+					],
+					[
+						"SB",
+						"Solomon Islands"
+					],
+					[
+						"SO",
+						"Somalia"
+					],
+					[
+						"ZA",
+						"South Africa"
+					],
+					[
+						"SS",
+						"South Sudan"
+					],
+					[
+						"ES",
+						"Spain"
+					],
+					[
+						"LK",
+						"Sri Lanka"
+					],
+					[
+						"SD",
+						"Sudan"
+					],
+					[
+						"SR",
+						"Suriname"
+					],
+					[
+						"SE",
+						"Sweden"
+					],
+					[
+						"CH",
+						"Switzerland"
+					],
+					[
+						"SY",
+						"Syrian Arab Republic"
+					],
+					[
+						"TW",
+						"Taiwan"
+					],
+					[
+						"TJ",
+						"Tajikistan"
+					],
+					[
+						"TZ",
+						"Tanzania"
+					],
+					[
+						"TH",
+						"Thailand"
+					],
+					[
+						"TL",
+						"Timor-Leste"
+					],
+					[
+						"TG",
+						"Togo"
+					],
+					[
+						"TO",
+						"Tonga"
+					],
+					[
+						"TT",
+						"Trinidad and Tobago"
+					],
+					[
+						"TN",
+						"Tunisia"
+					],
+					[
+						"TR",
+						"Turkey"
+					],
+					[
+						"TM",
+						"Turkmenistan"
+					],
+					[
+						"TV",
+						"Tuvalu"
+					],
+					[
+						"UG",
+						"Uganda"
+					],
+					[
+						"UA",
+						"Ukraine"
+					],
+					[
+						"AE",
+						"United Arab Emirates"
+					],
+					[
+						"GB",
+						"United Kingdom"
+					],
+					[
+						"US",
+						"United States"
+					],
+					[
+						"UY",
+						"Uruguay"
+					],
+					[
+						"UZ",
+						"Uzbekistan"
+					],
+					[
+						"VU",
+						"Vanuatu"
+					],
+					[
+						"VE",
+						"Venezuela"
+					],
+					[
+						"VN",
+						"Viet Nam"
+					],
+					[
+						"YE",
+						"Yemen"
+					],
+					[
+						"ZM",
+						"Zambia"
+					],
+					[
+						"ZW",
+						"Zimbabwe"
+					]
+				],
+				"verbatim": "\n                <option value=\"\" disabled selected>Select country…</option>\n                <!-- Frequently Used Countries Pinned to Top -->\n                <option value=\"US\">United States</option>\n                <option value=\"GB\">United Kingdom</option>\n                <option value=\"CA\">Canada</option>\n                <option value=\"ZA\">South Africa</option>\n                <option value=\"AU\">Australia</option>\n                <option disabled>──────────</option>\n                <!-- Complete ISO Alphabetical List -->\n                <option value=\"AF\">Afghanistan</option>\n                <option value=\"AL\">Albania</option>\n                <option value=\"DZ\">Algeria</option>\n                <option value=\"AS\">American Samoa</option>\n                <option value=\"AD\">Andorra</option>\n                <option value=\"AO\">Angola</option>\n                <option value=\"AI\">Anguilla</option>\n                <option value=\"AG\">Antigua and Barbuda</option>\n                <option value=\"AR\">Argentina</option>\n                <option value=\"AM\">Armenia</option>\n                <option value=\"AW\">Aruba</option>\n                <option value=\"AT\">Austria</option>\n                <option value=\"AZ\">Azerbaijan</option>\n                <option value=\"BS\">Bahamas</option>\n                <option value=\"BH\">Bahrain</option>\n                <option value=\"BD\">Bangladesh</option>\n                <option value=\"BB\">Barbados</option>\n                <option value=\"BY\">Belarus</option>\n                <option value=\"BE\">Belgium</option>\n                <option value=\"BZ\">Belize</option>\n                <option value=\"BJ\">Benin</option>\n                <option value=\"BM\">Bermuda</option>\n                <option value=\"BT\">Bhutan</option>\n                <option value=\"BO\">Bolivia</option>\n                <option value=\"BA\">Bosnia and Herzegovina</option>\n                <option value=\"BW\">Botswana</option>\n                <option value=\"BR\">Brazil</option>\n                <option value=\"BN\">Brunei Darussalam</option>\n                <option value=\"BG\">Bulgaria</option>\n                <option value=\"BF\">Burkina Faso</option>\n                <option value=\"BI\">Burundi</option>\n                <option value=\"CV\">Cabo Verde</option>\n                <option value=\"KH\">Cambodia</option>\n                <option value=\"CM\">Cameroon</option>\n                <option value=\"KY\">Cayman Islands</option>\n                <option value=\"CF\">Central African Republic</option>\n                <option value=\"TD\">Chad</option>\n                <option value=\"CL\">Chile</option>\n                <option value=\"CN\">China</option>\n                <option value=\"CO\">Colombia</option>\n                <option value=\"KM\">Comoros</option>\n                <option value=\"CG\">Congo</option>\n                <option value=\"CD\">Congo, Democratic Republic of the</option>\n                <option value=\"CR\">Costa Rica</option>\n                <option value=\"HR\">Croatia</option>\n                <option value=\"CU\">Cuba</option>\n                <option value=\"CY\">Cyprus</option>\n                <option value=\"CZ\">Czechia</option>\n                <option value=\"DK\">Denmark</option>\n                <option value=\"DJ\">Djibouti</option>\n                <option value=\"DM\">Dominica</option>\n                <option value=\"DO\">Dominican Republic</option>\n                <option value=\"EC\">Ecuador</option>\n                <option value=\"EG\">Egypt</option>\n                <option value=\"SV\">El Salvador</option>\n                <option value=\"GQ\">Equatorial Guinea</option>\n                <option value=\"ER\">Eritrea</option>\n                <option value=\"EE\">Estonia</option>\n                <option value=\"SZ\">Eswatini</option>\n                <option value=\"ET\">Ethiopia</option>\n                <option value=\"FJ\">Fiji</option>\n                <option value=\"FI\">Finland</option>\n                <option value=\"FR\">France</option>\n                <option value=\"GF\">French Guiana</option>\n                <option value=\"PF\">French Polynesia</option>\n                <option value=\"GA\">Gabon</option>\n                <option value=\"GM\">Gambia</option>\n                <option value=\"GE\">Georgia</option>\n                <option value=\"DE\">Germany</option>\n                <option value=\"GH\">Ghana</option>\n                <option value=\"GR\">Greece</option>\n                <option value=\"GL\">Greenland</option>\n                <option value=\"GD\">Grenada</option>\n                <option value=\"GU\">Guam</option>\n                <option value=\"GT\">Guatemala</option>\n                <option value=\"GN\">Guinea</option>\n                <option value=\"GW\">Guinea-Bissau</option>\n                <option value=\"GY\">Guyana</option>\n                <option value=\"HT\">Haiti</option>\n                <option value=\"HN\">Honduras</option>\n                <option value=\"HK\">Hong Kong</option>\n                <option value=\"HU\">Hungary</option>\n                <option value=\"IS\">Iceland</option>\n                <option value=\"IN\">India</option>\n                <option value=\"ID\">Indonesia</option>\n                <option value=\"IR\">Iran</option>\n                <option value=\"IQ\">Iraq</option>\n                <option value=\"IE\">Ireland</option>\n                <option value=\"IL\">Israel</option>\n                <option value=\"IT\">Italy</option>\n                <option value=\"JM\">Jamaica</option>\n                <option value=\"JP\">Japan</option>\n                <option value=\"JO\">Jordan</option>\n                <option value=\"KZ\">Kazakhstan</option>\n                <option value=\"KE\">Kenya</option>\n                <option value=\"KI\">Kiribati</option>\n                <option value=\"KP\">Korea (North)</option>\n                <option value=\"KR\">Korea (South)</option>\n                <option value=\"KW\">Kuwait</option>\n                <option value=\"KG\">Kyrgyzstan</option>\n                <option value=\"LA\">Lao People's Democratic Republic</option>\n                <option value=\"LV\">Latvia</option>\n                <option value=\"LB\">Lebanon</option>\n                <option value=\"LS\">Lesotho</option>\n                <option value=\"LR\">Liberia</option>\n                <option value=\"LY\">Libya</option>\n                <option value=\"LI\">Liechtenstein</option>\n                <option value=\"LT\">Lithuania</option>\n                <option value=\"LU\">Luxembourg</option>\n                <option value=\"MO\">Macao</option>\n                <option value=\"MG\">Madagascar</option>\n                <option value=\"MW\">Malawi</option>\n                <option value=\"MY\">Malaysia</option>\n                <option value=\"MV\">Maldives</option>\n                <option value=\"ML\">Mali</option>\n                <option value=\"MT\">Malta</option>\n                <option value=\"MR\">Mauritania</option>\n                <option value=\"MU\">Mauritius</option>\n                <option value=\"MX\">Mexico</option>\n                <option value=\"FM\">Micronesia</option>\n                <option value=\"MD\">Moldova</option>\n                <option value=\"MC\">Monaco</option>\n                <option value=\"MN\">Mongolia</option>\n                <option value=\"ME\">Montenegro</option>\n                <option value=\"MA\">Morocco</option>\n                <option value=\"MZ\">Mozambique</option>\n                <option value=\"MM\">Myanmar</option>\n                <option value=\"NA\">Namibia</option>\n                <option value=\"NR\">Nauru</option>\n                <option value=\"NP\">Nepal</option>\n                <option value=\"NL\">Netherlands</option>\n                <option value=\"NC\">New Caledonia</option>\n                <option value=\"NZ\">New Zealand</option>\n                <option value=\"NI\">Nicaragua</option>\n                <option value=\"NE\">Niger</option>\n                <option value=\"NG\">Nigeria</option>\n                <option value=\"NO\">Norway</option>\n                <option value=\"OM\">Oman</option>\n                <option value=\"PK\">Pakistan</option>\n                <option value=\"PW\">Palau</option>\n                <option value=\"PA\">Panama</option>\n                <option value=\"PG\">Papua New Guinea</option>\n                <option value=\"PY\">Paraguay</option>\n                <option value=\"PE\">Peru</option>\n                <option value=\"PH\">Philippines</option>\n                <option value=\"PL\">Poland</option>\n                <option value=\"PT\">Portugal</option>\n                <option value=\"PR\">Puerto Rico</option>\n                <option value=\"QA\">Qatar</option>\n                <option value=\"RO\">Romania</option>\n                <option value=\"RU\">Russian Federation</option>\n                <option value=\"RW\">Rwanda</option>\n                <option value=\"WS\">Samoa</option>\n                <option value=\"SM\">San Marino</option>\n                <option value=\"ST\">Sao Tome and Principe</option>\n                <option value=\"SA\">Saudi Arabia</option>\n                <option value=\"SN\">Senegal</option>\n                <option value=\"RS\">Serbia</option>\n                <option value=\"SC\">Seychelles</option>\n                <option value=\"SL\">Sierra Leone</option>\n                <option value=\"SG\">Singapore</option>\n                <option value=\"SK\">Slovakia</option>\n                <option value=\"SI\">Slovenia</option>\n                <option value=\"SB\">Solomon Islands</option>\n                <option value=\"SO\">Somalia</option>\n                <option value=\"SS\">South Sudan</option>\n                <option value=\"ES\">Spain</option>\n                <option value=\"LK\">Sri Lanka</option>\n                <option value=\"SD\">Sudan</option>\n                <option value=\"SR\">Suriname</option>\n                <option value=\"SE\">Sweden</option>\n                <option value=\"CH\">Switzerland</option>\n                <option value=\"SY\">Syrian Arab Republic</option>\n                <option value=\"TW\">Taiwan</option>\n                <option value=\"TJ\">Tajikistan</option>\n                <option value=\"TZ\">Tanzania</option>\n                <option value=\"TH\">Thailand</option>\n                <option value=\"TL\">Timor-Leste</option>\n                <option value=\"TG\">Togo</option>\n                <option value=\"TO\">Tonga</option>\n                <option value=\"TT\">Trinidad and Tobago</option>\n                <option value=\"TN\">Tunisia</option>\n                <option value=\"TR\">Turkey</option>\n                <option value=\"TM\">Turkmenistan</option>\n                <option value=\"TV\">Tuvalu</option>\n                <option value=\"UG\">Uganda</option>\n                <option value=\"UA\">Ukraine</option>\n                <option value=\"AE\">United Arab Emirates</option>\n                <option value=\"UY\">Uruguay</option>\n                <option value=\"UZ\">Uzbekistan</option>\n                <option value=\"VU\">Vanuatu</option>\n                <option value=\"VE\">Venezuela</option>\n                <option value=\"VN\">Viet Nam</option>\n                <option value=\"YE\">Yemen</option>\n                <option value=\"ZM\">Zambia</option>\n                <option value=\"ZW\">Zimbabwe</option>\n              "
+			}
 		},
 		{
 			"id": "c_ct_f_row_div_select_required",

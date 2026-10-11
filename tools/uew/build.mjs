@@ -23,6 +23,7 @@ import { splitSection, readSectionFile } from './lib/split.mjs';
 import { deriveSection, GENERIC_ROLES } from './lib/derive.mjs';
 import { emitTemplate, emitScript, emitCss, emitWidgetClass, emitSchema, guardPhpNewlines } from './lib/emit.mjs';
 import { registries } from './sections/index.mjs';
+import { buildIconLibrary } from './lib/icons.mjs';
 
 const here = path.dirname( fileURLToPath( import.meta.url ) );
 const repoRoot = path.resolve( here, '..', '..' );
@@ -512,6 +513,13 @@ writeFile(
 		'\t'
 	) + '\n'
 );
+
+/*
+ * The icons the editor's icon picker offers. Built from every schema on disk,
+ * so a `--only` run keeps the icons of sections it did not touch.
+ */
+const iconLibrary = buildIconLibrary( path.join( pluginRoot, 'includes', 'sections' ) );
+writeFile( 'includes/sections/icons.json', JSON.stringify( iconLibrary, null, '\t' ) + '\n' );
 
 /* ----------------------------------------------------------- verification */
 

@@ -357,7 +357,7 @@
 					"control": "text",
 					"label": "Title",
 					"esc": "post",
-					"default": "African-Led &amp; African-Owned"
+					"default": "African-Led & African-Owned"
 				},
 				{
 					"id": "body",

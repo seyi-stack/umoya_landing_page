@@ -172,6 +172,13 @@
 
     #umoya-ways-to-travel .umoya-wtt-track::-webkit-scrollbar { display: none; }
 
+    /* The track scrolls sideways, so keyboard users must be able to reach it
+       (WCAG 2.1.1): focus it, then use the arrow keys. */
+    #umoya-ways-to-travel .umoya-wtt-track:focus-visible {
+      outline: 2px solid var(--terra);
+      outline-offset: 4px;
+    }
+
     #umoya-ways-to-travel .umoya-wtt-card {
       flex: 0 0 calc((100% - 2 * clamp(16px, 2vw, 24px)) / 3);
       min-width: 0;
@@ -302,7 +309,7 @@
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
 
-    <div class="umoya-wtt-track" role="list" aria-label="Travel styles">
+    <div class="umoya-wtt-track" role="list" aria-label="Travel styles" tabindex="0">
 
       <article class="umoya-wtt-card" role="listitem">
         <div class="umoya-wtt-media">

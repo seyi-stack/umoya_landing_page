@@ -237,9 +237,9 @@
 					"controls": [
 						{
 							"id": "c_pv_meta_text",
-							"control": "textarea",
+							"control": "wysiwyg",
 							"label": "Text",
-							"description": "Inline formatting tags are preserved.",
+							"description": "",
 							"default": "<strong>Effective date:</strong> 1 June 2026<br>Version 1.1",
 							"esc": "post",
 							"group": "p_pv_meta",
@@ -1908,8 +1908,8 @@
 			"controls": [
 				{
 					"id": "pv_li_markup",
-					"control": "textarea",
-					"label": "Item (HTML)",
+					"control": "wysiwyg",
+					"label": "Item",
 					"esc": "raw",
 					"default": "Technical information such as your IP address, device type, browser type and operating system."
 				}
@@ -2813,9 +2813,9 @@
 		},
 		{
 			"id": "c_pv_meta_text",
-			"control": "textarea",
+			"control": "wysiwyg",
 			"label": "Text",
-			"description": "Inline formatting tags are preserved.",
+			"description": "",
 			"default": "<strong>Effective date:</strong> 1 June 2026<br>Version 1.1",
 			"esc": "post",
 			"group": "p_pv_meta",

@@ -27,7 +27,6 @@
  * attribute itself.
  */
 import fs from 'fs';
-import os from 'os';
 import path from 'path';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
@@ -242,6 +241,24 @@ function readProbes( probes ) {
 	return out;
 }
 
+/** Runs in the page: the computed look of every element in the section. */
+function fingerprint( rootSelector ) {
+	const props = [ 'box-shadow', 'opacity', 'filter', 'color', 'background-color', 'border-top-width', 'border-top-color', 'font-size', 'font-weight', 'padding-top', 'margin-top', 'transform', 'text-shadow' ];
+	const root = document.querySelector( rootSelector );
+	if ( ! root ) return null;
+	// The heroes fade in; comparing two pages caught at different moments of
+	// that reported opacity 0.998 against 1. Jump every finite animation to
+	// its end so both are read in their settled state.
+	for ( const animation of document.getAnimations() ) {
+		const timing = animation.effect && animation.effect.getComputedTiming ? animation.effect.getComputedTiming() : {};
+		if ( Infinity !== timing.iterations ) animation.finish();
+	}
+	return Array.from( root.querySelectorAll( '*' ) ).map( ( element, index ) => {
+		const style = getComputedStyle( element );
+		return index + ' <' + element.tagName.toLowerCase() + '> ' + props.map( ( p ) => p + ':' + style.getPropertyValue( p ) ).join( '; ' );
+	} );
+}
+
 /** Open each portal the way a visitor would, injecting a trigger if the page has none. */
 async function openPortals( page, portals ) {
 	for ( const portal of portals || [] ) {
@@ -278,9 +295,17 @@ for ( const key of keys ) {
 	const slug = 'uew-probe-' + key.replace( /_/g, '-' );
 	plans[ key ] = { schema, probes, slug };
 	job.pages.push( { slug, title: 'UEW probe: ' + schema.title, widgets: [ { name: schema.name, settings } ] } );
+	// Switching an element's Style row to Custom, and setting nothing else,
+	// must change nothing. Elementor's Box Shadow control used to apply its own
+	// default shadow the moment the row opened.
+	const custom = {};
+	for ( const part of schema.style_parts ) custom[ part.id + '_style' ] = 'yes';
+	job.pages.push( { slug: slug + '-plain', title: 'UEW probe (untouched): ' + schema.title, widgets: [ { name: schema.name, settings: {} } ] } );
+	job.pages.push( { slug: slug + '-custom', title: 'UEW probe (Custom, empty): ' + schema.title, widgets: [ { name: schema.name, settings: custom } ] } );
 }
 
-const jobFile = path.join( os.tmpdir(), 'uew-control-check-' + process.pid + '.json' );
+fs.mkdirSync( path.join( pluginRoot, '.verify' ), { recursive: true } );
+const jobFile = path.join( pluginRoot, '.verify', 'control-check-' + process.pid + '.json' );
 fs.writeFileSync( jobFile, JSON.stringify( job ), 'utf8' );
 let pages;
 try {
@@ -344,6 +369,22 @@ for ( const key of keys ) {
 		}
 		for ( const background of result.backgrounds ) {
 			if ( 'ok' !== background.status ) row.problems.push( 'control "' + background.label + '": ' + background.detail );
+		}
+
+		const looks = {};
+		for ( const variant of [ 'plain', 'custom' ] ) {
+			const target = pages[ slug + '-' + variant ];
+			if ( ! target ) continue;
+			await gotoWithRetry( page, target.url, { waitUntil: 'domcontentloaded', timeout: 60000 } );
+			await page.waitForSelector( schema.root_selector, { timeout: 20000 } );
+			await settle( page, 900 );
+			looks[ variant ] = await page.evaluate( fingerprint, schema.root_selector );
+		}
+		if ( looks.plain && looks.custom ) {
+			const changed = looks.custom.filter( ( line, index ) => line !== looks.plain[ index ] );
+			if ( changed.length ) {
+				row.problems.push( 'switching every Style row to Custom, with nothing set, changed ' + changed.length + ' element(s), e.g. ' + changed[ 0 ].slice( 0, 160 ) );
+			}
 		}
 	} catch ( error ) {
 		row.problems.push( String( error.message || error ).slice( 0, 200 ) );

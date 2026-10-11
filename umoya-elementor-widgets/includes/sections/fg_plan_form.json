@@ -170,9 +170,9 @@
 					"controls": [
 						{
 							"id": "c_fg_pl_ttl_text",
-							"control": "textarea",
+							"control": "wysiwyg",
 							"label": "Title",
-							"description": "Inline formatting tags are preserved.",
+							"description": "",
 							"default": "Let's plan it <em>together</em>.",
 							"esc": "post",
 							"group": "p_fg_pl_ttl",
@@ -3406,9 +3406,9 @@
 		},
 		{
 			"id": "c_fg_pl_ttl_text",
-			"control": "textarea",
+			"control": "wysiwyg",
 			"label": "Title",
-			"description": "Inline formatting tags are preserved.",
+			"description": "",
 			"default": "Let's plan it <em>together</em>.",
 			"esc": "post",
 			"group": "p_fg_pl_ttl",

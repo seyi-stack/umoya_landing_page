@@ -1,9 +1,9 @@
 # CLAUDE.md - Umoya Afrika Tours Project Handoff
 
-Last updated: 2026-10-06
+Last updated: 2026-10-11
 Workspace: `C:\Users\MOVING_SURFACE\Downloads\UM_Claude`
 Remote: `https://github.com/seyi-stack/umoya_landing_page.git`
-Current local branch: `codex/elementor-widget-sync` (pushed; Phase 28 is the latest work — `git log -3` for hashes)
+Current local branch: `codex/elementor-widget-sync` (pushed; Phase 29 is the latest work — `git log -3` for hashes)
 
 This file is the living handoff for the Umoya Afrika Tours website work. It should help any future assistant, developer, or editor understand what has been built, why it was built, how the pieces connect, and what still needs attention.
 
@@ -26,9 +26,9 @@ Use this file before making further changes. The project has moved beyond standa
 > They cover everything built after the widget-generator work, including
 > the two competing header systems on the live site and an unresolved
 > live-site stability problem. For the Elementor widgets, read **Phase 26**,
-> **Phase 28** and `tools/uew/README.md`: every page compiles to native
-> widgets whose panels follow the page's visible blocks, and seven checks prove
-> the rendering, every control, and that every panel opens promptly.
+> **Phase 28**, **Phase 29** and `tools/uew/README.md`: every page compiles to native
+> widgets whose panels follow the page's visible blocks, and eight checks prove
+> the rendering, every control, accessibility, and that every panel opens promptly.
 
 ### Companion notes files
 
@@ -1858,6 +1858,113 @@ a text box); render 63/63; control reach 63/63; behaviour 41/41; browser 63/63;
 editor 63/63, no retries — panels open in 58–920 ms, the slowest Style panel of
 each widget in 0.15–1.2 s, and the heaviest panel holds 623 controls.
 
+### Phase 29 - Client feedback on the live widgets, and an audit, 2026-10-11
+
+The homepage and Founder's Circle pages now run on the 5.0.0 widgets, and the
+client reported five problems while editing them, plus a request to audit for
+bugs, security, failure risks and accessibility. Plugin **5.0.0 → 6.0.0**.
+
+> **Control ids are now load-bearing on the live site.** Every change below
+> keeps existing ids, except where a set of single controls became a list (the
+> footer's Legal links and socials, the forms' country options). Those drop any
+> edit made to them on a live page; nothing else does. Changing a control's
+> *type* under the same id is safe when the stored value means the same thing.
+
+#### The five reported problems
+
+| Reported | Cause | Fix |
+|---|---|---|
+| Country dropdown slow and odd to edit | 200 options as a 200-row list, drawn at once | One **Countries Listed First** picker (`country_list`); the list itself is the CRM's ISO vocabulary and fixed. Left alone it prints the source byte for byte |
+| FC Founding Offer: background gone, height and button wrong | **Not the widget.** The live page still has the *old* pricing section pasted in an HTML widget, sharing `#fc-pricing` and the `.fc-pri-*` classes, and its stylesheet overrides the widget's (`background: var(--cream)`, `.fc-pri-btn { width: 100% }`) | **Delete the old HTML widget on the live FC page.** Each widget now shows an editor-only warning when its root id appears twice on a page |
+| Clicking a Style row's pencil adds a drop shadow | Elementor's Box Shadow control applies its own default shadow as soon as its condition is met | A Shadow dropdown (Default / None / Soft / Medium / Strong) with no default. The new control-check regression then found the same bug in photo filters (`{{SIZE \|\| 100}}` fallback wrote `filter: brightness(100%)…` and wiped the footer logo's own filter); now per-element CSS variables, empty writes nothing |
+| Footer Legal column and socials cannot be added to or removed | Legal items carry different behaviour hooks (Cookie Settings is a button, Email Opt-out opens the pop-up); social links are bare `<a>`s, never treated as list items | **Mixed lists**: one Legal list whose rows have a **Type** (link / Cookie Settings / Email Opt-out); a **Social Links** list with an icon picker. Also: list rows' "This row only" colour lost to `#umoya-footer .umoya-ft-social a` -- row rules now also go through the root id |
+| Icons show as SVG code | Rows' differing `<svg>`s were a raw HTML box | An **icon picker**: a searchable grid (114 line icons: the site's own plus Lucide; 12 social marks: the site's own plus Simple Icons). Stores exactly what the box stored |
+
+Same spirit, same release: every text field that carried inline tags (`<em>` in
+a headline, a bold name, the address's `<br>`s, the accordion and film copy) is
+now Elementor's **visual editor** instead of a box of tags -- 20 single fields
+and 8 list fields. Paragraphs from the visual editor print inline
+(`Value_Formatter::inline_rich()`), since these fields sit inside a `<p>`.
+
+#### Security
+
+All in `class-submissions.php`; unit-tested in `_work/test-submissions.php`
+(not committed) with 21 assertions, and `tools/verify-alias-mapping.mjs` still
+passes.
+
+- **Rate limit could be bypassed.** `get_client_ip()` believed `CF-Connecting-IP`
+  and `X-Forwarded-For` from anyone, so a script could rotate fake addresses
+  past the 8-per-10-minutes limit and flood Umoya Submissions and HubSpot. The
+  header is now believed only when the connection comes from a Cloudflare range
+  (filterable: `umoya_trusted_proxy_ranges`).
+- **The endpoint was an open relay to HubSpot.** Portal and form ids come from
+  the request body, so anyone could make this server post anything to any form
+  in any portal. Only Umoya's portal and its eight forms are forwarded now
+  (`Submissions::HUBSPOT_FORM_IDS`, filterable); anything else is saved and
+  marked `skipped` with the reason. **A new HubSpot form must be added there.**
+  The retired `cb87d460` form the live homepage popup still posts to is now
+  `skipped` instead of `failed` -- it was 404ing anyway; re-paste the popup.
+- **No size limit.** Bodies over 32 KB are refused (413) and each value is
+  capped at 5,000 characters; the raw body is stored for resends, so one request
+  could otherwise put megabytes in the database.
+- Reviewed and fine: admin output escaping, the resend nonce and capability
+  checks, custom CSS (cannot close its `<style>`), section scripts (no
+  HTML-injection sinks), the icon picker (draws only library markup, never a
+  saved value).
+
+#### Accessibility
+
+A new eighth check, **`a11y-check.mjs`**, runs axe-core (WCAG 2.2 A + AA) on
+every widget with dialogs opened. Fixed in the section files:
+
+- Slideshow dots were 11-20 px tap targets (homepage journey, Signature Journey
+  hotels, About). Now 24 px buttons with the visible dot unchanged; the dots sit
+  2-6 px further apart. **Re-paste** `homepage-section-03-signature-journey.html`,
+  `signature-journey/section-05-stays.html` and `about/section-02-who-we-are.html`
+  wherever they are still pasted HTML.
+- The Ways to Travel carousel scrolled sideways but no keyboard could reach it:
+  now focusable with a visible focus ring. **Re-paste**
+  `homepage-section-04-ways-to-travel.html` if pasted.
+
+**Needs the client's decision -- the brand palette fails contrast.** 232
+findings, all the palette itself, reported by the check but not failed:
+
+| Pair | Ratio | Needed | Where |
+|---|---|---|---|
+| Terracotta `#D97E53` on cream | 2.62:1 | 4.5 (3 for large) | eyebrows, accents, italic headline words |
+| Terracotta on white / white on terracotta | 2.97:1 | 4.5 | **every button**, labels |
+| Dark terracotta `#C06840` on cream | 3.5:1 | 4.5 | links, emphasis |
+| Muted brown body text on cream / white | 4.09-4.33:1 | 4.5 | descriptions, fine print |
+
+The muted brown is a near miss that a slightly darker shade would fix without a
+visible change. The terracotta is the brand: passing AA means a darker
+terracotta for small text and buttons (around `#A9552F` on cream), which is a
+visible change and the client's call.
+
+#### Failure risks noted, not changed
+
+- `class-console-cleanup.php` still shims **cookieadmin**, which CookieYes has
+  replaced, and targets a hard-coded homepage element (`.elementor-element-63b2bfb`).
+  Harmless; remove once the live pages are confirmed free of cookieadmin.
+- The homepage live page has the shared nav pasted **twice** in HTML widgets
+  (duplicate `#umoyaSiteNavMount`, `#umoyaSiteNav`). Delete one.
+- Check job files moved from the system temp folder into the git-ignored
+  `umoya-elementor-widgets/.verify/`.
+
+**All eight checks on the final build, 2026-10-11 (mains power):** fidelity
+63/63; edit 63/63 (1,659 controls, 97 lists, plus every library icon, every
+mixed-list kind and visual-editor paragraphs); render 63/63; control reach 63/63
+including "Custom with nothing set changes nothing"; behaviour 41/41; browser
+63/63; editor 63/63, no retries -- panels open in 74-1,542 ms (the contact
+forms' panel, which now draws two country pickers), slowest Style panel
+0.23-1.97 s, heaviest panel 623 controls; accessibility 63/63 with the brand
+palette's 232 contrast findings reported for decision.
+
+Hand-tested in the editor: the icon picker (search, pick, the preview updates,
+undo restores), the footer's Legal list (a Cookie Settings row shows only Type
+and Text; switching a row's Type re-renders it as that kind), the Social Links
+picker (brand marks), and the duplicate-id warning.
+
 ---
 
 ## 6. Repository Map
@@ -1888,9 +1995,9 @@ each widget in 0.15–1.2 s, and the heaviest panel holds 623 controls.
 | `about/` | About Us page — 8 sections. |
 | `for-groups/` | For Groups page — 8 sections. |
 | `theme-overrides/tevily_child/header.php` | Optional child-theme override removing the Tevily header. Not deployed. |
-| `tools/uew/` | **The widget compiler** (all 63 sections, eight page families) + the local WordPress/Elementor test harness + seven checks. Has its own `README.md`. |
+| `tools/uew/` | **The widget compiler** (all 63 sections, eight page families) + the local WordPress/Elementor test harness + eight checks. Has its own `README.md`. |
 | `local-env/` | The harness itself — portable PHP with OPcache, WordPress on SQLite, Elementor 4.2.4. **Git-ignored, generated;** rebuild with `node tools/uew/setup-local-env.mjs`. |
-| `umoya-elementor-widgets/` | Custom Elementor plugin source — 63 compiled section widgets (5.0.0) plus the HubSpot/WordPress submission backend. |
+| `umoya-elementor-widgets/` | Custom Elementor plugin source — 63 compiled section widgets (6.0.0) plus the HubSpot/WordPress submission backend. |
 | `Website docs/` | Legal documents, footer URL map, and Elementor-ready legal snippets. |
 | `hubspot-docx/` | Extracted Word document content for the HubSpot integration brief. |
 | `HubSpot Section 02 Integration Brief.docx` | Original HubSpot handoff brief. |
@@ -1908,7 +2015,7 @@ folders, and the generator that read the originals has been deleted.
 
 ```text
 umoya-elementor-widgets/
-  umoya-elementor-widgets.php          bootstrap, version 5.0.0
+  umoya-elementor-widgets.php          bootstrap, version 6.0.0
   includes/
     class-plugin.php                   categories, widget registration, asset handles
     class-section-registry.php         reads includes/sections/*.json
@@ -1937,7 +2044,7 @@ from the zip.
 `umoya-elementor-widgets/umoya-elementor-widgets.php`:
 
 - Plugin name: `Umoya Elementor Widgets`
-- Version: `5.0.0`
+- Version: `6.0.0`
 - Requires WordPress 5.8+, PHP 7.4+, Elementor (tested up to 4.2.4).
 - Initializes:
   - `Submissions`
@@ -2148,7 +2255,7 @@ build, and the fidelity check is what makes them trustworthy.
 Edit the section file in its folder (the tables above say which), then:
 
 ```powershell
-npm --prefix tools/uew run check   # build + the seven checks
+npm --prefix tools/uew run check   # build + the eight checks
 python tools/build-plugin-zip.py
 ```
 
@@ -2470,11 +2577,11 @@ npm --prefix tools/uew run check
 ```
 
    That runs the build (which **fails** if a template stops reproducing its
-   source byte for byte), then seven checks: edit (every control and list
+   source byte for byte), then eight checks: edit (every control and list
    changed and verified), render, control-reach (every style panel read back in
    a browser), behaviour (lists lengthened and shortened, every control
-   clicked), browser (pixel-level against the pasted original) and editor
-   (opened, edited live). Narrow any of them with `--only=fc_hero,home_hero`;
+   clicked), browser (pixel-level against the pasted original), editor
+   (opened, edited live) and accessibility (axe-core, WCAG 2.2 AA). Narrow any of them with `--only=fc_hero,home_hero`;
    on the build, `--only` merges into the manifest rather than replacing it.
    The harness server must be running for all but the build and edit check.
 
@@ -3066,9 +3173,14 @@ so re-check after a cache purge.
 - ✅ **The panels follow the page** (Phase 28, plugin **5.0.0**): a short list of
   blocks on every tab, one pop-out row per element on the Style tab, settings
   chosen per kind of element, ids taken from the markup.
-- ⏳ **No live page uses the widgets yet.** Every live page is still pasted HTML
-  widgets. Moving a page onto the widgets is a per-page decision; the content is
-  identical either way (the browser check compares exactly that).
+- ✅ **The homepage and Founder's Circle pages run on the widgets** (by
+  2026-10-11); the other pages are still pasted HTML widgets. Control ids are
+  therefore load-bearing now -- see Phase 29. On the FC page, **delete the old
+  pricing HTML widget** (it breaks the Founding Offer); on the homepage, delete
+  the **second pasted nav**.
+- ⏳ **Upload plugin 6.0.0** (Phase 29), then Elementor → Tools → **Clear Files
+  & Data** in each site's own `/wp-admin/` (what Elementor 4.2.4 calls
+  "Regenerate CSS & Data"; per site on this multisite).
 - **After re-uploading the plugin, purge Elementor's cache** (Elementor →
   Tools → Regenerate CSS & Data). Elementor caches rendered widget HTML in post
   meta, so without this a page keeps serving the previous version's markup —
@@ -3398,7 +3510,8 @@ Think of this project as five connected layers:
      WordPress + Elementor 4.2.4 harness: byte fidelity, render, browser and
      editor (defaults), plus edit, control-reach and behaviour (every control
      and list actually changed). One code path, no legacy.
-   - No live page uses the widgets yet; every live page is pasted HTML widgets.
+   - The homepage and Founder's Circle run on the widgets; the other pages are
+     pasted HTML widgets.
 
 4. WordPress/theme layer (lives on the server, not in this repo):
    - Two header systems depending on the Elementor template

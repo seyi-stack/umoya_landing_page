@@ -52,6 +52,10 @@ function uew_prepare_defaults( array $schema ) {
 
 	$c = array();
 	foreach ( $schema['fields'] as $field ) {
+		if ( 'country_list' === $field['control'] ) {
+			$c[ $field['id'] ] = Value_Formatter::country_list( $field['default'], $field['country'] );
+			continue;
+		}
 		if ( ! empty( $field['flag_attr'] ) ) {
 			$c[ $field['id'] ] = Value_Formatter::flag(
 				$field['default'],

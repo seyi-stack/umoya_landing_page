@@ -53,7 +53,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
 
-    <div class="umoya-wtt-track" role="list" aria-label="<?php echo $c['c_umoya_wtt_track_aria_label']; ?>">
+    <div class="umoya-wtt-track" role="list" aria-label="<?php echo $c['c_umoya_wtt_track_aria_label']; ?>" tabindex="0">
 
       <?php $__i = 0; foreach ( $r['rep_article_umoya_wtt_card'] as $it ) : if ( $__i ++ ) { echo '
 

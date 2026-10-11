@@ -201,25 +201,45 @@
       z-index: 2;
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 0;
       transform: translateX(-50%);
     }
 
+    /* Each button is a 24px tap target (WCAG 2.5.8); the visible dot is
+       drawn inside it at its original 11px. */
     #umoya-journey .umoya-journey-dot {
       appearance: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: none;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    #umoya-journey .umoya-journey-dot::before {
+      content: '';
       width: 11px;
       height: 11px;
-      padding: 0;
       border: 1px solid rgba(255,255,255,.85);
       border-radius: 50%;
       background: rgba(255,255,255,.48);
-      cursor: pointer;
       transition: background .22s var(--ease), transform .22s var(--ease);
     }
 
-    #umoya-journey .umoya-journey-dot.is-active {
+    #umoya-journey .umoya-journey-dot.is-active::before {
       background: var(--white);
       transform: scale(1.12);
+    }
+
+    #umoya-journey .umoya-journey-dot:focus-visible {
+      outline: 2px solid var(--white);
+      outline-offset: -2px;
     }
 
     /* Copy block below carousel */

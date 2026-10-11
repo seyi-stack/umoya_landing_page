@@ -108,12 +108,12 @@
     position: absolute;
     left: 0; right: 0; bottom: 14px;
     display: flex;
-    gap: 2px;
+    gap: 0;
     justify-content: center;
     z-index: 3;
   }
   .ab-wh-dot {
-    width: 20px;
+    width: 24px; /* 24px tap target (WCAG 2.5.8); with no gap the dots sit 2px further apart than before */
     height: 34px;
     padding: 0;
     background: none;

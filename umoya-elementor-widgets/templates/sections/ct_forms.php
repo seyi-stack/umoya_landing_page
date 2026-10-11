@@ -144,8 +144,7 @@ if ( ! defined( 'ABSPATH' ) ) {
               <label for="ctCountry"><?php echo $c['c_ct_f_row_div_label_text_5']; ?> <span class="ct-f-req" aria-hidden="true">*</span></label>
               <!-- Same list and same ISO values as the Founder's Circle form,
                    so the `country` property stays consistent across pages. -->
-              <select id="ctCountry" name="<?php echo $c['c_ct_f_row_div_select_name']; ?>"<?php echo $c['c_ct_f_row_div_select_required']; ?><?php echo $c['c_ct_f_row_div_select_disabled']; ?><?php echo $c['c_ct_f_row_div_select_multiple']; ?>>
-                <?php $__i = 0; foreach ( $r['rep_option_2'] as $it ) : if ( $__i ++ ) { echo $it['_uew_sep']; } ?><option<?php echo $it['value']; ?><?php echo $it['disabled']; ?><?php echo $it['selected']; ?> class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['label']; ?></option><?php endforeach; echo "\n              "; ?></select>
+              <select id="ctCountry" name="<?php echo $c['c_ct_f_row_div_select_name']; ?>"<?php echo $c['c_ct_f_row_div_select_required']; ?><?php echo $c['c_ct_f_row_div_select_disabled']; ?><?php echo $c['c_ct_f_row_div_select_multiple']; ?>><?php echo $c['c_ct_f_row_div_select_countries']; ?></select>
             </div>
             <div class="ct-f-field">
               <label for="ctCity"><?php echo $c['c_ct_f_row_div_label_text_6']; ?></label>

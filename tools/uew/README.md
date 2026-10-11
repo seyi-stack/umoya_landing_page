@@ -76,7 +76,11 @@ node tools/uew/browser-check.mjs --shots      # also writes screenshots
 # Open every section in the real Elementor editor, edit it live, check it is usable
 node tools/uew/editor-check.mjs
 
-# All seven, in order -- cheapest and most fundamental first
+# Run axe-core (WCAG 2.2 A + AA) on every widget, its dialogs opened
+node tools/uew/a11y-check.mjs
+node tools/uew/a11y-check.mjs --verbose       # also lists the accepted findings
+
+# All eight, in order -- cheapest and most fundamental first
 npm --prefix tools/uew run check
 ```
 
@@ -311,16 +315,51 @@ how its rows stay correct when edited:
   Item" would post a second `FNAME`. Option lists are lists, with a panel notice
   that each option's value is what is submitted (and a sharper one, from
   `spec.optionNotices`, where a HubSpot dropdown must match exactly).
-- **Different behaviour hooks, different controls.** Items carrying different
-  `data-*` attribute names (`data-wtt-prev` / `data-wtt-next`) are not a list.
+- **Different behaviour hooks, different controls -- except in a list of
+  links.** Items carrying different `data-*` attribute names
+  (`data-wtt-prev` / `data-wtt-next`) are not a list. But a run of `<li>`s
+  where at least two items are plain is a **mixed list**: the footer's Legal
+  column holds the Cookie Settings button and the Email Opt-out link beside
+  ordinary links. Each kind is built (and proved) as its own repeater, then
+  joined: a row carries `uew_kind`, shown as **Type** (labels from
+  `spec.variantLabels`), the template prints that kind's markup, fields that
+  mean the same thing are shared (the text, the link), and the rest are shown
+  only for the kinds that use them. "Add Item" makes a plain link. A kind whose
+  items number themselves rejects the mix.
+- **Icon links are list items.** A bare `<a>` is normally a link in a sentence
+  and never a list, but one holding an `<svg>` is an icon link -- the footer's
+  socials were skipped until this, so they could not be added or removed.
 - **Late attributes and notes.** An attribute only a later item carries (one
   photo's framing `style`, the brochure link's `target`/`rel`) gets a slot in
   the row template; a source comment only one item carries (which photo is the
   approved one) is the row's own, so it travels with its card. Comments are not
   part of an item's shape — counting them once turned six host photos into one
   raw HTML box.
-- **What a row shows.** Wiring (role, ids, aria state, viewBox, lazy-loading)
-  is kept per row but hidden. Content is labelled the way Elementor's widgets
+- **Icons are picked, not typed.** Where rows' `<svg>`s differ, the drawing is
+  one value per row with an **icon picker** (`umoya_icon`,
+  `class-control-icon-picker.php`): a searchable grid of the icons in
+  `includes/sections/icons.json`, which the build writes from every icon the
+  sections already use plus Lucide line icons and Simple Icons social marks
+  (`lib/icons.mjs`; both packages are pinned dev dependencies). Two families:
+  `brand` for icons inside a link to a social network (filled), `line` for the
+  rest (stroked by the section's CSS). The value is still the inside of the
+  `<svg>`, exactly what the old "Icon (HTML)" box held, so ids and saved values
+  are unchanged and the `<svg>` element itself stays the section's own. The
+  editor draws only library markup; a saved value is compared, never inserted.
+- **Formatted words get the visual editor.** A field whose text carries inline
+  formatting (`<em>`, `<strong>`, `<br>`, a link) is a WYSIWYG control, not a
+  box of tags -- in rows too, where the formatting differs row to row (one
+  host's name in bold). The visual editor hands back paragraphs, and these
+  fields sit inside a `<p>` or `<li>`, so `Value_Formatter::inline_rich()` turns
+  paragraph breaks into `<br><br>` and drops the wrappers; a value with no `<p>`
+  prints untouched. Not for a bare `<span>`: TinyMCE throws one away on the
+  first edit, and the hero button and price line style theirs.
+- **A country dropdown is one control.** A `<select>` of 100+ ISO codes is not
+  a 200-row list but a **Countries Listed First** picker
+  (`Value_Formatter::country_list()`): the list itself is the CRM's vocabulary
+  and fixed; the editor chooses only which come first.
+- **What a row shows.** Wiring (role, ids, aria state, viewBox, lazy-loading,
+  `target`/`rel`) is kept per row but hidden. Content is labelled the way Elementor's widgets
   label it: "Choose Image", "Alt Text", "Link", a link's or button's own
   "Text", and the element's class where its role says little ("Role",
   "Description"). A `url()` in a row's style attribute is an image picker. A
@@ -368,11 +407,11 @@ super admins).
 | Attribute value | `attr` / `url` | `esc_attr` / `esc_url` |
 | Optional attribute in a start tag | `attrs` | rebuilt as clean `name="value"` pairs; `" onmouseover="…` has no tag in it and would sail through kses |
 | Inside a comment | `comment` | cannot close the comment early |
-| Markup (an icon's `<svg>`) | `raw` | `wp_kses` with the post list **plus SVG**, which kses would otherwise strip |
+| Markup (an icon's `<svg>`) | `raw` | `wp_kses` with the post list **plus SVG**, which kses would otherwise strip. An icon from the picker's library is trusted like the compiler's own |
 | Whitespace and comments between elements | `trivia` | reduced to whitespace if edited |
 | URL inside a quoted CSS `url()` | `cssurl` | quotes percent-encoded so it cannot end the CSS string |
 
-### Four rules the compiler keeps
+### Five rules the compiler keeps
 
 1. **Styling never touches markup.** Every style control is an Elementor
    `selectors` entry. The section's own stylesheet stays the baseline; controls
@@ -398,7 +437,18 @@ super admins).
    values by id, so an id that followed the display name would quietly reset
    every saved value the day a name improved — renaming "Addr" to "Address"
    would have blanked the footer's address on every page using the widget. Ids
-   change only when the section's markup does.
+   change only when the section's markup does. **Live pages now use the
+   widgets (homepage, Founder's Circle), so a change that drops an id drops
+   that saved edit on the live site.** Changing a control's *type* under the
+   same id is fine when the stored value keeps its meaning -- the icon picker
+   and the visual editor both store exactly what the old boxes stored.
+
+5. **Setting an element's Style row to Custom changes nothing by itself.** A
+   control that writes CSS while empty -- Elementor's Box Shadow default, a
+   filter rule with a `{{SIZE || 100}}` fallback -- applied a shadow, or wiped
+   the footer logo's own filter, the moment the pencil was clicked.
+   `control-check` asserts it: every row set to Custom with nothing filled in
+   must look exactly like the untouched widget.
 
 ---
 
@@ -447,8 +497,8 @@ canvas to show the new text with the section script initialised again on the
 fresh markup, and — for a section with a portal — that exactly one live copy of
 the dialog remains.
 
-The four checks above all prove a widget's *defaults*. These three prove its
-*controls*:
+The four checks above all prove a widget's *defaults*. The next three prove its
+*controls*, and the last its accessibility:
 
 **`edit-check.mjs`** (no server) renders each widget through Elementor's real
 code path once per control: every text, URL, image, dropdown option, switcher
@@ -468,7 +518,13 @@ any dialog has been opened (and so moved to `<body>`). A panel whose selector
 matches nothing, or whose value never arrives, is named. Values that lose to an
 inline `style` attribute are noted, not failed: those properties have their own
 controls, under "Set on the element itself" in the element's pop-out.
-Stylesheet photos are checked on their pseudo-element.
+Stylesheet photos are checked on their pseudo-element. It also loads each
+widget twice more -- untouched, and with **every Style row switched to Custom
+and nothing set** -- and fails if the two look different in any element
+(shadow, opacity, filter, colours, border, type, spacing, transform), with
+finite animations jumped to their end so a fade-in caught mid-way is not a
+difference. That is the regression for the pencil adding a drop shadow, and it
+found the same bug in the photo filters on its first run.
 
 **`behaviour-check.mjs`** gives every list one more row (as "Add Item" would),
 then one fewer, and on each page clicks through every arrow, dot, tab and
@@ -476,9 +532,36 @@ accordion trigger — buttons only, never links or submits — lets auto-advanci
 slideshows turn, and fails on any page error. It also checks that each merged
 list still renders the same number of items in every place.
 
+`edit-check` also picks **every icon in the library** on a row (each must print
+exactly as drawn inside the row's own `<svg>`, changing nothing else), adds a
+row of **every kind** to a mixed list (each must carry its kind's behaviour
+hooks), and types paragraphs into every visual-editor field (they must print
+inline, never as a `<p>` inside a `<p>`).
+
+**`a11y-check.mjs`** runs axe-core (WCAG 2.2 A and AA) on each widget's test
+page with reveal animations finished and every dialog opened, looking only at
+the section itself. Findings that are a decision rather than a defect are listed
+in its `ACCEPTED` table with the reason; today that is only the brand palette's
+contrast (terracotta on cream 2.62:1, white on terracotta 2.97:1, the muted
+brown 4.1-4.3:1), which is the client's call -- it is reported, tallied by colour
+pair, and anything below 2.5:1 still fails. Its first run found, and the
+section files now fix: 11-20 px slideshow dots (now 24 px tap targets, the
+visible dot unchanged) and the Ways to Travel carousel, a scroll area no
+keyboard could reach.
+
 ---
 
 ## Traps worth knowing
+
+**A widget and an old pasted copy of the same section fight.** Every section
+styles and scripts itself by its root id. On the live Founder's Circle page the
+Founding Offer widget lost its background and stretched its button because an
+older pricing block, pasted into an HTML widget years earlier, still sat on the
+page with the same `#fc-pricing` and its own stylesheet. In the editor (only),
+each widget now shows a terracotta notice when a second element on the page
+carries its id (`Section_Widget::print_duplicate_warning()`). The fix is always
+to delete the older copy. `home_why`/`fc_why` and `home_essentials`/
+`fc_essentials` share ids by design and trip it too if placed together.
 
 **The harness's forms still talk to the real HubSpot portal.** Its
 `wp-config.php` sets `WP_HTTP_BLOCK_EXTERNAL`, so WordPress cannot forward a
@@ -570,7 +653,7 @@ Elementor → Tools → Regenerate CSS & Data.
 
 1. Edit the section HTML in its folder (the table at the top says which).
 2. `node tools/uew/build.mjs`
-3. `npm --prefix tools/uew run check` — build and all seven checks
+3. `npm --prefix tools/uew run check` — build and all eight checks
 4. `python tools/build-plugin-zip.py` — never `Compress-Archive`, which writes
    backslash paths WordPress cannot install. The script also refuses a zip in
    which a registered widget is missing any of its files.

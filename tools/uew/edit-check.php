@@ -188,6 +188,46 @@ foreach ( $manifest as $key => $meta ) {
 			continue;
 		}
 
+		if ( 'country_list' === $field['control'] ) {
+			$all   = $field['country']['all'];
+			$names = array();
+			foreach ( $all as $pair ) {
+				$names[ $pair[0] ] = $pair[1];
+			}
+			// Two countries not first by default, then a code that is not a
+			// country at all and must be ignored.
+			$pick = array();
+			foreach ( array_keys( $names ) as $code ) {
+				if ( ! in_array( $code, (array) $field['default'], true ) && count( $pick ) < 2 ) {
+					$pick[] = $code;
+				}
+			}
+			list( $html, $errors ) = uew_edit_render( $name, array( $id => array_merge( $pick, array( '"><img src=x onerror=alert(1)>' ) ) ) );
+			foreach ( $errors as $error ) {
+				$fail( $id, $error );
+			}
+			$expected = '';
+			foreach ( $pick as $code ) {
+				$expected .= '<option value="' . esc_attr( $code ) . '">' . esc_html( $names[ $code ] ) . '</option>';
+			}
+			if ( false === strpos( $html, $expected . '<option disabled>' ) ) {
+				$fail( $id, 'the chosen countries do not lead the list' );
+			}
+			if ( false !== stripos( $html, 'onerror' ) ) {
+				$fail( $id, 'a code that is not a country reached the markup' );
+			}
+			// The page has other dropdowns, so count against the default render.
+			$grown = substr_count( $html, '<option' ) - substr_count( $default, '<option' );
+			if ( $grown !== count( $all ) + 2 - substr_count( $field['country']['verbatim'], '<option' ) ) {
+				$fail( $id, 'the list is not every country exactly once' );
+			}
+			list( $html, $errors ) = uew_edit_render( $name, array( $id => $field['default'] ) );
+			if ( $html !== $default ) {
+				$fail( $id, 'putting the default back does not restore the default render' );
+			}
+			continue;
+		}
+
 		if ( 'select' === $field['control'] ) {
 			// Wiring is proven with a probe, as for text: counting an option's
 			// occurrences cannot work when one value contains another ("sync"
@@ -219,6 +259,18 @@ foreach ( $manifest as $key => $meta ) {
 				}
 			}
 			continue;
+		}
+
+		// The visual editor hands back paragraphs; inline fields must print
+		// them as line breaks, never as a <p> inside a <p>.
+		if ( 'wysiwyg' === $field['control'] ) {
+			list( $html, $errors ) = uew_edit_render( $name, array( $id => '<p>Uewpara' . $n . 'a</p><p>Uewpara' . $n . 'b <em>x</em></p>' ) );
+			foreach ( $errors as $error ) {
+				$fail( $id, $error );
+			}
+			if ( false === strpos( $html, 'Uewpara' . $n . 'a<br><br>Uewpara' . $n . 'b <em>x</em>' ) || false !== strpos( $html, '<p>Uewpara' ) ) {
+				$fail( $id, 'paragraphs from the visual editor do not print inline' );
+			}
 		}
 
 		list( $value, $rendered ) = uew_probe_for( $field, $n );
@@ -362,7 +414,7 @@ foreach ( $manifest as $key => $meta ) {
 		$typed['_id'] = 'uewnew2';
 		$has_text = false;
 		foreach ( $definition['controls'] as $field ) {
-			if ( in_array( $field['control'], array( 'text', 'textarea' ), true ) && 'post' === $field['esc'] ) {
+			if ( in_array( $field['control'], array( 'text', 'textarea', 'wysiwyg' ), true ) && 'post' === $field['esc'] ) {
 				$typed[ $field['id'] ] = $probe;
 				$has_text = true;
 			}
@@ -394,6 +446,71 @@ foreach ( $manifest as $key => $meta ) {
 		list( $html, $errors ) = uew_edit_render( $name, array( $rid => array() ) );
 		foreach ( $errors as $error ) {
 			$fail( $rid . ' (emptied)', $error );
+		}
+
+		foreach ( $definition['controls'] as $field ) {
+			// Every icon the picker offers, picked on row 1, prints exactly as
+			// drawn inside the row's own <svg> -- and only there.
+			if ( 'icon' === $field['control'] ) {
+				$family = isset( $field['family'] ) ? $field['family'] : 'line';
+				$icons  = \Umoya_EW\Icon_Library::markups( $family );
+				if ( count( $icons ) < 5 ) {
+					$fail( $rid . '>' . $field['id'], 'the "' . $family . '" icon library is missing or nearly empty' );
+				}
+				foreach ( $icons as $markup ) {
+					$picked                    = $rows;
+					$picked[0][ $field['id'] ] = $markup;
+					list( $html, $errors )     = uew_edit_render( $name, array( $rid => $picked ) );
+					foreach ( $errors as $error ) {
+						$fail( $rid . '>' . $field['id'], $error );
+					}
+					if ( ! preg_match( '/<svg\b[^>]*>' . preg_quote( $markup, '/' ) . '<\/svg>/', $html ) ) {
+						$fail( $rid . '>' . $field['id'], 'a picked icon does not print exactly as drawn inside its <svg>: ' . substr( $markup, 0, 60 ) );
+						break;
+					}
+					if ( uew_tag_count( $html ) - uew_tag_count( $default ) !== uew_tag_count( $markup ) - uew_tag_count( (string) $definition['rows'][0][ $field['id'] ] ) ) {
+						$fail( $rid . '>' . $field['id'], 'picking an icon changed markup outside the icon' );
+						break;
+					}
+				}
+			}
+
+			// A mixed list: a row of every kind renders, as that kind.
+			if ( 'uew_kind' === $field['id'] ) {
+				foreach ( (array) $field['options'] as $kind ) {
+					$extra = array( '_id' => 'uewkind' );
+					foreach ( $definition['controls'] as $control ) {
+						$value                    = isset( $control['default'] ) ? $control['default'] : '';
+						$extra[ $control['id'] ] = in_array( $control['control'], array( 'url', 'media' ), true ) ? array( 'url' => $value ) : $value;
+					}
+					$extra['uew_kind']     = $kind;
+					list( $html, $errors ) = uew_edit_render( $name, array( $rid => array_merge( $rows, array( $extra ) ) ) );
+					foreach ( $errors as $error ) {
+						$fail( $rid . ' (kind ' . $kind . ')', $error );
+					}
+					if ( 1 !== substr_count( $html, 'elementor-repeater-item-uewkind' ) ) {
+						$fail( $rid . ' (kind ' . $kind . ')', 'a row of this kind did not render exactly once' );
+					}
+					// It is the kind it says: the same hooks as the source's own row of that kind.
+					$source_row = null;
+					foreach ( $rows as $row ) {
+						if ( $row['uew_kind'] === $kind ) {
+							$source_row = $row['_id'];
+							break;
+						}
+					}
+					$hooks_of = function ( $html, $id ) {
+						if ( ! preg_match( '/<li class="elementor-repeater-item-' . preg_quote( $id, '/' ) . '">([\s\S]*?)<\/li>/', $html, $m ) ) {
+							return null;
+						}
+						preg_match_all( '/\s(data-[a-z0-9-]+)/', $m[1], $d );
+						return implode( ' ', $d[1] );
+					};
+					if ( null !== $source_row && $hooks_of( $html, 'uewkind' ) !== $hooks_of( $html, $source_row ) ) {
+						$fail( $rid . ' (kind ' . $kind . ')', 'a new row of this kind does not carry the same behaviour hooks as the original' );
+					}
+				}
+			}
 		}
 	}
 

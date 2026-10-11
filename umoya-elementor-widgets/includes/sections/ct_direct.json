@@ -166,9 +166,9 @@
 					"controls": [
 						{
 							"id": "c_ct_dir_item_a_text_2",
-							"control": "textarea",
-							"label": "Text",
-							"description": "Inline formatting tags are preserved.",
+							"control": "wysiwyg",
+							"label": "Link 1",
+							"description": "",
 							"default": "Same address, subject line <em>Media</em>",
 							"esc": "post",
 							"group": "p_ct_dir_item_a",
@@ -177,7 +177,7 @@
 						{
 							"id": "c_ct_dir_item_a_href_2",
 							"control": "url",
-							"label": "Link",
+							"label": "Link 2",
 							"default": {
 								"url": "mailto:info@umoyaafrikatours.co.za?subject=Media"
 							},
@@ -592,9 +592,9 @@
 		},
 		{
 			"id": "c_ct_dir_item_a_text_2",
-			"control": "textarea",
+			"control": "wysiwyg",
 			"label": "Link",
-			"description": "Inline formatting tags are preserved.",
+			"description": "",
 			"default": "Same address, subject line <em>Media</em>",
 			"esc": "post",
 			"group": "p_ct_dir_item_a",

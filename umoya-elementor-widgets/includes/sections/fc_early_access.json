@@ -202,9 +202,9 @@
 					"controls": [
 						{
 							"id": "c_fc_bf_title_text",
-							"control": "textarea",
+							"control": "wysiwyg",
 							"label": "Title",
-							"description": "Inline formatting tags are preserved.",
+							"description": "",
 							"default": "Experience South Africa <em>Differently</em>",
 							"esc": "post",
 							"group": "p_fc_bf_title",
@@ -1235,9 +1235,9 @@
 		},
 		{
 			"id": "c_fc_bf_title_text",
-			"control": "textarea",
+			"control": "wysiwyg",
 			"label": "Title",
-			"description": "Inline formatting tags are preserved.",
+			"description": "",
 			"default": "Experience South Africa <em>Differently</em>",
 			"esc": "post",
 			"group": "p_fc_bf_title",

@@ -695,7 +695,7 @@
 					"control": "text",
 					"label": "Alt Text",
 					"esc": "attr",
-					"default": "Cape Grace on the V&amp;A Waterfront marina, with Table Mountain beyond"
+					"default": "Cape Grace on the V&A Waterfront marina, with Table Mountain beyond"
 				},
 				{
 					"id": "loading",

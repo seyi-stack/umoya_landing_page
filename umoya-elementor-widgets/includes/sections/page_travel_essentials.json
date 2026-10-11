@@ -1002,8 +1002,8 @@
 			"controls": [
 				{
 					"id": "te_p_markup",
-					"control": "textarea",
-					"label": "Paragraph (HTML)",
+					"control": "wysiwyg",
+					"label": "Paragraph",
 					"esc": "raw",
 					"default": "Comprehensive travel insurance is a requirement for every guest on every Umoya journey. The requirement exists for your protection, not ours. South Africa is far from most of our guests' home countries, the journey spans three provinces, the extensions cross international borders, and the value of a confirmed booking is meaningful. A good policy turns the small risks of international travel, a delayed flight, a forgotten medication, a missed connection, a family emergency at home, into administrative inconveniences rather than financial losses."
 				}

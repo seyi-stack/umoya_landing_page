@@ -75,6 +75,14 @@ export const sections = [
 			// ancestor cannot break its position: fixed. Its style controls need
 			// the portal branch to follow it there.
 			portals: [ { selector: '#umoya-email-optout', trigger: '[data-umoya-email-optout]' } ],
+			// The Legal column mixes plain links with two items that do something
+			// else; as a list, each row says which it is. Keyed by the item's
+			// behaviour hooks.
+			variantLabels: {
+				'': 'Link to a page or file',
+				'data-umoya-cookie-prefs': 'Cookie Settings (opens the cookie preferences)',
+				'data-umoya-email-optout': 'Email Opt-out (opens the opt-out pop-up)',
+			},
 		},
 	},
 	{

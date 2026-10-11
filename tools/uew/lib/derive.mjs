@@ -371,6 +371,21 @@ const LINK_DESTINATIONS = [
 ];
 
 /**
+ * Which icon set an icon picks from: `brand` for a link to a social network
+ * (filled marks), `line` for everything else (drawn with a stroke, styled by
+ * the section's CSS).
+ */
+function iconFamily( doc, node ) {
+	for ( let current = node; current; current = doc.parentsOf.get( current )?.node ) {
+		if ( 'a' === current.tagName?.toLowerCase() ) {
+			const href = attr( current, 'href' ) || '';
+			return LINK_DESTINATIONS.some( ( [ pattern ] ) => pattern.test( href ) ) ? 'brand' : 'line';
+		}
+	}
+	return 'line';
+}
+
+/**
  * What a link or button would be called by someone looking at it: its words,
  * or for an icon-only link, where it goes. Empty when neither says anything.
  */
@@ -779,11 +794,44 @@ export function deriveSection( options ) {
 	// is rejected here, and its items then fall through to the ordinary
 	// per-element treatment below -- so a rejected repeater costs a nicer panel,
 	// never a loss of editability or of markup.
+	// A country dropdown is one control, not a list. Its two hundred ISO
+	// options are the CRM's vocabulary, not copy: as a list they made the
+	// panel slow to open and let a country be renamed or deleted, which would
+	// break the HubSpot `country` mapping. The editor picks only which come
+	// first (Value_Formatter::country_list()).
+	const countrySelects = new Map();
+	for ( const { node } of doc.entries ) {
+		if ( 'select' !== node.tagName.toLowerCase() ) continue;
+		const options = elementChildren( node ).filter( ( kid ) => 'option' === kid.tagName.toLowerCase() );
+		const coded = ( option ) => /^[A-Z]{2}$/.test( attr( option, 'value' ) || '' );
+		if ( options.filter( coded ).length < 100 || options.filter( coded ).length < options.length * 0.8 ) continue;
+		const prompt = options.find( ( option ) => '' === attr( option, 'value' ) );
+		const divider = options.findIndex( ( option ) => null === attr( option, 'value' ) && null !== attr( option, 'disabled' ) );
+		// Every country once, in alphabetical order: the pinned ones are left
+		// out of the source's own alphabetical run, so they are folded back in.
+		const byCode = new Map();
+		for ( const option of options.filter( coded ) ) {
+			byCode.set( attr( option, 'value' ), innerText( option ).replace( /\s+/g, ' ' ).trim() );
+		}
+		const range = innerRange( node );
+		countrySelects.set( node, {
+			prompt: prompt ? innerText( prompt ).trim() : '',
+			pinned: divider > 0 ? options.slice( 0, divider ).filter( coded ).map( ( option ) => attr( option, 'value' ) ) : [],
+			all: [ ...byCode.entries() ].sort( ( a, b ) => a[ 1 ].localeCompare( b[ 1 ], 'en' ) ),
+			verbatim: markup.slice( range.start, range.end ),
+			range,
+		} );
+		for ( const { node: inside } of doc.entries ) {
+			if ( inside !== node && contains( doc, node, inside ) ) skip.add( inside );
+		}
+	}
+
 	const bareEdits = [];
 	const accepted = [];
 	const plans = [];
 	const repeaterLabels = [];
 	for ( const group of detectRepeaters( doc, rootNode, spec ) ) {
+		if ( group.nodes.some( ( item ) => skip.has( item ) ) ) continue;
 		// Elementor repeaters do not nest. A run inside an already-accepted
 		// repeater is skipped: its values are still bound individually inside
 		// the outer row template, so nothing becomes uneditable.
@@ -805,7 +853,7 @@ export function deriveSection( options ) {
 			continue;
 		}
 
-		const plan = buildRepeater( doc, group, { markup, notes, prefixes } );
+		const plan = buildRepeater( doc, group, { markup, notes, prefixes, spec } );
 		if ( ! plan ) continue;
 
 		// The value of an <option> is what the form submits. Say so on the
@@ -1153,6 +1201,25 @@ export function deriveSection( options ) {
 		const tag = node.tagName.toLowerCase();
 		let consumedSubtree = false;
 
+		const country = countrySelects.get( node );
+		if ( country ) {
+			const id = ctx.uniqueId( ctx.idStem + '_countries' );
+			ctx.push(
+				{
+					id,
+					control: 'country_list',
+					label: 'Countries Listed First',
+					description: 'The countries shown at the top of the list. Every other country follows in alphabetical order.',
+					default: country.pinned,
+					esc: 'country_list',
+					group: ctx.group,
+					sort: 2,
+					country: { prompt: country.prompt, pinned: country.pinned, all: country.all, verbatim: country.verbatim },
+				},
+				{ start: country.range.start, end: country.range.end, replacement: phpEcho( id ) }
+			);
+		}
+
 		// Editable inner content. Two shapes: an element whose content is one
 		// editable block, or an element mixing text with styled children -- in
 		// which case each loose text run gets its own control so nothing is
@@ -1171,9 +1238,11 @@ export function deriveSection( options ) {
 					ctx.push(
 						{
 							id,
-							control: hasMarkup || value.length > 90 ? 'textarea' : 'text',
+							// Words with inline formatting (an <em> in a headline) get the
+							// visual editor, so the formatting shows as formatting, not tags.
+							control: richEditable( value ) ? 'wysiwyg' : hasMarkup || value.length > 90 ? 'textarea' : 'text',
 							label: ctx.prefixLabel,
-							description: hasMarkup ? 'Inline formatting tags are preserved.' : '',
+							description: '',
 							default: readableText( value, 'text', 'post' ),
 							esc: 'post',
 							group: ctx.group,
@@ -2320,7 +2389,11 @@ const INLINE_FORMATTING = new Set( [ 'em', 'strong', 'b', 'i', 'u', 'small', 'su
 function isListLike( node ) {
 	const tag = node.tagName.toLowerCase();
 	if ( INLINE_FORMATTING.has( tag ) ) return false;
-	if ( ( tag === 'span' || tag === 'a' ) && ! classList( node ).length ) return false;
+	// A bare link is usually a link inside a sentence -- except an icon link.
+	// The footer's social icons are plain <a>s, and skipping them left the
+	// row of socials impossible to add to or shorten.
+	if ( tag === 'a' && ! classList( node ).length ) return elementChildren( node ).some( ( kid ) => 'svg' === kid.tagName.toLowerCase() );
+	if ( tag === 'span' && ! classList( node ).length ) return false;
 	return true;
 }
 
@@ -2366,6 +2439,13 @@ function buildRepeater( doc, group, ctx ) {
 	// arrow `data-wtt-next`, and a third arrow would be meaningless.
 	const hooks = group.nodes.map( ( node ) => dataAttributeNames( doc, node ) );
 	if ( new Set( hooks ).size > 1 ) {
+		// A list of links where a few items do something else -- the footer's
+		// Legal column holds the Cookie Settings button and the Email Opt-out
+		// link beside ordinary links -- is still a list. Each kind of item keeps
+		// its own markup, and a row says which kind it is.
+		if ( group.nodes.every( ( node ) => 'li' === node.tagName.toLowerCase() ) && hooks.filter( ( h ) => '' === h ).length >= 2 ) {
+			return buildVariantRepeater( doc, group, hooks, ctx, reject );
+		}
 		return reject( 'items carry different behaviour hooks (' + [ ...new Set( hooks ) ].map( ( h ) => h || 'none' ).join( ' / ' ) + ')' );
 	}
 
@@ -2379,7 +2459,7 @@ function buildRepeater( doc, group, ctx ) {
 	// divergent element's contents become a single per-row markup value. That
 	// keeps the surrounding text controls intact instead of rejecting the whole
 	// repeater.
-	const opaquePaths = findOpaquePaths( group.nodes );
+	const opaquePaths = findOpaquePaths( group.nodes, markup );
 	// Where items differ in their class list (the active slide, a stagger
 	// delay) or in the whitespace between attributes (the dots line their
 	// attributes up in columns), those spans are bound per row too. They are
@@ -2433,7 +2513,14 @@ function buildRepeater( doc, group, ctx ) {
 	// while its fifth holds a 200-option country list.
 	const OPAQUE_LIMIT = 600;
 	for ( const binding of bindings ) {
-		if ( 'opaque' !== binding.kind ) continue;
+		// The visual editor was chosen from row 1; every row has to qualify.
+		if ( 'opaque' === binding.kind && 'wysiwyg' === binding.control && ! rows.every( ( row ) => everyRowIsInlineProse( row[ binding.id ] ) ) ) {
+			binding.control = 'textarea';
+			binding.label += ' (HTML)';
+		}
+		// An icon is picked, not read, however long its drawing is; prose in
+		// the visual editor has no structure to lose, however long it runs.
+		if ( 'opaque' !== binding.kind || [ 'icon', 'wysiwyg' ].includes( binding.control ) ) continue;
 		const longest = rows.reduce( ( max, row ) => Math.max( max, String( row[ binding.id ] || '' ).length ), 0 );
 		if ( longest > OPAQUE_LIMIT ) {
 			return reject(
@@ -2512,9 +2599,13 @@ function buildRepeater( doc, group, ctx ) {
 	const kept = bindings.filter( ( b ) => ! derivedIds.has( b.id ) );
 	const labels = rowControlLabels( kept, ctx.prefixes || [] );
 
+	// Icon links to social networks read as what they are.
+	const social = group.nodes.every( ( node ) => 'a' === node.tagName.toLowerCase() &&
+		LINK_DESTINATIONS.some( ( [ pattern ] ) => pattern.test( attr( node, 'href' ) || '' ) ) );
+
 	return {
 		groupId: group.id,
-		label: pluralise( semanticName( template, ctx.prefixes || [] ) ),
+		label: social ? 'Social Links' : pluralise( semanticName( template, ctx.prefixes || [] ) ),
 		item_label: labelBinding ? '{{{ ' + labelBinding.id + ' }}}' : '',
 		controls: kept.map( ( b ) => ( {
 			id: b.id,
@@ -2525,6 +2616,7 @@ function buildRepeater( doc, group, ctx ) {
 			label: labels.get( b.id ),
 			esc: b.esc,
 			options: b.options,
+			...( b.family ? { family: b.family } : {} ),
 			default: modeOf( rows.map( ( row ) => row[ b.id ] ) ),
 		} ) ),
 		rows,
@@ -2541,6 +2633,130 @@ function buildRepeater( doc, group, ctx ) {
 		selector: ( group.signature.startsWith( 'option' ) || ! classList( template ).length )
 			? null
 			: '.' + classList( template ).filter( ( c ) => ! isPositionalClass( c ) ).sort().join( '.' ),
+	};
+}
+
+/**
+ * A list whose items come in a few kinds, told apart by their behaviour hooks.
+ *
+ * Each kind is built as its own repeater, which proves its items round-trip,
+ * and the kinds are then joined into one: a row carries `uew_kind`, the
+ * template prints that kind's markup, and the row's fields are shared between
+ * kinds where they mean the same thing (the link text, the link) and shown
+ * only for the kinds that use them otherwise. "Add Item" makes a plain link,
+ * so a new row can never be a second Cookie Settings button by accident.
+ */
+function buildVariantRepeater( doc, group, hooks, ctx, reject ) {
+	const kinds = [ ...new Set( [ '', ...hooks ] ) ];
+	const keyOf = ( hook ) => ( '' === hook ? 'link' : slug( hook.split( ' ' )[ 0 ].replace( /^data-/, '' ) ) || 'item' );
+	const labels = ( ctx.spec && ctx.spec.variantLabels ) || {};
+
+	const plans = [];
+	for ( const hook of kinds ) {
+		const nodes = group.nodes.filter( ( _, i ) => hooks[ i ] === hook );
+		const plan = buildRepeater( doc, { ...group, nodes }, { ...ctx, notes: [] } );
+		if ( ! plan ) return reject( 'its "' + ( hook || 'plain' ) + '" items do not round-trip on their own' );
+		// Position-derived values were computed within one kind, not the list.
+		if ( /\$it\['_uew_(n|count)'\]/.test( plan.rowTemplateBare ) ) {
+			return reject( 'its "' + ( hook || 'plain' ) + '" items number themselves, which a mixed list cannot keep' );
+		}
+		plans.push( { hook, key: keyOf( hook ), nodes, plan } );
+	}
+
+	// Share a field between kinds when it is the same sort of thing.
+	const roleOf = ( control ) => control.control + '|' + control.esc;
+	const controls = [];
+	const renames = plans.map( () => new Map() );
+	plans.forEach( ( { plan, key }, k ) => {
+		const claimed = new Set();
+		for ( const control of plan.controls ) {
+			let target = controls.find( ( c ) => roleOf( c ) === roleOf( control ) && 'hidden' !== control.control && ! claimed.has( c.id ) && ! c.kinds.includes( key ) );
+			if ( ! target ) {
+				let id = control.id;
+				while ( controls.some( ( c ) => c.id === id ) ) id = key.replace( /-/g, '_' ) + '_' + id;
+				target = { ...control, id, kinds: [] };
+				controls.push( target );
+			}
+			claimed.add( target.id );
+			target.kinds.push( key );
+			renames[ k ].set( control.id, target.id );
+		}
+	} );
+
+	const allKeys = plans.map( ( p ) => p.key );
+	for ( const control of controls ) {
+		if ( control.kinds.length < allKeys.length ) control.condition = { uew_kind: control.kinds };
+		delete control.kinds;
+	}
+
+	const renameTemplate = ( template, map ) => {
+		let out = template;
+		const tokens = [];
+		for ( const [ from, to ] of map ) {
+			const token = '\u0000' + tokens.length + '\u0000';
+			tokens.push( [ token, phpEchoItem( to ) ] );
+			out = out.split( phpEchoItem( from ) ).join( token );
+		}
+		for ( const [ token, echo ] of tokens ) out = out.split( token ).join( echo );
+		return out;
+	};
+	const choose = ( which ) => {
+		let out = "<?php $__k = isset( $it['uew_kind'] ) ? (string) $it['uew_kind'] : ''; ";
+		plans.slice( 1 ).forEach( ( { key }, i ) => {
+			out += ( i ? '<?php elseif' : 'if' ) + " ( '" + key + "' === $__k ) : ?>" + renameTemplate( plans[ i + 1 ].plan[ which ], renames[ i + 1 ] );
+		} );
+		return out + '<?php else : ?>' + renameTemplate( plans[ 0 ].plan[ which ], renames[ 0 ] ) + '<?php endif; ?>';
+	};
+
+	// Rows in document order, each under its kind's shared ids.
+	const rows = group.nodes.map( ( node ) => {
+		const k = plans.findIndex( ( p ) => p.nodes.includes( node ) );
+		const own = plans[ k ].plan.rows[ plans[ k ].nodes.indexOf( node ) ];
+		const row = { uew_kind: plans[ k ].key };
+		for ( const [ id, value ] of Object.entries( own ) ) {
+			if ( '_uew_sep' !== id ) row[ renames[ k ].get( id ) || id ] = value;
+		}
+		return row;
+	} );
+
+	controls.unshift( {
+		id: 'uew_kind',
+		control: 'select',
+		label: 'Type',
+		esc: 'attr',
+		options: allKeys,
+		option_labels: Object.fromEntries( plans.map( ( { hook, key, nodes } ) => [
+			key,
+			labels[ hook ] || ( '' === hook ? 'Link' : 'Like “' + innerText( nodes[ 0 ] ).replace( /\s+/g, ' ' ).trim() + '”' ),
+		] ) ),
+		default: 'link',
+	} );
+	// Separators across the whole list, exactly as buildRepeater keeps them.
+	const separators = [];
+	for ( let i = 1; i < group.nodes.length; i += 1 ) {
+		separators.push( ctx.markup.slice( outerRange( group.nodes[ i - 1 ] ).end, outerRange( group.nodes[ i ] ).start ) );
+	}
+	const perRowSeparator = new Set( separators ).size > 1;
+	if ( perRowSeparator ) rows.forEach( ( row, index ) => { row._uew_sep = index === 0 ? '' : separators[ index - 1 ]; } );
+
+	const textId = renames[ 0 ].get( plans[ 0 ].plan.item_label.replace( /^\{\{\{ (\w+) \}\}\}$/, '$1' ) );
+	ctx.notes.push( 'repeater "' + group.id + '" (x' + group.nodes.length + ') mixes ' + plans.length + ' kinds of item (' + kinds.map( ( h ) => h || 'plain' ).join( ' / ' ) + '); each row says which it is' );
+
+	return {
+		groupId: group.id,
+		label: pluralise( semanticName( group.nodes[ 0 ], ctx.prefixes || [] ) ),
+		item_label: textId && controls.find( ( c ) => c.id === textId && ! c.condition ) ? '{{{ ' + textId + ' }}}' : plans[ 0 ].plan.item_label,
+		controls,
+		rows,
+		perRowSeparator,
+		separator: separators[ 0 ] ?? '\n',
+		rowTemplate: choose( 'rowTemplate' ),
+		rowTemplateBare: choose( 'rowTemplateBare' ),
+		range: { start: outerRange( group.nodes[ 0 ] ).start, end: outerRange( group.nodes[ group.nodes.length - 1 ] ).end },
+		nodes: group.nodes,
+		signature: group.signature,
+		firstState: false,
+		selector: null,
 	};
 }
 
@@ -2579,7 +2795,10 @@ function emitRepeater( plans, ctx ) {
 
 	plans.forEach( ( plan, index ) => {
 		const prefix = prefixOf( index );
-		for ( const control of plan.controls ) controls.push( { ...control, id: prefix + control.id } );
+		// The default is what "Add Item" fills in, so it is shown readably too.
+		for ( const control of plan.controls ) {
+			controls.push( { ...control, id: prefix + control.id, default: readableText( control.default, control.control, control.esc ) } );
+		}
 		// Rows were proved against the source with their values as written;
 		// what the editor shows is the readable form (see readableText()).
 		const byId = new Map( plan.controls.map( ( control ) => [ control.id, control ] ) );
@@ -2743,7 +2962,9 @@ function rowControlLabels( bindings, prefixes ) {
  * the journey stats' `data-short` is the label phones show.
  */
 function isRowWiringAttr( name ) {
-	return /^(role|id|for|tabindex|viewbox|xmlns|focusable|type|loading|decoding|fetchpriority|sizes|referrerpolicy|crossorigin)$/.test( name ) ||
+	// `target` and `rel` too: a row's "_blank" / "noopener" read as code, and
+	// every list link that opens a new tab does so for the same reason.
+	return /^(role|id|for|tabindex|viewbox|xmlns|focusable|type|loading|decoding|fetchpriority|sizes|referrerpolicy|crossorigin|target|rel)$/.test( name ) ||
 		/^aria-(hidden|expanded|selected|current|pressed|checked|controls|labelledby|describedby|roledescription|live|atomic|haspopup|modal|orientation)$/.test( name );
 }
 
@@ -3038,8 +3259,12 @@ function totalSegments( text, total ) {
  * enough to spot a missing `<span>`, an extra `<path>` or a note that only one
  * item carries, without being upset by whitespace.
  */
-function findOpaquePaths( nodes ) {
+function findOpaquePaths( nodes, markup ) {
 	const opaque = new Set();
+	const innerOf = ( node ) => {
+		const range = innerRange( node );
+		return markup.slice( range.start, range.end ).replace( /\s+/g, ' ' ).trim();
+	};
 
 	// Comments are not part of the shape. One host card carries a note about
 	// which photograph is the approved one; counting it made that card's whole
@@ -3051,6 +3276,15 @@ function findOpaquePaths( nodes ) {
 	const walk = ( path ) => {
 		const targets = nodes.map( ( node ) => nodeAtPath( node, path ) );
 		if ( targets.some( ( t ) => ! t ) ) return;
+
+		// Icons that differ are one choice per row, whatever their drawing: the
+		// footer's socials are each a single <path>, so their shapes agree and
+		// only the `d` differs -- which used to become a hidden geometry field
+		// nobody could change. Bound whole, an icon gets the icon picker.
+		if ( targets.every( ( t ) => 'svg' === t.tagName.toLowerCase() ) && new Set( targets.map( innerOf ) ).size > 1 ) {
+			opaque.add( path.join( '.' ) );
+			return;
+		}
 
 		const shapes = new Set( targets.map( shapeOf ) );
 		if ( shapes.size > 1 ) {
@@ -3109,6 +3343,22 @@ function itemClassEdit( markup, template, templateRange ) {
 	return { start: at, end: at, replacement: ' class="' + marker + '"' };
 }
 
+/** Text with nothing but inline formatting -- what the visual editor edits cleanly. */
+const INLINE_PROSE_TAGS = new Set( [ 'a', 'b', 'i', 'em', 'strong', 'span', 'br', 'code', 'small', 'sup', 'sub', 'mark', 'abbr', 'u', 's' ] );
+function everyRowIsInlineProse( value ) {
+	const tags = [ ...String( value ).matchAll( /<\/?([a-zA-Z][a-zA-Z0-9]*)/g ) ].map( ( m ) => m[ 1 ].toLowerCase() );
+	return /\S/.test( String( value ).replace( /<[^>]*>/g, '' ) ) && tags.every( ( tag ) => INLINE_PROSE_TAGS.has( tag ) ) && ! /<span\s*>/i.test( value );
+}
+
+/**
+ * Formatted words the visual editor can carry without loss. Not a bare
+ * `<span>`: TinyMCE discards a span with no attributes the moment the text is
+ * edited, and the hero button and the price line style theirs from the CSS.
+ */
+function richEditable( value ) {
+	return /<[a-zA-Z]/.test( value ) && everyRowIsInlineProse( value );
+}
+
 function collectRepeaterBindings( doc, template, markup, presence, opaquePaths, variance, prefixes = [] ) {
 	const bindings = [];
 	const seen = new Set();
@@ -3122,13 +3372,21 @@ function collectRepeaterBindings( doc, template, markup, presence, opaquePaths, 
 		if ( opaquePaths && opaquePaths.has( path.join( '.' ) ) ) {
 			const range = innerRange( node );
 			if ( range.end > range.start ) {
+				// An icon is chosen from a grid of icons, not typed as SVG code.
+				// The value is still the drawing itself, so the control id and every
+				// saved value stay exactly as they were.
+				const icon = 'svg' === tag;
+				// Words whose formatting differs row to row (one host's name in
+				// bold) are still words: the visual editor, not a box of tags.
+				const prose = ! icon && everyRowIsInlineProse( markup.slice( range.start, range.end ) );
 				bindings.push( {
 					id: uniqueBinding( labelFor( node, tag ) + '_markup', bindings, seen ),
-					control: 'textarea',
-					label: rowElementLabel( node, prefixes ) + ' (HTML)',
+					control: icon ? 'icon' : prose ? 'wysiwyg' : 'textarea',
+					label: icon ? 'Icon' : rowElementLabel( node, prefixes ) + ( prose ? '' : ' (HTML)' ),
 					esc: 'raw',
 					range: { start: range.start, end: range.end },
 					kind: 'opaque',
+					...( icon ? { family: iconFamily( doc, node ) } : {} ),
 					node,
 				} );
 			}
@@ -3175,7 +3433,7 @@ function collectRepeaterBindings( doc, template, markup, presence, opaquePaths, 
 				const id = uniqueBinding( labelFor( node, tag ), bindings, seen );
 				bindings.push( {
 					id,
-					control: /<[a-zA-Z]/.test( value ) || value.length > 90 ? 'textarea' : 'text',
+					control: richEditable( value ) ? 'wysiwyg' : /<[a-zA-Z]/.test( value ) || value.length > 90 ? 'textarea' : 'text',
 					label: rowElementLabel( node, prefixes ),
 					esc: 'post',
 					range: { start: range.start + leading.length, end: range.end - trailing.length },

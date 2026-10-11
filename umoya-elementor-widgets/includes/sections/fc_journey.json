@@ -159,9 +159,9 @@
 					"controls": [
 						{
 							"id": "c_fc_jrn_ttl_text",
-							"control": "textarea",
+							"control": "wysiwyg",
 							"label": "Title",
-							"description": "Inline formatting tags are preserved.",
+							"description": "",
 							"default": "Your Journey <em>Begins Here</em>",
 							"esc": "post",
 							"group": "p_fc_jrn_ttl",
@@ -615,7 +615,7 @@
 					"control": "text",
 					"label": "Alt Text",
 					"esc": "attr",
-					"default": "Eyethu Heritage Hall — Johannesburg &amp; Soweto history and culture"
+					"default": "Eyethu Heritage Hall — Johannesburg & Soweto history and culture"
 				},
 				{
 					"id": "loading",
@@ -629,19 +629,19 @@
 					"control": "text",
 					"label": "Title",
 					"esc": "post",
-					"default": "History &amp; Culture"
+					"default": "History & Culture"
 				},
 				{
 					"id": "loc",
 					"control": "text",
 					"label": "Location",
 					"esc": "post",
-					"default": "Johannesburg &amp; Soweto"
+					"default": "Johannesburg & Soweto"
 				},
 				{
 					"id": "desc_markup",
-					"control": "textarea",
-					"label": "Description (HTML)",
+					"control": "wysiwyg",
+					"label": "Description",
 					"esc": "raw",
 					"default": "A warm welcome from <span class=\"fc-jrn-nm\">Lucia Motloung</span>, a CEO of black-owned wine company Luc Mo Wines, ride through the colorful streets of Soweto, where history and culture come to light before your eyes. Have lunch with <span class=\"fc-jrn-nm\">Antoinette Sithole</span>, sister of the late Hector Pieterson whose legacy in the anti-apartheid movement lives on."
 				},
@@ -1745,9 +1745,9 @@
 		},
 		{
 			"id": "c_fc_jrn_ttl_text",
-			"control": "textarea",
+			"control": "wysiwyg",
 			"label": "Title",
-			"description": "Inline formatting tags are preserved.",
+			"description": "",
 			"default": "Your Journey <em>Begins Here</em>",
 			"esc": "post",
 			"group": "p_fc_jrn_ttl",

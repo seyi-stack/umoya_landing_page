@@ -187,9 +187,9 @@
 					"controls": [
 						{
 							"id": "c_pt_tt_ttl_text",
-							"control": "textarea",
+							"control": "wysiwyg",
 							"label": "Title",
-							"description": "Inline formatting tags are preserved.",
+							"description": "",
 							"default": "Tell us why you're <em>traveling</em>.",
 							"esc": "post",
 							"group": "p_pt_tt_ttl",
@@ -1513,9 +1513,9 @@
 		},
 		{
 			"id": "c_pt_tt_ttl_text",
-			"control": "textarea",
+			"control": "wysiwyg",
 			"label": "Title",
-			"description": "Inline formatting tags are preserved.",
+			"description": "",
 			"default": "Tell us why you're <em>traveling</em>.",
 			"esc": "post",
 			"group": "p_pt_tt_ttl",

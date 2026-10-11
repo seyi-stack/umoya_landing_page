@@ -1,7 +1,7 @@
 {
   "name": "umoya-widget-compiler",
   "private": true,
-  "version": "4.0.0",
+  "version": "6.0.0",
   "type": "module",
   "description": "Compiles Umoya section HTML into native Elementor widgets, and proves nothing was lost and every control works.",
   "scripts": {
@@ -14,10 +14,16 @@
     "check:behaviour": "node behaviour-check.mjs",
     "check:browser": "node browser-check.mjs",
     "check:editor": "node editor-check.mjs",
-    "check": "node build.mjs && node edit-check.mjs && node render-check.mjs && node control-check.mjs && node behaviour-check.mjs && node browser-check.mjs && node editor-check.mjs"
+    "check": "node build.mjs && node edit-check.mjs && node render-check.mjs && node control-check.mjs && node behaviour-check.mjs && node browser-check.mjs && node editor-check.mjs && node a11y-check.mjs",
+    "check:a11y": "node a11y-check.mjs"
   },
   "dependencies": {
     "parse5": "^7.2.1",
     "puppeteer-core": "^25.9.0"
+  },
+  "devDependencies": {
+    "axe-core": "4.13.0",
+    "lucide-static": "1.45.0",
+    "simple-icons": "16.31.0"
   }
 }

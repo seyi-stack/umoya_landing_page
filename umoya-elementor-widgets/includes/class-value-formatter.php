@@ -242,6 +242,30 @@ class Value_Formatter {
 	}
 
 	/**
+	 * Words edited in the visual editor, made fit to print inline.
+	 *
+	 * These fields sit inside a `<p>`, an `<li>` or a heading, but the visual
+	 * editor can hand back paragraphs. A `<p>` inside a `<p>` is invalid HTML
+	 * -- the browser closes the outer one early and the text falls out of its
+	 * styling -- so paragraph breaks become line breaks and the wrappers go.
+	 * A value with no `<p>` (every value the section file supplied) is returned
+	 * untouched, whitespace and all.
+	 *
+	 * @param mixed $value Setting.
+	 * @return mixed
+	 */
+	public static function inline_rich( $value ) {
+		if ( ! is_string( $value ) || false === stripos( $value, '<p' ) ) {
+			return $value;
+		}
+
+		$value = preg_replace( '#</p>\s*<p\b[^>]*>#i', '<br><br>', $value );
+		$value = preg_replace( '#</?p\b[^>]*>#i', '', $value );
+
+		return trim( $value );
+	}
+
+	/**
 	 * Render a boolean HTML attribute from a switcher.
 	 *
 	 * `autoplay`, `muted`, `loop`, `playsinline`, `required` and friends carry no
@@ -272,6 +296,63 @@ class Value_Formatter {
 		$prefix = preg_replace( '/[^\s]/', '', (string) $prefix );
 
 		return ( '' === $prefix ? ' ' : $prefix ) . $attr;
+	}
+
+	/**
+	 * The options of a country dropdown.
+	 *
+	 * The list itself is fixed -- the ISO names and codes HubSpot's `country`
+	 * property expects -- so an editor only chooses which countries come first.
+	 * Two hundred editable rows made the panel slow to open and let a country
+	 * be renamed or deleted, which would quietly break the CRM mapping.
+	 *
+	 * Left at its default the field prints the section file's own markup, byte
+	 * for byte; any other choice is built from the same list: the prompt, the
+	 * chosen countries, a divider, then every other country in order.
+	 *
+	 * @param mixed $value   Setting: the chosen country codes.
+	 * @param array $country { prompt, pinned, all: [[code, name]...], verbatim }.
+	 * @return string
+	 */
+	public static function country_list( $value, array $country ) {
+		$all = isset( $country['all'] ) ? (array) $country['all'] : array();
+		$names = array();
+		foreach ( $all as $pair ) {
+			$names[ (string) $pair[0] ] = (string) $pair[1];
+		}
+
+		$chosen = array();
+		foreach ( (array) $value as $code ) {
+			$code = (string) $code;
+			// Only codes from the list: a setting can never add an option.
+			if ( isset( $names[ $code ] ) && ! in_array( $code, $chosen, true ) ) {
+				$chosen[] = $code;
+			}
+		}
+
+		$pinned = isset( $country['pinned'] ) ? array_values( array_map( 'strval', (array) $country['pinned'] ) ) : array();
+		if ( $chosen === $pinned && isset( $country['verbatim'] ) ) {
+			return (string) $country['verbatim'];
+		}
+
+		$out = '';
+		if ( ! empty( $country['prompt'] ) ) {
+			$out .= '<option value="" disabled selected>' . esc_html( $country['prompt'] ) . '</option>';
+		}
+		foreach ( $chosen as $code ) {
+			$out .= '<option value="' . esc_attr( $code ) . '">' . esc_html( $names[ $code ] ) . '</option>';
+		}
+		if ( $chosen ) {
+			$out .= '<option disabled>──────────</option>';
+		}
+		foreach ( $all as $pair ) {
+			if ( in_array( (string) $pair[0], $chosen, true ) ) {
+				continue; // already listed first
+			}
+			$out .= '<option value="' . esc_attr( $pair[0] ) . '">' . esc_html( $pair[1] ) . '</option>';
+		}
+
+		return $out;
 	}
 
 	/**

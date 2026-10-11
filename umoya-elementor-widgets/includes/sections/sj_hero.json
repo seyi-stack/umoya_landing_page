@@ -207,9 +207,9 @@
 					"controls": [
 						{
 							"id": "c_sj_h1_title_text",
-							"control": "textarea",
+							"control": "wysiwyg",
 							"label": "Title",
-							"description": "Inline formatting tags are preserved.",
+							"description": "",
 							"default": "One Journey,<br>in Three Chapters.",
 							"esc": "post",
 							"group": "p_sj_h1_title",
@@ -962,9 +962,9 @@
 		},
 		{
 			"id": "c_sj_h1_title_text",
-			"control": "textarea",
+			"control": "wysiwyg",
 			"label": "Title",
-			"description": "Inline formatting tags are preserved.",
+			"description": "",
 			"default": "One Journey,<br>in Three Chapters.",
 			"esc": "post",
 			"group": "p_sj_h1_title",

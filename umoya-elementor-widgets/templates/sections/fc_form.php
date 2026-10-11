@@ -133,8 +133,7 @@ if ( ! defined( 'ABSPATH' ) ) {
               <!-- Row 4: Country | City -->
               <div class="fc-f2-field">
                 <label for="fc2Country"><?php echo $c['c_fc_f2_field_label_text_6']; ?> <span class="fc-f2-req" aria-hidden="true">*</span></label>
-                <select id="fc2Country" name="<?php echo $c['c_fc_f2_field_select_name_2']; ?>"<?php echo $c['c_fc_f2_field_select_required_2']; ?><?php echo $c['c_fc_f2_field_select_disabled_2']; ?><?php echo $c['c_fc_f2_field_select_multiple_2']; ?>>
-                  <?php $__i = 0; foreach ( $r['rep_option_2'] as $it ) : if ( $__i ++ ) { echo $it['_uew_sep']; } ?><option<?php echo $it['value']; ?><?php echo $it['disabled']; ?><?php echo $it['selected']; ?> class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['label']; ?></option><?php endforeach; echo "\n                "; ?></select>
+                <select id="fc2Country" name="<?php echo $c['c_fc_f2_field_select_name_2']; ?>"<?php echo $c['c_fc_f2_field_select_required_2']; ?><?php echo $c['c_fc_f2_field_select_disabled_2']; ?><?php echo $c['c_fc_f2_field_select_multiple_2']; ?>><?php echo $c['c_fc_f2_field_select_countries']; ?></select>
               </div>
               <div class="fc-f2-field">
                 <label for="fc2City"><?php echo $c['c_fc_f2_field_label_text_7']; ?></label>

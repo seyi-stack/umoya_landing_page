@@ -165,9 +165,9 @@
 					"controls": [
 						{
 							"id": "c_ab_wh_pron_text",
-							"control": "textarea",
+							"control": "wysiwyg",
 							"label": "Text",
-							"description": "Inline formatting tags are preserved.",
+							"description": "",
 							"default": "<b>Umoya</b> (oo-MOH-ya), isiZulu",
 							"esc": "post",
 							"group": "p_ab_wh_pron",
@@ -929,9 +929,9 @@
 		},
 		{
 			"id": "c_ab_wh_pron_text",
-			"control": "textarea",
+			"control": "wysiwyg",
 			"label": "Text",
-			"description": "Inline formatting tags are preserved.",
+			"description": "",
 			"default": "<b>Umoya</b> (oo-MOH-ya), isiZulu",
 			"esc": "post",
 			"group": "p_ab_wh_pron",

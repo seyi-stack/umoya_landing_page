@@ -213,9 +213,9 @@
 					"controls": [
 						{
 							"id": "c_fc_det_title_text",
-							"control": "textarea",
+							"control": "wysiwyg",
 							"label": "Title",
-							"description": "Inline formatting tags are preserved.",
+							"description": "",
 							"default": "Travel <em>Essentials</em>",
 							"esc": "post",
 							"group": "p_fc_det_title",
@@ -438,9 +438,10 @@
 				},
 				{
 					"id": "svg_markup",
-					"control": "textarea",
-					"label": "Icon (HTML)",
+					"control": "icon",
+					"label": "Icon",
 					"esc": "raw",
+					"family": "line",
 					"default": "\n                  <rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/>\n                  <line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"/>\n                  <line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"/>\n                  <line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"/>\n                "
 				},
 				{
@@ -487,8 +488,8 @@
 				},
 				{
 					"id": "content_markup",
-					"control": "textarea",
-					"label": "Content (HTML)",
+					"control": "wysiwyg",
+					"label": "Content",
 					"esc": "raw",
 					"default": "\n              Once your departure is confirmed, it is guaranteed. From that point you can book flights and make arrangements knowing your journey will proceed as planned.\n            "
 				},
@@ -1038,9 +1039,9 @@
 		},
 		{
 			"id": "c_fc_det_title_text",
-			"control": "textarea",
+			"control": "wysiwyg",
 			"label": "Title",
-			"description": "Inline formatting tags are preserved.",
+			"description": "",
 			"default": "Travel <em>Essentials</em>",
 			"esc": "post",
 			"group": "p_fc_det_title",

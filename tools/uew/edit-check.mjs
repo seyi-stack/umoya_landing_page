@@ -15,7 +15,6 @@
  */
 import fs from 'fs';
 import path from 'path';
-import os from 'os';
 import { fileURLToPath } from 'url';
 import { execFileSync } from 'child_process';
 
@@ -34,7 +33,8 @@ console.log( '\nUmoya widget edit check' );
 console.log( '=======================\n' );
 console.log( 'Changing every control, repeater row and field, and checking where the change lands.\n' );
 
-const jobFile = path.join( os.tmpdir(), 'uew-edit-check-' + process.pid + '.json' );
+fs.mkdirSync( path.join( repoRoot, 'umoya-elementor-widgets', '.verify' ), { recursive: true } );
+const jobFile = path.join( repoRoot, 'umoya-elementor-widgets', '.verify', 'edit-check-' + process.pid + '.json' );
 fs.writeFileSync( jobFile, JSON.stringify( { keys } ), 'utf8' );
 
 let results;

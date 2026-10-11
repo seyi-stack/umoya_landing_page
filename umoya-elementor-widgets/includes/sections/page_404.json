@@ -195,9 +195,9 @@
 					"controls": [
 						{
 							"id": "c_um404_ttl_text",
-							"control": "textarea",
+							"control": "wysiwyg",
 							"label": "Title",
-							"description": "Inline formatting tags are preserved.",
+							"description": "",
 							"default": "We've lost the <em>trail</em>",
 							"esc": "post",
 							"group": "p_um404_ttl",
@@ -636,9 +636,9 @@
 		},
 		{
 			"id": "c_um404_ttl_text",
-			"control": "textarea",
+			"control": "wysiwyg",
 			"label": "Title",
-			"description": "Inline formatting tags are preserved.",
+			"description": "",
 			"default": "We've lost the <em>trail</em>",
 			"esc": "post",
 			"group": "p_um404_ttl",

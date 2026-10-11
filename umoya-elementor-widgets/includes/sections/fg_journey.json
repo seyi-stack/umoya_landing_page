@@ -428,7 +428,7 @@
 					"control": "text",
 					"label": "Heading",
 					"esc": "post",
-					"default": "History &amp; Culture"
+					"default": "History & Culture"
 				},
 				{
 					"id": "p",

@@ -156,9 +156,9 @@
 					"controls": [
 						{
 							"id": "c_umoya_journey_heading_text",
-							"control": "textarea",
+							"control": "wysiwyg",
 							"label": "Title",
-							"description": "Inline formatting tags are preserved.",
+							"description": "",
 							"default": "Our Signature Journey: </br> Into the Heart of <em>Southern Africa</em>",
 							"esc": "post",
 							"group": "p_umoya_journey_heading",
@@ -220,9 +220,9 @@
 					"controls": [
 						{
 							"id": "c_umoya_journey_highlight_span_text",
-							"control": "textarea",
+							"control": "wysiwyg",
 							"label": "Text 2",
-							"description": "Inline formatting tags are preserved.",
+							"description": "",
 							"default": "<strong>Itinerary at a Glance:</strong> Johannesburg & Soweto, the Sabi Sand, and Cape Town — with optional extensions to Victoria Falls and Chobe.",
 							"esc": "post",
 							"group": "p_umoya_journey_highlight_span",
@@ -699,14 +699,14 @@
 					"control": "text",
 					"label": "Eyebrow",
 					"esc": "post",
-					"default": "Chapter 1: History &amp; Culture"
+					"default": "Chapter 1: History & Culture"
 				},
 				{
 					"id": "l2_slide_title",
 					"control": "text",
 					"label": "Title",
 					"esc": "post",
-					"default": "Johannesburg &amp; Soweto"
+					"default": "Johannesburg & Soweto"
 				},
 				{
 					"id": "l3_type",
@@ -1229,6 +1229,7 @@
 				"shadow",
 				"padding",
 				"margin",
+				"flex_container",
 				"states",
 				"effects",
 				"visibility"
@@ -1576,9 +1577,9 @@
 		},
 		{
 			"id": "c_umoya_journey_heading_text",
-			"control": "textarea",
+			"control": "wysiwyg",
 			"label": "Title",
-			"description": "Inline formatting tags are preserved.",
+			"description": "",
 			"default": "Our Signature Journey: </br> Into the Heart of <em>Southern Africa</em>",
 			"esc": "post",
 			"group": "p_umoya_journey_heading",
@@ -1636,9 +1637,9 @@
 		},
 		{
 			"id": "c_umoya_journey_highlight_span_text",
-			"control": "textarea",
+			"control": "wysiwyg",
 			"label": "Text",
-			"description": "Inline formatting tags are preserved.",
+			"description": "",
 			"default": "<strong>Itinerary at a Glance:</strong> Johannesburg & Soweto, the Sabi Sand, and Cape Town — with optional extensions to Victoria Falls and Chobe.",
 			"esc": "post",
 			"group": "p_umoya_journey_highlight_span",

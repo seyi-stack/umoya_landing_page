@@ -240,9 +240,9 @@
 					"controls": [
 						{
 							"id": "c_fc_why_title_text",
-							"control": "textarea",
+							"control": "wysiwyg",
 							"label": "Title",
-							"description": "Inline formatting tags are preserved.",
+							"description": "",
 							"default": "A new company, built on <em>long relationships</em>.",
 							"esc": "post",
 							"group": "p_fc_why_title",
@@ -806,8 +806,8 @@
 			"controls": [
 				{
 					"id": "body_markup",
-					"control": "textarea",
-					"label": "Body (HTML)",
+					"control": "wysiwyg",
+					"label": "Body",
 					"esc": "raw",
 					"default": "Umoya is African-led and African-owned, and of the diaspora ourselves. <strong>Wilson Nyah</strong> built it over a decade of work across the continent, and on the relationships that came with it. Those relationships are why <strong>Lucia Motloung</strong> pours her own wine on your first evening, and why <strong>Antoinette Sithole</strong> sits at your table in Soweto and tells you about the day in 1976 she lived herself."
 				}
@@ -1443,9 +1443,9 @@
 		},
 		{
 			"id": "c_fc_why_title_text",
-			"control": "textarea",
+			"control": "wysiwyg",
 			"label": "Title",
-			"description": "Inline formatting tags are preserved.",
+			"description": "",
 			"default": "A new company, built on <em>long relationships</em>.",
 			"esc": "post",
 			"group": "p_fc_why_title",

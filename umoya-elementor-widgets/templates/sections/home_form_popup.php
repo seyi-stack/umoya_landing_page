@@ -84,8 +84,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
             <div class="umoya-field">
               <label for="umoyaCountry"><?php echo $c['c_umoya_field_label_text_6']; ?></label>
-              <select id="umoyaCountry" name="<?php echo $c['c_umoya_field_select_name_2']; ?>"<?php echo $c['c_umoya_field_select_required_2']; ?><?php echo $c['c_umoya_field_select_disabled_2']; ?><?php echo $c['c_umoya_field_select_multiple_2']; ?>>
-                  <?php $__i = 0; foreach ( $r['rep_option_2'] as $it ) : if ( $__i ++ ) { echo $it['_uew_sep']; } ?><option<?php echo $it['value']; ?><?php echo $it['disabled']; ?><?php echo $it['selected']; ?> class="<?php echo $it['_uew_item_class']; ?>"><?php echo $it['label']; ?></option><?php endforeach; echo "\n                "; ?></select>
+              <select id="umoyaCountry" name="<?php echo $c['c_umoya_field_select_name_2']; ?>"<?php echo $c['c_umoya_field_select_required_2']; ?><?php echo $c['c_umoya_field_select_disabled_2']; ?><?php echo $c['c_umoya_field_select_multiple_2']; ?>><?php echo $c['c_umoya_field_select_countries']; ?></select>
             </div>
             <div class="umoya-field">
               <label for="umoyaCity"><?php echo $c['c_umoya_field_label_text_7']; ?></label>

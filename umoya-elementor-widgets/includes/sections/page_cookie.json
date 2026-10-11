@@ -195,9 +195,9 @@
 					"controls": [
 						{
 							"id": "c_ck_meta_text",
-							"control": "textarea",
+							"control": "wysiwyg",
 							"label": "Text",
-							"description": "Inline formatting tags are preserved.",
+							"description": "",
 							"default": "<strong>Effective date:</strong> 1 June 2026<br>\n        <strong>Last updated:</strong> 26 August 2026<br>\n        Version 1.2",
 							"esc": "post",
 							"group": "p_ck_meta",
@@ -458,9 +458,9 @@
 					"controls": [
 						{
 							"id": "c_ck_sec_ul_li_text",
-							"control": "textarea",
+							"control": "wysiwyg",
 							"label": "Item",
-							"description": "Inline formatting tags are preserved.",
+							"description": "",
 							"default": "<code>_ga_*</code> (Google Analytics, approximately 1 year) &mdash; used by Google Analytics to count and record page views, enabling us to understand overall site traffic and visitor behaviour in aggregate.",
 							"esc": "post",
 							"group": "p_ck_sec_ul_li",
@@ -1256,8 +1256,8 @@
 			"controls": [
 				{
 					"id": "ck_li_markup",
-					"control": "textarea",
-					"label": "Item (HTML)",
+					"control": "wysiwyg",
+					"label": "Item",
 					"esc": "raw",
 					"default": "<code>__cf_bm</code> (Cloudflare, 1 hour) &mdash; supports Cloudflare's bot management service, which protects the site from automated abuse."
 				}
@@ -1339,14 +1339,14 @@
 				},
 				{
 					"id": "target",
-					"control": "text",
+					"control": "hidden",
 					"label": "Link Target",
 					"esc": "attr",
 					"default": "_blank"
 				},
 				{
 					"id": "rel",
-					"control": "text",
+					"control": "hidden",
 					"label": "Link Relationship",
 					"esc": "attr",
 					"default": "noopener"
@@ -2056,9 +2056,9 @@
 		},
 		{
 			"id": "c_ck_meta_text",
-			"control": "textarea",
+			"control": "wysiwyg",
 			"label": "Text",
-			"description": "Inline formatting tags are preserved.",
+			"description": "",
 			"default": "<strong>Effective date:</strong> 1 June 2026<br>\n        <strong>Last updated:</strong> 26 August 2026<br>\n        Version 1.2",
 			"esc": "post",
 			"group": "p_ck_meta",
@@ -2193,9 +2193,9 @@
 		},
 		{
 			"id": "c_ck_sec_ul_li_text",
-			"control": "textarea",
+			"control": "wysiwyg",
 			"label": "Item",
-			"description": "Inline formatting tags are preserved.",
+			"description": "",
 			"default": "<code>_ga_*</code> (Google Analytics, approximately 1 year) &mdash; used by Google Analytics to count and record page views, enabling us to understand overall site traffic and visitor behaviour in aggregate.",
 			"esc": "post",
 			"group": "p_ck_sec_ul_li",

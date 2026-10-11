@@ -272,9 +272,9 @@
 					"controls": [
 						{
 							"id": "c_umoya_ft_addr_text",
-							"control": "textarea",
+							"control": "wysiwyg",
 							"label": "Address",
-							"description": "Inline formatting tags are preserved.",
+							"description": "",
 							"default": "West Tower, 2nd Floor,<br>\n            Nelson Mandela Square,<br>\n            Maude Street, Sandown,<br>\n            Johannesburg, 2146",
 							"esc": "post",
 							"group": "p_umoya_ft_addr",
@@ -364,137 +364,10 @@
 					]
 				},
 				{
-					"kind": "group",
-					"label": "Terms & Conditions",
-					"order": 36,
-					"controls": [
-						{
-							"id": "c_umoya_ft_col_ul_li_a_text",
-							"control": "text",
-							"label": "Text",
-							"description": "",
-							"default": "Terms & Conditions",
-							"esc": "post",
-							"group": "p_umoya_ft_col_ul_li_a",
-							"sort": 0
-						},
-						{
-							"id": "c_umoya_ft_col_ul_li_a_href",
-							"control": "url",
-							"label": "Link",
-							"default": {
-								"url": "https://umoyaafrikatours.co.za/terms-and-conditions/"
-							},
-							"esc": "url",
-							"group": "p_umoya_ft_col_ul_li_a",
-							"tab": "content",
-							"sort": 1
-						}
-					]
-				},
-				{
-					"kind": "group",
-					"label": "Privacy Policy",
-					"order": 38,
-					"controls": [
-						{
-							"id": "c_umoya_ft_col_ul_li_a_text_2",
-							"control": "text",
-							"label": "Text",
-							"description": "",
-							"default": "Privacy Policy",
-							"esc": "post",
-							"group": "p_umoya_ft_col_ul_li_a",
-							"sort": 0
-						},
-						{
-							"id": "c_umoya_ft_col_ul_li_a_href_2",
-							"control": "url",
-							"label": "Link",
-							"default": {
-								"url": "https://umoyaafrikatours.co.za/privacy/"
-							},
-							"esc": "url",
-							"group": "p_umoya_ft_col_ul_li_a",
-							"tab": "content",
-							"sort": 1
-						}
-					]
-				},
-				{
-					"kind": "group",
-					"label": "Cookie Settings",
-					"order": 40,
-					"controls": [
-						{
-							"id": "c_cky_banner_element_text",
-							"control": "text",
-							"label": "Cookie Settings",
-							"description": "",
-							"default": "Cookie Settings",
-							"esc": "post",
-							"group": "p_cky_banner_element",
-							"sort": 0
-						}
-					]
-				},
-				{
-					"kind": "group",
-					"label": "Email Opt-out",
-					"order": 42,
-					"controls": [
-						{
-							"id": "c_umoya_ft_col_ul_li_a_text_3",
-							"control": "text",
-							"label": "Text",
-							"description": "",
-							"default": "Email Opt-out",
-							"esc": "post",
-							"group": "p_umoya_ft_col_ul_li_a",
-							"sort": 0
-						},
-						{
-							"id": "c_umoya_ft_col_ul_li_a_href_3",
-							"control": "url",
-							"label": "Link",
-							"default": {
-								"url": "mailto:info@umoyaafrikatours.co.za?subject=Unsubscribe"
-							},
-							"esc": "url",
-							"group": "p_umoya_ft_col_ul_li_a",
-							"tab": "content",
-							"sort": 1
-						}
-					]
-				},
-				{
-					"kind": "group",
-					"label": "PAIA Manual",
-					"order": 44,
-					"controls": [
-						{
-							"id": "c_umoya_ft_col_ul_li_a_text_4",
-							"control": "text",
-							"label": "Text",
-							"description": "",
-							"default": "PAIA Manual",
-							"esc": "post",
-							"group": "p_umoya_ft_col_ul_li_a",
-							"sort": 0
-						},
-						{
-							"id": "c_umoya_ft_col_ul_li_a_href_4",
-							"control": "url",
-							"label": "Link",
-							"default": {
-								"url": "https://umoyaafrikatours.co.za/umoya_paia_manual.pdf"
-							},
-							"esc": "url",
-							"group": "p_umoya_ft_col_ul_li_a",
-							"tab": "content",
-							"sort": 1
-						}
-					]
+					"kind": "list",
+					"id": "rep_li_3",
+					"label": "Links",
+					"order": 35
 				}
 			]
 		},
@@ -681,80 +554,10 @@
 					]
 				},
 				{
-					"kind": "group",
-					"label": "Instagram",
-					"order": 70,
-					"controls": [
-						{
-							"id": "c_umoya_ft_social_a_href",
-							"control": "url",
-							"label": "Instagram",
-							"default": {
-								"url": "https://www.instagram.com/umoyaafrikatours/"
-							},
-							"esc": "url",
-							"group": "p_umoya_ft_social_a",
-							"tab": "content",
-							"sort": 1
-						}
-					]
-				},
-				{
-					"kind": "group",
-					"label": "Facebook",
-					"order": 73,
-					"controls": [
-						{
-							"id": "c_umoya_ft_social_a_href_2",
-							"control": "url",
-							"label": "Facebook",
-							"default": {
-								"url": "https://www.facebook.com/umoyaafrikatours"
-							},
-							"esc": "url",
-							"group": "p_umoya_ft_social_a",
-							"tab": "content",
-							"sort": 1
-						}
-					]
-				},
-				{
-					"kind": "group",
-					"label": "TikTok",
-					"order": 76,
-					"controls": [
-						{
-							"id": "c_umoya_ft_social_a_href_3",
-							"control": "url",
-							"label": "TikTok",
-							"default": {
-								"url": "https://www.tiktok.com/@umoyaafrikatours"
-							},
-							"esc": "url",
-							"group": "p_umoya_ft_social_a",
-							"tab": "content",
-							"sort": 1
-						}
-					]
-				},
-				{
-					"kind": "group",
-					"label": "LinkedIn",
-					"order": 79,
-					"controls": [
-						{
-							"id": "c_umoya_ft_social_a_href_4",
-							"control": "url",
-							"label": "LinkedIn",
-							"default": {
-								"url": "https://www.linkedin.com/company/umoyaafrikatours/"
-							},
-							"esc": "url",
-							"group": "p_umoya_ft_social_a",
-							"tab": "content",
-							"sort": 1
-						}
-					]
+					"kind": "list",
+					"id": "rep_a",
+					"label": "Links",
+					"order": 70
 				}
 			]
 		},
@@ -992,19 +795,6 @@
 					"inline": [],
 					"inline_props": [],
 					"heading": "Layout"
-				}
-			]
-		},
-		{
-			"id": "style_r_legal",
-			"label": "Legal",
-			"tokens": false,
-			"rows": [
-				{
-					"part": "p_cky_banner_element",
-					"label": "Button",
-					"inline": [],
-					"inline_props": []
 				}
 			]
 		},
@@ -1380,74 +1170,6 @@
 				},
 				{
 					"kind": "group",
-					"label": "Bottom bar › Instagram",
-					"order": 70,
-					"controls": [
-						{
-							"id": "c_umoya_ft_social_a_aria_label",
-							"control": "text",
-							"label": "Accessible Name",
-							"default": "Umoya Afrika Tours on Instagram",
-							"esc": "attr",
-							"group": "p_umoya_ft_social_a",
-							"tab": "content",
-							"sort": 1
-						}
-					]
-				},
-				{
-					"kind": "group",
-					"label": "Bottom bar › Facebook",
-					"order": 73,
-					"controls": [
-						{
-							"id": "c_umoya_ft_social_a_aria_label_2",
-							"control": "text",
-							"label": "Accessible Name",
-							"default": "Umoya Afrika Tours on Facebook",
-							"esc": "attr",
-							"group": "p_umoya_ft_social_a",
-							"tab": "content",
-							"sort": 1
-						}
-					]
-				},
-				{
-					"kind": "group",
-					"label": "Bottom bar › TikTok",
-					"order": 76,
-					"controls": [
-						{
-							"id": "c_umoya_ft_social_a_aria_label_3",
-							"control": "text",
-							"label": "Accessible Name",
-							"default": "Umoya Afrika Tours on TikTok",
-							"esc": "attr",
-							"group": "p_umoya_ft_social_a",
-							"tab": "content",
-							"sort": 1
-						}
-					]
-				},
-				{
-					"kind": "group",
-					"label": "Bottom bar › LinkedIn",
-					"order": 79,
-					"controls": [
-						{
-							"id": "c_umoya_ft_social_a_aria_label_4",
-							"control": "text",
-							"label": "Accessible Name",
-							"default": "Umoya Afrika Tours on LinkedIn",
-							"esc": "attr",
-							"group": "p_umoya_ft_social_a",
-							"tab": "content",
-							"sort": 1
-						}
-					]
-				},
-				{
-					"kind": "group",
 					"label": "Email opt-out pop-up › Close Button",
 					"order": 84,
 					"controls": [
@@ -1484,39 +1206,6 @@
 								"eager",
 								"lazy"
 							],
-							"esc": "attr",
-							"group": "behaviour",
-							"tab": "behaviour",
-							"sort": 1
-						}
-					]
-				},
-				{
-					"kind": "group",
-					"label": "Legal › PAIA Manual",
-					"order": 44,
-					"controls": [
-						{
-							"id": "c_umoya_ft_col_ul_li_a_target",
-							"control": "select",
-							"label": "Link Target",
-							"default": "_blank",
-							"options": [
-								"_self",
-								"_blank",
-								"_parent",
-								"_top"
-							],
-							"esc": "attr",
-							"group": "behaviour",
-							"tab": "behaviour",
-							"sort": 1
-						},
-						{
-							"id": "c_umoya_ft_col_ul_li_a_rel",
-							"control": "text",
-							"label": "Link Relationship",
-							"default": "noopener",
 							"esc": "attr",
 							"group": "behaviour",
 							"tab": "behaviour",
@@ -1599,138 +1288,6 @@
 							"sort": 1
 						}
 					]
-				},
-				{
-					"kind": "group",
-					"label": "Bottom bar › Instagram",
-					"order": 70,
-					"controls": [
-						{
-							"id": "c_umoya_ft_social_a_target",
-							"control": "select",
-							"label": "Link Target",
-							"default": "_blank",
-							"options": [
-								"_self",
-								"_blank",
-								"_parent",
-								"_top"
-							],
-							"esc": "attr",
-							"group": "behaviour",
-							"tab": "behaviour",
-							"sort": 1
-						},
-						{
-							"id": "c_umoya_ft_social_a_rel",
-							"control": "text",
-							"label": "Link Relationship",
-							"default": "noopener",
-							"esc": "attr",
-							"group": "behaviour",
-							"tab": "behaviour",
-							"sort": 1
-						}
-					]
-				},
-				{
-					"kind": "group",
-					"label": "Bottom bar › Facebook",
-					"order": 73,
-					"controls": [
-						{
-							"id": "c_umoya_ft_social_a_target_2",
-							"control": "select",
-							"label": "Link Target",
-							"default": "_blank",
-							"options": [
-								"_self",
-								"_blank",
-								"_parent",
-								"_top"
-							],
-							"esc": "attr",
-							"group": "behaviour",
-							"tab": "behaviour",
-							"sort": 1
-						},
-						{
-							"id": "c_umoya_ft_social_a_rel_2",
-							"control": "text",
-							"label": "Link Relationship",
-							"default": "noopener",
-							"esc": "attr",
-							"group": "behaviour",
-							"tab": "behaviour",
-							"sort": 1
-						}
-					]
-				},
-				{
-					"kind": "group",
-					"label": "Bottom bar › TikTok",
-					"order": 76,
-					"controls": [
-						{
-							"id": "c_umoya_ft_social_a_target_3",
-							"control": "select",
-							"label": "Link Target",
-							"default": "_blank",
-							"options": [
-								"_self",
-								"_blank",
-								"_parent",
-								"_top"
-							],
-							"esc": "attr",
-							"group": "behaviour",
-							"tab": "behaviour",
-							"sort": 1
-						},
-						{
-							"id": "c_umoya_ft_social_a_rel_3",
-							"control": "text",
-							"label": "Link Relationship",
-							"default": "noopener",
-							"esc": "attr",
-							"group": "behaviour",
-							"tab": "behaviour",
-							"sort": 1
-						}
-					]
-				},
-				{
-					"kind": "group",
-					"label": "Bottom bar › LinkedIn",
-					"order": 79,
-					"controls": [
-						{
-							"id": "c_umoya_ft_social_a_target_4",
-							"control": "select",
-							"label": "Link Target",
-							"default": "_blank",
-							"options": [
-								"_self",
-								"_blank",
-								"_parent",
-								"_top"
-							],
-							"esc": "attr",
-							"group": "behaviour",
-							"tab": "behaviour",
-							"sort": 1
-						},
-						{
-							"id": "c_umoya_ft_social_a_rel_4",
-							"control": "text",
-							"label": "Link Relationship",
-							"default": "noopener",
-							"esc": "attr",
-							"group": "behaviour",
-							"tab": "behaviour",
-							"sort": 1
-						}
-					]
 				}
 			]
 		},
@@ -1739,36 +1296,6 @@
 			"label": "Form Field Rules",
 			"notice": "",
 			"groups": [
-				{
-					"kind": "group",
-					"label": "Legal › Cookie Settings",
-					"order": 40,
-					"controls": [
-						{
-							"id": "c_cky_banner_element_disabled",
-							"control": "switcher",
-							"label": "Disabled",
-							"description": "",
-							"default": "",
-							"flag_attr": "disabled",
-							"flag_prefix": " ",
-							"esc": "raw",
-							"group": "p_cky_banner_element",
-							"tab": "form",
-							"sort": 1
-						},
-						{
-							"id": "c_cky_banner_element_type",
-							"control": "text",
-							"label": "Type",
-							"default": "button",
-							"esc": "attr",
-							"group": "form",
-							"tab": "form",
-							"sort": 1
-						}
-					]
-				},
 				{
 					"kind": "group",
 					"label": "Sign-up › Form",
@@ -2536,6 +2063,238 @@
 			"region": "r_support",
 			"order": 26,
 			"block_label": "Links"
+		},
+		{
+			"id": "rep_li_3",
+			"label": "Legal Items",
+			"item_label": "{{{ a }}}",
+			"controls": [
+				{
+					"id": "uew_kind",
+					"control": "select",
+					"label": "Type",
+					"esc": "attr",
+					"options": [
+						"link",
+						"umoya_cookie_prefs",
+						"umoya_email_optout"
+					],
+					"option_labels": {
+						"link": "Link to a page or file",
+						"umoya_cookie_prefs": "Cookie Settings (opens the cookie preferences)",
+						"umoya_email_optout": "Email Opt-out (opens the opt-out pop-up)"
+					},
+					"default": "link"
+				},
+				{
+					"id": "href",
+					"control": "url",
+					"label": "Link",
+					"esc": "url",
+					"default": "https://umoyaafrikatours.co.za/terms-and-conditions/",
+					"condition": {
+						"uew_kind": [
+							"link",
+							"umoya_email_optout"
+						]
+					}
+				},
+				{
+					"id": "extra_attributes",
+					"control": "hidden",
+					"label": "Extra attributes (optional)",
+					"esc": "attrs",
+					"default": "",
+					"condition": {
+						"uew_kind": [
+							"link"
+						]
+					}
+				},
+				{
+					"id": "a",
+					"control": "text",
+					"label": "Text",
+					"esc": "post",
+					"default": "Terms & Conditions"
+				},
+				{
+					"id": "type",
+					"control": "hidden",
+					"label": "Type",
+					"esc": "attr",
+					"default": "button",
+					"condition": {
+						"uew_kind": [
+							"umoya_cookie_prefs"
+						]
+					}
+				},
+				{
+					"id": "_uew_sep",
+					"control": "hidden",
+					"label": "Separator markup",
+					"esc": "raw",
+					"default": "\n          "
+				}
+			],
+			"rows": [
+				{
+					"uew_kind": "link",
+					"href": "https://umoyaafrikatours.co.za/terms-and-conditions/",
+					"extra_attributes": "",
+					"a": "Terms & Conditions",
+					"_uew_sep": ""
+				},
+				{
+					"uew_kind": "link",
+					"href": "https://umoyaafrikatours.co.za/privacy/",
+					"extra_attributes": "",
+					"a": "Privacy Policy",
+					"_uew_sep": "\n          "
+				},
+				{
+					"uew_kind": "umoya_cookie_prefs",
+					"type": "button",
+					"a": "Cookie Settings",
+					"_uew_sep": "\n          <!--\n            CookieYes binds its own click handler to .cky-banner-element and\n            re-opens the preference centre, so this needs no href. A <button>\n            rather than <a href=\"#\"> so it never jumps the page to the top if\n            CookieYes has not loaded.\n          -->\n          "
+				},
+				{
+					"uew_kind": "umoya_email_optout",
+					"href": "mailto:info@umoyaafrikatours.co.za?subject=Unsubscribe",
+					"a": "Email Opt-out",
+					"_uew_sep": "\n          <!--\n            EMAIL OPT-OUT opens the popup at the bottom of this widget\n            rather than navigating to /email-preferences/. The standalone\n            page still exists, unchanged, at\n            shared/page-email-preferences.html — to switch back to it,\n            replace this <li> with:\n\n              <li><a href=\"https://umoyaafrikatours.co.za/email-preferences/\">Email Opt-out</a></li>\n\n            and delete the popup block below.\n\n            The href here is a REAL mailto, not \"#\" — it is what the item\n            falls back to if the script has not run, and it does exactly\n            what the popup copy tells the reader to do. The script calls\n            preventDefault() and opens the dialog instead.\n          -->\n          "
+				},
+				{
+					"uew_kind": "link",
+					"href": "https://umoyaafrikatours.co.za/umoya_paia_manual.pdf",
+					"extra_attributes": " target=\"_blank\" rel=\"noopener\"",
+					"a": "PAIA Manual",
+					"_uew_sep": "\n          <!--\n            umoya_paia_manual.pdf - underscores, umoya_ prefix. Uploaded and\n            verified byte-identical to\n            \"Revised footer docs/Umoya_PAIA_Manual (final).pdf\" on\n            2026-09-01 (HTTP 200, 110300 bytes).\n\n            Several other spellings of this file exist at the web root and\n            are NOT interchangeable. Confirm with an HTTP request, never the\n            Mountain Duck listing, which shows entries the server does not\n            serve:\n              /umoya_paia_manual.pdf   200  <- use this one\n              /paia_manual.pdf         200  superseded, left in place\n              /Umoya_PAIA_Manual.pdf   200  superseded, left in place\n              /paia-manual.pdf         404  ghost listing only\n            Nothing was deleted.\n          -->\n          "
+				}
+			],
+			"loops": 1,
+			"selector": null,
+			"notice": "",
+			"portal": null,
+			"base_label": "Items",
+			"region": "r_legal",
+			"order": 35,
+			"block_label": "Links"
+		},
+		{
+			"id": "rep_a",
+			"label": "Social Links",
+			"item_label": "{{{ aria_label }}}",
+			"controls": [
+				{
+					"id": "href",
+					"control": "url",
+					"label": "Link",
+					"esc": "url",
+					"default": "https://www.instagram.com/umoyaafrikatours/"
+				},
+				{
+					"id": "target",
+					"control": "hidden",
+					"label": "Link Target",
+					"esc": "attr",
+					"default": "_blank"
+				},
+				{
+					"id": "rel",
+					"control": "hidden",
+					"label": "Link Relationship",
+					"esc": "attr",
+					"default": "noopener"
+				},
+				{
+					"id": "aria_label",
+					"control": "text",
+					"label": "Accessible Name",
+					"esc": "attr",
+					"default": "Umoya Afrika Tours on Instagram"
+				},
+				{
+					"id": "viewbox",
+					"control": "hidden",
+					"label": "Viewbox",
+					"esc": "attr",
+					"default": "0 0 24 24"
+				},
+				{
+					"id": "aria_hidden",
+					"control": "hidden",
+					"label": "Aria Hidden",
+					"esc": "attr",
+					"default": "true"
+				},
+				{
+					"id": "focusable",
+					"control": "hidden",
+					"label": "Focusable",
+					"esc": "attr",
+					"default": "false"
+				},
+				{
+					"id": "svg_markup",
+					"control": "icon",
+					"label": "Icon",
+					"esc": "raw",
+					"family": "brand",
+					"default": "<path d=\"M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z\"/>"
+				}
+			],
+			"rows": [
+				{
+					"href": "https://www.instagram.com/umoyaafrikatours/",
+					"target": "_blank",
+					"rel": "noopener",
+					"aria_label": "Umoya Afrika Tours on Instagram",
+					"viewbox": "0 0 24 24",
+					"aria_hidden": "true",
+					"focusable": "false",
+					"svg_markup": "<path d=\"M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z\"/>"
+				},
+				{
+					"href": "https://www.facebook.com/umoyaafrikatours",
+					"target": "_blank",
+					"rel": "noopener",
+					"aria_label": "Umoya Afrika Tours on Facebook",
+					"viewbox": "0 0 24 24",
+					"aria_hidden": "true",
+					"focusable": "false",
+					"svg_markup": "<path d=\"M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.7-1.6h1.6V3.2c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.6H7.6V13h2.8v8h3.1z\"/>"
+				},
+				{
+					"href": "https://www.tiktok.com/@umoyaafrikatours",
+					"target": "_blank",
+					"rel": "noopener",
+					"aria_label": "Umoya Afrika Tours on TikTok",
+					"viewbox": "0 0 24 24",
+					"aria_hidden": "true",
+					"focusable": "false",
+					"svg_markup": "<path d=\"M16.8 5.6c-.9-.6-1.5-1.6-1.7-2.6h-3v12.3a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.6V9.4c1 .7 2.3 1.2 3.6 1.2V7.5c-.7 0-1.4-.2-2-.6-.4-.2-.7-.5-1-.8z\"/>"
+				},
+				{
+					"href": "https://www.linkedin.com/company/umoyaafrikatours/",
+					"target": "_blank",
+					"rel": "noopener",
+					"aria_label": "Umoya Afrika Tours on LinkedIn",
+					"viewbox": "0 0 24 24",
+					"aria_hidden": "true",
+					"focusable": "false",
+					"svg_markup": "<path d=\"M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm6 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9V9z\"/>"
+				}
+			],
+			"loops": 1,
+			"selector": null,
+			"notice": "",
+			"portal": null,
+			"base_label": "Social Links",
+			"region": "r_bottom_bar",
+			"order": 70,
+			"block_label": "Links"
 		}
 	],
 	"style_parts": [
@@ -2920,36 +2679,6 @@
 			"display": "Column Links"
 		},
 		{
-			"id": "p_cky_banner_element",
-			"label": "Button",
-			"short_label": "Button",
-			"parent_label": "",
-			"sample": "Cookie Settings",
-			"selector": ".cky-banner-element",
-			"tag": "button",
-			"features": [
-				"text",
-				"fill",
-				"border",
-				"shadow",
-				"padding",
-				"margin",
-				"flex_container",
-				"states",
-				"effects",
-				"visibility"
-			],
-			"animated": [],
-			"shared": false,
-			"absolute": false,
-			"repeater": null,
-			"order": 40,
-			"box": false,
-			"everywhere": false,
-			"region": "r_legal",
-			"display": "Button"
-		},
-		{
 			"id": "p_umoya_ft_signup",
 			"label": "Container 2",
 			"short_label": "Container",
@@ -3060,7 +2789,7 @@
 		},
 		{
 			"id": "p_umoya_ft_submit",
-			"label": "Form Button",
+			"label": "Button",
 			"short_label": "Button",
 			"parent_label": "Form",
 			"sample": "Join",
@@ -3348,7 +3077,7 @@
 			"animated": [],
 			"shared": true,
 			"absolute": false,
-			"repeater": null,
+			"repeater": "a",
 			"order": 70,
 			"box": false,
 			"everywhere": false,
@@ -3760,9 +3489,9 @@
 		},
 		{
 			"id": "c_umoya_ft_addr_text",
-			"control": "textarea",
+			"control": "wysiwyg",
 			"label": "Address",
-			"description": "Inline formatting tags are preserved.",
+			"description": "",
 			"default": "West Tower, 2nd Floor,<br>\n            Nelson Mandela Square,<br>\n            Maude Street, Sandown,<br>\n            Johannesburg, 2146",
 			"esc": "post",
 			"group": "p_umoya_ft_addr",
@@ -3838,153 +3567,6 @@
 			"esc": "post",
 			"group": "p_umoya_ft_col_h3",
 			"sort": 0
-		},
-		{
-			"id": "c_umoya_ft_col_ul_li_a_text",
-			"control": "text",
-			"label": "Link",
-			"description": "",
-			"default": "Terms & Conditions",
-			"esc": "post",
-			"group": "p_umoya_ft_col_ul_li_a",
-			"sort": 0
-		},
-		{
-			"id": "c_umoya_ft_col_ul_li_a_href",
-			"control": "url",
-			"label": "Link",
-			"default": {
-				"url": "https://umoyaafrikatours.co.za/terms-and-conditions/"
-			},
-			"esc": "url",
-			"group": "p_umoya_ft_col_ul_li_a",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_col_ul_li_a_text_2",
-			"control": "text",
-			"label": "Link",
-			"description": "",
-			"default": "Privacy Policy",
-			"esc": "post",
-			"group": "p_umoya_ft_col_ul_li_a",
-			"sort": 0
-		},
-		{
-			"id": "c_umoya_ft_col_ul_li_a_href_2",
-			"control": "url",
-			"label": "Link",
-			"default": {
-				"url": "https://umoyaafrikatours.co.za/privacy/"
-			},
-			"esc": "url",
-			"group": "p_umoya_ft_col_ul_li_a",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "c_cky_banner_element_text",
-			"control": "text",
-			"label": "Button",
-			"description": "",
-			"default": "Cookie Settings",
-			"esc": "post",
-			"group": "p_cky_banner_element",
-			"sort": 0
-		},
-		{
-			"id": "c_cky_banner_element_disabled",
-			"control": "switcher",
-			"label": "Disabled",
-			"description": "",
-			"default": "",
-			"flag_attr": "disabled",
-			"flag_prefix": " ",
-			"esc": "raw",
-			"group": "p_cky_banner_element",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "c_cky_banner_element_type",
-			"control": "text",
-			"label": "Type",
-			"default": "button",
-			"esc": "attr",
-			"group": "form",
-			"tab": "form",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_col_ul_li_a_text_3",
-			"control": "text",
-			"label": "Link",
-			"description": "",
-			"default": "Email Opt-out",
-			"esc": "post",
-			"group": "p_umoya_ft_col_ul_li_a",
-			"sort": 0
-		},
-		{
-			"id": "c_umoya_ft_col_ul_li_a_href_3",
-			"control": "url",
-			"label": "Link",
-			"default": {
-				"url": "mailto:info@umoyaafrikatours.co.za?subject=Unsubscribe"
-			},
-			"esc": "url",
-			"group": "p_umoya_ft_col_ul_li_a",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_col_ul_li_a_text_4",
-			"control": "text",
-			"label": "Link",
-			"description": "",
-			"default": "PAIA Manual",
-			"esc": "post",
-			"group": "p_umoya_ft_col_ul_li_a",
-			"sort": 0
-		},
-		{
-			"id": "c_umoya_ft_col_ul_li_a_href_4",
-			"control": "url",
-			"label": "Link",
-			"default": {
-				"url": "https://umoyaafrikatours.co.za/umoya_paia_manual.pdf"
-			},
-			"esc": "url",
-			"group": "p_umoya_ft_col_ul_li_a",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_col_ul_li_a_target",
-			"control": "select",
-			"label": "Link Target",
-			"default": "_blank",
-			"options": [
-				"_self",
-				"_blank",
-				"_parent",
-				"_top"
-			],
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_col_ul_li_a_rel",
-			"control": "text",
-			"label": "Link Relationship",
-			"default": "noopener",
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1
 		},
 		{
 			"id": "c_umoya_ft_signup_umoya_ft_h_text",
@@ -4703,198 +4285,6 @@
 			"esc": "post",
 			"group": "p_umoya_ft_tag",
 			"sort": 0
-		},
-		{
-			"id": "c_umoya_ft_social_a_href",
-			"control": "url",
-			"label": "Link",
-			"default": {
-				"url": "https://www.instagram.com/umoyaafrikatours/"
-			},
-			"esc": "url",
-			"group": "p_umoya_ft_social_a",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_social_a_target",
-			"control": "select",
-			"label": "Link Target",
-			"default": "_blank",
-			"options": [
-				"_self",
-				"_blank",
-				"_parent",
-				"_top"
-			],
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_social_a_rel",
-			"control": "text",
-			"label": "Link Relationship",
-			"default": "noopener",
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_social_a_aria_label",
-			"control": "text",
-			"label": "Accessible Name",
-			"default": "Umoya Afrika Tours on Instagram",
-			"esc": "attr",
-			"group": "p_umoya_ft_social_a",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_social_a_href_2",
-			"control": "url",
-			"label": "Link",
-			"default": {
-				"url": "https://www.facebook.com/umoyaafrikatours"
-			},
-			"esc": "url",
-			"group": "p_umoya_ft_social_a",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_social_a_target_2",
-			"control": "select",
-			"label": "Link Target",
-			"default": "_blank",
-			"options": [
-				"_self",
-				"_blank",
-				"_parent",
-				"_top"
-			],
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_social_a_rel_2",
-			"control": "text",
-			"label": "Link Relationship",
-			"default": "noopener",
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_social_a_aria_label_2",
-			"control": "text",
-			"label": "Accessible Name",
-			"default": "Umoya Afrika Tours on Facebook",
-			"esc": "attr",
-			"group": "p_umoya_ft_social_a",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_social_a_href_3",
-			"control": "url",
-			"label": "Link",
-			"default": {
-				"url": "https://www.tiktok.com/@umoyaafrikatours"
-			},
-			"esc": "url",
-			"group": "p_umoya_ft_social_a",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_social_a_target_3",
-			"control": "select",
-			"label": "Link Target",
-			"default": "_blank",
-			"options": [
-				"_self",
-				"_blank",
-				"_parent",
-				"_top"
-			],
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_social_a_rel_3",
-			"control": "text",
-			"label": "Link Relationship",
-			"default": "noopener",
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_social_a_aria_label_3",
-			"control": "text",
-			"label": "Accessible Name",
-			"default": "Umoya Afrika Tours on TikTok",
-			"esc": "attr",
-			"group": "p_umoya_ft_social_a",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_social_a_href_4",
-			"control": "url",
-			"label": "Link",
-			"default": {
-				"url": "https://www.linkedin.com/company/umoyaafrikatours/"
-			},
-			"esc": "url",
-			"group": "p_umoya_ft_social_a",
-			"tab": "content",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_social_a_target_4",
-			"control": "select",
-			"label": "Link Target",
-			"default": "_blank",
-			"options": [
-				"_self",
-				"_blank",
-				"_parent",
-				"_top"
-			],
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_social_a_rel_4",
-			"control": "text",
-			"label": "Link Relationship",
-			"default": "noopener",
-			"esc": "attr",
-			"group": "behaviour",
-			"tab": "behaviour",
-			"sort": 1
-		},
-		{
-			"id": "c_umoya_ft_social_a_aria_label_4",
-			"control": "text",
-			"label": "Accessible Name",
-			"default": "Umoya Afrika Tours on LinkedIn",
-			"esc": "attr",
-			"group": "p_umoya_ft_social_a",
-			"tab": "content",
-			"sort": 1
 		},
 		{
 			"id": "c_umoya_email_optout_umoya_ep_close_disabled",

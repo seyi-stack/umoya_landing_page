@@ -504,11 +504,29 @@ class Control_Factory {
 			) );
 		}
 
+		// A choice of shadows, not Elementor's Box Shadow control: that control
+		// carries a default of its own (a 10px black blur at 50%), so setting a
+		// row to Custom put a shadow on the element before anything was chosen.
+		// Elementor's own widgets hide it behind a second toggle, which cannot
+		// sit inside a pop-out. Every option here is empty until picked.
 		if ( $shadow ) {
-			self::control( $widget, $id . '_box_shadow', array(
-				'label'     => 'Box Shadow',
-				'type'      => Controls_Manager::BOX_SHADOW,
-				'selectors' => array( $target => 'box-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{SPREAD}}px {{COLOR}};' ),
+			self::control( $widget, $id . '_shadow', array(
+				'label'     => 'Shadow',
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array(
+					''       => 'Default',
+					'none'   => 'None',
+					'soft'   => 'Soft',
+					'medium' => 'Medium',
+					'strong' => 'Strong',
+				),
+				'selectors_dictionary' => array(
+					'none'   => 'none',
+					'soft'   => '0 4px 14px rgba(75, 46, 43, 0.10)',
+					'medium' => '0 10px 28px rgba(75, 46, 43, 0.16)',
+					'strong' => '0 18px 44px rgba(75, 46, 43, 0.24)',
+				),
+				'selectors' => array( $target => 'box-shadow: {{VALUE}};' ),
 			) );
 		}
 	}
@@ -559,10 +577,17 @@ class Control_Factory {
 
 		if ( in_array( 'filters', $features, true ) ) {
 			// One `filter` declaration carries every function, so each slider
-			// writes all three, reading its siblings' values and falling back to
-			// "no change" for any left empty. Separate `filter` rules would
-			// overwrite each other.
-			$filter = 'filter: brightness( {{' . $id . '_filter_brightness.SIZE || 100}}% ) contrast( {{' . $id . '_filter_contrast.SIZE || 100}}% ) saturate( {{' . $id . '_filter_saturate.SIZE || 100}}% );';
+			// sets its own variable and writes the whole declaration, reading
+			// its siblings' variables with "no change" as the fallback. Separate
+			// `filter` rules would overwrite each other.
+			//
+			// Each slider's own value is a plain {{SIZE}}, never `{{SIZE || 100}}`:
+			// a fallback makes the rule non-empty, so Elementor printed
+			// `filter: brightness(100%) ...` the moment the row was set to Custom
+			// -- wiping the footer logo's own CSS filter. Empty now emits nothing.
+			// The variables are named per element, because they inherit.
+			$var = '--uew-' . str_replace( '_', '-', $id ) . '-';
+			$all = 'filter: brightness( var(' . $var . 'brightness, 100%) ) contrast( var(' . $var . 'contrast, 100%) ) saturate( var(' . $var . 'saturate, 100%) );';
 
 			foreach ( array(
 				'brightness' => 'Brightness',
@@ -574,7 +599,7 @@ class Control_Factory {
 					'type'       => Controls_Manager::SLIDER,
 					'size_units' => array( '%' ),
 					'range'      => array( '%' => array( 'min' => 0, 'max' => 200, 'step' => 1 ) ),
-					'selectors'  => array( $target => $filter ),
+					'selectors'  => array( $target => $var . $name . ': {{SIZE}}%; ' . $all ),
 				) );
 			}
 		}
