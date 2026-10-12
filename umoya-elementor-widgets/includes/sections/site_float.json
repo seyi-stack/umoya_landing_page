@@ -1,0 +1,552 @@
+{
+	"key": "site_float",
+	"name": "umoya-site-float",
+	"title": "Floating Buttons",
+	"description": "The WhatsApp and scroll-to-top buttons fixed to the bottom-right of the screen. They appear once the visitor scrolls past the hero. Place it once per page, anywhere.",
+	"icon": "eicon-scroll",
+	"category": "umoya-site",
+	"source": "shared/section-98-floating-actions.html",
+	"class_name": "Site_Float",
+	"widget_file": "widgets/class-site-float.php",
+	"root_selector": "#umoya-float",
+	"template": "templates/sections/site_float.php",
+	"style": {
+		"handle": "uew-umoya-site-float",
+		"file": "assets/css/sections/site_float.css"
+	},
+	"script": {
+		"handle": "uew-umoya-site-float",
+		"file": "assets/js/sections/site_float.js"
+	},
+	"keywords": [
+		"umoya",
+		"site",
+		"global",
+		"shared",
+		"floating",
+		"buttons"
+	],
+	"portals": [
+		{
+			"selector": "#umoya-float",
+			"trigger": null
+		}
+	],
+	"tokens": [],
+	"regions": [
+		{
+			"id": "r_buttons",
+			"label": "Buttons",
+			"portal": true
+		}
+	],
+	"content_panels": [
+		{
+			"id": "content_r_buttons",
+			"label": "Buttons",
+			"items": [
+				{
+					"kind": "group",
+					"label": "WhatsApp Button",
+					"order": 1,
+					"controls": [
+						{
+							"id": "c_umoya_fab_umoya_wa_show",
+							"control": "switcher",
+							"label": "Show the WhatsApp button",
+							"description": "",
+							"default": "yes",
+							"flag_attr": "hidden",
+							"flag_prefix": " ",
+							"flag_invert": true,
+							"esc": "raw",
+							"group": "p_umoya_fab_umoya_wa",
+							"sort": -1
+						},
+						{
+							"id": "c_umoya_fab_umoya_wa_href",
+							"control": "url",
+							"label": "Link",
+							"default": {
+								"url": "https://wa.me/12403136344?text=Hi.%20I%20just%20went%20through%20the%20Umoya%20Afrika%20Tours%20website%20and%20would%20love%20to%20get%20some%20information"
+							},
+							"esc": "url",
+							"group": "p_umoya_fab_umoya_wa",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Scroll-to-top Button",
+					"order": 6,
+					"controls": [
+						{
+							"id": "c_umoya_fab_umoya_top_show",
+							"control": "switcher",
+							"label": "Show the scroll-to-top button",
+							"description": "",
+							"default": "yes",
+							"flag_attr": "hidden",
+							"flag_prefix": " ",
+							"flag_invert": true,
+							"esc": "raw",
+							"group": "p_umoya_fab_umoya_top",
+							"sort": -1
+						}
+					]
+				}
+			]
+		}
+	],
+	"style_panels": [
+		{
+			"id": "style_section",
+			"label": "Section",
+			"tokens": true,
+			"rows": [
+				{
+					"part": "p_section",
+					"label": "Section",
+					"inline": [],
+					"inline_props": []
+				}
+			]
+		},
+		{
+			"id": "style_r_buttons",
+			"label": "Buttons",
+			"tokens": false,
+			"rows": [
+				{
+					"part": "p_umoya_fab_umoya_wa",
+					"label": "WhatsApp Button",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_wa_svg",
+					"label": "WhatsApp Icon",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_fab_umoya_top",
+					"label": "Scroll-to-top Button",
+					"inline": [],
+					"inline_props": []
+				},
+				{
+					"part": "p_umoya_top_svg",
+					"label": "Arrow",
+					"inline": [],
+					"inline_props": []
+				}
+			]
+		}
+	],
+	"advanced_panels": [
+		{
+			"id": "uew_accessibility",
+			"label": "Accessibility",
+			"notice": "What screen readers announce for each element. Visitors do not see these; keep them short and descriptive.",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Section",
+					"order": 0,
+					"controls": [
+						{
+							"id": "c_section_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Quick actions",
+							"esc": "attr",
+							"group": "p_section",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Buttons › WhatsApp Button",
+					"order": 1,
+					"controls": [
+						{
+							"id": "c_umoya_fab_umoya_wa_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Chat on WhatsApp (opens in a new tab)",
+							"esc": "attr",
+							"group": "p_umoya_fab_umoya_wa",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				},
+				{
+					"kind": "group",
+					"label": "Buttons › Scroll-to-top Button",
+					"order": 6,
+					"controls": [
+						{
+							"id": "c_umoya_fab_umoya_top_aria_label",
+							"control": "text",
+							"label": "Accessible Name",
+							"default": "Scroll to top",
+							"esc": "attr",
+							"group": "p_umoya_fab_umoya_top",
+							"tab": "content",
+							"sort": 1
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "uew_behaviour",
+			"label": "Links &amp; Behaviour",
+			"notice": "",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Buttons › WhatsApp Button",
+					"order": 1,
+					"controls": [
+						{
+							"id": "c_umoya_fab_umoya_wa_target",
+							"control": "select",
+							"label": "Link Target",
+							"default": "_blank",
+							"options": [
+								"_self",
+								"_blank",
+								"_parent",
+								"_top"
+							],
+							"esc": "attr",
+							"group": "behaviour",
+							"tab": "behaviour",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_fab_umoya_wa_rel",
+							"control": "text",
+							"label": "Link Relationship",
+							"default": "noopener",
+							"esc": "attr",
+							"group": "behaviour",
+							"tab": "behaviour",
+							"sort": 1
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "uew_form",
+			"label": "Form Field Rules",
+			"notice": "",
+			"groups": [
+				{
+					"kind": "group",
+					"label": "Buttons › Scroll-to-top Button",
+					"order": 6,
+					"controls": [
+						{
+							"id": "c_umoya_fab_umoya_top_disabled",
+							"control": "switcher",
+							"label": "Disabled",
+							"description": "",
+							"default": "",
+							"flag_attr": "disabled",
+							"flag_prefix": " ",
+							"esc": "raw",
+							"group": "p_umoya_fab_umoya_top",
+							"tab": "form",
+							"sort": 1
+						},
+						{
+							"id": "c_umoya_fab_umoya_top_type",
+							"control": "text",
+							"label": "Type",
+							"default": "button",
+							"esc": "attr",
+							"group": "form",
+							"tab": "form",
+							"sort": 1
+						}
+					]
+				}
+			]
+		}
+	],
+	"repeaters": [],
+	"style_parts": [
+		{
+			"id": "p_section",
+			"label": "Section",
+			"short_label": "Section",
+			"parent_label": "",
+			"sample": "",
+			"selector": "",
+			"tag": "div",
+			"features": [
+				"fill",
+				"border",
+				"padding",
+				"min_height",
+				"flex_container",
+				"effects"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null,
+			"order": 0,
+			"box": false,
+			"everywhere": false,
+			"region": "",
+			"display": "Section"
+		},
+		{
+			"id": "p_umoya_fab_umoya_wa",
+			"label": "WhatsApp Button",
+			"short_label": "WhatsApp Button",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-fab.umoya-wa",
+			"tag": "a",
+			"features": [
+				"text",
+				"fill",
+				"border",
+				"shadow",
+				"padding",
+				"margin",
+				"grid_container",
+				"states",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null,
+			"order": 1,
+			"box": false,
+			"everywhere": false,
+			"region": "r_buttons",
+			"display": "WhatsApp Button"
+		},
+		{
+			"id": "p_umoya_wa_svg",
+			"label": "WhatsApp Icon",
+			"short_label": "WhatsApp Icon",
+			"parent_label": "WhatsApp Button",
+			"sample": "",
+			"selector": ".umoya-wa-svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null,
+			"order": 2,
+			"box": false,
+			"everywhere": false,
+			"region": "r_buttons",
+			"display": "WhatsApp Icon"
+		},
+		{
+			"id": "p_umoya_fab_umoya_top",
+			"label": "Scroll-to-top Button",
+			"short_label": "Scroll-to-top Button",
+			"parent_label": "",
+			"sample": "",
+			"selector": ".umoya-fab.umoya-top",
+			"tag": "button",
+			"features": [
+				"text",
+				"fill",
+				"border",
+				"shadow",
+				"padding",
+				"margin",
+				"grid_container",
+				"states",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null,
+			"order": 6,
+			"box": false,
+			"everywhere": false,
+			"region": "r_buttons",
+			"display": "Scroll-to-top Button"
+		},
+		{
+			"id": "p_umoya_top_svg",
+			"label": "Arrow",
+			"short_label": "Arrow",
+			"parent_label": "Scroll-to-top Button",
+			"sample": "",
+			"selector": ".umoya-top-svg",
+			"tag": "svg",
+			"features": [
+				"svg",
+				"effects",
+				"visibility"
+			],
+			"animated": [],
+			"shared": false,
+			"absolute": false,
+			"repeater": null,
+			"order": 7,
+			"box": false,
+			"everywhere": false,
+			"region": "r_buttons",
+			"display": "Arrow"
+		}
+	],
+	"inline_styles": [],
+	"fields": [
+		{
+			"id": "c_section_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Quick actions",
+			"esc": "attr",
+			"group": "p_section",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "c_section_data_show_after",
+			"control": "text",
+			"label": "Appear after scrolling",
+			"default": "60vh",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "content",
+			"sort": 1,
+			"description": "How far down the page the buttons appear. 60vh is 60% of the screen height, so they stay out of the way on the hero; a plain number, such as 300, is pixels."
+		},
+		{
+			"id": "c_umoya_fab_umoya_wa_href",
+			"control": "url",
+			"label": "Link",
+			"default": {
+				"url": "https://wa.me/12403136344?text=Hi.%20I%20just%20went%20through%20the%20Umoya%20Afrika%20Tours%20website%20and%20would%20love%20to%20get%20some%20information"
+			},
+			"esc": "url",
+			"group": "p_umoya_fab_umoya_wa",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "c_umoya_fab_umoya_wa_target",
+			"control": "select",
+			"label": "Link Target",
+			"default": "_blank",
+			"options": [
+				"_self",
+				"_blank",
+				"_parent",
+				"_top"
+			],
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "c_umoya_fab_umoya_wa_rel",
+			"control": "text",
+			"label": "Link Relationship",
+			"default": "noopener",
+			"esc": "attr",
+			"group": "behaviour",
+			"tab": "behaviour",
+			"sort": 1
+		},
+		{
+			"id": "c_umoya_fab_umoya_wa_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Chat on WhatsApp (opens in a new tab)",
+			"esc": "attr",
+			"group": "p_umoya_fab_umoya_wa",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "c_umoya_fab_umoya_wa_show",
+			"control": "switcher",
+			"label": "Show the WhatsApp button",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "hidden",
+			"flag_prefix": " ",
+			"flag_invert": true,
+			"esc": "raw",
+			"group": "p_umoya_fab_umoya_wa",
+			"sort": -1
+		},
+		{
+			"id": "c_umoya_fab_umoya_top_disabled",
+			"control": "switcher",
+			"label": "Disabled",
+			"description": "",
+			"default": "",
+			"flag_attr": "disabled",
+			"flag_prefix": " ",
+			"esc": "raw",
+			"group": "p_umoya_fab_umoya_top",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "c_umoya_fab_umoya_top_type",
+			"control": "text",
+			"label": "Type",
+			"default": "button",
+			"esc": "attr",
+			"group": "form",
+			"tab": "form",
+			"sort": 1
+		},
+		{
+			"id": "c_umoya_fab_umoya_top_aria_label",
+			"control": "text",
+			"label": "Accessible Name",
+			"default": "Scroll to top",
+			"esc": "attr",
+			"group": "p_umoya_fab_umoya_top",
+			"tab": "content",
+			"sort": 1
+		},
+		{
+			"id": "c_umoya_fab_umoya_top_show",
+			"control": "switcher",
+			"label": "Show the scroll-to-top button",
+			"description": "",
+			"default": "yes",
+			"flag_attr": "hidden",
+			"flag_prefix": " ",
+			"flag_invert": true,
+			"esc": "raw",
+			"group": "p_umoya_fab_umoya_top",
+			"sort": -1
+		}
+	]
+}

@@ -392,6 +392,12 @@ for ( const registry of registries ) {
 			error.message = section.key + ' (' + section.source + '): ' + error.message;
 			throw error;
 		}
+		// A field the registry words better than the markup can: its label,
+		// description and tab, keyed by the field's (stable) id.
+		for ( const field of derived.fields ) {
+			const override = ( section.spec && section.spec.fieldOverrides || {} )[ field.id ];
+			if ( override ) Object.assign( field, override );
+		}
 		const { contentPanels, stylePanels, advancedPanels, leanParts } = buildPanels( derived );
 
 		const paths = {

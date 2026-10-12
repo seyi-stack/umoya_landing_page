@@ -256,6 +256,16 @@ and assuming a space would fold them together.
 Attributes with a fixed set of legal values (`preload`, `loading`, `target`,
 `method`…) become dropdowns rather than free-text boxes.
 
+**Switching an element off** is a registry decision, not something the markup
+says: `spec.toggles`, keyed by the element's selector like `overrides`, gives it
+a Content-tab switch ("Show the WhatsApp button"), on by default, that prints
+`hidden` when off (`flag_invert` in the schema). On, it prints nothing, so the
+default render is unchanged; the section's CSS must honour `[hidden]` where it
+sets `display`. **`spec.fieldOverrides`**, keyed by field id, rewords a field
+the markup names badly (`data-show-after` becomes "Appear after scrolling", with
+a description) and can move it (`tab`, `region`, `owner`, `owner_label`,
+`order`). Ids never change, so neither touches a saved value.
+
 ### Dialogs that move themselves to `<body>` (portals)
 
 Every style control is scoped under the widget wrapper (`{{WRAPPER}}`). The

@@ -86,6 +86,46 @@ export const sections = [
 		},
 	},
 	{
+		key: 'site_float',
+		source: 'shared/section-98-floating-actions.html',
+		name: 'umoya-site-float',
+		title: 'Floating Buttons',
+		class_name: 'Site_Float',
+		icon: 'eicon-scroll',
+		description: 'The WhatsApp and scroll-to-top buttons fixed to the bottom-right of the screen. They appear once the visitor scrolls past the hero. Place it once per page, anywhere.',
+		spec: {
+			regionLabels: { '#umoya-float': 'Buttons' },
+			overrides: {
+				'.umoya-fab.umoya-wa': { label: 'WhatsApp Button' },
+				'.umoya-fab.umoya-top': { label: 'Scroll-to-top Button' },
+				'.umoya-wa-svg': { label: 'WhatsApp Icon' },
+				'.umoya-top-svg': { label: 'Arrow' },
+			},
+			// Either button can be switched off. Off adds `hidden`, so the other
+			// one takes its place at the corner.
+			toggles: {
+				'.umoya-fab.umoya-wa': { label: 'Show the WhatsApp button' },
+				'.umoya-fab.umoya-top': { label: 'Show the scroll-to-top button' },
+			},
+			// The whole bar moves itself to <body>, so a transformed ancestor
+			// cannot pin it to the page instead of the screen. It needs no
+			// trigger: it is always there once the page has scrolled.
+			portals: [ { selector: '#umoya-float' } ],
+			fieldOverrides: {
+				// First in the buttons' own panel, rather than on the Advanced tab.
+				c_section_data_show_after: {
+					label: 'Appear after scrolling',
+					description: 'How far down the page the buttons appear. 60vh is 60% of the screen height, so they stay out of the way on the hero; a plain number, such as 300, is pixels.',
+					tab: 'content',
+					region: 'r_content',
+					owner: 'appear_after',
+					owner_label: 'Appear after scrolling',
+					order: 0,
+				},
+			},
+		},
+	},
+	{
 		key: 'page_404',
 		source: 'shared/page-404.html',
 		name: 'umoya-page-404',

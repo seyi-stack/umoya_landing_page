@@ -1,9 +1,9 @@
 # CLAUDE.md - Umoya Afrika Tours Project Handoff
 
-Last updated: 2026-10-11
+Last updated: 2026-10-12
 Workspace: `C:\Users\MOVING_SURFACE\Downloads\UM_Claude`
 Remote: `https://github.com/seyi-stack/umoya_landing_page.git`
-Current local branch: `codex/elementor-widget-sync` (pushed; Phase 29 is the latest work — `git log -3` for hashes)
+Current local branch: `codex/elementor-widget-sync` (pushed; Phase 30 is the latest work — `git log -3` for hashes)
 
 This file is the living handoff for the Umoya Afrika Tours website work. It should help any future assistant, developer, or editor understand what has been built, why it was built, how the pieces connect, and what still needs attention.
 
@@ -1965,6 +1965,62 @@ undo restores), the footer's Legal list (a Cookie Settings row shows only Type
 and Text; switching a row's Type re-renders it as that kind), the Social Links
 picker (brand marks), and the duplicate-id warning.
 
+### Phase 30 - Floating WhatsApp + scroll-to-top buttons, 2026-10-12
+
+The client's snippet (`Desktop/02.html`: a WhatsApp button and a scroll-to-top
+button fixed to the bottom-right) became `shared/section-98-floating-actions.html`
+and the 64th widget, **Site-wide → Floating Buttons** (`site_float`). Plugin
+**6.0.0 → 6.1.0**; no existing control id changed. Place it once per page,
+anywhere (it is fixed to the screen); `make-site.mjs` puts it on every page.
+
+Changes from the snippet, all deliberate:
+
+- **Hidden on the hero.** Both buttons slide in once the page has scrolled past
+  `data-show-after` (default `60vh`, 60% of the screen height; a plain number is
+  pixels) and slide out again near the top. Editable on the Content tab as
+  **Appear after scrolling**. In the Elementor editor the bar always shows, so it
+  can be found.
+- **Either button can be switched off**: **Show the WhatsApp button** / **Show
+  the scroll-to-top button** on the Content tab. Off adds `hidden`; the other
+  button takes the corner. This is a new registry feature, `spec.toggles` (a
+  Content switch, on by default, that prints `hidden` when off -- `flag_invert`
+  in the schema), plus `spec.fieldOverrides` to relabel, explain and place a
+  field by id.
+- Styles scoped to `#umoya-float` instead of `!important` everywhere, so the
+  Style tab can still change them and theme button/link rules cannot.
+- **Moves itself to `<body>`** (a declared portal), like the footer's opt-out
+  dialog, so a transformed ancestor cannot pin it to the page.
+- `z-index: 999990`: above the page, **below** the CookieYes banner, the menu bar
+  and every dialog, so it never covers their buttons (the snippet's
+  2147483646 sat over all of them).
+- No JavaScript: the WhatsApp button still shows; scroll-to-top (which needs the
+  script) does not. Reduced motion: instant jump, no slide. Hidden in print.
+  iPhone safe area respected. A visitor's own scroll or swipe cancels the
+  smooth scroll.
+- `aria-label` on the WhatsApp link says it opens in a new tab; the group has
+  `role="group"` (an `aria-label` on a bare `div` is not allowed).
+
+The WhatsApp number is the snippet's, `+1 240 313 6344`, with its pre-filled
+message.
+
+**Deploying:** upload plugin 6.1.0, then add the Floating Buttons widget to each
+page built on the widgets. On pages still built from pasted HTML, replace any
+pasted copy of the old snippet with `shared/section-98-floating-actions.html`
+-- **never both on one page** (two `#umoya-float` bars; the widget's editor
+warning will say so).
+
+Verified: all eight checks on the widget (fidelity, edit including both
+switches, render, control reach, browser identical to the pasted snippet,
+editor, accessibility clean), and in real headless Chrome at 1280 and 390 px:
+hidden at the top and at 150 px, shown past the hero 16 px from the corner,
+scroll-to-top back to 0 and hidden again, each switch removing only its button,
+no page errors. `behaviour-check --only=` on a section with no lists now says so
+instead of crashing.
+
+> **Testing trap:** the Claude browser pane does not fire scroll events while it
+> is not rendering, so the bar looks stuck there. Test scrolling in real Chrome
+> (or dispatch a `scroll` event).
+
 ---
 
 ## 6. Repository Map
@@ -1995,9 +2051,9 @@ picker (brand marks), and the duplicate-id warning.
 | `about/` | About Us page — 8 sections. |
 | `for-groups/` | For Groups page — 8 sections. |
 | `theme-overrides/tevily_child/header.php` | Optional child-theme override removing the Tevily header. Not deployed. |
-| `tools/uew/` | **The widget compiler** (all 63 sections, eight page families) + the local WordPress/Elementor test harness + eight checks. Has its own `README.md`. |
+| `tools/uew/` | **The widget compiler** (all 64 sections, eight page families) + the local WordPress/Elementor test harness + eight checks. Has its own `README.md`. |
 | `local-env/` | The harness itself — portable PHP with OPcache, WordPress on SQLite, Elementor 4.2.4. **Git-ignored, generated;** rebuild with `node tools/uew/setup-local-env.mjs`. |
-| `umoya-elementor-widgets/` | Custom Elementor plugin source — 63 compiled section widgets (6.0.0) plus the HubSpot/WordPress submission backend. |
+| `umoya-elementor-widgets/` | Custom Elementor plugin source — 64 compiled section widgets (6.1.0) plus the HubSpot/WordPress submission backend. |
 | `Website docs/` | Legal documents, footer URL map, and Elementor-ready legal snippets. |
 | `hubspot-docx/` | Extracted Word document content for the HubSpot integration brief. |
 | `HubSpot Section 02 Integration Brief.docx` | Original HubSpot handoff brief. |
@@ -2015,7 +2071,7 @@ folders, and the generator that read the originals has been deleted.
 
 ```text
 umoya-elementor-widgets/
-  umoya-elementor-widgets.php          bootstrap, version 6.0.0
+  umoya-elementor-widgets.php          bootstrap, version 6.1.0
   includes/
     class-plugin.php                   categories, widget registration, asset handles
     class-section-registry.php         reads includes/sections/*.json
@@ -2044,7 +2100,7 @@ from the zip.
 `umoya-elementor-widgets/umoya-elementor-widgets.php`:
 
 - Plugin name: `Umoya Elementor Widgets`
-- Version: `6.0.0`
+- Version: `6.1.0`
 - Requires WordPress 5.8+, PHP 7.4+, Elementor (tested up to 4.2.4).
 - Initializes:
   - `Submissions`
@@ -2068,8 +2124,8 @@ See `tools/uew/README.md` for what the controls are and why.
 
 ## 7. Elementor Widget Registry
 
-The plugin exposes **63 section widgets in eight categories**, all compiled by
-`tools/uew/`: **6 Site-wide** from `shared/`, **12 Founder's Circle** from
+The plugin exposes **64 section widgets in eight categories**, all compiled by
+`tools/uew/`: **7 Site-wide** from `shared/`, **12 Founder's Circle** from
 `founders-circle-revamp/`, **13 homepage** from `homepage-revamp/`, **8
 Signature Journey** from `signature-journey/`, **5 Private & Tailormade**, **8
 About Us**, **8 For Groups** and **3 Contact** from their own folders. Schemas
@@ -2170,6 +2226,7 @@ Category: `Umoya - Site-wide` (`umoya-site`). Compiled from **`shared/`**.
 |---|---|---|---|
 | `site_nav` | Site Navigation | `section-00-nav.html` | `#umoyaSiteNavMount` |
 | `site_footer` | Site Footer | `section-99-footer.html` | `#umoya-footer` (+ `#umoya-email-optout`) |
+| `site_float` | Floating Buttons | `section-98-floating-actions.html` | `#umoya-float` (moves itself to `<body>`) |
 | `page_404` | 404 Page | `page-404.html` | `#umoya-404` |
 | `page_travel_essentials` | Travel Essentials Page | `page-travel-essentials.html` | `#umoya-travel-essentials` |
 | `page_privacy` | Privacy Policy Page | `page-privacy-policy.html` | `#umoya-privacy` |
@@ -3231,7 +3288,7 @@ node tools/uew/setup-local-env.mjs --serve
 # Build every page on it to test by hand (http://localhost:8765/); re-run to reset
 node tools/uew/make-site.mjs
 
-# Compile all 63 section widgets + prove nothing was lost and every control works
+# Compile all 64 section widgets + prove nothing was lost and every control works
 npm --prefix tools/uew run check
 
 # Just one or two widgets, any check

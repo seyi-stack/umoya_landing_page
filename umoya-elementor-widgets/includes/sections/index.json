@@ -55,6 +55,35 @@
 			"footer"
 		]
 	},
+	"site_float": {
+		"key": "site_float",
+		"name": "umoya-site-float",
+		"title": "Floating Buttons",
+		"description": "The WhatsApp and scroll-to-top buttons fixed to the bottom-right of the screen. They appear once the visitor scrolls past the hero. Place it once per page, anywhere.",
+		"icon": "eicon-scroll",
+		"category": "umoya-site",
+		"source": "shared/section-98-floating-actions.html",
+		"class_name": "Site_Float",
+		"widget_file": "widgets/class-site-float.php",
+		"root_selector": "#umoya-float",
+		"template": "templates/sections/site_float.php",
+		"style": {
+			"handle": "uew-umoya-site-float",
+			"file": "assets/css/sections/site_float.css"
+		},
+		"script": {
+			"handle": "uew-umoya-site-float",
+			"file": "assets/js/sections/site_float.js"
+		},
+		"keywords": [
+			"umoya",
+			"site",
+			"global",
+			"shared",
+			"floating",
+			"buttons"
+		]
+	},
 	"page_404": {
 		"key": "page_404",
 		"name": "umoya-page-404",

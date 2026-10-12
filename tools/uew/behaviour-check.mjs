@@ -121,6 +121,13 @@ const keys = Object.keys( manifest ).filter( ( key ) => {
 	return schema.script && schema.repeaters.length;
 } );
 
+// Only sections with a script and a list have behaviour to change; `--only` on
+// one without (the floating buttons) is nothing to check, not an error.
+if ( ! keys.length ) {
+	console.log( '\nNo section in this run has both a list and a script, so there is no list behaviour to check.' );
+	process.exit( 0 );
+}
+
 const job = { pages: [] };
 const plans = {};
 for ( const key of keys ) {

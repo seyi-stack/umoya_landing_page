@@ -58,7 +58,8 @@ function uew_prepare_defaults( array $schema ) {
 		}
 		if ( ! empty( $field['flag_attr'] ) ) {
 			$c[ $field['id'] ] = Value_Formatter::flag(
-				$field['default'],
+				// A "Show …" switch prints its attribute when it is off.
+				empty( $field['flag_invert'] ) ? $field['default'] : ( 'yes' === $field['default'] ? '' : 'yes' ),
 				$field['flag_attr'],
 				isset( $field['flag_prefix'] ) ? $field['flag_prefix'] : ' '
 			);

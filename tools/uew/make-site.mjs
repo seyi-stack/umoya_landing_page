@@ -10,7 +10,8 @@
  *
  * Every page uses the navigation it uses live: the homepage, Founder's Circle
  * and Signature Journey keep their own, every other page the Site Navigation.
- * That way each of the 63 widgets appears exactly once.
+ * Every page ends with the footer and the floating buttons, as live; every
+ * other widget appears exactly once.
  */
 
 import fs from 'fs';
@@ -27,20 +28,21 @@ const family = ( category ) => widgets.filter( ( w ) => w.category === category 
 
 const NAV = 'umoya-site-nav';
 const FOOTER = 'umoya-site-footer';
+const FLOAT = 'umoya-site-float';
 
 const pages = [
-	{ slug: 'home', title: 'Home', widgets: [ ...family( 'umoya-homepage' ), FOOTER ] },
-	{ slug: 'signature-journey', title: 'The Signature Journey', widgets: [ ...family( 'umoya-sj' ), FOOTER ] },
-	{ slug: 'private-and-tailormade', title: 'Private & Tailormade', widgets: [ NAV, ...family( 'umoya-pt' ), FOOTER ] },
-	{ slug: 'for-groups', title: 'For Groups', widgets: [ NAV, ...family( 'umoya-fg' ), FOOTER ] },
-	{ slug: 'about-us', title: 'About Us', widgets: [ NAV, ...family( 'umoya-about' ), FOOTER ] },
-	{ slug: 'founders-circle', title: "Founder's Circle", widgets: [ ...family( 'umoya-fc' ), FOOTER ] },
-	{ slug: 'contact', title: 'Contact', widgets: [ NAV, ...family( 'umoya-contact' ), FOOTER ] },
-	{ slug: 'privacy', title: 'Privacy Policy', widgets: [ NAV, 'umoya-page-privacy', FOOTER ] },
-	{ slug: 'cookie-policy', title: 'Cookie Policy', widgets: [ NAV, 'umoya-page-cookie', FOOTER ] },
-	{ slug: 'travel-essentials', title: 'Travel Essentials', widgets: [ NAV, 'umoya-page-travel-essentials', FOOTER ] },
+	{ slug: 'home', title: 'Home', widgets: [ ...family( 'umoya-homepage' ), FOOTER, FLOAT ] },
+	{ slug: 'signature-journey', title: 'The Signature Journey', widgets: [ ...family( 'umoya-sj' ), FOOTER, FLOAT ] },
+	{ slug: 'private-and-tailormade', title: 'Private & Tailormade', widgets: [ NAV, ...family( 'umoya-pt' ), FOOTER, FLOAT ] },
+	{ slug: 'for-groups', title: 'For Groups', widgets: [ NAV, ...family( 'umoya-fg' ), FOOTER, FLOAT ] },
+	{ slug: 'about-us', title: 'About Us', widgets: [ NAV, ...family( 'umoya-about' ), FOOTER, FLOAT ] },
+	{ slug: 'founders-circle', title: "Founder's Circle", widgets: [ ...family( 'umoya-fc' ), FOOTER, FLOAT ] },
+	{ slug: 'contact', title: 'Contact', widgets: [ NAV, ...family( 'umoya-contact' ), FOOTER, FLOAT ] },
+	{ slug: 'privacy', title: 'Privacy Policy', widgets: [ NAV, 'umoya-page-privacy', FOOTER, FLOAT ] },
+	{ slug: 'cookie-policy', title: 'Cookie Policy', widgets: [ NAV, 'umoya-page-cookie', FOOTER, FLOAT ] },
+	{ slug: 'travel-essentials', title: 'Travel Essentials', widgets: [ NAV, 'umoya-page-travel-essentials', FOOTER, FLOAT ] },
 	// Live, the 404 goes in a Theme Builder template; here it is a page to look at.
-	{ slug: 'page-not-found-preview', title: '404 Page (preview)', widgets: [ NAV, 'umoya-page-404', FOOTER ] },
+	{ slug: 'page-not-found-preview', title: '404 Page (preview)', widgets: [ NAV, 'umoya-page-404', FOOTER, FLOAT ] },
 ];
 
 const placed = new Set( pages.flatMap( ( p ) => p.widgets ) );

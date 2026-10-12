@@ -739,6 +739,10 @@ abstract class Section_Widget extends \Elementor\Widget_Base {
 			}
 
 			if ( ! empty( $field['flag_attr'] ) ) {
+				// A "Show …" switch prints its attribute (`hidden`) when it is off.
+				if ( ! empty( $field['flag_invert'] ) ) {
+					$value = ( 'yes' === $value ) ? '' : 'yes';
+				}
 				$values[ $id ] = Value_Formatter::flag(
 					$value,
 					$field['flag_attr'],

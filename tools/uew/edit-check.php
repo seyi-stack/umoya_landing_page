@@ -180,6 +180,10 @@ foreach ( $manifest as $key => $meta ) {
 			$token = ( isset( $field['flag_prefix'] ) && '' !== preg_replace( '/[^\s]/', '', $field['flag_prefix'] ) ? preg_replace( '/[^\s]/', '', $field['flag_prefix'] ) : ' ' ) . $field['flag_attr'];
 			$delta = strlen( $default ) - strlen( $html );
 			$want  = ( 'yes' === $field['default'] ) ? strlen( $token ) : -strlen( ' ' . $field['flag_attr'] );
+			// A "Show …" switch works the other way round: off adds the attribute.
+			if ( ! empty( $field['flag_invert'] ) ) {
+				$want = -$want;
+			}
 			if ( $html === $default ) {
 				$fail( $id, 'switching it changed nothing' );
 			} elseif ( $delta !== $want ) {

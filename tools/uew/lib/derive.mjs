@@ -1061,6 +1061,34 @@ export function deriveSection( options ) {
 				uniqueId,
 			} );
 
+			// "Show the WhatsApp button": a switch on the Content tab, on by
+			// default, that adds `hidden` to the element when switched off. Named
+			// in the registry (`spec.toggles`, keyed like `overrides`), because
+			// which elements an editor should be able to switch off is a
+			// decision, not something the markup says. On, it prints nothing, so
+			// the default render is still the section file byte for byte.
+			const toggle = ( spec.toggles || {} )[ selectorInfo.selector ];
+			if ( toggle && ! isRoot ) {
+				const id = uniqueId( 'c_' + partId.replace( /^p_/, '' ) + '_show' );
+				const field = {
+					id,
+					control: 'switcher',
+					label: toggle.label,
+					description: toggle.description || '',
+					default: 'yes',
+					flag_attr: 'hidden',
+					flag_prefix: ' ',
+					flag_invert: true,
+					esc: 'raw',
+					group: partId,
+					sort: -1,
+				};
+				Object.defineProperty( field, '_node', { value: node, enumerable: false } );
+				fields.push( field );
+				const at = startTagInsertOffset( markup, node );
+				edits.push( { start: at, end: at, replacement: phpEcho( id ) } );
+			}
+
 			// When an element's whole inner range became one rich-text control,
 			// its descendants are inside that control's text. Binding them again
 			// would produce overlapping edits, so they are claimed here.
