@@ -132,6 +132,18 @@
     display: block;
   }
 
+  /* Phones: 40px buttons (down from 56), tucked closer to the corner. */
+  @media (max-width: 768px) {
+    #umoya-float {
+      right: 12px;
+      bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+      gap: 8px;
+    }
+    #umoya-float .umoya-fab { width: 40px; height: 40px; }
+    #umoya-float .umoya-wa-svg { width: 40px; height: 40px; }
+    #umoya-float .umoya-top-svg { width: 19px; height: 19px; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     #umoya-float,
     #umoya-float.is-armed:not(.is-shown),
