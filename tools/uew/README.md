@@ -49,6 +49,9 @@ node tools/uew/setup-local-env.mjs
 # Start it (leave running in its own terminal)
 node tools/uew/setup-local-env.mjs --serve
 
+# Install the brand fonts (Canela Deck + Noto Sans) so widgets look right here
+node tools/uew/setup-fonts.mjs
+
 # Build the whole site on it for testing by hand: 11 pages at their live
 # slugs, every widget once, homepage as the front page. Re-run to reset them.
 node tools/uew/make-site.mjs
@@ -95,6 +98,18 @@ OPcache matters: without it every request recompiled WordPress and Elementor,
 and a page took 4.4 s instead of 1.3 s.
 
 Admin: <http://127.0.0.1:8765/wp-admin/> — `admin` / `admin`.
+
+**Fonts.** The widgets use `font-family: inherit` on purpose: on the live site the
+brand fonts come from WordPress, not the section HTML (Canela Deck is an Elementor
+Pro Custom Font applied to h1–h3 by the Site Kit, h1 500 / h2 400 / h3 500; Noto
+Sans is the body font). The harness has neither Elementor Pro nor the live theme,
+so `setup-fonts.mjs` reproduces it: it downloads the 12 Canela Deck files the live
+site serves plus Noto Sans (latin, variable) into `local-env/.../uploads/umoya-fonts/`
+and writes a local-only mu-plugin with the `@font-face` rules, the h1–h3 rules and
+both families in Elementor's font picker (group "Umoya Brand"). Re-run it after
+rebuilding the harness. **The Canela files are the "Trial" cut the live site
+currently serves: they live in the git-ignored `local-env` only and must never be
+committed or put in the plugin zip.** Nothing in the plugin changed.
 
 ---
 

@@ -1,0 +1,155 @@
+/**
+ * Install the brand fonts on the LOCAL WordPress harness, so widgets render
+ * here the way they do on the live site.
+ *
+ *   node tools/uew/setup-fonts.mjs
+ *
+ * Why this exists. The widgets use `font-family: inherit` on purpose: on the
+ * live site the brand fonts come from WordPress, not from the section HTML --
+ * Canela Deck is an Elementor Pro Custom Font applied to h1-h3 by the Site Kit
+ * (h1 500, h2 400, h3 500), and the body font is set by the theme. The harness
+ * has neither Elementor Pro nor the theme, so without this the widgets fall back
+ * to a system font and look wrong. The widgets do not change.
+ *
+ * What it does:
+ *   1. Downloads the 12 Canela Deck files the live site serves (Thin..Black,
+ *      roman + italic) and Noto Sans (latin subset, variable, roman + italic)
+ *      into local-env/wordpress/wp-content/uploads/umoya-fonts/.
+ *   2. Writes local-env/wordpress/wp-content/mu-plugins/umoya-brand-fonts.php:
+ *      @font-face rules, `body { font-family: "Noto Sans" }`, the live Site Kit's
+ *      h1/h2/h3 rules for Canela Deck, and both families added to Elementor's
+ *      font picker.
+ *
+ * Licensing: the Canela Deck files are the "Trial" cut the live site currently
+ * serves. They are downloaded to the git-ignored local-env only, for testing,
+ * and must never be committed or shipped in the plugin zip. Swap in the licensed
+ * files (same names) when the client has them.
+ */
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const here = path.dirname( fileURLToPath( import.meta.url ) );
+const repoRoot = path.resolve( here, '..', '..' );
+const content = path.join( repoRoot, 'local-env', 'wordpress', 'wp-content' );
+const fontDir = path.join( content, 'uploads', 'umoya-fonts' );
+const muDir = path.join( content, 'mu-plugins' );
+
+if ( ! fs.existsSync( content ) ) {
+	console.error( 'The local harness is not installed. Run `node tools/uew/setup-local-env.mjs` first.' );
+	process.exit( 1 );
+}
+fs.mkdirSync( fontDir, { recursive: true } );
+fs.mkdirSync( muDir, { recursive: true } );
+
+const LIVE = 'https://umoyaafrikatours.co.za/wp-content/uploads/2025/12/';
+const CANELA = [
+	[ 'Thin', 100 ], [ 'Light', 300 ], [ 'Regular', 400 ], [ 'Medium', 500 ], [ 'Bold', 700 ], [ 'Black', 900 ],
+];
+
+async function download( url, to, asBrowser = false ) {
+	if ( fs.existsSync( to ) && fs.statSync( to ).size > 1000 ) return 'kept';
+	const response = await fetch( url, asBrowser ? { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36' } } : {} );
+	if ( ! response.ok ) throw new Error( url + ' -> HTTP ' + response.status );
+	const bytes = Buffer.from( await response.arrayBuffer() );
+	// Fonts start with wOFF / wOF2; an HTML error page does not.
+	if ( ! [ 'wOFF', 'wOF2' ].includes( bytes.subarray( 0, 4 ).toString( 'latin1' ) ) ) throw new Error( url + ' is not a font file' );
+	fs.writeFileSync( to, bytes );
+	return bytes.length;
+}
+
+const faces = [];
+
+console.log( '\nCanela Deck (from the live site)' );
+for ( const [ name, weight ] of CANELA ) {
+	for ( const italic of [ false, true ] ) {
+		const file = 'CanelaDeck-' + name + ( italic ? 'Italic' : '' ) + '-Trial.woff';
+		const size = await download( LIVE + file, path.join( fontDir, file ) );
+		console.log( '  ' + file.padEnd(38) + size );
+		faces.push( { family: 'Canela Deck', weight, style: italic ? 'italic' : 'normal', file, format: 'woff' } );
+	}
+}
+
+console.log( '\nNoto Sans (Google Fonts, latin subset, variable)' );
+const css = await ( await fetch( 'https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap', {
+	headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36' },
+} ) ).text();
+for ( const block of css.match( /@font-face\s*{[^}]*}/g ) || [] ) {
+	if ( ! /U\+0000-00FF/.test( block ) ) continue; // the latin subset only
+	const style = ( block.match( /font-style:\s*(\w+)/ ) || [] )[ 1 ];
+	const url = ( block.match( /url\(([^)]+)\)/ ) || [] )[ 1 ];
+	if ( ! style || ! url ) continue;
+	const file = 'NotoSans-' + ( 'italic' === style ? 'Italic' : 'Regular' ) + '-VF-latin.woff2';
+	const size = await download( url, path.join( fontDir, file ), true );
+	console.log( '  ' + file.padEnd(38) + size );
+	faces.push( { family: 'Noto Sans', weight: '100 900', style, file, format: 'woff2' } );
+}
+if ( faces.filter( ( f ) => 'Noto Sans' === f.family ).length !== 2 ) throw new Error( 'Expected both Noto Sans faces (roman and italic).' );
+
+const faceCss = faces.map( ( f ) =>
+	`@font-face{font-family:"${ f.family }";font-style:${ f.style };font-weight:${ f.weight };font-display:swap;src:url("%URL%/${ f.file }") format("${ f.format }");}`
+).join( '\n' );
+
+fs.writeFileSync( path.join( muDir, 'umoya-brand-fonts.php' ), `<?php
+/**
+ * Plugin Name: Umoya brand fonts (local harness only)
+ *
+ * GENERATED by tools/uew/setup-fonts.mjs. Not part of the plugin, never deployed.
+ *
+ * Reproduces what the live site does so widgets look the same here:
+ *  - Canela Deck for h1-h3, with the weights the live Site Kit sets
+ *    (.elementor-kit-28 h1 500, h2 400, h3 500);
+ *  - Noto Sans for everything else (the widgets use font-family: inherit);
+ *  - both families offered in Elementor's font picker.
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+function umoya_brand_fonts_css() {
+	$url = content_url( 'uploads/umoya-fonts' );
+	$faces = <<<'CSS'
+${ faceCss }
+CSS;
+	$faces = str_replace( '%URL%', $url, $faces );
+
+	return $faces . <<<'CSS'
+
+html body, html body button, html body input, html body select, html body textarea { font-family: "Noto Sans", sans-serif; }
+html body h1, html body h2, html body h3, html body h4, html body h5, html body h6,
+html body .elementor-widget-heading .elementor-heading-title { font-family: "Canela Deck", "Noto Sans", sans-serif; }
+html body h1 { font-weight: 500; }
+html body h2 { font-weight: 400; }
+html body h3 { font-weight: 500; }
+CSS;
+}
+
+// Front end, and the editor's preview iframe (which is a front-end render).
+add_action( 'wp_head', function () {
+	echo '<style id="umoya-brand-fonts">' . umoya_brand_fonts_css() . '</style>' . "\\n"; // phpcs:ignore
+}, 999 ); // after the default theme's own global styles, which set Manrope
+
+// The editor panel itself: only the font picker's preview needs the faces.
+add_action( 'elementor/editor/after_enqueue_styles', function () {
+	wp_add_inline_style( 'elementor-editor', umoya_brand_fonts_css() );
+} );
+
+// Both families in Elementor's font picker, under "Custom".
+add_filter( 'elementor/fonts/additional_font_groups', function ( $groups ) {
+	$groups['umoya_brand'] = __( 'Umoya Brand', 'umoya-elementor-widgets' );
+	return $groups;
+} );
+add_filter( 'elementor/fonts/groups', function ( $groups ) {
+	$groups['umoya_brand'] = __( 'Umoya Brand', 'umoya-elementor-widgets' );
+	return $groups;
+} );
+add_filter( 'elementor/fonts/additional_fonts', function ( $fonts ) {
+	$fonts['Canela Deck'] = 'umoya_brand';
+	$fonts['Noto Sans']   = 'umoya_brand';
+	return $fonts;
+} );
+` );
+
+console.log( '\nInstalled. Reload any page on the harness.' );
+console.log( 'Fonts:   ' + fontDir );
+console.log( 'Loader:  ' + path.join( muDir, 'umoya-brand-fonts.php' ) + '\n' );
