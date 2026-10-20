@@ -113,19 +113,31 @@ ${ faceCss }
 CSS;
 	$faces = str_replace( '%URL%', $url, $faces );
 
+	// The live headings rule is the Site Kit's: kit class + h2, setting Canela
+	// Deck. One class and one element outranks a section's own one-class
+	// font-family: inherit, which is why headings are Canela on the live site
+	// even in sections that say inherit. The same selector shape, with this
+	// site's kit id, gives the same result here.
+	$kit = '.elementor-kit-' . (int) get_option( 'elementor_active_kit' );
+
 	return $faces . <<<'CSS'
 
 html body, html body button, html body input, html body select, html body textarea { font-family: "Noto Sans", sans-serif; }
-html body h1, html body h2, html body h3, html body h4, html body h5, html body h6,
-html body .elementor-widget-heading .elementor-heading-title { font-family: "Canela Deck", "Noto Sans", sans-serif; }
-html body h1 { font-weight: 500; }
-html body h2 { font-weight: 400; }
-html body h3 { font-weight: 500; }
-CSS;
+CSS
+	. "\\n" . $kit . ' h1, ' . $kit . ' h2, ' . $kit . ' h3 { font-family: "Canela Deck", "Noto Sans", sans-serif; }'
+	. "\\n" . $kit . ' h1 { font-weight: 500; }'
+	. "\\n" . $kit . ' h2 { font-weight: 400; }'
+	. "\\n" . $kit . ' h3 { font-weight: 500; }';
 }
 
 // Front end, and the editor's preview iframe (which is a front-end render).
 add_action( 'wp_head', function () {
+	// Not Elementor's own editor screen: its panel is admin UI, which has its
+	// own fonts and must keep them (its headings are h-tags). The canvas beside
+	// it is a separate front-end render and does get these rules.
+	if ( class_exists( '\\Elementor\\Plugin' ) && \\Elementor\\Plugin::$instance->editor->is_edit_mode() ) {
+		return;
+	}
 	echo '<style id="umoya-brand-fonts">' . umoya_brand_fonts_css() . '</style>' . "\\n"; // phpcs:ignore
 }, 999 ); // after the default theme's own global styles, which set Manrope
 
